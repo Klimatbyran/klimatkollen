@@ -1,0 +1,3 @@
+{
+  "extends": ["@iteam/eslint-config-react/typescript"]
+}
