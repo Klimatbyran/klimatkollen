@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { H1 } from '../components/Typography'
+import ShareButton from '../components/ShareButton';
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <H1>Klimatkollen</H1>
+      <ShareButton />
     </div>
   )
 }
