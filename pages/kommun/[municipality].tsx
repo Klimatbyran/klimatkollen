@@ -10,7 +10,7 @@ const Municipality = () => {
     <>
       <p>Kommun: {municipality}</p>
       <Link href="/" passHref>
-        <a>
+        <a href="replace">
           <BackArrow />
         </a>
       </Link>
