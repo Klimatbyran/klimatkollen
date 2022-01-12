@@ -9,7 +9,7 @@ const Municipality = () => {
   return (
     <>
       <p>Kommun: {municipality}</p>
-      <Link href="/">
+      <Link href="/" passHref>
         <a>
           <BackArrow />
         </a>
