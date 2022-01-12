@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import ShareIcon from '../public/icons/share.svg';
 
-const Button = styled.div`
+const Button = styled.button`
   width: 216px;
   height: 56px;
   color: #2d2d2d;
@@ -12,10 +13,27 @@ const Button = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  fill: #2d2d2d;
+  margin: 50px;
 
   p {
     font-weight: bold;
+    font-size: 16px;
     margin-left: 30%;
+  }
+
+  &:hover {
+    background: #94d3c1;
+  }
+
+  &:focus {
+    border: 2px solid #fff;
+  }
+
+  &:disabled {
+    background: #6c6c6c;
+    color: #fff;
+    fill: #fff;
   }
 `;
 
@@ -23,7 +41,7 @@ const ShareButton = () => {
   return (
     <>
       <Button>
-        <img src="/icons/share.svg" alt="Share icon" />
+        <ShareIcon alt="Share icon" />
         <p>Dela</p>
       </Button>
     </>
