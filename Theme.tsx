@@ -14,6 +14,7 @@ const colorTheme: DefaultTheme = {
   dark: '#424242',
   black: '#2D2D2D',
 }
+
 type Props = {
   children: ReactNode
 }

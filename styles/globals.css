@@ -1,15 +1,16 @@
-html,
-body {
+* {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  background: #2d2d2d;
+  color: #fff;
   font-family: Helvetica Neue;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }
