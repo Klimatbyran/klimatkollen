@@ -36,7 +36,7 @@ const Button = styled.button`
   }
 `
 
-interface ShareButtonProps {
+type ShareButtonProps = {
   handleClick: () => void
 }
 
