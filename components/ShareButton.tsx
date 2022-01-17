@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import ShareIcon from '../public/icons/share.svg';
+import styled from 'styled-components'
+import ShareIcon from '../public/icons/share.svg'
 
 const Button = styled.button`
   width: 216px;
@@ -34,7 +34,7 @@ const Button = styled.button`
     color: ${(props) => props.theme.white};
     fill: ${(props) => props.theme.white};
   }
-`;
+`
 
 interface ShareButtonProps {
   handleClick: () => void
@@ -42,11 +42,11 @@ interface ShareButtonProps {
 
 const ShareButton = ({ handleClick }: ShareButtonProps) => {
   return (
-      <Button onClick={handleClick}>
-        <ShareIcon alt="Share icon" />
-        <p>Dela</p>
-      </Button>
+    <Button onClick={handleClick}>
+      <ShareIcon alt="Share icon" />
+      <p>Dela</p>
+    </Button>
   )
 }
 
-export default ShareButton;
+export default ShareButton
