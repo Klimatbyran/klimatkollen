@@ -36,13 +36,13 @@ const Button = styled.button`
   }
 `;
 
-interface Props {
+interface ShareButtonProps {
   handleClick: () => void
 }
 
-const ShareButton: React.FC<Props> = ( props ) => {
+const ShareButton: React.FC<ShareButtonProps> = ({ handleClick }) => {
   return (
-      <Button onClick={props.handleClick}>
+      <Button onClick={handleClick}>
         <ShareIcon alt="Share icon" />
         <p>Dela</p>
       </Button>
