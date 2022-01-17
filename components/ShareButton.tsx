@@ -4,7 +4,7 @@ import ShareIcon from '../public/icons/share.svg';
 const Button = styled.button`
   width: 216px;
   height: 56px;
-  color: #2d2d2d;
+  color: ${(props) => props.theme.black};
   background: ${(props) => props.theme.main};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -13,8 +13,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-  fill: #2d2d2d;
-  margin: 50px;
+  fill: ${(props) => props.theme.black};
 
   p {
     font-weight: bold;
@@ -23,28 +22,30 @@ const Button = styled.button`
   }
 
   &:hover {
-    background: #94d3c1;
+    background: ${(props) => props.theme.greenGraphTwo};
   }
 
   &:focus {
-    border: 2px solid #fff;
+    border: 2px solid ${(props) => props.theme.white};
   }
 
   &:disabled {
-    background: #6c6c6c;
-    color: #fff;
-    fill: #fff;
+    background: ${(props) => props.theme.grey};
+    color: ${(props) => props.theme.white};
+    fill: ${(props) => props.theme.white};
   }
 `;
 
-const ShareButton = () => {
+interface Props {
+  handleClick: () => void
+}
+
+const ShareButton: React.FC<Props> = ( props ) => {
   return (
-    <>
-      <Button>
+      <Button onClick={props.handleClick}>
         <ShareIcon alt="Share icon" />
         <p>Dela</p>
       </Button>
-    </>
   )
 }
 
