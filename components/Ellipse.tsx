@@ -6,7 +6,7 @@ width: 347px;
 height: 318px;
 left: -187px;
 top: -119px;
-background: #424242;
+background: ${(props) => props.theme.dark};
 filter: blur(98px);
 z-index: -1;
 `;
