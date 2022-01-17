@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { H1 } from '../components/Typography'
-import ShareButton from '../components/ShareButton'
+// import ShareButton from '../components/ShareButton'
 
 const Home: NextPage = () => {
-  function handleClick() {
-    // Function to handle click on share button
-  }
+  // function handleClick() {
+  //   // Function to handle click on share button
+  // }
 
   return (
     <div>
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <H1>Klimatkollen</H1>
-      <ShareButton handleClick={handleClick} />
+      {/* <ShareButton handleClick={handleClick} /> */}
     </div>
   )
 }

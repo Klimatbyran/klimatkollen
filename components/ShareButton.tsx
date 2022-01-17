@@ -4,8 +4,8 @@ import ShareIcon from '../public/icons/share.svg'
 const Button = styled.button`
   width: 216px;
   height: 56px;
-  color: ${(props) => props.theme.black};
-  background: ${(props) => props.theme.main};
+  color: ${({ theme }) => theme.black};
+  background: ${({ theme }) => theme.main};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   border: 0;
@@ -13,7 +13,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-  fill: ${(props) => props.theme.black};
+  fill: ${({ theme }) => theme.black};
 
   p {
     font-weight: bold;
@@ -22,17 +22,17 @@ const Button = styled.button`
   }
 
   &:hover {
-    background: ${(props) => props.theme.greenGraphTwo};
+    background: ${({ theme }) => theme.greenGraphTwo};
   }
 
   &:focus {
-    border: 2px solid ${(props) => props.theme.white};
+    border: 2px solid ${({ theme }) => theme.white};
   }
 
   &:disabled {
-    background: ${(props) => props.theme.grey};
-    color: ${(props) => props.theme.white};
-    fill: ${(props) => props.theme.white};
+    background: ${({ theme }) => theme.grey};
+    color: ${({ theme }) => theme.white};
+    fill: ${({ theme }) => theme.white};
   }
 `
 
