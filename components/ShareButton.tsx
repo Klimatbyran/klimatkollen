@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import ShareIcon from '../public/icons/share.svg'
+// import ShareIcon from '../public/icons/share.svg'
 
 const Btn = styled.button`
   width: 216px;
@@ -43,7 +43,7 @@ type ShareButtonProps = {
 const ShareButton = ({ handleClick }: ShareButtonProps) => {
   return (
     <Btn onClick={handleClick}>
-      <ShareIcon alt="Share icon" />
+      {/* <ShareIcon alt="Share icon" /> */}
       <p>Dela</p>
     </Btn>
   )
