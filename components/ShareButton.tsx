@@ -40,7 +40,7 @@ interface ShareButtonProps {
   handleClick: () => void
 }
 
-const ShareButton: React.FC<ShareButtonProps> = ({ handleClick }) => {
+const ShareButton = ({ handleClick }: ShareButtonProps) => {
   return (
       <Button onClick={handleClick}>
         <ShareIcon alt="Share icon" />
