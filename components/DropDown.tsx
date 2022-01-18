@@ -1,58 +1,10 @@
-import styled from 'styled-components'
 import { useState } from 'react'
+import styled from 'styled-components'
+import ArrowDown from '../public/icons/arrow-down.svg'
 
-const DropDownDiv = styled.div`
+const SearchDropDown = styled.div`
   position: relative;
   display: inline-block;
-`
-
-const Content = styled.div`
-  position: absolute;
-  background-color: #2d2d2d;
-  min-width: 230px;
-  z-index: 1;
-`
-
-const Link = styled.a`
-  color: #2d2d2d;
-  text-decoration: none;
-  display: block;
-  width: 280px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  padding-left: 1rem;
-`
-
-// const Button = styled.button`
-//   border: 1px solid white;
-//   background-color: #2d2d2d;
-//   border-radius: 4px;
-//   width: 280px;
-//   height: 56px;
-//   color: white;
-// `
-
-const Input = styled.input`
-  width: 280px;
-  height: 56px;
-  background-color: #2d2d2d;
-  border: 1px solid white;
-  border-radius: 4px;
-  color: white;
-  padding-left: 1rem;
-  outline: none;
-
-  ::placeholder {
-    color: white;
-    font-size: 16px;
-  }
-`
-
-const Btn = styled.button`
-  background-color: red;
-  right: 30px;
-  position: absolute;
 `
 
 const Flex = styled.div`
@@ -61,53 +13,98 @@ const Flex = styled.div`
   justify-contet: center;
 `
 
-const Items = styled.div`
+const Link = styled.a`
+  color: ${({ theme }) => theme.black};
+  text-decoration: none;
+  width: 280px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+`
+
+const Input = styled.input`
+  width: 280px;
+  height: 56px;
+  background-color: ${({ theme }) => theme.black};
+  border: 1px solid white;
+  border-radius: 4px;
+  color: ${({ theme }) => theme.white};
+  padding-left: 1rem;
+  outline: none;
+
+  ::placeholder {
+    color: ${({ theme }) => theme.white};
+    font-size: 14px;
+    font-family: Helvetica Neue;
+    font-weight: 300;
+  }
+`
+
+const Btn = styled.button`
+  background-color: ${({ theme }) => theme.black};
+  width: 40px;
+  height: 30px;
+  right: 10px;
+  position: absolute;
+  border: none;
+`
+
+const MunicipalitiesWrapper = styled.div`
   background-color: #f9fbff;
+  max-height: 195px;
+  overflow-y: scroll;
 `
 
 const DropDown = () => {
-  const [showDropDown, setShowDropDown] = useState(false)
-  const municipalitiesFromApi = ['Göteborg', 'Stockholm', 'Malmö', 'Mallmö']
+  //TO DO: get municipalities from API
+  const municipalitiesFromApi = [
+    'Göteborg',
+    'Stockholm',
+    'Malmö',
+    'Bjuv',
+    'Ekerö',
+    'Tyresö',
+  ]
+  const sortedMunicipalities = municipalitiesFromApi.sort((a, b) => a.localeCompare(b))
 
-  const [municipalities, setMunicipalities] = useState(municipalitiesFromApi)
+  const [showDropDown, setShowDropDown] = useState(false)
+  const [municipalities, setMunicipalities] = useState(sortedMunicipalities)
 
   const onInputChange = (value: string) => {
     if (value.length < 1) {
-      console.log('e')
       setShowDropDown(false)
     } else {
       setShowDropDown(true)
     }
-    // console.log(value)
-    // console.log(showDropDown)
-    const filterdMunicipalities = municipalitiesFromApi.filter((test) =>
+    const filterdMunicipalities = sortedMunicipalities.filter((test) =>
       test.toLowerCase().startsWith(value.toLowerCase()),
     )
     setMunicipalities(filterdMunicipalities)
   }
 
   return (
-    <DropDownDiv>
-      <Content id="myDropdown">
-        <Flex>
-          <Input
-            type="text"
-            placeholder="Hur går det för din kommun?"
-            onChange={(e) => onInputChange(e.target.value)}
-          />
-          <Btn onClick={() => setShowDropDown(!showDropDown)}> Ner </Btn>
-        </Flex>
-        {showDropDown && (
-          <Items>
-            {municipalities.map((name, i) => (
-              <Link key={i} href={`/kommun/${name}`}>
-                {name}
-              </Link>
-            ))}
-          </Items>
-        )}
-      </Content>
-    </DropDownDiv>
+    <SearchDropDown>
+      <Flex>
+        <Input
+          type="text"
+          placeholder="Hur går det för din kommun?"
+          onChange={(e) => onInputChange(e.target.value)}
+        />
+        <Btn onClick={() => setShowDropDown((current) => !current)}>
+          <ArrowDown />
+        </Btn>
+      </Flex>
+      {showDropDown && (
+        <MunicipalitiesWrapper>
+          {municipalities.map((name, i) => (
+            <Link key={i} href={`/kommun/${name}`}>
+              {name}
+            </Link>
+          ))}
+        </MunicipalitiesWrapper>
+      )}
+    </SearchDropDown>
   )
 }
 
