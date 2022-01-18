@@ -14,7 +14,7 @@ const Content = styled.div`
 `
 
 const Link = styled.a`
-  color: white;
+  color: #2d2d2d;
   text-decoration: none;
   display: block;
   width: 280px;
@@ -24,23 +24,45 @@ const Link = styled.a`
   padding-left: 1rem;
 `
 
-const Button = styled.button`
-  border: 1px solid white;
-  background-color: #2d2d2d;
-  border-radius: 4px;
-  width: 280px;
-  height: 56px;
-  color: white;
-`
+// const Button = styled.button`
+//   border: 1px solid white;
+//   background-color: #2d2d2d;
+//   border-radius: 4px;
+//   width: 280px;
+//   height: 56px;
+//   color: white;
+// `
 
 const Input = styled.input`
   width: 280px;
   height: 56px;
   background-color: #2d2d2d;
-  border: none;
+  border: 1px solid white;
+  border-radius: 4px;
   color: white;
   padding-left: 1rem;
   outline: none;
+
+  ::placeholder {
+    color: white;
+    font-size: 16px;
+  }
+`
+
+const Btn = styled.button`
+  background-color: red;
+  right: 30px;
+  position: absolute;
+`
+
+const Flex = styled.div`
+  display: flex;
+  align-items: center;
+  justify-contet: center;
+`
+
+const Items = styled.div`
+  background-color: #f9fbff;
 `
 
 const DropDown = () => {
@@ -50,6 +72,14 @@ const DropDown = () => {
   const [municipalities, setMunicipalities] = useState(municipalitiesFromApi)
 
   const onInputChange = (value: string) => {
+    if (value.length < 1) {
+      console.log('e')
+      setShowDropDown(false)
+    } else {
+      setShowDropDown(true)
+    }
+    // console.log(value)
+    // console.log(showDropDown)
     const filterdMunicipalities = municipalitiesFromApi.filter((test) =>
       test.toLowerCase().startsWith(value.toLowerCase()),
     )
@@ -58,24 +88,25 @@ const DropDown = () => {
 
   return (
     <DropDownDiv>
-      <Button onClick={() => setShowDropDown(!showDropDown)}>
-        Hur går det för din kommun?
-      </Button>
-      {showDropDown && (
-        <Content id="myDropdown">
+      <Content id="myDropdown">
+        <Flex>
           <Input
             type="text"
-            placeholder="Search.."
-            id="myInput"
+            placeholder="Hur går det för din kommun?"
             onChange={(e) => onInputChange(e.target.value)}
           />
-          {municipalities.map((name, i) => (
-            <Link key={i} href={`/kommun/${name}`}>
-              {name}
-            </Link>
-          ))}
-        </Content>
-      )}
+          <Btn onClick={() => setShowDropDown(!showDropDown)}> Ner </Btn>
+        </Flex>
+        {showDropDown && (
+          <Items>
+            {municipalities.map((name, i) => (
+              <Link key={i} href={`/kommun/${name}`}>
+                {name}
+              </Link>
+            ))}
+          </Items>
+        )}
+      </Content>
     </DropDownDiv>
   )
 }
