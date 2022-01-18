@@ -42,7 +42,7 @@ type ShareButtonProps = {
 
 const ShareButton = ({ handleClick }: ShareButtonProps) => {
   return (
-    <Button onClick={handleClick}>
+    <Button type="button" onClick={handleClick}>
       <Icon />
       <p>Dela</p>
     </Button>
