@@ -1,16 +1,17 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Theme from '../Theme'
-import Ellipse from '../components/Ellipse'
+import Ellipse from '../components/Ellipse';
+import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="wrapper">
-      <Theme>
-        <Ellipse />
+    <Theme>
+      <Ellipse />
+      <Layout>
         <Component {...pageProps} />
-      </Theme>
-    </div>
+      </Layout>
+    </Theme>
   )
 }
 

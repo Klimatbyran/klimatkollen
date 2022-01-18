@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { Paragraph, ParagraphBold } from './Typography'
-import Image from 'next/image'
 import infoIcon from '../public/icons/info.svg'
 
 const StyledDiv = styled.div`

@@ -1,16 +1,19 @@
 import { useRouter } from 'next/router'
-import InfoBox from '../../components/InfoBox';
-
+import ShareButton from '../../components/ShareButton'
 
 const Municipality = () => {
   const router = useRouter()
   const { municipality } = router.query
 
+  const handleClick = () => {
+    // Function to handle click on share button    
+  }
+
   return (
-    <>
-    <h1>{municipality}</h1>
-    <InfoBox />
-    </>
+    <div>
+      <p>Kommun: {municipality}</p>
+      <ShareButton handleClick={handleClick} />
+    </div>
   )
 }
 
