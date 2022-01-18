@@ -5,7 +5,7 @@ import Icon from '../public/icons/info.svg'
 const StyledDiv = styled.div`
   width: 334px;
   height: 282px;
-  background: #424242;
+  background: ${({ theme }) => theme.dark};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 20px;
