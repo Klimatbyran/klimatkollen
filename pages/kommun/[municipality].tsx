@@ -6,7 +6,7 @@ const Municipality = () => {
   const { municipality } = router.query
 
   const handleClick = () => {
-    
+    // Function to handle click on share button    
   }
 
   return (
