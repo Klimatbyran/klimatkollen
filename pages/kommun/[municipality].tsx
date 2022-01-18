@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import ShareButton from '../../components/ShareButton'
+import Back from '../../components/Back';
 
 const Municipality = () => {
   const router = useRouter()
@@ -13,6 +14,7 @@ const Municipality = () => {
     <div>
       <p>Kommun: {municipality}</p>
       <ShareButton handleClick={handleClick} />
+      <Back />
     </div>
   )
 }
