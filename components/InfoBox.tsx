@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Paragraph, ParagraphBold } from './Typography'
-import infoIcon from '../public/icons/info.svg'
+import Icon from '../public/icons/info.svg'
 
 const StyledDiv = styled.div`
   width: 334px;
@@ -38,81 +38,79 @@ const StyledIcon = styled.div`
 
 const InfoBox = () => {
   return (
-    <>
-      <StyledDiv>
-        <div className="row">
-          <section className="left">
-            <Paragraph>Här sitter</Paragraph>
-            <StyledIcon>
-              <Image src={infoIcon} />
-            </StyledIcon>
-          </section>
-          <section className="right">
-            <ParagraphBold>Moderaterna</ParagraphBold>
-          </section>
-        </div>
+    <StyledDiv>
+      <div className="row">
+        <section className="left">
+          <Paragraph>Här sitter</Paragraph>
+          <StyledIcon>
+            <Icon />
+          </StyledIcon>
+        </section>
+        <section className="right">
+          <ParagraphBold>Moderaterna</ParagraphBold>
+        </section>
+      </div>
 
-        <div className="row">
-          <section className="left">
-            <Paragraph>Koldioxidbudget</Paragraph>
-            <StyledIcon>
-              <Image src={infoIcon} />
-            </StyledIcon>
-          </section>
-          <section className="right">
-            <ParagraphBold>500 kVM</ParagraphBold>
-          </section>
-        </div>
+      <div className="row">
+        <section className="left">
+          <Paragraph>Koldioxidbudget</Paragraph>
+          <StyledIcon>
+            <Icon />
+          </StyledIcon>
+        </section>
+        <section className="right">
+          <ParagraphBold>500 kVM</ParagraphBold>
+        </section>
+      </div>
 
-        <div className="row">
-          <section className="left">
-            <Paragraph>Utsläpp historiskt</Paragraph>
-            <StyledIcon>
-              <Image src={infoIcon} />
-            </StyledIcon>
-          </section>
-          <section className="right">
-            <ParagraphBold>500 kVM</ParagraphBold>
-          </section>
-        </div>
+      <div className="row">
+        <section className="left">
+          <Paragraph>Utsläpp historiskt</Paragraph>
+          <StyledIcon>
+            <Icon />
+          </StyledIcon>
+        </section>
+        <section className="right">
+          <ParagraphBold>500 kVM</ParagraphBold>
+        </section>
+      </div>
 
-        <div className="row">
-          <section className="left">
-            <Paragraph>Glappet</Paragraph>
-            <StyledIcon>
-              <Image src={infoIcon} />
-            </StyledIcon>
-          </section>
-          <section className="right">
-            <ParagraphBold>500 kVM</ParagraphBold>
-          </section>
-        </div>
+      <div className="row">
+        <section className="left">
+          <Paragraph>Glappet</Paragraph>
+          <StyledIcon>
+            <Icon />
+          </StyledIcon>
+        </section>
+        <section className="right">
+          <ParagraphBold>500 kVM</ParagraphBold>
+        </section>
+      </div>
 
-        <div className="row">
-          <section className="left">
-            <Paragraph>Tre största utsläpp</Paragraph>
-            <StyledIcon>
-              <Image src={infoIcon} />
-            </StyledIcon>
-          </section>
-          <section className="right">
-            <ParagraphBold>500 kVM</ParagraphBold>
-          </section>
-        </div>
+      <div className="row">
+        <section className="left">
+          <Paragraph>Tre största utsläpp</Paragraph>
+          <StyledIcon>
+            <Icon />
+          </StyledIcon>
+        </section>
+        <section className="right">
+          <ParagraphBold>500 kVM</ParagraphBold>
+        </section>
+      </div>
 
-        <div className="row">
-          <section className="left">
-            <Paragraph>Finns det en plan?</Paragraph>
-            <StyledIcon>
-              <Image src={infoIcon} />
-            </StyledIcon>
-          </section>
-          <section className="right">
-            <ParagraphBold>Ja</ParagraphBold>
-          </section>
-        </div>
-      </StyledDiv>
-    </>
+      <div className="row">
+        <section className="left">
+          <Paragraph>Finns det en plan?</Paragraph>
+          <StyledIcon>
+            <Icon />
+          </StyledIcon>
+        </section>
+        <section className="right">
+          <ParagraphBold>Ja</ParagraphBold>
+        </section>
+      </div>
+    </StyledDiv>
   )
 }
 
