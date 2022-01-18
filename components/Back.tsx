@@ -7,10 +7,6 @@ const Button = styled.button`
   cursor: pointer;
   fill: #fff;
   background: transparent;
-
-  @media only screen and (min-width: 768px) {
-    display: none;
-  }
 `;
 
 const BackArrow = () => {
