@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import DropDown from '../components/DropDown'
-import { H1 } from '../components/Typography'
+import { H1, Paragraph } from '../components/Typography'
 
 const Home: NextPage = () => {
   return (
@@ -12,6 +12,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <H1>Klimatkollen</H1>
+      <Paragraph>
+        Låt oss ta tempen på hur väl din kommun når upp till de mål som är uppsatta i
+        parisavtalet.
+      </Paragraph>
       <DropDown />
     </div>
   )
