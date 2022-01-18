@@ -3,12 +3,13 @@ import { Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
 
 const StyledDiv = styled.div`
-  width: 334px;
+  min-width: 290px;
+  max-width: 330px;
   height: 282px;
   background: ${({ theme }) => theme.dark};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,7 +30,7 @@ const StyledDiv = styled.div`
 `;
 
 const StyledIcon = styled.div`
-  margin-left: 20px;
+  margin-left: 12px;
 
   &:hover {
     cursor: pointer;
