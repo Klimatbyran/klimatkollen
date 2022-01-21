@@ -11,14 +11,14 @@ const Button = styled.button<{ icon: boolean }>`
   border: 0;
   display: flex;
   align-items: center;
-  justify-content: ${(props) => (props.icon ? 'start' : 'center')};
-  padding-left: ${(props) => (props.icon ? '20px' : '0%')};
+  justify-content: ${({ icon }) => (icon ? 'start' : 'center')};
+  padding-left: ${({ icon }) => (icon ? '20px' : '0%')};
   cursor: pointer;
   fill: ${({ theme }) => theme.black};
   p {
     font-weight: bold;
     font-size: 16px;
-    margin-left: ${(props) => (props.icon ? '30%' : '0%')};
+    margin-left: ${({ icon }) => (icon ? '30%' : '0%')};
   }
 
   &:hover {
