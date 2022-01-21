@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import ShareButton from '../../components/ShareButton'
+import Button from '../../components/Button'
 import Back from '../../components/Back'
 
 const Municipality = () => {
@@ -14,7 +14,7 @@ const Municipality = () => {
     <div>
       <Back />
       <p>Kommun: {municipality}</p>
-      <ShareButton handleClick={handleClick} />
+      <Button handleClick={handleClick} text="Dela" shareIcon />
     </div>
   )
 }
