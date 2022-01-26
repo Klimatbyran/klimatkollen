@@ -68,17 +68,11 @@ const Municiplity = styled.li`
   position: relative;
 `
 
-const DropDown = () => {
-  //TO DO: get municipalities from API
-  const municipalitiesFromApi = [
-    'Göteborg',
-    'Stockholm',
-    'Malmö',
-    'Bjuv',
-    'Ekerö',
-    'Tyresö',
-  ]
-  const sortedMunicipalities = municipalitiesFromApi.sort((a, b) => a.localeCompare(b))
+type Props = {
+  municipalitiesName: Array<string>
+}
+const DropDown = ({ municipalitiesName }: Props) => {
+  const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMuniciplity, setSelectedMunicipality] = useState<string>('')
   const [municipalities, setMunicipalities] = useState(sortedMunicipalities)
