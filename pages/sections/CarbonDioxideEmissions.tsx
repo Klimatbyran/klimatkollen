@@ -1,5 +1,5 @@
-import { H5 } from '../components/Typography'
-import ShareIcon from '../components/ShareIcon'
+import { H5 } from '../../components/Typography'
+import ShareIcon from '../../components/ShareIcon'
 import styled from 'styled-components'
 
 const SectionWrapper = styled.div`
