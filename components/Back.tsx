@@ -7,6 +7,7 @@ const Button = styled.button`
   cursor: pointer;
   fill: #fff;
   background: transparent;
+  text-align: left;
 `;
 
 const BackArrow = () => {
