@@ -15,8 +15,7 @@ const Municipality = () => {
   return (
     <div>
       <Back />
-      <p>Kommun: {municipality}</p>
-      <H1>Kommun: {municipality}</H1>
+      <H1>{municipality}</H1>
       <Button handleClick={handleClick} text="Dela" shareIcon />
       <InfoBox />
     </div>
