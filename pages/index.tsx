@@ -28,9 +28,9 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
 }
 
 export async function getServerSideProps() {
-  const municipalities = await fetch('http://localhost:3000/api/municipalities').then(
-    (res) => res.json(),
-  )
+  const municipalities = await fetch(
+    'http://klimatkollen.vercel.app/api/municipalities',
+  ).then((res) => res.json())
   return {
     props: { municipalities },
   }
