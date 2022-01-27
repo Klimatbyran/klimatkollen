@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getMunicipalities, getMunicipality } from '../../../utils/emissionService'
+import { getMunicipality } from '../../../utils/emissionService'
+import { WikiDataService } from '../../../utils/wikiDataService'
 
 export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
   const name = req.query.name as string
@@ -7,9 +8,18 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
 
   switch (method) {
     case 'GET':
+      
       getMunicipality(name)
         .then((municipality) => {
-          res.status(200).json(municipality)
+          new WikiDataService().getMunicipalityByName(name)
+            .then((wikiDataMunicipality) => {
+
+              municipality.Population = wikiDataMunicipality.Population
+              municipality.CoatOfArmsImage = wikiDataMunicipality.CoatOfArmsImage
+              municipality.Image = wikiDataMunicipality.Image
+
+              res.status(200).json(municipality)
+            })
         })
         .catch((error) => {
           res.status(500).json(error)
