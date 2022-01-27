@@ -2,6 +2,7 @@ import { H5 } from '../../components/Typography'
 import ShareIcon from '../../components/ShareIcon'
 import styled from 'styled-components'
 import { InView } from 'react-intersection-observer'
+import { useRouter } from 'next/router'
 
 const SectionWrapper = styled.div`
   display: flex;
@@ -22,13 +23,19 @@ const CarbonDioxideEmissions = () => {
     // alert('click on share icon')
   }
 
+
+
+  const router = useRouter()
+  const { municipality } = router.query
+
   const handleOnChange = () => {
     console.log('KOLDIOXIDUTSLÄPP is in viewport')
+    window.history.replaceState(null, '', `/kommun/${municipality}/koldioxidutslapp`); 
   }
 
   return (
-    <InView as="div" threshold={1} onChange={() => handleOnChange()}>
-      <SectionWrapper id="carbon-dioxide-emissions">
+    <InView as="div" threshold={1} rootMargin="-25px 0px" onChange={() => handleOnChange()}>
+      <SectionWrapper id="koldioxidutslapp">
         <H5>Koldioxidutsläpp</H5>
         <StyledShareButton>
           <ShareIcon handleClick={handleClick} />

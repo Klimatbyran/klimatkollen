@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import { Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
+import { InView } from 'react-intersection-observer'
+import { useRouter } from 'next/router'
+
 
 const StyledDiv = styled.div`
   min-width: 290px;
@@ -38,7 +41,18 @@ const StyledIcon = styled.div`
 `
 
 const InfoBox = () => {
+
+  const router = useRouter()
+  const { municipality } = router.query
+
+  const handleOnChange = () => {
+    console.log("SCORECARD is in viewport")
+    window.history.replaceState(null, '', `/kommun/${municipality}`); 
+  }
+
+
   return (
+    <InView as="div" threshold={1} initialInView onChange={() => handleOnChange()}>
     <StyledDiv>
       <div className="row">
         <section className="left">
@@ -88,6 +102,7 @@ const InfoBox = () => {
         </section>
       </div>
     </StyledDiv>
+    </InView>
   )
 }
 

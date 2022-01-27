@@ -12,6 +12,8 @@ const Municipality = () => {
   const router = useRouter()
   const { municipality } = router.query
 
+  window.history.replaceState(null, '', `/kommun/${municipality}`); 
+
   const handleClick = () => {
     // Function to handle click on share button
     alert('clicked the share button')
