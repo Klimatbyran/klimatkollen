@@ -67,6 +67,15 @@ a {
   fill-opacity: 0.5;
   filter: url(#dropshadow);
   stroke-width: 3;
+  transition: all 0.6s ease-in-out;
+}
+
+text {
+  transition: translate 0.6s ease-in-out;
+}
+
+path {
+  transition: all 0.6s ease-in-out;
 }
 
 #dataset-1 {
@@ -127,13 +136,13 @@ a {
     transform: scaleY(1);
   }
 }
-.dataset {
+.dataset.hidden {
   transform-origin: bottom;
   transform: scaleY(0.01);
   opacity: 0.5;
 }
 
-.loaded .dataset {
+.dataset.show {
   opacity: 1;
   -webkit-animation: raise 0.3s ease 0.2s forwards;
   animation: raise 0.3s ease 0.2s forwards;
@@ -141,7 +150,7 @@ a {
 
 .loaded #dataset-1 {
   -webkit-animation-delay: 0.1s;
-  animation-delay: 0.1s;
+  animation-delay: 0s;
 }
 
 .loaded #dataset-2 {

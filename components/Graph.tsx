@@ -53,13 +53,66 @@ const line = (
   return p.toString()
 }
 
+const square = (
+  data: Array<Co2Year>,
+  {
+    width = 500,
+    height = 240,
+    maxCo2 = max(data, 'co2') * data.length,
+    x = 0,
+  }: {
+    width?: number
+    height?: number
+    maxCo2?: number
+    minCo2?: number
+    x?: number
+  },
+) => {
+  if (!data.length) return ''
+  const p = path()
+  p.moveTo(x, height)
+  const totalCo2 = data.reduce((sum, d: { year: number; co2: number }) => sum + d.co2, 0)
+  p.lineTo(x, height - (totalCo2 / maxCo2) * height)
+  p.lineTo(x + width / 2, height - (totalCo2 / maxCo2) * height)
+  p.lineTo(x + width / 2, height)
+  p.lineTo(x, height)
+  p.closePath()
+  return p.toString()
+}
+
+const YearLabel = ({
+  width = 500,
+  height = 240,
+  maxYear = 2025,
+  minYear = 1990,
+  year,
+  offset = 10,
+}: {
+  width?: number
+  height?: number
+  maxYear?: number
+  minYear?: number
+  offset?: number
+  year: number
+}) => {
+  return (
+    <text
+      x={((year - minYear) / (maxYear - minYear)) * width}
+      y={height + 30 - offset}
+      className="year">
+      {year}
+    </text>
+  )
+}
+
 const Graph = () => {
   const [loaded, setLoaded] = useState(false)
   const [showNow, setShowNow] = useState(false)
   const [showParis, setShowParis] = useState(false)
   const [showPledges, setShowPledges] = useState(false)
+  const [showSummary, setShowSummary] = useState(false)
   const [width, height] = [500, 240]
-  const [year, setYear] = useState({ year: 1990 })
+  const [startYear, setStartYear] = useState(1990)
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 300)
@@ -129,10 +182,49 @@ const Graph = () => {
     { year: 2030, co2: 0 },
   ]
 
-  const glappet = paris.map((d, i) => ({
+  const diff = pledges.map((d, i) => ({
     year: d.year,
-    co2: pledges[i].co2 - d.co2,
+    co2: d.co2 - paris[i].co2,
+    offset: paris[i].co2,
   }))
+
+  const step1 = () => {
+    setShowNow(true)
+    setShowParis(true)
+    setShowPledges(false)
+    setShowSummary(false)
+    setStartYear(1990)
+  }
+
+  const step2 = () => {
+    setShowNow(true)
+    setShowParis(true)
+    setShowPledges(true)
+    setShowSummary(false)
+    setStartYear(1990)
+  }
+  const step3 = () => {
+    setShowNow(true)
+    setShowParis(true)
+    setShowPledges(true)
+    setShowSummary(false)
+    setStartYear(2018)
+  }
+  const step4 = () => {
+    setShowNow(false)
+    setShowParis(false)
+    setShowPledges(false)
+    setShowSummary(true)
+    setStartYear(2020)
+  }
+
+  // const step5 = () => {
+  //   setShowNow(false)
+  //   setShowParis(true)
+  //   setShowPledges(true)
+  //   setShowSummary(false)
+  //   setStartYear(2018)
+  // }
 
   return (
     <>
@@ -142,7 +234,7 @@ const Graph = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={loaded ? 'loaded' : ''}>
-        <svg viewBox={`0 0 ${width} ${height}`}>
+        <svg viewBox={`0 0 ${width} ${height + 30}`}>
           <defs>
             <filter id="dropshadow">
               <feGaussianBlur in="SourceAlpha" stdDeviation="3"></feGaussianBlur>
@@ -160,51 +252,66 @@ const Graph = () => {
             <animated.path
               className="dataset"
               d={line(data, {
-                minYear: 1990,
+                minYear: startYear,
                 maxYear: 2030,
                 width,
                 height,
                 maxCo2: max(data, 'co2'),
               })}
               id="dataset-1"></animated.path>
-            {showPledges && (
-              <animated.path
-                className="dataset"
-                d={line(pledges, {
-                  minYear: 1990,
-                  maxYear: 2030,
-                  maxCo2: max(data, 'co2'),
-                })}
-                id="dataset-2"></animated.path>
-            )}
-            {showParis && (
-              <animated.path
-                className="dataset"
-                d={line(paris, {
-                  minYear: 1990,
-                  maxYear: 2030,
-                  width,
-                  height,
-                  maxCo2: max(data, 'co2'),
-                })}
-                id="dataset-3"></animated.path>
-            )}
-
-            {/* <animated.path
-              className="dataset"
-              d="M0,260 C35,254 63,124 88,124 C114,124 148,163 219,163 C290,163 315,100 359,100 C402,100 520,244 560,259 C560,259 0,259 0,260 Z"
-              id="dataset-2"></animated.path>
             <animated.path
-              className="dataset"
-              d="M0,260 C0,260 22,199 64,199 C105,199 112,144 154,144 C195,144 194,126 216,126 C237,126 263,184 314,184 C365,183 386,128 434,129 C483,130 511,240 560,260 L0,260 Z"
-              id="dataset-1"></animated.path> */}
+              className={showPledges || showSummary ? 'dataset show' : 'dataset hidden'}
+              d={
+                showSummary
+                  ? square(pledges, {
+                      width,
+                      height,
+                      x: 0,
+                    })
+                  : line(pledges, {
+                      minYear: startYear,
+                      maxYear: 2030,
+                      maxCo2: max(data, 'co2'),
+                    })
+              }
+              id="dataset-2"></animated.path>
+            )
+            <animated.path
+              className={showParis || showSummary ? 'dataset show' : 'dataset hidden'}
+              d={
+                showSummary
+                  ? square(paris, {
+                      width,
+                      height,
+                      x: width / 2,
+                    })
+                  : line(paris, {
+                      minYear: startYear,
+                      maxYear: 2030,
+                      width,
+                      height,
+                      maxCo2: max(data, 'co2'),
+                    })
+              }
+              id="dataset-3"></animated.path>
           </g>
+          {!showSummary && (
+            <>
+              <YearLabel minYear={startYear} maxYear={2030} year={1990} />
+              <YearLabel minYear={startYear} maxYear={2030} year={2000} />
+              <YearLabel minYear={startYear} maxYear={2030} year={2010} />
+              <YearLabel minYear={startYear} maxYear={2030} year={2020} />
+              <YearLabel minYear={startYear} maxYear={2030} year={2025} />
+            </>
+          )}
         </svg>
       </div>
 
-      <button onClick={() => setShowNow(!showNow)}>Historiskt</button>
-      <button onClick={() => setShowParis(!showParis)}>Paris</button>
-      <button onClick={() => setShowPledges(!showPledges)}>Prognos</button>
+      <button onClick={() => step1()}>step1</button>
+      <button onClick={() => step2()}>step2</button>
+      <button onClick={() => step3()}>step3</button>
+      <button onClick={() => step4()}>step4</button>
+      {/* <button onClick={() => step5()}>step5</button> */}
     </>
   )
 }
