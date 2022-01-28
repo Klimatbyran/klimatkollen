@@ -38,7 +38,7 @@ const MunicipalityInfo = () => {
   const { municipality } = router.query
 
   const handleOnChange = () => {
-    window.history.replaceState(null, '', `/kommun/${municipality}/`)
+    window.history.replaceState(null, '', `/kommun/${municipality}`)
   }
 
   return (
