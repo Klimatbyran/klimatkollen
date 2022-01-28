@@ -1,5 +1,5 @@
-import { H5 } from '../../components/Typography'
-import ShareIcon from '../../components/ShareIcon'
+import { H5 } from '../../../components/Typography'
+import ShareIcon from '../../../components/ShareIcon'
 import styled from 'styled-components'
 import { InView } from 'react-intersection-observer'
 import { useRouter } from 'next/router'
@@ -12,7 +12,6 @@ const SectionWrapper = styled.div`
 `
 
 const Affect = () => {
-
   const handleClick = () => {
     // Function to handle click on share icon
     alert('click on share icon')
@@ -22,16 +21,15 @@ const Affect = () => {
   const { municipality } = router.query
 
   const handleOnChange = () => {
-    console.log("HUR KAN JAG PÅVERKA is in viewport")
-    window.history.replaceState(null, '', `/kommun/${municipality}/hur-kan-jag-paverka`); 
+    window.history.replaceState(null, '', `/kommun/${municipality}/hur-kan-jag-paverka`)
   }
 
   return (
-    <InView as="div" threshold={1} onChange={() => handleOnChange()}>
-    <SectionWrapper id="hur-kan-jag-paverka">
-      <H5>Hur kan jag påverka?</H5>
-      <ShareIcon handleClick={handleClick} />
-    </SectionWrapper>
+    <InView as="div" threshold={0.8} onChange={() => handleOnChange()}>
+      <SectionWrapper id="hur-kan-jag-paverka">
+        <H5>Hur kan jag påverka?</H5>
+        <ShareIcon handleClick={handleClick} />
+      </SectionWrapper>
     </InView>
   )
 }

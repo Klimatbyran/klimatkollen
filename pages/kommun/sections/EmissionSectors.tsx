@@ -1,5 +1,5 @@
-import { H5 } from '../../components/Typography'
-import ShareIcon from '../../components/ShareIcon'
+import { H5 } from '../../../components/Typography'
+import ShareIcon from '../../../components/ShareIcon'
 import styled from 'styled-components'
 import { InView } from 'react-intersection-observer'
 import { useRouter } from 'next/router'
@@ -23,17 +23,14 @@ const EmissionSectors = () => {
   const { municipality } = router.query
 
   const handleOnChange = () => {
-    console.log('TRE STÖRSTA UTSLÄPPSEKTORER is in viewport')
 
-    if (typeof window !== "undefined") {
-      window.history.pushState(null, '', `/kommun/${municipality}/tre-storsta-utslappssektorerna`); 
+      window.history.replaceState(null, '', `/kommun/${municipality}/tre-storsta-utslappssektorerna`); 
 
-    }
 
   }
 
   return (
-    <InView as="div" threshold={1} onChange={() => handleOnChange()}>
+    <InView as="div" threshold={0.8} onChange={() => handleOnChange()}>
       <SectionWrapper id="tre-storsta-utslappssektorerna">
         <H5>Tre största utsläppsektorerna</H5>
         <ShareIcon handleClick={() => handleClick('utslappssektorer')} />

@@ -4,7 +4,6 @@ import Icon from '../public/icons/info.svg'
 import { InView } from 'react-intersection-observer'
 import { useRouter } from 'next/router'
 
-
 const StyledDiv = styled.div`
   min-width: 290px;
   max-width: 330px;
@@ -41,67 +40,69 @@ const StyledIcon = styled.div`
 `
 
 const InfoBox = () => {
-
   const router = useRouter()
   const { municipality } = router.query
 
   const handleOnChange = () => {
-    console.log("SCORECARD is in viewport")
-    window.history.replaceState(null, '', `/kommun/${municipality}`); 
+    window.history.replaceState(null, '', `/kommun/${municipality}`)
   }
 
-
   return (
-    <InView as="div" threshold={1} initialInView onChange={() => handleOnChange()}>
-    <StyledDiv>
-      <div className="row">
-        <section className="left">
-          <Paragraph>Antal invånare</Paragraph>
-          <StyledIcon>
-            <Icon />
-          </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>50 000</ParagraphBold>
-        </section>
-      </div>
+    <InView
+      as="div"
+      threshold={1}
+      rootMargin={'50px'}
+      initialInView
+      onChange={() => handleOnChange()}>
+      <StyledDiv>
+        <div className="row">
+          <section className="left">
+            <Paragraph>Antal invånare</Paragraph>
+            <StyledIcon>
+              <Icon />
+            </StyledIcon>
+          </section>
+          <section className="right">
+            <ParagraphBold>50 000</ParagraphBold>
+          </section>
+        </div>
 
-      <div className="row">
-        <section className="left">
-          <Paragraph>Här styr</Paragraph>
-          <StyledIcon>
-            <Icon />
-          </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>Moderaterna</ParagraphBold>
-        </section>
-      </div>
+        <div className="row">
+          <section className="left">
+            <Paragraph>Här styr</Paragraph>
+            <StyledIcon>
+              <Icon />
+            </StyledIcon>
+          </section>
+          <section className="right">
+            <ParagraphBold>Moderaterna</ParagraphBold>
+          </section>
+        </div>
 
-      <div className="row">
-        <section className="left">
-          <Paragraph>Koldioxidbudget</Paragraph>
-          <StyledIcon>
-            <Icon />
-          </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>500 kVM</ParagraphBold>
-        </section>
-      </div>
+        <div className="row">
+          <section className="left">
+            <Paragraph>Koldioxidbudget</Paragraph>
+            <StyledIcon>
+              <Icon />
+            </StyledIcon>
+          </section>
+          <section className="right">
+            <ParagraphBold>500 kVM</ParagraphBold>
+          </section>
+        </div>
 
-      <div className="row">
-        <section className="left">
-          <Paragraph>Utsläpp per capita</Paragraph>
-          <StyledIcon>
-            <Icon />
-          </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>55 ton co2/år</ParagraphBold>
-        </section>
-      </div>
-    </StyledDiv>
+        <div className="row">
+          <section className="left">
+            <Paragraph>Utsläpp per capita</Paragraph>
+            <StyledIcon>
+              <Icon />
+            </StyledIcon>
+          </section>
+          <section className="right">
+            <ParagraphBold>55 ton co2/år</ParagraphBold>
+          </section>
+        </div>
+      </StyledDiv>
     </InView>
   )
 }
