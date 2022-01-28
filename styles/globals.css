@@ -67,11 +67,18 @@ a {
   fill-opacity: 0.5;
   filter: url(#dropshadow);
   stroke-width: 3;
-  transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in;
 }
 
-text {
-  transition: translate 0.6s ease-in-out;
+.label {
+  fill: #fff;
+  text-shadow: 0 0 1px #000;
+  font-size: 0.475em;
+  opacity: 0.6;
+  animation-delay: 300ms;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease;
 }
 
 path {
@@ -136,9 +143,10 @@ path {
     transform: scaleY(1);
   }
 }
+
 .dataset.hidden {
   transform-origin: bottom;
-  transform: scaleY(0.01);
+  transform: scaleY(0);
   opacity: 0.5;
 }
 
