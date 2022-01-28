@@ -13,7 +13,6 @@ const SectionWrapper = styled.div`
 
 const Affect = () => {
   const handleClick = () => {
-    // Function to handle click on share icon
     alert('click on share icon')
   }
 
@@ -25,7 +24,7 @@ const Affect = () => {
   }
 
   return (
-    <InView as="div" threshold={0.8} onChange={() => handleOnChange()}>
+    <InView as="div" threshold={1} onChange={() => handleOnChange()}>
       <SectionWrapper id="hur-kan-jag-paverka">
         <H5>Hur kan jag påverka?</H5>
         <ShareIcon handleClick={handleClick} />

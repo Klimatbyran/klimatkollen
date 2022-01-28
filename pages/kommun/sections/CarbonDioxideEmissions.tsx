@@ -19,8 +19,7 @@ const StyledShareButton = styled.button`
 
 const CarbonDioxideEmissions = () => {
   const handleClick = () => {
-    // Function to handle click on share icon
-    // alert('click on share icon')
+    alert('click on share icon')
   }
 
   const router = useRouter()

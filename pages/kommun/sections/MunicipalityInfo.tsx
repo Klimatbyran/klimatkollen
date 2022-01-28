@@ -30,8 +30,7 @@ const SectionHeader = styled.div`
 
 const MunicipalityInfo = () => {
   const handleClick = () => {
-    // Function to handle click on share icon
-    // alert('click on share icon')
+    alert('click on share icon')
   }
 
   const router = useRouter()
@@ -42,7 +41,7 @@ const MunicipalityInfo = () => {
   }
 
   return (
-    <InView as="div" threshold={1} onChange={() => handleOnChange()}>
+    <InView as="div" threshold={1} initialInView onChange={() => handleOnChange()}>
       <SectionWrapper id="kommuninfo">
         <SectionHeader>
           <Back />
