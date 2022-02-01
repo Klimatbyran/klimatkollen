@@ -66,7 +66,7 @@ a {
 .dataset {
   fill-opacity: 0.5;
   filter: url(#dropshadow);
-  stroke-width: 3;
+  stroke-width: 2;
   transition: all 0.6s ease-in;
 }
 

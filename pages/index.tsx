@@ -31,7 +31,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
           pledges={pledges}
         />
       )}
-      {currentStep < 3 && (
+      {currentStep < 4 && (
         <button onClick={() => setCurrentStep((current) => current + 1)}>nästa</button>
       )}
 

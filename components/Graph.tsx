@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { path } from 'd3-path'
-import { animated, useSpring, useTransition } from 'react-spring'
+import { animated, Controller } from 'react-spring'
 import bezier from 'bezier-curve'
 
 // https://dev.to/tomdohnal/react-svg-animation-with-react-spring-4-2kba
@@ -10,6 +10,15 @@ type Co2Year = { year: number; co2: number }
 
 const max = (array: Array<Co2Year>, key: 'year' | 'co2') => {
   return Math.max(...array.map((d) => d[key]))
+}
+
+const bezierCurve = (normalizedData: [number, number]) => {
+  const curve = []
+  for (let t = 0; t < 1; t += 0.01) {
+    const point = bezier(t, normalizedData)
+    curve.push(point)
+  }
+  return curve
 }
 
 type Props = {
@@ -28,7 +37,9 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
   const [showPledges, setShowPledges] = useState(false)
   const [minYear, setMinYear] = useState(1990)
   const [maxYear, setMaxYear] = useState(2030)
+  // const controller = new Controller({ minYear: 1990, maxYear: 2020 })
   const [maxCo2, setMaxCo2] = useState(max(data, 'co2'))
+  // const { maxYear, minYear } = controller.get()
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 300)
@@ -62,19 +73,37 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
         setShowPledges(false)
         setMinYear(1990)
         setMaxYear(2020)
+        // controller.update({ minYear: 1990, maxYear: 2020 })
+        // controller.start()
+
         break
       case 2:
         setShowNow(true)
-        setShowPledges(true)
-        setShowParis(false)
+        setShowParis(true)
+        setShowPledges(false)
         setMinYear(1990)
         setMaxYear(2030)
+        // controller.update({ minYear: 1990, maxYear: 2020 })
+        // controller.start()
+
         break
       case 3:
+        setShowNow(true)
+        setShowPledges(true)
+        setShowParis(true)
+        setMinYear(2018)
+        // controller.update({ minYear: 1990, maxYear: 2030 })
+        // controller.start()
+
+        break
+      case 4:
         setShowNow(true)
         setShowParis(true)
         setShowPledges(true)
         setMinYear(2018)
+        // controller.update({ minYear: 2018, maxYear: 2030 })
+        // controller.start()
+
         break
       default:
         break
@@ -89,7 +118,6 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
     const line = (data: Array<Co2Year>) => {
       if (!data.length) return ''
       const p = path()
-
       const normalizedData = data.map((d: { year: number; co2: number }) => [
         ((d.year - minYear) * width) / (maxYear - minYear),
         height - (d.co2 / maxCo2) * height,
@@ -99,12 +127,14 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
       p.moveTo(normalizedData[0][0], normalizedData[0][1])
       // console.log({ normalizedData })
       // draw all the datapoints
-      const curve = []
-      for (let t = 0; t < 1; t += 0.01) {
-        const point = bezier(t, normalizedData)
-        console.log({ point, t, maxCo2, maxYear, minYear })
-        curve.push(point)
-      }
+
+      // const curve = [
+      //   ...bezierCurve(normalizedData.slice(0, normalizedData.length / 2)),
+      //   ...bezierCurve(normalizedData.slice(normalizedData.length / 2)),
+      // ]
+
+      const curve = normalizedData // bezierCurve(normalizedData)
+
       curve.forEach((d) => {
         p.lineTo(d[0], d[1])
       })
@@ -121,7 +151,7 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
     setPledgesPath(line(pledges))
     setParisPath(line(paris))
     setNowPath(line(data))
-  }, [data, pledges, paris, height, width, minYear, maxYear, maxCo2])
+  }, [data, pledges, paris, height, width, maxCo2, minYear, maxYear])
 
   if (data.length === 0) return null
 
