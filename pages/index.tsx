@@ -1,14 +1,37 @@
 import { useState } from 'react'
 import Head from 'next/head'
+import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Graph from '../components/Graph'
 import { H1, Paragraph } from '../components/Typography'
 import { Municipality } from '../utils/types'
 import { data, pledges, paris } from '../data/stockholm'
+import ArrowRight from '../public/icons/arrow-right.svg'
+import ArrowLeft from '../public/icons/arrow-left-green.svg'
 
 type PropsType = {
   municipalities: Array<Municipality>
 }
+
+const Btn = styled.button`
+  border: none;
+  background-color: none;
+  cursor: pointer;
+  background-color: inherit;
+  color: #fff;
+  font-family: 'Helvetica Neue';
+  font-weight: 300;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`
+
+const Flex = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   const municipalitiesName = municipalities.map((item) => item.Name)
@@ -31,15 +54,21 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
           pledges={pledges}
         />
       )}
-      {currentStep < 4 && (
-        <button onClick={() => setCurrentStep((current) => current + 1)}>nästa</button>
-      )}
-
-      {currentStep != 1 && (
-        <button onClick={() => setCurrentStep((current) => current - 1)}>
-          förgående
-        </button>
-      )}
+      <Flex>
+        {currentStep != 1 ? (
+          <Btn onClick={() => setCurrentStep((current) => current - 1)}>
+            <ArrowLeft />
+            Förgående
+          </Btn>
+        ) : (
+          <div></div>
+        )}
+        {currentStep < 3 && (
+          <Btn onClick={() => setCurrentStep((current) => current + 1)}>
+            Nästa <ArrowRight />
+          </Btn>
+        )}
+      </Flex>
       <H1>Klimatkollen</H1>
       <Paragraph>
         Låt oss ta tempen på hur väl din kommun når upp till de mål som är uppsatta i

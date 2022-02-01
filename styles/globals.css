@@ -79,6 +79,8 @@ a {
   transition-duration: 0.3s;
   transition-property: transform;
   transition-timing-function: ease;
+  font-family: 'Helvetica Neue';
+  font-weight: 300;
 }
 
 path {
