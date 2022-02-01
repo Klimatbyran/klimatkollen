@@ -86,18 +86,18 @@ path {
 }
 
 #dataset-1 {
-  fill: #ff004f;
-  stroke: #ff004f;
-}
-
-#dataset-2 {
-  fill: #ffb79a;
-  stroke: #ffb79a;
+  fill: #fb6447;
+  stroke: #fb6447;
 }
 
 #dataset-3 {
-  fill: #ff5739;
-  stroke: #ff5739;
+  fill: #fdba9f;
+  stroke: #fdba9f;
+}
+
+#dataset-2 {
+  fill: #ef3054;
+  stroke: #ef3054;
 }
 #dataset-4 {
   fill: #50ff39;

@@ -10,6 +10,8 @@
   "dependencies": {
     "@types/styled-components": "^5.1.19",
     "babel-plugin-styled-components": "^2.0.2",
+    "bezier": "^0.1.0",
+    "bezier-curve": "^1.0.0",
     "csv-parse": "^5.0.4",
     "d3-path": "^3.0.1",
     "jotai": "^1.5.3",
