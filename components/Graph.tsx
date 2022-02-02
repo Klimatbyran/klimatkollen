@@ -49,17 +49,17 @@ const Graph = ({ klimatData, currentStep, width, height }: Props) => {
   // const props = useSpring({ val: 100000, from: { val: 0 } })
   // const { maxYear, minYear } = controller.get()
 
-  // const pledgesProps = useSpring({
-  //   d: klimatData[currentStep].pledgesPath,
-  // })
+  const pledgesProps = useSpring({
+    d: klimatData[currentStep].pledgesPath,
+  })
 
-  // const parisProps = useSpring({
-  //   d: klimatData[currentStep].parisPath,
-  // })
+  const parisProps = useSpring({
+    d: klimatData[currentStep].parisPath,
+  })
 
-  // const historyProps = useSpring({
-  //   d: klimatData[currentStep].historyPath,
-  // })
+  const historyProps = useSpring({
+    d: klimatData[currentStep].historyPath,
+  })
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 300)
@@ -201,16 +201,16 @@ const Graph = ({ klimatData, currentStep, width, height }: Props) => {
           <g className="datasets">
             <animated.path
               className="dataset show"
-              d={klimatData[currentStep].historyPath}
+              d={historyProps.d}
               id="dataset-1"></animated.path>
             <animated.path
               className="dataset show"
-              d={klimatData[currentStep].parisPath}
-              id="dataset-3"></animated.path>
+              d={pledgesProps.d}
+              id="dataset-2"></animated.path>
             <animated.path
               className="dataset show"
-              d={klimatData[currentStep].pledgesPath}
-              id="dataset-2"></animated.path>
+              d={parisProps.d}
+              id="dataset-3"></animated.path>
           </g>
 
           {/* <text x="0" y="15" className="label">
