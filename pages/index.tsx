@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import DropDown from '../components/DropDown'
+import Map from '../components/Map'
 import { H1, Paragraph } from '../components/Typography'
 import { Municipality } from '../utils/types'
 
@@ -23,6 +24,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
         parisavtalet.
       </Paragraph>
       <DropDown municipalitiesName={municipalitiesName} />
+      <Map />
     </>
   )
 }
