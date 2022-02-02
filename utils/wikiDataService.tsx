@@ -64,7 +64,6 @@ export class WikiDataService {
     }
 
     getPopulationFromPage(page:any) : number {
-        
         page.claims.P1082.sort((elem1:any, elem2:any) => {
             var date1 = elem1.qualifiers.P585[0].datavalue.value.time
             var date2 = elem2.qualifiers.P585[0].datavalue.value.time
