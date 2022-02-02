@@ -5,7 +5,7 @@ import DropDown from '../components/DropDown'
 import Graph from '../components/Graph'
 import { H1, Paragraph } from '../components/Typography'
 import { Municipality } from '../utils/types'
-import { data, pledges, paris } from '../data/stockholm'
+import { klimatData } from '../data/stockholm'
 import ArrowRight from '../public/icons/arrow-right.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 
@@ -60,22 +60,25 @@ const Box = styled.div`
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   const municipalitiesName = municipalities.map((item) => item.Name)
-  const [currentStep, setCurrentStep] = useState(1)
+  const [currentStep, setCurrentStep] = useState(0)
   const [text, setText] = useState('Historiska utsläpp')
+  const [width, setWidth] = useState(500)
 
   useEffect(() => {
     switch (currentStep) {
-      case 1:
+      case 0:
         setText('Historiska utsläpp')
         break
-      case 2:
+      case 1:
         setText('För att nå Parisavtalet')
         break
-      case 3:
+      case 2:
         setText('Framtida prognos')
+        setWidth(500)
         break
-      case 4:
+      case 3:
         setText('Glappet')
+        setWidth(800)
         break
       default:
         break
@@ -92,18 +95,9 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
       <Center>
         <Box>{text}</Box>
       </Center>
-      {data?.length && paris?.length && pledges?.length && (
-        <Graph
-          width={500}
-          height={250}
-          currentStep={currentStep}
-          data={data}
-          paris={paris}
-          pledges={pledges}
-        />
-      )}
+      <Graph width={500} height={250} currentStep={currentStep} klimatData={klimatData} />
       <Flex>
-        {currentStep != 1 ? (
+        {currentStep != 0 ? (
           <Btn onClick={() => setCurrentStep((current) => current - 1)}>
             <ArrowLeft />
             Förgående
@@ -111,7 +105,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
         ) : (
           <div></div>
         )}
-        {currentStep < 4 && (
+        {currentStep < 3 && (
           <Btn onClick={() => setCurrentStep((current) => current + 1)}>
             Nästa <ArrowRight />
           </Btn>

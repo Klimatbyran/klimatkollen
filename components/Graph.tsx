@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { path } from 'd3-path'
-import { animated, Controller } from 'react-spring'
+import { animated, Controller, useSpring } from 'react-spring'
 import bezier from 'bezier-curve'
 
 // https://dev.to/tomdohnal/react-svg-animation-with-react-spring-4-2kba
@@ -21,16 +21,23 @@ const bezierCurve = (normalizedData: [number, number]) => {
   return curve
 }
 
+type Data = {
+  pledgesPath?: string
+  parisPath?: string
+  historyPath?: string
+}
+
 type Props = {
-  data: Array<Co2Year>
-  pledges: Array<Co2Year>
-  paris: Array<Co2Year>
+  history: string
+  pledges: string
+  paris: string
+  klimatData: Array<Data>
   currentStep: number
   width: number
   height: number
 }
 
-const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
+const Graph = ({ klimatData, currentStep, width, height }: Props) => {
   const [loaded, setLoaded] = useState(false)
   const [showNow, setShowNow] = useState(false)
   const [showParis, setShowParis] = useState(false)
@@ -38,8 +45,21 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
   const [minYear, setMinYear] = useState(1990)
   const [maxYear, setMaxYear] = useState(2030)
   // const controller = new Controller({ minYear: 1990, maxYear: 2020 })
-  const [maxCo2, setMaxCo2] = useState(max(data, 'co2'))
+  // const [maxCo2, setMaxCo2] = useState(max(data, 'co2'))
+  // const props = useSpring({ val: 100000, from: { val: 0 } })
   // const { maxYear, minYear } = controller.get()
+
+  // const pledgesProps = useSpring({
+  //   d: klimatData[currentStep].pledgesPath,
+  // })
+
+  // const parisProps = useSpring({
+  //   d: klimatData[currentStep].parisPath,
+  // })
+
+  // const historyProps = useSpring({
+  //   d: klimatData[currentStep].historyPath,
+  // })
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 300)
@@ -67,7 +87,7 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
 
   useEffect(() => {
     switch (currentStep) {
-      case 1:
+      case 0:
         setShowNow(true)
         setShowParis(false)
         setShowPledges(false)
@@ -77,7 +97,7 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
         // controller.start()
 
         break
-      case 2:
+      case 1:
         setShowNow(true)
         setShowParis(true)
         setShowPledges(false)
@@ -87,7 +107,7 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
         // controller.start()
 
         break
-      case 3:
+      case 2:
         setShowNow(true)
         setShowPledges(true)
         setShowParis(true)
@@ -97,7 +117,7 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
         // controller.start()
 
         break
-      case 4:
+      case 3:
         setShowNow(true)
         setShowParis(true)
         setShowPledges(true)
@@ -109,52 +129,52 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
       default:
         break
     }
-  }, [currentStep, data])
+  }, [currentStep])
 
-  const [pledgesPath, setPledgesPath] = useState<string>('')
-  const [parisPath, setParisPath] = useState<string>('')
-  const [nowPath, setNowPath] = useState<string>('')
+  // const [pledgesPath, setPledgesPath] = useState<string>('')
+  // const [parisPath, setParisPath] = useState<string>('')
+  // const [nowPath, setNowPath] = useState<string>('')
 
-  useEffect(() => {
-    const line = (data: Array<Co2Year>) => {
-      if (!data.length) return ''
-      const p = path()
-      const normalizedData = data.map((d: { year: number; co2: number }) => [
-        ((d.year - minYear) * width) / (maxYear - minYear),
-        height - (d.co2 / maxCo2) * height,
-      ])
-      // console.log({ maxCo2, minCo2, normalizedData })
-      // start at the top left
-      p.moveTo(normalizedData[0][0], normalizedData[0][1])
-      // console.log({ normalizedData })
-      // draw all the datapoints
+  // useEffect(() => {
+  //   const line = (data: Array<Co2Year>) => {
+  //     if (!data.length) return ''
+  //     const p = path()
+  //     const normalizedData = data.map((d: { year: number; co2: number }) => [
+  //       ((d.year - minYear) * width) / (maxYear - minYear),
+  //       height - (d.co2 / maxCo2) * height,
+  //     ])
+  //     // console.log({ minYear, maxYea, normalizedData })
+  //     // start at the top left
+  //     p.moveTo(normalizedData[0][0], normalizedData[0][1])
+  //     // console.log({ normalizedData })
+  //     // draw all the datapoints
 
-      // const curve = [
-      //   ...bezierCurve(normalizedData.slice(0, normalizedData.length / 2)),
-      //   ...bezierCurve(normalizedData.slice(normalizedData.length / 2)),
-      // ]
+  //     // const curve = [
+  //     //   ...bezierCurve(normalizedData.slice(0, normalizedData.length / 2)),
+  //     //   ...bezierCurve(normalizedData.slice(normalizedData.length / 2)),
+  //     // ]
 
-      const curve = normalizedData // bezierCurve(normalizedData)
+  //     const curve = normalizedData // bezierCurve(normalizedData)
 
-      curve.forEach((d) => {
-        p.lineTo(d[0], d[1])
-      })
+  //     curve.forEach((d) => {
+  //       p.lineTo(d[0], d[1])
+  //     })
 
-      // draw the bottom of the line
-      p.lineTo(normalizedData[normalizedData.length - 1][0], height)
-      p.lineTo(normalizedData[0][0], height)
-      p.lineTo(normalizedData[0][0], normalizedData[0][1])
-      p.closePath()
-      // console.log('line', p.toString())
-      return p.toString()
-    }
+  //     // draw the bottom of the line
+  //     p.lineTo(normalizedData[normalizedData.length - 1][0], height)
+  //     p.lineTo(normalizedData[0][0], height)
+  //     p.lineTo(normalizedData[0][0], normalizedData[0][1])
+  //     p.closePath()
+  //     console.log('line', p.toString())
+  //     return p.toString()
+  //   }
 
-    setPledgesPath(line(pledges))
-    setParisPath(line(paris))
-    setNowPath(line(data))
-  }, [data, pledges, paris, height, width, maxCo2, minYear, maxYear])
+  //   setPledgesPath(line(pledges))
+  //   setParisPath(line(paris))
+  //   setNowPath(line(data))
+  // }, [data, pledges, paris, height, width, maxCo2, minYear, maxYear])
 
-  if (data.length === 0) return null
+  // if (data.length === 0) return null
 
   return (
     <>
@@ -164,46 +184,44 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={loaded ? 'loaded' : ''}>
-        {nowPath && (
-          <svg viewBox={`0 -10 ${width} ${height + 30}`}>
-            <defs>
-              <filter id="dropshadow">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="3"></feGaussianBlur>
-                <feOffset dx="0" dy="0" result="offsetblur"></feOffset>
-                <feComponentTransfer>
-                  <feFuncA slope="0.2" type="linear"></feFuncA>
-                </feComponentTransfer>
-                <feMerge>
-                  <feMergeNode></feMergeNode>
-                  <feMergeNode in="SourceGraphic"></feMergeNode>
-                </feMerge>
-              </filter>
-            </defs>
-            <g className="datasets">
-              <animated.path
-                className={showNow ? 'dataset show' : 'dataset hidden'}
-                d={nowPath}
-                id="dataset-1"></animated.path>
-              <animated.path
-                className={showPledges ? 'dataset show' : 'dataset hidden'}
-                d={pledgesPath}
-                id="dataset-2"></animated.path>
-              <animated.path
-                className={showParis ? 'dataset show' : 'dataset hidden'}
-                d={parisPath}
-                id="dataset-3"></animated.path>
-            </g>
+        <svg viewBox={`0 -10 ${width} ${height + 30}`}>
+          <defs>
+            <filter id="dropshadow">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="3"></feGaussianBlur>
+              <feOffset dx="0" dy="0" result="offsetblur"></feOffset>
+              <feComponentTransfer>
+                <feFuncA slope="0.2" type="linear"></feFuncA>
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+              </feMerge>
+            </filter>
+          </defs>
+          <g className="datasets">
+            <animated.path
+              className="dataset show"
+              d={klimatData[currentStep].historyPath}
+              id="dataset-1"></animated.path>
+            <animated.path
+              className="dataset show"
+              d={klimatData[currentStep].parisPath}
+              id="dataset-3"></animated.path>
+            <animated.path
+              className="dataset show"
+              d={klimatData[currentStep].pledgesPath}
+              id="dataset-2"></animated.path>
+          </g>
 
-            <text x="0" y="15" className="label">
-              {Math.ceil(maxCo2 / 1000) * 1000} co2
-            </text>
-            <YearLabel key="1" year={1990} />
-            <YearLabel key="2" year={2000} />
-            <YearLabel key="3" year={2010} />
-            <YearLabel key="4" year={2020} />
-            <YearLabel key="5" year={2025} />
-          </svg>
-        )}
+          {/* <text x="0" y="15" className="label">
+            {Math.ceil(maxCo2 / 1000) * 1000} co2
+          </text> */}
+          <YearLabel key="1" year={1990} />
+          <YearLabel key="2" year={2000} />
+          <YearLabel key="3" year={2010} />
+          <YearLabel key="4" year={2020} />
+          <YearLabel key="5" year={2025} />
+        </svg>
       </div>
     </>
   )
