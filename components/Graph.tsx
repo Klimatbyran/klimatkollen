@@ -91,7 +91,8 @@ const Graph = ({ data, pledges, paris, currentStep, width, height }: Props) => {
         setShowNow(true)
         setShowPledges(true)
         setShowParis(true)
-        setMinYear(2018)
+        setMinYear(1990)
+        setMaxYear(2030)
         // controller.update({ minYear: 1990, maxYear: 2030 })
         // controller.start()
 
