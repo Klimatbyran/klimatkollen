@@ -12,14 +12,14 @@ const max = (array: Array<Co2Year>, key: 'year' | 'co2') => {
   return Math.max(...array.map((d) => d[key]))
 }
 
-const bezierCurve = (normalizedData: [number, number]) => {
-  const curve = []
-  for (let t = 0; t < 1; t += 0.01) {
-    const point = bezier(t, normalizedData)
-    curve.push(point)
-  }
-  return curve
-}
+// const bezierCurve = (normalizedData: [number, number]) => {
+//   const curve = []
+//   for (let t = 0; t < 1; t += 0.01) {
+//     const point = bezier(t, normalizedData)
+//     curve.push(point)
+//   }
+//   return curve
+// }
 
 type Data = {
   pledgesPath?: string
