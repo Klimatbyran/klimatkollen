@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { path } from 'd3-path'
 import { animated, Controller, useSpring } from 'react-spring'
-import bezier from 'bezier-curve'
+// import bezier from 'bezier-curve'
 
 // https://dev.to/tomdohnal/react-svg-animation-with-react-spring-4-2kba
 
@@ -28,13 +28,28 @@ type Data = {
 }
 
 type Props = {
-  history: string
-  pledges: string
-  paris: string
+  history?: string
+  pledges?: string
+  paris?: string
   klimatData: Array<Data>
   currentStep: number
   width: number
   height: number
+}
+
+const Number = ({ year }: { year: number }) => {
+  // const [flip, set] = useState(false)
+  const { number } = useSpring({
+    reset: true,
+    // reverse: flip,
+    from: { number: 0 },
+    number: year,
+    delay: 200,
+    // config: config.molasses,
+    // onRest: () => set(!flip),
+  })
+
+  return <animated.div>{number.interpolate((val) => Math.floor(val))}</animated.div>
 }
 
 const Graph = ({ klimatData, currentStep, width, height }: Props) => {
@@ -49,16 +64,24 @@ const Graph = ({ klimatData, currentStep, width, height }: Props) => {
   // const props = useSpring({ val: 100000, from: { val: 0 } })
   // const { maxYear, minYear } = controller.get()
 
-  const pledgesProps = useSpring({
-    d: klimatData[currentStep].pledgesPath,
+  const historyProps = useSpring({
+    d: klimatData[currentStep].historyPath,
+    config: {
+      duration: 200,
+    },
   })
 
   const parisProps = useSpring({
     d: klimatData[currentStep].parisPath,
+    config: {
+      duration: 200,
+    },
   })
-
-  const historyProps = useSpring({
-    d: klimatData[currentStep].historyPath,
+  const pledgesProps = useSpring({
+    d: klimatData[currentStep].pledgesPath,
+    config: {
+      duration: 200,
+    },
   })
 
   useEffect(() => {
@@ -222,6 +245,7 @@ const Graph = ({ klimatData, currentStep, width, height }: Props) => {
           <YearLabel key="4" year={2020} />
           <YearLabel key="5" year={2025} />
         </svg>
+        <Number year={1990} />
       </div>
     </>
   )
