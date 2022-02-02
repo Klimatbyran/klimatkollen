@@ -1,5 +1,4 @@
-import { Municipality, MunicipalityData } from "./types"
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import axios from 'axios';
 
 // @ts-ignore
 import WikiDataSdk from "wikidata-sdk"
@@ -26,6 +25,7 @@ export class WikiDataService {
 
             axios.get(url)
                 .then((response) => {
+                    //console.log(JSON.stringify(response.data))
                     const pageName = Object.getOwnPropertyNames(response.data.entities).shift();
             
                     if (pageName && pageName != "-1") {
@@ -93,13 +93,12 @@ export class WikiDataService {
 
         let imageUrl = bestImage.mainsnak.datavalue.value.replaceAll(" ", "_")
 
-        console.log('md5', md5)
         let imageUrlHash = md5(imageUrl)
         let location = "https://upload.wikimedia.org/wikipedia/commons/[a]/[a][b]/".replaceAll("[a]", imageUrlHash.charAt(0)).replaceAll("[b]", imageUrlHash.charAt(1))
 
         return {
             ImageUrl: location + imageUrl,
-            Description: bestImage.qualifiers ? bestImage.qualifiers.P2096[0].datavalue.value.text : ""
+            Description: bestImage.qualifiers && bestImage.qualifiers.P2096 ? bestImage.qualifiers.P2096[0].datavalue.value.text : ""
         } 
     }
 
