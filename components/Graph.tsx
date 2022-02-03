@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { path } from 'd3-path'
-import { animated, Controller, useSpring } from 'react-spring'
+import { animated, useSpring, useSpringRef, useChain } from 'react-spring'
+
 // import bezier from 'bezier-curve'
 
 // https://dev.to/tomdohnal/react-svg-animation-with-react-spring-4-2kba
@@ -37,167 +37,100 @@ type Props = {
   height: number
 }
 
-const Number = ({ year }: { year: number }) => {
-  // const [flip, set] = useState(false)
-  const { number } = useSpring({
-    reset: true,
-    // reverse: flip,
-    from: { number: 0 },
-    number: year,
-    delay: 200,
-    // config: config.molasses,
-    // onRest: () => set(!flip),
-  })
-
-  return <animated.div>{number.interpolate((val) => Math.floor(val))}</animated.div>
-}
+const YEARS = [1990, 2000, 2010, 2020, 2025]
 
 const Graph = ({ klimatData, currentStep, width, height }: Props) => {
   const [loaded, setLoaded] = useState(false)
-  const [showNow, setShowNow] = useState(false)
-  const [showParis, setShowParis] = useState(false)
-  const [showPledges, setShowPledges] = useState(false)
   const [minYear, setMinYear] = useState(1990)
   const [maxYear, setMaxYear] = useState(2030)
-  // const controller = new Controller({ minYear: 1990, maxYear: 2020 })
-  // const [maxCo2, setMaxCo2] = useState(max(data, 'co2'))
-  // const props = useSpring({ val: 100000, from: { val: 0 } })
-  // const { maxYear, minYear } = controller.get()
+  const [labelSteps, setLabelSteps] = useState<number[]>([])
+
+  const parisPropsRef = useSpringRef()
+  const historyPropsRef = useSpringRef()
+  const pledgesPropsRef = useSpringRef()
 
   const historyProps = useSpring({
     d: klimatData[currentStep].historyPath,
     config: {
       duration: 200,
+      // clamp: true,
+      // easing: easings.easeInOutBounce,
     },
+    ref: historyPropsRef,
   })
 
   const parisProps = useSpring({
     d: klimatData[currentStep].parisPath,
     config: {
-      duration: 200,
+      duration: 100,
+      // easing: easings.easeInOutBounce,
     },
+    ref: parisPropsRef,
   })
   const pledgesProps = useSpring({
     d: klimatData[currentStep].pledgesPath,
     config: {
       duration: 200,
     },
+    ref: pledgesPropsRef,
   })
+
+  useChain([historyPropsRef, parisPropsRef, pledgesPropsRef])
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 300)
-  }, [])
+
+    const xCoords = YEARS.map((year) => {
+      return ((year - minYear) / (maxYear - minYear)) * width
+    })
+    setLabelSteps(xCoords)
+  }, [minYear, maxYear])
 
   const YearLabel = ({
     width = 500,
     height = 240,
     year,
     offset = 0,
+    x,
   }: {
     width?: number
     height?: number
     offset?: number
     year: number
+    x: number
   }) => {
-    const x = ((year - minYear) / (maxYear - minYear)) * width
     const y = height + 30 - offset
     return (
-      <text className="label" transform={`translate(${x}, ${y})`}>
+      <animated.text className="label" y={y} x={x}>
         {year}
-      </text>
+      </animated.text>
     )
   }
 
   useEffect(() => {
     switch (currentStep) {
       case 0:
-        setShowNow(true)
-        setShowParis(false)
-        setShowPledges(false)
         setMinYear(1990)
         setMaxYear(2020)
-        // controller.update({ minYear: 1990, maxYear: 2020 })
-        // controller.start()
 
         break
       case 1:
-        setShowNow(true)
-        setShowParis(true)
-        setShowPledges(false)
         setMinYear(1990)
         setMaxYear(2030)
-        // controller.update({ minYear: 1990, maxYear: 2020 })
-        // controller.start()
-
         break
       case 2:
-        setShowNow(true)
-        setShowPledges(true)
-        setShowParis(true)
         setMinYear(1990)
         setMaxYear(2030)
-        // controller.update({ minYear: 1990, maxYear: 2030 })
-        // controller.start()
 
         break
       case 3:
-        setShowNow(true)
-        setShowParis(true)
-        setShowPledges(true)
         setMinYear(2018)
-        // controller.update({ minYear: 2018, maxYear: 2030 })
-        // controller.start()
 
         break
       default:
         break
     }
   }, [currentStep])
-
-  // const [pledgesPath, setPledgesPath] = useState<string>('')
-  // const [parisPath, setParisPath] = useState<string>('')
-  // const [nowPath, setNowPath] = useState<string>('')
-
-  // useEffect(() => {
-  //   const line = (data: Array<Co2Year>) => {
-  //     if (!data.length) return ''
-  //     const p = path()
-  //     const normalizedData = data.map((d: { year: number; co2: number }) => [
-  //       ((d.year - minYear) * width) / (maxYear - minYear),
-  //       height - (d.co2 / maxCo2) * height,
-  //     ])
-  //     // console.log({ minYear, maxYea, normalizedData })
-  //     // start at the top left
-  //     p.moveTo(normalizedData[0][0], normalizedData[0][1])
-  //     // console.log({ normalizedData })
-  //     // draw all the datapoints
-
-  //     // const curve = [
-  //     //   ...bezierCurve(normalizedData.slice(0, normalizedData.length / 2)),
-  //     //   ...bezierCurve(normalizedData.slice(normalizedData.length / 2)),
-  //     // ]
-
-  //     const curve = normalizedData // bezierCurve(normalizedData)
-
-  //     curve.forEach((d) => {
-  //       p.lineTo(d[0], d[1])
-  //     })
-
-  //     // draw the bottom of the line
-  //     p.lineTo(normalizedData[normalizedData.length - 1][0], height)
-  //     p.lineTo(normalizedData[0][0], height)
-  //     p.lineTo(normalizedData[0][0], normalizedData[0][1])
-  //     p.closePath()
-  //     console.log('line', p.toString())
-  //     return p.toString()
-  //   }
-
-  //   setPledgesPath(line(pledges))
-  //   setParisPath(line(paris))
-  //   setNowPath(line(data))
-  // }, [data, pledges, paris, height, width, maxCo2, minYear, maxYear])
-
-  // if (data.length === 0) return null
 
   return (
     <>
@@ -235,17 +168,12 @@ const Graph = ({ klimatData, currentStep, width, height }: Props) => {
               d={parisProps.d}
               id="dataset-3"></animated.path>
           </g>
-
-          {/* <text x="0" y="15" className="label">
-            {Math.ceil(maxCo2 / 1000) * 1000} co2
-          </text> */}
-          <YearLabel key="1" year={1990} />
-          <YearLabel key="2" year={2000} />
-          <YearLabel key="3" year={2010} />
-          <YearLabel key="4" year={2020} />
-          <YearLabel key="5" year={2025} />
+          <YearLabel key="1" year={1990} x={labelSteps[0]} />
+          <YearLabel key="2" year={2000} x={labelSteps[1]} />
+          <YearLabel key="3" year={2010} x={labelSteps[2]} />
+          <YearLabel key="4" year={2020} x={labelSteps[3]} />
+          <YearLabel key="5" year={2025} x={labelSteps[4]} />
         </svg>
-        <Number year={1990} />
       </div>
     </>
   )

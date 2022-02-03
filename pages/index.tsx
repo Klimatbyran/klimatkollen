@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Graph from '../components/Graph'
@@ -59,10 +60,32 @@ const Box = styled.div`
 `
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
+  const router = useRouter()
+  const stepFromRouter = router.query.step
+
   const municipalitiesName = municipalities.map((item) => item.Name)
-  const [currentStep, setCurrentStep] = useState(0)
+  const [currentStep, setCurrentStep] = useState<number>(0)
   const [text, setText] = useState('Historiska utsläpp')
   const [width, setWidth] = useState(500)
+
+  useEffect(() => {
+    switch (stepFromRouter) {
+      case '0':
+        setCurrentStep(0)
+        break
+      case '1':
+        setCurrentStep(1)
+        break
+      case '2':
+        setCurrentStep(2)
+        break
+      case '3':
+        setCurrentStep(3)
+        break
+      default:
+        break
+    }
+  }, [stepFromRouter])
 
   useEffect(() => {
     switch (currentStep) {
