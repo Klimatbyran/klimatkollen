@@ -15,54 +15,6 @@ a {
   text-decoration: none;
 }
 
-/* body {
-  background: #2d2d2d;
-  color: rgba(255, 255, 255, 0.1);
-  font-family: "Montserrat", sans-serif;
-} */
-
-.chart {
-  position: relative;
-  width: 560px;
-  height: 260px;
-  margin: 3em auto;
-  background-image: repeating-radial-gradient(
-    center center,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.1) 2px,
-    transparent 2px,
-    transparent 100%
-  );
-  background-size: 29px 29px;
-  background-position: -11px 11px;
-}
-
-.chart::before,
-.chart::after {
-  display: inline-block;
-  font-size: 0.875em;
-}
-
-.chart::before {
-  display: inline-block;
-  position: absolute;
-  left: -3.5em;
-  top: -5px;
-  content: 'CO2';
-  white-space: pre;
-  height: 100%;
-  line-height: 4.2;
-  text-align: right;
-}
-
-.chart::after {
-  content: '1990 2020';
-  width: 110%;
-  margin-left: -5%;
-  word-spacing: 36.5em;
-  padding-top: 0.5em;
-}
-
 .dataset {
   fill-opacity: 0.2;
   filter: url(#dropshadow);
@@ -70,23 +22,9 @@ a {
   transition: all 0.6s ease-in;
 }
 
-.label {
-  fill: #fff;
-  text-shadow: 0 0 1px #000;
-  font-size: 0.475em;
-  /* opacity: 0.6; */
-  animation-delay: 300ms;
-  transition-duration: 0.3s;
-  transition-property: transform;
-  transition-timing-function: ease;
-  font-family: 'Helvetica Neue';
-  font-weight: 300;
-  font-size: 16px;
-}
-
-path {
+/* path {
   transition: all 0.6s ease-in-out;
-}
+} */
 
 #dataset-1 {
   fill: #fb6447;
@@ -107,69 +45,6 @@ path {
   stroke: #78ff39;
 }
 
-.chart button {
-  position: relative;
-  top: -0.75em;
-  border: none;
-  background: rgba(255, 255, 255, 0.5);
-  color: #2d2d2d;
-  border-radius: 5px;
-  padding: 0.25em 1em;
-  font-size: 1em;
-  float: right;
-  cursor: pointer;
-}
-.chart button:focus {
-  outline: none;
-}
-
-@-webkit-keyframes raise {
-  0% {
-    transform: scaleY(0.01);
-  }
-  75% {
-    transform: scaleY(1.1);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
-
-@keyframes raise {
-  0% {
-    transform: scaleY(0.01);
-  }
-  75% {
-    transform: scaleY(1.1);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
-
-/* .dataset.hidden {
-  transform-origin: bottom;
-  transform: scaleY(0);
-  opacity: 0.5;
-} */
-
 .dataset.show {
   opacity: 1;
-  /* -webkit-animation: raise 0.3s ease 0.2s forwards;
-  animation: raise 0.3s ease 0.2s forwards; */
 }
-
-/* .loaded #dataset-1 {
-  -webkit-animation-delay: 0.1s;
-  animation-delay: 0s;
-}
-
-.loaded #dataset-2 {
-  -webkit-animation-delay: 0.14s;
-  animation-delay: 0.14s;
-}
-
-.loaded #dataset-3 {
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-} */

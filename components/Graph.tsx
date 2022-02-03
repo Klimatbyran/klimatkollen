@@ -1,16 +1,21 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { animated, useSpring, useSpringRef, useChain } from 'react-spring'
-
+import { animated, useSpring } from 'react-spring'
+import styled from 'styled-components'
+import { devices } from '../utils/devices'
 // import bezier from 'bezier-curve'
 
-// https://dev.to/tomdohnal/react-svg-animation-with-react-spring-4-2kba
+const Label = styled.text`
+  fill: #fff;
+  text-shadow: 0 0 1px #000;
+  font-family: 'Helvetica Neue';
+  font-weight: 300;
+  font-size: 18px;
 
-type Co2Year = { year: number; co2: number }
-
-const max = (array: Array<Co2Year>, key: 'year' | 'co2') => {
-  return Math.max(...array.map((d) => d[key]))
-}
+  @media only screen and (${devices.tablet}) {
+    font-size: 14px;
+  }
+`
 
 // const bezierCurve = (normalizedData: [number, number]) => {
 //   const curve = []
@@ -35,47 +40,36 @@ type Props = {
   currentStep: number
   width: number
   height: number
+  maxCo2: number
 }
 
 const YEARS = [1990, 2000, 2010, 2020, 2025]
 
-const Graph = ({ klimatData, currentStep, width, height }: Props) => {
+const Graph = ({ klimatData, currentStep, width, height, maxCo2 }: Props) => {
   const [loaded, setLoaded] = useState(false)
   const [minYear, setMinYear] = useState(1990)
   const [maxYear, setMaxYear] = useState(2030)
   const [labelSteps, setLabelSteps] = useState<number[]>([])
 
-  const parisPropsRef = useSpringRef()
-  const historyPropsRef = useSpringRef()
-  const pledgesPropsRef = useSpringRef()
-
   const historyProps = useSpring({
     d: klimatData[currentStep].historyPath,
     config: {
-      duration: 200,
-      // clamp: true,
-      // easing: easings.easeInOutBounce,
+      duration: 100,
     },
-    ref: historyPropsRef,
   })
 
   const parisProps = useSpring({
     d: klimatData[currentStep].parisPath,
     config: {
       duration: 100,
-      // easing: easings.easeInOutBounce,
     },
-    ref: parisPropsRef,
   })
   const pledgesProps = useSpring({
     d: klimatData[currentStep].pledgesPath,
     config: {
-      duration: 200,
+      duration: 100,
     },
-    ref: pledgesPropsRef,
   })
-
-  useChain([historyPropsRef, parisPropsRef, pledgesPropsRef])
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 300)
@@ -101,9 +95,9 @@ const Graph = ({ klimatData, currentStep, width, height }: Props) => {
   }) => {
     const y = height + 30 - offset
     return (
-      <animated.text className="label" y={y} x={x}>
+      <Label y={y} x={x}>
         {year}
-      </animated.text>
+      </Label>
     )
   }
 
@@ -112,7 +106,6 @@ const Graph = ({ klimatData, currentStep, width, height }: Props) => {
       case 0:
         setMinYear(1990)
         setMaxYear(2020)
-
         break
       case 1:
         setMinYear(1990)
@@ -121,11 +114,9 @@ const Graph = ({ klimatData, currentStep, width, height }: Props) => {
       case 2:
         setMinYear(1990)
         setMaxYear(2030)
-
         break
       case 3:
         setMinYear(2018)
-
         break
       default:
         break
@@ -168,6 +159,9 @@ const Graph = ({ klimatData, currentStep, width, height }: Props) => {
               d={parisProps.d}
               id="dataset-3"></animated.path>
           </g>
+          <Label x="0" y="15">
+            {Math.ceil(maxCo2 / 1000) * 1000} co2
+          </Label>
           <YearLabel key="1" year={1990} x={labelSteps[0]} />
           <YearLabel key="2" year={2000} x={labelSteps[1]} />
           <YearLabel key="3" year={2010} x={labelSteps[2]} />
