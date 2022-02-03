@@ -58,16 +58,20 @@ const Box = styled.div`
   height: 34px;
   background-color: #fff;
   border-radius: 32px;
-  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
+`
+
+const InfoText = styled.p`
+  color: black;
 `
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-top: 1rem;
 `
 
 type Co2Year = { year: number; co2: number }
@@ -141,7 +145,9 @@ const Municipality = () => {
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>
           <Center>
-            <Box>{text}</Box>
+            <Box>
+              <InfoText>{text}</InfoText>
+            </Box>
           </Center>
           <Graph
             width={500}

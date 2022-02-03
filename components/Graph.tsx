@@ -10,7 +10,7 @@ const Label = styled.text`
   text-shadow: 0 0 1px #000;
   font-family: 'Helvetica Neue';
   font-weight: 300;
-  font-size: 18px;
+  font-size: 20px;
 
   @media only screen and (${devices.tablet}) {
     font-size: 14px;
