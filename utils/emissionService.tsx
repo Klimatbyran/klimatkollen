@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import { parse } from 'csv-parse'
-import { Municipality } from './types'
+import { Municipality, Emission } from './types'
 
 type EmissionData = {
   Huvudsektor: string
@@ -25,6 +25,21 @@ type EmissionData = {
 
 export class EmissionService {
   constructor() {}
+
+  private getEmissionLevelChangeAverage(municipality : Municipality, years: number): number {
+    let emissionsPercentages = 0
+    municipality.Emissions
+      .slice(Math.max(municipality.Emissions.length - years-1, 1))
+      .forEach((emission : Emission, index: number, emissions: Array<Emission>) => {
+        let previous = emissions[index-1] as Emission
+        if (previous) {
+          let changeSinceLastYear = (emission.CO2equivalent-previous.CO2equivalent)/previous.CO2equivalent as number
+          emissionsPercentages += changeSinceLastYear
+        }
+      })
+      
+    return emissionsPercentages/years
+  }
   
   // TODO: return list of all municipalities with only emission changes percentage
   public async getMunicipalities(): Promise<Array<Municipality>> {
@@ -94,7 +109,7 @@ export class EmissionService {
 
           const municipalities: Array<Municipality> = result.map(
             (municipalityData: EmissionData) => {
-              return {
+              let municipality = {
                 Name: municipalityData.Kommun,
                 County: municipalityData.Län,
                 Emissions: [
@@ -111,8 +126,11 @@ export class EmissionService {
                   { Year: '2017', CO2equivalent: municipalityData[2017] },
                   { Year: '2018', CO2equivalent: municipalityData[2018] },
                   { Year: '2019', CO2equivalent: municipalityData[2019] },
-                ],
-              }
+                ]
+              } as Municipality
+
+              municipality.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(municipality, 5)
+              return municipality
             },
           )
 
@@ -197,7 +215,7 @@ export class EmissionService {
 
           const municipalities: Array<Municipality> = result.map(
             (municipalityData: EmissionData) => {
-              return {
+              let municipality =  {
                 Name: municipalityData.Kommun,
                 County: municipalityData.Län,
                 Emissions: [
@@ -215,7 +233,10 @@ export class EmissionService {
                   { Year: '2018', CO2equivalent: municipalityData[2018] },
                   { Year: '2019', CO2equivalent: municipalityData[2019] },
                 ],
-              }
+              } as Municipality
+
+              municipality.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(municipality, 5)
+              return municipality
             },
           )
           const municipality = municipalities.shift()
