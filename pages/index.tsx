@@ -3,17 +3,15 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
-import { H1, Paragraph } from '../components/Typography'
+import { H1, H5, Paragraph, ParagraphSmall } from '../components/Typography'
 import { Municipality } from '../utils/types'
-// import Municipality from './kommun/[municipality]'
-// import Municipality from './kommun/[municipality]'
 
 type PropsType = {
   municipalities: Array<Municipality>
 }
 const Box = styled.div`
   width: 195px;
-  height: 34px;
+  height: 100%;
   background-color: #fff;
   border-radius: 32px;
   display: flex;
@@ -23,6 +21,35 @@ const Box = styled.div`
 
 const InfoText = styled.p`
   color: black;
+`
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 34px;
+`
+
+const Dot = styled.div<{ color: string }>`
+  background-color: ${(props) => props.color};
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+`
+
+const InfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 14rem;
+  align-items: flex-end;
+`
+
+const Flex = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
 `
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
@@ -42,17 +69,41 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
       </Head>
 
       <H1>Klimatkollen</H1>
-      <Paragraph>
-        Låt oss ta tempen på hur väl din kommun når upp till de mål som är uppsatta i
-        parisavtalet.
-      </Paragraph>
-      <DropDown municipalitiesName={municipalitiesName} />
-      {selected && (
-        <Box>
-          <InfoText>{selected}</InfoText>
-        </Box>
-      )}
+      <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
+      <H5>
+        Utsläppsförändring sedan <br /> Parisavtalet 2015
+      </H5>
+      <Wrapper>
+        {selected ? (
+          <Box>
+            <InfoText>{selected}</InfoText>
+          </Box>
+        ) : (
+          ''
+        )}
+      </Wrapper>
       <Map emissionsLevels={emissionsLevels} setSelected={setSelected} />
+      <InfoBox>
+        <div>
+          <Flex>
+            <Dot color="#EF3054" /> <Paragraph>Ökat med 3%</Paragraph>
+          </Flex>
+          <Flex>
+            <Dot color="#EF5E30" /> <Paragraph>Ökat med 1%</Paragraph>
+          </Flex>
+          <Flex>
+            <Dot color="#EF7F17" />
+            <Paragraph>Ökat med 0-1%</Paragraph>
+          </Flex>
+          <Flex>
+            <Dot color="#EF9917" /> <Paragraph>Minskat med 2%</Paragraph>
+          </Flex>
+          <Flex>
+            <Dot color="#EFBF17" /> <Paragraph>Minskat med 4%</Paragraph>
+          </Flex>
+        </div>
+      </InfoBox>
+      <DropDown municipalitiesName={municipalitiesName} />
     </>
   )
 }

@@ -1,10 +1,7 @@
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer } from 'deck.gl'
 import municipalityData from '../pages/data/kommuner.json'
-import { Municipality } from '../utils/types'
-const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
-// Viewport settings
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
   latitude: 62.134934,
@@ -15,8 +12,10 @@ const INITIAL_VIEW_STATE = {
 }
 
 const MapDiv = styled.div`
-  top: 330px;
-  position: absolute;
+  display: flex;
+  left: 15px;
+  position: relative;
+  margin-bottom: 1.5rem;
 `
 
 const bounds = [
@@ -113,11 +112,11 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
   return (
     <MapDiv>
       <DeckGL
-        width="200px"
-        height="500px"
+        width="180px"
+        height="400px"
         initialViewState={INITIAL_VIEW_STATE}
         controller={true}
-        onClick={(e) => setSelected(e.object.name)}
+        onClick={(e) => e.object?.name && setSelected(e.object.name)}
         layers={[kommunLayer]}
       />
     </MapDiv>
