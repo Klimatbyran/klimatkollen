@@ -5,11 +5,11 @@ import Icon from '../public/icons/info.svg'
 const StyledDiv = styled.div`
   min-width: 290px;
   max-width: 330px;
-  height: 282px;
+  min-height: 200px;
   background: ${({ theme }) => theme.dark};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  padding: 15px;
+  padding: 25px 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,7 +27,7 @@ const StyledDiv = styled.div`
   & section.right {
     text-align: right;
   }
-`;
+`
 
 const StyledIcon = styled.div`
   margin-left: 12px;
@@ -35,14 +35,26 @@ const StyledIcon = styled.div`
   &:hover {
     cursor: pointer;
   }
-`;
+`
 
 const InfoBox = () => {
   return (
     <StyledDiv>
       <div className="row">
         <section className="left">
-          <Paragraph>Här sitter</Paragraph>
+          <Paragraph>Antal invånare</Paragraph>
+          <StyledIcon>
+            <Icon />
+          </StyledIcon>
+        </section>
+        <section className="right">
+          <ParagraphBold>50 000</ParagraphBold>
+        </section>
+      </div>
+
+      <div className="row">
+        <section className="left">
+          <Paragraph>Här styr</Paragraph>
           <StyledIcon>
             <Icon />
           </StyledIcon>
@@ -66,49 +78,13 @@ const InfoBox = () => {
 
       <div className="row">
         <section className="left">
-          <Paragraph>Utsläpp historiskt</Paragraph>
+          <Paragraph>Utsläpp per capita</Paragraph>
           <StyledIcon>
             <Icon />
           </StyledIcon>
         </section>
         <section className="right">
-          <ParagraphBold>500 kVM</ParagraphBold>
-        </section>
-      </div>
-
-      <div className="row">
-        <section className="left">
-          <Paragraph>Glappet</Paragraph>
-          <StyledIcon>
-            <Icon />
-          </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>500 kVM</ParagraphBold>
-        </section>
-      </div>
-
-      <div className="row">
-        <section className="left">
-          <Paragraph>Tre största utsläpp</Paragraph>
-          <StyledIcon>
-            <Icon />
-          </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>500 kVM</ParagraphBold>
-        </section>
-      </div>
-
-      <div className="row">
-        <section className="left">
-          <Paragraph>Finns det en plan?</Paragraph>
-          <StyledIcon>
-            <Icon />
-          </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>Ja</ParagraphBold>
+          <ParagraphBold>55 ton co2/år</ParagraphBold>
         </section>
       </div>
     </StyledDiv>

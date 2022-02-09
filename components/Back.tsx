@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Icon from '../public/icons/arrow-left.svg';
+import Icon from '../public/icons/arrow-left.svg'
 import Link from 'next/link'
 
 const Button = styled.button`
@@ -7,7 +7,9 @@ const Button = styled.button`
   cursor: pointer;
   fill: #fff;
   background: transparent;
-`;
+  position: absolute;
+  top: 10;
+`
 
 const BackArrow = () => {
   return (

@@ -5,20 +5,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@danmarshall/deckgl-typings": "^4.9.13",
     "@deck.gl/layers": "^8.6.6",
     "@types/styled-components": "^5.1.19",
+    "@types/wikidata-sdk": "^6.1.0",
+    "axios": "^0.25.0",
     "babel-plugin-styled-components": "^2.0.2",
+    "bezier": "^0.1.0",
+    "bezier-curve": "^1.0.0",
     "csv-parse": "^5.0.4",
+    "d3-path": "^3.0.1",
     "deck.gl": "^8.6.6",
     "jotai": "^1.5.3",
+    "md5": "^2.3.0",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-map-gl": "^6.1.19",
+    "react-spring": "^9.4.2",
     "styled-components": "^5.3.3"
   },
   "eslintConfig": {
@@ -32,6 +40,9 @@
     "@babel/preset-react": "^7.16.7",
     "@iteam/eslint-config-react": "^0.3.2",
     "@svgr/webpack": "^6.2.0",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/d3-path": "^3.0.0",
     "@types/node": "17.0.8",
     "@types/react": "17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
@@ -44,6 +55,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-testing-library": "^5.0.3",
+    "jest": "^27.4.7",
     "prettier": "^2.5.1",
     "typescript": "^4.5.4"
   }

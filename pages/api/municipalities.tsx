@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getMunicipalities } from '../../utils/emissionService';
+import { EmissionService } from '../../utils/emissionService';
 
 export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
     const {
@@ -10,7 +10,7 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
     switch (method) {
       case 'GET':
         
-          getMunicipalities().then((municipalities) => {
+          new EmissionService().getMunicipalities().then((municipalities) => {
             if(municipalities.length < 1) {
               res.status(404).json("Inga kommuner hittades")
             }
