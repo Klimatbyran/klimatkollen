@@ -57,7 +57,6 @@ export class WikiDataService {
   }
 
   getCoatOfArmsFromPage(page: any): WikiDataImage {
-    console.log(JSON.stringify(page.claims.P94))
     return this.getPreferredImageUrl(page.claims.P94)
   }
 
