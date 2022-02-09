@@ -11,6 +11,7 @@ export type Municipality = {
   CoatOfArmsImage?: Image
   Population?: number
   Image?: Image
+  EmissionLevelChangeAverage: number
 }
 
 export type Emission = {
