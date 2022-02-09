@@ -1,15 +1,38 @@
 import Head from 'next/head'
+import { useState } from 'react'
+import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import { H1, Paragraph } from '../components/Typography'
 import { Municipality } from '../utils/types'
+// import Municipality from './kommun/[municipality]'
+// import Municipality from './kommun/[municipality]'
 
 type PropsType = {
   municipalities: Array<Municipality>
 }
+const Box = styled.div`
+  width: 195px;
+  height: 34px;
+  background-color: #fff;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const InfoText = styled.p`
+  color: black;
+`
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
+  const [selected, setSelected] = useState()
   const municipalitiesName = municipalities.map((item) => item.Name)
+  const emissionsLevels = municipalities.map((item) => ({
+    name: item.Name,
+    emissions: item.EmissionLevelChangeAverage,
+  }))
+
   return (
     <>
       <Head>
@@ -24,7 +47,12 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
         parisavtalet.
       </Paragraph>
       <DropDown municipalitiesName={municipalitiesName} />
-      <Map />
+      {selected && (
+        <Box>
+          <InfoText>{selected}</InfoText>
+        </Box>
+      )}
+      <Map emissionsLevels={emissionsLevels} setSelected={setSelected} />
     </>
   )
 }
