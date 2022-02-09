@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import Icon from '../public/icons/share.svg'
 
 const Button = styled.button<{ icon: boolean }>`
-  width: 280px;
   height: 56px;
   color: ${({ theme }) => theme.black};
   background: ${({ theme }) => theme.main};
@@ -13,12 +12,15 @@ const Button = styled.button<{ icon: boolean }>`
   align-items: center;
   justify-content: ${({ icon }) => (icon ? 'start' : 'center')};
   padding-left: ${({ icon }) => (icon ? '20px' : '0%')};
+  padding-right: ${({ icon }) => (icon ? '20px' : '0%')};
   cursor: pointer;
   fill: ${({ theme }) => theme.black};
-  p {
+
+  span {
     font-weight: bold;
     font-size: 16px;
-    margin-left: ${({ icon }) => (icon ? '30%' : '0%')};
+    display: block;
+    flex-grow: 1;
   }
 
   &:hover {
@@ -46,7 +48,7 @@ const ShareButton = ({ handleClick, text, shareIcon = false }: ShareButtonProps)
   return (
     <Button type="button" onClick={handleClick} icon={shareIcon}>
       {shareIcon && <Icon />}
-      <p>{text}</p>
+      <span>{text}</span>
     </Button>
   )
 }

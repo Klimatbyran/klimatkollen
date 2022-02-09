@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import Head from 'next/head'
 import styled from 'styled-components'
 import Graph from './Graph'
 import { H1 } from './Typography'
@@ -10,6 +9,8 @@ import { devices } from '../utils/devices'
 import Button from './Button'
 import InfoBox from './InfoBox'
 import Back from './Back'
+import { hasShareAPI } from '../utils/navigator'
+import MetaTags from './MetaTags'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -80,18 +81,24 @@ const max = (array: Array<Co2Year>, key: 'year' | 'co2') => {
   return Math.max(...array.map((d) => d[key]))
 }
 
-const STEPS: { [index: number]: { text: string } } = {
+type ShareTextFn = (name: string) => string
+const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
   0: {
     text: 'Historiska utsläpp',
+    shareText: (name) => `Kolla de historiska utsläppen för ${name}`,
   },
   1: {
     text: 'För att nå Parisavtalet',
+    shareText: (name) =>
+      `Hur behöver utsläppen ändras i ${name} för att nå Parisavtalet?`,
   },
   2: {
     text: 'Framtida prognos',
+    shareText: (name) => `Se den framtida prognosen för ${name}`,
   },
   3: {
     text: 'Glappet',
+    shareText: (name) => `Hur stort är glappet i ${name} från nu och framtiden?`,
   },
 }
 
@@ -106,11 +113,9 @@ const Municipality = (props: Props) => {
   const { step, municipality, onNextStep, onPreviousStep } = props
 
   // https://github.com/vercel/next.js/discussions/11484
-  if (!municipality) return null
-
-  const handleClick = () => {
-    // Function to handle click on share button
-  }
+  if (!municipality || typeof municipality !== 'string') return null
+  const municipalityTitleCase =
+    municipality[0].toLocaleUpperCase() + municipality.slice(1)
 
   const maxCo2 = max(data, 'co2')
 
@@ -119,13 +124,43 @@ const Municipality = (props: Props) => {
     throw new Error('Render a sort of 500 page I guess')
   }
 
-  const text = stepConfig ? stepConfig.text : 'Ajabaja'
+  const { text, shareText } = stepConfig
+
+  const handleClick = async () => {
+    async function share(name: string) {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: `Klimatkollen ${name}`,
+            text: shareText(name),
+            url: window.location.toString(),
+          })
+        } catch {
+          // Avoid unhandled promise rejection
+          console.debug('Share cancelled')
+        }
+      } else {
+        if (process.env.NODE_ENV !== 'production') {
+          alert(
+            'This is a fake share dialog. Visit using https:// on a mobile device to actually test it',
+          )
+        }
+        // This should not be reached
+        throw new Error('This should not be reached.')
+      }
+    }
+    share(municipalityTitleCase)
+  }
 
   return (
     <>
       <Back />
+      <MetaTags
+        title={`Klimatkollen - ${municipalityTitleCase}`}
+        description={shareText(municipalityTitleCase)}
+      />
       <Wrapper>
-        <H1>{municipality}</H1>
+        <H1>{municipalityTitleCase}</H1>
         <InfoBox />
 
         <GraphWrapper>
@@ -158,7 +193,9 @@ const Municipality = (props: Props) => {
             )}
           </Flex>
         </GraphWrapper>
-        <Button handleClick={handleClick} text="Dela" shareIcon />
+        {hasShareAPI() && (
+          <Button handleClick={handleClick} text="Dela i dina sociala medier" shareIcon />
+        )}
       </Wrapper>
     </>
   )
