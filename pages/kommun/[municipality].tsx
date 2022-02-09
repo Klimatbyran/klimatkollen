@@ -80,60 +80,42 @@ const max = (array: Array<Co2Year>, key: 'year' | 'co2') => {
   return Math.max(...array.map((d) => d[key]))
 }
 
+const STEPS: { [index: number]: { text: string } } = {
+  0: {
+    text: 'Historiska utsläpp',
+  },
+  1: {
+    text: 'För att nå Parisavtalet',
+  },
+  2: {
+    text: 'Framtida prognos',
+  },
+  3: {
+    text: 'Glappet',
+  },
+}
+
 const Municipality = () => {
   const router = useRouter()
-  const { municipality } = router.query
+  const { municipality, step } = router.query
+
+  // https://github.com/vercel/next.js/discussions/11484
+  if (!municipality) return null
+
+  const currentStep = typeof step === 'string' ? parseInt(step, 10) || 0 : 0
 
   const handleClick = () => {
     // Function to handle click on share button
   }
-  const stepFromRouter = router.query.step
 
   const maxCo2 = max(data, 'co2')
 
-  const [currentStep, setCurrentStep] = useState<number>(0)
-  const [text, setText] = useState('Historiska utsläpp')
-  const [width, setWidth] = useState(500)
+  const stepConfig = STEPS[currentStep]
+  if (!stepConfig) {
+    throw new Error('Render a sort of 500 page I guess')
+  }
 
-  useEffect(() => {
-    switch (stepFromRouter) {
-      case '0':
-        setCurrentStep(0)
-        break
-      case '1':
-        setCurrentStep(1)
-        break
-      case '2':
-        setCurrentStep(2)
-        break
-      case '3':
-        setCurrentStep(3)
-        break
-      default:
-        break
-    }
-  }, [stepFromRouter])
-
-  useEffect(() => {
-    switch (currentStep) {
-      case 0:
-        setText('Historiska utsläpp')
-        break
-      case 1:
-        setText('För att nå Parisavtalet')
-        break
-      case 2:
-        setText('Framtida prognos')
-        setWidth(500)
-        break
-      case 3:
-        setText('Glappet')
-        setWidth(800)
-        break
-      default:
-        break
-    }
-  }, [currentStep])
+  const text = stepConfig ? stepConfig.text : 'Ajabaja'
 
   return (
     <>
@@ -158,7 +140,10 @@ const Municipality = () => {
           />
           <Flex>
             {currentStep != 0 ? (
-              <Btn onClick={() => setCurrentStep((current) => current - 1)}>
+              <Btn
+                onClick={() =>
+                  router.replace(`/kommun/${municipality}?step=${currentStep - 1}`)
+                }>
                 <ArrowLeft />
                 Förgående
               </Btn>
@@ -166,7 +151,10 @@ const Municipality = () => {
               <div></div>
             )}
             {currentStep < 3 && (
-              <Btn onClick={() => setCurrentStep((current) => current + 1)}>
+              <Btn
+                onClick={() =>
+                  router.replace(`/kommun/${municipality}?step=${currentStep + 1}`)
+                }>
                 Nästa <ArrowRight />
               </Btn>
             )}
