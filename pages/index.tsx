@@ -42,7 +42,6 @@ const InfoBox = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 22rem;
   height: 100px;
 `
 
