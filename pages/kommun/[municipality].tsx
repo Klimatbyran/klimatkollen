@@ -142,7 +142,11 @@ const Municipality = () => {
             {currentStep != 0 ? (
               <Btn
                 onClick={() =>
-                  router.replace(`/kommun/${municipality}?step=${currentStep - 1}`)
+                  router.replace(
+                    `/kommun/${municipality}?step=${currentStep - 1}`,
+                    undefined,
+                    { scroll: false },
+                  )
                 }>
                 <ArrowLeft />
                 Förgående
@@ -153,7 +157,11 @@ const Municipality = () => {
             {currentStep < 3 && (
               <Btn
                 onClick={() =>
-                  router.replace(`/kommun/${municipality}?step=${currentStep + 1}`)
+                  router.replace(
+                    `/kommun/${municipality}?step=${currentStep + 1}`,
+                    undefined,
+                    { scroll: false },
+                  )
                 }>
                 Nästa <ArrowRight />
               </Btn>
