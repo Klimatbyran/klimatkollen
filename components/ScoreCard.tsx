@@ -5,11 +5,10 @@ import Icon from '../public/icons/info.svg'
 const StyledDiv = styled.div`
   min-width: 290px;
   max-width: 330px;
-  min-height: 200px;
   background: ${({ theme }) => theme.dark};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  padding: 25px 15px;
+  padding: 15px 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,10 +17,13 @@ const StyledDiv = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0.8rem 0;
   }
 
   & section.left {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   & section.right {
@@ -43,48 +45,48 @@ const ScoreCard = () => {
       <div className="row">
         <section className="left">
           <Paragraph>Antal invånare</Paragraph>
+          <ParagraphBold>50 000</ParagraphBold>
+        </section>
+        <section className="right">
           <StyledIcon>
             <Icon />
           </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>50 000</ParagraphBold>
         </section>
       </div>
 
       <div className="row">
         <section className="left">
           <Paragraph>Här styr</Paragraph>
+          <ParagraphBold>Moderaterna</ParagraphBold>
+        </section>
+        <section className="right">
           <StyledIcon>
             <Icon />
           </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>Moderaterna</ParagraphBold>
         </section>
       </div>
 
       <div className="row">
         <section className="left">
           <Paragraph>Koldioxidbudget</Paragraph>
+          <ParagraphBold>24 000 ton co2</ParagraphBold>
+        </section>
+        <section className="right">
           <StyledIcon>
             <Icon />
           </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>500 kVM</ParagraphBold>
         </section>
       </div>
 
       <div className="row">
         <section className="left">
-          <Paragraph>Utsläpp per capita</Paragraph>
+          <Paragraph>Klimatutsläpp per invånare</Paragraph>
+          <ParagraphBold>5 ton co2/år</ParagraphBold>
+        </section>
+        <section className="right">
           <StyledIcon>
             <Icon />
           </StyledIcon>
-        </section>
-        <section className="right">
-          <ParagraphBold>55 ton co2/år</ParagraphBold>
         </section>
       </div>
     </StyledDiv>
