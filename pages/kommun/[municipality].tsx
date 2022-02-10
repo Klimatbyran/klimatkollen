@@ -8,7 +8,7 @@ import ArrowRight from '../../public/icons/arrow-right.svg'
 import ArrowLeft from '../../public/icons/arrow-left-green.svg'
 import { devices } from '../../utils/devices'
 import Button from '../../components/Button'
-import InfoBox from '../../components/InfoBox'
+import ScoreCard from '../../components/ScoreCard'
 import Back from '../../components/Back'
 
 const GraphWrapper = styled.div`
@@ -122,7 +122,7 @@ const Municipality = () => {
       <Back />
       <Wrapper>
         <H1>{municipality}</H1>
-        <InfoBox />
+        <ScoreCard />
 
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>

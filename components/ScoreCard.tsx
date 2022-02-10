@@ -37,7 +37,7 @@ const StyledIcon = styled.div`
   }
 `
 
-const InfoBox = () => {
+const ScoreCard = () => {
   return (
     <StyledDiv>
       <div className="row">
@@ -91,4 +91,4 @@ const InfoBox = () => {
   )
 }
 
-export default InfoBox
+export default ScoreCard
