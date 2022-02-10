@@ -3,7 +3,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
-import { H1, H5, Paragraph, ParagraphSmall } from '../components/Typography'
+import { H1, H5, Paragraph } from '../components/Typography'
 import { Municipality } from '../utils/types'
 
 type PropsType = {
@@ -51,6 +51,12 @@ const Flex = styled.div`
   align-items: center;
   gap: 1rem;
 `
+const FlexCenter = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   const [selected, setSelected] = useState()
@@ -70,9 +76,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
 
       <H1>Klimatkollen</H1>
       <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
-      <H5>
-        Utsläppsförändring sedan <br /> Parisavtalet 2015
-      </H5>
+      <H5>Utsläppsförändring sedan Parisavtalet 2015</H5>
       <Wrapper>
         {selected ? (
           <Box>
@@ -103,7 +107,9 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
           </Flex>
         </div>
       </InfoBox>
-      <DropDown municipalitiesName={municipalitiesName} />
+      <FlexCenter>
+        <DropDown municipalitiesName={municipalitiesName} />
+      </FlexCenter>
     </>
   )
 }

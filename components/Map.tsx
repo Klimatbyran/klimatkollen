@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer } from 'deck.gl'
 import municipalityData from '../pages/data/kommuner.json'
+import { devices } from '../utils/devices'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -13,9 +14,13 @@ const INITIAL_VIEW_STATE = {
 
 const MapDiv = styled.div`
   display: flex;
-  left: 15px;
+  left: 1rem;
   position: relative;
   margin-bottom: 1.5rem;
+
+  @media only screen and (${devices.tablet}) {
+    left: 10rem;
+  }
 `
 
 const bounds = [
@@ -103,20 +108,31 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
     polygonOffset: 1,
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0],
-    getFillColor: (e) => {
+    getFillColor: (e: any) => {
       return getColor(e.emissions)
     },
     pickable: true,
   })
 
+  type Emissions = {
+    object: {
+      emissions: number
+      name: string
+      geometry: [number, number][]
+    }
+  }
+
   return (
     <MapDiv>
       <DeckGL
-        width="180px"
-        height="400px"
+        width="170px"
+        height="380px"
         initialViewState={INITIAL_VIEW_STATE}
         controller={true}
-        onClick={(e) => e.object?.name && setSelected(e.object.name)}
+        onClick={({ object }: Emissions) => {
+          console.log(object)
+          return object?.name && setSelected(object.name)
+        }}
         layers={[kommunLayer]}
       />
     </MapDiv>
