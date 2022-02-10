@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import Graph from '../../components/Graph'
-import { H1 } from '../../components/Typography'
-import { klimatData, data } from '../../data/stockholm'
-import ArrowRight from '../../public/icons/arrow-right.svg'
-import ArrowLeft from '../../public/icons/arrow-left-green.svg'
-import { devices } from '../../utils/devices'
-import Button from '../../components/Button'
-import InfoBox from '../../components/InfoBox'
-import Back from '../../components/Back'
+import Graph from './Graph'
+import { H1 } from './Typography'
+import { klimatData, data } from '../data/stockholm'
+import ArrowRight from '../public/icons/arrow-right.svg'
+import ArrowLeft from '../public/icons/arrow-left-green.svg'
+import { devices } from '../utils/devices'
+import Button from './Button'
+import InfoBox from './InfoBox'
+import Back from './Back'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -95,14 +95,18 @@ const STEPS: { [index: number]: { text: string } } = {
   },
 }
 
-const Municipality = () => {
-  const router = useRouter()
-  const { municipality, step } = router.query
+type Props = {
+  municipality: string
+  step: number
+  onNextStep: (() => void) | undefined
+  onPreviousStep: (() => void) | undefined
+}
+
+const Municipality = (props: Props) => {
+  const { step, municipality, onNextStep, onPreviousStep } = props
 
   // https://github.com/vercel/next.js/discussions/11484
   if (!municipality) return null
-
-  const currentStep = typeof step === 'string' ? parseInt(step, 10) || 0 : 0
 
   const handleClick = () => {
     // Function to handle click on share button
@@ -110,7 +114,7 @@ const Municipality = () => {
 
   const maxCo2 = max(data, 'co2')
 
-  const stepConfig = STEPS[currentStep]
+  const stepConfig = STEPS[step]
   if (!stepConfig) {
     throw new Error('Render a sort of 500 page I guess')
   }
@@ -134,35 +138,21 @@ const Municipality = () => {
           <Graph
             width={500}
             height={250}
-            currentStep={currentStep}
+            currentStep={step}
             klimatData={klimatData}
             maxCo2={maxCo2}
           />
           <Flex>
-            {currentStep != 0 ? (
-              <Btn
-                onClick={() =>
-                  router.replace(
-                    `/kommun/${municipality}?step=${currentStep - 1}`,
-                    undefined,
-                    { scroll: false },
-                  )
-                }>
+            {onPreviousStep ? (
+              <Btn onClick={onPreviousStep}>
                 <ArrowLeft />
                 Förgående
               </Btn>
             ) : (
               <div></div>
             )}
-            {currentStep < 3 && (
-              <Btn
-                onClick={() =>
-                  router.replace(
-                    `/kommun/${municipality}?step=${currentStep + 1}`,
-                    undefined,
-                    { scroll: false },
-                  )
-                }>
+            {onNextStep && (
+              <Btn onClick={onNextStep}>
                 Nästa <ArrowRight />
               </Btn>
             )}
