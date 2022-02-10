@@ -7,27 +7,34 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
   const name = req.query.name as string
   const method = req.method as string
 
+  const emissionService = new EmissionService()
   switch (method) {
     case 'GET':
-      let emissionService = new EmissionService()
-      Promise.all([emissionService.getMunicipality(name), emissionService.getMunicipalities(), new WikiDataService().getMunicipalityByName(name)])
+      Promise.all([
+        emissionService.getMunicipality(name),
+        emissionService.getMunicipalities(),
+        new WikiDataService().getMunicipalityByName(name),
+      ])
         .then((response) => {
           const municipality = response[0]
           const municipalities = response[1]
           const wikiDataMunicipality = response[2]
 
           municipality.Population = wikiDataMunicipality.Population
-              municipality.CoatOfArmsImage = wikiDataMunicipality.CoatOfArmsImage
-              municipality.Image = wikiDataMunicipality.Image
+          municipality.CoatOfArmsImage = wikiDataMunicipality.CoatOfArmsImage
+          municipality.Image = wikiDataMunicipality.Image
 
-          municipality.AverageEmissionChangeRank = municipalities.find((m:Municipality) => {
+          municipality.AverageEmissionChangeRank = municipalities.find(
+            (m: Municipality) => {
               return m.Name == municipality.Name
-            })?.AverageEmissionChangeRank
-          
-            res.status(200).json(municipality)
+            },
+          )?.AverageEmissionChangeRank
+
+          res.status(200).json(municipality)
         })
         .catch((error) => {
-          res.status(500).json(error)
+          console.log('error', error)
+          return res.status(500).json(error)
         })
 
       break
