@@ -10,6 +10,7 @@ import { devices } from '../../utils/devices'
 import Button from '../../components/Button'
 import ScoreCard from '../../components/ScoreCard'
 import Back from '../../components/Back'
+import { Municipality } from '../../utils/types'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -94,10 +95,15 @@ const STEPS: { [index: number]: { text: string } } = {
     text: 'Glappet',
   },
 }
+type Props = {
+  municipalityData: Municipality
+}
 
-const Municipality = () => {
+const MunicipalityPage = ({municipalityData}: Props) => {
   const router = useRouter()
   const { municipality, step } = router.query
+
+console.log('muniData', municipalityData)
 
   // https://github.com/vercel/next.js/discussions/11484
   if (!municipality) return null
@@ -166,4 +172,19 @@ const Municipality = () => {
   )
 }
 
-export default Municipality
+type Query = {
+  query: {
+    municipality: string
+  }
+}
+
+export async function getServerSideProps(context: any) {
+  const { municipality } = context.query;
+  const res = await fetch(`http://klimatkollen.vercel.app/api/municipality/${municipality}`);
+  const municipalityData = await res.json();
+
+  console.log(`Fetched municipalityData: ${municipalityData}`);
+  return { props: { municipalityData } };
+}
+
+export default MunicipalityPage
