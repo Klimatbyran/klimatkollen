@@ -1,35 +1,19 @@
-import * as fs from 'fs'
-import * as path from 'path'
-import { parse } from 'csv-parse'
-import { Municipality, Emission } from './types'
+import { Municipality, Emission, EmissionSector } from './types'
+import axios from 'axios'
 
-type EmissionData = {
-  Huvudsektor: string
-  Undersektor: string
-  Län: string
-  Kommun: string
-  1990: number
-  2000: number
-  2005: number
-  2010: number
-  2011: number
-  2012: number
-  2013: number
-  2014: number
-  2015: number
-  2016: number
-  2017: number
-  2018: number
-  2019: number
-}
+const CLIMATE_VIEW_BASE_URL = "https://climateview.azure-api.net/climatedata/nationalemissions/se"
 
 export class EmissionService {
-  constructor() {}
+  municipalities: Array<Municipality>
 
-  private getEmissionLevelChangeAverage(municipality : Municipality, years: number): number {
+  constructor() {
+    this.municipalities = []
+  }
+
+  private getEmissionLevelChangeAverage(emissions : Array<Emission>, years: number): number {
     let emissionsPercentages = 0
-    municipality.Emissions
-      .slice(Math.max(municipality.Emissions.length - years-1, 1))
+    emissions
+      .slice(Math.max(emissions.length - years-1, 1))
       .forEach((emission : Emission, index: number, emissions: Array<Emission>) => {
         let previous = emissions[index-1] as Emission
         if (previous) {
@@ -41,213 +25,126 @@ export class EmissionService {
     return emissionsPercentages/years
   }
   
-  // TODO: return list of all municipalities with only emission changes percentage
   public async getMunicipalities(): Promise<Array<Municipality>> {
     const promise = new Promise<Array<Municipality>>((resolve, reject) => {
-      const csvFilePath = path.resolve('./resources/emissions_per_municipality.csv')
-      const headers = [
-        'Huvudsektor',
-        'Undersektor',
-        'Län',
-        'Kommun',
-        '1990',
-        '2000',
-        '2005',
-        '2010',
-        '2011',
-        '2012',
-        '2013',
-        '2014',
-        '2015',
-        '2016',
-        '2017',
-        '2018',
-        '2019',
-      ]
-      const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' })
 
-      parse(
-        fileContent,
-        {
-          delimiter: ';',
-          columns: headers,
-          fromLine: 9,
-          cast: (columnValue, context) => {
-            const columnName = context.column as string
-            if (
-              [
-                '1990',
-                '2000',
-                '2005',
-                '2010',
-                '2011',
-                '2012',
-                '2013',
-                '2014',
-                '2015',
-                '2016',
-                '2017',
-                '2018',
-                '2019',
-              ].includes(columnName)
-            ) {
-              return parseInt(columnValue, 10)
-            }
-            return columnValue
-          },
-          on_record: (line, context) => {
-            if (line.Huvudsektor != 'Alla' || line.Kommun == 'Alla') {
-              return
-            }
-            return line
-          },
-        },
-        (error, result: EmissionData[]) => {
-          if (error) {
-            reject('Error: ' + error.message)
-          }
+      axios.get(CLIMATE_VIEW_BASE_URL).then((response) => {
 
-          const municipalities: Array<Municipality> = result.map(
-            (municipalityData: EmissionData) => {
-              let municipality = {
-                Name: municipalityData.Kommun,
-                County: municipalityData.Län,
-                Emissions: [
-                  { Year: '1990', CO2equivalent: municipalityData[1990] },
-                  { Year: '2000', CO2equivalent: municipalityData[2000] },
-                  { Year: '2005', CO2equivalent: municipalityData[2005] },
-                  { Year: '2010', CO2equivalent: municipalityData[2010] },
-                  { Year: '2011', CO2equivalent: municipalityData[2011] },
-                  { Year: '2012', CO2equivalent: municipalityData[2012] },
-                  { Year: '2013', CO2equivalent: municipalityData[2013] },
-                  { Year: '2014', CO2equivalent: municipalityData[2014] },
-                  { Year: '2015', CO2equivalent: municipalityData[2015] },
-                  { Year: '2016', CO2equivalent: municipalityData[2016] },
-                  { Year: '2017', CO2equivalent: municipalityData[2017] },
-                  { Year: '2018', CO2equivalent: municipalityData[2018] },
-                  { Year: '2019', CO2equivalent: municipalityData[2019] },
-                ]
-              } as Municipality
+        if (this.municipalities.length > 0) {
+          resolve(this.municipalities)
+        }
+        else {
+          this.municipalities = response.data.emissions
+            .map(
+              (municipalityData: any) => {
 
-              municipality.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(municipality, 5)
-              return municipality
-            },
-          )
+                let emissions = municipalityData.emissions
+                  .find((sector:any) => { 
+                    return sector.mainSector == "Alla"
+                  })
+                  .emissions.map((emission:any) => {
+                    return {
+                      Year: emission.year,
+                      CO2equivalent: emission.emission
+                    }
+                  })
 
-          resolve(municipalities)
-        },
-      )
+                let municipality = {
+                  Name: municipalityData.kommun
+                } as Municipality
+
+                municipality.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(emissions, 5)
+                return municipality
+              },
+            )
+            .sort((a: Municipality, b:Municipality) => {
+                return a.EmissionLevelChangeAverage - b.EmissionLevelChangeAverage
+              })
+            
+            this.municipalities.forEach((municipality: Municipality, index:number) => {
+              municipality.AverageEmissionChangeRank = index+1
+            })
+
+          resolve(this.municipalities)
+        }
+      })
+      .catch((error) => {
+        reject(error)
+      })
     })
 
     return promise
   }
 
-  //TODO: return municipality with past emission list, co2-budget, future emission based on trend, top 3 emission main sektor with top 3 subsectors
+  private totalEmissions(sector:any) { 
+    return sector.mainSector == "Alla" && sector.subSector == "Alla"
+  }
+  private mainSectorEmissions(sector: any) {
+    return sector.mainSector != "Alla" && sector.subSector == "Alla"
+  }
+
+  private getTop3EmissionSectorsFromRawData(municipalityRawData:any, sectorFilter: Function) : Array<EmissionSector> {
+    
+    return municipalityRawData.emissions
+      .filter(sectorFilter)
+      .map((sector:any) => {
+        
+          let lastEmission = sector.emissions.pop()
+
+          let emissionSector = {
+            CO2equivalent: lastEmission.emission,
+            Year: lastEmission.year,
+            Name: sector.subSector == "Alla" ? sector.mainSector : sector.subSector
+          } as EmissionSector
+          
+           emissionSector.SubSectors = this.getTop3EmissionSectorsFromRawData(municipalityRawData, 
+              (sector: any) => sector.mainSector == emissionSector.Name && sector.subSector != "Alla")
+
+          return emissionSector
+      })
+      .sort((sectorData1:EmissionSector, sectorData2:EmissionSector) => sectorData2.CO2equivalent - sectorData1.CO2equivalent)
+      .slice(0, 3) as Array<EmissionSector>
+  }
+
+  //TODO: 
+  // co2-budget, 
+  // future emission based on trend
+  // total budget kvar
   public async getMunicipality(name: string): Promise<Municipality> {
     const promise = new Promise<Municipality>((resolve, reject) => {
-      const csvFilePath = path.resolve('./resources/emissions_per_municipality.csv')
-      const headers = [
-        'Huvudsektor',
-        'Undersektor',
-        'Län',
-        'Kommun',
-        '1990',
-        '2000',
-        '2005',
-        '2010',
-        '2011',
-        '2012',
-        '2013',
-        '2014',
-        '2015',
-        '2016',
-        '2017',
-        '2018',
-        '2019',
-      ]
-      const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' })
 
-      parse(
-        fileContent,
-        {
-          delimiter: ';',
-          columns: headers,
-          fromLine: 9,
-          cast: (columnValue, context) => {
-            const columnName = context.column as string
-            if (
-              [
-                '1990',
-                '2000',
-                '2005',
-                '2010',
-                '2011',
-                '2012',
-                '2013',
-                '2014',
-                '2015',
-                '2016',
-                '2017',
-                '2018',
-                '2019',
-              ].includes(columnName)
-            ) {
-              return parseInt(columnValue, 10)
-            }
-            return columnValue
+      const url = CLIMATE_VIEW_BASE_URL + "/kommun/" + name
+      
+      axios.get(url).then((response) => {
+
+        const municipality: Municipality = response.data.emissions
+          .map((municipalityData: any) => {
+            
+            let municipality = {
+              Name: municipalityData.kommun,
+              Emissions: municipalityData.emissions
+                .find(this.totalEmissions)
+                .emissions.map((emission:any) => {
+                  return {
+                    Year: emission.year,
+                    CO2equivalent: emission.emission
+                  }
+                }),
+              LargestEmissionSectors: this.getTop3EmissionSectorsFromRawData(municipalityData, this.mainSectorEmissions)
+            } as Municipality
+
+            municipality.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(municipality.Emissions, 5)
+            return municipality
           },
-          on_record: (line, context) => {
-            if (line.Huvudsektor != 'Alla' || line.Kommun == 'Alla') {
-              return
-            }
+        )
+        .shift()
 
-            if (line.Kommun.toLowerCase() != name.toLowerCase()) {
-              return
-            }
+        resolve(municipality)
 
-            return line
-          },
-        },
-        (error, result: EmissionData[]) => {
-          if (error) {
-            reject('Error: ' + error.message)
-          }
-
-          const municipalities: Array<Municipality> = result.map(
-            (municipalityData: EmissionData) => {
-              let municipality =  {
-                Name: municipalityData.Kommun,
-                County: municipalityData.Län,
-                Emissions: [
-                  { Year: '1990', CO2equivalent: municipalityData[1990] },
-                  { Year: '2000', CO2equivalent: municipalityData[2000] },
-                  { Year: '2005', CO2equivalent: municipalityData[2005] },
-                  { Year: '2010', CO2equivalent: municipalityData[2010] },
-                  { Year: '2011', CO2equivalent: municipalityData[2011] },
-                  { Year: '2012', CO2equivalent: municipalityData[2012] },
-                  { Year: '2013', CO2equivalent: municipalityData[2013] },
-                  { Year: '2014', CO2equivalent: municipalityData[2014] },
-                  { Year: '2015', CO2equivalent: municipalityData[2015] },
-                  { Year: '2016', CO2equivalent: municipalityData[2016] },
-                  { Year: '2017', CO2equivalent: municipalityData[2017] },
-                  { Year: '2018', CO2equivalent: municipalityData[2018] },
-                  { Year: '2019', CO2equivalent: municipalityData[2019] },
-                ],
-              } as Municipality
-
-              municipality.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(municipality, 5)
-              return municipality
-            },
-          )
-          const municipality = municipalities.shift()
-
-          if (municipality) {
-            resolve(municipality)
-          } else {
-            reject('Ingen kommun hittades')
-          }
-        },
-      )
+      })
+      .catch((error) => {
+        reject(error)
+      })
     })
 
     return promise
