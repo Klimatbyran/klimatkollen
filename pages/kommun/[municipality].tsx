@@ -145,7 +145,7 @@ const Municipality = () => {
                   router.replace(`/kommun/${municipality}?step=${currentStep - 1}`)
                 }>
                 <ArrowLeft />
-                Förgående
+                Föregående
               </Btn>
             ) : (
               <div></div>
