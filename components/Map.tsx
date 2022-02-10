@@ -13,14 +13,8 @@ const INITIAL_VIEW_STATE = {
 }
 
 const MapDiv = styled.div`
-  display: flex;
-  left: 1rem;
   position: relative;
   margin-bottom: 1.5rem;
-
-  @media only screen and (${devices.tablet}) {
-    left: 10rem;
-  }
 `
 
 const bounds = [
@@ -70,23 +64,28 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
     const yellow = [239, 191, 23]
     const orange = [239, 153, 23]
     const darkOrange = [239, 127, 23]
-    const red = [239, 71, 48]
+    const red = [239, 94, 48]
     const pink = [239, 48, 84]
+    const green = [145, 223, 200]
 
-    if (emission > 0.03) {
+    if (emission > 0) {
       return pink
     }
-    if (emission > 0.01) {
+    if (emission > -0.02) {
       return red
     }
-    if (emission > 0) {
+    if (emission > -0.04) {
       return darkOrange
     }
-    if (emission > -0.02) {
+    if (emission > -0.07) {
       return orange
     }
-    if (emission > -0.04) {
+    if (emission > -0.1) {
       return yellow
+    }
+
+    if (emission > -0.2) {
+      return green
     }
 
     return [239, 48, 84]
@@ -108,8 +107,8 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
     polygonOffset: 1,
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0],
-    getFillColor: (e: any) => {
-      return getColor(e.emissions)
+    getFillColor: ({ emissions }: { emissions: number }) => {
+      return getColor(emissions)
     },
     pickable: true,
   })
@@ -125,14 +124,12 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
   return (
     <MapDiv>
       <DeckGL
-        width="170px"
+        style={{ border: '1px solid white', borderRadius: '4px' }}
+        width={'240px'}
         height="380px"
         initialViewState={INITIAL_VIEW_STATE}
         controller={true}
-        onClick={({ object }: Emissions) => {
-          console.log(object)
-          return object?.name && setSelected(object.name)
-        }}
+        onClick={({ object }: Emissions) => object?.name && setSelected(object.name)}
         layers={[kommunLayer]}
       />
     </MapDiv>

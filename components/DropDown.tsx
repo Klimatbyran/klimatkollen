@@ -5,7 +5,6 @@ import ArrowDown from '../public/icons/arrow-down.svg'
 import Button from './Button'
 
 const Container = styled.div`
-  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;

@@ -6,7 +6,7 @@ export const maxWidth = '55em'
 const Layout = styled.main`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 1rem;
   max-width: ${maxWidth};
   margin: 0 auto;

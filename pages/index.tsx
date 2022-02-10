@@ -3,7 +3,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
-import { H1, H5, Paragraph } from '../components/Typography'
+import { H1, ParagraphBold, Paragraph } from '../components/Typography'
 import { Municipality } from '../utils/types'
 
 type PropsType = {
@@ -40,15 +40,16 @@ const Dot = styled.div<{ color: string }>`
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 14rem;
-  align-items: flex-end;
+  margin-top: 22rem;
+  height: 100px;
 `
 
 const Flex = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 `
 const FlexCenter = styled.div`
@@ -59,7 +60,7 @@ const FlexCenter = styled.div`
 `
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
-  const [selected, setSelected] = useState()
+  const [selected, setSelected] = useState('Utforska kartan')
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
     name: item.Name,
@@ -76,36 +77,35 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
 
       <H1>Klimatkollen</H1>
       <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
-      <H5>Utsläppsförändring sedan Parisavtalet 2015</H5>
+      <FlexCenter>
+        <ParagraphBold>Utsläppsförändring sedan Parisavtalet 2015</ParagraphBold>
+      </FlexCenter>
       <Wrapper>
-        {selected ? (
-          <Box>
-            <InfoText>{selected}</InfoText>
-          </Box>
-        ) : (
-          ''
-        )}
+        <Box>
+          <InfoText>{selected}</InfoText>
+        </Box>
       </Wrapper>
       <Map emissionsLevels={emissionsLevels} setSelected={setSelected} />
       <InfoBox>
-        <div>
-          <Flex>
-            <Dot color="#EF3054" /> <Paragraph>Ökat med 3%</Paragraph>
-          </Flex>
-          <Flex>
-            <Dot color="#EF5E30" /> <Paragraph>Ökat med 1%</Paragraph>
-          </Flex>
-          <Flex>
-            <Dot color="#EF7F17" />
-            <Paragraph>Ökat med 0-1%</Paragraph>
-          </Flex>
-          <Flex>
-            <Dot color="#EF9917" /> <Paragraph>Minskat med 2%</Paragraph>
-          </Flex>
-          <Flex>
-            <Dot color="#EFBF17" /> <Paragraph>Minskat med 4%</Paragraph>
-          </Flex>
-        </div>
+        <Flex>
+          <Dot color="#EF3054" /> <Paragraph>Ökat mer än 0% </Paragraph>
+        </Flex>
+        <Flex>
+          <Dot color="#EF5E30" /> <Paragraph> Minskat med 0-2%</Paragraph>
+        </Flex>
+        <Flex>
+          <Dot color="#EF7F17" />
+          <Paragraph>Minskat med 2-4%</Paragraph>
+        </Flex>
+        <Flex>
+          <Dot color="#EF9917" /> <Paragraph>Minskat med 4-7%</Paragraph>
+        </Flex>
+        <Flex>
+          <Dot color="#EFBF17" /> <Paragraph>Minskat med 7-10%</Paragraph>
+        </Flex>
+        <Flex>
+          <Dot color="#91BFC8" /> <Paragraph>Minskat mer än 10% </Paragraph>
+        </Flex>
       </InfoBox>
       <FlexCenter>
         <DropDown municipalitiesName={municipalitiesName} />
