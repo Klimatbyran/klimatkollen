@@ -1,20 +1,28 @@
 import styled from 'styled-components'
-import DeckGL, { PolygonLayer } from 'deck.gl'
+import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
 import municipalityData from '../pages/data/kommuner.json'
 import { devices } from '../utils/devices'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
-  latitude: 62.134934,
-  zoom: 3,
+  latitude: 63,
+  zoom: 3.96,
   minZoom: 3,
   pitch: 0,
   bearing: 0,
 }
 
 const MapDiv = styled.div`
+  padding: 2rem 0;
+  // margin-bottom: 1.5rem;
+`
+
+const DeckGLWrapper = styled.div`
   position: relative;
-  margin-bottom: 1.5rem;
+  // TODO: Hardcoding this is not good.
+  height: 380px;
+  border: 1px solid #f9fbff;
+  border-radius: 8px;
 `
 
 const bounds = [
@@ -60,13 +68,13 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
     }
   })
 
-  const getColor = (emission: number) => {
-    const yellow = [239, 191, 23]
-    const orange = [239, 153, 23]
-    const darkOrange = [239, 127, 23]
-    const red = [239, 94, 48]
-    const pink = [239, 48, 84]
-    const green = [145, 223, 200]
+  const getColor = (emission: number): RGBAColor => {
+    const yellow: RGBAColor = [239, 191, 23, 1]
+    const orange: RGBAColor = [239, 153, 23, 1]
+    const darkOrange: RGBAColor = [239, 127, 23]
+    const red: RGBAColor = [239, 94, 48]
+    const pink: RGBAColor = [239, 48, 84]
+    const green: RGBAColor = [145, 223, 200]
 
     if (emission > 0) {
       return pink
@@ -91,6 +99,12 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
     return [239, 48, 84]
   }
 
+  type Emissions = {
+    emissions: number
+    name: string
+    geometry: [number, number][]
+  }
+
   const kommunLayer = new PolygonLayer({
     id: 'polygon-layer',
     data: municipalityLines,
@@ -107,31 +121,29 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
     polygonOffset: 1,
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0],
-    getFillColor: ({ emissions }: { emissions: number }) => {
-      return getColor(emissions)
+    getFillColor: (d) => {
+      return getColor((d as Emissions).emissions)
     },
     pickable: true,
   })
 
-  type Emissions = {
-    object: {
-      emissions: number
-      name: string
-      geometry: [number, number][]
-    }
-  }
+  // TODO: Use https://deck.gl/docs/api-reference/core/web-mercator-viewport to
+  //       zoom in on the bounds of Sweden adjusted to the height of the map
 
   return (
     <MapDiv>
-      <DeckGL
-        style={{ border: '1px solid white', borderRadius: '4px' }}
-        width={'240px'}
-        height="380px"
-        initialViewState={INITIAL_VIEW_STATE}
-        controller={true}
-        onClick={({ object }: Emissions) => object?.name && setSelected(object.name)}
-        layers={[kommunLayer]}
-      />
+      <DeckGLWrapper>
+        <DeckGL
+          initialViewState={INITIAL_VIEW_STATE}
+          controller={true}
+          onClick={({ object }) => {
+            // IDK what the correct type is
+            const name = (object as unknown as Emissions)?.name
+            name && setSelected(name)
+          }}
+          layers={[kommunLayer]}
+        />
+      </DeckGLWrapper>
     </MapDiv>
   )
 }
