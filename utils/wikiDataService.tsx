@@ -44,7 +44,7 @@ export class WikiDataService {
 
           municipality.CoatOfArmsImage = this.getCoatOfArmsFromPage(page)
           municipality.Population = this.getPopulationFromPage(page)
-          //   municipality.Image = this.getImageFromPage(page)
+          municipality.Image = this.getImageFromPage(page)
 
           resolve(municipality)
         } else {
