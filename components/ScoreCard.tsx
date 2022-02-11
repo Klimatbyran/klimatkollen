@@ -41,17 +41,17 @@ const StyledIcon = styled.div`
 `
 
 type Props = {
-  municipalityData: Municipality
+  population?: number
 }
 
-const ScoreCard = ({ municipalityData }: Props) => {
-  console.log('municipality data in scorecard', municipalityData)
+const ScoreCard = ({ population }: Props) => {
   return (
     <StyledDiv>
+        {population && 
       <div className="row">
         <section className="left">
           <Paragraph>Antal invånare</Paragraph>
-          <ParagraphBold>{municipalityData.Population}</ParagraphBold>
+          <ParagraphBold>{population}</ParagraphBold>
         </section>
         <section className="right">
           <StyledIcon>
@@ -59,6 +59,7 @@ const ScoreCard = ({ municipalityData }: Props) => {
           </StyledIcon>
         </section>
       </div>
+        }
 
       <div className="row">
         <section className="left">

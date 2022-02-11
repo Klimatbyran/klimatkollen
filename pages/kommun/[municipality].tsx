@@ -104,7 +104,6 @@ const MunicipalityPage = ({ municipalityData }: Props) => {
   const router = useRouter()
   const { municipality, step } = router.query
 
-  console.log('muniData', municipalityData)
 
   // https://github.com/vercel/next.js/discussions/11484
   if (!municipality) return null
@@ -124,12 +123,21 @@ const MunicipalityPage = ({ municipalityData }: Props) => {
 
   const text = stepConfig ? stepConfig.text : 'Ajabaja'
 
+
+  const capitalizeFirstLetter = (municipality: string) =>
+  municipality.charAt(0).toUpperCase() + municipality.slice(1)
+
+ let municipalityName = '' 
+  if(typeof municipality === 'string' ) {
+  municipalityName =  capitalizeFirstLetter(municipality)
+  } 
+
   return (
     <>
       <Back />
       <Wrapper>
-        <H1>{municipality}</H1>
-        <ScoreCard municipalityData={municipalityData} />
+        <H1>{municipalityName}</H1>
+        <ScoreCard population={municipalityData.Population}  />
 
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>
@@ -173,14 +181,14 @@ const MunicipalityPage = ({ municipalityData }: Props) => {
   )
 }
 
-// type Query = {
-//   query: {
-//     municipality: string
-//   }
-// }
+type Query = {
+  query: {
+    municipality: string
+  }
+}
 
-export async function getServerSideProps(context: any) {
-  const { municipality } = context.query
+export async function getServerSideProps({query}: Query) {
+  const { municipality } = query
   const res = await fetch(
     `http://klimatkollen.vercel.app/api/municipality/${municipality}`,
   )
