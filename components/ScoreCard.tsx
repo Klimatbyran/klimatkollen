@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
+import { Municipality } from '../utils/types'
 
 const StyledDiv = styled.div`
   min-width: 290px;
@@ -39,13 +40,18 @@ const StyledIcon = styled.div`
   }
 `
 
-const ScoreCard = () => {
+type Props = {
+  municipalityData: Municipality
+}
+
+const ScoreCard = ({ municipalityData }: Props) => {
+  console.log('municipality data in scorecard', municipalityData)
   return (
     <StyledDiv>
       <div className="row">
         <section className="left">
           <Paragraph>Antal invånare</Paragraph>
-          <ParagraphBold>50 000</ParagraphBold>
+          <ParagraphBold>{municipalityData.Population}</ParagraphBold>
         </section>
         <section className="right">
           <StyledIcon>

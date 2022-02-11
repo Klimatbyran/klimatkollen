@@ -95,15 +95,16 @@ const STEPS: { [index: number]: { text: string } } = {
     text: 'Glappet',
   },
 }
+
 type Props = {
   municipalityData: Municipality
 }
 
-const MunicipalityPage = ({municipalityData}: Props) => {
+const MunicipalityPage = ({ municipalityData }: Props) => {
   const router = useRouter()
   const { municipality, step } = router.query
 
-console.log('muniData', municipalityData)
+  console.log('muniData', municipalityData)
 
   // https://github.com/vercel/next.js/discussions/11484
   if (!municipality) return null
@@ -128,7 +129,7 @@ console.log('muniData', municipalityData)
       <Back />
       <Wrapper>
         <H1>{municipality}</H1>
-        <ScoreCard />
+        <ScoreCard municipalityData={municipalityData} />
 
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>
@@ -178,13 +179,15 @@ type Query = {
   }
 }
 
-export async function getServerSideProps(context: any) {
-  const { municipality } = context.query;
-  const res = await fetch(`http://klimatkollen.vercel.app/api/municipality/${municipality}`);
-  const municipalityData = await res.json();
+export async function getServerSideProps(context: Query) {
+  const { municipality } = context.query
+  const res = await fetch(
+    `http://klimatkollen.vercel.app/api/municipality/${municipality}`,
+  )
+  const municipalityData = await res.json()
 
-  console.log(`Fetched municipalityData: ${municipalityData}`);
-  return { props: { municipalityData } };
+  console.log(`Fetched municipalityData: ${municipalityData}`)
+  return { props: { municipalityData } }
 }
 
 export default MunicipalityPage
