@@ -173,13 +173,13 @@ const MunicipalityPage = ({ municipalityData }: Props) => {
   )
 }
 
-type Query = {
-  query: {
-    municipality: string
-  }
-}
+// type Query = {
+//   query: {
+//     municipality: string
+//   }
+// }
 
-export async function getServerSideProps(context: Query) {
+export async function getServerSideProps(context: any) {
   const { municipality } = context.query
   const res = await fetch(
     `http://klimatkollen.vercel.app/api/municipality/${municipality}`,
