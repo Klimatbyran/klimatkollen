@@ -105,8 +105,8 @@ const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
 type Props = {
   municipality: string
   step: number
-  onNextStep: (() => void) | undefined
-  onPreviousStep: (() => void) | undefined
+  onNextStep?: (() => void) | undefined
+  onPreviousStep?: (() => void) | undefined
 }
 
 const Municipality = (props: Props) => {

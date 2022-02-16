@@ -1,7 +1,18 @@
 import { useRouter } from 'next/router'
 import Municipality from '../../../components/Municipality'
 
-export const STEPS = ['historiska-utslapp', 'parisavtalet', 'framtida-prognos', 'glappet']
+export const STEPS = [
+  'historiska-utslapp',
+  'for-att-klara-parisavtalet',
+  'vad-hander-om-vi-inte-minskar-utslappen',
+  'om-vi-forsatter-som-idag',
+  'nuvarande-trend',
+  'minska-glappet',
+  'vad-ar-glappet',
+  'storsta-utslappskallorna-intro',
+  'storsta-utslappskallorna',
+  'sag-din-asikt',
+]
 
 export default function Step() {
   const router = useRouter()
