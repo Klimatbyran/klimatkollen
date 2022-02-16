@@ -43,19 +43,18 @@ const InfoBox = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   height: 100px;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 `
 
-const Flex = styled.div`
+const Label = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
 `
 const FlexCenter = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
 `
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
@@ -86,25 +85,25 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
       </Wrapper>
       <Map emissionsLevels={emissionsLevels} setSelected={setSelected} />
       <InfoBox>
-        <Flex>
+        <Label>
           <Dot color="#EF3054" /> <Paragraph>Ökat mer än 0% </Paragraph>
-        </Flex>
-        <Flex>
+        </Label>
+        <Label>
           <Dot color="#EF5E30" /> <Paragraph> Minskat med 0-2%</Paragraph>
-        </Flex>
-        <Flex>
+        </Label>
+        <Label>
           <Dot color="#EF7F17" />
           <Paragraph>Minskat med 2-4%</Paragraph>
-        </Flex>
-        <Flex>
+        </Label>
+        <Label>
           <Dot color="#EF9917" /> <Paragraph>Minskat med 4-7%</Paragraph>
-        </Flex>
-        <Flex>
+        </Label>
+        <Label>
           <Dot color="#EFBF17" /> <Paragraph>Minskat med 7-10%</Paragraph>
-        </Flex>
-        <Flex>
+        </Label>
+        <Label>
           <Dot color="#91BFC8" /> <Paragraph>Minskat mer än 10% </Paragraph>
-        </Flex>
+        </Label>
       </InfoBox>
       <FlexCenter>
         <DropDown municipalitiesName={municipalitiesName} />
