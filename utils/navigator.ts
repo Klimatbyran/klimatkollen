@@ -1,3 +1,3 @@
 export function hasShareAPI() {
-  return !!navigator.share
+  return typeof navigator !== 'undefined' && !!navigator.share
 }
