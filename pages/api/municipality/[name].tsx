@@ -30,6 +30,7 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
             },
           )?.AverageEmissionChangeRank
 
+          res.setHeader('Cache-Control', `public, s-maxage=${60 * 60}`)
           res.status(200).json(municipality)
         })
         .catch((error) => {
