@@ -7,8 +7,8 @@ import { WebMercatorViewport } from '@deck.gl/core'
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
   latitude: 63,
-  zoom: 2.9,
-  minZoom: 2.9,
+  zoom: 3.4,
+  minZoom: 3,
   pitch: 0,
   bearing: 0,
 }
@@ -143,7 +143,6 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
             MAP_RANGE.lon[1],
             Math.max(MAP_RANGE.lon[0], viewState.longitude),
           )
-          console.log(MAP_RANGE.lat[0], viewState.latitude)
           viewState.latitude = Math.min(
             MAP_RANGE.lat[1],
             Math.max(MAP_RANGE.lat[0], viewState.latitude),
