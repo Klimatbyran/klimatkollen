@@ -79,6 +79,11 @@ const replaceLetters = (name: string) => {
   return replacedWord
 }
 
+const MAP_RANGE = {
+  lon: [8.107180004121693, 26.099158344940808],
+  lat: [61.9, 63.9],
+}
+
 type Props = {
   emissionsLevels: Array<{ name: string; emissions: number }>
   setSelected: (value: string) => void
@@ -122,28 +127,6 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
     pickable: true,
   })
 
-  // TODO: Use https://deck.gl/docs/api-reference/core/web-mercator-viewport to
-  //       zoom in on the bounds of Sweden adjusted to the height of the map
-
-  // const bounds = [
-  //   [23.367392, 67.212782], // Southwest
-  //   [13.003822000000014, 55.604981], //Northeast
-  // ]
-
-  // const viewport = new WebMercatorViewport({
-  //   width: 600,
-  //   height: 400,
-  //   longitude: 17.062927,
-  //   latitude: 63,
-  //   zoom: 3,
-  //   minZoom: 3.5,
-  //   pitch: 0,
-  //   bearing: 0,
-  //   // bounds: bounds,
-  // })
-
-  // viewport.project([63, 17.062927])
-
   return (
     <DeckGLWrapper>
       <DeckGL
@@ -151,11 +134,22 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
         controller={true}
         onClick={({ object }) => {
           // IDK what the correct type is
-          // console.log(object)
           const name = (object as unknown as Emissions)?.name
           name && setSelected(name)
         }}
         layers={[kommunLayer]}
+        onViewStateChange={({ viewState }) => {
+          viewState.longitude = Math.min(
+            MAP_RANGE.lon[1],
+            Math.max(MAP_RANGE.lon[0], viewState.longitude),
+          )
+          console.log(MAP_RANGE.lat[0], viewState.latitude)
+          viewState.latitude = Math.min(
+            MAP_RANGE.lat[1],
+            Math.max(MAP_RANGE.lat[0], viewState.latitude),
+          )
+          return viewState
+        }}
       />
     </DeckGLWrapper>
   )
