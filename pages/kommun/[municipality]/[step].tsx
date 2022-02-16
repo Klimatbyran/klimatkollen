@@ -32,3 +32,12 @@ export default function Step() {
     />
   )
 }
+
+export async function getServerSideProps() {
+  const municipalities = await fetch(
+    'http://klimatkollen.vercel.app/api/municipalities',
+  ).then((res) => res.json())
+  return {
+    props: { municipalities },
+  }
+}
