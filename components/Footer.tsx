@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Paragraph, H5 } from './Typography'
+import { Paragraph, H5, ParagraphBold } from './Typography'
 import { devices } from '../utils/devices'
 import WWF from '../public/icons/wwf.svg'
 import ClimateView from '../public/icons/climateview.svg'
@@ -7,6 +7,7 @@ import VBK from '../public/icons/vbk.svg'
 import WeDontHaveTime from '../public/icons/we-dont-have-time.svg'
 import Klimatklubben from '../public/icons/klimatklubben.svg'
 import Argand from '../public/icons/argand.svg'
+import NewsletterForm from '../components/NewsletterForm'
 
 const Wrapper = styled.div`
     background: ${({ theme }) => theme.dark};
@@ -113,6 +114,10 @@ const Footer = () => {
                 <Paragraph>
                     Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">ClimateView</a>.
                 </Paragraph>
+            </TextSection>
+            <TextSection>
+                <ParagraphBold>Anmäl dig för nyhetsbrev</ParagraphBold>
+                <NewsletterForm />
             </TextSection>
             <TextSection>
                 <H5>Våra samarbetspartners</H5>
