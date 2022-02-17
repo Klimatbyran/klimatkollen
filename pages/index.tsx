@@ -105,7 +105,6 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
       <FlexCenter>
         <DropDown municipalitiesName={municipalitiesName} />
       </FlexCenter>
-      <Footer />
     </>
   )
 }
