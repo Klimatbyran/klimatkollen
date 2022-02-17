@@ -7,7 +7,7 @@ import ArrowRight from '../public/icons/arrow-right.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 import { devices } from '../utils/devices'
 import Button from './Button'
-import InfoBox from './InfoBox'
+import ScoreCard from './ScoreCard'
 import Back from './Back'
 import { hasShareAPI } from '../utils/navigator'
 import MetaTags from './MetaTags'
@@ -161,7 +161,7 @@ const Municipality = (props: Props) => {
       />
       <Wrapper>
         <H1>{municipalityTitleCase}</H1>
-        <InfoBox />
+        <ScoreCard />
 
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>
