@@ -6,6 +6,7 @@ import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
 import { H1, ParagraphBold, Paragraph } from '../components/Typography'
 import { Municipality } from '../utils/types'
+import Footer from '../components/Footer'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -104,6 +105,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
       <FlexCenter>
         <DropDown municipalitiesName={municipalitiesName} />
       </FlexCenter>
+      <Footer />
     </>
   )
 }
