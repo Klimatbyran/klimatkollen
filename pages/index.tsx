@@ -114,6 +114,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const municipalities = await new EmissionService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
 
+  res.setHeader('Cache-Control', 'public, maxage=3600, s-maxage=4000')
+
   return {
     props: { municipalities },
   }
