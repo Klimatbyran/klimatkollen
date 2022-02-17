@@ -7,7 +7,13 @@ import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import { PolitycalRuleService } from '../../../utils/politicalRuleService'
 
-export const STEPS = ['historiska-utslapp', 'parisavtalet', 'framtida-prognos', 'glappet']
+export const STEPS = [
+  'historiska-utslapp',
+  'parisavtalet',
+  'framtida-prognos',
+  'glappet',
+  'min-plan',
+]
 
 type Props = {
   municipality: TMunicipality

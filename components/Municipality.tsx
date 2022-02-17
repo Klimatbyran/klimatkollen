@@ -1,8 +1,6 @@
-import Head from 'next/head'
 import styled from 'styled-components'
 import Graph from './Graph'
 import { H1 } from './Typography'
-import { klimatData, data } from '../data/stockholm'
 import ArrowRight from '../public/icons/arrow-right.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 import { devices } from '../utils/devices'
@@ -12,6 +10,12 @@ import Back from './Back'
 import { hasShareAPI } from '../utils/navigator'
 import { Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
+
+import {
+  data as historicalEmissions,
+  pledges as pledgedEmissions,
+  paris as parisEmissions,
+} from '../data/stockholm'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -89,12 +93,6 @@ const HeaderSection = styled.div`
   margin-top: 20px;
 `
 
-type Co2Year = { year: number; co2: number }
-
-const max = (array: Array<Co2Year>, key: 'year' | 'co2') => {
-  return Math.max(...array.map((d) => d[key]))
-}
-
 type ShareTextFn = (name: string) => string
 const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
   0: {
@@ -114,6 +112,10 @@ const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
     text: 'Glappet',
     shareText: (name) => `Hur stort är glappet i ${name} från nu och framtiden?`,
   },
+  4: {
+    text: 'Din plan',
+    shareText: (name) => `Här är min plan för att ${name} ska hålla sin klimatbudget.`,
+  },
 }
 
 type Props = {
@@ -126,7 +128,6 @@ type Props = {
 
 const Municipality = (props: Props) => {
   const { step, municipality, onNextStep, onPreviousStep, coatOfArmsImage } = props
-  const maxCo2 = max(data, 'co2')
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
@@ -182,11 +183,10 @@ const Municipality = (props: Props) => {
             </Box>
           </Center>
           <Graph
-            width={500}
-            height={250}
-            currentStep={step}
-            klimatData={klimatData}
-            maxCo2={maxCo2}
+            step={step}
+            historical={historicalEmissions}
+            pledged={pledgedEmissions}
+            paris={parisEmissions}
           />
           <Flex>
             {onPreviousStep ? (

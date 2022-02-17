@@ -1,169 +1,247 @@
-import { useEffect, useState } from 'react'
-import { animated, useSpring } from 'react-spring'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import {
+  Filler,
+  Chart,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+} from 'chart.js'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Line } from 'react-chartjs-2'
+
 import styled from 'styled-components'
-import { devices } from '../utils/devices'
-// import bezier from 'bezier-curve'
 
-const Label = styled.text`
-  fill: #fff;
-  text-shadow: 0 0 1px #000;
-  font-family: 'Helvetica Neue';
-  font-weight: 300;
-  font-size: 20px;
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 
-  @media only screen and (${devices.tablet}) {
-    font-size: 14px;
-  }
+const RangeContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-left: 12.5rem;
 `
 
-// const bezierCurve = (normalizedData: [number, number]) => {
-//   const curve = []
-//   for (let t = 0; t < 1; t += 0.01) {
-//     const point = bezier(t, normalizedData)
-//     curve.push(point)
-//   }
-//   return curve
-// }
+const Range = styled.input`
+  appearance: slider-vertical;
+  writing-mode: bt-lr; // ie and edge
+  width: 0.05rem;
+  margin-right: 2.95rem;
+`
 
-type Data = {
-  pledgesPath?: string
-  parisPath?: string
-  historyPath?: string
+type EmissionData = {
+  year: number
+  co2: number
+}
+
+function getSetup(emissions: EmissionData[][]): {
+  labels: number[]
+  adjustableYearStart: number
+  minYear: number
+  maxYear: number
+} {
+  const all = new Set<number>()
+  emissions.forEach((e) => e.forEach((t) => all.add(t.year)))
+  const years = Array.from(all).sort()
+  return {
+    labels: years,
+    adjustableYearStart: new Date().getFullYear(),
+    minYear: years[0],
+    maxYear: years[years.length - 1],
+  }
+}
+
+function getFillerValues(fromYear: number, toYear: number) {
+  return new Array(toYear - fromYear).map((f) => null)
 }
 
 type Props = {
-  history?: string
-  pledges?: string
-  paris?: string
-  klimatData: Array<Data>
-  currentStep: number
-  width: number
-  height: number
-  maxCo2: number
+  step: number
+  historical: EmissionData[]
+  paris: EmissionData[]
+  pledged: EmissionData[]
 }
 
-const YEARS = [1990, 2000, 2010, 2020, 2025]
+type Dataset = Array<null | number>
 
-const Graph = ({ klimatData, currentStep, width, height, maxCo2 }: Props) => {
-  const [loaded, setLoaded] = useState(false)
-  const [minYear, setMinYear] = useState(1990)
-  const [maxYear, setMaxYear] = useState(2030)
-  const [labelSteps, setLabelSteps] = useState<number[]>([])
+const Graph = ({ step, historical, paris, pledged }: Props) => {
+  const chartRef = useRef()
+  const setup = useMemo(
+    () => getSetup([historical, paris, pledged]),
+    [historical, paris, pledged],
+  )
 
-  const historyProps = useSpring({
-    d: klimatData[currentStep].historyPath,
-    config: {
-      duration: 100,
+  const historicalDataset = useMemo(() => historical.map((f) => f.co2), [historical])
+  const parisDataset = useMemo(
+    () =>
+      (historical.slice(0, -1).map(() => null) as Dataset).concat(
+        paris.map((p) => p.co2),
+      ),
+    [historical, paris],
+  )
+
+  const pledgeDataset = useMemo(
+    () =>
+      (historical.slice(0, -1).map(() => null) as Dataset).concat(
+        pledged.map((p) => p.co2),
+      ),
+    [historical, pledged],
+  )
+
+  const [userGraph, setUserGraph] = useState(
+    pledged
+      .filter((pledge) => pledge.year >= setup.adjustableYearStart)
+      .map((f) => ({ year: f.year, co2: f.co2, current: f.co2, change: 1 })),
+  )
+
+  // useEffect(() => {
+  //   const chart = chartRef.current
+  //   if (chart) {
+  //     const dataset = chart.data.datasets[3]
+
+  //     userGraph
+  //       .filter((f) => f !== null)
+  //       .reduce((prev, curr) => {
+  //         curr.acc = (prev.acc ?? 1) * curr.change
+  //         curr.emitted = prev.emitted + curr.co2 * curr.acc
+  //         return curr
+  //       })
+  //     dataset.data = historical.map((f) => f.null)
+  //     // console.log('before', chart.data.datasets[3].data.length)
+  //     // chart.data.datasets[3].data.splice(historical.length)
+  //     // console.log('after', chart.data.datasets[3].data.length)
+  //     // chart.data.datasets[3].data = userGraph.map((f) => (f ? f.co2 / f.acc : f))
+  //     // console.log(chart.data.datasets[3].data)
+  //     // chart.update()
+  //   }
+  // }, [userGraph])
+
+  const options = {
+    options: {
+      responsive: true,
+      scales: {
+        x: {
+          min: step > 2 ? 2019 : 1991,
+          max: step > 0 ? 2050 : 2019,
+          grid: {
+            display: false,
+            drawBorder: false,
+          },
+        },
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+          },
+          beginAtZero: true,
+        },
+      },
     },
-  })
-
-  const parisProps = useSpring({
-    d: klimatData[currentStep].parisPath,
-    config: {
-      duration: 100,
+    data: {
+      labels: setup.labels,
+      datasets: [
+        {
+          id: 'historical',
+          fill: true,
+          data: historicalDataset,
+          borderWidth: 1,
+          borderColor: 'rgba(239, 94, 48, 1)',
+          backgroundColor: 'rgba(239, 94, 48, 0.3)',
+          pointRadius: 0,
+          tension: 0.5,
+          hidden: false,
+        },
+        {
+          id: 'paris',
+          fill: true,
+          data: parisDataset,
+          borderWidth: 1,
+          borderColor: 'rgba(239, 153, 23, 1)',
+          backgroundColor: 'rgba(239, 153, 23, 0.3)',
+          pointRadius: 0,
+          tension: 0.5,
+          hidden: false,
+        },
+        {
+          id: 'pledge',
+          fill: true,
+          data: pledgeDataset,
+          borderWidth: 1,
+          borderColor: 'rgba(239, 48, 84, 1)',
+          backgroundColor: 'rgba(239, 48, 84, 0.3)',
+          pointRadius: 0,
+          tension: 0.5,
+          hidden: step < 2,
+        },
+        {
+          id: 'usergrap',
+          fill: true,
+          data: (
+            getFillerValues(setup.minYear, setup.adjustableYearStart) as Dataset
+          ).concat(
+            userGraph.reduce(
+              (sum, f) => {
+                const acc = sum.acc * f.change
+                return {
+                  acc,
+                  values: sum.values.concat([f.co2 / acc]),
+                }
+              },
+              { acc: 1, values: [] as Dataset },
+            ).values,
+          ),
+          borderWidth: 1,
+          borderColor: 'rgba(255, 255, 255)',
+          backgroundColor: 'rgba(255, 255, 255, 0.6)',
+          pointRadius: 0,
+          tension: 0,
+          hidden: step < 4,
+        },
+      ],
     },
-  })
-  const pledgesProps = useSpring({
-    d: klimatData[currentStep].pledgesPath,
-    config: {
-      duration: 100,
-    },
-  })
-
-  useEffect(() => {
-    setTimeout(() => setLoaded(true), 300)
-
-    const xCoords = YEARS.map((year) => {
-      return ((year - minYear) / (maxYear - minYear)) * width
-    })
-    setLabelSteps(xCoords)
-  }, [minYear, maxYear])
-
-  const YearLabel = ({
-    width = 500,
-    height = 240,
-    year,
-    offset = 0,
-    x,
-  }: {
-    width?: number
-    height?: number
-    offset?: number
-    year: number
-    x: number
-  }) => {
-    const y = height + 30 - offset
-    return (
-      <Label y={y} x={x}>
-        {year}
-      </Label>
-    )
   }
 
-  useEffect(() => {
-    switch (currentStep) {
-      case 0:
-        setMinYear(1990)
-        setMaxYear(2020)
-        break
-      case 1:
-        setMinYear(1990)
-        setMaxYear(2030)
-        break
-      case 2:
-        setMinYear(1990)
-        setMaxYear(2030)
-        break
-      case 3:
-        setMinYear(2018)
-        break
-      default:
-        break
-    }
-  }, [currentStep])
+  const handleYearChange = (index: number, value: number) => {
+    setUserGraph((current) => {
+      // const thing = current.reduce((prev, curr) => {
+      //   return {
+      //     ...curr,
+      //     acc: prev.acc * curr.change,
+      //     // emitted: prev.emitted +
+      //   }
+      //   // curr.emitted = prev.emitted + curr.co2 * curr.acc
+      // })
+      // console.log(thing)
+      const copy = [...current]
+      copy[index].change = value
+      return copy
+    })
+  }
 
   return (
-    <>
-      <div className={loaded ? 'loaded' : ''}>
-        <svg viewBox={`0 -10 ${width} ${height + 30}`}>
-          <defs>
-            <filter id="dropshadow">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="3"></feGaussianBlur>
-              <feOffset dx="0" dy="0" result="offsetblur"></feOffset>
-              <feComponentTransfer>
-                <feFuncA slope="0.2" type="linear"></feFuncA>
-              </feComponentTransfer>
-              <feMerge>
-                <feMergeNode></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-              </feMerge>
-            </filter>
-          </defs>
-          <g className="datasets">
-            <animated.path
-              className="dataset show"
-              d={historyProps.d}
-              id="dataset-1"></animated.path>
-            <animated.path
-              className="dataset show"
-              d={pledgesProps.d}
-              id="dataset-2"></animated.path>
-            <animated.path
-              className="dataset show"
-              d={parisProps.d}
-              id="dataset-3"></animated.path>
-          </g>
-          <Label x="0" y="15">
-            {Math.ceil(maxCo2 / 1000) * 1000} co2
-          </Label>
-          <YearLabel key="1" year={1990} x={labelSteps[0]} />
-          <YearLabel key="2" year={2000} x={labelSteps[1]} />
-          <YearLabel key="3" year={2010} x={labelSteps[2]} />
-          <YearLabel key="4" year={2020} x={labelSteps[3]} />
-          <YearLabel key="5" year={2025} x={labelSteps[4]} />
-        </svg>
-      </div>
-    </>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Line
+        ref={chartRef}
+        datasetIdKey="id"
+        data={options.data}
+        options={options.options}
+      />
+      {step > 3 && (
+        <RangeContainer>
+          {userGraph.map((value, i) => (
+            <Range
+              key={i}
+              min={1}
+              max={2}
+              step={0.01}
+              value={value.change}
+              type="range"
+              // @ts-ignore - this is for firefox :*(
+              orient="vertical"
+              onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
+            />
+          ))}
+        </RangeContainer>
+      )}
+    </div>
   )
 }
 
