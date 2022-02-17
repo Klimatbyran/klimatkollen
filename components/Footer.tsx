@@ -56,13 +56,15 @@ const IconSection = styled.div`
     gap: 15px;
     margin-bottom: 60px;
     width: 350px;
-    height: 200px;
+
+    @media only screen and (${devices.tablet}) {
+        height: 200px;
+    }
 `
 
 const IconWrapper = styled.div`
     display: flex;
     align-items: center;
-
     @media only screen and (${devices.tablet}) {
         margin-top: 5px;
         height: 80px;
@@ -85,10 +87,10 @@ const Footer = () => {
                     Använd Klimatkollen för att dela fakta och kräva svar. Hur vill partierna minska utsläppen? Vilka lösningar finns? Klimatkollen hjälper dig att ställa rätt frågor.
                 </Paragraph>
                 <Paragraph>
-                    All fakta på Klimatkollen kommer från offentliga källor. Vi redovisar alla källor tydligt så att du enkelt kan kolla upp och läsa mer. Om något blivit fel, mejla gärna oss på info@klimatkollen.se så att vi kan ändra.
+                    All fakta på Klimatkollen kommer från offentliga källor. Vi redovisar alla källor tydligt så att du enkelt kan kolla upp och läsa mer. Om något blivit fel, mejla gärna oss på <a href="mailto:info@klimatkollen.se">info@klimatkollen.se</a> så att vi kan ändra.
                 </Paragraph>
                 <Paragraph>
-                    Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av Iteam. Vi tror på kraften i att visualisera fakta på ett enkelt och tilltalande sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt och åtgärder som minskar utsläppen i linje med Parisavtalet.
+                    Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av <a href="https://iteam.se/" target="_blank" rel="noreferrer">Iteam</a>. Vi tror på kraften i att visualisera fakta på ett enkelt och tilltalande sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt och åtgärder som minskar utsläppen i linje med Parisavtalet.
                 </Paragraph>
             </TextSection>
             <TextSection>
@@ -103,13 +105,13 @@ const Footer = () => {
                     Enligt Parisavtalet ska rika länder, som historiskt sett släppt ut mycket växthusgaser, ta ett större ansvar för att genomföra klimatomställningen. Där ingår Sverige, som både ska före när det gäller få ner utsläppen, men också hjälpa mer sårbara länder att ställa om. I Sverige stöds Parisavtalet av alla partier i riksdagen.
                 </Paragraph>
                 <Paragraph>
-                    Läs mer om Parisavtalet hos vår samarbetspartner WWF.
+                    Läs mer om Parisavtalet hos vår samarbetspartner <a href="https://wwf.se/" target="_blank" rel="noreferrer">WWF</a>.
                 </Paragraph>
                 <Paragraph>
                     En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut innan vi riskerar att öka temperaturen så mycket att det bryter mot Parisavtalet. Det är ett sätt att åskådliggöra utsläppsutrymmet som finns kvar om vi ska hålla uppvärmningen under 1,5 grader. FN:s klimatpanel, IPCC, beräknar en global koldioxidbudget, som sedan kan beräkas per land, region eller kommun. Klimatkollen visar koldioxidbudgetar för alla Sveriges kommuner som utgår ifrån Parisavtalets mål om 1,5 graders global uppvärmning.
                 </Paragraph>
                 <Paragraph>
-                    Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner ClimateView.
+                    Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">ClimateView</a>.
                 </Paragraph>
             </TextSection>
             <TextSection>
@@ -118,37 +120,37 @@ const Footer = () => {
             <FlexSection>
                 <IconSection>
                     <IconWrapper>
-                        <WWF />
+                        <a href="https://www.wwf.se/" target="_blank" rel="noreferrer"><WWF /></a>
                     </IconWrapper>
                     <Paragraph>Världens största miljöorganisation med sex miljoner supportrar globalt och 200 000 i Sverige</Paragraph>
                 </IconSection>
                 <IconSection>
                     <IconWrapper>                
-                        <ClimateView />
+                        <a href="https://www.climateview.global/" target="_blank" rel="noreferrer"><ClimateView /></a>
                     </IconWrapper>
                     <Paragraph>Ett internationellt teknikföretag som hjälper kommuner att planera och analysera klimatarbetet</Paragraph>
                 </IconSection>
                 <IconSection>
                     <IconWrapper>
-                        <VBK />
+                        <a href="https://varabarnsklimat.se/" target="_blank" rel="noreferrer"><VBK /></a>
                     </IconWrapper>
                     <Paragraph>Samlar föräldrar och andra vuxna för att lyfta fram barnens perspektiv i klimatfrågan</Paragraph>
                 </IconSection>
                 <IconSection>
                     <IconWrapper>
-                        <WeDontHaveTime />
+                        <a href="https://www.wedonthavetime.org/" target="_blank" rel="noreferrer"><WeDontHaveTime /></a>
                     </IconWrapper>
-                    <Paragraph>Världens största sociala nätverk för klimataktion. Skapa din egen kampanj här www.wedonthavetime.org</Paragraph>
+                    <Paragraph>Världens största sociala nätverk för klimataktion. Skapa din egen kampanj här (<a href="https://www.wedonthavetime.org/" target="_blank" rel="noreferrer">www.wedonthavetime.org</a>)</Paragraph>
                 </IconSection>
                 <IconSection>
                     <IconWrapper>
-                        <Klimatklubben />
+                        <a href="https://www.klimatklubben.se/" target="_blank" rel="noreferrer"><Klimatklubben /></a>
                     </IconWrapper>
                     <Paragraph>Ett nätverk som arbetar för att klimatfrågan ska lyftas högst upp på agendan</Paragraph>
                 </IconSection>
                 <IconSection>
                     <IconWrapper>
-                        <Argand />
+                        <a href="https://argandpartners.com/" target="_blank" rel="noreferrer"><Argand /></a>
                     </IconWrapper>
                     <Paragraph>Investerar i klimatlösningar</Paragraph>
                 </IconSection>
