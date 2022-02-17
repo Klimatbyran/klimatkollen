@@ -17,11 +17,12 @@ const Wrapper = styled.div`
 
     @media only screen and (${devices.tablet}) {
         justify-content: center;
+        padding: 80px 20px;
     }
 `
 
 const ContentWrapper = styled.div`
-    width: 850px;
+    width: 840px;
 `
 
 const TextSection = styled.div`
@@ -36,7 +37,6 @@ const FlexSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
-    justify-content: center;
     text-align: center;
     align-items: center;
 
@@ -44,17 +44,19 @@ const FlexSection = styled.div`
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+        width: 90%;
     }
 `
 
 const IconSection = styled.div`
     display: flex;
     flex-direction: column;
-    justify-items: center;
+
     align-items: center;
-    gap: 20px;
-    margin-bottom: 40px;
+    gap: 15px;
+    margin-bottom: 60px;
     width: 350px;
+    height: 200px;
 `
 
 const IconWrapper = styled.div`
