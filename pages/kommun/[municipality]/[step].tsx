@@ -14,13 +14,19 @@ export default function Step() {
   const onNext = () => {
     const next = STEPS[stepIndex + 1]
     if (!next) throw new Error(`Assertion failed: No step with index ${stepIndex + 1}`)
-    router.replace(`/kommun/${municipality}/${next}`, undefined, { scroll: false })
+    router.replace(`/kommun/${municipality}/${next}`, undefined, {
+      shallow: true,
+      scroll: false,
+    })
   }
 
   const onPrevious = () => {
     const prev = STEPS[stepIndex - 1]
     if (!prev) throw new Error(`Assertion failed: No step with index ${stepIndex - 1}`)
-    router.replace(`/kommun/${municipality}/${prev}`, undefined, { scroll: false })
+    router.replace(`/kommun/${municipality}/${prev}`, undefined, {
+      shallow: true,
+      scroll: false,
+    })
   }
 
   return (
