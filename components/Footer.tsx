@@ -116,7 +116,7 @@ const Footer = () => {
                 </Paragraph>
             </TextSection>
             <TextSection>
-                <ParagraphBold>Anmäl dig för nyhetsbrev</ParagraphBold>
+                <ParagraphBold>Intresseanmälan för nyhetsbrev</ParagraphBold>
                 <NewsletterForm />
             </TextSection>
             <TextSection>
