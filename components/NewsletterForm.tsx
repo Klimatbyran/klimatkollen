@@ -50,7 +50,7 @@ const NewsletterForm = () => {
 
   const handleSubmit = (e: any) => {
 
-    const regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')
+    const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
 
     if (regex.test(form) === true) {
       e.preventDefault()
