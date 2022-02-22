@@ -17,10 +17,10 @@ const StyledForm = styled.input`
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.white}
   }
   :-ms-input-placeholder {
-     color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.white}
   }
 `
 
@@ -30,32 +30,37 @@ const Container = styled.div`
   flex-direction: column;
   width: 300px;
 
-    @media only screen and (${devices.tablet}) {
-      flex-direction: row;
-      width: 100%;
-    }
+  @media only screen and (${devices.tablet}) {
+    flex-direction: row;
+    width: 100%;
+  }
 `
 
 // TO DO: Fix button size on desktop
 
 const NewsletterForm = () => {
 
-  const [form, setForm] = useState('');
-  const [showConfirmationText, setShowConfirmationText] = useState(false)
+  const [form, setForm] = useState('')
+  const [validateEmail, setValidateEmail] = useState('')
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setShowConfirmationText(false)
+    setValidateEmail('')
     setForm(e.currentTarget.value)
-    console.log(form)
   }
 
   const handleSubmit = (e: any) => {
-    e.preventDefault()
-    console.log("E-postadress: " + form)
-    setForm('')
-    setShowConfirmationText(true)
-  }
 
+    const regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')
+
+    if (regex.test(form) === true) {
+      e.preventDefault()
+      console.log("E-postadress: " + form) // Skicka sparad e-postadress till MailChimp
+      setValidateEmail("Tack, din e-postadress är registrerad.")
+      setForm('')
+    } else {
+      setValidateEmail("Vänligen ange en korrekt e-postadress.")
+    }
+  }
 
   return (
     <Container>
@@ -67,7 +72,7 @@ const NewsletterForm = () => {
         placeholder="E-postadress"
         onChange={handleChange} 
       />
-      {showConfirmationText && <p>Tack, din e-postadress är registrerad!</p>}
+      {validateEmail}
       <Button handleClick={handleSubmit} text="Skicka intresseanmälan" />
     </Container>
   )
