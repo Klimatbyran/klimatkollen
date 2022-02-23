@@ -24,11 +24,11 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
           municipality.CoatOfArmsImage = wikiDataMunicipality.CoatOfArmsImage
           municipality.Image = wikiDataMunicipality.Image
 
-          municipality.AverageEmissionChangeRank = municipalities.find(
+          municipality.HistoricalEmission.AverageEmissionChangeRank = municipalities.find(
             (m: Municipality) => {
               return m.Name == municipality.Name
             },
-          )?.AverageEmissionChangeRank
+          )?.HistoricalEmission.AverageEmissionChangeRank
 
           res.status(200).json(municipality)
         })
