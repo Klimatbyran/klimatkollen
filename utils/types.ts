@@ -11,24 +11,25 @@ export type Municipality = {
   Population?: number
   Image?: Image
   Budget: Budget
-  Emissions: Emissions
+  HistoricalEmission: Emission
 }
 
-export type Emission = {
+export type EmissionPerYear = {
   Year: string
   CO2Equivalent: number
 }
 
-export type Emissions = {
-  EmissionPerYear: Array<Emission>
+export type Emission = {
+  EmissionPerYear: Array<EmissionPerYear>
   LargestEmissionSectors: Array<EmissionSector>
   EmissionLevelChangeAverage: number
   AverageEmissionChangeRank?: number
 }
 
 export type Budget = {
-  TotalCO2Equivalent: number,
-  TotalPercentage: number
+  CO2Equivalent: number,
+  PercentageOfNationalBudget: number
+  BudgetPerYear: Array<EmissionPerYear>
 }
 
 export type EmissionSector = {
