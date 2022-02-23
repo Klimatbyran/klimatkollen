@@ -7,23 +7,33 @@ export type Image = {
 export type Municipality = {
   County: string
   Name: string
-  Emissions: Array<Emission>
-  LargestEmissionSectors: Array<EmissionSector>
   CoatOfArmsImage?: Image
   Population?: number
   Image?: Image
-  EmissionLevelChangeAverage: number
-  AverageEmissionChangeRank?: number
+  Budget: Budget
+  Emissions: Emissions
 }
 
 export type Emission = {
   Year: string
-  CO2equivalent: number
+  CO2Equivalent: number
+}
+
+export type Emissions = {
+  EmissionPerYear: Array<Emission>
+  LargestEmissionSectors: Array<EmissionSector>
+  EmissionLevelChangeAverage: number
+  AverageEmissionChangeRank?: number
+}
+
+export type Budget = {
+  TotalCO2Equivalent: number,
+  TotalPercentage: number
 }
 
 export type EmissionSector = {
   Name: string
   Year: string
-  CO2equivalent: number
+  CO2Equivalent: number
   SubSectors: Array<EmissionSector>
 }
