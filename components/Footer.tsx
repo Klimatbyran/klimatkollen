@@ -9,6 +9,8 @@ import Klimatklubben from '../public/icons/klimatklubben.svg'
 import Argand from '../public/icons/argand.svg'
 import NewsletterSubscribe from './NewsletterSubscribe'
 import Emoji from './Emoji'
+import ArrowDown from '../public/icons/arrow-down-round.svg'
+import { useState } from 'react'
 
 const Wrapper = styled.div`
     background: ${({ theme }) => theme.dark};
@@ -27,15 +29,24 @@ const ContentWrapper = styled.div`
     width: 840px;
 `
 
+const HeaderSection = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    & .arrow {
+        display: block;
+
+        @media only screen and (${devices.tablet}) {
+            display: none;
+        }
+    }
+`
+
 const HiddenSection = styled.div`
     background: black;
     display: flex;
     flex-direction: column;
     gap: 15px;
-
-    @media only screen and (${devices.tablet}) {
-        background: gray;
-    }
 `
 
 const TextSection = styled.div`
@@ -87,11 +98,18 @@ const IconWrapper = styled.div`
 
 const Footer = () => {
 
+    const handleClick = () => {
+        console.log("clicked the arrow icon")
+    }
+
   return (
     <Wrapper>
         <ContentWrapper>
             <TextSection>
-                <H5>Om klimatkollen</H5>
+                <HeaderSection>
+                    <H5>Om klimatkollen</H5>
+                    <ArrowDown className="arrow" onClick={handleClick} />
+                </HeaderSection>
                 <HiddenSection>
                     <Paragraph>
                         Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att delas i sociala kanaler och läsas i mobilen. Här kan du se hur det går med klimatutsläppen i varje kommun, hur stort utrymmet är enligt Parisavtalet för ytterligare utsläpp och hur stort glappet är till dagens nivåer. Du kan också se de största utsläppskällorna i din kommun och hur mycket (eller lite) utsläppen i din kommun minskar jämfört med andra.
@@ -111,7 +129,10 @@ const Footer = () => {
                 </HiddenSection>
             </TextSection>
             <TextSection>
-                <H5>We <Emoji symbol="❤️" label="heart" /> Parisavtalet</H5>
+                <HeaderSection>
+                    <H5>We <Emoji symbol="❤️" label="heart" /> Parisavtalet</H5>
+                    <ArrowDown className="arrow" onClick={handleClick}/>
+                </HeaderSection>
                 <HiddenSection>
                     <Paragraph>
                         Parisavtalet är ett juridiskt bindande avtal mellan världens länder om att begränsa den globala uppvärmningen till väl under två grader med sikte på 1,5 grader.
