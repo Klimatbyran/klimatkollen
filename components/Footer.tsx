@@ -7,7 +7,7 @@ import VBK from '../public/icons/vbk.svg'
 import WeDontHaveTime from '../public/icons/we-dont-have-time.svg'
 import Klimatklubben from '../public/icons/klimatklubben.svg'
 import Argand from '../public/icons/argand.svg'
-import NewsletterForm from '../components/NewsletterForm'
+import NewsletterSubscribe from './NewsletterSubscribe'
 
 const Wrapper = styled.div`
     background: ${({ theme }) => theme.dark};
@@ -73,6 +73,11 @@ const IconWrapper = styled.div`
 `
 
 const Footer = () => {
+
+    const onValidated = () => {
+        console.log("testar lite")
+    }
+
   return (
     <Wrapper>
         <ContentWrapper>
@@ -117,7 +122,7 @@ const Footer = () => {
             </TextSection>
             <TextSection>
                 <ParagraphBold>Intresseanmälan för nyhetsbrev</ParagraphBold>
-                <NewsletterForm />
+                <NewsletterSubscribe />
             </TextSection>
             <TextSection>
                 <H5>Våra samarbetspartners</H5>
