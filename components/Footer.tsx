@@ -8,6 +8,7 @@ import WeDontHaveTime from '../public/icons/we-dont-have-time.svg'
 import Klimatklubben from '../public/icons/klimatklubben.svg'
 import Argand from '../public/icons/argand.svg'
 import NewsletterSubscribe from './NewsletterSubscribe'
+import Emoji from './Emoji'
 
 const Wrapper = styled.div`
     background: ${({ theme }) => theme.dark};
@@ -24,6 +25,17 @@ const Wrapper = styled.div`
 
 const ContentWrapper = styled.div`
     width: 840px;
+`
+
+const HiddenSection = styled.div`
+    background: black;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    @media only screen and (${devices.tablet}) {
+        background: gray;
+    }
 `
 
 const TextSection = styled.div`
@@ -60,6 +72,7 @@ const IconSection = styled.div`
 
     @media only screen and (${devices.tablet}) {
         height: 200px;
+        width: 300px;
     }
 `
 
@@ -74,51 +87,51 @@ const IconWrapper = styled.div`
 
 const Footer = () => {
 
-    const onValidated = () => {
-        console.log("testar lite")
-    }
-
   return (
     <Wrapper>
         <ContentWrapper>
             <TextSection>
                 <H5>Om klimatkollen</H5>
-                <Paragraph>
-                    Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att delas i sociala kanaler och läsas i mobilen. Här kan du se hur det går med klimatutsläppen i varje kommun, hur stort utrymmet är enligt Parisavtalet för ytterligare utsläpp och hur stort glappet är till dagens nivåer. Du kan också se de största utsläppskällorna i din kommun och hur mycket (eller lite) utsläppen i din kommun minskar jämfört med andra.
-                </Paragraph>
-                <Paragraph>
-                    Vi utvecklar Klimatkollen kontinuerligt. Mer fakta kommer. Skriv upp dig här så berättar vi när vi släpper något nytt.
-                </Paragraph>
-                <Paragraph>
-                    Använd Klimatkollen för att dela fakta och kräva svar. Hur vill partierna minska utsläppen? Vilka lösningar finns? Klimatkollen hjälper dig att ställa rätt frågor.
-                </Paragraph>
-                <Paragraph>
-                    All fakta på Klimatkollen kommer från offentliga källor. Vi redovisar alla källor tydligt så att du enkelt kan kolla upp och läsa mer. Om något blivit fel, mejla gärna oss på <a href="mailto:info@klimatkollen.se">info@klimatkollen.se</a> så att vi kan ändra.
-                </Paragraph>
-                <Paragraph>
-                    Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av <a href="https://iteam.se/" target="_blank" rel="noreferrer">Iteam</a>. Vi tror på kraften i att visualisera fakta på ett enkelt och tilltalande sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt och åtgärder som minskar utsläppen i linje med Parisavtalet.
-                </Paragraph>
+                <HiddenSection>
+                    <Paragraph>
+                        Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att delas i sociala kanaler och läsas i mobilen. Här kan du se hur det går med klimatutsläppen i varje kommun, hur stort utrymmet är enligt Parisavtalet för ytterligare utsläpp och hur stort glappet är till dagens nivåer. Du kan också se de största utsläppskällorna i din kommun och hur mycket (eller lite) utsläppen i din kommun minskar jämfört med andra.
+                    </Paragraph>
+                    <Paragraph>
+                        Vi utvecklar Klimatkollen kontinuerligt. Mer fakta kommer. Skriv upp dig här så berättar vi när vi släpper något nytt.
+                    </Paragraph>
+                    <Paragraph>
+                        Använd Klimatkollen för att dela fakta och kräva svar. Hur vill partierna minska utsläppen? Vilka lösningar finns? Klimatkollen hjälper dig att ställa rätt frågor.
+                    </Paragraph>
+                    <Paragraph>
+                        All fakta på Klimatkollen kommer från offentliga källor. Vi redovisar alla källor tydligt så att du enkelt kan kolla upp och läsa mer. Om något blivit fel, mejla gärna oss på <a href="mailto:info@klimatkollen.se">info@klimatkollen.se</a> så att vi kan ändra.
+                    </Paragraph>
+                    <Paragraph>
+                        Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av <a href="https://iteam.se/" target="_blank" rel="noreferrer">Iteam</a>. Vi tror på kraften i att visualisera fakta på ett enkelt och tilltalande sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt och åtgärder som minskar utsläppen i linje med Parisavtalet.
+                    </Paragraph>
+                </HiddenSection>
             </TextSection>
             <TextSection>
-                <H5>Vad är Parisavtalet?</H5>
-                <Paragraph>
-                    Parisavtalet är ett juridiskt bindande avtal mellan världens länder om att begränsa den globala uppvärmningen till väl under två grader med sikte på 1,5 grader.
-                </Paragraph>
-                <Paragraph>
-                    För att nå målet måste världen som helhet halvera växthusgasutsläppen till 2030 och nå nära noll utsläpp senast 2050.
-                </Paragraph>
-                <Paragraph>
-                    Enligt Parisavtalet ska rika länder, som historiskt sett släppt ut mycket växthusgaser, ta ett större ansvar för att genomföra klimatomställningen. Där ingår Sverige, som både ska före när det gäller få ner utsläppen, men också hjälpa mer sårbara länder att ställa om. I Sverige stöds Parisavtalet av alla partier i riksdagen.
-                </Paragraph>
-                <Paragraph>
-                    Läs mer om Parisavtalet hos vår samarbetspartner <a href="https://wwf.se/" target="_blank" rel="noreferrer">WWF</a>.
-                </Paragraph>
-                <Paragraph>
-                    En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut innan vi riskerar att öka temperaturen så mycket att det bryter mot Parisavtalet. Det är ett sätt att åskådliggöra utsläppsutrymmet som finns kvar om vi ska hålla uppvärmningen under 1,5 grader. FN:s klimatpanel, IPCC, beräknar en global koldioxidbudget, som sedan kan beräkas per land, region eller kommun. Klimatkollen visar koldioxidbudgetar för alla Sveriges kommuner som utgår ifrån Parisavtalets mål om 1,5 graders global uppvärmning.
-                </Paragraph>
-                <Paragraph>
-                    Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">ClimateView</a>.
-                </Paragraph>
+                <H5>We <Emoji symbol="❤️" label="heart" /> Parisavtalet</H5>
+                <HiddenSection>
+                    <Paragraph>
+                        Parisavtalet är ett juridiskt bindande avtal mellan världens länder om att begränsa den globala uppvärmningen till väl under två grader med sikte på 1,5 grader.
+                    </Paragraph>
+                    <Paragraph>
+                        För att nå målet måste världen som helhet halvera växthusgasutsläppen till 2030 och nå nära noll utsläpp senast 2050.
+                    </Paragraph>
+                    <Paragraph>
+                        Enligt Parisavtalet ska rika länder, som historiskt sett släppt ut mycket växthusgaser, ta ett större ansvar för att genomföra klimatomställningen. Där ingår Sverige, som både ska före när det gäller få ner utsläppen, men också hjälpa mer sårbara länder att ställa om. I Sverige stöds Parisavtalet av alla partier i riksdagen.
+                    </Paragraph>
+                    <Paragraph>
+                        Läs mer om Parisavtalet hos vår samarbetspartner <a href="https://wwf.se/" target="_blank" rel="noreferrer">WWF</a>.
+                    </Paragraph>
+                    <Paragraph>
+                        En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut innan vi riskerar att öka temperaturen så mycket att det bryter mot Parisavtalet. Det är ett sätt att åskådliggöra utsläppsutrymmet som finns kvar om vi ska hålla uppvärmningen under 1,5 grader. FN:s klimatpanel, IPCC, beräknar en global koldioxidbudget, som sedan kan beräkas per land, region eller kommun. Klimatkollen visar koldioxidbudgetar för alla Sveriges kommuner som utgår ifrån Parisavtalets mål om 1,5 graders global uppvärmning.
+                    </Paragraph>
+                    <Paragraph>
+                        Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">ClimateView</a>.
+                    </Paragraph>
+                </HiddenSection>
             </TextSection>
             <TextSection>
                 <ParagraphBold>Intresseanmälan för nyhetsbrev</ParagraphBold>
