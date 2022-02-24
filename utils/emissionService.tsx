@@ -116,15 +116,17 @@ export class EmissionService {
   }
 
   //TODO:
-  // co2-budget,
   // future emission based on trend
-  // total budget kvar
   public async getMunicipality(name: string): Promise<Municipality> {
     const promise = new Promise<Municipality>((resolve, reject) => {
-      const capitalizeFirstLetter = (name: string) =>
-        name.charAt(0).toUpperCase() + name.slice(1)
-
-      const url = CLIMATE_VIEW_BASE_URL + '/kommun/' + capitalizeFirstLetter(name)
+      
+      function toTitleCase(str:string) {
+        return str.toLowerCase().replace(/(?:^|[\s-/])\w/g, function (match) {
+            return match.toUpperCase();
+        });
+      }
+      
+      const url = CLIMATE_VIEW_BASE_URL + '/kommun/' + toTitleCase(name)
 
       axios
         .get(url)

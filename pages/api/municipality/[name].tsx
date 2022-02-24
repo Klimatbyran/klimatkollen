@@ -22,9 +22,9 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
           const municipalities = response[1]
           const wikiDataMunicipality = response[2]
 
-          municipality.Population = wikiDataMunicipality.Population
           municipality.CoatOfArmsImage = wikiDataMunicipality.CoatOfArmsImage
           municipality.Image = wikiDataMunicipality.Image
+          municipality.Population = wikiDataMunicipality.Population
 
           municipality.AverageEmissionChangeRank = municipalities.find(
             (m: Municipality) => {

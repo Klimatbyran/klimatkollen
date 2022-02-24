@@ -10,7 +10,7 @@ export type Municipality = {
   Emissions: Array<Emission>
   LargestEmissionSectors: Array<EmissionSector>
   CoatOfArmsImage?: Image
-  Population?: number
+  Population: number | null
   Image?: Image
   EmissionLevelChangeAverage: number
   AverageEmissionChangeRank?: number
