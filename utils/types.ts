@@ -14,6 +14,7 @@ export type Municipality = {
   Image?: Image
   EmissionLevelChangeAverage: number
   AverageEmissionChangeRank?: number
+  PoliticalRule: Array<string> | null
 }
 
 export type Emission = {

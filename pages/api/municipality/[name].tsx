@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { EmissionService } from '../../../utils/emissionService'
 import { WikiDataService } from '../../../utils/wikiDataService'
+import { PolitycalRuleService } from '../../../utils/politicalRuleService'
 import { Municipality } from '../../../utils/types'
 
 export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
@@ -8,6 +9,7 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
   const method = req.method as string
 
   const emissionService = new EmissionService()
+  const politicalRuleService = new PolitycalRuleService()
   switch (method) {
     case 'GET':
       Promise.all([
@@ -29,6 +31,8 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
               return m.Name == municipality.Name
             },
           )?.AverageEmissionChangeRank
+
+          municipality.PoliticalRule = politicalRuleService.getPoliticalRule(name)
 
           res.status(200).json(municipality)
         })
