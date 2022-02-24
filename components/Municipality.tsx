@@ -158,7 +158,10 @@ const Municipality = (props: Props) => {
       />
       <Wrapper>
         <H1>{municipality.Name}</H1>
-        <ScoreCard population={municipality.Population} />
+        <ScoreCard
+          population={municipality.Population}
+          budget={municipality.Budget.CO2Equivalent}
+        />
 
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>

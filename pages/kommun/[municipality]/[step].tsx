@@ -67,9 +67,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   municipality.CoatOfArmsImage = wikiDataMunicipality.CoatOfArmsImage
   municipality.Image = wikiDataMunicipality.Image
 
-  municipality.AverageEmissionChangeRank = municipalities.find((m) => {
-    return m.Name == municipality.Name
-  })?.AverageEmissionChangeRank
+  municipality.HistoricalEmission.AverageEmissionChangeRank =
+    municipalities.find((m) => {
+      return m.Name == municipality.Name
+    })?.HistoricalEmission.AverageEmissionChangeRank || null
 
   return {
     props: {

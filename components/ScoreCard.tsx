@@ -41,25 +41,26 @@ const StyledIcon = styled.div`
 `
 
 type Props = {
-  population?: number
+  population: number | null
+  budget: number | null
 }
 
-const ScoreCard = ({ population }: Props) => {
+const ScoreCard = ({ population, budget }: Props) => {
   return (
     <StyledDiv>
-        {population && 
-      <div className="row">
-        <section className="left">
-          <Paragraph>Antal invånare</Paragraph>
-          <ParagraphBold>{population}</ParagraphBold>
-        </section>
-        <section className="right">
-          <StyledIcon>
-            <Icon />
-          </StyledIcon>
-        </section>
-      </div>
-        }
+      {population && (
+        <div className="row">
+          <section className="left">
+            <Paragraph>Antal invånare</Paragraph>
+            <ParagraphBold>{population}</ParagraphBold>
+          </section>
+          <section className="right">
+            <StyledIcon>
+              <Icon />
+            </StyledIcon>
+          </section>
+        </div>
+      )}
 
       <div className="row">
         <section className="left">
@@ -73,17 +74,19 @@ const ScoreCard = ({ population }: Props) => {
         </section>
       </div>
 
-      <div className="row">
-        <section className="left">
-          <Paragraph>Koldioxidbudget</Paragraph>
-          <ParagraphBold>24 000 ton co2</ParagraphBold>
-        </section>
-        <section className="right">
-          <StyledIcon>
-            <Icon />
-          </StyledIcon>
-        </section>
-      </div>
+      {budget && (
+        <div className="row">
+          <section className="left">
+            <Paragraph>Koldioxidbudget</Paragraph>
+            <ParagraphBold>{budget} ton co2</ParagraphBold>
+          </section>
+          <section className="right">
+            <StyledIcon>
+              <Icon />
+            </StyledIcon>
+          </section>
+        </div>
+      )}
 
       <div className="row">
         <section className="left">
