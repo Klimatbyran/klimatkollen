@@ -125,13 +125,12 @@ export class EmissionService {
             return match.toUpperCase();
         });
       }
-      
+
       const url = CLIMATE_VIEW_BASE_URL + '/kommun/' + toTitleCase(name)
 
       axios
         .get(url)
         .then((response) => {
-          console.log('res in axios', response.data)
           const municipality: Municipality = response.data.emissions
             .map((municipalityData: any) => {
               const municipality = {
