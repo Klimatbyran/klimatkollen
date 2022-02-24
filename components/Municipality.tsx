@@ -170,15 +170,11 @@ const Municipality = (props: Props) => {
         title={`Klimatkollen - ${municipality.Name}`}
         description={shareText(municipality.Name)}
       />
-
-  
       <Wrapper>
         <HeaderSection>
           <H1>{municipality.Name}</H1>
           <CoatOfArmsImage src={municipality.CoatOfArmsImage?.ImageUrl} alt="img" />
         </HeaderSection>
-
-
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>
           <Center>
@@ -209,14 +205,10 @@ const Municipality = (props: Props) => {
             )}
           </Flex>
         </GraphWrapper>
-
-
-
         <ScoreCard
           population={municipality.Population}
           budget={municipality.Budget.CO2Equivalent}
         />
-
         {hasShareAPI() && (
           <Button handleClick={handleClick} text="Dela i dina sociala medier" shareIcon />
         )}
