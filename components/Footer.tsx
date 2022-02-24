@@ -10,6 +10,7 @@ import Argand from '../public/icons/argand.svg'
 import NewsletterSubscribe from './NewsletterSubscribe'
 import Emoji from './Emoji'
 import ArrowDown from '../public/icons/arrow-down-round.svg'
+import ArrowUp from '../public/icons/arrow-up-green.svg'
 import { useState } from 'react'
 
 const Wrapper = styled.div`
@@ -42,8 +43,7 @@ const HeaderSection = styled.div`
     }
 `
 
-const HiddenSection = styled.div`
-    background: black;
+const ToggleSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -98,9 +98,8 @@ const IconWrapper = styled.div`
 
 const Footer = () => {
 
-    const handleClick = () => {
-        console.log("clicked the arrow icon")
-    }
+    const [toggleFirst, setToggleFirst] = useState(false)
+    const [toggleSecond, setToggleSecond] = useState(false)
 
   return (
     <Wrapper>
@@ -108,9 +107,10 @@ const Footer = () => {
             <TextSection>
                 <HeaderSection>
                     <H5>Om klimatkollen</H5>
-                    <ArrowDown className="arrow" onClick={handleClick} />
+                    {toggleFirst ? <ArrowUp className="arrow" onClick={() => setToggleFirst(!toggleFirst)} /> : <ArrowDown className="arrow" onClick={() => setToggleFirst(!toggleFirst)} />}                
                 </HeaderSection>
-                <HiddenSection>
+                {toggleFirst &&                 
+                <ToggleSection>
                     <Paragraph>
                         Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att delas i sociala kanaler och läsas i mobilen. Här kan du se hur det går med klimatutsläppen i varje kommun, hur stort utrymmet är enligt Parisavtalet för ytterligare utsläpp och hur stort glappet är till dagens nivåer. Du kan också se de största utsläppskällorna i din kommun och hur mycket (eller lite) utsläppen i din kommun minskar jämfört med andra.
                     </Paragraph>
@@ -126,14 +126,15 @@ const Footer = () => {
                     <Paragraph>
                         Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av <a href="https://iteam.se/" target="_blank" rel="noreferrer">Iteam</a>. Vi tror på kraften i att visualisera fakta på ett enkelt och tilltalande sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt och åtgärder som minskar utsläppen i linje med Parisavtalet.
                     </Paragraph>
-                </HiddenSection>
+                </ToggleSection>}
             </TextSection>
             <TextSection>
                 <HeaderSection>
                     <H5>We <Emoji symbol="❤️" label="heart" /> Parisavtalet</H5>
-                    <ArrowDown className="arrow" onClick={handleClick}/>
+                    {toggleSecond ? <ArrowUp className="arrow" onClick={() => setToggleSecond(!toggleSecond)} /> : <ArrowDown className="arrow" onClick={() => setToggleSecond(!toggleSecond)} />}
                 </HeaderSection>
-                <HiddenSection>
+                {toggleSecond &&                 
+                <ToggleSection>
                     <Paragraph>
                         Parisavtalet är ett juridiskt bindande avtal mellan världens länder om att begränsa den globala uppvärmningen till väl under två grader med sikte på 1,5 grader.
                     </Paragraph>
@@ -152,7 +153,7 @@ const Footer = () => {
                     <Paragraph>
                         Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">ClimateView</a>.
                     </Paragraph>
-                </HiddenSection>
+                </ToggleSection>}
             </TextSection>
             <TextSection>
                 <ParagraphBold>Intresseanmälan för nyhetsbrev</ParagraphBold>
