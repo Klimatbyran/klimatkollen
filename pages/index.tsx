@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
 import styled from 'styled-components'
@@ -5,6 +6,7 @@ import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
 import { H1, ParagraphBold, Paragraph } from '../components/Typography'
+import { EmissionService } from '../utils/emissionService'
 import { Municipality } from '../utils/types'
 import Footer from '../components/Footer'
 
@@ -64,7 +66,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
     name: item.Name,
-    emissions: item.EmissionLevelChangeAverage,
+    emissions: item.HistoricalEmission.EmissionLevelChangeAverage,
   }))
 
   return (
@@ -109,10 +111,12 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   )
 }
 
-export async function getServerSideProps() {
-  const municipalities = await fetch(
-    'http://klimatkollen.vercel.app/api/municipalities',
-  ).then((res) => res.json())
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  const municipalities = await new EmissionService().getMunicipalities()
+  if (municipalities.length < 1) throw new Error('No municipalities found')
+
+  res.setHeader('Cache-Control', 'public, maxage=3600, s-maxage=4000')
+
   return {
     props: { municipalities },
   }
