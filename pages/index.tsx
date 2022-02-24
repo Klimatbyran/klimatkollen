@@ -65,7 +65,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
     name: item.Name,
-    emissions: item.EmissionLevelChangeAverage,
+    emissions: item.HistoricalEmission.EmissionLevelChangeAverage,
   }))
 
   return (
