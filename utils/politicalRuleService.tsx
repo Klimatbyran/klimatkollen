@@ -36,6 +36,8 @@ export class PolitycalRuleService {
                             return 'Centerpartiet'
                         case 'MP':
                             return 'Miljöpartiet'
+                        case 'SD':
+                            return 'Sverigedemokraterna'
                         case 'ÖP':
                             return rawmun? rawmun.annatparti : ''
                     }
