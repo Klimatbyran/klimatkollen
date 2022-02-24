@@ -45,8 +45,9 @@ type Props = {
   budget: number | null
 }
 
-const ScoreCard = ({ population, budget }: Props) => {
+const ScoreCard = ({ population, budget}: Props) => {
   return (
+
     <StyledDiv>
       {population && (
         <div className="row">

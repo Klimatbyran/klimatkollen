@@ -76,6 +76,19 @@ const Wrapper = styled.div`
   margin-top: 1rem;
 `
 
+const CoatOfArmsImage = styled.img`
+  width: 60px;
+`
+
+const HeaderSection = styled.div`
+  display: flex;
+  height: 150px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+`
+
 type Co2Year = { year: number; co2: number }
 
 const max = (array: Array<Co2Year>, key: 'year' | 'co2') => {
@@ -108,10 +121,11 @@ type Props = {
   step: number
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
+  coatOfArmsImage: any
 }
 
 const Municipality = (props: Props) => {
-  const { step, municipality, onNextStep, onPreviousStep } = props
+  const { step, municipality, onNextStep, onPreviousStep, coatOfArmsImage } = props
   const maxCo2 = max(data, 'co2')
 
   const stepConfig = STEPS[step]
@@ -156,12 +170,14 @@ const Municipality = (props: Props) => {
         title={`Klimatkollen - ${municipality.Name}`}
         description={shareText(municipality.Name)}
       />
+
+  
       <Wrapper>
-        <H1>{municipality.Name}</H1>
-        <ScoreCard
-          population={municipality.Population}
-          budget={municipality.Budget.CO2Equivalent}
-        />
+        <HeaderSection>
+          <H1>{municipality.Name}</H1>
+          <CoatOfArmsImage src={municipality.CoatOfArmsImage?.ImageUrl} alt="img" />
+        </HeaderSection>
+
 
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>
@@ -193,6 +209,14 @@ const Municipality = (props: Props) => {
             )}
           </Flex>
         </GraphWrapper>
+
+
+
+        <ScoreCard
+          population={municipality.Population}
+          budget={municipality.Budget.CO2Equivalent}
+        />
+
         {hasShareAPI() && (
           <Button handleClick={handleClick} text="Dela i dina sociala medier" shareIcon />
         )}
