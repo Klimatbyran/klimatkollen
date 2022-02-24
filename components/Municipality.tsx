@@ -10,6 +10,7 @@ import Button from './Button'
 import ScoreCard from './ScoreCard'
 import Back from './Back'
 import { hasShareAPI } from '../utils/navigator'
+import { Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
 
 const GraphWrapper = styled.div`
@@ -103,7 +104,7 @@ const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
 }
 
 type Props = {
-  municipality: string
+  municipality: TMunicipality
   step: number
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
@@ -111,12 +112,6 @@ type Props = {
 
 const Municipality = (props: Props) => {
   const { step, municipality, onNextStep, onPreviousStep } = props
-
-  // https://github.com/vercel/next.js/discussions/11484
-  if (!municipality || typeof municipality !== 'string') return null
-  const municipalityTitleCase =
-    municipality[0].toLocaleUpperCase() + municipality.slice(1)
-
   const maxCo2 = max(data, 'co2')
 
   const stepConfig = STEPS[step]
@@ -149,19 +144,21 @@ const Municipality = (props: Props) => {
         throw new Error('This should not be reached.')
       }
     }
-    share(municipalityTitleCase)
+    share(municipality.Name)
   }
+
+  console.log(municipality)
 
   return (
     <>
       <Back />
       <MetaTags
-        title={`Klimatkollen - ${municipalityTitleCase}`}
-        description={shareText(municipalityTitleCase)}
+        title={`Klimatkollen - ${municipality.Name}`}
+        description={shareText(municipality.Name)}
       />
       <Wrapper>
-        <H1>{municipalityTitleCase}</H1>
-        <ScoreCard />
+        <H1>{municipality.Name}</H1>
+        <ScoreCard population={municipality.Population} />
 
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>
