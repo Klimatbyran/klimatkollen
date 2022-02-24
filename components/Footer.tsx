@@ -11,7 +11,7 @@ import NewsletterSubscribe from './NewsletterSubscribe'
 import Emoji from './Emoji'
 import ArrowDown from '../public/icons/arrow-down-round.svg'
 import ArrowUp from '../public/icons/arrow-up-green.svg'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Wrapper = styled.div`
     background: ${({ theme }) => theme.dark};
@@ -47,6 +47,14 @@ const ToggleSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    .mobile {
+        background: black;
+    }
+
+    .desktop {
+        background: yellow;
+    }
 `
 
 const TextSection = styled.div`
@@ -90,6 +98,7 @@ const IconSection = styled.div`
 const IconWrapper = styled.div`
     display: flex;
     align-items: center;
+
     @media only screen and (${devices.tablet}) {
         margin-top: 5px;
         height: 80px;
@@ -101,15 +110,24 @@ const Footer = () => {
     const [toggleFirst, setToggleFirst] = useState(false)
     const [toggleSecond, setToggleSecond] = useState(false)
 
+    useEffect(() => {
+        if (window.innerWidth >= 768) {
+         setToggleFirst(true)
+         setToggleSecond(true)
+        }
+    }, [window.innerWidth])
+
+
+
   return (
     <Wrapper>
         <ContentWrapper>
             <TextSection>
                 <HeaderSection>
-                    <H5>Om klimatkollen</H5>
+                    <H5>Om Klimatkollen</H5>
                     {toggleFirst ? <ArrowUp className="arrow" onClick={() => setToggleFirst(!toggleFirst)} /> : <ArrowDown className="arrow" onClick={() => setToggleFirst(!toggleFirst)} />}                
                 </HeaderSection>
-                {toggleFirst &&                 
+                {toggleFirst &&                
                 <ToggleSection>
                     <Paragraph>
                         Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att delas i sociala kanaler och läsas i mobilen. Här kan du se hur det går med klimatutsläppen i varje kommun, hur stort utrymmet är enligt Parisavtalet för ytterligare utsläpp och hur stort glappet är till dagens nivåer. Du kan också se de största utsläppskällorna i din kommun och hur mycket (eller lite) utsläppen i din kommun minskar jämfört med andra.
