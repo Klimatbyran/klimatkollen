@@ -21,7 +21,7 @@ export class PolitycalRuleService {
                 .split(',')
                 .filter((rawMun:any) => rawMun != '')
                 .map((partyShort:string) => {
-                    switch(partyShort){
+                    switch(partyShort) {
                         case 'M':
                             return 'Moderaterna'
                         case 'S':
