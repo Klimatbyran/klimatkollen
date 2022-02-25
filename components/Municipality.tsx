@@ -121,7 +121,7 @@ type Props = {
   step: number
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
-  coatOfArmsImage: any
+  coatOfArmsImage: string | null
 }
 
 const Municipality = (props: Props) => {
@@ -161,8 +161,6 @@ const Municipality = (props: Props) => {
     share(municipality.Name)
   }
 
-  console.log(municipality)
-
   return (
     <>
       <Back />
@@ -173,7 +171,8 @@ const Municipality = (props: Props) => {
       <Wrapper>
         <HeaderSection>
           <H1>{municipality.Name}</H1>
-          <CoatOfArmsImage src={municipality.CoatOfArmsImage?.ImageUrl} alt="img" />
+
+          {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
         </HeaderSection>
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>

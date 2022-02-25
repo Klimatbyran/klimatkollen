@@ -44,6 +44,7 @@ export default function Step({ id, municipality }: Props) {
       step={stepNum}
       onNextStep={stepIndex < STEPS.length - 1 ? onNext : undefined}
       onPreviousStep={stepIndex > 0 ? onPrevious : undefined}
+      coatOfArmsImage={municipality.CoatOfArmsImage?.ImageUrl || null}
     />
   )
 }
