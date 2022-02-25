@@ -8,12 +8,10 @@ import { EmailFormFields } from 'react-mailchimp-subscribe'
 const StyledForm = styled.form`
   display: flex;
   gap: 1.5rem;
-  width: 280px;
   flex-direction: column;
 
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
-    width: 100%;
   }
 `
 
@@ -23,8 +21,6 @@ const StyledInput = styled.input`
   border: 1px solid ${({ theme }) => theme.white};
   border-radius: 5px;
   padding: 15px;
-  max-width: 400px;
-  min-width: 350px;
   color: ${({ theme }) => theme.white};
   font-size: 16px;
   font-family: Helvetica Neue;
@@ -36,6 +32,11 @@ const StyledInput = styled.input`
   :-ms-input-placeholder {
     color: ${({ theme }) => theme.white};
   }
+
+  @media only screen and (${devices.tablet}) {
+    min-width: 400px;
+  }
+
 `
 
 const Container = styled.div`
