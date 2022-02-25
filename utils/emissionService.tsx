@@ -1,10 +1,11 @@
 import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission } from './types'
 import axios from 'axios'
 
-const CLIMATE_VIEW_EMISSION_BASE_URL = 'https://climateview.azure-api.net/climatedata/nationalemissions/se'
+const CLIMATE_VIEW_EMISSION_BASE_URL =
+  'https://climateview.azure-api.net/climatedata/nationalemissions/se'
 const CLIMATE_VIEW_EMISSION_URL =
   'https://climateview.azure-api.net/climatedata/nationalemissions/se/kommun/'
-const CLIMATE_VIEW_BUDGET_URL = 
+const CLIMATE_VIEW_BUDGET_URL =
   'https://climateview.azure-api.net/climatedata/nationalbudgets/se/kommun/'
 
 export class EmissionService {
@@ -21,14 +22,16 @@ export class EmissionService {
     let emissionsPercentages = 0
     emissions
       .slice(Math.max(emissions.length - years - 1, 1))
-      .forEach((emission: EmissionPerYear, index: number, emissions: Array<EmissionPerYear>) => {
-        let previous = emissions[index - 1] as EmissionPerYear
-        if (previous) {
-          let changeSinceLastYear = ((emission.CO2Equivalent - previous.CO2Equivalent) /
-            previous.CO2Equivalent) as number
-          emissionsPercentages += changeSinceLastYear
-        }
-      })
+      .forEach(
+        (emission: EmissionPerYear, index: number, emissions: Array<EmissionPerYear>) => {
+          let previous = emissions[index - 1] as EmissionPerYear
+          if (previous) {
+            let changeSinceLastYear = ((emission.CO2Equivalent - previous.CO2Equivalent) /
+              previous.CO2Equivalent) as number
+            emissionsPercentages += changeSinceLastYear
+          }
+        },
+      )
 
     return emissionsPercentages / years
   }
@@ -57,8 +60,8 @@ export class EmissionService {
                 let municipality = {
                   Name: municipalityData.kommun,
                   HistoricalEmission: {
-                    EmissionPerYear: emissions
-                  }
+                    EmissionPerYear: emissions,
+                  },
                 } as Municipality
 
                 municipality.HistoricalEmission.EmissionLevelChangeAverage =
@@ -66,7 +69,10 @@ export class EmissionService {
                 return municipality
               })
               .sort((a: Municipality, b: Municipality) => {
-                return a.HistoricalEmission.EmissionLevelChangeAverage - b.HistoricalEmission.EmissionLevelChangeAverage
+                return (
+                  a.HistoricalEmission.EmissionLevelChangeAverage -
+                  b.HistoricalEmission.EmissionLevelChangeAverage
+                )
               })
 
             this.municipalities.forEach((municipality: Municipality, index: number) => {
@@ -125,15 +131,14 @@ export class EmissionService {
   // future emission based on trend
   public async getMunicipality(name: string): Promise<Municipality> {
     const promise = new Promise<Municipality>((resolve, reject) => {
-
       const capitalizeFirstLetter = (name: string) =>
         name.charAt(0).toUpperCase() + name.slice(1)
 
-      const parseEmissions = (responseData: any) : Emission => {
+      const parseEmissions = (responseData: any): Emission => {
         const emissions = responseData.emissions
           .map((municipalityData: any) => {
             const emissions = {
-              EmissionPerYear : municipalityData.emissions
+              EmissionPerYear: municipalityData.emissions
                 .find(this.totalEmissions)
                 .emissions.map((emission: any) => {
                   return {
@@ -141,32 +146,37 @@ export class EmissionService {
                     CO2Equivalent: emission.emission,
                   }
                 }),
-                LargestEmissionSectors: this.getTop3EmissionSectorsFromRawData(
-                  municipalityData,
-                  this.mainSectorEmissions,
-                )
+              LargestEmissionSectors: this.getTop3EmissionSectorsFromRawData(
+                municipalityData,
+                this.mainSectorEmissions,
+              ),
             } as Emission
 
-          emissions.EmissionLevelChangeAverage =
-            this.getEmissionLevelChangeAverage(emissions.EmissionPerYear, 5)
-          return emissions
-        })
-        .shift()
+            emissions.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(
+              emissions.EmissionPerYear,
+              5,
+            )
+            return emissions
+          })
+          .shift()
 
         return emissions
       }
 
-      const parseBudget = (responseData:any) : Budget => {
+      const parseBudget = (responseData: any): Budget => {
         const budget = {
           CO2Equivalent: responseData.emissionBudgets[0].totalRemainingCO2Budget,
-          PercentageOfNationalBudget: responseData.emissionBudgets[0].percentOfNationalCO2Budget,
-          BudgetPerYear: responseData.emissionBudgets[0].emissionReductions.linearEmissionReduction.yearlyEmissionReduction
-            .map((emission: any) => {
-              return {
-                Year: emission.year,
-                CO2Equivalent: emission.emission,
-              }
-            })
+          PercentageOfNationalBudget:
+            responseData.emissionBudgets[0].percentOfNationalCO2Budget,
+          BudgetPerYear:
+            responseData.emissionBudgets[0].emissionReductions.linearEmissionReduction.yearlyEmissionReduction.map(
+              (emission: any) => {
+                return {
+                  Year: emission.year,
+                  CO2Equivalent: emission.emission,
+                }
+              },
+            ),
         } as Budget
 
         return budget
@@ -174,32 +184,32 @@ export class EmissionService {
 
       Promise.allSettled([
         axios.get(CLIMATE_VIEW_EMISSION_URL + capitalizeFirstLetter(name)),
-        axios.get(CLIMATE_VIEW_BUDGET_URL + capitalizeFirstLetter(name))
+        axios.get(CLIMATE_VIEW_BUDGET_URL + capitalizeFirstLetter(name)),
       ])
-      .then((result) => {
-        //reject only if emission data is missing
-        if (result[0].status == "rejected") {
-          reject(result[0].reason)
-        }
-        else if (result[0].status == "fulfilled") {
-          const municipality = {
-            Name: result[0].value.data.emissions[0].kommun,
-            HistoricalEmission: parseEmissions(result[0].value.data),
-            Budget: result[1].status == "fulfilled" ? 
-              parseBudget(result[1].value.data) : {
-                CO2Equivalent: 0,
-                PercentageOfNationalBudget: 0,
-                BudgetPerYear: []
-              }
-          } as Municipality
+        .then((result) => {
+          //reject only if emission data is missing
+          if (result[0].status == 'rejected') {
+            reject(result[0].reason)
+          } else if (result[0].status == 'fulfilled') {
+            const municipality = {
+              Name: result[0].value.data.emissions[0].kommun,
+              HistoricalEmission: parseEmissions(result[0].value.data),
+              Budget:
+                result[1].status == 'fulfilled'
+                  ? parseBudget(result[1].value.data)
+                  : {
+                      CO2Equivalent: 0,
+                      PercentageOfNationalBudget: 0,
+                      BudgetPerYear: [],
+                    },
+            } as Municipality
 
-          resolve(municipality)
-        }
-      })
-      .catch((error) => {
-        reject(error)
-      })
-
+            resolve(municipality)
+          }
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
 
     return promise
