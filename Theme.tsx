@@ -13,6 +13,7 @@ const colorTheme: DefaultTheme = {
   grey: '#6C6C6C',
   dark: '#424242',
   black: '#2D2D2D',
+  darkGreen: '#2D7B64',
 }
 
 type Props = {

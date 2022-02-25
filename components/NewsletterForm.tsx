@@ -45,6 +45,27 @@ const Container = styled.div`
   flex-direction: column;
 `
 
+const EmailValidation = styled.div`
+  width: 100%;
+  background: ${({ theme }) => theme.darkGreen};
+  height: 56px;
+  border-radius: 4px;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  span {
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    flex-grow: 1;
+    text-align: center;
+  }
+`
+
 type Props = {
   status: 'sending' | 'error' | 'success' | null
   message: string | Error | null
@@ -90,19 +111,19 @@ const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
           placeholder="E-postadress"
           required
         />
-        <Button text="Skicka intresseanmälan" />
+        {status === 'success' ?
+          <EmailValidation>
+            <span>Tack för din intresseanmälan!</span>
+          </EmailValidation>
+          : <Button text={'Skicka intresseanmälan'} />
+        }
       </StyledForm>
-      <div>
-        {status === 'sending' && <div>Skickar...</div>}
+        {status === 'sending'}
         {status === 'error' || error ? (
           <div
             dangerouslySetInnerHTML={{ __html: error ?? getMessage(message as string) }}
           />
         ) : null}
-        {status === 'success' && (
-          <div dangerouslySetInnerHTML={{ __html: "Tack för din registrering!" }} />
-        )}
-      </div>
     </Container>
   )
 }

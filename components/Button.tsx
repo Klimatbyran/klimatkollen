@@ -46,7 +46,7 @@ type ShareButtonProps = {
 
 const ShareButton = ({ handleClick, text, shareIcon = false }: ShareButtonProps) => {
   return (
-    <Button type="submit" onClick={handleClick} icon={shareIcon}>
+    <Button type="submit" onClick={handleClick} icon={shareIcon} >
       {shareIcon && <Icon />}
       <span>{text}</span>
     </Button>
