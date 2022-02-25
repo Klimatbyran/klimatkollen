@@ -7,8 +7,7 @@ const Button = styled.button`
   cursor: pointer;
   fill: #fff;
   background: transparent;
-  position: absolute;
-  top: 10;
+  align-self: flex-start;
 `
 
 const BackArrow = () => {
