@@ -134,19 +134,19 @@ const Footer = () => {
                 {toggleFirst &&                
                 <ToggleSection>
                     <Paragraph>
-                        Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att delas i sociala kanaler och läsas i mobilen. Här kan du se hur det går med klimatutsläppen i varje kommun, hur stort utrymmet är enligt Parisavtalet för ytterligare utsläpp och hur stort glappet är till dagens nivåer. Du kan också se de största utsläppskällorna i din kommun och hur mycket (eller lite) utsläppen i din kommun minskar jämfört med andra.
+                        Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att delas i sociala kanaler och läsas i mobilen. Här kan du se hur det går med klimatutsläppen för Sverige som helhet och för enskilda kommuner. Du kan också se den mängd koldioxid vi har kvar att släppa ut enligt Parisavtalet och hur stort glappet är mellan målet och hur det faktiskt går. Du kan också se de största utsläppskällorna i din kommun och hur mycket (eller lite) utsläppen i din kommun minskar jämfört med andra.                     </Paragraph>
+                    <Paragraph>
+                        Vi utvecklar Klimatkollen kontinuerligt. Mer fakta kommer. Skriv upp dig <a href="#signup">här</a> så berättar vi när vi släpper något nytt.
+                    </Paragraph>
+                    <ParagraphBold>Hur ska jag använda Klimatkollen?</ParagraphBold>
+                    <Paragraph>
+                        Använd Klimatkollen för ta reda på hur din kommuns klimatutsläpp ser ut, dela fakta med andra och kräva svar på hur vi ska minska glappet mellan mål och verklighet. Hur vill partierna minska utsläppen? Vilka lösningar finns? Klimatkollen hjälper dig att ställa rätt frågor. 
                     </Paragraph>
                     <Paragraph>
-                        Vi utvecklar Klimatkollen kontinuerligt. Mer fakta kommer. Skriv upp dig här så berättar vi när vi släpper något nytt.
+                        All fakta på Klimatkollen kommer från offentliga källor. Vi redovisar alla källor tydligt så att du enkelt kan kolla upp och läsa mer. Om något blivit fel, mejla gärna oss på <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så att vi kan ändra.
                     </Paragraph>
                     <Paragraph>
-                        Använd Klimatkollen för att dela fakta och kräva svar. Hur vill partierna minska utsläppen? Vilka lösningar finns? Klimatkollen hjälper dig att ställa rätt frågor.
-                    </Paragraph>
-                    <Paragraph>
-                        All fakta på Klimatkollen kommer från offentliga källor. Vi redovisar alla källor tydligt så att du enkelt kan kolla upp och läsa mer. Om något blivit fel, mejla gärna oss på <a href="mailto:info@klimatkollen.se">info@klimatkollen.se</a> så att vi kan ändra.
-                    </Paragraph>
-                    <Paragraph>
-                        Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av <a href="https://iteam.se/" target="_blank" rel="noreferrer">Iteam</a>. Vi tror på kraften i att visualisera fakta på ett enkelt och tilltalande sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt och åtgärder som minskar utsläppen i linje med Parisavtalet.
+                    Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av <a href="https://iteam.se/" target="_blank" rel="noreferrer">Iteam</a>. Vi tror på kraften i att visualisera fakta på ett enkelt och tilltalande sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt och åtgärder som minskar utsläppen i linje med Parisavtalet. 
                     </Paragraph>
                 </ToggleSection>}
             </TextSection>
@@ -164,8 +164,7 @@ const Footer = () => {
                         För att nå målet måste världen som helhet halvera växthusgasutsläppen till 2030 och nå nära noll utsläpp senast 2050.
                     </Paragraph>
                     <Paragraph>
-                        Enligt Parisavtalet ska rika länder, som historiskt sett släppt ut mycket växthusgaser, ta ett större ansvar för att genomföra klimatomställningen. Där ingår Sverige, som både ska före när det gäller få ner utsläppen, men också hjälpa mer sårbara länder att ställa om. I Sverige stöds Parisavtalet av alla partier i riksdagen.
-                    </Paragraph>
+                        Enligt Parisavtalet ska rika länder, som historiskt sett släppt ut mycket växthusgaser, ta ett större ansvar för att genomföra klimatomställningen. Där ingår Sverige, som både ska gå före när det gäller få ner utsläppen, men också hjälpa mer sårbara länder att ställa om. I Sverige stöds Parisavtalet av alla partier i riksdagen.                    </Paragraph>
                     <Paragraph>
                         Läs mer om Parisavtalet hos vår samarbetspartner <a href="https://wwf.se/" target="_blank" rel="noreferrer">WWF</a>.
                     </Paragraph>
@@ -177,7 +176,7 @@ const Footer = () => {
                     </Paragraph>
                 </ToggleSection>}
             </TextSection>
-            <TextSection>
+            <TextSection id="signup">
                 <ParagraphBold>Intresseanmälan för nyhetsbrev</ParagraphBold>
                 <NewsletterSubscribe />
             </TextSection>
