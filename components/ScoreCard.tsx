@@ -26,6 +26,7 @@ const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 90%;
   }
 
   & section.right {
@@ -58,15 +59,19 @@ type Props = {
   population: number | null
   budget: number | null
   municipality: string
+  politicalRule: Array<string> | null
 }
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-const ScoreCard = ({ population, budget, municipality }: Props) => {
+const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) => {
+
   const [togglePopulation, setTogglePopulation] = useState(false)
   const [togglePoliticalRule, setTogglePoliticalRule] = useState(false)
   const [toggleBudget, setToggleBudget] = useState(false)
   const [toggleEmissionsPerCapita, setToggleEmissionsPerCapita] = useState(false)
+
+  const politicalRuleFormatted = politicalRule?.join(', ')
 
   return (
     <StyledDiv>
@@ -96,7 +101,7 @@ const ScoreCard = ({ population, budget, municipality }: Props) => {
       <div className="row">
         <section className="left">
           <Paragraph>Här styr</Paragraph>
-          <ParagraphBold>Moderaterna</ParagraphBold>
+          <ParagraphBold>{politicalRuleFormatted}</ParagraphBold>
         </section>
         <section className="right">
           <StyledIcon onClick={() => setTogglePoliticalRule(!togglePoliticalRule)}>
