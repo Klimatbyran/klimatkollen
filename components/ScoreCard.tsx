@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
-import { Municipality } from '../utils/types'
 
 const StyledDiv = styled.div`
   min-width: 290px;
@@ -45,15 +44,16 @@ type Props = {
   budget: number | null
 }
 
-const ScoreCard = ({ population, budget}: Props) => {
-  return (
+const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
+const ScoreCard = ({ population, budget }: Props) => {
+  return (
     <StyledDiv>
       {population && (
         <div className="row">
           <section className="left">
             <Paragraph>Antal invånare</Paragraph>
-            <ParagraphBold>{population}</ParagraphBold>
+            <ParagraphBold>{formatter.format(population)}</ParagraphBold>
           </section>
           <section className="right">
             <StyledIcon>
@@ -79,7 +79,7 @@ const ScoreCard = ({ population, budget}: Props) => {
         <div className="row">
           <section className="left">
             <Paragraph>Koldioxidbudget</Paragraph>
-            <ParagraphBold>{budget} ton co2</ParagraphBold>
+            <ParagraphBold>{formatter.format(Math.round(budget))} ton co2</ParagraphBold>
           </section>
           <section className="right">
             <StyledIcon>
