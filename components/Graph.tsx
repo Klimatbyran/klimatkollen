@@ -14,10 +14,32 @@ import styled from 'styled-components'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 
+// useEffect(() => {
+//   const chart = chartRef.current
+//   if (chart) {
+//     const dataset = chart.data.datasets[3]
+
+//     userGraph
+//       .filter((f) => f !== null)
+//       .reduce((prev, curr) => {
+//         curr.acc = (prev.acc ?? 1) * curr.change
+//         curr.emitted = prev.emitted + curr.co2 * curr.acc
+//         return curr
+//       })
+//     dataset.data = historical.map((f) => f.null)
+//     // console.log('before', chart.data.datasets[3].data.length)
+//     // chart.data.datasets[3].data.splice(historical.length)
+//     // console.log('after', chart.data.datasets[3].data.length)
+//     // chart.data.datasets[3].data = userGraph.map((f) => (f ? f.co2 / f.acc : f))
+//     // console.log(chart.data.datasets[3].data)
+//     // chart.update()
+//   }
+// }, [userGraph])
+
 const RangeContainer = styled.div`
+  margin-top: 4rem;
   display: flex;
-  justify-content: space-between;
-  padding-left: 11rem;
+  justify-content: center;
 `
 
 const Range = styled.div`
@@ -29,12 +51,39 @@ const Range = styled.div`
 const Slider = styled.input`
   appearance: slider-vertical;
   writing-mode: bt-lr; // ie and edge
-  width: 3rem;
+  width: 4rem;
+  margin-top: 0.25rem;
+`
+
+const Percentage = styled.label`
+  font-size: 0.75rem;
+  margin-top: 6px;
 `
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`
+
+const MandatePeriod = styled.div`
+  font-size: 0.75rem;
+`
+
+const StartYear = styled.div`
+  border-bottom: 1px solid white;
+  font-weight: 300;
+`
+const EndYear = styled.div`
+  font-weight: 300;
+`
+
+const Help = styled.p`
+  margin-top: 2rem;
+  line-height: 1.5rem;
+`
+
+const P = styled.p`
+  margin-top: 1.5rem;
 `
 
 type EmissionData = {
@@ -62,6 +111,16 @@ function getSetup(emissions: EmissionData[][]): {
 function getFillerValues(fromYear: number, toYear: number) {
   return new Array(toYear - fromYear).map((f) => null)
 }
+
+const MANDATE_PERIODS = [
+  [2022, 2026],
+  [2026, 2030],
+  [2030, 2034],
+  [2034, 2038],
+  [2038, 2042],
+  [2042, 2046],
+  [2046, 2050],
+]
 
 type Props = {
   step: number
@@ -95,53 +154,40 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
     [historical, pledged],
   )
 
-  const [userGraph, setUserGraph] = useState(
-    pledged
-      .filter((pledge) => pledge.year >= setup.adjustableYearStart)
-      .map((f) => ({ year: f.year, co2: f.co2, current: f.co2, change: 1 })),
+  const [mandateChanges, setMandateChanges] = useState(
+    MANDATE_PERIODS.map((f) => ({
+      start: f[0],
+      end: f[1],
+      change: 1.0,
+    })),
   )
 
-  // useEffect(() => {
-  //   const chart = chartRef.current
-  //   if (chart) {
-  //     const dataset = chart.data.datasets[3]
+  const userGraph = useMemo(
+    () =>
+      pledged
+        .filter((pledge) => pledge.year >= setup.adjustableYearStart)
+        .map((f) => ({ year: f.year, co2: f.co2 })),
+    [pledged, setup],
+  )
 
-  //     userGraph
-  //       .filter((f) => f !== null)
-  //       .reduce((prev, curr) => {
-  //         curr.acc = (prev.acc ?? 1) * curr.change
-  //         curr.emitted = prev.emitted + curr.co2 * curr.acc
-  //         return curr
-  //       })
-  //     dataset.data = historical.map((f) => f.null)
-  //     // console.log('before', chart.data.datasets[3].data.length)
-  //     // chart.data.datasets[3].data.splice(historical.length)
-  //     // console.log('after', chart.data.datasets[3].data.length)
-  //     // chart.data.datasets[3].data = userGraph.map((f) => (f ? f.co2 / f.acc : f))
-  //     // console.log(chart.data.datasets[3].data)
-  //     // chart.update()
-  //   }
-  // }, [userGraph])
+  const adjustedUserGraph: Dataset = useMemo(() => {
+    const dataset: Dataset = []
+    let acc = 1
 
-  const options = {
-    options: {},
-    data: {
-      labels: setup.labels,
-    },
-  }
+    mandateChanges.forEach((mandate) => {
+      acc = acc * mandate.change
+      userGraph
+        .filter((f) => f.year >= mandate.start && f.year < mandate.end) // range exlusive end
+        .forEach((f) => {
+          dataset.push(f.co2 / acc)
+        })
+    })
+    return dataset
+  }, [userGraph, mandateChanges])
 
   const handleYearChange = (index: number, value: number) => {
-    setUserGraph((current) => {
-      // const thing = current.reduce((prev, curr) => {
-      //   return {
-      //     ...curr,
-      //     acc: prev.acc * curr.change,
-      //     // emitted: prev.emitted +
-      //   }
-      //   // curr.emitted = prev.emitted + curr.co2 * curr.acc
-      // })
-      // console.log(thing)
-      const copy = [...current]
+    setMandateChanges((m) => {
+      const copy = [...m]
       copy[index].change = value
       return copy
     })
@@ -184,18 +230,7 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
               fill: true,
               data: (
                 getFillerValues(setup.minYear, setup.adjustableYearStart) as Dataset
-              ).concat(
-                userGraph.reduce(
-                  (sum, f) => {
-                    const acc = sum.acc * f.change
-                    return {
-                      acc,
-                      values: sum.values.concat([f.co2 / acc]),
-                    }
-                  },
-                  { acc: 1, values: [] as Dataset },
-                ).values,
-              ),
+              ).concat(adjustedUserGraph),
               borderWidth: 1,
               borderColor: '#EFBF17',
               backgroundColor: '#EFBF17',
@@ -238,14 +273,7 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
                 color: 'white',
                 align: 'center',
                 callback: (tickValue) => {
-                  console.log(tickValue)
                   const idx = tickValue as number
-                  console.log(
-                    idx,
-                    setup.labels[idx],
-                    idx % 2 === 0,
-                    idx % 2 === 0 ? setup.labels[idx] : '',
-                  )
                   return idx % 2 === 0 ? setup.labels[idx] : ''
                 },
               },
@@ -287,7 +315,7 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
       {step > 3 && (
         <>
           <RangeContainer>
-            {userGraph.map((value, i) => (
+            {mandateChanges.map((value, i) => (
               <Range
                 key={i}
                 style={{
@@ -295,6 +323,10 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
                   flexDirection: 'column',
                   alignItems: 'center',
                 }}>
+                <MandatePeriod>
+                  <StartYear>{value.start}</StartYear>
+                  <EndYear>{value.end}</EndYear>
+                </MandatePeriod>
                 <Slider
                   min={1}
                   max={2}
@@ -305,14 +337,15 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
                   orient="vertical"
                   onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
                 />
-                <label>{100 - Math.round(100 / value.change)}%</label>
+                <Percentage>{100 - Math.round(100 / value.change)}%</Percentage>
               </Range>
             ))}
           </RangeContainer>
-          <p>
+          <Help>
             Med hjälp av reglagen så styr du hur stora utsläppsminskningar man behöver
             göra per mandatperiod för att nå Parisavtalet.
-          </p>
+          </Help>
+          <P>Dela din graf på sociala medier.</P>
         </>
       )}
     </Container>
