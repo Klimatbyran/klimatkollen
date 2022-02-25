@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
+import Municipality from './Municipality'
 
 const StyledDiv = styled.div`
   min-width: 290px;
@@ -42,11 +43,15 @@ const StyledIcon = styled.div`
 type Props = {
   population: number | null
   budget: number | null
+  politicalRule: Array<string> | null
 }
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-const ScoreCard = ({ population, budget }: Props) => {
+const ScoreCard = ({ population, budget, politicalRule }: Props) => {
+
+  const politicalRuleFormatted = politicalRule?.join(', ')
+
   return (
     <StyledDiv>
       {population && (
@@ -66,7 +71,7 @@ const ScoreCard = ({ population, budget }: Props) => {
       <div className="row">
         <section className="left">
           <Paragraph>Här styr</Paragraph>
-          <ParagraphBold>Moderaterna</ParagraphBold>
+          <ParagraphBold>{politicalRuleFormatted}</ParagraphBold>
         </section>
         <section className="right">
           <StyledIcon>
