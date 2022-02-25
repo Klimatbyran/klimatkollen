@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
-import Municipality from './Municipality'
 
 const StyledDiv = styled.div`
   min-width: 290px;
@@ -25,6 +24,7 @@ const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 90%;
   }
 
   & section.right {
