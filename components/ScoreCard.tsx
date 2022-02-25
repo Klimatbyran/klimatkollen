@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
+import IconGreen from '../public/icons/info-green.svg'
+import { useState } from 'react'
 
 const StyledDiv = styled.div`
   min-width: 290px;
@@ -39,28 +41,56 @@ const StyledIcon = styled.div`
   }
 `
 
+const InfoSection = styled.div`
+  background: ${({ theme }) => theme.main};
+  color: ${({ theme }) => theme.black};
+  padding: 15px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+
+    & a {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+`
+
 type Props = {
   population: number | null
   budget: number | null
+  municipality: string
 }
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-const ScoreCard = ({ population, budget }: Props) => {
+const ScoreCard = ({ population, budget, municipality }: Props) => {
+  const [togglePopulation, setTogglePopulation] = useState(false)
+  const [togglePoliticalRule, setTogglePoliticalRule] = useState(false)
+  const [toggleBudget, setToggleBudget] = useState(false)
+  const [toggleEmissionsPerCapita, setToggleEmissionsPerCapita] = useState(false)
+
   return (
     <StyledDiv>
       {population && (
-        <div className="row">
-          <section className="left">
-            <Paragraph>Antal invånare</Paragraph>
-            <ParagraphBold>{formatter.format(population)}</ParagraphBold>
+        <>
+          <div className="row">
+            <section className="left">
+              <Paragraph>Antal invånare</Paragraph>
+              <ParagraphBold>{formatter.format(population)}</ParagraphBold>
+            </section>
+            <section className="right">
+              <StyledIcon onClick={() => setTogglePopulation(!togglePopulation)}>
+                {togglePopulation ? <IconGreen /> : <Icon />}
+              </StyledIcon>
+            </section>
+          </div>
+          <section>
+            {togglePopulation ? (
+              <InfoSection>
+                <Paragraph>Uppgift hämtad från Wikimedia.</Paragraph>
+              </InfoSection>
+            ) : null}
           </section>
-          <section className="right">
-            <StyledIcon>
-              <Icon />
-            </StyledIcon>
-          </section>
-        </div>
+        </>
       )}
 
       <div className="row">
@@ -69,24 +99,46 @@ const ScoreCard = ({ population, budget }: Props) => {
           <ParagraphBold>Moderaterna</ParagraphBold>
         </section>
         <section className="right">
-          <StyledIcon>
-            <Icon />
+          <StyledIcon onClick={() => setTogglePoliticalRule(!togglePoliticalRule)}>
+            {togglePoliticalRule ? <IconGreen /> : <Icon />}
           </StyledIcon>
         </section>
       </div>
+      <section>
+        {togglePoliticalRule ? (
+          <InfoSection>
+            <Paragraph>
+              Uppgift hämtad från <a href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html" target="_blank" rel="noreferrer">Sveriges Kommuner och Regioner</a>.
+            </Paragraph>
+          </InfoSection>
+        ) : null}
+      </section>
 
       {budget && (
-        <div className="row">
-          <section className="left">
-            <Paragraph>Koldioxidbudget</Paragraph>
-            <ParagraphBold>{formatter.format(Math.round(budget))} ton co2</ParagraphBold>
+        <>
+          <div className="row">
+            <section className="left">
+              <Paragraph>Koldioxidbudget</Paragraph>
+              <ParagraphBold>
+                {formatter.format(Math.round(budget))} ton co2
+              </ParagraphBold>
+            </section>
+            <section className="right">
+              <StyledIcon onClick={() => setToggleBudget(!toggleBudget)}>
+                {toggleBudget ? <IconGreen /> : <Icon />}
+              </StyledIcon>
+            </section>
+          </div>
+          <section>
+            {toggleBudget ? (
+              <InfoSection>
+                <Paragraph>
+                  Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om beräkningen <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">här</a>.
+                </Paragraph>
+              </InfoSection>
+            ) : null}
           </section>
-          <section className="right">
-            <StyledIcon>
-              <Icon />
-            </StyledIcon>
-          </section>
-        </div>
+        </>
       )}
 
       <div className="row">
@@ -95,11 +147,21 @@ const ScoreCard = ({ population, budget }: Props) => {
           <ParagraphBold>5 ton co2/år</ParagraphBold>
         </section>
         <section className="right">
-          <StyledIcon>
-            <Icon />
+          <StyledIcon
+            onClick={() => setToggleEmissionsPerCapita(!toggleEmissionsPerCapita)}>
+            {toggleEmissionsPerCapita ? <IconGreen /> : <Icon />}
           </StyledIcon>
         </section>
       </div>
+      <section>
+        {toggleEmissionsPerCapita ? (
+          <InfoSection>
+            <Paragraph>
+              Sammanslagning av klimatutsläpp i {municipality} per invånare och konsumtionsbaserade utsläpp i Sverige per invånare.
+            </Paragraph>
+          </InfoSection>
+        ) : null}
+      </section>
     </StyledDiv>
   )
 }
