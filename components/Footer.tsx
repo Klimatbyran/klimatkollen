@@ -110,14 +110,18 @@ const Footer = () => {
     const [toggleFirst, setToggleFirst] = useState(false)
     const [toggleSecond, setToggleSecond] = useState(false)
 
-    useEffect(() => {
+    const resizeHandler = () => {
+
         if (window.innerWidth >= 768) {
-         setToggleFirst(true)
-         setToggleSecond(true)
+            setToggleFirst(true)
+            setToggleSecond(true)
         }
-    }, [window.innerWidth])
+    }
 
-
+    useEffect(() => {
+        window.onresize = resizeHandler
+        resizeHandler()
+    }, [])
 
   return (
     <Wrapper>
