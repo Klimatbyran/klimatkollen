@@ -109,12 +109,14 @@ const Footer = () => {
 
     const [toggleFirst, setToggleFirst] = useState(false)
     const [toggleSecond, setToggleSecond] = useState(false)
+    const [toggleThird, setToggleThird] = useState(false)
 
     const resizeHandler = () => {
 
         if (window.innerWidth >= 768) {
             setToggleFirst(true)
             setToggleSecond(true)
+            setToggleThird(true)
         }
     }
 
@@ -164,15 +166,24 @@ const Footer = () => {
                         För att nå målet måste världen som helhet halvera växthusgasutsläppen till 2030 och nå nära noll utsläpp senast 2050.
                     </Paragraph>
                     <Paragraph>
-                        Enligt Parisavtalet ska rika länder, som historiskt sett släppt ut mycket växthusgaser, ta ett större ansvar för att genomföra klimatomställningen. Där ingår Sverige, som både ska gå före när det gäller få ner utsläppen, men också hjälpa mer sårbara länder att ställa om. I Sverige stöds Parisavtalet av alla partier i riksdagen.                    </Paragraph>
+                        Enligt Parisavtalet ska rika länder, som historiskt sett släppt ut mycket växthusgaser, ta ett större ansvar för att genomföra klimatomställningen. Där ingår Sverige, som både ska gå före när det gäller få ner utsläppen, men också hjälpa mer sårbara länder att ställa om. I Sverige stöds Parisavtalet av alla partier i riksdagen.                    
+                    </Paragraph>
                     <Paragraph>
                         Läs mer om Parisavtalet hos vår samarbetspartner <a href="https://wwf.se/" target="_blank" rel="noreferrer">WWF</a>.
                     </Paragraph>
+                </ToggleSection>}
+            </TextSection>
+            <TextSection>
+                <HeaderSection>
+                    <H5>Om koldioxidbudgetar</H5>
+                    {toggleThird ? <ArrowUp className="arrow" onClick={() => setToggleThird(!toggleThird)} /> : <ArrowDown className="arrow" onClick={() => setToggleThird(!toggleThird)} />}
+                </HeaderSection>
+                {toggleThird &&                 
+                <ToggleSection>
                     <Paragraph>
-                        En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut innan vi riskerar att öka temperaturen så mycket att det bryter mot Parisavtalet. Det är ett sätt att åskådliggöra utsläppsutrymmet som finns kvar om vi ska hålla uppvärmningen under 1,5 grader. FN:s klimatpanel, IPCC, beräknar en global koldioxidbudget, som sedan kan beräkas per land, region eller kommun. Klimatkollen visar koldioxidbudgetar för alla Sveriges kommuner som utgår ifrån Parisavtalets mål om 1,5 graders global uppvärmning.
-                    </Paragraph>
+                    En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut innan vi riskerar att öka temperaturen så mycket att det bryter mot Parisavtalet. Det är ett sätt att åskådliggöra utsläppsutrymmet som finns kvar om vi ska hålla uppvärmningen under 1,5 grader. FN:s klimatpanel, IPCC, beräknar en global koldioxidbudget, som sedan kan brytas ner per land, region eller kommun. Klimatkollen visar koldioxidbudgetar för alla Sveriges kommuner som utgår ifrån Parisavtalets mål om 1,5 graders global uppvärmning.                    </Paragraph>
                     <Paragraph>
-                        Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">ClimateView</a>.
+                    Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">ClimateView</a>.                    
                     </Paragraph>
                 </ToggleSection>}
             </TextSection>
@@ -206,7 +217,7 @@ const Footer = () => {
                     <IconWrapper>
                         <a href="https://www.wedonthavetime.org/" target="_blank" rel="noreferrer"><WeDontHaveTime /></a>
                     </IconWrapper>
-                    <Paragraph>Världens största sociala nätverk för klimataktion. Skapa din egen kampanj här (<a href="https://www.wedonthavetime.org/" target="_blank" rel="noreferrer">www.wedonthavetime.org</a>)</Paragraph>
+                    <Paragraph>Världens största sociala nätverk för klimataktion. Skapa din egen kampanj på <a href="https://www.wedonthavetime.org/" target="_blank" rel="noreferrer">www.wedonthavetime.org</a></Paragraph>
                 </IconSection>
                 <IconSection>
                     <IconWrapper>
