@@ -36,6 +36,11 @@ Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 //   }
 // }, [userGraph])
 
+const YAxisTitle = styled.label`
+  font-size: 0.94rem;
+  margin-bottom: 1rem;
+`
+
 const RangeContainer = styled.div`
   margin-top: 4rem;
   display: flex;
@@ -195,6 +200,7 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
 
   return (
     <Container>
+      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{
@@ -285,17 +291,6 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
                 display: false,
               },
               beginAtZero: true,
-              title: {
-                display: true,
-                text: 'Tusen ton CO₂',
-                align: 'center',
-                font: {
-                  family: 'Helvetica Neue',
-                  size: 15,
-                  weight: '300',
-                },
-                color: 'white',
-              },
               ticks: {
                 stepSize: 50_000,
                 font: {
