@@ -9,14 +9,10 @@ import Button from './Button'
 import ScoreCard from './ScoreCard'
 import Back from './Back'
 import { hasShareAPI } from '../utils/navigator'
-import { Municipality as TMunicipality } from '../utils/types'
+import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
 
-import {
-  data as historicalEmissions,
-  pledges as pledgedEmissions,
-  paris as parisEmissions,
-} from '../data/stockholm'
+import { pledges as pledgedEmissions } from '../data/stockholm'
 import { useState } from 'react'
 
 const GraphWrapper = styled.div`
@@ -179,10 +175,20 @@ type Props = {
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
   coatOfArmsImage: string | null
+  historicalEmissions: EmissionPerYear[]
+  budgetedEmissions: EmissionPerYear[]
 }
 
 const Municipality = (props: Props) => {
-  const { step, municipality, onNextStep, onPreviousStep, coatOfArmsImage } = props
+  const {
+    step,
+    municipality,
+    onNextStep,
+    onPreviousStep,
+    coatOfArmsImage,
+    historicalEmissions,
+    budgetedEmissions,
+  } = props
 
   const [mandateChanges, setMandateChanges] = useState(
     MANDATE_PERIODS.map((f) => ({
@@ -257,7 +263,7 @@ const Municipality = (props: Props) => {
             step={step}
             historical={historicalEmissions}
             pledged={pledgedEmissions}
-            paris={parisEmissions}
+            budget={budgetedEmissions}
             mandatePeriodChanges={mandateChanges}
           />
         </GraphWrapper>

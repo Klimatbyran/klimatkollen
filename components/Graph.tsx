@@ -9,6 +9,7 @@ import {
 } from 'chart.js'
 import { useMemo, useState } from 'react'
 import { Line } from 'react-chartjs-2'
+import { EmissionPerYear } from '../utils/types'
 
 import styled from 'styled-components'
 
@@ -46,30 +47,38 @@ const YAxisTitle = styled.label`
   margin-bottom: 1rem;
 `
 
-type EmissionData = {
-  year: number
-  co2: number
-}
-
-function getSetup(emissions: EmissionData[][]): {
+function getSetup(emissions: EmissionPerYear[][]): {
   labels: number[]
   adjustableYearStart: number
   minYear: number
   maxYear: number
 } {
-  const all = new Set<number>()
-  emissions.forEach((e) => e.forEach((t) => all.add(t.year)))
-  const years = Array.from(all).sort()
+  let minYear = new Date().getFullYear()
+  let maxYear = new Date().getFullYear()
+
+  // const all = new Set<number>()
+  emissions.forEach((e) =>
+    e.forEach((t) => {
+      minYear = Math.min(minYear, t.Year)
+      maxYear = Math.max(maxYear, t.Year)
+    }),
+  )
+  // const years = Array.from(all).sort()
+  const labels: number[] = []
+  for (let i = minYear; i <= maxYear; i++) {
+    labels.push(i)
+  }
+
   return {
-    labels: years,
+    labels,
     adjustableYearStart: new Date().getFullYear(),
-    minYear: years[0],
-    maxYear: years[years.length - 1],
+    minYear,
+    maxYear,
   }
 }
 
 function getFillerValues(fromYear: number, toYear: number) {
-  return new Array(toYear - fromYear).map((f) => null)
+  return new Array(toYear - fromYear).map(() => null)
 }
 
 type MandatePeriod = {
@@ -80,59 +89,63 @@ type MandatePeriod = {
 
 type Props = {
   step: number
-  historical: EmissionData[]
-  paris: EmissionData[]
-  pledged: EmissionData[]
+  historical: EmissionPerYear[]
+  budget: EmissionPerYear[]
+  pledged: EmissionPerYear[]
   mandatePeriodChanges: MandatePeriod[]
 }
 
-type Dataset = Array<null | number>
+type Dataset = Array<{ x: number; y: number }>
 
-const Graph = ({ step, historical, paris, pledged, mandatePeriodChanges }: Props) => {
+const Graph = ({ step, historical, budget, pledged, mandatePeriodChanges }: Props) => {
   const setup = useMemo(
-    () => getSetup([historical, paris, pledged]),
-    [historical, paris, pledged],
+    () => getSetup([historical, budget, pledged]),
+    [historical, budget, pledged],
   )
 
-  const historicalDataset = useMemo(() => historical.map((f) => f.co2), [historical])
-  const parisDataset = useMemo(
-    () =>
-      (historical.slice(0, -1).map(() => null) as Dataset).concat(
-        paris.map((p) => p.co2),
-      ),
-    [historical, paris],
+  const historicalDataset: Dataset = useMemo(
+    () => historical.map((f) => ({ x: f.Year, y: f.CO2Equivalent })),
+    [historical],
+  )
+  const budgetDataset: Dataset = useMemo(
+    () => budget.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
+    [historical, budget],
   )
 
-  const pledgeDataset = useMemo(
-    () =>
-      (historical.slice(0, -1).map(() => null) as Dataset).concat(
-        pledged.map((p) => p.co2),
-      ),
+  const pledgeDataset: Dataset = useMemo(
+    () => pledged.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
     [historical, pledged],
   )
 
   const userGraph = useMemo(
     () =>
       pledged
-        .filter((pledge) => pledge.year >= setup.adjustableYearStart)
-        .map((f) => ({ year: f.year, co2: f.co2 })),
+        .filter((pledge) => pledge.Year >= setup.adjustableYearStart)
+        .map((f) => ({ Year: f.Year, CO2Equivalent: f.CO2Equivalent })),
     [pledged, setup],
   )
 
-  const adjustedUserGraph: Dataset = useMemo(() => {
+  const adjustedUserGraphDataset: Dataset = useMemo(() => {
     const dataset: Dataset = []
     let acc = 1
 
     mandatePeriodChanges.forEach((mandate) => {
       acc = acc * mandate.change
       userGraph
-        .filter((f) => f.year >= mandate.start && f.year < mandate.end) // range exlusive end
+        .filter((f) => f.Year >= mandate.start && f.Year < mandate.end) // range exlusive end
         .forEach((f) => {
-          dataset.push(f.co2 / acc)
+          dataset.push({ x: f.Year, y: f.CO2Equivalent / acc })
         })
     })
     return dataset
   }, [userGraph, mandatePeriodChanges])
+
+  // some assertions
+  if (process.env.NODE_ENV !== 'production') {
+    if (adjustedUserGraphDataset.length > setup.labels.length) {
+      throw new Error('Dataset length larger than label length')
+    }
+  }
 
   return (
     <Container>
@@ -156,9 +169,9 @@ const Graph = ({ step, historical, paris, pledged, mandatePeriodChanges }: Props
             },
             {
               // @ts-ignore
-              id: 'paris',
+              id: 'budget',
               fill: true,
-              data: parisDataset,
+              data: budgetDataset,
               borderWidth: 2,
               borderColor: '#6BA292',
               backgroundColor: '#91DFC8',
@@ -170,9 +183,7 @@ const Graph = ({ step, historical, paris, pledged, mandatePeriodChanges }: Props
               // @ts-ignore
               id: 'usergrap',
               fill: true,
-              data: (
-                getFillerValues(setup.minYear, setup.adjustableYearStart) as Dataset
-              ).concat(adjustedUserGraph),
+              data: adjustedUserGraphDataset,
               borderWidth: 1,
               borderColor: '#EFBF17',
               backgroundColor: '#EFBF17',
