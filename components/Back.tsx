@@ -15,7 +15,9 @@ const BackArrow = () => {
   return (
     <Link href="/">
       <Button type="button">
-        <Icon />
+        <a href="/">
+          <Icon />
+        </a>
       </Button>
     </Link>
   )
