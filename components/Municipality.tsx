@@ -77,7 +77,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-top: 1rem;
 `
 
 const CoatOfArmsImage = styled.img`
@@ -86,7 +85,6 @@ const CoatOfArmsImage = styled.img`
 
 const HeaderSection = styled.div`
   display: flex;
-  height: 150px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
