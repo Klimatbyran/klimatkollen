@@ -1,4 +1,4 @@
-import { useState, FC } from 'react'
+import { useState, FC, useEffect } from 'react'
 import { decode } from 'html-entities'
 import Button from './Button'
 import styled from 'styled-components'
@@ -84,10 +84,10 @@ const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
       setError('Vänligen fyll i en giltig e-postadress.')
       return null
     }
-
+    
     const isFormValidated = onValidated({ EMAIL: email })
     
-    return email && email.indexOf('@') > -1 && isFormValidated
+    return email && email.indexOf('@') > -1 && isFormValidated    
   }
 
   const getMessage = (message: string) => {
@@ -102,6 +102,14 @@ const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
     return formattedMessage ? decode(formattedMessage) : null
   }
 
+  useEffect(() => {
+    if (status === 'success') {
+      setTimeout(() => {
+        setEmail('')
+      }, 3000)
+    }
+  }, [status])
+
   return (
     <Container>
       <StyledForm onSubmit={handleFormSubmit}>
@@ -109,14 +117,15 @@ const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
           onChange={(event) => setEmail(event?.target?.value ?? '')}
           type="email"
           placeholder="E-postadress"
+          value={email}
           required
         />
-        {status === 'success' ?
+        {status === 'success' && email !== '' ?
           <EmailValidation>
             <span>Tack för din intresseanmälan!</span>
           </EmailValidation>
           : <Button text={'Skicka intresseanmälan'} />
-        }
+        } 
       </StyledForm>
         {status === 'sending'}
         {status === 'error' || error ? (
