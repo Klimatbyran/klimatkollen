@@ -2,17 +2,18 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import Municipality from '../../../components/Municipality'
+import { EmissionService } from '../../../utils/emissionService'
+import { WikiDataService } from '../../../utils/wikiDataService'
+import { Municipality as TMunicipality } from '../../../utils/types'
 
 export const STEPS = ['historiska-utslapp', 'parisavtalet', 'framtida-prognos', 'glappet']
 
 type Props = {
-  municipality: {
-    id: string
-    title: string
-  }
+  municipality: TMunicipality
+  id: string
 }
 
-export default function Step({ municipality }: Props) {
+export default function Step({ id, municipality }: Props) {
   const router = useRouter()
   const { step } = router.query
   const stepString = typeof step === 'string' ? step : STEPS[0]
@@ -22,7 +23,7 @@ export default function Step({ municipality }: Props) {
   const onNext = () => {
     const next = STEPS[stepIndex + 1]
     if (!next) throw new Error(`Assertion failed: No step with index ${stepIndex + 1}`)
-    router.replace(`/kommun/${municipality.id}/${next}`, undefined, {
+    router.replace(`/kommun/${id}/${next}`, undefined, {
       shallow: true,
       scroll: false,
     })
@@ -31,7 +32,7 @@ export default function Step({ municipality }: Props) {
   const onPrevious = () => {
     const prev = STEPS[stepIndex - 1]
     if (!prev) throw new Error(`Assertion failed: No step with index ${stepIndex - 1}`)
-    router.replace(`/kommun/${municipality.id}/${prev}`, undefined, {
+    router.replace(`/kommun/${id}/${prev}`, undefined, {
       shallow: true,
       scroll: false,
     })
@@ -39,10 +40,11 @@ export default function Step({ municipality }: Props) {
 
   return (
     <Municipality
-      municipality={municipality.title}
+      municipality={municipality}
       step={stepNum}
       onNextStep={stepIndex < STEPS.length - 1 ? onNext : undefined}
       onPreviousStep={stepIndex > 0 ? onPrevious : undefined}
+      coatOfArmsImage={municipality.CoatOfArmsImage?.ImageUrl || null}
     />
   )
 }
@@ -53,14 +55,28 @@ interface Params extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const id = (params as Params).municipality as string
-  const title = id[0].toUpperCase() + id.slice(1)
+
+  const emissionService = new EmissionService()
+
+  const [municipality, municipalities, wikiDataMunicipality] = await Promise.all([
+    emissionService.getMunicipality(id),
+    emissionService.getMunicipalities(),
+    new WikiDataService().getMunicipalityByName(id),
+  ])
+
+  municipality.Population = wikiDataMunicipality.Population
+  municipality.CoatOfArmsImage = wikiDataMunicipality.CoatOfArmsImage
+  municipality.Image = wikiDataMunicipality.Image
+
+  municipality.HistoricalEmission.AverageEmissionChangeRank =
+    municipalities.find((m) => {
+      return m.Name == municipality.Name
+    })?.HistoricalEmission.AverageEmissionChangeRank || null
 
   return {
     props: {
-      municipality: {
-        id,
-        title,
-      },
+      municipality,
+      id,
     },
   }
 }
