@@ -151,7 +151,7 @@ const Graph = ({ step, historical, paris, pledged, mandatePeriodChanges }: Props
               borderColor: '#EF5E30',
               backgroundColor: '#EF5E30',
               pointRadius: 0,
-              tension: 0.5,
+              tension: 0.15,
               hidden: false,
             },
             {
@@ -163,7 +163,7 @@ const Graph = ({ step, historical, paris, pledged, mandatePeriodChanges }: Props
               borderColor: '#6BA292',
               backgroundColor: '#91DFC8',
               pointRadius: 0,
-              tension: 0.5,
+              tension: 0.15,
               hidden: false,
             },
             {
@@ -177,7 +177,7 @@ const Graph = ({ step, historical, paris, pledged, mandatePeriodChanges }: Props
               borderColor: '#EFBF17',
               backgroundColor: '#EFBF17',
               pointRadius: 0,
-              tension: 0.5,
+              tension: 0.15,
               hidden: step < 4,
             },
             {
@@ -189,7 +189,7 @@ const Graph = ({ step, historical, paris, pledged, mandatePeriodChanges }: Props
               borderColor: '#EF3054',
               backgroundColor: '#542E35',
               pointRadius: 0,
-              tension: 0.5,
+              tension: 0.15,
               hidden: step < 2,
             },
           ],
