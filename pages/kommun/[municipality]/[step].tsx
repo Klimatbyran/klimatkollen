@@ -5,6 +5,7 @@ import Municipality from '../../../components/Municipality'
 import { EmissionService } from '../../../utils/emissionService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
+import { PolitycalRuleService } from '../../../utils/politicalRuleService'
 
 export const STEPS = ['historiska-utslapp', 'parisavtalet', 'framtida-prognos', 'glappet']
 
@@ -72,7 +73,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     municipalities.find((m) => {
       return m.Name == municipality.Name
     })?.HistoricalEmission.AverageEmissionChangeRank || null
-
+  
+  municipality.PoliticalRule = new PolitycalRuleService().getPoliticalRule(id)
+  
   return {
     props: {
       municipality,
