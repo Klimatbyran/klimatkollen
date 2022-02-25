@@ -36,59 +36,14 @@ Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 //   }
 // }, [userGraph])
 
-const YAxisTitle = styled.label`
-  font-size: 0.94rem;
-  margin-bottom: 1rem;
-`
-
-const RangeContainer = styled.div`
-  margin-top: 4rem;
-  display: flex;
-  justify-content: center;
-`
-
-const Range = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const Slider = styled.input`
-  appearance: slider-vertical;
-  writing-mode: bt-lr; // ie and edge
-  width: 4rem;
-  margin-top: 0.25rem;
-`
-
-const Percentage = styled.label`
-  font-size: 0.75rem;
-  margin-top: 6px;
-`
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
 `
 
-const MandatePeriod = styled.div`
-  font-size: 0.75rem;
-`
-
-const StartYear = styled.div`
-  border-bottom: 1px solid white;
-  font-weight: 300;
-`
-const EndYear = styled.div`
-  font-weight: 300;
-`
-
-const Help = styled.p`
-  margin-top: 2rem;
-  line-height: 1.5rem;
-`
-
-const P = styled.p`
-  margin-top: 1.5rem;
+const YAxisTitle = styled.label`
+  font-size: 0.94rem;
+  margin-bottom: 1rem;
 `
 
 type EmissionData = {
@@ -117,26 +72,23 @@ function getFillerValues(fromYear: number, toYear: number) {
   return new Array(toYear - fromYear).map((f) => null)
 }
 
-const MANDATE_PERIODS = [
-  [2022, 2026],
-  [2026, 2030],
-  [2030, 2034],
-  [2034, 2038],
-  [2038, 2042],
-  [2042, 2046],
-  [2046, 2050],
-]
+type MandatePeriod = {
+  start: number
+  end: number
+  change: number
+}
 
 type Props = {
   step: number
   historical: EmissionData[]
   paris: EmissionData[]
   pledged: EmissionData[]
+  mandatePeriodChanges: MandatePeriod[]
 }
 
 type Dataset = Array<null | number>
 
-const Graph = ({ step, historical, paris, pledged }: Props) => {
+const Graph = ({ step, historical, paris, pledged, mandatePeriodChanges }: Props) => {
   const setup = useMemo(
     () => getSetup([historical, paris, pledged]),
     [historical, paris, pledged],
@@ -159,14 +111,6 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
     [historical, pledged],
   )
 
-  const [mandateChanges, setMandateChanges] = useState(
-    MANDATE_PERIODS.map((f) => ({
-      start: f[0],
-      end: f[1],
-      change: 1.0,
-    })),
-  )
-
   const userGraph = useMemo(
     () =>
       pledged
@@ -179,7 +123,7 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
     const dataset: Dataset = []
     let acc = 1
 
-    mandateChanges.forEach((mandate) => {
+    mandatePeriodChanges.forEach((mandate) => {
       acc = acc * mandate.change
       userGraph
         .filter((f) => f.year >= mandate.start && f.year < mandate.end) // range exlusive end
@@ -188,15 +132,7 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
         })
     })
     return dataset
-  }, [userGraph, mandateChanges])
-
-  const handleYearChange = (index: number, value: number) => {
-    setMandateChanges((m) => {
-      const copy = [...m]
-      copy[index].change = value
-      return copy
-    })
-  }
+  }, [userGraph, mandatePeriodChanges])
 
   return (
     <Container>
@@ -307,42 +243,6 @@ const Graph = ({ step, historical, paris, pledged }: Props) => {
           },
         }}
       />
-      {step > 3 && (
-        <>
-          <RangeContainer>
-            {mandateChanges.map((value, i) => (
-              <Range
-                key={i}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                }}>
-                <MandatePeriod>
-                  <StartYear>{value.start}</StartYear>
-                  <EndYear>{value.end}</EndYear>
-                </MandatePeriod>
-                <Slider
-                  min={1}
-                  max={2}
-                  step={0.01}
-                  value={value.change}
-                  type="range"
-                  // @ts-ignore - this is for firefox :*(
-                  orient="vertical"
-                  onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
-                />
-                <Percentage>{100 - Math.round(100 / value.change)}%</Percentage>
-              </Range>
-            ))}
-          </RangeContainer>
-          <Help>
-            Med hjälp av reglagen så styr du hur stora utsläppsminskningar man behöver
-            göra per mandatperiod för att nå Parisavtalet.
-          </Help>
-          <P>Dela din graf på sociala medier.</P>
-        </>
-      )}
     </Container>
   )
 }

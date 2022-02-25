@@ -5,8 +5,6 @@ import IconGreen from '../public/icons/info-green.svg'
 import { useState } from 'react'
 
 const StyledDiv = styled.div`
-  min-width: 290px;
-  max-width: 330px;
   background: ${({ theme }) => theme.dark};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -14,6 +12,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 1rem;
 
   & div.row {
     display: flex;

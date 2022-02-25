@@ -4,6 +4,11 @@
   margin: 0;
 }
 
+body,
+html {
+  width: 100%;
+}
+
 body {
   background: #2d2d2d;
   color: #fff;
