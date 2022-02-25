@@ -11,6 +11,7 @@ export type Municipality = {
   Image: Image | null
   Budget: Budget
   HistoricalEmission: Emission
+  PoliticalRule: Array<string> | null
 }
 
 export type EmissionPerYear = {

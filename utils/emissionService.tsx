@@ -131,8 +131,12 @@ export class EmissionService {
   // future emission based on trend
   public async getMunicipality(name: string): Promise<Municipality> {
     const promise = new Promise<Municipality>((resolve, reject) => {
-      const capitalizeFirstLetter = (name: string) =>
-        name.charAt(0).toUpperCase() + name.slice(1)
+      
+      function toTitleCase(str:string) {
+          return str.toLowerCase().replace(/(?:^|[\s\-\/])(\w|[\p{L}])/gu, function (match) {
+            return match.toUpperCase();
+        });
+      }
 
       const parseEmissions = (responseData: any): Emission => {
         const emissions = responseData.emissions
@@ -181,10 +185,10 @@ export class EmissionService {
 
         return budget
       }
-
+      
       Promise.allSettled([
-        axios.get(CLIMATE_VIEW_EMISSION_URL + capitalizeFirstLetter(name)),
-        axios.get(CLIMATE_VIEW_BUDGET_URL + capitalizeFirstLetter(name)),
+        axios.get(CLIMATE_VIEW_EMISSION_URL + toTitleCase(name)),
+        axios.get(CLIMATE_VIEW_BUDGET_URL + toTitleCase(name)),
       ])
         .then((result) => {
           //reject only if emission data is missing

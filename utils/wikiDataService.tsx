@@ -12,7 +12,7 @@ export type WikiDataImage = {
 
 export type WikiDataMunicipality = {
   CoatOfArmsImage: WikiDataImage
-  Population: number
+  Population: number | null
   Image: WikiDataImage
 }
 
@@ -21,10 +21,17 @@ export class WikiDataService {
 
   public async getMunicipalityByName(name: string): Promise<WikiDataMunicipality> {
     const promise = new Promise<WikiDataMunicipality>((resolve, reject) => {
-      const url = WikiDataSdk.getEntitiesFromSitelinks(name + ' Municipality')
+     
+      function toTitleCase(str:string) {
+        return str.toLowerCase().replace(/(?:^|[\s\-\/])(\w|[\p{L}])/gu, function (match) {
+          return match.toUpperCase();
+      });
+    }
+      
+      const pageName = toTitleCase(name) + ' Municipality'
+      const url = WikiDataSdk.getEntitiesFromSitelinks(pageName)
 
       axios.get(url).then((response) => {
-        //console.log(JSON.stringify(response.data))
         const pageName = Object.getOwnPropertyNames(response.data.entities).shift()
 
         if (pageName && pageName != '-1') {
@@ -41,14 +48,12 @@ export class WikiDataService {
           }
 
           var page = response.data.entities[pageName]
-
           municipality.CoatOfArmsImage = this.getCoatOfArmsFromPage(page)
           municipality.Population = this.getPopulationFromPage(page)
           municipality.Image = this.getImageFromPage(page)
 
           resolve(municipality)
         } else {
-          //kommun-sida hittades ej
           reject('Kommun-sida hittades ej i Wikidata')
         }
       })
@@ -68,7 +73,6 @@ export class WikiDataService {
       else if (date1 < date2) return 1
       return 0
     })
-
     return parseInt(page.claims.P1082[0].mainsnak.datavalue.value.amount)
   }
 
