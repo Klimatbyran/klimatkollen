@@ -7,9 +7,10 @@ import ArrowRight from '../public/icons/arrow-right.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 import { devices } from '../utils/devices'
 import Button from './Button'
-import InfoBox from './InfoBox'
+import ScoreCard from './ScoreCard'
 import Back from './Back'
 import { hasShareAPI } from '../utils/navigator'
+import { Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
 
 const GraphWrapper = styled.div`
@@ -75,6 +76,19 @@ const Wrapper = styled.div`
   margin-top: 1rem;
 `
 
+const CoatOfArmsImage = styled.img`
+  width: 60px;
+`
+
+const HeaderSection = styled.div`
+  display: flex;
+  height: 150px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+`
+
 type Co2Year = { year: number; co2: number }
 
 const max = (array: Array<Co2Year>, key: 'year' | 'co2') => {
@@ -103,20 +117,15 @@ const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
 }
 
 type Props = {
-  municipality: string
+  municipality: TMunicipality
   step: number
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
+  coatOfArmsImage: string | null
 }
 
 const Municipality = (props: Props) => {
-  const { step, municipality, onNextStep, onPreviousStep } = props
-
-  // https://github.com/vercel/next.js/discussions/11484
-  if (!municipality || typeof municipality !== 'string') return null
-  const municipalityTitleCase =
-    municipality[0].toLocaleUpperCase() + municipality.slice(1)
-
+  const { step, municipality, onNextStep, onPreviousStep, coatOfArmsImage } = props
   const maxCo2 = max(data, 'co2')
 
   const stepConfig = STEPS[step]
@@ -149,20 +158,22 @@ const Municipality = (props: Props) => {
         throw new Error('This should not be reached.')
       }
     }
-    share(municipalityTitleCase)
+    share(municipality.Name)
   }
 
   return (
     <>
       <Back />
       <MetaTags
-        title={`Klimatkollen - ${municipalityTitleCase}`}
-        description={shareText(municipalityTitleCase)}
+        title={`Klimatkollen - ${municipality.Name}`}
+        description={shareText(municipality.Name)}
       />
       <Wrapper>
-        <H1>{municipalityTitleCase}</H1>
-        <InfoBox />
+        <HeaderSection>
+          <H1>{municipality.Name}</H1>
 
+          {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
+        </HeaderSection>
         <GraphWrapper>
           <Title>Koldioxidutsläpp</Title>
           <Center>
@@ -193,6 +204,10 @@ const Municipality = (props: Props) => {
             )}
           </Flex>
         </GraphWrapper>
+        <ScoreCard
+          population={municipality.Population}
+          budget={municipality.Budget.CO2Equivalent}
+        />
         {hasShareAPI() && (
           <Button handleClick={handleClick} text="Dela i dina sociala medier" shareIcon />
         )}

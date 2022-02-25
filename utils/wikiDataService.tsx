@@ -23,10 +23,10 @@ export class WikiDataService {
     const promise = new Promise<WikiDataMunicipality>((resolve, reject) => {
      
       function toTitleCase(str:string) {
-        return str.toLowerCase().replace(/(?:^|[\s-/])\w/g, function (match) {
-            return match.toUpperCase();
-        });
-      }
+        return str.toLowerCase().replace(/(?:^|[\s\-\/])(\w|[\p{L}])/gu, function (match) {
+          return match.toUpperCase();
+      });
+    }
       
       const pageName = toTitleCase(name) + ' Municipality'
       const url = WikiDataSdk.getEntitiesFromSitelinks(pageName)
