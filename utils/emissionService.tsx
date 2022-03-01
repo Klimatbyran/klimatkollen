@@ -193,7 +193,7 @@ export class EmissionService {
         .then((result) => {
           //reject only if emission data is missing
           if (result[0].status == 'rejected') {
-            reject(result[0].reason.data)
+            reject("Utsläpp för den här kommunen hittades inte")
           } else if (result[0].status == 'fulfilled') {
             const municipality = {
               Name: result[0].value.data.emissions[0].kommun,
