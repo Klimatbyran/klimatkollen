@@ -127,8 +127,6 @@ export class EmissionService {
       .slice(0, 3) as Array<EmissionSector>
   }
 
-  //TODO:
-  // future emission based on trend
   public async getMunicipality(name: string): Promise<Municipality> {
     const promise = new Promise<Municipality>((resolve, reject) => {
       
@@ -186,6 +184,20 @@ export class EmissionService {
         return budget
       }
       
+      const parseTrend = (responseData: any): Array<EmissionPerYear> => {
+        const trend =
+            responseData.emissionBudgets[0].emissionReductions.trendEmissionReduction.yearlyEmissionReduction.map(
+              (emission: any) => {
+                return {
+                  Year: emission.year,
+                  CO2Equivalent: emission.emission,
+                }
+              },
+            )
+
+        return trend
+      }
+
       Promise.allSettled([
         axios.get(CLIMATE_VIEW_EMISSION_URL + toTitleCase(name)),
         axios.get(CLIMATE_VIEW_BUDGET_URL + toTitleCase(name)),
@@ -206,8 +218,12 @@ export class EmissionService {
                       PercentageOfNationalBudget: 0,
                       BudgetPerYear: [],
                     },
+              EmissionTrend:
+                result[1].status == 'fulfilled'
+                  ? parseTrend(result[1].value.data)
+                  : null
             } as Municipality
-
+            
             resolve(municipality)
           }
         })
