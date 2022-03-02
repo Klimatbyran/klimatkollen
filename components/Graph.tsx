@@ -169,18 +169,6 @@ const Graph = ({ step, historical, budget, pledged, mandatePeriodChanges }: Prop
             },
             {
               // @ts-ignore
-              id: 'budget',
-              fill: true,
-              data: budgetDataset,
-              borderWidth: 2,
-              borderColor: '#6BA292',
-              backgroundColor: '#91DFC8',
-              pointRadius: 0,
-              tension: 0.15,
-              hidden: false,
-            },
-            {
-              // @ts-ignore
               id: 'usergrap',
               fill: true,
               data: adjustedUserGraphDataset,
@@ -190,6 +178,18 @@ const Graph = ({ step, historical, budget, pledged, mandatePeriodChanges }: Prop
               pointRadius: 0,
               tension: 0.15,
               hidden: step < 4,
+            },
+            {
+              // @ts-ignore
+              id: 'budget',
+              fill: true,
+              data: budgetDataset,
+              borderWidth: 2,
+              borderColor: '#6BA292',
+              backgroundColor: '#91DFC8',
+              pointRadius: 0,
+              tension: 0.15,
+              hidden: false,
             },
             {
               // @ts-ignore
