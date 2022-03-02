@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import Graph from './Graph'
-import { H1 } from './Typography'
-import ArrowRight from '../public/icons/arrow-right.svg'
+import { H1, H3 } from './Typography'
+import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 import Button from './Button'
 import ScoreCard from './ScoreCard'
@@ -12,6 +12,7 @@ import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
 
 import { useState } from 'react'
+import PageWrapper from './PageWrapper'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -37,7 +38,6 @@ const Flex = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 1.25rem;
 `
 
 const Title = styled.h3`
@@ -67,7 +67,7 @@ const InfoText = styled.p`
   color: black;
 `
 
-const Wrapper = styled.div`
+const Top = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -128,8 +128,14 @@ const Help = styled.p`
   line-height: 1.5rem;
 `
 
-const P = styled.p`
-  margin-top: 1.5rem;
+const FactH2 = styled(H3)`
+  // margin-bottom: 60px;
+`
+
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 `
 
 const MANDATE_PERIODS = [
@@ -241,93 +247,103 @@ const Municipality = (props: Props) => {
 
   return (
     <>
-      <Back />
       <MetaTags
         title={`Klimatkollen - ${municipality.Name}`}
         description={shareText(municipality.Name)}
       />
-      <Wrapper>
-        <HeaderSection>
-          <H1>{municipality.Name}</H1>
+      <PageWrapper backgroundColor="black">
+        <Back />
+        <Top>
+          <HeaderSection>
+            <H1>{municipality.Name}</H1>
 
-          {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
-        </HeaderSection>
-        <GraphWrapper>
-          <Title>Koldioxidutsläpp</Title>
-          <Center>
-            <Box>
-              <InfoText>{text}</InfoText>
-            </Box>
-          </Center>
-          <Graph
-            step={step}
-            historical={historicalEmissions}
-            trend={trendingEmissions}
-            budget={budgetedEmissions}
-            mandatePeriodChanges={mandateChanges}
+            {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
+          </HeaderSection>
+          <GraphWrapper>
+            <Title>Koldioxidutsläpp</Title>
+            <Center>
+              <Box>
+                <InfoText>{text}</InfoText>
+              </Box>
+            </Center>
+            <Graph
+              step={step}
+              historical={historicalEmissions}
+              trend={trendingEmissions}
+              budget={budgetedEmissions}
+              mandatePeriodChanges={mandateChanges}
+            />
+          </GraphWrapper>
+          <Flex>
+            {onPreviousStep ? (
+              <Btn onClick={onPreviousStep}>
+                <ArrowLeft />
+                Förgående
+              </Btn>
+            ) : (
+              <div></div>
+            )}
+            {onNextStep && (
+              <Btn onClick={onNextStep}>
+                Nästa <ArrowRight />
+              </Btn>
+            )}
+          </Flex>
+          {step > 3 && (
+            <>
+              <RangeContainer>
+                {mandateChanges.map((value, i) => (
+                  <Range
+                    key={i}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}>
+                    <MandatePeriod>
+                      <StartYear>{value.start}</StartYear>
+                      <EndYear>{value.end}</EndYear>
+                    </MandatePeriod>
+                    <Slider
+                      min={1}
+                      max={2}
+                      step={0.01}
+                      value={value.change}
+                      type="range"
+                      // @ts-ignore - this is for firefox :*(
+                      orient="vertical"
+                      onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
+                    />
+                    <Percentage>{100 - Math.round(100 / value.change)}%</Percentage>
+                  </Range>
+                ))}
+              </RangeContainer>
+              <Help>
+                Med hjälp av reglagen så styr du hur stora utsläppsminskningar man behöver
+                göra per mandatperiod för att nå Parisavtalet.
+              </Help>
+            </>
+          )}
+        </Top>
+      </PageWrapper>
+      <PageWrapper backgroundColor="dark">
+        <Bottom>
+          <FactH2>Fakta om klimatomställningen i {municipality.Name}</FactH2>
+          <ScoreCard
+            population={municipality.Population}
+            budget={municipality.Budget.CO2Equivalent}
+            municipality={municipality.Name}
+            politicalRule={municipality.PoliticalRule}
           />
-        </GraphWrapper>
-        <Flex>
-          {onPreviousStep ? (
-            <Btn onClick={onPreviousStep}>
-              <ArrowLeft />
-              Förgående
-            </Btn>
-          ) : (
-            <div></div>
+          {hasShareAPI() && (
+            <Button
+              handleClick={handleClick}
+              text="Dela i dina sociala medier"
+              shareIcon
+            />
           )}
-          {onNextStep && (
-            <Btn onClick={onNextStep}>
-              Nästa <ArrowRight />
-            </Btn>
-          )}
-        </Flex>
-        {step > 3 && (
-          <>
-            <RangeContainer>
-              {mandateChanges.map((value, i) => (
-                <Range
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}>
-                  <MandatePeriod>
-                    <StartYear>{value.start}</StartYear>
-                    <EndYear>{value.end}</EndYear>
-                  </MandatePeriod>
-                  <Slider
-                    min={1}
-                    max={2}
-                    step={0.01}
-                    value={value.change}
-                    type="range"
-                    // @ts-ignore - this is for firefox :*(
-                    orient="vertical"
-                    onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
-                  />
-                  <Percentage>{100 - Math.round(100 / value.change)}%</Percentage>
-                </Range>
-              ))}
-            </RangeContainer>
-            <Help>
-              Med hjälp av reglagen så styr du hur stora utsläppsminskningar man behöver
-              göra per mandatperiod för att nå Parisavtalet.
-            </Help>
-            <P>Dela din graf på sociala medier.</P>
-          </>
-        )}
-        <ScoreCard
-          population={municipality.Population}
-          budget={municipality.Budget.CO2Equivalent}
-          municipality={municipality.Name}
-          politicalRule={municipality.PoliticalRule}
-        />
-        {hasShareAPI() && (
-          <Button handleClick={handleClick} text="Dela i dina sociala medier" shareIcon />
-        )}
-      </Wrapper>
+        </Bottom>
+      </PageWrapper>
     </>
   )
 }

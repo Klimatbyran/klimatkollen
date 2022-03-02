@@ -1,5 +1,4 @@
 import { GetServerSideProps } from 'next'
-import Head from 'next/head'
 import { useState } from 'react'
 import styled from 'styled-components'
 import DropDown from '../components/DropDown'
@@ -8,30 +7,16 @@ import MetaTags from '../components/MetaTags'
 import { H1, ParagraphBold, Paragraph } from '../components/Typography'
 import { EmissionService } from '../utils/emissionService'
 import { Municipality } from '../utils/types'
-import Footer from '../components/Footer'
+import PageWrapper from '../components/PageWrapper'
 
 type PropsType = {
   municipalities: Array<Municipality>
 }
-const Box = styled.div`
-  width: 195px;
-  height: 100%;
-  background-color: #fff;
-  border-radius: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
 
-const InfoText = styled.p`
-  color: black;
-`
-const Wrapper = styled.div`
+const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 34px;
+  flex-direction: column;
+  gap 3rem;
 `
 
 const Dot = styled.div<{ color: string }>`
@@ -72,41 +57,45 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   return (
     <>
       <MetaTags title="Klimatkollen" description="Enkel fakta om klimatomställningen" />
-      <H1>Klimatkollen</H1>
-      <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
-      <FlexCenter>
-        <ParagraphBold>Utsläppsförändring sedan Parisavtalet 2015</ParagraphBold>
-      </FlexCenter>
-      <Wrapper>
-        <Box>
-          <InfoText>{selected}</InfoText>
-        </Box>
-      </Wrapper>
-      <Map emissionsLevels={emissionsLevels} setSelected={setSelected} />
-      <InfoBox>
-        <Label>
-          <Dot color="#EF3054" /> <Paragraph>Ökat mer än 0% </Paragraph>
-        </Label>
-        <Label>
-          <Dot color="#EF5E30" /> <Paragraph> Minskat med 0-2%</Paragraph>
-        </Label>
-        <Label>
-          <Dot color="#EF7F17" />
-          <Paragraph>Minskat med 2-4%</Paragraph>
-        </Label>
-        <Label>
-          <Dot color="#EF9917" /> <Paragraph>Minskat med 4-7%</Paragraph>
-        </Label>
-        <Label>
-          <Dot color="#EFBF17" /> <Paragraph>Minskat med 7-10%</Paragraph>
-        </Label>
-        <Label>
-          <Dot color="#91BFC8" /> <Paragraph>Minskat mer än 10% </Paragraph>
-        </Label>
-      </InfoBox>
-      <FlexCenter>
-        <DropDown municipalitiesName={municipalitiesName} />
-      </FlexCenter>
+      <PageWrapper backgroundColor="black">
+        <Container>
+          <div>
+            <H1>Klimatkollen</H1>
+            <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
+          </div>
+          <FlexCenter>
+            <DropDown municipalitiesName={municipalitiesName} />
+          </FlexCenter>
+          <FlexCenter>
+            <div>
+              <ParagraphBold>Utsläppsförändring sedan Parisavtalet 2015</ParagraphBold>
+              <p>För att nå målet behöver klimatutsläppen minska med X% per år,</p>
+            </div>
+          </FlexCenter>
+          <Map emissionsLevels={emissionsLevels} setSelected={setSelected} />
+          <InfoBox>
+            <Label>
+              <Dot color="#EF3054" /> <Paragraph>Ökat mer än 0% </Paragraph>
+            </Label>
+            <Label>
+              <Dot color="#EF5E30" /> <Paragraph> Minskat med 0-2%</Paragraph>
+            </Label>
+            <Label>
+              <Dot color="#EF7F17" />
+              <Paragraph>Minskat med 2-4%</Paragraph>
+            </Label>
+            <Label>
+              <Dot color="#EF9917" /> <Paragraph>Minskat med 4-7%</Paragraph>
+            </Label>
+            <Label>
+              <Dot color="#EFBF17" /> <Paragraph>Minskat med 7-10%</Paragraph>
+            </Label>
+            <Label>
+              <Dot color="#91BFC8" /> <Paragraph>Minskat mer än 10% </Paragraph>
+            </Label>
+          </InfoBox>
+        </Container>
+      </PageWrapper>
     </>
   )
 }
