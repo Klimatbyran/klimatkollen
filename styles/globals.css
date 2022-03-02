@@ -4,10 +4,18 @@
   margin: 0;
 }
 
+body,
+html {
+  width: 100%;
+}
+
 body {
   background: #2d2d2d;
   color: #fff;
   font-family: Helvetica Neue;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 300;
 }
 
 html { 
@@ -17,38 +25,4 @@ html {
 a {
   color: inherit;
   text-decoration: underline;
-}
-
-.dataset {
-  fill-opacity: 0.2;
-  filter: url(#dropshadow);
-  stroke-width: 2;
-  transition: all 0.6s ease-in;
-}
-
-/* path {
-  transition: all 0.6s ease-in-out;
-} */
-
-#dataset-1 {
-  fill: #fb6447;
-  stroke: #fb6447;
-}
-
-#dataset-3 {
-  fill: #fdba9f;
-  stroke: #fdba9f;
-}
-
-#dataset-2 {
-  fill: #ef3054;
-  stroke: #ef3054;
-}
-#dataset-4 {
-  fill: #50ff39;
-  stroke: #78ff39;
-}
-
-.dataset.show {
-  opacity: 1;
 }
