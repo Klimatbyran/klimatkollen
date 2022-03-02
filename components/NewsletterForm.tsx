@@ -36,7 +36,6 @@ const StyledInput = styled.input`
   @media only screen and (${devices.tablet}) {
     min-width: 400px;
   }
-
 `
 
 const Container = styled.div`
@@ -95,22 +94,10 @@ const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
       setError('Vänligen fyll i en giltig e-postadress.')
       return null
     }
-    
-    const isFormValidated = onValidated({ EMAIL: email })
-    
-    return email && email.indexOf('@') > -1 && isFormValidated    
-  }
 
-  const getMessage = (message: string) => {
-    if (!message) {
-      return null
-    }
-    const result = message?.split('-') ?? null
-    if ('0' !== result?.[0]?.trim()) {
-      return decode(message)
-    }
-    const formattedMessage = result?.[1]?.trim() ?? null
-    return formattedMessage ? decode(formattedMessage) : null
+    const isFormValidated = onValidated({ EMAIL: email })
+
+    return email && email.indexOf('@') > -1 && isFormValidated
   }
 
   return (
@@ -132,12 +119,6 @@ const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
           <Button text={'Skicka intresseanmälan'} />
         )}
       </StyledForm>
-      {status === 'sending'}
-      {status === 'error' || error ? (
-        <div
-          dangerouslySetInnerHTML={{ __html: error ?? getMessage(message as string) }}
-        />
-      ) : null}
     </Container>
   )
 }
