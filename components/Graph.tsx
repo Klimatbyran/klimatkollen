@@ -7,18 +7,13 @@ import {
   PointElement,
   LineElement,
 } from 'chart.js'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import { EmissionPerYear } from '../utils/types'
 
 import styled from 'styled-components'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
-
-// useEffect(() => {
-//   const chart = chartRef.current
-//   if (chart) {
-//     const dataset = chart.data.datasets[3]
 
 //     userGraph
 //       .filter((f) => f !== null)
@@ -27,15 +22,6 @@ Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 //         curr.emitted = prev.emitted + curr.co2 * curr.acc
 //         return curr
 //       })
-//     dataset.data = historical.map((f) => f.null)
-//     // console.log('before', chart.data.datasets[3].data.length)
-//     // chart.data.datasets[3].data.splice(historical.length)
-//     // console.log('after', chart.data.datasets[3].data.length)
-//     // chart.data.datasets[3].data = userGraph.map((f) => (f ? f.co2 / f.acc : f))
-//     // console.log(chart.data.datasets[3].data)
-//     // chart.update()
-//   }
-// }, [userGraph])
 
 const Container = styled.div`
   display: flex;
@@ -77,10 +63,6 @@ function getSetup(emissions: EmissionPerYear[][]): {
   }
 }
 
-function getFillerValues(fromYear: number, toYear: number) {
-  return new Array(toYear - fromYear).map(() => null)
-}
-
 type MandatePeriod = {
   start: number
   end: number
@@ -109,12 +91,12 @@ const Graph = ({ step, historical, budget, pledged, mandatePeriodChanges }: Prop
   )
   const budgetDataset: Dataset = useMemo(
     () => budget.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
-    [historical, budget],
+    [budget],
   )
 
   const pledgeDataset: Dataset = useMemo(
     () => pledged.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
-    [historical, pledged],
+    [pledged],
   )
 
   const userGraph = useMemo(
@@ -142,7 +124,14 @@ const Graph = ({ step, historical, budget, pledged, mandatePeriodChanges }: Prop
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
-    if (adjustedUserGraphDataset.length > setup.labels.length) {
+    if (
+      Math.max(
+        adjustedUserGraphDataset.length,
+        pledgeDataset.length,
+        budgetDataset.length,
+        historicalDataset.length,
+      ) > setup.labels.length
+    ) {
       throw new Error('Dataset length larger than label length')
     }
   }
