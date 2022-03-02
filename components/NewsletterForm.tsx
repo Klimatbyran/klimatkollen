@@ -75,6 +75,17 @@ type Props = {
 const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
+  const [showThanks, setThanks] = useState(false)
+
+  useEffect(() => {
+    if (status === 'success' || status === 'error') {
+      setThanks(true)
+      setTimeout(() => {
+        setThanks(false)
+        setEmail('')
+      }, 3000)
+    }
+  }, [status])
 
   const handleFormSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -102,37 +113,31 @@ const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
     return formattedMessage ? decode(formattedMessage) : null
   }
 
-  useEffect(() => {
-    if (status === 'success') {
-      setTimeout(() => {
-        setEmail('')
-      }, 3000)
-    }
-  }, [status])
-
   return (
     <Container>
       <StyledForm onSubmit={handleFormSubmit}>
         <StyledInput
-          onChange={(event) => setEmail(event?.target?.value ?? '')}
+          onChange={(event) => setEmail(event.target.value)}
           type="email"
           placeholder="E-postadress"
           value={email}
           required
+          disabled={showThanks}
         />
-        {status === 'success' && email !== '' ?
+        {showThanks ? (
           <EmailValidation>
             <span>Tack för din intresseanmälan!</span>
           </EmailValidation>
-          : <Button text={'Skicka intresseanmälan'} />
-        } 
+        ) : (
+          <Button text={'Skicka intresseanmälan'} />
+        )}
       </StyledForm>
-        {status === 'sending'}
-        {status === 'error' || error ? (
-          <div
-            dangerouslySetInnerHTML={{ __html: error ?? getMessage(message as string) }}
-          />
-        ) : null}
+      {status === 'sending'}
+      {status === 'error' || error ? (
+        <div
+          dangerouslySetInnerHTML={{ __html: error ?? getMessage(message as string) }}
+        />
+      ) : null}
     </Container>
   )
 }
