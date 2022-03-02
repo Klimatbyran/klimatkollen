@@ -207,6 +207,7 @@ const Municipality = (props: Props) => {
         <ScoreCard
           population={municipality.Population}
           budget={municipality.Budget.CO2Equivalent}
+          municipality={municipality.Name}
           politicalRule={municipality.PoliticalRule}
         />
         {hasShareAPI() && (
