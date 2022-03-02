@@ -3,9 +3,11 @@ import { Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
 import IconGreen from '../public/icons/info-green.svg'
 import { useState } from 'react'
+import { devices } from '../utils/devices'
 
 const StyledDiv = styled.div`
-  background: ${({ theme }) => theme.dark};
+  background: ${({ theme }) => theme.black};
+
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 15px 15px;
@@ -13,6 +15,10 @@ const StyledDiv = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
+
+  @media only screen and (${devices.tablet}) {
+    background: ${(props) => props.theme.black};
+  }
 
   & div.row {
     display: flex;
@@ -48,10 +54,10 @@ const InfoSection = styled.div`
   border-radius: 4px;
   margin-bottom: 10px;
 
-    & a {
-      text-decoration: underline;
-      cursor: pointer;
-    }
+  & a {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `
 
 type Props = {
@@ -64,7 +70,6 @@ type Props = {
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
 const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) => {
-
   const [togglePopulation, setTogglePopulation] = useState(false)
   const [togglePoliticalRule, setTogglePoliticalRule] = useState(false)
   const [toggleBudget, setToggleBudget] = useState(false)
@@ -112,7 +117,14 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
         {togglePoliticalRule ? (
           <InfoSection>
             <Paragraph>
-              Uppgift hämtad från <a href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html" target="_blank" rel="noreferrer">Sveriges Kommuner och Regioner</a>.
+              Uppgift hämtad från{' '}
+              <a
+                href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
+                target="_blank"
+                rel="noreferrer">
+                Sveriges Kommuner och Regioner
+              </a>
+              .
             </Paragraph>
           </InfoSection>
         ) : null}
@@ -137,7 +149,15 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
             {toggleBudget ? (
               <InfoSection>
                 <Paragraph>
-                  Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om beräkningen <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">här</a>.
+                  Mängden koldioxid kvar att släppa ut för att klara Parisavtalets
+                  1,5-gradersmål, läs mer om beräkningen{' '}
+                  <a
+                    href="https://www.climateview.global/"
+                    target="_blank"
+                    rel="noreferrer">
+                    här
+                  </a>
+                  .
                 </Paragraph>
               </InfoSection>
             ) : null}
@@ -161,7 +181,8 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
         {toggleEmissionsPerCapita ? (
           <InfoSection>
             <Paragraph>
-              Sammanslagning av klimatutsläpp i {municipality} per invånare och konsumtionsbaserade utsläpp i Sverige per invånare.
+              Sammanslagning av klimatutsläpp i {municipality} per invånare och
+              konsumtionsbaserade utsläpp i Sverige per invånare.
             </Paragraph>
           </InfoSection>
         ) : null}
