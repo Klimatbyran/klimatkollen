@@ -4,7 +4,6 @@ import Graph from './Graph'
 import { H1 } from './Typography'
 import ArrowRight from '../public/icons/arrow-right.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
-import { devices } from '../utils/devices'
 import Button from './Button'
 import ScoreCard from './ScoreCard'
 import Back from './Back'
@@ -12,7 +11,6 @@ import { hasShareAPI } from '../utils/navigator'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
 
-import { pledges as pledgedEmissions } from '../data/stockholm'
 import { useState } from 'react'
 
 const GraphWrapper = styled.div`
@@ -177,6 +175,7 @@ type Props = {
   coatOfArmsImage: string | null
   historicalEmissions: EmissionPerYear[]
   budgetedEmissions: EmissionPerYear[]
+  trendingEmissions: EmissionPerYear[]
 }
 
 const Municipality = (props: Props) => {
@@ -188,6 +187,7 @@ const Municipality = (props: Props) => {
     coatOfArmsImage,
     historicalEmissions,
     budgetedEmissions,
+    trendingEmissions,
   } = props
 
   const [mandateChanges, setMandateChanges] = useState(
@@ -262,7 +262,7 @@ const Municipality = (props: Props) => {
           <Graph
             step={step}
             historical={historicalEmissions}
-            pledged={pledgedEmissions}
+            trend={trendingEmissions}
             budget={budgetedEmissions}
             mandatePeriodChanges={mandateChanges}
           />
