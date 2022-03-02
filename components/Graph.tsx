@@ -73,16 +73,16 @@ type Props = {
   step: number
   historical: EmissionPerYear[]
   budget: EmissionPerYear[]
-  pledged: EmissionPerYear[]
+  trend: EmissionPerYear[]
   mandatePeriodChanges: MandatePeriod[]
 }
 
 type Dataset = Array<{ x: number; y: number }>
 
-const Graph = ({ step, historical, budget, pledged, mandatePeriodChanges }: Props) => {
+const Graph = ({ step, historical, budget, trend, mandatePeriodChanges }: Props) => {
   const setup = useMemo(
-    () => getSetup([historical, budget, pledged]),
-    [historical, budget, pledged],
+    () => getSetup([historical, budget, trend]),
+    [historical, budget, trend],
   )
 
   const historicalDataset: Dataset = useMemo(
@@ -95,16 +95,16 @@ const Graph = ({ step, historical, budget, pledged, mandatePeriodChanges }: Prop
   )
 
   const pledgeDataset: Dataset = useMemo(
-    () => pledged.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
-    [pledged],
+    () => trend.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
+    [trend],
   )
 
   const userGraph = useMemo(
     () =>
-      pledged
+      trend
         .filter((pledge) => pledge.Year >= setup.adjustableYearStart)
         .map((f) => ({ Year: f.Year, CO2Equivalent: f.CO2Equivalent })),
-    [pledged, setup],
+    [trend, setup],
   )
 
   const adjustedUserGraphDataset: Dataset = useMemo(() => {
