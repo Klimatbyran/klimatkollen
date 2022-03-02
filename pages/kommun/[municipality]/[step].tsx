@@ -81,9 +81,23 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     municipalities.find((m) => {
       return m.Name == municipality.Name
     })?.HistoricalEmission.AverageEmissionChangeRank || null
-  
+
   municipality.PoliticalRule = new PolitycalRuleService().getPoliticalRule(id)
-  
+
+  const maxHistorical = Math.max(
+    ...municipality.HistoricalEmission.EmissionPerYear.map((e) => e.Year),
+  )
+  const minBudget = Math.min(...municipality.Budget.BudgetPerYear.map((f) => f.Year))
+
+  // Fill the gap between budgeted and historical emissions by putting
+  // budget data into historical emissions
+  const needed = minBudget - maxHistorical
+  if (needed > 0) {
+    municipality.Budget.BudgetPerYear.slice(0, needed).forEach((emission) => {
+      municipality.HistoricalEmission.EmissionPerYear.push(emission)
+    })
+  }
+
   return {
     props: {
       municipality,
