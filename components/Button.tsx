@@ -11,8 +11,8 @@ const Button = styled.button<{ icon: boolean }>`
   display: flex;
   align-items: center;
   justify-content: ${({ icon }) => (icon ? 'start' : 'center')};
-  padding-left: ${({ icon }) => (icon ? '20px' : '0%')};
-  padding-right: ${({ icon }) => (icon ? '20px' : '0%')};
+  padding-left: ${({ icon }) => (icon ? '20px' : '20px')};
+  padding-right: ${({ icon }) => (icon ? '20px' : '20px')};
   cursor: pointer;
   fill: ${({ theme }) => theme.black};
 
@@ -39,14 +39,14 @@ const Button = styled.button<{ icon: boolean }>`
 `
 
 type ShareButtonProps = {
-  handleClick: () => void
+  handleClick?: (e: any) => void
   text: string
   shareIcon?: boolean
 }
 
 const ShareButton = ({ handleClick, text, shareIcon = false }: ShareButtonProps) => {
   return (
-    <Button type="button" onClick={handleClick} icon={shareIcon}>
+    <Button type="submit" onClick={handleClick} icon={shareIcon} >
       {shareIcon && <Icon />}
       <span>{text}</span>
     </Button>

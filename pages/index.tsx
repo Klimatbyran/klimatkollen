@@ -8,6 +8,7 @@ import MetaTags from '../components/MetaTags'
 import { H1, ParagraphBold, Paragraph } from '../components/Typography'
 import { EmissionService } from '../utils/emissionService'
 import { Municipality } from '../utils/types'
+import Footer from '../components/Footer'
 
 type PropsType = {
   municipalities: Array<Municipality>

@@ -10,9 +10,13 @@ body {
   font-family: Helvetica Neue;
 }
 
+html { 
+  scroll-behavior: smooth; 
+} 
+
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .dataset {
