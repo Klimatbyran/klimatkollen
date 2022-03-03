@@ -186,7 +186,7 @@ export class EmissionService {
       
       const parseTrend = (responseData: any): Trend => {
         const trend = {
-          TotalCO2Budget: responseData.emissionBudgets[0].totalRemainingCO2Budget,
+          TotalRemainingCO2Budget: responseData.emissionBudgets[0].totalRemainingCO2Budget,
           RemainingCO2: responseData.emissionBudgets[0].emissionReductions.trendEmissionReduction.remainingBudget,
           TrendPerYear: responseData.emissionBudgets[0].emissionReductions.trendEmissionReduction.yearlyEmissionReduction.map(
             (emission: any) => {
@@ -224,7 +224,7 @@ export class EmissionService {
                 result[1].status == 'fulfilled'
                   ? parseTrend(result[1].value.data)
                   :  {
-                    TotalCO2Budget: 0,
+                    TotalRemainingCO2Budget: 0,
                     RemainingCO2: 0,
                     TrendPerYear: [],
                   }

@@ -34,7 +34,7 @@ export type Budget = {
 }
 
 export type Trend = {
-  TotalCO2Budget: number,
+  TotalRemainingCO2Budget: number,
   TrendPerYear: Array<EmissionPerYear>,
   RemainingCO2: number
 }
