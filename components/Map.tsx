@@ -26,7 +26,7 @@ const DeckGLWrapper = styled.div`
   }
 `
 
-const getColor = (emission: number, name: string): RGBAColor => {
+const getColor = (emission: number): RGBAColor => {
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
   const darkOrange: RGBAColor = [239, 127, 23]
@@ -121,7 +121,7 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0],
     getFillColor: (d) => {
-      return getColor((d as Emissions).emissions, (d as Emissions).name)
+      return getColor((d as Emissions).emissions)
     },
     pickable: true,
   })
