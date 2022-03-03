@@ -26,6 +26,7 @@ export default function MetaTags({ title, description, imageUrl, url }: Props) {
         <>
           <meta property="og:url" content={url} />
           <meta property="twitter:url" content={url} />
+          <link rel="canonical" href={url} />
         </>
       )}
       {imageUrl && (
