@@ -46,7 +46,7 @@ const InfoBox = styled.div`
 const Label = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   &:first-child div {
     border-radius: 10% 10% 0 0;
   }
