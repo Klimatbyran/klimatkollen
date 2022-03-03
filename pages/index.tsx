@@ -59,6 +59,10 @@ const FlexCenter = styled.div`
   display: flex;
 `
 
+const StyledParagraph = styled(Paragraph)`
+  z-index: 1;
+`
+
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   const [selected, setSelected] = useState('Utforska kartan')
   const municipalitiesName = municipalities.map((item) => item.Name)
@@ -91,37 +95,37 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                 <Square color="#EF3054">
                   <ArrowIcon rotateUp={true} />
                 </Square>
-                <Paragraph>0% + </Paragraph>
+                <StyledParagraph>0% +</StyledParagraph>
               </Label>
               <Label>
                 <Square color="#EF5E30">
                   <ArrowIcon />
                 </Square>
-                <Paragraph>0-1%</Paragraph>
+                <StyledParagraph>0-1%</StyledParagraph>
               </Label>
               <Label>
                 <Square color="#EF7F17">
                   <ArrowIcon />
                 </Square>
-                <Paragraph>1-2%</Paragraph>
+                <StyledParagraph>1-2%</StyledParagraph>
               </Label>
               <Label>
                 <Square color="#EF9917">
                   <ArrowIcon />
                 </Square>
-                <Paragraph>2-3%</Paragraph>
+                <StyledParagraph>2-3%</StyledParagraph>
               </Label>
               <Label>
                 <Square color="#EFBF17">
                   <ArrowIcon />
                 </Square>
-                <Paragraph>3-10%</Paragraph>
+                <StyledParagraph>3-10%</StyledParagraph>
               </Label>
               <Label>
                 <Square color="#91BFC8">
                   <ArrowIcon />
                 </Square>
-                <Paragraph>15% +</Paragraph>
+                <StyledParagraph>15% +</StyledParagraph>
               </Label>
             </InfoBox>
           </Map>
