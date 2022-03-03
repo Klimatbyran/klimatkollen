@@ -3,6 +3,7 @@ import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
 import municipalityData from '../pages/data/kommuner.json'
 import { devices } from '../utils/devices'
 import { WebMercatorViewport } from '@deck.gl/core'
+import { ReactNode } from 'react'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -84,9 +85,10 @@ const MAP_RANGE = {
 type Props = {
   emissionsLevels: Array<{ name: string; emissions: number }>
   setSelected: (value: string) => void
+  children: ReactNode
 }
 
-const Map = ({ emissionsLevels, setSelected }: Props) => {
+const Map = ({ emissionsLevels, setSelected, children }: Props) => {
   const municipalityLines = municipalityData.features.map(({ geometry, properties }) => {
     const name = replaceLetters(properties.name)
     const emissions = emissionsLevels.find((e) => e.name === name)?.emissions
@@ -147,6 +149,7 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
           return viewState
         }}
       />
+      {children}
     </DeckGLWrapper>
   )
 }

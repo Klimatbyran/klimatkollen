@@ -8,6 +8,7 @@ import { H1, ParagraphBold, Paragraph } from '../components/Typography'
 import { EmissionService } from '../utils/emissionService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
+import Icon from '../public/icons/arrow.svg'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -19,27 +20,39 @@ const Container = styled.div`
   gap 3rem;
 `
 
-const Dot = styled.div<{ color: string }>`
+const Square = styled.div<{ color: string }>`
   background-color: ${(props) => props.color};
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: relative;
+`
+
+const ArrowIcon = styled(Icon)<{ rotateUp?: boolean }>`
+  position: absolute;
+  z-index: 1;
+  margin: auto;
+  left: 0;
+  ${(props) => props.rotateUp && 'transform: rotate(-90deg)'};
+  right: 0;
+  top: 0;
+  bottom: 0;
 `
 
 const InfoBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 1rem;
-  height: 100px;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
+  padding-left: 0.87rem;
+  padding-top: 1.2rem;
 `
 
 const Label = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  &:first-child div {
+    border-radius: 10% 10% 0 0;
+  }
+  &:last-child div {
+    border-radius: 0 0 10% 10%;
+  }
 `
 const FlexCenter = styled.div`
   width: 100%;
@@ -72,28 +85,46 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
               <p>För att nå målet behöver klimatutsläppen minska med X% per år,</p>
             </div>
           </FlexCenter>
-          <Map emissionsLevels={emissionsLevels} setSelected={setSelected} />
-          <InfoBox>
-            <Label>
-              <Dot color="#EF3054" /> <Paragraph>0% + </Paragraph>
-            </Label>
-            <Label>
-              <Dot color="#EF5E30" /> <Paragraph>0-1%</Paragraph>
-            </Label>
-            <Label>
-              <Dot color="#EF7F17" />
-              <Paragraph>1-2%</Paragraph>
-            </Label>
-            <Label>
-              <Dot color="#EF9917" /> <Paragraph>2-3%</Paragraph>
-            </Label>
-            <Label>
-              <Dot color="#EFBF17" /> <Paragraph>3-10%</Paragraph>
-            </Label>
-            <Label>
-              <Dot color="#91BFC8" /> <Paragraph>15% +</Paragraph>
-            </Label>
-          </InfoBox>
+          <Map emissionsLevels={emissionsLevels} setSelected={setSelected}>
+            <InfoBox>
+              <Label>
+                <Square color="#EF3054">
+                  <ArrowIcon rotateUp={true} />
+                </Square>
+                <Paragraph>0% + </Paragraph>
+              </Label>
+              <Label>
+                <Square color="#EF5E30">
+                  <ArrowIcon />
+                </Square>
+                <Paragraph>0-1%</Paragraph>
+              </Label>
+              <Label>
+                <Square color="#EF7F17">
+                  <ArrowIcon />
+                </Square>
+                <Paragraph>1-2%</Paragraph>
+              </Label>
+              <Label>
+                <Square color="#EF9917">
+                  <ArrowIcon />
+                </Square>
+                <Paragraph>2-3%</Paragraph>
+              </Label>
+              <Label>
+                <Square color="#EFBF17">
+                  <ArrowIcon />
+                </Square>
+                <Paragraph>3-10%</Paragraph>
+              </Label>
+              <Label>
+                <Square color="#91BFC8">
+                  <ArrowIcon />
+                </Square>
+                <Paragraph>15% +</Paragraph>
+              </Label>
+            </InfoBox>
+          </Map>
         </Container>
       </PageWrapper>
     </>
