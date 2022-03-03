@@ -249,8 +249,6 @@ const Municipality = (props: Props) => {
 
   const handleClick = async () => {
     async function share(name: string) {
-      console.log(shareUrl)
-
       if (navigator.share) {
         try {
           await navigator.share({
