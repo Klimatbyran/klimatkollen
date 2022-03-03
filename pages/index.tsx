@@ -78,20 +78,20 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
               <Dot color="#EF3054" /> <Paragraph>Ökat mer än 0% </Paragraph>
             </Label>
             <Label>
-              <Dot color="#EF5E30" /> <Paragraph> Minskat med 0-2%</Paragraph>
+              <Dot color="#EF5E30" /> <Paragraph> Minskat med 0-1%</Paragraph>
             </Label>
             <Label>
               <Dot color="#EF7F17" />
-              <Paragraph>Minskat med 2-4%</Paragraph>
+              <Paragraph>Minskat med 1-2%</Paragraph>
             </Label>
             <Label>
-              <Dot color="#EF9917" /> <Paragraph>Minskat med 4-7%</Paragraph>
+              <Dot color="#EF9917" /> <Paragraph>Minskat med 2-3%</Paragraph>
             </Label>
             <Label>
-              <Dot color="#EFBF17" /> <Paragraph>Minskat med 7-10%</Paragraph>
+              <Dot color="#EFBF17" /> <Paragraph>Minskat med 3-10%</Paragraph>
             </Label>
             <Label>
-              <Dot color="#91BFC8" /> <Paragraph>Minskat mer än 10% </Paragraph>
+              <Dot color="#91BFC8" /> <Paragraph>Minskat mer än 15% </Paragraph>
             </Label>
           </InfoBox>
         </Container>
