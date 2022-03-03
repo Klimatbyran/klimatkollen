@@ -63,7 +63,10 @@ interface Params extends ParsedUrlQuery {
   id: string
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
+
+  res.setHeader('Cache-Control', 'public, maxage=3600, s-maxage=4000')
+
   const id = (params as Params).municipality as string
 
   const emissionService = new EmissionService()
