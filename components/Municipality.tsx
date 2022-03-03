@@ -13,6 +13,7 @@ import MetaTags from './MetaTags'
 
 import { useState } from 'react'
 import PageWrapper from './PageWrapper'
+import { useRouter } from 'next/router'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -148,6 +149,15 @@ const MANDATE_PERIODS = [
   [2046, 2050],
 ]
 
+const MANDATE_MAX_CHANGE = 2
+const MANDATE_MIN_CHANGE = 1
+
+const DEFAULT_MANDATE_VALUES = MANDATE_PERIODS.map((f) => ({
+  start: f[0],
+  end: f[1],
+  change: 1.0,
+}))
+
 type ShareTextFn = (name: string) => string
 const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
   0: {
@@ -195,13 +205,32 @@ const Municipality = (props: Props) => {
     budgetedEmissions,
     trendingEmissions,
   } = props
+  const router = useRouter()
+  const q = router.query['g[]']
 
-  const [mandateChanges, setMandateChanges] = useState(
-    MANDATE_PERIODS.map((f) => ({
-      start: f[0],
-      end: f[1],
-      change: 1.0,
-    })),
+  const [mandateChanges, setMandateChanges] = useState<typeof DEFAULT_MANDATE_VALUES>(
+    () => {
+      if (typeof q === 'undefined') return DEFAULT_MANDATE_VALUES
+
+      const g = (Array.isArray(q) ? q : [q])
+        .map((v) => parseFloat(v))
+        .map((f) => Math.max(MANDATE_MIN_CHANGE, Math.min(MANDATE_MAX_CHANGE, f)))
+
+      if (g.length !== MANDATE_PERIODS.length) {
+        console.debug('Incorrect number of g parameters')
+        return DEFAULT_MANDATE_VALUES
+      }
+
+      if (g.some((v) => Number.isNaN(v))) {
+        console.debug('Non-number values in g parameter')
+        return DEFAULT_MANDATE_VALUES
+      }
+
+      return DEFAULT_MANDATE_VALUES.map((v, idx) => ({
+        ...v,
+        change: g[idx],
+      }))
+    },
   )
 
   const stepConfig = STEPS[step]
