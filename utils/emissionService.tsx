@@ -33,7 +33,7 @@ export class EmissionService {
         },
       )
 
-    return emissionsPercentages / years
+    return Math.round((emissionsPercentages / years) * 100) / 100
   }
 
   public async getMunicipalities(): Promise<Array<Municipality>> {
