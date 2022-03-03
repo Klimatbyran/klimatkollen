@@ -239,15 +239,24 @@ const Municipality = (props: Props) => {
   }
 
   const { text, shareText } = stepConfig
+  // let shareUrl = window.location.toString()
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+  let shareUrl = `${baseUrl}${router.asPath}`
+  if (step === 4) {
+    const qry = mandateChanges.map((c) => `g[]=${c.change}`).join('&')
+    shareUrl = `${shareUrl}?${qry}`
+  }
 
   const handleClick = async () => {
     async function share(name: string) {
+      console.log(shareUrl)
+
       if (navigator.share) {
         try {
           await navigator.share({
             title: `Klimatkollen ${name}`,
             text: shareText(name),
-            url: window.location.toString(),
+            url: shareUrl,
           })
         } catch {
           // Avoid unhandled promise rejection
@@ -279,6 +288,7 @@ const Municipality = (props: Props) => {
       <MetaTags
         title={`Klimatkollen - ${municipality.Name}`}
         description={shareText(municipality.Name)}
+        url={shareUrl}
       />
       <PageWrapper backgroundColor="black">
         <Back />
