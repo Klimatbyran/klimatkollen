@@ -75,23 +75,23 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
           <Map emissionsLevels={emissionsLevels} setSelected={setSelected} />
           <InfoBox>
             <Label>
-              <Dot color="#EF3054" /> <Paragraph>Ökat mer än 0% </Paragraph>
+              <Dot color="#EF3054" /> <Paragraph>0% + </Paragraph>
             </Label>
             <Label>
-              <Dot color="#EF5E30" /> <Paragraph> Minskat med 0-1%</Paragraph>
+              <Dot color="#EF5E30" /> <Paragraph>0-1%</Paragraph>
             </Label>
             <Label>
               <Dot color="#EF7F17" />
-              <Paragraph>Minskat med 1-2%</Paragraph>
+              <Paragraph>1-2%</Paragraph>
             </Label>
             <Label>
-              <Dot color="#EF9917" /> <Paragraph>Minskat med 2-3%</Paragraph>
+              <Dot color="#EF9917" /> <Paragraph>2-3%</Paragraph>
             </Label>
             <Label>
-              <Dot color="#EFBF17" /> <Paragraph>Minskat med 3-10%</Paragraph>
+              <Dot color="#EFBF17" /> <Paragraph>3-10%</Paragraph>
             </Label>
             <Label>
-              <Dot color="#91BFC8" /> <Paragraph>Minskat mer än 15% </Paragraph>
+              <Dot color="#91BFC8" /> <Paragraph>15% +</Paragraph>
             </Label>
           </InfoBox>
         </Container>
