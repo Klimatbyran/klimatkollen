@@ -12,7 +12,7 @@ export type Municipality = {
   Budget: Budget
   HistoricalEmission: Emission
   PoliticalRule: Array<string> | null
-  EmissionTrend: Array<EmissionPerYear> | null
+  EmissionTrend: Trend
 }
 
 export type EmissionPerYear = {
@@ -31,6 +31,12 @@ export type Budget = {
   CO2Equivalent: number
   PercentageOfNationalBudget: number
   BudgetPerYear: Array<EmissionPerYear>
+}
+
+export type Trend = {
+  TotalCO2Budget: number,
+  TrendPerYear: Array<EmissionPerYear>,
+  RemainingCO2: number
 }
 
 export type EmissionSector = {

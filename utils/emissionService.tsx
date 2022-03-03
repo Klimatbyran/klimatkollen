@@ -1,4 +1,4 @@
-import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission } from './types'
+import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend } from './types'
 import axios from 'axios'
 
 const CLIMATE_VIEW_EMISSION_BASE_URL =
@@ -184,16 +184,19 @@ export class EmissionService {
         return budget
       }
       
-      const parseTrend = (responseData: any): Array<EmissionPerYear> => {
-        const trend =
-            responseData.emissionBudgets[0].emissionReductions.trendEmissionReduction.yearlyEmissionReduction.map(
-              (emission: any) => {
-                return {
-                  Year: emission.year,
-                  CO2Equivalent: emission.emission,
-                }
-              },
-            )
+      const parseTrend = (responseData: any): Trend => {
+        const trend = {
+          TotalCO2Budget: responseData.emissionBudgets[0].totalRemainingCO2Budget,
+          RemainingCO2: responseData.emissionBudgets[0].emissionReductions.trendEmissionReduction.remainingBudget,
+          TrendPerYear: responseData.emissionBudgets[0].emissionReductions.trendEmissionReduction.yearlyEmissionReduction.map(
+            (emission: any) => {
+              return {
+                Year: emission.year,
+                CO2Equivalent: emission.emission,
+              }
+            },
+          )
+        } as Trend
 
         return trend
       }
@@ -221,7 +224,11 @@ export class EmissionService {
               EmissionTrend:
                 result[1].status == 'fulfilled'
                   ? parseTrend(result[1].value.data)
-                  : null
+                  :  {
+                    TotalCO2Budget: 0,
+                    RemainingCO2: 0,
+                    TrendPerYear: [],
+                  }
             } as Municipality
             
             resolve(municipality)
