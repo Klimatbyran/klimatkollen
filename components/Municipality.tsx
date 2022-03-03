@@ -11,7 +11,7 @@ import { hasShareAPI } from '../utils/navigator'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import PageWrapper from './PageWrapper'
 import { useRouter } from 'next/router'
 
@@ -139,24 +139,16 @@ const Bottom = styled.div`
   gap: 3rem;
 `
 
-const MANDATE_PERIODS = [
-  [2022, 2026],
-  [2026, 2030],
-  [2030, 2034],
-  [2034, 2038],
-  [2038, 2042],
-  [2042, 2046],
-  [2046, 2050],
-]
+function makeMandatePeriods(startYear: number, endYear: number) {
+  const mandates = []
+  for (let i = startYear; i <= endYear; i += 4) {
+    mandates.push([i, i + 4])
+  }
+  return mandates
+}
 
 const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
-
-const DEFAULT_MANDATE_VALUES = MANDATE_PERIODS.map((f) => ({
-  start: f[0],
-  end: f[1],
-  change: 1.0,
-}))
 
 type ShareTextFn = (name: string) => string
 const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
@@ -192,6 +184,7 @@ type Props = {
   historicalEmissions: EmissionPerYear[]
   budgetedEmissions: EmissionPerYear[]
   trendingEmissions: EmissionPerYear[]
+  totalRemainingCO2: number
 }
 
 const Municipality = (props: Props) => {
@@ -204,29 +197,45 @@ const Municipality = (props: Props) => {
     historicalEmissions,
     budgetedEmissions,
     trendingEmissions,
+    totalRemainingCO2,
   } = props
   const router = useRouter()
   const q = router.query['g[]']
 
-  const [mandateChanges, setMandateChanges] = useState<typeof DEFAULT_MANDATE_VALUES>(
+  const mandatePeriods = useMemo(
+    () =>
+      makeMandatePeriods(
+        new Date().getFullYear(),
+        budgetedEmissions.reduce((acc, next) => Math.max(acc, next.Year), 2050),
+      ),
+    [budgetedEmissions],
+  )
+
+  const defaultMandateValues = useMemo(
+    () => mandatePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
+    [mandatePeriods],
+  )
+
+  // Load mandate change values from ?g[] parameter in URL
+  const [mandateChanges, setMandateChanges] = useState<typeof defaultMandateValues>(
     () => {
-      if (typeof q === 'undefined') return DEFAULT_MANDATE_VALUES
+      if (typeof q === 'undefined') return defaultMandateValues
 
       const g = (Array.isArray(q) ? q : [q])
         .map((v) => parseFloat(v))
         .map((f) => Math.max(MANDATE_MIN_CHANGE, Math.min(MANDATE_MAX_CHANGE, f)))
 
-      if (g.length !== MANDATE_PERIODS.length) {
+      if (g.length !== mandatePeriods.length) {
         console.debug('Incorrect number of g parameters')
-        return DEFAULT_MANDATE_VALUES
+        return defaultMandateValues
       }
 
       if (g.some((v) => Number.isNaN(v))) {
         console.debug('Non-number values in g parameter')
-        return DEFAULT_MANDATE_VALUES
+        return defaultMandateValues
       }
 
-      return DEFAULT_MANDATE_VALUES.map((v, idx) => ({
+      return defaultMandateValues.map((v, idx) => ({
         ...v,
         change: g[idx],
       }))
@@ -309,6 +318,7 @@ const Municipality = (props: Props) => {
               trend={trendingEmissions}
               budget={budgetedEmissions}
               mandatePeriodChanges={mandateChanges}
+              totalRemainingCO2={totalRemainingCO2}
             />
           </GraphWrapper>
           <Flex>

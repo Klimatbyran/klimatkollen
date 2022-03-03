@@ -55,6 +55,7 @@ export default function Step({ id, municipality }: Props) {
       historicalEmissions={municipality.HistoricalEmission.EmissionPerYear}
       budgetedEmissions={municipality.Budget.BudgetPerYear}
       trendingEmissions={municipality.EmissionTrend.TrendPerYear || []}
+      totalRemainingCO2={municipality.EmissionTrend.TotalRemainingCO2Budget}
     />
   )
 }
