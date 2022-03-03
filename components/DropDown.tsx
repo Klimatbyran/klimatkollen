@@ -2,12 +2,14 @@ import { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import ArrowDown from '../public/icons/arrow-down.svg'
-import Button from './Button'
+import ArrowRightWhite from '../public/icons/arrow-right-white.svg'
+import ArrowRightGreen from '../public/icons/arrow-right-green.svg'
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
   width: 280px;
 `
 
@@ -19,7 +21,7 @@ const SearchDropDown = styled.div`
 const Flex = styled.div`
   display: flex;
   align-items: center;
-  justify-contet: center;
+  justify-content: center;
 `
 
 const Input = styled.input`
@@ -47,6 +49,14 @@ const Btn = styled.button`
   right: 10px;
   position: absolute;
   border: none;
+`
+
+const RoundButton = styled.button`
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border: none;
+  background: none;
 `
 
 const MunicipalitiesWrapper = styled.ul`
@@ -147,7 +157,9 @@ const DropDown = ({ municipalitiesName }: Props) => {
           </MunicipalitiesWrapper>
         )}
       </SearchDropDown>
-      <Button handleClick={seeMuniciplity} text="Granska nu" />
+      <RoundButton type="submit" onClick={seeMuniciplity}>
+        {selectedMuniciplity ? <ArrowRightGreen /> : <ArrowRightWhite />}
+      </RoundButton>
     </Container>
   )
 }

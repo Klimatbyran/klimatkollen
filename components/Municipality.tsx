@@ -1,25 +1,23 @@
-import Head from 'next/head'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import Graph from './Graph'
-import { H1 } from './Typography'
-import { klimatData, data } from '../data/stockholm'
-import ArrowRight from '../public/icons/arrow-right.svg'
+import { H1, H3 } from './Typography'
+import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
-import { devices } from '../utils/devices'
 import Button from './Button'
 import ScoreCard from './ScoreCard'
 import Back from './Back'
 import { hasShareAPI } from '../utils/navigator'
-import { Municipality as TMunicipality } from '../utils/types'
+import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
+
+import { useState } from 'react'
+import PageWrapper from './PageWrapper'
 
 const GraphWrapper = styled.div`
   display: flex;
   gap: 1rem;
   flex-direction: column;
-  @media only screen and (${devices.tablet}) {
-    width: 600px;
-  }
 `
 
 const Btn = styled.button`
@@ -48,8 +46,8 @@ const Title = styled.h3`
 `
 
 const Center = styled.div`
-width: 100%
-background-color: coral;
+  width: 100%
+  background-color: coral;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,11 +67,10 @@ const InfoText = styled.p`
   color: black;
 `
 
-const Wrapper = styled.div`
+const Top = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-top: 1rem;
 `
 
 const CoatOfArmsImage = styled.img`
@@ -82,18 +79,74 @@ const CoatOfArmsImage = styled.img`
 
 const HeaderSection = styled.div`
   display: flex;
-  height: 150px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
 `
 
-type Co2Year = { year: number; co2: number }
+const RangeContainer = styled.div`
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+`
 
-const max = (array: Array<Co2Year>, key: 'year' | 'co2') => {
-  return Math.max(...array.map((d) => d[key]))
-}
+const Range = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const Slider = styled.input`
+  appearance: slider-vertical;
+  writing-mode: bt-lr; // ie and edge
+  width: 3rem;
+  margin-top: 0.25rem;
+`
+
+const Percentage = styled.label`
+  font-size: 0.75rem;
+  margin-top: 6px;
+`
+
+const MandatePeriod = styled.div`
+  font-size: 0.75rem;
+`
+
+const StartYear = styled.div`
+  border-bottom: 1px solid white;
+  font-weight: 300;
+`
+const EndYear = styled.div`
+  font-weight: 300;
+`
+
+const Help = styled.p`
+  margin-top: 2rem;
+  line-height: 1.5rem;
+`
+
+const FactH2 = styled(H3)`
+  // margin-bottom: 60px;
+`
+
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+`
+
+const MANDATE_PERIODS = [
+  [2022, 2026],
+  [2026, 2030],
+  [2030, 2034],
+  [2034, 2038],
+  [2038, 2042],
+  [2042, 2046],
+  [2046, 2050],
+]
 
 type ShareTextFn = (name: string) => string
 const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
@@ -114,6 +167,10 @@ const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
     text: 'Glappet',
     shareText: (name) => `Hur stort är glappet i ${name} från nu och framtiden?`,
   },
+  4: {
+    text: 'Din plan',
+    shareText: (name) => `Här är min plan för att ${name} ska hålla sin klimatbudget.`,
+  },
 }
 
 type Props = {
@@ -122,11 +179,30 @@ type Props = {
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
   coatOfArmsImage: string | null
+  historicalEmissions: EmissionPerYear[]
+  budgetedEmissions: EmissionPerYear[]
+  trendingEmissions: EmissionPerYear[]
 }
 
 const Municipality = (props: Props) => {
-  const { step, municipality, onNextStep, onPreviousStep, coatOfArmsImage } = props
-  const maxCo2 = max(data, 'co2')
+  const {
+    step,
+    municipality,
+    onNextStep,
+    onPreviousStep,
+    coatOfArmsImage,
+    historicalEmissions,
+    budgetedEmissions,
+    trendingEmissions,
+  } = props
+
+  const [mandateChanges, setMandateChanges] = useState(
+    MANDATE_PERIODS.map((f) => ({
+      start: f[0],
+      end: f[1],
+      change: 1.0,
+    })),
+  )
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
@@ -161,33 +237,43 @@ const Municipality = (props: Props) => {
     share(municipality.Name)
   }
 
+  const handleYearChange = (index: number, value: number) => {
+    setMandateChanges((m) => {
+      const copy = [...m]
+      copy[index].change = value
+      return copy
+    })
+  }
+
   return (
     <>
-      <Back />
       <MetaTags
         title={`Klimatkollen - ${municipality.Name}`}
         description={shareText(municipality.Name)}
       />
-      <Wrapper>
-        <HeaderSection>
-          <H1>{municipality.Name}</H1>
+      <PageWrapper backgroundColor="black">
+        <Back />
+        <Top>
+          <HeaderSection>
+            <H1>{municipality.Name}</H1>
 
-          {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
-        </HeaderSection>
-        <GraphWrapper>
-          <Title>Koldioxidutsläpp</Title>
-          <Center>
-            <Box>
-              <InfoText>{text}</InfoText>
-            </Box>
-          </Center>
-          <Graph
-            width={500}
-            height={250}
-            currentStep={step}
-            klimatData={klimatData}
-            maxCo2={maxCo2}
-          />
+            {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
+          </HeaderSection>
+          <GraphWrapper>
+            <Title>Koldioxidutsläpp</Title>
+            <Center>
+              <Box>
+                <InfoText>{text}</InfoText>
+              </Box>
+            </Center>
+            <Graph
+              step={step}
+              historical={historicalEmissions}
+              trend={trendingEmissions}
+              budget={budgetedEmissions}
+              mandatePeriodChanges={mandateChanges}
+            />
+          </GraphWrapper>
           <Flex>
             {onPreviousStep ? (
               <Btn onClick={onPreviousStep}>
@@ -203,16 +289,61 @@ const Municipality = (props: Props) => {
               </Btn>
             )}
           </Flex>
-        </GraphWrapper>
-        <ScoreCard
-          population={municipality.Population}
-          budget={municipality.Budget.CO2Equivalent}
-          politicalRule={municipality.PoliticalRule}
-        />
-        {hasShareAPI() && (
-          <Button handleClick={handleClick} text="Dela i dina sociala medier" shareIcon />
-        )}
-      </Wrapper>
+          {step > 3 && (
+            <>
+              <RangeContainer>
+                {mandateChanges.map((value, i) => (
+                  <Range
+                    key={i}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}>
+                    <MandatePeriod>
+                      <StartYear>{value.start}</StartYear>
+                      <EndYear>{value.end}</EndYear>
+                    </MandatePeriod>
+                    <Slider
+                      min={1}
+                      max={2}
+                      step={0.01}
+                      value={value.change}
+                      type="range"
+                      // @ts-ignore - this is for firefox :*(
+                      orient="vertical"
+                      onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
+                    />
+                    <Percentage>{100 - Math.round(100 / value.change)}%</Percentage>
+                  </Range>
+                ))}
+              </RangeContainer>
+              <Help>
+                Med hjälp av reglagen så styr du hur stora utsläppsminskningar man behöver
+                göra per mandatperiod för att nå Parisavtalet.
+              </Help>
+            </>
+          )}
+        </Top>
+      </PageWrapper>
+      <PageWrapper backgroundColor="dark">
+        <Bottom>
+          <FactH2>Fakta om klimatomställningen i {municipality.Name}</FactH2>
+          <ScoreCard
+            population={municipality.Population}
+            budget={municipality.Budget.CO2Equivalent}
+            municipality={municipality.Name}
+            politicalRule={municipality.PoliticalRule}
+          />
+          {hasShareAPI() && (
+            <Button
+              handleClick={handleClick}
+              text="Dela i dina sociala medier"
+              shareIcon
+            />
+          )}
+        </Bottom>
+      </PageWrapper>
     </>
   )
 }

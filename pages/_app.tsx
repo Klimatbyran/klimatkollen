@@ -5,8 +5,13 @@ import Theme from '../Theme'
 import Ellipse from '../components/Ellipse'
 import Layout from '../components/Layout'
 import { Provider } from 'jotai'
+import Footer from '../components/Footer'
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  const router = useRouter()
+
   return (
     <Provider>
       <Head>
@@ -18,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        {router.pathname.indexOf('/kommun') ? <Footer /> : null}
       </Theme>
     </Provider>
   )

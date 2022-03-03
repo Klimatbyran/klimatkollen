@@ -56,4 +56,5 @@ export const ParagraphBold = styled.p`
   font-size: 16px;
   line-height: 20px;
   margin: 0;
+  margin-bottom: 0.25rem;
 `

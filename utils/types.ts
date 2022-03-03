@@ -16,7 +16,7 @@ export type Municipality = {
 }
 
 export type EmissionPerYear = {
-  Year: string
+  Year: number
   CO2Equivalent: number
 }
 

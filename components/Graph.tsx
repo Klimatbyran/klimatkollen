@@ -1,169 +1,249 @@
-import { useEffect, useState } from 'react'
-import { animated, useSpring } from 'react-spring'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import {
+  Filler,
+  Chart,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+} from 'chart.js'
+import { useMemo } from 'react'
+import { Line } from 'react-chartjs-2'
+import { EmissionPerYear } from '../utils/types'
+
 import styled from 'styled-components'
-import { devices } from '../utils/devices'
-// import bezier from 'bezier-curve'
 
-const Label = styled.text`
-  fill: #fff;
-  text-shadow: 0 0 1px #000;
-  font-family: 'Helvetica Neue';
-  font-weight: 300;
-  font-size: 20px;
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 
-  @media only screen and (${devices.tablet}) {
-    font-size: 14px;
-  }
+//     userGraph
+//       .filter((f) => f !== null)
+//       .reduce((prev, curr) => {
+//         curr.acc = (prev.acc ?? 1) * curr.change
+//         curr.emitted = prev.emitted + curr.co2 * curr.acc
+//         return curr
+//       })
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
-// const bezierCurve = (normalizedData: [number, number]) => {
-//   const curve = []
-//   for (let t = 0; t < 1; t += 0.01) {
-//     const point = bezier(t, normalizedData)
-//     curve.push(point)
-//   }
-//   return curve
-// }
+const YAxisTitle = styled.label`
+  font-size: 0.94rem;
+  margin-bottom: 1rem;
+`
 
-type Data = {
-  pledgesPath?: string
-  parisPath?: string
-  historyPath?: string
+function getSetup(emissions: EmissionPerYear[][]): {
+  labels: number[]
+  adjustableYearStart: number
+  minYear: number
+  maxYear: number
+} {
+  let minYear = new Date().getFullYear()
+  let maxYear = new Date().getFullYear()
+
+  // const all = new Set<number>()
+  emissions.forEach((e) =>
+    e.forEach((t) => {
+      minYear = Math.min(minYear, t.Year)
+      maxYear = Math.max(maxYear, t.Year)
+    }),
+  )
+  // const years = Array.from(all).sort()
+  const labels: number[] = []
+  for (let i = minYear; i <= maxYear; i++) {
+    labels.push(i)
+  }
+
+  return {
+    labels,
+    adjustableYearStart: new Date().getFullYear(),
+    minYear,
+    maxYear,
+  }
+}
+
+type MandatePeriod = {
+  start: number
+  end: number
+  change: number
 }
 
 type Props = {
-  history?: string
-  pledges?: string
-  paris?: string
-  klimatData: Array<Data>
-  currentStep: number
-  width: number
-  height: number
-  maxCo2: number
+  step: number
+  historical: EmissionPerYear[]
+  budget: EmissionPerYear[]
+  trend: EmissionPerYear[]
+  mandatePeriodChanges: MandatePeriod[]
 }
 
-const YEARS = [1990, 2000, 2010, 2020, 2025]
+type Dataset = Array<{ x: number; y: number }>
 
-const Graph = ({ klimatData, currentStep, width, height, maxCo2 }: Props) => {
-  const [loaded, setLoaded] = useState(false)
-  const [minYear, setMinYear] = useState(1990)
-  const [maxYear, setMaxYear] = useState(2030)
-  const [labelSteps, setLabelSteps] = useState<number[]>([])
+const Graph = ({ step, historical, budget, trend, mandatePeriodChanges }: Props) => {
+  const setup = useMemo(
+    () => getSetup([historical, budget, trend]),
+    [historical, budget, trend],
+  )
 
-  const historyProps = useSpring({
-    d: klimatData[currentStep].historyPath,
-    config: {
-      duration: 100,
-    },
-  })
+  const historicalDataset: Dataset = useMemo(
+    () => historical.map((f) => ({ x: f.Year, y: f.CO2Equivalent })),
+    [historical],
+  )
+  const budgetDataset: Dataset = useMemo(
+    () => budget.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
+    [budget],
+  )
 
-  const parisProps = useSpring({
-    d: klimatData[currentStep].parisPath,
-    config: {
-      duration: 100,
-    },
-  })
-  const pledgesProps = useSpring({
-    d: klimatData[currentStep].pledgesPath,
-    config: {
-      duration: 100,
-    },
-  })
+  const pledgeDataset: Dataset = useMemo(
+    () => trend.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
+    [trend],
+  )
 
-  useEffect(() => {
-    setTimeout(() => setLoaded(true), 300)
+  const userGraph = useMemo(
+    () =>
+      trend
+        .filter((pledge) => pledge.Year >= setup.adjustableYearStart)
+        .map((f) => ({ Year: f.Year, CO2Equivalent: f.CO2Equivalent })),
+    [trend, setup],
+  )
 
-    const xCoords = YEARS.map((year) => {
-      return ((year - minYear) / (maxYear - minYear)) * width
+  const adjustedUserGraphDataset: Dataset = useMemo(() => {
+    const dataset: Dataset = []
+    let acc = 1
+
+    mandatePeriodChanges.forEach((mandate) => {
+      acc = acc * mandate.change
+      userGraph
+        .filter((f) => f.Year >= mandate.start && f.Year < mandate.end) // range exlusive end
+        .forEach((f) => {
+          dataset.push({ x: f.Year, y: f.CO2Equivalent / acc })
+        })
     })
-    setLabelSteps(xCoords)
-  }, [minYear, maxYear])
+    return dataset
+  }, [userGraph, mandatePeriodChanges])
 
-  const YearLabel = ({
-    width = 500,
-    height = 240,
-    year,
-    offset = 0,
-    x,
-  }: {
-    width?: number
-    height?: number
-    offset?: number
-    year: number
-    x: number
-  }) => {
-    const y = height + 30 - offset
-    return (
-      <Label y={y} x={x}>
-        {year}
-      </Label>
-    )
+  // some assertions
+  if (process.env.NODE_ENV !== 'production') {
+    if (
+      Math.max(
+        adjustedUserGraphDataset.length,
+        pledgeDataset.length,
+        budgetDataset.length,
+        historicalDataset.length,
+      ) > setup.labels.length
+    ) {
+      throw new Error('Dataset length larger than label length')
+    }
   }
 
-  useEffect(() => {
-    switch (currentStep) {
-      case 0:
-        setMinYear(1990)
-        setMaxYear(2020)
-        break
-      case 1:
-        setMinYear(1990)
-        setMaxYear(2030)
-        break
-      case 2:
-        setMinYear(1990)
-        setMaxYear(2030)
-        break
-      case 3:
-        setMinYear(2018)
-        break
-      default:
-        break
-    }
-  }, [currentStep])
-
   return (
-    <>
-      <div className={loaded ? 'loaded' : ''}>
-        <svg viewBox={`0 -10 ${width} ${height + 30}`}>
-          <defs>
-            <filter id="dropshadow">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="3"></feGaussianBlur>
-              <feOffset dx="0" dy="0" result="offsetblur"></feOffset>
-              <feComponentTransfer>
-                <feFuncA slope="0.2" type="linear"></feFuncA>
-              </feComponentTransfer>
-              <feMerge>
-                <feMergeNode></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-              </feMerge>
-            </filter>
-          </defs>
-          <g className="datasets">
-            <animated.path
-              className="dataset show"
-              d={historyProps.d}
-              id="dataset-1"></animated.path>
-            <animated.path
-              className="dataset show"
-              d={pledgesProps.d}
-              id="dataset-2"></animated.path>
-            <animated.path
-              className="dataset show"
-              d={parisProps.d}
-              id="dataset-3"></animated.path>
-          </g>
-          <Label x="0" y="15">
-            {Math.ceil(maxCo2 / 1000) * 1000} co2
-          </Label>
-          <YearLabel key="1" year={1990} x={labelSteps[0]} />
-          <YearLabel key="2" year={2000} x={labelSteps[1]} />
-          <YearLabel key="3" year={2010} x={labelSteps[2]} />
-          <YearLabel key="4" year={2020} x={labelSteps[3]} />
-          <YearLabel key="5" year={2025} x={labelSteps[4]} />
-        </svg>
-      </div>
-    </>
+    <Container>
+      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
+      <Line
+        datasetIdKey="id"
+        data={{
+          labels: setup.labels,
+          datasets: [
+            {
+              // @ts-ignore
+              id: 'historical',
+              fill: true,
+              data: historicalDataset,
+              borderWidth: 2,
+              borderColor: '#EF5E30',
+              backgroundColor: '#EF5E30',
+              pointRadius: 0,
+              tension: 0.15,
+              hidden: false,
+            },
+            {
+              // @ts-ignore
+              id: 'usergrap',
+              fill: true,
+              data: adjustedUserGraphDataset,
+              borderWidth: 1,
+              borderColor: '#EFBF17',
+              backgroundColor: '#EFBF17',
+              pointRadius: 0,
+              tension: 0.15,
+              hidden: step < 4,
+            },
+            {
+              // @ts-ignore
+              id: 'budget',
+              fill: true,
+              data: budgetDataset,
+              borderWidth: 2,
+              borderColor: '#6BA292',
+              backgroundColor: '#91DFC8',
+              pointRadius: 0,
+              tension: 0.15,
+              hidden: false,
+            },
+            {
+              // @ts-ignore
+              id: 'pledge',
+              fill: true,
+              data: pledgeDataset,
+              borderWidth: 2,
+              borderColor: '#EF3054',
+              backgroundColor: '#542E35',
+              pointRadius: 0,
+              tension: 0.15,
+              hidden: step < 2,
+            },
+          ],
+        }}
+        options={{
+          responsive: true,
+          scales: {
+            x: {
+              min: step > 2 ? 2019 : setup.minYear,
+              max: step > 0 ? 2050 : 2019,
+              grid: {
+                display: true,
+                drawBorder: false,
+                color: 'rgba(255, 255, 255, 0.2)',
+                drawTicks: false,
+              },
+              ticks: {
+                font: {
+                  family: 'Helvetica Neue',
+                  size: 15,
+                  weight: '300',
+                },
+                color: 'white',
+                align: 'center',
+                callback: (tickValue) => {
+                  const idx = tickValue as number
+                  return idx % 2 === 0 ? setup.labels[idx] : ''
+                },
+              },
+            },
+            y: {
+              suggestedMax: 150_000,
+              grid: {
+                drawBorder: false,
+                display: false,
+              },
+              beginAtZero: true,
+              ticks: {
+                stepSize: 50_000,
+                font: {
+                  family: 'Helvetica Neue',
+                  size: 15,
+                  weight: '300',
+                },
+                color: 'white',
+                callback: (a, _idx) => {
+                  return ((a as number) / 1000).toString()
+                },
+              },
+            },
+          },
+        }}
+      />
+    </Container>
   )
 }
 

@@ -171,7 +171,7 @@ export class EmissionService {
           PercentageOfNationalBudget:
             responseData.emissionBudgets[0].percentOfNationalCO2Budget,
           BudgetPerYear:
-            responseData.emissionBudgets[0].emissionReductions.linearEmissionReduction.yearlyEmissionReduction.map(
+            responseData.emissionBudgets[0].emissionReductions.exponentialEmissionReduction.yearlyEmissionReduction.map(
               (emission: any) => {
                 return {
                   Year: emission.year,
@@ -197,7 +197,6 @@ export class EmissionService {
             },
           )
         } as Trend
-
         return trend
       }
 
@@ -208,7 +207,7 @@ export class EmissionService {
         .then((result) => {
           //reject only if emission data is missing
           if (result[0].status == 'rejected') {
-            reject(result[0].reason)
+            reject("Utsläpp för den här kommunen hittades inte")
           } else if (result[0].status == 'fulfilled') {
             const municipality = {
               Name: result[0].value.data.emissions[0].kommun,

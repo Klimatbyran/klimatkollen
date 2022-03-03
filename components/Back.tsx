@@ -7,15 +7,16 @@ const Button = styled.button`
   cursor: pointer;
   fill: #fff;
   background: transparent;
-  position: absolute;
-  top: 10;
+  align-self: flex-start;
 `
 
 const BackArrow = () => {
   return (
     <Link href="/">
       <Button type="button">
-        <Icon />
+        <a href="/">
+          <Icon />
+        </a>
       </Button>
     </Link>
   )
