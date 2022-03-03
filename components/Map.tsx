@@ -119,7 +119,7 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0],
     getFillColor: (d) => {
-      return getColor((d as Emissions).emissions, (d as Emissions).name)
+      return getColor((d as Emissions).emissions)
     },
     pickable: true,
   })
