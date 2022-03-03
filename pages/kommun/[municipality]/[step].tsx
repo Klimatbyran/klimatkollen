@@ -54,7 +54,7 @@ export default function Step({ id, municipality }: Props) {
       coatOfArmsImage={municipality.CoatOfArmsImage?.ImageUrl || null}
       historicalEmissions={municipality.HistoricalEmission.EmissionPerYear}
       budgetedEmissions={municipality.Budget.BudgetPerYear}
-      trendingEmissions={municipality.EmissionTrend || []}
+      trendingEmissions={municipality.EmissionTrend.TrendPerYear || []}
     />
   )
 }
