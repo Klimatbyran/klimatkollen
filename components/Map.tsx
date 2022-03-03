@@ -3,6 +3,7 @@ import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
 import municipalityData from '../pages/data/kommuner.json'
 import { devices } from '../utils/devices'
 import { WebMercatorViewport } from '@deck.gl/core'
+import { ReactNode } from 'react'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -33,26 +34,23 @@ const getColor = (emission: number): RGBAColor => {
   const pink: RGBAColor = [239, 48, 84]
   const green: RGBAColor = [145, 223, 200]
 
-  if (emission > 0) {
+  if (emission >= 0) {
     return pink
   }
-  if (emission > -0.02) {
+  if (emission >= -0.01) {
     return red
   }
-  if (emission > -0.04) {
+  if (emission >= -0.02) {
     return darkOrange
   }
-  if (emission > -0.07) {
+  if (emission >= -0.03) {
     return orange
   }
-  if (emission > -0.1) {
+  if (emission >= -0.10) {
     return yellow
   }
 
-  if (emission > -0.2) {
-    return green
-  }
-  return pink
+  return green
 }
 
 const replaceLetters = (name: string) => {
@@ -87,9 +85,10 @@ const MAP_RANGE = {
 type Props = {
   emissionsLevels: Array<{ name: string; emissions: number }>
   setSelected: (value: string) => void
+  children: ReactNode
 }
 
-const Map = ({ emissionsLevels, setSelected }: Props) => {
+const Map = ({ emissionsLevels, setSelected, children }: Props) => {
   const municipalityLines = municipalityData.features.map(({ geometry, properties }) => {
     const name = replaceLetters(properties.name)
     const emissions = emissionsLevels.find((e) => e.name === name)?.emissions
@@ -150,6 +149,7 @@ const Map = ({ emissionsLevels, setSelected }: Props) => {
           return viewState
         }}
       />
+      {children}
     </DeckGLWrapper>
   )
 }
