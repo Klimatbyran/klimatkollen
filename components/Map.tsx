@@ -25,7 +25,7 @@ const DeckGLWrapper = styled.div`
   }
 `
 
-const getColor = (emission: number, name: string): RGBAColor => {
+const getColor = (emission: number): RGBAColor => {
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
   const darkOrange: RGBAColor = [239, 127, 23]
