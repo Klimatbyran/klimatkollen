@@ -65,6 +65,7 @@ const MunicipalitiesWrapper = styled.ul`
   max-height: 195px;
   overflow-y: scroll;
   position: absolute;
+  z-index:2;
 `
 
 const Municiplity = styled.li`
