@@ -281,6 +281,21 @@ const Municipality = (props: Props) => {
     })
   }
 
+  function renderEmissionChangeRank (name: string, changeRank: number | null) : string {
+    
+    switch (changeRank) {
+      case null:
+        return ""
+      case 1:
+        return name + " har placering " + changeRank + " av 290 kommuner när det gäller utsläppsminsking, det är bäst i Sverige!"
+      case 290:
+        return name + " har placering " + changeRank + " av 290 kommuner när det gäller utsläppsminskning, det är sämst i Sverige :("
+      default:
+        return name + " har placering " + changeRank + " av 290 kommuner när det gäller utsläppsminskning, det är bättre än " + (290-changeRank) + " och sämre än " + (changeRank-1) + " andra kommuner i Sverige."
+    }
+    
+  }
+
   return (
     <>
       <MetaTags
@@ -372,12 +387,7 @@ const Municipality = (props: Props) => {
             municipality={municipality.Name}
             politicalRule={municipality.PoliticalRule}
           />
-          {municipality.HistoricalEmission.AverageEmissionChangeRank ? (
-            <p>
-            {municipality.Name} har placering {municipality.HistoricalEmission.AverageEmissionChangeRank} av 290 kommuner när det gäller utsläppsminskning, det är bättre än {290-municipality.HistoricalEmission.AverageEmissionChangeRank} och sämre än {municipality.HistoricalEmission.AverageEmissionChangeRank-1} andra kommuner i Sverige.
-            </p>
-            ) : (<span></span>)
-          }
+          <p>{renderEmissionChangeRank(municipality.Name, municipality.HistoricalEmission.AverageEmissionChangeRank)}</p>
           {hasShareAPI() && (
             <Button
               handleClick={handleClick}
