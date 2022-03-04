@@ -372,6 +372,12 @@ const Municipality = (props: Props) => {
             municipality={municipality.Name}
             politicalRule={municipality.PoliticalRule}
           />
+          {municipality.HistoricalEmission.AverageEmissionChangeRank ? (
+            <p>
+            {municipality.Name} har placering {municipality.HistoricalEmission.AverageEmissionChangeRank} av 290 kommuner när det gäller utsläppsminskning, det är bättre än {290-municipality.HistoricalEmission.AverageEmissionChangeRank} och sämre än {municipality.HistoricalEmission.AverageEmissionChangeRank-1} andra kommuner i Sverige.
+            </p>
+            ) : (<span></span>)
+          }
           {hasShareAPI() && (
             <Button
               handleClick={handleClick}
