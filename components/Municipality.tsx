@@ -41,11 +41,6 @@ const Flex = styled.div`
   justify-content: space-between;
 `
 
-const Title = styled.h3`
-  font-family: 'Helvetica Neue';
-  font-size: 20px;
-`
-
 const Center = styled.div`
   width: 100%
   background-color: coral;
@@ -333,7 +328,6 @@ const Municipality = (props: Props) => {
             {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
           </HeaderSection>
           <GraphWrapper>
-            <Title>Koldioxidutsläpp</Title>
             <Center>
               <Box>
                 <InfoText>{text}</InfoText>
