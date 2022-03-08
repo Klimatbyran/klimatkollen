@@ -162,24 +162,28 @@ type ShareTextFn = (name: string) => string
 const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
   0: {
     text: 'Historiska utsläpp',
-    shareText: (name) => `Kolla de historiska utsläppen för ${name}`,
+    shareText: (_name) =>
+      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   1: {
     text: 'För att nå Parisavtalet',
-    shareText: (name) =>
-      `Hur behöver utsläppen ändras i ${name} för att nå Parisavtalet?`,
+    shareText: (_name) =>
+      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   2: {
     text: 'Framtida prognos',
-    shareText: (name) => `Se den framtida prognosen för ${name}`,
+    shareText: (_name) =>
+      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   3: {
     text: 'Glappet',
-    shareText: (name) => `Hur stort är glappet i ${name} från nu och framtiden?`,
+    shareText: (_name) =>
+      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   4: {
     text: 'Din plan',
-    shareText: (name) => `Här är min plan för att ${name} ska hålla sin klimatbudget.`,
+    shareText: (_name) =>
+      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
 }
 
@@ -281,25 +285,42 @@ const Municipality = (props: Props) => {
     })
   }
 
-  function renderEmissionChangeRank (name: string, changeRank: number | null) : string {
-    
+  function renderEmissionChangeRank(name: string, changeRank: number | null): string {
     switch (changeRank) {
       case null:
-        return ""
+        return ''
       case 1:
-        return name + " har placering " + changeRank + " av 290 kommuner när det gäller utsläppsminsking, det är bäst i Sverige!"
+        return (
+          name +
+          ' har placering ' +
+          changeRank +
+          ' av 290 kommuner när det gäller utsläppsminsking, det är bäst i Sverige!'
+        )
       case 290:
-        return name + " har placering " + changeRank + " av 290 kommuner när det gäller utsläppsminskning, det är sämst i Sverige :("
+        return (
+          name +
+          ' har placering ' +
+          changeRank +
+          ' av 290 kommuner när det gäller utsläppsminskning, det är sämst i Sverige :('
+        )
       default:
-        return name + " har placering " + changeRank + " av 290 kommuner när det gäller utsläppsminskning, det är bättre än " + (290-changeRank) + " och sämre än " + (changeRank-1) + " andra kommuner i Sverige."
+        return (
+          name +
+          ' har placering ' +
+          changeRank +
+          ' av 290 kommuner när det gäller utsläppsminskning, det är bättre än ' +
+          (290 - changeRank) +
+          ' och sämre än ' +
+          (changeRank - 1) +
+          ' andra kommuner i Sverige.'
+        )
     }
-    
   }
 
   return (
     <>
       <MetaTags
-        title={`Klimatkollen - ${municipality.Name}`}
+        title={`Klimatkollen — Hur går det med klimatutsläppen i ${municipality.Name}?`}
         description={shareText(municipality.Name)}
         url={shareUrl}
       />
@@ -387,7 +408,12 @@ const Municipality = (props: Props) => {
             municipality={municipality.Name}
             politicalRule={municipality.PoliticalRule}
           />
-          <p>{renderEmissionChangeRank(municipality.Name, municipality.HistoricalEmission.AverageEmissionChangeRank)}</p>
+          <p>
+            {renderEmissionChangeRank(
+              municipality.Name,
+              municipality.HistoricalEmission.AverageEmissionChangeRank,
+            )}
+          </p>
           {hasShareAPI() && (
             <Button
               handleClick={handleClick}
