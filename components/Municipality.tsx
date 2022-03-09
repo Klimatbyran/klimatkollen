@@ -14,6 +14,7 @@ import MetaTags from './MetaTags'
 import { useState } from 'react'
 import PageWrapper from './PageWrapper'
 import { useRouter } from 'next/router'
+import DropDown from './DropDown'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -191,6 +192,7 @@ type Props = {
   historicalEmissions: EmissionPerYear[]
   budgetedEmissions: EmissionPerYear[]
   trendingEmissions: EmissionPerYear[]
+  municipalitiesName: Array<string>
 }
 
 const Municipality = (props: Props) => {
@@ -203,6 +205,7 @@ const Municipality = (props: Props) => {
     historicalEmissions,
     budgetedEmissions,
     trendingEmissions,
+    municipalitiesName,
   } = props
   const router = useRouter()
   const q = router.query['g[]']
@@ -408,6 +411,9 @@ const Municipality = (props: Props) => {
               municipality.HistoricalEmission.AverageEmissionChangeRank,
             )}
           </p>
+
+          <DropDown municipalitiesName={municipalitiesName} />
+
           {hasShareAPI() && (
             <Button
               handleClick={handleClick}
