@@ -8,7 +8,7 @@ import { ReactNode } from 'react'
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
   latitude: 63,
-  zoom: 3.4,
+  zoom: 3,
   minZoom: 3,
   pitch: 0,
   bearing: 0,
@@ -129,8 +129,19 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
   return (
     <DeckGLWrapper>
       <DeckGL
+        touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
-        controller={true}
+        controller={{
+          scrollZoom: true,
+          dragPan: false,
+          dragRotate: false,
+          doubleClickZoom: true,
+          touchZoom: false,
+          touchRotate: false,
+
+          keyboard: false,
+          inertia: false,
+        }}
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as Emissions)?.name
