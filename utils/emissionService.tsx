@@ -18,8 +18,13 @@ export class EmissionService {
   private getEmissionLevelChangeAverage(
     emissions: Array<EmissionPerYear>,
     years: number,
+    name: string
   ): number {
     let emissionsPercentages = 0
+    if(name == "Danderyd") {
+    console.log('Danderyd')
+    console.log('Years', years)
+    }
     emissions
       .slice(Math.max(emissions.length - years - 1, 1))
       .forEach(
@@ -29,11 +34,23 @@ export class EmissionService {
             let changeSinceLastYear = ((emission.CO2Equivalent - previous.CO2Equivalent) /
               previous.CO2Equivalent) as number
             emissionsPercentages += changeSinceLastYear
+            if(name == "Danderyd") {
+              console.log('År', emission.Year)
+              console.log('Emission', emission.CO2Equivalent)
+              console.log('Förra året', previous.Year)
+              console.log('Emission last year', previous.CO2Equivalent)
+              console.log('changeSinceLastYear', changeSinceLastYear)
+              
+            }
           }
         },
       )
 
-    return Math.round((emissionsPercentages / years) * 100) / 100
+    //return Math.round((emissionsPercentages / years) * 100) / 100
+    if(name == "Danderyd"){
+      console.log('Förändring', emissionsPercentages/years)
+    }
+    return emissionsPercentages / years
   }
 
   public async getMunicipalities(): Promise<Array<Municipality>> {
@@ -65,7 +82,7 @@ export class EmissionService {
                 } as Municipality
 
                 municipality.HistoricalEmission.EmissionLevelChangeAverage =
-                  this.getEmissionLevelChangeAverage(emissions, 5)
+                  this.getEmissionLevelChangeAverage(emissions, 5, municipality.Name)
                 return municipality
               })
               .sort((a: Municipality, b: Municipality) => {

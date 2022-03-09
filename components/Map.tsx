@@ -26,13 +26,14 @@ const DeckGLWrapper = styled.div`
   }
 `
 
-const getColor = (emission: number): RGBAColor => {
+const getColor = (emission: number, name:string): RGBAColor => {
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
   const darkOrange: RGBAColor = [239, 127, 23]
   const red: RGBAColor = [239, 94, 48]
   const pink: RGBAColor = [239, 48, 84]
   const green: RGBAColor = [145, 223, 200]
+
 
   if (emission >= 0) {
     return pink
@@ -47,9 +48,12 @@ const getColor = (emission: number): RGBAColor => {
     return orange
   }
   if (emission >= -0.13) {
+
+    //console.log(name + " " + emission)
     return yellow
   }
 
+  //console.log(name + " " + emission)
   return green
 }
 
@@ -121,7 +125,7 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0],
     getFillColor: (d) => {
-      return getColor((d as Emissions).emissions)
+      return getColor((d as Emissions).emissions, (d as Emissions).name)
     },
     pickable: true,
   })
@@ -143,8 +147,10 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
           inertia: false,
         }}
         onClick={({ object }) => {
+          console.log('test')
           // IDK what the correct type is
           const name = (object as unknown as Emissions)?.name
+          console.log('name', name)
           name && setSelected(name)
         }}
         layers={[kommunLayer]}
