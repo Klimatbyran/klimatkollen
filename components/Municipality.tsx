@@ -345,7 +345,7 @@ const Municipality = (props: Props) => {
             {onPreviousStep ? (
               <Btn onClick={onPreviousStep}>
                 <ArrowLeft />
-                Förgående
+                Föregående
               </Btn>
             ) : (
               <div></div>
@@ -395,7 +395,7 @@ const Municipality = (props: Props) => {
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
         <Bottom>
-          <FactH2>Fakta om klimatomställningen i {municipality.Name}</FactH2>
+          <FactH2>Fakta om {municipality.Name}</FactH2>
           <ScoreCard
             population={municipality.Population}
             budget={municipality.Budget.CO2Equivalent}
