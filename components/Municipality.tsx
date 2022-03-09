@@ -70,13 +70,6 @@ const Top = styled.div`
   flex-direction: column;
   gap: 2rem;
 `
-
-const DropDownSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`
-
 const CoatOfArmsImage = styled.img`
   width: 60px;
 `
@@ -164,6 +157,20 @@ const BottomRight = styled.div`
 
   @media only screen and (${devices.tablet}) {
     width: 50%;
+  }
+`
+
+const DropDownSection = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+
+  @media only screen and (${devices.tablet}) {
+    align-items: center;
+    padding-right: 25px;
+    margin-top: 50px;
   }
 `
 
@@ -458,13 +465,12 @@ const Municipality = (props: Props) => {
                 municipality.HistoricalEmission.AverageEmissionChangeRank,
               )}
             </p>
-
-            <DropDownSection>
+          </BottomRight>
+        </Bottom>
+        <DropDownSection>
               <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
               <DropDown municipalitiesName={municipalitiesName} />
             </DropDownSection>
-          </BottomRight>
-        </Bottom>
         <BottomShare>
           {hasShareAPI() && (
             <Button
