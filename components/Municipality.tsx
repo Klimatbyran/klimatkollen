@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import Graph from './Graph'
-import { H1, H3 } from './Typography'
+import { H1, H3, ParagraphBold } from './Typography'
 import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 import Button from './Button'
@@ -412,7 +412,10 @@ const Municipality = (props: Props) => {
             )}
           </p>
 
-          <DropDown municipalitiesName={municipalitiesName} />
+          <section>
+            <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
+            <DropDown municipalitiesName={municipalitiesName} />
+          </section>
 
           {hasShareAPI() && (
             <Button
