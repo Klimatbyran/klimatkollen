@@ -15,6 +15,7 @@ import { useState } from 'react'
 import PageWrapper from './PageWrapper'
 import { useRouter } from 'next/router'
 import DropDown from './DropDown'
+import { devices } from '../utils/devices'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -68,6 +69,12 @@ const Top = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+`
+
+const DropDownSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `
 
 const CoatOfArmsImage = styled.img`
@@ -133,6 +140,41 @@ const Bottom = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+
+  @media only screen and (${devices.tablet}) {
+    flex-direction: row;
+  }
+`
+
+const BottomHeader = styled.div`
+  margin-bottom: 20px;
+  width: 100%;
+`
+
+const BottomLeft = styled.div`
+  @media only screen and (${devices.tablet}) {
+    width: 50%;
+  }
+`
+
+const BottomRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  @media only screen and (${devices.tablet}) {
+    width: 50%;
+  }
+`
+
+const BottomShare = styled.div`
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+
+  @media only screen and (${devices.tablet}) {
+    justify-content: center;
+  }
 `
 
 const MANDATE_PERIODS = [
@@ -397,26 +439,33 @@ const Municipality = (props: Props) => {
         </Top>
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
-        <Bottom>
+        <BottomHeader>
           <FactH2>Fakta om {municipality.Name}</FactH2>
+        </BottomHeader>
+        <Bottom>
+          <BottomLeft>
           <ScoreCard
             population={municipality.Population}
             budget={municipality.Budget.CO2Equivalent}
             municipality={municipality.Name}
             politicalRule={municipality.PoliticalRule}
           />
-          <p>
-            {renderEmissionChangeRank(
-              municipality.Name,
-              municipality.HistoricalEmission.AverageEmissionChangeRank,
-            )}
-          </p>
+          </BottomLeft>
+          <BottomRight>
+            <p>
+              {renderEmissionChangeRank(
+                municipality.Name,
+                municipality.HistoricalEmission.AverageEmissionChangeRank,
+              )}
+            </p>
 
-          <section>
-            <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
-            <DropDown municipalitiesName={municipalitiesName} />
-          </section>
-
+            <DropDownSection>
+              <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
+              <DropDown municipalitiesName={municipalitiesName} />
+            </DropDownSection>
+          </BottomRight>
+        </Bottom>
+        <BottomShare>
           {hasShareAPI() && (
             <Button
               handleClick={handleClick}
@@ -424,7 +473,7 @@ const Municipality = (props: Props) => {
               shareIcon
             />
           )}
-        </Bottom>
+        </BottomShare>
       </PageWrapper>
     </>
   )

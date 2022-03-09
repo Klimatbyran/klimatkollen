@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
+  max-width: 450px;
 
   @media only screen and (${devices.tablet}) {
     background: ${(props) => props.theme.black};

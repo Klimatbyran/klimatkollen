@@ -11,8 +11,8 @@ const Button = styled.button<{ icon: boolean }>`
   display: flex;
   align-items: center;
   justify-content: ${({ icon }) => (icon ? 'start' : 'center')};
-  padding-left: ${({ icon }) => (icon ? '20px' : '20px')};
-  padding-right: ${({ icon }) => (icon ? '20px' : '20px')};
+  padding-left: ${({ icon }) => (icon ? '50px' : '20px')};
+  padding-right: ${({ icon }) => (icon ? '50px' : '20px')};
   cursor: pointer;
   fill: ${({ theme }) => theme.black};
 
@@ -21,6 +21,7 @@ const Button = styled.button<{ icon: boolean }>`
     font-size: 16px;
     display: block;
     flex-grow: 1;
+    margin-left: 30px;
   }
 
   &:hover {
