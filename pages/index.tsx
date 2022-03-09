@@ -128,7 +128,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                 <Square color="#91BFC8">
                   <ArrowIcon />
                 </Square>
-                <StyledParagraph>15% +</StyledParagraph>
+                <StyledParagraph>14% +</StyledParagraph>
               </Label>
             </InfoBox>
           </Map>

@@ -46,7 +46,7 @@ const getColor = (emission: number): RGBAColor => {
   if (emission >= -0.03) {
     return orange
   }
-  if (emission >= -0.1) {
+  if (emission >= -0.13) {
     return yellow
   }
 
