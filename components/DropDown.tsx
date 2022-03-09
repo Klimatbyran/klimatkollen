@@ -27,7 +27,7 @@ const Flex = styled.div`
 const Input = styled.input`
   width: 280px;
   height: 56px;
-  background-color: ${({ theme }) => theme.black};
+  background-color: transparent;
   border: 1px solid white;
   border-radius: 4px;
   color: ${({ theme }) => theme.white};
@@ -43,7 +43,7 @@ const Input = styled.input`
 `
 
 const Btn = styled.button`
-  background-color: ${({ theme }) => theme.black};
+  background-color: transparent;
   width: 40px;
   height: 30px;
   right: 10px;
