@@ -7,6 +7,7 @@ import VBK from '../public/icons/vbk.svg'
 import WeDontHaveTime from '../public/icons/we-dont-have-time.svg'
 import Klimatklubben from '../public/icons/klimatklubben.svg'
 import Argand from '../public/icons/argand.svg'
+import StormGeo from '../public/icons/stormgeo.svg'
 import NewsletterSubscribe from './NewsletterSubscribe'
 import Emoji from './Emoji'
 import ArrowDown from '../public/icons/arrow-down-round.svg'
@@ -72,7 +73,8 @@ const FlexSection = styled.div`
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 0 60px;
+    justify-content: center;
     width: 90%;
   }
 `
@@ -342,6 +344,18 @@ const Footer = () => {
                 </a>
               </IconWrapper>
               <Paragraph>Investerar i klimatlösningar</Paragraph>
+            </IconSection>
+
+
+            <IconSection>
+              <IconWrapper>
+                <a href="https://www.stormgeo.com/" target="_blank" rel="noreferrer">
+                  <StormGeo />
+                </a>
+              </IconWrapper>
+              <Paragraph>
+              Skandinaviens första privata väderföretag, en global leverantör av vädertjänster 
+              </Paragraph>
             </IconSection>
           </FlexSection>
         </ContentWrapper>
