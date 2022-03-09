@@ -124,7 +124,7 @@ const DropDown = ({ municipalitiesName }: Props) => {
 
   const seeMuniciplity = () => {
     if (municipalities.includes(selectedMuniciplity)) {
-      router.push(`kommun/${selectedMuniciplity.toLowerCase()}`)
+      router.push(`/kommun/${selectedMuniciplity.toLowerCase()}`)
     } else {
       setShowInfoText(true)
       setTimeout(() => {
