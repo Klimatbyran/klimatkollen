@@ -107,7 +107,7 @@ const Graph = ({ step, historical, budget, trend, user, maxVisibleYear }: Props)
 
   return (
     <Container>
-      <YAxisTitle>Tusen ton CO₂ (kCO₂)</YAxisTitle>
+      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{

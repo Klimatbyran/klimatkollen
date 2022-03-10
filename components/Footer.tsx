@@ -139,12 +139,11 @@ const Footer = () => {
               <ToggleSection>
                 <Paragraph>
                   Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att
-                  delas i sociala kanaler och läsas i mobilen. Här kan du se hur det går
-                  med koldioxidutsläppen för Sverige som helhet och för enskilda kommuner.
-                  Du kan också se den mängd koldioxid vi har kvar att släppa ut enligt
-                  Parisavtalet och hur stort glappet är mellan målet och hur det faktiskt
-                  går. Du kan också se de största utsläppskällorna i din kommun och hur
-                  mycket (eller lite) utsläppen i din kommun minskar jämfört med andra.
+                  delas i sociala medier och läsas i mobilen. Här kan du se hur det går
+                  med koldioxidutsläppen för Sverige som helhet och för enskilda kommuner,
+                  samt den mängd koldioxid vi har kvar att släppa ut enligt Parisavtalet.
+                  Du kan också se hur mycket (eller lite) utsläppen i din kommun minskar
+                  jämfört med andra.
                 </Paragraph>
                 <Paragraph>
                   Vi utvecklar Klimatkollen kontinuerligt. Skriv upp dig{' '}
@@ -155,17 +154,10 @@ const Footer = () => {
                   <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så berättar
                   vi hur du kan bidra.
                 </Paragraph>
-                <ParagraphBold>Hur ska jag använda Klimatkollen?</ParagraphBold>
                 <Paragraph>
-                  Använd Klimatkollen för ta reda på hur din kommuns koldioxidutsläpp ser
-                  ut, dela fakta med andra och kräva svar på hur vi ska minska glappet
-                  mellan mål och verklighet. Hur vill partierna minska utsläppen? Vilka
-                  lösningar finns? Klimatkollen hjälper dig att ställa rätt frågor.{' '}
-                </Paragraph>
-                <Paragraph>
-                  All fakta på Klimatkollen kommer från offentliga källor. Vi redovisar
-                  alla källor tydligt så att du enkelt kan kolla upp och läsa mer. Om
-                  något blivit fel, mejla gärna oss på{' '}
+                  All fakta på Klimatkollen baseras på offentliga källor och annan fullt
+                  redovisad data. Vi anger alla källor tydligt så att du enkelt kan kolla
+                  upp och läsa mer. Om något blivit fel, mejla oss gärna på{' '}
                   <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så att vi
                   kan ändra.
                 </Paragraph>
@@ -247,8 +239,8 @@ const Footer = () => {
                   Parisavtalet. Det är ett sätt att åskådliggöra utsläppsutrymmet som
                   finns kvar om vi ska hålla uppvärmningen under 1,5 grader. FN:s
                   klimatpanel, IPCC har tagit fram koldioxidbudgetar för vilken mängd
-                  klimatutsläpp som motsvarar vilka temperaturökningar, med olika nivåer
-                  av sannolikhet. Klimatkollen visar hur en sådan budget kan fördelas för
+                  utsläpp som motsvarar vilka temperaturökningar, med olika nivåer av
+                  sannolikhet. Klimatkollen visar hur en sådan budget kan fördelas för
                   Sverige och våra kommuner.
                 </Paragraph>
                 <Paragraph>
@@ -294,17 +286,17 @@ const Footer = () => {
             {toggleFourth && (
               <ToggleSection>
                 <Paragraph>
-                  Först väljs en global koldioxidbudget baserat på IPCC:s olika scenarier.
-                  Dessa scenarier baseras på vilken mängd koldioxidutsläpp som förväntas
-                  leda till vilka temperaturhöjningar, och med vilken sannolikhet.
-                  Klimatkollen har valt 1,5℃ och 50% sannolikhet, vilket ger en global
-                  koldioxidbudget på 500 Gigaton (Gt).
+                  Först väljs en global koldioxidbudget baserat på IPCC:s olika scenarier
+                  för vilken mängd koldioxidutsläpp som förväntas leda till vilka
+                  temperaturhöjningar, och med vilken sannolikhet. Klimatkollen har valt
+                  1,5 grader och 50% sannolikhet, vilket ger en global koldioxidbudget på
+                  500 Gigaton (Gt).
                 </Paragraph>
                 <Paragraph>
-                  Sedan görs avdrag från den globala koldioxidbudgeten. En viss del av
-                  budgeten öronmärks för en viss typ av utsläpp, som bedöms nödvändiga
-                  under omställningen. Klimatkollen följer praxis och gör avdrag för mark-
-                  och skogsanvändning samt cementproduktion. Då återstår X Gt.
+                  Sedan görs avdrag från den globala koldioxidbudgeten. En viss del
+                  öronmärks för en viss typ av utsläpp, som bedöms nödvändiga under
+                  omställningen. Klimatkollen följer praxis och gör avdrag för mark- och
+                  skogsanvändning samt cementproduktion. Då återstår X Gt.
                 </Paragraph>
                 <Paragraph>
                   Därefter tillämpas Parisavtalets rättviseprincip om att utvecklade
