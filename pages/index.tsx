@@ -55,9 +55,7 @@ const Label = styled.div`
     border-bottom-right-radius: 10%;
   }
 `
-const LastLabel = styled(Label)`
-    
-`
+
 const FlexCenter = styled.div`
   width: 100%;
   display: flex;
