@@ -20,7 +20,6 @@ type Props = {
   id: string
   municipalitiesName: Array<string>
   placeholder: string
-  className: string
 }
 
 export default function Step({
@@ -28,7 +27,6 @@ export default function Step({
   municipality,
   municipalitiesName,
   placeholder,
-  className
 }: Props) {
   const router = useRouter()
   const { step } = router.query
@@ -66,7 +64,6 @@ export default function Step({
       trendingEmissions={municipality.EmissionTrend.TrendPerYear || []}
       municipalitiesName={municipalitiesName}
       placeholder={placeholder}
-      className={className}
     />
   )
 }
