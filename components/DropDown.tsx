@@ -25,13 +25,13 @@ const Flex = styled.div`
 `
 
 const Input = styled.input`
-  width: 350px;
+  width: 305px;
   height: 56px;
   background-color: transparent;
   border: 1px solid white;
   border-radius: 4px;
   color: ${({ theme }) => theme.white};
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   outline: none;
   font-size: 16px;
   font-weight: 300;
@@ -46,7 +46,7 @@ const Btn = styled.button`
   background-color: transparent;
   width: 40px;
   height: 30px;
-  right: 10px;
+  right: 5px;
   position: absolute;
   border: none;
 `
@@ -71,7 +71,7 @@ const MunicipalitiesWrapper = styled.ul`
 const Municiplity = styled.li`
   color: ${({ theme }) => theme.black};
   text-decoration: none;
-  width: 350px;
+  width: 305px;
   height: 56px;
   display: flex;
   align-items: center;

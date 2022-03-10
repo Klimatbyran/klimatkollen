@@ -84,7 +84,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
             <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
           </div>
           <FlexCenter>
-            <DropDown municipalitiesName={municipalitiesName} placeholder="Hur går klimatomställningen i din kommun?" />
+            <DropDown municipalitiesName={municipalitiesName} placeholder="Hur går omställningen i din kommun?" />
           </FlexCenter>
           <FlexCenter>
             <div>
