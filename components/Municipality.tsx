@@ -281,6 +281,15 @@ const Circle = styled.span`
   display: inline-block;
 `
 
+const Line = styled.span`
+  width: 14px;
+  height: 4px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  background-color: ${(props) => props.color};
+  display: inline-block;
+`
+
 function makePeriods(startYear: number, endYear: number, increment: number) {
   const mandates = []
   for (let i = startYear; i <= endYear; i += increment) {
@@ -293,7 +302,7 @@ const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
 
 const START_YEAR = 2022
-const END_YEAR = 2030
+const END_YEAR = 2050
 
 type ShareTextFn = (name: string) => string
 const STEPS: {
@@ -301,7 +310,7 @@ const STEPS: {
 } = {
   0: {
     text: 'Historiska utsläpp',
-    body: (name) => `Sedan 1990 har ${name} släppt ut X ton koldioxid.`,
+    body: (name) => `Klimatutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
@@ -320,15 +329,15 @@ const STEPS: {
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   3: {
-    text: 'Glappet',
+    text: 'Utforska glappet',
     body: (_name) =>
-      'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
+      'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   4: {
-    text: 'Minska glappet',
-    body: (name) =>
+    text: 'Utforska glappet',
+    body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
@@ -365,7 +374,7 @@ const Municipality = (props: Props) => {
   const q = router.query['g[]']
 
   // TOOD: 2022-2030
-  const adjustablePeriods = useMemo(() => makePeriods(START_YEAR, END_YEAR, 1), [])
+  const adjustablePeriods = useMemo(() => makePeriods(START_YEAR, 2030, 1), [])
 
   const defaultPeriods = useMemo(
     () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
@@ -525,16 +534,16 @@ const Municipality = (props: Props) => {
               <Legends>
                 <Legend>
                   <Circle color="#EF3054" />
-                  Fortsätta som idag: {Math.round(totalTrend / 1000)} kCO₂
+                  Fortsätta som idag
                 </Legend>
                 <Legend>
                   <Circle color="#6BA292" />
-                  Parisavtalet: {Math.round(totalBudget / 1000)} kCO₂
+                  Parisavtalet
                 </Legend>
                 {step > 3 && (
                   <Legend>
-                    <Circle color="rgb(239, 191, 23)" />
-                    Din plan: {Math.round(userTotal / 1000)} kCO₂
+                    <Line color="rgb(239, 191, 23)" />
+                    Din plan
                   </Legend>
                 )}
               </Legends>
@@ -591,8 +600,9 @@ const Municipality = (props: Props) => {
                 ))}
               </RangeContainer>
               <Help>
-                Med hjälp av reglagen så styr du hur stor årlig utsläppsminskningar i
-                procent som du tycker att man behöver göra för att nå Parisavtalet.
+                Med hjälp av reglagen så styr du hur stor årlig utsläppsminskningar{' '}
+                <Line color="rgb(239, 191, 23)" /> i procent som du tycker att man behöver
+                göra för att nå Parisavtalet.
               </Help>
             </Adjustments>
           )}
