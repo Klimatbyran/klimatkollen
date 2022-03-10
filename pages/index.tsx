@@ -54,6 +54,9 @@ const Label = styled.div`
     border-radius: 0 0 10% 10%;
   }
 `
+const LastLabel = styled(Label)`
+    margin-top:5px;
+`
 const FlexCenter = styled.div`
   width: 100%;
   display: flex;
@@ -129,8 +132,12 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                 <Square color="#91BFC8">
                   <ArrowIcon />
                 </Square>
-                <StyledParagraph>14% +</StyledParagraph>
+                <StyledParagraph>10%-15%</StyledParagraph>
               </Label>
+              <LastLabel>
+                <Square color="#4ECB80"></Square>
+                <StyledParagraph>Parisavtalet</StyledParagraph>
+              </LastLabel>
             </InfoBox>
           </Map>
         </Container>
