@@ -34,8 +34,6 @@ const getColor = (emission: number): RGBAColor => {
   const darkOrange: RGBAColor = [239, 127, 23]
   const red: RGBAColor = [239, 94, 48]
   const pink: RGBAColor = [239, 48, 84]
-  const green: RGBAColor = [145, 223, 200]
-
 
   if (emission >= 0) {
     return pink
@@ -49,11 +47,11 @@ const getColor = (emission: number): RGBAColor => {
   if (emission >= -0.03) {
     return orange
   }
-  if (emission >= -0.10) {
+  if (emission >= -0.1) {
     return yellow
   }
 
-  return green
+  return [145, 191, 200]
 }
 
 const replaceLetters = (name: string) => {
