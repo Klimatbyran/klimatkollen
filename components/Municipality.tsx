@@ -622,7 +622,7 @@ const Municipality = (props: Props) => {
         </Bottom>
         <DropDownSection>
           <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
-          <DropDown municipalitiesName={municipalitiesName} placeholder="Välj kommun" />
+          <DropDown className="municipality-page" municipalitiesName={municipalitiesName} placeholder="Välj kommun" />
         </DropDownSection>
         <BottomShare>
           {hasShareAPI() && (

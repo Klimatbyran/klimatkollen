@@ -25,13 +25,13 @@ const Flex = styled.div`
 `
 
 const Input = styled.input`
-  width: 350px;
+  width: 305px;
   height: 56px;
   background-color: transparent;
   border: 1px solid white;
   border-radius: 4px;
   color: ${({ theme }) => theme.white};
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   outline: none;
   font-size: 16px;
   font-weight: 300;
@@ -46,7 +46,7 @@ const Btn = styled.button`
   background-color: transparent;
   width: 40px;
   height: 30px;
-  right: 10px;
+  right: 5px;
   position: absolute;
   border: none;
 `
@@ -66,12 +66,20 @@ const MunicipalitiesWrapper = styled.ul`
   overflow-y: scroll;
   position: absolute;
   z-index:2;
+
+  &.startpage {
+    bottom: auto;
+  }
+
+  &.municipality-page {
+    bottom: 100%;
+  }
 `
 
 const Municiplity = styled.li`
   color: ${({ theme }) => theme.black};
   text-decoration: none;
-  width: 350px;
+  width: 305px;
   height: 56px;
   display: flex;
   align-items: center;
@@ -82,9 +90,10 @@ const Municiplity = styled.li`
 type Props = {
   municipalitiesName: Array<string>
   placeholder: string
+  className: string
 }
 
-const DropDown = ({ municipalitiesName, placeholder }: Props) => {
+const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
   const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMuniciplity, setSelectedMunicipality] = useState<string>('')
@@ -155,7 +164,7 @@ const DropDown = ({ municipalitiesName, placeholder }: Props) => {
           </Btn>
         </Flex>
         {showDropDown && (
-          <MunicipalitiesWrapper>
+          <MunicipalitiesWrapper className={className}>
             {municipalities.map((name, i) => (
               <Municiplity key={i} onClick={(e) => onMuniciplityClick(e)}>
                 {name}
