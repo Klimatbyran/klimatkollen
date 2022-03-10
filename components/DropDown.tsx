@@ -40,14 +40,6 @@ const Input = styled.input`
   ::placeholder {
     color: ${({ theme }) => theme.white};
   }
-
-  & .startpage {
-    background-color: red;
-  }
-
-  & .municipality-page {
-    background-color: green;
-  }
 `
 
 const Btn = styled.button`
@@ -74,6 +66,14 @@ const MunicipalitiesWrapper = styled.ul`
   overflow-y: scroll;
   position: absolute;
   z-index:2;
+
+  & .startpage {
+    bottom: auto;
+  }
+
+  & .municipality-page {
+    bottom: 100%;
+  }
 `
 
 const Municiplity = styled.li`
@@ -154,14 +154,13 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
             placeholder={placeholder}
             onChange={(e) => onInputChange(e.target.value)}
             value={selectedMuniciplity}
-            className={className}
           />
           <Btn onClick={() => setShowDropDown((current) => !current)}>
             <ArrowDown />
           </Btn>
         </Flex>
         {showDropDown && (
-          <MunicipalitiesWrapper>
+          <MunicipalitiesWrapper className={className}>
             {municipalities.map((name, i) => (
               <Municiplity key={i} onClick={(e) => onMuniciplityClick(e)}>
                 {name}
