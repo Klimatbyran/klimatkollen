@@ -8,7 +8,7 @@ import {
   LineElement,
 } from 'chart.js'
 import { useMemo } from 'react'
-import { Bubble, Line } from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 import { EmissionPerYear } from '../utils/types'
 
 import styled from 'styled-components'
@@ -123,7 +123,6 @@ const Graph = ({
     })
 
     setPlanTotal(total)
-    console.log(dataset)
 
     return dataset
   }, [periodChanges])

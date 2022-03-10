@@ -255,14 +255,22 @@ const Legends = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
+
+  @media all and (${devices.tablet}) {
+    justify-content: center;
+  }
 `
 
 const Legend = styled.label`
-  // flex: 0 0 33.33333%;
   display: flex;
-  // flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 0.3125rem;
+  align-items: center;
+
+  @media all and (${devices.tablet}) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 
 const Circle = styled.span`
@@ -494,12 +502,12 @@ const Municipality = (props: Props) => {
             {step > 2 && (
               <Legends>
                 <Legend>
-                  <Circle color="#6BA292" />
-                  Parisavtalet: {Math.round(totalBudget / 1000)} kCO₂
-                </Legend>
-                <Legend>
                   <Circle color="#EF3054" />
                   Fortsätta som idag: {Math.round(totalTrend / 1000)} kCO₂
+                </Legend>
+                <Legend>
+                  <Circle color="#6BA292" />
+                  Parisavtalet: {Math.round(totalBudget / 1000)} kCO₂
                 </Legend>
                 {step > 3 && (
                   <Legend>
