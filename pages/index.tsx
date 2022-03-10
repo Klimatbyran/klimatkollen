@@ -106,31 +106,31 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                 <Square color="#EF5E30">
                   <ArrowIcon />
                 </Square>
-                <StyledParagraph>0-1%</StyledParagraph>
+                <StyledParagraph>0–1%</StyledParagraph>
               </Label>
               <Label>
                 <Square color="#EF7F17">
                   <ArrowIcon />
                 </Square>
-                <StyledParagraph>1-2%</StyledParagraph>
+                <StyledParagraph>1–2%</StyledParagraph>
               </Label>
               <Label>
                 <Square color="#EF9917">
                   <ArrowIcon />
                 </Square>
-                <StyledParagraph>2-3%</StyledParagraph>
+                <StyledParagraph>2–3%</StyledParagraph>
               </Label>
               <Label>
                 <Square color="#EFBF17">
                   <ArrowIcon />
                 </Square>
-                <StyledParagraph>3-10%</StyledParagraph>
+                <StyledParagraph>3–10%</StyledParagraph>
               </Label>
               <Label>
                 <Square color="#91BFC8">
                   <ArrowIcon />
                 </Square>
-                <StyledParagraph>10%-15%</StyledParagraph>
+                <StyledParagraph>10%–15%</StyledParagraph>
               </Label>
             </InfoBox>
             <InfoBox>
