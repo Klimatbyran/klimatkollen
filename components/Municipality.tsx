@@ -135,7 +135,7 @@ const Bottom = styled.div`
   gap: 3rem;
 
   @media only screen and (${devices.tablet}) {
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
 `
 
@@ -153,7 +153,7 @@ const BottomLeft = styled.div`
 const BottomRight = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 
   @media only screen and (${devices.tablet}) {
     width: 50%;
@@ -345,25 +345,25 @@ const Municipality = (props: Props) => {
           name +
           ' har placering ' +
           changeRank +
-          ' av 290 kommuner när det gäller utsläppsminsking, det är bäst i Sverige!'
+          ' av 290 kommuner när det gäller utsläppsminskingar sedan Parisavtalet 2015, det är bäst i Sverige!'
         )
       case 290:
         return (
           name +
           ' har placering ' +
           changeRank +
-          ' av 290 kommuner när det gäller utsläppsminskning, det är sämst i Sverige :('
+          ' av 290 kommuner när det gäller utsläppsminskningar sedan Parisavtalet 2015, det är sämst i Sverige :('
         )
       default:
         return (
           name +
           ' har placering ' +
           changeRank +
-          ' av 290 kommuner när det gäller utsläppsminskning, det är bättre än ' +
+          ' av 290 kommuner när det gäller utsläppsminskningar sedan Parisavtalet 2015, det är bättre än ' +
           (290 - changeRank) +
           ' och sämre än ' +
           (changeRank - 1) +
-          ' andra kommuner i Sverige.'
+          ' grannkommuner.'
         )
     }
   }
@@ -451,9 +451,17 @@ const Municipality = (props: Props) => {
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
         <BottomHeader>
-          <FactH2>Fakta om {municipality.Name}</FactH2>
+          <FactH2>Klimatfakta om {municipality.Name}</FactH2>
         </BottomHeader>
         <Bottom>
+        <BottomRight>
+            <p>
+              {renderEmissionChangeRank(
+                municipality.Name,
+                municipality.HistoricalEmission.AverageEmissionChangeRank,
+              )}
+            </p>
+          </BottomRight>
           <BottomLeft>
           <ScoreCard
             population={municipality.Population}
@@ -462,14 +470,6 @@ const Municipality = (props: Props) => {
             politicalRule={municipality.PoliticalRule}
           />
           </BottomLeft>
-          <BottomRight>
-            <p>
-              {renderEmissionChangeRank(
-                municipality.Name,
-                municipality.HistoricalEmission.AverageEmissionChangeRank,
-              )}
-            </p>
-          </BottomRight>
         </Bottom>
         <DropDownSection>
           <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>

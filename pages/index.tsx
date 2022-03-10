@@ -88,8 +88,8 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
           </FlexCenter>
           <FlexCenter>
             <div>
-              <ParagraphBold>Utsläppsförändring sedan Parisavtalet 2015</ParagraphBold>
-              <p>För att nå målet behöver klimatutsläppen minska med X% per år,</p>
+              <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
+              <p>För att klara Parisavtalet behöver koldioxidutsläppen i Sverige minska med X% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.</p>
             </div>
           </FlexCenter>
           <Map emissionsLevels={emissionsLevels} setSelected={setSelected}>
