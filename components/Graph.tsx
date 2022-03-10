@@ -66,33 +66,18 @@ function getSetup(emissions: EmissionPerYear[][]): {
 const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset =>
   perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
-type PeriodChange = {
-  start: number
-  end: number
-  change: number
-}
-
 type Props = {
   step: number
   historical: EmissionPerYear[]
   budget: EmissionPerYear[]
   trend: EmissionPerYear[]
-  periodChanges: PeriodChange[]
-  setPlanTotal: (value: number) => void
+  user: EmissionPerYear[]
   maxVisibleYear: number
 }
 
 type Dataset = Array<{ x: number; y: number }>
 
-const Graph = ({
-  step,
-  historical,
-  budget,
-  trend,
-  periodChanges,
-  setPlanTotal,
-  maxVisibleYear,
-}: Props) => {
+const Graph = ({ step, historical, budget, trend, user, maxVisibleYear }: Props) => {
   const setup = useMemo(
     () => getSetup([historical, budget, trend]),
     [historical, budget, trend],
@@ -104,34 +89,13 @@ const Graph = ({
   )
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
   const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
-
-  const adjustedUserGraphDataset: Dataset = useMemo(() => {
-    const dataset: Dataset = []
-
-    let acc = 1
-    let total = 0
-    periodChanges.forEach((mandateChange) => {
-      // Problem: This counts on budget to go at least all the way to 2050
-      ;[...trend, ...budget.slice(trend.length)]
-        .filter((e) => e.Year >= mandateChange.start && e.Year < mandateChange.end)
-        .forEach((budgeted) => {
-          acc = acc * mandateChange.change
-          // Problem: This is a clone of the budget and we cannot go "above it"
-          dataset.push({ x: budgeted.Year, y: budgeted.CO2Equivalent * acc })
-          total += budgeted.CO2Equivalent * acc
-        })
-    })
-
-    setPlanTotal(total)
-
-    return dataset
-  }, [periodChanges])
+  const userDataset: Dataset = useMemo(() => emissionPerYearToDataset(user), [user])
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
       Math.max(
-        adjustedUserGraphDataset.length,
+        userDataset.length,
         pledgeDataset.length,
         budgetDataset.length,
         historicalDataset.length,
@@ -165,7 +129,7 @@ const Graph = ({
               // @ts-ignore
               id: 'usergrap',
               fill: true,
-              data: adjustedUserGraphDataset,
+              data: userDataset,
               borderWidth: 1,
               borderColor: 'rgb(239, 191, 23)',
               backgroundColor: 'rgba(239, 191, 23, 0.6)',

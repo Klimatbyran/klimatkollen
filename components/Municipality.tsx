@@ -363,7 +363,6 @@ const Municipality = (props: Props) => {
   } = props
   const router = useRouter()
   const q = router.query['g[]']
-  const [totalCustomPlan, setTotalCustomPlan] = useState(0)
 
   // TOOD: 2022-2030
   const adjustablePeriods = useMemo(() => makePeriods(START_YEAR, END_YEAR, 1), [])
@@ -396,6 +395,29 @@ const Municipality = (props: Props) => {
       change: g[idx],
     }))
   })
+
+  const [userEmissions, userTotal] = useMemo(() => {
+    const emissions: EmissionPerYear[] = []
+
+    let acc = 1
+    let total = 0
+    mandateChanges.forEach((mandateChange) => {
+      // Problem: This counts on budget to go at least all the way to 2050
+      ;[...trendingEmissions, ...budgetedEmissions.slice(trendingEmissions.length)]
+        .filter((e) => e.Year >= mandateChange.start && e.Year < mandateChange.end)
+        .forEach((budgeted) => {
+          acc = acc * mandateChange.change
+          // Problem: This is a clone of the budget and we cannot go "above it"
+          emissions.push({
+            Year: budgeted.Year,
+            CO2Equivalent: budgeted.CO2Equivalent * acc,
+          })
+          total += budgeted.CO2Equivalent * acc
+        })
+    })
+
+    return [emissions, total]
+  }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
   const totalBudget = budgetedEmissions.reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
   const totalTrend = trendingEmissions.reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
@@ -512,7 +534,7 @@ const Municipality = (props: Props) => {
                 {step > 3 && (
                   <Legend>
                     <Circle color="rgb(239, 191, 23)" />
-                    Din plan: {Math.round(totalCustomPlan / 1000)} kCO₂
+                    Din plan: {Math.round(userTotal / 1000)} kCO₂
                   </Legend>
                 )}
               </Legends>
@@ -522,8 +544,7 @@ const Municipality = (props: Props) => {
               historical={historicalEmissions}
               trend={trendingEmissions}
               budget={budgetedEmissions}
-              periodChanges={mandateChanges}
-              setPlanTotal={setTotalCustomPlan}
+              user={userEmissions}
               maxVisibleYear={END_YEAR}
             />
           </GraphWrapper>
