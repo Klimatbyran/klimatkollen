@@ -86,12 +86,20 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
             <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
           </div>
           <FlexCenter>
-            <DropDown className="startpage" municipalitiesName={municipalitiesName} placeholder="Hur går omställningen i din kommun?" />
+            <DropDown
+              className="startpage"
+              municipalitiesName={municipalitiesName}
+              placeholder="Hur går omställningen i din kommun?"
+            />
           </FlexCenter>
           <FlexCenter>
             <div>
               <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
-              <p>För att klara Parisavtalet behöver koldioxidutsläppen i Sverige minska med X% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.</p>
+              <p>
+                För att klara Parisavtalet behöver koldioxidutsläppen i Sverige minska med
+                X% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i
+                Sveriges kommuner sedan Parisavtalet 2015.
+              </p>
             </div>
           </FlexCenter>
           <Map emissionsLevels={emissionsLevels} setSelected={setSelected}>
