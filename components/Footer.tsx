@@ -34,10 +34,6 @@ const HeaderSection = styled.div`
 
   & .arrow {
     display: block;
-
-    @media only screen and (${devices.tablet}) {
-      display: none;
-    }
   }
 `
 
@@ -108,19 +104,20 @@ const Footer = () => {
   const [toggleFirst, setToggleFirst] = useState(false)
   const [toggleSecond, setToggleSecond] = useState(false)
   const [toggleThird, setToggleThird] = useState(false)
+  const [toggleFourth, setToggleFourth] = useState(false)
 
-  const resizeHandler = () => {
-    if (window.innerWidth >= 768) {
-      setToggleFirst(true)
-      setToggleSecond(true)
-      setToggleThird(true)
-    }
-  }
+  // const resizeHandler = () => {
+  //   if (window.innerWidth >= 768) {
+  //     setToggleFirst(true)
+  //     setToggleSecond(true)
+  //     setToggleThird(true)
+  //   }
+  // }
 
-  useEffect(() => {
-    window.onresize = resizeHandler
-    resizeHandler()
-  }, [])
+  // useEffect(() => {
+  //   window.onresize = resizeHandler
+  //   resizeHandler()
+  // }, [])
 
   return (
     <PageWrapper backgroundColor="dark">
@@ -141,22 +138,26 @@ const Footer = () => {
             {toggleFirst && (
               <ToggleSection>
                 <Paragraph>
-                Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att delas i sociala kanaler och läsas i mobilen. Här kan du se hur det går med koldioxidutsläppen för Sverige som helhet och för enskilda kommuner. Du kan också se den mängd koldioxid vi har kvar att släppa ut enligt Parisavtalet och hur stort glappet är mellan målet och hur det faktiskt går. Du kan också se de största utsläppskällorna i din kommun och hur mycket (eller lite) utsläppen i din kommun minskar jämfört med andra. 
+                  Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att
+                  delas i sociala medier och läsas i mobilen. Här kan du se hur det går
+                  med koldioxidutsläppen för Sverige som helhet och för enskilda kommuner,
+                  samt den mängd koldioxid vi har kvar att släppa ut enligt Parisavtalet.
+                  Du kan också se hur mycket (eller lite) utsläppen i din kommun minskar
+                  jämfört med andra.
                 </Paragraph>
                 <Paragraph>
                   Vi utvecklar Klimatkollen kontinuerligt. Skriv upp dig{' '}
                   <a href="#signup">här</a> så berättar vi när vi släpper något nytt.
                 </Paragraph>
                 <Paragraph>
-                <b>Stötta oss!</b> Skicka ett mejl till <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så berättar vi hur du kan bidra. 
+                  <b>Stötta oss!</b> Skicka ett mejl till{' '}
+                  <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så berättar
+                  vi hur du kan bidra.
                 </Paragraph>
-                <ParagraphBold>Hur ska jag använda Klimatkollen?</ParagraphBold>
                 <Paragraph>
-                Använd Klimatkollen för ta reda på hur din kommuns koldioxidutsläpp ser ut, dela fakta med andra och kräva svar på hur vi ska minska glappet mellan mål och verklighet. Hur vill partierna minska utsläppen? Vilka lösningar finns? Klimatkollen hjälper dig att ställa rätt frågor.               </Paragraph>
-                <Paragraph>
-                  All fakta på Klimatkollen kommer från offentliga källor. Vi redovisar
-                  alla källor tydligt så att du enkelt kan kolla upp och läsa mer. Om
-                  något blivit fel, mejla gärna oss på{' '}
+                  All fakta på Klimatkollen baseras på offentliga källor och annan fullt
+                  redovisad data. Vi anger alla källor tydligt så att du enkelt kan kolla
+                  upp och läsa mer. Om något blivit fel, mejla oss gärna på{' '}
                   <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så att vi
                   kan ändra.
                 </Paragraph>
@@ -164,7 +165,8 @@ const Footer = () => {
                   Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av{' '}
                   <a href="https://iteam.se/" target="_blank" rel="noreferrer">
                     Iteam
-                  </a>. Vi tror på kraften i att visualisera fakta på ett enkelt och
+                  </a>
+                  . Vi tror på kraften i att visualisera fakta på ett enkelt och
                   tilltalande sätt. På det sättet vill vi bidra till en mer faktabaserad
                   klimatdebatt och åtgärder som minskar utsläppen i linje med
                   Parisavtalet.
@@ -211,7 +213,8 @@ const Footer = () => {
                   Läs mer om Parisavtalet hos vår samarbetspartner{' '}
                   <a href="https://wwf.se/klimat" target="_blank" rel="noreferrer">
                     WWF
-                  </a>.
+                  </a>
+                  .
                 </Paragraph>
               </ToggleSection>
             )}
@@ -231,27 +234,86 @@ const Footer = () => {
             {toggleThird && (
               <ToggleSection>
                 <Paragraph>
-                  En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut innan vi riskerar att öka temperaturen så mycket att det bryter mot Parisavtalet. Det är ett sätt att åskådliggöra utsläppsutrymmet som finns kvar om vi ska hålla uppvärmningen under 1,5 grader. FN:s klimatpanel, IPCC har tagit fram koldioxidbudgetar för vilken mängd klimatutsläpp som motsvarar vilka temperaturökningar, med olika nivåer av sannolikhet. Klimatkollen visar hur en sådan budget kan fördelas för Sverige och våra kommuner.
+                  En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut
+                  innan vi riskerar att öka temperaturen så mycket att det bryter mot
+                  Parisavtalet. Det är ett sätt att åskådliggöra utsläppsutrymmet som
+                  finns kvar om vi ska hålla uppvärmningen under 1,5 grader. FN:s
+                  klimatpanel, IPCC har tagit fram koldioxidbudgetar för vilken mängd
+                  utsläpp som motsvarar vilka temperaturökningar, med olika nivåer av
+                  sannolikhet. Klimatkollen visar hur en sådan budget kan fördelas för
+                  Sverige och våra kommuner.
                 </Paragraph>
                 <Paragraph>
-                  Vi har valt att visa en koldioxidbudget för utsläpp inom Sveriges gränser, för att det är så världens länder rapporterar inom klimatkonventionen. Sverige har även hög klimatbelastning från de varor som vi importerar från andra länder och bidrar därför till utsläpp i andra delar av världen. Dessa konsumtionsbaserade utsläpp är inte medräknade i Klimatkollens koldioxidbudget. 
+                  Vi har valt att visa en koldioxidbudget för utsläpp inom Sveriges
+                  gränser, för att det är så världens länder rapporterar inom
+                  klimatkonventionen. Sverige har även hög klimatbelastning från de varor
+                  som vi importerar från andra länder och bidrar därför till utsläpp i
+                  andra delar av världen. Dessa konsumtionsbaserade utsläpp är inte
+                  medräknade i Klimatkollens koldioxidbudget.
                 </Paragraph>
                 <Paragraph>
-                  Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">ClimateView</a>. 
-                  Läs mer om konsumtionsbaserade utsläpp hos vår samarbetspartner <a href="https://wwf.se/" target="_blank" rel="noreferrer">Världsnaturfonden WWF</a>. 
+                  Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner{' '}
+                  <a
+                    href="https://www.climateview.global/"
+                    target="_blank"
+                    rel="noreferrer">
+                    ClimateView
+                  </a>
+                  . Läs mer om konsumtionsbaserade utsläpp hos vår samarbetspartner{' '}
+                  <a href="https://wwf.se/" target="_blank" rel="noreferrer">
+                    Världsnaturfonden WWF
+                  </a>
+                  .
                 </Paragraph>
-                <ParagraphBold>Så beräknas koldioxidbudgetarna</ParagraphBold>
+              </ToggleSection>
+            )}
+          </TextSection>
+          <TextSection>
+            <HeaderSection>
+              <H5>Så beräknas koldioxidbudgetarna</H5>
+              {toggleFourth ? (
+                <ArrowUp
+                  className="arrow"
+                  onClick={() => setToggleFourth(!toggleFourth)}
+                />
+              ) : (
+                <ArrowDown
+                  className="arrow"
+                  onClick={() => setToggleFourth(!toggleFourth)}
+                />
+              )}
+            </HeaderSection>
+            {toggleFourth && (
+              <ToggleSection>
                 <Paragraph>
-                  Först väljs en global koldioxidbudget baserat på IPCC:s olika scenarier. Dessa scenarier baseras på vilken mängd koldioxidutsläpp som förväntas leda till vilka temperaturhöjningar, och med vilken sannolikhet. Klimatkollen har valt 1,5℃ och 50% sannolikhet, vilket ger en global koldioxidbudget på 500 Gigaton (Gt).
+                  Först väljs en global koldioxidbudget baserat på IPCC:s olika scenarier
+                  för vilken mängd koldioxidutsläpp som förväntas leda till vilka
+                  temperaturhöjningar, och med vilken sannolikhet. Klimatkollen har valt
+                  1,5 grader och 50% sannolikhet, vilket ger en global koldioxidbudget på
+                  500 Gigaton (Gt).
                 </Paragraph>
                 <Paragraph>
-                  Sedan görs avdrag från den globala koldioxidbudgeten. En viss del av budgeten öronmärks för en viss typ av utsläpp, som bedöms nödvändiga under omställningen. Klimatkollen följer praxis och gör avdrag för mark- och skogsanvändning samt cementproduktion. Då återstår X Gt.
+                  Sedan görs avdrag från den globala koldioxidbudgeten. En viss del
+                  öronmärks för en viss typ av utsläpp, som bedöms nödvändiga under
+                  omställningen. Klimatkollen följer praxis och gör avdrag för mark- och
+                  skogsanvändning samt cementproduktion. Då återstår X Gt.
                 </Paragraph>
                 <Paragraph>
-                  Därefter tillämpas Parisavtalets rättviseprincip om att utvecklade länder med större historiska utsläpp ska ta ett större ansvar än utvecklingsländer, som behöver längre tid på sig att ställa om. Fördelningen vi valt att visa är att 65% av den återstående globala koldioxidbudgeten tilldelas utvecklingsländerna medan 35% går till utvecklade länder, däribland Sverige. Då återstår X Gt.
+                  Därefter tillämpas Parisavtalets rättviseprincip om att utvecklade
+                  länder med större historiska utsläpp ska ta ett större ansvar än
+                  utvecklingsländer, som behöver längre tid på sig att ställa om.
+                  Fördelningen vi valt att visa är att 65% av den återstående globala
+                  koldioxidbudgeten tilldelas utvecklingsländerna medan 35% går till
+                  utvecklade länder, däribland Sverige. Då återstår X Gt.
                 </Paragraph>
                 <Paragraph>
-                  Till sist räknas Sveriges och kommunernas andelar av den globala koldioxidbudgeten fram. Ett avdrag görs för internationellt flyg och sjöfart. Klimatkollen följer sedan standard och använder den så kallade &#8220;grandfathering-principen&#8221;, vilket innebär att fördelningen baseras på historiska utsläpp. De som har släppt ut mer får en större del av budgeten än de som släppt ut mindre. Då återstår X Gt för Sverige som helhet.
+                  Till sist räknas Sveriges och kommunernas andelar av den globala
+                  koldioxidbudgeten fram. Ett avdrag görs för internationellt flyg och
+                  sjöfart. Klimatkollen följer sedan standard och använder den så kallade
+                  &#8220;grandfathering-principen&#8221;, vilket innebär att fördelningen
+                  baseras på historiska utsläpp. De som har släppt ut mer får en större
+                  del av budgeten än de som släppt ut mindre. Då återstår X Gt för Sverige
+                  som helhet.
                 </Paragraph>
               </ToggleSection>
             )}
@@ -294,7 +356,8 @@ const Footer = () => {
                 </a>
               </IconWrapper>
               <Paragraph>
-                En ideell påverkansorganisation som tar fajten för barns rättigheter i klimatomställningen.
+                En ideell påverkansorganisation som tar fajten för barns rättigheter i
+                klimatomställningen.
               </Paragraph>
             </IconSection>
             <IconSection>
@@ -304,7 +367,7 @@ const Footer = () => {
                 </a>
               </IconWrapper>
               <Paragraph>
-                Samlar människor för att skapa opinion och klimatengagemang. 
+                Samlar människor för att skapa opinion och klimatengagemang.
               </Paragraph>
             </IconSection>
             <IconSection>
@@ -317,14 +380,14 @@ const Footer = () => {
                 </a>
               </IconWrapper>
               <Paragraph>
-                Världens största sociala nätverk för klimataktion. Skapa din egen kampanj
-                {' '}
+                Världens största sociala nätverk för klimataktion. Skapa din egen kampanj{' '}
                 <a
                   href="https://www.wedonthavetime.org/"
                   target="_blank"
                   rel="noreferrer">
                   här
-                </a>.
+                </a>
+                .
               </Paragraph>
             </IconSection>
             <IconSection>
@@ -333,9 +396,7 @@ const Footer = () => {
                   <Argand />
                 </a>
               </IconWrapper>
-              <Paragraph>
-                Investerar i klimatlösningar.
-                </Paragraph>
+              <Paragraph>Investerar i klimatlösningar.</Paragraph>
             </IconSection>
             <IconSection>
               <IconWrapper>
@@ -344,7 +405,8 @@ const Footer = () => {
                 </a>
               </IconWrapper>
               <Paragraph>
-                Skandinaviens första privata väderföretag, en global leverantör av vädertjänster. 
+                Skandinaviens första privata väderföretag, en global leverantör av
+                vädertjänster.
               </Paragraph>
             </IconSection>
           </FlexSection>

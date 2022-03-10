@@ -310,7 +310,7 @@ const STEPS: {
 } = {
   0: {
     text: 'Historiska utsläpp',
-    body: (name) => `Klimatutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
+    body: (name) => `Koldioxidutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
@@ -502,11 +502,7 @@ const Municipality = (props: Props) => {
           name +
           ' har placering ' +
           changeRank +
-          ' av 290 kommuner när det gäller utsläppsminskningar sedan Parisavtalet 2015, det är bättre än ' +
-          (290 - changeRank) +
-          ' och sämre än ' +
-          (changeRank - 1) +
-          ' grannkommuner.'
+          ' av 290 kommuner när det gäller utsläppsminskningar sedan Parisavtalet 2015.'
         )
     }
   }
@@ -610,7 +606,7 @@ const Municipality = (props: Props) => {
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
         <BottomHeader>
-          <FactH2>Klimatfakta om {municipality.Name}</FactH2>
+          <FactH2>Fakta om {municipality.Name}</FactH2>
         </BottomHeader>
         <Bottom>
           <BottomRight>
@@ -632,7 +628,11 @@ const Municipality = (props: Props) => {
         </Bottom>
         <DropDownSection>
           <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
-          <DropDown className="municipality-page" municipalitiesName={municipalitiesName} placeholder="Välj kommun" />
+          <DropDown
+            className="municipality-page"
+            municipalitiesName={municipalitiesName}
+            placeholder="Välj kommun"
+          />
         </DropDownSection>
         <BottomShare>
           {hasShareAPI() && (

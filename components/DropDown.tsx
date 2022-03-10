@@ -4,28 +4,34 @@ import { useRouter } from 'next/router'
 import ArrowDown from '../public/icons/arrow-down.svg'
 import ArrowRightWhite from '../public/icons/arrow-right-white.svg'
 import ArrowRightGreen from '../public/icons/arrow-right-green.svg'
+import { devices } from '../utils/devices'
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  width: 280px;
+  width: 100%;
+
+  @media only screen and (${devices.tablet}) {
+    width: 325px;
+  }
 `
 
 const SearchDropDown = styled.div`
   position: relative;
-  display: inline-block;
+  width: 100%;
 `
 
 const Flex = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `
 
 const Input = styled.input`
-  width: 305px;
+  width: 100%;
   height: 56px;
   background-color: transparent;
   border: 1px solid white;
@@ -39,6 +45,10 @@ const Input = styled.input`
 
   ::placeholder {
     color: ${({ theme }) => theme.white};
+  }
+
+  @media only screen and (${devices.tablet}) {
+    width: 305px;
   }
 `
 
