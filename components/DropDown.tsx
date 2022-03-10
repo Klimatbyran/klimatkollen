@@ -25,9 +25,9 @@ const Flex = styled.div`
 `
 
 const Input = styled.input`
-  width: 280px;
+  width: 350px;
   height: 56px;
-  background-color: ${({ theme }) => theme.black};
+  background-color: transparent;
   border: 1px solid white;
   border-radius: 4px;
   color: ${({ theme }) => theme.white};
@@ -43,7 +43,7 @@ const Input = styled.input`
 `
 
 const Btn = styled.button`
-  background-color: ${({ theme }) => theme.black};
+  background-color: transparent;
   width: 40px;
   height: 30px;
   right: 10px;
@@ -71,7 +71,7 @@ const MunicipalitiesWrapper = styled.ul`
 const Municiplity = styled.li`
   color: ${({ theme }) => theme.black};
   text-decoration: none;
-  width: 280px;
+  width: 350px;
   height: 56px;
   display: flex;
   align-items: center;
@@ -81,8 +81,10 @@ const Municiplity = styled.li`
 
 type Props = {
   municipalitiesName: Array<string>
+  placeholder: string
 }
-const DropDown = ({ municipalitiesName }: Props) => {
+
+const DropDown = ({ municipalitiesName, placeholder }: Props) => {
   const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMuniciplity, setSelectedMunicipality] = useState<string>('')
@@ -124,7 +126,7 @@ const DropDown = ({ municipalitiesName }: Props) => {
 
   const seeMuniciplity = () => {
     if (municipalities.includes(selectedMuniciplity)) {
-      router.push(`kommun/${selectedMuniciplity.toLowerCase()}`)
+      router.push(`/kommun/${selectedMuniciplity.toLowerCase()}`)
     } else {
       setShowInfoText(true)
       setTimeout(() => {
@@ -140,7 +142,7 @@ const DropDown = ({ municipalitiesName }: Props) => {
         <Flex>
           <Input
             type="text"
-            placeholder="Hur går det för din kommun?"
+            placeholder={placeholder}
             onChange={(e) => onInputChange(e.target.value)}
             value={selectedMuniciplity}
           />

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import Graph from './Graph'
-import { H1, H3 } from './Typography'
+import { H1, H3, ParagraphBold } from './Typography'
 import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 import Button from './Button'
@@ -14,6 +14,8 @@ import MetaTags from './MetaTags'
 import { useState } from 'react'
 import PageWrapper from './PageWrapper'
 import { useRouter } from 'next/router'
+import DropDown from './DropDown'
+import { devices } from '../utils/devices'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -68,7 +70,6 @@ const Top = styled.div`
   flex-direction: column;
   gap: 2rem;
 `
-
 const CoatOfArmsImage = styled.img`
   width: 60px;
 `
@@ -132,6 +133,58 @@ const Bottom = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+
+  @media only screen and (${devices.tablet}) {
+    flex-direction: row-reverse;
+  }
+`
+
+const BottomHeader = styled.div`
+  margin-bottom: 20px;
+  width: 100%;
+`
+
+const BottomLeft = styled.div`
+  @media only screen and (${devices.tablet}) {
+    width: 50%;
+  }
+`
+
+const BottomRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media only screen and (${devices.tablet}) {
+    width: 50%;
+  }
+`
+
+const DropDownSection = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 30px;
+
+  @media only screen and (${devices.tablet}) {
+    margin-top: 50px;
+    text-align: center;
+    align-items: center;
+    padding-right: 60px;
+  }
+`
+
+const BottomShare = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-top: 2rem;
+
+  @media only screen and (${devices.tablet}) {
+    align-items: center;
+  }
 `
 
 const MANDATE_PERIODS = [
@@ -191,6 +244,8 @@ type Props = {
   historicalEmissions: EmissionPerYear[]
   budgetedEmissions: EmissionPerYear[]
   trendingEmissions: EmissionPerYear[]
+  municipalitiesName: Array<string>
+  placeholder: string
 }
 
 const Municipality = (props: Props) => {
@@ -203,6 +258,8 @@ const Municipality = (props: Props) => {
     historicalEmissions,
     budgetedEmissions,
     trendingEmissions,
+    municipalitiesName,
+    placeholder,
   } = props
   const router = useRouter()
   const q = router.query['g[]']
@@ -289,25 +346,25 @@ const Municipality = (props: Props) => {
           name +
           ' har placering ' +
           changeRank +
-          ' av 290 kommuner när det gäller utsläppsminsking, det är bäst i Sverige!'
+          ' av 290 kommuner när det gäller utsläppsminskingar sedan Parisavtalet 2015, det är bäst i Sverige!'
         )
       case 290:
         return (
           name +
           ' har placering ' +
           changeRank +
-          ' av 290 kommuner när det gäller utsläppsminskning, det är sämst i Sverige :('
+          ' av 290 kommuner när det gäller utsläppsminskningar sedan Parisavtalet 2015, det är sämst i Sverige :('
         )
       default:
         return (
           name +
           ' har placering ' +
           changeRank +
-          ' av 290 kommuner när det gäller utsläppsminskning, det är bättre än ' +
+          ' av 290 kommuner när det gäller utsläppsminskningar sedan Parisavtalet 2015, det är bättre än ' +
           (290 - changeRank) +
           ' och sämre än ' +
           (changeRank - 1) +
-          ' andra kommuner i Sverige.'
+          ' grannkommuner.'
         )
     }
   }
@@ -345,7 +402,7 @@ const Municipality = (props: Props) => {
             {onPreviousStep ? (
               <Btn onClick={onPreviousStep}>
                 <ArrowLeft />
-                Förgående
+                Föregående
               </Btn>
             ) : (
               <div></div>
@@ -394,20 +451,32 @@ const Municipality = (props: Props) => {
         </Top>
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
+        <BottomHeader>
+          <FactH2>Klimatfakta om {municipality.Name}</FactH2>
+        </BottomHeader>
         <Bottom>
-          <FactH2>Fakta om klimatomställningen i {municipality.Name}</FactH2>
+        <BottomRight>
+            <p>
+              {renderEmissionChangeRank(
+                municipality.Name,
+                municipality.HistoricalEmission.AverageEmissionChangeRank,
+              )}
+            </p>
+          </BottomRight>
+          <BottomLeft>
           <ScoreCard
             population={municipality.Population}
             budget={municipality.Budget.CO2Equivalent}
             municipality={municipality.Name}
             politicalRule={municipality.PoliticalRule}
           />
-          <p>
-            {renderEmissionChangeRank(
-              municipality.Name,
-              municipality.HistoricalEmission.AverageEmissionChangeRank,
-            )}
-          </p>
+          </BottomLeft>
+        </Bottom>
+        <DropDownSection>
+          <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
+          <DropDown municipalitiesName={municipalitiesName} placeholder="Välj kommun" />
+        </DropDownSection>
+        <BottomShare>
           {hasShareAPI() && (
             <Button
               handleClick={handleClick}
@@ -415,7 +484,7 @@ const Municipality = (props: Props) => {
               shareIcon
             />
           )}
-        </Bottom>
+        </BottomShare>
       </PageWrapper>
     </>
   )
