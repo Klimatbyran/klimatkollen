@@ -116,7 +116,7 @@ const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
             <span>Tack för din intresseanmälan!</span>
           </EmailValidation>
         ) : (
-          <Button text={'Skicka intresseanmälan'} />
+          <Button text={'Skicka'} />
         )}
       </StyledForm>
     </Container>

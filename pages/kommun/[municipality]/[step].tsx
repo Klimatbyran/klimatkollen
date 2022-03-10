@@ -15,12 +15,15 @@ export const STEPS = [
   'min-plan',
 ]
 
+
 type Props = {
   municipality: TMunicipality
   id: string
+  municipalitiesName: Array<string>
+  placeholder: string
 }
 
-export default function Step({ id, municipality }: Props) {
+export default function Step({ id, municipality, municipalitiesName, placeholder }: Props) {
   const router = useRouter()
   const { step } = router.query
   const stepString = typeof step === 'string' ? step : STEPS[0]
@@ -55,6 +58,8 @@ export default function Step({ id, municipality }: Props) {
       historicalEmissions={municipality.HistoricalEmission.EmissionPerYear}
       budgetedEmissions={municipality.Budget.BudgetPerYear}
       trendingEmissions={municipality.EmissionTrend.TrendPerYear || []}
+      municipalitiesName={municipalitiesName}
+      placeholder={placeholder}
     />
   )
 }
@@ -102,10 +107,13 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
     })
   }
 
+  const municipalitiesName = municipalities.map((item) => item.Name)
+
   return {
     props: {
       municipality,
       id,
+      municipalitiesName,
     },
   }
 }
