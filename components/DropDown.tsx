@@ -118,6 +118,10 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
   const onMuniciplityClick = (e: any) => {
     setSelectedMunicipality(e.target.innerHTML)
     setShowDropDown(false)
+    
+    if (municipalities.includes(e.target.innerHTML)) {
+      router.push(`/kommun/${e.target.innerHTML.toLowerCase()}`)
+    }
   }
 
   const onInputChange = (value: string) => {

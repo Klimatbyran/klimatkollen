@@ -24,6 +24,8 @@ const DeckGLWrapper = styled.div`
   @media only screen and (${devices.tablet}) {
     height: 500px;
   }
+  padding-left: 0.87rem;
+  padding-top: 1.2rem;
 `
 
 const getColor = (emission: number): RGBAColor => {
@@ -33,6 +35,7 @@ const getColor = (emission: number): RGBAColor => {
   const red: RGBAColor = [239, 94, 48]
   const pink: RGBAColor = [239, 48, 84]
   const green: RGBAColor = [145, 223, 200]
+
 
   if (emission >= 0) {
     return pink
@@ -46,7 +49,7 @@ const getColor = (emission: number): RGBAColor => {
   if (emission >= -0.03) {
     return orange
   }
-  if (emission >= -0.13) {
+  if (emission >= -0.10) {
     return yellow
   }
 

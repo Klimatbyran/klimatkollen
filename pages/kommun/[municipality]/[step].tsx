@@ -15,7 +15,6 @@ export const STEPS = [
   'min-plan',
 ]
 
-
 type Props = {
   municipality: TMunicipality
   id: string
@@ -24,7 +23,13 @@ type Props = {
   className: string
 }
 
-export default function Step({ id, municipality, municipalitiesName, placeholder, className }: Props) {
+export default function Step({
+  id,
+  municipality,
+  municipalitiesName,
+  placeholder,
+  className
+}: Props) {
   const router = useRouter()
   const { step } = router.query
   const stepString = typeof step === 'string' ? step : STEPS[0]
@@ -71,7 +76,6 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
-
   res.setHeader('Cache-Control', 'public, maxage=3600, s-maxage=4000')
 
   const id = (params as Params).municipality as string
