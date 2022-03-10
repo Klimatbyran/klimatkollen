@@ -281,6 +281,15 @@ const Circle = styled.span`
   display: inline-block;
 `
 
+const Line = styled.span`
+  width: 14px;
+  height: 4px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  background-color: ${(props) => props.color};
+  display: inline-block;
+`
+
 function makePeriods(startYear: number, endYear: number, increment: number) {
   const mandates = []
   for (let i = startYear; i <= endYear; i += increment) {
@@ -533,7 +542,7 @@ const Municipality = (props: Props) => {
                 </Legend>
                 {step > 3 && (
                   <Legend>
-                    <Circle color="rgb(239, 191, 23)" />
+                    <Line color="rgb(239, 191, 23)" />
                     Din plan: {Math.round(userTotal / 1000)} kCO₂
                   </Legend>
                 )}
@@ -591,8 +600,9 @@ const Municipality = (props: Props) => {
                 ))}
               </RangeContainer>
               <Help>
-                Med hjälp av reglagen så styr du hur stor årlig utsläppsminskningar i
-                procent som du tycker att man behöver göra för att nå Parisavtalet.
+                Med hjälp av reglagen så styr du hur stor årlig utsläppsminskningar{' '}
+                <Line color="rgb(239, 191, 23)" /> i procent som du tycker att man behöver
+                göra för att nå Parisavtalet.
               </Help>
             </Adjustments>
           )}

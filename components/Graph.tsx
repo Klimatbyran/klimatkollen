@@ -128,9 +128,9 @@ const Graph = ({ step, historical, budget, trend, user, maxVisibleYear }: Props)
             {
               // @ts-ignore
               id: 'usergrap',
-              fill: true,
+              fill: false,
               data: userDataset,
-              borderWidth: 1,
+              borderWidth: 2,
               borderColor: 'rgb(239, 191, 23)',
               backgroundColor: 'rgba(239, 191, 23, 0.6)',
               pointRadius: 0,
