@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import Icon from '../public/icons/share.svg'
+import { devices } from '../utils/devices'
+
 
 const Button = styled.button<{ icon: boolean }>`
   height: 56px;
@@ -11,10 +13,15 @@ const Button = styled.button<{ icon: boolean }>`
   display: flex;
   align-items: center;
   justify-content: ${({ icon }) => (icon ? 'start' : 'center')};
-  padding-left: ${({ icon }) => (icon ? '40px' : '20px')};
-  padding-right: ${({ icon }) => (icon ? '40px' : '20px')};
+  padding-left: ${({ icon }) => (icon ? '20px' : '20px')};
+  padding-right: ${({ icon }) => (icon ? '20px' : '20px')};
   cursor: pointer;
   fill: ${({ theme }) => theme.black};
+  width: 100%;
+
+  @media only screen and (${devices.tablet}) {
+    max-width: 350px;
+  }
 
   span {
     font-weight: bold;

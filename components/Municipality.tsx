@@ -168,19 +168,22 @@ const DropDownSection = styled.div`
   margin-top: 30px;
 
   @media only screen and (${devices.tablet}) {
-    align-items: center;
-    padding-right: 25px;
     margin-top: 50px;
+    text-align: center;
+    align-items: center;
+    padding-right: 60px;
   }
 `
 
 const BottomShare = styled.div`
   width: 100%;
-  margin-top: 40px;
   display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-top: 2rem;
 
   @media only screen and (${devices.tablet}) {
-    justify-content: center;
+    align-items: center;
   }
 `
 
@@ -242,6 +245,7 @@ type Props = {
   budgetedEmissions: EmissionPerYear[]
   trendingEmissions: EmissionPerYear[]
   municipalitiesName: Array<string>
+  placeholder: string | null
 }
 
 const Municipality = (props: Props) => {
@@ -468,9 +472,9 @@ const Municipality = (props: Props) => {
           </BottomRight>
         </Bottom>
         <DropDownSection>
-              <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
-              <DropDown municipalitiesName={municipalitiesName} />
-            </DropDownSection>
+          <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
+          <DropDown municipalitiesName={municipalitiesName} placeholder="Välj kommun" />
+        </DropDownSection>
         <BottomShare>
           {hasShareAPI() && (
             <Button
