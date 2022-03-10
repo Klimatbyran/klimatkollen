@@ -39,8 +39,7 @@ const ArrowIcon = styled(Icon)<{ rotateUp?: boolean }>`
 `
 
 const InfoBox = styled.div`
-  padding-left: 0.87rem;
-  padding-top: 1.2rem;
+  padding-bottom: 0.5rem;
 `
 
 const Label = styled.div`
@@ -48,14 +47,16 @@ const Label = styled.div`
   align-items: center;
   gap: 0.5rem;
   &:first-child div {
-    border-radius: 10% 10% 0 0;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
   }
   &:last-child div {
-    border-radius: 0 0 10% 10%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
   }
 `
 const LastLabel = styled(Label)`
-    margin-top:5px;
+    
 `
 const FlexCenter = styled.div`
   width: 100%;
@@ -133,10 +134,12 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                 </Square>
                 <StyledParagraph>10%-15%</StyledParagraph>
               </Label>
-              <LastLabel>
+            </InfoBox>
+            <InfoBox>
+              <Label>
                 <Square color="#4ECB80"></Square>
                 <StyledParagraph>Parisavtalet</StyledParagraph>
-              </LastLabel>
+              </Label>
             </InfoBox>
           </Map>
         </Container>

@@ -24,6 +24,8 @@ const DeckGLWrapper = styled.div`
   @media only screen and (${devices.tablet}) {
     height: 500px;
   }
+  padding-left: 0.87rem;
+  padding-top: 1.2rem;
 `
 
 const getColor = (emission: number): RGBAColor => {
