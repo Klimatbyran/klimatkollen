@@ -245,7 +245,7 @@ type Props = {
   budgetedEmissions: EmissionPerYear[]
   trendingEmissions: EmissionPerYear[]
   municipalitiesName: Array<string>
-  placeholder: string | null
+  placeholder: string
 }
 
 const Municipality = (props: Props) => {
@@ -259,6 +259,7 @@ const Municipality = (props: Props) => {
     budgetedEmissions,
     trendingEmissions,
     municipalitiesName,
+    placeholder,
   } = props
   const router = useRouter()
   const q = router.query['g[]']

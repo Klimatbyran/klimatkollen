@@ -20,9 +20,10 @@ type Props = {
   municipality: TMunicipality
   id: string
   municipalitiesName: Array<string>
+  placeholder: string
 }
 
-export default function Step({ id, municipality, municipalitiesName }: Props) {
+export default function Step({ id, municipality, municipalitiesName, placeholder }: Props) {
   const router = useRouter()
   const { step } = router.query
   const stepString = typeof step === 'string' ? step : STEPS[0]
@@ -58,6 +59,7 @@ export default function Step({ id, municipality, municipalitiesName }: Props) {
       budgetedEmissions={municipality.Budget.BudgetPerYear}
       trendingEmissions={municipality.EmissionTrend.TrendPerYear || []}
       municipalitiesName={municipalitiesName}
+      placeholder={placeholder}
     />
   )
 }
