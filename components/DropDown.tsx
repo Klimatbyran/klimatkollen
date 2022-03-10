@@ -65,7 +65,7 @@ const MunicipalitiesWrapper = styled.ul`
   max-height: 195px;
   overflow-y: scroll;
   position: absolute;
-  z-index:2;
+  z-index: 2;
 
   &.startpage {
     bottom: auto;
@@ -118,7 +118,7 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
   const onMuniciplityClick = (e: any) => {
     setSelectedMunicipality(e.target.innerHTML)
     setShowDropDown(false)
-    
+
     if (municipalities.includes(e.target.innerHTML)) {
       router.push(`/kommun/${e.target.innerHTML.toLowerCase()}`)
     }

@@ -302,7 +302,7 @@ const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
 
 const START_YEAR = 2022
-const END_YEAR = 2030
+const END_YEAR = 2050
 
 type ShareTextFn = (name: string) => string
 const STEPS: {
@@ -329,14 +329,14 @@ const STEPS: {
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   3: {
-    text: 'Utforska Glappet',
+    text: 'Utforska glappet',
     body: (_name) =>
       'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   4: {
-    text: 'Minska glappet',
+    text: 'Utforska glappet',
     body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
     shareText: (_name) =>
@@ -374,7 +374,7 @@ const Municipality = (props: Props) => {
   const q = router.query['g[]']
 
   // TOOD: 2022-2030
-  const adjustablePeriods = useMemo(() => makePeriods(START_YEAR, END_YEAR, 1), [])
+  const adjustablePeriods = useMemo(() => makePeriods(START_YEAR, 2030, 1), [])
 
   const defaultPeriods = useMemo(
     () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
