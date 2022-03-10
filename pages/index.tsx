@@ -95,7 +95,6 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
               <p>För att nå målet behöver klimatutsläppen minska med X% per år,</p>
             </div>
           </FlexCenter>
-          <div>{setSelected}</div>
           <Map emissionsLevels={emissionsLevels} setSelected={setSelected}>
             <InfoBox>
               <Label>
