@@ -9,6 +9,7 @@ import { EmissionService } from '../utils/emissionService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import Icon from '../public/icons/arrow.svg'
+import { devices } from '../utils/devices'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -38,11 +39,36 @@ const ArrowIcon = styled(Icon)<{ rotateUp?: boolean }>`
   bottom: 0;
 `
 
+const MapContainer = styled.div`
+  position: relative;
+  // TODO: Hardcoding this is not good.
+  height: 380px;
+  border: 1px solid #f9fbff;
+  border-radius: 8px;
+  display: flex;
+
+  @media only screen and (${devices.tablet}) {
+    height: 500px;
+  }
+`
+
+const MapLabels = styled.div`
+  padding-left: 0.87rem;
+  padding-top: 1.2rem;
+
+  @media only screen and (${devices.tablet}) {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+`
+
 const InfoBox = styled.div`
   padding-bottom: 0.5rem;
 `
 
 const Label = styled.div`
+  flex-shrink: 1;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -102,52 +128,56 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
               </p>
             </div>
           </FlexCenter>
-          <Map emissionsLevels={emissionsLevels} setSelected={setSelected}>
-            <InfoBox>
-              <Label>
-                <Square color="#EF3054">
-                  <ArrowIcon rotateUp={true} />
-                </Square>
-                <StyledParagraph>0% +</StyledParagraph>
-              </Label>
-              <Label>
-                <Square color="#EF5E30">
-                  <ArrowIcon />
-                </Square>
-                <StyledParagraph>0–1%</StyledParagraph>
-              </Label>
-              <Label>
-                <Square color="#EF7F17">
-                  <ArrowIcon />
-                </Square>
-                <StyledParagraph>1–2%</StyledParagraph>
-              </Label>
-              <Label>
-                <Square color="#EF9917">
-                  <ArrowIcon />
-                </Square>
-                <StyledParagraph>2–3%</StyledParagraph>
-              </Label>
-              <Label>
-                <Square color="#EFBF17">
-                  <ArrowIcon />
-                </Square>
-                <StyledParagraph>3–10%</StyledParagraph>
-              </Label>
-              <Label>
-                <Square color="#91BFC8">
-                  <ArrowIcon />
-                </Square>
-                <StyledParagraph>10%–15%</StyledParagraph>
-              </Label>
-            </InfoBox>
-            <InfoBox>
-              <Label>
-                <Square color="#4ECB80"></Square>
-                <StyledParagraph>Parisavtalet</StyledParagraph>
-              </Label>
-            </InfoBox>
-          </Map>
+          <MapContainer>
+            <MapLabels>
+              <InfoBox>
+                <Label>
+                  <Square color="#EF3054">
+                    <ArrowIcon rotateUp={true} />
+                  </Square>
+                  <StyledParagraph>0% +</StyledParagraph>
+                </Label>
+                <Label>
+                  <Square color="#EF5E30">
+                    <ArrowIcon />
+                  </Square>
+                  <StyledParagraph>0–1%</StyledParagraph>
+                </Label>
+                <Label>
+                  <Square color="#EF7F17">
+                    <ArrowIcon />
+                  </Square>
+                  <StyledParagraph>1–2%</StyledParagraph>
+                </Label>
+                <Label>
+                  <Square color="#EF9917">
+                    <ArrowIcon />
+                  </Square>
+                  <StyledParagraph>2–3%</StyledParagraph>
+                </Label>
+                <Label>
+                  <Square color="#EFBF17">
+                    <ArrowIcon />
+                  </Square>
+                  <StyledParagraph>3–10%</StyledParagraph>
+                </Label>
+                <Label>
+                  <Square color="#91BFC8">
+                    <ArrowIcon />
+                  </Square>
+                  <StyledParagraph>10%–15%</StyledParagraph>
+                </Label>
+              </InfoBox>
+              <InfoBox>
+                <Label>
+                  <Square color="#4ECB80"></Square>
+                  <StyledParagraph>Parisavtalet</StyledParagraph>
+                </Label>
+              </InfoBox>
+            </MapLabels>
+
+            <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
+          </MapContainer>
         </Container>
       </PageWrapper>
     </>
