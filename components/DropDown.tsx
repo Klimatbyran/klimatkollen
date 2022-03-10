@@ -67,11 +67,11 @@ const MunicipalitiesWrapper = styled.ul`
   position: absolute;
   z-index:2;
 
-  & .startpage {
+  &.startpage {
     bottom: auto;
   }
 
-  & .municipality-page {
+  &.municipality-page {
     bottom: 100%;
   }
 `
