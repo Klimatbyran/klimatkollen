@@ -301,7 +301,7 @@ const STEPS: {
 } = {
   0: {
     text: 'Historiska utsläpp',
-    body: (name) => `Sedan 1990 har ${name} släppt ut X ton koldioxid.`,
+    body: (name) => `Klimatutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
@@ -320,15 +320,15 @@ const STEPS: {
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   3: {
-    text: 'Glappet',
+    text: 'Utforska Glappet',
     body: (_name) =>
-      'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
+      'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   4: {
     text: 'Minska glappet',
-    body: (name) =>
+    body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
