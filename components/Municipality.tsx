@@ -246,6 +246,7 @@ type Props = {
   trendingEmissions: EmissionPerYear[]
   municipalitiesName: Array<string>
   placeholder: string
+  className: string
 }
 
 const Municipality = (props: Props) => {
@@ -260,6 +261,7 @@ const Municipality = (props: Props) => {
     trendingEmissions,
     municipalitiesName,
     placeholder,
+    className,
   } = props
   const router = useRouter()
   const q = router.query['g[]']
@@ -474,7 +476,7 @@ const Municipality = (props: Props) => {
         </Bottom>
         <DropDownSection>
           <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
-          <DropDown municipalitiesName={municipalitiesName} placeholder="Välj kommun" />
+          <DropDown className="municipality-page" municipalitiesName={municipalitiesName} placeholder="Välj kommun" />
         </DropDownSection>
         <BottomShare>
           {hasShareAPI() && (

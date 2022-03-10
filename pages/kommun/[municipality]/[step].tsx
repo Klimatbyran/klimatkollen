@@ -21,9 +21,10 @@ type Props = {
   id: string
   municipalitiesName: Array<string>
   placeholder: string
+  className: string
 }
 
-export default function Step({ id, municipality, municipalitiesName, placeholder }: Props) {
+export default function Step({ id, municipality, municipalitiesName, placeholder, className }: Props) {
   const router = useRouter()
   const { step } = router.query
   const stepString = typeof step === 'string' ? step : STEPS[0]
@@ -60,6 +61,7 @@ export default function Step({ id, municipality, municipalitiesName, placeholder
       trendingEmissions={municipality.EmissionTrend.TrendPerYear || []}
       municipalitiesName={municipalitiesName}
       placeholder={placeholder}
+      className={className}
     />
   )
 }

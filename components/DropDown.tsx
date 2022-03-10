@@ -40,6 +40,14 @@ const Input = styled.input`
   ::placeholder {
     color: ${({ theme }) => theme.white};
   }
+
+  & .startpage {
+    background-color: red;
+  }
+
+  & .municipality-page {
+    background-color: green;
+  }
 `
 
 const Btn = styled.button`
@@ -82,9 +90,10 @@ const Municiplity = styled.li`
 type Props = {
   municipalitiesName: Array<string>
   placeholder: string
+  className: string
 }
 
-const DropDown = ({ municipalitiesName, placeholder }: Props) => {
+const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
   const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMuniciplity, setSelectedMunicipality] = useState<string>('')
@@ -145,6 +154,7 @@ const DropDown = ({ municipalitiesName, placeholder }: Props) => {
             placeholder={placeholder}
             onChange={(e) => onInputChange(e.target.value)}
             value={selectedMuniciplity}
+            className={className}
           />
           <Btn onClick={() => setShowDropDown((current) => !current)}>
             <ArrowDown />
