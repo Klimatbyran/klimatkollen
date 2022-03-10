@@ -11,7 +11,7 @@ import { hasShareAPI } from '../utils/navigator'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import PageWrapper from './PageWrapper'
 import { useRouter } from 'next/router'
 import DropDown from './DropDown'
@@ -82,25 +82,85 @@ const HeaderSection = styled.div`
   margin-top: 20px;
 `
 
-const RangeContainer = styled.div`
-  margin-top: 4rem;
+const Adjustments = styled.div`
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
+  flex-direction: column;
+
+  @media only screen and (${devices.tablet}) {
+    flex-direction: row;
+  }
+`
+
+const RangeContainer = styled.div`
+  display: flex;
   overflow-x: auto;
   padding-bottom: 1rem;
+  flex-shrink: 0;
+  flex-grow: 1;
+  justify-content: space-between;
+
+  @media only screen and (${devices.tablet}) {
+    flex-grow: 0;
+    justify-content: start;
+  }
 `
 
 const Range = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 40px;
 `
 
 const Slider = styled.input`
-  appearance: slider-vertical;
-  writing-mode: bt-lr; // ie and edge
-  width: 3rem;
-  margin-top: 0.25rem;
+  width: 84px;
+  height: 40px;
+  margin-top: calc((84px - 40px) / 2);
+  margin-bottom: calc((84px - 40px) / 2);
+  appearance: none;
+  background: transparent;
+  transform: rotate(-90deg);
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    background: ${(props) => props.theme.grey};
+    box-shadow: none;
+    height: 6px;
+    border-radius: 5px;
+  }
+
+  &::-moz-range-track {
+    background: ${(props) => props.theme.grey};
+    box-shadow: none;
+    height: 6px;
+    border-radius: 5px;
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    border-radius: 100%;
+    background: #f9fbff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: -4px;
+    height: 14px;
+    width: 14px;
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+    border: none;
+    border-radius: 100%;
+    background: #f9fbff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: -4px;
+    height: 14p;
+    width: 14px;
+  }
 `
 
 const Percentage = styled.label`
@@ -115,14 +175,18 @@ const MandatePeriod = styled.div`
 const StartYear = styled.div`
   border-bottom: 1px solid white;
   font-weight: 300;
+  margin-bottom: 8px;
 `
 const EndYear = styled.div`
   font-weight: 300;
 `
 
 const Help = styled.p`
-  margin-top: 2rem;
+  // margin-top: 2rem;
   line-height: 1.5rem;
+  @media only screen and (${devices.tablet}) {
+    max-width: 350px;
+  }
 `
 
 const FactH2 = styled(H3)`
@@ -187,49 +251,85 @@ const BottomShare = styled.div`
   }
 `
 
-const MANDATE_PERIODS = [
-  [2022, 2026],
-  [2026, 2030],
-  [2030, 2034],
-  [2034, 2038],
-  [2038, 2042],
-  [2042, 2046],
-  [2046, 2050],
-]
+const Legends = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+
+  @media all and (${devices.tablet}) {
+    justify-content: center;
+  }
+`
+
+const Legend = styled.label`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3125rem;
+  align-items: center;
+
+  @media all and (${devices.tablet}) {
+    flex-direction: column;
+    justify-content: center;
+  }
+`
+
+const Circle = styled.span`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
+  display: inline-block;
+`
+
+function makePeriods(startYear: number, endYear: number, increment: number) {
+  const mandates = []
+  for (let i = startYear; i <= endYear; i += increment) {
+    mandates.push([i, i + increment])
+  }
+  return mandates
+}
 
 const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
 
-const DEFAULT_MANDATE_VALUES = MANDATE_PERIODS.map((f) => ({
-  start: f[0],
-  end: f[1],
-  change: 1.0,
-}))
+const START_YEAR = 2022
+const END_YEAR = 2030
 
 type ShareTextFn = (name: string) => string
-const STEPS: { [index: number]: { text: string; shareText: ShareTextFn } } = {
+const STEPS: {
+  [index: number]: { text: string; body: ShareTextFn; shareText: ShareTextFn }
+} = {
   0: {
     text: 'Historiska utsläpp',
+    body: (name) => `Sedan 1990 har ${name} släppt ut X ton koldioxid.`,
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   1: {
     text: 'För att nå Parisavtalet',
+    body: (name) =>
+      `För att vara i linje med Parisavtalet behöver ${name} minska sina utsläpp med X% per år.`,
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   2: {
-    text: 'Framtida prognos',
+    text: 'Om vi fortsätter som idag',
+    body: (_name) =>
+      'Om klimatutsläppen följer nuvarande trend kommer koldioxidbudgeten att ta slut 2024.',
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   3: {
     text: 'Glappet',
+    body: (_name) =>
+      'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   4: {
-    text: 'Din plan',
+    text: 'Minska glappet',
+    body: (name) =>
+      'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
@@ -264,37 +364,70 @@ const Municipality = (props: Props) => {
   const router = useRouter()
   const q = router.query['g[]']
 
-  const [mandateChanges, setMandateChanges] = useState<typeof DEFAULT_MANDATE_VALUES>(
-    () => {
-      if (typeof q === 'undefined') return DEFAULT_MANDATE_VALUES
+  // TOOD: 2022-2030
+  const adjustablePeriods = useMemo(() => makePeriods(START_YEAR, END_YEAR, 1), [])
 
-      const g = (Array.isArray(q) ? q : [q])
-        .map((v) => parseFloat(v))
-        .map((f) => Math.max(MANDATE_MIN_CHANGE, Math.min(MANDATE_MAX_CHANGE, f)))
-
-      if (g.length !== MANDATE_PERIODS.length) {
-        console.debug('Incorrect number of g parameters')
-        return DEFAULT_MANDATE_VALUES
-      }
-
-      if (g.some((v) => Number.isNaN(v))) {
-        console.debug('Non-number values in g parameter')
-        return DEFAULT_MANDATE_VALUES
-      }
-
-      return DEFAULT_MANDATE_VALUES.map((v, idx) => ({
-        ...v,
-        change: g[idx],
-      }))
-    },
+  const defaultPeriods = useMemo(
+    () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
+    [adjustablePeriods],
   )
+
+  // Load mandate change values from ?g[] parameter in URL
+  const [mandateChanges, setMandateChanges] = useState<typeof defaultPeriods>(() => {
+    if (typeof q === 'undefined') return defaultPeriods
+
+    const g = (Array.isArray(q) ? q : [q])
+      .map((v) => parseFloat(v))
+      .map((f) => Math.max(MANDATE_MIN_CHANGE, Math.min(MANDATE_MAX_CHANGE, f)))
+
+    if (g.length !== adjustablePeriods.length) {
+      console.debug('Incorrect number of g parameters')
+      return defaultPeriods
+    }
+
+    if (g.some((v) => Number.isNaN(v))) {
+      console.debug('Non-number values in g parameter')
+      return defaultPeriods
+    }
+
+    return defaultPeriods.map((v, idx) => ({
+      ...v,
+      change: g[idx],
+    }))
+  })
+
+  const [userEmissions, userTotal] = useMemo(() => {
+    const emissions: EmissionPerYear[] = []
+
+    let acc = 1
+    let total = 0
+    mandateChanges.forEach((mandateChange) => {
+      // Problem: This counts on budget to go at least all the way to 2050
+      ;[...trendingEmissions, ...budgetedEmissions.slice(trendingEmissions.length)]
+        .filter((e) => e.Year >= mandateChange.start && e.Year < mandateChange.end)
+        .forEach((budgeted) => {
+          acc = acc * mandateChange.change
+          // Problem: This is a clone of the budget and we cannot go "above it"
+          emissions.push({
+            Year: budgeted.Year,
+            CO2Equivalent: budgeted.CO2Equivalent * acc,
+          })
+          total += budgeted.CO2Equivalent * acc
+        })
+    })
+
+    return [emissions, total]
+  }, [mandateChanges, trendingEmissions, budgetedEmissions])
+
+  const totalBudget = budgetedEmissions.reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalTrend = trendingEmissions.reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
     throw new Error('Render a sort of 500 page I guess')
   }
 
-  const { text, shareText } = stepConfig
+  const { text, shareText, body } = stepConfig
   // let shareUrl = window.location.toString()
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   let shareUrl = `${baseUrl}${router.asPath}`
@@ -385,17 +518,34 @@ const Municipality = (props: Props) => {
             {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
           </HeaderSection>
           <GraphWrapper>
-            <Center>
-              <Box>
-                <InfoText>{text}</InfoText>
-              </Box>
-            </Center>
+            <h3>{text}</h3>
+            <p>{body}</p>
+
+            {step > 2 && (
+              <Legends>
+                <Legend>
+                  <Circle color="#EF3054" />
+                  Fortsätta som idag: {Math.round(totalTrend / 1000)} kCO₂
+                </Legend>
+                <Legend>
+                  <Circle color="#6BA292" />
+                  Parisavtalet: {Math.round(totalBudget / 1000)} kCO₂
+                </Legend>
+                {step > 3 && (
+                  <Legend>
+                    <Circle color="rgb(239, 191, 23)" />
+                    Din plan: {Math.round(userTotal / 1000)} kCO₂
+                  </Legend>
+                )}
+              </Legends>
+            )}
             <Graph
               step={step}
               historical={historicalEmissions}
               trend={trendingEmissions}
               budget={budgetedEmissions}
-              mandatePeriodChanges={mandateChanges}
+              user={userEmissions}
+              maxVisibleYear={END_YEAR}
             />
           </GraphWrapper>
           <Flex>
@@ -414,39 +564,37 @@ const Municipality = (props: Props) => {
             )}
           </Flex>
           {step > 3 && (
-            <>
+            <Adjustments>
               <RangeContainer>
                 {mandateChanges.map((value, i) => (
-                  <Range
-                    key={i}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                    }}>
+                  <Range key={i}>
                     <MandatePeriod>
                       <StartYear>{value.start}</StartYear>
-                      <EndYear>{value.end}</EndYear>
+                      {/* <EndYear>{value.end}</EndYear> */}
                     </MandatePeriod>
                     <Slider
-                      min={1}
+                      min={0.5}
                       max={2}
                       step={0.01}
                       value={value.change}
                       type="range"
-                      // @ts-ignore - this is for firefox :*(
-                      orient="vertical"
                       onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
                     />
-                    <Percentage>{100 - Math.round(100 / value.change)}%</Percentage>
+                    <Percentage
+                    // style={{
+                    //   color: value.change > 1 ? 'pink' : 'lightgreen',
+                    // }}
+                    >
+                      {100 - Math.round(100 * value.change)}%
+                    </Percentage>
                   </Range>
                 ))}
               </RangeContainer>
               <Help>
-                Med hjälp av reglagen så styr du hur stora utsläppsminskningar man behöver
-                göra per mandatperiod för att nå Parisavtalet.
+                Med hjälp av reglagen så styr du hur stor årlig utsläppsminskningar i
+                procent som du tycker att man behöver göra för att nå Parisavtalet.
               </Help>
-            </>
+            </Adjustments>
           )}
         </Top>
       </PageWrapper>
@@ -455,7 +603,7 @@ const Municipality = (props: Props) => {
           <FactH2>Klimatfakta om {municipality.Name}</FactH2>
         </BottomHeader>
         <Bottom>
-        <BottomRight>
+          <BottomRight>
             <p>
               {renderEmissionChangeRank(
                 municipality.Name,
@@ -464,12 +612,12 @@ const Municipality = (props: Props) => {
             </p>
           </BottomRight>
           <BottomLeft>
-          <ScoreCard
-            population={municipality.Population}
-            budget={municipality.Budget.CO2Equivalent}
-            municipality={municipality.Name}
-            politicalRule={municipality.PoliticalRule}
-          />
+            <ScoreCard
+              population={municipality.Population}
+              budget={municipality.Budget.CO2Equivalent}
+              municipality={municipality.Name}
+              politicalRule={municipality.PoliticalRule}
+            />
           </BottomLeft>
         </Bottom>
         <DropDownSection>

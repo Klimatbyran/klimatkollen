@@ -63,70 +63,39 @@ function getSetup(emissions: EmissionPerYear[][]): {
   }
 }
 
-type MandatePeriod = {
-  start: number
-  end: number
-  change: number
-}
+const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset =>
+  perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
 type Props = {
   step: number
   historical: EmissionPerYear[]
   budget: EmissionPerYear[]
   trend: EmissionPerYear[]
-  mandatePeriodChanges: MandatePeriod[]
+  user: EmissionPerYear[]
+  maxVisibleYear: number
 }
 
 type Dataset = Array<{ x: number; y: number }>
 
-const Graph = ({ step, historical, budget, trend, mandatePeriodChanges }: Props) => {
+const Graph = ({ step, historical, budget, trend, user, maxVisibleYear }: Props) => {
   const setup = useMemo(
     () => getSetup([historical, budget, trend]),
     [historical, budget, trend],
   )
 
   const historicalDataset: Dataset = useMemo(
-    () => historical.map((f) => ({ x: f.Year, y: f.CO2Equivalent })),
+    () => emissionPerYearToDataset(historical),
     [historical],
   )
-  const budgetDataset: Dataset = useMemo(
-    () => budget.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
-    [budget],
-  )
-
-  const pledgeDataset: Dataset = useMemo(
-    () => trend.map((p) => ({ x: p.Year, y: p.CO2Equivalent })),
-    [trend],
-  )
-
-  const userGraph = useMemo(
-    () =>
-      trend
-        .filter((pledge) => pledge.Year >= setup.adjustableYearStart)
-        .map((f) => ({ Year: f.Year, CO2Equivalent: f.CO2Equivalent })),
-    [trend, setup],
-  )
-
-  const adjustedUserGraphDataset: Dataset = useMemo(() => {
-    const dataset: Dataset = []
-    let acc = 1
-
-    mandatePeriodChanges.forEach((mandate) => {
-      acc = acc * mandate.change
-      userGraph
-        .filter((f) => f.Year >= mandate.start && f.Year < mandate.end) // range exlusive end
-        .forEach((f) => {
-          dataset.push({ x: f.Year, y: f.CO2Equivalent / acc })
-        })
-    })
-    return dataset
-  }, [userGraph, mandatePeriodChanges])
+  const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
+  const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
+  const userDataset: Dataset = useMemo(() => emissionPerYearToDataset(user), [user])
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
       Math.max(
-        adjustedUserGraphDataset.length,
+        userDataset.length,
         pledgeDataset.length,
         budgetDataset.length,
         historicalDataset.length,
@@ -138,7 +107,7 @@ const Graph = ({ step, historical, budget, trend, mandatePeriodChanges }: Props)
 
   return (
     <Container>
-      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
+      <YAxisTitle>Tusen ton CO₂ (kCO₂)</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{
@@ -150,8 +119,8 @@ const Graph = ({ step, historical, budget, trend, mandatePeriodChanges }: Props)
               fill: true,
               data: historicalDataset,
               borderWidth: 2,
-              borderColor: '#EF5E30',
-              backgroundColor: '#EF5E30',
+              borderColor: 'rgb(239, 94, 48)',
+              backgroundColor: 'rgb(239, 94, 48, 0.6)',
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
@@ -160,10 +129,10 @@ const Graph = ({ step, historical, budget, trend, mandatePeriodChanges }: Props)
               // @ts-ignore
               id: 'usergrap',
               fill: true,
-              data: adjustedUserGraphDataset,
+              data: userDataset,
               borderWidth: 1,
-              borderColor: '#EFBF17',
-              backgroundColor: '#EFBF17',
+              borderColor: 'rgb(239, 191, 23)',
+              backgroundColor: 'rgba(239, 191, 23, 0.6)',
               pointRadius: 0,
               tension: 0.15,
               hidden: step < 4,
@@ -175,7 +144,7 @@ const Graph = ({ step, historical, budget, trend, mandatePeriodChanges }: Props)
               data: budgetDataset,
               borderWidth: 2,
               borderColor: '#6BA292',
-              backgroundColor: '#91DFC8',
+              backgroundColor: 'rgba(145, 223, 200, 0.6)',
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
@@ -198,8 +167,8 @@ const Graph = ({ step, historical, budget, trend, mandatePeriodChanges }: Props)
           responsive: true,
           scales: {
             x: {
-              min: step > 2 ? 2019 : setup.minYear,
-              max: step > 0 ? 2050 : 2019,
+              min: step === 0 ? setup.minYear : step < 4 ? 2017 : 2022,
+              max: step > 0 ? maxVisibleYear : 2019,
               grid: {
                 display: true,
                 drawBorder: false,
@@ -216,12 +185,13 @@ const Graph = ({ step, historical, budget, trend, mandatePeriodChanges }: Props)
                 align: 'center',
                 callback: (tickValue) => {
                   const idx = tickValue as number
-                  return idx % 2 === 0 ? setup.labels[idx] : ''
+                  // return idx % 2 === 0 ? setup.labels[idx] : ''
+                  return setup.labels[idx]
                 },
               },
             },
             y: {
-              suggestedMax: 150_000,
+              //suggestedMax: step > 3 ? totalRemainingCO2 : 1350_000,
               grid: {
                 drawBorder: false,
                 display: false,
