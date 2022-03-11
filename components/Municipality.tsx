@@ -530,11 +530,17 @@ const Municipality = (props: Props) => {
               <Legends>
                 <Legend>
                   <Circle color="#EF3054" />
-                  Fortsätta som idag: {Math.round(totalTrend/1000)} tusen ton
+                  Fortsätta som idag
+                  {step > 3 && (
+                    ": " + Math.round(totalTrend/1000) + " tusen ton"
+                  )}
                 </Legend>
                 <Legend>
                   <Circle color="#6BA292" />
-                  Parisavtalet: {Math.round(totalBudget/1000)} tusen ton
+                  Parisavtalet
+                  {step > 3 && (
+                    ": " + Math.round(totalBudget/1000) + " tusen ton"
+                  )}
                 </Legend>
                 {step > 3 && (
                   <Legend>
