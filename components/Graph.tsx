@@ -135,7 +135,7 @@ const Graph = ({ step, historical, budget, trend, user, maxVisibleYear }: Props)
               backgroundColor: 'rgba(239, 191, 23, 0.6)',
               pointRadius: 0,
               tension: 0.15,
-              hidden: step < 4,
+              hidden: step < 3,
             },
             {
               // @ts-ignore

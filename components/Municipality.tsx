@@ -328,14 +328,14 @@ const STEPS: {
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
+  // 3: {
+  //   text: 'Utforska glappet',
+  //   body: (_name) =>
+  //     'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
+  //   shareText: (_name) =>
+  //     `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+  // },
   3: {
-    text: 'Utforska glappet',
-    body: (_name) =>
-      'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
-    shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
-  },
-  4: {
     text: 'Utforska glappet',
     body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
@@ -536,7 +536,7 @@ const Municipality = (props: Props) => {
                   <Circle color="#6BA292" />
                   Parisavtalet
                 </Legend>
-                {step > 3 && (
+                {step > 2 && (
                   <Legend>
                     <Line color="rgb(239, 191, 23)" />
                     Din plan
@@ -568,7 +568,7 @@ const Municipality = (props: Props) => {
               </Btn>
             )}
           </Flex>
-          {step > 3 && (
+          {step > 2 && (
             <Adjustments>
               <RangeContainer>
                 {mandateChanges.map((value, i) => (
