@@ -525,25 +525,28 @@ const Municipality = (props: Props) => {
           <GraphWrapper>
             <h3>{text}</h3>
             <p>{body}</p>
-
-            {step > 2 && (
-              <Legends>
+            <Legends>
+              {step < 3 && (
                 <Legend>
-                  <Circle color="#EF3054" />
-                  Fortsätta som idag
+                  <Circle color="rgb(239, 94, 48)" />
+                  Historiska utsläpp
                 </Legend>
+              )}
+              <Legend>
+                <Circle color="#EF3054" />
+                Fortsätta som idag
+              </Legend>
+              <Legend>
+                <Circle color="#6BA292" />
+                Parisavtalet
+              </Legend>
+              {step > 2 && (
                 <Legend>
-                  <Circle color="#6BA292" />
-                  Parisavtalet
+                  <Line color="rgb(239, 191, 23)" />
+                  Din plan
                 </Legend>
-                {step > 2 && (
-                  <Legend>
-                    <Line color="rgb(239, 191, 23)" />
-                    Din plan
-                  </Legend>
-                )}
-              </Legends>
-            )}
+              )}
+            </Legends>
             <Graph
               step={step}
               historical={historicalEmissions}
