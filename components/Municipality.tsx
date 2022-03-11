@@ -301,8 +301,8 @@ function makePeriods(startYear: number, endYear: number, increment: number) {
 const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
 
-const START_YEAR = 2022
-const END_YEAR = 2050
+const START_YEAR = 2019
+const END_YEAR = 2060
 
 type ShareTextFn = (name: string) => string
 const STEPS: {
@@ -530,16 +530,16 @@ const Municipality = (props: Props) => {
               <Legends>
                 <Legend>
                   <Circle color="#EF3054" />
-                  Fortsätta som idag
+                  Fortsätta som idag: {Math.round(totalTrend/1000)} tusen ton
                 </Legend>
                 <Legend>
                   <Circle color="#6BA292" />
-                  Parisavtalet
+                  Parisavtalet: {Math.round(totalBudget/1000)} tusen ton
                 </Legend>
                 {step > 3 && (
                   <Legend>
                     <Line color="rgb(239, 191, 23)" />
-                    Din plan
+                    Din plan: {Math.round(userTotal/1000)} tusen ton
                   </Legend>
                 )}
               </Legends>
