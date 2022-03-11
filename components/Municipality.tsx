@@ -146,9 +146,9 @@ const Slider = styled.input`
     border-radius: 100%;
     background: #f9fbff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: -4px;
-    height: 14px;
-    width: 14px;
+    margin-top: -8px;
+    height: 24px;
+    width: 24px;
   }
 
   &::-moz-range-thumb {
@@ -157,9 +157,9 @@ const Slider = styled.input`
     border-radius: 100%;
     background: #f9fbff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: -4px;
-    height: 14p;
-    width: 14px;
+    margin-top: -8px;
+    height: 24p;
+    width: 24px;
   }
 `
 
