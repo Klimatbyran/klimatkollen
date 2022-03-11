@@ -146,9 +146,9 @@ const Slider = styled.input`
     border-radius: 100%;
     background: #f9fbff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: -4px;
-    height: 14px;
-    width: 14px;
+    margin-top: -8px;
+    height: 24px;
+    width: 24px;
   }
 
   &::-moz-range-thumb {
@@ -157,9 +157,9 @@ const Slider = styled.input`
     border-radius: 100%;
     background: #f9fbff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: -4px;
-    height: 14p;
-    width: 14px;
+    margin-top: -8px;
+    height: 24p;
+    width: 24px;
   }
 `
 
@@ -328,14 +328,14 @@ const STEPS: {
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
+  // 3: {
+  //   text: 'Utforska glappet',
+  //   body: (_name) =>
+  //     'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
+  //   shareText: (_name) =>
+  //     `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+  // },
   3: {
-    text: 'Utforska glappet',
-    body: (_name) =>
-      'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
-    shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
-  },
-  4: {
     text: 'Utforska glappet',
     body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
@@ -525,25 +525,28 @@ const Municipality = (props: Props) => {
           <GraphWrapper>
             <h3>{text}</h3>
             <p>{body}</p>
-
-            {step > 2 && (
-              <Legends>
+            <Legends>
+              {step < 3 && (
                 <Legend>
-                  <Circle color="#EF3054" />
-                  Fortsätta som idag
+                  <Circle color="rgb(239, 94, 48)" />
+                  Historiska utsläpp
                 </Legend>
+              )}
+              <Legend>
+                <Circle color="#EF3054" />
+                Fortsätta som idag
+              </Legend>
+              <Legend>
+                <Circle color="#6BA292" />
+                Parisavtalet
+              </Legend>
+              {step > 2 && (
                 <Legend>
-                  <Circle color="#6BA292" />
-                  Parisavtalet
+                  <Line color="rgb(239, 191, 23)" />
+                  Din plan
                 </Legend>
-                {step > 3 && (
-                  <Legend>
-                    <Line color="rgb(239, 191, 23)" />
-                    Din plan
-                  </Legend>
-                )}
-              </Legends>
-            )}
+              )}
+            </Legends>
             <Graph
               step={step}
               historical={historicalEmissions}
@@ -568,7 +571,7 @@ const Municipality = (props: Props) => {
               </Btn>
             )}
           </Flex>
-          {step > 3 && (
+          {step > 2 && (
             <Adjustments>
               <RangeContainer>
                 {mandateChanges.map((value, i) => (

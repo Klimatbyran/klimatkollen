@@ -124,36 +124,37 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
   return (
     <DeckGLWrapper>
       <DeckGL
-        touchAction="unset"
+        // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
-        controller={{
-          scrollZoom: true,
-          dragPan: false,
-          dragRotate: false,
-          doubleClickZoom: true,
-          touchZoom: false,
-          touchRotate: false,
+        controller
+        // controller={{
+        //   scrollZoom: true,
+        //   dragPan: false,
+        //   dragRotate: false,
+        //   doubleClickZoom: true,
+        //   touchZoom: false,
+        //   touchRotate: false,
 
-          keyboard: false,
-          inertia: false,
-        }}
+        //   keyboard: false,
+        //   inertia: false,
+        // }}
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as Emissions)?.name
           name && setSelected(name)
         }}
         layers={[kommunLayer]}
-        onViewStateChange={({ viewState }) => {
-          viewState.longitude = Math.min(
-            MAP_RANGE.lon[1],
-            Math.max(MAP_RANGE.lon[0], viewState.longitude),
-          )
-          viewState.latitude = Math.min(
-            MAP_RANGE.lat[1],
-            Math.max(MAP_RANGE.lat[0], viewState.latitude),
-          )
-          return viewState
-        }}
+        // onViewStateChange={({ viewState }) => {
+        //   viewState.longitude = Math.min(
+        //     MAP_RANGE.lon[1],
+        //     Math.max(MAP_RANGE.lon[0], viewState.longitude),
+        //   )
+        //   viewState.latitude = Math.min(
+        //     MAP_RANGE.lat[1],
+        //     Math.max(MAP_RANGE.lat[0], viewState.latitude),
+        //   )
+        //   return viewState
+        // }}
       />
       {children}
     </DeckGLWrapper>
