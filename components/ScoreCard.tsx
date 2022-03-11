@@ -135,7 +135,9 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
           <div className="row">
             <section className="left">
               <Paragraph>Koldioxidbudget</Paragraph>
-              <ParagraphBold>{formatter.format(Math.round(budget))} ton</ParagraphBold>
+              <ParagraphBold>
+                {formatter.format(Math.round(budget))} ton
+              </ParagraphBold>
             </section>
             <section className="right">
               <StyledIcon onClick={() => setToggleBudget(!toggleBudget)}>
@@ -163,7 +165,7 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
         </>
       )}
 
-      {/* <div className="row">
+      <div className="row">
         <section className="left">
           <Paragraph>Klimatutsläpp per invånare</Paragraph>
           <ParagraphBold>5 ton/år</ParagraphBold>
@@ -183,7 +185,7 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
             </Paragraph>
           </InfoSection>
         ) : null}
-      </section> */}
+      </section>
     </StyledDiv>
   )
 }
