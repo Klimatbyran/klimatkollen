@@ -301,8 +301,8 @@ function makePeriods(startYear: number, endYear: number, increment: number) {
 const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
 
-const START_YEAR = 2019
-const END_YEAR = 2060
+const START_YEAR = 2022
+const END_YEAR = 2050
 
 type ShareTextFn = (name: string) => string
 const STEPS: {
