@@ -115,7 +115,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
             <DropDown
               className="startpage"
               municipalitiesName={municipalitiesName}
-              placeholder="Hur går omställningen i din kommun?"
+              placeholder="Hur går det i din kommun?"
             />
           </FlexCenter>
           <FlexCenter>
