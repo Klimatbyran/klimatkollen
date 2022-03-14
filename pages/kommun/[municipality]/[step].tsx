@@ -11,7 +11,7 @@ export const STEPS = [
   'historiska-utslapp',
   'parisavtalet',
   'framtida-prognos',
-  'glappet',
+  // 'glappet',
   'min-plan',
 ]
 

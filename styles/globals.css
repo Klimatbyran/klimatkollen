@@ -12,15 +12,15 @@ html {
 body {
   background: #2d2d2d;
   color: #fff;
-  font-family: Helvetica Neue;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
   font-size: 16px;
   line-height: 19px;
   font-weight: 300;
 }
 
-html { 
-  scroll-behavior: smooth; 
-} 
+html {
+  scroll-behavior: smooth;
+}
 
 a {
   color: inherit;
