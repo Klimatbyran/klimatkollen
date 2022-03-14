@@ -532,20 +532,24 @@ const Municipality = (props: Props) => {
                   Historiska utsläpp
                 </Legend>
               )}
-              <Legend>
-                <Circle color="#EF3054" />
-                Fortsätta som idag
-                {step > 3 && (
-                  ": " + Math.round(totalTrend/1000) + " kt CO₂"
-                )}
-              </Legend>
-              <Legend>
-                <Circle color="#6BA292" />
-                  Parisavtalet
+              {step > 1 && (
+                <Legend>
+                  <Circle color="#6BA292" />
+                    Parisavtalet
+                    {step > 3 && (
+                      ": " + Math.round(totalBudget/1000) + " kt CO₂"
+                    )}
+                </Legend>
+              )}
+              {step > 2 && (
+                <Legend>
+                  <Circle color="#EF3054" />
+                  Fortsätta som idag
                   {step > 3 && (
-                    ": " + Math.round(totalBudget/1000) + " kt CO₂"
+                    ": " + Math.round(totalTrend/1000) + " kt CO₂"
                   )}
-              </Legend>
+                </Legend>
+              )}
               {step > 3 && (
                 <Legend>
                   <Line color="rgb(239, 191, 23)" />
