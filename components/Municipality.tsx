@@ -610,7 +610,7 @@ const Municipality = (props: Props) => {
               <Help>
                 Med hjälp av reglagen så styr du hur stor årlig utsläppsminskningar{' '}
                 <Line color="rgb(239, 191, 23)" /> i procent som du tycker att man behöver
-                göra för att nå Parisavtalet.
+                göra för att nå Parisavtalet till 2030:
 
                 <h2 style={{color: '#6BA292', marginTop: 10}}>
                   Parisavtalet: {Math.round(totalBudget/1000) + " kt"}

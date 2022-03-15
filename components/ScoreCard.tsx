@@ -134,7 +134,7 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
         <>
           <div className="row">
             <section className="left">
-              <Paragraph>Koldioxidbudget</Paragraph>
+              <Paragraph>Koldioxidbudget (till 2050)</Paragraph>
               <ParagraphBold>
                 {formatter.format(Math.round(budget))} ton
               </ParagraphBold>
