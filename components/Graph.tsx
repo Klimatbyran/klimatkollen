@@ -72,12 +72,13 @@ type Props = {
   budget: EmissionPerYear[]
   trend: EmissionPerYear[]
   user: EmissionPerYear[]
-  maxVisibleYear: number
+  maxVisibleYear: number,
+  municipality: string
 }
 
 type Dataset = Array<{ x: number; y: number }>
 
-const Graph = ({ step, historical, budget, trend, user, maxVisibleYear }: Props) => {
+const Graph = ({ step, historical, budget, trend, user, maxVisibleYear, municipality }: Props) => {
   const setup = useMemo(
     () => getSetup([historical, budget, trend]),
     [historical, budget, trend],
@@ -107,7 +108,7 @@ const Graph = ({ step, historical, budget, trend, user, maxVisibleYear }: Props)
 
   return (
     <Container>
-      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
+      <YAxisTitle>Tusen ton CO₂ ({municipality})</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{

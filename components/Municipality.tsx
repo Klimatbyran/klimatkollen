@@ -340,7 +340,7 @@ const STEPS: {
   //     `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   // },
   3: {
-    text: 'Utforska glappet',
+    text: 'Skapa din egen klimatplan',
     buttonText: 'Din plan',
     body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
@@ -546,7 +546,7 @@ const Municipality = (props: Props) => {
               {step > 1 && (
                 <Legend>
                   <Circle color="#EF3054" />
-                  Fortsätta som idag
+                  Trend
                 </Legend>
               )}
               {step > 2 && (
@@ -561,6 +561,7 @@ const Municipality = (props: Props) => {
               historical={historicalEmissions}
               trend={trendingEmissions}
               budget={budgetedEmissions}
+              municipality={municipality.Name}
               user={userEmissions}
               maxVisibleYear={END_YEAR}
             />
@@ -607,16 +608,15 @@ const Municipality = (props: Props) => {
                 ))}
               </RangeContainer>
               <Help>
-                Med hjälp av reglagen så styr du hur stor årlig utsläppsminskningar{' '}
-                <Line color="rgb(239, 191, 23)" /> i procent som du tycker att man behöver
-                göra för att nå Parisavtalet till 2030:
+                Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig utsläppsminskning 
+                man behöver genomföra i {municipality.Name} fram till 2030:
 
                 <TotalCo2 style={{color: '#6BA292', marginTop: 10}}>
                   Parisavtalet: {Math.round(totalBudget/1000)} kt CO₂
                 </TotalCo2>
                 <TotalCo2 style={{color: 'rgb(239, 191, 23)', marginTop: 5}}>
                   Din plan: {Math.round(userTotal/1000) } kt CO₂
-                  {userTotal < totalBudget && ('✅')}
+                  {userTotal < totalBudget && (' ✅')}
                 </TotalCo2>
               </Help>
 
