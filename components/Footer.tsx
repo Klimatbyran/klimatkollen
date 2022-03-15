@@ -5,7 +5,6 @@ import WWF from '../public/icons/wwf.svg'
 import ClimateView from '../public/icons/climateview.svg'
 import VBK from '../public/icons/vbk.svg'
 import WeDontHaveTime from '../public/icons/we-dont-have-time.svg'
-import Klimatklubben from '../public/icons/klimatklubben.svg'
 import Argand from '../public/icons/argand.svg'
 import StormGeo from '../public/icons/stormgeo.svg'
 import NewsletterSubscribe from './NewsletterSubscribe'
@@ -312,7 +311,7 @@ const Footer = () => {
                   href="https://www.wedonthavetime.org/"
                   target="_blank"
                   rel="noreferrer">
-                  <WeDontHaveTime />
+                  <img src="/icons/we-dont-have-time.svg" alt="wedonthavetime logo" />
                 </a>
               </IconWrapper>
               <Paragraph>
@@ -329,7 +328,7 @@ const Footer = () => {
             <IconSection>
               <IconWrapper>
                 <a href="https://www.klimatklubben.se/" target="_blank" rel="noreferrer">
-                  <Klimatklubben />
+                  <img src="/icons/klimatklubben.svg" alt='Klimatklubben logo'/>
                 </a>
               </IconWrapper>
               <Paragraph>

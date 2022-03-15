@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
-import municipalityData from '../pages/data/kommuner.json'
 import { devices } from '../utils/devices'
 import { WebMercatorViewport } from '@deck.gl/core'
-import { ReactNode } from 'react'
+import { ReactNode, useMemo, useState } from 'react'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -89,7 +91,17 @@ type Props = {
 }
 
 const Map = ({ emissionsLevels, setSelected, children }: Props) => {
-  const municipalityLines = municipalityData.features.map(({ geometry, properties }) => {
+  const [municipalityData, setMunicipalityData] = useState<any>({})
+  const router = useRouter()
+
+  useMemo (() => {
+    axios.get('/api/map').then(res => {
+      console.log('api/map', res.data)
+      setMunicipalityData(res.data)
+    })
+  }, [])
+   
+  const municipalityLines = municipalityData?.features?.map(({ geometry, properties }) => {
     const name = replaceLetters(properties.name)
     const emissions = emissionsLevels.find((e) => e.name === name)?.emissions
     return {
@@ -143,20 +155,14 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
           inertia: false,
         }}
         onClick={({ object }) => {
+          console.log('click', object)
           // IDK what the correct type is
           const name = (object as unknown as Emissions)?.name
-          name && setSelected(name)
+          if (name) window.location.href = `/kommun/${name.toLowerCase()}`
         }}
         layers={[kommunLayer]}
         onViewStateChange={({ viewState }) => {
-          viewState.longitude = Math.min(
-            MAP_RANGE.lon[1],
-            Math.max(MAP_RANGE.lon[0], viewState.longitude),
-          )
-          viewState.latitude = Math.min(
-            MAP_RANGE.lat[1],
-            Math.max(MAP_RANGE.lat[0], viewState.latitude),
-          )
+          
           return viewState
         }}
       />

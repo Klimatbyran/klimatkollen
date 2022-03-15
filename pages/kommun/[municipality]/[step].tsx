@@ -66,11 +66,16 @@ interface Params extends ParsedUrlQuery {
   id: string
 }
 
+const cache = new Map()
+
 export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
 
   res.setHeader('Cache-Control', 'public, maxage=3600, s-maxage=4000')
 
+
   const id = (params as Params).municipality as string
+
+  if (cache.get(id)) return cache.get(id)
 
   const emissionService = new EmissionService()
 
@@ -107,11 +112,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
 
   const municipalitiesName = municipalities.map((item) => item.Name)
 
-  return {
+  const result = {
     props: {
       municipality,
       id,
       municipalitiesName,
     },
   }
+
+  cache.set(id, result)
+
+  return result
 }

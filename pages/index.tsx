@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 import { useState } from 'react'
 import styled from 'styled-components'
 import DropDown from '../components/DropDown'
@@ -71,6 +71,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
     emissions: item.HistoricalEmission.EmissionLevelChangeAverage,
   }))
 
+
   return (
     <>
       <MetaTags
@@ -138,15 +139,14 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const municipalities = await new EmissionService().getMunicipalities()
-  if (municipalities.length < 1) throw new Error('No municipalities found')
-
-  res.setHeader('Cache-Control', 'public, maxage=3600, s-maxage=4000')
+export const getStaticProps: GetStaticProps = async () => {
+  if ((await municipalities).length < 1) throw new Error('No municipalities found')
 
   return {
-    props: { municipalities },
+    props: { municipalities: await municipalities },
   }
 }
+
+const municipalities = new EmissionService().getMunicipalities()
 
 export default Home
