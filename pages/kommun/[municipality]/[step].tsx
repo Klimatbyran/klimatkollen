@@ -11,22 +11,27 @@ export const STEPS = [
   'historiska-utslapp',
   'parisavtalet',
   'framtida-prognos',
-  'glappet',
+  // 'glappet',
   'min-plan',
 ]
-
 
 type Props = {
   municipality: TMunicipality
   id: string
   municipalitiesName: Array<string>
+  placeholder: string
 }
 
-export default function Step({ id, municipality, municipalitiesName }: Props) {
+export default function Step({
+  id,
+  municipality,
+  municipalitiesName,
+  placeholder,
+}: Props) {
   const router = useRouter()
   const { step } = router.query
   const stepString = typeof step === 'string' ? step : STEPS[0]
-  const stepIndex = STEPS.indexOf(stepString) > -1 ? STEPS.indexOf(stepString) : 0
+  const stepIndex = STEPS.indexOf(stepString) > -1 ? STEPS.indexOf(stepString) : 1
   const stepNum = stepIndex
 
   const onNext = () => {
@@ -58,6 +63,7 @@ export default function Step({ id, municipality, municipalitiesName }: Props) {
       budgetedEmissions={municipality.Budget.BudgetPerYear}
       trendingEmissions={municipality.EmissionTrend.TrendPerYear || []}
       municipalitiesName={municipalitiesName}
+      placeholder={placeholder}
     />
   )
 }
@@ -69,7 +75,6 @@ interface Params extends ParsedUrlQuery {
 const cache = new Map()
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
-
   res.setHeader('Cache-Control', 'public, maxage=3600, s-maxage=4000')
 
 

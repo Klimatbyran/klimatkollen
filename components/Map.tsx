@@ -1,32 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
-import { devices } from '../utils/devices'
-import { WebMercatorViewport } from '@deck.gl/core'
 import { ReactNode, useMemo, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
-  latitude: 63,
-  zoom: 3,
+  latitude: 61,
+  zoom: 5,
   minZoom: 3,
-  pitch: 0,
+  pitch: 50,
   bearing: 0,
 }
 
 const DeckGLWrapper = styled.div`
-  position: relative;
-  // TODO: Hardcoding this is not good.
-  height: 380px;
-  border: 1px solid #f9fbff;
-  border-radius: 8px;
-
-  @media only screen and (${devices.tablet}) {
-    height: 500px;
-  }
-`
+  width: 100%;`
 
 const getColor = (emission: number): RGBAColor => {
   const yellow: RGBAColor = [239, 191, 23]
@@ -34,7 +23,6 @@ const getColor = (emission: number): RGBAColor => {
   const darkOrange: RGBAColor = [239, 127, 23]
   const red: RGBAColor = [239, 94, 48]
   const pink: RGBAColor = [239, 48, 84]
-  const green: RGBAColor = [145, 223, 200]
 
   if (emission >= 0) {
     return pink
@@ -48,11 +36,11 @@ const getColor = (emission: number): RGBAColor => {
   if (emission >= -0.03) {
     return orange
   }
-  if (emission >= -0.13) {
+  if (emission >= -0.1) {
     return yellow
   }
 
-  return green
+  return [145, 191, 200]
 }
 
 const replaceLetters = (name: string) => {
@@ -87,7 +75,7 @@ const MAP_RANGE = {
 type Props = {
   emissionsLevels: Array<{ name: string; emissions: number }>
   setSelected: (value: string) => void
-  children: ReactNode
+  children?: ReactNode
 }
 
 const Map = ({ emissionsLevels, setSelected, children }: Props) => {
@@ -96,7 +84,6 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
 
   useMemo (() => {
     axios.get('/api/map').then(res => {
-      console.log('api/map', res.data)
       setMunicipalityData(res.data)
     })
   }, [])
@@ -131,7 +118,7 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
     getElevation: 0,
     polygonOffset: 1,
     getPolygon: (k: any) => k.geometry,
-    getLineColor: () => [0, 0, 0],
+    getLineColor: () => [0, 0, 0, 80],
     getFillColor: (d) => {
       return getColor((d as Emissions).emissions)
     },
@@ -141,30 +128,38 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
   return (
     <DeckGLWrapper>
       <DeckGL
-        touchAction="unset"
+        // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
-        controller={{
-          scrollZoom: true,
-          dragPan: false,
-          dragRotate: false,
-          doubleClickZoom: true,
-          touchZoom: false,
-          touchRotate: false,
+        controller
+        // controller={{
+        //   scrollZoom: true,
+        //   dragPan: false,
+        //   dragRotate: false,
+        //   doubleClickZoom: true,
+        //   touchZoom: false,
+        //   touchRotate: false,
 
-          keyboard: false,
-          inertia: false,
-        }}
+        //   keyboard: false,
+        //   inertia: false,
+        // }}
         onClick={({ object }) => {
           console.log('click', object)
           // IDK what the correct type is
           const name = (object as unknown as Emissions)?.name
-          if (name) window.location.href = `/kommun/${name.toLowerCase()}`
+          if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
         layers={[kommunLayer]}
-        onViewStateChange={({ viewState }) => {
-          
-          return viewState
-        }}
+        // onViewStateChange={({ viewState }) => {
+        //   viewState.longitude = Math.min(
+        //     MAP_RANGE.lon[1],
+        //     Math.max(MAP_RANGE.lon[0], viewState.longitude),
+        //   )
+        //   viewState.latitude = Math.min(
+        //     MAP_RANGE.lat[1],
+        //     Math.max(MAP_RANGE.lat[0], viewState.latitude),
+        //   )
+        //   return viewState
+        // }}
       />
       {children}
     </DeckGLWrapper>

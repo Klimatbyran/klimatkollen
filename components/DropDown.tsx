@@ -4,34 +4,40 @@ import { useRouter } from 'next/router'
 import ArrowDown from '../public/icons/arrow-down.svg'
 import ArrowRightWhite from '../public/icons/arrow-right-white.svg'
 import ArrowRightGreen from '../public/icons/arrow-right-green.svg'
+import { devices } from '../utils/devices'
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  width: 280px;
+  width: 100%;
+
+  @media only screen and (${devices.tablet}) {
+    width: 325px;
+  }
 `
 
 const SearchDropDown = styled.div`
   position: relative;
-  display: inline-block;
+  width: 100%;
 `
 
 const Flex = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `
 
 const Input = styled.input`
-  width: 280px;
+  width: 100%;
   height: 56px;
   background-color: transparent;
   border: 1px solid white;
   border-radius: 4px;
   color: ${({ theme }) => theme.white};
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   outline: none;
   font-size: 16px;
   font-weight: 300;
@@ -40,13 +46,17 @@ const Input = styled.input`
   ::placeholder {
     color: ${({ theme }) => theme.white};
   }
+
+  @media only screen and (${devices.tablet}) {
+    width: 305px;
+  }
 `
 
 const Btn = styled.button`
   background-color: transparent;
   width: 40px;
   height: 30px;
-  right: 10px;
+  right: 5px;
   position: absolute;
   border: none;
 `
@@ -65,13 +75,21 @@ const MunicipalitiesWrapper = styled.ul`
   max-height: 195px;
   overflow-y: scroll;
   position: absolute;
-  z-index:2;
+  z-index: 2;
+
+  &.startpage {
+    bottom: auto;
+  }
+
+  &.municipality-page {
+    bottom: 100%;
+  }
 `
 
 const Municiplity = styled.li`
   color: ${({ theme }) => theme.black};
   text-decoration: none;
-  width: 280px;
+  width: 305px;
   height: 56px;
   display: flex;
   align-items: center;
@@ -81,8 +99,11 @@ const Municiplity = styled.li`
 
 type Props = {
   municipalitiesName: Array<string>
+  placeholder: string
+  className: string
 }
-const DropDown = ({ municipalitiesName }: Props) => {
+
+const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
   const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMuniciplity, setSelectedMunicipality] = useState<string>('')
@@ -107,6 +128,10 @@ const DropDown = ({ municipalitiesName }: Props) => {
   const onMuniciplityClick = (e: any) => {
     setSelectedMunicipality(e.target.innerHTML)
     setShowDropDown(false)
+
+    if (municipalities.includes(e.target.innerHTML)) {
+      router.push(`/kommun/${e.target.innerHTML.toLowerCase()}`)
+    }
   }
 
   const onInputChange = (value: string) => {
@@ -140,7 +165,7 @@ const DropDown = ({ municipalitiesName }: Props) => {
         <Flex>
           <Input
             type="text"
-            placeholder="Hur går det för din kommun?"
+            placeholder={placeholder}
             onChange={(e) => onInputChange(e.target.value)}
             value={selectedMuniciplity}
           />
@@ -149,7 +174,7 @@ const DropDown = ({ municipalitiesName }: Props) => {
           </Btn>
         </Flex>
         {showDropDown && (
-          <MunicipalitiesWrapper>
+          <MunicipalitiesWrapper className={className}>
             {municipalities.map((name, i) => (
               <Municiplity key={i} onClick={(e) => onMuniciplityClick(e)}>
                 {name}

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { devices } from '../utils/devices'
 
-type BackgroundColors = 'dark' | 'black'
+type BackgroundColors = 'dark' | 'black' | 'gradient'
 
 const Wrap = styled.div<{ background: BackgroundColors }>`
   background: ${({ background, theme }) => theme[background]};
@@ -16,7 +16,7 @@ const WrapInner = styled.div`
   padding: 40px 20px;
 
   @media only screen and (${devices.tablet}) {
-    padding: 80px 20px;
+    padding: 30px 20px;
   }
 `
 

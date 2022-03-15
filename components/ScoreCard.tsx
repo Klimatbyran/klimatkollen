@@ -134,9 +134,9 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
         <>
           <div className="row">
             <section className="left">
-              <Paragraph>Koldioxidbudget</Paragraph>
+              <Paragraph>Koldioxidbudget (till 2050)</Paragraph>
               <ParagraphBold>
-                {formatter.format(Math.round(budget))} ton co2
+                {formatter.format(Math.round(budget))} ton
               </ParagraphBold>
             </section>
             <section className="right">
@@ -168,7 +168,7 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
       <div className="row">
         <section className="left">
           <Paragraph>Klimatutsläpp per invånare</Paragraph>
-          <ParagraphBold>5 ton co2/år</ParagraphBold>
+          <ParagraphBold>5 ton/år</ParagraphBold>
         </section>
         <section className="right">
           <StyledIcon
@@ -181,8 +181,7 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
         {toggleEmissionsPerCapita ? (
           <InfoSection>
             <Paragraph>
-              Sammanslagning av klimatutsläpp i {municipality} per invånare och
-              konsumtionsbaserade utsläpp i Sverige per invånare.
+              Gäller så kallade territoriella koldioxidutsläpp i Sverige per invånare.
             </Paragraph>
           </InfoSection>
         ) : null}

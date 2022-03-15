@@ -18,7 +18,7 @@ export class EmissionService {
 
   private getEmissionLevelChangeAverage(
     emissions: Array<EmissionPerYear>,
-    years: number,
+    years: number
   ): number {
     let emissionsPercentages = 0
     emissions
@@ -33,8 +33,7 @@ export class EmissionService {
           }
         },
       )
-
-    return Math.round((emissionsPercentages / years) * 100) / 100
+    return emissionsPercentages / years
   }
 
   public async getMunicipalities(): Promise<Array<Municipality>> {
