@@ -591,7 +591,7 @@ const Municipality = (props: Props) => {
                     </MandatePeriod>
                     <Slider
                       min={0.5}
-                      max={2}
+                      max={1.5}
                       step={0.01}
                       value={value.change}
                       type="range"
@@ -602,7 +602,7 @@ const Municipality = (props: Props) => {
                     //   color: value.change > 1 ? 'pink' : 'lightgreen',
                     // }}
                     >
-                      {100 - Math.round(100 * value.change)}%
+                      {Math.round(100 * value.change) - 100}%
                     </Percentage>
                   </Range>
                 ))}
