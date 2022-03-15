@@ -306,16 +306,18 @@ const END_YEAR = 2050
 
 type ShareTextFn = (name: string) => string
 const STEPS: {
-  [index: number]: { text: string; body: ShareTextFn; shareText: ShareTextFn }
+  [index: number]: { text: string; buttonText: string; body: ShareTextFn; shareText: ShareTextFn }
 } = {
   0: {
     text: 'Historiska utsläpp',
+    buttonText: 'Historik',
     body: (name) => `Koldioxidutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   1: {
     text: 'För att nå Parisavtalet',
+    buttonText: 'Parisavtalet',
     body: (name) =>
       `För att vara i linje med Parisavtalet behöver ${name} minska sina utsläpp med X% per år.`,
     shareText: (_name) =>
@@ -323,6 +325,7 @@ const STEPS: {
   },
   2: {
     text: 'Om vi fortsätter som idag',
+    buttonText: 'Trend',
     body: (_name) =>
       'Om klimatutsläppen följer nuvarande trend kommer koldioxidbudgeten att ta slut 2024.',
     shareText: (_name) =>
@@ -337,6 +340,7 @@ const STEPS: {
   // },
   3: {
     text: 'Utforska glappet',
+    buttonText: 'Din plan',
     body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
     shareText: (_name) =>
@@ -570,14 +574,15 @@ const Municipality = (props: Props) => {
             {onPreviousStep ? (
               <Btn onClick={onPreviousStep}>
                 <ArrowLeft />
-                Föregående
+                {STEPS[step - 1].buttonText}
               </Btn>
             ) : (
               <div></div>
             )}
             {onNextStep && (
               <Btn onClick={onNextStep}>
-                Nästa <ArrowRight />
+                {STEPS[step + 1]?.buttonText || 'Nästa'}
+                <ArrowRight />
               </Btn>
             )}
           </Flex>

@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   return {
     redirect: {
-      destination: `/kommun/${id}/historiska-utslapp`,
+      destination: `/kommun/${id}/parisavtalet`,
       permanent: true,
     },
   }
