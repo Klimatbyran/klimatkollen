@@ -167,7 +167,7 @@ const Graph = ({ step, historical, budget, trend, user, maxVisibleYear }: Props)
           responsive: true,
           scales: {
             x: {
-              min: step === 0 ? setup.minYear : step < 4 ? 2016 : 2022,
+              min: step === 0 ? setup.minYear : step < 3 ? 2016 : 2022,
               max: step > 0 ? maxVisibleYear : 2020,
               grid: {
                 display: true,

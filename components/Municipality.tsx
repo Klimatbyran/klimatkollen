@@ -432,8 +432,8 @@ const Municipality = (props: Props) => {
     return [emissions, total]
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
-  const totalBudget = budgetedEmissions.reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
-  const totalTrend = trendingEmissions.reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalBudget = budgetedEmissions.filter(c => c.Year >= 2022 && c.Year <= 2030).reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalTrend = trendingEmissions.filter(c => c.Year >= 2022 && c.Year <= 2030).reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
@@ -540,24 +540,18 @@ const Municipality = (props: Props) => {
                 <Legend>
                   <Circle color="#6BA292" />
                     Parisavtalet
-                    {step > 2 && (
-                      ": " + Math.round(totalBudget/1000) + " kt CO₂"
-                    )}
                 </Legend>
               )}
               {step > 1 && (
                 <Legend>
                   <Circle color="#EF3054" />
                   Fortsätta som idag
-                  {step > 2 && (
-                    ": " + Math.round(totalTrend/1000) + " kt CO₂"
-                  )}
                 </Legend>
               )}
               {step > 2 && (
                 <Legend>
                   <Line color="rgb(239, 191, 23)" />
-                  Din plan: {Math.round(userTotal/1000)} kt CO₂
+                  Din plan
                 </Legend>
               )}
             </Legends>
@@ -617,7 +611,16 @@ const Municipality = (props: Props) => {
                 Med hjälp av reglagen så styr du hur stor årlig utsläppsminskningar{' '}
                 <Line color="rgb(239, 191, 23)" /> i procent som du tycker att man behöver
                 göra för att nå Parisavtalet.
+
+                <h2 style={{color: '#6BA292', marginTop: 10}}>
+                  Parisavtalet: {Math.round(totalBudget/1000) + " kt"}
+                </h2>
+                <h2 style={{color: 'rgb(239, 191, 23)', marginTop: 5}}>
+                  Din plan: {Math.round(userTotal/1000) + " kt"}{' '}
+                  {userTotal < totalBudget && ('✅')}
+                </h2>
               </Help>
+
             </Adjustments>
           )}
         </Top>
