@@ -144,7 +144,7 @@ const Slider = styled.input`
   &::-webkit-slider-thumb {
     appearance: none;
     border-radius: 100%;
-    background: #f9fbff;
+    background: rgb(239, 191, 23);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     margin-top: -8px;
     height: 24px;
@@ -168,17 +168,18 @@ const Percentage = styled.label`
   margin-top: 6px;
 `
 
-const MandatePeriod = styled.div`
-  font-size: 0.75rem;
-`
-
 const StartYear = styled.div`
-  border-bottom: 1px solid white;
+  font-size: 0.75rem;
   font-weight: 300;
   margin-bottom: 8px;
 `
 const EndYear = styled.div`
   font-weight: 300;
+`
+
+const TotalCo2 = styled.div`
+  font-size: 1.6rem;
+  font-weight: 500;
 `
 
 const Help = styled.p`
@@ -585,10 +586,13 @@ const Municipality = (props: Props) => {
               <RangeContainer>
                 {mandateChanges.map((value, i) => (
                   <Range key={i}>
-                    <MandatePeriod>
-                      <StartYear>{value.start}</StartYear>
-                      {/* <EndYear>{value.end}</EndYear> */}
-                    </MandatePeriod>
+                    <Percentage
+                    // style={{
+                    //   color: value.change > 1 ? 'pink' : 'lightgreen',
+                    // }}
+                    >
+                      {Math.round(100 * value.change) - 100}%
+                    </Percentage>
                     <Slider
                       min={0.5}
                       max={1.5}
@@ -597,13 +601,8 @@ const Municipality = (props: Props) => {
                       type="range"
                       onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
                     />
-                    <Percentage
-                    // style={{
-                    //   color: value.change > 1 ? 'pink' : 'lightgreen',
-                    // }}
-                    >
-                      {Math.round(100 * value.change) - 100}%
-                    </Percentage>
+                    <StartYear>{value.start}</StartYear>
+                    
                   </Range>
                 ))}
               </RangeContainer>
@@ -612,13 +611,13 @@ const Municipality = (props: Props) => {
                 <Line color="rgb(239, 191, 23)" /> i procent som du tycker att man behöver
                 göra för att nå Parisavtalet till 2030:
 
-                <h2 style={{color: '#6BA292', marginTop: 10}}>
-                  Parisavtalet: {Math.round(totalBudget/1000) + " kt"}
-                </h2>
-                <h2 style={{color: 'rgb(239, 191, 23)', marginTop: 5}}>
-                  Din plan: {Math.round(userTotal/1000) + " kt"}{' '}
+                <TotalCo2 style={{color: '#6BA292', marginTop: 10}}>
+                  Parisavtalet: {Math.round(totalBudget/1000)} kt CO₂
+                </TotalCo2>
+                <TotalCo2 style={{color: 'rgb(239, 191, 23)', marginTop: 5}}>
+                  Din plan: {Math.round(userTotal/1000) } kt CO₂
                   {userTotal < totalBudget && ('✅')}
-                </h2>
+                </TotalCo2>
               </Help>
 
             </Adjustments>
