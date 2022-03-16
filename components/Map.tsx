@@ -15,7 +15,7 @@ const INITIAL_VIEW_STATE = {
 }
 
 const DeckGLWrapper = styled.div`
-  padding-left: -0.87rem;
+  padding-left: 0.87rem;
   padding-right: 0.87rem;
   padding-top: 1.2rem;
   flex-grow: 1;
