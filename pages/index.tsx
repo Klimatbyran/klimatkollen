@@ -89,7 +89,7 @@ const FlexCenter = styled.div`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
-  max-width: 8em;
+  max-width: 6.7em;
   @media only screen and (${devices.tablet}) {
     max-width: 20em;
   }
