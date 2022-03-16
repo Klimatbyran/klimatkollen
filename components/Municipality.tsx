@@ -623,6 +623,15 @@ const Municipality = (props: Props) => {
             </Adjustments>
           )}
         </Top>
+        <BottomShare>
+          {hasShareAPI() && (
+            <Button
+              handleClick={handleClick}
+              text="Dela i dina sociala medier"
+              shareIcon
+            />
+          )}
+        </BottomShare>
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
         <BottomHeader>
@@ -654,15 +663,6 @@ const Municipality = (props: Props) => {
             placeholder="Välj kommun"
           />
         </DropDownSection>
-        <BottomShare>
-          {hasShareAPI() && (
-            <Button
-              handleClick={handleClick}
-              text="Dela i dina sociala medier"
-              shareIcon
-            />
-          )}
-        </BottomShare>
       </PageWrapper>
     </>
   )
