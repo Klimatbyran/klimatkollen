@@ -89,6 +89,10 @@ const FlexCenter = styled.div`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
+  max-width: 8em;
+  @media only screen and (${devices.tablet}) {
+    max-width: 20em;
+  }
 `
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
@@ -123,7 +127,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
               <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
               <p>
                 För att klara Parisavtalet behöver koldioxidutsläppen i Sverige minska med
-                X% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i
+                21% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i
                 Sveriges kommuner sedan Parisavtalet 2015.
               </p>
             </div>
@@ -165,13 +169,13 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                   <Square color="#91BFC8">
                     <ArrowIcon />
                   </Square>
-                  <StyledParagraph>10%–15%</StyledParagraph>
+                  <StyledParagraph>10–15%</StyledParagraph>
                 </Label>
               </InfoBox>
               <InfoBox>
-                <Label>
+                <Label style={{display:'flex', alignItems:'flex-start'}}>
                   <Square color="#4ECB80"></Square>
-                  <StyledParagraph>Parisavtalet</StyledParagraph>
+                  <StyledParagraph>21% (i nivå med Parisavtalet)</StyledParagraph>
                 </Label>
               </InfoBox>
             </MapLabels>
