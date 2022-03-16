@@ -31,7 +31,7 @@ export default function Step({
   const router = useRouter()
   const { step } = router.query
   const stepString = typeof step === 'string' ? step : STEPS[0]
-  const stepIndex = STEPS.indexOf(stepString) > -1 ? STEPS.indexOf(stepString) : 0
+  const stepIndex = STEPS.indexOf(stepString) > -1 ? STEPS.indexOf(stepString) : 1
   const stepNum = stepIndex
 
   const onNext = () => {

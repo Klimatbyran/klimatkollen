@@ -16,7 +16,7 @@ const WrapInner = styled.div`
   padding: 40px 20px;
 
   @media only screen and (${devices.tablet}) {
-    padding: 80px 20px;
+    padding: 30px 20px;
   }
 `
 

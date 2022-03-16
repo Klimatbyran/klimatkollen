@@ -144,7 +144,7 @@ const Slider = styled.input`
   &::-webkit-slider-thumb {
     appearance: none;
     border-radius: 100%;
-    background: #f9fbff;
+    background: rgb(239, 191, 23);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     margin-top: -8px;
     height: 24px;
@@ -168,17 +168,18 @@ const Percentage = styled.label`
   margin-top: 6px;
 `
 
-const MandatePeriod = styled.div`
-  font-size: 0.75rem;
-`
-
 const StartYear = styled.div`
-  border-bottom: 1px solid white;
+  font-size: 0.75rem;
   font-weight: 300;
   margin-bottom: 8px;
 `
 const EndYear = styled.div`
   font-weight: 300;
+`
+
+const TotalCo2 = styled.div`
+  font-size: 1.6rem;
+  font-weight: 500;
 `
 
 const Help = styled.p`
@@ -306,16 +307,18 @@ const END_YEAR = 2050
 
 type ShareTextFn = (name: string) => string
 const STEPS: {
-  [index: number]: { text: string; body: ShareTextFn; shareText: ShareTextFn }
+  [index: number]: { text: string; buttonText: string; body: ShareTextFn; shareText: ShareTextFn }
 } = {
   0: {
     text: 'Historiska utsläpp',
+    buttonText: 'Historik',
     body: (name) => `Koldioxidutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
     shareText: (_name) =>
       `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   },
   1: {
     text: 'För att nå Parisavtalet',
+    buttonText: 'Parisavtalet',
     body: (name) =>
       `För att vara i linje med Parisavtalet behöver ${name} minska sina utsläpp med X% per år.`,
     shareText: (_name) =>
@@ -323,6 +326,7 @@ const STEPS: {
   },
   2: {
     text: 'Om vi fortsätter som idag',
+    buttonText: 'Trend',
     body: (_name) =>
       'Om klimatutsläppen följer nuvarande trend kommer koldioxidbudgeten att ta slut 2024.',
     shareText: (_name) =>
@@ -336,7 +340,8 @@ const STEPS: {
   //     `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
   // },
   3: {
-    text: 'Utforska glappet',
+    text: 'Skapa din egen klimatplan',
+    buttonText: 'Din plan',
     body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
     shareText: (_name) =>
@@ -428,8 +433,8 @@ const Municipality = (props: Props) => {
     return [emissions, total]
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
-  const totalBudget = budgetedEmissions.reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
-  const totalTrend = trendingEmissions.reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalBudget = budgetedEmissions.filter(c => c.Year >= 2022 && c.Year <= 2030).reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalTrend = trendingEmissions.filter(c => c.Year >= 2022 && c.Year <= 2030).reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
@@ -536,24 +541,18 @@ const Municipality = (props: Props) => {
                 <Legend>
                   <Circle color="#6BA292" />
                     Parisavtalet
-                    {step > 2 && (
-                      ": " + Math.round(totalBudget/1000) + " kt CO₂"
-                    )}
                 </Legend>
               )}
               {step > 1 && (
                 <Legend>
                   <Circle color="#EF3054" />
-                  Fortsätta som idag
-                  {step > 2 && (
-                    ": " + Math.round(totalTrend/1000) + " kt CO₂"
-                  )}
+                  Trend
                 </Legend>
               )}
               {step > 2 && (
                 <Legend>
                   <Line color="rgb(239, 191, 23)" />
-                  Din plan: {Math.round(userTotal/1000)} kt CO₂
+                  Din plan
                 </Legend>
               )}
             </Legends>
@@ -562,6 +561,7 @@ const Municipality = (props: Props) => {
               historical={historicalEmissions}
               trend={trendingEmissions}
               budget={budgetedEmissions}
+              municipality={municipality.Name}
               user={userEmissions}
               maxVisibleYear={END_YEAR}
             />
@@ -570,14 +570,15 @@ const Municipality = (props: Props) => {
             {onPreviousStep ? (
               <Btn onClick={onPreviousStep}>
                 <ArrowLeft />
-                Föregående
+                {STEPS[step - 1].buttonText}
               </Btn>
             ) : (
               <div></div>
             )}
             {onNextStep && (
               <Btn onClick={onNextStep}>
-                Nästa <ArrowRight />
+                {STEPS[step + 1]?.buttonText || 'Nästa'}
+                <ArrowRight />
               </Btn>
             )}
           </Flex>
@@ -586,33 +587,39 @@ const Municipality = (props: Props) => {
               <RangeContainer>
                 {mandateChanges.map((value, i) => (
                   <Range key={i}>
-                    <MandatePeriod>
-                      <StartYear>{value.start}</StartYear>
-                      {/* <EndYear>{value.end}</EndYear> */}
-                    </MandatePeriod>
-                    <Slider
-                      min={0.5}
-                      max={2}
-                      step={0.01}
-                      value={value.change}
-                      type="range"
-                      onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
-                    />
                     <Percentage
                     // style={{
                     //   color: value.change > 1 ? 'pink' : 'lightgreen',
                     // }}
                     >
-                      {100 - Math.round(100 * value.change)}%
+                      {Math.round(100 * value.change) - 100}%
                     </Percentage>
+                    <Slider
+                      min={0.5}
+                      max={1.5}
+                      step={0.01}
+                      value={value.change}
+                      type="range"
+                      onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
+                    />
+                    <StartYear>{value.start}</StartYear>
+                    
                   </Range>
                 ))}
               </RangeContainer>
               <Help>
-                Med hjälp av reglagen så styr du hur stor årlig utsläppsminskningar{' '}
-                <Line color="rgb(239, 191, 23)" /> i procent som du tycker att man behöver
-                göra för att nå Parisavtalet.
+                Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig utsläppsminskning 
+                man behöver genomföra i {municipality.Name} fram till 2030:
+
+                <TotalCo2 style={{color: '#6BA292', marginTop: 10}}>
+                  Parisavtalet: {Math.round(totalBudget/1000)} kt CO₂
+                </TotalCo2>
+                <TotalCo2 style={{color: 'rgb(239, 191, 23)', marginTop: 5}}>
+                  Din plan: {Math.round(userTotal/1000) } kt CO₂
+                  {userTotal < totalBudget && (' ✅')}
+                </TotalCo2>
               </Help>
+
             </Adjustments>
           )}
         </Top>
