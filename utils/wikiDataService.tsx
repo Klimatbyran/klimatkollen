@@ -13,7 +13,7 @@ export type WikiDataImage = {
 export type WikiDataMunicipality = {
   CoatOfArmsImage: WikiDataImage | null
   Population: number | null
-  Image: WikiDataImage
+  Image: WikiDataImage | null
 }
 
 export class WikiDataService {
@@ -51,14 +51,14 @@ export class WikiDataService {
     return promise
   }
 
-  getCoatOfArmsFromPage(page: any): WikiDataImage {
+  getCoatOfArmsFromPage(page: any): WikiDataImage | null {
     if (!page.claims.P94)
       return null
     
     return this.getPreferredImageUrl(page.claims.P94)
   }
 
-  getPopulationFromPage(page: any): number {
+  getPopulationFromPage(page: any): number | null {
     if (!page.claims.P1082)
       return null
 
@@ -72,7 +72,7 @@ export class WikiDataService {
     return parseInt(page.claims.P1082[0].mainsnak.datavalue.value.amount)
   }
 
-  getImageFromPage(page: any): WikiDataImage {
+  getImageFromPage(page: any): WikiDataImage | null {
     if (!page.claims.P18)
       return null
     return this.getPreferredImageUrl(page.claims.P18)
