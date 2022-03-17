@@ -9,14 +9,38 @@ import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
-
   const router = useRouter()
 
   return (
     <Provider>
       <Head>
         <title>Klimatkollen</title>
+        {/* https://favicon.io/favicon-converter/ */}
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicons/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="/favicons/favicon-192x192.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="/favicons/favicon-512x512.png"
+        />
       </Head>
       <Theme>
         <Ellipse />

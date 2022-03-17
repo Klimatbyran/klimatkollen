@@ -10,6 +10,7 @@ import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import Icon from '../public/icons/arrow.svg'
 import { devices } from '../utils/devices'
+import Image from 'next/image'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -112,7 +113,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
       <PageWrapper backgroundColor="black">
         <Container>
           <div>
-            <H1>Klimatkollen</H1>
+            <Image src="/logo.png" width="268.06" height="52" />
             <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
           </div>
           <FlexCenter>
@@ -173,7 +174,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                 </Label>
               </InfoBox>
               <InfoBox>
-                <Label style={{display:'flex', alignItems:'flex-start'}}>
+                <Label style={{ display: 'flex', alignItems: 'flex-start' }}>
                   <Square color="#4ECB80"></Square>
                   <StyledParagraph>21% (i nivå med Parisavtalet)</StyledParagraph>
                 </Label>
@@ -192,7 +193,10 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const municipalities = await new EmissionService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
 
-  res.setHeader('Cache-Control', 'public, stale-while-revalidate=60, max-age=' + ((60*60)*24)*7)
+  res.setHeader(
+    'Cache-Control',
+    'public, stale-while-revalidate=60, max-age=' + 60 * 60 * 24 * 7,
+  )
 
   return {
     props: { municipalities },
