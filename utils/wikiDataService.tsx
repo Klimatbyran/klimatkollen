@@ -11,9 +11,9 @@ export type WikiDataImage = {
 }
 
 export type WikiDataMunicipality = {
-  CoatOfArmsImage: WikiDataImage
+  CoatOfArmsImage: WikiDataImage | null
   Population: number | null
-  Image: WikiDataImage
+  Image: WikiDataImage | null
 }
 
 export class WikiDataService {
@@ -30,27 +30,17 @@ export class WikiDataService {
       
       const pageName = toTitleCase(name) + ' Municipality'
       const url = WikiDataSdk.getEntitiesFromSitelinks(pageName)
-
       axios.get(url).then((response) => {
         const pageName = Object.getOwnPropertyNames(response.data.entities).shift()
 
         if (pageName && pageName != '-1') {
-          let municipality: WikiDataMunicipality = {
-            CoatOfArmsImage: {
-              ImageUrl: '',
-              Description: '',
-            },
-            Population: 0,
-            Image: {
-              ImageUrl: '',
-              Description: '',
-            },
-          }
-
           var page = response.data.entities[pageName]
-          municipality.CoatOfArmsImage = this.getCoatOfArmsFromPage(page)
-          municipality.Population = this.getPopulationFromPage(page)
-          municipality.Image = this.getImageFromPage(page)
+
+          let municipality: WikiDataMunicipality = {
+            CoatOfArmsImage: this.getCoatOfArmsFromPage(page),
+            Population: this.getPopulationFromPage(page),
+            Image: this.getImageFromPage(page),
+          }
 
           resolve(municipality)
         } else {
@@ -61,11 +51,17 @@ export class WikiDataService {
     return promise
   }
 
-  getCoatOfArmsFromPage(page: any): WikiDataImage {
+  getCoatOfArmsFromPage(page: any): WikiDataImage | null {
+    if (!page.claims.P94)
+      return null
+    
     return this.getPreferredImageUrl(page.claims.P94)
   }
 
-  getPopulationFromPage(page: any): number {
+  getPopulationFromPage(page: any): number | null {
+    if (!page.claims.P1082)
+      return null
+
     page.claims.P1082.sort((elem1: any, elem2: any) => {
       const date1 = elem1.qualifiers.P585[0].datavalue.value.time
       const date2 = elem2.qualifiers.P585[0].datavalue.value.time
@@ -76,7 +72,9 @@ export class WikiDataService {
     return parseInt(page.claims.P1082[0].mainsnak.datavalue.value.amount)
   }
 
-  getImageFromPage(page: any): WikiDataImage {
+  getImageFromPage(page: any): WikiDataImage | null {
+    if (!page.claims.P18)
+      return null
     return this.getPreferredImageUrl(page.claims.P18)
   }
 
