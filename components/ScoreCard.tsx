@@ -4,6 +4,7 @@ import Icon from '../public/icons/info.svg'
 import IconGreen from '../public/icons/info-green.svg'
 import { useState } from 'react'
 import { devices } from '../utils/devices'
+import Link from 'next/link'
 
 const StyledDiv = styled.div`
   background: ${({ theme }) => theme.black};
@@ -135,9 +136,7 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
           <div className="row">
             <section className="left">
               <Paragraph>Koldioxidbudget (till 2050)</Paragraph>
-              <ParagraphBold>
-                {formatter.format(Math.round(budget))} ton
-              </ParagraphBold>
+              <ParagraphBold>{formatter.format(Math.round(budget))} ton</ParagraphBold>
             </section>
             <section className="right">
               <StyledIcon onClick={() => setToggleBudget(!toggleBudget)}>
@@ -150,14 +149,7 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
               <InfoSection>
                 <Paragraph>
                   Mängden koldioxid kvar att släppa ut för att klara Parisavtalets
-                  1,5-gradersmål, läs mer om beräkningen{' '}
-                  <a
-                    href="https://www.climateview.global/"
-                    target="_blank"
-                    rel="noreferrer">
-                    här
-                  </a>
-                  .
+                  1,5-gradersmål, <Link href="/#source-budget-expl">läs mer här</Link>.
                 </Paragraph>
               </InfoSection>
             ) : null}
