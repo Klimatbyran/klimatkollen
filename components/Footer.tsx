@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Paragraph, H5, ParagraphBold } from './Typography'
 import { devices } from '../utils/devices'
-import WWF from '../public/icons/wwf.svg'
 import ClimateView from '../public/icons/climateview.svg'
 import VBK from '../public/icons/vbk.svg'
 import WeDontHaveTime from '../public/icons/we-dont-have-time.svg'
@@ -15,6 +14,7 @@ import ArrowUp from '../public/icons/arrow-up-green.svg'
 import { useState, useEffect } from 'react'
 import PageWrapper from './PageWrapper'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 const Foot = styled.footer`
   width: 100%;
@@ -26,7 +26,7 @@ const Foot = styled.footer`
 `
 
 const ContentWrapper = styled.div`
-  width: 840px;
+  flex: 1 1 0;
 `
 
 const HeaderSection = styled.div`
@@ -55,6 +55,7 @@ const ToggleSection = styled.div`
 const TextSection = styled.div`
   display: flex;
   flex-direction: column;
+
   gap: 15px;
   margin-bottom: 40px;
   max-width: 750px;
@@ -63,16 +64,14 @@ const TextSection = styled.div`
 const FlexSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  text-align: center;
   align-items: center;
+  gap: 60px 28px;
 
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0 60px;
-    justify-content: center;
-    width: 90%;
+    align-items: stretch;
+    justify-content: space-between;
   }
 `
 
@@ -82,23 +81,21 @@ const IconSection = styled.div`
 
   align-items: center;
   gap: 15px;
-  margin-bottom: 60px;
-  width: 350px;
 
   @media only screen and (${devices.tablet}) {
-    height: 200px;
-    width: 300px;
+    flex: 0 1 350px;
   }
 `
 
 const IconWrapper = styled.div`
   display: flex;
   align-items: center;
+  flex-grow: 1;
+`
 
-  @media only screen and (${devices.tablet}) {
-    margin-top: 5px;
-    height: 80px;
-  }
+const LogoParagraph = styled(Paragraph)`
+  max-width: 350px;
+  text-align: center;
 `
 
 const Footer = () => {
@@ -334,12 +331,12 @@ const Footer = () => {
             <IconSection>
               <IconWrapper>
                 <a href="https://www.wwf.se/" target="_blank" rel="noreferrer">
-                  <WWF />
+                  <Image src={'/WWF_Logo_Small_RGB_72dpi.jpg'} width={86} height={97} />
                 </a>
               </IconWrapper>
-              <Paragraph>
+              <LogoParagraph>
                 Global miljöorganisation med 200 000 svenska supportrar.
-              </Paragraph>
+              </LogoParagraph>
             </IconSection>
             <IconSection>
               <IconWrapper>
@@ -350,9 +347,9 @@ const Footer = () => {
                   <ClimateView />
                 </a>
               </IconWrapper>
-              <Paragraph>
+              <LogoParagraph>
                 Hjälper kommuner och städer att planera och analysera klimatarbetet.
-              </Paragraph>
+              </LogoParagraph>
             </IconSection>
             <IconSection>
               <IconWrapper>
@@ -360,10 +357,10 @@ const Footer = () => {
                   <VBK />
                 </a>
               </IconWrapper>
-              <Paragraph>
+              <LogoParagraph>
                 En ideell påverkansorganisation som tar fajten för barns rättigheter i
                 klimatomställningen.
-              </Paragraph>
+              </LogoParagraph>
             </IconSection>
             <IconSection>
               <IconWrapper>
@@ -371,9 +368,9 @@ const Footer = () => {
                   <Klimatklubben />
                 </a>
               </IconWrapper>
-              <Paragraph>
+              <LogoParagraph>
                 Samlar människor för att skapa opinion och klimatengagemang.
-              </Paragraph>
+              </LogoParagraph>
             </IconSection>
             <IconSection>
               <IconWrapper>
@@ -384,7 +381,7 @@ const Footer = () => {
                   <WeDontHaveTime />
                 </a>
               </IconWrapper>
-              <Paragraph>
+              <LogoParagraph>
                 Världens största sociala nätverk för klimataktion. Skapa din egen kampanj{' '}
                 <a
                   href="https://www.wedonthavetime.org/"
@@ -393,7 +390,7 @@ const Footer = () => {
                   här
                 </a>
                 .
-              </Paragraph>
+              </LogoParagraph>
             </IconSection>
             <IconSection>
               <IconWrapper>
@@ -401,7 +398,7 @@ const Footer = () => {
                   <Argand />
                 </a>
               </IconWrapper>
-              <Paragraph>Investerar i klimatlösningar.</Paragraph>
+              <LogoParagraph>Investerar i klimatlösningar.</LogoParagraph>
             </IconSection>
             <IconSection>
               <IconWrapper>
@@ -409,10 +406,10 @@ const Footer = () => {
                   <StormGeo />
                 </a>
               </IconWrapper>
-              <Paragraph>
+              <LogoParagraph>
                 Skandinaviens första privata väderföretag, en global leverantör av
                 vädertjänster.
-              </Paragraph>
+              </LogoParagraph>
             </IconSection>
           </FlexSection>
         </ContentWrapper>
