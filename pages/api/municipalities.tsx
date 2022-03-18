@@ -16,7 +16,7 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
             res.status(404).json('Inga kommuner hittades')
           }
 
-          res.setHeader('Cache-Control', 'public, s-maxage=120')
+          res.setHeader('Cache-Control', 'public, stale-while-revalidate=60, max-age=' + ((60*60)*24)*7)
           res.status(200).json(municipalities)
         })
         .catch((error) => {

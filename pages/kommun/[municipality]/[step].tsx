@@ -73,7 +73,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
-  res.setHeader('Cache-Control', 'public, maxage=3600, s-maxage=4000')
+  res.setHeader('Cache-Control', 'public, stale-while-revalidate=60, max-age=' + ((60*60)*24)*7)
 
   const id = (params as Params).municipality as string
 
