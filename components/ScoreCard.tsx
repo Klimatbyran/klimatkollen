@@ -93,7 +93,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
         <>
           <div className="row">
             <section className="left">
-              <Paragraph>Koldioxidbudget (till 2050)</Paragraph>
+              <Paragraph>Koldioxidbudget</Paragraph>
               <ParagraphBold>{formatter.format(Math.round(budget))} ton</ParagraphBold>
             </section>
             <section className="right">

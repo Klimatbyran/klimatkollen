@@ -116,10 +116,10 @@ const Range = styled.div`
 `
 
 const Slider = styled.input`
-  width: 84px;
+  width: 114px;
   height: 40px;
-  margin-top: calc((84px - 40px) / 2);
-  margin-bottom: calc((84px - 40px) / 2);
+  margin-top: calc((114px - 20px) / 2);
+  margin-bottom: calc((114px - 20px) / 2);
   appearance: none;
   background: transparent;
   transform: rotate(-90deg);
@@ -387,7 +387,7 @@ const Municipality = (props: Props) => {
   const range = (start: number, end: number) => Array.from({length: end-start}, (_, i) => i + start)
 
 
-  const adjustablePeriods = range(2020, 2050).map(i => [i, i + 1])
+  const adjustablePeriods = range(2020, 2051).map(i => [i, i + 1])
 
   const defaultPeriods = useMemo(
     () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
@@ -442,10 +442,10 @@ const Municipality = (props: Props) => {
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
   const totalBudget = budgetedEmissions
-    .filter((c) => c.Year >= 2020 && c.Year <= 2050)
+    .filter((c) => c.Year >= 2019 && c.Year <= 2050)
     .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
   const totalTrend = trendingEmissions
-    .filter((c) => c.Year >= 2020 && c.Year <= 2050)
+    .filter((c) => c.Year >= 2019 && c.Year <= 2050)
     .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
 
   const stepConfig = STEPS[step]
@@ -621,12 +621,11 @@ const Municipality = (props: Props) => {
               </RangeContainer>
               <Help>
                 Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
-                utsläppsminskning man behöver genomföra i {municipality.Name} fram till
-                2030:
-                <TotalCo2 style={{ color: 'red', marginTop: 5 }}>
+                utsläppsminskning man behöver genomföra i {municipality.Name}:
+                <TotalCo2 style={{ color: 'red', marginTop: 15 }}>
                   Trend: {Math.round(totalTrend / 1000)} kt CO₂
                 </TotalCo2>
-                <TotalCo2 style={{ color: '#6BA292', marginTop: 10 }}>
+                <TotalCo2 style={{ color: '#6BA292', marginTop: 5 }}>
                   Parisavtalet: {Math.round(totalBudget / 1000)} kt CO₂
                 </TotalCo2>
                 <TotalCo2 style={{ color: 'rgb(239, 191, 23)', marginTop: 5 }}>
