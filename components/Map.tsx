@@ -1,26 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
-import municipalityData from '../pages/data/kommuner.json'
-import { devices } from '../utils/devices'
-import { WebMercatorViewport } from '@deck.gl/core'
-import { ReactNode } from 'react'
+import { ReactNode, useMemo, useState } from 'react'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
-  latitude: 63,
-  zoom: 3,
+  latitude: 61,
+  zoom: 4,
   minZoom: 3,
-  pitch: 0,
+  pitch: 30,
   bearing: 0,
 }
 
 const DeckGLWrapper = styled.div`
-  padding-left: 0.87rem;
-  padding-right: 0.87rem;
-  padding-top: 1.2rem;
-  flex-grow: 1;
-  position: relative;
-`
+  width: 100%;`
 
 const getColor = (emission: number): RGBAColor => {
   const yellow: RGBAColor = [239, 191, 23]
@@ -84,7 +79,16 @@ type Props = {
 }
 
 const Map = ({ emissionsLevels, setSelected, children }: Props) => {
-  const municipalityLines = municipalityData.features.map(({ geometry, properties }) => {
+  const [municipalityData, setMunicipalityData] = useState<any>({})
+  const router = useRouter()
+
+  useMemo (() => {
+    axios.get('/api/map').then(res => {
+      setMunicipalityData(res.data)
+    })
+  }, [])
+   
+  const municipalityLines = municipalityData?.features?.map(({ geometry, properties } : {geometry: any, properties: any}) => {
     const name = replaceLetters(properties.name)
     const emissions = emissionsLevels.find((e) => e.name === name)?.emissions
     return {
@@ -114,7 +118,7 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
     getElevation: 0,
     polygonOffset: 1,
     getPolygon: (k: any) => k.geometry,
-    getLineColor: () => [0, 0, 0],
+    getLineColor: () => [0, 0, 0, 80],
     getFillColor: (d) => {
       return getColor((d as Emissions).emissions)
     },
@@ -126,7 +130,9 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
       <DeckGL
         // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
-        controller
+        controller={{
+          scrollZoom: false
+        }}
         // controller={{
         //   scrollZoom: true,
         //   dragPan: false,
@@ -139,9 +145,10 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
         //   inertia: false,
         // }}
         onClick={({ object }) => {
+          console.log('click', object)
           // IDK what the correct type is
           const name = (object as unknown as Emissions)?.name
-          name && setSelected(name)
+          if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
         layers={[kommunLayer]}
         // onViewStateChange={({ viewState }) => {

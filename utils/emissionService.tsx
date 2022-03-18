@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend } from './types'
 import axios from 'axios'
 

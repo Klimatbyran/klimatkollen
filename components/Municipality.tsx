@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import Graph from './Graph'
@@ -119,10 +120,10 @@ const Range = styled.div`
 `
 
 const Slider = styled.input`
-  width: 84px;
+  width: 114px;
   height: 40px;
-  margin-top: calc((84px - 40px) / 2);
-  margin-bottom: calc((84px - 40px) / 2);
+  margin-top: calc((114px - 20px) / 2);
+  margin-bottom: calc((114px - 20px) / 2);
   appearance: none;
   background: transparent;
   transform: rotate(-90deg);
@@ -306,7 +307,7 @@ function makePeriods(startYear: number, endYear: number, increment: number) {
 const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
 
-const START_YEAR = 2022
+const START_YEAR = 2020
 const END_YEAR = 2050
 
 type ShareTextFn = (name: string) => string
@@ -387,8 +388,10 @@ const Municipality = (props: Props) => {
   const router = useRouter()
   const q = router.query['g[]']
 
-  // TOOD: 2022-2030
-  const adjustablePeriods = useMemo(() => makePeriods(START_YEAR, 2030, 1), [])
+  const range = (start: number, end: number) => Array.from({length: end-start}, (_, i) => i + start)
+
+
+  const adjustablePeriods = range(2019, 2051).map(i => [i, i + 1])
 
   const defaultPeriods = useMemo(
     () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
@@ -443,10 +446,10 @@ const Municipality = (props: Props) => {
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
   const totalBudget = budgetedEmissions
-    .filter((c) => c.Year >= 2022 && c.Year <= 2030)
+    .filter((c) => c.Year >= 2019 && c.Year <= 2050)
     .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
   const totalTrend = trendingEmissions
-    .filter((c) => c.Year >= 2022 && c.Year <= 2030)
+    .filter((c) => c.Year >= 2019 && c.Year <= 2050)
     .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
 
   const stepConfig = STEPS[step]
@@ -489,9 +492,10 @@ const Municipality = (props: Props) => {
     share(municipality.Name)
   }
 
-  const handleYearChange = (index: number, value: number) => {
+  const handleYearChange = (year: number, value: number) => {
     setMandateChanges((m) => {
       const copy = [...m]
+      const index = copy.findIndex((c) => c.start === year)
       copy[index].change = value
       return copy
     })
@@ -601,14 +605,14 @@ const Municipality = (props: Props) => {
           {step > 2 && (
             <Adjustments>
               <RangeContainer>
-                {mandateChanges.map((value, i) => (
+                {mandateChanges.slice(2, 10).map((value, i) => (
                   <Range key={i}>
                     <Percentage
                     // style={{
                     //   color: value.change > 1 ? 'pink' : 'lightgreen',
                     // }}
                     >
-                      {Math.round(100 * value.change) - 100}%
+                      {value.change > 1 ? '+' : ''} {Math.round(100 * value.change) - 100}%
                     </Percentage>
                     <Slider
                       min={0.5}
@@ -616,22 +620,26 @@ const Municipality = (props: Props) => {
                       step={0.01}
                       value={value.change}
                       type="range"
-                      onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
+                      onChange={(e) => handleYearChange(value.start, parseFloat(e.target.value))}
                     />
                     <StartYear>{value.start}</StartYear>
                   </Range>
                 ))}
               </RangeContainer>
               <Help>
-                Använd reglagen och gör din plan för årliga utsläppsförändringar i{' '}
-                {municipality.Name} fram till 2030.
-                <TotalCo2 style={{ color: '#6BA292', marginTop: 10 }}>
+                Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
+                utsläppsminskning man behöver genomföra i {municipality.Name}:
+                <TotalCo2 style={{ color: '#EF3054', marginTop: 15 }}>
+                  Trend: {Math.round(totalTrend / 1000)} kt CO₂
+                </TotalCo2>
+                <TotalCo2 style={{ color: '#6BA292', marginTop: 5 }}>
                   Parisavtalet: {Math.round(totalBudget / 1000)} kt CO₂
                 </TotalCo2>
                 <TotalCo2 style={{ color: 'rgb(239, 191, 23)', marginTop: 5 }}>
                   Din plan: {Math.round(userTotal / 1000)} kt CO₂
                   {userTotal < totalBudget && ' ✅'}
                 </TotalCo2>
+
               </Help>
             </Adjustments>
           )}
