@@ -200,7 +200,7 @@ const Bottom = styled.div`
   gap: 3rem;
 
   @media only screen and (${devices.tablet}) {
-    flex-direction: row-reverse;
+    // flex-direction: row-reverse;
   }
 `
 
@@ -211,7 +211,7 @@ const BottomHeader = styled.div`
 
 const BottomLeft = styled.div`
   @media only screen and (${devices.tablet}) {
-    width: 50%;
+    // width: 50%;
   }
 `
 
@@ -307,14 +307,19 @@ const END_YEAR = 2050
 
 type ShareTextFn = (name: string) => string
 const STEPS: {
-  [index: number]: { text: string; buttonText: string; body: ShareTextFn; shareText: ShareTextFn }
+  [index: number]: {
+    text: string
+    buttonText: string
+    body: ShareTextFn
+    shareText: ShareTextFn
+  }
 } = {
   0: {
     text: 'Historiska utsläpp',
     buttonText: 'Historik',
     body: (name) => `Koldioxidutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
     shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+      `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   1: {
     text: 'För att nå Parisavtalet',
@@ -322,7 +327,7 @@ const STEPS: {
     body: (name) =>
       `För att vara i linje med Parisavtalet behöver ${name} minska sina utsläpp med X% per år.`,
     shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+      `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   2: {
     text: 'Om vi fortsätter som idag',
@@ -330,14 +335,14 @@ const STEPS: {
     body: (_name) =>
       'Om klimatutsläppen följer nuvarande trend kommer koldioxidbudgeten att ta slut 2024.',
     shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+      `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   // 3: {
   //   text: 'Utforska glappet',
   //   body: (_name) =>
   //     'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
   //   shareText: (_name) =>
-  //     `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+  //    `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   // },
   3: {
     text: 'Skapa din egen klimatplan',
@@ -345,7 +350,7 @@ const STEPS: {
     body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
     shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+      `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
 }
 
@@ -433,8 +438,12 @@ const Municipality = (props: Props) => {
     return [emissions, total]
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
-  const totalBudget = budgetedEmissions.filter(c => c.Year >= 2022 && c.Year <= 2030).reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
-  const totalTrend = trendingEmissions.filter(c => c.Year >= 2022 && c.Year <= 2030).reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalBudget = budgetedEmissions
+    .filter((c) => c.Year >= 2022 && c.Year <= 2030)
+    .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalTrend = trendingEmissions
+    .filter((c) => c.Year >= 2022 && c.Year <= 2030)
+    .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
@@ -540,7 +549,7 @@ const Municipality = (props: Props) => {
               {step > 0 && (
                 <Legend>
                   <Circle color="#6BA292" />
-                    Parisavtalet
+                  Parisavtalet
                 </Legend>
               )}
               {step > 1 && (
@@ -603,23 +612,20 @@ const Municipality = (props: Props) => {
                       onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
                     />
                     <StartYear>{value.start}</StartYear>
-                    
                   </Range>
                 ))}
               </RangeContainer>
               <Help>
-                Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig utsläppsminskning 
-                man behöver genomföra i {municipality.Name} fram till 2030:
-
-                <TotalCo2 style={{color: '#6BA292', marginTop: 10}}>
-                  Parisavtalet: {Math.round(totalBudget/1000)} kt CO₂
+                Använd reglagen och gör din plan för årliga utsläppsförändringar i{' '}
+                {municipality.Name} fram till 2030.
+                <TotalCo2 style={{ color: '#6BA292', marginTop: 10 }}>
+                  Parisavtalet: {Math.round(totalBudget / 1000)} kt CO₂
                 </TotalCo2>
-                <TotalCo2 style={{color: 'rgb(239, 191, 23)', marginTop: 5}}>
-                  Din plan: {Math.round(userTotal/1000) } kt CO₂
-                  {userTotal < totalBudget && (' ✅')}
+                <TotalCo2 style={{ color: 'rgb(239, 191, 23)', marginTop: 5 }}>
+                  Din plan: {Math.round(userTotal / 1000)} kt CO₂
+                  {userTotal < totalBudget && ' ✅'}
                 </TotalCo2>
               </Help>
-
             </Adjustments>
           )}
         </Top>
@@ -638,20 +644,21 @@ const Municipality = (props: Props) => {
           <FactH2>Fakta om {municipality.Name}</FactH2>
         </BottomHeader>
         <Bottom>
-          <BottomRight>
+          {/* <BottomRight>
             <p>
               {renderEmissionChangeRank(
                 municipality.Name,
                 municipality.HistoricalEmission.AverageEmissionChangeRank,
               )}
             </p>
-          </BottomRight>
+          </BottomRight> */}
           <BottomLeft>
             <ScoreCard
               population={municipality.Population}
               budget={municipality.Budget.CO2Equivalent}
               municipality={municipality.Name}
               politicalRule={municipality.PoliticalRule}
+              rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
             />
           </BottomLeft>
         </Bottom>
