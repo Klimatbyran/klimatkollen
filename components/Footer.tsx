@@ -140,12 +140,12 @@ const Footer = () => {
             {toggleFirst && (
               <ToggleSection>
                 <Paragraph>
-                  Klimatkollen visar enkel fakta om klimatomställningen, anpassad för att
-                  delas i sociala medier och läsas i mobilen. Här kan du se hur det går
-                  med koldioxidutsläppen för Sverige som helhet och för enskilda kommuner,
-                  samt den mängd koldioxid vi har kvar att släppa ut enligt Parisavtalet.
-                  Du kan också se hur mycket (eller lite) utsläppen i din kommun minskar
-                  jämfört med andra.
+                  Klimatkollen visar utsläppen i landets kommuner jämfört med
+                  Parisavtalet, anpassad för att delas i sociala medier och läsas i
+                  mobilen. Här kan du se hur det går med koldioxidutsläppen för Sverige
+                  som helhet och för enskilda kommuner, samt den mängd koldioxid vi har
+                  kvar att släppa ut enligt Parisavtalet. Du kan också se hur mycket
+                  (eller lite) utsläppen i din kommun minskar jämfört med andra.
                 </Paragraph>
                 <Paragraph>
                   Vi utvecklar Klimatkollen kontinuerligt. Skriv upp dig{' '}
