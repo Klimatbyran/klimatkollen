@@ -13,6 +13,7 @@ import ArrowDown from '../public/icons/arrow-down-round.svg'
 import ArrowUp from '../public/icons/arrow-up-green.svg'
 import { useState, useEffect } from 'react'
 import PageWrapper from './PageWrapper'
+import { useRouter } from 'next/router'
 
 const Foot = styled.footer`
   width: 100%;
@@ -100,10 +101,14 @@ const IconWrapper = styled.div`
 `
 
 const Footer = () => {
+  const router = useRouter()
+  console.log(router)
   const [toggleFirst, setToggleFirst] = useState(false)
   const [toggleSecond, setToggleSecond] = useState(false)
   const [toggleThird, setToggleThird] = useState(false)
-  const [toggleFourth, setToggleFourth] = useState(false)
+  const [toggleFourth, setToggleFourth] = useState(
+    router.asPath.includes('#source-budget-expl'),
+  )
 
   // const resizeHandler = () => {
   //   if (window.innerWidth >= 768) {
@@ -269,7 +274,7 @@ const Footer = () => {
           </TextSection>
           <TextSection>
             <HeaderSection>
-              <H5>Så beräknas koldioxidbudgetarna</H5>
+              <H5 id="source-budget-expl">Så beräknas koldioxidbudgetarna</H5>
               {toggleFourth ? (
                 <ArrowUp
                   className="arrow"

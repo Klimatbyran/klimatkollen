@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import Graph from './Graph'
@@ -302,12 +303,17 @@ function makePeriods(startYear: number, endYear: number, increment: number) {
 const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
 
-const START_YEAR = 2022
+const START_YEAR = 2020
 const END_YEAR = 2050
 
 type ShareTextFn = (name: string) => string
 const STEPS: {
-  [index: number]: { text: string; buttonText: string; body: ShareTextFn; shareText: ShareTextFn }
+  [index: number]: {
+    text: string
+    buttonText: string
+    body: ShareTextFn
+    shareText: ShareTextFn
+  }
 } = {
   0: {
     text: 'Historiska utsläpp',
@@ -379,7 +385,18 @@ const Municipality = (props: Props) => {
   const q = router.query['g[]']
 
   // TOOD: 2022-2030
-  const adjustablePeriods = useMemo(() => makePeriods(START_YEAR, 2030, 1), [])
+  const adjustablePeriods = [
+    [2020, 2021],
+    [2021, 2022],
+    [2022, 2023],
+    [2023, 2024],
+    [2024, 2025],
+    [2025, 2026],
+    [2026, 2027],
+    [2027, 2028],
+    [2028, 2029],
+    [2029, 2030],
+  ]
 
   const defaultPeriods = useMemo(
     () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
@@ -433,8 +450,12 @@ const Municipality = (props: Props) => {
     return [emissions, total]
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
-  const totalBudget = budgetedEmissions.filter(c => c.Year >= 2022 && c.Year <= 2030).reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
-  const totalTrend = trendingEmissions.filter(c => c.Year >= 2022 && c.Year <= 2030).reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalBudget = budgetedEmissions
+    .filter((c) => c.Year >= 2020 && c.Year <= 2030)
+    .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalTrend = trendingEmissions
+    .filter((c) => c.Year >= 2020 && c.Year <= 2030)
+    .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
@@ -476,9 +497,10 @@ const Municipality = (props: Props) => {
     share(municipality.Name)
   }
 
-  const handleYearChange = (index: number, value: number) => {
+  const handleYearChange = (year: number, value: number) => {
     setMandateChanges((m) => {
       const copy = [...m]
+      const index = copy.findIndex((c) => c.start === year)
       copy[index].change = value
       return copy
     })
@@ -540,7 +562,7 @@ const Municipality = (props: Props) => {
               {step > 0 && (
                 <Legend>
                   <Circle color="#6BA292" />
-                    Parisavtalet
+                  Parisavtalet
                 </Legend>
               )}
               {step > 1 && (
@@ -585,14 +607,14 @@ const Municipality = (props: Props) => {
           {step > 2 && (
             <Adjustments>
               <RangeContainer>
-                {mandateChanges.map((value, i) => (
+                {mandateChanges.slice(2).map((value, i) => (
                   <Range key={i}>
                     <Percentage
                     // style={{
                     //   color: value.change > 1 ? 'pink' : 'lightgreen',
                     // }}
                     >
-                      {Math.round(100 * value.change) - 100}%
+                      {value.change > 1 ? '+' : ''} {Math.round(100 * value.change) - 100}%
                     </Percentage>
                     <Slider
                       min={0.5}
@@ -600,29 +622,36 @@ const Municipality = (props: Props) => {
                       step={0.01}
                       value={value.change}
                       type="range"
-                      onChange={(e) => handleYearChange(i, parseFloat(e.target.value))}
+                      onChange={(e) => handleYearChange(value.start, parseFloat(e.target.value))}
                     />
                     <StartYear>{value.start}</StartYear>
-                    
                   </Range>
                 ))}
               </RangeContainer>
               <Help>
-                Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig utsläppsminskning 
-                man behöver genomföra i {municipality.Name} fram till 2030:
-
-                <TotalCo2 style={{color: '#6BA292', marginTop: 10}}>
-                  Parisavtalet: {Math.round(totalBudget/1000)} kt CO₂
+                Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
+                utsläppsminskning man behöver genomföra i {municipality.Name} fram till
+                2030:
+                <TotalCo2 style={{ color: '#6BA292', marginTop: 10 }}>
+                  Parisavtalet: {Math.round(totalBudget / 1000)} kt CO₂
                 </TotalCo2>
-                <TotalCo2 style={{color: 'rgb(239, 191, 23)', marginTop: 5}}>
-                  Din plan: {Math.round(userTotal/1000) } kt CO₂
-                  {userTotal < totalBudget && (' ✅')}
+                <TotalCo2 style={{ color: 'rgb(239, 191, 23)', marginTop: 5 }}>
+                  Din plan: {Math.round(userTotal / 1000)} kt CO₂
+                  {userTotal < totalBudget && ' ✅'}
                 </TotalCo2>
               </Help>
-
             </Adjustments>
           )}
         </Top>
+        <BottomShare>
+          {hasShareAPI() && (
+            <Button
+              handleClick={handleClick}
+              text="Dela i dina sociala medier"
+              shareIcon
+            />
+          )}
+        </BottomShare>
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
         <BottomHeader>
@@ -654,15 +683,6 @@ const Municipality = (props: Props) => {
             placeholder="Välj kommun"
           />
         </DropDownSection>
-        <BottomShare>
-          {hasShareAPI() && (
-            <Button
-              handleClick={handleClick}
-              text="Dela i dina sociala medier"
-              shareIcon
-            />
-          )}
-        </BottomShare>
       </PageWrapper>
     </>
   )

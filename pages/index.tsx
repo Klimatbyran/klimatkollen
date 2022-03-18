@@ -10,6 +10,7 @@ import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import Icon from '../public/icons/arrow.svg'
 import { devices } from '../utils/devices'
+import Image from 'next/image'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -33,12 +34,12 @@ const Square = styled.div<{ color: string }>`
   position: relative;
 `
 
-const ArrowIcon = styled(Icon)<{ rotateUp?: boolean }>`
+const ArrowIcon = styled(Icon)<{ rotateup?: boolean }>`
   position: absolute;
   z-index: 1;
   margin: auto;
   left: 0;
-  ${(props) => props.rotateUp && 'transform: rotate(-90deg)'};
+  ${(props) => props.rotateup && 'transform: rotate(-90deg)'};
   right: 0;
   top: 0;
   bottom: 0;
@@ -85,13 +86,16 @@ const FlexCenter = styled.div`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
+  max-width: 6.7em;
+  @media only screen and (${devices.tablet}) {
+    max-width: 20em;
+  }
 `
 
 const StartPageWrapper = styled.div`
   padding: 30px;
   background: ${({ theme }) => theme.black};
   height: 80vh;
-  width: 40vw;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -120,7 +124,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
       <StartPageWrapper backgroundColor="gradient">
         <Container>
           <div>
-            <H1>Klimatkollen</H1>
+            <Image src="/logo.png" width="268.06" height="52" />
             <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
           </div>
           <FlexCenter>
@@ -131,20 +135,13 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
             />
           </FlexCenter>
           <FlexCenter>
-            <Hero>
-              <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
-              <p>
-                För att klara Parisavtalet behöver koldioxidutsläppen i Sverige minska med
-                X% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i
-                Sveriges kommuner sedan Parisavtalet 2015.
-              </p>
-            </Hero>
+            
 
             <MapLabels>
               <InfoBox>
                 <Label>
                   <Square color="#EF3054">
-                    <ArrowIcon rotateUp={true} />
+                    <ArrowIcon rotateup={true} />
                   </Square>
                   <StyledParagraph>0% +</StyledParagraph>
                 </Label>
@@ -176,32 +173,45 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                   <Square color="#91BFC8">
                     <ArrowIcon />
                   </Square>
-                  <StyledParagraph>10%–15%</StyledParagraph>
+                  <StyledParagraph>10–15%</StyledParagraph>
                 </Label>
               </InfoBox>
               <InfoBox>
-                <Label>
+                <Label style={{ display: 'flex', alignItems: 'flex-start' }}>
                   <Square color="#4ECB80"></Square>
-                  <StyledParagraph>Parisavtalet</StyledParagraph>
+                  <StyledParagraph>21% (i nivå med Parisavtalet)</StyledParagraph>
                 </Label>
               </InfoBox>
             </MapLabels>
           </FlexCenter>
         </Container>
-      <div style={{ height: 200 }}></div>
       </StartPageWrapper>
+      <PageWrapper backgroundColor={'black'}>
+        <Hero>
+          <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
+          <p>
+            För att klara Parisavtalet behöver koldioxidutsläppen i Sverige minska med
+            21% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i
+            Sveriges kommuner sedan Parisavtalet 2015.
+          </p>
+        </Hero>
+      </PageWrapper>
     </>
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  if ((await municipalities).length < 1) throw new Error('No municipalities found')
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  const municipalities = await new EmissionService().getMunicipalities()
+  if (municipalities.length < 1) throw new Error('No municipalities found')
+
+  res.setHeader(
+    'Cache-Control',
+    'public, stale-while-revalidate=60, max-age=' + 60 * 60 * 24 * 7,
+  )
 
   return {
     props: { municipalities: await municipalities },
   }
 }
-
-const municipalities = new EmissionService().getMunicipalities()
 
 export default Home

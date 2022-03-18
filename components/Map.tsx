@@ -130,7 +130,9 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
       <DeckGL
         // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
-        controller
+        controller={{
+          scrollZoom: false
+        }}
         // controller={{
         //   scrollZoom: true,
         //   dragPan: false,
