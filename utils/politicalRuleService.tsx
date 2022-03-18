@@ -1,9 +1,8 @@
-//const fs = require('fs')
 import { RawPoliticalRule } from "../resources/RawPoliticalRule"
 
 export class PolitycalRuleService {
     public getPoliticalRule(municipalityName: string) : Array<string> {
-
+        
         const rawmun = RawPoliticalRule
             .find((rawPM:any) => {
                 return rawPM.kommun.toLowerCase() == municipalityName.toLowerCase() + " kommun" || 
@@ -47,31 +46,31 @@ export class PolitycalRuleService {
         return rule
     }
 
-    // private tsvJSON(tsv:any) {
-    //     const lines = tsv.split("\n");
-    //     const result = [];
-    //     const headers = lines[0].split("\t");
+    private tsvJSON(tsv:any) {
+        const lines = tsv.split("\n");
+        const result = [];
+        const headers = lines[0].split("\t");
       
-    //     for (let i = 2; i < lines.length; i++) {
-    //         const currentline = lines[i].split("\t");
-    //         const obj = {
-    //             kommun: currentline[0],
-    //             styre: currentline[12],
-    //             annatparti: currentline[11]
-    //         }
+        for (let i = 2; i < lines.length; i++) {
+            const currentline = lines[i].split("\t");
+            const obj = {
+                kommun: currentline[0],
+                styre: currentline[12],
+                annatparti: currentline[11]
+            }
       
-    //       result.push(obj);
-    //     }
+          result.push(obj);
+        }
       
-    //     return result;
-    //   }
+        return result;
+      }
       
-    // private readFromTSV() {
+    private readFromTSV() {
           
-    //     const { readFileSync } = require('fs');
-    //     const tsvFileData = readFileSync('./resources/politisk-majoritet-kommuner.tsv');
-    //     const jsonRes = this.tsvJSON(tsvFileData.toString());
+        const { readFileSync } = require('fs');
+        const tsvFileData = readFileSync('./resources/politisk-majoritet-kommuner2.tsv');
+        const jsonRes = this.tsvJSON(tsvFileData.toString());
         
-    //     console.log(JSON.stringify(jsonRes));
-    // }
+        console.log(JSON.stringify(jsonRes));
+    }
 }
