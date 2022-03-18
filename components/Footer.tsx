@@ -160,9 +160,9 @@ const Footer = () => {
                   vi hur du kan bidra.
                 </Paragraph>
                 <Paragraph>
-                  All fakta på Klimatkollen baseras på offentliga källor och annan fullt
-                  redovisad data. Vi anger alla källor tydligt så att du enkelt kan kolla
-                  upp och läsa mer. Om något blivit fel, mejla oss gärna på{' '}
+                  Klimatkollen baseras på offentliga källor och annan fullt redovisad
+                  data. Vi anger alla källor tydligt så att du enkelt kan kolla upp och
+                  läsa mer. Om något blivit fel, mejla oss gärna på{' '}
                   <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så att vi
                   kan ändra.
                 </Paragraph>
@@ -170,11 +170,14 @@ const Footer = () => {
                   Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av{' '}
                   <a href="https://iteam.se/" target="_blank" rel="noreferrer">
                     Iteam
-                  </a>
-                  . Vi tror på kraften i att visualisera fakta på ett enkelt och
-                  tilltalande sätt. På det sättet vill vi bidra till en mer faktabaserad
-                  klimatdebatt och åtgärder som minskar utsläppen i linje med
-                  Parisavtalet.
+                  </a>{' '}
+                  och{' '}
+                  <a href="https://varabarnsklimat.se/" target="_blank" rel="noreferrer">
+                    Våra barns klimat.
+                  </a>{' '}
+                  Vi tror på kraften i att visualisera data på ett enkelt och tilltalande
+                  sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt
+                  och åtgärder som minskar utsläppen i linje med Parisavtalet.
                 </Paragraph>
               </ToggleSection>
             )}
@@ -200,8 +203,8 @@ const Footer = () => {
               <ToggleSection>
                 <Paragraph>
                   Parisavtalet är ett juridiskt bindande avtal mellan världens länder om
-                  att begränsa den globala uppvärmningen till väl under två grader med
-                  sikte på 1,5 grader.
+                  att begränsa den globala uppvärmningen till väl under 2 grader med sikte
+                  på 1,5 grader.
                 </Paragraph>
                 <Paragraph>
                   För att nå målet måste världen som helhet halvera växthusgasutsläppen
@@ -414,6 +417,9 @@ const Footer = () => {
                 vädertjänster.
               </Paragraph>
             </IconSection>
+            <Paragraph>
+              CC BY NC SA - Attribution-NonCommercial-ShareAlike 4.0 International license
+            </Paragraph>
           </FlexSection>
         </ContentWrapper>
       </Foot>

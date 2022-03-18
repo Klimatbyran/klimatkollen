@@ -107,14 +107,14 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
   return (
     <>
       <MetaTags
-        title="Klimatkollen — Enkel fakta om klimatomställningen"
+        title="Klimatkollen — Få koll på Sveriges klimatomställning"
         description="Hur går det med utsläppsminskningarna i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
       />
       <PageWrapper backgroundColor="black">
         <Container>
           <div>
             <Image src="/logo.png" width="268.06" height="52" />
-            <Paragraph>Enkel fakta om klimatomställningen</Paragraph>
+            <Paragraph>Få koll på Sveriges klimatomställning</Paragraph>
           </div>
           <FlexCenter>
             <DropDown
