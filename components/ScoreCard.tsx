@@ -15,7 +15,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 450px;
+  // max-width: 450px;
 
   @media only screen and (${devices.tablet}) {
     background: ${(props) => props.theme.black};
@@ -66,11 +66,12 @@ type Props = {
   budget: number | null
   municipality: string
   politicalRule: Array<string> | null
+  rank: number | null
 }
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) => {
+const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
   const [togglePopulation, setTogglePopulation] = useState(false)
   const [togglePoliticalRule, setTogglePoliticalRule] = useState(false)
   const [toggleBudget, setToggleBudget] = useState(false)
@@ -80,57 +81,14 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
 
   return (
     <StyledDiv>
-      {population && (
-        <>
-          <div className="row">
-            <section className="left">
-              <Paragraph>Antal invånare</Paragraph>
-              <ParagraphBold>{formatter.format(population)}</ParagraphBold>
-            </section>
-            <section className="right">
-              <StyledIcon onClick={() => setTogglePopulation(!togglePopulation)}>
-                {togglePopulation ? <IconGreen /> : <Icon />}
-              </StyledIcon>
-            </section>
-          </div>
-          <section>
-            {togglePopulation ? (
-              <InfoSection>
-                <Paragraph>Uppgift hämtad från Wikimedia.</Paragraph>
-              </InfoSection>
-            ) : null}
+      {rank && (
+        <div className="row">
+          <section className="left">
+            <Paragraph>Rankning av utsläppsminskningstakt</Paragraph>
+            <ParagraphBold>{rank} av 290 kommuner</ParagraphBold>
           </section>
-        </>
+        </div>
       )}
-
-      <div className="row">
-        <section className="left">
-          <Paragraph>Här styr</Paragraph>
-          <ParagraphBold>{politicalRuleFormatted}</ParagraphBold>
-        </section>
-        <section className="right">
-          <StyledIcon onClick={() => setTogglePoliticalRule(!togglePoliticalRule)}>
-            {togglePoliticalRule ? <IconGreen /> : <Icon />}
-          </StyledIcon>
-        </section>
-      </div>
-      <section>
-        {togglePoliticalRule ? (
-          <InfoSection>
-            <Paragraph>
-              Uppgift hämtad från{' '}
-              <a
-                href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
-                target="_blank"
-                rel="noreferrer">
-                Sveriges Kommuner och Regioner
-              </a>
-              .
-            </Paragraph>
-          </InfoSection>
-        ) : null}
-      </section>
-
       {budget && (
         <>
           <div className="row">
@@ -149,7 +107,8 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
               <InfoSection>
                 <Paragraph>
                   Mängden koldioxid kvar att släppa ut för att klara Parisavtalets
-                  1,5-gradersmål, <Link href="/#source-budget-expl">läs mer här</Link>.
+                  1,5-gradersmål, läs mer{' '}
+                  <Link href="/#source-budget-expl">om beräkningen här</Link>.
                 </Paragraph>
               </InfoSection>
             ) : null}
@@ -174,10 +133,66 @@ const ScoreCard = ({ population, budget, municipality, politicalRule }: Props) =
           <InfoSection>
             <Paragraph>
               Gäller så kallade territoriella koldioxidutsläpp i Sverige per invånare.
+              Data från{' '}
+              <a
+                href="https://nationellaemissionsdatabasen.smhi.se/"
+                target="_blank"
+                rel="noreferrer">
+                nationella emissionsdatabasen.
+              </a>
             </Paragraph>
           </InfoSection>
         ) : null}
       </section>
+      <div className="row">
+        <section className="left">
+          <Paragraph>Här styr</Paragraph>
+          <ParagraphBold>{politicalRuleFormatted}</ParagraphBold>
+        </section>
+        <section className="right">
+          <StyledIcon onClick={() => setTogglePoliticalRule(!togglePoliticalRule)}>
+            {togglePoliticalRule ? <IconGreen /> : <Icon />}
+          </StyledIcon>
+        </section>
+      </div>
+      <section>
+        {togglePoliticalRule ? (
+          <InfoSection>
+            <Paragraph>
+              Uppgift om politiskt styre är hämtad från{' '}
+              <a
+                href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
+                target="_blank"
+                rel="noreferrer">
+                Sveriges Kommuner och Regioner.
+              </a>{' '}
+              Data uppdaterad januari 2022.
+            </Paragraph>
+          </InfoSection>
+        ) : null}
+      </section>
+      {population && (
+        <>
+          <div className="row">
+            <section className="left">
+              <Paragraph>Antal invånare</Paragraph>
+              <ParagraphBold>{formatter.format(population)}</ParagraphBold>
+            </section>
+            <section className="right">
+              <StyledIcon onClick={() => setTogglePopulation(!togglePopulation)}>
+                {togglePopulation ? <IconGreen /> : <Icon />}
+              </StyledIcon>
+            </section>
+          </div>
+          <section>
+            {togglePopulation ? (
+              <InfoSection>
+                <Paragraph>Uppgift hämtad från Wikimedia.</Paragraph>
+              </InfoSection>
+            ) : null}
+          </section>
+        </>
+      )}
     </StyledDiv>
   )
 }

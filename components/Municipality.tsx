@@ -201,7 +201,7 @@ const Bottom = styled.div`
   gap: 3rem;
 
   @media only screen and (${devices.tablet}) {
-    flex-direction: row-reverse;
+    // flex-direction: row-reverse;
   }
 `
 
@@ -212,7 +212,7 @@ const BottomHeader = styled.div`
 
 const BottomLeft = styled.div`
   @media only screen and (${devices.tablet}) {
-    width: 50%;
+    // width: 50%;
   }
 `
 
@@ -320,7 +320,7 @@ const STEPS: {
     buttonText: 'Historik',
     body: (name) => `Koldioxidutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
     shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+      `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   1: {
     text: 'För att nå Parisavtalet',
@@ -328,7 +328,7 @@ const STEPS: {
     body: (name) =>
       `För att vara i linje med Parisavtalet behöver ${name} minska sina utsläpp med X% per år.`,
     shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+      `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   2: {
     text: 'Om vi fortsätter som idag',
@@ -336,14 +336,14 @@ const STEPS: {
     body: (_name) =>
       'Om klimatutsläppen följer nuvarande trend kommer koldioxidbudgeten att ta slut 2024.',
     shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+      `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   // 3: {
   //   text: 'Utforska glappet',
   //   body: (_name) =>
   //     'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
   //   shareText: (_name) =>
-  //     `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+  //    `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   // },
   3: {
     text: 'Skapa din egen klimatplan',
@@ -351,7 +351,7 @@ const STEPS: {
     body: (_name) =>
       'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
     shareText: (_name) =>
-      `Klimatutsläppen hittills. Om vi fortsätter som nu. Om vi ska klara Parisavtalet.`,
+      `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
 }
 
@@ -384,19 +384,10 @@ const Municipality = (props: Props) => {
   const router = useRouter()
   const q = router.query['g[]']
 
-  // TOOD: 2022-2030
-  const adjustablePeriods = [
-    [2020, 2021],
-    [2021, 2022],
-    [2022, 2023],
-    [2023, 2024],
-    [2024, 2025],
-    [2025, 2026],
-    [2026, 2027],
-    [2027, 2028],
-    [2028, 2029],
-    [2029, 2030],
-  ]
+  const range = (start: number, end: number) => Array.from({length: end-start}, (_, i) => i + start)
+
+
+  const adjustablePeriods = range(2020, 2050).map(i => [i, i + 1])
 
   const defaultPeriods = useMemo(
     () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
@@ -451,10 +442,10 @@ const Municipality = (props: Props) => {
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
   const totalBudget = budgetedEmissions
-    .filter((c) => c.Year >= 2020 && c.Year <= 2030)
+    .filter((c) => c.Year >= 2020 && c.Year <= 2050)
     .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
   const totalTrend = trendingEmissions
-    .filter((c) => c.Year >= 2020 && c.Year <= 2030)
+    .filter((c) => c.Year >= 2020 && c.Year <= 2050)
     .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
 
   const stepConfig = STEPS[step]
@@ -607,7 +598,7 @@ const Municipality = (props: Props) => {
           {step > 2 && (
             <Adjustments>
               <RangeContainer>
-                {mandateChanges.slice(2).map((value, i) => (
+                {mandateChanges.slice(2, 10).map((value, i) => (
                   <Range key={i}>
                     <Percentage
                     // style={{
@@ -632,6 +623,9 @@ const Municipality = (props: Props) => {
                 Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
                 utsläppsminskning man behöver genomföra i {municipality.Name} fram till
                 2030:
+                <TotalCo2 style={{ color: 'red', marginTop: 5 }}>
+                  Trend: {Math.round(totalTrend / 1000)} kt CO₂
+                </TotalCo2>
                 <TotalCo2 style={{ color: '#6BA292', marginTop: 10 }}>
                   Parisavtalet: {Math.round(totalBudget / 1000)} kt CO₂
                 </TotalCo2>
@@ -639,6 +633,7 @@ const Municipality = (props: Props) => {
                   Din plan: {Math.round(userTotal / 1000)} kt CO₂
                   {userTotal < totalBudget && ' ✅'}
                 </TotalCo2>
+
               </Help>
             </Adjustments>
           )}
@@ -658,20 +653,21 @@ const Municipality = (props: Props) => {
           <FactH2>Fakta om {municipality.Name}</FactH2>
         </BottomHeader>
         <Bottom>
-          <BottomRight>
+          {/* <BottomRight>
             <p>
               {renderEmissionChangeRank(
                 municipality.Name,
                 municipality.HistoricalEmission.AverageEmissionChangeRank,
               )}
             </p>
-          </BottomRight>
+          </BottomRight> */}
           <BottomLeft>
             <ScoreCard
               population={municipality.Population}
               budget={municipality.Budget.CO2Equivalent}
               municipality={municipality.Name}
               politicalRule={municipality.PoliticalRule}
+              rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
             />
           </BottomLeft>
         </Bottom>
