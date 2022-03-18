@@ -88,7 +88,7 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
     })
   }, [])
    
-  const municipalityLines = municipalityData?.features?.map(({ geometry, properties }) => {
+  const municipalityLines = municipalityData?.features?.map(({ geometry, properties } : {geometry: any, properties: any}) => {
     const name = replaceLetters(properties.name)
     const emissions = emissionsLevels.find((e) => e.name === name)?.emissions
     return {

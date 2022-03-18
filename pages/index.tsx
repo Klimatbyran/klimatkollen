@@ -121,7 +121,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
         <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
       </MapContainer>
 
-      <StartPageWrapper backgroundColor="gradient">
+      <StartPageWrapper>
         <Container>
           <div>
             <Image src="/logo.png" width="268.06" height="52" />

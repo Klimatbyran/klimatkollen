@@ -387,7 +387,7 @@ const Municipality = (props: Props) => {
   const range = (start: number, end: number) => Array.from({length: end-start}, (_, i) => i + start)
 
 
-  const adjustablePeriods = range(2020, 2051).map(i => [i, i + 1])
+  const adjustablePeriods = range(2019, 2051).map(i => [i, i + 1])
 
   const defaultPeriods = useMemo(
     () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
@@ -622,7 +622,7 @@ const Municipality = (props: Props) => {
               <Help>
                 Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
                 utsläppsminskning man behöver genomföra i {municipality.Name}:
-                <TotalCo2 style={{ color: 'red', marginTop: 15 }}>
+                <TotalCo2 style={{ color: '#EF3054', marginTop: 15 }}>
                   Trend: {Math.round(totalTrend / 1000)} kt CO₂
                 </TotalCo2>
                 <TotalCo2 style={{ color: '#6BA292', marginTop: 5 }}>
