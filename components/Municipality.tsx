@@ -39,8 +39,12 @@ const Btn = styled.button`
 
 const Flex = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  > * {
+    user-select: none;
+  }
 `
 
 const Center = styled.div`
@@ -584,8 +588,11 @@ const Municipality = (props: Props) => {
             ) : (
               <div></div>
             )}
+            <span style={{ textAlign: 'center' }}>
+              {step + 1} / {Object.keys(STEPS).length}
+            </span>
             {onNextStep && (
-              <Btn onClick={onNextStep}>
+              <Btn onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
                 {STEPS[step + 1]?.buttonText || 'Nästa'}
                 <ArrowRight />
               </Btn>
