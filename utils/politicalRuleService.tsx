@@ -18,7 +18,7 @@ export class PolitycalRuleService {
         if (rawmun) {
            rule = rawmun.styre
                 .split(',')
-                .filter((rawMun:any) => rawMun != '')
+                .filter((rawMun:any) => rawMun != '' && rawMun != ' ')
                 .map((partyShort:string) => {
                     switch(partyShort) {
                         case 'M':
