@@ -8,9 +8,9 @@ import { useRouter } from 'next/router'
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
   latitude: 61,
-  zoom: 5,
+  zoom: 4,
   minZoom: 3,
-  pitch: 50,
+  pitch: 30,
   bearing: 0,
 }
 

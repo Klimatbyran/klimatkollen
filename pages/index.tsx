@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { useState } from 'react'
 import styled from 'styled-components'
 import DropDown from '../components/DropDown'
@@ -20,11 +20,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap 3rem;
-  position: relative;
-`
-
-const Hero = styled.div`
-  background: ${({ theme }) => theme.black};
 `
 
 const Square = styled.div<{ color: string }>`
@@ -34,29 +29,39 @@ const Square = styled.div<{ color: string }>`
   position: relative;
 `
 
-const ArrowIcon = styled(Icon)<{ rotateup?: boolean }>`
+const ArrowIcon = styled(Icon)<{ rotateUp?: boolean }>`
   position: absolute;
   z-index: 1;
   margin: auto;
   left: 0;
-  ${(props) => props.rotateup && 'transform: rotate(-90deg)'};
+  ${(props) => props.rotateUp && 'transform: rotate(-90deg)'};
   right: 0;
   top: 0;
   bottom: 0;
 `
 
 const MapContainer = styled.div`
-  position: absolute;
+  position: relative;
   // TODO: Hardcoding this is not good.
-  height: 900px;
-  width: 100%;
+  height: 380px;
+  border: 1px solid #f9fbff;
+  border-radius: 8px;
   display: flex;
+
+  @media only screen and (${devices.tablet}) {
+    height: 500px;
+  }
 `
 
 const MapLabels = styled.div`
   padding-left: 0.87rem;
   padding-top: 1.2rem;
 
+  @media only screen and (${devices.tablet}) {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 `
 
 const InfoBox = styled.div`
@@ -81,7 +86,6 @@ const Label = styled.div`
 const FlexCenter = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
 `
 
 const StyledParagraph = styled(Paragraph)`
@@ -90,15 +94,6 @@ const StyledParagraph = styled(Paragraph)`
   @media only screen and (${devices.tablet}) {
     max-width: 20em;
   }
-`
-
-const StartPageWrapper = styled.div`
-  padding: 30px;
-  background: ${({ theme }) => theme.black};
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 `
 
 const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
@@ -115,13 +110,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
         title="Klimatkollen — Få koll på Sveriges klimatomställning"
         description="Hur går det med utsläppsminskningarna i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
       />
-      <MapContainer>
-        
-
-        <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
-      </MapContainer>
-
-      <StartPageWrapper>
+      <PageWrapper backgroundColor="black">
         <Container>
           <div>
             <Image src="/logo.png" width="268.06" height="52" />
@@ -135,13 +124,21 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
             />
           </FlexCenter>
           <FlexCenter>
-            
-
+            <div>
+              <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
+              <p>
+                För att klara Parisavtalet behöver koldioxidutsläppen i Sverige minska med
+                21% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i
+                Sveriges kommuner sedan Parisavtalet 2015.
+              </p>
+            </div>
+          </FlexCenter>
+          <MapContainer>
             <MapLabels>
               <InfoBox>
                 <Label>
                   <Square color="#EF3054">
-                    <ArrowIcon rotateup={true} />
+                    <ArrowIcon rotateUp={true} />
                   </Square>
                   <StyledParagraph>0% +</StyledParagraph>
                 </Label>
@@ -183,18 +180,10 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                 </Label>
               </InfoBox>
             </MapLabels>
-          </FlexCenter>
+
+            <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
+          </MapContainer>
         </Container>
-      </StartPageWrapper>
-      <PageWrapper backgroundColor={'black'}>
-        <Hero>
-          <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
-          <p>
-            För att klara Parisavtalet behöver koldioxidutsläppen i Sverige minska med
-            21% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i
-            Sveriges kommuner sedan Parisavtalet 2015.
-          </p>
-        </Hero>
       </PageWrapper>
     </>
   )
@@ -210,7 +199,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   )
 
   return {
-    props: { municipalities: await municipalities },
+    props: { municipalities },
   }
 }
 
