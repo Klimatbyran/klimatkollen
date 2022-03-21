@@ -97,6 +97,13 @@ const LogoParagraph = styled(Paragraph)`
   text-align: center;
 `
 
+const Copyright = styled.p`
+  color: ${({ theme }) => theme.lightGrey};
+  font-size: 13px;
+  text-align: center;
+  margin-top: 4rem;
+`
+
 const Footer = () => {
   const router = useRouter()
   console.log(router)
@@ -363,10 +370,16 @@ const Footer = () => {
                 vädertjänster.
               </LogoParagraph>
             </IconSection>
-            <Paragraph>
-              CC BY NC SA - Attribution-NonCommercial-ShareAlike 4.0 International license
-            </Paragraph>
           </FlexSection>
+          <Copyright>
+            CC BY NC SA -{' '}
+            <a
+              href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+              target="_blank"
+              rel="noreferrer">
+              Attribution-NonCommercial-ShareAlike 4.0 International license
+            </a>
+          </Copyright>
         </ContentWrapper>
       </Foot>
     </PageWrapper>
