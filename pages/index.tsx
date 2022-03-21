@@ -127,9 +127,8 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
             <div>
               <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
               <p>
-                För att klara Parisavtalet behöver koldioxidutsläppen i Sverige minska med
-                21% per år. På kartan visas genomsnittlig årlig förändring av utsläppen i
-                Sveriges kommuner sedan Parisavtalet 2015.
+                På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges
+                kommuner sedan Parisavtalet 2015.
               </p>
             </div>
           </FlexCenter>
@@ -171,12 +170,6 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
                     <ArrowIcon />
                   </Square>
                   <StyledParagraph>10–15%</StyledParagraph>
-                </Label>
-              </InfoBox>
-              <InfoBox>
-                <Label style={{ display: 'flex', alignItems: 'flex-start' }}>
-                  <Square color="#4ECB80"></Square>
-                  <StyledParagraph>21% (i nivå med Parisavtalet)</StyledParagraph>
                 </Label>
               </InfoBox>
             </MapLabels>
