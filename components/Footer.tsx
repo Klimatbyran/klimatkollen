@@ -270,6 +270,15 @@ const Footer = () => {
                   Sverige och våra kommuner.
                 </Paragraph>
                 <Paragraph>
+                  För att vara i linje med Parisavtalet och koldioxidbudgeten som
+                  motsvarar 1,5 graders uppvärmning krävs en årlig nationell
+                  utsläppsminskning med 21 procent från 2022. Sedan 1990 har Sveriges
+                  utsläpp minskat med 35 procent totalt, eller drygt en procent per år.
+                  Lokalt skiljer sig utsläppen, trenden och därmed koldioxidbudgeten åt
+                  från kommun till kommun, vilket gör att den nödvändiga minskningstakten
+                  också varierar.
+                </Paragraph>
+                <Paragraph>
                   Vi har valt att visa en koldioxidbudget för utsläpp inom Sveriges
                   gränser, för att det är så världens länder rapporterar inom
                   klimatkonventionen. Sverige har även hög klimatbelastning från de varor
@@ -278,18 +287,12 @@ const Footer = () => {
                   medräknade i Klimatkollens koldioxidbudget.
                 </Paragraph>
                 <Paragraph>
-                  Läs mer om hur koldioxidbudgetarna är beräknade hos vår samarbetspartner{' '}
-                  <a
-                    href="https://www.climateview.global/"
-                    target="_blank"
-                    rel="noreferrer">
-                    ClimateView
+                  Den nationella koldioxidbudgeten beräknas av Uppsala Universitet enligt
+                  Tyndall-modellen och fördelas sedan ut på kommunerna av ClimateView. Läs
+                  mer om hur koldioxidbudgeten är beräknad{' '}
+                  <a href="about:blank" target="_blank" rel="noreferrer">
+                    här.
                   </a>
-                  . Läs mer om konsumtionsbaserade utsläpp hos vår samarbetspartner{' '}
-                  <a href="https://wwf.se/" target="_blank" rel="noreferrer">
-                    Världsnaturfonden WWF
-                  </a>
-                  .
                 </Paragraph>
               </ToggleSection>
             )}
