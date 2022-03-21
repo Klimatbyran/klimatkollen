@@ -110,6 +110,7 @@ const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
           value={email}
           required
           disabled={showThanks}
+          id="signup"
         />
         {showThanks ? (
           <EmailValidation>
