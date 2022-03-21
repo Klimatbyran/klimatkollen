@@ -104,6 +104,12 @@ const Copyright = styled.p`
   margin-top: 4rem;
 `
 
+const GHLink = styled.p`
+  color: ${({ theme }) => theme.lightGrey};
+  font-size: 13px;
+  text-align: center;
+`
+
 const Footer = () => {
   const router = useRouter()
   console.log(router)
@@ -380,6 +386,15 @@ const Footer = () => {
               Attribution-NonCommercial-ShareAlike 4.0 International license
             </a>
           </Copyright>
+          <GHLink>
+            Klimatkollen är{' '}
+            <a
+              href="https://github.com/Klimatbyran/klimatkollen"
+              target="_blank"
+              rel="noreferrer">
+              öppen källkod
+            </a>
+          </GHLink>
         </ContentWrapper>
       </Foot>
     </PageWrapper>
