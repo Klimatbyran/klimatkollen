@@ -321,7 +321,7 @@ const STEPS: {
 } = {
   0: {
     text: 'Historiska utsläpp',
-    buttonText: 'Historik',
+    buttonText: 'Historiskt',
     body: (name) => `Koldioxidutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
     shareText: (_name) =>
       `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
@@ -388,10 +388,10 @@ const Municipality = (props: Props) => {
   const router = useRouter()
   const q = router.query['g[]']
 
-  const range = (start: number, end: number) => Array.from({length: end-start}, (_, i) => i + start)
+  const range = (start: number, end: number) =>
+    Array.from({ length: end - start }, (_, i) => i + start)
 
-
-  const adjustablePeriods = range(2019, 2051).map(i => [i, i + 1])
+  const adjustablePeriods = range(2019, 2051).map((i) => [i, i + 1])
 
   const defaultPeriods = useMemo(
     () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
@@ -551,7 +551,7 @@ const Municipality = (props: Props) => {
               {step < 3 && (
                 <Legend>
                   <Circle color="rgb(239, 94, 48)" />
-                  Historiska utsläpp
+                  Historiskt
                 </Legend>
               )}
               {step > 0 && (
@@ -612,7 +612,8 @@ const Municipality = (props: Props) => {
                     //   color: value.change > 1 ? 'pink' : 'lightgreen',
                     // }}
                     >
-                      {value.change > 1 ? '+' : ''} {Math.round(100 * value.change) - 100}%
+                      {value.change > 1 ? '+' : ''} {Math.round(100 * value.change) - 100}
+                      %
                     </Percentage>
                     <Slider
                       min={0.5}
@@ -620,7 +621,9 @@ const Municipality = (props: Props) => {
                       step={0.01}
                       value={value.change}
                       type="range"
-                      onChange={(e) => handleYearChange(value.start, parseFloat(e.target.value))}
+                      onChange={(e) =>
+                        handleYearChange(value.start, parseFloat(e.target.value))
+                      }
                     />
                     <StartYear>{value.start}</StartYear>
                   </Range>
@@ -639,7 +642,6 @@ const Municipality = (props: Props) => {
                   Din plan: {Math.round(userTotal / 1000)} kt CO₂
                   {userTotal < totalBudget && ' ✅'}
                 </TotalCo2>
-
               </Help>
             </Adjustments>
           )}
