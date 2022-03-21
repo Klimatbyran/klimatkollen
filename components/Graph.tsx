@@ -72,13 +72,21 @@ type Props = {
   budget: EmissionPerYear[]
   trend: EmissionPerYear[]
   user: EmissionPerYear[]
-  maxVisibleYear: number,
+  maxVisibleYear: number
   municipality: string
 }
 
 type Dataset = Array<{ x: number; y: number }>
 
-const Graph = ({ step, historical, budget, trend, user, maxVisibleYear, municipality }: Props) => {
+const Graph = ({
+  step,
+  historical,
+  budget,
+  trend,
+  user,
+  maxVisibleYear,
+  municipality,
+}: Props) => {
   const setup = useMemo(
     () => getSetup([historical, budget, trend]),
     [historical, budget, trend],
@@ -178,7 +186,7 @@ const Graph = ({ step, historical, budget, trend, user, maxVisibleYear, municipa
               },
               ticks: {
                 font: {
-                  family: 'Helvetica Neue',
+                  family: 'Roboto',
                   size: 15,
                   weight: '300',
                 },
@@ -201,7 +209,7 @@ const Graph = ({ step, historical, budget, trend, user, maxVisibleYear, municipa
               ticks: {
                 stepSize: 50_000,
                 font: {
-                  family: 'Helvetica Neue',
+                  family: 'Roboto',
                   size: 15,
                   weight: '300',
                 },
