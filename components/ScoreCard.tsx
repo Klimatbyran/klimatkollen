@@ -84,7 +84,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
       {rank && (
         <div className="row">
           <section className="left">
-            <Paragraph>Rankning av utsläppsminskningstakt</Paragraph>
+            <Paragraph>Rankning av utsläppsminskningstakt sedan 2015</Paragraph>
             <ParagraphBold>{rank} av 290 kommuner</ParagraphBold>
           </section>
         </div>
