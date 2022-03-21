@@ -160,8 +160,17 @@ const Footer = () => {
                   (eller lite) utsläppen i din kommun minskar jämfört med andra.
                 </Paragraph>
                 <Paragraph>
-                  Vi utvecklar Klimatkollen kontinuerligt. Skriv upp dig{' '}
-                  <a href="#signup">här</a> så berättar vi när vi släpper något nytt.
+                  Klimatkollen är en process och vi är bara i början. Självklart är
+                  Klimatkollen utvecklad med öppen källkod. Det betyder att du kan vara
+                  med och utveckla och förbättra sajten via{' '}
+                  <a
+                    href="https://github.com/Klimatbyran/klimatkollen"
+                    target="_blank"
+                    rel="noreferrer">
+                    vårt Github-repo.
+                  </a>{' '}
+                  Eller skriv upp dig <a href="#signup">här</a> så berättar vi när vi
+                  släpper något nytt.
                 </Paragraph>
                 <Paragraph>
                   <b>Stötta oss!</b> Skicka ett mejl till{' '}
@@ -285,7 +294,7 @@ const Footer = () => {
               </ToggleSection>
             )}
           </TextSection>
-          <TextSection id="signup">
+          <TextSection>
             <ParagraphBold>Vill du få nyheter om Klimatkollen?</ParagraphBold>
             <NewsletterSubscribe />
           </TextSection>
