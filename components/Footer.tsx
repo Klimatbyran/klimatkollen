@@ -102,10 +102,10 @@ const Footer = () => {
   console.log(router)
   const [toggleFirst, setToggleFirst] = useState(false)
   const [toggleSecond, setToggleSecond] = useState(false)
-  const [toggleThird, setToggleThird] = useState(false)
-  const [toggleFourth, setToggleFourth] = useState(
+  const [toggleThird, setToggleThird] = useState(
     router.asPath.includes('#source-budget-expl'),
   )
+  const [toggleFourth, setToggleFourth] = useState()
 
   // const resizeHandler = () => {
   //   if (window.innerWidth >= 768) {
@@ -225,7 +225,7 @@ const Footer = () => {
           </TextSection>
           <TextSection>
             <HeaderSection>
-              <H5>Om koldioxidbudgetar</H5>
+              <H5 id="source-budget-expl">Om koldioxidbudgetar</H5>
               {toggleThird ? (
                 <ArrowUp className="arrow" onClick={() => setToggleThird(!toggleThird)} />
               ) : (
@@ -268,56 +268,6 @@ const Footer = () => {
                     Världsnaturfonden WWF
                   </a>
                   .
-                </Paragraph>
-              </ToggleSection>
-            )}
-          </TextSection>
-          <TextSection>
-            <HeaderSection>
-              <H5 id="source-budget-expl">Så beräknas koldioxidbudgetarna</H5>
-              {toggleFourth ? (
-                <ArrowUp
-                  className="arrow"
-                  onClick={() => setToggleFourth(!toggleFourth)}
-                />
-              ) : (
-                <ArrowDown
-                  className="arrow"
-                  onClick={() => setToggleFourth(!toggleFourth)}
-                />
-              )}
-            </HeaderSection>
-            {toggleFourth && (
-              <ToggleSection>
-                <Paragraph>
-                  Först väljs en global koldioxidbudget baserat på IPCC:s olika scenarier
-                  för vilken mängd koldioxidutsläpp som förväntas leda till vilka
-                  temperaturhöjningar, och med vilken sannolikhet. Klimatkollen har valt
-                  1,5 grader och 50% sannolikhet, vilket ger en global koldioxidbudget på
-                  500 Gigaton (Gt).
-                </Paragraph>
-                <Paragraph>
-                  Sedan görs avdrag från den globala koldioxidbudgeten. En viss del
-                  öronmärks för en viss typ av utsläpp, som bedöms nödvändiga under
-                  omställningen. Klimatkollen följer praxis och gör avdrag för mark- och
-                  skogsanvändning samt cementproduktion. Då återstår X Gt.
-                </Paragraph>
-                <Paragraph>
-                  Därefter tillämpas Parisavtalets rättviseprincip om att utvecklade
-                  länder med större historiska utsläpp ska ta ett större ansvar än
-                  utvecklingsländer, som behöver längre tid på sig att ställa om.
-                  Fördelningen vi valt att visa är att 65% av den återstående globala
-                  koldioxidbudgeten tilldelas utvecklingsländerna medan 35% går till
-                  utvecklade länder, däribland Sverige. Då återstår X Gt.
-                </Paragraph>
-                <Paragraph>
-                  Till sist räknas Sveriges och kommunernas andelar av den globala
-                  koldioxidbudgeten fram. Ett avdrag görs för internationellt flyg och
-                  sjöfart. Klimatkollen följer sedan standard och använder den så kallade
-                  &#8220;grandfathering-principen&#8221;, vilket innebär att fördelningen
-                  baseras på historiska utsläpp. De som har släppt ut mer får en större
-                  del av budgeten än de som släppt ut mindre. Då återstår X Gt för Sverige
-                  som helhet.
                 </Paragraph>
               </ToggleSection>
             )}
@@ -367,7 +317,7 @@ const Footer = () => {
             <IconSection>
               <IconWrapper>
                 <a href="https://www.klimatklubben.se/" target="_blank" rel="noreferrer">
-                  <img src="/icons/klimatklubben.svg" alt='Klimatklubben logo'/>
+                  <img src="/icons/klimatklubben.svg" alt="Klimatklubben logo" />
                 </a>
               </IconWrapper>
               <LogoParagraph>
