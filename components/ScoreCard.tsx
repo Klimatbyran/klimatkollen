@@ -116,7 +116,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
         </>
       )}
 
-      <div className="row">
+      {/* <div className="row">
         <section className="left">
           <Paragraph>Klimatutsläpp per invånare</Paragraph>
           <ParagraphBold>5 ton/år</ParagraphBold>
@@ -127,7 +127,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
             {toggleEmissionsPerCapita ? <IconGreen /> : <Icon />}
           </StyledIcon>
         </section>
-      </div>
+      </div> */}
       <section>
         {toggleEmissionsPerCapita ? (
           <InfoSection>
