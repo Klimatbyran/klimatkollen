@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html lang="sv">
+    <Html>
       <Head>
         {/* <link
           href="/Roboto/Roboto-Regular.ttf"
