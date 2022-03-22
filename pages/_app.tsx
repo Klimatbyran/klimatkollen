@@ -42,6 +42,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="/favicons/favicon-512x512.png"
         />
         <meta property="og:image" content="https://klimatkollen.se/social-picture.png" />
+        <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:image"
           content="https://klimatkollen.se/social-picture.png"
