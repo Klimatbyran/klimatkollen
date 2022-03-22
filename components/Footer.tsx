@@ -35,6 +35,10 @@ const HeaderSection = styled.div`
   & .arrow {
     display: block;
   }
+
+  :hover {
+    cursor: pointer;
+  }
 `
 
 const ToggleSection = styled.div`
@@ -138,7 +142,7 @@ const Footer = () => {
       <Foot>
         <ContentWrapper>
           <TextSection>
-            <HeaderSection>
+            <HeaderSection onClick={() => setToggleFirst(!toggleFirst)}>
               <H5>Om Klimatkollen</H5>
               {toggleFirst ? (
                 <ArrowUp className="arrow" onClick={() => setToggleFirst(!toggleFirst)} />
@@ -201,7 +205,7 @@ const Footer = () => {
             )}
           </TextSection>
           <TextSection>
-            <HeaderSection>
+            <HeaderSection onClick={() => setToggleSecond(!toggleSecond)}>
               <H5>
                 We <Emoji symbol="❤️" label="heart" /> Parisavtalet
               </H5>
@@ -246,7 +250,7 @@ const Footer = () => {
             )}
           </TextSection>
           <TextSection>
-            <HeaderSection>
+            <HeaderSection onClick={() => setToggleThird(!toggleThird)}>
               <H5 id="source-budget-expl">Om koldioxidbudgetar</H5>
               {toggleThird ? (
                 <ArrowUp className="arrow" onClick={() => setToggleThird(!toggleThird)} />
