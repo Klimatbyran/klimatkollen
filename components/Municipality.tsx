@@ -30,7 +30,7 @@ const Btn = styled.button`
   cursor: pointer;
   background-color: inherit;
   color: #fff;
-  font-family: 'Helvetica Neue';
+  font-family: 'Roboto';
   font-weight: 300;
   font-size: 16px;
   display: flex;
@@ -542,7 +542,7 @@ const Municipality = (props: Props) => {
           <HeaderSection>
             <H1>{municipality.Name}</H1>
 
-            {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
+            {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt={`Kommunvapen för ${municipality.Name}`} />}
           </HeaderSection>
           <GraphWrapper>
             <h3>{text}</h3>
@@ -605,7 +605,7 @@ const Municipality = (props: Props) => {
           {step > 2 && (
             <Adjustments>
               <RangeContainer>
-                {mandateChanges.slice(2, 10).map((value, i) => (
+                {mandateChanges.filter(c => c.start >= 2022 && c.end <= 2030).map((value, i) => (
                   <Range key={i}>
                     <Percentage
                     // style={{
@@ -636,11 +636,11 @@ const Municipality = (props: Props) => {
                   Trend: {Math.round(totalTrend / 1000)} kt CO₂
                 </TotalCo2>
                 <TotalCo2 style={{ color: '#6BA292', marginTop: 5 }}>
-                  Parisavtalet: {Math.round(totalBudget / 1000)} kt CO₂
+                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} kt CO₂
                 </TotalCo2>
                 <TotalCo2 style={{ color: 'rgb(239, 191, 23)', marginTop: 5 }}>
                   Din plan: {Math.round(userTotal / 1000)} kt CO₂
-                  {userTotal < totalBudget && ' ✅'}
+                  {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
                 </TotalCo2>
               </Help>
             </Adjustments>

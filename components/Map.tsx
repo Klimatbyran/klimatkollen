@@ -7,10 +7,10 @@ import { useRouter } from 'next/router'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
-  latitude: 61,
-  zoom: 4,
+  latitude: 63,
+  zoom: 3.5,
   minZoom: 3,
-  pitch: 30,
+  pitch: 0,
   bearing: 0,
 }
 
@@ -145,7 +145,6 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
         //   inertia: false,
         // }}
         onClick={({ object }) => {
-          console.log('click', object)
           // IDK what the correct type is
           const name = (object as unknown as Emissions)?.name
           if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)

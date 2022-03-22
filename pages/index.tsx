@@ -113,7 +113,8 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
       <PageWrapper backgroundColor="black">
         <Container>
           <div>
-            <Image src="/logo.png" width="268.06" height="52" />
+            {/* <Image src="/logo.png" width="268.06" height="52" /> */}
+            <Image src="/logo_beta.svg" width="485" height="86" />
             <Paragraph>Få koll på Sveriges klimatomställning</Paragraph>
           </div>
           <FlexCenter>

@@ -23,7 +23,7 @@ const StyledInput = styled.input`
   padding: 15px;
   color: ${({ theme }) => theme.white};
   font-size: 16px;
-  font-family: Helvetica Neue;
+  font-family: Roboto;
 
   ::placeholder,
   ::-webkit-input-placeholder {
