@@ -41,7 +41,7 @@ const Input = styled.input`
   outline: none;
   font-size: 16px;
   font-weight: 300;
-  font-family: Helvetica Neue;
+  font-family: Roboto;
 
   ::placeholder {
     color: ${({ theme }) => theme.white};

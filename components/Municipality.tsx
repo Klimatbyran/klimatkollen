@@ -30,7 +30,7 @@ const Btn = styled.button`
   cursor: pointer;
   background-color: inherit;
   color: #fff;
-  font-family: 'Helvetica Neue';
+  font-family: 'Roboto';
   font-weight: 300;
   font-size: 16px;
   display: flex;
