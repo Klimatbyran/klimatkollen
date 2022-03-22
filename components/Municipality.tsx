@@ -542,7 +542,7 @@ const Municipality = (props: Props) => {
           <HeaderSection>
             <H1>{municipality.Name}</H1>
 
-            {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt="img" />}
+            {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt={`Kommunvapen för ${municipality.Name}`} />}
           </HeaderSection>
           <GraphWrapper>
             <h3>{text}</h3>
