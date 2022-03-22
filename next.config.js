@@ -10,5 +10,9 @@ module.exports = {
 
     return config
   },
-  reactStrictMode: true
+  reactStrictMode: true,
+  i18n: {
+    locales: ["sv"],
+    defaultLocale: "sv",
+  }
 }
