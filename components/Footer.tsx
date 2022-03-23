@@ -397,11 +397,11 @@ const Footer = () => {
             </IconSection>
           </FlexSection>
           <Copyright>
-            CC BY NC SA -{' '}
+            CC BY-NC-SA -{' '}
             <a
               href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
               target="_blank"
-              rel="noreferrer">
+              rel="noreferrer license">
               Attribution-NonCommercial-ShareAlike 4.0 International license
             </a>
           </Copyright>
