@@ -152,11 +152,9 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
   }
 
   const seeMunicipality = () => {
-    const municipalityExists =
-      municipalities.includes(selectedMunicipality) ||
-      municipalities.find(
-        (municipality) => municipality.toLowerCase() === selectedMunicipality,
-      )
+    const municipalityExists = municipalities.find(
+      (municipality) => municipality.toLowerCase() === selectedMunicipality.toLowerCase(),
+    )
 
     if (municipalityExists) {
       router.push(`/kommun/${selectedMunicipality.toLowerCase()}`)

@@ -79,6 +79,21 @@ test('dropdown handles typing and clicking the green arrow', () => {
 
   setup()
 
+  userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'Sollentuna')
+  userEvent.click(screen.getByLabelText(/visa kommun/i))
+
+  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
+})
+
+test('dropdown handles typing with lowercase letters and clicking the green arrow', () => {
+  const router = {
+    push: vi.fn(),
+  }
+
+  ;(useRouter as SpyInstanceFn).mockReturnValue(router)
+
+  setup()
+
   userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'sollentuna')
   userEvent.click(screen.getByLabelText(/visa kommun/i))
 
