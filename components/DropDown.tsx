@@ -86,7 +86,7 @@ const MunicipalitiesWrapper = styled.ul`
   }
 `
 
-const Municiplity = styled.li`
+const Municipality = styled.li`
   color: ${({ theme }) => theme.black};
   text-decoration: none;
   width: 305px;
@@ -95,6 +95,10 @@ const Municiplity = styled.li`
   align-items: center;
   padding-left: 1rem;
   position: relative;
+`
+
+const ErrorText = styled.div`
+  margin-top: 8px;
 `
 
 type Props = {
@@ -106,7 +110,7 @@ type Props = {
 const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
   const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
   const [showDropDown, setShowDropDown] = useState(false)
-  const [selectedMuniciplity, setSelectedMunicipality] = useState<string>('')
+  const [selectedMunicipality, setSelectedMunicipality] = useState<string>('')
   const [municipalities, setMunicipalities] = useState(sortedMunicipalities)
   const [showInfoText, setShowInfoText] = useState(false)
 
@@ -125,12 +129,12 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
     }
   }, [showDropDown])
 
-  const onMuniciplityClick = (e: any) => {
-    setSelectedMunicipality(e.target.innerHTML)
+  const onMunicipalityClick = (name: string) => {
+    setSelectedMunicipality(name)
     setShowDropDown(false)
 
-    if (municipalities.includes(e.target.innerHTML)) {
-      router.push(`/kommun/${e.target.innerHTML.toLowerCase()}`)
+    if (municipalities.includes(name)) {
+      router.push(`/kommun/${name.toLowerCase()}`)
     }
   }
 
@@ -141,15 +145,21 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
     } else {
       setShowDropDown(true)
     }
-    const filterdMunicipalities = sortedMunicipalities.filter((test) =>
+    const filteredMunicipalities = sortedMunicipalities.filter((test) =>
       test.toLowerCase().startsWith(value.toLowerCase()),
     )
-    setMunicipalities(filterdMunicipalities)
+    setMunicipalities(filteredMunicipalities)
   }
 
-  const seeMuniciplity = () => {
-    if (municipalities.includes(selectedMuniciplity)) {
-      router.push(`/kommun/${selectedMuniciplity.toLowerCase()}`)
+  const seeMunicipality = () => {
+    const municipalityExists =
+      municipalities.includes(selectedMunicipality) ||
+      municipalities.find(
+        (municipality) => municipality.toLowerCase() === selectedMunicipality,
+      )
+
+    if (municipalityExists) {
+      router.push(`/kommun/${selectedMunicipality.toLowerCase()}`)
     } else {
       setShowInfoText(true)
       setTimeout(() => {
@@ -159,34 +169,46 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
   }
 
   return (
-    <Container>
-      {showInfoText && <p>Välj en kommun i listan</p>}
-      <SearchDropDown ref={ref}>
-        <Flex>
-          <Input
-            type="text"
-            placeholder={placeholder}
-            onChange={(e) => onInputChange(e.target.value)}
-            value={selectedMuniciplity}
-          />
-          <Btn onClick={() => setShowDropDown((current) => !current)}>
-            <ArrowDown />
-          </Btn>
-        </Flex>
-        {showDropDown && (
-          <MunicipalitiesWrapper className={className}>
-            {municipalities.map((name, i) => (
-              <Municiplity key={i} onClick={(e) => onMuniciplityClick(e)}>
-                {name}
-              </Municiplity>
-            ))}
-          </MunicipalitiesWrapper>
-        )}
-      </SearchDropDown>
-      <RoundButton type="submit" onClick={seeMuniciplity}>
-        {selectedMuniciplity ? <ArrowRightGreen /> : <ArrowRightWhite />}
-      </RoundButton>
-    </Container>
+    <div>
+      <Container>
+        <SearchDropDown ref={ref}>
+          <Flex>
+            <Input
+              aria-label={placeholder}
+              type="text"
+              placeholder={placeholder}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  seeMunicipality()
+                }
+              }}
+              onChange={(e) => onInputChange(e.target.value)}
+              value={selectedMunicipality}
+            />
+            <Btn onClick={() => setShowDropDown((current) => !current)}>
+              <ArrowDown />
+            </Btn>
+          </Flex>
+          {showDropDown && (
+            <MunicipalitiesWrapper className={className}>
+              {municipalities.map((name, i) => (
+                <Municipality key={i} onClick={() => onMunicipalityClick(name)}>
+                  {name}
+                </Municipality>
+              ))}
+            </MunicipalitiesWrapper>
+          )}
+        </SearchDropDown>
+        <RoundButton onClick={seeMunicipality}>
+          {selectedMunicipality ? (
+            <ArrowRightGreen aria-label="Visa kommun" />
+          ) : (
+            <ArrowRightWhite aria-label="Visa kommun" />
+          )}
+        </RoundButton>
+      </Container>
+      {showInfoText && <ErrorText>Välj en kommun i listan</ErrorText>}
+    </div>
   )
 }
 
