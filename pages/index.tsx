@@ -29,7 +29,7 @@ const Square = styled.div<{ color: string }>`
   position: relative;
 `
 
-const ArrowIcon = styled(Icon)<{ rotateUp?: boolean }>`
+const ArrowIcon = styled(Icon) <{ rotateUp?: boolean }>`
   position: absolute;
   z-index: 1;
   margin: auto;
@@ -91,8 +91,11 @@ const FlexCenter = styled.div`
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
   max-width: 6.7em;
+  font-size: 0.6em;
+
   @media only screen and (${devices.tablet}) {
     max-width: 20em;
+    font-size: 1em;
   }
 `
 

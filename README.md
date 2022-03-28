@@ -17,7 +17,7 @@ This opens up a webserver on http://localhost:3000. Just edit the code and see t
 
 ## Contribute
 
-The current version is just the first MVP version, we have many ideas to explore to make the climate data more accessible to the public. Please have a look at the [Issues](issues) and [Pull Requests](pulls) to see if you can contribute. Both testing and bug fixes, typos or fact check our data is of course encouraged.
+The current version is just the first MVP version, we have many ideas to explore to make the climate data more accessible to the public. Please have a look at the [Issues](https://github.com/Klimatbyran/klimatkollen/issues) and [Pull Requests](https://github.com/Klimatbyran/klimatkollen/pulls) to see if you can contribute. Both testing and bug fixes, typos or fact check our data is of course encouraged.
 
 We value your feedback and love PR:s, issues and your encouragement. Please star this repo if you want to follow the progress.
 

@@ -391,7 +391,7 @@ const Municipality = (props: Props) => {
   const range = (start: number, end: number) =>
     Array.from({ length: end - start }, (_, i) => i + start)
 
-  const adjustablePeriods = range(2019, 2051).map((i) => [i, i + 1])
+  const adjustablePeriods = range(2020, 2051).map((i) => [i, i + 1])
 
   const defaultPeriods = useMemo(
     () => adjustablePeriods.map((f) => ({ start: f[0], end: f[1], change: 1 })),
@@ -446,10 +446,10 @@ const Municipality = (props: Props) => {
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
   const totalBudget = budgetedEmissions
-    .filter((c) => c.Year >= 2019 && c.Year <= 2050)
+    .filter((c) => c.Year >= 2020 && c.Year <= 2050)
     .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
   const totalTrend = trendingEmissions
-    .filter((c) => c.Year >= 2019 && c.Year <= 2050)
+    .filter((c) => c.Year >= 2020 && c.Year <= 2050)
     .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
 
   const stepConfig = STEPS[step]

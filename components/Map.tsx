@@ -133,6 +133,15 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
         controller={{
           scrollZoom: false
         }}
+        getTooltip={({ object }) => object && {
+          html: `<p>${(object as unknown as Emissions)?.name}</p>`,
+          style: {
+            backgroundColor: 'black',
+            border: '1px solid white',
+            borderRadius: '5px',
+            fontSize: '0.6em'
+          }
+        }}
         // controller={{
         //   scrollZoom: true,
         //   dragPan: false,
@@ -155,7 +164,6 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
           viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
           return viewState
         }}
-      />
       {children}
     </DeckGLWrapper>
   )
