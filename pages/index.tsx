@@ -90,10 +90,11 @@ const FlexCenter = styled.div`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
-  max-width: 6.7em;
+  width: 5em;
+  font-size: 0.7em;
 
   @media only screen and (${devices.tablet}) {
-    max-width: 20em;
+    font-size: 1em;
   }
 `
 
