@@ -118,12 +118,16 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
   const router = useRouter()
 
   useEffect(() => {
-    const checkIfClickedOutside = (e: { target: any }) => {
-      if (showDropDown && ref.current && !ref.current.contains(e.target)) {
+    const checkIfClickedOutside = (e: MouseEvent) => {
+      const element = e.target
+
+      if (showDropDown && element instanceof Node && !ref.current?.contains(element)) {
         setShowDropDown(false)
       }
     }
+
     document.addEventListener('mousedown', checkIfClickedOutside)
+
     return () => {
       document.removeEventListener('mousedown', checkIfClickedOutside)
     }
@@ -146,7 +150,7 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
       setShowDropDown(true)
     }
     const filteredMunicipalities = sortedMunicipalities.filter((test) =>
-      test.toLowerCase().startsWith(value.toLowerCase()),
+      test.toLowerCase().includes(value.toLowerCase()),
     )
     setMunicipalities(filteredMunicipalities)
   }

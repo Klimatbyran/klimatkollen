@@ -70,6 +70,44 @@ test('dropdown shows error text if nothing is selected', () => {
   expect(screen.queryByText(/välj en kommun i listan/i)).not.toBeInTheDocument()
 })
 
+test('dropdown closes when clicking outside', () => {
+  const router = {
+    push: vi.fn(),
+  }
+
+  ;(useRouter as SpyInstanceFn).mockReturnValue(router)
+
+  setup()
+
+  userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'llen')
+
+  // Opens dropdown
+  expect(screen.getByText(/sollentuna/i)).toBeInTheDocument()
+
+  // Click outside
+  userEvent.click(screen.getByText(/få koll på sveriges klimatomställning/i))
+
+  // Dropdown is closed
+  expect(screen.queryByText(/sollentuna/i)).not.toBeInTheDocument()
+  expect(router.push).not.toHaveBeenCalled()
+})
+
+test('dropdown handles selecting from list', () => {
+  const router = {
+    push: vi.fn(),
+  }
+
+  ;(useRouter as SpyInstanceFn).mockReturnValue(router)
+
+  setup()
+
+  userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'llen')
+  userEvent.click(screen.getByText(/sollentuna/i))
+  userEvent.click(screen.getByLabelText(/visa kommun/i))
+
+  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
+})
+
 test('dropdown handles typing and clicking the green arrow', () => {
   const router = {
     push: vi.fn(),
