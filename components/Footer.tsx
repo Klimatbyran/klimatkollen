@@ -178,14 +178,14 @@ const Footer = () => {
                 </Paragraph>
                 <Paragraph>
                   <b>Stötta oss!</b> Skicka ett mejl till{' '}
-                  <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så berättar
+                  <a href="mailto:hej@varabarnsklimat.se">hej@varabarnsklimat.se</a> så berättar
                   vi hur du kan bidra.
                 </Paragraph>
                 <Paragraph>
                   Klimatkollen baseras på offentliga källor och annan fullt redovisad
                   data. Vi anger alla källor tydligt så att du enkelt kan kolla upp och
                   läsa mer. Om något blivit fel, mejla oss gärna på{' '}
-                  <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så att vi
+                  <a href="mailto:hej@varabarnsklimat.se">hej@varabarnsklimat.se</a> så att vi
                   kan ändra.
                 </Paragraph>
                 <Paragraph>
