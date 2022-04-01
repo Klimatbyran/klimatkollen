@@ -164,6 +164,7 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
           viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
           return viewState
         }}
+      />
       {children}
     </DeckGLWrapper>
   )
