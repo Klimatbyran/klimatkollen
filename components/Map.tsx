@@ -159,11 +159,12 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
           if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
         layers={[kommunLayer]}
-        onViewStateChange={({ viewState }) => {
+        // FIXME needs to be adapted to mobile before reintroducing
+        /*onViewStateChange={({ viewState }) => {
           viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))
           viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
           return viewState
-        }}
+        }}*/
       />
       {children}
     </DeckGLWrapper>
