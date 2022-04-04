@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
-import { H1, ParagraphBold, Paragraph } from '../components/Typography'
+import { ParagraphBold, Paragraph } from '../components/Typography'
 import { EmissionService } from '../utils/emissionService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -98,8 +98,8 @@ const StyledParagraph = styled(Paragraph)`
   }
 `
 
-const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
-  const [selected, setSelected] = useState('Utforska kartan')
+const Home = ({ municipalities }: PropsType) => {
+  const [, setSelected] = useState('Utforska kartan')
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
     name: item.Name,
@@ -116,7 +116,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
         <Container>
           <div>
             {/* <Image src="/logo.png" width="268.06" height="52" /> */}
-            <Image src="/logo_beta.svg" width="485" height="86" />
+            <Image src="/logo_beta.svg" width="485" height="86" alt="Klimatkollen" />
             <Paragraph>Få koll på Sveriges klimatomställning</Paragraph>
           </div>
           <FlexCenter>
