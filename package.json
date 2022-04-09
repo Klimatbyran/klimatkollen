@@ -2,7 +2,7 @@
   "name": "klimatkollen",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_PUBLIC_MAILCHIMP_URL=https:// next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
