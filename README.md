@@ -1,6 +1,6 @@
 ## Klimatkollen
 
-This is the official source code for [klimatkollen.se](klimatkollen.se).
+This is the official source code for [klimatkollen.se](https://klimatkollen.se).
 
 ## About
 
