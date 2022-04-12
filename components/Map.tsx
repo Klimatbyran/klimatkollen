@@ -4,6 +4,7 @@ import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
 import { ReactNode, useMemo, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import NextNProgress from 'nextjs-progressbar';
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -127,6 +128,16 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
 
   return (
     <DeckGLWrapper>
+      <NextNProgress
+        color="#6BA292"
+        startPosition={1}
+        stopDelayMs={20}
+        height={10}
+        showOnShallow={true}
+        options={{
+          showSpinner: false
+        }}
+      />
       <DeckGL
         // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
@@ -159,12 +170,12 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
           if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
         layers={[kommunLayer]}
-        // FIXME needs to be adapted to mobile before reintroducing
-        /*onViewStateChange={({ viewState }) => {
-          viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))
-          viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
-          return viewState
-        }}*/
+      // FIXME needs to be adapted to mobile before reintroducing
+      /*onViewStateChange={({ viewState }) => {
+        viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))
+        viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
+        return viewState
+      }}*/
       />
       {children}
     </DeckGLWrapper>
