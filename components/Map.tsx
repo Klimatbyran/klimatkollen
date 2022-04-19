@@ -142,7 +142,10 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
         // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
         controller={{
-          scrollZoom: false
+          // Removed this to make desktop map zoomable
+          // Wonder why it was set to false in first place tho
+          // could be that it has to be reversed
+          // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
           html: `<p>${(object as unknown as Emissions)?.name}</p>`,
