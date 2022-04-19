@@ -7,10 +7,28 @@ import Layout from '../components/Layout'
 import { Provider } from 'jotai'
 import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
+import ReactGA from 'react-ga4'
+import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
-
+  const gaId = process.env.NEXT_PUBLIC_GA_ID
+  if (gaId) {
+    ReactGA.initialize(gaId)
+    const reportPageView = () => {
+      ReactGA.send({
+        hitType: 'pageview',
+        page: window.location.pathname
+      })
+    }
+    useEffect(() => {
+      reportPageView()
+      router.events.on('routeChangeComplete', reportPageView)
+      return () => {
+        router.events.off('routeChangeComplete', reportPageView)
+      }
+    }, [router.events, reportPageView])
+  }
   return (
     <Provider>
       <Head>
