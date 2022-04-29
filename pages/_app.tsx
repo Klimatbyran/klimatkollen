@@ -7,7 +7,6 @@ import Layout from '../components/Layout'
 import { Provider } from 'jotai'
 import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
-import ReactGA from 'react-ga4'
 import Script from 'next/script'
 
 function MyApp({ Component, pageProps }: AppProps) {
