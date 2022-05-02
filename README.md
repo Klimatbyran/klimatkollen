@@ -10,8 +10,8 @@ A general perception is that Sweden is far ahead in climate change adaptation. W
 
 We use next.js and Typescript and it's pretty straight forward to get started. Just clone the repo and run:
 
-    yarn
-    yarn dev
+    npm ci
+    npm run dev
 
 This opens up a webserver on http://localhost:3000. Just edit the code and see the live refresh.
 
