@@ -75,8 +75,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             backgroundColor: '#91DFC8',
             fontSize: '13px',
           }}
-          expires={150}
-        >
+          expires={150}>
           Denna site använder cookies för att förbättra användarupplevelsen.
         </CookieConsent>
         <Ellipse />
