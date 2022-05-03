@@ -8,6 +8,7 @@ import { Provider } from 'jotai'
 import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
+import CookieConsent from 'react-cookie-consent'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -64,6 +65,19 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Theme>
+        <CookieConsent
+          location="bottom"
+          buttonText="Ok"
+          style={{ background: '#6C6C6C' }}
+          flipButtons
+          debug={true}
+          buttonStyle={{
+            backgroundColor: '#91DFC8',
+            fontSize: '13px',
+          }}
+          expires={150}>
+          Denna site använder cookies för att förbättra användarupplevelsen.
+        </CookieConsent>
         <Ellipse />
         <Layout>
           <Component {...pageProps} />
