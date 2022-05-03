@@ -7,31 +7,28 @@ import Layout from '../components/Layout'
 import { Provider } from 'jotai'
 import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
-import ReactGA from 'react-ga4'
-import { useEffect } from 'react'
+import Script from 'next/script'
 import CookieConsent from 'react-cookie-consent'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
-  const gaId = process.env.NEXT_PUBLIC_GA_ID
-  if (gaId) {
-    ReactGA.initialize(gaId)
-    const reportPageView = () => {
-      ReactGA.send({
-        hitType: 'pageview',
-        page: window.location.pathname,
-      })
-    }
-    useEffect(() => {
-      reportPageView()
-      router.events.on('routeChangeComplete', reportPageView)
-      return () => {
-        router.events.off('routeChangeComplete', reportPageView)
-      }
-    }, [router.events, reportPageView])
-  }
   return (
     <Provider>
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+
+      <Script strategy="lazyOnload">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+        page_path: window.location.pathname,
+        });
+    `}
+      </Script>
       <Head>
         <title>Klimatkollen</title>
         {/* https://favicon.io/favicon-converter/ */}
@@ -78,7 +75,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             backgroundColor: '#91DFC8',
             fontSize: '13px',
           }}
-          expires={150}>
+          expires={150}
+        >
           Denna site använder cookies för att förbättra användarupplevelsen.
         </CookieConsent>
         <Ellipse />
