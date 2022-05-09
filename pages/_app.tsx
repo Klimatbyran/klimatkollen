@@ -69,8 +69,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           location="bottom"
           buttonText="Ok"
           style={{ background: '#6C6C6C' }}
-          flipButtons
-          debug={true}
           buttonStyle={{
             backgroundColor: '#91DFC8',
             fontSize: '13px',
