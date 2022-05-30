@@ -195,9 +195,12 @@ const EndYear = styled.div`
 `
 
 const TotalCo2 = styled.div`
-  font-size: 1.6rem;
   font-weight: 500;
-  margin: 1rem 0;
+  margin: 1rem 0 0 -5px;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  background-color: ${(props) => props.color};
+  color: #2d2d2d;
 `
 
 const Help = styled.p`
@@ -263,7 +266,7 @@ const BottomShare = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin-top: 2rem;
+  margin-top: 3.5rem;
 
   @media only screen and (${devices.tablet}) {
     align-items: center;
@@ -659,17 +662,19 @@ const Municipality = (props: Props) => {
               )}
               <TotalsContainer>
                 <H3>Framtida utsläpp</H3>
-                <TotalCo2 style={{ color: '#EF3054' }}>
+                <TotalCo2 color="#EF3054">
                   Trend: {Math.round(totalTrend / 1000)} kt CO₂
                 </TotalCo2>
-                <TotalCo2 style={{ color: '#6BA292' }}>
+                <TotalCo2 color="#6BA292">
                   Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} kt
                   CO₂
                 </TotalCo2>
-                <TotalCo2 style={{ color: 'rgb(239, 191, 23)' }}>
-                  Din plan: {Math.round(userTotal / 1000)} kt CO₂
-                  {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
-                </TotalCo2>
+                {step > 2 && (
+                  <TotalCo2 color="rgb(239, 191, 23)">
+                    Din plan: {Math.round(userTotal / 1000)} kt CO₂
+                    {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
+                  </TotalCo2>
+                )}
               </TotalsContainer>
             </BottomContainer>
           )}
