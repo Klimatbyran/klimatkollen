@@ -87,15 +87,26 @@ const HeaderSection = styled.div`
   margin-top: 20px;
 `
 
-const Adjustments = styled.div`
-  display: flex;
+const BottomContainer = styled.div`
+  display: grid;
   gap: 1rem;
   margin-top: 0.5rem;
-  justify-content: space-between;
-  flex-direction: column;
 
   @media only screen and (${devices.tablet}) {
-    flex-direction: row;
+    gap: 0;
+    grid-template-columns: 45% auto 40%;
+  }
+`
+
+const AdjustmentsContainer = styled.div`
+  grid-column: 1 / 2;
+`
+
+const TotalsContainer = styled.div`
+  grid-column: 1 / 2;
+
+  @media all and (${devices.tablet}) {
+    grid-column: 3 / 4;
   }
 `
 
@@ -609,42 +620,44 @@ const Municipality = (props: Props) => {
               </Btn>
             )}
           </Flex>
-          {step > 2 && (
-            <Adjustments>
-              <div>
-                <Help>
-                  Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
-                  utsläppsminskning man behöver genomföra i {municipality.Name}:
-                </Help>
-                <RangeContainer>
-                  {mandateChanges
-                    .filter((c) => c.start >= 2022 && c.end <= 2030)
-                    .map((value, i) => (
-                      <Range key={i}>
-                        <Percentage
-                        // style={{
-                        //   color: value.change > 1 ? 'pink' : 'lightgreen',
-                        // }}
-                        >
-                          {value.change > 1 ? '+' : ''}{' '}
-                          {Math.round(100 * value.change) - 100}%
-                        </Percentage>
-                        <Slider
-                          min={0.5}
-                          max={1.5}
-                          step={0.01}
-                          value={value.change}
-                          type="range"
-                          onChange={(e) =>
-                            handleYearChange(value.start, parseFloat(e.target.value))
-                          }
-                        />
-                        <StartYear>{value.start}</StartYear>
-                      </Range>
-                    ))}
-                </RangeContainer>
-              </div>
-              <div>
+          {step > 1 && (
+            <BottomContainer>
+              {step > 2 && (
+                <AdjustmentsContainer>
+                  <Help>
+                    Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
+                    utsläppsminskning man behöver genomföra i {municipality.Name}:
+                  </Help>
+                  <RangeContainer>
+                    {mandateChanges
+                      .filter((c) => c.start >= 2022 && c.end <= 2030)
+                      .map((value, i) => (
+                        <Range key={i}>
+                          <Percentage
+                          // style={{
+                          //   color: value.change > 1 ? 'pink' : 'lightgreen',
+                          // }}
+                          >
+                            {value.change > 1 ? '+' : ''}{' '}
+                            {Math.round(100 * value.change) - 100}%
+                          </Percentage>
+                          <Slider
+                            min={0.5}
+                            max={1.5}
+                            step={0.01}
+                            value={value.change}
+                            type="range"
+                            onChange={(e) =>
+                              handleYearChange(value.start, parseFloat(e.target.value))
+                            }
+                          />
+                          <StartYear>{value.start}</StartYear>
+                        </Range>
+                      ))}
+                  </RangeContainer>
+                </AdjustmentsContainer>
+              )}
+              <TotalsContainer>
                 <H3>Framtida utsläpp</H3>
                 <TotalCo2 style={{ color: '#EF3054' }}>
                   Trend: {Math.round(totalTrend / 1000)} kt CO₂
@@ -657,8 +670,8 @@ const Municipality = (props: Props) => {
                   Din plan: {Math.round(userTotal / 1000)} kt CO₂
                   {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
                 </TotalCo2>
-              </div>
-            </Adjustments>
+              </TotalsContainer>
+            </BottomContainer>
           )}
         </Top>
         <BottomShare>
