@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import Graph from './Graph'
-import { H1, H3, ParagraphBold } from './Typography'
+import { H1, H2, H3, ParagraphBold } from './Typography'
 import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 import Button from './Button'
@@ -545,7 +545,7 @@ const Municipality = (props: Props) => {
             {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt={`Kommunvapen för ${municipality.Name}`} />}
           </HeaderSection>
           <GraphWrapper>
-            <h3>{text}</h3>
+            <H2>{text}</H2>
             <p>{body}</p>
             <Legends>
               {step < 3 && (
@@ -629,6 +629,7 @@ const Municipality = (props: Props) => {
                   </Range>
                 ))}
               </RangeContainer>
+              <H3>Framtida utsläpp</H3>
               <Help>
                 Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
                 utsläppsminskning man behöver genomföra i {municipality.Name}:
@@ -658,7 +659,7 @@ const Municipality = (props: Props) => {
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
         <BottomHeader>
-          <FactH2>Fakta om {municipality.Name}</FactH2>
+          <H2>Fakta om {municipality.Name}</H2>
         </BottomHeader>
         <Bottom>
           {/* <BottomRight>
