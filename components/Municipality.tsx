@@ -604,35 +604,37 @@ const Municipality = (props: Props) => {
           </Flex>
           {step > 2 && (
             <Adjustments>
-              <RangeContainer>
-                {mandateChanges.filter(c => c.start >= 2022 && c.end <= 2030).map((value, i) => (
-                  <Range key={i}>
-                    <Percentage
-                    // style={{
-                    //   color: value.change > 1 ? 'pink' : 'lightgreen',
-                    // }}
-                    >
-                      {value.change > 1 ? '+' : ''} {Math.round(100 * value.change) - 100}
-                      %
-                    </Percentage>
-                    <Slider
-                      min={0.5}
-                      max={1.5}
-                      step={0.01}
-                      value={value.change}
-                      type="range"
-                      onChange={(e) =>
-                        handleYearChange(value.start, parseFloat(e.target.value))
-                      }
-                    />
-                    <StartYear>{value.start}</StartYear>
-                  </Range>
-                ))}
-              </RangeContainer>
-              <H3>Framtida utsläpp</H3>
               <Help>
                 Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
                 utsläppsminskning man behöver genomföra i {municipality.Name}:
+                <RangeContainer>
+                  {mandateChanges.filter(c => c.start >= 2022 && c.end <= 2030).map((value, i) => (
+                    <Range key={i}>
+                      <Percentage
+                      // style={{
+                      //   color: value.change > 1 ? 'pink' : 'lightgreen',
+                      // }}
+                      >
+                        {value.change > 1 ? '+' : ''} {Math.round(100 * value.change) - 100}
+                        %
+                      </Percentage>
+                      <Slider
+                        min={0.5}
+                        max={1.5}
+                        step={0.01}
+                        value={value.change}
+                        type="range"
+                        onChange={(e) =>
+                          handleYearChange(value.start, parseFloat(e.target.value))
+                        }
+                      />
+                      <StartYear>{value.start}</StartYear>
+                    </Range>
+                  ))}
+                </RangeContainer>
+              </Help>
+              <div>
+                <H3>Framtida utsläpp</H3>
                 <TotalCo2 style={{ color: '#EF3054', marginTop: 15 }}>
                   Trend: {Math.round(totalTrend / 1000)} kt CO₂
                 </TotalCo2>
@@ -643,7 +645,7 @@ const Municipality = (props: Props) => {
                   Din plan: {Math.round(userTotal / 1000)} kt CO₂
                   {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
                 </TotalCo2>
-              </Help>
+              </div>
             </Adjustments>
           )}
         </Top>
