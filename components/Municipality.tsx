@@ -90,6 +90,7 @@ const HeaderSection = styled.div`
 const Adjustments = styled.div`
   display: flex;
   gap: 1rem;
+  margin-top: 0.5rem;
   justify-content: space-between;
   flex-direction: column;
 
@@ -101,7 +102,7 @@ const Adjustments = styled.div`
 const RangeContainer = styled.div`
   display: flex;
   overflow-x: auto;
-  padding-bottom: 1rem;
+  padding: 1rem 0;
   flex-shrink: 0;
   flex-grow: 1;
   justify-content: space-between;
@@ -185,6 +186,7 @@ const EndYear = styled.div`
 const TotalCo2 = styled.div`
   font-size: 1.6rem;
   font-weight: 500;
+  margin: 1rem 0;
 `
 
 const Help = styled.p`
@@ -609,9 +611,11 @@ const Municipality = (props: Props) => {
           </Flex>
           {step > 2 && (
             <Adjustments>
-              <Help>
-                Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
-                utsläppsminskning man behöver genomföra i {municipality.Name}:
+              <div>
+                <Help>
+                  Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
+                  utsläppsminskning man behöver genomföra i {municipality.Name}:
+                </Help>
                 <RangeContainer>
                   {mandateChanges
                     .filter((c) => c.start >= 2022 && c.end <= 2030)
@@ -639,17 +643,17 @@ const Municipality = (props: Props) => {
                       </Range>
                     ))}
                 </RangeContainer>
-              </Help>
+              </div>
               <div>
                 <H3>Framtida utsläpp</H3>
-                <TotalCo2 style={{ color: '#EF3054', marginTop: 15 }}>
+                <TotalCo2 style={{ color: '#EF3054' }}>
                   Trend: {Math.round(totalTrend / 1000)} kt CO₂
                 </TotalCo2>
-                <TotalCo2 style={{ color: '#6BA292', marginTop: 5 }}>
+                <TotalCo2 style={{ color: '#6BA292' }}>
                   Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} kt
                   CO₂
                 </TotalCo2>
-                <TotalCo2 style={{ color: 'rgb(239, 191, 23)', marginTop: 5 }}>
+                <TotalCo2 style={{ color: 'rgb(239, 191, 23)' }}>
                   Din plan: {Math.round(userTotal / 1000)} kt CO₂
                   {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
                 </TotalCo2>
