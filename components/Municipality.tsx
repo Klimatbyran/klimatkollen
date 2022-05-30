@@ -100,6 +100,11 @@ const BottomContainer = styled.div`
 
 const AdjustmentsContainer = styled.div`
   grid-column: 1 / 2;
+  margin-bottom: 1rem;
+
+  @media only screen and (${devices.tablet}) {
+    margin-bottom: 0;
+  }
 `
 
 const TotalsContainer = styled.div`
@@ -627,10 +632,7 @@ const Municipality = (props: Props) => {
             <BottomContainer>
               {step > 2 && (
                 <AdjustmentsContainer>
-                  <Help>
-                    Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
-                    utsläppsminskning man behöver genomföra i {municipality.Name}:
-                  </Help>
+                  <H3>Din plan</H3>
                   <RangeContainer>
                     {mandateChanges
                       .filter((c) => c.start >= 2022 && c.end <= 2030)
@@ -658,6 +660,10 @@ const Municipality = (props: Props) => {
                         </Range>
                       ))}
                   </RangeContainer>
+                  <Help>
+                    Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
+                    utsläppsminskning man behöver genomföra i {municipality.Name}:
+                  </Help>
                 </AdjustmentsContainer>
               )}
               <TotalsContainer>
