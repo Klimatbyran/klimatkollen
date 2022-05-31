@@ -5,7 +5,7 @@ import Graph from './Graph'
 import { H1, H2, H3, ParagraphBold } from './Typography'
 import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
-import Button from './Button'
+import ShareButton from './Button'
 import ScoreCard from './ScoreCard'
 import Back from './Back'
 import { hasShareAPI } from '../utils/navigator'
@@ -24,7 +24,7 @@ const GraphWrapper = styled.div`
   flex-direction: column;
 `
 
-const Btn = styled.button`
+const Button = styled.button`
   border: none;
   background-color: none;
   cursor: pointer;
@@ -49,7 +49,7 @@ const Flex = styled.div`
 `
 
 const Center = styled.div`
-  width: 100%
+  width: 100%;
   background-color: coral;
   display: flex;
   align-items: center;
@@ -611,10 +611,10 @@ const Municipality = (props: Props) => {
           </GraphWrapper>
           <Flex>
             {onPreviousStep ? (
-              <Btn onClick={onPreviousStep}>
+              <Button onClick={onPreviousStep}>
                 <ArrowLeft />
                 {STEPS[step - 1].buttonText}
-              </Btn>
+              </Button>
             ) : (
               <div></div>
             )}
@@ -622,10 +622,10 @@ const Municipality = (props: Props) => {
               {step + 1} / {Object.keys(STEPS).length}
             </span>
             {onNextStep && (
-              <Btn onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
+              <Button onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
                 {STEPS[step + 1]?.buttonText || 'Nästa'}
                 <ArrowRight />
-              </Btn>
+              </Button>
             )}
           </Flex>
           {step > 1 && (
@@ -687,7 +687,7 @@ const Municipality = (props: Props) => {
         </Top>
         <BottomShare>
           {hasShareAPI() && (
-            <Button
+            <ShareButton
               handleClick={handleClick}
               text="Dela i dina sociala medier"
               shareIcon
