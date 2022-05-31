@@ -7,6 +7,7 @@ import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 import ShareButton from './Button'
 import ScoreCard from './ScoreCard'
+import Icon from '../public/icons/info.svg'
 import Back from './Back'
 import { hasShareAPI } from '../utils/navigator'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
@@ -36,6 +37,21 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 1rem;
+`
+
+const InfoButton = styled(Button)`
+  height: 21px;
+`
+
+const InfoButtonWrapper = styled.div`
+  @media only screen and (${devices.tablet}) {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    margin-top: -50px;
+    margin-right: 1rem;
+    justify-content: end;
+  }
 `
 
 const Flex = styled.div`
@@ -598,6 +614,11 @@ const Municipality = (props: Props) => {
                   Din plan
                 </Legend>
               )}
+              <InfoButtonWrapper>
+                <InfoButton type="button" aria-label="Om grafen">
+                  <Icon />
+                </InfoButton>
+              </InfoButtonWrapper>
             </Legends>
             <Graph
               step={step}
