@@ -541,6 +541,8 @@ const Municipality = (props: Props) => {
     shareUrl = `${shareUrl}?${qry}`
   }
 
+  const [isOpen, setIsOpen] = useState(false)
+
   const handleClick = async () => {
     async function share(name: string) {
       if (navigator.share) {
@@ -653,7 +655,10 @@ const Municipality = (props: Props) => {
                 </Legend>
               )}
               <InfoButtonWrapper>
-                <InfoButton type="button" aria-label="Om grafen">
+                <InfoButton
+                  type="button"
+                  aria-label="Om grafen"
+                  onClick={() => setIsOpen(true)}>
                   <Info />
                 </InfoButton>
               </InfoButtonWrapper>
@@ -785,19 +790,24 @@ const Municipality = (props: Props) => {
             placeholder="Välj kommun"
           />
         </DropDownSection>
-        <Modal>
-          <div>
+        {isOpen && (
+          <Modal>
             <div>
-              <Button type="button" aria-label="Stäng information">
-                <Close />
-              </Button>
-              <Paragraph>
-                Den linjära trenden baseras på den utsläppningsminskning som skett i
-                kommuninen under perioden 20xx – 20xx.
-              </Paragraph>
+              <div>
+                <Button
+                  type="button"
+                  aria-label="Stäng information"
+                  onClick={() => setIsOpen(false)}>
+                  <Close />
+                </Button>
+                <Paragraph>
+                  Den linjära trenden baseras på den utsläppningsminskning som skett i
+                  kommuninen under perioden 20xx – 20xx.
+                </Paragraph>
+              </div>
             </div>
-          </div>
-        </Modal>
+          </Modal>
+        )}
       </PageWrapper>
     </>
   )
