@@ -2,17 +2,18 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 import Graph from './Graph'
-import { H1, H2, H3, Paragraph, ParagraphBold } from './Typography'
+import { H1, H2, H3, ParagraphBold } from './Typography'
 import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
 import ShareButton from './Button'
 import ScoreCard from './ScoreCard'
 import Info from '../public/icons/info.svg'
-import Close from '../public/icons/close.svg'
 import Back from './Back'
 import { hasShareAPI } from '../utils/navigator'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
+import InfoModal from './InfoModal'
+import { Button } from './shared'
 
 import { useMemo, useState } from 'react'
 import PageWrapper from './PageWrapper'
@@ -24,20 +25,6 @@ const GraphWrapper = styled.div`
   display: flex;
   gap: 1rem;
   flex-direction: column;
-`
-
-const Button = styled.button`
-  border: none;
-  background-color: none;
-  cursor: pointer;
-  background-color: inherit;
-  color: #fff;
-  font-family: 'Roboto';
-  font-weight: 300;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
 `
 
 const InfoButton = styled(Button)`
@@ -52,43 +39,6 @@ const InfoButtonWrapper = styled.div`
     margin-top: -50px;
     margin-right: 1rem;
     justify-content: end;
-  }
-`
-
-const Modal = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-
-  & div:nth-of-type(1) {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    & div {
-      width: 350px;
-      height: auto;
-      padding: 3rem 2rem 2rem 2rem;
-      display: flex;
-      flex-direction: column;
-      background: ${({ theme }) => theme.black};
-      color: ${({ theme }) => theme.white};
-      z-index: 10;
-      border-radius: 16px;
-      box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-
-      & button {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-      }
-    }
   }
 `
 
@@ -463,6 +413,8 @@ const Municipality = (props: Props) => {
   const router = useRouter()
   const q = router.query['g[]']
 
+  const [isOpen, setIsOpen] = useState(false)
+
   const range = (start: number, end: number) =>
     Array.from({ length: end - start }, (_, i) => i + start)
 
@@ -540,8 +492,6 @@ const Municipality = (props: Props) => {
     const qry = mandateChanges.map((c) => `g[]=${c.change}`).join('&')
     shareUrl = `${shareUrl}?${qry}`
   }
-
-  const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = async () => {
     async function share(name: string) {
@@ -790,23 +740,33 @@ const Municipality = (props: Props) => {
             placeholder="Välj kommun"
           />
         </DropDownSection>
-        {isOpen && (
-          <Modal>
-            <div>
-              <div>
-                <Button
-                  type="button"
-                  aria-label="Stäng information"
-                  onClick={() => setIsOpen(false)}>
-                  <Close />
-                </Button>
-                <Paragraph>
-                  Den linjära trenden baseras på den utsläppningsminskning som skett i
-                  kommuninen under perioden 20xx – 20xx.
-                </Paragraph>
-              </div>
-            </div>
-          </Modal>
+        {step < 3 && isOpen && (
+          <InfoModal
+            onClick={() => setIsOpen(false)}
+            text={`Utsläpp som skett i kommunen under perioden ${
+              historicalEmissions[0].Year
+            }–${historicalEmissions[historicalEmissions.length - 1].Year}.`}
+          />
+        )}
+        {step > 0 && isOpen && (
+          <InfoModal
+            onClick={() => setIsOpen(false)}
+            text={`Den budgeterade utsläppningsgraden i kommunen under perioden ${budgetedEmissions[0].Year}–${END_YEAR}.`}
+          />
+        )}
+        {step > 1 && isOpen && (
+          <InfoModal
+            onClick={() => setIsOpen(false)}
+            text={`Den linjära trenden baseras på den utsläppningsminskning som skett i kommunen under perioden ${trendingEmissions[0].Year}–${END_YEAR}.`}
+          />
+        )}
+        {step > 2 && isOpen && (
+          <InfoModal
+            onClick={() => setIsOpen(false)}
+            text={`Din plan för utsläppningsminskning i kommunen under perioden ${
+              userEmissions[0].Year
+            }–${userEmissions[userEmissions.length - 1].Year}.`}
+          />
         )}
       </PageWrapper>
     </>
