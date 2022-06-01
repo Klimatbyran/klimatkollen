@@ -1,25 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
-import Graph from './Graph'
-import { H1, H2, H3, ParagraphBold } from './Typography'
+import { useMemo, useState } from 'react'
+import { useRouter } from 'next/router'
+
 import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
-import ShareButton from './Button'
-import ScoreCard from './ScoreCard'
 import Info from '../public/icons/info.svg'
+import { H1, H2, H3, ParagraphBold } from './Typography'
 import Back from './Back'
-import { hasShareAPI } from '../utils/navigator'
-import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
 import InfoModal from './InfoModal'
-import { Button } from './shared'
-
-import { useMemo, useState } from 'react'
 import PageWrapper from './PageWrapper'
-import { useRouter } from 'next/router'
 import DropDown from './DropDown'
+import Graph from './Graph'
+import ShareButton from './Button'
+import ScoreCard from './ScoreCard'
+import { Button } from './shared'
+import { hasShareAPI } from '../utils/navigator'
 import { devices } from '../utils/devices'
+import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 
 const GraphWrapper = styled.div`
   display: flex;
