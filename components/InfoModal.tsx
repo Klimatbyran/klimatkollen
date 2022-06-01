@@ -4,13 +4,14 @@ import styled from 'styled-components'
 import Close from '../public/icons/close.svg'
 import { Paragraph } from './Typography'
 import { Button } from './shared'
+import { devices } from '../utils/devices'
 
-const Modal = styled.div`
+const Modal = styled.div<{ scrollY: number }>`
   background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  top: 50%;
+  top: ${({ scrollY }) => `calc(50% + ${scrollY}px)`};
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
@@ -42,9 +43,9 @@ const Modal = styled.div`
   }
 `
 
-type Props = { text: string; close: () => void }
+type Props = { text: string; close: () => void; scrollY: number }
 
-const InfoModal = ({ text, close }: Props) => {
+const InfoModal = ({ text, close, scrollY }: Props) => {
   const ref = useRef<HTMLDivElement>(null)
   const activeElement = document.activeElement as HTMLElement
 
@@ -99,7 +100,7 @@ const InfoModal = ({ text, close }: Props) => {
   }, [])
 
   return (
-    <Modal ref={ref}>
+    <Modal ref={ref} scrollY={scrollY}>
       <div>
         <div>
           <Button type="button" aria-label="Stäng information" onClick={close}>

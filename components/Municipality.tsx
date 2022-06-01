@@ -415,6 +415,23 @@ const Municipality = (props: Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
+  let scrollY = 0
+  if (typeof window !== 'undefined') {
+    scrollY = window && window.scrollY
+    console.log(scrollY)
+  }
+
+  const toggleModal = () => {
+    const body = document.body
+    if (!isOpen) {
+      body.style.overflow = 'hidden'
+      setIsOpen(true)
+    } else {
+      body.style.overflow = ''
+      setIsOpen(false)
+    }
+  }
+
   const range = (start: number, end: number) =>
     Array.from({ length: end - start }, (_, i) => i + start)
 
@@ -605,10 +622,7 @@ const Municipality = (props: Props) => {
                 </Legend>
               )}
               <InfoButtonWrapper>
-                <InfoButton
-                  type="button"
-                  aria-label="Om grafen"
-                  onClick={() => setIsOpen(true)}>
+                <InfoButton type="button" aria-label="Om grafen" onClick={toggleModal}>
                   <Info />
                 </InfoButton>
               </InfoButtonWrapper>
@@ -742,30 +756,34 @@ const Municipality = (props: Props) => {
         </DropDownSection>
         {step === 0 && isOpen && (
           <InfoModal
-            close={() => setIsOpen(false)}
+            close={toggleModal}
             text={`Utsläpp som skett i kommunen under perioden ${
               historicalEmissions[0].Year
             }–${historicalEmissions[historicalEmissions.length - 1].Year}.`}
+            scrollY={scrollY}
           />
         )}
         {step === 1 && isOpen && (
           <InfoModal
-            close={() => setIsOpen(false)}
+            close={toggleModal}
             text={`Den budgeterade utsläppningsgraden i kommunen under perioden ${budgetedEmissions[0].Year}–${END_YEAR}.`}
+            scrollY={scrollY}
           />
         )}
         {step === 2 && isOpen && (
           <InfoModal
-            close={() => setIsOpen(false)}
+            close={toggleModal}
             text={`Den linjära trenden baseras på den utsläppningsminskning som skett i kommunen under perioden ${trendingEmissions[0].Year}–${END_YEAR}.`}
+            scrollY={scrollY}
           />
         )}
         {step === 3 && isOpen && (
           <InfoModal
-            close={() => setIsOpen(false)}
+            close={toggleModal}
             text={`Din plan för utsläppningsminskning i kommunen under perioden ${
               userEmissions[0].Year
             }–${userEmissions[userEmissions.length - 1].Year}.`}
+            scrollY={scrollY}
           />
         )}
       </PageWrapper>
