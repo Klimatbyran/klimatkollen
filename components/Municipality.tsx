@@ -740,29 +740,29 @@ const Municipality = (props: Props) => {
             placeholder="Välj kommun"
           />
         </DropDownSection>
-        {step < 3 && isOpen && (
+        {step === 0 && isOpen && (
           <InfoModal
-            onClick={() => setIsOpen(false)}
+            close={() => setIsOpen(false)}
             text={`Utsläpp som skett i kommunen under perioden ${
               historicalEmissions[0].Year
             }–${historicalEmissions[historicalEmissions.length - 1].Year}.`}
           />
         )}
-        {step > 0 && isOpen && (
+        {step === 1 && isOpen && (
           <InfoModal
-            onClick={() => setIsOpen(false)}
+            close={() => setIsOpen(false)}
             text={`Den budgeterade utsläppningsgraden i kommunen under perioden ${budgetedEmissions[0].Year}–${END_YEAR}.`}
           />
         )}
-        {step > 1 && isOpen && (
+        {step === 2 && isOpen && (
           <InfoModal
-            onClick={() => setIsOpen(false)}
+            close={() => setIsOpen(false)}
             text={`Den linjära trenden baseras på den utsläppningsminskning som skett i kommunen under perioden ${trendingEmissions[0].Year}–${END_YEAR}.`}
           />
         )}
-        {step > 2 && isOpen && (
+        {step === 3 && isOpen && (
           <InfoModal
-            onClick={() => setIsOpen(false)}
+            close={() => setIsOpen(false)}
             text={`Din plan för utsläppningsminskning i kommunen under perioden ${
               userEmissions[0].Year
             }–${userEmissions[userEmissions.length - 1].Year}.`}

@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
 import Close from '../public/icons/close.svg'
@@ -41,14 +42,67 @@ const Modal = styled.div`
   }
 `
 
-type Props = { text: string; onClick: () => void }
+type Props = { text: string; close: () => void }
 
-const InfoModal = ({ text, onClick }: Props) => {
+const InfoModal = ({ text, close }: Props) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const activeElement = document.activeElement as HTMLElement
+
+  let focusableElements: HTMLElement[] | undefined
+  let activeIndex = -1
+
+  const handleKeydown = (evt: KeyboardEvent) => {
+    const listener = keyListenersMap.get(evt.keyCode)
+    return listener && listener(evt)
+  }
+
+  const handleTab = (evt: KeyboardEvent) => {
+    let total = focusableElements?.length
+    if (!evt.shiftKey) {
+      activeIndex + 1 === total ? (activeIndex = 0) : (activeIndex += 1)
+      if (focusableElements) focusableElements[activeIndex].focus()
+      return evt.preventDefault()
+    }
+    if (evt.shiftKey) {
+      total && activeIndex - 1 < 0 ? (activeIndex = total - 1) : (activeIndex -= 1)
+      if (focusableElements) {
+        const typecastElement = focusableElements[activeIndex] as HTMLElement
+        typecastElement.focus()
+      }
+      return evt.preventDefault()
+    }
+  }
+
+  const handleEscape = (evt: KeyboardEvent) => {
+    if (evt.key === 'Escape') close()
+  }
+
+  const keyListenersMap = new Map([
+    [9, handleTab],
+    [27, handleEscape],
+  ])
+
+  useEffect(() => {
+    if (ref.current) {
+      focusableElements = Array.from(
+        ref.current.querySelectorAll('a, button, textarea') as NodeListOf<HTMLElement>,
+      )
+    }
+  }, [ref])
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeydown)
+    return () => {
+      document.removeEventListener('keydown', handleKeydown)
+      activeElement.focus()
+    }
+  }, [])
+
   return (
-    <Modal>
+    <Modal ref={ref}>
       <div>
         <div>
-          <Button type="button" aria-label="Stäng information" onClick={onClick}>
+          <Button type="button" aria-label="Stäng information" onClick={close}>
             <Close />
           </Button>
           <Paragraph>{text}</Paragraph>
