@@ -63,7 +63,7 @@ const Center = styled.div`
 const Box = styled.div`
   width: 195px;
   height: 34px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.white};
   border-radius: 32px;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@ const Box = styled.div`
 `
 
 const InfoText = styled.p`
-  color: black;
+  color: ${({ theme }) => theme.black};
 `
 
 const Top = styled.div`

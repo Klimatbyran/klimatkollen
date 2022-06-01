@@ -23,9 +23,9 @@ const Modal = styled.div<{ scrollY: number }>`
     transform: translate(-50%, -50%);
 
     & div {
-      width: 350px;
+      width: 70vw;
       height: auto;
-      padding: 3rem 2rem 2rem 2rem;
+      padding: 3rem 2rem 2.5rem 2rem;
       display: flex;
       flex-direction: column;
       background: ${({ theme }) => theme.black};
@@ -33,6 +33,10 @@ const Modal = styled.div<{ scrollY: number }>`
       z-index: 10;
       border-radius: 16px;
       box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+
+      @media only screen and (${devices.tablet}) {
+        width: 350px;
+      }
 
       & button {
         position: absolute;
@@ -53,6 +57,7 @@ const InfoModal = ({ text, close, scrollY }: Props) => {
   let activeIndex = -1
 
   const handleKeydown = (evt: KeyboardEvent) => {
+    // todo: replace keyCode with KeyboardEvent.code
     const listener = keyListenersMap.get(evt.keyCode)
     return listener && listener(evt)
   }
