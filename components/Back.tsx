@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Icon from '../public/icons/arrow-left.svg'
 import Link from 'next/link'
 
-const Button = styled.button`
+const A = styled.a`
   border: 0;
   cursor: pointer;
   fill: #fff;
@@ -10,14 +10,12 @@ const Button = styled.button`
   align-self: flex-start;
 `
 
-const BackArrow = () => {
+const BackArrow = ({ route }: { route: string }) => {
   return (
-    <Link href="/">
-      <Button type="button">
-        <a href="/">
-          <Icon />
-        </a>
-      </Button>
+    <Link href={route}>
+      <A aria-label="Gå tillbaka">
+        <Icon aria-hidden="true" />
+      </A>
     </Link>
   )
 }

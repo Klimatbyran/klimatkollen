@@ -80,7 +80,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Layout>
           <Component {...pageProps} />
         </Layout>
-        {router.pathname.indexOf('/kommun') ? <Footer /> : null}
+        {router.pathname === '/partier' ? <Footer /> : null}
       </Theme>
     </Provider>
   )
