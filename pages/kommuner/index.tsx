@@ -10,7 +10,6 @@ import { Municipality } from '../../utils/types'
 import PageWrapper from '../../components/PageWrapper'
 import Icon from '../../public/icons/arrow.svg'
 import { devices } from '../../utils/devices'
-import Image from 'next/image'
 import Back from '../../components/Back'
 
 type PropsType = {
@@ -20,7 +19,7 @@ type PropsType = {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap 3rem;
+  gap: 3rem;
 `
 
 const Square = styled.div<{ color: string }>`

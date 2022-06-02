@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Provider } from 'jotai'
-import { useRouter } from 'next/router'
 import Script from 'next/script'
 import CookieConsent from 'react-cookie-consent'
 import { NextPage } from 'next'
@@ -9,7 +8,6 @@ import { ReactElement, ReactNode } from 'react'
 
 import '../styles/globals.css'
 import Theme from '../Theme'
-import Ellipse from '../components/Ellipse'
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
