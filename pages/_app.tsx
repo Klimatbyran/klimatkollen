@@ -1,17 +1,26 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Theme from '../Theme'
-import Ellipse from '../components/Ellipse'
-import Layout from '../components/Layout'
 import { Provider } from 'jotai'
-import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
 import CookieConsent from 'react-cookie-consent'
+import { NextPage } from 'next'
+import { ReactElement, ReactNode } from 'react'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter()
+import '../styles/globals.css'
+import Theme from '../Theme'
+import Ellipse from '../components/Ellipse'
+
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page)
   return (
     <Provider>
       <Script
@@ -76,11 +85,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           expires={150}>
           Denna site använder cookies för att förbättra användarupplevelsen.
         </CookieConsent>
-        <Ellipse />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-        {router.pathname === '/partier' ? <Footer /> : null}
+        {getLayout(<Component {...pageProps} />)}
       </Theme>
     </Provider>
   )

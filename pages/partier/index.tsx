@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next'
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 import styled from 'styled-components'
 import DropDown from '../../components/DropDown'
 import Map from '../../components/Map'
@@ -13,6 +13,8 @@ import { devices } from '../../utils/devices'
 import Image from 'next/image'
 import Back from '../../components/Back'
 import Link from 'next/link'
+import Layout from '../../components/Layout'
+import Footer from '../../components/Footer'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -100,7 +102,7 @@ const StyledParagraph = styled(Paragraph)`
   }
 `
 
-const Kommuner = ({ municipalities }: PropsType) => {
+const Partier = ({ municipalities }: PropsType) => {
   const [, setSelected] = useState('Utforska kartan')
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
@@ -112,15 +114,12 @@ const Kommuner = ({ municipalities }: PropsType) => {
     <>
       <MetaTags
         title="Klimatkollen — Få koll på Sveriges klimatomställning"
-        description="Hur går det med utsläppsminskningarna i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
+        description=""
       />
       <PageWrapper backgroundColor="black">
         <Container>
           <div>
-            <Image src="/logo_beta.svg" width="485" height="86" alt="Klimatkollen" />
-            <Paragraph>
-              DUMMYTEXT Få koll på riksdagspartiernas partipolitik DUMMYTEXT
-            </Paragraph>
+            <Paragraph>Här kommer grafer för partierna finnas.</Paragraph>
           </div>
           <div>
             <Link href="/kommuner">
@@ -147,4 +146,13 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   }
 }
 
-export default Kommuner
+export default Partier
+
+Partier.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <Layout>{page}</Layout>
+      <Footer />
+    </>
+  )
+}
