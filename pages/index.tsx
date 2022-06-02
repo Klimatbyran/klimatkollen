@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
-import { H1, ParagraphBold, Paragraph } from '../components/Typography'
+import { ParagraphBold, Paragraph } from '../components/Typography'
 import { EmissionService } from '../utils/emissionService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -29,7 +29,7 @@ const Square = styled.div<{ color: string }>`
   position: relative;
 `
 
-const ArrowIcon = styled(Icon)<{ rotateUp?: boolean }>`
+const ArrowIcon = styled(Icon) <{ rotateUp?: boolean }>`
   position: absolute;
   z-index: 1;
   margin: auto;
@@ -90,14 +90,16 @@ const FlexCenter = styled.div`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
-  max-width: 6.7em;
+  width: 5em;
+  font-size: 0.7em;
+
   @media only screen and (${devices.tablet}) {
-    max-width: 20em;
+    font-size: 1em;
   }
 `
 
-const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
-  const [selected, setSelected] = useState('Utforska kartan')
+const Home = ({ municipalities }: PropsType) => {
+  const [, setSelected] = useState('Utforska kartan')
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
     name: item.Name,
@@ -114,7 +116,7 @@ const Home: React.FC<PropsType> = ({ municipalities }: PropsType) => {
         <Container>
           <div>
             {/* <Image src="/logo.png" width="268.06" height="52" /> */}
-            <Image src="/logo_beta.svg" width="485" height="86" />
+            <Image src="/logo_beta.svg" width="485" height="86" alt="Klimatkollen" />
             <Paragraph>Få koll på Sveriges klimatomställning</Paragraph>
           </div>
           <FlexCenter>

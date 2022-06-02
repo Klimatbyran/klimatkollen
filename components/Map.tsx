@@ -4,6 +4,7 @@ import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
 import { ReactNode, useMemo, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import NextNProgress from 'nextjs-progressbar';
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -82,13 +83,13 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
-  useMemo (() => {
+  useMemo(() => {
     axios.get('/api/map').then(res => {
       setMunicipalityData(res.data)
     })
   }, [])
-   
-  const municipalityLines = municipalityData?.features?.map(({ geometry, properties } : {geometry: any, properties: any}) => {
+
+  const municipalityLines = municipalityData?.features?.map(({ geometry, properties }: { geometry: any, properties: any }) => {
     const name = replaceLetters(properties.name)
     const emissions = emissionsLevels.find((e) => e.name === name)?.emissions
     return {
@@ -127,11 +128,33 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
 
   return (
     <DeckGLWrapper>
+      <NextNProgress
+        color="#6BA292"
+        startPosition={1}
+        stopDelayMs={20}
+        height={10}
+        showOnShallow={true}
+        options={{
+          showSpinner: false
+        }}
+      />
       <DeckGL
         // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
         controller={{
-          scrollZoom: false
+          // Removed this to make desktop map zoomable
+          // Wonder why it was set to false in first place tho
+          // could be that it has to be reversed
+          // scrollZoom: false
+        }}
+        getTooltip={({ object }) => object && {
+          html: `<p>${(object as unknown as Emissions)?.name}</p>`,
+          style: {
+            backgroundColor: 'black',
+            border: '1px solid white',
+            borderRadius: '5px',
+            fontSize: '0.6em'
+          }
         }}
         // controller={{
         //   scrollZoom: true,
@@ -150,17 +173,12 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
           if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
         layers={[kommunLayer]}
-        // onViewStateChange={({ viewState }) => {
-        //   viewState.longitude = Math.min(
-        //     MAP_RANGE.lon[1],
-        //     Math.max(MAP_RANGE.lon[0], viewState.longitude),
-        //   )
-        //   viewState.latitude = Math.min(
-        //     MAP_RANGE.lat[1],
-        //     Math.max(MAP_RANGE.lat[0], viewState.latitude),
-        //   )
-        //   return viewState
-        // }}
+      // FIXME needs to be adapted to mobile before reintroducing
+      /*onViewStateChange={({ viewState }) => {
+        viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))
+        viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
+        return viewState
+      }}*/
       />
       {children}
     </DeckGLWrapper>

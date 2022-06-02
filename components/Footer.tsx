@@ -241,7 +241,7 @@ const Footer = () => {
                 </Paragraph>
                 <Paragraph>
                   Läs mer om Parisavtalet hos vår samarbetspartner{' '}
-                  <a href="https://wwf.se/klimat" target="_blank" rel="noreferrer">
+                  <a href="https://www.wwf.se/rapport/ipcc/#parisavtalet" target="_blank" rel="noreferrer">
                     WWF
                   </a>
                   .
@@ -291,9 +291,9 @@ const Footer = () => {
                   medräknade i Klimatkollens koldioxidbudget.
                 </Paragraph>
                 <Paragraph>
-                  Den nationella koldioxidbudgeten beräknas av Uppsala Universitet enligt
-                  Tyndall-modellen och fördelas sedan ut på kommunerna av ClimateView. Läs
-                  mer om hur koldioxidbudgeten är beräknad{' '}
+                  Den nationella koldioxidbudgeten beräknas av Uppsala Universitet med grund i den så 
+                  kallade Tyndall-modellen och fördelas sedan ut på kommunerna av ClimateView. 
+                  Läs mer om hur koldioxidbudgeten är beräknad{' '}
                   <a
                     href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
                     target="_blank"
@@ -397,11 +397,11 @@ const Footer = () => {
             </IconSection>
           </FlexSection>
           <Copyright>
-            CC BY NC SA -{' '}
+            CC BY-NC-SA -{' '}
             <a
               href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
               target="_blank"
-              rel="noreferrer">
+              rel="noreferrer license">
               Attribution-NonCommercial-ShareAlike 4.0 International license
             </a>
           </Copyright>
