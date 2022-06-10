@@ -771,7 +771,7 @@ const Municipality = (props: Props) => {
         {step === 2 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text="Trendlinjen är baserad på årliga utsläpp sedan Parisavtalet 2015."
+            text="Trendlinjen är baserad på årliga utsläpp i kommunen sedan Parisavtalet 2015."
             scrollY={scrollY}
           />
         )}
