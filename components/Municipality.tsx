@@ -690,7 +690,7 @@ const Municipality = (props: Props) => {
                   </RangeContainer>
                   <Help>
                     Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
-                    utsläppsminskning man behöver genomföra i {municipality.Name}:
+                    utsläppsminskning man behöver genomföra i {municipality.Name}.
                   </Help>
                 </AdjustmentsContainer>
               )}
@@ -757,32 +757,30 @@ const Municipality = (props: Props) => {
         {step === 0 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text={`Utsläpp som skett i kommunen under perioden ${
-              historicalEmissions[0].Year
-            }–${historicalEmissions[historicalEmissions.length - 1].Year}.`}
+            text={`Koldioxidutsläpp i kommunen sedan ${historicalEmissions[0].Year}.`}
             scrollY={scrollY}
           />
         )}
         {step === 1 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text={`Den budgeterade utsläppningsgraden i kommunen under perioden ${budgetedEmissions[0].Year}–${END_YEAR}.`}
+            text="Den minskning av koldioxidutsläpp som krävs för att vara i linje med Parisavtalet och den utsläppsbudget som motsvarar 1,5 graders uppvärmning, visad som exponentiellt avtagande, det vill säga där utsläppen minskar med en viss procent varje år."
             scrollY={scrollY}
           />
         )}
         {step === 2 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text={`Den linjära trenden baseras på den utsläppningsminskning som skett i kommunen under perioden ${trendingEmissions[0].Year}–${END_YEAR}.`}
+            text="Trendlinjen är baserad på årliga utsläpp sedan Parisavtalet 2015."
             scrollY={scrollY}
           />
         )}
         {step === 3 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text={`Din plan för utsläppningsminskning i kommunen under perioden ${
-              userEmissions[0].Year
-            }–${userEmissions[userEmissions.length - 1].Year}.`}
+            text={`Här kan du själv ange årlig procentuell minskning av koldioxidutsläppen i kommunen för mandatperioderna 2022–2026 och 2026–2030. För återstående utsläpp anges därefter en exponentiell minskning fram till år ${
+              userEmissions[userEmissions.length - 1].Year
+            }.`}
             scrollY={scrollY}
           />
         )}
