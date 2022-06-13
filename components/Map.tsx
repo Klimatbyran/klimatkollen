@@ -170,7 +170,7 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as Emissions)?.name
-          if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
+          if (name) router.push(`/kommuner/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
         layers={[kommunLayer]}
       // FIXME needs to be adapted to mobile before reintroducing

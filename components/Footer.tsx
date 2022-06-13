@@ -3,7 +3,6 @@ import { Paragraph, H5, ParagraphBold } from './Typography'
 import { devices } from '../utils/devices'
 import ClimateView from '../public/icons/climateview.svg'
 import VBK from '../public/icons/vbk.svg'
-import WeDontHaveTime from '../public/icons/we-dont-have-time.svg'
 import Argand from '../public/icons/argand.svg'
 import StormGeo from '../public/icons/stormgeo.svg'
 import NewsletterSubscribe from './NewsletterSubscribe'
@@ -116,7 +115,6 @@ const GHLink = styled.p`
 
 const Footer = () => {
   const router = useRouter()
-  console.log(router)
   const [toggleFirst, setToggleFirst] = useState(false)
   const [toggleSecond, setToggleSecond] = useState(false)
   const [toggleThird, setToggleThird] = useState(

@@ -10,11 +10,11 @@ const Button = styled.button`
   align-self: flex-start;
 `
 
-const BackArrow = () => {
+const BackArrow = ({ route }: { route: string }) => {
   return (
-    <Link href="/">
+    <Link href={route}>
       <Button type="button">
-        <a href="/">
+        <a href={route}>
           <Icon />
         </a>
       </Button>

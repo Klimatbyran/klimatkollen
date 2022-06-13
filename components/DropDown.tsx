@@ -138,7 +138,7 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
     setShowDropDown(false)
 
     if (municipalities.includes(name)) {
-      router.push(`/kommun/${name.toLowerCase()}`)
+      router.push(`/kommuner/kommun/${name.toLowerCase()}`)
     }
   }
 
@@ -161,7 +161,7 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
     )
 
     if (municipalityExists) {
-      router.push(`/kommun/${selectedMunicipality.toLowerCase()}`)
+      router.push(`/kommuner/kommun/${selectedMunicipality.toLowerCase()}`)
     } else {
       setShowInfoText(true)
       setTimeout(() => {
