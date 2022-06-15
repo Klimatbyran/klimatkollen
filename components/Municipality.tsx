@@ -585,7 +585,6 @@ const Municipality = (props: Props) => {
         <Top>
           <HeaderSection>
             <H1>{municipality.Name}</H1>
-
             {coatOfArmsImage && (
               <CoatOfArmsImage
                 src={coatOfArmsImage}
