@@ -1,11 +1,11 @@
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
-import Municipality from '../../../../components/Municipality'
-import { EmissionService } from '../../../../utils/emissionService'
-import { WikiDataService } from '../../../../utils/wikiDataService'
-import { Municipality as TMunicipality } from '../../../../utils/types'
-import { PolitycalRuleService } from '../../../../utils/politicalRuleService'
+import Municipality from '../../../components/Municipality'
+import { EmissionService } from '../../../utils/emissionService'
+import { WikiDataService } from '../../../utils/wikiDataService'
+import { Municipality as TMunicipality } from '../../../utils/types'
+import { PolitycalRuleService } from '../../../utils/politicalRuleService'
 
 export const STEPS = [
   'historiska-utslapp',
@@ -37,7 +37,7 @@ export default function Step({
   const onNext = () => {
     const next = STEPS[stepIndex + 1]
     if (!next) throw new Error(`Assertion failed: No step with index ${stepIndex + 1}`)
-    router.replace(`/kommuner/kommun/${id}/${next}`, undefined, {
+    router.replace(`/kommun/${id}/${next}`, undefined, {
       shallow: true,
       scroll: false,
     })
@@ -46,7 +46,7 @@ export default function Step({
   const onPrevious = () => {
     const prev = STEPS[stepIndex - 1]
     if (!prev) throw new Error(`Assertion failed: No step with index ${stepIndex - 1}`)
-    router.replace(`/kommuner/kommun/${id}/${prev}`, undefined, {
+    router.replace(`/kommun/${id}/${prev}`, undefined, {
       shallow: true,
       scroll: false,
     })

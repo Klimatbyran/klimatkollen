@@ -537,17 +537,12 @@ const Municipality = (props: Props) => {
         url={shareUrl}
       />
       <PageWrapper backgroundColor="black">
-        <Back route={'/kommuner'} />
+        <Back />
         <Top>
           <HeaderSection>
             <H1>{municipality.Name}</H1>
 
-            {coatOfArmsImage && (
-              <CoatOfArmsImage
-                src={coatOfArmsImage}
-                alt={`Kommunvapen för ${municipality.Name}`}
-              />
-            )}
+            {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt={`Kommunvapen för ${municipality.Name}`} />}
           </HeaderSection>
           <GraphWrapper>
             <h3>{text}</h3>
@@ -610,31 +605,29 @@ const Municipality = (props: Props) => {
           {step > 2 && (
             <Adjustments>
               <RangeContainer>
-                {mandateChanges
-                  .filter((c) => c.start >= 2022 && c.end <= 2030)
-                  .map((value, i) => (
-                    <Range key={i}>
-                      <Percentage
-                      // style={{
-                      //   color: value.change > 1 ? 'pink' : 'lightgreen',
-                      // }}
-                      >
-                        {value.change > 1 ? '+' : ''}{' '}
-                        {Math.round(100 * value.change) - 100}%
-                      </Percentage>
-                      <Slider
-                        min={0.5}
-                        max={1.5}
-                        step={0.01}
-                        value={value.change}
-                        type="range"
-                        onChange={(e) =>
-                          handleYearChange(value.start, parseFloat(e.target.value))
-                        }
-                      />
-                      <StartYear>{value.start}</StartYear>
-                    </Range>
-                  ))}
+                {mandateChanges.filter(c => c.start >= 2022 && c.end <= 2030).map((value, i) => (
+                  <Range key={i}>
+                    <Percentage
+                    // style={{
+                    //   color: value.change > 1 ? 'pink' : 'lightgreen',
+                    // }}
+                    >
+                      {value.change > 1 ? '+' : ''} {Math.round(100 * value.change) - 100}
+                      %
+                    </Percentage>
+                    <Slider
+                      min={0.5}
+                      max={1.5}
+                      step={0.01}
+                      value={value.change}
+                      type="range"
+                      onChange={(e) =>
+                        handleYearChange(value.start, parseFloat(e.target.value))
+                      }
+                    />
+                    <StartYear>{value.start}</StartYear>
+                  </Range>
+                ))}
               </RangeContainer>
               <Help>
                 Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
@@ -643,8 +636,7 @@ const Municipality = (props: Props) => {
                   Trend: {Math.round(totalTrend / 1000)} kt CO₂
                 </TotalCo2>
                 <TotalCo2 style={{ color: '#6BA292', marginTop: 5 }}>
-                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} kt
-                  CO₂
+                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} kt CO₂
                 </TotalCo2>
                 <TotalCo2 style={{ color: 'rgb(239, 191, 23)', marginTop: 5 }}>
                   Din plan: {Math.round(userTotal / 1000)} kt CO₂
