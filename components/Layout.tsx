@@ -1,8 +1,8 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import styled from 'styled-components'
 
 import { devices } from '../utils/devices'
-import Footer from './Footer'
 import { Paragraph } from './Typography'
 
 const Header = styled.header`
@@ -25,11 +25,14 @@ export default function Layout({ children }: { children: JSX.Element }) {
   return (
     <>
       <Header>
-        <Image src="/logo_beta.svg" width="485" height="86" alt="Klimatkollen" />
+        <Link href="/">
+          <a href="/">
+            <Image src="/logo_beta.svg" width="485" height="86" alt="Klimatkollen" />
+          </a>
+        </Link>
         <Paragraph>Få koll på Sveriges klimatomställning</Paragraph>
       </Header>
       <Main>{children}</Main>
-      <Footer />
     </>
   )
 }

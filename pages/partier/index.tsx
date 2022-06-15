@@ -30,7 +30,7 @@ const Partier = () => {
           </div>
           <div>
             <Link href="/kommuner">
-              <a href="placeholder">Kommuner</a>
+              <a href="/kommuner">Kommuner</a>
             </Link>
           </div>
         </Container>

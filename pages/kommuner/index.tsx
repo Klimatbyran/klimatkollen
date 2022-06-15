@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next'
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 import styled from 'styled-components'
 import DropDown from '../../components/DropDown'
 import Map from '../../components/Map'
@@ -10,7 +10,7 @@ import { Municipality } from '../../utils/types'
 import PageWrapper from '../../components/PageWrapper'
 import Icon from '../../public/icons/arrow.svg'
 import { devices } from '../../utils/devices'
-import Back from '../../components/Back'
+import Layout from '../../components/Layout'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -113,7 +113,6 @@ const Kommuner = ({ municipalities }: PropsType) => {
         description="Hur går det med utsläppsminskningarna i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
       />
       <PageWrapper backgroundColor="black">
-        <Back route={'/'} />
         <Container>
           <FlexCenter>
             <DropDown
@@ -196,3 +195,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 }
 
 export default Kommuner
+
+Kommuner.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <Layout>{page}</Layout>
+    </>
+  )
+}
