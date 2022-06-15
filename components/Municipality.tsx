@@ -1,22 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
-import Graph from './Graph'
-import { H1, H3, ParagraphBold } from './Typography'
+import { useMemo, useState } from 'react'
+import { useRouter } from 'next/router'
+
 import ArrowRight from '../public/icons/arrow-right-green.svg'
 import ArrowLeft from '../public/icons/arrow-left-green.svg'
-import Button from './Button'
-import ScoreCard from './ScoreCard'
+import Info from '../public/icons/info.svg'
+import { H1, H2, H3, ParagraphBold } from './Typography'
 import Back from './Back'
-import { hasShareAPI } from '../utils/navigator'
-import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 import MetaTags from './MetaTags'
-
-import { useMemo, useState } from 'react'
+import InfoModal from './InfoModal'
 import PageWrapper from './PageWrapper'
-import { useRouter } from 'next/router'
 import DropDown from './DropDown'
+import Graph from './Graph'
+import ShareButton from './Button'
+import ScoreCard from './ScoreCard'
+import { Button } from './shared'
+import { hasShareAPI } from '../utils/navigator'
 import { devices } from '../utils/devices'
+import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -24,18 +27,19 @@ const GraphWrapper = styled.div`
   flex-direction: column;
 `
 
-const Btn = styled.button`
-  border: none;
-  background-color: none;
-  cursor: pointer;
-  background-color: inherit;
-  color: #fff;
-  font-family: 'Roboto';
-  font-weight: 300;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+const InfoButton = styled(Button)`
+  height: 21px;
+`
+
+const InfoButtonWrapper = styled.div`
+  @media only screen and (${devices.tablet}) {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    margin-top: -50px;
+    margin-right: 1rem;
+    justify-content: end;
+  }
 `
 
 const Flex = styled.div`
@@ -49,7 +53,7 @@ const Flex = styled.div`
 `
 
 const Center = styled.div`
-  width: 100%
+  width: 100%;
   background-color: coral;
   display: flex;
   align-items: center;
@@ -59,7 +63,7 @@ const Center = styled.div`
 const Box = styled.div`
   width: 195px;
   height: 34px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.white};
   border-radius: 32px;
   display: flex;
   align-items: center;
@@ -67,7 +71,7 @@ const Box = styled.div`
 `
 
 const InfoText = styled.p`
-  color: black;
+  color: ${({ theme }) => theme.black};
 `
 
 const Top = styled.div`
@@ -87,21 +91,38 @@ const HeaderSection = styled.div`
   margin-top: 20px;
 `
 
-const Adjustments = styled.div`
-  display: flex;
+const BottomContainer = styled.div`
+  display: grid;
   gap: 1rem;
-  justify-content: space-between;
-  flex-direction: column;
+  margin-top: 0.5rem;
 
   @media only screen and (${devices.tablet}) {
-    flex-direction: row;
+    gap: 0;
+    grid-template-columns: 45% auto 40%;
+  }
+`
+
+const AdjustmentsContainer = styled.div`
+  grid-column: 1 / 2;
+  margin-bottom: 1rem;
+
+  @media only screen and (${devices.tablet}) {
+    margin-bottom: 0;
+  }
+`
+
+const TotalsContainer = styled.div`
+  grid-column: 1 / 2;
+
+  @media all and (${devices.tablet}) {
+    grid-column: 3 / 4;
   }
 `
 
 const RangeContainer = styled.div`
   display: flex;
   overflow-x: auto;
-  padding-bottom: 1rem;
+  padding: 1rem 0;
   flex-shrink: 0;
   flex-grow: 1;
   justify-content: space-between;
@@ -183,8 +204,12 @@ const EndYear = styled.div`
 `
 
 const TotalCo2 = styled.div`
-  font-size: 1.6rem;
   font-weight: 500;
+  margin: 1rem 0 0 -5px;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  background-color: ${(props) => props.color};
+  color: #2d2d2d;
 `
 
 const Help = styled.p`
@@ -250,7 +275,7 @@ const BottomShare = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
-  margin-top: 2rem;
+  margin-top: 3.5rem;
 
   @media only screen and (${devices.tablet}) {
     align-items: center;
@@ -387,6 +412,25 @@ const Municipality = (props: Props) => {
   } = props
   const router = useRouter()
   const q = router.query['g[]']
+
+  const [isOpen, setIsOpen] = useState(false)
+
+  let scrollY = 0
+  if (typeof window !== 'undefined') {
+    scrollY = window && window.scrollY
+    console.log(scrollY)
+  }
+
+  const toggleModal = () => {
+    const body = document.body
+    if (!isOpen) {
+      body.style.overflow = 'hidden'
+      setIsOpen(true)
+    } else {
+      body.style.overflow = ''
+      setIsOpen(false)
+    }
+  }
 
   const range = (start: number, end: number) =>
     Array.from({ length: end - start }, (_, i) => i + start)
@@ -542,10 +586,15 @@ const Municipality = (props: Props) => {
           <HeaderSection>
             <H1>{municipality.Name}</H1>
 
-            {coatOfArmsImage && <CoatOfArmsImage src={coatOfArmsImage} alt={`Kommunvapen för ${municipality.Name}`} />}
+            {coatOfArmsImage && (
+              <CoatOfArmsImage
+                src={coatOfArmsImage}
+                alt={`Kommunvapen för ${municipality.Name}`}
+              />
+            )}
           </HeaderSection>
           <GraphWrapper>
-            <h3>{text}</h3>
+            <H2>{text}</H2>
             <p>{body}</p>
             <Legends>
               {step < 3 && (
@@ -572,6 +621,11 @@ const Municipality = (props: Props) => {
                   Din plan
                 </Legend>
               )}
+              <InfoButtonWrapper>
+                <InfoButton type="button" aria-label="Om grafen" onClick={toggleModal}>
+                  <Info />
+                </InfoButton>
+              </InfoButtonWrapper>
             </Legends>
             <Graph
               step={step}
@@ -585,10 +639,10 @@ const Municipality = (props: Props) => {
           </GraphWrapper>
           <Flex>
             {onPreviousStep ? (
-              <Btn onClick={onPreviousStep}>
+              <Button onClick={onPreviousStep}>
                 <ArrowLeft />
                 {STEPS[step - 1].buttonText}
-              </Btn>
+              </Button>
             ) : (
               <div></div>
             )}
@@ -596,59 +650,72 @@ const Municipality = (props: Props) => {
               {step + 1} / {Object.keys(STEPS).length}
             </span>
             {onNextStep && (
-              <Btn onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
+              <Button onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
                 {STEPS[step + 1]?.buttonText || 'Nästa'}
                 <ArrowRight />
-              </Btn>
+              </Button>
             )}
           </Flex>
-          {step > 2 && (
-            <Adjustments>
-              <RangeContainer>
-                {mandateChanges.filter(c => c.start >= 2022 && c.end <= 2030).map((value, i) => (
-                  <Range key={i}>
-                    <Percentage
-                    // style={{
-                    //   color: value.change > 1 ? 'pink' : 'lightgreen',
-                    // }}
-                    >
-                      {value.change > 1 ? '+' : ''} {Math.round(100 * value.change) - 100}
-                      %
-                    </Percentage>
-                    <Slider
-                      min={0.5}
-                      max={1.5}
-                      step={0.01}
-                      value={value.change}
-                      type="range"
-                      onChange={(e) =>
-                        handleYearChange(value.start, parseFloat(e.target.value))
-                      }
-                    />
-                    <StartYear>{value.start}</StartYear>
-                  </Range>
-                ))}
-              </RangeContainer>
-              <Help>
-                Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
-                utsläppsminskning man behöver genomföra i {municipality.Name}:
-                <TotalCo2 style={{ color: '#EF3054', marginTop: 15 }}>
+          {step > 1 && (
+            <BottomContainer>
+              {step > 2 && (
+                <AdjustmentsContainer>
+                  <H3>Din plan</H3>
+                  <RangeContainer>
+                    {mandateChanges
+                      .filter((c) => c.start >= 2022 && c.end <= 2030)
+                      .map((value, i) => (
+                        <Range key={i}>
+                          <Percentage
+                          // style={{
+                          //   color: value.change > 1 ? 'pink' : 'lightgreen',
+                          // }}
+                          >
+                            {value.change > 1 ? '+' : ''}{' '}
+                            {Math.round(100 * value.change) - 100}%
+                          </Percentage>
+                          <Slider
+                            min={0.5}
+                            max={1.5}
+                            step={0.01}
+                            value={value.change}
+                            type="range"
+                            onChange={(e) =>
+                              handleYearChange(value.start, parseFloat(e.target.value))
+                            }
+                          />
+                          <StartYear>{value.start}</StartYear>
+                        </Range>
+                      ))}
+                  </RangeContainer>
+                  <Help>
+                    Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
+                    utsläppsminskning man behöver genomföra i {municipality.Name}.
+                  </Help>
+                </AdjustmentsContainer>
+              )}
+              <TotalsContainer>
+                <H3>Framtida utsläpp</H3>
+                <TotalCo2 color="#EF3054">
                   Trend: {Math.round(totalTrend / 1000)} kt CO₂
                 </TotalCo2>
-                <TotalCo2 style={{ color: '#6BA292', marginTop: 5 }}>
-                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} kt CO₂
+                <TotalCo2 color="#6BA292">
+                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} kt
+                  CO₂
                 </TotalCo2>
-                <TotalCo2 style={{ color: 'rgb(239, 191, 23)', marginTop: 5 }}>
-                  Din plan: {Math.round(userTotal / 1000)} kt CO₂
-                  {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
-                </TotalCo2>
-              </Help>
-            </Adjustments>
+                {step > 2 && (
+                  <TotalCo2 color="rgb(239, 191, 23)">
+                    Din plan: {Math.round(userTotal / 1000)} kt CO₂
+                    {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
+                  </TotalCo2>
+                )}
+              </TotalsContainer>
+            </BottomContainer>
           )}
         </Top>
         <BottomShare>
           {hasShareAPI() && (
-            <Button
+            <ShareButton
               handleClick={handleClick}
               text="Dela i dina sociala medier"
               shareIcon
@@ -658,7 +725,7 @@ const Municipality = (props: Props) => {
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
         <BottomHeader>
-          <FactH2>Fakta om {municipality.Name}</FactH2>
+          <H2>Fakta om {municipality.Name}</H2>
         </BottomHeader>
         <Bottom>
           {/* <BottomRight>
@@ -687,6 +754,36 @@ const Municipality = (props: Props) => {
             placeholder="Välj kommun"
           />
         </DropDownSection>
+        {step === 0 && isOpen && (
+          <InfoModal
+            close={toggleModal}
+            text={`Koldioxidutsläpp i kommunen sedan ${historicalEmissions[0].Year}.`}
+            scrollY={scrollY}
+          />
+        )}
+        {step === 1 && isOpen && (
+          <InfoModal
+            close={toggleModal}
+            text="Den minskning av koldioxidutsläpp som krävs för att vara i linje med Parisavtalet och den utsläppsbudget som motsvarar 1,5 graders uppvärmning, visad som exponentiellt avtagande, det vill säga där utsläppen minskar med en viss procent varje år."
+            scrollY={scrollY}
+          />
+        )}
+        {step === 2 && isOpen && (
+          <InfoModal
+            close={toggleModal}
+            text="Trendlinjen är baserad på årliga utsläpp i kommunen sedan Parisavtalet 2015."
+            scrollY={scrollY}
+          />
+        )}
+        {step === 3 && isOpen && (
+          <InfoModal
+            close={toggleModal}
+            text={`Här kan du själv ange årlig procentuell minskning av koldioxidutsläppen i kommunen för mandatperioderna 2022–2026 och 2026–2030. För återstående utsläpp anges därefter en exponentiell minskning fram till år ${
+              userEmissions[userEmissions.length - 1].Year
+            }.`}
+            scrollY={scrollY}
+          />
+        )}
       </PageWrapper>
     </>
   )
