@@ -21,6 +21,10 @@ const Main = styled.main`
   margin: 0 auto;
 `
 
+const Tagline = styled(Paragraph)`
+  margin: 0;
+`
+
 export default function Layout({ children }: { children: JSX.Element }) {
   return (
     <>
@@ -30,7 +34,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
             <Image src="/logo_beta.svg" width="485" height="86" alt="Klimatkollen" />
           </a>
         </Link>
-        <Paragraph>Få koll på Sveriges klimatomställning</Paragraph>
+        <Tagline>Få koll på Sveriges klimatomställning</Tagline>
       </Header>
       <Main>{children}</Main>
     </>

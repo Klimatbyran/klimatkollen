@@ -39,8 +39,8 @@ export const Paragraph = styled.p`
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
-  line-height: 1.4;
-  margin-bottom: 22.4px;
+  line-height: 1.5;
+  margin: 11.2px 0;
 `
 
 export const ParagraphSmall = styled.p`
