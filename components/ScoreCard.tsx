@@ -62,13 +62,11 @@ const InfoSection = styled.div`
 `
 
 const InfoHeading = styled(H3)`
-  line-height: 1;
   font-weight: 200;
   font-size: inherit;
 `
 
 const InfoParagraph = styled(Paragraph)`
-  line-height: 1;
   margin: 0;
 `
 

@@ -85,7 +85,7 @@ const Label = styled.div`
 
 const FlexCenter = styled.div`
   width: 100%;
-  display: flex;
+  /* display: flex; */
 `
 
 const StyledParagraph = styled(Paragraph)`
