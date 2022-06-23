@@ -418,7 +418,6 @@ const Municipality = (props: Props) => {
   let scrollY = 0
   if (typeof window !== 'undefined') {
     scrollY = window && window.scrollY
-    console.log(scrollY)
   }
 
   const toggleModal = () => {
