@@ -92,9 +92,11 @@ const StyledParagraph = styled(Paragraph)`
   z-index: 1;
   width: 5em;
   font-size: 0.7em;
+  margin: 0;
+  line-height: 0;
 
   @media only screen and (${devices.tablet}) {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 `
 
