@@ -134,9 +134,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
               </Link>
             </li>
             <li>
-              <Link
-                href="/partier"
-                aria-labelledby="Nyhet! Analys av riksdagspartiernas utsläppsmål">
+              <Link href="/partier">
                 <a
                   href="/partier"
                   aria-labelledby="Nyhet! Analys av riksdagspartiernas utsläppsmål"
@@ -144,7 +142,9 @@ export default function Layout({ children }: { children: JSX.Element }) {
                   Partiernas utsläppsmål
                 </a>
               </Link>
-              {visibleNotification && <Notification>Nyhet!</Notification>}
+              {visibleNotification && (
+                <Notification aria-hidden="true">Nyhet!</Notification>
+              )}
             </li>
           </ul>
         </Nav>
