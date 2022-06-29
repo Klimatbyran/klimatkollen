@@ -37,9 +37,6 @@ const Partier = () => {
         description=""
       />
       <PageWrapper backgroundColor="black">
-        <VisuallyHidden>
-          <H1>Klimatkollen</H1>
-        </VisuallyHidden>
         <Container>
           <H2>Partiernas utsläppsmål jämfört med Sveriges koldioxidbudget</H2>
           <Paragraph>
@@ -153,16 +150,6 @@ const Partier = () => {
             in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
             officia deserunt mollit anim id est laborum.
-          </Paragraph>
-        </Container>
-        <Container>
-          <Hr />
-          <H2>Runtom i landet</H2>
-          <Paragraph>
-            Hur går det med omställningen i din kommun?{' '}
-            <Link href="/kommuner">
-              <a href="/kommuner">Läs mer här</a>
-            </Link>
           </Paragraph>
         </Container>
       </PageWrapper>

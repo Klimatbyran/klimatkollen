@@ -5,11 +5,12 @@ import { useState } from 'react'
 import styled from 'styled-components'
 
 import { devices } from '../utils/devices'
-import { Paragraph } from './Typography'
+import { H1, Paragraph } from './Typography'
+import VisuallyHidden from './VisuallyHidden'
 
 const Header = styled.header`
   max-width: 840px;
-  padding: 20px 20px 40px;
+  padding: 20px;
   @media only screen and (${devices.tablet}) {
     padding: 30px 20px;
     margin: 0 auto;
@@ -56,6 +57,10 @@ const Nav = styled.nav<NavProps>`
     & li {
       position: relative;
       width: max-content;
+      margin-bottom: 10px;
+      @media only screen and (${devices.tablet}) {
+        margin: 0;
+      }
       & :nth-of-type(1) {
         & a {
           background-color: ${({ theme, path }) =>
@@ -144,7 +149,14 @@ export default function Layout({ children }: { children: JSX.Element }) {
           </ul>
         </Nav>
       </Header>
-      <Main>{children}</Main>
+      <Main>
+        <>
+          <VisuallyHidden>
+            <H1>Klimatkollen</H1>
+          </VisuallyHidden>
+          {children}
+        </>
+      </Main>
     </>
   )
 }
