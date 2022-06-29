@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next'
 import { ReactElement, useState } from 'react'
 import styled from 'styled-components'
+
 import DropDown from '../../components/DropDown'
 import Map from '../../components/Map'
 import MetaTags from '../../components/MetaTags'
@@ -11,6 +12,7 @@ import PageWrapper from '../../components/PageWrapper'
 import Icon from '../../public/icons/arrow.svg'
 import { devices } from '../../utils/devices'
 import Layout from '../../components/Layout'
+import Footer from '../../components/Footer'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -202,6 +204,7 @@ Kommuner.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
       <Layout>{page}</Layout>
+      <Footer />
     </>
   )
 }
