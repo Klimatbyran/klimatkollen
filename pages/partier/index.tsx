@@ -38,118 +38,103 @@ const Partier = () => {
       />
       <PageWrapper backgroundColor="black">
         <Container>
-          <H2>Partiernas utsläppsmål jämfört med Sveriges koldioxidbudget</H2>
+          <H2>
+            Analys av riksdagspartiernas klimatmål – sex av åtta missar Parisavtalet
+          </H2>
           <Paragraph>
-            Här kommer en inledande text som summerar informationen på denna webbsida. Att
-            vi analyserat riksdagspartiernas nettonollmål och jämfört det med den
-            Parisavtalskompatibla koldioxidbudget vi använder på Klimatkollen och dels
-            Naturvårdsverkets prognos för hur det faktiskt ser ut att gå med Sveriges
-            utsläpp med dagens politik.
+            Inför valet genomför Klimatkollen en granskning av riksdagspartiernas
+            klimatpolitik. Nu är första delen klar, en analys av partiernas klimatmål
+            jämfört med Parisavtalets 1,5-gradersmål, där hänsyn tagits till avtalets
+            rättviseaspekt.
           </Paragraph>
           <Paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-            in culpa qui officia deserunt mollit anim id est laborum.
-          </Paragraph>
-          <Figure>
-            <Image
-              src="/graph-1.png"
-              alt="Diagram gällande partiernas utsläppsmål jämfört med Sveriges koldioxidbudget."
-              layout={'responsive'}
-              width={1042}
-              height={592}
-            />
-          </Figure>
-          <Paragraph>
-            Här förklarar vi diagrammet. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
+            Bakom projektet står forskarnätverket Researchers’ Desk, Världsnaturfonden
+            WWF, Våra barns klimat och ClimateView, i samarbete med PwC och
+            Naturskyddsföreningen.
           </Paragraph>
           <Paragraph>
-            Sedan går vi igenom parti för parti. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
-          </Paragraph>
-          <Paragraph>
-            Parti 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </Paragraph>
-          <Paragraph>
-            Parti 3, 4 och 5. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </Paragraph>
-          <Paragraph>
-            Parti 6. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </Paragraph>
-          <Paragraph>
-            Parti 7-8. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </Paragraph>
-          <Paragraph>
-            Här kommer en samlad analys med slutsatser. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
+            Analysen visar att två partiers klimatmål, Miljöpartiets och Vänsterpartiets,
+            är nära Parisavtalets 1,5-gradersmål. Ytterligare två partier, Centerpartiet
+            och Liberalerna, går längre än Sveriges klimatmål, men når inte lika långt.
+            Kristdemokraterna, Moderaterna, Socialdemokraterna och Sverigedemokraterna har
+            mål i linje med det svenska klimatmålet, men är längre ifrån Parisavtalets
+            1,5-gradersmål.
           </Paragraph>
           <Figure>
             <Image
-              src="/graph-2.jpeg"
+              src="/image1-31.png"
               alt="Diagram gällande partiernas utsläppsmål jämfört med Sveriges koldioxidbudget."
               layout={'responsive'}
-              width={830}
-              height={593}
+              width={936}
+              height={452}
             />
           </Figure>
           <Paragraph>
-            Ovan läggs ett diagram som illustrerar en internationell utblick där vi sätter
-            de svenska partiernas nettonollmål i ett sammanhang. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
+            För att vara i linje med Parisavtalets 1,5-gradersmål bör Sverige maximalt
+            släppa ut cirka 170 miljoner ton koldioxid. Det utgör Sveriges andel av den
+            globala utsläppsbudgeten för Parisavtalets 1,5-gradersmål, med hänsyn tagen
+            till avtalets rättviseaspekt, där rika och tidigt industrialiserade länder ska
+            gå före.
           </Paragraph>
           <Paragraph>
-            Till sist berättar vi om metoden. Vilka frågor vi ställt till partierna, hur
-            vi analyserat svaren och vilka forskare som gjort det. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
+            Den framräknade nationella koldioxidbudgeten ligger även till grund för
+            jämförelsen på{' '}
+            <Link href="/kommuner">
+              <a href="/kommuner">kommunsidorna</a>
+            </Link>{' '}
+            på Klimatkollen. Läs mer om hur den är beräknad{' '}
+            <a href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">
+              här
+            </a>
+          </Paragraph>
+          <Paragraph>
+            Analysen baseras på två frågor i en enkät som skickats till samtliga
+            riksdagspartier under våren. Den första frågan var ”Vilken utsläppsbudget
+            eller klimatmål och takt för utsläppsminskningar vill ert parti se?”. Den
+            andra frågan var ”Står ert parti bakom EU:s nya förslag till mål om att
+            Sverige ska ha en nettoinbindning av kolinlagring från skog och mark på 47,3
+            miljoner ton CO₂e årligen till 2030?”
+          </Paragraph>
+          <Paragraph>
+            Alla partier utom Moderaterna har valt att svara på enkäten. Svaren har sedan
+            analyserats av forskare från nätverket Researchers’ Desk och WWF. Moderaterna
+            är dock med i analysen av klimatmålen, trots att de inte svarade på enkäten,
+            eftersom de tidigare ställt sig bakom Sveriges nuvarande klimatmål och därmed
+            beräknas utifrån det.
+          </Paragraph>
+          <Paragraph>
+            Kristdemokraternas, Liberalernas, Moderaternas, Socialdemokraternas och
+            Sverigedemokraternas ambitioner ligger i linje med Sveriges nuvarande
+            klimatmål, som kräver en koldioxidbudget på 355 miljoner ton CO₂. Det är cirka
+            2,1 gånger mer än Sveriges andel av den globala budgeten för Parisavtalets 1,5
+            gradersmål, med hänsyn tagen till avtalets rättviseaspekt.
+          </Paragraph>
+          <Paragraph>
+            Centerpartiets klimatmål är ”netto noll år 2040”. Detta innebär utsläpp av 311
+            miljoner ton CO₂, vilket är cirka 1,8 gånger mer än den nationella
+            koldioxidbudgeten.
+          </Paragraph>
+          <Paragraph>
+            Vänsterpartiets klimatmål är ”noll utsläpp till 2035”. Detta medför utsläpp av
+            217 miljoner ton CO₂, vilket är cirka 1,3 gånger mer än den nationella
+            koldioxidbudgeten.
+          </Paragraph>
+          <Paragraph>
+            Miljöpartiets klimatmål är ”en koldioxidbudget på 180 miljoner ton CO₂”. Detta
+            motsvarar att uppnå ”nollutsläpp” för CO₂ till 2034 vilket är cirka 1,1 gånger
+            mer än Sveriges andel av den nationella koldioxidbudgeten.
+          </Paragraph>
+          <Paragraph>
+            Inkluderar man partiernas mål för kompletterande åtgärder, där kolinlagring i
+            skog och mark och även bio-CCS (lagring av koldioxid från biobränsle) ingår,
+            så sticker fortfarande Miljöpartiet och Vänsterpartiet ut som mest
+            långtgående, men även Liberalerna utmärker sig, med omfattande mål för
+            bio-CCS.
+          </Paragraph>
+          <Paragraph>
+            PM med analysen av partiernas klimatmål i sin helhet finns{' '}
+            <a href="/Klimatkollen_LULUCF_final.pdf">här</a> och en fördjupning om skog
+            och mark finns <a href="/Carbon_budgets-Analysis_final.pdf">här</a>.
           </Paragraph>
         </Container>
       </PageWrapper>
