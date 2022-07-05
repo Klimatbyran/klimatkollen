@@ -33,8 +33,8 @@ const Partier = () => {
   return (
     <>
       <MetaTags
-        title="Klimatkollen — Få koll på Sveriges klimatomställning"
-        description=""
+        title="Klimatkollen – Analys av partiernas klimatmål"
+        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen, Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
       />
       <PageWrapper backgroundColor="black">
         <Container>
