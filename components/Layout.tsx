@@ -126,7 +126,8 @@ export default function Layout({ children }: { children: JSX.Element }) {
           </Link>
           <Tagline>Få koll på Sveriges klimatomställning</Tagline>
         </div>
-        <Nav path={path}>
+        {/* todo: important! before release – comment back nav */}
+        {/* <Nav path={path}>
           <ul>
             <li>
               <Link href="/kommuner">
@@ -147,7 +148,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
               )}
             </li>
           </ul>
-        </Nav>
+        </Nav> */}
       </Header>
       <Main>
         <>
