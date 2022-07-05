@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Paragraph, ParagraphBold } from './Typography'
+import { H3, Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
 import IconGreen from '../public/icons/info-green.svg'
 import { useState } from 'react'
@@ -61,6 +61,15 @@ const InfoSection = styled.div`
   }
 `
 
+const InfoHeading = styled(H3)`
+  font-weight: 200;
+  font-size: inherit;
+`
+
+const InfoParagraph = styled(Paragraph)`
+  margin: 0;
+`
+
 type Props = {
   population: number | null
   budget: number | null
@@ -84,7 +93,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
       {rank && (
         <div className="row">
           <section className="left">
-            <Paragraph>Rankning av utsläppsminskningstakt sedan 2015</Paragraph>
+            <InfoHeading>Rankning av utsläppsminskningstakt sedan 2015</InfoHeading>
             <ParagraphBold>{rank} av 290 kommuner</ParagraphBold>
           </section>
         </div>
@@ -93,7 +102,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
         <>
           <div className="row">
             <section className="left">
-              <Paragraph>Koldioxidbudget</Paragraph>
+              <InfoHeading>Koldioxidbudget</InfoHeading>
               <ParagraphBold>{formatter.format(Math.round(budget))} ton</ParagraphBold>
             </section>
             <section className="right">
@@ -105,11 +114,11 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
           <section>
             {toggleBudget ? (
               <InfoSection>
-                <Paragraph>
+                <InfoParagraph>
                   Mängden koldioxid kvar att släppa ut för att klara Parisavtalets
                   1,5-gradersmål, läs mer{' '}
                   <Link href="/#source-budget-expl">om beräkningen här</Link>.
-                </Paragraph>
+                </InfoParagraph>
               </InfoSection>
             ) : null}
           </section>
@@ -146,7 +155,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
       </section>
       <div className="row">
         <section className="left">
-          <Paragraph>Här styr</Paragraph>
+          <InfoHeading>Här styr</InfoHeading>
           <ParagraphBold>{politicalRuleFormatted}</ParagraphBold>
         </section>
         <section className="right">
@@ -158,7 +167,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
       <section>
         {togglePoliticalRule ? (
           <InfoSection>
-            <Paragraph>
+            <InfoParagraph>
               Uppgift om politiskt styre är hämtad från{' '}
               <a
                 href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
@@ -167,7 +176,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
                 Sveriges Kommuner och Regioner.
               </a>{' '}
               Data uppdaterad januari 2022.
-            </Paragraph>
+            </InfoParagraph>
           </InfoSection>
         ) : null}
       </section>
@@ -175,7 +184,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
         <>
           <div className="row">
             <section className="left">
-              <Paragraph>Antal invånare</Paragraph>
+              <InfoHeading>Antal invånare</InfoHeading>
               <ParagraphBold>{formatter.format(population)}</ParagraphBold>
             </section>
             <section className="right">
@@ -187,7 +196,7 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
           <section>
             {togglePopulation ? (
               <InfoSection>
-                <Paragraph>Uppgift hämtad från Wikimedia.</Paragraph>
+                <InfoParagraph>Uppgift hämtad från Wikimedia.</InfoParagraph>
               </InfoSection>
             ) : null}
           </section>

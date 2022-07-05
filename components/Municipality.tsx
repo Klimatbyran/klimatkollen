@@ -418,7 +418,6 @@ const Municipality = (props: Props) => {
   let scrollY = 0
   if (typeof window !== 'undefined') {
     scrollY = window && window.scrollY
-    console.log(scrollY)
   }
 
   const toggleModal = () => {
@@ -581,11 +580,10 @@ const Municipality = (props: Props) => {
         url={shareUrl}
       />
       <PageWrapper backgroundColor="black">
-        <Back />
+        <Back route={'/kommuner'} />
         <Top>
           <HeaderSection>
             <H1>{municipality.Name}</H1>
-
             {coatOfArmsImage && (
               <CoatOfArmsImage
                 src={coatOfArmsImage}
