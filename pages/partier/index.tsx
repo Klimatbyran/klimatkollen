@@ -39,7 +39,8 @@ const Partier = () => {
       <PageWrapper backgroundColor="black">
         <Container>
           <H2>
-            Analys av riksdagspartiernas klimatmål – sex av åtta missar Parisavtalet
+            Analys av riksdagspartiernas klimatmål – sex av åtta partier missar helt
+            Parisavtalets 1,5-gradersmål
           </H2>
           <Paragraph>
             Inför valet genomför Klimatkollen en granskning av riksdagspartiernas
