@@ -57,7 +57,7 @@ const Partier = () => {
             är nära Parisavtalets 1,5-gradersmål. Ytterligare två partier, Centerpartiet
             och Liberalerna, går längre än Sveriges klimatmål, men når inte lika långt.
             Kristdemokraterna, Moderaterna, Socialdemokraterna och Sverigedemokraterna har
-            mål i linje med det svenska klimatmålet, men är längre ifrån Parisavtalets
+            mål i linje med det svenska klimatmålet, men är längre ifrån Parisavtalets
             1,5-gradersmål.
           </Paragraph>
           <Figure>
