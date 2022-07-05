@@ -4,14 +4,14 @@ export const H1 = styled.h1`
   font-weight: bold;
   font-size: 48px;
   line-height: 1.25;
-  margin: 0;
+  margin: 0 0 16px 0;
 `
 
 export const H2 = styled.h2`
   font-weight: bold;
   font-size: 30px;
   line-height: 1.25;
-  margin: 0;
+  margin: 0 0 8px 0;
 `
 
 export const H3 = styled.h3`
@@ -39,8 +39,8 @@ export const Paragraph = styled.p`
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
-  line-height: 19px;
-  margin: 0;
+  line-height: 1.5;
+  margin: 11.2px 0;
 `
 
 export const ParagraphSmall = styled.p`
