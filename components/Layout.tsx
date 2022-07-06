@@ -126,8 +126,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
           </Link>
           <Tagline>Få koll på Sveriges klimatomställning</Tagline>
         </div>
-        {/* todo: important! before release – comment back nav */}
-        {/* <Nav path={path}>
+        <Nav path={path}>
           <ul>
             <li>
               <Link href="/kommuner">
@@ -138,9 +137,9 @@ export default function Layout({ children }: { children: JSX.Element }) {
               <Link href="/partier">
                 <a
                   href="/partier"
-                  aria-label="Nyhet! Partiernas utsläppsmål"
+                  aria-label="Nyhet! Partiernas klimatmål"
                   onClick={() => setVisibleNotification(false)}>
-                  Partiernas utsläppsmål
+                  Partiernas klimatmål
                 </a>
               </Link>
               {visibleNotification && (
@@ -148,7 +147,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
               )}
             </li>
           </ul>
-        </Nav> */}
+        </Nav>
       </Header>
       <Main>
         <>
