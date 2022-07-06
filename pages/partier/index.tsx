@@ -84,7 +84,9 @@ const Partier = () => {
               <a href="/kommuner">kommunsidorna</a>
             </Link>{' '}
             på Klimatkollen. Läs mer om hur den är beräknad{' '}
-            <a href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">
+            <a
+              href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
+              target="_blank">
               här
             </a>
           </Paragraph>
