@@ -10,7 +10,6 @@ import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
-import VisuallyHidden from '../../components/VisuallyHidden'
 import { devices } from '../../utils/devices'
 
 const Container = styled.section`
@@ -84,7 +83,9 @@ const Partier = () => {
               <a href="/kommuner">kommunsidorna</a>
             </Link>{' '}
             på Klimatkollen. Läs mer om hur den är beräknad{' '}
-            <a href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">
+            <a
+              href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
+              target="_blank">
               här
             </a>
           </Paragraph>
@@ -134,8 +135,14 @@ const Partier = () => {
           </Paragraph>
           <Paragraph>
             PM med analysen av partiernas klimatmål i sin helhet finns{' '}
-            <a href="/Klimatkollen_LULUCF_final.pdf">här</a> och en fördjupning om skog
-            och mark finns <a href="/Carbon_budgets-Analysis_final.pdf">här</a>.
+            <a href="/Carbon_budgets-Analysis_final.pdf" target="_blank">
+              här
+            </a>{' '}
+            och en fördjupning om skog och mark finns{' '}
+            <a href="/Klimatkollen_LULUCF_final.pdf" target="_blank">
+              här
+            </a>
+            .
           </Paragraph>
         </Container>
       </PageWrapper>
