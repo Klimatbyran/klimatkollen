@@ -41,7 +41,7 @@ const Partier = () => {
     <>
       <MetaTags
         title="Klimatkollen - Analys av partiernas klimatmål"
-        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen, Researchers&apos; Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
+        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen, Researchers' Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
       />
       <PageWrapper backgroundColor="black">
         <Container>
@@ -144,12 +144,19 @@ const Partier = () => {
             <Bold>För mer information:</Bold>
           </Paragraph>
           <Paragraph>
-            <Bold>Om projektet:</Bold> Ola Spännar, medgrundare av Klimatkollen, 070-710
-            74 14, hej@klimatkollen.se <br />
+            <Bold>Om projektet:</Bold> Ola Spännar, medgrundare av Klimatkollen,{' '}
+            <a href="tel:070-710 74 14">070-710 74 14</a>,{' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> <br />
             <Bold>Om beräkningarna:</Bold> Madeleine van der Veer, Världsnaturfonden WWF,
-            070-292 44 12, Madeleine.vanderVeer@wwf.se <br />
+            <a href="tel:070-292 44 12">070-292 44 12</a>,{' '}
+            <a href="mailto:Madeleine.vanderVeer@wwf.se">Madeleine.vanderVeer@wwf.se</a>{' '}
+            <br />
             <Bold>Om den kvalitativa analysen:</Bold> Kimberly Nicholas, Researchers&apos;
-            Desk, 076-307 50 37, kimberly.nicholas@LUCSUS.lu.se <br />
+            Desk, <a href="tel:076-307 50 37">076-307 50 37</a>,{' '}
+            <a href="mailto:kimberly.nicholas@LUCSUS.lu.se">
+              kimberly.nicholas@LUCSUS.lu.se
+            </a>{' '}
+            <br />
           </Paragraph>
           <Paragraph>
             <Bold>Om Klimatkollens utsläppsberäkning</Bold>
@@ -218,9 +225,9 @@ const Partier = () => {
             rättviseaspekt.
           </Paragraph>
           <Paragraph>
-            Bakom projektet står forskarnätverket Researchers&apos; Desk, Världsnaturfonden
-            WWF, Våra barns klimat och ClimateView, i samarbete med PwC och
-            Naturskyddsföreningen.
+            Bakom projektet står forskarnätverket Researchers&apos; Desk,
+            Världsnaturfonden WWF, Våra barns klimat och ClimateView, i samarbete med PwC
+            och Naturskyddsföreningen.
           </Paragraph>
           <Paragraph>
             Analysen visar att två partiers klimatmål, Miljöpartiets och Vänsterpartiets,
@@ -269,10 +276,10 @@ const Partier = () => {
           </Paragraph>
           <Paragraph>
             Alla partier utom Moderaterna har valt att svara på enkäten. Svaren har sedan
-            analyserats av forskare från nätverket Researchers&apos; Desk och WWF. Moderaterna
-            är dock med i analysen av klimatmålen, trots att de inte svarade på enkäten,
-            eftersom de tidigare ställt sig bakom Sveriges nuvarande klimatmål och därmed
-            beräknas utifrån det.
+            analyserats av forskare från nätverket Researchers&apos; Desk och WWF.
+            Moderaterna är dock med i analysen av klimatmålen, trots att de inte svarade
+            på enkäten, eftersom de tidigare ställt sig bakom Sveriges nuvarande klimatmål
+            och därmed beräknas utifrån det.
           </Paragraph>
           <Paragraph>
             Kristdemokraternas, Liberalernas, Moderaternas, Socialdemokraternas och
