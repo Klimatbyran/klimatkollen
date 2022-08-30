@@ -24,7 +24,7 @@ const Figure = styled.figure`
     width: 95%;
   }
 `
-const Figcapture = styled.figcaption`
+const Figcaption = styled.figcaption`
   font-style: italic;
 `
 
@@ -85,7 +85,7 @@ const Partier = () => {
                 height={452}
               />
             </Figure>
-            <Figcapture>
+            <Figcaption>
               Figuren visar potentialen för utsläppsminskning eller ökning med partiernas
               politik under nästa mandatperiod, jämfört med en fortsättning av redan
               beslutade åtgärder. Positiva värden (KD och SD) betyder att utsläppen
@@ -93,7 +93,7 @@ const Partier = () => {
               återvätning av torvmarker som brukar särskiljas från andra utsläppsminskande
               åtgärder. Moderaterna svarade inte på enkäten och har därför inte kunnat tas
               med i beräkningarna.
-            </Figcapture>
+            </Figcaption>
           </Paragraph>
           <Paragraph>
             - Det räcker inte med en gradvis förändring för att undvika klimatkatastrof.
