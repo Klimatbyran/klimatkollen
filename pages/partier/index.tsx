@@ -40,8 +40,8 @@ const Partier = () => {
   return (
     <>
       <MetaTags
-        title="Klimatkollen – Analys av partiernas klimatmål"
-        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen, Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
+        title="Klimatkollen - Analys av partiernas klimatmål"
+        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen, Researchers&apos; Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
       />
       <PageWrapper backgroundColor="black">
         <Container>
@@ -51,17 +51,17 @@ const Partier = () => {
           </H2>
           <Paragraph>
             <Bold>
-              27 miljoner ton växthusgaser – så mycket skiljer det mellan partiernas
+              27 miljoner ton växthusgaser - så mycket skiljer det mellan partiernas
               politik i en ny unik utsläppsberäkning för nästa mandatperiod. Fyra partiers
               politik kan i varierande grad bidra till utsläppsminskningar Mp (-21,1), V
               (-7,6), L (-7,1), S (-5,3), C (-4,9), medan två partier riskerar att öka
               utsläppen SD (+3,6), KD (+6,2). M har inte svarat. Analysen är samordnad av
-              Klimatkollen i samarbete med Researchers' Desk, Världsnaturfonden WWF,
+              Klimatkollen i samarbete med Researchers&apos; Desk, Världsnaturfonden WWF,
               ClimateView, Våra barns klimat och Naturskyddsföreningen.
             </Bold>
           </Paragraph>
           <Paragraph>
-            – Att de flesta partierna inte själva utsläppsberäknar sin politik är
+            - Att de flesta partierna inte själva utsläppsberäknar sin politik är
             oacceptabelt och borde vara en självklarhet. Den här beräkningen ger väljarna
             en chans att på riktigt få en uppfattning om hur ambitiös partiernas
             klimatpolitik är, säger Madeleine van der Veer, ansvarig för samhällspolitik,
@@ -75,7 +75,7 @@ const Partier = () => {
             utvecklats av bland annat Klimatpolitiska rådet.
           </Paragraph>
           <Paragraph>
-            <Bold>Tabell: Utsläppsförändring med partiernas politik 2023–2026</Bold>
+            <Bold>Tabell: Utsläppsförändring med partiernas politik 2023-2026</Bold>
             <Figure>
               <Image
                 src="/partier-totala-utslapp.png"
@@ -96,11 +96,11 @@ const Partier = () => {
             </Figcapture>
           </Paragraph>
           <Paragraph>
-            – Det räcker inte med en gradvis förändring för att undvika klimatkatastrof.
+            - Det räcker inte med en gradvis förändring för att undvika klimatkatastrof.
             De flesta partierna vill förbättra dagens system på marginalen, men det som
             krävs enligt vetenskapen är en systemförändring av hela samhället, säger
             Kimberly Nicholas, docent i miljövetenskap vid Lunds Universitet och medlem i
-            Researchers’ Desk.
+            Researchers&apos; Desk.
           </Paragraph>
           <Paragraph>
             Miljöpartiet är det parti i analysen som visar på de största
@@ -115,7 +115,7 @@ const Partier = () => {
             enligt siffror från SCB.
           </Paragraph>
           <Paragraph>
-            – En klimatpolitik utan vare sig budget eller utsläppsberäkningar är som att
+            - En klimatpolitik utan vare sig budget eller utsläppsberäkningar är som att
             gå och handla mat utan varken prislappar eller att veta vad jag har i
             plånboken. Det är alla medborgares rätt att veta vad partiernas politik leder
             till i utsläppsminskningar i närtid. Våra unga förtjänar politiker som tar
@@ -129,14 +129,14 @@ const Partier = () => {
             på Parisavtalets 1,5-gradersmål.
           </Paragraph>
           <Paragraph>
-            – I vår vetenskapliga bedömning av partiernas svar är det tydligt att alla
+            - I vår vetenskapliga bedömning av partiernas svar är det tydligt att alla
             partier bör skärpa sin politik för att ligga i linje med Parisavtalets
             1,5-gradersmål. Alla partier bör kunna presentera vad deras politik leder till
             i utsläppsminskningar, säger Erik Pihl, PhD, sakkunnig på
             Naturskyddsföreningen.
           </Paragraph>
           <Paragraph>
-            – Vi har redan det vi behöver för att göra bra bedömningar av vilka effekter
+            - Vi har redan det vi behöver för att göra bra bedömningar av vilka effekter
             olika klimatåtgärder har. Självklart bör alla partier presentera en politik
             som utsläppsberäknas, säger Tomer Shalit, grundare av ClimateView.
           </Paragraph>
@@ -148,7 +148,7 @@ const Partier = () => {
             74 14, hej@klimatkollen.se <br />
             <Bold>Om beräkningarna:</Bold> Madeleine van der Veer, Världsnaturfonden WWF,
             070-292 44 12, Madeleine.vanderVeer@wwf.se <br />
-            <Bold>Om den kvalitativa analysen:</Bold> Kimberly Nicholas, Researchers’
+            <Bold>Om den kvalitativa analysen:</Bold> Kimberly Nicholas, Researchers&apos;
             Desk, 076-307 50 37, kimberly.nicholas@LUCSUS.lu.se <br />
           </Paragraph>
           <Paragraph>
@@ -168,7 +168,7 @@ const Partier = () => {
             Urvalet av frågor som beräknats i den här analysen har främst gjorts utifrån
             det oberoende verktyget Panorama som utvecklats av ClimateCiew för bland annat
             Klimatpolitiska rådet. De åtgärder som analyserats har valts ut för att visa
-            på potentiell minskning av utsläppen under kommande mandatperiod år 2023–2026.
+            på potentiell minskning av utsläppen under kommande mandatperiod år 2023-2026.
             I en enkät till riksdagspartierna har de fått svara på hur de ställer sig till
             åtgärderna. Enkäten skickades ut till partierna i maj. Moderaterna valde att
             inte delta i analysen. Partierna har även haft möjlighet att ta upp andra
@@ -191,7 +191,7 @@ const Partier = () => {
             Enkäten till partierna omfattade även av icke-beräkningsbara frågor, vilka
             tillsammans med utsläppsberäkningen, legat till grund för en kvalitativ analys
             av partiernas klimatpolitik. Analysen är gjord av forskarnätverket
-            Researchers’ Desk och täcker in åtta olika perspektiv – klimatmål och
+            Researchers&apos; Desk och täcker in åtta olika perspektiv - klimatmål och
             koldioxidbudget, Parisavtalets rättviseaspekt, konsumtion, energi,
             kolinlagring i skog och mark, samhällsekonomi och koldioxidlagring.
           </Paragraph>
@@ -208,7 +208,7 @@ const Partier = () => {
             Världsnaturfonden WWF, Klimatklubben och klimatteknikbolaget ClimateView.
           </Paragraph>
           <H2>
-            Analys av riksdagspartiernas klimatmål – sex av åtta partier missar helt
+            Analys av riksdagspartiernas klimatmål - sex av åtta partier missar helt
             Parisavtalets 1,5-gradersmål
           </H2>
           <Paragraph>
@@ -218,7 +218,7 @@ const Partier = () => {
             rättviseaspekt.
           </Paragraph>
           <Paragraph>
-            Bakom projektet står forskarnätverket Researchers’ Desk, Världsnaturfonden
+            Bakom projektet står forskarnätverket Researchers&apos; Desk, Världsnaturfonden
             WWF, Våra barns klimat och ClimateView, i samarbete med PwC och
             Naturskyddsföreningen.
           </Paragraph>
@@ -269,7 +269,7 @@ const Partier = () => {
           </Paragraph>
           <Paragraph>
             Alla partier utom Moderaterna har valt att svara på enkäten. Svaren har sedan
-            analyserats av forskare från nätverket Researchers’ Desk och WWF. Moderaterna
+            analyserats av forskare från nätverket Researchers&apos; Desk och WWF. Moderaterna
             är dock med i analysen av klimatmålen, trots att de inte svarade på enkäten,
             eftersom de tidigare ställt sig bakom Sveriges nuvarande klimatmål och därmed
             beräknas utifrån det.
