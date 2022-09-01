@@ -46,169 +46,89 @@ const Partier = () => {
           </H2>
           <Paragraph>
             <Bold>
-              27 miljoner ton växthusgaser - så mycket skiljer det mellan partiernas
-              politik i en ny unik utsläppsberäkning för nästa mandatperiod. Fyra partiers
-              politik kan i varierande grad bidra till utsläppsminskningar Mp (-21,1), V
-              (-7,6), L (-7,1), S (-5,3), C (-4,9), medan två partier riskerar att öka
-              utsläppen SD (+3,6), KD (+6,2). M har inte svarat. Analysen är samordnad av
-              Klimatkollen i samarbete med Researchers&apos; Desk, Världsnaturfonden WWF,
-              ClimateView, Våra barns klimat och Naturskyddsföreningen.
+              Det skiljer 30 miljoner ton växthusgaser mellan partiernas klimatåtgärder
+              för nästa mandatperiod, vilket motsvarar mer än hälften av Sveriges årliga
+              utsläpp. Fem partier bidrar i varierande grad till utsläppsminskningar (Mp,
+              V, L, S och C) medan två partiers åtgärder (SD och KD) ökar utsläppen. M har
+              inte svarat.
             </Bold>
           </Paragraph>
           <Paragraph>
-            - Att de flesta partierna inte själva utsläppsberäknar sin politik är
-            oacceptabelt och borde vara en självklarhet. Den här beräkningen ger väljarna
-            en chans att på riktigt få en uppfattning om hur ambitiös partiernas
-            klimatpolitik är, säger Madeleine van der Veer, ansvarig för samhällspolitik,
-            Världsnaturfonden WWF
+            <Bold>
+              Det visar en unik analys av partiernas klimatpolitik som samordnats av
+              Klimatkollen i samarbete med Researchers&apos; Desk, Världsnaturfonden WWF,
+              ClimateView, Våra barns klimat, Naturskyddsföreningen och PwC.
+            </Bold>
           </Paragraph>
           <Paragraph>
-            Beräkningen är baserad på partiernas egna svar på frågor om åtgärder som både
-            är möjliga att genomföra och ge effekt redan under nästa mandatperiod, såsom
-            energiskatt, reduktionsplikt och Klimatklivet. Svaren har sedan analyserats av
-            forskare och experter med stöd av det oberoende verktyget Panorama som
-            utvecklats av bland annat Klimatpolitiska rådet.
+            Beräkningen är baserad på en enkät där riksdagspartierna svarat på frågor om
+            åtgärder som är möjliga att både genomföra och ge effekt redan under nästa
+            mandatperiod, såsom energiskatt, reduktionsplikt och Klimatklivet. Beräkningar
+            har gjorts med stöd av det oberoende verktyget Panorama som utvecklats av
+            bland andra Klimatpolitiska rådet och ClimateView.
           </Paragraph>
           <Paragraph>
-            <Bold>Tabell: Utsläppsförändring med partiernas politik 2023-2026</Bold>
-            <Figure>
-              <Image
-                src="/partier-totala-utslapp.png"
-                alt=""
-                layout="responsive"
-                width={936}
-                height={452}
-              />
-            </Figure>
-            <Figcaption>
-              Figuren visar potentialen för utsläppsminskning eller ökning med partiernas
-              politik under nästa mandatperiod, jämfört med en fortsättning av redan
-              beslutade åtgärder. Positiva värden (KD och SD) betyder att utsläppen
-              riskerar att öka under mandatperioden. Streckad area avser effekten av
-              återvätning av torvmarker som brukar särskiljas från andra utsläppsminskande
-              åtgärder. Moderaterna svarade inte på enkäten och har därför inte kunnat tas
-              med i beräkningarna.
-            </Figcaption>
+            <Bold>
+              Utsläppsförändring med partiernas politik mandatperioden 2023-2026
+            </Bold>
+            <Image
+              src="/partier-totala-utslapp.png"
+              alt="Utsläppsförändring med partiernas politik mandatperioden 2023-2026"
+              layout="responsive"
+              width={600}
+              height={600}
+            />
           </Paragraph>
           <Paragraph>
-            - Det räcker inte med en gradvis förändring för att undvika klimatkatastrof.
-            De flesta partierna vill förbättra dagens system på marginalen, men det som
-            krävs enligt vetenskapen är en systemförändring av hela samhället, säger
-            Kimberly Nicholas, docent i miljövetenskap vid Lunds Universitet och medlem i
-            Researchers&apos; Desk.
+            Beräkningen anger sammanlagda utsläppsförändringar under mandatperioden
+            2023-2026 med respektive partis politik jämfört med status quo. Miljöpartiet
+            visar de största utsläppsminskningarna under mandatperioden (24,2 miljoner
+            ton). Därefter kommer Vänsterpartiet (7,6 miljoner ton), Liberalerna (7,1
+            miljoner ton), Socialdemokraterna (5,3 miljoner ton) och Centerpartiet (4,9
+            miljoner ton). Sverigedemokraterna och Kristdemokraterna visar istället
+            utsläppsökningar (3,6 respektive 6,2 miljoner ton). Skillnaden mellan partiet
+            i botten (KD) och i toppen (MP) är 30 miljoner ton växthusgaser, vilket
+            motsvarar mer än hälften av Sveriges årliga utsläpp.
           </Paragraph>
           <Paragraph>
-            Miljöpartiet är det parti i analysen som visar på de största
-            utsläppsminskningarna under mandatperioden (21,1 miljoner ton). Därefter
-            kommer Vänsterpartiet (7,6 miljoner ton), Liberalerna (7,1 miljoner ton),
-            Socialdemokraterna (5,3 miljoner ton) och Centerpartiet (4,9 miljoner ton).
-            Kristdemokraterna och Sverigedemokraterna visade istället på utsläppsökningar
-            (6,2 miljoner ton och 3,6 miljoner ton). Skillnaden mellan partiet i botten
-            (KD) och det i toppen (MP) är 27 miljoner ton växthusgaser, vilket motsvarar
-            mer än hälften av Sveriges årliga utsläpp. 2021 släppte Sverige ut 48 miljoner
-            ton växthusgaser, vilket var en ökning med fyra procent jämfört med 2020,
-            enligt siffror från SCB.
-          </Paragraph>
-          <Paragraph>
-            - En klimatpolitik utan vare sig budget eller utsläppsberäkningar är som att
-            gå och handla mat utan varken prislappar eller att veta vad jag har i
-            plånboken. Det är alla medborgares rätt att veta vad partiernas politik leder
-            till i utsläppsminskningar i närtid. Våra unga förtjänar politiker som tar
-            klimatpolitiken på allvar, säger Frida Berry Eklund, talesperson för Våra
-            barns klimat.
-          </Paragraph>
-          <Paragraph>
-            Beräkningarna kompletterar den analys av partiernas klimatmål som
-            presenterades i Almedalen i juli i år. Den visade att endast två av riksdagens
-            åtta partier (MP och V) står bakom klimatmål som är i närheten av att leverera
-            på Parisavtalets 1,5-gradersmål.
-          </Paragraph>
-          <Paragraph>
-            - I vår vetenskapliga bedömning av partiernas svar är det tydligt att alla
-            partier bör skärpa sin politik för att ligga i linje med Parisavtalets
-            1,5-gradersmål. Alla partier bör kunna presentera vad deras politik leder till
-            i utsläppsminskningar, säger Erik Pihl, PhD, sakkunnig på
-            Naturskyddsföreningen.
-          </Paragraph>
-          <Paragraph>
-            - Vi har redan det vi behöver för att göra bra bedömningar av vilka effekter
-            olika klimatåtgärder har. Självklart bör alla partier presentera en politik
-            som utsläppsberäknas, säger Tomer Shalit, grundare av ClimateView.
-          </Paragraph>
-          <Paragraph>
-            <Bold>För mer information:</Bold>
-          </Paragraph>
-          <Paragraph>
-            <Bold>Om projektet:</Bold> Ola Spännar, medgrundare av Klimatkollen,{' '}
-            <a href="tel:070-710 74 14">070-710 74 14</a>,{' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> <br />
-            <Bold>Om beräkningarna:</Bold> Madeleine van der Veer, Världsnaturfonden WWF,
-            <a href="tel:070-292 44 12">070-292 44 12</a>,{' '}
-            <a href="mailto:Madeleine.vanderVeer@wwf.se">Madeleine.vanderVeer@wwf.se</a>{' '}
-            <br />
-            <Bold>Om den kvalitativa analysen:</Bold> Kimberly Nicholas, Researchers&apos;
-            Desk, <a href="tel:076-307 50 37">076-307 50 37</a>,{' '}
-            <a href="mailto:kimberly.nicholas@LUCSUS.lu.se">
-              kimberly.nicholas@LUCSUS.lu.se
-            </a>{' '}
-            <br />
-          </Paragraph>
-          <Paragraph>
-            <Bold>Om Klimatkollens utsläppsberäkning</Bold>
-          </Paragraph>
-          <Paragraph>
-            Partigranskningen har samordnats av initiativet Klimatkollen, vars syfte är
-            att tillgängliggöra fakta om klimatomställningen och verka för minskade
-            klimatutsläpp i linje med Parisavtalet. Partigranskningen består av en
-            kvantitativ analys (LÄNK HÄR) och en kvalitativ utsläppsberäkning (LÄNK HÄR)
-            av riksdagspartiernas svar på en enkät som skickades ut i maj i år.
-          </Paragraph>
-          <Paragraph>
-            <Bold>Om den kvantitativa utsläppsberäkningen</Bold>
-          </Paragraph>
-          <Paragraph>
-            Urvalet av frågor som beräknats i den här analysen har främst gjorts utifrån
-            det oberoende verktyget Panorama som utvecklats av ClimateCiew för bland annat
-            Klimatpolitiska rådet. De åtgärder som analyserats har valts ut för att visa
-            på potentiell minskning av utsläppen under kommande mandatperiod år 2023-2026.
-            I en enkät till riksdagspartierna har de fått svara på hur de ställer sig till
-            åtgärderna. Enkäten skickades ut till partierna i maj. Moderaterna valde att
-            inte delta i analysen. Partierna har även haft möjlighet att ta upp andra
-            åtgärder som kan utsläppsberäknas. Baserat på svaren har totalt 13 åtgärder
+            Urvalet av frågor som beräknats har främst gjorts utifrån Panorama. De
+            åtgärder som analyserats har valts ut för att visa potentiell minskning av
+            utsläppen under kommande mandatperiod 2023-2026. Enkäten skickades ut till
+            partierna i maj. Partierna har även haft möjlighet att ta upp andra åtgärder
+            som kan utsläppsberäknas. Baserat på svaren har totalt 13 åtgärder
             utsläppsberäknats av forskare och experter.
           </Paragraph>
           <Paragraph>
-            <Bold>Åtgärderna som har beräknats</Bold>
+            Åtgärderna som beräknats är koldioxidskatt och energiskatt, (nivå och
+            undantag), bonus-malus, reduktionsplikt, kilometerskatt, Klimatklivet, CCS i
+            cementsektorn, energieffektivisering av flerbostadshus, flygskatt,
+            konsumtionsskatt på livsmedel och återvätning av torvmarker.
+          </Paragraph>
+          <Paragraph>Hela rapporten med utsläppsberäkningen finns <a href="/utslappsberakningar-hela-reporten.pdf">här</a>.</Paragraph>
+          <Paragraph>
+            <Bold>Kvalitativ bedömning av Researchers&apos; Desk</Bold>
           </Paragraph>
           <Paragraph>
-            Koldioxidskatt och energiskatt, (nivå och undantag), bonus-malus,
-            reduktionsplikt, kilometerskatt, Klimatklivet, CCS i cementsektorn,
-            energieffektivisering av flerbostadshus, flygskatt, konsumtionsskatt på
-            livsmedel, återvätning av torvmarker
+            Utöver utsläppsberäkningen har forskare i nätverket Researchers&apos; Desk
+            gjort en egen kvalitativ analys av enkätsvaren och partiernas klimatpolitik
+            som omfattar åtta olika perspektiv - övergripande resonemang, klimatmål och
+            koldioxidbudget, rättviseaspekter, omställningspotential, energi, kolinlagring
+            i skog och mark, samhällsekonomi och koldioxidlagring. Partiernas styrkor och
+            svagheter har analyserats utifrån vad som krävs för att hantera klimatkrisen i
+            enlighet med forskningsläget.
           </Paragraph>
           <Paragraph>
-            <Bold>Om den kvalitativa analysen</Bold>
+            Några resultat har överraskat forskarna, som att Socialdemokraterna lämnat
+            svar som upprätthåller status quo snarare än att påskynda omställningen och
+            att Kristdemokraterna och Sverigedemokraterna lägger ett stort klimatansvar på
+            EU samtidigt som de avvisar EU:s politik för skog och mark. Liberalerna och
+            Centerpartiet förlitar sig i hög grad på ännu ej utbyggda teknologier och
+            lägger större vikt vid marknadsbaserade styrmedel, som koldioxidskatt, än vad
+            det finns vetenskapligt stöd för. Vänsterpartiet och Miljöpartiet ser
+            betydelsen av livsstilsförändringar, men Vänsterpartiet skjuter omställningen
+            på framtiden.
           </Paragraph>
-          <Paragraph>
-            Enkäten till partierna omfattade även av icke-beräkningsbara frågor, vilka
-            tillsammans med utsläppsberäkningen, legat till grund för en kvalitativ analys
-            av partiernas klimatpolitik. Analysen är gjord av forskarnätverket
-            Researchers&apos; Desk och täcker in åtta olika perspektiv - klimatmål och
-            koldioxidbudget, Parisavtalets rättviseaspekt, konsumtion, energi,
-            kolinlagring i skog och mark, samhällsekonomi och koldioxidlagring.
-          </Paragraph>
-          <Paragraph>
-            <Bold>Om Klimatkollen.se</Bold>
-          </Paragraph>
-          <Paragraph>
-            Klimatkollen.se är ett nytt digitalt verktyg som presenterar klimatfakta och
-            utsläppsdata för Sverige och alla kommuner. Syftet är att visualisera fakta på
-            ett enkelt och tilltalande sätt, för att på det sättet bidra till en mer
-            faktabaserad klimatdebatt och åtgärder som minskar utsläppen i linje med
-            Parisavtalet. Klimatkollen.se är utvecklad av Klimatbyrån och Våra barns
-            klimat i samarbete med bland andra digitaliseringsföretaget Iteam,
-            Världsnaturfonden WWF, Klimatklubben och klimatteknikbolaget ClimateView.
-          </Paragraph>
+          <Paragraph>Researchers&apos; Desks kvalitativa analys finns <a href="/utslappsberakningar-kvalitativ-analys.pdf">här</a></Paragraph>
         </Container>
       </PageWrapper>
     </>
