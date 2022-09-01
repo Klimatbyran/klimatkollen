@@ -104,7 +104,7 @@ const Partier = () => {
             cementsektorn, energieffektivisering av flerbostadshus, flygskatt,
             konsumtionsskatt på livsmedel och återvätning av torvmarker.
           </Paragraph>
-          <Paragraph>Hela rapporten med utsläppsberäkningen finns <a href="/utslappsberakningar-hela-reporten.pdf">här</a>.</Paragraph>
+          <Paragraph>Hela rapporten med utsläppsberäkningen finns <a href="/utslappsberakning_klimatkollen.pdf">här</a>.</Paragraph>
           <Paragraph>
             <Bold>Kvalitativ bedömning av Researchers&apos; Desk</Bold>
           </Paragraph>
@@ -128,7 +128,7 @@ const Partier = () => {
             betydelsen av livsstilsförändringar, men Vänsterpartiet skjuter omställningen
             på framtiden.
           </Paragraph>
-          <Paragraph>Researchers&apos; Desks kvalitativa analys finns <a href="/utslappsberakningar-kvalitativ-analys.pdf">här</a></Paragraph>
+          <Paragraph>Researchers&apos; Desks kvalitativa analys finns <a href="/utslappsberakningar_kvalitativ_analys.pdf">här</a></Paragraph>
         </Container>
       </PageWrapper>
     </>
