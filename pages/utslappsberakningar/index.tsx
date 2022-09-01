@@ -41,7 +41,7 @@ const Partier = () => {
       <PageWrapper backgroundColor="black">
         <Container>
           <H2>
-            Unik utsläppsberäkning av partiernas politik: 27 miljoner ton klimatutsläpp
+            Unik utsläppsberäkning av partiernas politik: 30 miljoner ton klimatutsläpp
             skiljer
           </H2>
           <Paragraph>
@@ -68,9 +68,6 @@ const Partier = () => {
             bland andra Klimatpolitiska rådet och ClimateView.
           </Paragraph>
           <Paragraph>
-            <Bold>
-              Utsläppsförändring med partiernas politik mandatperioden 2023-2026
-            </Bold>
             <Image
               src="/partier-totala-utslapp.png"
               alt="Utsläppsförändring med partiernas politik mandatperioden 2023-2026"
@@ -104,7 +101,12 @@ const Partier = () => {
             cementsektorn, energieffektivisering av flerbostadshus, flygskatt,
             konsumtionsskatt på livsmedel och återvätning av torvmarker.
           </Paragraph>
-          <Paragraph>Hela rapporten med utsläppsberäkningen finns <a href="/utslappsberakning_klimatkollen.pdf">här</a>.</Paragraph>
+          <Paragraph>
+            <a href="/utslappsberakning_klimatkollen.pdf">
+              Läs hela rapporten med utsläppsberäkningar
+            </a>
+            .
+          </Paragraph>
           <Paragraph>
             <Bold>Kvalitativ bedömning av Researchers&apos; Desk</Bold>
           </Paragraph>
@@ -122,13 +124,16 @@ const Partier = () => {
             svar som upprätthåller status quo snarare än att påskynda omställningen och
             att Kristdemokraterna och Sverigedemokraterna lägger ett stort klimatansvar på
             EU samtidigt som de avvisar EU:s politik för skog och mark. Liberalerna och
-            Centerpartiet förlitar sig i hög grad på ännu ej utbyggda teknologier och
-            lägger större vikt vid marknadsbaserade styrmedel, som koldioxidskatt, än vad
-            det finns vetenskapligt stöd för. Vänsterpartiet och Miljöpartiet ser
-            betydelsen av livsstilsförändringar, men Vänsterpartiet skjuter omställningen
-            på framtiden.
+            Centerpartiet förlitar sig i hög grad på ännu ej utbyggda teknologier.
+            Vänsterpartiet och Miljöpartiet ser betydelsen av livsstilsförändringar, men
+            Vänsterpartiet skjuter omställningen på framtiden.
           </Paragraph>
-          <Paragraph>Researchers&apos; Desks kvalitativa analys finns <a href="/utslappsberakningar_kvalitativ_analys.pdf">här</a></Paragraph>
+          <Paragraph>
+            <a href="/utslappsberakningar_kvalitativ_analys.pdf">
+              Läs Researchers&apos; kvalitativa analys
+            </a>
+            .
+          </Paragraph>
         </Container>
       </PageWrapper>
     </>
