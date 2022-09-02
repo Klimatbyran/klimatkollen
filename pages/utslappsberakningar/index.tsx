@@ -4,7 +4,7 @@ import { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import MetaTags from '../../components/MetaTags'
-import { H2, Paragraph } from '../../components/Typography'
+import { H2, H3, Paragraph } from '../../components/Typography'
 import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
@@ -108,9 +108,7 @@ const Partier = () => {
             </a>
             .
           </Paragraph>
-          <Paragraph>
-            <Bold>Kvalitativ bedömning av Researchers&apos; Desk</Bold>
-          </Paragraph>
+          <H3>Kvalitativ bedömning av Researchers&apos; Desk</H3>
           <Paragraph>
             Utöver utsläppsberäkningen har forskare i nätverket Researchers&apos; Desk
             gjort en egen kvalitativ analys av enkätsvaren och partiernas klimatpolitik
