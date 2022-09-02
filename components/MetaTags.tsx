@@ -18,7 +18,7 @@ export default function MetaTags({ title, description, imageUrl, url }: Props) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
 
-      {/* <meta property="twitter:card" content="summary_large_image" /> */}
+      <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
 
