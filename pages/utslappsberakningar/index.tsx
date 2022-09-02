@@ -2,29 +2,17 @@ import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
-
 import MetaTags from '../../components/MetaTags'
 import { H2, H3, Paragraph } from '../../components/Typography'
 import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
-import { devices } from '../../utils/devices'
 
 const Container = styled.section`
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
-`
-
-const Figure = styled.figure`
-  margin: 22.4px 2px;
-  @media only screen and (${devices.tablet}) {
-    width: 95%;
-  }
-`
-const Figcaption = styled.figcaption`
-  font-style: italic;
 `
 
 const Bold = styled.span`
@@ -42,16 +30,16 @@ const Partier = () => {
       <PageWrapper backgroundColor="black">
         <Container>
           <H2>
-            Unik utsläppsberäkning av partiernas politik: 30 miljoner ton klimatutsläpp
+            Unik utsläppsberäkning av partiernas politik: 56 miljoner ton klimatutsläpp
             skiljer
           </H2>
           <Paragraph>
             <Bold>
-              Det skiljer 30 miljoner ton växthusgaser mellan partiernas klimatåtgärder
-              för nästa mandatperiod, vilket motsvarar mer än hälften av Sveriges årliga
-              utsläpp. Fem partier bidrar i varierande grad till utsläppsminskningar (Mp,
-              V, L, S och C) medan två partiers åtgärder (SD och KD) ökar utsläppen. M har
-              inte svarat.
+              Det skiljer 56 miljoner ton växthusgaser mellan partiernas klimatåtgärder
+              för nästa mandatperiod, vilket motsvarar mer än Sveriges årliga utsläpp. Fem
+              partier bidrar i varierande grad till utsläppsminskningar (Mp, V, L, S och
+              C) medan två partiers åtgärder (SD och KD) ökar utsläppen. M har inte
+              svarat.
             </Bold>
           </Paragraph>
           <Paragraph>
@@ -80,13 +68,13 @@ const Partier = () => {
           <Paragraph>
             Beräkningen anger sammanlagda utsläppsförändringar under mandatperioden
             2023-2026 med respektive partis politik jämfört med status quo. Miljöpartiet
-            visar de största utsläppsminskningarna under mandatperioden (24,2 miljoner
-            ton). Därefter kommer Vänsterpartiet (7,6 miljoner ton), Liberalerna (7,1
-            miljoner ton), Socialdemokraterna (5,3 miljoner ton) och Centerpartiet (4,9
+            visar de största utsläppsminskningarna under mandatperioden (-30,0 miljoner
+            ton). Därefter kommer Liberalerna (-7,8 miljoner ton), Centerpartiet (-5,6
+            miljoner ton), Socialdemokraterna (-5,3 miljoner ton) och Vänsterpartiet (-1,1
             miljoner ton). Sverigedemokraterna och Kristdemokraterna visar istället
-            utsläppsökningar (3,6 respektive 6,2 miljoner ton). Skillnaden mellan partiet
-            i botten (KD) och i toppen (MP) är 30 miljoner ton växthusgaser, vilket
-            motsvarar mer än hälften av Sveriges årliga utsläpp.
+            utsläppsökningar (+23,4 respektive +25,5 miljoner ton). Skillnaden mellan
+            partiet i botten (KD) och i toppen (MP) är 56 miljoner ton växthusgaser,
+            vilket motsvarar mer än Sveriges årliga utsläpp.
           </Paragraph>
           <Paragraph>
             Urvalet av frågor som beräknats har främst gjorts utifrån Panorama. De
