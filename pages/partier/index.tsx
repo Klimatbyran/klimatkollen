@@ -31,7 +31,7 @@ const Partier = () => {
       <MetaTags
         title="Klimatkollen - Analys av partiernas klimatmål"
         description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen, Researchers' Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
-        imageUrl="https://klimatkollen-git-feat-partier-totala-utslapp-klimatbyran.vercel.app/image1-31.png"
+        imageUrl="/image1-31.png"
       />
       <PageWrapper backgroundColor="black">
         <Container>
