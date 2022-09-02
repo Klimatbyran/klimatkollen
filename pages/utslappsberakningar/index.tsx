@@ -26,7 +26,6 @@ const Partier = () => {
         title="Klimatkollen - Utsläppsberäkningar för partierna"
         description="Utsläppsberäkningar för partierna, gjord av Klimatkollen, Researchers' Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
         imageUrl="/partier-totala-utslapp.png"
-        url="/partier-totala-utslapp.png"
       />
       <PageWrapper backgroundColor="black">
         <Container>
