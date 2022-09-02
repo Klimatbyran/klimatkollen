@@ -26,6 +26,7 @@ const Partier = () => {
         title="Klimatkollen - Utsläppsberäkningar för partierna"
         description="Utsläppsberäkningar för partierna, gjord av Klimatkollen, Researchers' Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
         imageUrl="/partier-totala-utslapp.png"
+        url="/partier-totala-utslapp.png"
       />
       <PageWrapper backgroundColor="black">
         <Container>
@@ -91,7 +92,7 @@ const Partier = () => {
             konsumtionsskatt på livsmedel och återvätning av torvmarker.
           </Paragraph>
           <Paragraph>
-            <a href="/utslappsberakning_klimatkollen.pdf">
+            <a href="/utslappsberakning_klimatkollen.pdf" target={'_blank'}>
               Läs hela rapporten med utsläppsberäkningar
             </a>
             .
@@ -116,7 +117,7 @@ const Partier = () => {
             Vänsterpartiet skjuter omställningen på framtiden.
           </Paragraph>
           <Paragraph>
-            <a href="/utslappsberakningar_kvalitativ_analys.pdf">
+            <a href="/utslappsberakningar_kvalitativ_analys.pdf" target={'_blank'}>
               Läs Researchers&apos; kvalitativa analys
             </a>
             .
