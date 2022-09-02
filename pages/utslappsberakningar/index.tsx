@@ -25,7 +25,7 @@ const Partier = () => {
       <MetaTags
         title="Klimatkollen - Utsläppsberäkningar för partierna"
         description="Utsläppsberäkningar för partierna, gjord av Klimatkollen, Researchers' Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
-        imageUrl="https://klimatkollen-git-feat-partier-totala-utslapp-klimatbyran.vercel.app/partier-totala-utslapp.png"
+        imageUrl="/partier-totala-utslapp.png"
       />
       <PageWrapper backgroundColor="black">
         <Container>
