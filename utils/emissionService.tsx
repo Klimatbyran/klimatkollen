@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend } from './types'
 import axios from 'axios'
+import * as fs from 'fs'
+import * as path from 'path'
 
 const CLIMATE_VIEW_EMISSION_BASE_URL =
   'https://climateview.azure-api.net/climatedata/nationalemissions/se'
@@ -9,11 +11,77 @@ const CLIMATE_VIEW_EMISSION_URL =
 const CLIMATE_VIEW_BUDGET_URL =
   'https://climateview.azure-api.net/climatedata/nationalbudgets/se/kommun/'
 
+const emissionJsonPath = path.resolve('./resources/emission-data.json');
+const emissionFileContent = fs.readFileSync(emissionJsonPath, { encoding: 'utf-8' })
+
+interface JsonObj {
+  kommun: string
+}
+
+let jsonList: JsonObj[] = JSON.parse(emissionFileContent)
+
 export class EmissionService {
   municipalities: Array<Municipality>
+  jsonData: Array<Municipality>
 
   constructor() {
     this.municipalities = []
+    this.jsonData = jsonList.map((jsonData: any) => {
+      var emissions = new Array<EmissionPerYear>();
+      Object.entries(jsonData.emissions).forEach(([year, emission]) => {
+        let emissionByYear = {
+          Year: year,
+          CO2Equivalent: emission
+        } as unknown as EmissionPerYear
+        emissions.push(emissionByYear)
+      });
+      const emission = {
+        EmissionPerYear: emissions,
+        LargestEmissionSectors: new Array<EmissionSector>()
+      } as Emission
+      emission.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(
+        emission.EmissionPerYear,
+        5,
+      )
+      const trend = {
+        TrendPerYear: Object.entries(jsonData.trend).map(
+          ([year, emission]) => {
+            return {
+              Year: year,
+              CO2Equivalent: emission,
+            }
+          }
+        )
+      } as unknown as Trend
+      const budget = {
+        PercentageOfNationalBudget: 1,
+        CO2Equivalent: jsonData.budget,
+        BudgetPerYear: Object.entries(jsonData.emissionBudget).map(
+          ([year, emission]) => {
+            return {
+              Year: year,
+              CO2Equivalent: emission,
+            }
+          }
+        )
+      } as unknown as Budget
+      let municipality = {
+        Name: jsonData.kommun,
+        HistoricalEmission: emission,
+        EmissionTrend: trend,
+        Budget: budget
+      } as Municipality
+      return municipality
+    })
+    .sort((a: Municipality, b: Municipality) => {
+      return (
+        a.HistoricalEmission.EmissionLevelChangeAverage -
+        b.HistoricalEmission.EmissionLevelChangeAverage
+      )
+    })
+    this.jsonData.forEach((municipality: Municipality, index: number) => {
+      municipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
+    })
   }
 
   private getEmissionLevelChangeAverage(
@@ -79,7 +147,7 @@ export class EmissionService {
               municipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
             })
 
-            resolve(this.municipalities)
+            resolve(this.jsonData)
           }
         })
         .catch((error) => {
@@ -227,8 +295,10 @@ export class EmissionService {
                     TrendPerYear: [],
                   }
             } as Municipality
-            
-            resolve(municipality)
+            const mun = this.jsonData.filter(kommun => kommun.Name.toLowerCase() === name)[0]
+            console.log(municipality)
+            console.log(mun)
+            resolve(mun)
           }
         })
         .catch((error) => {
