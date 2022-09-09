@@ -29,6 +29,7 @@ export class EmissionService {
         5,
       )
       const trend = {
+        FutureCO2Emission: jsonData.futureEmission,
         TrendPerYear: Object.entries(jsonData.trend).map(
           ([year, emission]) => {
             return {
