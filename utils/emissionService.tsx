@@ -30,7 +30,7 @@ export class EmissionService {
       var emissions = new Array<EmissionPerYear>();
       Object.entries(jsonData.emissions).forEach(([year, emission]) => {
         let emissionByYear = {
-          Year: year,
+          Year: Number(year),
           CO2Equivalent: emission
         } as unknown as EmissionPerYear
         emissions.push(emissionByYear)
@@ -47,7 +47,7 @@ export class EmissionService {
         TrendPerYear: Object.entries(jsonData.trend).map(
           ([year, emission]) => {
             return {
-              Year: year,
+              Year: Number(year),
               CO2Equivalent: emission,
             }
           }
@@ -59,7 +59,7 @@ export class EmissionService {
         BudgetPerYear: Object.entries(jsonData.emissionBudget).map(
           ([year, emission]) => {
             return {
-              Year: year,
+              Year: Number(year),
               CO2Equivalent: emission,
             }
           }
