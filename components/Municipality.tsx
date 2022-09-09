@@ -491,9 +491,7 @@ const Municipality = (props: Props) => {
   const totalBudget = budgetedEmissions
     .filter((c) => c.Year >= 2020 && c.Year <= 2050)
     .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
-  const totalTrend = trendingEmissions
-    .filter((c) => c.Year >= 2020 && c.Year <= 2050)
-    .reduce((acc, cur) => acc + cur.CO2Equivalent, 0)
+  const totalTrend = municipality.EmissionTrend.FutureCO2Emission
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
