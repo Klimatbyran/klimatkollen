@@ -152,7 +152,7 @@ const Partier = () => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const municipalities = await new EmissionService().getMunicipalities()
+  const municipalities = new EmissionService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
 
   res.setHeader(
