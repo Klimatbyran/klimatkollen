@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 #Budget i ton från och med 2020
-budget = 170000000+40948459*50.81/46.29+40948459*50.81/46.29*1.05
+budget = 170000000#+40948459*50.81/46.29+40948459*50.81/46.29*1.05
 
 df_raw = pd.read_excel('https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2') #Download data from SMHI and load it in to a pandas dataframe
 
