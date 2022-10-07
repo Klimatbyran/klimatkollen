@@ -87,5 +87,5 @@ for i in range(len(df_cem)):
  'Linjär Utsläpp' : df_cem.iloc[i]['Linear Emission']                          
                           })
 
-with open('emission_budget_data.json', 'w', encoding='utf8') as json_file: #save dataframe as json file
+with open('emission-data.json', 'w', encoding='utf8') as json_file: #save dataframe as json file
     json.dump(temp, json_file, ensure_ascii=False)
