@@ -83,7 +83,7 @@ for i in range(len(df_cem)):
  'emissions':{'1990':df_cem.iloc[i][1990],'2000':df_cem.iloc[i][2000],'2005':df_cem.iloc[i][2005],'2010':df_cem.iloc[i][2010],'2015':df_cem.iloc[i][2015],'2016':df_cem.iloc[i][2016],'2017':df_cem.iloc[i][2017],'2018':df_cem.iloc[i][2018],'2019':df_cem.iloc[i][2019],'2020':df_cem.iloc[i][2020]},
  'budget':df_cem.iloc[i]['Budget'],
  'Exponentiell Bana': df_cem.iloc[i]['Paris Path'],
- 'Linjär Bana' : df_cem.iloc[i]['Linear Path'],
+ 'trend':df_cem.iloc[i]['Linear Path'],
  'Linjär Utsläpp' : df_cem.iloc[i]['Linear Emission']                          
                           })
 
