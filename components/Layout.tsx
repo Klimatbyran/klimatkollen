@@ -149,9 +149,9 @@ export default function Layout({ children }: { children: JSX.Element }) {
               </Link>
             </li>
             <li>
-              <Link href="/partier">
+              <Link href="/utslappsberakningar">
                 <a
-                  href="/partier"
+                  href="/utslappsberakningar"
                   aria-label="Nyhet! Partiernas utsläppsberäkningar"
                   onClick={() => setVisibleNotification(false)}>
                   Utsläppsberäkningar
