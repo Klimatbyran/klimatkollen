@@ -73,6 +73,12 @@ const Nav = styled.nav<NavProps>`
             path === '/partier' ? theme.main : theme.white};
         }
       }
+      & :nth-of-type(3) {
+        & a {
+          background-color: ${({ theme, path }) =>
+            path === '/utslappsberakningar' ? theme.main : theme.white};
+        }
+      }
       & a {
         padding: 0.5rem 1rem;
         border-radius: 4px;
@@ -137,9 +143,18 @@ export default function Layout({ children }: { children: JSX.Element }) {
               <Link href="/partier">
                 <a
                   href="/partier"
-                  aria-label="Nyhet! Partiernas klimatmål"
-                  onClick={() => setVisibleNotification(false)}>
+                  aria-label="Nyhet! Partiernas klimatmål">
                   Partiernas klimatmål
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/utslappsberakningar">
+                <a
+                  href="/utslappsberakningar"
+                  aria-label="Nyhet! Partiernas utsläppsberäkningar"
+                  onClick={() => setVisibleNotification(false)}>
+                  Utsläppsberäkningar
                 </a>
               </Link>
               {visibleNotification && (
