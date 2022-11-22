@@ -69,3 +69,34 @@ a {
   color: inherit;
   text-decoration: underline;
 }
+
+input {
+  background-color: transparent;
+  border: 0;
+  padding: 8px;
+  
+}
+
+input:hover {
+  background-color: #d3d3d3;
+  cursor: pointer;
+  border: 0;  
+}
+
+.percentage-input-input {
+  position: relative;
+  display: inline-block;
+}
+
+
+.percentage-input-input::after {
+  content: '%';
+  font-family: sans-serif;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  
+  transform: translateY(-50%);
+}

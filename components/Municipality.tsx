@@ -671,6 +671,7 @@ const Municipality = (props: Props) => {
                       .filter((c) => c.start >= 2022 && c.end <= 2030)
                       .map((value, i) => (
                         <Range key={i}>
+                          <div className="percentage-input-input">
                             <Percentage
                               min={-50}
                               max={100}
@@ -685,13 +686,8 @@ const Municipality = (props: Props) => {
                                 )
                               }}
                             />
-                          // style={{
-                          //   color: value.change > 1 ? 'pink' : 'lightgreen',
-                          // }}
-                          >
-                            {value.change > 1 ? '+' : ''}{' '}
-                            {Math.round(100 * value.change) - 100}%
-                          </Percentage>
+                          </div>
+
                           <Slider
                             min={0.5}
                             max={2}
