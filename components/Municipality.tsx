@@ -123,8 +123,6 @@ const RangeContainer = styled.div`
   display: flex;
   overflow-x: auto;
   padding: 1rem 0;
-  flex-shrink: 0;
-  flex-grow: 1;
   justify-content: space-between;
 
   @media only screen and (${devices.tablet}) {
@@ -137,7 +135,7 @@ const Range = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40px;
+  width: 60px;
 `
 
 const Slider = styled.input`
@@ -189,9 +187,13 @@ const Slider = styled.input`
   }
 `
 
-const Percentage = styled.label`
+const Percentage = styled.input`
   font-size: 0.75rem;
-  margin-top: 6px;
+  margin: auto;
+  width: 3rem;
+  margin-right: 2px;
+  color: #fff;
+  appearance: textfield;
 `
 
 const StartYear = styled.div`
@@ -414,7 +416,9 @@ const Municipality = (props: Props) => {
   const q = router.query['g[]']
 
   const [isOpen, setIsOpen] = useState(false)
-
+  const [yearPlanPercentage, setOwnYearPlanPercentage] = useState<{
+    [x: number]: number
+  }>({})
   let scrollY = 0
   if (typeof window !== 'undefined') {
     scrollY = window && window.scrollY
@@ -570,6 +574,11 @@ const Municipality = (props: Props) => {
     }
   }
 
+  const handleChangePercentage = (value: number | string, idx: number) => {
+    // A bit hacky here with  the typing, should probably be typed better...
+    setOwnYearPlanPercentage((prevPlan) => ({ ...prevPlan, [idx]: value as number }))
+  }
+
   return (
     <>
       <MetaTags
@@ -662,7 +671,20 @@ const Municipality = (props: Props) => {
                       .filter((c) => c.start >= 2022 && c.end <= 2030)
                       .map((value, i) => (
                         <Range key={i}>
-                          <Percentage
+                            <Percentage
+                              min={-50}
+                              max={100}
+                              prefix="%"
+                              type="number"
+                              value={yearPlanPercentage[i] ?? 0}
+                              onChange={(e) => handleChangePercentage(e.target.value, i)}
+                              onBlur={(e) => {
+                                handleYearChange(
+                                  value.start,
+                                  parseFloat(e.target.value) / 100 + 1,
+                                )
+                              }}
+                            />
                           // style={{
                           //   color: value.change > 1 ? 'pink' : 'lightgreen',
                           // }}
@@ -672,13 +694,17 @@ const Municipality = (props: Props) => {
                           </Percentage>
                           <Slider
                             min={0.5}
-                            max={1.5}
+                            max={2}
                             step={0.01}
-                            value={value.change}
                             type="range"
-                            onChange={(e) =>
+                            value={yearPlanPercentage[i] / 100 + 1}
+                            onChange={(e) => {
+                              handleChangePercentage(
+                                Math.round((parseFloat(e.target.value) - 1) * 100),
+                                i,
+                              )
                               handleYearChange(value.start, parseFloat(e.target.value))
-                            }
+                            }}
                           />
                           <StartYear>{value.start}</StartYear>
                         </Range>
