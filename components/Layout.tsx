@@ -70,15 +70,17 @@ const Nav = styled.nav<NavProps>`
         color: ${({ theme }) => theme.black};
         white-space: nowrap;
       }
-      & a:hover {
-        background-color: ${({ theme, className }) =>
-          className === 'active' ? theme.greenGraphThree : theme.grey};
-      }
       & .active {
         background-color: ${({ theme }) => theme.main};
+        & :hover {
+          background-color: ${({ theme }) => theme.greenGraphOne};
+        }
       }
       & .inactive {
         background-color: ${({ theme }) => theme.white};
+        & :hover {
+          background-color: ${({ theme }) => theme.greenGraphThree};
+        }
       }
     }
   }
