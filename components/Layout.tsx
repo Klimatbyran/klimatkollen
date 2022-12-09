@@ -60,36 +60,6 @@ const Nav = styled.nav<NavProps>`
       @media only screen and (${devices.tablet}) {
         margin: 0;
       }
-      & :nth-of-type(1) {
-        & a {
-          background-color: ${({ theme, path }) =>
-            path === '/kommuner' ? theme.main : theme.white};
-        }
-        & a:hover {
-          background-color: ${({ theme, path }) =>
-            path !== '/kommuner' ? theme.greenGraphThree : theme.greenGraphOne};
-        }
-      }
-      & :nth-of-type(2) {
-        & a {
-          background-color: ${({ theme, path }) =>
-            path === '/partier' ? theme.main : theme.white};
-        }
-        & a:hover {
-          background-color: ${({ theme, path }) =>
-            path !== '/partier' ? theme.greenGraphThree : theme.greenGraphOne};
-        }
-      }
-      & :nth-of-type(3) {
-        & a {
-          background-color: ${({ theme, path }) =>
-            path === '/utslappsberakningar' ? theme.main : theme.white};
-        }
-        & a:hover {
-          background-color: ${({ theme, path }) =>
-            path !== '/utslappsberakningar' ? theme.greenGraphThree : theme.greenGraphOne};
-        }
-      }
       & a {
         padding: 0.5rem 1rem;
         border-radius: 4px;
@@ -99,6 +69,16 @@ const Nav = styled.nav<NavProps>`
         text-decoration: none;
         color: ${({ theme }) => theme.black};
         white-space: nowrap;
+      }
+      & a:hover {
+        background-color: ${({ theme, className }) =>
+          className === 'active' ? theme.greenGraphThree : theme.greenGraphOne};
+      }
+      & .active {
+        background-color: ${({ theme }) => theme.main};
+      }
+      & .inactive {
+        background-color: ${({ theme }) => theme.white};
       }
     }
   }
@@ -147,13 +127,15 @@ export default function Layout({ children }: { children: JSX.Element }) {
           <ul>
             <li>
               <Link href="/kommuner">
-                <a href="/kommuner">Kommuner</a>
+                <a className={router.pathname == "/kommuner" ? "active" : "inactive"}>
+                  Kommuner
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/partier">
                 <a
-                  href="/partier"
+                  className={router.pathname == "/partier" ? "active" : "inactive"}
                   aria-label="Nyhet! Partiernas klimatmål">
                   Partiernas klimatmål
                 </a>
@@ -162,7 +144,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
             <li>
               <Link href="/utslappsberakningar">
                 <a
-                  href="/utslappsberakningar"
+                  className={router.pathname == "/utslappsberakningar" ? "active" : "inactive"}
                   aria-label="Nyhet! Partiernas utsläppsberäkningar"
                   onClick={() => setVisibleNotification(false)}>
                   Utsläppsberäkningar
