@@ -53,7 +53,6 @@ const Nav = styled.nav<NavProps>`
       justify-content: center;
       gap: 25px;
     }
-
     & li {
       position: relative;
       width: max-content;
@@ -66,17 +65,29 @@ const Nav = styled.nav<NavProps>`
           background-color: ${({ theme, path }) =>
             path === '/kommuner' ? theme.main : theme.white};
         }
+        & a:hover {
+          background-color: ${({ theme, path }) =>
+            path !== '/kommuner' ? theme.greenGraphThree : theme.greenGraphOne};
+        }
       }
       & :nth-of-type(2) {
         & a {
           background-color: ${({ theme, path }) =>
             path === '/partier' ? theme.main : theme.white};
         }
+        & a:hover {
+          background-color: ${({ theme, path }) =>
+            path !== '/partier' ? theme.greenGraphThree : theme.greenGraphOne};
+        }
       }
       & :nth-of-type(3) {
         & a {
           background-color: ${({ theme, path }) =>
             path === '/utslappsberakningar' ? theme.main : theme.white};
+        }
+        & a:hover {
+          background-color: ${({ theme, path }) =>
+            path !== '/utslappsberakningar' ? theme.greenGraphThree : theme.greenGraphOne};
         }
       }
       & a {
