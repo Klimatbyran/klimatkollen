@@ -72,7 +72,7 @@ const Nav = styled.nav<NavProps>`
       }
       & a:hover {
         background-color: ${({ theme, className }) =>
-          className === 'active' ? theme.greenGraphThree : theme.greenGraphOne};
+          className === 'active' ? theme.greenGraphThree : theme.grey};
       }
       & .active {
         background-color: ${({ theme }) => theme.main};
@@ -127,7 +127,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
           <ul>
             <li>
               <Link href="/kommuner">
-                <a className={router.pathname == "/kommuner" ? "active" : "inactive"}>
+                <a className={path == "/kommuner" ? "active" : "inactive"}>
                   Kommuner
                 </a>
               </Link>
@@ -135,7 +135,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
             <li>
               <Link href="/partier">
                 <a
-                  className={router.pathname == "/partier" ? "active" : "inactive"}
+                  className={path == "/partier" ? "active" : "inactive"}
                   aria-label="Nyhet! Partiernas klimatmål">
                   Partiernas klimatmål
                 </a>
@@ -144,7 +144,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
             <li>
               <Link href="/utslappsberakningar">
                 <a
-                  className={router.pathname == "/utslappsberakningar" ? "active" : "inactive"}
+                  className={path == "/utslappsberakningar" ? "active" : "inactive"}
                   aria-label="Nyhet! Partiernas utsläppsberäkningar"
                   onClick={() => setVisibleNotification(false)}>
                   Utsläppsberäkningar
