@@ -98,7 +98,7 @@ const Notification = styled.div`
   top: -24px;
   right: -20px;
   padding: 3px 8px;
-  background-color: ${({ theme }) => theme.red};
+  background-color: ${({ theme }) => theme.darkGreen};
   color: ${({ theme }) => theme.black};
   border: 1px solid ${({ theme }) => theme.black};
   border-radius: 20px;
