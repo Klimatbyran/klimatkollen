@@ -13,6 +13,7 @@ import Icon from '../../public/icons/arrow.svg'
 import { devices } from '../../utils/devices'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
+import MunicipalityList from '../../components/MunicipalityList'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -31,7 +32,7 @@ const Square = styled.div<{ color: string }>`
   position: relative;
 `
 
-const ArrowIcon = styled(Icon)<{ rotateUp?: boolean }>`
+const ArrowIcon = styled(Icon) <{ rotateUp?: boolean }>`
   position: absolute;
   z-index: 1;
   margin: auto;
@@ -104,11 +105,16 @@ const StyledParagraph = styled(Paragraph)`
 
 const Kommuner = ({ municipalities }: PropsType) => {
   const [, setSelected] = useState('Utforska kartan')
+  const [toggleViewMode, setToggleViewMode] = useState(true);
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
     name: item.Name,
     emissions: item.HistoricalEmission.EmissionLevelChangeAverage,
   }))
+
+  function toggle() {
+    setToggleViewMode(!toggleViewMode);
+  }
 
   return (
     <>
@@ -134,6 +140,11 @@ const Kommuner = ({ municipalities }: PropsType) => {
               </p>
             </div>
           </FlexCenter>
+          <div className="flex justify-end p-5">
+            <button onClick={() => setToggleViewMode(!toggleViewMode)}>
+              {toggleViewMode ? 'Karta' : 'Lista'}
+            </button> {/* FIXME snygga till, högra hörnet */}
+          </div>
           <MapContainer>
             <MapLabels>
               <InfoBox>
@@ -175,8 +186,16 @@ const Kommuner = ({ municipalities }: PropsType) => {
                 </Label>
               </InfoBox>
             </MapLabels>
-
-            <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
+            <div style={{
+              display: toggleViewMode ? "block" : "none"
+            }}>
+              <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
+            </div>
+            <div style={{
+              display: toggleViewMode ? "none" : "block"
+            }}>
+              <MunicipalityList children={Kommuner} /> {/* FIXME visa data! */}
+            </div>
           </MapContainer>
         </Container>
       </PageWrapper>
