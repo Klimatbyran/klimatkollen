@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             fontSize: '13px',
           }}
           expires={150}>
-          Denna site använder cookies för att förbättra användarupplevelsen.
+          Denna sida använder cookies för att förbättra användarupplevelsen.
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}
       </Theme>
