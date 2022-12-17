@@ -13,6 +13,7 @@ import Icon from '../../public/icons/arrow.svg'
 import { devices } from '../../utils/devices'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
+import MunicipalityTable from '../../components/MunicipalityTable'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -185,23 +186,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
               <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
             </div>
             <div style={{ display: toggleViewMode ? "none" : "block" }}>
-              <table>
-                <tr>
-                  <th>Kommun</th>
-                  <th>Utsläpp</th>
-                </tr>
-                {emissionsLevels.map((val, key) => {
-                  return (
-                    <tr key={key}>
-                      <td>{val.name}</td>
-                      <td>{val.emissions}</td>
-                    </tr>
-                  )
-                })}
-              </table>
-              <table>
-                {emissionsLevels.map(emissionsLevels => <><tr>{emissionsLevels.name}</tr><tr>{emissionsLevels.emissions}</tr></>)}
-              </table>
+              <MunicipalityTable emissionsLevels={emissionsLevels} />
             </div>
           </MapContainer>
         </Container>
