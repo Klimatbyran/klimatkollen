@@ -112,10 +112,6 @@ const Kommuner = ({ municipalities }: PropsType) => {
     emissions: item.HistoricalEmission.EmissionLevelChangeAverage,
   }))
 
-  function toggle() {
-    setToggleViewMode(!toggleViewMode);
-  }
-
   return (
     <>
       <MetaTags
@@ -194,7 +190,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
             <div style={{
               display: toggleViewMode ? "none" : "block"
             }}>
-              <MunicipalityList children={Kommuner} /> {/* FIXME visa data! */}
+              <MunicipalityList emissionsLevels={emissionsLevels} />
             </div>
           </MapContainer>
         </Container>
