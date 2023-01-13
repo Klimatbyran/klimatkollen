@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Theme>
         <CookieConsent
           location="bottom"
-          buttonText="Ok"
+          buttonText="OK"
           style={{ background: '#6C6C6C' }}
           buttonStyle={{
             backgroundColor: '#91DFC8',
