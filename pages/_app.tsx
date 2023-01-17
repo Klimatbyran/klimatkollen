@@ -74,14 +74,14 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Theme>
         <CookieConsent
           location="bottom"
-          buttonText="Ok"
+          buttonText="OK"
           style={{ background: '#6C6C6C' }}
           buttonStyle={{
             backgroundColor: '#91DFC8',
             fontSize: '13px',
           }}
           expires={150}>
-          Denna site använder cookies för att förbättra användarupplevelsen.
+          Denna sida använder cookies för att förbättra användarupplevelsen.
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}
       </Theme>
