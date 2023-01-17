@@ -693,15 +693,15 @@ const Municipality = (props: Props) => {
               <TotalsContainer>
                 <H3>Framtida utsläpp</H3>
                 <TotalCo2 color="#EF3054">
-                  Trend: {Math.round(totalTrend / 1000)} kt CO₂
+                  Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
                 </TotalCo2>
                 <TotalCo2 color="#6BA292">
-                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} kt
+                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton 
                   CO₂
                 </TotalCo2>
                 {step > 2 && (
                   <TotalCo2 color="rgb(239, 191, 23)">
-                    Din plan: {Math.round(userTotal / 1000)} kt CO₂
+                    Din plan: {Math.round(userTotal / 1000)} tusen ton  CO₂
                     {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
                   </TotalCo2>
                 )}
