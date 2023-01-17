@@ -116,7 +116,7 @@ const Graph = ({
 
   return (
     <Container>
-      <YAxisTitle>Tusen ton CO₂ ({municipality})</YAxisTitle>
+      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{
