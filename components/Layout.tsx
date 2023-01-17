@@ -53,31 +53,12 @@ const Nav = styled.nav<NavProps>`
       justify-content: center;
       gap: 25px;
     }
-
     & li {
       position: relative;
       width: max-content;
       margin-bottom: 10px;
       @media only screen and (${devices.tablet}) {
         margin: 0;
-      }
-      & :nth-of-type(1) {
-        & a {
-          background-color: ${({ theme, path }) =>
-            path === '/kommuner' ? theme.main : theme.white};
-        }
-      }
-      & :nth-of-type(2) {
-        & a {
-          background-color: ${({ theme, path }) =>
-            path === '/partier' ? theme.main : theme.white};
-        }
-      }
-      & :nth-of-type(3) {
-        & a {
-          background-color: ${({ theme, path }) =>
-            path === '/utslappsberakningar' ? theme.main : theme.white};
-        }
       }
       & a {
         padding: 0.5rem 1rem;
@@ -88,6 +69,18 @@ const Nav = styled.nav<NavProps>`
         text-decoration: none;
         color: ${({ theme }) => theme.black};
         white-space: nowrap;
+      }
+      & .active {
+        background-color: ${({ theme }) => theme.main};
+        & :hover {
+          background-color: ${({ theme }) => theme.greenGraphOne};
+        }
+      }
+      & .inactive {
+        background-color: ${({ theme }) => theme.white};
+        & :hover {
+          background-color: ${({ theme }) => theme.greenGraphThree};
+        }
       }
     }
   }
@@ -136,13 +129,15 @@ export default function Layout({ children }: { children: JSX.Element }) {
           <ul>
             <li>
               <Link href="/kommuner">
-                <a href="/kommuner">Kommuner</a>
+                <a className={path == "/kommuner" ? "active" : "inactive"}>
+                  Kommuner
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/partier">
                 <a
-                  href="/partier"
+                  className={path == "/partier" ? "active" : "inactive"}
                   aria-label="Nyhet! Partiernas klimatmål">
                   Partiernas klimatmål
                 </a>
@@ -151,7 +146,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
             <li>
               <Link href="/utslappsberakningar">
                 <a
-                  href="/utslappsberakningar"
+                  className={path == "/utslappsberakningar" ? "active" : "inactive"}
                   aria-label="Nyhet! Partiernas utsläppsberäkningar"
                   onClick={() => setVisibleNotification(false)}>
                   Utsläppsberäkningar
