@@ -119,7 +119,7 @@ const Footer = () => {
   const [toggleThird, setToggleThird] = useState(
     router.asPath.includes('#source-budget-expl'),
   )
-  const [toggleFourth, setToggleFourth] = useState()
+  const [toggleFourth, setToggleFourth] = useState(false)
 
   // const resizeHandler = () => {
   //   if (window.innerWidth >= 768) {
@@ -297,6 +297,29 @@ const Footer = () => {
                     rel="noreferrer">
                     här.
                   </a>
+                </Paragraph>
+              </ToggleSection>
+            )}
+          </TextSection>
+          <TextSection>
+            <HeaderSection onClick={() => setToggleFourth(!toggleFourth)}>
+              <H5>FIXME Källor och statistik</H5>
+              {toggleFourth ? (
+                <ArrowUp
+                  className="arrow"
+                  onClick={() => setToggleFourth(!toggleFourth)}
+                />
+              ) : (
+                <ArrowDown
+                  className="arrow"
+                  onClick={() => setToggleFourth(!toggleFourth)}
+                />
+              )}
+            </HeaderSection>
+            {toggleFourth && (
+              <ToggleSection>
+                <Paragraph>
+                  Lorem ipsum.
                 </Paragraph>
               </ToggleSection>
             )}
