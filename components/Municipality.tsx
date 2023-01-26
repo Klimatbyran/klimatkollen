@@ -573,7 +573,7 @@ const Municipality = (props: Props) => {
   return (
     <>
       <MetaTags
-        title={`Klimatkollen — Hur går det med klimatutsläppen i ${municipality.Name}?`}
+        title={`Klimatkollen — Hur går det i ${municipality.Name}?`}
         description={shareText(municipality.Name)}
         url={shareUrl}
       />

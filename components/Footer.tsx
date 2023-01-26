@@ -189,11 +189,7 @@ const Footer = () => {
                   Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av{' '}
                   <a href="https://iteam.se/" target="_blank" rel="noreferrer">
                     Iteam
-                  </a>{' '}
-                  och{' '}
-                  <a href="https://varabarnsklimat.se/" target="_blank" rel="noreferrer">
-                    Våra barns klimat.
-                  </a>{' '}
+                  </a>{' '}.
                   Vi tror på kraften i att visualisera data på ett enkelt och tilltalande
                   sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt
                   och åtgärder som minskar utsläppen i linje med Parisavtalet.
@@ -230,11 +226,11 @@ const Footer = () => {
                   till 2030 och nå nära noll utsläpp senast 2050.
                 </Paragraph>
                 <Paragraph>
-                  Enligt Parisavtalet ska rika länder, som historiskt sett släppt ut
-                  mycket växthusgaser, ta ett större ansvar för att genomföra
-                  klimatomställningen. Där ingår Sverige, som både ska gå före när det
-                  gäller få ner utsläppen, men också hjälpa mer sårbara länder att ställa
-                  om. I Sverige stöds Parisavtalet av alla partier i riksdagen.
+                  Enligt Parisavtalet ska rika länder, som historiskt sett släppt ut mycket
+                  växthusgaser, ta ett större ansvar för att genomföra klimatomställningen.
+                  Där ingår Sverige, som både ska gå före när det gäller få ner utsläppen,
+                  men också hjälpa mer sårbara länder att ställa om.
+                  I Sverige stöds Parisavtalet av alla partier i riksdagen.
                 </Paragraph>
                 <Paragraph>
                   Läs mer om Parisavtalet hos vår samarbetspartner{' '}
@@ -271,32 +267,26 @@ const Footer = () => {
                   Sverige och våra kommuner.
                 </Paragraph>
                 <Paragraph>
-                  För att vara i linje med Parisavtalet och koldioxidbudgeten som
-                  motsvarar 1,5 graders uppvärmning krävs en årlig nationell
-                  utsläppsminskning med 21 procent från 2022. Sedan 1990 har Sveriges
-                  utsläpp minskat med 35 procent totalt, eller drygt en procent per år.
-                  Lokalt skiljer sig utsläppen, trenden och därmed koldioxidbudgeten åt
-                  från kommun till kommun, vilket gör att den nödvändiga minskningstakten
-                  också varierar.
+                  Den nationella koldioxidbudgeten beräknas av forskare vid Uppsala Universitet
+                  enligt Tyndall-modellen och fördelas sedan ut på kommunerna av ClimateView.
+                  Läs mer om hur koldioxidbudgeten är beräknad
+                  <a href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf" target="_blank" rel="noreferrer">
+                    här
+                  </a>.
                 </Paragraph>
                 <Paragraph>
-                  Vi har valt att visa en koldioxidbudget för utsläpp inom Sveriges
-                  gränser, för att det är så världens länder rapporterar inom
-                  klimatkonventionen. Sverige har även hög klimatbelastning från de varor
-                  som vi importerar från andra länder och bidrar därför till utsläpp i
-                  andra delar av världen. Dessa konsumtionsbaserade utsläpp är inte
+                  Vi har valt att visa en koldioxidbudget för utsläpp inom Sveriges gränser
+                  (det vill säga territoriella koldioxidutsläpp), för att det är så världens
+                  länder rapporterar inom klimatkonventionen. Sverige har även hög klimatbelastning
+                  från de varor som vi importerar från andra länder och bidrar därför till
+                  utsläpp i andra delar av världen. Dessa konsumtionsbaserade utsläpp är inte
                   medräknade i Klimatkollens koldioxidbudget.
                 </Paragraph>
                 <Paragraph>
-                  Den nationella koldioxidbudgeten beräknas av Uppsala Universitet med grund i den så
-                  kallade Tyndall-modellen och fördelas sedan ut på kommunerna av ClimateView.
-                  Läs mer om hur koldioxidbudgeten är beräknad{' '}
-                  <a
-                    href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
-                    target="_blank"
-                    rel="noreferrer">
-                    här.
-                  </a>
+                  Klimatkollen jämför kommunens territoriella koldioxidutsläpp med en lokalt 
+                  framräknad koldioxidbudget. Inom en kommuns gränser sker även andra utsläpp 
+                  av växthusgaser såsom utsläpp från invånarnas konsumtion, utsläpp från skog 
+                  och mark och andra växthusgasutsläpp, som exempelvis lustgas och metan.
                 </Paragraph>
               </ToggleSection>
             )}
