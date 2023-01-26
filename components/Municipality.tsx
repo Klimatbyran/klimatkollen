@@ -613,7 +613,7 @@ const Municipality = (props: Props) => {
               )}
               {step > 2 && (
                 <Legend>
-                  <Line color="rgb(239, 191, 23)" />
+                  <Circle color="rgb(239, 191, 23)" />
                   Din plan
                 </Legend>
               )}
