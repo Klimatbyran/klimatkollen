@@ -153,37 +153,26 @@ const Footer = () => {
             {toggleFirst && (
               <ToggleSection>
                 <Paragraph>
-                  Klimatkollen visar utsläppen i landets kommuner jämfört med
-                  Parisavtalet, anpassad för att delas i sociala medier och läsas i
-                  mobilen. Här kan du se hur det går med koldioxidutsläppen för Sverige
-                  som helhet och för enskilda kommuner, samt den mängd koldioxid vi har
-                  kvar att släppa ut enligt Parisavtalet. Du kan också se hur mycket
-                  (eller lite) utsläppen i din kommun minskar jämfört med andra.
+                  Klimatkollen visar koldioxidutsläppen i landets kommuner och hur utsläppen
+                  bör minska enligt Parisavtalet. För varje kommun finns en koldioxidbudget
+                  baserad på 1,5-gradersmålet och en prognos för hur det går med utsläppen
+                  framöver om det fortsätter som nu. Dessutom rankas kommunerna baserat på
+                  genomsnittlig årlig utsläppsminskning sedan Parisavtalet undertecknades 2015.
                 </Paragraph>
                 <Paragraph>
-                  Klimatkollen är en process och vi är bara i början. Självklart är
-                  Klimatkollen utvecklad med öppen källkod. Det betyder att du kan vara
-                  med och utveckla och förbättra sajten via{' '}
-                  <a
-                    href="https://github.com/Klimatbyran/klimatkollen"
-                    target="_blank"
-                    rel="noreferrer">
-                    vårt Github-repo.
-                  </a>{' '}
-                  Eller skriv upp dig <a href="#signup">här</a> så berättar vi när vi
-                  släpper något nytt.
+                  Självklart är Klimatkollen utvecklad med öppen källkod. Det betyder att du
+                  kan vara med och utveckla och förbättra sajten via{' '}
+                  <a href="https://github.com/Klimatbyran/klimatkollen" target="_blank" rel="noreferrer">
+                    vårt Github-repo
+                  </a>.
+                </Paragraph>
+                <Paragraph>
+                  Skriv upp dig <a href="#signup">här</a> så berättar vi när vi släpper något nytt.
                 </Paragraph>
                 <Paragraph>
                   <b>Stötta oss!</b> Skicka ett mejl till{' '}
                   <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så berättar
                   vi hur du kan bidra.
-                </Paragraph>
-                <Paragraph>
-                  Klimatkollen baseras på offentliga källor och annan fullt redovisad
-                  data. Vi anger alla källor tydligt så att du enkelt kan kolla upp och
-                  läsa mer. Om något blivit fel, mejla oss gärna på{' '}
-                  <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a> så att vi
-                  kan ändra.
                 </Paragraph>
                 <Paragraph>
                   Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av{' '}
@@ -236,8 +225,7 @@ const Footer = () => {
                   Läs mer om Parisavtalet hos vår samarbetspartner{' '}
                   <a href="https://www.wwf.se/rapport/ipcc/#parisavtalet" target="_blank" rel="noreferrer">
                     WWF
-                  </a>
-                  .
+                  </a>.
                 </Paragraph>
               </ToggleSection>
             )}
@@ -257,14 +245,12 @@ const Footer = () => {
             {toggleThird && (
               <ToggleSection>
                 <Paragraph>
-                  En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut
-                  innan vi riskerar att öka temperaturen så mycket att det bryter mot
-                  Parisavtalet. Det är ett sätt att åskådliggöra utsläppsutrymmet som
-                  finns kvar om vi ska hålla uppvärmningen under 1,5 grader. FN:s
-                  klimatpanel, IPCC har tagit fram koldioxidbudgetar för vilken mängd
-                  utsläpp som motsvarar vilka temperaturökningar, med olika nivåer av
-                  sannolikhet. Klimatkollen visar hur en sådan budget kan fördelas för
-                  Sverige och våra kommuner.
+                  En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut innan vi riskerar
+                  att öka temperaturen så mycket att det bryter mot Parisavtalet. Det är ett sätt att
+                  åskådliggöra utsläppsutrymmet som finns kvar om vi ska hålla uppvärmningen under 1,5
+                  grader. FN:s klimatpanel, IPCC har tagit fram koldioxidbudgetar för vilken mängd
+                  utsläpp som motsvarar vilka temperaturökningar, med olika nivåer av sannolikhet.
+                  Klimatkollen visar hur en sådan budget kan fördelas för Sverige och våra kommuner.
                 </Paragraph>
                 <Paragraph>
                   Den nationella koldioxidbudgeten beräknas av forskare vid Uppsala Universitet
@@ -283,9 +269,9 @@ const Footer = () => {
                   medräknade i Klimatkollens koldioxidbudget.
                 </Paragraph>
                 <Paragraph>
-                  Klimatkollen jämför kommunens territoriella koldioxidutsläpp med en lokalt 
-                  framräknad koldioxidbudget. Inom en kommuns gränser sker även andra utsläpp 
-                  av växthusgaser såsom utsläpp från invånarnas konsumtion, utsläpp från skog 
+                  Klimatkollen jämför kommunens territoriella koldioxidutsläpp med en lokalt
+                  framräknad koldioxidbudget. Inom en kommuns gränser sker även andra utsläpp
+                  av växthusgaser såsom utsläpp från invånarnas konsumtion, utsläpp från skog
                   och mark och andra växthusgasutsläpp, som exempelvis lustgas och metan.
                 </Paragraph>
               </ToggleSection>
@@ -293,7 +279,7 @@ const Footer = () => {
           </TextSection>
           <TextSection>
             <HeaderSection onClick={() => setToggleFourth(!toggleFourth)}>
-              <H5>FIXME Källor och statistik</H5>
+              <H5>Om våra källor</H5>
               {toggleFourth ? (
                 <ArrowUp
                   className="arrow"
@@ -309,7 +295,30 @@ const Footer = () => {
             {toggleFourth && (
               <ToggleSection>
                 <Paragraph>
-                  Lorem ipsum.
+                  Klimatkollen baseras på offentliga källor och verifierad data.
+                  Vi anger alla källor så att du enkelt kan kolla upp och läsa mer.
+                  Om något blivit fel, mejla oss gärna på
+                  <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+                  så att vi kan ändra.
+                </Paragraph>
+                <Paragraph>
+                  Utsläppssiffrorna hämtas från
+                  <a href="https://nationellaemissionsdatabasen.smhi.se/" target="_blank" rel="noreferrer">
+                    Nationella emissionsdatabasen
+                  </a>,
+                  som hanteras av SMHI och utgår från Sveriges officiella utsläppsstatistik,
+                  med Naturvårdsverket som ansvarig myndighet. Kommunal utsläppsdata har
+                  1,5–2 års fördröjning, 2020 års siffror släpptes i september 2022.
+                </Paragraph>
+                <Paragraph>
+                  Uppgifter om politiskt styre i kommunerna hämtas från
+                  <a href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html" target="_blank" rel="noreferrer">
+                    Sveriges Kommuner och Regioner
+                  </a>.
+                  Från
+                  <a href="https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities" target="_blank" rel="noreferrer">
+                    Wikidata
+                  </a> hämtar vi kommunernas invånarantal och kommunvapen.
                 </Paragraph>
               </ToggleSection>
             )}
