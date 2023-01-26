@@ -298,7 +298,7 @@ const Footer = () => {
                   Klimatkollen baseras på offentliga källor och verifierad data.
                   Vi anger alla källor så att du enkelt kan kolla upp och läsa mer.
                   Om något blivit fel, mejla oss gärna på{' '}
-                  <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+                  <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>{' '}
                   så att vi kan ändra.
                 </Paragraph>
                 <Paragraph>
