@@ -178,7 +178,7 @@ const Footer = () => {
                   Klimatkollen är utvecklad av Klimatbyrån ideell förening med hjälp av{' '}
                   <a href="https://iteam.se/" target="_blank" rel="noreferrer">
                     Iteam
-                  </a>{' '}.
+                  </a>.
                   Vi tror på kraften i att visualisera data på ett enkelt och tilltalande
                   sätt. På det sättet vill vi bidra till en mer faktabaserad klimatdebatt
                   och åtgärder som minskar utsläppen i linje med Parisavtalet.
@@ -255,7 +255,7 @@ const Footer = () => {
                 <Paragraph>
                   Den nationella koldioxidbudgeten beräknas av forskare vid Uppsala Universitet
                   enligt Tyndall-modellen och fördelas sedan ut på kommunerna av ClimateView.
-                  Läs mer om hur koldioxidbudgeten är beräknad
+                  Läs mer om hur koldioxidbudgeten är beräknad{' '}
                   <a href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf" target="_blank" rel="noreferrer">
                     här
                   </a>.
@@ -297,12 +297,12 @@ const Footer = () => {
                 <Paragraph>
                   Klimatkollen baseras på offentliga källor och verifierad data.
                   Vi anger alla källor så att du enkelt kan kolla upp och läsa mer.
-                  Om något blivit fel, mejla oss gärna på
+                  Om något blivit fel, mejla oss gärna på{' '}
                   <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
                   så att vi kan ändra.
                 </Paragraph>
                 <Paragraph>
-                  Utsläppssiffrorna hämtas från
+                  Utsläppssiffrorna hämtas från{' '}
                   <a href="https://nationellaemissionsdatabasen.smhi.se/" target="_blank" rel="noreferrer">
                     Nationella emissionsdatabasen
                   </a>,
@@ -311,14 +311,14 @@ const Footer = () => {
                   1,5–2 års fördröjning, 2020 års siffror släpptes i september 2022.
                 </Paragraph>
                 <Paragraph>
-                  Uppgifter om politiskt styre i kommunerna hämtas från
+                  Uppgifter om politiskt styre i kommunerna hämtas från{' '}
                   <a href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html" target="_blank" rel="noreferrer">
                     Sveriges Kommuner och Regioner
                   </a>.
-                  Från
+                  Från{' '}
                   <a href="https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities" target="_blank" rel="noreferrer">
                     Wikidata
-                  </a> hämtar vi kommunernas invånarantal och kommunvapen.
+                  </a>{' '}hämtar vi kommunernas invånarantal och kommunvapen.
                 </Paragraph>
               </ToggleSection>
             )}
