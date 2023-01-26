@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import ArrowRight from '../public/icons/arrow-right-green.svg'
-import ArrowLeft from '../public/icons/arrow-left-green.svg'
+import ArrowRight from '../public/icons/arrow-right-white.svg'
+import ArrowLeft from '../public/icons/arrow-left-white.svg'
 import Info from '../public/icons/info.svg'
 import { H1, H2, H3, ParagraphBold } from './Typography'
 import Back from './Back'
@@ -693,15 +693,15 @@ const Municipality = (props: Props) => {
               <TotalsContainer>
                 <H3>Framtida utsläpp</H3>
                 <TotalCo2 color="#EF3054">
-                  Trend: {Math.round(totalTrend / 1000)} kt CO₂
+                  Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
                 </TotalCo2>
                 <TotalCo2 color="#6BA292">
-                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} kt
+                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton 
                   CO₂
                 </TotalCo2>
                 {step > 2 && (
                   <TotalCo2 color="rgb(239, 191, 23)">
-                    Din plan: {Math.round(userTotal / 1000)} kt CO₂
+                    Din plan: {Math.round(userTotal / 1000)} tusen ton  CO₂
                     {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
                   </TotalCo2>
                 )}

@@ -98,9 +98,9 @@ const Notification = styled.div`
   top: -24px;
   right: -20px;
   padding: 3px 8px;
-  background-color: ${({ theme }) => theme.red};
+  background-color: ${({ theme }) => theme.yellow};
   color: ${({ theme }) => theme.black};
-  border: 1px solid ${({ theme }) => theme.black};
+  border: 1px solid ${({ theme }) => theme.darkYellow};
   border-radius: 20px;
   font-size: 12px;
   line-height: 16px;

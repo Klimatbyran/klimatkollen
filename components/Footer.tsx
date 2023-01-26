@@ -288,8 +288,8 @@ const Footer = () => {
                   medräknade i Klimatkollens koldioxidbudget.
                 </Paragraph>
                 <Paragraph>
-                  Den nationella koldioxidbudgeten beräknas av Uppsala Universitet med grund i den så 
-                  kallade Tyndall-modellen och fördelas sedan ut på kommunerna av ClimateView. 
+                  Den nationella koldioxidbudgeten beräknas av Uppsala Universitet med grund i den så
+                  kallade Tyndall-modellen och fördelas sedan ut på kommunerna av ClimateView.
                   Läs mer om hur koldioxidbudgeten är beräknad{' '}
                   <a
                     href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
@@ -394,12 +394,12 @@ const Footer = () => {
             </IconSection>
           </FlexSection>
           <Copyright>
-            CC BY-NC-SA -{' '}
+            CC BY-SA -{' '}
             <a
-              href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+              href="http://creativecommons.org/licenses/by-sa/4.0/"
               target="_blank"
               rel="noreferrer license">
-              Attribution-NonCommercial-ShareAlike 4.0 International license
+              Attribution-ShareAlike 4.0 International license
             </a>
           </Copyright>
           <GHLink>
