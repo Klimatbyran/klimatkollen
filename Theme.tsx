@@ -7,6 +7,7 @@ const colorTheme: DefaultTheme = {
   greenGraphTwo: '#94D3C1',
   greenGraphThree: '#DDF1EB',
   yellow: '#EFBF17',
+  darkYellow: '#BF9812',
   red: '#EF3054',
   white: '#FFFFFF',
   lightGrey: '#F2F2F2',
