@@ -61,7 +61,7 @@ const Nav = styled.nav<NavProps>`
         margin: 0;
       }
       & a {
-        padding: 0.5rem 0.5rem;
+        padding: 0.5rem 1rem;
         border-radius: 4px;
         font-size: 14px;
         line-height: 20px;
@@ -129,30 +129,33 @@ export default function Layout({ children }: { children: JSX.Element }) {
         <Nav path={path}>
           <ul>
             <li>
-              <a className={path == "/kommuner" ? "active" : "inactive"}>
-                <Link href="/kommuner">
+              <Link href="/kommuner">
+                <a className={path == "/kommuner" ? "active" : "inactive"}
+                href="/kommuner">
                   Kommuner
-                </Link>
-              </a>
+                </a>
+              </Link>
             </li>
             <li>
-              <a
-                className={path == "/partier" ? "active" : "inactive"}
-                aria-label="Nyhet! Partiernas klimatmål">
-                <Link href="/partier">
+              <Link href="/partier">
+                <a
+                  className={path == "/partier" ? "active" : "inactive"}
+                  aria-label="Nyhet! Partiernas klimatmål"
+                  href="/partier">
                   Partiernas klimatmål
-                </Link>
-              </a>
+                </a>
+              </Link>
             </li>
             <li>
-              <a
-                className={path == "/utslappsberakningar" ? "active" : "inactive"}
-                aria-label="Nyhet! Partiernas utsläppsberäkningar"
-                onClick={() => setVisibleNotification(false)}>
-                <Link href="/utslappsberakningar">
+              <Link href="/utslappsberakningar">
+                <a
+                  className={path == "/utslappsberakningar" ? "active" : "inactive"}
+                  aria-label="Nyhet! Partiernas utsläppsberäkningar"
+                  href="/utslappsberakningar"
+                  onClick={() => setVisibleNotification(false)}>
                   Utsläppsberäkningar
-                </Link>
-              </a>
+                </a>
+              </Link>
               {visibleNotification && (
                 <Notification aria-hidden="true">Nyhet!</Notification>
               )}
