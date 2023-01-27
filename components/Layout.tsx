@@ -61,7 +61,7 @@ const Nav = styled.nav<NavProps>`
         margin: 0;
       }
       & a {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.5rem;
         border-radius: 4px;
         font-size: 14px;
         line-height: 20px;
@@ -86,14 +86,15 @@ const Nav = styled.nav<NavProps>`
   }
 `
 
+
 const Notification = styled.div`
   position: absolute;
   top: -24px;
   right: -20px;
   padding: 3px 8px;
-  background-color: ${({ theme }) => theme.red};
+  background-color: ${({ theme }) => theme.yellow};
   color: ${({ theme }) => theme.black};
-  border: 1px solid ${({ theme }) => theme.black};
+  border: 1px solid ${({ theme }) => theme.darkYellow};
   border-radius: 20px;
   font-size: 12px;
   line-height: 16px;
@@ -128,30 +129,30 @@ export default function Layout({ children }: { children: JSX.Element }) {
         <Nav path={path}>
           <ul>
             <li>
-              <Link href="/kommuner">
-                <a className={path == "/kommuner" ? "active" : "inactive"}>
+              <a className={path == "/kommuner" ? "active" : "inactive"}>
+                <Link href="/kommuner">
                   Kommuner
-                </a>
-              </Link>
+                </Link>
+              </a>
             </li>
             <li>
-              <Link href="/partier">
-                <a
-                  className={path == "/partier" ? "active" : "inactive"}
-                  aria-label="Nyhet! Partiernas klimatmål">
+              <a
+                className={path == "/partier" ? "active" : "inactive"}
+                aria-label="Nyhet! Partiernas klimatmål">
+                <Link href="/partier">
                   Partiernas klimatmål
-                </a>
-              </Link>
+                </Link>
+              </a>
             </li>
             <li>
-              <Link href="/utslappsberakningar">
-                <a
-                  className={path == "/utslappsberakningar" ? "active" : "inactive"}
-                  aria-label="Nyhet! Partiernas utsläppsberäkningar"
-                  onClick={() => setVisibleNotification(false)}>
+              <a
+                className={path == "/utslappsberakningar" ? "active" : "inactive"}
+                aria-label="Nyhet! Partiernas utsläppsberäkningar"
+                onClick={() => setVisibleNotification(false)}>
+                <Link href="/utslappsberakningar">
                   Utsläppsberäkningar
-                </a>
-              </Link>
+                </Link>
+              </a>
               {visibleNotification && (
                 <Notification aria-hidden="true">Nyhet!</Notification>
               )}
