@@ -246,32 +246,31 @@ const Footer = () => {
               <ToggleSection>
                 <Paragraph>
                   En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut innan vi riskerar
-                  att öka temperaturen så mycket att det bryter mot Parisavtalet. Det är ett sätt att
-                  åskådliggöra utsläppsutrymmet som finns kvar om vi ska hålla uppvärmningen under 1,5
-                  grader. FN:s klimatpanel, IPCC har tagit fram koldioxidbudgetar för vilken mängd
-                  utsläpp som motsvarar vilka temperaturökningar, med olika nivåer av sannolikhet.
-                  Klimatkollen visar hur en sådan budget kan fördelas för Sverige och våra kommuner.
+                  att öka temperaturen så mycket att det bryter mot Parisavtalet. FN:s klimatpanel,
+                  IPCC har tagit fram koldioxidbudgetar för vilken mängd utsläpp som motsvarar vilka
+                  temperaturökningar, med olika nivåer av sannolikhet.
                 </Paragraph>
                 <Paragraph>
-                  Den nationella koldioxidbudgeten beräknas av forskare vid Uppsala Universitet
-                  enligt Tyndall-modellen och fördelas sedan ut på kommunerna av ClimateView.{' '}
+                  Klimatkollen utgår ifrån en  nationell koldioxidbudget baserat på 50% sannolikhet att
+                  hålla uppvärmningen inom 1,5 grader, som. beräknats av forskare vid Uppsala Universitet
+                  enligt Tyndall-modellen och sedan fördelats ut på kommunerna av företaget ClimateView.
+                </Paragraph>
+                <Paragraph>
                   <a href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf" target="_blank" rel="noreferrer">
-                  Läs mer om hur koldioxidbudgeten är beräknad här
+                    Läs mer om hur koldioxidbudgeten är beräknad här
                   </a>.
                 </Paragraph>
                 <Paragraph>
-                  Vi har valt att visa en koldioxidbudget för utsläpp inom Sveriges gränser
-                  (det vill säga territoriella koldioxidutsläpp), för att det är så världens
-                  länder rapporterar inom klimatkonventionen. Sverige har även hög klimatbelastning
-                  från de varor som vi importerar från andra länder och bidrar därför till
-                  utsläpp i andra delar av världen. Dessa konsumtionsbaserade utsläpp är inte
-                  medräknade i Klimatkollens koldioxidbudget.
+                  Vi har valt att visa en koldioxidbudget för utsläpp inom Sveriges gränser (det vill säga
+                  territoriella koldioxidutsläpp), för det är så världens länder rapporterar inom klimatkonventionen.
+                  Sverige har även hög klimatbelastning från varor vi importerar från andra länder och bidrar därför
+                  till utsläpp i andra delar av världen. Dessa konsumtionsbaserade utsläpp är inte medräknade i
+                  Klimatkollens koldioxidbudget.
                 </Paragraph>
                 <Paragraph>
-                  Klimatkollen jämför kommunens territoriella koldioxidutsläpp med en lokalt
-                  framräknad koldioxidbudget. Inom en kommuns gränser sker även andra utsläpp
-                  av växthusgaser såsom utsläpp från invånarnas konsumtion, utsläpp från skog
-                  och mark och andra växthusgasutsläpp, som exempelvis lustgas och metan.
+                  Klimatkollen jämför territoriella koldioxidutsläpp i kommunen med den lokala  koldioxidbudgeten.
+                  Inom en kommuns gränser sker dock även andra utsläpp av växthusgaser såsom utsläpp från invånarnas
+                  konsumtion, utsläpp från skog och mark och andra växthusgasutsläpp, som exempelvis lustgas och metan.
                 </Paragraph>
               </ToggleSection>
             )}
