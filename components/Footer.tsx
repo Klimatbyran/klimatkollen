@@ -246,13 +246,13 @@ const Footer = () => {
               <ToggleSection>
                 <Paragraph>
                   En koldioxidbudget är den mängd koldioxid vi har kvar att släppa ut innan vi riskerar
-                  att öka temperaturen så mycket att det bryter mot Parisavtalet. FN:s klimatpanel,
+                  att öka temperaturen så mycket att det bryter mot Parisavtalet. FN:s klimatpanel 
                   IPCC har tagit fram koldioxidbudgetar för vilken mängd utsläpp som motsvarar vilka
                   temperaturökningar, med olika nivåer av sannolikhet.
                 </Paragraph>
                 <Paragraph>
                   Klimatkollen utgår ifrån en  nationell koldioxidbudget baserat på 50% sannolikhet att
-                  hålla uppvärmningen inom 1,5 grader, som. beräknats av forskare vid Uppsala Universitet
+                  hålla uppvärmningen inom 1,5 grader, som beräknats av forskare vid Uppsala Universitet
                   enligt Tyndall-modellen och sedan fördelats ut på kommunerna av företaget ClimateView.
                 </Paragraph>
                 <Paragraph>
