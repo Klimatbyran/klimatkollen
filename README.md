@@ -17,9 +17,15 @@ This opens up a webserver on http://localhost:3000. Just edit the code and see t
 
 ## Contribute
 
-The current version is just the first MVP version, we have many ideas to explore to make the climate data more accessible to the public. Please have a look at the [Issues](https://github.com/Klimatbyran/klimatkollen/issues) and [Pull Requests](https://github.com/Klimatbyran/klimatkollen/pulls) to see if you can contribute. Both testing and bug fixes, typos or fact check our data is of course encouraged.
+The idea behind Klimatkollen is to provide climate data in an accessible and understandable way.
 
-We value your feedback and love PR:s, issues and your encouragement. Please star this repo if you want to follow the progress.
+Do you have an idea for a feature you think should be added to the project? Feel free to develop it and create a pull request where you explain what you've done. If you can't develop them yourself, please submit an [issue](https://github.com/Klimatbyran/klimatkollen/issues) where you explain what you'd like done.
+
+Looking for ideas on things needed to be done? Take a look at our [issues](https://github.com/Klimatbyran/klimatkollen/issues) and/or [pull requests](https://github.com/Klimatbyran/klimatkollen/pulls). Testing, bug fixes, typos or fact check our data is highly appreciated. 
+
+Have feedback? Either submit an [issue](https://github.com/Klimatbyran/klimatkollen/issues) or send an email to [hej@klimatkollen.se](mailto:hej@klimatkollen.se).
+
+Please star this repo if you want to follow the progress and feel free to join our [Discord](https://discord.gg/5xeqknPa).
 
 ## Partners
 
