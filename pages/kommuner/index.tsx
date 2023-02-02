@@ -1,6 +1,8 @@
+
 import { GetServerSideProps } from 'next'
-import { ReactElement, useState } from 'react'
+import { ReactElement, useMemo, useState } from 'react'
 import styled from 'styled-components'
+import { ColumnDef } from '@tanstack/react-table'
 
 import DropDown from '../../components/DropDown'
 import Map from '../../components/Map'
@@ -13,7 +15,7 @@ import Icon from '../../public/icons/arrow.svg'
 import { devices } from '../../utils/devices'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
-import MunicipalityTable from '../../components/MunicipalityTable'
+import ComparisonTable from '../../components/ComparisonTable'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -47,10 +49,9 @@ const MapContainer = styled.div`
   position: relative;
   // TODO: Hardcoding this is not good.
   height: 380px;
-  border: 1px solid #f9fbff;
+  border: 1px solid ${({ theme }) => theme.paperWhite};
   border-radius: 8px;
   display: flex;
-
   @media only screen and (${devices.tablet}) {
     height: 500px;
   }
@@ -59,7 +60,6 @@ const MapContainer = styled.div`
 const MapLabels = styled.div`
   padding-left: 0.87rem;
   padding-top: 1.2rem;
-
   @media only screen and (${devices.tablet}) {
     position: absolute;
     left: 0;
@@ -97,7 +97,6 @@ const StyledParagraph = styled(Paragraph)`
   font-size: 0.7em;
   margin: 0;
   line-height: 0;
-
   @media only screen and (${devices.tablet}) {
     font-size: 0.9em;
   }
@@ -111,6 +110,32 @@ const Kommuner = ({ municipalities }: PropsType) => {
     name: item.Name,
     emissions: item.HistoricalEmission.EmissionLevelChangeAverage,
   }))
+
+  type MuniciplaityItem = {
+    name: string,
+    emissions: number;
+  }
+
+  const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
+    () => [
+      {
+        header: 'Index',
+        cell: (row) => row.renderValue(),
+        accessorKey: 'index',
+      },
+      {
+        header: 'Kommun',
+        cell: (row) => row.renderValue(),
+        accessorKey: 'name',
+      },
+      {
+        header: 'Utsläpp',
+        cell: (row) => row.renderValue(),
+        accessorKey: 'emissions',
+      },
+    ],
+    []
+  )
 
   return (
     <>
@@ -142,51 +167,51 @@ const Kommuner = ({ municipalities }: PropsType) => {
             </button> {/* FIXME snygga till, högra hörnet */}
           </div>
           <MapContainer>
-            <MapLabels>
-              <InfoBox>
-                <Label>
-                  <Square color="#EF3054">
-                    <ArrowIcon rotateUp={true} />
-                  </Square>
-                  <StyledParagraph>0% +</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#EF5E30">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>0–1%</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#EF7F17">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>1–2%</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#EF9917">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>2–3%</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#EFBF17">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>3–10%</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#91BFC8">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>10–15%</StyledParagraph>
-                </Label>
-              </InfoBox>
-            </MapLabels>
             <div style={{ display: toggleViewMode ? "block" : "none" }}>
+              <MapLabels>
+                <InfoBox>
+                  <Label>
+                    <Square color="#EF3054">
+                      <ArrowIcon rotateUp={true} />
+                    </Square>
+                    <StyledParagraph>0% +</StyledParagraph>
+                  </Label>
+                  <Label>
+                    <Square color="#EF5E30">
+                      <ArrowIcon />
+                    </Square>
+                    <StyledParagraph>0–1%</StyledParagraph>
+                  </Label>
+                  <Label>
+                    <Square color="#EF7F17">
+                      <ArrowIcon />
+                    </Square>
+                    <StyledParagraph>1–2%</StyledParagraph>
+                  </Label>
+                  <Label>
+                    <Square color="#EF9917">
+                      <ArrowIcon />
+                    </Square>
+                    <StyledParagraph>2–3%</StyledParagraph>
+                  </Label>
+                  <Label>
+                    <Square color="#EFBF17">
+                      <ArrowIcon />
+                    </Square>
+                    <StyledParagraph>3–10%</StyledParagraph>
+                  </Label>
+                  <Label>
+                    <Square color="#91BFC8">
+                      <ArrowIcon />
+                    </Square>
+                    <StyledParagraph>10–15%</StyledParagraph>
+                  </Label>
+                </InfoBox>
+              </MapLabels>
               <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
             </div>
             <div style={{ display: toggleViewMode ? "none" : "block" }}>
-              <MunicipalityTable emissionsLevels={emissionsLevels} />
+              <ComparisonTable data={emissionsLevels} columns={cols} />
             </div>
           </MapContainer>
         </Container>
