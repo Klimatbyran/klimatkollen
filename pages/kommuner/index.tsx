@@ -105,22 +105,21 @@ const ToggleContainer = styled.div`
 `
 
 const ToggleButton = styled.button`
-color: ${({ theme }) => theme.paperWhite};
-background: ${({ theme }) => theme.dark};
-box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-border-radius: 4px;
-border: 0;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 10px;
-margin: 10px;
-cursor: pointer;
-fill: ${({ theme }) => theme.greenGraphTwo};
-
-&:hover {
-  background: ${({ theme }) => theme.grey};
-}
+  width: 70px;
+  color: ${({ theme }) => theme.paperWhite};
+  background: ${({ theme }) => theme.dark};
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  margin: 10px;
+  cursor: pointer;
+  fill: ${({ theme }) => theme.greenGraphTwo};
+  &:hover {
+    background: ${({ theme }) => theme.grey};
+  }
 `
 
 const StyledParagraph = styled(Paragraph)`

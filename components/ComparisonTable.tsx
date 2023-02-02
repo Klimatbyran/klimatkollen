@@ -14,10 +14,11 @@ const Styles = styled.div`
         overflow-y: auto;
     
         td, th {
-            padding: 0.5rem 2rem 0.2rem 1rem;
+            padding: 0.5rem 2rem 0.2rem 0.87rem;
         }
 
         th {
+            padding-top: 1.2rem;
             fontWeight: bold;
             text-align: left;
         }
