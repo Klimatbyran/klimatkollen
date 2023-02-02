@@ -31,11 +31,6 @@ interface ReactTableProps<T extends object> {
 }
 
 const ComparisonTable = <T extends object>({ data, columns }: ReactTableProps<T>) => {
-    /* FIXME
-    - tabell ska stanna i parent
-    - index baserat på sort ska visas
-     */
-    
     const [sorting, setSorting] = React.useState<SortingState>([])
 
     const table = useReactTable({
