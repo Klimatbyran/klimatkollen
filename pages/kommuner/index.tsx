@@ -276,3 +276,4 @@ Kommuner.getLayout = function getLayout(page: ReactElement) {
     </>
   )
 }
+
