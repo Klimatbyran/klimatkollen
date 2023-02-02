@@ -12,6 +12,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 const Styles = styled.div`    
     table {
         border-spacing: 0;
+        overflow-y:scroll;
     
         th, td {
             padding: 0.5rem;

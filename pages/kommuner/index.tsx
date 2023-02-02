@@ -91,6 +91,32 @@ const FlexCenter = styled.div`
   /* display: flex; */
 `
 
+const ToggleContainer = styled.div`
+  margin-left: auto;  
+  margin-right: 0;
+  z-index: 100;
+  position: relative;
+`
+
+const ToggleButton = styled.button`
+color: ${({ theme }) => theme.paperWhite};
+background: ${({ theme }) => theme.dark};
+box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+border-radius: 4px;
+border: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 10px;
+margin: 10px;
+cursor: pointer;
+fill: ${({ theme }) => theme.greenGraphTwo};
+
+&:hover {
+  background: ${({ theme }) => theme.grey};
+}
+`
+
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
   width: 5em;
@@ -161,11 +187,6 @@ const Kommuner = ({ municipalities }: PropsType) => {
               </p>
             </div>
           </FlexCenter>
-          <div className="flex justify-end p-5">
-            <button onClick={() => setToggleViewMode(!toggleViewMode)}>
-              {toggleViewMode ? 'Karta' : 'Lista'}
-            </button> {/* FIXME snygga till, högra hörnet */}
-          </div>
           <MapContainer>
             <div style={{ display: toggleViewMode ? "block" : "none" }}>
               <MapLabels>
@@ -213,6 +234,12 @@ const Kommuner = ({ municipalities }: PropsType) => {
             <div style={{ display: toggleViewMode ? "none" : "block" }}>
               <ComparisonTable data={emissionsLevels} columns={cols} />
             </div>
+
+            <ToggleContainer>
+              <ToggleButton onClick={() => setToggleViewMode(!toggleViewMode)}>
+                {toggleViewMode ? 'Karta' : 'Lista'}
+              </ToggleButton>
+            </ToggleContainer>
           </MapContainer>
         </Container>
       </PageWrapper>
