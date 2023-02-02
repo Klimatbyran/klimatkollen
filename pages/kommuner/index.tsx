@@ -47,6 +47,7 @@ const ArrowIcon = styled(Icon) <{ rotateUp?: boolean }>`
 
 const MapContainer = styled.div`
   position: relative;
+  overflow-y: scroll;
   // TODO: Hardcoding this is not good.
   height: 380px;
   border: 1px solid ${({ theme }) => theme.paperWhite};
@@ -54,6 +55,11 @@ const MapContainer = styled.div`
   display: flex;
   @media only screen and (${devices.tablet}) {
     height: 500px;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  ::-webkit-scrollbar {  /* Chrome, Safari and Opera */
+    display: none;
   }
 `
 
@@ -146,7 +152,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
     () => [
       {
         header: 'Index',
-        cell: (row) => row.renderValue(),
+        cell: (row) => row.cell.row.index+1,
         accessorKey: 'index',
       },
       {
@@ -155,8 +161,8 @@ const Kommuner = ({ municipalities }: PropsType) => {
         accessorKey: 'name',
       },
       {
-        header: 'Utsläpp',
-        cell: (row) => row.renderValue(),
+        header: 'Utsläpp [%]',
+        cell: (row) => (row.renderValue()*100).toFixed(2),
         accessorKey: 'emissions',
       },
     ],

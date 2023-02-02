@@ -11,16 +11,15 @@ import type { ColumnDef } from '@tanstack/react-table'
 
 const Styles = styled.div`    
     table {
-        border-spacing: 0;
-        overflow-y:scroll;
+        overflow-y: auto;
     
-        th, td {
-            padding: 0.5rem;
-            border-bottom: 1px solid ${({ theme }) => theme.paperWhite};
+        td, th {
+            padding: 0.5rem 2rem 0.2rem 1rem;
         }
 
         th {
             fontWeight: bold;
+            text-align: left;
         }
     }
 `
@@ -32,9 +31,7 @@ interface ReactTableProps<T extends object> {
 
 const ComparisonTable = <T extends object>({ data, columns }: ReactTableProps<T>) => {
     /* FIXME
-    - tabell ska fylla parent
     - tabell ska stanna i parent
-    - tabellhuvud ska align left
     - index baserat på sort ska visas
      */
     
