@@ -105,7 +105,7 @@ const ToggleContainer = styled.div`
 `
 
 const ToggleButton = styled.button`
-  width: 70px;
+  width: 100px;
   color: ${({ theme }) => theme.paperWhite};
   background: ${({ theme }) => theme.dark};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
