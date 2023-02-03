@@ -173,8 +173,8 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
                 href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
                 target="_blank"
                 rel="noreferrer">
-                Sveriges Kommuner och Regioner.
-              </a>{' '}
+                Sveriges Kommuner och Regioner
+              </a>.
               Data uppdaterad januari 2022.
             </InfoParagraph>
           </InfoSection>
@@ -196,7 +196,14 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
           <section>
             {togglePopulation ? (
               <InfoSection>
-                <InfoParagraph>Uppgift hämtad från Wikimedia.</InfoParagraph>
+                <InfoParagraph>
+                  Uppgift hämtad från{' '}
+                  <a href="https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities"
+                    target="_blank"
+                    rel="noreferrer">
+                    Wikidata
+                  </a>.
+                </InfoParagraph>
               </InfoSection>
             ) : null}
           </section>
