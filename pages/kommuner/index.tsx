@@ -242,7 +242,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
 
             <ToggleContainer>
               <ToggleButton onClick={() => setToggleViewMode(!toggleViewMode)}>
-                {toggleViewMode ? 'Karta' : 'Lista'}
+                {toggleViewMode ? 'Visa lista' : 'Visa karta'}
               </ToggleButton>
             </ToggleContainer>
           </MapContainer>
