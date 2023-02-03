@@ -160,7 +160,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
         accessorKey: 'name',
       },
       {
-        header: 'Utsläpp [%]',
+        header: 'Utsläppsminskning [%]',
         cell: (row) => (row.renderValue()*100).toFixed(2),
         accessorKey: 'emissions',
       },
