@@ -150,7 +150,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
     () => [
       {
-        header: 'Index',
+        header: 'Ranking',
         cell: (row) => row.cell.row.index+1,
         accessorKey: 'index',
       },
