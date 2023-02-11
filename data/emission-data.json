@@ -81,7 +81,7 @@
       "2050": 0
     },
     "futureEmission": 768254.3087453896,
-    "netZeroReached": "2034-03-16",
+    "hitNetZero": "2034-03-16",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -166,7 +166,7 @@
       "2050": 55125.88258418674
     },
     "futureEmission": 1941598.9140177993,
-    "netZeroReached": "2135-09-08",
+    "hitNetZero": "2135-09-08",
     "budgetRunsOut": "2026-12-22"
   },
   {
@@ -251,7 +251,7 @@
       "2050": 0
     },
     "futureEmission": 786552.8515251756,
-    "netZeroReached": "2048-07-10",
+    "hitNetZero": "2048-07-10",
     "budgetRunsOut": "2028-03-31"
   },
   {
@@ -336,7 +336,7 @@
       "2050": 10047.098624588572
     },
     "futureEmission": 410743.06730977295,
-    "netZeroReached": "2091-02-23",
+    "hitNetZero": "2091-02-23",
     "budgetRunsOut": "2027-03-25"
   },
   {
@@ -421,7 +421,7 @@
       "2050": 27999.016881940886
     },
     "futureEmission": 1147074.7419929649,
-    "netZeroReached": "2090-11-02",
+    "hitNetZero": "2090-11-02",
     "budgetRunsOut": "2027-03-21"
   },
   {
@@ -506,7 +506,7 @@
       "2050": 0
     },
     "futureEmission": 36624.045342900965,
-    "netZeroReached": "2027-07-09",
+    "hitNetZero": "2027-07-09",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -591,7 +591,7 @@
       "2050": 3122.562994694803
     },
     "futureEmission": 555853.3925555458,
-    "netZeroReached": "2053-01-07",
+    "hitNetZero": "2053-01-07",
     "budgetRunsOut": "2027-11-26"
   },
   {
@@ -676,7 +676,7 @@
       "2050": 6021.798765058629
     },
     "futureEmission": 1000799.6313669877,
-    "netZeroReached": "2053-04-12",
+    "hitNetZero": "2053-04-12",
     "budgetRunsOut": "2027-12-27"
   },
   {
@@ -761,7 +761,7 @@
       "2050": 81266.96240538894
     },
     "futureEmission": 2380621.2466122634,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-08-16"
   },
   {
@@ -846,7 +846,7 @@
       "2050": 46566.76817800291
     },
     "futureEmission": 3807280.3870413643,
-    "netZeroReached": "2058-08-28",
+    "hitNetZero": "2058-08-28",
     "budgetRunsOut": "2027-09-25"
   },
   {
@@ -931,7 +931,7 @@
       "2050": 23406.89150924608
     },
     "futureEmission": 1246337.6029009977,
-    "netZeroReached": "2069-03-27",
+    "hitNetZero": "2069-03-27",
     "budgetRunsOut": "2027-08-18"
   },
   {
@@ -1016,7 +1016,7 @@
       "2050": 0
     },
     "futureEmission": 57477.07101545612,
-    "netZeroReached": "2024-08-07",
+    "hitNetZero": "2024-08-07",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -1101,7 +1101,7 @@
       "2050": 5824.4216524082585
     },
     "futureEmission": 261669.0308900758,
-    "netZeroReached": "2079-12-20",
+    "hitNetZero": "2079-12-20",
     "budgetRunsOut": "2027-05-30"
   },
   {
@@ -1186,7 +1186,7 @@
       "2050": 0
     },
     "futureEmission": 214071.32987963027,
-    "netZeroReached": "2029-05-27",
+    "hitNetZero": "2029-05-27",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -1271,7 +1271,7 @@
       "2050": 184327.4241427267
     },
     "futureEmission": 4411856.896458784,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2025-11-20"
   },
   {
@@ -1356,7 +1356,7 @@
       "2050": 55619.19720567984
     },
     "futureEmission": 1485558.2041287592,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-06-03"
   },
   {
@@ -1441,7 +1441,7 @@
       "2050": 0
     },
     "futureEmission": 973745.9180464586,
-    "netZeroReached": "2044-05-11",
+    "hitNetZero": "2044-05-11",
     "budgetRunsOut": "2028-06-14"
   },
   {
@@ -1526,7 +1526,7 @@
       "2050": 13257.239331351593
     },
     "futureEmission": 922251.792339867,
-    "netZeroReached": "2061-04-30",
+    "hitNetZero": "2061-04-30",
     "budgetRunsOut": "2027-08-27"
   },
   {
@@ -1611,7 +1611,7 @@
       "2050": 14511.207436822355
     },
     "futureEmission": 5714718.355696031,
-    "netZeroReached": "2051-03-20",
+    "hitNetZero": "2051-03-20",
     "budgetRunsOut": "2028-01-30"
   },
   {
@@ -1696,7 +1696,7 @@
       "2050": 40636.92956182547
     },
     "futureEmission": 3912304.673850914,
-    "netZeroReached": "2056-10-04",
+    "hitNetZero": "2056-10-04",
     "budgetRunsOut": "2027-10-12"
   },
   {
@@ -1781,7 +1781,7 @@
       "2050": 0
     },
     "futureEmission": 812017.5209910293,
-    "netZeroReached": "2037-09-02",
+    "hitNetZero": "2037-09-02",
     "budgetRunsOut": "2029-12-10"
   },
   {
@@ -1866,7 +1866,7 @@
       "2050": 0
     },
     "futureEmission": 325380.68844660785,
-    "netZeroReached": "2036-08-12",
+    "hitNetZero": "2036-08-12",
     "budgetRunsOut": "2030-10-18"
   },
   {
@@ -1951,7 +1951,7 @@
       "2050": 36285.83554814849
     },
     "futureEmission": 1656356.2527919821,
-    "netZeroReached": "2078-06-30",
+    "hitNetZero": "2078-06-30",
     "budgetRunsOut": "2027-08-02"
   },
   {
@@ -2036,7 +2036,7 @@
       "2050": 0
     },
     "futureEmission": 195694.11391528696,
-    "netZeroReached": "2033-09-29",
+    "hitNetZero": "2033-09-29",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -2121,7 +2121,7 @@
       "2050": 0
     },
     "futureEmission": 543111.8127393784,
-    "netZeroReached": "2037-07-02",
+    "hitNetZero": "2037-07-02",
     "budgetRunsOut": "2030-04-29"
   },
   {
@@ -2206,7 +2206,7 @@
       "2050": 0
     },
     "futureEmission": 500039.8282875004,
-    "netZeroReached": "2044-01-05",
+    "hitNetZero": "2044-01-05",
     "budgetRunsOut": "2028-08-20"
   },
   {
@@ -2291,7 +2291,7 @@
       "2050": 0
     },
     "futureEmission": 163364.80211523,
-    "netZeroReached": "2045-08-08",
+    "hitNetZero": "2045-08-08",
     "budgetRunsOut": "2028-06-27"
   },
   {
@@ -2376,7 +2376,7 @@
       "2050": 0
     },
     "futureEmission": 95886.55444089253,
-    "netZeroReached": "2026-03-08",
+    "hitNetZero": "2026-03-08",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -2461,7 +2461,7 @@
       "2050": 24495.946169768693
     },
     "futureEmission": 1162204.52031847,
-    "netZeroReached": "2075-09-02",
+    "hitNetZero": "2075-09-02",
     "budgetRunsOut": "2027-06-03"
   },
   {
@@ -2546,7 +2546,7 @@
       "2050": 14153.53262661767
     },
     "futureEmission": 387504.76750140154,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-06-16"
   },
   {
@@ -2631,7 +2631,7 @@
       "2050": 25636.79490356939
     },
     "futureEmission": 1150166.6652183349,
-    "netZeroReached": "2080-03-16",
+    "hitNetZero": "2080-03-16",
     "budgetRunsOut": "2027-03-26"
   },
   {
@@ -2716,7 +2716,7 @@
       "2050": 0
     },
     "futureEmission": 481281.28146033443,
-    "netZeroReached": "2043-07-14",
+    "hitNetZero": "2043-07-14",
     "budgetRunsOut": "2028-10-02"
   },
   {
@@ -2801,7 +2801,7 @@
       "2050": 16392.59369850438
     },
     "futureEmission": 1254184.2243236764,
-    "netZeroReached": "2059-08-22",
+    "hitNetZero": "2059-08-22",
     "budgetRunsOut": "2027-09-05"
   },
   {
@@ -2886,7 +2886,7 @@
       "2050": 4371.907805139432
     },
     "futureEmission": 460068.8769228249,
-    "netZeroReached": "2055-12-13",
+    "hitNetZero": "2055-12-13",
     "budgetRunsOut": "2027-11-11"
   },
   {
@@ -2971,7 +2971,7 @@
       "2050": 70677.20419286471
     },
     "futureEmission": 3428023.3111908985,
-    "netZeroReached": "2074-03-23",
+    "hitNetZero": "2074-03-23",
     "budgetRunsOut": "2027-05-26"
   },
   {
@@ -3056,7 +3056,7 @@
       "2050": 8901.00122130476
     },
     "futureEmission": 2670857.9570670286,
-    "netZeroReached": "2051-08-24",
+    "hitNetZero": "2051-08-24",
     "budgetRunsOut": "2028-02-12"
   },
   {
@@ -3141,7 +3141,7 @@
       "2050": 124152.71559273917
     },
     "futureEmission": 4669561.710612295,
-    "netZeroReached": "2109-11-15",
+    "hitNetZero": "2109-11-15",
     "budgetRunsOut": "2026-07-19"
   },
   {
@@ -3226,7 +3226,7 @@
       "2050": 0
     },
     "futureEmission": 162856.4485708613,
-    "netZeroReached": "2040-04-09",
+    "hitNetZero": "2040-04-09",
     "budgetRunsOut": "2029-05-21"
   },
   {
@@ -3311,7 +3311,7 @@
       "2050": 0
     },
     "futureEmission": 199618.4887708775,
-    "netZeroReached": "2032-07-18",
+    "hitNetZero": "2032-07-18",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -3396,7 +3396,7 @@
       "2050": 84527.31985083688
     },
     "futureEmission": 3596675.164715974,
-    "netZeroReached": "2085-08-24",
+    "hitNetZero": "2085-08-24",
     "budgetRunsOut": "2027-04-28"
   },
   {
@@ -3481,7 +3481,7 @@
       "2050": 0
     },
     "futureEmission": 1230345.9563140392,
-    "netZeroReached": "2049-11-03",
+    "hitNetZero": "2049-11-03",
     "budgetRunsOut": "2028-03-09"
   },
   {
@@ -3566,7 +3566,7 @@
       "2050": 0
     },
     "futureEmission": 715519.0496919182,
-    "netZeroReached": "2035-02-28",
+    "hitNetZero": "2035-02-28",
     "budgetRunsOut": "2031-06-12"
   },
   {
@@ -3651,7 +3651,7 @@
       "2050": 4658.95482136216
     },
     "futureEmission": 678954.9581792913,
-    "netZeroReached": "2053-11-10",
+    "hitNetZero": "2053-11-10",
     "budgetRunsOut": "2027-12-14"
   },
   {
@@ -3736,7 +3736,7 @@
       "2050": 22310.727224914357
     },
     "futureEmission": 1460775.8232204614,
-    "netZeroReached": "2062-08-24",
+    "hitNetZero": "2062-08-24",
     "budgetRunsOut": "2027-07-27"
   },
   {
@@ -3821,7 +3821,7 @@
       "2050": 0
     },
     "futureEmission": 371346.16333678056,
-    "netZeroReached": "2038-04-24",
+    "hitNetZero": "2038-04-24",
     "budgetRunsOut": "2029-10-03"
   },
   {
@@ -3906,7 +3906,7 @@
       "2050": 0
     },
     "futureEmission": 217317.3577145385,
-    "netZeroReached": "2043-06-27",
+    "hitNetZero": "2043-06-27",
     "budgetRunsOut": "2028-09-07"
   },
   {
@@ -3991,7 +3991,7 @@
       "2050": 16918.575374258275
     },
     "futureEmission": 581666.9325389068,
-    "netZeroReached": "2152-01-21",
+    "hitNetZero": "2152-01-21",
     "budgetRunsOut": "2026-12-07"
   },
   {
@@ -4076,7 +4076,7 @@
       "2050": 0
     },
     "futureEmission": 216360.18140812166,
-    "netZeroReached": "2037-12-06",
+    "hitNetZero": "2037-12-06",
     "budgetRunsOut": "2029-11-13"
   },
   {
@@ -4161,7 +4161,7 @@
       "2050": 0
     },
     "futureEmission": 690570.920907524,
-    "netZeroReached": "2040-05-28",
+    "hitNetZero": "2040-05-28",
     "budgetRunsOut": "2029-04-11"
   },
   {
@@ -4246,7 +4246,7 @@
       "2050": 0
     },
     "futureEmission": 84440.54982823781,
-    "netZeroReached": "2029-08-23",
+    "hitNetZero": "2029-08-23",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -4331,7 +4331,7 @@
       "2050": 0
     },
     "futureEmission": 289695.4910201027,
-    "netZeroReached": "2042-05-04",
+    "hitNetZero": "2042-05-04",
     "budgetRunsOut": "2029-05-29"
   },
   {
@@ -4416,7 +4416,7 @@
       "2050": 400595.8476083111
     },
     "futureEmission": 9760505.775594838,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2027-02-16"
   },
   {
@@ -4501,7 +4501,7 @@
       "2050": 105418.53994490672
     },
     "futureEmission": 2501132.7076732665,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-01-11"
   },
   {
@@ -4586,7 +4586,7 @@
       "2050": 3314.676576808328
     },
     "futureEmission": 393352.60910496116,
-    "netZeroReached": "2055-01-18",
+    "hitNetZero": "2055-01-18",
     "budgetRunsOut": "2027-11-01"
   },
   {
@@ -4671,7 +4671,7 @@
       "2050": 0
     },
     "futureEmission": 306645.71854567574,
-    "netZeroReached": "2046-03-24",
+    "hitNetZero": "2046-03-24",
     "budgetRunsOut": "2028-05-25"
   },
   {
@@ -4756,7 +4756,7 @@
       "2050": 886725.8932292871
     },
     "futureEmission": 19766405.64017457,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2025-09-30"
   },
   {
@@ -4841,7 +4841,7 @@
       "2050": 0
     },
     "futureEmission": 2218756.8811674723,
-    "netZeroReached": "2039-07-09",
+    "hitNetZero": "2039-07-09",
     "budgetRunsOut": "2029-05-11"
   },
   {
@@ -4926,7 +4926,7 @@
       "2050": 1042287.5639290363
     },
     "futureEmission": 47736759.30750601,
-    "netZeroReached": "2078-05-04",
+    "hitNetZero": "2078-05-04",
     "budgetRunsOut": "2027-05-21"
   },
   {
@@ -5011,7 +5011,7 @@
       "2050": 110456.34382915762
     },
     "futureEmission": 3261542.4176860377,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-09-02"
   },
   {
@@ -5096,7 +5096,7 @@
       "2050": 33306.509995477085
     },
     "futureEmission": 1024056.5341132425,
-    "netZeroReached": "2623-08-08",
+    "hitNetZero": "2623-08-08",
     "budgetRunsOut": "2026-10-20"
   },
   {
@@ -5181,7 +5181,7 @@
       "2050": 0
     },
     "futureEmission": 872089.9780493486,
-    "netZeroReached": "2044-11-06",
+    "hitNetZero": "2044-11-06",
     "budgetRunsOut": "2028-08-19"
   },
   {
@@ -5266,7 +5266,7 @@
       "2050": 0
     },
     "futureEmission": 453223.77511852526,
-    "netZeroReached": "2040-02-10",
+    "hitNetZero": "2040-02-10",
     "budgetRunsOut": "2029-04-10"
   },
   {
@@ -5351,7 +5351,7 @@
       "2050": 25585.090416009072
     },
     "futureEmission": 935681.4079592014,
-    "netZeroReached": "2118-02-22",
+    "hitNetZero": "2118-02-22",
     "budgetRunsOut": "2027-01-11"
   },
   {
@@ -5436,7 +5436,7 @@
       "2050": 12860.637448966503
     },
     "futureEmission": 4969507.732077065,
-    "netZeroReached": "2051-03-30",
+    "hitNetZero": "2051-03-30",
     "budgetRunsOut": "2028-01-19"
   },
   {
@@ -5521,7 +5521,7 @@
       "2050": 0
     },
     "futureEmission": 871918.0608467374,
-    "netZeroReached": "2047-10-16",
+    "hitNetZero": "2047-10-16",
     "budgetRunsOut": "2028-06-05"
   },
   {
@@ -5606,7 +5606,7 @@
       "2050": 0
     },
     "futureEmission": 1157627.662378592,
-    "netZeroReached": "2040-05-17",
+    "hitNetZero": "2040-05-17",
     "budgetRunsOut": "2029-02-04"
   },
   {
@@ -5691,7 +5691,7 @@
       "2050": 2353.36786346999
     },
     "futureEmission": 424523.96328945167,
-    "netZeroReached": "2052-12-21",
+    "hitNetZero": "2052-12-21",
     "budgetRunsOut": "2027-11-04"
   },
   {
@@ -5776,7 +5776,7 @@
       "2050": 0
     },
     "futureEmission": 419253.4888467451,
-    "netZeroReached": "2038-12-13",
+    "hitNetZero": "2038-12-13",
     "budgetRunsOut": "2029-07-08"
   },
   {
@@ -5861,7 +5861,7 @@
       "2050": 100885.3307002685
     },
     "futureEmission": 2425973.4460298764,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2025-11-04"
   },
   {
@@ -5946,7 +5946,7 @@
       "2050": 268096.8836305961
     },
     "futureEmission": 10624380.480001803,
-    "netZeroReached": "2096-08-11",
+    "hitNetZero": "2096-08-11",
     "budgetRunsOut": "2027-02-03"
   },
   {
@@ -6031,7 +6031,7 @@
       "2050": 0
     },
     "futureEmission": 257818.94442685685,
-    "netZeroReached": "2043-06-19",
+    "hitNetZero": "2043-06-19",
     "budgetRunsOut": "2028-10-19"
   },
   {
@@ -6116,7 +6116,7 @@
       "2050": 0
     },
     "futureEmission": 227833.65995256376,
-    "netZeroReached": "2043-07-17",
+    "hitNetZero": "2043-07-17",
     "budgetRunsOut": "2028-09-11"
   },
   {
@@ -6201,7 +6201,7 @@
       "2050": 0
     },
     "futureEmission": 648759.6577263377,
-    "netZeroReached": "2035-03-21",
+    "hitNetZero": "2035-03-21",
     "budgetRunsOut": "2032-07-31"
   },
   {
@@ -6286,7 +6286,7 @@
       "2050": 0
     },
     "futureEmission": 984315.4550540636,
-    "netZeroReached": "2038-02-01",
+    "hitNetZero": "2038-02-01",
     "budgetRunsOut": "2029-10-13"
   },
   {
@@ -6371,7 +6371,7 @@
       "2050": 0
     },
     "futureEmission": 1117959.7772574637,
-    "netZeroReached": "2038-06-11",
+    "hitNetZero": "2038-06-11",
     "budgetRunsOut": "2029-10-14"
   },
   {
@@ -6456,7 +6456,7 @@
       "2050": 0
     },
     "futureEmission": 570603.6570743625,
-    "netZeroReached": "2047-09-19",
+    "hitNetZero": "2047-09-19",
     "budgetRunsOut": "2028-04-21"
   },
   {
@@ -6541,7 +6541,7 @@
       "2050": 0
     },
     "futureEmission": 323754.1324839004,
-    "netZeroReached": "2036-10-23",
+    "hitNetZero": "2036-10-23",
     "budgetRunsOut": "2030-03-08"
   },
   {
@@ -6626,7 +6626,7 @@
       "2050": 0
     },
     "futureEmission": 329654.1753863846,
-    "netZeroReached": "2040-07-11",
+    "hitNetZero": "2040-07-11",
     "budgetRunsOut": "2029-05-17"
   },
   {
@@ -6711,7 +6711,7 @@
       "2050": 0
     },
     "futureEmission": 66468.72099331842,
-    "netZeroReached": "2023-07-14",
+    "hitNetZero": "2023-07-14",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -6796,7 +6796,7 @@
       "2050": 0
     },
     "futureEmission": 651591.8825074977,
-    "netZeroReached": "2041-02-10",
+    "hitNetZero": "2041-02-10",
     "budgetRunsOut": "2029-02-13"
   },
   {
@@ -6881,7 +6881,7 @@
       "2050": 94757.16312602442
     },
     "futureEmission": 3476690.916341207,
-    "netZeroReached": "2116-12-07",
+    "hitNetZero": "2116-12-07",
     "budgetRunsOut": "2027-01-13"
   },
   {
@@ -6966,7 +6966,7 @@
       "2050": 218160.3077748944
     },
     "futureEmission": 6165306.063811273,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-05-05"
   },
   {
@@ -7051,7 +7051,7 @@
       "2050": 34884.431539962534
     },
     "futureEmission": 1556821.4211214762,
-    "netZeroReached": "2080-08-25",
+    "hitNetZero": "2080-08-25",
     "budgetRunsOut": "2027-04-17"
   },
   {
@@ -7136,7 +7136,7 @@
       "2050": 5871.565210290253
     },
     "futureEmission": 3246892.713877026,
-    "netZeroReached": "2050-11-03",
+    "hitNetZero": "2050-11-03",
     "budgetRunsOut": "2028-02-09"
   },
   {
@@ -7221,7 +7221,7 @@
       "2050": 0
     },
     "futureEmission": 130910.22199495911,
-    "netZeroReached": "2034-10-05",
+    "hitNetZero": "2034-10-05",
     "budgetRunsOut": "2032-01-06"
   },
   {
@@ -7306,7 +7306,7 @@
       "2050": 22765.18496324774
     },
     "futureEmission": 1002853.633109089,
-    "netZeroReached": "2081-11-22",
+    "hitNetZero": "2081-11-22",
     "budgetRunsOut": "2027-04-19"
   },
   {
@@ -7391,7 +7391,7 @@
       "2050": 0
     },
     "futureEmission": 599424.7191247605,
-    "netZeroReached": "2046-10-17",
+    "hitNetZero": "2046-10-17",
     "budgetRunsOut": "2028-05-11"
   },
   {
@@ -7476,7 +7476,7 @@
       "2050": 0
     },
     "futureEmission": 125775.55640035529,
-    "netZeroReached": "2029-02-22",
+    "hitNetZero": "2029-02-22",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -7561,7 +7561,7 @@
       "2050": 76821.9519171303
     },
     "futureEmission": 2350514.6066586482,
-    "netZeroReached": "2761-12-02",
+    "hitNetZero": "2761-12-02",
     "budgetRunsOut": "2026-10-11"
   },
   {
@@ -7646,7 +7646,7 @@
       "2050": 84976.62048418075
     },
     "futureEmission": 7064271.950892325,
-    "netZeroReached": "2058-06-11",
+    "hitNetZero": "2058-06-11",
     "budgetRunsOut": "2027-08-24"
   },
   {
@@ -7731,7 +7731,7 @@
       "2050": 0
     },
     "futureEmission": 604030.9666061469,
-    "netZeroReached": "2041-11-18",
+    "hitNetZero": "2041-11-18",
     "budgetRunsOut": "2029-01-02"
   },
   {
@@ -7816,7 +7816,7 @@
       "2050": 0
     },
     "futureEmission": 1223821.8758121475,
-    "netZeroReached": "2040-06-02",
+    "hitNetZero": "2040-06-02",
     "budgetRunsOut": "2029-03-22"
   },
   {
@@ -7901,7 +7901,7 @@
       "2050": 0
     },
     "futureEmission": 147106.67094473488,
-    "netZeroReached": "2035-12-02",
+    "hitNetZero": "2035-12-02",
     "budgetRunsOut": "2031-03-06"
   },
   {
@@ -7986,7 +7986,7 @@
       "2050": 0
     },
     "futureEmission": 946877.63599314,
-    "netZeroReached": "2041-05-14",
+    "hitNetZero": "2041-05-14",
     "budgetRunsOut": "2029-01-01"
   },
   {
@@ -8071,7 +8071,7 @@
       "2050": 0
     },
     "futureEmission": 1053354.0395307266,
-    "netZeroReached": "2044-09-21",
+    "hitNetZero": "2044-09-21",
     "budgetRunsOut": "2028-08-01"
   },
   {
@@ -8156,7 +8156,7 @@
       "2050": 65239.008109890856
     },
     "futureEmission": 2665630.1579605667,
-    "netZeroReached": "2091-03-20",
+    "hitNetZero": "2091-03-20",
     "budgetRunsOut": "2027-03-30"
   },
   {
@@ -8241,7 +8241,7 @@
       "2050": 24846.17415710725
     },
     "futureEmission": 3271194.0189640177,
-    "netZeroReached": "2054-05-27",
+    "hitNetZero": "2054-05-27",
     "budgetRunsOut": "2027-11-09"
   },
   {
@@ -8326,7 +8326,7 @@
       "2050": 0
     },
     "futureEmission": 796954.3092009252,
-    "netZeroReached": "2042-05-04",
+    "hitNetZero": "2042-05-04",
     "budgetRunsOut": "2028-11-06"
   },
   {
@@ -8411,7 +8411,7 @@
       "2050": 11849.518992756028
     },
     "futureEmission": 686656.2108311485,
-    "netZeroReached": "2066-01-17",
+    "hitNetZero": "2066-01-17",
     "budgetRunsOut": "2027-07-10"
   },
   {
@@ -8496,7 +8496,7 @@
       "2050": 0
     },
     "futureEmission": 554408.4029349007,
-    "netZeroReached": "2045-07-10",
+    "hitNetZero": "2045-07-10",
     "budgetRunsOut": "2028-06-24"
   },
   {
@@ -8581,7 +8581,7 @@
       "2050": 822723.0745911142
     },
     "futureEmission": 22864501.621115398,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-05-19"
   },
   {
@@ -8666,7 +8666,7 @@
       "2050": 4618.030640099198
     },
     "futureEmission": 1076995.8260458466,
-    "netZeroReached": "2052-03-12",
+    "hitNetZero": "2052-03-12",
     "budgetRunsOut": "2027-11-30"
   },
   {
@@ -8751,7 +8751,7 @@
       "2050": 20840.311924208887
     },
     "futureEmission": 1259178.8205397693,
-    "netZeroReached": "2064-09-18",
+    "hitNetZero": "2064-09-18",
     "budgetRunsOut": "2027-08-30"
   },
   {
@@ -8836,7 +8836,7 @@
       "2050": 12493.287493352778
     },
     "futureEmission": 1445400.2556839632,
-    "netZeroReached": "2055-03-23",
+    "hitNetZero": "2055-03-23",
     "budgetRunsOut": "2027-11-11"
   },
   {
@@ -8921,7 +8921,7 @@
       "2050": 9462.117532426491
     },
     "futureEmission": 3264875.7622949453,
-    "netZeroReached": "2051-05-29",
+    "hitNetZero": "2051-05-29",
     "budgetRunsOut": "2028-01-21"
   },
   {
@@ -9006,7 +9006,7 @@
       "2050": 0
     },
     "futureEmission": 793527.8255828345,
-    "netZeroReached": "2040-01-21",
+    "hitNetZero": "2040-01-21",
     "budgetRunsOut": "2029-03-27"
   },
   {
@@ -9091,7 +9091,7 @@
       "2050": 0
     },
     "futureEmission": 141538.9297802022,
-    "netZeroReached": "2027-09-15",
+    "hitNetZero": "2027-09-15",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -9176,7 +9176,7 @@
       "2050": 106734.97951918188
     },
     "futureEmission": 4377428.550980237,
-    "netZeroReached": "2090-09-07",
+    "hitNetZero": "2090-09-07",
     "budgetRunsOut": "2027-03-18"
   },
   {
@@ -9261,7 +9261,7 @@
       "2050": 43221.812946315855
     },
     "futureEmission": 3314543.0049792007,
-    "netZeroReached": "2059-08-08",
+    "hitNetZero": "2059-08-08",
     "budgetRunsOut": "2027-09-09"
   },
   {
@@ -9346,7 +9346,7 @@
       "2050": 12797.300654472085
     },
     "futureEmission": 711502.8420791766,
-    "netZeroReached": "2067-07-06",
+    "hitNetZero": "2067-07-06",
     "budgetRunsOut": "2027-07-07"
   },
   {
@@ -9431,7 +9431,7 @@
       "2050": 52983.58544091182
     },
     "futureEmission": 2280569.6869216617,
-    "netZeroReached": "2084-05-19",
+    "hitNetZero": "2084-05-19",
     "budgetRunsOut": "2027-03-28"
   },
   {
@@ -9516,7 +9516,7 @@
       "2050": 7316.312465179246
     },
     "futureEmission": 1116518.561427343,
-    "netZeroReached": "2053-08-24",
+    "hitNetZero": "2053-08-24",
     "budgetRunsOut": "2027-11-25"
   },
   {
@@ -9601,7 +9601,7 @@
       "2050": 0
     },
     "futureEmission": 2666722.3386792247,
-    "netZeroReached": "2040-09-06",
+    "hitNetZero": "2040-09-06",
     "budgetRunsOut": "2029-01-30"
   },
   {
@@ -9686,7 +9686,7 @@
       "2050": 0
     },
     "futureEmission": 745177.5843867989,
-    "netZeroReached": "2038-04-06",
+    "hitNetZero": "2038-04-06",
     "budgetRunsOut": "2029-11-02"
   },
   {
@@ -9771,7 +9771,7 @@
       "2050": 152568.5924901343
     },
     "futureEmission": 5349011.777271986,
-    "netZeroReached": "2138-08-10",
+    "hitNetZero": "2138-08-10",
     "budgetRunsOut": "2026-12-01"
   },
   {
@@ -9856,7 +9856,7 @@
       "2050": 5480.801890153205
     },
     "futureEmission": 578433.3896441618,
-    "netZeroReached": "2055-12-07",
+    "hitNetZero": "2055-12-07",
     "budgetRunsOut": "2027-10-03"
   },
   {
@@ -9941,7 +9941,7 @@
       "2050": 11306.51643483853
     },
     "futureEmission": 562764.0002714089,
-    "netZeroReached": "2072-09-06",
+    "hitNetZero": "2072-09-06",
     "budgetRunsOut": "2027-05-23"
   },
   {
@@ -10026,7 +10026,7 @@
       "2050": 0
     },
     "futureEmission": 305722.5790918395,
-    "netZeroReached": "2037-12-24",
+    "hitNetZero": "2037-12-24",
     "budgetRunsOut": "2029-10-20"
   },
   {
@@ -10111,7 +10111,7 @@
       "2050": 0
     },
     "futureEmission": 408751.9280054567,
-    "netZeroReached": "2033-05-07",
+    "hitNetZero": "2033-05-07",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -10196,7 +10196,7 @@
       "2050": 0
     },
     "futureEmission": 196796.0140486059,
-    "netZeroReached": "2042-03-07",
+    "hitNetZero": "2042-03-07",
     "budgetRunsOut": "2028-11-17"
   },
   {
@@ -10281,7 +10281,7 @@
       "2050": 38000.56830992445
     },
     "futureEmission": 974241.9974085476,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-02-06"
   },
   {
@@ -10366,7 +10366,7 @@
       "2050": 35248.73080332484
     },
     "futureEmission": 2397115.630848713,
-    "netZeroReached": "2061-10-24",
+    "hitNetZero": "2061-10-24",
     "budgetRunsOut": "2027-07-07"
   },
   {
@@ -10451,7 +10451,7 @@
       "2050": 0
     },
     "futureEmission": 346089.9997027794,
-    "netZeroReached": "2034-11-30",
+    "hitNetZero": "2034-11-30",
     "budgetRunsOut": "2031-10-14"
   },
   {
@@ -10536,7 +10536,7 @@
       "2050": 9766.000906572677
     },
     "futureEmission": 1274132.8390210965,
-    "netZeroReached": "2054-06-12",
+    "hitNetZero": "2054-06-12",
     "budgetRunsOut": "2028-01-05"
   },
   {
@@ -10621,7 +10621,7 @@
       "2050": 173519.384772107
     },
     "futureEmission": 10488759.919855397,
-    "netZeroReached": "2064-09-24",
+    "hitNetZero": "2064-09-24",
     "budgetRunsOut": "2027-07-16"
   },
   {
@@ -10706,7 +10706,7 @@
       "2050": 0
     },
     "futureEmission": 1720696.4010363396,
-    "netZeroReached": "2043-11-26",
+    "hitNetZero": "2043-11-26",
     "budgetRunsOut": "2028-08-09"
   },
   {
@@ -10791,7 +10791,7 @@
       "2050": 0
     },
     "futureEmission": 678331.0189046073,
-    "netZeroReached": "2039-11-08",
+    "hitNetZero": "2039-11-08",
     "budgetRunsOut": "2029-03-11"
   },
   {
@@ -10876,7 +10876,7 @@
       "2050": 0
     },
     "futureEmission": 139204.61450303774,
-    "netZeroReached": "2031-03-13",
+    "hitNetZero": "2031-03-13",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -10961,7 +10961,7 @@
       "2050": 0
     },
     "futureEmission": 943022.8178423902,
-    "netZeroReached": "2046-09-24",
+    "hitNetZero": "2046-09-24",
     "budgetRunsOut": "2028-05-06"
   },
   {
@@ -11046,7 +11046,7 @@
       "2050": 0
     },
     "futureEmission": 196701.33683742295,
-    "netZeroReached": "2027-12-14",
+    "hitNetZero": "2027-12-14",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -11131,7 +11131,7 @@
       "2050": 4506434.332338154
     },
     "futureEmission": 120389071.35232005,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-05-19"
   },
   {
@@ -11216,7 +11216,7 @@
       "2050": 0
     },
     "futureEmission": 1711325.9299901337,
-    "netZeroReached": "2042-10-04",
+    "hitNetZero": "2042-10-04",
     "budgetRunsOut": "2028-10-24"
   },
   {
@@ -11301,7 +11301,7 @@
       "2050": 4063.243680400308
     },
     "futureEmission": 905065.0548300539,
-    "netZeroReached": "2052-04-21",
+    "hitNetZero": "2052-04-21",
     "budgetRunsOut": "2028-05-12"
   },
   {
@@ -11386,7 +11386,7 @@
       "2050": 0
     },
     "futureEmission": 5139464.03705515,
-    "netZeroReached": "2029-01-04",
+    "hitNetZero": "2029-01-04",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -11471,7 +11471,7 @@
       "2050": 0
     },
     "futureEmission": 2812846.934101536,
-    "netZeroReached": "2028-05-21",
+    "hitNetZero": "2028-05-21",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -11556,7 +11556,7 @@
       "2050": 0
     },
     "futureEmission": 242033.45035918476,
-    "netZeroReached": "2033-01-28",
+    "hitNetZero": "2033-01-28",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -11641,7 +11641,7 @@
       "2050": 5469.3534934611525
     },
     "futureEmission": 231797.08841614568,
-    "netZeroReached": "2086-03-24",
+    "hitNetZero": "2086-03-24",
     "budgetRunsOut": "2027-03-17"
   },
   {
@@ -11726,7 +11726,7 @@
       "2050": 0
     },
     "futureEmission": 894833.2415845129,
-    "netZeroReached": "2040-05-08",
+    "hitNetZero": "2040-05-08",
     "budgetRunsOut": "2028-12-11"
   },
   {
@@ -11811,7 +11811,7 @@
       "2050": 0
     },
     "futureEmission": 975138.9136854796,
-    "netZeroReached": "2048-05-04",
+    "hitNetZero": "2048-05-04",
     "budgetRunsOut": "2028-04-08"
   },
   {
@@ -11896,7 +11896,7 @@
       "2050": 14602.165243890602
     },
     "futureEmission": 1060265.9051198235,
-    "netZeroReached": "2060-07-10",
+    "hitNetZero": "2060-07-10",
     "budgetRunsOut": "2027-08-20"
   },
   {
@@ -11981,7 +11981,7 @@
       "2050": 0
     },
     "futureEmission": 351919.3060616744,
-    "netZeroReached": "2045-04-03",
+    "hitNetZero": "2045-04-03",
     "budgetRunsOut": "2028-06-16"
   },
   {
@@ -12066,7 +12066,7 @@
       "2050": 10680.911028002389
     },
     "futureEmission": 1651232.2175807054,
-    "netZeroReached": "2053-08-02",
+    "hitNetZero": "2053-08-02",
     "budgetRunsOut": "2027-12-06"
   },
   {
@@ -12151,7 +12151,7 @@
       "2050": 0
     },
     "futureEmission": 757011.8682507346,
-    "netZeroReached": "2044-12-01",
+    "hitNetZero": "2044-12-01",
     "budgetRunsOut": "2028-06-25"
   },
   {
@@ -12236,7 +12236,7 @@
       "2050": 0
     },
     "futureEmission": 681344.355938073,
-    "netZeroReached": "2038-04-21",
+    "hitNetZero": "2038-04-21",
     "budgetRunsOut": "2029-09-24"
   },
   {
@@ -12321,7 +12321,7 @@
       "2050": 6129.2158975169295
     },
     "futureEmission": 337659.4637823404,
-    "netZeroReached": "2067-11-17",
+    "hitNetZero": "2067-11-17",
     "budgetRunsOut": "2027-06-19"
   },
   {
@@ -12406,7 +12406,7 @@
       "2050": 160464.9185839435
     },
     "futureEmission": 3799194.109152061,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-05-01"
   },
   {
@@ -12491,7 +12491,7 @@
       "2050": 0
     },
     "futureEmission": 38020.69303180963,
-    "netZeroReached": "2032-04-26",
+    "hitNetZero": "2032-04-26",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -12576,7 +12576,7 @@
       "2050": 0
     },
     "futureEmission": 1225517.3819586616,
-    "netZeroReached": "2038-01-11",
+    "hitNetZero": "2038-01-11",
     "budgetRunsOut": "2029-11-08"
   },
   {
@@ -12661,7 +12661,7 @@
       "2050": 0
     },
     "futureEmission": 157385.06627003854,
-    "netZeroReached": "2027-04-27",
+    "hitNetZero": "2027-04-27",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -12746,7 +12746,7 @@
       "2050": 33640.41798194975
     },
     "futureEmission": 1130265.166309271,
-    "netZeroReached": "2174-05-31",
+    "hitNetZero": "2174-05-31",
     "budgetRunsOut": "2026-11-07"
   },
   {
@@ -12831,7 +12831,7 @@
       "2050": 34138.13002437865
     },
     "futureEmission": 1935103.4132598236,
-    "netZeroReached": "2066-10-18",
+    "hitNetZero": "2066-10-18",
     "budgetRunsOut": "2027-07-14"
   },
   {
@@ -12916,7 +12916,7 @@
       "2050": 0
     },
     "futureEmission": 175394.20112788572,
-    "netZeroReached": "2036-12-30",
+    "hitNetZero": "2036-12-30",
     "budgetRunsOut": "2030-04-14"
   },
   {
@@ -13001,7 +13001,7 @@
       "2050": 0
     },
     "futureEmission": 143014.53064147086,
-    "netZeroReached": "2038-02-03",
+    "hitNetZero": "2038-02-03",
     "budgetRunsOut": "2029-09-12"
   },
   {
@@ -13086,7 +13086,7 @@
       "2050": 0
     },
     "futureEmission": 425571.50939814956,
-    "netZeroReached": "2040-10-23",
+    "hitNetZero": "2040-10-23",
     "budgetRunsOut": "2029-02-15"
   },
   {
@@ -13171,7 +13171,7 @@
       "2050": 24654.159783174167
     },
     "futureEmission": 901151.4004862818,
-    "netZeroReached": "2118-01-16",
+    "hitNetZero": "2118-01-16",
     "budgetRunsOut": "2027-02-25"
   },
   {
@@ -13256,7 +13256,7 @@
       "2050": 206108.52781761438
     },
     "futureEmission": 11049824.968482582,
-    "netZeroReached": "2068-12-26",
+    "hitNetZero": "2068-12-26",
     "budgetRunsOut": "2027-06-26"
   },
   {
@@ -13341,7 +13341,7 @@
       "2050": 5625.577452080324
     },
     "futureEmission": 2413479.208161433,
-    "netZeroReached": "2051-02-09",
+    "hitNetZero": "2051-02-09",
     "budgetRunsOut": "2028-01-30"
   },
   {
@@ -13426,7 +13426,7 @@
       "2050": 0
     },
     "futureEmission": 103802.57343715506,
-    "netZeroReached": "2033-10-06",
+    "hitNetZero": "2033-10-06",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -13511,7 +13511,7 @@
       "2050": 87290.72305751196
     },
     "futureEmission": 2319120.609446996,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-04-21"
   },
   {
@@ -13596,7 +13596,7 @@
       "2050": 9876.08745555766
     },
     "futureEmission": 755965.7752108003,
-    "netZeroReached": "2059-08-16",
+    "hitNetZero": "2059-08-16",
     "budgetRunsOut": "2027-10-02"
   },
   {
@@ -13681,7 +13681,7 @@
       "2050": 124652.32449065335
     },
     "futureEmission": 5222572.856086373,
-    "netZeroReached": "2087-09-08",
+    "hitNetZero": "2087-09-08",
     "budgetRunsOut": "2027-03-18"
   },
   {
@@ -13766,7 +13766,7 @@
       "2050": 0
     },
     "futureEmission": 1750028.5447234358,
-    "netZeroReached": "2036-11-29",
+    "hitNetZero": "2036-11-29",
     "budgetRunsOut": "2030-10-09"
   },
   {
@@ -13851,7 +13851,7 @@
       "2050": 1976.2398331398144
     },
     "futureEmission": 1000675.9993847862,
-    "netZeroReached": "2050-12-04",
+    "hitNetZero": "2050-12-04",
     "budgetRunsOut": "2028-01-30"
   },
   {
@@ -13936,7 +13936,7 @@
       "2050": 0
     },
     "futureEmission": 79490.85283411638,
-    "netZeroReached": "2030-10-12",
+    "hitNetZero": "2030-10-12",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -14021,7 +14021,7 @@
       "2050": 0
     },
     "futureEmission": 387386.15334140963,
-    "netZeroReached": "2046-03-14",
+    "hitNetZero": "2046-03-14",
     "budgetRunsOut": "2028-07-20"
   },
   {
@@ -14106,7 +14106,7 @@
       "2050": 0
     },
     "futureEmission": 266074.72481282684,
-    "netZeroReached": "2048-02-11",
+    "hitNetZero": "2048-02-11",
     "budgetRunsOut": "2028-02-28"
   },
   {
@@ -14191,7 +14191,7 @@
       "2050": 14571.63546254579
     },
     "futureEmission": 787410.4325493576,
-    "netZeroReached": "2068-08-27",
+    "hitNetZero": "2068-08-27",
     "budgetRunsOut": "2027-06-22"
   },
   {
@@ -14276,7 +14276,7 @@
       "2050": 24453.782676142175
     },
     "futureEmission": 886167.1926138985,
-    "netZeroReached": "2121-07-17",
+    "hitNetZero": "2121-07-17",
     "budgetRunsOut": "2027-02-06"
   },
   {
@@ -14361,7 +14361,7 @@
       "2050": 22865.227711636107
     },
     "futureEmission": 1529700.5025429463,
-    "netZeroReached": "2062-02-23",
+    "hitNetZero": "2062-02-23",
     "budgetRunsOut": "2027-08-21"
   },
   {
@@ -14446,7 +14446,7 @@
       "2050": 0
     },
     "futureEmission": 220874.86064350666,
-    "netZeroReached": "2035-06-15",
+    "hitNetZero": "2035-06-15",
     "budgetRunsOut": "2031-03-12"
   },
   {
@@ -14531,7 +14531,7 @@
       "2050": 21763.47139123082
     },
     "futureEmission": 24835213.771258775,
-    "netZeroReached": "2050-05-21",
+    "hitNetZero": "2050-05-21",
     "budgetRunsOut": "2028-03-08"
   },
   {
@@ -14616,7 +14616,7 @@
       "2050": 200258.93901015446
     },
     "futureEmission": 3783508.513441028,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2023-11-22"
   },
   {
@@ -14701,7 +14701,7 @@
       "2050": 4258.910173117649
     },
     "futureEmission": 726000.1330926244,
-    "netZeroReached": "2053-03-07",
+    "hitNetZero": "2053-03-07",
     "budgetRunsOut": "2027-11-21"
   },
   {
@@ -14786,7 +14786,7 @@
       "2050": 42429.304866111954
     },
     "futureEmission": 1405581.1580519828,
-    "netZeroReached": "2193-10-15",
+    "hitNetZero": "2193-10-15",
     "budgetRunsOut": "2026-09-30"
   },
   {
@@ -14871,7 +14871,7 @@
       "2050": 32757.835257343948
     },
     "futureEmission": 2378743.6249244125,
-    "netZeroReached": "2060-07-04",
+    "hitNetZero": "2060-07-04",
     "budgetRunsOut": "2027-09-28"
   },
   {
@@ -14956,7 +14956,7 @@
       "2050": 0
     },
     "futureEmission": 94240.30654979548,
-    "netZeroReached": "2028-09-12",
+    "hitNetZero": "2028-09-12",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -15041,7 +15041,7 @@
       "2050": 3373.600666584447
     },
     "futureEmission": 625622.4335280566,
-    "netZeroReached": "2052-11-12",
+    "hitNetZero": "2052-11-12",
     "budgetRunsOut": "2028-02-18"
   },
   {
@@ -15126,7 +15126,7 @@
       "2050": 0
     },
     "futureEmission": 618311.334684869,
-    "netZeroReached": "2039-01-04",
+    "hitNetZero": "2039-01-04",
     "budgetRunsOut": "2029-08-21"
   },
   {
@@ -15211,7 +15211,7 @@
       "2050": 11800.258111877367
     },
     "futureEmission": 2702835.7764663706,
-    "netZeroReached": "2052-03-30",
+    "hitNetZero": "2052-03-30",
     "budgetRunsOut": "2027-09-21"
   },
   {
@@ -15296,7 +15296,7 @@
       "2050": 1312.3189071528614
     },
     "futureEmission": 982271.6845905745,
-    "netZeroReached": "2050-08-10",
+    "hitNetZero": "2050-08-10",
     "budgetRunsOut": "2028-01-21"
   },
   {
@@ -15381,7 +15381,7 @@
       "2050": 14001.125500890194
     },
     "futureEmission": 783366.7896188338,
-    "netZeroReached": "2067-04-12",
+    "hitNetZero": "2067-04-12",
     "budgetRunsOut": "2027-07-05"
   },
   {
@@ -15466,7 +15466,7 @@
       "2050": 25388.216756030917
     },
     "futureEmission": 3367910.529391381,
-    "netZeroReached": "2054-05-09",
+    "hitNetZero": "2054-05-09",
     "budgetRunsOut": "2027-12-30"
   },
   {
@@ -15551,7 +15551,7 @@
       "2050": 269929.5007201135
     },
     "futureEmission": 8703422.10286649,
-    "netZeroReached": "2248-04-21",
+    "hitNetZero": "2248-04-21",
     "budgetRunsOut": "2026-10-27"
   },
   {
@@ -15636,7 +15636,7 @@
       "2050": 921.0149680548348
     },
     "futureEmission": 659494.2407331314,
-    "netZeroReached": "2050-08-21",
+    "hitNetZero": "2050-08-21",
     "budgetRunsOut": "2028-01-11"
   },
   {
@@ -15721,7 +15721,7 @@
       "2050": 6155.779093625955
     },
     "futureEmission": 761684.5123725631,
-    "netZeroReached": "2054-10-10",
+    "hitNetZero": "2054-10-10",
     "budgetRunsOut": "2027-11-11"
   },
   {
@@ -15806,7 +15806,7 @@
       "2050": 0
     },
     "futureEmission": 785063.6263354991,
-    "netZeroReached": "2049-04-28",
+    "hitNetZero": "2049-04-28",
     "budgetRunsOut": "2028-03-03"
   },
   {
@@ -15891,7 +15891,7 @@
       "2050": 227389.61401180923
     },
     "futureEmission": 10696007.901375862,
-    "netZeroReached": "2076-04-30",
+    "hitNetZero": "2076-04-30",
     "budgetRunsOut": "2027-04-29"
   },
   {
@@ -15976,7 +15976,7 @@
       "2050": 0
     },
     "futureEmission": 190705.21291361251,
-    "netZeroReached": "2043-09-20",
+    "hitNetZero": "2043-09-20",
     "budgetRunsOut": "2028-08-07"
   },
   {
@@ -16061,7 +16061,7 @@
       "2050": 5543.987709511537
     },
     "futureEmission": 557802.1005117125,
-    "netZeroReached": "2056-05-07",
+    "hitNetZero": "2056-05-07",
     "budgetRunsOut": "2027-09-23"
   },
   {
@@ -16146,7 +16146,7 @@
       "2050": 0
     },
     "futureEmission": 1555352.468945467,
-    "netZeroReached": "2045-08-28",
+    "hitNetZero": "2045-08-28",
     "budgetRunsOut": "2028-10-21"
   },
   {
@@ -16231,7 +16231,7 @@
       "2050": 0
     },
     "futureEmission": 627391.8476479762,
-    "netZeroReached": "2039-11-06",
+    "hitNetZero": "2039-11-06",
     "budgetRunsOut": "2029-09-11"
   },
   {
@@ -16316,7 +16316,7 @@
       "2050": 0
     },
     "futureEmission": 484391.17619609705,
-    "netZeroReached": "2036-07-04",
+    "hitNetZero": "2036-07-04",
     "budgetRunsOut": "2030-04-14"
   },
   {
@@ -16401,7 +16401,7 @@
       "2050": 0
     },
     "futureEmission": 489111.72556017153,
-    "netZeroReached": "2028-10-03",
+    "hitNetZero": "2028-10-03",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -16486,7 +16486,7 @@
       "2050": 0
     },
     "futureEmission": 512785.11833301396,
-    "netZeroReached": "2030-01-21",
+    "hitNetZero": "2030-01-21",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -16571,7 +16571,7 @@
       "2050": 18423.968572624348
     },
     "futureEmission": 505523.7785220319,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-06-23"
   },
   {
@@ -16656,7 +16656,7 @@
       "2050": 23653.198170380725
     },
     "futureEmission": 793704.6739206356,
-    "netZeroReached": "2175-02-04",
+    "hitNetZero": "2175-02-04",
     "budgetRunsOut": "2026-12-16"
   },
   {
@@ -16741,7 +16741,7 @@
       "2050": 3324.7779626017436
     },
     "futureEmission": 967289.2499732366,
-    "netZeroReached": "2051-09-14",
+    "hitNetZero": "2051-09-14",
     "budgetRunsOut": "2027-12-29"
   },
   {
@@ -16826,7 +16826,7 @@
       "2050": 0
     },
     "futureEmission": 10552516.577401493,
-    "netZeroReached": "2043-11-19",
+    "hitNetZero": "2043-11-19",
     "budgetRunsOut": "2029-05-21"
   },
   {
@@ -16911,7 +16911,7 @@
       "2050": 0
     },
     "futureEmission": 3861935.453649669,
-    "netZeroReached": "2026-11-14",
+    "hitNetZero": "2026-11-14",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -16996,7 +16996,7 @@
       "2050": 2777.81085150328
     },
     "futureEmission": 205691.2858064787,
-    "netZeroReached": "2060-03-04",
+    "hitNetZero": "2060-03-04",
     "budgetRunsOut": "2027-09-12"
   },
   {
@@ -17081,7 +17081,7 @@
       "2050": 12982.242219469044
     },
     "futureEmission": 629428.8441216772,
-    "netZeroReached": "2074-03-27",
+    "hitNetZero": "2074-03-27",
     "budgetRunsOut": "2027-06-05"
   },
   {
@@ -17166,7 +17166,7 @@
       "2050": 39696.78901303001
     },
     "futureEmission": 2137955.834076253,
-    "netZeroReached": "2068-10-25",
+    "hitNetZero": "2068-10-25",
     "budgetRunsOut": "2027-05-29"
   },
   {
@@ -17251,7 +17251,7 @@
       "2050": 71414.83811240806
     },
     "futureEmission": 1882661.951326684,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-06-01"
   },
   {
@@ -17336,7 +17336,7 @@
       "2050": 0
     },
     "futureEmission": 107567.24642303296,
-    "netZeroReached": "2025-10-04",
+    "hitNetZero": "2025-10-04",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -17421,7 +17421,7 @@
       "2050": 0
     },
     "futureEmission": 196508.48852706744,
-    "netZeroReached": "2041-03-18",
+    "hitNetZero": "2041-03-18",
     "budgetRunsOut": "2028-12-23"
   },
   {
@@ -17506,7 +17506,7 @@
       "2050": 229684.25243434682
     },
     "futureEmission": 11365325.340543356,
-    "netZeroReached": "2073-01-04",
+    "hitNetZero": "2073-01-04",
     "budgetRunsOut": "2027-05-28"
   },
   {
@@ -17591,7 +17591,7 @@
       "2050": 0
     },
     "futureEmission": 407679.49616785045,
-    "netZeroReached": "2036-03-22",
+    "hitNetZero": "2036-03-22",
     "budgetRunsOut": "2030-09-27"
   },
   {
@@ -17676,7 +17676,7 @@
       "2050": 0
     },
     "futureEmission": 104502.21291928555,
-    "netZeroReached": "2028-11-04",
+    "hitNetZero": "2028-11-04",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -17761,7 +17761,7 @@
       "2050": 0
     },
     "futureEmission": 357825.83713723556,
-    "netZeroReached": "2040-07-16",
+    "hitNetZero": "2040-07-16",
     "budgetRunsOut": "2029-03-13"
   },
   {
@@ -17846,7 +17846,7 @@
       "2050": 3922.7266767397523
     },
     "futureEmission": 1130032.5722047929,
-    "netZeroReached": "2051-09-21",
+    "hitNetZero": "2051-09-21",
     "budgetRunsOut": "2028-01-11"
   },
   {
@@ -17931,7 +17931,7 @@
       "2050": 0
     },
     "futureEmission": 365612.56161210337,
-    "netZeroReached": "2045-02-28",
+    "hitNetZero": "2045-02-28",
     "budgetRunsOut": "2028-07-04"
   },
   {
@@ -18016,7 +18016,7 @@
       "2050": 3893.4717987976037
     },
     "futureEmission": 904748.9631628328,
-    "netZeroReached": "2052-03-14",
+    "hitNetZero": "2052-03-14",
     "budgetRunsOut": "2027-12-19"
   },
   {
@@ -18101,7 +18101,7 @@
       "2050": 0
     },
     "futureEmission": 359518.864453124,
-    "netZeroReached": "2043-01-03",
+    "hitNetZero": "2043-01-03",
     "budgetRunsOut": "2028-10-05"
   },
   {
@@ -18186,7 +18186,7 @@
       "2050": 0
     },
     "futureEmission": 402324.9139730937,
-    "netZeroReached": "2044-09-05",
+    "hitNetZero": "2044-09-05",
     "budgetRunsOut": "2028-08-16"
   },
   {
@@ -18271,7 +18271,7 @@
       "2050": 0
     },
     "futureEmission": 672523.086773296,
-    "netZeroReached": "2033-03-03",
+    "hitNetZero": "2033-03-03",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -18356,7 +18356,7 @@
       "2050": 0
     },
     "futureEmission": 310614.39969249256,
-    "netZeroReached": "2037-04-30",
+    "hitNetZero": "2037-04-30",
     "budgetRunsOut": "2030-04-01"
   },
   {
@@ -18441,7 +18441,7 @@
       "2050": 687013.9121253975
     },
     "futureEmission": 15577798.275849158,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-03-04"
   },
   {
@@ -18526,7 +18526,7 @@
       "2050": 0
     },
     "futureEmission": 504788.25620114227,
-    "netZeroReached": "2044-09-19",
+    "hitNetZero": "2044-09-19",
     "budgetRunsOut": "2028-10-18"
   },
   {
@@ -18611,7 +18611,7 @@
       "2050": 48274.18227764033
     },
     "futureEmission": 1865748.3212454338,
-    "netZeroReached": "2101-10-20",
+    "hitNetZero": "2101-10-20",
     "budgetRunsOut": "2027-02-11"
   },
   {
@@ -18696,7 +18696,7 @@
       "2050": 0
     },
     "futureEmission": 172659.41831150933,
-    "netZeroReached": "2038-03-29",
+    "hitNetZero": "2038-03-29",
     "budgetRunsOut": "2029-11-09"
   },
   {
@@ -18781,7 +18781,7 @@
       "2050": 7395.8447044275235
     },
     "futureEmission": 570305.427799745,
-    "netZeroReached": "2059-07-21",
+    "hitNetZero": "2059-07-21",
     "budgetRunsOut": "2027-05-18"
   },
   {
@@ -18866,7 +18866,7 @@
       "2050": 0
     },
     "futureEmission": 1265959.3098100547,
-    "netZeroReached": "2045-01-24",
+    "hitNetZero": "2045-01-24",
     "budgetRunsOut": "2028-08-10"
   },
   {
@@ -18951,7 +18951,7 @@
       "2050": 270354.76652081497
     },
     "futureEmission": 5681307.585247333,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2025-06-24"
   },
   {
@@ -19036,7 +19036,7 @@
       "2050": 0
     },
     "futureEmission": 439516.6392550557,
-    "netZeroReached": "2041-07-27",
+    "hitNetZero": "2041-07-27",
     "budgetRunsOut": "2028-12-29"
   },
   {
@@ -19121,7 +19121,7 @@
       "2050": 0
     },
     "futureEmission": 528612.040721939,
-    "netZeroReached": "2048-02-23",
+    "hitNetZero": "2048-02-23",
     "budgetRunsOut": "2028-04-27"
   },
   {
@@ -19206,7 +19206,7 @@
       "2050": 0
     },
     "futureEmission": 481479.8643993777,
-    "netZeroReached": "2045-03-07",
+    "hitNetZero": "2045-03-07",
     "budgetRunsOut": "2028-06-13"
   },
   {
@@ -19291,7 +19291,7 @@
       "2050": 0
     },
     "futureEmission": 266020.1194845539,
-    "netZeroReached": "2034-08-08",
+    "hitNetZero": "2034-08-08",
     "budgetRunsOut": "2031-12-20"
   },
   {
@@ -19376,7 +19376,7 @@
       "2050": 5726.11994726595
     },
     "futureEmission": 370478.4274568926,
-    "netZeroReached": "2062-12-01",
+    "hitNetZero": "2062-12-01",
     "budgetRunsOut": "2027-08-13"
   },
   {
@@ -19461,7 +19461,7 @@
       "2050": 53793.69088224461
     },
     "futureEmission": 2236848.5559137114,
-    "netZeroReached": "2088-10-07",
+    "hitNetZero": "2088-10-07",
     "budgetRunsOut": "2027-02-20"
   },
   {
@@ -19546,7 +19546,7 @@
       "2050": 26729.431470796233
     },
     "futureEmission": 873769.3373430506,
-    "netZeroReached": "2215-09-15",
+    "hitNetZero": "2215-09-15",
     "budgetRunsOut": "2026-11-05"
   },
   {
@@ -19631,7 +19631,7 @@
       "2050": 0
     },
     "futureEmission": 839078.2421393194,
-    "netZeroReached": "2042-12-21",
+    "hitNetZero": "2042-12-21",
     "budgetRunsOut": "2028-10-22"
   },
   {
@@ -19716,7 +19716,7 @@
       "2050": 0
     },
     "futureEmission": 851880.5557518302,
-    "netZeroReached": "2041-05-30",
+    "hitNetZero": "2041-05-30",
     "budgetRunsOut": "2028-12-24"
   },
   {
@@ -19801,7 +19801,7 @@
       "2050": 5519.457714245189
     },
     "futureEmission": 706765.6444132366,
-    "netZeroReached": "2054-07-24",
+    "hitNetZero": "2054-07-24",
     "budgetRunsOut": "2027-11-28"
   },
   {
@@ -19886,7 +19886,7 @@
       "2050": 0
     },
     "futureEmission": 125791.70879644819,
-    "netZeroReached": "2033-04-07",
+    "hitNetZero": "2033-04-07",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -19971,7 +19971,7 @@
       "2050": 9136.507569241337
     },
     "futureEmission": 1346671.5572452147,
-    "netZeroReached": "2053-10-22",
+    "hitNetZero": "2053-10-22",
     "budgetRunsOut": "2027-12-09"
   },
   {
@@ -20056,7 +20056,7 @@
       "2050": 0
     },
     "futureEmission": 372928.3082482611,
-    "netZeroReached": "2047-12-19",
+    "hitNetZero": "2047-12-19",
     "budgetRunsOut": "2028-05-06"
   },
   {
@@ -20141,7 +20141,7 @@
       "2050": 219306.24802121634
     },
     "futureEmission": 6476952.06808831,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-09-03"
   },
   {
@@ -20226,7 +20226,7 @@
       "2050": 93979.85297588765
     },
     "futureEmission": 2732113.4155142503,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-08-15"
   },
   {
@@ -20311,7 +20311,7 @@
       "2050": 0
     },
     "futureEmission": 3411111.8147537215,
-    "netZeroReached": "2043-04-04",
+    "hitNetZero": "2043-04-04",
     "budgetRunsOut": "2028-10-15"
   },
   {
@@ -20396,7 +20396,7 @@
       "2050": 5985.625320489518
     },
     "futureEmission": 1094094.937982414,
-    "netZeroReached": "2052-12-01",
+    "hitNetZero": "2052-12-01",
     "budgetRunsOut": "2028-01-28"
   },
   {
@@ -20481,7 +20481,7 @@
       "2050": 546194.2321097478
     },
     "futureEmission": 10188817.225431494,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2023-05-02"
   },
   {
@@ -20566,7 +20566,7 @@
       "2050": 0
     },
     "futureEmission": 4629448.212593053,
-    "netZeroReached": "2037-04-23",
+    "hitNetZero": "2037-04-23",
     "budgetRunsOut": "2030-12-29"
   },
   {
@@ -20651,7 +20651,7 @@
       "2050": 2338.4250073153526
     },
     "futureEmission": 570630.9430734096,
-    "netZeroReached": "2052-01-30",
+    "hitNetZero": "2052-01-30",
     "budgetRunsOut": "2028-01-13"
   },
   {
@@ -20736,7 +20736,7 @@
       "2050": 0
     },
     "futureEmission": 43330.99111382264,
-    "netZeroReached": "2026-12-09",
+    "hitNetZero": "2026-12-09",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -20821,7 +20821,7 @@
       "2050": 25983.92617791146
     },
     "futureEmission": 1761611.7916343748,
-    "netZeroReached": "2061-11-13",
+    "hitNetZero": "2061-11-13",
     "budgetRunsOut": "2027-08-01"
   },
   {
@@ -20906,7 +20906,7 @@
       "2050": 0
     },
     "futureEmission": 258960.39413156424,
-    "netZeroReached": "2037-05-02",
+    "hitNetZero": "2037-05-02",
     "budgetRunsOut": "2030-04-04"
   },
   {
@@ -20991,7 +20991,7 @@
       "2050": 41574.333871743176
     },
     "futureEmission": 1581471.1987446984,
-    "netZeroReached": "2105-07-16",
+    "hitNetZero": "2105-07-16",
     "budgetRunsOut": "2027-03-13"
   },
   {
@@ -21076,7 +21076,7 @@
       "2050": 0
     },
     "futureEmission": 147350.62461569908,
-    "netZeroReached": "2032-05-08",
+    "hitNetZero": "2032-05-08",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -21161,7 +21161,7 @@
       "2050": 2101.5093960417435
     },
     "futureEmission": 1034771.504811391,
-    "netZeroReached": "2050-12-14",
+    "hitNetZero": "2050-12-14",
     "budgetRunsOut": "2028-02-11"
   },
   {
@@ -21246,7 +21246,7 @@
       "2050": 82460.64416242391
     },
     "futureEmission": 4122951.2651831126,
-    "netZeroReached": "2072-05-26",
+    "hitNetZero": "2072-05-26",
     "budgetRunsOut": "2027-06-15"
   },
   {
@@ -21331,7 +21331,7 @@
       "2050": 5580.57875258103
     },
     "futureEmission": 344957.001875175,
-    "netZeroReached": "2064-02-03",
+    "hitNetZero": "2064-02-03",
     "budgetRunsOut": "2027-08-01"
   },
   {
@@ -21416,7 +21416,7 @@
       "2050": 33513.61028250493
     },
     "futureEmission": 1413482.1752440813,
-    "netZeroReached": "2086-11-03",
+    "hitNetZero": "2086-11-03",
     "budgetRunsOut": "2027-03-13"
   },
   {
@@ -21501,7 +21501,7 @@
       "2050": 0
     },
     "futureEmission": 590607.594670162,
-    "netZeroReached": "2034-02-26",
+    "hitNetZero": "2034-02-26",
     "budgetRunsOut": "2033-02-23"
   },
   {
@@ -21586,7 +21586,7 @@
       "2050": 1765.829911939567
     },
     "futureEmission": 435065.69251688843,
-    "netZeroReached": "2052-01-22",
+    "hitNetZero": "2052-01-22",
     "budgetRunsOut": "2027-12-08"
   },
   {
@@ -21671,7 +21671,7 @@
       "2050": 2456.932135587558
     },
     "futureEmission": 789902.1757578978,
-    "netZeroReached": "2051-07-10",
+    "hitNetZero": "2051-07-10",
     "budgetRunsOut": "2028-02-22"
   },
   {
@@ -21756,7 +21756,7 @@
       "2050": 5049.2242604848
     },
     "futureEmission": 480974.1621446326,
-    "netZeroReached": "2056-11-10",
+    "hitNetZero": "2056-11-10",
     "budgetRunsOut": "2027-10-30"
   },
   {
@@ -21841,7 +21841,7 @@
       "2050": 0
     },
     "futureEmission": 393538.33262370515,
-    "netZeroReached": "2049-12-06",
+    "hitNetZero": "2049-12-06",
     "budgetRunsOut": "2028-03-02"
   },
   {
@@ -21926,7 +21926,7 @@
       "2050": 424372.7739168983
     },
     "futureEmission": 10221571.532379419,
-    "netZeroReached": "Aldrig",
+    "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-01-27"
   },
   {
@@ -22011,7 +22011,7 @@
       "2050": 5649.985309891752
     },
     "futureEmission": 352488.22074455826,
-    "netZeroReached": "2063-11-02",
+    "hitNetZero": "2063-11-02",
     "budgetRunsOut": "2027-08-13"
   },
   {
@@ -22096,7 +22096,7 @@
       "2050": 65692.2532196797
     },
     "futureEmission": 2320905.26364253,
-    "netZeroReached": "2133-11-26",
+    "hitNetZero": "2133-11-26",
     "budgetRunsOut": "2026-12-28"
   },
   {
@@ -22181,7 +22181,7 @@
       "2050": 47242.14432390127
     },
     "futureEmission": 2478250.007713814,
-    "netZeroReached": "2069-12-15",
+    "hitNetZero": "2069-12-15",
     "budgetRunsOut": "2027-06-25"
   },
   {
@@ -22266,7 +22266,7 @@
       "2050": 0
     },
     "futureEmission": 1355818.5502241063,
-    "netZeroReached": "2044-03-23",
+    "hitNetZero": "2044-03-23",
     "budgetRunsOut": "2028-09-17"
   },
   {
@@ -22351,7 +22351,7 @@
       "2050": 79167.6122983545
     },
     "futureEmission": 7673547.117478664,
-    "netZeroReached": "2056-08-31",
+    "hitNetZero": "2056-08-31",
     "budgetRunsOut": "2028-02-10"
   },
   {
@@ -22436,7 +22436,7 @@
       "2050": 0
     },
     "futureEmission": 1653228.5678709052,
-    "netZeroReached": "2042-04-02",
+    "hitNetZero": "2042-04-02",
     "budgetRunsOut": "2029-03-22"
   },
   {
@@ -22521,7 +22521,7 @@
       "2050": 2484.882552633062
     },
     "futureEmission": 715429.3034685005,
-    "netZeroReached": "2051-09-22",
+    "hitNetZero": "2051-09-22",
     "budgetRunsOut": "2028-01-10"
   },
   {
@@ -22606,7 +22606,7 @@
       "2050": 0
     },
     "futureEmission": 97392.01056623494,
-    "netZeroReached": "2036-02-01",
+    "hitNetZero": "2036-02-01",
     "budgetRunsOut": "2030-11-22"
   },
   {
@@ -22691,7 +22691,7 @@
       "2050": 0
     },
     "futureEmission": 636561.382079142,
-    "netZeroReached": "2039-08-27",
+    "hitNetZero": "2039-08-27",
     "budgetRunsOut": "2029-05-10"
   },
   {
@@ -22776,7 +22776,7 @@
       "2050": 0
     },
     "futureEmission": 707332.6150672968,
-    "netZeroReached": "2048-01-19",
+    "hitNetZero": "2048-01-19",
     "budgetRunsOut": "2028-04-24"
   },
   {
@@ -22861,7 +22861,7 @@
       "2050": 0
     },
     "futureEmission": 319548.7915703886,
-    "netZeroReached": "2038-11-27",
+    "hitNetZero": "2038-11-27",
     "budgetRunsOut": "2029-06-13"
   },
   {
@@ -22946,7 +22946,7 @@
       "2050": 0
     },
     "futureEmission": 120306.93004571769,
-    "netZeroReached": "2031-07-26",
+    "hitNetZero": "2031-07-26",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -23031,7 +23031,7 @@
       "2050": 3648.057560591493
     },
     "futureEmission": 388100.13673072594,
-    "netZeroReached": "2055-11-16",
+    "hitNetZero": "2055-11-16",
     "budgetRunsOut": "2027-08-12"
   },
   {
@@ -23116,7 +23116,7 @@
       "2050": 0
     },
     "futureEmission": 2019931.7328770114,
-    "netZeroReached": "2049-08-30",
+    "hitNetZero": "2049-08-30",
     "budgetRunsOut": "2028-05-07"
   },
   {
@@ -23201,7 +23201,7 @@
       "2050": 9224.812723375857
     },
     "futureEmission": 599420.446721254,
-    "netZeroReached": "2062-10-26",
+    "hitNetZero": "2062-10-26",
     "budgetRunsOut": "2027-08-04"
   },
   {
@@ -23286,7 +23286,7 @@
       "2050": 12907.289594923612
     },
     "futureEmission": 1130584.4420419273,
-    "netZeroReached": "2057-10-13",
+    "hitNetZero": "2057-10-13",
     "budgetRunsOut": "2027-09-18"
   },
   {
@@ -23371,7 +23371,7 @@
       "2050": 0
     },
     "futureEmission": 59581.000435427355,
-    "netZeroReached": "2024-10-08",
+    "hitNetZero": "2024-10-08",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -23456,7 +23456,7 @@
       "2050": 0
     },
     "futureEmission": 465758.22963996086,
-    "netZeroReached": "2044-12-30",
+    "hitNetZero": "2044-12-30",
     "budgetRunsOut": "2028-07-09"
   },
   {
@@ -23541,7 +23541,7 @@
       "2050": 10156.947767196922
     },
     "futureEmission": 476860.6761272896,
-    "netZeroReached": "2076-07-03",
+    "hitNetZero": "2076-07-03",
     "budgetRunsOut": "2027-04-01"
   },
   {
@@ -23626,7 +23626,7 @@
       "2050": 0
     },
     "futureEmission": 464095.11179686984,
-    "netZeroReached": "2039-08-11",
+    "hitNetZero": "2039-08-11",
     "budgetRunsOut": "2029-06-28"
   },
   {
@@ -23711,7 +23711,7 @@
       "2050": 0
     },
     "futureEmission": 185422.07590141176,
-    "netZeroReached": "2035-06-14",
+    "hitNetZero": "2035-06-14",
     "budgetRunsOut": "2031-05-23"
   },
   {
@@ -23796,7 +23796,7 @@
       "2050": 6887.26902597351
     },
     "futureEmission": 522523.1668318829,
-    "netZeroReached": "2059-10-11",
+    "hitNetZero": "2059-10-11",
     "budgetRunsOut": "2027-08-26"
   },
   {
@@ -23881,7 +23881,7 @@
       "2050": 0
     },
     "futureEmission": 642699.0292373339,
-    "netZeroReached": "2044-02-12",
+    "hitNetZero": "2044-02-12",
     "budgetRunsOut": "2028-08-25"
   },
   {
@@ -23966,7 +23966,7 @@
       "2050": 0
     },
     "futureEmission": 2539249.7585599823,
-    "netZeroReached": "2037-03-04",
+    "hitNetZero": "2037-03-04",
     "budgetRunsOut": "2030-07-24"
   },
   {
@@ -24051,7 +24051,7 @@
       "2050": 32044.551355276024
     },
     "futureEmission": 1376689.2823022064,
-    "netZeroReached": "2084-08-10",
+    "hitNetZero": "2084-08-10",
     "budgetRunsOut": "2027-03-22"
   },
   {
@@ -24136,7 +24136,7 @@
       "2050": 0
     },
     "futureEmission": 3488587.0992366397,
-    "netZeroReached": "2048-09-02",
+    "hitNetZero": "2048-09-02",
     "budgetRunsOut": "2028-04-29"
   },
   {
@@ -24221,7 +24221,7 @@
       "2050": 0
     },
     "futureEmission": 482334.78589351394,
-    "netZeroReached": "2030-01-29",
+    "hitNetZero": "2030-01-29",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -24306,7 +24306,7 @@
       "2050": 32331.225286663044
     },
     "futureEmission": 1526007.7121394284,
-    "netZeroReached": "2076-01-24",
+    "hitNetZero": "2076-01-24",
     "budgetRunsOut": "2027-05-13"
   },
   {
@@ -24391,7 +24391,7 @@
       "2050": 0
     },
     "futureEmission": 919853.6951148936,
-    "netZeroReached": "2045-05-06",
+    "hitNetZero": "2045-05-06",
     "budgetRunsOut": "2028-10-19"
   },
   {
@@ -24476,7 +24476,7 @@
       "2050": 3629.4217949749436
     },
     "futureEmission": 532080.5166795843,
-    "netZeroReached": "2053-10-31",
+    "hitNetZero": "2053-10-31",
     "budgetRunsOut": "2027-12-18"
   },
   {
@@ -24561,7 +24561,7 @@
       "2050": 0
     },
     "futureEmission": 138569.11143347647,
-    "netZeroReached": "2033-03-27",
+    "hitNetZero": "2033-03-27",
     "budgetRunsOut": "Aldrig"
   },
   {
@@ -24646,7 +24646,7 @@
       "2050": 0
     },
     "futureEmission": 86826.18165547572,
-    "netZeroReached": "2032-10-06",
+    "hitNetZero": "2032-10-06",
     "budgetRunsOut": "Aldrig"
   }
 ]

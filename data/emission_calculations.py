@@ -107,10 +107,12 @@ df_cem['Linear Emission'] = temp
 
 path_crunched_data = 'output_extra.xlsx'
 df_raw_crunched = pd.read_excel(path_crunched_data)
-df_raw_crunched['netZeroReached'] = [i.date() if type(i) is datetime.datetime else i for i in df_raw_crunched['När netto noll nås']]
-df_raw_crunched['budgetRunsOut'] = [i.date() if type(i) is datetime.datetime else i for i in df_raw_crunched['Budget tar slut']]
+df_raw_crunched['hitNetZero'] = [i.date() if type(
+    i) is datetime.datetime else i for i in df_raw_crunched['När netto noll nås']]
+df_raw_crunched['budgetRunsOut'] = [i.date() if type(
+    i) is datetime.datetime else i for i in df_raw_crunched['Budget tar slut']]
 df_crunched = df_raw_crunched.filter(
-    ['Kommun', 'netZeroReached', 'budgetRunsOut'], axis=1)
+    ['Kommun', 'hitNetZero', 'budgetRunsOut'], axis=1)
 
 df_master = df_cem .merge(df_crunched, on='Kommun', how='left')
 
@@ -134,7 +136,7 @@ for i in range(len(df_cem)):
         'emissionBudget': df_master.iloc[i]['Paris Path'],
         'trend': df_master.iloc[i]['Linear Path'],
         'futureEmission': df_master.iloc[i]['Linear Emission'],
-        'netZeroReached': df_master.iloc[i]['netZeroReached'],
+        'hitNetZero': df_master.iloc[i]['hitNetZero'],
         'budgetRunsOut': df_master.iloc[i]['budgetRunsOut']
     })
 
