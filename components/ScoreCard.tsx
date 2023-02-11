@@ -72,7 +72,7 @@ const InfoParagraph = styled(Paragraph)`
 type Props = {
   population: number | null
   budget: number | null
-  budgetFinished: number | null
+  budgetRunsOut: number | string
   municipality: string
   politicalRule: Array<string> | null
   rank: number | null
@@ -80,11 +80,11 @@ type Props = {
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-const ScoreCard = ({ population, budget, budgetFinished, rank, politicalRule }: Props) => {
+const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: Props) => {
   const [togglePopulation, setTogglePopulation] = useState(false)
   const [togglePoliticalRule, setTogglePoliticalRule] = useState(false)
   const [toggleBudget, setToggleBudget] = useState(false)
-  const [toggleBudgetFinished, setToggleBudgetFinished] = useState(false)
+  const [togglebudgetRunsOut, setTogglebudgetRunsOut] = useState(false)
   const [toggleEmissionsPerCapita, setToggleEmissionsPerCapita] = useState(false)
 
   const politicalRuleFormatted = politicalRule?.join(', ')
@@ -125,24 +125,24 @@ const ScoreCard = ({ population, budget, budgetFinished, rank, politicalRule }: 
           </section>
           </>
       )}
-      {budgetFinished && (
+      {budgetRunsOut && (
         <>
           <div className="row">
             <section className="left">
               <InfoHeading>Koldioxidbudgeten tar slut</InfoHeading>
-              <ParagraphBold>{formatter.format(Math.round(budgetFinished))} ton</ParagraphBold>
+              <ParagraphBold>{budgetRunsOut}</ParagraphBold>
             </section>
             <section className="right">
-              <StyledIcon onClick={() => setToggleBudgetFinished(!toggleBudgetFinished)}>
-                {toggleBudgetFinished ? <IconGreen /> : <Icon />}
+              <StyledIcon onClick={() => setTogglebudgetRunsOut(!togglebudgetRunsOut)}>
+                {togglebudgetRunsOut ? <IconGreen /> : <Icon />}
               </StyledIcon>
             </section>
           </div>
           <section>
-            {toggleBudgetFinished ? (
+            {togglebudgetRunsOut ? (
               <InfoSection>
                 <InfoParagraph>
-                  Lorem ipsum.
+                  Datumet när kommunens koldioxidbudget tar slut.
                 </InfoParagraph>
               </InfoSection>
             ) : null}
