@@ -142,7 +142,7 @@ const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: P
             {togglebudgetRunsOut ? (
               <InfoSection>
                 <InfoParagraph>
-                  Datumet när kommunens koldioxidbudget tar slut.
+                  Datumet när kommunens koldioxidbudget tar slut. {/*FIXME lägg i copy*/}
                 </InfoParagraph>
               </InfoSection>
             ) : null}
