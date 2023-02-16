@@ -696,7 +696,7 @@ const Municipality = (props: Props) => {
                   Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
                 </TotalCo2>
                 <TotalCo2 color="#6BA292">
-                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton 
+                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
                   CO₂
                 </TotalCo2>
                 {step > 2 && (
@@ -775,9 +775,8 @@ const Municipality = (props: Props) => {
         {step === 3 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text={`Här kan du själv ange årlig procentuell minskning av koldioxidutsläppen i kommunen för mandatperioderna 2022–2026 och 2026–2030. För återstående utsläpp anges därefter en exponentiell minskning fram till år ${
-              userEmissions[userEmissions.length - 1].Year
-            }.`}
+            text={`Här kan du själv ange årlig procentuell minskning av koldioxidutsläppen i kommunen för mandatperioderna 2022–2026 och 2026–2030. För återstående utsläpp anges därefter en exponentiell minskning fram till år ${userEmissions[userEmissions.length - 1].Year
+              }.`}
             scrollY={scrollY}
           />
         )}

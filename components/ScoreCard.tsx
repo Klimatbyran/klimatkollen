@@ -1,10 +1,8 @@
 import styled from 'styled-components'
-import { H3, Paragraph, ParagraphBold } from './Typography'
-import Icon from '../public/icons/info.svg'
-import IconGreen from '../public/icons/info-green.svg'
 import { useState } from 'react'
 import { devices } from '../utils/devices'
 import Link from 'next/link'
+import ScoreCardSection from './ScoreCardSection'
 
 const StyledDiv = styled.div`
   background: ${({ theme }) => theme.black};
@@ -39,36 +37,6 @@ const StyledDiv = styled.div`
   }
 `
 
-const StyledIcon = styled.div`
-  margin-left: 12px;
-
-  &:hover {
-    cursor: pointer;
-  }
-`
-
-const InfoSection = styled.div`
-  background: ${({ theme }) => theme.main};
-  color: ${({ theme }) => theme.black};
-  padding: 15px 10px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-
-  & a {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-`
-
-const InfoHeading = styled(H3)`
-  font-weight: 200;
-  font-size: inherit;
-`
-
-const InfoParagraph = styled(Paragraph)`
-  margin: 0;
-`
-
 type Props = {
   population: number | null
   budget: number | null
@@ -81,159 +49,68 @@ type Props = {
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
 const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: Props) => {
-  const [togglePopulation, setTogglePopulation] = useState(false)
-  const [togglePoliticalRule, setTogglePoliticalRule] = useState(false)
-  const [toggleBudget, setToggleBudget] = useState(false)
-  const [togglebudgetRunsOut, setTogglebudgetRunsOut] = useState(false)
-  const [toggleEmissionsPerCapita, setToggleEmissionsPerCapita] = useState(false)
-
-  const politicalRuleFormatted = politicalRule?.join(', ')
+  const rankFormatted = rank + ' av 290 kommuner'
+  const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
 
   return (
     <StyledDiv>
-      {rank && (
-        <div className="row">
-          <section className="left">
-            <InfoHeading>Rankning av utsläppsminskningstakt sedan 2015</InfoHeading>
-            <ParagraphBold>{rank} av 290 kommuner</ParagraphBold>
-          </section>
-        </div>
-      )}
-      {budget && (
-        <>
-          <div className="row">
-            <section className="left">
-              <InfoHeading>Koldioxidbudget</InfoHeading>
-              <ParagraphBold>{formatter.format(Math.round(budget))} ton</ParagraphBold>
-            </section>
-            <section className="right">
-              <StyledIcon onClick={() => setToggleBudget(!toggleBudget)}>
-                {toggleBudget ? <IconGreen /> : <Icon />}
-              </StyledIcon>
-            </section>
-          </div>
-          <section>
-            {toggleBudget ? (
-              <InfoSection>
-                <InfoParagraph>
-                  Mängden koldioxid kvar att släppa ut för att klara Parisavtalets
-                  1,5-gradersmål, läs mer{' '}
-                  <Link href="/#source-budget-expl">om beräkningen här</Link>.
-                </InfoParagraph>
-              </InfoSection>
-            ) : null}
-          </section>
+      {rank && <ScoreCardSection
+        heading='Rankning av utsläppsminskningstakt sedan 2015'
+        data={rankFormatted}
+      />}
+      {budget && <ScoreCardSection
+        heading='Koldioxidbudget'
+        data={formatter.format(Math.round(budget)) + ' ton'}
+        info={
+          <>
+            Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer{' '}
+            <Link href="/#source-budget-expl">om beräkningen här</Link>.
           </>
-      )}
-      {budgetRunsOut && (
-        <>
-          <div className="row">
-            <section className="left">
-              <InfoHeading>Koldioxidbudgeten tar slut</InfoHeading>
-              <ParagraphBold>{budgetRunsOut}</ParagraphBold>
-            </section>
-            <section className="right">
-              <StyledIcon onClick={() => setTogglebudgetRunsOut(!togglebudgetRunsOut)}>
-                {togglebudgetRunsOut ? <IconGreen /> : <Icon />}
-              </StyledIcon>
-            </section>
-          </div>
-          <section>
-            {togglebudgetRunsOut ? (
-              <InfoSection>
-                <InfoParagraph>
-                  Datumet när kommunens koldioxidbudget tar slut. {/*FIXME lägg i copy*/}
-                </InfoParagraph>
-              </InfoSection>
-            ) : null}
-          </section>
-        </>
-      )}
+        }
+      />}
+      {budgetRunsOut && <ScoreCardSection
+        heading='Koldioxidbudgeten tar slut'
+        data={budgetRunsOut.toString()}
+        info={
+          <>
+            Datumet när kommunens koldioxidbudget tar slut.
+          </>
+        }
+      />}
+      {<ScoreCardSection
+        heading='Nödvändig utsläppsminskningstakt för att nå Parisavtalet'
+        data='22% per år'
+        info={<>Lorem ipsum.</>}
+      />}
+      {population && <ScoreCardSection
+        heading='Utsläpp per invånare'
+        data='3.6 ton koldioxid per år'
+        info={
+          <>
+            Kommunens utsläpp utslaget på dess {formatter.format(population)} invånare. Uppgift hämtad från{' '}
+            <a href="https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities"
+              target="_blank"
+              rel="noreferrer">
+              Wikidata
+            </a>.
+          </>
+        }
+      />}
+      {politicalRule && <ScoreCardSection
+        heading='Här styr'
+        data={politicalRuleFormatted}
+        info={
+          <>Uppgift om politiskt styre är hämtad från{' '}
+            <a
+              href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
+              target="_blank"
+              rel="noreferrer">
+              Sveriges Kommuner och Regioner
+            </a>
+            . Data uppdaterad januari 2022.
+          </>}
+      />}
 
-      {/* <div className="row">
-        <section className="left">
-          <Paragraph>Klimatutsläpp per invånare</Paragraph>
-          <ParagraphBold>5 ton/år</ParagraphBold>
-        </section>
-        <section className="right">
-          <StyledIcon
-            onClick={() => setToggleEmissionsPerCapita(!toggleEmissionsPerCapita)}>
-            {toggleEmissionsPerCapita ? <IconGreen /> : <Icon />}
-          </StyledIcon>
-        </section>
-      </div> */}
-      <section>
-        {toggleEmissionsPerCapita ? (
-          <InfoSection>
-            <Paragraph>
-              Gäller så kallade territoriella koldioxidutsläpp i Sverige per invånare.
-              Data från{' '}
-              <a
-                href="https://nationellaemissionsdatabasen.smhi.se/"
-                target="_blank"
-                rel="noreferrer">
-                nationella emissionsdatabasen.
-              </a>
-            </Paragraph>
-          </InfoSection>
-        ) : null}
-      </section>
-      <div className="row">
-        <section className="left">
-          <InfoHeading>Här styr</InfoHeading>
-          <ParagraphBold>{politicalRuleFormatted}</ParagraphBold>
-        </section>
-        <section className="right">
-          <StyledIcon onClick={() => setTogglePoliticalRule(!togglePoliticalRule)}>
-            {togglePoliticalRule ? <IconGreen /> : <Icon />}
-          </StyledIcon>
-        </section>
-      </div>
-      <section>
-        {togglePoliticalRule ? (
-          <InfoSection>
-            <InfoParagraph>
-              Uppgift om politiskt styre är hämtad från{' '}
-              <a
-                href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
-                target="_blank"
-                rel="noreferrer">
-                Sveriges Kommuner och Regioner
-              </a>.
-              Data uppdaterad januari 2022.
-            </InfoParagraph>
-          </InfoSection>
-        ) : null}
-      </section>
-      {population && (
-        <>
-          <div className="row">
-            <section className="left">
-              <InfoHeading>Antal invånare</InfoHeading>
-              <ParagraphBold>{formatter.format(population)}</ParagraphBold>
-            </section>
-            <section className="right">
-              <StyledIcon onClick={() => setTogglePopulation(!togglePopulation)}>
-                {togglePopulation ? <IconGreen /> : <Icon />}
-              </StyledIcon>
-            </section>
-          </div>
-          <section>
-            {togglePopulation ? (
-              <InfoSection>
-                <InfoParagraph>
-                  Uppgift hämtad från{' '}
-                  <a href="https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities"
-                    target="_blank"
-                    rel="noreferrer">
-                    Wikidata
-                  </a>.
-                </InfoParagraph>
-              </InfoSection>
-            ) : null}
-          </section>
-        </>
-      )}
     </StyledDiv>
   )
 }
