@@ -114,6 +114,10 @@ const Label = styled.div`
   }
 `
 
+const TabelContainer = styled.div`
+  width: 100%;
+`
+
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
   width: 5em;
@@ -123,10 +127,6 @@ const StyledParagraph = styled(Paragraph)`
   @media only screen and (${devices.tablet}) {
     font-size: 0.9em;
   }
-`
-
-const Row = styled.a`
-  text-decoration: none; 
 `
 
 const Kommuner = ({ municipalities }: PropsType) => {
@@ -157,7 +157,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
       },
       {
         header: 'Utsläppsförändring', // Fixme inforuta
-        cell: (row) => (row.renderValue() * 100).toFixed(1) + '%',
+        cell: (row) => typeof row.renderValue() === 'number' ? (row.renderValue() * 100).toFixed(1) + '%' : 'NaN',
         accessorKey: 'emissions',
       },
     ],
@@ -231,7 +231,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
               </MapLabels>
               <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
             </div>
-            <div style={{ display: toggleViewMode ? "none" : "block" }}>
+            <div style={{ display: toggleViewMode ? "none" : "block", width: '100%' }}>
               <ComparisonTable data={emissionsLevels} columns={cols} />
             </div>
           </MunicipalityContainer>
