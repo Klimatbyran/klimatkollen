@@ -16,7 +16,6 @@ import { devices } from '../../utils/devices'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
 import ComparisonTable from '../../components/ComparisonTable'
-import replaceLetters from '../../utils/shared'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -25,7 +24,10 @@ type PropsType = {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+`
+
+const InfoText = styled.div`
+  margin-top: 3rem;
 `
 
 const Square = styled.div<{ color: string }>`
@@ -48,6 +50,8 @@ const ArrowIcon = styled(Icon) <{ rotateUp?: boolean }>`
 
 const ToggleButton = styled.button`
   width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   color: ${({ theme }) => theme.paperWhite};
   background: ${({ theme }) => theme.dark};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -56,7 +60,6 @@ const ToggleButton = styled.button`
   align-items: center;
   justify-content: center;
   padding: 0.8rem;
-  margin: 0;
   cursor: pointer;
   fill: ${({ theme }) => theme.greenGraphTwo};
   &:hover {
@@ -64,10 +67,9 @@ const ToggleButton = styled.button`
   }
 `
 
-const MapContainer = styled.div`
+const MunicipalityContainer = styled.div`
   position: relative;
   overflow-y: scroll;
-  margin: 0;
   // TODO: Hardcoding this is not good.
   height: 380px;
   border: 1px solid ${({ theme }) => theme.paperWhite};
@@ -112,11 +114,6 @@ const Label = styled.div`
   }
 `
 
-const FlexCenter = styled.div`
-  width: 100%;
-  /* display: flex; */
-`
-
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
   width: 5em;
@@ -155,10 +152,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
       },
       {
         header: 'Kommun',
-        cell: (row) =>
-          <Row href={'kommuner/kommun/' + decodeURIComponent(row.renderValue().toLowerCase())}>
-            {row.renderValue()}
-          </Row>,
+        cell: (row) => row.renderValue(),
         accessorKey: 'name',
       },
       {
@@ -178,27 +172,23 @@ const Kommuner = ({ municipalities }: PropsType) => {
       />
       <PageWrapper backgroundColor="black">
         <Container>
-          <FlexCenter>
-            <DropDown
-              className="startpage"
-              municipalitiesName={municipalitiesName}
-              placeholder="Hur går det i din kommun?"
-            />
-          </FlexCenter>
-          <FlexCenter>
-            <div>
-              <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
-              <p>
-                På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges
-                kommuner sedan Parisavtalet 2015.
-              </p>
-            </div>
-          </FlexCenter>
+          <DropDown
+            className="startpage"
+            municipalitiesName={municipalitiesName}
+            placeholder="Hur går det i din kommun?"
+          />
+          <InfoText>
+            <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
+            <p>
+              På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges
+              kommuner sedan Parisavtalet 2015.
+            </p>
+          </InfoText>
           <ToggleButton onClick={() => setToggleViewMode(!toggleViewMode)}>
             {toggleViewMode ? 'Visa lista' : 'Visa karta'}
           </ToggleButton>
-          <MapContainer>
-            <div style={{ display: toggleViewMode ? "block" : "none" } }>
+          <MunicipalityContainer>
+            <div style={{ display: toggleViewMode ? "block" : "none" }}>
               <MapLabels>
                 <InfoBox>
                   <Label>
@@ -244,7 +234,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
             <div style={{ display: toggleViewMode ? "none" : "block" }}>
               <ComparisonTable data={emissionsLevels} columns={cols} />
             </div>
-          </MapContainer>
+          </MunicipalityContainer>
         </Container>
       </PageWrapper>
     </>

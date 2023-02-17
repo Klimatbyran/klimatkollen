@@ -632,7 +632,7 @@ const Municipality = (props: Props) => {
                 Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
                 CO₂
               </TotalCo2>
-s            </BottomContainer>
+            </BottomContainer>
           )}
         </Top>
         <BottomShare>

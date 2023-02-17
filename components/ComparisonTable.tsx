@@ -1,4 +1,6 @@
-import React from 'react'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+
 import styled from 'styled-components'
 import {
     getCoreRowModel,
@@ -25,13 +27,14 @@ const Styles = styled.div`
     }
 `
 
-interface ReactTableProps<T extends object> {
+interface Props<T extends object> {
     data: T[]
     columns: ColumnDef<T>[]
 }
 
-const ComparisonTable = <T extends object>({ data, columns }: ReactTableProps<T>) => {
-    const [sorting, setSorting] = React.useState<SortingState>([])
+const ComparisonTable = <T extends object>({ data, columns }: Props<T>) => {
+    const [sorting, setSorting] = useState<SortingState>([])
+    const router = useRouter()
 
     const table = useReactTable({
         data,
@@ -43,6 +46,10 @@ const ComparisonTable = <T extends object>({ data, columns }: ReactTableProps<T>
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
     })
+
+    const handleRowClick = (row) => {
+        router.push(`/kommuner/kommun/${row.original.id}`);
+    }
 
     return (
         <Styles>
@@ -78,10 +85,12 @@ const ComparisonTable = <T extends object>({ data, columns }: ReactTableProps<T>
                 ))}
                 <tbody>
                     {table.getRowModel().rows.map((row) => (
-                        <tr key={row.id} >
+                        <tr key={row.id} onClick={() => handleRowClick(row)}>
                             {row.getVisibleCells().map((cell) => (
                                 <td key={cell.id}>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    <a href="hjej">
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </a>
                                 </td>
                             ))}
                         </tr>
