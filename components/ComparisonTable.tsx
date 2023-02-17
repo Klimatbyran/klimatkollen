@@ -11,20 +11,29 @@ import {
     Row,
 } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
+import { devices } from '../utils/devices'
 
 
 const StyledTable = styled.table`
     overflow-y: auto;
     width: 100%;
     border-collapse: collapse;
+
+    @media only screen and (${devices.mobile}) {
+      font-size: 0.9em;
+    }
 `
 
 const TableData = styled.td`
-    padding: 0.5rem 2rem 0.2rem 0.87rem;  
+    padding: 0.5rem 1rem 0.2rem 0.87rem;  
+
+    @media only screen and (${devices.mobile}) {
+        padding: 0.3rem 0rem 0.1rem 0.87rem;  
+    }
 `
 
 const TableHeading = styled.th`
-    padding: 1.2rem 2rem 0.2rem 0.87rem;  
+    padding: 1.2rem 1rem 0.2rem 0.87rem;  
     fontWeight: bold;
     text-align: left; 
 `
