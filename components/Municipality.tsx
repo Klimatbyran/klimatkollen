@@ -92,14 +92,13 @@ const HeaderSection = styled.div`
 `
 
 const BottomContainer = styled.div`
-  display: grid;
-  gap: 1rem;
   margin-top: 0.5rem;
 
   @media only screen and (${devices.tablet}) {
     gap: 0;
     grid-template-columns: 45% auto 40%;
   }
+
 `
 
 const AdjustmentsContainer = styled.div`
@@ -108,14 +107,6 @@ const AdjustmentsContainer = styled.div`
 
   @media only screen and (${devices.tablet}) {
     margin-bottom: 0;
-  }
-`
-
-const TotalsContainer = styled.div`
-  grid-column: 1 / 2;
-
-  @media all and (${devices.tablet}) {
-    grid-column: 3 / 4;
   }
 `
 
@@ -367,21 +358,6 @@ const STEPS: {
     shareText: (_name) =>
       `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
-  // 3: {
-  //   text: 'Utforska glappet',
-  //   body: (_name) =>
-  //     'Idag sjunker inte utsläppen tillräckligt fort för att vara i linje med Parisavtalet. Men hur mycket måste de sjunka de närmsta åren för att klara 1,5-gradersmålet?',
-  //   shareText: (_name) =>
-  //    `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
-  // },
-  3: {
-    text: 'Skapa din egen klimatplan',
-    buttonText: 'Din plan',
-    body: (_name) =>
-      'När behöver vi göra våra utsläppminskningar, använd reglagen för att få till en utsläppsminskningsplan som uppfyller Parisavtalet mål på 1.5 grader.',
-    shareText: (_name) =>
-      `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
-  },
 }
 
 type Props = {
@@ -502,7 +478,7 @@ const Municipality = (props: Props) => {
   // let shareUrl = window.location.toString()
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   let shareUrl = `${baseUrl}${router.asPath}`
-  if (step === 4) {
+  if (step === 3) {
     const qry = mandateChanges.map((c) => `g[]=${c.change}`).join('&')
     shareUrl = `${shareUrl}?${qry}`
   }
@@ -611,12 +587,6 @@ const Municipality = (props: Props) => {
                   Trend
                 </Legend>
               )}
-              {step > 2 && (
-                <Legend>
-                  <Circle color="rgb(239, 191, 23)" />
-                  Din plan
-                </Legend>
-              )}
               <InfoButtonWrapper>
                 <InfoButton type="button" aria-label="Om grafen" onClick={toggleModal}>
                   <Info />
@@ -647,66 +617,22 @@ const Municipality = (props: Props) => {
             </span>
             {onNextStep && (
               <Button onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
-                {STEPS[step + 1]?.buttonText || 'Nästa'}
+                {STEPS[step + 1]?.buttonText}
                 <ArrowRight />
               </Button>
             )}
           </Flex>
           {step > 1 && (
             <BottomContainer>
-              {step > 2 && (
-                <AdjustmentsContainer>
-                  <H3>Din plan</H3>
-                  <RangeContainer>
-                    {mandateChanges
-                      .filter((c) => c.start >= 2022 && c.end <= 2030)
-                      .map((value, i) => (
-                        <Range key={i}>
-                          <Percentage
-                          // style={{
-                          //   color: value.change > 1 ? 'pink' : 'lightgreen',
-                          // }}
-                          >
-                            {value.change > 1 ? '+' : ''}{' '}
-                            {Math.round(100 * value.change) - 100}%
-                          </Percentage>
-                          <Slider
-                            min={0.5}
-                            max={1.5}
-                            step={0.01}
-                            value={value.change}
-                            type="range"
-                            onChange={(e) =>
-                              handleYearChange(value.start, parseFloat(e.target.value))
-                            }
-                          />
-                          <StartYear>{value.start}</StartYear>
-                        </Range>
-                      ))}
-                  </RangeContainer>
-                  <Help>
-                    Med hjälp av reglagen kan du själv skapa en plan över hur stor årlig
-                    utsläppsminskning man behöver genomföra i {municipality.Name}.
-                  </Help>
-                </AdjustmentsContainer>
-              )}
-              <TotalsContainer>
-                <H3>Framtida utsläpp</H3>
-                <TotalCo2 color="#EF3054">
-                  Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
-                </TotalCo2>
-                <TotalCo2 color="#6BA292">
-                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton 
-                  CO₂
-                </TotalCo2>
-                {step > 2 && (
-                  <TotalCo2 color="rgb(239, 191, 23)">
-                    Din plan: {Math.round(userTotal / 1000)} tusen ton  CO₂
-                    {userTotal < municipality.Budget.CO2Equivalent && ' ✅'}
-                  </TotalCo2>
-                )}
-              </TotalsContainer>
-            </BottomContainer>
+              <H3>Framtida utsläpp</H3>
+              <TotalCo2 color="#EF3054">
+                Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
+              </TotalCo2>
+              <TotalCo2 color="#6BA292">
+                Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
+                CO₂
+              </TotalCo2>
+s            </BottomContainer>
           )}
         </Top>
         <BottomShare>
@@ -768,15 +694,6 @@ const Municipality = (props: Props) => {
           <InfoModal
             close={toggleModal}
             text="Trendlinjen är baserad på årliga utsläpp i kommunen sedan Parisavtalet 2015."
-            scrollY={scrollY}
-          />
-        )}
-        {step === 3 && isOpen && (
-          <InfoModal
-            close={toggleModal}
-            text={`Här kan du själv ange årlig procentuell minskning av koldioxidutsläppen i kommunen för mandatperioderna 2022–2026 och 2026–2030. För återstående utsläpp anges därefter en exponentiell minskning fram till år ${
-              userEmissions[userEmissions.length - 1].Year
-            }.`}
             scrollY={scrollY}
           />
         )}

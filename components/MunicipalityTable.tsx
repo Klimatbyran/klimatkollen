@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 type Props = {
@@ -14,8 +15,10 @@ export default function MunicipalityTable(props: Props) {
             {props.emissionsLevels.map((val, key) => {
                 return (
                     <tr key={key}>
-                        <td>{val.name}</td>
-                        <td>{val.emissions}</td>
+                        <Link href={'kommuner/kommun/' + { val.name.toLowerCase }}>
+                            <td>{val.name}</td>
+                            <td>{val.emissions + ' %'}</td> {/* fixme fixa plustecken om positivt */}
+                        </Link>
                     </tr>
                 )
             })}

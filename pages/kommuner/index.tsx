@@ -16,6 +16,7 @@ import { devices } from '../../utils/devices'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
 import ComparisonTable from '../../components/ComparisonTable'
+import replaceLetters from '../../utils/shared'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -45,9 +46,28 @@ const ArrowIcon = styled(Icon) <{ rotateUp?: boolean }>`
   bottom: 0;
 `
 
+const ToggleButton = styled.button`
+  width: 100%;
+  color: ${({ theme }) => theme.paperWhite};
+  background: ${({ theme }) => theme.dark};
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  margin: 0;
+  cursor: pointer;
+  fill: ${({ theme }) => theme.greenGraphTwo};
+  &:hover {
+    background: ${({ theme }) => theme.grey};
+  }
+`
+
 const MapContainer = styled.div`
   position: relative;
   overflow-y: scroll;
+  margin: 0;
   // TODO: Hardcoding this is not good.
   height: 380px;
   border: 1px solid ${({ theme }) => theme.paperWhite};
@@ -97,31 +117,6 @@ const FlexCenter = styled.div`
   /* display: flex; */
 `
 
-const ToggleContainer = styled.div`
-  margin-left: auto;  
-  margin-right: 0;
-  z-index: 100;
-  position: relative;
-`
-
-const ToggleButton = styled.button`
-  width: 100px;
-  color: ${({ theme }) => theme.paperWhite};
-  background: ${({ theme }) => theme.dark};
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  border: 0;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8rem;
-  margin: 10px;
-  cursor: pointer;
-  fill: ${({ theme }) => theme.greenGraphTwo};
-  &:hover {
-    background: ${({ theme }) => theme.grey};
-  }
-`
-
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
   width: 5em;
@@ -131,6 +126,10 @@ const StyledParagraph = styled(Paragraph)`
   @media only screen and (${devices.tablet}) {
     font-size: 0.9em;
   }
+`
+
+const Row = styled.a`
+  text-decoration: none; 
 `
 
 const Kommuner = ({ municipalities }: PropsType) => {
@@ -151,17 +150,20 @@ const Kommuner = ({ municipalities }: PropsType) => {
     () => [
       {
         header: 'Ranking',
-        cell: (row) => row.cell.row.index+1,
+        cell: (row) => row.cell.row.index + 1,
         accessorKey: 'index',
       },
       {
         header: 'Kommun',
-        cell: (row) => row.renderValue(),
+        cell: (row) =>
+          <Row href={'kommuner/kommun/' + decodeURIComponent(row.renderValue().toLowerCase())}>
+            {row.renderValue()}
+          </Row>,
         accessorKey: 'name',
       },
       {
-        header: 'Utsläppsminskning [%]',
-        cell: (row) => (row.renderValue()*100).toFixed(2),
+        header: 'Utsläppsförändring', // Fixme inforuta
+        cell: (row) => (row.renderValue() * 100).toFixed(1) + '%',
         accessorKey: 'emissions',
       },
     ],
@@ -192,8 +194,11 @@ const Kommuner = ({ municipalities }: PropsType) => {
               </p>
             </div>
           </FlexCenter>
+          <ToggleButton onClick={() => setToggleViewMode(!toggleViewMode)}>
+            {toggleViewMode ? 'Visa lista' : 'Visa karta'}
+          </ToggleButton>
           <MapContainer>
-            <div style={{ display: toggleViewMode ? "block" : "none" }}>
+            <div style={{ display: toggleViewMode ? "block" : "none" } }>
               <MapLabels>
                 <InfoBox>
                   <Label>
@@ -239,12 +244,6 @@ const Kommuner = ({ municipalities }: PropsType) => {
             <div style={{ display: toggleViewMode ? "none" : "block" }}>
               <ComparisonTable data={emissionsLevels} columns={cols} />
             </div>
-
-            <ToggleContainer>
-              <ToggleButton onClick={() => setToggleViewMode(!toggleViewMode)}>
-                {toggleViewMode ? 'Visa lista' : 'Visa karta'}
-              </ToggleButton>
-            </ToggleContainer>
           </MapContainer>
         </Container>
       </PageWrapper>
