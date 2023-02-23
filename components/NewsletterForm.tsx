@@ -1,5 +1,4 @@
 import { useState, FC, useEffect } from 'react'
-import { decode } from 'html-entities'
 import Button from './Button'
 import styled from 'styled-components'
 import { devices } from '../utils/devices'

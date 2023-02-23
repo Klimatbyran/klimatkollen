@@ -7,7 +7,7 @@ import { devices } from '../utils/devices'
 import Link from 'next/link'
 
 const StyledDiv = styled.div`
-  background: ${({ theme }) => theme.black};
+  background: ${({ theme }) => theme.darkestGrey};
 
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -18,7 +18,7 @@ const StyledDiv = styled.div`
   // max-width: 450px;
 
   @media only screen and (${devices.tablet}) {
-    background: ${(props) => props.theme.black};
+    background: ${(props) => props.theme.darkestGrey};
   }
 
   & div.row {
@@ -50,7 +50,7 @@ const StyledIcon = styled.div`
 
 const InfoSection = styled.div`
   background: ${({ theme }) => theme.main};
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.darkestGrey};
   padding: 15px 10px;
   border-radius: 4px;
   margin-bottom: 10px;

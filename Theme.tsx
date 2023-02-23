@@ -13,8 +13,8 @@ const colorTheme: DefaultTheme = {
   paperWhite: '#F9FBFF',
   lightGrey: '#F2F2F2',
   grey: '#6C6C6C',
-  dark: '#424242',
-  black: '#2D2D2D',
+  darkGrey: '#424242',
+  darkestGrey: '#2D2D2D',
   darkGreen: '#2D7B64',
   gradient: 'linear-gradient(rgba(45,45,45, 1), rgba(0,0,0, 0.0))',
 }

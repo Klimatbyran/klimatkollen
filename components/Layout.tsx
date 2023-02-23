@@ -67,7 +67,7 @@ const Nav = styled.nav<NavProps>`
         line-height: 20px;
         font-weight: 700;
         text-decoration: none;
-        color: ${({ theme }) => theme.black};
+        color: ${({ theme }) => theme.darkestGrey};
         white-space: nowrap;
       }
       & .active {
@@ -93,7 +93,7 @@ const Notification = styled.div`
   right: -20px;
   padding: 3px 8px;
   background-color: ${({ theme }) => theme.yellow};
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.darkestGrey};
   border: 1px solid ${({ theme }) => theme.darkYellow};
   border-radius: 20px;
   font-size: 12px;

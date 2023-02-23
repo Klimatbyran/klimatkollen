@@ -16,6 +16,10 @@ import { devices } from '../../utils/devices'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
 import ComparisonTable from '../../components/ComparisonTable'
+import Info from '../../public/icons/info.svg'
+import { IconButton } from '../../components/shared'
+import InfoModal from '../../components/InfoModal'
+
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -53,7 +57,7 @@ const ToggleButton = styled.button`
   margin-top: 3rem;
   margin-bottom: 1rem;
   color: ${({ theme }) => theme.paperWhite};
-  background: ${({ theme }) => theme.dark};
+  background: ${({ theme }) => theme.darkGrey};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   border: 0;
@@ -95,6 +99,11 @@ const MapLabels = styled.div`
   }
 `
 
+const InfoButton = styled(IconButton)`
+  height: 50px;
+  width: 50px;
+`
+
 const InfoBox = styled.div`
   padding-bottom: 0.5rem;
 `
@@ -114,10 +123,6 @@ const Label = styled.div`
   }
 `
 
-const TabelContainer = styled.div`
-  width: 100%;
-`
-
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
   width: 5em;
@@ -131,7 +136,9 @@ const StyledParagraph = styled(Paragraph)`
 
 const Kommuner = ({ municipalities }: PropsType) => {
   const [, setSelected] = useState('Utforska kartan')
-  const [toggleViewMode, setToggleViewMode] = useState(true);
+  const [toggleViewMode, setToggleViewMode] = useState(true)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
     name: item.Name,
@@ -141,6 +148,26 @@ const Kommuner = ({ municipalities }: PropsType) => {
   type MuniciplaityItem = {
     name: string,
     emissions: number;
+  }
+
+  const convertToPercent = (rowData: unknown) => {
+    let percentString = 'Data saknas'
+    if (typeof (rowData) == 'number') {
+      let percent = (rowData * 100).toFixed(1)
+      percentString = percent > 0 ? '+' + percent + '%' : percent + '%'
+    }
+    return percentString
+  }
+
+  const toggleModal = () => {
+    const body = document.body
+    if (!modalIsOpen) {
+      body.style.overflow = 'hidden'
+      setModalIsOpen(true)
+    } else {
+      body.style.overflow = ''
+      setModalIsOpen(false)
+    }
   }
 
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
@@ -156,8 +183,16 @@ const Kommuner = ({ municipalities }: PropsType) => {
         accessorKey: 'name',
       },
       {
-        header: 'Utsläppsförändring', // Fixme inforuta
-        cell: (row) => typeof row.renderValue() === 'number' ? (row.renderValue() * 100).toFixed(1) + '%' : 'NaN',
+        header: () => {
+          return (
+            <>
+              Utsläppsförändring
+              <InfoButton type="button" aria-label="Om grafen" onClick={toggleModal} >
+                <Info />
+              </InfoButton>
+            </>)
+        }, // Fixme fixa så att onclick funkar, sen snygga till
+        cell: (row) => convertToPercent(row.renderValue()),
         accessorKey: 'emissions',
       },
     ],
@@ -233,6 +268,14 @@ const Kommuner = ({ municipalities }: PropsType) => {
             </div>
             <div style={{ display: toggleViewMode ? "none" : "block", width: '100%' }}>
               <ComparisonTable data={emissionsLevels} columns={cols} />
+
+              {modalIsOpen && (
+                <InfoModal
+                  close={toggleModal}
+                  text={`Lorem ipsum`}
+                  scrollY={scrollX}
+                />
+              )}
             </div>
           </MunicipalityContainer>
         </Container>

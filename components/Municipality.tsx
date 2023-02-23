@@ -16,7 +16,7 @@ import DropDown from './DropDown'
 import Graph from './Graph'
 import ShareButton from './Button'
 import ScoreCard from './ScoreCard'
-import { Button } from './shared'
+import { IconButton } from './shared'
 import { hasShareAPI } from '../utils/navigator'
 import { devices } from '../utils/devices'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
@@ -27,7 +27,7 @@ const GraphWrapper = styled.div`
   flex-direction: column;
 `
 
-const InfoButton = styled(Button)`
+const InfoButton = styled(IconButton)`
   height: 21px;
 `
 
@@ -71,7 +71,7 @@ const Box = styled.div`
 `
 
 const InfoText = styled.p`
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.darkestGrey};
 `
 
 const Top = styled.div`
@@ -605,10 +605,10 @@ const Municipality = (props: Props) => {
           </GraphWrapper>
           <Flex>
             {onPreviousStep ? (
-              <Button onClick={onPreviousStep}>
+              <IconButton onClick={onPreviousStep}>
                 <ArrowLeft />
                 {STEPS[step - 1].buttonText}
-              </Button>
+              </IconButton>
             ) : (
               <div></div>
             )}
@@ -616,10 +616,10 @@ const Municipality = (props: Props) => {
               {step + 1} / {Object.keys(STEPS).length}
             </span>
             {onNextStep && (
-              <Button onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
+              <IconButton onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
                 {STEPS[step + 1]?.buttonText}
                 <ArrowRight />
-              </Button>
+              </IconButton>
             )}
           </Flex>
           {step > 1 && (

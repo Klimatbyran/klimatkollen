@@ -2,14 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import styled from 'styled-components'
-import {
-    getCoreRowModel,
-    useReactTable,
-    flexRender,
-    SortingState,
-    getSortedRowModel,
-    Row,
-} from '@tanstack/react-table'
+import { getCoreRowModel, useReactTable, flexRender, SortingState, getSortedRowModel, Row } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
 import { devices } from '../utils/devices'
 
@@ -32,7 +25,10 @@ const TableData = styled.td`
     }
 `
 
-const TableHeading = styled.th`
+const TableHeader = styled.th`
+    position: sticky;
+    top: 0;
+    background: ${({ theme }) => theme.darkGrey};
     padding: 1.2rem 1rem 0.2rem 0.87rem;  
     fontWeight: bold;
     text-align: left; 
@@ -40,17 +36,17 @@ const TableHeading = styled.th`
 
 const TableRow = styled.tr`
     :hover {
-        background-color: ${({ theme }) => theme.dark};
+        background-color: ${({ theme }) => theme.darkGrey};
         cursor: pointer;
     }
 `
 
-interface Props<T extends object> {
+type TableProps<T extends object> = {
     data: T[]
     columns: ColumnDef<T>[]
 }
 
-const ComparisonTable = <T extends object>({ data, columns }: Props<T>) => {
+const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => {
     const [sorting, setSorting] = useState<SortingState>([])
     const router = useRouter()
 
@@ -76,7 +72,7 @@ const ComparisonTable = <T extends object>({ data, columns }: Props<T>) => {
                 <tr key={headerGroup.id}>
                     {headerGroup.headers.map((header) => {
                         return (
-                            <TableHeading key={header.id} colSpan={header.colSpan}>
+                            <TableHeader key={header.id} colSpan={header.colSpan}>
                                 {header.isPlaceholder ? null : (
                                     <div
                                         {...{
@@ -96,7 +92,7 @@ const ComparisonTable = <T extends object>({ data, columns }: Props<T>) => {
                                         }[header.column.getIsSorted() as string] ?? null}
                                     </div>
                                 )}
-                            </TableHeading>
+                            </TableHeader>
                         )
                     })}
                 </tr>
