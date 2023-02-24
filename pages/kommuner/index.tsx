@@ -17,9 +17,8 @@ import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
 import ComparisonTable from '../../components/ComparisonTable'
 import Info from '../../public/icons/info.svg'
-import { IconButton } from '../../components/shared'
-import InfoModal from '../../components/InfoModal'
 import MapLabel from '../../components/MapLabel'
+import InfoTooltip from '../../components/InfoTooltip'
 
 
 type PropsType = {
@@ -100,28 +99,17 @@ const MapLabels = styled.div`
   }
 `
 
-const InfoButton = styled(IconButton)`
-  height: 50px;
-  width: 50px;
+const InfoButton = styled.button`
+  background: transparent;
+  border: none;
+`
+
+const InfoIcon = styled(Info)`
+  transform: scale(0.6); 
 `
 
 const InfoBox = styled.div`
   padding-bottom: 0.5rem;
-`
-
-const Label = styled.div`
-  flex-shrink: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  &:first-child div {
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
-  }
-  &:last-child div {
-    border-bottom-left-radius: 10%;
-    border-bottom-right-radius: 10%;
-  }
 `
 
 const StyledParagraph = styled(Paragraph)`
@@ -139,6 +127,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
   const [, setSelected] = useState('Utforska kartan')
   const [toggleViewMode, setToggleViewMode] = useState(true)
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [likeList, setLikeList] = useState(false)
 
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
@@ -161,14 +150,14 @@ const Kommuner = ({ municipalities }: PropsType) => {
   }
 
   const toggleModal = () => {
-    const body = document.body
-    if (!modalIsOpen) {
-      body.style.overflow = 'hidden'
-      setModalIsOpen(true)
-    } else {
-      body.style.overflow = ''
-      setModalIsOpen(false)
-    }
+    setModalIsOpen(!modalIsOpen)
+  }
+
+  const handleLeave = () => {
+    return setLikeList(false)
+  }
+  const handleHover = () => {
+    return setLikeList(true)
   }
 
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
@@ -188,11 +177,9 @@ const Kommuner = ({ municipalities }: PropsType) => {
           return (
             <>
               Utsläppsförändring
-              <InfoButton type="button" aria-label="Om grafen" onClick={toggleModal} >
-                <Info />
-              </InfoButton>
+              <InfoTooltip text="Lorem ipsum" />
             </>)
-        }, // Fixme fixa så att onclick funkar, sen snygga till
+        },
         cell: (row) => convertToPercent(row.renderValue()),
         accessorKey: 'emissions',
       },
@@ -239,14 +226,6 @@ const Kommuner = ({ municipalities }: PropsType) => {
             </div>
             <div style={{ display: toggleViewMode ? "none" : "block", width: '100%' }}>
               <ComparisonTable data={emissionsLevels} columns={cols} />
-
-              {modalIsOpen && (
-                <InfoModal
-                  close={toggleModal}
-                  text={`Lorem ipsum`}
-                  scrollY={scrollX}
-                />
-              )}
             </div>
           </MunicipalityContainer>
         </Container>

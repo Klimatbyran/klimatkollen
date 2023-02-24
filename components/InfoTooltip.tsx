@@ -1,0 +1,44 @@
+import { useState } from "react"
+import styled from "styled-components"
+import Info from '../public/icons/info.svg'
+
+const Wrapper = styled.div`
+  position: relative;
+`
+
+const Tooltip = styled.div`
+  position:absolute;
+  top: 12px;
+  background: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 100;
+`
+
+const InfoIcon = styled(Info)`
+  transform: scale(0.6); 
+`
+
+type TooltipProps = {
+  text: string
+}
+
+const InfoTooltip = ({ text }: TooltipProps) => {
+  const [show, setShow] = useState(false)
+
+  return (
+    <Wrapper>
+      <InfoIcon
+        onMouseEinnter={() => setShow(true)}
+        onMouseLeave={() => setShow(false)}
+      />
+      {show &&
+        <Tooltip >
+          {text}
+        </Tooltip>}
+    </Wrapper>
+  )
+}
+
+export default InfoTooltip
