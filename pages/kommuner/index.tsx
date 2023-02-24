@@ -227,12 +227,12 @@ const Kommuner = ({ municipalities }: PropsType) => {
             <div style={{ display: toggleViewMode ? "block" : "none" }}>
               <MapLabels>
                 <InfoBox>
-                  <MapLabel color={'#EF3054'} label={labels[0]} rotateUp={true} />
-                  <MapLabel color={'#EF5E30'} label={labels[1]} />
-                  <MapLabel color={'#EF7F17'} label={labels[2]} />
-                  <MapLabel color={'#EF9917'} label={labels[3]} />
-                  <MapLabel color={'#EFBF17'} label={labels[4]} />
-                  <MapLabel color={'#91BFC8'} label={labels[5]} />
+                  <MapLabel color={'#EF3054'} label={'0% +'} rotateUp={true} />
+                  <MapLabel color={'#EF5E30'} label={'0–1%'} />
+                  <MapLabel color={'#EF7F17'} label={'1–2%'} />
+                  <MapLabel color={'#EF9917'} label={'2–3%'} />
+                  <MapLabel color={'#EFBF17'} label={'3–10%'} />
+                  <MapLabel color={'#91BFC8'} label={'10–15%'} />
                 </InfoBox>
               </MapLabels>
               <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
