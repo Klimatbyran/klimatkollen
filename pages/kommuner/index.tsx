@@ -19,6 +19,7 @@ import ComparisonTable from '../../components/ComparisonTable'
 import Info from '../../public/icons/info.svg'
 import { IconButton } from '../../components/shared'
 import InfoModal from '../../components/InfoModal'
+import MapLabel from '../../components/MapLabel'
 
 
 type PropsType = {
@@ -226,42 +227,12 @@ const Kommuner = ({ municipalities }: PropsType) => {
             <div style={{ display: toggleViewMode ? "block" : "none" }}>
               <MapLabels>
                 <InfoBox>
-                  <Label>
-                    <Square color="#EF3054">
-                      <ArrowIcon rotateUp={true} />
-                    </Square>
-                    <StyledParagraph>0% +</StyledParagraph>
-                  </Label>
-                  <Label>
-                    <Square color="#EF5E30">
-                      <ArrowIcon />
-                    </Square>
-                    <StyledParagraph>0–1%</StyledParagraph>
-                  </Label>
-                  <Label>
-                    <Square color="#EF7F17">
-                      <ArrowIcon />
-                    </Square>
-                    <StyledParagraph>1–2%</StyledParagraph>
-                  </Label>
-                  <Label>
-                    <Square color="#EF9917">
-                      <ArrowIcon />
-                    </Square>
-                    <StyledParagraph>2–3%</StyledParagraph>
-                  </Label>
-                  <Label>
-                    <Square color="#EFBF17">
-                      <ArrowIcon />
-                    </Square>
-                    <StyledParagraph>3–10%</StyledParagraph>
-                  </Label>
-                  <Label>
-                    <Square color="#91BFC8">
-                      <ArrowIcon />
-                    </Square>
-                    <StyledParagraph>10–15%</StyledParagraph>
-                  </Label>
+                  <MapLabel color={'#EF3054'} label={labels[0]} rotateUp={true} />
+                  <MapLabel color={'#EF5E30'} label={labels[1]} />
+                  <MapLabel color={'#EF7F17'} label={labels[2]} />
+                  <MapLabel color={'#EF9917'} label={labels[3]} />
+                  <MapLabel color={'#EFBF17'} label={labels[4]} />
+                  <MapLabel color={'#91BFC8'} label={labels[5]} />
                 </InfoBox>
               </MapLabels>
               <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
