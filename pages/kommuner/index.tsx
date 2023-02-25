@@ -41,17 +41,6 @@ const Square = styled.div<{ color: string }>`
   position: relative;
 `
 
-const ArrowIcon = styled(Icon) <{ rotateUp?: boolean }>`
-  position: absolute;
-  z-index: 1;
-  margin: auto;
-  left: 0;
-  ${(props) => props.rotateUp && 'transform: rotate(-90deg)'};
-  right: 0;
-  top: 0;
-  bottom: 0;
-`
-
 const ToggleButton = styled.button`
   width: 100%;
   margin-top: 3rem;
@@ -74,6 +63,7 @@ const ToggleButton = styled.button`
 const MunicipalityContainer = styled.div`
   position: relative;
   overflow-y: scroll;
+  z-index: 150;
   // TODO: Hardcoding this is not good.
   height: 380px;
   border: 1px solid ${({ theme }) => theme.paperWhite};
@@ -99,35 +89,13 @@ const MapLabels = styled.div`
   }
 `
 
-const InfoButton = styled.button`
-  background: transparent;
-  border: none;
-`
-
-const InfoIcon = styled(Info)`
-  transform: scale(0.6); 
-`
-
 const InfoBox = styled.div`
   padding-bottom: 0.5rem;
-`
-
-const StyledParagraph = styled(Paragraph)`
-  z-index: 1;
-  width: 5em;
-  font-size: 0.7em;
-  margin: 0;
-  line-height: 0;
-  @media only screen and (${devices.tablet}) {
-    font-size: 0.9em;
-  }
 `
 
 const Kommuner = ({ municipalities }: PropsType) => {
   const [, setSelected] = useState('Utforska kartan')
   const [toggleViewMode, setToggleViewMode] = useState(true)
-  const [modalIsOpen, setModalIsOpen] = useState(false)
-  const [likeList, setLikeList] = useState(false)
 
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
@@ -149,17 +117,6 @@ const Kommuner = ({ municipalities }: PropsType) => {
     return percentString
   }
 
-  const toggleModal = () => {
-    setModalIsOpen(!modalIsOpen)
-  }
-
-  const handleLeave = () => {
-    return setLikeList(false)
-  }
-  const handleHover = () => {
-    return setLikeList(true)
-  }
-
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
     () => [
       {
@@ -176,8 +133,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
         header: () => {
           return (
             <>
-              Utsläppsförändring
-              <InfoTooltip text="Lorem ipsum" />
+              Utsläppsförändring<InfoTooltip text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
             </>)
         },
         cell: (row) => convertToPercent(row.renderValue()),

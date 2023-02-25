@@ -4,15 +4,20 @@ import Info from '../public/icons/info.svg'
 
 const Wrapper = styled.div`
   position: relative;
+  display: inline-block;
 `
 
 const Tooltip = styled.div`
-  position:absolute;
-  top: 12px;
+  position: absolute;
+  width: 200px;
+  top: 10px;
+  right: 10px;
   background: black;
   color: white;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
+  border: 1px solid white;
+  font: 0.8em "Roboto";
   z-index: 100;
 `
 
@@ -30,11 +35,11 @@ const InfoTooltip = ({ text }: TooltipProps) => {
   return (
     <Wrapper>
       <InfoIcon
-        onMouseEinnter={() => setShow(true)}
+        onMouseOver={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
       />
       {show &&
-        <Tooltip >
+        <Tooltip>
           {text}
         </Tooltip>}
     </Wrapper>

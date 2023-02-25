@@ -13,12 +13,13 @@ const StyledTable = styled.table`
     border-collapse: collapse;
 
     @media only screen and (${devices.mobile}) {
-      font-size: 0.9em;
+      font-size: 0.8em;
     }
 `
 
 const TableData = styled.td`
     padding: 0.5rem 1rem 0.2rem 0.87rem;  
+    overflow: hidden;
 
     @media only screen and (${devices.mobile}) {
         padding: 0.3rem 0rem 0.1rem 0.87rem;  
@@ -29,7 +30,7 @@ const TableHeader = styled.th`
     position: sticky;
     top: 0;
     background: ${({ theme }) => theme.darkGrey};
-    padding: 1.2rem 1rem 0.2rem 0.87rem;  
+    padding: 1.2rem 1rem 0.6rem 0.87rem;  
     fontWeight: bold;
     text-align: left; 
 `
