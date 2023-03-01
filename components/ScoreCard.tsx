@@ -38,19 +38,20 @@ const StyledDiv = styled.div`
 `
 
 type Props = {
-  population: number | null
+  rank: number | null
   budget: number | null
   budgetRunsOut: number | string
-  municipality: string
+  emissionChange: number
+  population: number | null
   politicalRule: Array<string> | null
-  rank: number | null
 }
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: Props) => {
+const ScoreCard = ({ rank, budget, budgetRunsOut, emissionChange, population, politicalRule }: Props) => {
   const rankFormatted = rank + ' av 290 kommuner'
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
+  const emissionChangeFormatted = (emissionChange * 100).toFixed(1)
 
   return (
     <StyledDiv>
@@ -78,9 +79,13 @@ const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: P
         }
       />}
       {<ScoreCardSection
-        heading='Nödvändig utsläppsminskningstakt för att nå Parisavtalet'
-        data='22% per år'
-        info={<>Lorem ipsum.</>}
+        heading='Utsläppsminskning för att klara Parisavtalet'
+        data={emissionChangeFormatted + ' procent per år'}
+        info={
+          <>
+            Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska överskrida sin koldioxidbudget.
+          </>
+        }
       />}
       {population && <ScoreCardSection
         heading='Utsläpp per invånare'

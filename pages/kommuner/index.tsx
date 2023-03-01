@@ -137,7 +137,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
           <MapContainer>
             <MapLabels>
               <InfoBox>
-                <Label>
+                <Label> 
                   <Square color="#EF3054">
                     <ArrowIcon rotateUp={true} />
                   </Square>
@@ -175,7 +175,6 @@ const Kommuner = ({ municipalities }: PropsType) => {
                 </Label>
               </InfoBox>
             </MapLabels>
-
             <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
           </MapContainer>
         </Container>
