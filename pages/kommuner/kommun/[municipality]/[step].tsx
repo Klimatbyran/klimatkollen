@@ -11,8 +11,6 @@ export const STEPS = [
   'historiska-utslapp',
   'parisavtalet',
   'framtida-prognos',
-  // 'glappet',
-  'min-plan',
 ]
 
 type Props = {

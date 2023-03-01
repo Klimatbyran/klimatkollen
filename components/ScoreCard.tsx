@@ -55,16 +55,21 @@ const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: P
   return (
     <StyledDiv>
       {rank && <ScoreCardSection
-        heading='Rankning av utsläppsminskningstakt sedan 2015'
+        heading='Kommunens utsläppsrankning'
         data={rankFormatted}
+        info={
+          <>
+            Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015
+          </>
+        }
       />}
       {budget && <ScoreCardSection
         heading='Koldioxidbudget'
         data={formatter.format(Math.round(budget)) + ' ton'}
         info={
           <>
-            Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer{' '}
-            <Link href="/#source-budget-expl">om beräkningen här</Link>.
+            Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om koldioxidbudgetar{' '}
+            <Link href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">här</Link>.
           </>
         }
       />}
@@ -73,26 +78,37 @@ const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: P
         data={budgetRunsOut.toString()}
         info={
           <>
-            Datumet när kommunens koldioxidbudget tar slut.
+            Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend.
           </>
         }
       />}
       {<ScoreCardSection
-        heading='Nödvändig utsläppsminskningstakt för att nå Parisavtalet'
+        heading='Utsläppsminskning för att klara Parisavtalet'
         data='22% per år'
-        info={<>Lorem ipsum.</>}
+        info={
+          <>
+            Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska överskrida sin koldioxidbudget.
+          </>
+        }
       />}
       {population && <ScoreCardSection
-        heading='Utsläpp per invånare'
+        heading='Koldioxidutsläpp per invånare'
         data='3.6 ton koldioxid per år'
         info={
           <>
-            Kommunens utsläpp utslaget på dess {formatter.format(population)} invånare. Uppgift hämtad från{' '}
+            Det senaste årets koldioxidutsläpp i kommunen dividerat med antalet kommuninvånare. Antal kommuninvånare från{' '}
             <a href="https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities"
               target="_blank"
               rel="noreferrer">
               Wikidata
-            </a>.
+            </a>,
+            utsläpp från{' '}
+            <a
+              href="https://nationellaemissionsdatabasen.smhi.se/"
+              target="_blank"
+              rel="noreferrer">
+              nationella emissionsdatabasen.
+            </a>
           </>
         }
       />}
@@ -110,7 +126,6 @@ const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: P
             . Data uppdaterad januari 2022.
           </>}
       />}
-
     </StyledDiv>
   )
 }
