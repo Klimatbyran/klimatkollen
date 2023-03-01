@@ -296,7 +296,7 @@ const Municipality = (props: Props) => {
     }))
   })
 
-  const [userEmissions, userTotal] = useMemo(() => {
+  const userEmissions = useMemo(() => {
     const emissions: EmissionPerYear[] = []
 
     let acc = 1
@@ -316,7 +316,7 @@ const Municipality = (props: Props) => {
         })
     })
 
-    return [emissions, total]
+    return emissions
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
   const totalTrend = municipality.EmissionTrend.FutureCO2Emission
@@ -478,7 +478,8 @@ const Municipality = (props: Props) => {
               rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
               budget={municipality.Budget.CO2Equivalent}
               budgetRunsOut={municipality.BudgetRunsOut}
-              emissionChange={municipality.EmissionTrend}
+              emissionChangePercent={municipality.EmissionChangePercent}
+              emissionLastYear={emissionLastYear}
               population={municipality.Population}
               politicalRule={municipality.PoliticalRule}
             />

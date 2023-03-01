@@ -56,6 +56,7 @@ export class EmissionService {
         HistoricalEmission: emission,
         EmissionTrend: trend,
         Budget: budget,
+        EmissionChangePercent: jsonData.emissionChangePercent,
         HitNetZero: jsonData.hitNetZero,
         BudgetRunsOut: jsonData.budgetRunsOut
       } as Municipality
