@@ -41,17 +41,25 @@ type Props = {
   rank: number | null
   budget: number | null
   budgetRunsOut: number | string
-  emissionChange: number
+  emissionChangePercent: number
+  emissionLastYear: number
   population: number | null
   politicalRule: Array<string> | null
 }
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-const ScoreCard = ({ rank, budget, budgetRunsOut, emissionChange, population, politicalRule }: Props) => {
+const ScoreCard = ({
+  rank,
+  budget,
+  budgetRunsOut,
+  emissionChangePercent,
+  emissionLastYear,
+  population,
+  politicalRule
+}: Props) => {
   const rankFormatted = rank + ' av 290 kommuner'
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
-  const emissionChangeFormatted = (emissionChange * 100).toFixed(1)
 
   return (
     <StyledDiv>
@@ -85,16 +93,16 @@ const ScoreCard = ({ rank, budget, budgetRunsOut, emissionChange, population, po
       />}
       {<ScoreCardSection
         heading='Utsläppsminskning för att klara Parisavtalet'
-        data={emissionChangeFormatted + ' procent per år'}
+        data={'-' + emissionChangePercent.toFixed(1) + ' procent per år'}
         info={
           <>
             Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska överskrida sin koldioxidbudget.
           </>
         }
       />}
-      {population && <ScoreCardSection
+      {emissionLastYear && population && <ScoreCardSection
         heading='Koldioxidutsläpp per invånare'
-        data='3.6 ton koldioxid per år'
+        data={(emissionLastYear / population).toFixed(1) + ' ton koldioxid per år'}
         info={
           <>
             Det senaste årets koldioxidutsläpp i kommunen dividerat med antalet kommuninvånare. Antal kommuninvånare från{' '}
