@@ -554,7 +554,7 @@ const Municipality = (props: Props) => {
         url={shareUrl}
       />
       <PageWrapper backgroundColor="black">
-        <Back route={'/kommuner'} />
+        <Back route={'/'} />
         <Top>
           <HeaderSection>
             <H1>{municipality.Name}</H1>
