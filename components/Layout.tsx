@@ -130,13 +130,26 @@ export default function Layout({ children }: { children: JSX.Element }) {
           <ul>
             <li>
               <Link href="/kommuner">
-                <a className={path == "/kommuner" ? "active" : "inactive"}
-                href="/kommuner">
+                <a className={path == "/kommuner" ? "active" : "inactive"}>
                   Kommuner
                 </a>
               </Link>
             </li>
             <li>
+              <Link href="/statistik-och-kallor">
+                <a className={path == "/statistik-och-kallor" ? "active" : "inactive"}>
+                  Statistik och källor
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/om-oss">
+                <a className={path == "/om-oss" ? "active" : "inactive"}>
+                  Om oss
+                </a>
+              </Link>
+            </li>
+            {/* <li>
               <Link href="/partier">
                 <a
                   className={path == "/partier" ? "active" : "inactive"}
@@ -159,7 +172,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
               {visibleNotification && (
                 <Notification aria-hidden="true">Nyhet!</Notification>
               )}
-            </li>
+            </li> */}
           </ul>
         </Nav>
       </Header>

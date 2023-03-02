@@ -10,7 +10,6 @@ import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
-import VisuallyHidden from '../../components/VisuallyHidden'
 import { devices } from '../../utils/devices'
 
 const Container = styled.section`
