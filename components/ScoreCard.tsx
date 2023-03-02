@@ -41,7 +41,7 @@ type Props = {
   rank: number | null
   budget: number | null
   budgetRunsOut: number | string
-  emissionChangePercent: number | null
+  emissionChangePercent: number
   emissionLastYear: number
   population: number | null
   politicalRule: Array<string> | null
@@ -93,7 +93,7 @@ const ScoreCard = ({
       />}
       {<ScoreCardSection
         heading='Utsläppsminskning för att klara Parisavtalet'
-        data={'-' + emissionChangePercent.toFixed(1) + ' procent per år'}
+        data={'-' + emissionChangePercent.toFixed(1) + '% per år'}
         info={
           <>
             Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska överskrida sin koldioxidbudget.
