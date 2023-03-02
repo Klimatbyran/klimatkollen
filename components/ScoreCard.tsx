@@ -117,8 +117,8 @@ const ScoreCard = ({
               href="https://nationellaemissionsdatabasen.smhi.se/"
               target="_blank"
               rel="noreferrer">
-              nationella emissionsdatabasen.
-            </a>
+              nationella emissionsdatabasen
+            </a>.
           </>
         }
       />}
