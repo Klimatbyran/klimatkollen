@@ -129,7 +129,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
             <div>
               <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
               <p>
-                På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges
+                På kartan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges
                 kommuner sedan Parisavtalet 2015.
               </p>
             </div>
