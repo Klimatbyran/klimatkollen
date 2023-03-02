@@ -467,14 +467,6 @@ const Municipality = (props: Props) => {
           <H2>Fakta om {municipality.Name}</H2>
         </BottomHeader>
         <Bottom>
-          {/* <BottomRight>
-            <p>
-              {renderEmissionChangeRank(
-                municipality.Name,
-                municipality.HistoricalEmission.AverageEmissionChangeRank,
-              )}
-            </p>
-          </BottomRight> */}
           <BottomLeft>
             <ScoreCard
               rank={municipality.HistoricalEmission.AverageEmissionChangeRank}

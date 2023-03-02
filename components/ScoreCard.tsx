@@ -64,16 +64,21 @@ const ScoreCard = ({
   return (
     <StyledDiv>
       {rank && <ScoreCardSection
-        heading='Rankning av utsläppsminskningstakt sedan 2015'
+        heading='Kommunens utsläppsrankning'
         data={rankFormatted}
+        info={
+          <>
+            Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015
+          </>
+        }
       />}
       {budget && <ScoreCardSection
         heading='Koldioxidbudget'
         data={formatter.format(Math.round(budget)) + ' ton'}
         info={
           <>
-            Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer{' '}
-            <Link href="/#source-budget-expl">om beräkningen här</Link>.
+            Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om koldioxidbudgetar{' '}
+            <Link href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">här</Link>.
           </>
         }
       />}
@@ -82,7 +87,7 @@ const ScoreCard = ({
         data={budgetRunsOut.toString()}
         info={
           <>
-            Datumet när kommunens koldioxidbudget tar slut.
+            Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend.
           </>
         }
       />}
@@ -106,11 +111,14 @@ const ScoreCard = ({
               target="_blank"
               rel="noreferrer">
               Wikidata
+            </a>,
+            utsläpp från{' '}
+            <a
+              href="https://nationellaemissionsdatabasen.smhi.se/"
+              target="_blank"
+              rel="noreferrer">
+              nationella emissionsdatabasen.
             </a>
-            , utsläppsdata hämtat från{' '}
-            <a href="https://nationellaemissionsdatabasen.smhi.se/" target="_blank" rel="noreferrer">
-              Nationella emissionsdatabasen
-            </a>.
           </>
         }
       />}
