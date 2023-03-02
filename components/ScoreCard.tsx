@@ -100,11 +100,16 @@ const ScoreCard = ({
         data={(emissionLastYear / population).toFixed(1) + ' ton koldioxid per år'}
         info={
           <>
-            Kommunens utsläpp utslaget på dess {formatter.format(population)} invånare. Uppgift hämtad från{' '}
+            Kommunens utsläpp utslaget på dess {formatter.format(population)} invånare. 
+            Invånarantal hämtat från{' '}
             <a href="https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities"
               target="_blank"
               rel="noreferrer">
               Wikidata
+            </a>
+            , utsläppsdata hämtat från{' '}
+            <a href="https://nationellaemissionsdatabasen.smhi.se/" target="_blank" rel="noreferrer">
+              Nationella emissionsdatabasen
             </a>.
           </>
         }
@@ -118,9 +123,9 @@ const ScoreCard = ({
               href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
               target="_blank"
               rel="noreferrer">
-              Sveriges Kommuner och Regioner
+              Sveriges Kommuner och Regioner (SKR)
             </a>
-            . Data uppdaterad januari 2022.
+            . Informationen gäller föregående mandatperiod, vi väntar på ny data från SKR i mars 2023.
           </>}
       />}
 
