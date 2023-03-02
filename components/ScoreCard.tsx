@@ -42,7 +42,7 @@ type Props = {
   budget: number | null
   budgetRunsOut: number | string
   emissionChangePercent: number
-  emissionLastYear: number
+  emissionLastYear: number | undefined
   population: number | null
   politicalRule: Array<string> | null
 }
