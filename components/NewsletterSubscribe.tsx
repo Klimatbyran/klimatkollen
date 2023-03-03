@@ -12,7 +12,6 @@ const NewsletterSubscribe = () => {
         return (
           <NewsletterForm
             status={status}
-            message={message}
             onValidated={(formData) => subscribe(formData)}
           />
         )
