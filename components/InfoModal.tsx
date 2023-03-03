@@ -63,7 +63,7 @@ const InfoModal = ({ text, close, scrollY }: Props) => {
   }
 
   const handleTab = (evt: KeyboardEvent) => {
-    let total = focusableElements?.length
+    const total = focusableElements?.length
     if (!evt.shiftKey) {
       activeIndex + 1 === total ? (activeIndex = 0) : (activeIndex += 1)
       if (focusableElements) focusableElements[activeIndex].focus()

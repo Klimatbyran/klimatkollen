@@ -1,6 +1,6 @@
 
 import { GetServerSideProps } from 'next'
-import { ReactElement, useEffect, useMemo, useState } from 'react'
+import { ReactElement, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { ColumnDef } from '@tanstack/react-table'
 import { useRouter } from 'next/router'
@@ -16,7 +16,6 @@ import { devices } from '../../utils/devices'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
 import ComparisonTable from '../../components/ComparisonTable'
-import Info from '../../public/icons/info.svg'
 import MapLabel from '../../components/MapLabel'
 import InfoTooltip from '../../components/InfoTooltip'
 
@@ -32,13 +31,6 @@ const Container = styled.div`
 
 const InfoText = styled.div`
   margin-top: 3rem;
-`
-
-const Square = styled.div<{ color: string }>`
-  background-color: ${(props) => props.color};
-  width: 20px;
-  height: 20px;
-  position: relative;
 `
 
 const ToggleButton = styled.button`
@@ -96,8 +88,6 @@ const InfoBox = styled.div`
 const Kommuner = ({ municipalities }: PropsType) => {
   const [, setSelected] = useState('Utforska kartan')
   const [toggleViewMode, setToggleViewMode] = useState(true)
-  const router = useRouter()
-
 
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
@@ -113,8 +103,8 @@ const Kommuner = ({ municipalities }: PropsType) => {
   const convertToPercent = (rowData: unknown) => {
     let percentString = 'Data saknas'
     if (typeof (rowData) == 'number') {
-      const percent = (rowData * 100).toFixed(1) + '%' 
-      percentString = rowData > 0 ? '+' + percent : percent
+      //const percent = (rowData * 100).toFixed(1) + '%' 
+      percentString = 'hejson'//rowData > 0 ? '+' + percent : percent
     }
     return percentString
   }

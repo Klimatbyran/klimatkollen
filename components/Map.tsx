@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
-import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
+import { DeckGL, PolygonLayer, RGBAColor } from 'deck.gl'
 import { ReactNode, useMemo, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
@@ -68,18 +68,18 @@ const replaceLetters = (name: string) => {
   return replacedWord
 }
 
-const MAP_RANGE = {
+// Use when viewState is reimplemented
+/* const MAP_RANGE = {
   lon: [8.107180004121693, 26.099158344940808],
   lat: [61.9, 63.9],
-}
+} */
 
 type Props = {
   emissionsLevels: Array<{ name: string; emissions: number }>
-  setSelected: (value: string) => void
   children?: ReactNode
 }
 
-const Map = ({ emissionsLevels, setSelected, children }: Props) => {
+const Map = ({ emissionsLevels, children }: Props) => {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
