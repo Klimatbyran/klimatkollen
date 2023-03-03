@@ -285,7 +285,7 @@ const Municipality = (props: Props) => {
     }))
   })
 
-  const userEmissions = useMemo(() => {
+  const [userEmissions] = useMemo(() => {
     const emissions: EmissionPerYear[] = []
 
     let acc = 1
