@@ -3,7 +3,6 @@ import { GetServerSideProps } from 'next'
 import { ReactElement, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { ColumnDef } from '@tanstack/react-table'
-import { useRouter } from 'next/router'
 
 import DropDown from '../../components/DropDown'
 import Map from '../../components/Map'
@@ -86,7 +85,6 @@ const InfoBox = styled.div`
 `
 
 const Kommuner = ({ municipalities }: PropsType) => {
-  const [, setSelected] = useState('Utforska kartan')
   const [toggleViewMode, setToggleViewMode] = useState(true)
 
   const municipalitiesName = municipalities.map((item) => item.Name)
@@ -170,7 +168,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
                   <MapLabel color={'#91BFC8'} label={'10–15%'} />
                 </InfoBox>
               </MapLabels>
-              <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
+              <Map emissionsLevels={emissionsLevels} />
             </div>
             <div style={{ display: toggleViewMode ? "none" : "block", width: '100%' }}>
               <ComparisonTable data={emissionsLevels} columns={cols} />
