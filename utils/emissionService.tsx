@@ -3,7 +3,7 @@ import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend 
 import * as fs from 'fs'
 import * as path from 'path'
 
-const EMISSION_FILE_PATH = path.resolve('./resources/emission-data.json');
+const EMISSION_FILE_PATH = path.resolve('./data/emission-data.json');
 
 export class EmissionService {
   municipalities: Array<Municipality>
@@ -55,7 +55,9 @@ export class EmissionService {
         Name: jsonData.kommun,
         HistoricalEmission: emission,
         EmissionTrend: trend,
-        Budget: budget
+        Budget: budget,
+        HitNetZero: jsonData.hitNetZero,
+        BudgetRunsOut: jsonData.budgetRunsOut
       } as Municipality
       return municipality
     })

@@ -7,8 +7,7 @@ import { devices } from '../utils/devices'
 import Link from 'next/link'
 
 const StyledDiv = styled.div`
-  background: ${({ theme }) => theme.darkestGrey};
-
+  background: ${({ theme }) => theme.black};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 15px 15px;
@@ -73,6 +72,7 @@ const InfoParagraph = styled(Paragraph)`
 type Props = {
   population: number | null
   budget: number | null
+  budgetRunsOut: number | string
   municipality: string
   politicalRule: Array<string> | null
   rank: number | null
@@ -80,11 +80,11 @@ type Props = {
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
+const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: Props) => {
   const [togglePopulation, setTogglePopulation] = useState(false)
   const [togglePoliticalRule, setTogglePoliticalRule] = useState(false)
   const [toggleBudget, setToggleBudget] = useState(false)
-  const [toggleEmissionsPerCapita, setToggleEmissionsPerCapita] = useState(false)
+  const [toggleBudgetRunsOut, setToggleBudgetRunsOut] = useState(false)
 
   const politicalRuleFormatted = politicalRule?.join(', ')
 
@@ -124,34 +124,35 @@ const ScoreCard = ({ population, budget, rank, politicalRule }: Props) => {
           </section>
         </>
       )}
-
-      {/* <div className="row">
-        <section className="left">
-          <Paragraph>Klimatutsläpp per invånare</Paragraph>
-          <ParagraphBold>5 ton/år</ParagraphBold>
-        </section>
-        <section className="right">
-          <StyledIcon
-            onClick={() => setToggleEmissionsPerCapita(!toggleEmissionsPerCapita)}>
-            {toggleEmissionsPerCapita ? <IconGreen /> : <Icon />}
-          </StyledIcon>
-        </section>
-      </div> */}
+      {budgetRunsOut && (
+        <>
+          <div className="row">
+            <section className="left">
+              <InfoHeading>Koldioxidbudgeten tar slut</InfoHeading>
+              <ParagraphBold>
+                {budgetRunsOut === 'Aldrig' ?
+                  'Med nuvarande trend håller kommunen sin budget' :
+                  budgetRunsOut}
+              </ParagraphBold>
+            </section>
+            <section className="right">
+              <StyledIcon onClick={() => setToggleBudgetRunsOut(!toggleBudgetRunsOut)}>
+                {toggleBudgetRunsOut ? <IconGreen /> : <Icon />}
+              </StyledIcon>
+            </section>
+          </div>
+          <section>
+            {toggleBudgetRunsOut ? (
+              <InfoSection>
+                <InfoParagraph>
+                  Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend.
+                </InfoParagraph>
+              </InfoSection>
+            ) : null}
+          </section>
+        </>
+      )}
       <section>
-        {toggleEmissionsPerCapita ? (
-          <InfoSection>
-            <Paragraph>
-              Gäller så kallade territoriella koldioxidutsläpp i Sverige per invånare.
-              Data från{' '}
-              <a
-                href="https://nationellaemissionsdatabasen.smhi.se/"
-                target="_blank"
-                rel="noreferrer">
-                nationella emissionsdatabasen.
-              </a>
-            </Paragraph>
-          </InfoSection>
-        ) : null}
       </section>
       <div className="row">
         <section className="left">

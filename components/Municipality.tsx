@@ -662,6 +662,7 @@ const Municipality = (props: Props) => {
             <ScoreCard
               population={municipality.Population}
               budget={municipality.Budget.CO2Equivalent}
+              budgetRunsOut={municipality.BudgetRunsOut}
               municipality={municipality.Name}
               politicalRule={municipality.PoliticalRule}
               rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
