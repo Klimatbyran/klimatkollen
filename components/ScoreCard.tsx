@@ -84,8 +84,7 @@ const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: P
   const [togglePopulation, setTogglePopulation] = useState(false)
   const [togglePoliticalRule, setTogglePoliticalRule] = useState(false)
   const [toggleBudget, setToggleBudget] = useState(false)
-  const [togglebudgetRunsOut, setTogglebudgetRunsOut] = useState(false)
-  const [toggleEmissionsPerCapita, setToggleEmissionsPerCapita] = useState(false)
+  const [toggleBudgetRunsOut, setToggleBudgetRunsOut] = useState(false)
 
   const politicalRuleFormatted = politicalRule?.join(', ')
 
@@ -123,23 +122,27 @@ const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: P
               </InfoSection>
             ) : null}
           </section>
-          </>
+        </>
       )}
       {budgetRunsOut && (
         <>
           <div className="row">
             <section className="left">
               <InfoHeading>Koldioxidbudgeten tar slut</InfoHeading>
-              <ParagraphBold>{budgetRunsOut}</ParagraphBold>
+              <ParagraphBold>
+                {budgetRunsOut === 'Aldrig' ?
+                  'Med nuvarande trend håller kommunen sin budget' :
+                  budgetRunsOut}
+              </ParagraphBold>
             </section>
             <section className="right">
-              <StyledIcon onClick={() => setTogglebudgetRunsOut(!togglebudgetRunsOut)}>
-                {togglebudgetRunsOut ? <IconGreen /> : <Icon />}
+              <StyledIcon onClick={() => setToggleBudgetRunsOut(!toggleBudgetRunsOut)}>
+                {toggleBudgetRunsOut ? <IconGreen /> : <Icon />}
               </StyledIcon>
             </section>
           </div>
           <section>
-            {togglebudgetRunsOut ? (
+            {toggleBudgetRunsOut ? (
               <InfoSection>
                 <InfoParagraph>
                   Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend.
@@ -149,34 +152,7 @@ const ScoreCard = ({ population, budget, budgetRunsOut, rank, politicalRule }: P
           </section>
         </>
       )}
-
-      {/* <div className="row">
-        <section className="left">
-          <Paragraph>Klimatutsläpp per invånare</Paragraph>
-          <ParagraphBold>5 ton/år</ParagraphBold>
-        </section>
-        <section className="right">
-          <StyledIcon
-            onClick={() => setToggleEmissionsPerCapita(!toggleEmissionsPerCapita)}>
-            {toggleEmissionsPerCapita ? <IconGreen /> : <Icon />}
-          </StyledIcon>
-        </section>
-      </div> */}
       <section>
-        {toggleEmissionsPerCapita ? (
-          <InfoSection>
-            <Paragraph>
-              Gäller så kallade territoriella koldioxidutsläpp i Sverige per invånare.
-              Data från{' '}
-              <a
-                href="https://nationellaemissionsdatabasen.smhi.se/"
-                target="_blank"
-                rel="noreferrer">
-                nationella emissionsdatabasen.
-              </a>
-            </Paragraph>
-          </InfoSection>
-        ) : null}
       </section>
       <div className="row">
         <section className="left">
