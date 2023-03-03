@@ -61,7 +61,6 @@ export default function Step({
       budgetedEmissions={municipality.Budget.BudgetPerYear}
       trendingEmissions={municipality.EmissionTrend.TrendPerYear || []}
       municipalitiesName={municipalitiesName}
-      placeholder={placeholder}
     />
   )
 }
