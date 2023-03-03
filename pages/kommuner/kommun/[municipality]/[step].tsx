@@ -17,14 +17,12 @@ type Props = {
   municipality: TMunicipality
   id: string
   municipalitiesName: Array<string>
-  placeholder: string
 }
 
 export default function Step({
   id,
   municipality,
   municipalitiesName,
-  placeholder,
 }: Props) {
   const router = useRouter()
   const { step } = router.query
