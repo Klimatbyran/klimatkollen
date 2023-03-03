@@ -101,8 +101,8 @@ const Kommuner = ({ municipalities }: PropsType) => {
   const convertToPercent = (rowData: unknown) => {
     let percentString = 'Data saknas'
     if (typeof (rowData) == 'number') {
-      //const percent = (rowData * 100).toFixed(1) + '%' 
-      percentString = 'hejson'//rowData > 0 ? '+' + percent : percent
+      const percent = (rowData * 100).toFixed(1) + '%' 
+      percentString = rowData > 0 ? '+' + percent : percent
     }
     return percentString
   }
