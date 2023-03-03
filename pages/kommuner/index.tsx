@@ -145,10 +145,6 @@ const Kommuner = ({ municipalities }: PropsType) => {
     []
   )
 
-  const handleToggle = () => {
-    setToggleViewMode(!toggleViewMode)
-  }
-
   return (
     <>
       <MetaTags
@@ -169,7 +165,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
               kommuner sedan Parisavtalet 2015.
             </p>
           </InfoText>
-          <ToggleButton onClick={handleToggle}>
+          <ToggleButton onClick={() => setToggleViewMode(!toggleViewMode)}>
             {toggleViewMode ? 'Visa lista' : 'Visa karta'}
           </ToggleButton>
           <MunicipalityContainer>
