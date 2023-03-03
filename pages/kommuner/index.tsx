@@ -1,17 +1,17 @@
 
 import { GetServerSideProps } from 'next'
-import { ReactElement, useMemo, useState } from 'react'
+import { ReactElement, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { ColumnDef } from '@tanstack/react-table'
+import { useRouter } from 'next/router'
 
 import DropDown from '../../components/DropDown'
 import Map from '../../components/Map'
 import MetaTags from '../../components/MetaTags'
-import { ParagraphBold, Paragraph } from '../../components/Typography'
+import { ParagraphBold } from '../../components/Typography'
 import { EmissionService } from '../../utils/emissionService'
 import { Municipality } from '../../utils/types'
 import PageWrapper from '../../components/PageWrapper'
-import Icon from '../../public/icons/arrow.svg'
 import { devices } from '../../utils/devices'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
@@ -96,6 +96,8 @@ const InfoBox = styled.div`
 const Kommuner = ({ municipalities }: PropsType) => {
   const [, setSelected] = useState('Utforska kartan')
   const [toggleViewMode, setToggleViewMode] = useState(true)
+  const router = useRouter()
+
 
   const municipalitiesName = municipalities.map((item) => item.Name)
   const emissionsLevels = municipalities.map((item) => ({
@@ -143,6 +145,10 @@ const Kommuner = ({ municipalities }: PropsType) => {
     []
   )
 
+  const handleToggle = () => {
+    setToggleViewMode(!toggleViewMode)
+  }
+
   return (
     <>
       <MetaTags
@@ -163,7 +169,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
               kommuner sedan Parisavtalet 2015.
             </p>
           </InfoText>
-          <ToggleButton onClick={() => setToggleViewMode(!toggleViewMode)}>
+          <ToggleButton onClick={handleToggle}>
             {toggleViewMode ? 'Visa lista' : 'Visa karta'}
           </ToggleButton>
           <MunicipalityContainer>
