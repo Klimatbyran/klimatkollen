@@ -135,7 +135,7 @@ const Footer = () => {
   // }, [])
 
   return (
-    <PageWrapper backgroundColor="dark">
+    <PageWrapper backgroundColor={'darkGrey'}>
       <Foot>
         <ContentWrapper>
           <TextSection>

@@ -7,7 +7,6 @@ import { devices } from '../utils/devices'
 import Link from 'next/link'
 
 const StyledDiv = styled.div`
-  background: ${({ theme }) => theme.black};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 15px 15px;

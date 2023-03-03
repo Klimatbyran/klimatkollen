@@ -149,7 +149,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
         title="Klimatkollen — Få koll på Sveriges klimatomställning"
         description="Hur går det med utsläppsminskningarna i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper backgroundColor='darkestGrey'>
         <Container>
           <DropDown
             className="startpage"

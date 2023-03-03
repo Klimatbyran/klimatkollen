@@ -20,6 +20,7 @@ import { IconButton } from './shared'
 import { hasShareAPI } from '../utils/navigator'
 import { devices } from '../utils/devices'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
+import Theme from '../Theme'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -553,7 +554,7 @@ const Municipality = (props: Props) => {
         description={shareText(municipality.Name)}
         url={shareUrl}
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper backgroundColor='darkestGrey'>
         <Back route={'/kommuner'} />
         <Top>
           <HeaderSection>
@@ -645,19 +646,11 @@ const Municipality = (props: Props) => {
           )}
         </BottomShare>
       </PageWrapper>
-      <PageWrapper backgroundColor="dark">
+      <PageWrapper backgroundColor={'darkGrey'}>
         <BottomHeader>
           <H2>Fakta om {municipality.Name}</H2>
         </BottomHeader>
         <Bottom>
-          {/* <BottomRight>
-            <p>
-              {renderEmissionChangeRank(
-                municipality.Name,
-                municipality.HistoricalEmission.AverageEmissionChangeRank,
-              )}
-            </p>
-          </BottomRight> */}
           <BottomLeft>
             <ScoreCard
               population={municipality.Population}
