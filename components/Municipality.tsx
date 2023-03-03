@@ -402,7 +402,6 @@ const Municipality = (props: Props) => {
               historical={historicalEmissions}
               trend={trendingEmissions}
               budget={budgetedEmissions}
-              municipality={municipality.Name}
               user={userEmissions}
               maxVisibleYear={END_YEAR}
             />
