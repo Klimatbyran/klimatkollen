@@ -75,12 +75,14 @@ const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => 
                         return (
                             <TableHeader key={header.id} colSpan={header.colSpan}>
                                 {header.isPlaceholder ? null : (
+                                    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
                                     <div
                                         {...{
                                             className: header.column.getCanSort()
                                                 ? 'cursor-pointer select-none'
                                                 : '',
                                             onClick: header.column.getToggleSortingHandler(),
+                                            onKeyDown: header.column.getToggleSortingHandler(),
                                         }}
                                     >
                                         {flexRender(
