@@ -123,7 +123,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
         header: () => {
           return (
             <>
-              Utsläppsförändring<InfoTooltip text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+              Utsläppsförändring<InfoTooltip text="Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015" />
             </>)
         },
         cell: (row) => convertToPercent(row.renderValue()),
