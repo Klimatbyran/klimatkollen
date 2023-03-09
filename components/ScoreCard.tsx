@@ -136,7 +136,6 @@ const ScoreCard = ({
             . Informationen gäller föregående mandatperiod, vi väntar på ny data från SKR i mars 2023.
           </>}
       />}
-
     </StyledDiv>
   )
 }
