@@ -71,7 +71,8 @@ const OmOss = () => {
                 <Paragraph>
                   Läs mer om varför Klimatkollen behövs i{' '}
                   <a href='https://www.aktuellhallbarhet.se/alla-nyheter/debatt/darfor-behovs-klimatkollen/'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     vår debattartikel här
                   </a>.
                 </Paragraph>
@@ -81,7 +82,8 @@ const OmOss = () => {
                     <ListItem>
                       Koldioxidbudgetar för landets alla 290 kommuner. Klimatkollen utgår ifrån en{' '}
                       <a href='https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf'
-                        target={'_blank'}>
+                        target='_blank'
+                        rel='noreferrer'>
                         nationell koldioxidbudget
                       </a>{' '}
                       som beräknats av forskare vid Uppsala universitet enligt Tyndall-modellen och som sedan fördelats ut på kommunerna av ClimateView.
@@ -103,7 +105,8 @@ const OmOss = () => {
                   Klimatkollen är utvecklad med öppen källkod. Det betyder att alla kan vara med och utveckla och förbättra
                   sajten via vårt{' '}
                   <a href='https://github.com/Klimatbyran/klimatkollen'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     Github-repo
                   </a>.
                 </Paragraph>
@@ -139,7 +142,8 @@ const OmOss = () => {
                   vilka lösningar som genomförs i vilka kommuner och vilken effekt dessa åtgärder kan få på utsläppen.
                   Läs mer om det i{' '}
                   <a href='https://www.aktuellhallbarhet.se/alla-nyheter/debatt/med-battre-klimatdata-kan-vi-accelerera-klimatomstallningen/'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     vår debattartikel
                   </a>.
                 </Paragraph>
@@ -153,12 +157,14 @@ const OmOss = () => {
                   Klimatkollen finns till för – och drivs av – klimatintresserade medborgare.
                   Hos oss kan alla bidra. Du kan exempelvis hjälpa oss att{' '}
                   <a href='https://www.linkedin.com/posts/ospannar_klimatkollens-kommundata-activity-7027238300889272320-wvS3?utm_source=share&utm_medium=member_desktop'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     hitta data
                   </a>{' '}
                   som saknas, förbättra sajten via vårt{' '}
                   <a href='https://github.com/Klimatbyran/klimatkollen'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     Github-repo</a>{' '}
                   och sprida Klimatkollen i dina nätverk.
                 </Paragraph>
@@ -212,17 +218,20 @@ const OmOss = () => {
                 <Paragraph>
                   Här hittar du våra{' '}
                   <a href='/stadgar.pdf'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     stadgar
                   </a>{' '},
                   {' '}
                   <a href='/uppforandekod.pdf'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     uppförandekod
                   </a>{' '}
                   och {' '}
                   <a href='antikorruptionspolicy.pdf'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     antikorruptionspolicy
                   </a>.
                 </Paragraph>
@@ -235,7 +244,8 @@ const OmOss = () => {
                 <Paragraph>
                   I dag drivs Klimatkollen med hjälp av ett{' '}
                   <a href='https://www.mynewsdesk.com/se/klimatbyraan/pressreleases/klimatkollen-faar-stoed-av-postkodstiftelsen-och-rekryterar-toppnamn-3223979'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     projektstöd från Postkodstiftelsen
                   </a>.
                   Mycket av arbetet är helt ideellt, därför välkomnar vi gärna fler samarbetspartners och ekonomiskt stöd!
@@ -256,7 +266,8 @@ const OmOss = () => {
                     <ListItem>
                       En{' '}
                       <a href='https://klimatkollen.se/partier'
-                        target={'_blank'}>
+                        target='_blank'
+                        rel='noreferrer'>
                         analys av riksdagspartiernas klimatmål
                       </a>,
                       tillsammans med forskarnätverket Researchers’ Desk, Världsnaturfonden WWF, Våra barns klimat och ClimateView,
@@ -264,7 +275,8 @@ const OmOss = () => {
                     </ListItem>
                     <ListItem>
                       <a href='https://klimatkollen.se/utslappsberakningar'
-                        target={'_blank'}>
+                        target='_blank'
+                        rel='noreferrer'>
                         Utsläppsberäkning av riksdagspartiernas politik
                       </a>{' '}
                       gällande tolv centrala klimatåtgärder. Bakom uträkningarna står Klimatkollen, Världsnaturfonden WWF, ClimateView,
