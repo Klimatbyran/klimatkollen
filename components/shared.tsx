@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { H5 } from './Typography'
 
 export const Button = styled.button`
   border: none;
@@ -12,6 +13,11 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 1rem;
+`
+
+export const AiryH5 = styled(H5)`
+  margin-top: 25px;
+  margin-bottom: 15px;
 `
 
 export const UnorderedList = styled.ul`

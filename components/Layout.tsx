@@ -136,9 +136,9 @@ export default function Layout({ children }: { children: JSX.Element }) {
               </Link>
             </li>
             <li>
-              <Link href="/statistik-och-kallor">
-                <a className={path == "/statistik-och-kallor" ? "active" : "inactive"}>
-                  Statistik och källor
+              <Link href="/fakta">
+                <a className={path == "/fakta" ? "active" : "inactive"}>
+                  Vår klimatfakta
                 </a>
               </Link>
             </li>

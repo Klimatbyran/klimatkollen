@@ -3,22 +3,17 @@ import { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import MetaTags from '../../components/MetaTags'
-import { H2, H5, Paragraph } from '../../components/Typography'
+import { H2, Paragraph } from '../../components/Typography'
 import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
-import { UnorderedList, ListItem, OrderedList } from '../../components/shared'
+import { AiryH5, UnorderedList, ListItem, OrderedList } from '../../components/shared'
 
 const Container = styled.section`
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
-`
-
-const AiryH5 = styled(H5)`
-  margin-top: 25px;
-  margin-bottom: 15px;
 `
 
 const OmOss = () => {
@@ -61,7 +56,7 @@ const OmOss = () => {
                 Koldioxidbudgetar för landets alla 290 kommuner. Klimatkollen utgår ifrån en{' '}
                 <a href='https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf'>
                   nationell koldioxidbudget
-                </a>
+                </a>{' '}
                 som beräknats av forskare vid Uppsala universitet enligt Tyndall-modellen och som sedan fördelats ut på kommunerna av ClimateView.
               </ListItem>
               <ListItem>
@@ -121,13 +116,13 @@ const OmOss = () => {
             Hos oss kan alla bidra. Du kan exempelvis hjälpa oss att hitta data som saknas,
             förbättra sajten via vårt{' '}
             <a href='https://github.com/Klimatbyran/klimatkollen'>
-              Github-repo</a>
+              Github-repo</a>{' '}
             och sprida Klimatkollen i dina nätverk.
           </Paragraph>
           <Paragraph>
             <u>Skriv upp dig på vårt nyhetsbrev</u> så berättar vi när vi släpper något nytt.<br />
             <u>Skänk en slant!</u> Varje krona ger oss muskler att visa upp mer data. Vårt bankgiro: 5793-3178<br />
-            <u>Ge av din kompetens?</u> Skicka ett mejl till hej@klimatkollen.se.
+            <u>Ge av din kompetens?</u> Skicka ett mejl till <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
           </Paragraph>
           <AiryH5>
             Vår styrelse
@@ -193,7 +188,7 @@ const OmOss = () => {
               <ListItem>
                 <a href='https://klimatkollen.se/utslappsberakningar'>
                   Utsläppsberäkning av riksdagspartiernas politik
-                </a>
+                </a>{' '}
                 gällande tolv centrala klimatåtgärder. Bakom uträkningarna står Klimatkollen, Världsnaturfonden WWF, ClimateView,
                 Naturskyddsföreningen och Våra barns klimat. Beräkningarna visade att den nya regeringens politik kan öka utsläppen
                 med 25 miljoner ton redan under mandatperioden 2022–2026.
