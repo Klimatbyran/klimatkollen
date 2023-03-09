@@ -39,7 +39,7 @@ const StyledDiv = styled.div`
 type Props = {
   rank: number | null
   budget: number | null
-  budgetRunsOut: number | string
+  budgetRunsOut: string
   emissionChangePercent: number
   emissionLastYear: number | undefined
   population: number | null
@@ -83,7 +83,7 @@ const ScoreCard = ({
       />}
       {budgetRunsOut && <ScoreCardSection
         heading='Koldioxidbudgeten tar slut'
-        data={budgetRunsOut.toString()}
+        data={budgetRunsOut === 'Aldrig' ? 'Med nuvarande trend håller kommunen sin budget' : budgetRunsOut}
         info={
           <>
             Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend.
@@ -104,7 +104,7 @@ const ScoreCard = ({
         data={(emissionLastYear / population).toFixed(1) + ' ton koldioxid per år'}
         info={
           <>
-            Kommunens utsläpp utslaget på dess {formatter.format(population)} invånare. 
+            Kommunens utsläpp utslaget på dess {formatter.format(population)} invånare.
             Invånarantal hämtat från{' '}
             <a href="https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities"
               target="_blank"
