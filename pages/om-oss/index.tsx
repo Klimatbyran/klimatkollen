@@ -169,9 +169,17 @@ const OmOss = () => {
                   och sprida Klimatkollen i dina nätverk.
                 </Paragraph>
                 <Paragraph>
-                  <u>Skriv upp dig på vårt nyhetsbrev</u> så berättar vi när vi släpper något nytt.<br />
-                  <u>Skänk en slant!</u> Varje krona ger oss muskler att visa upp mer data. Vårt bankgiro: 5793-3178<br />
-                  <u>Ge av din kompetens?</u> Skicka ett mejl till <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
+                  <UnorderedList>
+                    <ListItem>
+                      Skriv upp dig på vårt nyhetsbrev så berättar vi när vi släpper något nytt.
+                    </ListItem>
+                    <ListItem>
+                      Skänk en slant! Varje krona ger oss muskler att visa upp mer data. Vårt bankgiro: 5793-3178
+                    </ListItem>
+                    <ListItem>
+                      Ge av din kompetens? Skicka ett mejl till <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+                    </ListItem>
+                  </UnorderedList>
                 </Paragraph>
               </>}
           />
