@@ -1,9 +1,10 @@
 import { GetServerSideProps } from 'next'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 
 import MetaTags from '../../components/MetaTags'
-import { H2, Paragraph } from '../../components/Typography'
+import { Paragraph } from '../../components/Typography'
 import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
@@ -11,10 +12,32 @@ import Footer from '../../components/Footer'
 import { UnorderedList, ListItem, OrderedList, AiryH2 } from '../../components/shared'
 import ToggleSection from '../../components/ToggleSection'
 
+import Ola from './assets/ola.jpeg'
+import Frida from './assets/frida.jpg'
+import Anna from './assets/anna.jpeg'
+import CJ from './assets/carl-johan.jpg'
+import Christian from './assets/christian.jpeg'
+import Maria from './assets/maria.jpg'
+
 const Container = styled.section`
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+`
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 32px;
+  margin-top: 32px;
+`
+
+const GridItem = styled.div`
+  min-height: 200px;
+`
+
+const GridImage = styled(Image)`
+  border-radius: 50%;
 `
 
 const OmOss = () => {
@@ -143,33 +166,39 @@ const OmOss = () => {
               <>
                 <Paragraph>
                   Klimatkollen drivs av den ideella föreningen, Klimatbyrån. I styrelsen sitter:
-                  <UnorderedList>
-                    <ListItem>
+                  <Grid>
+                    <GridItem>
+                      <GridImage src={Ola} alt='Ola Spännar' />
                       <b>Ola Spännar</b> – Opinionsbildare, medgrundare av Klimatkollen,
                       tidigare kommunikationschef på Centerpartiet och kundansvarig på Forsman & Bodenfors.
-                    </ListItem>
-                    <ListItem>
+                    </GridItem>
+                    <GridItem>
+                      <GridImage src={Frida} alt='Frida Berry Eklund' />
                       <b>Frida Berry Eklund</b> – Specialist på klimatkommunikation, föreläsare och medgrundare till Klimatkollen.
                       Utsedd till en av Sveriges 101 hållbarhetsmäktigaste 2021. Initiativtagare till den
                       internationella plattformen Our Kids’ Climate och författare till boken “Prata med barn om klimatet” (Natur & Kultur, 2020).
-                    </ListItem>
-                    <ListItem>
+                    </GridItem>
+                    <GridItem>
+                      <GridImage src={Christian} alt='Christian Landgren' />
                       <b>Christian Landgren</b> – Digital entreprenör och en av Sveriges mest inflytelserika personer inom tech.
                       VD och grundare av Iteam och Öppna skolplattformen.
-                    </ListItem>
-                    <ListItem>
+                    </GridItem>
+                    <GridItem>
+                      <GridImage src={Anna} alt='Anna Loverus' />
                       <b>Anna Loverus</b> – Digital strateg och tidigare chef för sociala medier på Spotify och H&M.
                       VD och grundare av Better Odds.
-                    </ListItem>
-                    <ListItem>
+                    </GridItem>
+                    <GridItem>
+                      <GridImage src={Maria} alt='Maria Soxbo' />
                       <b>Maria Soxbo</b> – Journalist, författare, föreläsare och grundare av Klimatklubben.
                       Utsedd till en av Sveriges 101 hållbarhetsmäktigaste 2021.
-                    </ListItem>
-                    <ListItem>
+                    </GridItem>
+                    <GridItem>
+                      <GridImage src={CJ} alt='Carl-Johan Schultz' />
                       <b>Carl-Johan Schultz</b> – Hållbarhetsstrateg på Doings, tidigare planner på Forsman & Bodenfors,
                       författare till boken ”Hållbariseringen”, Årets marknadsföringsbok 2022.
-                    </ListItem>
-                  </UnorderedList>
+                    </GridItem>
+                  </Grid>
                 </Paragraph>
               </>}
           />
