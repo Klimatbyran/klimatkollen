@@ -149,30 +149,6 @@ export default function Layout({ children }: { children: JSX.Element }) {
                 </a>
               </Link>
             </li>
-            {/* <li>
-              <Link href="/partier">
-                <a
-                  className={path == "/partier" ? "active" : "inactive"}
-                  aria-label="Nyhet! Partiernas klimatmål"
-                  href="/partier">
-                  Partiernas klimatmål
-                </a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/utslappsberakningar">
-                <a
-                  className={path == "/utslappsberakningar" ? "active" : "inactive"}
-                  aria-label="Nyhet! Partiernas utsläppsberäkningar"
-                  href="/utslappsberakningar"
-                  onClick={() => setVisibleNotification(false)}>
-                  Utsläppsberäkningar
-                </a>
-              </Link>
-              {visibleNotification && (
-                <Notification aria-hidden="true">Nyhet!</Notification>
-              )}
-            </li> */}
           </ul>
         </Nav>
       </Header>
