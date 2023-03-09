@@ -76,7 +76,104 @@ const BottomContainer = styled.div`
     gap: 0;
     grid-template-columns: 45% auto 40%;
   }
+<<<<<<< HEAD
 
+=======
+
+`
+
+const AdjustmentsContainer = styled.div`
+  grid-column: 1 / 2;
+  margin-bottom: 1rem;
+
+  @media only screen and (${devices.tablet}) {
+    margin-bottom: 0;
+  }
+`
+
+const RangeContainer = styled.div`
+  display: flex;
+  overflow-x: auto;
+  padding: 1rem 0;
+  flex-shrink: 0;
+  flex-grow: 1;
+  justify-content: space-between;
+
+  @media only screen and (${devices.tablet}) {
+    flex-grow: 0;
+    justify-content: start;
+  }
+`
+
+const Range = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+`
+
+const Slider = styled.input`
+  width: 114px;
+  height: 40px;
+  margin-top: calc((114px - 20px) / 2);
+  margin-bottom: calc((114px - 20px) / 2);
+  appearance: none;
+  background: transparent;
+  transform: rotate(-90deg);
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    background: ${(props) => props.theme.grey};
+    box-shadow: none;
+    height: 6px;
+    border-radius: 5px;
+  }
+
+  &::-moz-range-track {
+    background: ${(props) => props.theme.grey};
+    box-shadow: none;
+    height: 6px;
+    border-radius: 5px;
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    border-radius: 100%;
+    background: rgb(239, 191, 23);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: -8px;
+    height: 24px;
+    width: 24px;
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+    border: none;
+    border-radius: 100%;
+    background: #f9fbff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: -8px;
+    height: 24p;
+    width: 24px;
+  }
+`
+
+const Percentage = styled.label`
+  font-size: 0.75rem;
+  margin-top: 6px;
+`
+
+const StartYear = styled.div`
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin-bottom: 8px;
+`
+const EndYear = styled.div`
+  font-weight: 300;
+>>>>>>> main
 `
 
 const TotalCo2 = styled.div`
@@ -469,6 +566,14 @@ const Municipality = (props: Props) => {
         <Bottom>
           <BottomLeft>
             <ScoreCard
+<<<<<<< HEAD
+=======
+              population={municipality.Population}
+              budget={municipality.Budget.CO2Equivalent}
+              budgetRunsOut={municipality.BudgetRunsOut}
+              municipality={municipality.Name}
+              politicalRule={municipality.PoliticalRule}
+>>>>>>> main
               rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
               budget={municipality.Budget.CO2Equivalent}
               budgetRunsOut={municipality.BudgetRunsOut}

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { useState } from 'react'
 import { devices } from '../utils/devices'
 import Link from 'next/link'
 import ScoreCardSection from './ScoreCardSection'
