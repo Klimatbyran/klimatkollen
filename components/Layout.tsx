@@ -130,22 +130,21 @@ export default function Layout({ children }: { children: JSX.Element }) {
           <ul>
             <li>
               <Link href="/">
-                <a className={path == "/" ? "active" : "inactive"}
-                href="/">
+                <a href="/" className={path == "/" ? "active" : "inactive"}>
                   Kommuner
                 </a>
               </Link>
             </li>
             <li>
               <Link href="/fakta">
-                <a className={path == "/fakta" ? "active" : "inactive"}>
+                <a href="/fakta" className={path == "/fakta" ? "active" : "inactive"}>
                   Vår klimatfakta
                 </a>
               </Link>
             </li>
             <li>
               <Link href="/om-oss">
-                <a className={path == "/om-oss" ? "active" : "inactive"}>
+                <a href="/om-oss" className={path == "/om-oss" ? "active" : "inactive"}>
                   Om oss
                 </a>
               </Link>

@@ -41,7 +41,8 @@ const Fakta = () => {
                   För att nå målet måste världens länder halvera växthusgasutsläppen till 2030 jämfört med 1990 och nå nära noll utsläpp senast 2050.
                   I dag{' '}
                   <a href='https://www.iea.org/news/global-co2-emissions-rebounded-to-their-highest-level-in-history-in-2021'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     ökar</a>{' '}
                   fortfarande utsläppen globalt.
                 </Paragraph>
@@ -53,7 +54,8 @@ const Fakta = () => {
                 <Paragraph>
                   Läs mer om Parisavtalet hos{' '}
                   <a href='https://www.wwf.se/rapport/ipcc/#parisavtalet'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     Världsnaturfonden WWF
                   </a>.
                 </Paragraph>
@@ -71,7 +73,8 @@ const Fakta = () => {
                 <Paragraph>
                   Statistik om koldioxidutsläpp hämtas från{' '}
                   <a href='https://nationellaemissionsdatabasen.smhi.se/'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     Nationella emissionsdatabasen
                   </a>,
                   som hanteras av SMHI och utgår från Sveriges officiella utsläppsstatistik, med Naturvårdsverket som ansvarig myndighet.
@@ -80,12 +83,14 @@ const Fakta = () => {
                 <Paragraph>
                   Uppgifter om politiskt styre i kommunerna hämtas från{' '}
                   <a href='https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     Sveriges Kommuner och Regioner
                   </a>.
                   Från{' '}
                   <a href='https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     Wikidata</a>{' '}
                   hämtar vi kommunernas invånarantal och kommunvapen.
                 </Paragraph>
@@ -103,12 +108,14 @@ const Fakta = () => {
                   FN:s klimatpanel (IPCC) beräknade i början av 2020 att den återstående globala koldioxidbudgeten,
                   för en 50/50 chans att hålla världen under 1,5 graders uppvärmning, var ca{' '}
                   <a href='https://www.carbonbrief.org/in-depth-qa-the-ipccs-sixth-assessment-report-on-climate-science/'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     500 gigaton
                   </a>.
                   När de faktiska utsläppen 2020–2022 räknats bort återstod{' '}
                   <a href='https://www.carbonbrief.org/guest-post-what-the-tiny-remaining-1-5c-carbon-budget-means-for-climate-policy/'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     380 Gigaton
                   </a>{' '}
                   koldioxid i januari 2023. Det motsvarar nio år med nuvarande utsläppstakt globalt.
@@ -117,7 +124,8 @@ const Fakta = () => {
                   Klimatkollen utgår ifrån en nationell koldioxidbudget för Sverige, baserad på IPCC:s uträkning globalt.
                   Den svenska budgeten är beräknad 2022 av forskare vid Uppsala Universitet, enligt Tyndall-modellen. Läs mer{' '}
                   <a href='https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     här
                   </a>.
                 </Paragraph>
@@ -135,7 +143,8 @@ const Fakta = () => {
                 <Paragraph>
                   Förutom Tyndall-modellen finns även andra sätt att beräkna en nationell koldioxidbudget, se exempel från{' '}
                   <a href='https://research.chalmers.se/publication/530543/file/530543_Fulltext.pdf'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     Chalmers här
                   </a>.
                 </Paragraph>
@@ -169,12 +178,14 @@ const Fakta = () => {
                   koldioxidutsläpp som vanligtvis rapporteras av myndigheter och i media och som idag visas på Klimatkollen.
                   Journalisten Alexandra Urisman Otto beskriver detta i{' '}
                   <a href='https://www.dn.se/sverige/sverige-ska-ga-fore-anda-ar-klimatmalen-langt-ifran-tillrackliga/'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     Dagens Nyheter
                   </a>{' '}
                   och i ett kapitel av{' '}
                   <a href='https://www.bokforlagetpolaris.se/klimatboken/t-1/9789177956525'
-                    target={'_blank'}>
+                    target='_blank'
+                    rel='noreferrer'>
                     Klimatboken
                   </a>.
                 </Paragraph>
