@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 import { Paragraph, H5, ParagraphBold } from './Typography'
 import { devices } from '../utils/devices'
-import ClimateView from '../public/icons/climateview.svg'
-import VBK from '../public/icons/vbk.svg'
-import Argand from '../public/icons/argand.svg'
-import StormGeo from '../public/icons/stormgeo.svg'
 import NewsletterSubscribe from './NewsletterSubscribe'
 import ArrowDown from '../public/icons/arrow-down-round.svg'
 import ArrowUp from '../public/icons/arrow-up-green.svg'
@@ -306,11 +302,14 @@ const Footer = () => {
           </TextSection>
           <FlexSection>
             <PartnerSection
+              link='https://postkodstiftelsen.se/'
+              logo={<img src="/icons/postkodstiftelsen.svg" width={'auto'} height={97} alt="Postkodstiftelsen logo" />} />
+            <PartnerSection
               link='https://www.wwf.se/'
               logo={<Image src='/WWF_Logo_Small_RGB_72dpi.jpg' width={86} height={97} />} />
             <PartnerSection
               link='https://www.climateview.global/'
-              logo={<ClimateView />} />
+              logo={<img src="/icons/climateview.svg" alt="ClimateViw logo" />} />
             <PartnerSection
               link='https://www.klimatklubben.se/'
               logo={<img src="/icons/klimatklubben.svg" alt="Klimatklubben logo" />} />
@@ -320,17 +319,20 @@ const Footer = () => {
           </TextSection>
           <FlexSection>
             <PartnerSection
+              link='https://www.pwc.se/'
+              logo={<img src='/pwc.png' width={86} height={'auto'} />} />
+            <PartnerSection
               link='https://varabarnsklimat.se/'
-              logo={<VBK />} />
+              logo={<img src="/icons/vbk.svg" alt="Våra barns klimat logo"  />} />
             <PartnerSection
               link='https://www.wedonthavetime.org/'
               logo={<img src="/icons/we-dont-have-time.svg" alt="Wedonthavetime logo" />} />
             <PartnerSection
               link='https://argandpartners.com/'
-              logo={<Argand />} />
+              logo={<img src="/icons/argand.svg" alt="Argand logo"  />} />
             <PartnerSection
               link='https://www.stormgeo.com/'
-              logo={<StormGeo />} />
+              logo={<img src="/icons/stormgeo.svg" alt="StromGeo logo"  />} />
           </FlexSection>
           <Copyright>
             CC BY-SA -{' '}
