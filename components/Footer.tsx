@@ -320,7 +320,7 @@ const Footer = () => {
           <FlexSection>
             <PartnerSection
               link='https://www.pwc.se/'
-              logo={<img src='/pwc.png' width={86} height={'auto'} />} />
+              logo={<img src='/pwc.png' width={86} height={'auto'} alt="PWC logo" />} />
             <PartnerSection
               link='https://varabarnsklimat.se/'
               logo={<img src="/icons/vbk.svg" alt="Våra barns klimat logo"  />} />
