@@ -129,8 +129,9 @@ export default function Layout({ children }: { children: JSX.Element }) {
         <Nav path={path}>
           <ul>
             <li>
-              <Link href="/kommuner">
-                <a className={path == "/kommuner" ? "active" : "inactive"}>
+              <Link href="/">
+                <a className={path == "/" ? "active" : "inactive"}
+                href="/">
                   Kommuner
                 </a>
               </Link>
