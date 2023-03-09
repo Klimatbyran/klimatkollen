@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Home from '../pages/kommuner'
+import Home from '../pages'
 import { useRouter } from 'next/router'
 import { SpyInstanceFn } from 'vitest'
 
@@ -105,7 +105,7 @@ test('dropdown handles selecting from list', () => {
   userEvent.click(screen.getByText(/sollentuna/i))
   userEvent.click(screen.getByLabelText(/visa kommun/i))
 
-  expect(router.push).toHaveBeenCalledWith('/kommuner/kommun/sollentuna')
+  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
 })
 
 test('dropdown handles typing and clicking the green arrow', () => {
@@ -120,7 +120,7 @@ test('dropdown handles typing and clicking the green arrow', () => {
   userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'Sollentuna')
   userEvent.click(screen.getByLabelText(/visa kommun/i))
 
-  expect(router.push).toHaveBeenCalledWith('/kommuner/kommun/sollentuna')
+  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
 })
 
 test('dropdown handles typing with lowercase letters and clicking the green arrow', () => {
@@ -135,7 +135,7 @@ test('dropdown handles typing with lowercase letters and clicking the green arro
   userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'sollentuna')
   userEvent.click(screen.getByLabelText(/visa kommun/i))
 
-  expect(router.push).toHaveBeenCalledWith('/kommuner/kommun/sollentuna')
+  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
 })
 
 test('dropdown handles typing and pressing enter', () => {
@@ -149,5 +149,5 @@ test('dropdown handles typing and pressing enter', () => {
 
   userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'sollentuna{Enter}')
 
-  expect(router.push).toHaveBeenCalledWith('/kommuner/kommun/sollentuna')
+  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
 })
