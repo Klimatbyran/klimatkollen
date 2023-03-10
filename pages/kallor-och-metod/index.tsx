@@ -8,7 +8,6 @@ import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
-import { AiryH2 } from '../../components/shared'
 import ToggleSection from '../../components/ToggleSection'
 
 const Container = styled.section`
@@ -17,18 +16,25 @@ const Container = styled.section`
   margin-bottom: 2rem;
 `
 
-const Fakta = () => {
+const AiryParagraph = styled(Paragraph)`
+  margin-bottom: 32px;
+`
+
+const KoM = () => {
   return (
     <>
       <MetaTags
-        title='Vår klimatfakta'
-        description='Om Klimatkollens klimatfakta'
+        title='Källor och metod'
+        description='Om Klimatkollens källor och metod'
       />
       <PageWrapper backgroundColor="black">
         <Container>
-          <AiryH2>
-            Vår klimatfakta
-          </AiryH2>
+          <H2>
+            Källor och metod
+          </H2>
+          <AiryParagraph>
+            Vår utgångspunkt är Parisavtalets 1,5-gradersmål och våra datakällor är offentliga. Klicka på rubrikerna för att läsa mer.
+          </AiryParagraph>
           <ToggleSection
             header='Klimatkollen utgår från Parisavtalet'
             text={
@@ -48,7 +54,7 @@ const Fakta = () => {
                 </Paragraph>
                 <Paragraph>
                   Enligt Parisavtalet ska rika länder ta ett större ansvar, eftersom deras stora historiska utsläpp innebär att de redan använt
-                  mycket av det utsläppsutrymme som återstår för att hejda uppvärmningen. Där ingår Sverige, som både ska gå före med att minska
+                  mycket av det utsläppsutrymme som återstår för att hejda uppvärmningen. Bland dessa länder ingår Sverige, som både ska gå före med att minska
                   utsläppen och även hjälpa andra mer sårbara länder att ställa om.
                 </Paragraph>
                 <Paragraph>
@@ -116,9 +122,9 @@ const Fakta = () => {
                   <a href='https://www.carbonbrief.org/guest-post-what-the-tiny-remaining-1-5c-carbon-budget-means-for-climate-policy/'
                     target='_blank'
                     rel='noreferrer'>
-                    380 Gigaton
+                    380 gigaton
                   </a>{' '}
-                  koldioxid i januari 2023. Det motsvarar nio år med nuvarande utsläppstakt globalt.
+                  koldioxid i januari 2023. Det motsvarar nio år med nuvarande utsläppstakt.
                 </Paragraph>
                 <Paragraph>
                   Klimatkollen utgår ifrån en nationell koldioxidbudget för Sverige, baserad på IPCC:s uträkning globalt.
@@ -130,7 +136,7 @@ const Fakta = () => {
                   </a>.
                 </Paragraph>
                 <Paragraph>
-                  För Sverige som helhet hade vi i början av 2022 en koldioxidbudget på 170 miljoner ton, motsvarande 3,5 år med nuvarande utsläppstakt.
+                  Sveriges koldioxidbudget var i början av 2022 170 miljoner ton, motsvarande 3,5 år med nuvarande utsläppstakt.
                 </Paragraph>
                 <Paragraph>
                   Den nationella koldioxidbudgeten har sedan fördelats enligt Tyndall-modellen på kommunerna av företaget ClimateView för Klimatkollens räkning.
@@ -170,13 +176,11 @@ const Fakta = () => {
                   Dessa konsumtionsbaserade utsläpp inkluderas inte i koldioxidbudgeten.
                 </Paragraph>
                 <Paragraph>
-                  Det finns även andra växthusgasutsläpp som inte inkluderas i koldioxidbudgeten, såsom utsläpp från skog och mark
-                  (så kallade biogena utsläpp) och utsläpp av andra växthusgaser som lustgas och metan.
+                  Inte heller  utsläpp från skog och mark (så kallade biogena utsläpp) inkluderas i koldioxidbudgeten.
                 </Paragraph>
                 <Paragraph>
-                  I praktiken betyder detta att de klimatpåverkande utsläppen egentligen är mycket större är de territoriella fossila
-                  koldioxidutsläpp som vanligtvis rapporteras av myndigheter och i media och som idag visas på Klimatkollen.
-                  Journalisten Alexandra Urisman Otto beskriver detta i{' '}
+                  Egentligen är alltså de klimatpåverkande utsläppen mycket större är de territoriella fossila koldioxidutsläpp som vanligtvis
+                  rapporteras av myndigheter och i media och som idag visas på Klimatkollen. Journalisten Alexandra Urisman Otto beskriver detta i{' '}
                   <a href='https://www.dn.se/sverige/sverige-ska-ga-fore-anda-ar-klimatmalen-langt-ifran-tillrackliga/'
                     target='_blank'
                     rel='noreferrer'>
@@ -215,9 +219,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   }
 }
 
-export default Fakta
+export default KoM
 
-Fakta.getLayout = function getLayout(page: ReactElement) {
+KoM.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
       <Layout>{page}</Layout>

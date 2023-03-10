@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { H2 } from './Typography'
 
 export const Button = styled.button`
   border: none;
@@ -13,10 +12,6 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   gap: 1rem;
-`
-
-export const AiryH2 = styled(H2)`
-  margin-bottom: 32px;
 `
 
 export const UnorderedList = styled.ul`

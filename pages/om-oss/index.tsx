@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 
 import MetaTags from '../../components/MetaTags'
-import { Paragraph } from '../../components/Typography'
+import { H2, H5, Paragraph } from '../../components/Typography'
 import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
@@ -23,6 +23,10 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+`
+
+const AiryParagraph = styled(Paragraph)`
+  margin-bottom: 32px;
 `
 
 const Grid = styled.div`
@@ -49,16 +53,22 @@ const OmOss = () => {
       />
       <PageWrapper backgroundColor='black'>
         <Container>
-          <AiryH2>
+          <H2>
             Om oss
-          </AiryH2>
+          </H2>
+          <AiryParagraph>
+            Klimatkollen är en medborgarplattform som tillgängliggör klimatdata. Klicka på rubrikerna för att läsa mer.
+          </AiryParagraph>
           <ToggleSection
             header='Vad är Klimatkollen?'
             text={
               <>
                 <Paragraph>
                   Klimatkollen är en medborgarplattform som tillgängliggör klimatdata och bygger stöd för minskade utsläpp
-                  i linje med Parisavtalet. Klimatkollen lanserades i mars 2022 och drivs av den ideella föreningen Klimatbyrån.
+                  i linje med Parisavtalet.
+                </Paragraph>
+                <Paragraph>
+                  Klimatkollen lanserades i mars 2022 och drivs av den ideella föreningen Klimatbyrån.
                 </Paragraph>
                 <Paragraph>
                   I centrum står vår visualisering av hur det går med koldioxidutsläppen. För det som spelar roll på sista
@@ -76,6 +86,12 @@ const OmOss = () => {
                     vår debattartikel här
                   </a>.
                 </Paragraph>
+              </>}
+          />
+          <ToggleSection
+            header='Vad finns på Klimatkollen?'
+            text={
+              <>
                 <Paragraph>
                   I dag kan du på Klimatkollen se:
                   <UnorderedList>
@@ -122,7 +138,12 @@ const OmOss = () => {
                   – och om det som görs räcker för att nå 1,5-gradersmålet. Därför startade vi Klimatkollen.
                 </Paragraph>
                 <Paragraph>
-                  Våra samarbetspartners under första året var Världsnaturfonden WWF, PwC, ClimateView, Iteam, Klimatklubben,
+                  Flera andra personer finns på olika sätt i Klimatkollens nätverk. Några av dem sitter i Klimatbyråns styrelse, se nedan.
+                  Andra jobbar med att vidareutveckla webbplatsen, tidigare Iteam, nu Elvira Boman från Precisit och Johan Pödra från It’s a Thing.
+                  Många fler bidrar med stöd och råd på olika sätt.
+                </Paragraph>
+                <Paragraph>
+                  Våra samarbetspartners under första året var Världsnaturfonden WWF, PwC, ClimateView, Klimatklubben,
                   Våra barns klimat, Argand Partners och We Don’t Have Time.
                 </Paragraph>
               </>}
@@ -138,8 +159,8 @@ const OmOss = () => {
                 </Paragraph>
                 <Paragraph>
                   Vi jobbar för att göra klimatdata lättillgänglig för medborgare. Det möjliggör ansvarsutkrävande och ger bränsle
-                  till nya digitala innovationer som snabbar på klimatomställningen. Vi behöver veta varifrån utsläppen kommer,
-                  vilka lösningar som genomförs i vilka kommuner och vilken effekt dessa åtgärder kan få på utsläppen.
+                  till nya digitala innovationer som snabbar på klimatomställningen. . Vi behöver veta mer om utsläppen,
+                  varifrån de kommer, vilka lösningar som genomförs i vilka kommuner och vilken effekt dessa åtgärder kan få.
                   Läs mer om det i{' '}
                   <a href='https://www.aktuellhallbarhet.se/alla-nyheter/debatt/med-battre-klimatdata-kan-vi-accelerera-klimatomstallningen/'
                     target='_blank'
@@ -171,7 +192,7 @@ const OmOss = () => {
                 <Paragraph>
                   <UnorderedList>
                     <ListItem>
-                      Skriv upp dig på vårt nyhetsbrev så berättar vi när vi släpper något nytt.
+                      Skriv upp dig på vårt nyhetsbrev (i formuläret längre ner på sidan) så berättar vi när vi släpper något nytt.
                     </ListItem>
                     <ListItem>
                       Skänk en slant! Varje krona ger oss muskler att visa upp mer data. Vårt bankgiro: 5793-3178
@@ -250,13 +271,15 @@ const OmOss = () => {
             text={
               <>
                 <Paragraph>
-                  I dag drivs Klimatkollen med hjälp av ett{' '}
+                  I dag drivs Klimatkollen med hjälp av {' '}
                   <a href='https://www.mynewsdesk.com/se/klimatbyraan/pressreleases/klimatkollen-faar-stoed-av-postkodstiftelsen-och-rekryterar-toppnamn-3223979'
                     target='_blank'
                     rel='noreferrer'>
-                    projektstöd från Postkodstiftelsen
+                    stöd från Postkodstiftelsen
                   </a>.
-                  Mycket av arbetet är helt ideellt, därför välkomnar vi gärna fler samarbetspartners och ekonomiskt stöd!
+                </Paragraph>
+                <Paragraph>
+                  Mycket av arbetet är ideellt, därför välkomnar vi fler samarbetspartners och ekonomiskt stöd!
                 </Paragraph>
                 <Paragraph>
                   Uppstarten finansierades av Världsnaturfonden WWF, ClimateView, We Don’t Have Time och Argand Partners.
@@ -268,28 +291,30 @@ const OmOss = () => {
             text={
               <>
                 <Paragraph>
-                  Inför riksdagsvalet 2022 ansvarade Klimatkollen för två unika projekt som syftade till att ge medborgare bättre koll på
+                  Inför riksdagsvalet 2022 ansvarade Klimatkollen för två unika projekt för att ge medborgare bättre koll på
                   utsläppseffekterna av partiernas klimatpolitik:
                   <OrderedList>
                     <ListItem>
+                      <b>Klimatmål</b><br/>
                       En{' '}
                       <a href='https://klimatkollen.se/partier'
                         target='_blank'
                         rel='noreferrer'>
-                        analys av riksdagspartiernas klimatmål
-                      </a>,
-                      tillsammans med forskarnätverket Researchers’ Desk, Världsnaturfonden WWF, Våra barns klimat och ClimateView,
-                      i samarbete med PwC och Naturskyddsföreningen. Analysen visade att sex av åtta partier missar Parisavtalets 1,5-gradersmål.
+                        analys
+                      </a>{' '}
+                      av riksdagspartiernas klimatmål, tillsammans med forskarnätverket Researchers’ Desk, Världsnaturfonden WWF, Våra barns klimat 
+                      och ClimateView, i samarbete med PwC och Naturskyddsföreningen. Analysen visade att sex av åtta partier missar Parisavtalets 1,5-gradersmål.
                     </ListItem>
                     <ListItem>
+                      <b>Utsläppsberäkning</b><br/>
                       <a href='https://klimatkollen.se/utslappsberakningar'
                         target='_blank'
                         rel='noreferrer'>
-                        Utsläppsberäkning av riksdagspartiernas politik
+                        Utsläppsberäkning
                       </a>{' '}
-                      gällande tolv centrala klimatåtgärder. Bakom uträkningarna står Klimatkollen, Världsnaturfonden WWF, ClimateView,
-                      Naturskyddsföreningen och Våra barns klimat. Beräkningarna visade att den nya regeringens politik kan öka utsläppen
-                      med 25 miljoner ton redan under mandatperioden 2022–2026.
+                      av riksdagspartiernas politik gällande tolv centrala klimatåtgärder. Bakom uträkningarna står Klimatkollen, 
+                      Världsnaturfonden WWF, ClimateView, Naturskyddsföreningen och Våra barns klimat. Beräkningarna visade att den 
+                      nya regeringens politik kan öka utsläppen med 25 miljoner ton redan under mandatperioden 2022–2026.
                     </ListItem>
                   </OrderedList>
                 </Paragraph>
