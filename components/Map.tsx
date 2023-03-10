@@ -84,9 +84,11 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
   const router = useRouter()
 
   useMemo(() => {
-    axios.get('/api/map').then(res => {
+    axios.get('/api/map')
+    .then(res => {
       setMunicipalityData(res.data)
     })
+    .catch(error => console.log(error));
   }, [])
 
   const municipalityLines = municipalityData?.features?.map(({ geometry, properties }: { geometry: any, properties: any }) => {
