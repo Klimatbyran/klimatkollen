@@ -323,7 +323,7 @@ const Footer = () => {
               logo={<img src='/pwc.png' width={86} height={'auto'} alt="PWC logo" />} />
             <PartnerSection
               link='https://varabarnsklimat.se/'
-              logo={<img src="/icons/vbk.svg" alt="Våra barns klimat logo"  />} />
+              logo={<img src="/icons/vbk.svg" width={86} height={'auto'} alt="Våra barns klimat logo"  />} />
             <PartnerSection
               link='https://www.wedonthavetime.org/'
               logo={<img src="/icons/we-dont-have-time.svg" alt="Wedonthavetime logo" />} />
@@ -332,7 +332,7 @@ const Footer = () => {
               logo={<img src="/icons/argand.svg" alt="Argand logo"  />} />
             <PartnerSection
               link='https://www.stormgeo.com/'
-              logo={<img src="/icons/stormgeo.svg" alt="StromGeo logo"  />} />
+              logo={<img src="/icons/stormgeo.svg"  width={'auto'} height={97} alt="StromGeo logo"  />} />
           </FlexSection>
           <Copyright>
             CC BY-SA -{' '}
