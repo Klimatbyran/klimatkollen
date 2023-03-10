@@ -2,15 +2,13 @@ import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 
 import MetaTags from '../../components/MetaTags'
-import { H1, H2, Paragraph } from '../../components/Typography'
+import { H2, Paragraph } from '../../components/Typography'
 import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
-import VisuallyHidden from '../../components/VisuallyHidden'
 import { devices } from '../../utils/devices'
 
 const Container = styled.section`
