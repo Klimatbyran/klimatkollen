@@ -13,3 +13,17 @@ export const Button = styled.button`
   align-items: center;
   gap: 1rem;
 `
+
+export const UnorderedList = styled.ul`
+  list-style-position: inside;
+  margin: 16px;
+`
+
+export const OrderedList = styled.ol`
+  list-style-position: inside;
+  margin: 16px;
+`
+
+export const ListItem = styled.li`
+  margin: 8px;
+`

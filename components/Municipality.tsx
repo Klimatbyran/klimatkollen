@@ -76,7 +76,6 @@ const BottomContainer = styled.div`
     gap: 0;
     grid-template-columns: 45% auto 40%;
   }
-
 `
 
 const TotalCo2 = styled.div`
