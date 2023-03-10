@@ -1,13 +1,10 @@
 import styled from 'styled-components'
 import { Paragraph, H5, ParagraphBold } from './Typography'
 import { devices } from '../utils/devices'
-import ClimateView from '../public/icons/climateview.svg'
-import VBK from '../public/icons/vbk.svg'
-import Argand from '../public/icons/argand.svg'
-import StormGeo from '../public/icons/stormgeo.svg'
 import NewsletterSubscribe from './NewsletterSubscribe'
 import PageWrapper from './PageWrapper'
 import Image from 'next/image'
+import PartnerSection from './PartnerSection'
 
 const Foot = styled.footer`
   width: 100%;
@@ -36,6 +33,7 @@ const FlexSection = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 60px 28px;
+  padding-bottom: 60px;
 
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
@@ -43,29 +41,6 @@ const FlexSection = styled.div`
     align-items: stretch;
     justify-content: space-between;
   }
-`
-
-const IconSection = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  gap: 15px;
-
-  @media only screen and (${devices.tablet}) {
-    flex: 0 1 350px;
-  }
-`
-
-const IconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-`
-
-const LogoParagraph = styled(Paragraph)`
-  max-width: 350px;
-  text-align: center;
 `
 
 const Copyright = styled.p`
@@ -91,92 +66,41 @@ const Footer = () => {
             <NewsletterSubscribe />
           </TextSection>
           <TextSection>
-            <H5>Våra samarbetspartners</H5>
+            <H5>Aktiva samarbetspartners</H5>
           </TextSection>
           <FlexSection>
-            <IconSection>
-              <IconWrapper>
-                <a href="https://www.wwf.se/" target="_blank" rel="noreferrer">
-                  <Image src={'/WWF_Logo_Small_RGB_72dpi.jpg'} width={86} height={97} />
-                </a>
-              </IconWrapper>
-              <LogoParagraph>
-                Global miljöorganisation med 200 000 svenska supportrar.
-              </LogoParagraph>
-            </IconSection>
-            <IconSection>
-              <IconWrapper>
-                <a
-                  href="https://www.climateview.global/"
-                  target="_blank"
-                  rel="noreferrer">
-                  <ClimateView />
-                </a>
-              </IconWrapper>
-              <LogoParagraph>
-                Hjälper kommuner och städer att planera och analysera klimatarbetet.
-              </LogoParagraph>
-            </IconSection>
-            <IconSection>
-              <IconWrapper>
-                <a href="https://varabarnsklimat.se/" target="_blank" rel="noreferrer">
-                  <VBK />
-                </a>
-              </IconWrapper>
-              <LogoParagraph>
-                En ideell påverkansorganisation som tar fajten för barns rättigheter i
-                klimatomställningen.
-              </LogoParagraph>
-            </IconSection>
-            <IconSection>
-              <IconWrapper>
-                <a href="https://www.klimatklubben.se/" target="_blank" rel="noreferrer">
-                  <img src="/icons/klimatklubben.svg" alt="Klimatklubben logo" />
-                </a>
-              </IconWrapper>
-              <LogoParagraph>
-                Samlar människor för att skapa opinion och klimatengagemang.
-              </LogoParagraph>
-            </IconSection>
-            <IconSection>
-              <IconWrapper>
-                <a
-                  href="https://www.wedonthavetime.org/"
-                  target="_blank"
-                  rel="noreferrer">
-                  <img src="/icons/we-dont-have-time.svg" alt="Wedonthavetime logo" />
-                </a>
-              </IconWrapper>
-              <LogoParagraph>
-                Världens största sociala nätverk för klimataktion. Skapa din egen kampanj{' '}
-                <a
-                  href="https://www.wedonthavetime.org/"
-                  target="_blank"
-                  rel="noreferrer">
-                  här
-                </a>
-                .
-              </LogoParagraph>
-            </IconSection>
-            <IconSection>
-              <IconWrapper>
-                <a href="https://argandpartners.com/" target="_blank" rel="noreferrer">
-                  <Argand />
-                </a>
-              </IconWrapper>
-              <LogoParagraph>Investerar i klimatlösningar.</LogoParagraph>
-            </IconSection>
-            <IconSection>
-              <IconWrapper>
-                <a href="https://www.stormgeo.com/" target="_blank" rel="noreferrer">
-                  <StormGeo />
-                </a>
-              </IconWrapper>
-              <LogoParagraph>
-                Skandinaviens första privata väderföretag, en global leverantör av
-                vädertjänster.
-              </LogoParagraph>
-            </IconSection>
+            <PartnerSection
+              link='https://postkodstiftelsen.se/'
+              logo={<img src="/icons/postkodstiftelsen.svg" width={180} height={'auto'} alt="Postkodstiftelsen logo" />} />
+            <PartnerSection
+              link='https://www.wwf.se/'
+              logo={<img src='/WWF_Logo_Small_RGB_72dpi.jpg' width={'auto'} height={90} alt="WWF logo" />} />
+            <PartnerSection
+              link='https://www.climateview.global/'
+              logo={<img src="/icons/climateview.svg" width={180} height={'auto'} alt="ClimateViw logo" />} />
+            <PartnerSection
+              link='https://www.klimatklubben.se/'
+              logo={<img src="/icons/klimatklubben.svg"  width={'auto'} height={90} alt="Klimatklubben logo" />} />
+          </FlexSection>
+          <TextSection>
+            <H5>Tidigare samarbetspartners</H5>
+          </TextSection>
+          <FlexSection>
+            <PartnerSection
+              link='https://www.pwc.se/'
+              logo={<img src='/pwc.png' width={'auto'} height={90} alt="PWC logo" />} />
+            <PartnerSection
+              link='https://varabarnsklimat.se/'
+              logo={<img src="/icons/vbk.svg" width={86} height={'auto'} alt="Våra barns klimat logo"  />} />
+            <PartnerSection
+              link='https://www.wedonthavetime.org/'
+              logo={<img src="/icons/we-dont-have-time.svg" width={180} height={'auto'} alt="Wedonthavetime logo" />} />
+            <PartnerSection
+              link='https://argandpartners.com/'
+              logo={<img src="/icons/argand.svg" width={180} height={'auto'} alt="Argand logo" />} />
+            <PartnerSection
+              link='https://www.stormgeo.com/'
+              logo={<img src="/icons/stormgeo.svg" width={180} height={'auto'} alt="StromGeo logo"  />} />
           </FlexSection>
           <Copyright>
             CC BY-SA -{' '}
