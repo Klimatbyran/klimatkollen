@@ -76,8 +76,8 @@ const Partier = () => {
           <Paragraph>
             Den framräknade nationella koldioxidbudgeten ligger även till grund för
             jämförelsen på{' '}
-            <Link href="/kommuner">
-              <a href="/kommuner">kommunsidorna</a>
+            <Link href="/">
+              <a href="/">startsidan</a>
             </Link>{' '}
             på Klimatkollen. Läs mer om hur den är beräknad{' '}
             <a

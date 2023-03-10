@@ -63,7 +63,7 @@ const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => 
     const handleRowClick = (row: Row<T>) => {
         const cells = row.getAllCells()
         const value = cells.at(1)?.renderValue()
-        const url = typeof value === 'string' ? `/kommuner/kommun/${value.toLowerCase()}` : '/404'
+        const url = typeof value === 'string' ? `/kommun/${value.toLowerCase()}` : '/404'
         router.push(url)
     }
 

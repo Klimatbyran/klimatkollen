@@ -81,6 +81,7 @@
       "2050": 0
     },
     "futureEmission": 768254.3087453896,
+    "emissionChangePercent": 11.46308637586113,
     "hitNetZero": "2034-03-16",
     "budgetRunsOut": "Aldrig"
   },
@@ -166,6 +167,7 @@
       "2050": 55125.88258418674
     },
     "futureEmission": 1941598.9140177993,
+    "emissionChangePercent": 15.26880841527871,
     "hitNetZero": "2135-09-08",
     "budgetRunsOut": "2026-12-22"
   },
@@ -251,6 +253,7 @@
       "2050": 0
     },
     "futureEmission": 786552.8515251756,
+    "emissionChangePercent": 14.186143935264,
     "hitNetZero": "2048-07-10",
     "budgetRunsOut": "2028-03-31"
   },
@@ -336,6 +339,7 @@
       "2050": 10047.098624588572
     },
     "futureEmission": 410743.06730977295,
+    "emissionChangePercent": 14.80616582188062,
     "hitNetZero": "2091-02-23",
     "budgetRunsOut": "2027-03-25"
   },
@@ -421,6 +425,7 @@
       "2050": 27999.016881940886
     },
     "futureEmission": 1147074.7419929649,
+    "emissionChangePercent": 14.89392225615583,
     "hitNetZero": "2090-11-02",
     "budgetRunsOut": "2027-03-21"
   },
@@ -506,6 +511,7 @@
       "2050": 0
     },
     "futureEmission": 36624.045342900965,
+    "emissionChangePercent": 12.63665697113161,
     "hitNetZero": "2027-07-09",
     "budgetRunsOut": "Aldrig"
   },
@@ -591,6 +597,7 @@
       "2050": 3122.562994694803
     },
     "futureEmission": 555853.3925555458,
+    "emissionChangePercent": 14.72509420000218,
     "hitNetZero": "2053-01-07",
     "budgetRunsOut": "2027-11-26"
   },
@@ -676,6 +683,7 @@
       "2050": 6021.798765058629
     },
     "futureEmission": 1000799.6313669877,
+    "emissionChangePercent": 14.22397784111526,
     "hitNetZero": "2053-04-12",
     "budgetRunsOut": "2027-12-27"
   },
@@ -761,6 +769,7 @@
       "2050": 81266.96240538894
     },
     "futureEmission": 2380621.2466122634,
+    "emissionChangePercent": 15.5473332485008,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-08-16"
   },
@@ -846,6 +855,7 @@
       "2050": 46566.76817800291
     },
     "futureEmission": 3807280.3870413643,
+    "emissionChangePercent": 14.56553960859994,
     "hitNetZero": "2058-08-28",
     "budgetRunsOut": "2027-09-25"
   },
@@ -931,6 +941,7 @@
       "2050": 23406.89150924608
     },
     "futureEmission": 1246337.6029009977,
+    "emissionChangePercent": 13.82784865163804,
     "hitNetZero": "2069-03-27",
     "budgetRunsOut": "2027-08-18"
   },
@@ -1016,6 +1027,7 @@
       "2050": 0
     },
     "futureEmission": 57477.07101545612,
+    "emissionChangePercent": 10.8016641749956,
     "hitNetZero": "2024-08-07",
     "budgetRunsOut": "Aldrig"
   },
@@ -1101,6 +1113,7 @@
       "2050": 5824.4216524082585
     },
     "futureEmission": 261669.0308900758,
+    "emissionChangePercent": 14.28089505971778,
     "hitNetZero": "2079-12-20",
     "budgetRunsOut": "2027-05-30"
   },
@@ -1186,6 +1199,7 @@
       "2050": 0
     },
     "futureEmission": 214071.32987963027,
+    "emissionChangePercent": 13.14757920807625,
     "hitNetZero": "2029-05-27",
     "budgetRunsOut": "Aldrig"
   },
@@ -1271,6 +1285,7 @@
       "2050": 184327.4241427267
     },
     "futureEmission": 4411856.896458784,
+    "emissionChangePercent": 17.31597321589728,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2025-11-20"
   },
@@ -1356,6 +1371,7 @@
       "2050": 55619.19720567984
     },
     "futureEmission": 1485558.2041287592,
+    "emissionChangePercent": 15.49668402875271,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-06-03"
   },
@@ -1441,6 +1457,7 @@
       "2050": 0
     },
     "futureEmission": 973745.9180464586,
+    "emissionChangePercent": 14.79872919630597,
     "hitNetZero": "2044-05-11",
     "budgetRunsOut": "2028-06-14"
   },
@@ -1526,6 +1543,7 @@
       "2050": 13257.239331351593
     },
     "futureEmission": 922251.792339867,
+    "emissionChangePercent": 14.60817548109228,
     "hitNetZero": "2061-04-30",
     "budgetRunsOut": "2027-08-27"
   },
@@ -1611,6 +1629,7 @@
       "2050": 14511.207436822355
     },
     "futureEmission": 5714718.355696031,
+    "emissionChangePercent": 14.24233899156748,
     "hitNetZero": "2051-03-20",
     "budgetRunsOut": "2028-01-30"
   },
@@ -1696,6 +1715,7 @@
       "2050": 40636.92956182547
     },
     "futureEmission": 3912304.673850914,
+    "emissionChangePercent": 14.62882663261786,
     "hitNetZero": "2056-10-04",
     "budgetRunsOut": "2027-10-12"
   },
@@ -1781,6 +1801,7 @@
       "2050": 0
     },
     "futureEmission": 812017.5209910293,
+    "emissionChangePercent": 13.77889658142003,
     "hitNetZero": "2037-09-02",
     "budgetRunsOut": "2029-12-10"
   },
@@ -1866,6 +1887,7 @@
       "2050": 0
     },
     "futureEmission": 325380.68844660785,
+    "emissionChangePercent": 12.69148103816091,
     "hitNetZero": "2036-08-12",
     "budgetRunsOut": "2030-10-18"
   },
@@ -1951,6 +1973,7 @@
       "2050": 36285.83554814849
     },
     "futureEmission": 1656356.2527919821,
+    "emissionChangePercent": 13.31162733071811,
     "hitNetZero": "2078-06-30",
     "budgetRunsOut": "2027-08-02"
   },
@@ -2036,6 +2059,7 @@
       "2050": 0
     },
     "futureEmission": 195694.11391528696,
+    "emissionChangePercent": 13.66295421896655,
     "hitNetZero": "2033-09-29",
     "budgetRunsOut": "Aldrig"
   },
@@ -2121,6 +2145,7 @@
       "2050": 0
     },
     "futureEmission": 543111.8127393784,
+    "emissionChangePercent": 12.84383856492786,
     "hitNetZero": "2037-07-02",
     "budgetRunsOut": "2030-04-29"
   },
@@ -2206,6 +2231,7 @@
       "2050": 0
     },
     "futureEmission": 500039.8282875004,
+    "emissionChangePercent": 14.13120807724914,
     "hitNetZero": "2044-01-05",
     "budgetRunsOut": "2028-08-20"
   },
@@ -2291,6 +2317,7 @@
       "2050": 0
     },
     "futureEmission": 163364.80211523,
+    "emissionChangePercent": 14.09914556450279,
     "hitNetZero": "2045-08-08",
     "budgetRunsOut": "2028-06-27"
   },
@@ -2376,6 +2403,7 @@
       "2050": 0
     },
     "futureEmission": 95886.55444089253,
+    "emissionChangePercent": 12.03456388425357,
     "hitNetZero": "2026-03-08",
     "budgetRunsOut": "Aldrig"
   },
@@ -2461,6 +2489,7 @@
       "2050": 24495.946169768693
     },
     "futureEmission": 1162204.52031847,
+    "emissionChangePercent": 14.50071831623765,
     "hitNetZero": "2075-09-02",
     "budgetRunsOut": "2027-06-03"
   },
@@ -2546,6 +2575,7 @@
       "2050": 14153.53262661767
     },
     "futureEmission": 387504.76750140154,
+    "emissionChangePercent": 15.69236949232824,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-06-16"
   },
@@ -2631,6 +2661,7 @@
       "2050": 25636.79490356939
     },
     "futureEmission": 1150166.6652183349,
+    "emissionChangePercent": 15.36809727579043,
     "hitNetZero": "2080-03-16",
     "budgetRunsOut": "2027-03-26"
   },
@@ -2716,6 +2747,7 @@
       "2050": 0
     },
     "futureEmission": 481281.28146033443,
+    "emissionChangePercent": 13.85248618728489,
     "hitNetZero": "2043-07-14",
     "budgetRunsOut": "2028-10-02"
   },
@@ -2801,6 +2833,7 @@
       "2050": 16392.59369850438
     },
     "futureEmission": 1254184.2243236764,
+    "emissionChangePercent": 14.71380856493496,
     "hitNetZero": "2059-08-22",
     "budgetRunsOut": "2027-09-05"
   },
@@ -2886,6 +2919,7 @@
       "2050": 4371.907805139432
     },
     "futureEmission": 460068.8769228249,
+    "emissionChangePercent": 14.33525360410344,
     "hitNetZero": "2055-12-13",
     "budgetRunsOut": "2027-11-11"
   },
@@ -2971,6 +3005,7 @@
       "2050": 70677.20419286471
     },
     "futureEmission": 3428023.3111908985,
+    "emissionChangePercent": 14.75218810659822,
     "hitNetZero": "2074-03-23",
     "budgetRunsOut": "2027-05-26"
   },
@@ -3056,6 +3091,7 @@
       "2050": 8901.00122130476
     },
     "futureEmission": 2670857.9570670286,
+    "emissionChangePercent": 13.94258423035323,
     "hitNetZero": "2051-08-24",
     "budgetRunsOut": "2028-02-12"
   },
@@ -3141,6 +3177,7 @@
       "2050": 124152.71559273917
     },
     "futureEmission": 4669561.710612295,
+    "emissionChangePercent": 18.84050449306402,
     "hitNetZero": "2109-11-15",
     "budgetRunsOut": "2026-07-19"
   },
@@ -3226,6 +3263,7 @@
       "2050": 0
     },
     "futureEmission": 162856.4485708613,
+    "emissionChangePercent": 13.33607129098248,
     "hitNetZero": "2040-04-09",
     "budgetRunsOut": "2029-05-21"
   },
@@ -3311,6 +3349,7 @@
       "2050": 0
     },
     "futureEmission": 199618.4887708775,
+    "emissionChangePercent": 12.65363717737673,
     "hitNetZero": "2032-07-18",
     "budgetRunsOut": "Aldrig"
   },
@@ -3396,6 +3435,7 @@
       "2050": 84527.31985083688
     },
     "futureEmission": 3596675.164715974,
+    "emissionChangePercent": 14.47573664167144,
     "hitNetZero": "2085-08-24",
     "budgetRunsOut": "2027-04-28"
   },
@@ -3481,6 +3521,7 @@
       "2050": 0
     },
     "futureEmission": 1230345.9563140392,
+    "emissionChangePercent": 14.07280755687334,
     "hitNetZero": "2049-11-03",
     "budgetRunsOut": "2028-03-09"
   },
@@ -3566,6 +3607,7 @@
       "2050": 0
     },
     "futureEmission": 715519.0496919182,
+    "emissionChangePercent": 13.53274423328361,
     "hitNetZero": "2035-02-28",
     "budgetRunsOut": "2031-06-12"
   },
@@ -3651,6 +3693,7 @@
       "2050": 4658.95482136216
     },
     "futureEmission": 678954.9581792913,
+    "emissionChangePercent": 14.27516647737847,
     "hitNetZero": "2053-11-10",
     "budgetRunsOut": "2027-12-14"
   },
@@ -3736,6 +3779,7 @@
       "2050": 22310.727224914357
     },
     "futureEmission": 1460775.8232204614,
+    "emissionChangePercent": 14.91857948415963,
     "hitNetZero": "2062-08-24",
     "budgetRunsOut": "2027-07-27"
   },
@@ -3821,6 +3865,7 @@
       "2050": 0
     },
     "futureEmission": 371346.16333678056,
+    "emissionChangePercent": 13.71492969549436,
     "hitNetZero": "2038-04-24",
     "budgetRunsOut": "2029-10-03"
   },
@@ -3906,6 +3951,7 @@
       "2050": 0
     },
     "futureEmission": 217317.3577145385,
+    "emissionChangePercent": 14.17075411932551,
     "hitNetZero": "2043-06-27",
     "budgetRunsOut": "2028-09-07"
   },
@@ -3991,6 +4037,7 @@
       "2050": 16918.575374258275
     },
     "futureEmission": 581666.9325389068,
+    "emissionChangePercent": 15.30923284917259,
     "hitNetZero": "2152-01-21",
     "budgetRunsOut": "2026-12-07"
   },
@@ -4076,6 +4123,7 @@
       "2050": 0
     },
     "futureEmission": 216360.18140812166,
+    "emissionChangePercent": 13.73313043406554,
     "hitNetZero": "2037-12-06",
     "budgetRunsOut": "2029-11-13"
   },
@@ -4161,6 +4209,7 @@
       "2050": 0
     },
     "futureEmission": 690570.920907524,
+    "emissionChangePercent": 13.63902022244347,
     "hitNetZero": "2040-05-28",
     "budgetRunsOut": "2029-04-11"
   },
@@ -4246,6 +4295,7 @@
       "2050": 0
     },
     "futureEmission": 84440.54982823781,
+    "emissionChangePercent": 12.36241162035954,
     "hitNetZero": "2029-08-23",
     "budgetRunsOut": "Aldrig"
   },
@@ -4331,6 +4381,7 @@
       "2050": 0
     },
     "futureEmission": 289695.4910201027,
+    "emissionChangePercent": 11.88445732332217,
     "hitNetZero": "2042-05-04",
     "budgetRunsOut": "2029-05-29"
   },
@@ -4416,6 +4467,7 @@
       "2050": 400595.8476083111
     },
     "futureEmission": 9760505.775594838,
+    "emissionChangePercent": 8.098179576824586,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2027-02-16"
   },
@@ -4501,6 +4553,7 @@
       "2050": 105418.53994490672
     },
     "futureEmission": 2501132.7076732665,
+    "emissionChangePercent": 15.8014658067856,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-01-11"
   },
@@ -4586,6 +4639,7 @@
       "2050": 3314.676576808328
     },
     "futureEmission": 393352.60910496116,
+    "emissionChangePercent": 14.66310560387275,
     "hitNetZero": "2055-01-18",
     "budgetRunsOut": "2027-11-01"
   },
@@ -4671,6 +4725,7 @@
       "2050": 0
     },
     "futureEmission": 306645.71854567574,
+    "emissionChangePercent": 14.26833241943295,
     "hitNetZero": "2046-03-24",
     "budgetRunsOut": "2028-05-25"
   },
@@ -4756,6 +4811,7 @@
       "2050": 886725.8932292871
     },
     "futureEmission": 19766405.64017457,
+    "emissionChangePercent": 16.15850929532336,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2025-09-30"
   },
@@ -4841,6 +4897,7 @@
       "2050": 0
     },
     "futureEmission": 2218756.8811674723,
+    "emissionChangePercent": 14.01763292795881,
     "hitNetZero": "2039-07-09",
     "budgetRunsOut": "2029-05-11"
   },
@@ -4926,6 +4983,7 @@
       "2050": 1042287.5639290363
     },
     "futureEmission": 47736759.30750601,
+    "emissionChangePercent": 14.5370546374996,
     "hitNetZero": "2078-05-04",
     "budgetRunsOut": "2027-05-21"
   },
@@ -5011,6 +5069,7 @@
       "2050": 110456.34382915762
     },
     "futureEmission": 3261542.4176860377,
+    "emissionChangePercent": 15.31643041781151,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-09-02"
   },
@@ -5096,6 +5155,7 @@
       "2050": 33306.509995477085
     },
     "futureEmission": 1024056.5341132425,
+    "emissionChangePercent": 14.93423087705056,
     "hitNetZero": "2623-08-08",
     "budgetRunsOut": "2026-10-20"
   },
@@ -5181,6 +5241,7 @@
       "2050": 0
     },
     "futureEmission": 872089.9780493486,
+    "emissionChangePercent": 13.75655713009211,
     "hitNetZero": "2044-11-06",
     "budgetRunsOut": "2028-08-19"
   },
@@ -5266,6 +5327,7 @@
       "2050": 0
     },
     "futureEmission": 453223.77511852526,
+    "emissionChangePercent": 13.86904645489515,
     "hitNetZero": "2040-02-10",
     "budgetRunsOut": "2029-04-10"
   },
@@ -5351,6 +5413,7 @@
       "2050": 25585.090416009072
     },
     "futureEmission": 935681.4079592014,
+    "emissionChangePercent": 15.2394775501068,
     "hitNetZero": "2118-02-22",
     "budgetRunsOut": "2027-01-11"
   },
@@ -5436,6 +5499,7 @@
       "2050": 12860.637448966503
     },
     "futureEmission": 4969507.732077065,
+    "emissionChangePercent": 14.3888975193849,
     "hitNetZero": "2051-03-30",
     "budgetRunsOut": "2028-01-19"
   },
@@ -5521,6 +5585,7 @@
       "2050": 0
     },
     "futureEmission": 871918.0608467374,
+    "emissionChangePercent": 13.5535049807456,
     "hitNetZero": "2047-10-16",
     "budgetRunsOut": "2028-06-05"
   },
@@ -5606,6 +5671,7 @@
       "2050": 0
     },
     "futureEmission": 1157627.662378592,
+    "emissionChangePercent": 14.35321475246328,
     "hitNetZero": "2040-05-17",
     "budgetRunsOut": "2029-02-04"
   },
@@ -5691,6 +5757,7 @@
       "2050": 2353.36786346999
     },
     "futureEmission": 424523.96328945167,
+    "emissionChangePercent": 15.06667397582121,
     "hitNetZero": "2052-12-21",
     "budgetRunsOut": "2027-11-04"
   },
@@ -5776,6 +5843,7 @@
       "2050": 0
     },
     "futureEmission": 419253.4888467451,
+    "emissionChangePercent": 13.932846497051,
     "hitNetZero": "2038-12-13",
     "budgetRunsOut": "2029-07-08"
   },
@@ -5861,6 +5929,7 @@
       "2050": 100885.3307002685
     },
     "futureEmission": 2425973.4460298764,
+    "emissionChangePercent": 17.84700548507886,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2025-11-04"
   },
@@ -5946,6 +6015,7 @@
       "2050": 268096.8836305961
     },
     "futureEmission": 10624380.480001803,
+    "emissionChangePercent": 15.47117975468961,
     "hitNetZero": "2096-08-11",
     "budgetRunsOut": "2027-02-03"
   },
@@ -6031,6 +6101,7 @@
       "2050": 0
     },
     "futureEmission": 257818.94442685685,
+    "emissionChangePercent": 13.69777314097021,
     "hitNetZero": "2043-06-19",
     "budgetRunsOut": "2028-10-19"
   },
@@ -6116,6 +6187,7 @@
       "2050": 0
     },
     "futureEmission": 227833.65995256376,
+    "emissionChangePercent": 14.09515875928625,
     "hitNetZero": "2043-07-17",
     "budgetRunsOut": "2028-09-11"
   },
@@ -6201,6 +6273,7 @@
       "2050": 0
     },
     "futureEmission": 648759.6577263377,
+    "emissionChangePercent": 11.59523116418673,
     "hitNetZero": "2035-03-21",
     "budgetRunsOut": "2032-07-31"
   },
@@ -6286,6 +6359,7 @@
       "2050": 0
     },
     "futureEmission": 984315.4550540636,
+    "emissionChangePercent": 13.8512528443,
     "hitNetZero": "2038-02-01",
     "budgetRunsOut": "2029-10-13"
   },
@@ -6371,6 +6445,7 @@
       "2050": 0
     },
     "futureEmission": 1117959.7772574637,
+    "emissionChangePercent": 13.49176847832349,
     "hitNetZero": "2038-06-11",
     "budgetRunsOut": "2029-10-14"
   },
@@ -6456,6 +6531,7 @@
       "2050": 0
     },
     "futureEmission": 570603.6570743625,
+    "emissionChangePercent": 14.16371932556542,
     "hitNetZero": "2047-09-19",
     "budgetRunsOut": "2028-04-21"
   },
@@ -6541,6 +6617,7 @@
       "2050": 0
     },
     "futureEmission": 323754.1324839004,
+    "emissionChangePercent": 14.05095701410824,
     "hitNetZero": "2036-10-23",
     "budgetRunsOut": "2030-03-08"
   },
@@ -6626,6 +6703,7 @@
       "2050": 0
     },
     "futureEmission": 329654.1753863846,
+    "emissionChangePercent": 13.1972940722552,
     "hitNetZero": "2040-07-11",
     "budgetRunsOut": "2029-05-17"
   },
@@ -6711,6 +6789,7 @@
       "2050": 0
     },
     "futureEmission": 66468.72099331842,
+    "emissionChangePercent": 10.36985480696021,
     "hitNetZero": "2023-07-14",
     "budgetRunsOut": "Aldrig"
   },
@@ -6796,6 +6875,7 @@
       "2050": 0
     },
     "futureEmission": 651591.8825074977,
+    "emissionChangePercent": 13.74876475328165,
     "hitNetZero": "2041-02-10",
     "budgetRunsOut": "2029-02-13"
   },
@@ -6881,6 +6961,7 @@
       "2050": 94757.16312602442
     },
     "futureEmission": 3476690.916341207,
+    "emissionChangePercent": 15.23587922451898,
     "hitNetZero": "2116-12-07",
     "budgetRunsOut": "2027-01-13"
   },
@@ -6966,6 +7047,7 @@
       "2050": 218160.3077748944
     },
     "futureEmission": 6165306.063811273,
+    "emissionChangePercent": 17.15065686066409,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-05-05"
   },
@@ -7051,6 +7133,7 @@
       "2050": 34884.431539962534
     },
     "futureEmission": 1556821.4211214762,
+    "emissionChangePercent": 14.9575032072128,
     "hitNetZero": "2080-08-25",
     "budgetRunsOut": "2027-04-17"
   },
@@ -7136,6 +7219,7 @@
       "2050": 5871.565210290253
     },
     "futureEmission": 3246892.713877026,
+    "emissionChangePercent": 14.19756381935929,
     "hitNetZero": "2050-11-03",
     "budgetRunsOut": "2028-02-09"
   },
@@ -7221,6 +7305,7 @@
       "2050": 0
     },
     "futureEmission": 130910.22199495911,
+    "emissionChangePercent": 13.3292147391442,
     "hitNetZero": "2034-10-05",
     "budgetRunsOut": "2032-01-06"
   },
@@ -7306,6 +7391,7 @@
       "2050": 22765.18496324774
     },
     "futureEmission": 1002853.633109089,
+    "emissionChangePercent": 14.85846322135288,
     "hitNetZero": "2081-11-22",
     "budgetRunsOut": "2027-04-19"
   },
@@ -7391,6 +7477,7 @@
       "2050": 0
     },
     "futureEmission": 599424.7191247605,
+    "emissionChangePercent": 14.23164150019534,
     "hitNetZero": "2046-10-17",
     "budgetRunsOut": "2028-05-11"
   },
@@ -7476,6 +7563,7 @@
       "2050": 0
     },
     "futureEmission": 125775.55640035529,
+    "emissionChangePercent": 13.08775212609517,
     "hitNetZero": "2029-02-22",
     "budgetRunsOut": "Aldrig"
   },
@@ -7561,6 +7649,7 @@
       "2050": 76821.9519171303
     },
     "futureEmission": 2350514.6066586482,
+    "emissionChangePercent": 15.04374918986112,
     "hitNetZero": "2761-12-02",
     "budgetRunsOut": "2026-10-11"
   },
@@ -7646,6 +7735,7 @@
       "2050": 84976.62048418075
     },
     "futureEmission": 7064271.950892325,
+    "emissionChangePercent": 15.10000248538541,
     "hitNetZero": "2058-06-11",
     "budgetRunsOut": "2027-08-24"
   },
@@ -7731,6 +7821,7 @@
       "2050": 0
     },
     "futureEmission": 604030.9666061469,
+    "emissionChangePercent": 13.71953691562784,
     "hitNetZero": "2041-11-18",
     "budgetRunsOut": "2029-01-02"
   },
@@ -7816,6 +7907,7 @@
       "2050": 0
     },
     "futureEmission": 1223821.8758121475,
+    "emissionChangePercent": 13.84349491369795,
     "hitNetZero": "2040-06-02",
     "budgetRunsOut": "2029-03-22"
   },
@@ -7901,6 +7993,7 @@
       "2050": 0
     },
     "futureEmission": 147106.67094473488,
+    "emissionChangePercent": 12.81668114925064,
     "hitNetZero": "2035-12-02",
     "budgetRunsOut": "2031-03-06"
   },
@@ -7986,6 +8079,7 @@
       "2050": 0
     },
     "futureEmission": 946877.63599314,
+    "emissionChangePercent": 14.04977774505713,
     "hitNetZero": "2041-05-14",
     "budgetRunsOut": "2029-01-01"
   },
@@ -8071,6 +8165,7 @@
       "2050": 0
     },
     "futureEmission": 1053354.0395307266,
+    "emissionChangePercent": 14.03578453074786,
     "hitNetZero": "2044-09-21",
     "budgetRunsOut": "2028-08-01"
   },
@@ -8156,6 +8251,7 @@
       "2050": 65239.008109890856
     },
     "futureEmission": 2665630.1579605667,
+    "emissionChangePercent": 14.71889564160099,
     "hitNetZero": "2091-03-20",
     "budgetRunsOut": "2027-03-30"
   },
@@ -8241,6 +8337,7 @@
       "2050": 24846.17415710725
     },
     "futureEmission": 3271194.0189640177,
+    "emissionChangePercent": 14.68038490598507,
     "hitNetZero": "2054-05-27",
     "budgetRunsOut": "2027-11-09"
   },
@@ -8326,6 +8423,7 @@
       "2050": 0
     },
     "futureEmission": 796954.3092009252,
+    "emissionChangePercent": 14.0899734699783,
     "hitNetZero": "2042-05-04",
     "budgetRunsOut": "2028-11-06"
   },
@@ -8411,6 +8509,7 @@
       "2050": 11849.518992756028
     },
     "futureEmission": 686656.2108311485,
+    "emissionChangePercent": 14.78996865169752,
     "hitNetZero": "2066-01-17",
     "budgetRunsOut": "2027-07-10"
   },
@@ -8496,6 +8595,7 @@
       "2050": 0
     },
     "futureEmission": 554408.4029349007,
+    "emissionChangePercent": 14.16684376085894,
     "hitNetZero": "2045-07-10",
     "budgetRunsOut": "2028-06-24"
   },
@@ -8581,6 +8681,7 @@
       "2050": 822723.0745911142
     },
     "futureEmission": 22864501.621115398,
+    "emissionChangePercent": 16.55017158180758,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-05-19"
   },
@@ -8666,6 +8767,7 @@
       "2050": 4618.030640099198
     },
     "futureEmission": 1076995.8260458466,
+    "emissionChangePercent": 14.85735761341502,
     "hitNetZero": "2052-03-12",
     "budgetRunsOut": "2027-11-30"
   },
@@ -8751,6 +8853,7 @@
       "2050": 20840.311924208887
     },
     "futureEmission": 1259178.8205397693,
+    "emissionChangePercent": 14.12857822528915,
     "hitNetZero": "2064-09-18",
     "budgetRunsOut": "2027-08-30"
   },
@@ -8836,6 +8939,7 @@
       "2050": 12493.287493352778
     },
     "futureEmission": 1445400.2556839632,
+    "emissionChangePercent": 14.47709089653952,
     "hitNetZero": "2055-03-23",
     "budgetRunsOut": "2027-11-11"
   },
@@ -8921,6 +9025,7 @@
       "2050": 9462.117532426491
     },
     "futureEmission": 3264875.7622949453,
+    "emissionChangePercent": 14.30818354036183,
     "hitNetZero": "2051-05-29",
     "budgetRunsOut": "2028-01-21"
   },
@@ -9006,6 +9111,7 @@
       "2050": 0
     },
     "futureEmission": 793527.8255828345,
+    "emissionChangePercent": 14.05201443134339,
     "hitNetZero": "2040-01-21",
     "budgetRunsOut": "2029-03-27"
   },
@@ -9091,6 +9197,7 @@
       "2050": 0
     },
     "futureEmission": 141538.9297802022,
+    "emissionChangePercent": 12.46808374191875,
     "hitNetZero": "2027-09-15",
     "budgetRunsOut": "Aldrig"
   },
@@ -9176,6 +9283,7 @@
       "2050": 106734.97951918188
     },
     "futureEmission": 4377428.550980237,
+    "emissionChangePercent": 14.95044824432103,
     "hitNetZero": "2090-09-07",
     "budgetRunsOut": "2027-03-18"
   },
@@ -9261,6 +9369,7 @@
       "2050": 43221.812946315855
     },
     "futureEmission": 3314543.0049792007,
+    "emissionChangePercent": 14.6595674424194,
     "hitNetZero": "2059-08-08",
     "budgetRunsOut": "2027-09-09"
   },
@@ -9346,6 +9455,7 @@
       "2050": 12797.300654472085
     },
     "futureEmission": 711502.8420791766,
+    "emissionChangePercent": 14.66432193141248,
     "hitNetZero": "2067-07-06",
     "budgetRunsOut": "2027-07-07"
   },
@@ -9431,6 +9541,7 @@
       "2050": 52983.58544091182
     },
     "futureEmission": 2280569.6869216617,
+    "emissionChangePercent": 15.09389264646029,
     "hitNetZero": "2084-05-19",
     "budgetRunsOut": "2027-03-28"
   },
@@ -9516,6 +9627,7 @@
       "2050": 7316.312465179246
     },
     "futureEmission": 1116518.561427343,
+    "emissionChangePercent": 14.59901692899016,
     "hitNetZero": "2053-08-24",
     "budgetRunsOut": "2027-11-25"
   },
@@ -9601,6 +9713,7 @@
       "2050": 0
     },
     "futureEmission": 2666722.3386792247,
+    "emissionChangePercent": 14.18397146195828,
     "hitNetZero": "2040-09-06",
     "budgetRunsOut": "2029-01-30"
   },
@@ -9686,6 +9799,7 @@
       "2050": 0
     },
     "futureEmission": 745177.5843867989,
+    "emissionChangePercent": 13.49858847477103,
     "hitNetZero": "2038-04-06",
     "budgetRunsOut": "2029-11-02"
   },
@@ -9771,6 +9885,7 @@
       "2050": 152568.5924901343
     },
     "futureEmission": 5349011.777271986,
+    "emissionChangePercent": 15.62061073011648,
     "hitNetZero": "2138-08-10",
     "budgetRunsOut": "2026-12-01"
   },
@@ -9856,6 +9971,7 @@
       "2050": 5480.801890153205
     },
     "futureEmission": 578433.3896441618,
+    "emissionChangePercent": 14.91670003747811,
     "hitNetZero": "2055-12-07",
     "budgetRunsOut": "2027-10-03"
   },
@@ -9941,6 +10057,7 @@
       "2050": 11306.51643483853
     },
     "futureEmission": 562764.0002714089,
+    "emissionChangePercent": 14.92294098687032,
     "hitNetZero": "2072-09-06",
     "budgetRunsOut": "2027-05-23"
   },
@@ -10026,6 +10143,7 @@
       "2050": 0
     },
     "futureEmission": 305722.5790918395,
+    "emissionChangePercent": 13.89413910896814,
     "hitNetZero": "2037-12-24",
     "budgetRunsOut": "2029-10-20"
   },
@@ -10111,6 +10229,7 @@
       "2050": 0
     },
     "futureEmission": 408751.9280054567,
+    "emissionChangePercent": 13.25219957306155,
     "hitNetZero": "2033-05-07",
     "budgetRunsOut": "Aldrig"
   },
@@ -10196,6 +10315,7 @@
       "2050": 0
     },
     "futureEmission": 196796.0140486059,
+    "emissionChangePercent": 14.05824341751748,
     "hitNetZero": "2042-03-07",
     "budgetRunsOut": "2028-11-17"
   },
@@ -10281,6 +10401,7 @@
       "2050": 38000.56830992445
     },
     "futureEmission": 974241.9974085476,
+    "emissionChangePercent": 17.22535817773254,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-02-06"
   },
@@ -10366,6 +10487,7 @@
       "2050": 35248.73080332484
     },
     "futureEmission": 2397115.630848713,
+    "emissionChangePercent": 15.34336995950156,
     "hitNetZero": "2061-10-24",
     "budgetRunsOut": "2027-07-07"
   },
@@ -10451,6 +10573,7 @@
       "2050": 0
     },
     "futureEmission": 346089.9997027794,
+    "emissionChangePercent": 13.38990897494015,
     "hitNetZero": "2034-11-30",
     "budgetRunsOut": "2031-10-14"
   },
@@ -10536,6 +10659,7 @@
       "2050": 9766.000906572677
     },
     "futureEmission": 1274132.8390210965,
+    "emissionChangePercent": 13.83558620721315,
     "hitNetZero": "2054-06-12",
     "budgetRunsOut": "2028-01-05"
   },
@@ -10621,6 +10745,7 @@
       "2050": 173519.384772107
     },
     "futureEmission": 10488759.919855397,
+    "emissionChangePercent": 14.84279926115805,
     "hitNetZero": "2064-09-24",
     "budgetRunsOut": "2027-07-16"
   },
@@ -10706,6 +10831,7 @@
       "2050": 0
     },
     "futureEmission": 1720696.4010363396,
+    "emissionChangePercent": 14.31587947688276,
     "hitNetZero": "2043-11-26",
     "budgetRunsOut": "2028-08-09"
   },
@@ -10791,6 +10917,7 @@
       "2050": 0
     },
     "futureEmission": 678331.0189046073,
+    "emissionChangePercent": 14.37000946357643,
     "hitNetZero": "2039-11-08",
     "budgetRunsOut": "2029-03-11"
   },
@@ -10876,6 +11003,7 @@
       "2050": 0
     },
     "futureEmission": 139204.61450303774,
+    "emissionChangePercent": 13.63428389135118,
     "hitNetZero": "2031-03-13",
     "budgetRunsOut": "Aldrig"
   },
@@ -10961,6 +11089,7 @@
       "2050": 0
     },
     "futureEmission": 943022.8178423902,
+    "emissionChangePercent": 14.32180047496414,
     "hitNetZero": "2046-09-24",
     "budgetRunsOut": "2028-05-06"
   },
@@ -11046,6 +11175,7 @@
       "2050": 0
     },
     "futureEmission": 196701.33683742295,
+    "emissionChangePercent": 10.6453706977446,
     "hitNetZero": "2027-12-14",
     "budgetRunsOut": "Aldrig"
   },
@@ -11131,6 +11261,7 @@
       "2050": 4506434.332338154
     },
     "futureEmission": 120389071.35232005,
+    "emissionChangePercent": 15.813083984543,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-05-19"
   },
@@ -11216,6 +11347,7 @@
       "2050": 0
     },
     "futureEmission": 1711325.9299901337,
+    "emissionChangePercent": 14.00698160020258,
     "hitNetZero": "2042-10-04",
     "budgetRunsOut": "2028-10-24"
   },
@@ -11301,6 +11433,7 @@
       "2050": 4063.243680400308
     },
     "futureEmission": 905065.0548300539,
+    "emissionChangePercent": 12.55988787410173,
     "hitNetZero": "2052-04-21",
     "budgetRunsOut": "2028-05-12"
   },
@@ -11386,6 +11519,7 @@
       "2050": 0
     },
     "futureEmission": 5139464.03705515,
+    "emissionChangePercent": 11.15830485887707,
     "hitNetZero": "2029-01-04",
     "budgetRunsOut": "Aldrig"
   },
@@ -11471,6 +11605,7 @@
       "2050": 0
     },
     "futureEmission": 2812846.934101536,
+    "emissionChangePercent": 11.81726064334345,
     "hitNetZero": "2028-05-21",
     "budgetRunsOut": "Aldrig"
   },
@@ -11556,6 +11691,7 @@
       "2050": 0
     },
     "futureEmission": 242033.45035918476,
+    "emissionChangePercent": 13.62206395683068,
     "hitNetZero": "2033-01-28",
     "budgetRunsOut": "Aldrig"
   },
@@ -11641,6 +11777,7 @@
       "2050": 5469.3534934611525
     },
     "futureEmission": 231797.08841614568,
+    "emissionChangePercent": 15.17821779368261,
     "hitNetZero": "2086-03-24",
     "budgetRunsOut": "2027-03-17"
   },
@@ -11726,6 +11863,7 @@
       "2050": 0
     },
     "futureEmission": 894833.2415845129,
+    "emissionChangePercent": 14.9584110605647,
     "hitNetZero": "2040-05-08",
     "budgetRunsOut": "2028-12-11"
   },
@@ -11811,6 +11949,7 @@
       "2050": 0
     },
     "futureEmission": 975138.9136854796,
+    "emissionChangePercent": 14.13024037936944,
     "hitNetZero": "2048-05-04",
     "budgetRunsOut": "2028-04-08"
   },
@@ -11896,6 +12035,7 @@
       "2050": 14602.165243890602
     },
     "futureEmission": 1060265.9051198235,
+    "emissionChangePercent": 14.83684819008985,
     "hitNetZero": "2060-07-10",
     "budgetRunsOut": "2027-08-20"
   },
@@ -11981,6 +12121,7 @@
       "2050": 0
     },
     "futureEmission": 351919.3060616744,
+    "emissionChangePercent": 14.37573525697371,
     "hitNetZero": "2045-04-03",
     "budgetRunsOut": "2028-06-16"
   },
@@ -12066,6 +12207,7 @@
       "2050": 10680.911028002389
     },
     "futureEmission": 1651232.2175807054,
+    "emissionChangePercent": 14.45080966280565,
     "hitNetZero": "2053-08-02",
     "budgetRunsOut": "2027-12-06"
   },
@@ -12151,6 +12293,7 @@
       "2050": 0
     },
     "futureEmission": 757011.8682507346,
+    "emissionChangePercent": 14.40886239645869,
     "hitNetZero": "2044-12-01",
     "budgetRunsOut": "2028-06-25"
   },
@@ -12236,6 +12379,7 @@
       "2050": 0
     },
     "futureEmission": 681344.355938073,
+    "emissionChangePercent": 13.80565503400393,
     "hitNetZero": "2038-04-21",
     "budgetRunsOut": "2029-09-24"
   },
@@ -12321,6 +12465,7 @@
       "2050": 6129.2158975169295
     },
     "futureEmission": 337659.4637823404,
+    "emissionChangePercent": 14.93256946962008,
     "hitNetZero": "2067-11-17",
     "budgetRunsOut": "2027-06-19"
   },
@@ -12406,6 +12551,7 @@
       "2050": 160464.9185839435
     },
     "futureEmission": 3799194.109152061,
+    "emissionChangePercent": 13.19089723944016,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-05-01"
   },
@@ -12491,6 +12637,7 @@
       "2050": 0
     },
     "futureEmission": 38020.69303180963,
+    "emissionChangePercent": 13.22614187653125,
     "hitNetZero": "2032-04-26",
     "budgetRunsOut": "Aldrig"
   },
@@ -12576,6 +12723,7 @@
       "2050": 0
     },
     "futureEmission": 1225517.3819586616,
+    "emissionChangePercent": 13.68222066786285,
     "hitNetZero": "2038-01-11",
     "budgetRunsOut": "2029-11-08"
   },
@@ -12661,6 +12809,7 @@
       "2050": 0
     },
     "futureEmission": 157385.06627003854,
+    "emissionChangePercent": 11.48771205049228,
     "hitNetZero": "2027-04-27",
     "budgetRunsOut": "Aldrig"
   },
@@ -12746,6 +12895,7 @@
       "2050": 33640.41798194975
     },
     "futureEmission": 1130265.166309271,
+    "emissionChangePercent": 15.6439120746259,
     "hitNetZero": "2174-05-31",
     "budgetRunsOut": "2026-11-07"
   },
@@ -12831,6 +12981,7 @@
       "2050": 34138.13002437865
     },
     "futureEmission": 1935103.4132598236,
+    "emissionChangePercent": 14.63012003914138,
     "hitNetZero": "2066-10-18",
     "budgetRunsOut": "2027-07-14"
   },
@@ -12916,6 +13067,7 @@
       "2050": 0
     },
     "futureEmission": 175394.20112788572,
+    "emissionChangePercent": 13.54268649782951,
     "hitNetZero": "2036-12-30",
     "budgetRunsOut": "2030-04-14"
   },
@@ -13001,6 +13153,7 @@
       "2050": 0
     },
     "futureEmission": 143014.53064147086,
+    "emissionChangePercent": 14.1143720935518,
     "hitNetZero": "2038-02-03",
     "budgetRunsOut": "2029-09-12"
   },
@@ -13086,6 +13239,7 @@
       "2050": 0
     },
     "futureEmission": 425571.50939814956,
+    "emissionChangePercent": 13.93702967638875,
     "hitNetZero": "2040-10-23",
     "budgetRunsOut": "2029-02-15"
   },
@@ -13171,6 +13325,7 @@
       "2050": 24654.159783174167
     },
     "futureEmission": 901151.4004862818,
+    "emissionChangePercent": 14.42810304030219,
     "hitNetZero": "2118-01-16",
     "budgetRunsOut": "2027-02-25"
   },
@@ -13256,6 +13411,7 @@
       "2050": 206108.52781761438
     },
     "futureEmission": 11049824.968482582,
+    "emissionChangePercent": 14.70826654335782,
     "hitNetZero": "2068-12-26",
     "budgetRunsOut": "2027-06-26"
   },
@@ -13341,6 +13497,7 @@
       "2050": 5625.577452080324
     },
     "futureEmission": 2413479.208161433,
+    "emissionChangePercent": 14.26152709429837,
     "hitNetZero": "2051-02-09",
     "budgetRunsOut": "2028-01-30"
   },
@@ -13426,6 +13583,7 @@
       "2050": 0
     },
     "futureEmission": 103802.57343715506,
+    "emissionChangePercent": 13.33785503990518,
     "hitNetZero": "2033-10-06",
     "budgetRunsOut": "Aldrig"
   },
@@ -13511,6 +13669,7 @@
       "2050": 87290.72305751196
     },
     "futureEmission": 2319120.609446996,
+    "emissionChangePercent": 16.32002856387461,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-04-21"
   },
@@ -13596,6 +13755,7 @@
       "2050": 9876.08745555766
     },
     "futureEmission": 755965.7752108003,
+    "emissionChangePercent": 14.30146473966633,
     "hitNetZero": "2059-08-16",
     "budgetRunsOut": "2027-10-02"
   },
@@ -13681,6 +13841,7 @@
       "2050": 124652.32449065335
     },
     "futureEmission": 5222572.856086373,
+    "emissionChangePercent": 15.08760911159269,
     "hitNetZero": "2087-09-08",
     "budgetRunsOut": "2027-03-18"
   },
@@ -13766,6 +13927,7 @@
       "2050": 0
     },
     "futureEmission": 1750028.5447234358,
+    "emissionChangePercent": 12.36415509849643,
     "hitNetZero": "2036-11-29",
     "budgetRunsOut": "2030-10-09"
   },
@@ -13851,6 +14013,7 @@
       "2050": 1976.2398331398144
     },
     "futureEmission": 1000675.9993847862,
+    "emissionChangePercent": 14.32184427778721,
     "hitNetZero": "2050-12-04",
     "budgetRunsOut": "2028-01-30"
   },
@@ -13936,6 +14099,7 @@
       "2050": 0
     },
     "futureEmission": 79490.85283411638,
+    "emissionChangePercent": 12.83654501602105,
     "hitNetZero": "2030-10-12",
     "budgetRunsOut": "Aldrig"
   },
@@ -14021,6 +14185,7 @@
       "2050": 0
     },
     "futureEmission": 387386.15334140963,
+    "emissionChangePercent": 13.57348388987347,
     "hitNetZero": "2046-03-14",
     "budgetRunsOut": "2028-07-20"
   },
@@ -14106,6 +14271,7 @@
       "2050": 0
     },
     "futureEmission": 266074.72481282684,
+    "emissionChangePercent": 14.74390143020482,
     "hitNetZero": "2048-02-11",
     "budgetRunsOut": "2028-02-28"
   },
@@ -14191,6 +14357,7 @@
       "2050": 14571.63546254579
     },
     "futureEmission": 787410.4325493576,
+    "emissionChangePercent": 14.7993479322394,
     "hitNetZero": "2068-08-27",
     "budgetRunsOut": "2027-06-22"
   },
@@ -14276,6 +14443,7 @@
       "2050": 24453.782676142175
     },
     "futureEmission": 886167.1926138985,
+    "emissionChangePercent": 14.69110008076369,
     "hitNetZero": "2121-07-17",
     "budgetRunsOut": "2027-02-06"
   },
@@ -14361,6 +14529,7 @@
       "2050": 22865.227711636107
     },
     "futureEmission": 1529700.5025429463,
+    "emissionChangePercent": 14.58695914527659,
     "hitNetZero": "2062-02-23",
     "budgetRunsOut": "2027-08-21"
   },
@@ -14446,6 +14615,7 @@
       "2050": 0
     },
     "futureEmission": 220874.86064350666,
+    "emissionChangePercent": 13.52450758241973,
     "hitNetZero": "2035-06-15",
     "budgetRunsOut": "2031-03-12"
   },
@@ -14531,6 +14701,7 @@
       "2050": 21763.47139123082
     },
     "futureEmission": 24835213.771258775,
+    "emissionChangePercent": 13.93397418180066,
     "hitNetZero": "2050-05-21",
     "budgetRunsOut": "2028-03-08"
   },
@@ -14616,6 +14787,7 @@
       "2050": 200258.93901015446
     },
     "futureEmission": 3783508.513441028,
+    "emissionChangePercent": 28.64105190358152,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2023-11-22"
   },
@@ -14701,6 +14873,7 @@
       "2050": 4258.910173117649
     },
     "futureEmission": 726000.1330926244,
+    "emissionChangePercent": 14.76558817092652,
     "hitNetZero": "2053-03-07",
     "budgetRunsOut": "2027-11-21"
   },
@@ -14786,6 +14959,7 @@
       "2050": 42429.304866111954
     },
     "futureEmission": 1405581.1580519828,
+    "emissionChangePercent": 16.21928596585656,
     "hitNetZero": "2193-10-15",
     "budgetRunsOut": "2026-09-30"
   },
@@ -14871,6 +15045,7 @@
       "2050": 32757.835257343948
     },
     "futureEmission": 2378743.6249244125,
+    "emissionChangePercent": 14.23003676818327,
     "hitNetZero": "2060-07-04",
     "budgetRunsOut": "2027-09-28"
   },
@@ -14956,6 +15131,7 @@
       "2050": 0
     },
     "futureEmission": 94240.30654979548,
+    "emissionChangePercent": 12.16236674421157,
     "hitNetZero": "2028-09-12",
     "budgetRunsOut": "Aldrig"
   },
@@ -15041,6 +15217,7 @@
       "2050": 3373.600666584447
     },
     "futureEmission": 625622.4335280566,
+    "emissionChangePercent": 13.56945056317219,
     "hitNetZero": "2052-11-12",
     "budgetRunsOut": "2028-02-18"
   },
@@ -15126,6 +15303,7 @@
       "2050": 0
     },
     "futureEmission": 618311.334684869,
+    "emissionChangePercent": 13.47038146916794,
     "hitNetZero": "2039-01-04",
     "budgetRunsOut": "2029-08-21"
   },
@@ -15211,6 +15389,7 @@
       "2050": 11800.258111877367
     },
     "futureEmission": 2702835.7764663706,
+    "emissionChangePercent": 15.88091009284541,
     "hitNetZero": "2052-03-30",
     "budgetRunsOut": "2027-09-21"
   },
@@ -15296,6 +15475,7 @@
       "2050": 1312.3189071528614
     },
     "futureEmission": 982271.6845905745,
+    "emissionChangePercent": 14.52593423395109,
     "hitNetZero": "2050-08-10",
     "budgetRunsOut": "2028-01-21"
   },
@@ -15381,6 +15561,7 @@
       "2050": 14001.125500890194
     },
     "futureEmission": 783366.7896188338,
+    "emissionChangePercent": 14.73339207167516,
     "hitNetZero": "2067-04-12",
     "budgetRunsOut": "2027-07-05"
   },
@@ -15466,6 +15647,7 @@
       "2050": 25388.216756030917
     },
     "futureEmission": 3367910.529391381,
+    "emissionChangePercent": 13.9448293024068,
     "hitNetZero": "2054-05-09",
     "budgetRunsOut": "2027-12-30"
   },
@@ -15551,6 +15733,7 @@
       "2050": 269929.5007201135
     },
     "futureEmission": 8703422.10286649,
+    "emissionChangePercent": 15.40154627835942,
     "hitNetZero": "2248-04-21",
     "budgetRunsOut": "2026-10-27"
   },
@@ -15636,6 +15819,7 @@
       "2050": 921.0149680548348
     },
     "futureEmission": 659494.2407331314,
+    "emissionChangePercent": 14.65388718652853,
     "hitNetZero": "2050-08-21",
     "budgetRunsOut": "2028-01-11"
   },
@@ -15721,6 +15905,7 @@
       "2050": 6155.779093625955
     },
     "futureEmission": 761684.5123725631,
+    "emissionChangePercent": 14.56124350090615,
     "hitNetZero": "2054-10-10",
     "budgetRunsOut": "2027-11-11"
   },
@@ -15806,6 +15991,7 @@
       "2050": 0
     },
     "futureEmission": 785063.6263354991,
+    "emissionChangePercent": 14.30587770106825,
     "hitNetZero": "2049-04-28",
     "budgetRunsOut": "2028-03-03"
   },
@@ -15891,6 +16077,7 @@
       "2050": 227389.61401180923
     },
     "futureEmission": 10696007.901375862,
+    "emissionChangePercent": 15.05563224349161,
     "hitNetZero": "2076-04-30",
     "budgetRunsOut": "2027-04-29"
   },
@@ -15976,6 +16163,7 @@
       "2050": 0
     },
     "futureEmission": 190705.21291361251,
+    "emissionChangePercent": 14.42856464031749,
     "hitNetZero": "2043-09-20",
     "budgetRunsOut": "2028-08-07"
   },
@@ -16061,6 +16249,7 @@
       "2050": 5543.987709511537
     },
     "futureEmission": 557802.1005117125,
+    "emissionChangePercent": 14.99246855560339,
     "hitNetZero": "2056-05-07",
     "budgetRunsOut": "2027-09-23"
   },
@@ -16146,6 +16335,7 @@
       "2050": 0
     },
     "futureEmission": 1555352.468945467,
+    "emissionChangePercent": 12.66311285705688,
     "hitNetZero": "2045-08-28",
     "budgetRunsOut": "2028-10-21"
   },
@@ -16231,6 +16421,7 @@
       "2050": 0
     },
     "futureEmission": 627391.8476479762,
+    "emissionChangePercent": 12.57681688801605,
     "hitNetZero": "2039-11-06",
     "budgetRunsOut": "2029-09-11"
   },
@@ -16316,6 +16507,7 @@
       "2050": 0
     },
     "futureEmission": 484391.17619609705,
+    "emissionChangePercent": 14.14270899128556,
     "hitNetZero": "2036-07-04",
     "budgetRunsOut": "2030-04-14"
   },
@@ -16401,6 +16593,7 @@
       "2050": 0
     },
     "futureEmission": 489111.72556017153,
+    "emissionChangePercent": 12.49633786442842,
     "hitNetZero": "2028-10-03",
     "budgetRunsOut": "Aldrig"
   },
@@ -16486,6 +16679,7 @@
       "2050": 0
     },
     "futureEmission": 512785.11833301396,
+    "emissionChangePercent": 12.69314800764216,
     "hitNetZero": "2030-01-21",
     "budgetRunsOut": "Aldrig"
   },
@@ -16571,6 +16765,7 @@
       "2050": 18423.968572624348
     },
     "futureEmission": 505523.7785220319,
+    "emissionChangePercent": 15.58690641726641,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-06-23"
   },
@@ -16656,6 +16851,7 @@
       "2050": 23653.198170380725
     },
     "futureEmission": 793704.6739206356,
+    "emissionChangePercent": 14.89785956141728,
     "hitNetZero": "2175-02-04",
     "budgetRunsOut": "2026-12-16"
   },
@@ -16741,6 +16937,7 @@
       "2050": 3324.7779626017436
     },
     "futureEmission": 967289.2499732366,
+    "emissionChangePercent": 14.56412417201648,
     "hitNetZero": "2051-09-14",
     "budgetRunsOut": "2027-12-29"
   },
@@ -16826,6 +17023,7 @@
       "2050": 0
     },
     "futureEmission": 10552516.577401493,
+    "emissionChangePercent": 11.1146148951815,
     "hitNetZero": "2043-11-19",
     "budgetRunsOut": "2029-05-21"
   },
@@ -16911,6 +17109,7 @@
       "2050": 0
     },
     "futureEmission": 3861935.453649669,
+    "emissionChangePercent": 9.63490924554209,
     "hitNetZero": "2026-11-14",
     "budgetRunsOut": "Aldrig"
   },
@@ -16996,6 +17195,7 @@
       "2050": 2777.81085150328
     },
     "futureEmission": 205691.2858064787,
+    "emissionChangePercent": 14.53375189326544,
     "hitNetZero": "2060-03-04",
     "budgetRunsOut": "2027-09-12"
   },
@@ -17081,6 +17281,7 @@
       "2050": 12982.242219469044
     },
     "futureEmission": 629428.8441216772,
+    "emissionChangePercent": 14.57753154473395,
     "hitNetZero": "2074-03-27",
     "budgetRunsOut": "2027-06-05"
   },
@@ -17166,6 +17367,7 @@
       "2050": 39696.78901303001
     },
     "futureEmission": 2137955.834076253,
+    "emissionChangePercent": 15.18763460463624,
     "hitNetZero": "2068-10-25",
     "budgetRunsOut": "2027-05-29"
   },
@@ -17251,6 +17453,7 @@
       "2050": 71414.83811240806
     },
     "futureEmission": 1882661.951326684,
+    "emissionChangePercent": 15.25610965338816,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-06-01"
   },
@@ -17336,6 +17539,7 @@
       "2050": 0
     },
     "futureEmission": 107567.24642303296,
+    "emissionChangePercent": 11.78388144436279,
     "hitNetZero": "2025-10-04",
     "budgetRunsOut": "Aldrig"
   },
@@ -17421,6 +17625,7 @@
       "2050": 0
     },
     "futureEmission": 196508.48852706744,
+    "emissionChangePercent": 14.25201287229397,
     "hitNetZero": "2041-03-18",
     "budgetRunsOut": "2028-12-23"
   },
@@ -17506,6 +17711,7 @@
       "2050": 229684.25243434682
     },
     "futureEmission": 11365325.340543356,
+    "emissionChangePercent": 14.80994182861572,
     "hitNetZero": "2073-01-04",
     "budgetRunsOut": "2027-05-28"
   },
@@ -17591,6 +17797,7 @@
       "2050": 0
     },
     "futureEmission": 407679.49616785045,
+    "emissionChangePercent": 13.36455823094663,
     "hitNetZero": "2036-03-22",
     "budgetRunsOut": "2030-09-27"
   },
@@ -17676,6 +17883,7 @@
       "2050": 0
     },
     "futureEmission": 104502.21291928555,
+    "emissionChangePercent": 13.03470805547795,
     "hitNetZero": "2028-11-04",
     "budgetRunsOut": "Aldrig"
   },
@@ -17761,6 +17969,7 @@
       "2050": 0
     },
     "futureEmission": 357825.83713723556,
+    "emissionChangePercent": 13.8450282070762,
     "hitNetZero": "2040-07-16",
     "budgetRunsOut": "2029-03-13"
   },
@@ -17846,6 +18055,7 @@
       "2050": 3922.7266767397523
     },
     "futureEmission": 1130032.5722047929,
+    "emissionChangePercent": 14.37698823454659,
     "hitNetZero": "2051-09-21",
     "budgetRunsOut": "2028-01-11"
   },
@@ -17931,6 +18141,7 @@
       "2050": 0
     },
     "futureEmission": 365612.56161210337,
+    "emissionChangePercent": 14.19261783523456,
     "hitNetZero": "2045-02-28",
     "budgetRunsOut": "2028-07-04"
   },
@@ -18016,6 +18227,7 @@
       "2050": 3893.4717987976037
     },
     "futureEmission": 904748.9631628328,
+    "emissionChangePercent": 14.58190051522703,
     "hitNetZero": "2052-03-14",
     "budgetRunsOut": "2027-12-19"
   },
@@ -18101,6 +18313,7 @@
       "2050": 0
     },
     "futureEmission": 359518.864453124,
+    "emissionChangePercent": 14.08933197766495,
     "hitNetZero": "2043-01-03",
     "budgetRunsOut": "2028-10-05"
   },
@@ -18186,6 +18399,7 @@
       "2050": 0
     },
     "futureEmission": 402324.9139730937,
+    "emissionChangePercent": 13.87817974962873,
     "hitNetZero": "2044-09-05",
     "budgetRunsOut": "2028-08-16"
   },
@@ -18271,6 +18485,7 @@
       "2050": 0
     },
     "futureEmission": 672523.086773296,
+    "emissionChangePercent": 13.15525891784842,
     "hitNetZero": "2033-03-03",
     "budgetRunsOut": "Aldrig"
   },
@@ -18356,6 +18571,7 @@
       "2050": 0
     },
     "futureEmission": 310614.39969249256,
+    "emissionChangePercent": 13.25469166150757,
     "hitNetZero": "2037-04-30",
     "budgetRunsOut": "2030-04-01"
   },
@@ -18441,6 +18657,7 @@
       "2050": 687013.9121253975
     },
     "futureEmission": 15577798.275849158,
+    "emissionChangePercent": 13.02646056245044,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-03-04"
   },
@@ -18526,6 +18743,7 @@
       "2050": 0
     },
     "futureEmission": 504788.25620114227,
+    "emissionChangePercent": 13.09828979004187,
     "hitNetZero": "2044-09-19",
     "budgetRunsOut": "2028-10-18"
   },
@@ -18611,6 +18829,7 @@
       "2050": 48274.18227764033
     },
     "futureEmission": 1865748.3212454338,
+    "emissionChangePercent": 15.12699867706612,
     "hitNetZero": "2101-10-20",
     "budgetRunsOut": "2027-02-11"
   },
@@ -18696,6 +18915,7 @@
       "2050": 0
     },
     "futureEmission": 172659.41831150933,
+    "emissionChangePercent": 13.46543186192229,
     "hitNetZero": "2038-03-29",
     "budgetRunsOut": "2029-11-09"
   },
@@ -18781,6 +19001,7 @@
       "2050": 7395.8447044275235
     },
     "futureEmission": 570305.427799745,
+    "emissionChangePercent": 16.47870299355244,
     "hitNetZero": "2059-07-21",
     "budgetRunsOut": "2027-05-18"
   },
@@ -18866,6 +19087,7 @@
       "2050": 0
     },
     "futureEmission": 1265959.3098100547,
+    "emissionChangePercent": 13.77979118565912,
     "hitNetZero": "2045-01-24",
     "budgetRunsOut": "2028-08-10"
   },
@@ -18951,6 +19173,7 @@
       "2050": 270354.76652081497
     },
     "futureEmission": 5681307.585247333,
+    "emissionChangePercent": 16.01341939237623,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2025-06-24"
   },
@@ -19036,6 +19259,7 @@
       "2050": 0
     },
     "futureEmission": 439516.6392550557,
+    "emissionChangePercent": 13.95021449560091,
     "hitNetZero": "2041-07-27",
     "budgetRunsOut": "2028-12-29"
   },
@@ -19121,6 +19345,7 @@
       "2050": 0
     },
     "futureEmission": 528612.040721939,
+    "emissionChangePercent": 13.94597691051029,
     "hitNetZero": "2048-02-23",
     "budgetRunsOut": "2028-04-27"
   },
@@ -19206,6 +19431,7 @@
       "2050": 0
     },
     "futureEmission": 481479.8643993777,
+    "emissionChangePercent": 14.44334715773222,
     "hitNetZero": "2045-03-07",
     "budgetRunsOut": "2028-06-13"
   },
@@ -19291,6 +19517,7 @@
       "2050": 0
     },
     "futureEmission": 266020.1194845539,
+    "emissionChangePercent": 13.72601542487118,
     "hitNetZero": "2034-08-08",
     "budgetRunsOut": "2031-12-20"
   },
@@ -19376,6 +19603,7 @@
       "2050": 5726.11994726595
     },
     "futureEmission": 370478.4274568926,
+    "emissionChangePercent": 14.62116323344901,
     "hitNetZero": "2062-12-01",
     "budgetRunsOut": "2027-08-13"
   },
@@ -19461,6 +19689,7 @@
       "2050": 53793.69088224461
     },
     "futureEmission": 2236848.5559137114,
+    "emissionChangePercent": 15.49238012922007,
     "hitNetZero": "2088-10-07",
     "budgetRunsOut": "2027-02-20"
   },
@@ -19546,6 +19775,7 @@
       "2050": 26729.431470796233
     },
     "futureEmission": 873769.3373430506,
+    "emissionChangePercent": 15.38923130296022,
     "hitNetZero": "2215-09-15",
     "budgetRunsOut": "2026-11-05"
   },
@@ -19631,6 +19861,7 @@
       "2050": 0
     },
     "futureEmission": 839078.2421393194,
+    "emissionChangePercent": 13.90942391209853,
     "hitNetZero": "2042-12-21",
     "budgetRunsOut": "2028-10-22"
   },
@@ -19716,6 +19947,7 @@
       "2050": 0
     },
     "futureEmission": 851880.5557518302,
+    "emissionChangePercent": 14.11086525786263,
     "hitNetZero": "2041-05-30",
     "budgetRunsOut": "2028-12-24"
   },
@@ -19801,6 +20033,7 @@
       "2050": 5519.457714245189
     },
     "futureEmission": 706765.6444132366,
+    "emissionChangePercent": 14.36436463809793,
     "hitNetZero": "2054-07-24",
     "budgetRunsOut": "2027-11-28"
   },
@@ -19886,6 +20119,7 @@
       "2050": 0
     },
     "futureEmission": 125791.70879644819,
+    "emissionChangePercent": 13.23638798084061,
     "hitNetZero": "2033-04-07",
     "budgetRunsOut": "Aldrig"
   },
@@ -19971,6 +20205,7 @@
       "2050": 9136.507569241337
     },
     "futureEmission": 1346671.5572452147,
+    "emissionChangePercent": 14.36627534161815,
     "hitNetZero": "2053-10-22",
     "budgetRunsOut": "2027-12-09"
   },
@@ -20056,6 +20291,7 @@
       "2050": 0
     },
     "futureEmission": 372928.3082482611,
+    "emissionChangePercent": 13.88631843871973,
     "hitNetZero": "2047-12-19",
     "budgetRunsOut": "2028-05-06"
   },
@@ -20141,6 +20377,7 @@
       "2050": 219306.24802121634
     },
     "futureEmission": 6476952.06808831,
+    "emissionChangePercent": 15.30922714762466,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-09-03"
   },
@@ -20226,6 +20463,7 @@
       "2050": 93979.85297588765
     },
     "futureEmission": 2732113.4155142503,
+    "emissionChangePercent": 15.44464027793524,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-08-15"
   },
@@ -20311,6 +20549,7 @@
       "2050": 0
     },
     "futureEmission": 3411111.8147537215,
+    "emissionChangePercent": 13.85048074962441,
     "hitNetZero": "2043-04-04",
     "budgetRunsOut": "2028-10-15"
   },
@@ -20396,6 +20635,7 @@
       "2050": 5985.625320489518
     },
     "futureEmission": 1094094.937982414,
+    "emissionChangePercent": 13.85049395125649,
     "hitNetZero": "2052-12-01",
     "budgetRunsOut": "2028-01-28"
   },
@@ -20481,6 +20721,7 @@
       "2050": 546194.2321097478
     },
     "futureEmission": 10188817.225431494,
+    "emissionChangePercent": 37.60336506051929,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2023-05-02"
   },
@@ -20566,6 +20807,7 @@
       "2050": 0
     },
     "futureEmission": 4629448.212593053,
+    "emissionChangePercent": 11.31768076271229,
     "hitNetZero": "2037-04-23",
     "budgetRunsOut": "2030-12-29"
   },
@@ -20651,6 +20893,7 @@
       "2050": 2338.4250073153526
     },
     "futureEmission": 570630.9430734096,
+    "emissionChangePercent": 14.25658266727726,
     "hitNetZero": "2052-01-30",
     "budgetRunsOut": "2028-01-13"
   },
@@ -20736,6 +20979,7 @@
       "2050": 0
     },
     "futureEmission": 43330.99111382264,
+    "emissionChangePercent": 11.94612098567832,
     "hitNetZero": "2026-12-09",
     "budgetRunsOut": "Aldrig"
   },
@@ -20821,6 +21065,7 @@
       "2050": 25983.92617791146
     },
     "futureEmission": 1761611.7916343748,
+    "emissionChangePercent": 14.9379529946341,
     "hitNetZero": "2061-11-13",
     "budgetRunsOut": "2027-08-01"
   },
@@ -20906,6 +21151,7 @@
       "2050": 0
     },
     "futureEmission": 258960.39413156424,
+    "emissionChangePercent": 13.22325934182439,
     "hitNetZero": "2037-05-02",
     "budgetRunsOut": "2030-04-04"
   },
@@ -20991,6 +21237,7 @@
       "2050": 41574.333871743176
     },
     "futureEmission": 1581471.1987446984,
+    "emissionChangePercent": 14.47246093969537,
     "hitNetZero": "2105-07-16",
     "budgetRunsOut": "2027-03-13"
   },
@@ -21076,6 +21323,7 @@
       "2050": 0
     },
     "futureEmission": 147350.62461569908,
+    "emissionChangePercent": 13.38815238622538,
     "hitNetZero": "2032-05-08",
     "budgetRunsOut": "Aldrig"
   },
@@ -21161,6 +21409,7 @@
       "2050": 2101.5093960417435
     },
     "futureEmission": 1034771.504811391,
+    "emissionChangePercent": 14.1360484149623,
     "hitNetZero": "2050-12-14",
     "budgetRunsOut": "2028-02-11"
   },
@@ -21246,6 +21495,7 @@
       "2050": 82460.64416242391
     },
     "futureEmission": 4122951.2651831126,
+    "emissionChangePercent": 14.56199272465786,
     "hitNetZero": "2072-05-26",
     "budgetRunsOut": "2027-06-15"
   },
@@ -21331,6 +21581,7 @@
       "2050": 5580.57875258103
     },
     "futureEmission": 344957.001875175,
+    "emissionChangePercent": 14.66533296711014,
     "hitNetZero": "2064-02-03",
     "budgetRunsOut": "2027-08-01"
   },
@@ -21416,6 +21667,7 @@
       "2050": 33513.61028250493
     },
     "futureEmission": 1413482.1752440813,
+    "emissionChangePercent": 15.21189289244355,
     "hitNetZero": "2086-11-03",
     "budgetRunsOut": "2027-03-13"
   },
@@ -21501,6 +21753,7 @@
       "2050": 0
     },
     "futureEmission": 590607.594670162,
+    "emissionChangePercent": 13.38660129467016,
     "hitNetZero": "2034-02-26",
     "budgetRunsOut": "2033-02-23"
   },
@@ -21586,6 +21839,7 @@
       "2050": 1765.829911939567
     },
     "futureEmission": 435065.69251688843,
+    "emissionChangePercent": 14.77686737511218,
     "hitNetZero": "2052-01-22",
     "budgetRunsOut": "2027-12-08"
   },
@@ -21671,6 +21925,7 @@
       "2050": 2456.932135587558
     },
     "futureEmission": 789902.1757578978,
+    "emissionChangePercent": 13.83733826760591,
     "hitNetZero": "2051-07-10",
     "budgetRunsOut": "2028-02-22"
   },
@@ -21756,6 +22011,7 @@
       "2050": 5049.2242604848
     },
     "futureEmission": 480974.1621446326,
+    "emissionChangePercent": 14.34709424819154,
     "hitNetZero": "2056-11-10",
     "budgetRunsOut": "2027-10-30"
   },
@@ -21841,6 +22097,7 @@
       "2050": 0
     },
     "futureEmission": 393538.33262370515,
+    "emissionChangePercent": 14.14539684907829,
     "hitNetZero": "2049-12-06",
     "budgetRunsOut": "2028-03-02"
   },
@@ -21926,6 +22183,7 @@
       "2050": 424372.7739168983
     },
     "futureEmission": 10221571.532379419,
+    "emissionChangePercent": 15.87572326130487,
     "hitNetZero": "Aldrig",
     "budgetRunsOut": "2026-01-27"
   },
@@ -22011,6 +22269,7 @@
       "2050": 5649.985309891752
     },
     "futureEmission": 352488.22074455826,
+    "emissionChangePercent": 14.49867602382193,
     "hitNetZero": "2063-11-02",
     "budgetRunsOut": "2027-08-13"
   },
@@ -22096,6 +22355,7 @@
       "2050": 65692.2532196797
     },
     "futureEmission": 2320905.26364253,
+    "emissionChangePercent": 15.18897783339212,
     "hitNetZero": "2133-11-26",
     "budgetRunsOut": "2026-12-28"
   },
@@ -22181,6 +22441,7 @@
       "2050": 47242.14432390127
     },
     "futureEmission": 2478250.007713814,
+    "emissionChangePercent": 14.62549362375736,
     "hitNetZero": "2069-12-15",
     "budgetRunsOut": "2027-06-25"
   },
@@ -22266,6 +22527,7 @@
       "2050": 0
     },
     "futureEmission": 1355818.5502241063,
+    "emissionChangePercent": 13.6969949736982,
     "hitNetZero": "2044-03-23",
     "budgetRunsOut": "2028-09-17"
   },
@@ -22351,6 +22613,7 @@
       "2050": 79167.6122983545
     },
     "futureEmission": 7673547.117478664,
+    "emissionChangePercent": 12.87922288020346,
     "hitNetZero": "2056-08-31",
     "budgetRunsOut": "2028-02-10"
   },
@@ -22436,6 +22699,7 @@
       "2050": 0
     },
     "futureEmission": 1653228.5678709052,
+    "emissionChangePercent": 12.65208934388247,
     "hitNetZero": "2042-04-02",
     "budgetRunsOut": "2029-03-22"
   },
@@ -22521,6 +22785,7 @@
       "2050": 2484.882552633062
     },
     "futureEmission": 715429.3034685005,
+    "emissionChangePercent": 14.39563061567623,
     "hitNetZero": "2051-09-22",
     "budgetRunsOut": "2028-01-10"
   },
@@ -22606,6 +22871,7 @@
       "2050": 0
     },
     "futureEmission": 97392.01056623494,
+    "emissionChangePercent": 13.20065330649133,
     "hitNetZero": "2036-02-01",
     "budgetRunsOut": "2030-11-22"
   },
@@ -22691,6 +22957,7 @@
       "2050": 0
     },
     "futureEmission": 636561.382079142,
+    "emissionChangePercent": 13.91718034336179,
     "hitNetZero": "2039-08-27",
     "budgetRunsOut": "2029-05-10"
   },
@@ -22776,6 +23043,7 @@
       "2050": 0
     },
     "futureEmission": 707332.6150672968,
+    "emissionChangePercent": 14.01454121381572,
     "hitNetZero": "2048-01-19",
     "budgetRunsOut": "2028-04-24"
   },
@@ -22861,6 +23129,7 @@
       "2050": 0
     },
     "futureEmission": 319548.7915703886,
+    "emissionChangePercent": 14.20559543290026,
     "hitNetZero": "2038-11-27",
     "budgetRunsOut": "2029-06-13"
   },
@@ -22946,6 +23215,7 @@
       "2050": 0
     },
     "futureEmission": 120306.93004571769,
+    "emissionChangePercent": 13.42405373201225,
     "hitNetZero": "2031-07-26",
     "budgetRunsOut": "Aldrig"
   },
@@ -23031,6 +23301,7 @@
       "2050": 3648.057560591493
     },
     "futureEmission": 388100.13673072594,
+    "emissionChangePercent": 15.72907766101321,
     "hitNetZero": "2055-11-16",
     "budgetRunsOut": "2027-08-12"
   },
@@ -23116,6 +23387,7 @@
       "2050": 0
     },
     "futureEmission": 2019931.7328770114,
+    "emissionChangePercent": 13.33438627650676,
     "hitNetZero": "2049-08-30",
     "budgetRunsOut": "2028-05-07"
   },
@@ -23201,6 +23473,7 @@
       "2050": 9224.812723375857
     },
     "futureEmission": 599420.446721254,
+    "emissionChangePercent": 14.76371152708161,
     "hitNetZero": "2062-10-26",
     "budgetRunsOut": "2027-08-04"
   },
@@ -23286,6 +23559,7 @@
       "2050": 12907.289594923612
     },
     "futureEmission": 1130584.4420419273,
+    "emissionChangePercent": 14.81541968137071,
     "hitNetZero": "2057-10-13",
     "budgetRunsOut": "2027-09-18"
   },
@@ -23371,6 +23645,7 @@
       "2050": 0
     },
     "futureEmission": 59581.000435427355,
+    "emissionChangePercent": 10.89247148918747,
     "hitNetZero": "2024-10-08",
     "budgetRunsOut": "Aldrig"
   },
@@ -23456,6 +23731,7 @@
       "2050": 0
     },
     "futureEmission": 465758.22963996086,
+    "emissionChangePercent": 14.20126015997826,
     "hitNetZero": "2044-12-30",
     "budgetRunsOut": "2028-07-09"
   },
@@ -23541,6 +23817,7 @@
       "2050": 10156.947767196922
     },
     "futureEmission": 476860.6761272896,
+    "emissionChangePercent": 15.515238386125,
     "hitNetZero": "2076-07-03",
     "budgetRunsOut": "2027-04-01"
   },
@@ -23626,6 +23903,7 @@
       "2050": 0
     },
     "futureEmission": 464095.11179686984,
+    "emissionChangePercent": 13.47491736481481,
     "hitNetZero": "2039-08-11",
     "budgetRunsOut": "2029-06-28"
   },
@@ -23711,6 +23989,7 @@
       "2050": 0
     },
     "futureEmission": 185422.07590141176,
+    "emissionChangePercent": 13.12859848658599,
     "hitNetZero": "2035-06-14",
     "budgetRunsOut": "2031-05-23"
   },
@@ -23796,6 +24075,7 @@
       "2050": 6887.26902597351
     },
     "futureEmission": 522523.1668318829,
+    "emissionChangePercent": 14.84655405482465,
     "hitNetZero": "2059-10-11",
     "budgetRunsOut": "2027-08-26"
   },
@@ -23881,6 +24161,7 @@
       "2050": 0
     },
     "futureEmission": 642699.0292373339,
+    "emissionChangePercent": 14.01958475916528,
     "hitNetZero": "2044-02-12",
     "budgetRunsOut": "2028-08-25"
   },
@@ -23966,6 +24247,7 @@
       "2050": 0
     },
     "futureEmission": 2539249.7585599823,
+    "emissionChangePercent": 12.58166479008384,
     "hitNetZero": "2037-03-04",
     "budgetRunsOut": "2030-07-24"
   },
@@ -24051,6 +24333,7 @@
       "2050": 32044.551355276024
     },
     "futureEmission": 1376689.2823022064,
+    "emissionChangePercent": 15.18272340772784,
     "hitNetZero": "2084-08-10",
     "budgetRunsOut": "2027-03-22"
   },
@@ -24136,6 +24419,7 @@
       "2050": 0
     },
     "futureEmission": 3488587.0992366397,
+    "emissionChangePercent": 13.74921408019829,
     "hitNetZero": "2048-09-02",
     "budgetRunsOut": "2028-04-29"
   },
@@ -24221,6 +24505,7 @@
       "2050": 0
     },
     "futureEmission": 482334.78589351394,
+    "emissionChangePercent": 11.72891174640266,
     "hitNetZero": "2030-01-29",
     "budgetRunsOut": "Aldrig"
   },
@@ -24306,6 +24591,7 @@
       "2050": 32331.225286663044
     },
     "futureEmission": 1526007.7121394284,
+    "emissionChangePercent": 14.83805136092329,
     "hitNetZero": "2076-01-24",
     "budgetRunsOut": "2027-05-13"
   },
@@ -24391,6 +24677,7 @@
       "2050": 0
     },
     "futureEmission": 919853.6951148936,
+    "emissionChangePercent": 12.81270009193047,
     "hitNetZero": "2045-05-06",
     "budgetRunsOut": "2028-10-19"
   },
@@ -24476,6 +24763,7 @@
       "2050": 3629.4217949749436
     },
     "futureEmission": 532080.5166795843,
+    "emissionChangePercent": 14.21900315433616,
     "hitNetZero": "2053-10-31",
     "budgetRunsOut": "2027-12-18"
   },
@@ -24561,6 +24849,7 @@
       "2050": 0
     },
     "futureEmission": 138569.11143347647,
+    "emissionChangePercent": 13.66598699545158,
     "hitNetZero": "2033-03-27",
     "budgetRunsOut": "Aldrig"
   },
@@ -24646,6 +24935,7 @@
       "2050": 0
     },
     "futureEmission": 86826.18165547572,
+    "emissionChangePercent": 13.42207880087553,
     "hitNetZero": "2032-10-06",
     "budgetRunsOut": "Aldrig"
   }

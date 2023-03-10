@@ -76,7 +76,6 @@ const BottomContainer = styled.div`
     gap: 0;
     grid-template-columns: 45% auto 40%;
   }
-
 `
 
 const TotalCo2 = styled.div`
@@ -166,6 +165,15 @@ const Circle = styled.span`
   display: inline-block;
 `
 
+const Line = styled.span`
+  width: 14px;
+  height: 4px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  background-color: ${(props) => props.color};
+  display: inline-block;
+`
+
 const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
 
@@ -235,6 +243,8 @@ const Municipality = (props: Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
+  const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear.at(-1)?.CO2Equivalent
+
   let scrollY = 0
   if (typeof window !== 'undefined') {
     scrollY = window && window.scrollY
@@ -285,7 +295,7 @@ const Municipality = (props: Props) => {
     }))
   })
 
-  const [userEmissions] = useMemo(() => {
+  const userEmissions = useMemo(() => {
     const emissions: EmissionPerYear[] = []
 
     let acc = 1
@@ -305,7 +315,7 @@ const Municipality = (props: Props) => {
         })
     })
 
-    return [emissions, total]
+    return emissions
   }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
   const totalTrend = municipality.EmissionTrend.FutureCO2Emission
@@ -357,8 +367,8 @@ const Municipality = (props: Props) => {
         description={shareText(municipality.Name)}
         url={shareUrl}
       />
-      <PageWrapper backgroundColor='darkestGrey'>
-        <Back route={'/kommuner'} />
+      <PageWrapper backgroundColor="darkestGrey">
+        <Back route={'/'} />
         <Top>
           <HeaderSection>
             <H1>{municipality.Name}</H1>
@@ -455,12 +465,13 @@ const Municipality = (props: Props) => {
         <Bottom>
           <BottomLeft>
             <ScoreCard
-              population={municipality.Population}
+              rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
               budget={municipality.Budget.CO2Equivalent}
               budgetRunsOut={municipality.BudgetRunsOut}
-              municipality={municipality.Name}
+              emissionChangePercent={municipality.EmissionChangePercent}
+              emissionLastYear={emissionLastYear}
+              population={municipality.Population}
               politicalRule={municipality.PoliticalRule}
-              rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
             />
           </BottomLeft>
         </Bottom>

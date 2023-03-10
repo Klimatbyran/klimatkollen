@@ -1,0 +1,32 @@
+import { GetServerSideProps } from 'next';
+import { ReactElement } from 'react';
+import Footer from '../components/Footer';
+import Layout from '../components/Layout';
+import { EmissionService } from '../utils/emissionService';
+import Kommuner from './index';
+
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  const municipalities = new EmissionService().getMunicipalities()
+  if (municipalities.length < 1) throw new Error('No municipalities found')
+  const viewMode = 'karta'
+
+  res.setHeader(
+    'Cache-Control',
+    'public, stale-while-revalidate=60, max-age=' + 60 * 60 * 24 * 7,
+  )
+
+  return {
+    props: { municipalities, viewMode },
+  }
+}
+
+export default Kommuner
+
+Kommuner.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <Layout>{page}</Layout>
+      <Footer />
+    </>
+  )
+}
