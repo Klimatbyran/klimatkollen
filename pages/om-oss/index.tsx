@@ -9,7 +9,7 @@ import { EmissionService } from '../../utils/emissionService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
-import { UnorderedList, ListItem, OrderedList, AiryH2 } from '../../components/shared'
+import { UnorderedList, ListItem, OrderedList } from '../../components/shared'
 import ToggleSection from '../../components/ToggleSection'
 
 import Ola from './assets/ola.jpeg'
