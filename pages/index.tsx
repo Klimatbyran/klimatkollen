@@ -83,7 +83,7 @@ const InfoBox = styled.div`
 
 type PropsType = {
   municipalities: Array<Municipality>
-  viewMode?: string
+  viewMode: string
 }
 
 
@@ -105,10 +105,11 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
   const handleToggle = () => {
     if (toggleViewMode == 'karta') {
       setToggleViewMode('lista')
+      router.push('lista', undefined, { shallow: true })
     } else {
       setToggleViewMode('karta')
+      router.push('karta', undefined, { shallow: true })
     }
-    router.push(`/${toggleViewMode}`, undefined, { shallow: true })
   }
 
   const convertToPercent = (rowData: unknown) => {
@@ -167,25 +168,25 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
             </p>
           </InfoText>
           <ToggleButton onClick={handleToggle}>
-            {viewMode ? 'Visa lista' : 'Visa karta'}
+            {toggleViewMode == 'karta' ? 'Visa lista' : 'Visa karta'}
           </ToggleButton>
           <MunicipalityContainer>
-            {toggleViewMode === 'karta' ?
-              <>
-                <MapLabels>
-                  <InfoBox>
-                    <MapLabel color={'#EF3054'} label={'0% +'} rotateUp={true} />
-                    <MapLabel color={'#EF5E30'} label={'0–1%'} />
-                    <MapLabel color={'#EF7F17'} label={'1–2%'} />
-                    <MapLabel color={'#EF9917'} label={'2–3%'} />
-                    <MapLabel color={'#EFBF17'} label={'3–10%'} />
-                    <MapLabel color={'#91BFC8'} label={'10–15%'} />
-                  </InfoBox>
-                </MapLabels>
-                <Map emissionsLevels={emissionsLevels} />
-              </>
-              : <ComparisonTable data={emissionsLevels} columns={cols} />
-            }
+            <div style={{ display: toggleViewMode == 'karta' ? 'block' : 'none' }}>
+              <MapLabels>
+                <InfoBox>
+                  <MapLabel color={'#EF3054'} label={'0% +'} rotateUp={true} />
+                  <MapLabel color={'#EF5E30'} label={'0–1%'} />
+                  <MapLabel color={'#EF7F17'} label={'1–2%'} />
+                  <MapLabel color={'#EF9917'} label={'2–3%'} />
+                  <MapLabel color={'#EFBF17'} label={'3–10%'} />
+                  <MapLabel color={'#91BFC8'} label={'10–15%'} />
+                </InfoBox>
+              </MapLabels>
+              <Map emissionsLevels={emissionsLevels} />
+            </div>
+            <div style={{ display: toggleViewMode == 'lista' ? 'block' : 'none', width: '100%' }}>
+              <ComparisonTable data={emissionsLevels} columns={cols} />
+            </div>
           </MunicipalityContainer>
         </Container>
       </PageWrapper>
