@@ -3,14 +3,14 @@ import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend 
 import * as fs from 'fs'
 import * as path from 'path'
 
-const EMISSION_FILE_PATH = path.resolve('./data/emission-data.json');
+const CLIMATE_DATA_FILE_PATH = path.resolve('./data/climate-data.json');
 
-export class EmissionService {
+export class ClimateDataService {
   municipalities: Array<Municipality>
 
   constructor() {
-    const emissionFileContent = fs.readFileSync(EMISSION_FILE_PATH, { encoding: 'utf-8' })
-    const jsonData: any[] = JSON.parse(emissionFileContent)
+    const climateDataFileContent = fs.readFileSync(CLIMATE_DATA_FILE_PATH, { encoding: 'utf-8' })
+    const jsonData: any[] = JSON.parse(climateDataFileContent)
     this.municipalities = jsonData.map((jsonData: any) => {
       var emissions = new Array<EmissionPerYear>();
       Object.entries(jsonData.emissions).forEach(([year, emission]) => {

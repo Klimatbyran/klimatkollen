@@ -5,6 +5,7 @@ import json
 import numpy as np
 import pandas as pd
 
+
 # Budget i ton från och med 2020
 budget = 170000000  # +40948459*50.81/46.29+40948459*50.81/46.29*1.05
 
@@ -119,7 +120,30 @@ df_raw_crunched['budgetRunsOut'] = [i.date() if type(
 df_crunched = df_raw_crunched.filter(
     ['Kommun', 'emissionChangePercent', 'hitNetZero', 'budgetRunsOut'], axis=1)
 
-df_master = df_cem .merge(df_crunched, on='Kommun', how='left')
+df_master = df_cem.merge(df_crunched, on='Kommun', how='left')
+
+
+# LOAD AND PREP DATA FROM TRAFA ON SHARE OF ELECTIC OR HYBRID CARS IN SALES
+
+path_nonfossil_cars_data = 'kpi1_trafa.xlsx'  # non fossil might be a bit of a stretch since it includes hybrids, well well
+df_raw_nonfossil_cars = pd.read_excel(path_nonfossil_cars_data, sheet_name='Tabell 5 Personbil')
+df_raw_nonfossil_cars.columns = df_raw_nonfossil_cars.iloc[3]
+df_raw_nonfossil_cars = df_raw_nonfossil_cars.drop([0, 1, 2, 3, 4, 5, 6, 7])
+df_raw_nonfossil_cars = df_raw_nonfossil_cars.reset_index(drop=True)
+
+print(df_raw_nonfossil_cars.columns.tolist())
+
+df_raw_nonfossil_cars['Kommun'] = df_raw_nonfossil_cars['Municipality']
+df_raw_nonfossil_cars['electricCars'] = (
+    df_raw_nonfossil_cars['Electricity'] + df_raw_nonfossil_cars['Plug-in hybrids']
+    )/df_raw_nonfossil_cars['Total']
+
+df_nonfossil_cars = df_raw_nonfossil_cars.filter(['Kommun', 'electricCars'], axis=1)
+
+df_master = df_master.merge(df_nonfossil_cars, on='Kommun', how='left')
+
+
+# MERGE ALL DATA IN LIST
 
 temp = []  # remane the columns
 for i in range(len(df_cem)):
@@ -143,8 +167,9 @@ for i in range(len(df_cem)):
         'futureEmission': df_master.iloc[i]['Linear Emission'],
         'emissionChangePercent': df_master.iloc[i]['emissionChangePercent'],
         'hitNetZero': df_master.iloc[i]['hitNetZero'],
-        'budgetRunsOut': df_master.iloc[i]['budgetRunsOut']
+        'budgetRunsOut': df_master.iloc[i]['budgetRunsOut'],
+        'electricCars': df_master.iloc[i]['electricCars']
     })
 
-with open('emission-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
+with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
     json.dump(temp, json_file, ensure_ascii=False, default=str)
