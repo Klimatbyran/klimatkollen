@@ -4,7 +4,6 @@ import { DeckGL, PolygonLayer, RGBAColor } from 'deck.gl'
 import { ReactNode, useMemo, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import NextNProgress from 'nextjs-progressbar';
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -128,16 +127,6 @@ const Map = ({ emissionsLevels, children }: Props) => {
 
   return (
     <DeckGLWrapper>
-      <NextNProgress
-        color="#6BA292"
-        startPosition={1}
-        stopDelayMs={20}
-        height={10}
-        showOnShallow={true}
-        options={{
-          showSpinner: false
-        }}
-      />
       <DeckGL
         // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}

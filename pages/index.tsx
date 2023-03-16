@@ -1,6 +1,6 @@
 
 import { GetServerSideProps } from 'next'
-import { ReactElement, useEffect, useMemo, useState } from 'react'
+import { ReactElement, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { ColumnDef } from '@tanstack/react-table'
