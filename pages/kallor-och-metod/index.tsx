@@ -27,7 +27,7 @@ const KoM = () => {
         title='Källor och metod'
         description='Om Klimatkollens källor och metod'
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper backgroundColor="darkestGrey">
         <Container>
           <H2>
             Källor och metod
