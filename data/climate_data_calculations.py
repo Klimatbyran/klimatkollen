@@ -131,14 +131,15 @@ df_raw_nonfossil_cars.columns = df_raw_nonfossil_cars.iloc[3]
 df_raw_nonfossil_cars = df_raw_nonfossil_cars.drop([0, 1, 2, 3, 4, 5, 6, 7])
 df_raw_nonfossil_cars = df_raw_nonfossil_cars.reset_index(drop=True)
 
-print(df_raw_nonfossil_cars.columns.tolist())
+
+# fixme fortsätt här, droppa rader utan kommunnamn och ersätt '-' med 0:or i kolumnerna
 
 df_raw_nonfossil_cars['Kommun'] = df_raw_nonfossil_cars['Municipality']
-df_raw_nonfossil_cars['electricCars'] = (
-    df_raw_nonfossil_cars['Electricity'] + df_raw_nonfossil_cars['Plug-in hybrids']
-    )/df_raw_nonfossil_cars['Total']
+df_raw_nonfossil_cars['electricity'] = df_raw_nonfossil_cars['Electricity']
+df_raw_nonfossil_cars['plugIn'] = df_raw_nonfossil_cars['Plug-in ']
+#df_raw_nonfossil_cars['electricCars'] = (df_raw_nonfossil_cars['Electricity'] + df_raw_nonfossil_cars['Plug-in '])/df_raw_nonfossil_cars['Total']
 
-df_nonfossil_cars = df_raw_nonfossil_cars.filter(['Kommun', 'electricCars'], axis=1)
+df_nonfossil_cars = df_raw_nonfossil_cars.filter(['Kommun', 'electricity', 'plugIn'], axis=1) #'electricCars'], axis=1)
 
 df_master = df_master.merge(df_nonfossil_cars, on='Kommun', how='left')
 
