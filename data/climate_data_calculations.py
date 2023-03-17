@@ -140,10 +140,9 @@ df_raw_cars = df_raw_cars.dropna(subset=['Kommun'])
 df_raw_cars['electricity'] = df_raw_cars['Electricity'].replace(' –', 0)
 df_raw_cars['plugIn'] = df_raw_cars['Plug-in '].replace(' –', 0)
 
-df_raw_cars['electricCars'] = (df_raw_cars['electricity'] + df_raw_cars['plugIn'])/df_raw_cars['Total']
+df_raw_cars['electricCars'] = ((df_raw_cars['electricity'] + df_raw_cars['plugIn'])/df_raw_cars['Total'])*100
 
-df_nonfossil_cars = df_raw_cars.filter(
-    ['Kommun', 'electricCars'], axis=1)
+df_nonfossil_cars = df_raw_cars.filter(['Kommun', 'electricCars'], axis=1)
 
 df_master = df_master.merge(df_nonfossil_cars, on='Kommun', how='left')
 
