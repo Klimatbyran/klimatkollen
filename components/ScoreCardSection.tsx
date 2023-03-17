@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { H3, Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
 import IconGreen from '../public/icons/info-green.svg'
-import Link from 'next/link'
+import ScoreCard from './ScoreCard'
 
 
 const InfoSection = styled.div`
@@ -43,7 +43,7 @@ type Props = {
   info?: JSX.Element
 }
 
-const ShareButton = ({ heading, data, info }: Props) => {
+const ScoreCardSection = ({ heading, data, info }: Props) => {
   const [toggle, setToggle] = useState(false)
 
   return (
@@ -72,4 +72,4 @@ const ShareButton = ({ heading, data, info }: Props) => {
   )
 }
 
-export default ShareButton
+export default ScoreCardSection

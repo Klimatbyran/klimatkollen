@@ -11,6 +11,7 @@ export class ClimateDataService {
   constructor() {
     const climateDataFileContent = fs.readFileSync(CLIMATE_DATA_FILE_PATH, { encoding: 'utf-8' })
     const jsonData: any[] = JSON.parse(climateDataFileContent)
+    
     this.municipalities = jsonData.map((jsonData: any) => {
       var emissions = new Array<EmissionPerYear>();
       Object.entries(jsonData.emissions).forEach(([year, emission]) => {
@@ -58,7 +59,8 @@ export class ClimateDataService {
         Budget: budget,
         EmissionChangePercent: jsonData.emissionChangePercent,
         HitNetZero: jsonData.hitNetZero,
-        BudgetRunsOut: jsonData.budgetRunsOut
+        BudgetRunsOut: jsonData.budgetRunsOut,
+        ElectricCars: jsonData.electricCars,
       } as Municipality
       return municipality
     })

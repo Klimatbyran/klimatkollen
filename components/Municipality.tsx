@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import ArrowRight from '../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../public/icons/arrow-left-white.svg'
 import Info from '../public/icons/info.svg'
-import { H1, H2, H3, ParagraphBold } from './Typography'
+import { H1, H2, H3, Paragraph, ParagraphBold } from './Typography'
 import Back from './Back'
 import MetaTags from './MetaTags'
 import InfoModal from './InfoModal'
@@ -165,14 +165,14 @@ const Circle = styled.span`
   display: inline-block;
 `
 
-const Line = styled.span`
-  width: 14px;
-  height: 4px;
-  margin-bottom: 3px;
-  margin-top: 3px;
-  background-color: ${(props) => props.color};
-  display: inline-block;
-`
+const GraphLegend = ({ label, color }: { label: string, color: string }) => {
+  return (
+    <Legend>
+      <Circle color={color} />
+      {label}
+    </Legend>
+  )
+}
 
 const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
@@ -238,7 +238,6 @@ const Municipality = (props: Props) => {
     budgetedEmissions,
     trendingEmissions,
     municipalitiesName,
-    placeholder,
   } = props
   const router = useRouter()
   const q = router.query['g[]']
@@ -388,24 +387,9 @@ const Municipality = (props: Props) => {
             <H2>{text}</H2>
             <p>{body}</p>
             <Legends>
-              {step < 3 && (
-                <Legend>
-                  <Circle color="rgb(239, 94, 48)" />
-                  Historiskt
-                </Legend>
-              )}
-              {step > 0 && (
-                <Legend>
-                  <Circle color="#6BA292" />
-                  Parisavtalet
-                </Legend>
-              )}
-              {step > 1 && (
-                <Legend>
-                  <Circle color="#EF3054" />
-                  Trend
-                </Legend>
-              )}
+              {step < 3 && <GraphLegend label='Historiskt' color='rgb(239, 94, 48)' />}
+              {step > 0 && <GraphLegend label='Parisavtalet' color='#6BA292' />}
+              {step > 1 && <GraphLegend label='Circle' color='#EF3054' />}
               <InfoButtonWrapper>
                 <InfoButton type="button" aria-label="Om grafen" onClick={toggleModal}>
                   <Info />
@@ -463,6 +447,14 @@ const Municipality = (props: Props) => {
             />
           )}
         </BottomShare>
+      </PageWrapper>
+      <PageWrapper backgroundColor='black'>
+        <BottomHeader>
+          <H2>Omställning</H2>
+          <Paragraph>
+            Lorem ipsum {municipality.ElectricCars.toFixed(1)}%
+          </Paragraph>
+        </BottomHeader>
       </PageWrapper>
       <PageWrapper backgroundColor="dark">
         <BottomHeader>
