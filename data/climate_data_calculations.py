@@ -125,21 +125,25 @@ df_master = df_cem.merge(df_crunched, on='Kommun', how='left')
 
 # LOAD AND PREP DATA FROM TRAFA ON SHARE OF ELECTIC OR HYBRID CARS IN SALES
 
-path_nonfossil_cars_data = 'kpi1_trafa.xlsx'  # non fossil might be a bit of a stretch since it includes hybrids, well well
-df_raw_nonfossil_cars = pd.read_excel(path_nonfossil_cars_data, sheet_name='Tabell 5 Personbil')
-df_raw_nonfossil_cars.columns = df_raw_nonfossil_cars.iloc[3]
-df_raw_nonfossil_cars = df_raw_nonfossil_cars.drop([0, 1, 2, 3, 4, 5, 6, 7])
-df_raw_nonfossil_cars = df_raw_nonfossil_cars.reset_index(drop=True)
+path_car_data = 'kpi1_trafa.xlsx'  # data on sold cars by trafa
+df_raw_cars = pd.read_excel(path_car_data, sheet_name='Tabell 5 Personbil')
+df_raw_cars.columns = df_raw_cars.iloc[3]
+df_raw_cars = df_raw_cars.drop([0, 1, 2, 3, 4, 5, 6, 7])
+df_raw_cars = df_raw_cars.reset_index(drop=True)
 
 
 # fixme fortsätt här, droppa rader utan kommunnamn och ersätt '-' med 0:or i kolumnerna
 
-df_raw_nonfossil_cars['Kommun'] = df_raw_nonfossil_cars['Municipality']
-df_raw_nonfossil_cars['electricity'] = df_raw_nonfossil_cars['Electricity']
-df_raw_nonfossil_cars['plugIn'] = df_raw_nonfossil_cars['Plug-in ']
-#df_raw_nonfossil_cars['electricCars'] = (df_raw_nonfossil_cars['Electricity'] + df_raw_nonfossil_cars['Plug-in '])/df_raw_nonfossil_cars['Total']
+df_raw_cars['Kommun'] = df_raw_cars['Municipality']
+df_raw_cars = df_raw_cars.drop(df_raw_cars[df_raw_cars['Kommun'] == 'Okänd Kommun   '].index)
+df_raw_cars = df_raw_cars.dropna(subset=['Kommun'])
+df_raw_cars['electricity'] = df_raw_cars['Electricity'].replace(' –', 0)
+df_raw_cars['plugIn'] = df_raw_cars['Plug-in '].replace(' –', 0)
 
-df_nonfossil_cars = df_raw_nonfossil_cars.filter(['Kommun', 'electricity', 'plugIn'], axis=1) #'electricCars'], axis=1)
+df_raw_cars['electricCars'] = (df_raw_cars['electricity'] + df_raw_cars['plugIn'])/df_raw_cars['Total']
+
+df_nonfossil_cars = df_raw_cars.filter(
+    ['Kommun', 'electricCars'], axis=1)
 
 df_master = df_master.merge(df_nonfossil_cars, on='Kommun', how='left')
 
