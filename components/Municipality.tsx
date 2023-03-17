@@ -248,6 +248,7 @@ const Municipality = (props: Props) => {
   const emissionLastYear = Array.isArray(municipality.HistoricalEmission.EmissionPerYear)
     ? municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.CO2Equivalent
     : undefined
+  // FIXME replace with const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear.at(-1)?.CO2Equivalent when Node has been updated >16.0.0
 
   let scrollY = 0
   if (typeof window !== 'undefined') {
