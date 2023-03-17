@@ -9,10 +9,29 @@ import { ParagraphBold, Paragraph } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
-import Icon from '../public/icons/arrow.svg'
 import { devices } from '../utils/devices'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
+import MapLabel from '../components/MapLabel'
+
+const ToggleButton = styled.button`
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.paperWhite};
+  background: ${({ theme }) => theme.darkGrey};
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  cursor: pointer;
+  fill: ${({ theme }) => theme.greenGraphTwo};
+  &:hover {
+    background: ${({ theme }) => theme.grey};
+  }
+`
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -22,24 +41,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-`
-
-const Square = styled.div<{ color: string }>`
-  background-color: ${(props) => props.color};
-  width: 20px;
-  height: 20px;
-  position: relative;
-`
-
-const ArrowIcon = styled(Icon)<{ rotateUp?: boolean }>`
-  position: absolute;
-  z-index: 1;
-  margin: auto;
-  left: 0;
-  ${(props) => props.rotateUp && 'transform: rotate(-90deg)'};
-  right: 0;
-  top: 0;
-  bottom: 0;
 `
 
 const MapContainer = styled.div`
@@ -70,45 +71,26 @@ const InfoBox = styled.div`
   padding-bottom: 0.5rem;
 `
 
-const Label = styled.div`
-  flex-shrink: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  &:first-child div {
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
-  }
-  &:last-child div {
-    border-bottom-left-radius: 10%;
-    border-bottom-right-radius: 10%;
-  }
-`
-
 const FlexCenter = styled.div`
   width: 100%;
   /* display: flex; */
 `
 
-const StyledParagraph = styled(Paragraph)`
-  z-index: 1;
-  width: 5em;
-  font-size: 0.7em;
-  margin: 0;
-  line-height: 0;
-
-  @media only screen and (${devices.tablet}) {
-    font-size: 0.9em;
-  }
-`
-
 const Kommuner = ({ municipalities }: PropsType) => {
-  const [, setSelected] = useState('Utforska kartan')
+  const [toggleData, setToggleData] = useState('ElectricCars')
   const municipalitiesName = municipalities.map((item) => item.Name)
-  const emissionsLevels = municipalities.map((item) => ({
+  const data = municipalities.map((item) => ({
     name: item.Name,
-    emissions: item.HistoricalEmission.EmissionLevelChangeAverage,
+    emissions: toggleData == 'ChangeAverage' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCars,
   }))
+
+  const handleToggle = () => {
+    if (toggleData == 'ElectricCars') {
+      setToggleData('ChangeAverage')
+    } else {
+      setToggleData('ElectricCars')
+    }
+  }
 
   return (
     <>
@@ -134,49 +116,21 @@ const Kommuner = ({ municipalities }: PropsType) => {
               </p>
             </div>
           </FlexCenter>
+          <ToggleButton onClick={handleToggle}>
+            {toggleData == 'ElectricCars' ? 'Visa utsläpp' : 'Visa elbilsomställning'}
+          </ToggleButton>
           <MapContainer>
             <MapLabels>
-              <InfoBox>
-                <Label>
-                  <Square color="#EF3054">
-                    <ArrowIcon rotateUp={true} />
-                  </Square>
-                  <StyledParagraph>0% +</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#EF5E30">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>0–1%</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#EF7F17">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>1–2%</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#EF9917">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>2–3%</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#EFBF17">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>3–10%</StyledParagraph>
-                </Label>
-                <Label>
-                  <Square color="#91BFC8">
-                    <ArrowIcon />
-                  </Square>
-                  <StyledParagraph>10–15%</StyledParagraph>
-                </Label>
+              <InfoBox>  {/* fixme elbilar <30%, 30-40, 40-50, 50-60, 60-70, 70< */}
+                <MapLabel color={'#EF3054'} label={'0% +'} rotateUp={true} />
+                <MapLabel color={'#EF5E30'} label={'0–1%'} />
+                <MapLabel color={'#EF7F17'} label={'1–2%'} />
+                <MapLabel color={'#EF9917'} label={'2–3%'} />
+                <MapLabel color={'#EFBF17'} label={'3–10%'} />
+                <MapLabel color={'#91BFC8'} label={'10–15%'} />
               </InfoBox>
             </MapLabels>
-
-            <Map emissionsLevels={emissionsLevels} setSelected={setSelected}></Map>
+            <Map emissionsLevels={data}></Map>
           </MapContainer>
         </Container>
       </PageWrapper>

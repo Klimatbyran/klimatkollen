@@ -75,11 +75,10 @@ const MAP_RANGE = {
 
 type Props = {
   emissionsLevels: Array<{ name: string; emissions: number }>
-  setSelected: (value: string) => void
   children?: ReactNode
 }
 
-const Map = ({ emissionsLevels, setSelected, children }: Props) => {
+const Map = ({ emissionsLevels, children }: Props) => {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
