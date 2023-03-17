@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
-import { ReactNode, useMemo, useState } from 'react'
+import { ReactNode, useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar';
@@ -83,10 +83,12 @@ const Map = ({ emissionsLevels, setSelected, children }: Props) => {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
-  useMemo(() => {
-    axios.get('/api/map').then(res => {
-      setMunicipalityData(res.data)
-    })
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('/api/map')
+      setMunicipalityData(response.data)
+    }
+    fetchData()
   }, [])
 
   const municipalityLines = municipalityData?.features?.map(({ geometry, properties }: { geometry: any, properties: any }) => {
