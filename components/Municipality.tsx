@@ -245,7 +245,9 @@ const Municipality = (props: Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear.at(-1)?.CO2Equivalent
+  const emissionLastYear = Array.isArray(municipality.HistoricalEmission.EmissionPerYear)
+    ? municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.CO2Equivalent
+    : undefined
 
   let scrollY = 0
   if (typeof window !== 'undefined') {
@@ -440,14 +442,14 @@ const Municipality = (props: Props) => {
           </Flex>
           {step > 1 && (
             <BottomContainer>
-                <H3>Framtida utsläpp</H3>
-                <TotalCo2 color="#EF3054">
-                  Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
-                </TotalCo2>
-                <TotalCo2 color="#6BA292">
-                  Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
-                  CO₂
-                </TotalCo2>
+              <H3>Framtida utsläpp</H3>
+              <TotalCo2 color="#EF3054">
+                Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
+              </TotalCo2>
+              <TotalCo2 color="#6BA292">
+                Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
+                CO₂
+              </TotalCo2>
             </BottomContainer>
           )}
         </Top>
