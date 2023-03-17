@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import MetaTags from '../../components/MetaTags'
 import { H2, Paragraph } from '../../components/Typography'
-import { EmissionService } from '../../utils/emissionService'
+import { ClimateDataService } from '../../utils/climateDataService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer'
@@ -206,7 +206,7 @@ const KoM = () => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const municipalities = new EmissionService().getMunicipalities()
+  const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
 
   res.setHeader(

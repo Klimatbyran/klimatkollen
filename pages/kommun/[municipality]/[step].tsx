@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import Municipality from '../../../components/Municipality'
-import { EmissionService } from '../../../utils/emissionService'
+import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import { PolitycalRuleService } from '../../../utils/politicalRuleService'
@@ -80,11 +80,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
 
   if (cache.get(id)) return cache.get(id)
 
-  const emissionService = new EmissionService()
+  const climateDataService = new ClimateDataService()
 
   const [municipality, municipalities, wikiDataMunicipality] = await Promise.all([
-    emissionService.getMunicipality(id),
-    emissionService.getMunicipalities(),
+    climateDataService.getMunicipality(id),
+    climateDataService.getMunicipalities(),
     new WikiDataService().getMunicipalityByName(id),
   ])
 
