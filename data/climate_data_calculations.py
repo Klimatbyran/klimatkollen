@@ -143,7 +143,7 @@ df_raw_cars['electricCars'] = ((df_raw_cars['electricity'] + df_raw_cars['plugIn
 
 df_cars = df_raw_cars.filter(['Kommun', 'electricCars'], axis=1)
 df_cars.loc[df_cars['Kommun'] == 'Upplands-Väsby', 'Kommun'] = 'Upplands Väsby'  # special solution for Upplands-Väsby which is named differently in the two dataframes
-
+
 df_master = df_master.merge(df_cars, on='Kommun', how='left')
 
 
