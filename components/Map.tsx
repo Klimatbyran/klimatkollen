@@ -18,30 +18,48 @@ const INITIAL_VIEW_STATE = {
 const DeckGLWrapper = styled.div`
   width: 100%;`
 
-const getColor = (emission: number): RGBAColor => {
+const getColor = (emission: number, boundaries: number[]): RGBAColor => {
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
   const darkOrange: RGBAColor = [239, 127, 23]
   const red: RGBAColor = [239, 94, 48]
   const pink: RGBAColor = [239, 48, 84]
 
-  if (emission >= 0) {
-    return pink
+  if (boundaries[0] < boundaries[1]) {
+    if (emission >= boundaries[4]) {
+      return pink
+    }
+    if (emission >= boundaries[3]) {
+      return red
+    }
+    if (emission >= boundaries[2]) {
+      return darkOrange
+    }
+    if (emission >= boundaries[1]) {
+      return orange
+    }
+    if (emission >= boundaries[0]) {
+      return yellow
+    }
+    return [145, 191, 200]
+  } else {
+    if (emission >= boundaries[0]) {
+      return pink
+    }
+    if (emission >= boundaries[1]) {
+      return red
+    }
+    if (emission >= boundaries[2]) {
+      return darkOrange
+    }
+    if (emission >= boundaries[3]) {
+      return orange
+    }
+    if (emission >= boundaries[4]) {
+      return yellow
+    }
+    return [145, 191, 200]
   }
-  if (emission >= -0.01) {
-    return red
-  }
-  if (emission >= -0.02) {
-    return darkOrange
-  }
-  if (emission >= -0.03) {
-    return orange
-  }
-  if (emission >= -0.1) {
-    return yellow
-  }
-
-  return [145, 191, 200]
 }
 
 const replaceLetters = (name: string) => {
@@ -76,9 +94,10 @@ const MAP_RANGE = {
 type Props = {
   emissionsLevels: Array<{ name: string; emissions: number }>
   children?: ReactNode
+  boundaries: number[]
 }
 
-const Map = ({ emissionsLevels, children }: Props) => {
+const Map = ({ emissionsLevels, children, boundaries }: Props) => {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
@@ -122,7 +141,7 @@ const Map = ({ emissionsLevels, children }: Props) => {
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0, 80],
     getFillColor: (d) => {
-      return getColor((d as Emissions).emissions)
+      return getColor((d as Emissions).emissions, boundaries)
     },
     pickable: true,
   })
@@ -149,7 +168,10 @@ const Map = ({ emissionsLevels, children }: Props) => {
           // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
-          html: `<p>${(object as unknown as Emissions)?.name}</p>`,
+          html: `
+          <p>${(object as unknown as Emissions)?.name}<br/>
+          ${(object as unknown as Emissions)?.emissions}
+          </p>`,
           style: {
             backgroundColor: 'black',
             border: '1px solid white',

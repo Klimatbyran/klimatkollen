@@ -61,7 +61,7 @@ const MapLabel = ({ color, label, rotateUp = false}: Props) => {
   return (
     <Label>
       <Square color={color}>
-        <ArrowIcon rotateUp={rotateUp} />
+        {/* FIXME needed? <ArrowIcon rotateUp={rotateUp} />*/}
       </Square>
       <StyledParagraph>{label}</StyledParagraph>
     </Label>
