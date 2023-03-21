@@ -1,27 +1,27 @@
+
 import { GetServerSideProps } from 'next'
-import { ReactElement, useState } from 'react'
+import { ReactElement, useMemo, useState } from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
+import { ColumnDef } from '@tanstack/react-table'
 
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
-import { ParagraphBold } from '../components/Typography'
+import { Paragraph, ParagraphBold } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
+import ComparisonTable from '../components/ComparisonTable'
 import MapLabel from '../components/MapLabel'
-
-type PropsType = {
-  municipalities: Array<Municipality>
-}
+import InfoTooltip from '../components/InfoTooltip'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3rem;
 `
 
 const RadioContainer = styled.div`
@@ -45,23 +45,52 @@ const RadioInput = styled.input`
   display: none;
 `
 
-const MapContainer = styled.div`
+const InfoText = styled.div`
+  margin-top: 3rem;
+`
+
+const ToggleButton = styled.button`
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.paperWhite};
+  background: ${({ theme }) => theme.darkGrey};
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  border: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  cursor: pointer;
+  fill: ${({ theme }) => theme.greenGraphTwo};
+  &:hover {
+    background: ${({ theme }) => theme.grey};
+  }
+`
+
+const MunicipalityContainer = styled.div`
   position: relative;
+  overflow-y: scroll;
+  z-index: 150;
   // TODO: Hardcoding this is not good.
   height: 380px;
-  border: 1px solid #f9fbff;
+  border: 1px solid ${({ theme }) => theme.paperWhite};
   border-radius: 8px;
   display: flex;
-
+  margin-bottom: 32px;
   @media only screen and (${devices.tablet}) {
     height: 500px;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  ::-webkit-scrollbar {  /* Chrome, Safari and Opera */
+    display: none;
   }
 `
 
 const MapLabels = styled.div`
   padding-left: 0.87rem;
   padding-top: 1.2rem;
-
   @media only screen and (${devices.tablet}) {
     position: absolute;
     left: 0;
@@ -73,15 +102,17 @@ const InfoBox = styled.div`
   padding-bottom: 0.5rem;
 `
 
-const FlexCenter = styled.div`
-  width: 100%;
-  /* display: flex; */
-`
-
 type SelectedData = 'Utsläppen' | 'Elbilarna'
 
-const Kommuner = ({ municipalities }: PropsType) => {
+type PropsType = {
+  municipalities: Array<Municipality>
+  viewMode: string
+}
+
+const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
   const [selectedData, setSelectedData] = useState<SelectedData>('Elbilarna')
+  const [toggleViewMode, setToggleViewMode] = useState(viewMode)
+  const router = useRouter()
   const municipalitiesName = municipalities.map((item) => item.Name)
   const data = municipalities.map((item) => ({
     name: item.Name,
@@ -106,13 +137,63 @@ const Kommuner = ({ municipalities }: PropsType) => {
     }
   }
 
+  type MuniciplaityItem = {
+    name: string,
+    emissions: number;
+  }
+
+  const handleToggle = () => {
+    if (toggleViewMode == 'karta') {
+      setToggleViewMode('lista')
+      router.push('lista', undefined, { shallow: true })
+    } else {
+      setToggleViewMode('karta')
+      router.push('karta', undefined, { shallow: true })
+    }
+  }
+
+  const convertToPercent = (rowData: unknown) => {
+    let percentString = 'Data saknas'
+    if (typeof (rowData) == 'number') {
+      const percent = (rowData * 100).toFixed(1) + '%'
+      percentString = rowData > 0 ? '+' + percent : percent
+    }
+    return percentString
+  }
+
+  const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
+    () => [
+      {
+        header: 'Ranking',
+        cell: (row) => row.cell.row.index + 1,
+        accessorKey: 'index',
+      },
+      {
+        header: 'Kommun',
+        cell: (row) => row.renderValue(),
+        accessorKey: 'name',
+      },
+      {
+        header: () => {
+          return (
+            <>
+              Utsläppsförändring<InfoTooltip text="Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015" />
+            </>)
+        },
+        cell: (row) => convertToPercent(row.renderValue()),
+        accessorKey: 'emissions',
+      },
+    ],
+    []
+  )
+
   return (
     <>
       <MetaTags
         title="Klimatkollen — Få koll på Sveriges klimatomställning"
         description="Hur går det med utsläppsminskningarna i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper backgroundColor='darkestGrey'>
         <Container>
           <ParagraphBold>
             Hur går det med...?
@@ -138,32 +219,38 @@ const Kommuner = ({ municipalities }: PropsType) => {
               Elbilarna
             </RadioLabel>
           </RadioContainer>
-          <FlexCenter>
-            <div>
-              <ParagraphBold>Utsläppsförändring sedan Parisavtalet</ParagraphBold>
-              <p>
-                På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges
-                kommuner sedan Parisavtalet 2015.
-              </p>
+          <InfoText>
+            <ParagraphBold>
+              Utsläppsförändring sedan Parisavtalet
+            </ParagraphBold>
+            <Paragraph>
+              På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges
+              kommuner sedan Parisavtalet 2015.
+            </Paragraph>
+          </InfoText>
+          <ToggleButton onClick={handleToggle}>
+            {toggleViewMode == 'karta' ? 'Visa lista' : 'Visa karta'}
+          </ToggleButton>
+          <MunicipalityContainer>
+            <div style={{ display: toggleViewMode == 'karta' ? 'block' : 'none' }}>
+              <MapLabels>
+                <InfoBox>
+                  {dataLabels[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'].map((label, i) => (
+                    <MapLabel color={labelColors[i]} label={label} />
+                  ))}
+                </InfoBox>
+              </MapLabels>
+              <Map emissionsLevels={data} boundaries={boundaries[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} />
             </div>
-          </FlexCenter>
-          <MapContainer>
-            <MapLabels>
-              <InfoBox>
-                {dataLabels[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'].map((label, i) => (
-                  <MapLabel color={labelColors[i]} label={label} key={i} />
-                ))}
-              </InfoBox>
-            </MapLabels>
-            <Map emissionsLevels={data} boundaries={boundaries[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']}></Map>
-          </MapContainer>
-          <FlexCenter>
-            <DropDown
-              className="startpage"
-              municipalitiesName={municipalitiesName}
-              placeholder="Hur går det i din kommun?"
-            />
-          </FlexCenter>
+            <div style={{ display: toggleViewMode == 'lista' ? 'block' : 'none', width: '100%' }}>
+              <ComparisonTable data={data} columns={cols} />
+            </div>
+          </MunicipalityContainer>
+          <DropDown
+            className="startpage"
+            municipalitiesName={municipalitiesName}
+            placeholder="Hur går det i din kommun?"
+          />
         </Container>
       </PageWrapper>
     </>
@@ -194,3 +281,4 @@ Kommuner.getLayout = function getLayout(page: ReactElement) {
     </>
   )
 }
+

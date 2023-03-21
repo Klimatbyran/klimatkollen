@@ -16,7 +16,7 @@ import DropDown from './DropDown'
 import Graph from './Graph'
 import ShareButton from './Button'
 import ScoreCard from './ScoreCard'
-import { Button } from './shared'
+import { IconButton } from './shared'
 import { hasShareAPI } from '../utils/navigator'
 import { devices } from '../utils/devices'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
@@ -27,7 +27,7 @@ const GraphWrapper = styled.div`
   flex-direction: column;
 `
 
-const InfoButton = styled(Button)`
+const InfoButton = styled(IconButton)`
   height: 21px;
 `
 
@@ -224,7 +224,6 @@ type Props = {
   budgetedEmissions: EmissionPerYear[]
   trendingEmissions: EmissionPerYear[]
   municipalitiesName: Array<string>
-  placeholder: string
 }
 
 const Municipality = (props: Props) => {
@@ -371,7 +370,7 @@ const Municipality = (props: Props) => {
         description={shareText(municipality.Name)}
         url={shareUrl}
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper backgroundColor="darkestGrey">
         <Back route={'/'} />
         <Top>
           <HeaderSection>
@@ -401,17 +400,16 @@ const Municipality = (props: Props) => {
               historical={historicalEmissions}
               trend={trendingEmissions}
               budget={budgetedEmissions}
-              municipality={municipality.Name}
               user={userEmissions}
               maxVisibleYear={END_YEAR}
             />
           </GraphWrapper>
           <Flex>
             {onPreviousStep ? (
-              <Button onClick={onPreviousStep}>
+              <IconButton onClick={onPreviousStep}>
                 <ArrowLeft />
                 {STEPS[step - 1].buttonText}
-              </Button>
+              </IconButton>
             ) : (
               <div></div>
             )}
@@ -419,10 +417,10 @@ const Municipality = (props: Props) => {
               {step + 1} / {Object.keys(STEPS).length}
             </span>
             {onNextStep && (
-              <Button onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
+              <IconButton onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
                 {STEPS[step + 1]?.buttonText}
                 <ArrowRight />
-              </Button>
+              </IconButton>
             )}
           </Flex>
           {step > 1 && (
@@ -448,7 +446,7 @@ const Municipality = (props: Props) => {
           )}
         </BottomShare>
       </PageWrapper>
-      <PageWrapper backgroundColor='black'>
+      <PageWrapper backgroundColor='darkGrey'>
         <BottomHeader>
           <H2>Omställning</H2>
           <Paragraph>
@@ -456,7 +454,7 @@ const Municipality = (props: Props) => {
           </Paragraph>
         </BottomHeader>
       </PageWrapper>
-      <PageWrapper backgroundColor="dark">
+      <PageWrapper backgroundColor="darkGrey">
         <BottomHeader>
           <H2>Fakta om {municipality.Name}</H2>
         </BottomHeader>

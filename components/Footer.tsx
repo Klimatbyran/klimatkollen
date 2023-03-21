@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import { Paragraph, H5, ParagraphBold } from './Typography'
+import { H5, ParagraphBold } from './Typography'
 import { devices } from '../utils/devices'
 import NewsletterSubscribe from './NewsletterSubscribe'
 import PageWrapper from './PageWrapper'
-import Image from 'next/image'
 import PartnerSection from './PartnerSection'
 
 const Foot = styled.footer`
@@ -58,7 +57,7 @@ const GHLink = styled.p`
 
 const Footer = () => {
   return (
-    <PageWrapper backgroundColor="dark">
+    <PageWrapper backgroundColor={'darkGrey'}>
       <Foot>
         <ContentWrapper>
           <TextSection>

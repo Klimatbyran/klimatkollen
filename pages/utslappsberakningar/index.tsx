@@ -23,9 +23,6 @@ const Figure = styled.figure`
     width: 95%;
   }
 `
-const Hr = styled.hr`
-  margin-bottom: 2rem;
-`
 
 const Utslappsberakningar = () => {
   return (
@@ -35,7 +32,7 @@ const Utslappsberakningar = () => {
         description="Den nya regeringens politik kan öka utsläppen med 25 miljoner ton"
         imageUrl="/totala-utslapp-alla-partier.jpg"
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper backgroundColor='darkestGrey'>
         <Container>
           <H2>
             Unik utsläppsberäkning av riksdagspartiernas klimatåtgärder - den nya

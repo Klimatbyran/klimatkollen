@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Close from '../public/icons/close.svg'
 import { Paragraph } from './Typography'
-import { Button } from './shared'
+import { IconButton } from './shared'
 import { devices } from '../utils/devices'
 
 const Modal = styled.div<{ scrollY: number }>`
@@ -28,7 +28,7 @@ const Modal = styled.div<{ scrollY: number }>`
       padding: 3rem 2rem 2.5rem 2rem;
       display: flex;
       flex-direction: column;
-      background: ${({ theme }) => theme.black};
+      background: ${({ theme }) => theme.darkestGrey};
       color: ${({ theme }) => theme.white};
       z-index: 10;
       border-radius: 16px;
@@ -63,7 +63,7 @@ const InfoModal = ({ text, close, scrollY }: Props) => {
   }
 
   const handleTab = (evt: KeyboardEvent) => {
-    let total = focusableElements?.length
+    const total = focusableElements?.length
     if (!evt.shiftKey) {
       activeIndex + 1 === total ? (activeIndex = 0) : (activeIndex += 1)
       if (focusableElements) focusableElements[activeIndex].focus()
@@ -108,9 +108,9 @@ const InfoModal = ({ text, close, scrollY }: Props) => {
     <Modal ref={ref} scrollY={scrollY}>
       <div>
         <div>
-          <Button type="button" aria-label="Stäng information" onClick={close}>
+          <IconButton type="button" aria-label="Stäng information" onClick={close}>
             <Close />
-          </Button>
+          </IconButton>
           <Paragraph>{text}</Paragraph>
         </div>
       </div>

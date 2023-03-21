@@ -1,5 +1,4 @@
 import { useState, FC, useEffect } from 'react'
-import { decode } from 'html-entities'
 import Button from './Button'
 import styled from 'styled-components'
 import { devices } from '../utils/devices'
@@ -67,11 +66,10 @@ const EmailValidation = styled.div`
 
 type Props = {
   status: 'sending' | 'error' | 'success' | null
-  message: string | Error | null
   onValidated: (value: EmailFormFields) => void
 }
 
-const NewsletterForm: FC<Props> = ({ status, message, onValidated }) => {
+const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
   const [showThanks, setThanks] = useState(false)

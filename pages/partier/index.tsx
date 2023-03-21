@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 import MetaTags from '../../components/MetaTags'
-import { H1, H2, Paragraph } from '../../components/Typography'
+import { H2, Paragraph } from '../../components/Typography'
 import { ClimateDataService } from '../../utils/climateDataService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
@@ -24,9 +24,6 @@ const Figure = styled.figure`
     width: 95%;
   }
 `
-const Hr = styled.hr`
-  margin-bottom: 2rem;
-`
 
 const Partier = () => {
   return (
@@ -35,7 +32,7 @@ const Partier = () => {
         title="Klimatkollen – Analys av partiernas klimatmål"
         description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen, Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper backgroundColor='darkestGrey'>
         <Container>
           <H2>
             Analys av riksdagspartiernas klimatmål – sex av åtta partier missar helt

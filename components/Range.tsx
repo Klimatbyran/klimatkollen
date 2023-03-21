@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 
 const Input = styled.input`

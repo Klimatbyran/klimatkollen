@@ -87,7 +87,7 @@ const MunicipalitiesWrapper = styled.ul`
 `
 
 const Municipality = styled.li`
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.darkestGrey};
   text-decoration: none;
   width: 305px;
   height: 56px;

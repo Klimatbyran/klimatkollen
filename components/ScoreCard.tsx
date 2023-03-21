@@ -4,7 +4,6 @@ import Link from 'next/link'
 import ScoreCardSection from './ScoreCardSection'
 
 const StyledDiv = styled.div`
-  background: ${({ theme }) => theme.black};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 15px 15px;
@@ -14,7 +13,7 @@ const StyledDiv = styled.div`
   // max-width: 450px;
 
   @media only screen and (${devices.tablet}) {
-    background: ${(props) => props.theme.black};
+    background: ${(props) => props.theme.darkestGrey};
   }
 
   & div.row {

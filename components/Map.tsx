@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
-import { ReactNode, useEffect, useMemo, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar';
@@ -86,10 +86,11 @@ const replaceLetters = (name: string) => {
   return replacedWord
 }
 
-const MAP_RANGE = {
+// Use when viewState is reimplemented
+/* const MAP_RANGE = {
   lon: [8.107180004121693, 26.099158344940808],
   lat: [61.9, 63.9],
-}
+} */
 
 type Props = {
   emissionsLevels: Array<{ name: string; emissions: number }>
@@ -150,10 +151,10 @@ const Map = ({ emissionsLevels, children, boundaries }: Props) => {
     <DeckGLWrapper>
       <NextNProgress
         color="#6BA292"
-        startPosition={1}
+        startPosition={0.3}
         stopDelayMs={20}
-        height={10}
-        showOnShallow={true}
+        height={5}
+        showOnShallow={false}
         options={{
           showSpinner: false
         }}
