@@ -7,8 +7,13 @@ import { useRouter } from 'next/router'
 import ArrowRight from '../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../public/icons/arrow-left-white.svg'
 import Info from '../public/icons/info.svg'
+<<<<<<< HEAD
 import { H1, H2, H3, Paragraph, ParagraphBold } from './Typography'
 import Back from './Back'
+=======
+import { H1, H2, H3, ParagraphBold } from './Typography'
+import BackArrow from './BackArrow'
+>>>>>>> 18f614f0fd4ab151dc9e7e5389abcba6059f9bef
 import MetaTags from './MetaTags'
 import InfoModal from './InfoModal'
 import PageWrapper from './PageWrapper'
@@ -370,8 +375,13 @@ const Municipality = (props: Props) => {
         description={shareText(municipality.Name)}
         url={shareUrl}
       />
+<<<<<<< HEAD
       <PageWrapper backgroundColor="darkestGrey">
         <Back route={'/'} />
+=======
+      <PageWrapper backgroundColor="black">
+        <BackArrow route={'/'} />
+>>>>>>> 1bedc4bd1ed3d5ec0922c8dd3d61c9ecc5d1ef8b
         <Top>
           <HeaderSection>
             <H1>{municipality.Name}</H1>

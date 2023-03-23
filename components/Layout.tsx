@@ -31,6 +31,7 @@ const Tagline = styled(Paragraph)`
   font-size: 14px;
   line-height: 20px;
 `
+
 type NavProps = {
   path: string
 }
@@ -83,25 +84,6 @@ const Nav = styled.nav<NavProps>`
         }
       }
     }
-  }
-`
-
-
-const Notification = styled.div`
-  position: absolute;
-  top: -24px;
-  right: -20px;
-  padding: 3px 8px;
-  background-color: ${({ theme }) => theme.yellow};
-  color: ${({ theme }) => theme.darkestGrey};
-  border: 1px solid ${({ theme }) => theme.darkYellow};
-  border-radius: 20px;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  @media only screen and (${devices.tablet}) {
-    right: -10px;
   }
 `
 

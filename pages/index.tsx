@@ -51,21 +51,18 @@ const InfoText = styled.div`
 `
 
 const ToggleButton = styled.button`
-  width: 100%;
-  margin-top: 1.5rem;
+  width: 96px;
+  margin-top: 3rem;
   margin-bottom: 1rem;
   color: ${({ theme }) => theme.paperWhite};
-  background: ${({ theme }) => theme.darkGrey};
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  background: transparent;
   border-radius: 4px;
-  border: 0;
-  align-items: center;
-  justify-content: center;
+  border: 1;
   padding: 0.8rem;
   cursor: pointer;
   fill: ${({ theme }) => theme.greenGraphTwo};
   &:hover {
-    background: ${({ theme }) => theme.grey};
+    background: ${({ theme }) => theme.darkGrey};
   }
 `
 
@@ -249,7 +246,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
             </Paragraph>
           </InfoText>
           <ToggleButton onClick={handleToggle}>
-            {toggleViewMode == 'karta' ? 'Visa lista' : 'Visa karta'}
+            {toggleViewMode == 'karta' ? 'Se lista' : 'Se karta'}
           </ToggleButton>
           <MunicipalityContainer>
             <div style={{ display: toggleViewMode == 'karta' ? 'block' : 'none' }}>
