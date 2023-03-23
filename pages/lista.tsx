@@ -2,11 +2,11 @@ import { GetServerSideProps } from 'next';
 import { ReactElement } from 'react';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
-import { EmissionService } from '../utils/emissionService';
+import { ClimateDataService } from '../utils/climateDataService';
 import Kommuner from './index';
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const municipalities = new EmissionService().getMunicipalities()
+  const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
   const viewMode = 'lista'
 
