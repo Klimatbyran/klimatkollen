@@ -8,7 +8,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
-import { Paragraph, ParagraphBold } from '../components/Typography'
+import { H5, Paragraph, ParagraphBold } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -29,6 +29,7 @@ const RadioContainer = styled.div`
   column-gap: 200px;
   justify-content: center;
   border-bottom: 1px solid white;
+  margin-top: 3rem;
 `
 
 const RadioLabel = styled.label`
@@ -51,7 +52,7 @@ const InfoText = styled.div`
 
 const ToggleButton = styled.button`
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
   color: ${({ theme }) => theme.paperWhite};
   background: ${({ theme }) => theme.darkGrey};
@@ -119,22 +120,37 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
     emissions: selectedData == 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCars,
   }))
   const boundaries = {
-    'Utsläppen': [0, -0.01, -0.02, -0.03, -0.1],
-    'Elbilarna': [30, 40, 50, 60, 70]
+    'Utsläppen': [0, -0.01, -0.02, -0.03, -0.10],
+    'Elbilarna': [0.30, 0.40, 0.50, 0.60, 0.70]
   }
-
+  const dataHeading = {
+    'Utsläppen': [
+      'Utsläppsförändring sedan Parisavtalet',
+      'På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.'
+    ],
+    'Elbilarna': [
+      'Andel elbilar i nyförsäljning',
+      'På kartan visas andelen elbilar av totala antalet bilar som såldes 2022.'
+    ],
+  }
+  const dataColumnHeader = {
+    'Utsläppen': [
+      'Utsläppsförändring',
+      'På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.'
+    ],
+    'Elbilarna': [
+      'Andel elbilar',
+      'Procent av nysålda bilar i kommunen som var elbilar 2022.'
+    ],
+  }
   const dataLabels = {
     'Utsläppen': ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     'Elbilarna': ['30% -', '30-40%', '40-50%', '50-60%', '60-70%', '70% +']
   }
   const labelColors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
 
-  const handleSelectData = (selection: SelectedData) => {
-    if (selectedData == 'Elbilarna') {
-      setSelectedData('Utsläppen')
-    } else {
-      setSelectedData('Elbilarna')
-    }
+  const handleSelectData = () => {
+    setSelectedData(selectedData == 'Elbilarna' ? 'Utsläppen' : 'Elbilarna')
   }
 
   type MuniciplaityItem = {
@@ -156,7 +172,11 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
     let percentString = 'Data saknas'
     if (typeof (rowData) == 'number') {
       const percent = (rowData * 100).toFixed(1) + '%'
-      percentString = rowData > 0 ? '+' + percent : percent
+      if (selectedData == 'Utsläppen') {
+        percentString = rowData > 0 ? '+' + percent : percent
+      } else {
+        percentString = percent
+      }
     }
     return percentString
   }
@@ -176,8 +196,9 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       {
         header: () => {
           return (
-            <>
-              Utsläppsförändring<InfoTooltip text="Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015" />
+            <> {/*  fixme fortsätt här, behöver ändra kolumnheader när man togglar! behöver också fixa redirect baserat på vad som är på karta/lista */}
+              {dataColumnHeader[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][0]}
+              <InfoTooltip text={dataColumnHeader[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]} />
             </>)
         },
         cell: (row) => convertToPercent(row.renderValue()),
@@ -195,16 +216,16 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       />
       <PageWrapper backgroundColor='darkestGrey'>
         <Container>
-          <ParagraphBold>
+          <H5>
             Hur går det med...?
-          </ParagraphBold>
+          </H5>
           <RadioContainer>
             <RadioLabel>
               <RadioInput
                 type="radio"
                 value='Utsläppen'
                 checked={selectedData === 'Utsläppen'}
-                onChange={() => handleSelectData('Utsläppen')}
+                onChange={() => handleSelectData()}
               />
               Utsläppen
             </RadioLabel>
@@ -214,18 +235,17 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
                 type="radio"
                 value='Elbilarna'
                 checked={selectedData === 'Elbilarna'}
-                onChange={() => handleSelectData('Elbilarna')}
+                onChange={() => handleSelectData()}
               />
               Elbilarna
             </RadioLabel>
           </RadioContainer>
           <InfoText>
             <ParagraphBold>
-              Utsläppsförändring sedan Parisavtalet
+              {dataHeading[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][0]}
             </ParagraphBold>
             <Paragraph>
-              På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges
-              kommuner sedan Parisavtalet 2015.
+              {dataHeading[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]}
             </Paragraph>
           </InfoText>
           <ToggleButton onClick={handleToggle}>

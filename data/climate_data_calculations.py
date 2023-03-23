@@ -7,7 +7,7 @@ import pandas as pd
 
 
 # Budget i ton från och med 2020
-budget = 170000000  # +40948459*50.81/46.29+40948459*50.81/46.29*1.05
+BUDGET = 170000000  # +40948459*50.81/46.29+40948459*50.81/46.29*1.05
 
 # LOAD AND PREPARE DATA FROM SMHI
 
@@ -66,7 +66,7 @@ df_cem['Andel'] = [df_cem[year_range].sum(axis=1)[i]/df_cem[year_range].sum(
     axis=0).sum() for i in range(len(df_cem))]
 
 # Update each kommuns budget given the new 2020 data
-df_cem['Budget'] = (budget)*df_cem['Andel']-df_cem[2020]
+df_cem['Budget'] = BUDGET*df_cem['Andel']-df_cem[2020]
 
 # Create an exponential curve that satisfy each kommuns budget
 temp = []
@@ -139,7 +139,7 @@ df_raw_cars = df_raw_cars.dropna(subset=['Kommun'])
 df_raw_cars['electricity'] = df_raw_cars['Electricity'].replace(' –', 0)
 df_raw_cars['plugIn'] = df_raw_cars['Plug-in '].replace(' –', 0)
 
-df_raw_cars['electricCars'] = ((df_raw_cars['electricity'] + df_raw_cars['plugIn'])/df_raw_cars['Total'])*100
+df_raw_cars['electricCars'] = ((df_raw_cars['electricity'] + df_raw_cars['plugIn'])/df_raw_cars['Total'])
 
 df_cars = df_raw_cars.filter(['Kommun', 'electricCars'], axis=1)
 df_cars.loc[df_cars['Kommun'] == 'Upplands-Väsby', 'Kommun'] = 'Upplands Väsby'  # special solution for Upplands-Väsby which is named differently in the two dataframes
