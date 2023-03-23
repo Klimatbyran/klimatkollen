@@ -8,8 +8,8 @@ import { ColumnDef } from '@tanstack/react-table'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
-import { ParagraphBold } from '../components/Typography'
-import { EmissionService } from '../utils/emissionService'
+import { ParagraphBold, Paragraph } from '../components/Typography'
+import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
@@ -195,7 +195,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const municipalities = new EmissionService().getMunicipalities()
+  const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
 
   res.setHeader(
