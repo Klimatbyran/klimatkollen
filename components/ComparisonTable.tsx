@@ -67,37 +67,42 @@ const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => 
         router.push(url)
     }
 
+    const renderHeader = (header) => {
+        return (
+            <TableHeader key={header.id} colSpan={header.colSpan}>
+                {header.isPlaceholder ? null : (
+                    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+                    <div
+                        {...{
+                            className: header.column.getCanSort() ? 'cursor-pointer select-none' : '',
+                            onClick: header.column.getToggleSortingHandler(),
+                            onKeyDown: header.column.getToggleSortingHandler(),
+                        }}
+                    >
+                        {flexRender(header.column.columnDef.header, header.getContext())}
+                        {{
+                            asc: ' ↑',
+                            desc: ' ↓',
+                        }[header.column.getIsSorted() as string] ?? null}
+                    </div>
+                )}
+            </TableHeader>
+        )
+    }
+
+    const renderCell = (cell) => {
+        return (
+            <TableData key={cell.id}>
+                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+            </TableData>
+        )
+    }
+
     return (
         <StyledTable>
             {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
-                    {headerGroup.headers.map((header) => {
-                        return (
-                            <TableHeader key={header.id} colSpan={header.colSpan}>
-                                {header.isPlaceholder ? null : (
-                                    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-                                    <div
-                                        {...{
-                                            className: header.column.getCanSort()
-                                                ? 'cursor-pointer select-none'
-                                                : '',
-                                            onClick: header.column.getToggleSortingHandler(),
-                                            onKeyDown: header.column.getToggleSortingHandler(),
-                                        }}
-                                    >
-                                        {flexRender(
-                                            header.column.columnDef.header,
-                                            header.getContext()
-                                        )}
-                                        {{
-                                            asc: ' ↑',
-                                            desc: ' ↓',
-                                        }[header.column.getIsSorted() as string] ?? null}
-                                    </div>
-                                )}
-                            </TableHeader>
-                        )
-                    })}
+                    {headerGroup.headers.map((header) => renderHeader(header))}
                 </tr>
             ))}
             <tbody>
