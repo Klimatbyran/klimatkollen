@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   align-self: flex-start;
 `
 
-type BackArrowProps = {
+export type BackArrowProps = {
   route: string
 }
 
