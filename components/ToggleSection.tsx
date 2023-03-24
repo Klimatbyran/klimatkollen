@@ -12,7 +12,6 @@ const TextSection = styled.div`
 
   gap: 15px;
   margin-bottom: 40px;
-  max-width: 750px;
 `
 
 const HeaderSection = styled.div`
