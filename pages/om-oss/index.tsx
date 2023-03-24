@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 
 import MetaTags from '../../components/MetaTags'
-import { H2, H5, Paragraph } from '../../components/Typography'
+import { H2, Paragraph } from '../../components/Typography'
 import { ClimateDataService } from '../../utils/climateDataService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
