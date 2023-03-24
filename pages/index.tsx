@@ -8,7 +8,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
-import { H5, Paragraph, ParagraphBold } from '../components/Typography'
+import {  H2, Paragraph, ParagraphBold } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -19,27 +19,54 @@ import ComparisonTable from '../components/ComparisonTable'
 import MapLabel from '../components/MapLabel'
 import InfoTooltip from '../components/InfoTooltip'
 
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
 `
 
+
+/*
+const Nav = styled.nav<NavProps>`
+      & .active {
+        background-color: ${({ theme }) => theme.main};
+        & :hover {
+          background-color: ${({ theme }) => theme.greenGraphOne};
+        }
+      }
+      & .inactive {
+        background-color: ${({ theme }) => theme.white};
+        & :hover {
+          background-color: ${({ theme }) => theme.greenGraphThree};
+        }
+      }
+    }
+  }
+`
+*/
+
+
 const RadioContainer = styled.div`
+  margin-top: 30px;
+  gap: 16px;
   display: flex;
-  column-gap: 200px;
-  justify-content: center;
-  border-bottom: 1px solid white;
-  margin-top: 3rem;
 `
 
 const RadioLabel = styled.label`
-  display: inline-block;
-  vertical-align: top;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  color: ${({ theme }) => theme.darkestGrey};
+  background: white;
+  white-space: nowrap;
   font-weight: bolder;
   cursor: pointer;
   margin-bottom: 8px;
   &:hover {
-    color: ${({ theme }) => theme.greenGraphTwo};
+    background: ${({ theme }) => theme.greenGraphThree};
 `
 
 const RadioInput = styled.input`
@@ -213,9 +240,9 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       />
       <PageWrapper backgroundColor='darkestGrey'>
         <Container>
-          <H5>
-            Hur går det med...?
-          </H5>
+          <H2>
+            Hur går det med?
+          </H2>
           <RadioContainer>
             <RadioLabel>
               <RadioInput
@@ -226,7 +253,6 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
               />
               Utsläppen
             </RadioLabel>
-            {/* fixne styla så att man ser vilken som är aktiv */}
             <RadioLabel>
               <RadioInput
                 type="radio"
