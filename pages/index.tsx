@@ -50,6 +50,7 @@ const RadioContainer = styled.div`
   margin-top: 30px;
   gap: 16px;
   display: flex;
+  font-weight: bolder;
 `
 
 const RadioLabel = styled.label`
@@ -62,7 +63,6 @@ const RadioLabel = styled.label`
   color: ${({ theme }) => theme.darkestGrey};
   background: white;
   white-space: nowrap;
-  font-weight: bolder;
   cursor: pointer;
   margin-bottom: 8px;
   &:hover {
