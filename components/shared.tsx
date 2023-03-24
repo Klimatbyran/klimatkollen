@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Button = styled.button`
+export const IconButton = styled.button`
   border: none;
   background-color: none;
   cursor: pointer;

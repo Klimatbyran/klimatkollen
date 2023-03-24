@@ -59,7 +59,7 @@ const GHLink = styled.p`
 
 const Footer = () => {
   return (
-    <PageWrapper backgroundColor="dark">
+    <PageWrapper backgroundColor={'darkGrey'}>
       <Foot>
         <ContentWrapper>
           <Navigation />
