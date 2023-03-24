@@ -34,7 +34,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
           <Link href="/">
             <a href="/">
               <Image
-                src="/logo_beta.svg"
+                src="/klimatkollen_logo.svg"
                 width="485"
                 height="86"
                 alt="Klimatkollen logotyp"
