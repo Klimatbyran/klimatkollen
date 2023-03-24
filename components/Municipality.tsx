@@ -7,19 +7,18 @@ import { useRouter } from 'next/router'
 import ArrowRight from '../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../public/icons/arrow-left-white.svg'
 import Info from '../public/icons/info.svg'
-import { H1, H2, H3, ParagraphBold } from './Typography'
+import { H1, H2, H3, H4, H5, Paragraph, ParagraphBold } from './Typography'
 import BackArrow from './BackArrow'
 import MetaTags from './MetaTags'
 import InfoModal from './InfoModal'
 import PageWrapper from './PageWrapper'
 import DropDown from './DropDown'
 import Graph from './Graph'
-import ShareButton from './Button'
 import ScoreCard from './ScoreCard'
 import { IconButton } from './shared'
-import { hasShareAPI } from '../utils/navigator'
 import { devices } from '../utils/devices'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
+import FactSection from './FactSection'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -52,11 +51,13 @@ const Flex = styled.div`
   }
 `
 
-const Top = styled.div`
+const EmissionsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 48px;
 `
+
 const CoatOfArmsImage = styled.img`
   width: 60px;
 `
@@ -67,15 +68,6 @@ const HeaderSection = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-`
-
-const BottomContainer = styled.div`
-  margin-top: 0.5rem;
-
-  @media only screen and (${devices.tablet}) {
-    gap: 0;
-    grid-template-columns: 45% auto 40%;
-  }
 `
 
 const TotalCo2 = styled.div`
@@ -97,15 +89,15 @@ const Bottom = styled.div`
   }
 `
 
-const BottomHeader = styled.div`
-  margin-bottom: 20px;
+const StyledH2 = styled(H2)`
+  margin-top: 32px;
+  margin-bottom: 32px;
   width: 100%;
 `
 
-const BottomLeft = styled.div`
-  @media only screen and (${devices.tablet}) {
-    // width: 50%;
-  }
+const StyledH5 = styled(H5)`
+  margin-top: 24px;
+  margin-bottom: 24px;
 `
 
 const DropDownSection = styled.div`
@@ -120,18 +112,6 @@ const DropDownSection = styled.div`
     text-align: center;
     align-items: center;
     padding-right: 60px;
-  }
-`
-
-const BottomShare = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  margin-top: 3.5rem;
-
-  @media only screen and (${devices.tablet}) {
-    align-items: center;
   }
 `
 
@@ -161,15 +141,6 @@ const Circle = styled.span`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: ${(props) => props.color};
-  display: inline-block;
-`
-
-const Line = styled.span`
-  width: 14px;
-  height: 4px;
-  margin-bottom: 3px;
-  margin-top: 3px;
   background-color: ${(props) => props.color};
   display: inline-block;
 `
@@ -337,32 +308,6 @@ const Municipality = (props: Props) => {
     shareUrl = `${shareUrl}?${qry}`
   }
 
-  const handleClick = async () => {
-    async function share(name: string) {
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: `Klimatkollen ${name}`,
-            text: shareText(name),
-            url: shareUrl,
-          })
-        } catch {
-          // Avoid unhandled promise rejection
-          console.debug('Share cancelled')
-        }
-      } else {
-        if (process.env.NODE_ENV !== 'production') {
-          alert(
-            'This is a fake share dialog. Visit using https:// on a mobile device to actually test it',
-          )
-        }
-        // This should not be reached
-        throw new Error('This should not be reached.')
-      }
-    }
-    share(municipality.Name)
-  }
-
   return (
     <>
       <MetaTags
@@ -372,7 +317,7 @@ const Municipality = (props: Props) => {
       />
       <PageWrapper backgroundColor="darkestGrey">
         <BackArrow route={'/'} />
-        <Top>
+        <EmissionsContainer>
           <HeaderSection>
             <H1>{municipality.Name}</H1>
             {coatOfArmsImage && (
@@ -439,7 +384,7 @@ const Municipality = (props: Props) => {
             )}
           </Flex>
           {step > 1 && (
-            <BottomContainer>
+            <>
               <H3>Framtida utsläpp</H3>
               <TotalCo2 color="#EF3054">
                 Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
@@ -448,35 +393,38 @@ const Municipality = (props: Props) => {
                 Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
                 CO₂
               </TotalCo2>
-            </BottomContainer>
+            </>
           )}
-        </Top>
-        <BottomShare>
-          {hasShareAPI() && (
-            <ShareButton
-              handleClick={handleClick}
-              text="Dela i dina sociala medier"
-              shareIcon
-            />
-          )}
-        </BottomShare>
+        </EmissionsContainer>
+        <StyledH2>
+          Omställning
+        </StyledH2>
+        <Paragraph>
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </Paragraph>
+        <StyledH5> {/* FIXME add icon */}
+          Elbilarna
+        </StyledH5>
+        <FactSection
+          heading='Lorem ipsum'
+          data={(municipality.ElectricCarChangePercent * 100).toFixed(1) + '%'}
+          info={<>Lorem ipsum</>}
+        />
       </PageWrapper>
       <PageWrapper backgroundColor={'darkGrey'}>
-        <BottomHeader>
+        <StyledH2>
           <H2>Fakta om {municipality.Name}</H2>
-        </BottomHeader>
+        </StyledH2>
         <Bottom>
-          <BottomLeft>
-            <ScoreCard
-              rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
-              budget={municipality.Budget.CO2Equivalent}
-              budgetRunsOut={municipality.BudgetRunsOut}
-              emissionChangePercent={municipality.EmissionChangePercent}
-              emissionLastYear={emissionLastYear}
-              population={municipality.Population}
-              politicalRule={municipality.PoliticalRule}
-            />
-          </BottomLeft>
+          <ScoreCard
+            rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
+            budget={municipality.Budget.CO2Equivalent}
+            budgetRunsOut={municipality.BudgetRunsOut}
+            emissionChangePercent={municipality.EmissionChangePercent}
+            emissionLastYear={emissionLastYear}
+            population={municipality.Population}
+            politicalRule={municipality.PoliticalRule}
+          />
         </Bottom>
         <DropDownSection>
           <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>

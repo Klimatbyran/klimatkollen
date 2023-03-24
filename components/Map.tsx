@@ -170,10 +170,7 @@ const Map = ({ emissionsLevels, children, boundaries }: Props) => {
           // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
-          html: `
-          <p>${(object as unknown as Emissions)?.name}<br/>
-          ${((object as unknown as Emissions)?.emissions * 100).toFixed(1)}
-          </p>`,
+          html: `<p>${(object as unknown as Emissions)?.name}</p>`,
           style: {
             backgroundColor: 'black',
             border: '1px solid white',
