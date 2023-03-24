@@ -25,25 +25,11 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-
-/*
-      & .active {
-        background-color: ${({ theme }) => theme.main};
-        & :hover {
-          background-color: ${({ theme }) => theme.greenGraphOne};
-
-      & .inactive {
-        background-color: ${({ theme }) => theme.white};
-        & :hover {
-          background-color: ${({ theme }) => theme.greenGraphThree};
-*/
-
-
 const RadioContainer = styled.div`
   margin-top: 30px;
   gap: 16px;
   display: flex;
-  font-weight: bolder
+  font-weight: bolder;
 `
 
 const RadioLabel = styled.label`
@@ -164,6 +150,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       'Procent av nysålda bilar i kommunen som var elbilar 2022.'
     ],
   }
+  const columnHeader = selectedData === 'Elbilarna' ? 'Andel elbilar' : 'Utsläppsförändring'
   const dataLabels = {
     'Utsläppen': ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     'Elbilarna': ['30% -', '30-40%', '40-50%', '50-60%', '60-70%', '70% +']
@@ -215,18 +202,19 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
         accessorKey: 'name',
       },
       {
-        header: () => {
-          return (
-            <> {/*  fixme fortsätt här, behöver ändra kolumnheader när man togglar! behöver också fixa redirect baserat på vad som är på karta/lista */}
-              {dataColumnHeader[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][0]}
-              <InfoTooltip text={dataColumnHeader[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]} />
-            </>)
-        },
+        header: columnHeader,
+        // () => {
+        //   return (
+        //     <> {/*  fixme fortsätt här, behöver ändra kolumnheader när man togglar! behöver också fixa redirect baserat på vad som är på karta/lista */}
+        //       {dataColumnHeader[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][0]}
+        //       <InfoTooltip text={dataColumnHeader[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]} />
+        //     </>)
+        // },
         cell: (row) => convertToPercent(row.renderValue()),
         accessorKey: 'emissions',
       },
     ],
-    []
+    [columnHeader]
   )
 
   return (
@@ -243,6 +231,16 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
           <RadioContainer>
               <RadioInput
                 type="radio"
+                id='elbilarna'
+                value='Elbilarna'
+                checked={selectedData === 'Elbilarna'}
+                onChange={() => handleSelectData()}
+              />
+              <RadioLabel htmlFor="elbilarna">
+              Elbilarna
+            </RadioLabel>
+              <RadioInput
+                type="radio"
                 id="utslappen"
                 value='Utsläppen'
                 checked={selectedData === 'Utsläppen'}
@@ -251,16 +249,6 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
 
             <RadioLabel htmlFor="utslappen">
               Utsläppen
-            </RadioLabel>
-              <RadioInput
-                type="radio"
-                id='elbilarna'
-                value='Elbilarna'
-                checked={selectedData === 'Elbilarna'}
-                onChange={() => handleSelectData()}
-              />
-              <RadioLabel htmlFor="elbilarna">
-              Elbilarna
             </RadioLabel>
           </RadioContainer>
           <InfoText>
