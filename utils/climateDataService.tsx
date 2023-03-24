@@ -61,6 +61,8 @@ export class ClimateDataService {
         HitNetZero: jsonData.hitNetZero,
         BudgetRunsOut: jsonData.budgetRunsOut,
         ElectricCars: jsonData.electricCars,
+        ElectricCarChangePercent: jsonData.electricCarChangePercent,
+        ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
       } as Municipality
       return municipality
     })

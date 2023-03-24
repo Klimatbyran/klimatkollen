@@ -68,5 +68,4 @@ const MapLabel = ({ color, label, rotateUp = false}: Props) => {
   )
 }
 
-
 export default MapLabel

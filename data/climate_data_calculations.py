@@ -125,29 +125,52 @@ df_master = df_cem.merge(df_crunched, on='Kommun', how='left')
 
 # LOAD AND PREP DATA FROM TRAFA ON SHARE OF ELECTIC OR HYBRID CARS IN SALES
 
-path_car_data = 'kpi1_trafa.xlsx'  # data on sold cars by trafa
-df_raw_cars = pd.read_excel(path_car_data, sheet_name='Tabell 5 Personbil')
+path_trafa_data = 'kpi1_trafa.xlsx'  # data on sold cars by trafa
+df_raw_trafa = pd.read_excel(path_trafa_data, sheet_name='Tabell 5 Personbil')
 
-df_raw_cars.columns = df_raw_cars.iloc[3]  # name columns after row 4
-df_raw_cars = df_raw_cars.drop([0, 1, 2, 3, 4, 5])  # drop usless rows
-df_raw_cars = df_raw_cars.reset_index(drop=True)
+df_raw_trafa.columns = df_raw_trafa.iloc[3]  # name columns after row 4
+df_raw_trafa = df_raw_trafa.drop([0, 1, 2, 3, 4, 5])  # drop usless rows
+df_raw_trafa = df_raw_trafa.reset_index(drop=True)
 
 # Clean data in columns
-df_raw_cars['Kommun'] = df_raw_cars['Municipality'].str.strip() 
-df_raw_cars = df_raw_cars.drop(df_raw_cars[df_raw_cars['Kommun'] == 'Okänd Kommun   '].index)
-df_raw_cars = df_raw_cars.dropna(subset=['Kommun'])
-df_raw_cars['electricity'] = df_raw_cars['Electricity'].replace(' –', 0)
-df_raw_cars['plugIn'] = df_raw_cars['Plug-in '].replace(' –', 0)
+df_raw_trafa['Kommun'] = df_raw_trafa['Municipality'].str.strip()
+df_raw_trafa = df_raw_trafa.drop(
+    df_raw_trafa[df_raw_trafa['Kommun'] == 'Okänd Kommun   '].index)
+df_raw_trafa = df_raw_trafa.dropna(subset=['Kommun'])
+df_raw_trafa['electricity'] = df_raw_trafa['Electricity'].replace(' –', 0)
+df_raw_trafa['plugIn'] = df_raw_trafa['Plug-in '].replace(' –', 0)
 
-df_raw_cars['electricCars'] = ((df_raw_cars['electricity'] + df_raw_cars['plugIn'])/df_raw_cars['Total'])
+df_raw_trafa['electricCars'] = (
+    (df_raw_trafa['electricity'] + df_raw_trafa['plugIn'])/df_raw_trafa['Total'])
 
-df_cars = df_raw_cars.filter(['Kommun', 'electricCars'], axis=1)
-df_cars.loc[df_cars['Kommun'] == 'Upplands-Väsby', 'Kommun'] = 'Upplands Väsby'  # special solution for Upplands-Väsby which is named differently in the two dataframes
+df_trafa = df_raw_trafa.filter(['Kommun', 'electricCars'], axis=1)
+# special solution for Upplands-Väsby which is named differently in the two dataframes
+df_trafa.loc[df_trafa['Kommun'] ==
+             'Upplands-Väsby', 'Kommun'] = 'Upplands Väsby'
+
+df_master = df_master.merge(df_trafa, on='Kommun', how='left')
+
+
+# LOAD AND PREP DATA ON CHANGE RATE OF PERCENTAGE OF NEWLY REGISTERED RECHARGABLE CARS PER MUNICIPALITY AND YEAR
+
+path_cars_data = 'kpi1_calculations.xlsx'  # calculations based on trafa data
+df_raw_cars = pd.read_excel(path_cars_data)
+
+df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row 0
+df_raw_cars = df_raw_cars.drop([0, 1])  # drop usless rows
+df_raw_cars = df_raw_cars.reset_index(drop=True)
+
+df_raw_cars['electricCarChangePercent'] = df_raw_cars['Procentenheter förändring av andel laddbara bilar 2015-2022']
+df_raw_cars['electricCarChangeYearly'] = df_raw_cars.apply(
+    lambda x: {2015: x[2015], 2016: x[2016], 2017: x[2017], 2018: x[2018], 2019: x[2019], 2020: x[2020], 2021: x[2021], 2022: x[2022]}, axis=1)
+
+df_cars = df_raw_cars.filter(
+    ['Kommun', 'electricCarChangePercent', 'electricCarChangeYearly'], axis=1)
 
 df_master = df_master.merge(df_cars, on='Kommun', how='left')
 
 
-# MERGE ALL DATA IN LIST
+# MERGE ALL DATA IN LIST TO RULE THEM ALL
 
 temp = []  # remane the columns
 for i in range(len(df_cem)):
@@ -172,7 +195,9 @@ for i in range(len(df_cem)):
         'emissionChangePercent': df_master.iloc[i]['emissionChangePercent'],
         'hitNetZero': df_master.iloc[i]['hitNetZero'],
         'budgetRunsOut': df_master.iloc[i]['budgetRunsOut'],
-        'electricCars': df_master.iloc[i]['electricCars']
+        'electricCars': df_master.iloc[i]['electricCars'],
+        'electricCarChangePercent': df_master.iloc[i]['electricCarChangePercent'],
+        'electricCarChangeYearly': df_master.iloc[i]['electricCarChangeYearly']
     })
 
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file

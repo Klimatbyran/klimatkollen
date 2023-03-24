@@ -19,6 +19,7 @@ const DeckGLWrapper = styled.div`
   width: 100%;`
 
 const getColor = (emission: number, boundaries: number[]): RGBAColor => {
+  const blue: RGBAColor = [145, 191, 200]
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
   const darkOrange: RGBAColor = [239, 127, 23]
@@ -27,21 +28,21 @@ const getColor = (emission: number, boundaries: number[]): RGBAColor => {
 
   if (boundaries[0] < boundaries[1]) {
     if (emission >= boundaries[4]) {
-      return pink
+      return blue
     }
     if (emission >= boundaries[3]) {
-      return red
-    }
-    if (emission >= boundaries[2]) {
-      return darkOrange
-    }
-    if (emission >= boundaries[1]) {
-      return orange
-    }
-    if (emission >= boundaries[0]) {
       return yellow
     }
-    return [145, 191, 200]
+    if (emission >= boundaries[2]) {
+      return orange
+    }
+    if (emission >= boundaries[1]) {
+      return darkOrange
+    }
+    if (emission >= boundaries[0]) {
+      return red
+    }
+    return pink
   } else {
     if (emission >= boundaries[0]) {
       return pink

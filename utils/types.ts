@@ -17,6 +17,8 @@ export type Municipality = {
   HitNetZero: number | string
   BudgetRunsOut: string
   ElectricCars: number
+  ElectricCarChangePercent: number,
+  ElectricCarChangeYearly: Array<number>,
 }
 
 export type EmissionPerYear = {

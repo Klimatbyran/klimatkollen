@@ -131,12 +131,18 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
   const municipalitiesName = municipalities.map((item) => item.Name)
   const data = municipalities.map((item) => ({
     name: item.Name,
-    emissions: selectedData == 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCars,
+    emissions: selectedData == 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCarChangePercent,
   }))
   const boundaries = {
     'Utsläppen': [0, -0.01, -0.02, -0.03, -0.10],
-    'Elbilarna': [0.30, 0.40, 0.50, 0.60, 0.70]
+    'Elbilarna': [0.04, 0.05, 0.06, 0.07, 0.08]
   }
+
+  const dataLabels = {
+    'Utsläppen': ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
+    'Elbilarna': ['4% -', '4-5%', '5-6%', '6-7%', '7-8%', '8% +']
+  }
+
   const dataHeading = {
     'Utsläppen': [
       'Utsläppsförändring sedan Parisavtalet',
@@ -159,10 +165,6 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
         text='På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.' />
     </>
 
-  const dataLabels = {
-    'Utsläppen': ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
-    'Elbilarna': ['30% -', '30-40%', '40-50%', '50-60%', '60-70%', '70% +']
-  }
   const labelColors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
 
   const handleSelectData = () => {
