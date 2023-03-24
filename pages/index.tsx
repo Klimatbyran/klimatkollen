@@ -225,6 +225,16 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
           <RadioContainer>
             <RadioInput
               type="radio"
+              id="utslappen"
+              value='Utsläppen'
+              checked={selectedData === 'Utsläppen'}
+              onChange={() => handleSelectData()}
+            />
+            <RadioLabel htmlFor="utslappen">
+              Utsläppen
+            </RadioLabel>
+            <RadioInput
+              type="radio"
               id='elbilarna'
               value='Elbilarna'
               checked={selectedData === 'Elbilarna'}
@@ -232,17 +242,6 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
             />
             <RadioLabel htmlFor="elbilarna">
               Elbilarna
-            </RadioLabel>
-            <RadioInput
-              type="radio"
-              id="utslappen"
-              value='Utsläppen'
-              checked={selectedData === 'Utsläppen'}
-              onChange={() => handleSelectData()}
-            />
-
-            <RadioLabel htmlFor="utslappen">
-              Utsläppen
             </RadioLabel>
           </RadioContainer>
           <InfoText>
