@@ -8,7 +8,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
-import {  H2, Paragraph, ParagraphBold } from '../components/Typography'
+import { H2, Paragraph, ParagraphBold } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -27,22 +27,15 @@ const Container = styled.div`
 
 
 /*
-const Nav = styled.nav<NavProps>`
       & .active {
         background-color: ${({ theme }) => theme.main};
         & :hover {
           background-color: ${({ theme }) => theme.greenGraphOne};
-        }
-      }
+
       & .inactive {
         background-color: ${({ theme }) => theme.white};
         & :hover {
           background-color: ${({ theme }) => theme.greenGraphThree};
-        }
-      }
-    }
-  }
-`
 */
 
 
@@ -50,7 +43,7 @@ const RadioContainer = styled.div`
   margin-top: 30px;
   gap: 16px;
   display: flex;
-  font-weight: bolder;
+  font-weight: bolder
 `
 
 const RadioLabel = styled.label`
@@ -65,12 +58,17 @@ const RadioLabel = styled.label`
   white-space: nowrap;
   cursor: pointer;
   margin-bottom: 8px;
+
   &:hover {
     background: ${({ theme }) => theme.greenGraphThree};
 `
 
 const RadioInput = styled.input`
   display: none;
+
+  &:checked + ${RadioLabel} {
+    background: ${({ theme }) => theme.greenGraphThree};
+  }
 `
 
 const InfoText = styled.div`
@@ -244,22 +242,22 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
             Hur går det med?
           </H2>
           <RadioContainer>
+            <RadioInput
+              type="radio"
+              value='Utsläppen'
+              checked={selectedData === 'Utsläppen'}
+              onChange={() => handleSelectData()}
+            />
             <RadioLabel>
-              <RadioInput
-                type="radio"
-                value='Utsläppen'
-                checked={selectedData === 'Utsläppen'}
-                onChange={() => handleSelectData()}
-              />
               Utsläppen
             </RadioLabel>
+            <RadioInput
+              type="radio"
+              value='Elbilarna'
+              checked={selectedData === 'Elbilarna'}
+              onChange={() => handleSelectData()}
+            />
             <RadioLabel>
-              <RadioInput
-                type="radio"
-                value='Elbilarna'
-                checked={selectedData === 'Elbilarna'}
-                onChange={() => handleSelectData()}
-              />
               Elbilarna
             </RadioLabel>
           </RadioContainer>
