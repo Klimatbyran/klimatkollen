@@ -61,7 +61,7 @@ const Footer = () => {
     <PageWrapper backgroundColor={'darkGrey'}>
       <Foot>
         <ContentWrapper>
-          <Navigation/>
+          <Navigation />
           <TextSection>
             <ParagraphBold>Vill du få nyheter om Klimatkollen?</ParagraphBold>
             <NewsletterSubscribe />

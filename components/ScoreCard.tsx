@@ -98,6 +98,7 @@ const ScoreCard = ({
           </>
         }
       />}
+      {/* Hide until we've found a better way to weight the values  
       {emissionLastYear && population && <ScoreCardSection
         heading='Koldioxidutsläpp per invånare'
         data={(emissionLastYear / population).toFixed(1) + ' ton koldioxid per år'}
@@ -119,7 +120,7 @@ const ScoreCard = ({
             </a>.
           </>
         }
-      />}
+      />} */}
       {politicalRule && <ScoreCardSection
         heading='Här styr'
         data={politicalRuleFormatted}
