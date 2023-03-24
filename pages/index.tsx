@@ -18,7 +18,8 @@ import Footer from '../components/Footer'
 import ComparisonTable from '../components/ComparisonTable'
 import MapLabel from '../components/MapLabel'
 import InfoTooltip from '../components/InfoTooltip'
-
+import ListIcon from '../public/icons/list.svg'
+import MapIcon from '../public/icons/map.svg'
 
 const Container = styled.div`
   display: flex;
@@ -30,7 +31,7 @@ const InfoText = styled.div`
 `
 
 const ToggleButton = styled.button`
-  width: 96px;
+  width: 112px;
   margin-top: 3rem;
   margin-bottom: 1rem;
   color: ${({ theme }) => theme.paperWhite};
@@ -39,10 +40,17 @@ const ToggleButton = styled.button`
   border: 1;
   padding: 0.8rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   fill: ${({ theme }) => theme.greenGraphTwo};
   &:hover {
     background: ${({ theme }) => theme.darkGrey};
   }
+`
+
+const ToggleText = styled.p`
+  margin-left: 8px;
 `
 
 const MunicipalityContainer = styled.div`
@@ -165,7 +173,20 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
             </p>
           </InfoText>
           <ToggleButton onClick={handleToggle}>
-            {toggleViewMode == 'karta' ? 'Se lista' : 'Se karta'}
+            {toggleViewMode == 'karta' ?
+              <>
+                <ListIcon />
+                <ToggleText>
+                  Se lista
+                </ToggleText>
+              </> :
+              <>
+                <MapIcon />
+                <ToggleText>
+                  Se karta
+                </ToggleText>
+              </>
+            }
           </ToggleButton>
           <MunicipalityContainer>
             <div style={{ display: toggleViewMode == 'karta' ? 'block' : 'none' }}>
@@ -186,7 +207,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
             </div>
           </MunicipalityContainer>
         </Container>
-      </PageWrapper>
+      </PageWrapper >
     </>
   )
 }
