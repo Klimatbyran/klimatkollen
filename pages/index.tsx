@@ -8,7 +8,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
-import { ParagraphBold, Paragraph } from '../components/Typography'
+import { ParagraphBold } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -37,13 +37,12 @@ const ToggleButton = styled.button`
   color: ${({ theme }) => theme.paperWhite};
   background: transparent;
   border-radius: 4px;
-  border: 1;
+  border: 1px solid white;
   padding: 0.8rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  fill: ${({ theme }) => theme.greenGraphTwo};
   &:hover {
     background: ${({ theme }) => theme.darkGrey};
   }
