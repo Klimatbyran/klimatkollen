@@ -6,7 +6,7 @@ import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
 import { ParagraphBold, Paragraph } from '../components/Typography'
-import { EmissionService } from '../utils/emissionService'
+import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import Icon from '../public/icons/arrow.svg'
@@ -185,7 +185,7 @@ const Kommuner = ({ municipalities }: PropsType) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const municipalities = new EmissionService().getMunicipalities()
+  const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
 
   res.setHeader(

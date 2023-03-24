@@ -5,6 +5,7 @@ import json
 import numpy as np
 import pandas as pd
 
+
 # Budget i ton från och med 2020
 budget = 170000000  # +40948459*50.81/46.29+40948459*50.81/46.29*1.05
 
@@ -119,7 +120,34 @@ df_raw_crunched['budgetRunsOut'] = [i.date() if type(
 df_crunched = df_raw_crunched.filter(
     ['Kommun', 'emissionChangePercent', 'hitNetZero', 'budgetRunsOut'], axis=1)
 
-df_master = df_cem .merge(df_crunched, on='Kommun', how='left')
+df_master = df_cem.merge(df_crunched, on='Kommun', how='left')
+
+
+# LOAD AND PREP DATA FROM TRAFA ON SHARE OF ELECTIC OR HYBRID CARS IN SALES
+
+path_car_data = 'kpi1_trafa.xlsx'  # data on sold cars by trafa
+df_raw_cars = pd.read_excel(path_car_data, sheet_name='Tabell 5 Personbil')
+
+df_raw_cars.columns = df_raw_cars.iloc[3]  # name columns after row 4
+df_raw_cars = df_raw_cars.drop([0, 1, 2, 3, 4, 5])  # drop usless rows
+df_raw_cars = df_raw_cars.reset_index(drop=True)
+
+# Clean data in columns
+df_raw_cars['Kommun'] = df_raw_cars['Municipality'].str.strip() 
+df_raw_cars = df_raw_cars.drop(df_raw_cars[df_raw_cars['Kommun'] == 'Okänd Kommun   '].index)
+df_raw_cars = df_raw_cars.dropna(subset=['Kommun'])
+df_raw_cars['electricity'] = df_raw_cars['Electricity'].replace(' –', 0)
+df_raw_cars['plugIn'] = df_raw_cars['Plug-in '].replace(' –', 0)
+
+df_raw_cars['electricCars'] = ((df_raw_cars['electricity'] + df_raw_cars['plugIn'])/df_raw_cars['Total'])*100
+
+df_cars = df_raw_cars.filter(['Kommun', 'electricCars'], axis=1)
+df_cars.loc[df_cars['Kommun'] == 'Upplands-Väsby', 'Kommun'] = 'Upplands Väsby'  # special solution for Upplands-Väsby which is named differently in the two dataframes
+
+df_master = df_master.merge(df_cars, on='Kommun', how='left')
+
+
+# MERGE ALL DATA IN LIST
 
 temp = []  # remane the columns
 for i in range(len(df_cem)):
@@ -143,8 +171,9 @@ for i in range(len(df_cem)):
         'futureEmission': df_master.iloc[i]['Linear Emission'],
         'emissionChangePercent': df_master.iloc[i]['emissionChangePercent'],
         'hitNetZero': df_master.iloc[i]['hitNetZero'],
-        'budgetRunsOut': df_master.iloc[i]['budgetRunsOut']
+        'budgetRunsOut': df_master.iloc[i]['budgetRunsOut'],
+        'electricCars': df_master.iloc[i]['electricCars']
     })
 
-with open('emission-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
+with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
     json.dump(temp, json_file, ensure_ascii=False, default=str)
