@@ -8,7 +8,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
-import {  H2, Paragraph, ParagraphBold } from '../components/Typography'
+import { H2, Paragraph, ParagraphBold } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -133,24 +133,25 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
   const dataHeading = {
     'Utsläppen': [
       'Utsläppsförändring sedan Parisavtalet',
-      'På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.'
+
     ],
     'Elbilarna': [
       'Andel elbilar i nyförsäljning',
       'På kartan visas andelen elbilar av totala antalet bilar som såldes 2022.'
     ],
   }
-  const dataColumnHeader = {
-    'Utsläppen': [
-      'Utsläppsförändring',
-      'På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.'
-    ],
-    'Elbilarna': [
-      'Andel elbilar',
-      'Procent av nysålda bilar i kommunen som var elbilar 2022.'
-    ],
-  }
-  const columnHeader = selectedData === 'Elbilarna' ? 'Andel elbilar' : 'Utsläppsförändring'
+  const columnHeader = selectedData === 'Elbilarna' ?
+    <>
+      Andel elbilar
+      <InfoTooltip
+        text='Procent av nysålda bilar i kommunen som var elbilar 2022.' />
+    </> :
+    <>
+      Utsläppsförändring
+      <InfoTooltip
+        text='På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.' />
+    </>
+
   const dataLabels = {
     'Utsläppen': ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     'Elbilarna': ['30% -', '30-40%', '40-50%', '50-60%', '60-70%', '70% +']
@@ -203,13 +204,6 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       },
       {
         header: columnHeader,
-        // () => {
-        //   return (
-        //     <> {/*  fixme fortsätt här, behöver ändra kolumnheader när man togglar! behöver också fixa redirect baserat på vad som är på karta/lista */}
-        //       {dataColumnHeader[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][0]}
-        //       <InfoTooltip text={dataColumnHeader[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]} />
-        //     </>)
-        // },
         cell: (row) => convertToPercent(row.renderValue()),
         accessorKey: 'emissions',
       },
@@ -229,23 +223,23 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
             Hur går det med?
           </H2>
           <RadioContainer>
-              <RadioInput
-                type="radio"
-                id='elbilarna'
-                value='Elbilarna'
-                checked={selectedData === 'Elbilarna'}
-                onChange={() => handleSelectData()}
-              />
-              <RadioLabel htmlFor="elbilarna">
+            <RadioInput
+              type="radio"
+              id='elbilarna'
+              value='Elbilarna'
+              checked={selectedData === 'Elbilarna'}
+              onChange={() => handleSelectData()}
+            />
+            <RadioLabel htmlFor="elbilarna">
               Elbilarna
             </RadioLabel>
-              <RadioInput
-                type="radio"
-                id="utslappen"
-                value='Utsläppen'
-                checked={selectedData === 'Utsläppen'}
-                onChange={() => handleSelectData()}
-              />
+            <RadioInput
+              type="radio"
+              id="utslappen"
+              value='Utsläppen'
+              checked={selectedData === 'Utsläppen'}
+              onChange={() => handleSelectData()}
+            />
 
             <RadioLabel htmlFor="utslappen">
               Utsläppen
