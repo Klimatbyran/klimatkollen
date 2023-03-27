@@ -43,6 +43,7 @@ const TableRow = styled.tr`
 `
 
 type TableProps<T extends object> = {
+    rank?: number
     data: T[]
     columns: ColumnDef<T>[]
 }

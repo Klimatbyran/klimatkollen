@@ -133,6 +133,42 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
     name: item.Name,
     dataPoint: selectedData == 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCarChangePercent,
   }))
+  const [rankedData, setRankedData] = useState<{
+    [key: string]: Array<{ name: string, dataPoint: number, rank: number }>
+  }>({})
+
+  useMemo(() => {
+    const dataSets = {
+      Elbilarna: municipalities.map((item) => ({
+        name: item.Name,
+        dataPoint: item.ElectricCarChangePercent,
+      })),
+      Utsläppen: municipalities.map((item) => ({
+        name: item.Name,
+        dataPoint: item.HistoricalEmission.EmissionLevelChangeAverage,
+      })),
+    }
+
+    const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
+      const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint);
+      const rankedData = sortedData.map((item, index) => ({
+        ...item,
+        rank: index + 1,
+      }));
+      return rankedData;
+    }
+    
+    const newRankedData = {}
+    for (const dataSetKey in dataSets) {
+      if (dataSets.hasOwnProperty(dataSetKey)) {
+        const sortAscending = dataSetKey === 'Elbilarna' ? false : true;
+        newRankedData[dataSetKey] = calculateRankings(dataSets[dataSetKey], sortAscending);
+      }
+    }
+
+    setRankedData(newRankedData)
+  }, [municipalities])
+
   const boundaries = {
     'Utsläppen': [0, -0.01, -0.02, -0.03, -0.10],
     'Elbilarna': [0.04, 0.05, 0.06, 0.07, 0.08]
@@ -203,7 +239,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
     () => [
       {
         header: 'Ranking',
-        cell: (row) => row.cell.row.index + 1,
+        cell: (row) => row.cell.row.index + 1, // fixme fortsätt här
         accessorKey: 'index',
       },
       {
@@ -289,7 +325,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
               <Map data={data} boundaries={boundaries[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} />
             </div>
             <div style={{ display: toggleViewMode == 'lista' ? 'block' : 'none', width: '100%' }}>
-              <ComparisonTable data={data} columns={cols} />
+              <ComparisonTable data={rankedData[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} columns={cols} />
             </div>
           </MunicipalityContainer>
           <DropDown
