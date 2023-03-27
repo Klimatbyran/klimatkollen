@@ -18,7 +18,7 @@ const INITIAL_VIEW_STATE = {
 const DeckGLWrapper = styled.div`
   width: 100%;`
 
-const getColor = (emission: number, boundaries: number[]): RGBAColor => {
+const getColor = (dataPoint: number, boundaries: number[]): RGBAColor => {
   const blue: RGBAColor = [145, 191, 200]
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
@@ -27,39 +27,39 @@ const getColor = (emission: number, boundaries: number[]): RGBAColor => {
   const pink: RGBAColor = [239, 48, 84]
 
   if (boundaries[0] < boundaries[1]) {
-    if (emission >= boundaries[4]) {
+    if (dataPoint >= boundaries[4]) {
       return blue
     }
-    if (emission >= boundaries[3]) {
+    if (dataPoint >= boundaries[3]) {
       return yellow
     }
-    if (emission >= boundaries[2]) {
+    if (dataPoint >= boundaries[2]) {
       return orange
     }
-    if (emission >= boundaries[1]) {
+    if (dataPoint >= boundaries[1]) {
       return darkOrange
     }
-    if (emission >= boundaries[0]) {
+    if (dataPoint >= boundaries[0]) {
       return red
     }
     return pink
   } else {
-    if (emission >= boundaries[0]) {
+    if (dataPoint >= boundaries[0]) {
       return pink
     }
-    if (emission >= boundaries[1]) {
+    if (dataPoint >= boundaries[1]) {
       return red
     }
-    if (emission >= boundaries[2]) {
+    if (dataPoint >= boundaries[2]) {
       return darkOrange
     }
-    if (emission >= boundaries[3]) {
+    if (dataPoint >= boundaries[3]) {
       return orange
     }
-    if (emission >= boundaries[4]) {
+    if (dataPoint >= boundaries[4]) {
       return yellow
     }
-    return [145, 191, 200]
+    return blue
   }
 }
 
@@ -94,12 +94,12 @@ const replaceLetters = (name: string) => {
 } */
 
 type Props = {
-  emissionsLevels: Array<{ name: string; emissions: number }>
+  data: Array<{ name: string; dataPoint: number }>
   children?: ReactNode
   boundaries: number[]
 }
 
-const Map = ({ emissionsLevels, children, boundaries }: Props) => {
+const Map = ({ data, children, boundaries }: Props) => {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
@@ -113,16 +113,16 @@ const Map = ({ emissionsLevels, children, boundaries }: Props) => {
 
   const municipalityLines = municipalityData?.features?.map(({ geometry, properties }: { geometry: any, properties: any }) => {
     const name = replaceLetters(properties.name)
-    const emissions = emissionsLevels.find((e) => e.name === name)?.emissions
+    const dataPoint = data.find((e) => e.name === name)?.dataPoint
     return {
       geometry: geometry.coordinates[0][0],
       name,
-      emissions,
+      dataPoint,
     }
   })
 
-  type Emissions = {
-    emissions: number
+  type MunicipalityData = {
+    dataPoint: number
     name: string
     geometry: [number, number][]
   }
@@ -143,7 +143,7 @@ const Map = ({ emissionsLevels, children, boundaries }: Props) => {
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0, 80],
     getFillColor: (d) => {
-      return getColor((d as Emissions).emissions, boundaries)
+      return getColor((d as MunicipalityData).dataPoint, boundaries)
     },
     pickable: true,
   })
@@ -170,7 +170,7 @@ const Map = ({ emissionsLevels, children, boundaries }: Props) => {
           // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
-          html: `<p>${(object as unknown as Emissions)?.name}</p>`,
+          html: `<p>${(object as unknown as MunicipalityData)?.name}</p>`,
           style: {
             backgroundColor: 'black',
             border: '1px solid white',
@@ -191,7 +191,7 @@ const Map = ({ emissionsLevels, children, boundaries }: Props) => {
         // }}
         onClick={({ object }) => {
           // IDK what the correct type is
-          const name = (object as unknown as Emissions)?.name
+          const name = (object as unknown as MunicipalityData)?.name
           if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
         layers={[kommunLayer]}

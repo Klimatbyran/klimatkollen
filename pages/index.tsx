@@ -131,7 +131,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
   const municipalitiesName = municipalities.map((item) => item.Name)
   const data = municipalities.map((item) => ({
     name: item.Name,
-    emissions: selectedData == 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCarChangePercent,
+    dataPoint: selectedData == 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCarChangePercent,
   }))
   const boundaries = {
     'Utsläppen': [0, -0.01, -0.02, -0.03, -0.10],
@@ -286,7 +286,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
                   ))}
                 </InfoBox>
               </MapLabels>
-              <Map emissionsLevels={data} boundaries={boundaries[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} />
+              <Map data={data} boundaries={boundaries[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} />
             </div>
             <div style={{ display: toggleViewMode == 'lista' ? 'block' : 'none', width: '100%' }}>
               <ComparisonTable data={data} columns={cols} />
