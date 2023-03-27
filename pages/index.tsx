@@ -173,7 +173,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
 
   type MuniciplaityItem = {
     name: string,
-    emissions: number;
+    dataPoint: number;
   }
 
   const handleToggle = () => {
@@ -214,7 +214,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       {
         header: columnHeader,
         cell: (row) => convertToPercent(row.renderValue()),
-        accessorKey: 'emissions',
+        accessorKey: 'dataPoint',
       },
     ],
     [columnHeader]
