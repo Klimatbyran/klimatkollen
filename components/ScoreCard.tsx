@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { devices } from '../utils/devices'
 import Link from 'next/link'
 import InfoSection from './FactSection'
 

@@ -238,11 +238,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
     let percentString = 'Data saknas'
     if (typeof (rowData) == 'number') {
       const percent = (rowData * 100).toFixed(1) + '%'
-      if (selectedData == 'Utsläppen') {
-        percentString = rowData > 0 ? '+' + percent : percent
-      } else {
-        percentString = percent
-      }
+      percentString = rowData > 0 ? '+' + percent : percent
     }
     return percentString
   }
@@ -337,7 +333,7 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
               <MapLabels>
                 <InfoBox>
                   {dataLabels[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'].map((label, i) => (
-                    <MapLabel color={labelColors[i]} label={label} />
+                    <MapLabel key={i} color={labelColors[i]} label={label} />
                   ))}
                 </InfoBox>
               </MapLabels>

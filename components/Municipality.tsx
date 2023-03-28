@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import ArrowRight from '../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../public/icons/arrow-left-white.svg'
 import Info from '../public/icons/info.svg'
-import { H1, H2, H3, H4, H5, Paragraph, ParagraphBold } from './Typography'
+import { H1, H2, H3, H5, Paragraph, ParagraphBold } from './Typography'
 import BackArrow from './BackArrow'
 import MetaTags from './MetaTags'
 import InfoModal from './InfoModal'
@@ -245,7 +245,7 @@ const Municipality = (props: Props) => {
   )
 
   // Load mandate change values from ?g[] parameter in URL
-  const [mandateChanges, setMandateChanges] = useState<typeof defaultPeriods>(() => {
+  const [mandateChanges, ] = useState<typeof defaultPeriods>(() => {
     if (typeof q === 'undefined') return defaultPeriods
 
     const g = (Array.isArray(q) ? q : [q])
@@ -267,29 +267,6 @@ const Municipality = (props: Props) => {
       change: g[idx],
     }))
   })
-
-  const userEmissions = useMemo(() => {
-    const emissions: EmissionPerYear[] = []
-
-    let acc = 1
-    let total = 0
-    mandateChanges.forEach((mandateChange) => {
-      // Problem: This counts on budget to go at least all the way to 2050
-      ;[...trendingEmissions, ...budgetedEmissions.slice(trendingEmissions.length)]
-        .filter((e) => e.Year >= mandateChange.start && e.Year < mandateChange.end)
-        .forEach((budgeted) => {
-          acc = acc * mandateChange.change
-          // Problem: This is a clone of the budget and we cannot go "above it"
-          emissions.push({
-            Year: budgeted.Year,
-            CO2Equivalent: budgeted.CO2Equivalent * acc,
-          })
-          total += budgeted.CO2Equivalent * acc
-        })
-    })
-
-    return emissions
-  }, [mandateChanges, trendingEmissions, budgetedEmissions])
 
   const totalTrend = municipality.EmissionTrend.FutureCO2Emission
 

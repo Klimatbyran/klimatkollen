@@ -38,7 +38,6 @@ const ArrowIcon = styled(Icon) <{ rotateUp?: boolean }>`
   bottom: 0;
 `
 
-
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
   width: 5em;
