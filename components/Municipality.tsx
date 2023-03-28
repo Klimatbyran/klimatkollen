@@ -41,7 +41,7 @@ const InfoButtonWrapper = styled.div`
   }
 `
 
-const Flex = styled.div`
+const Grid = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -213,9 +213,7 @@ const Municipality = (props: Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const emissionLastYear = Array.isArray(municipality.HistoricalEmission.EmissionPerYear)
-    ? municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.CO2Equivalent
-    : undefined
+  const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear?.[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.CO2Equivalent
   // FIXME replace with const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear.at(-1)?.CO2Equivalent when Node has been updated >16.0.0
 
   let scrollY = 0
@@ -245,7 +243,7 @@ const Municipality = (props: Props) => {
   )
 
   // Load mandate change values from ?g[] parameter in URL
-  const [mandateChanges, ] = useState<typeof defaultPeriods>(() => {
+  const [mandateChanges,] = useState<typeof defaultPeriods>(() => {
     if (typeof q === 'undefined') return defaultPeriods
 
     const g = (Array.isArray(q) ? q : [q])
@@ -268,7 +266,7 @@ const Municipality = (props: Props) => {
     }))
   })
 
-  const totalTrend = municipality.EmissionTrend.FutureCO2Emission
+  const totalTrend = municipality.EmissionTrend.FutureCO2Emission / 1000
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
@@ -305,7 +303,9 @@ const Municipality = (props: Props) => {
           </HeaderSection>
           <GraphWrapper>
             <H2>{text}</H2>
-            <p>{body}</p>
+            <Paragraph>
+              {body}
+            </Paragraph>
             <Legends>
               {step < 3 && (
                 <Legend>
@@ -339,7 +339,7 @@ const Municipality = (props: Props) => {
               maxVisibleYear={END_YEAR}
             />
           </GraphWrapper>
-          <Flex>
+          <Grid>
             {onPreviousStep ? (
               <IconButton onClick={onPreviousStep}>
                 <ArrowLeft />
@@ -357,12 +357,12 @@ const Municipality = (props: Props) => {
                 <ArrowRight />
               </IconButton>
             )}
-          </Flex>
+          </Grid>
           {step > 1 && (
             <>
               <H3>Framtida utsläpp</H3>
               <TotalCo2 color="#EF3054">
-                Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
+                Trend: {totalTrend} tusen ton CO₂
               </TotalCo2>
               <TotalCo2 color="#6BA292">
                 Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
