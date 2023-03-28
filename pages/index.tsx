@@ -158,11 +158,23 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       return rankedData;
     }
     
-    const newRankedData = {}
+    type RankedData = {
+      [key in SelectedData]: Array<{
+        name: string;
+        dataPoint: number;
+        rank: number;
+      }>
+    }
+    
+    const newRankedData: RankedData = {
+      Elbilarna: [],
+      Utsläppen: [],
+    }
+    
     for (const dataSetKey in dataSets) {
-      if (dataSets.hasOwnProperty(dataSetKey)) {
+      if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
         const sortAscending = dataSetKey === 'Elbilarna' ? false : true;
-        newRankedData[dataSetKey] = calculateRankings(dataSets[dataSetKey], sortAscending);
+        newRankedData[dataSetKey as SelectedData] = calculateRankings(dataSets[dataSetKey as SelectedData], sortAscending);
       }
     }
 
@@ -248,7 +260,14 @@ const Kommuner = ({ municipalities, viewMode = 'karta' }: PropsType) => {
         accessorKey: 'name',
       },
       {
-        header: columnHeader,
+        header: () => {
+          return (
+            <div>
+              {selectedData === 'Elbilarna' ? 'Andel elbilar' : 'Utsläppsförändring'}
+              <InfoTooltip text={dataHeading[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]} />
+            </div>
+          )
+        },
         cell: (row) => convertToPercent(row.renderValue()),
         accessorKey: 'dataPoint',
       },

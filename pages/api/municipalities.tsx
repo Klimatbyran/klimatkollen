@@ -3,14 +3,13 @@ import { ClimateDataService } from '../../utils/climateDataService'
 
 export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
   const {
-    query: { id, name },
     method,
   } = req
 
   switch (method) {
     case 'GET':
       try {
-        let municipalities = new ClimateDataService().getMunicipalities();
+        const municipalities = new ClimateDataService().getMunicipalities();
         if (municipalities.length < 1) {
           res.status(404).json('Inga kommuner hittades')
         } else {

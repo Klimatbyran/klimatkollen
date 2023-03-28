@@ -72,7 +72,6 @@ const HeaderSection = styled.div`
 
 const TotalCo2 = styled.div`
   font-weight: 500;
-  margin: 1rem 0 0 -5px;
   padding: 0.5rem 1rem;
   border-radius: 50px;
   background-color: ${(props) => props.color};
@@ -360,7 +359,6 @@ const Municipality = (props: Props) => {
               historical={historicalEmissions}
               trend={trendingEmissions}
               budget={budgetedEmissions}
-              user={userEmissions}
               maxVisibleYear={END_YEAR}
             />
           </GraphWrapper>

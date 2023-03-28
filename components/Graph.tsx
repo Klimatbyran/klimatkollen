@@ -15,14 +15,6 @@ import styled from 'styled-components'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 
-//     userGraph
-//       .filter((f) => f !== null)
-//       .reduce((prev, curr) => {
-//         curr.acc = (prev.acc ?? 1) * curr.change
-//         curr.emitted = prev.emitted + curr.co2 * curr.acc
-//         return curr
-//       })
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -71,7 +63,6 @@ type Props = {
   historical: EmissionPerYear[]
   budget: EmissionPerYear[]
   trend: EmissionPerYear[]
-  user: EmissionPerYear[]
   maxVisibleYear: number
 }
 
@@ -82,7 +73,6 @@ const Graph = ({
   historical,
   budget,
   trend,
-  user,
   maxVisibleYear,
 }: Props) => {
   const setup = useMemo(
@@ -96,13 +86,11 @@ const Graph = ({
   )
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
   const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
-  const userDataset: Dataset = useMemo(() => emissionPerYearToDataset(user), [user])
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
       Math.max(
-        userDataset.length,
         pledgeDataset.length,
         budgetDataset.length,
         historicalDataset.length,
@@ -131,18 +119,6 @@ const Graph = ({
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
-            },
-            {
-              // @ts-ignore
-              id: 'usergrap',
-              fill: true,
-              data: userDataset,
-              borderWidth: 2,
-              borderColor: 'rgb(239, 191, 23)',
-              backgroundColor: 'rgba(239, 191, 23, 0.2)',
-              pointRadius: 0,
-              tension: 0.15,
-              hidden: step < 3,
             },
             {
               // @ts-ignore

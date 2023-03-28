@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import styled from 'styled-components'
-import { getCoreRowModel, useReactTable, flexRender, SortingState, getSortedRowModel, Row } from '@tanstack/react-table'
+import { getCoreRowModel, useReactTable, flexRender, SortingState, getSortedRowModel, Row, Header } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
 import { devices } from '../utils/devices'
 
@@ -68,7 +68,7 @@ const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => 
         router.push(url)
     }
 
-    const renderHeader = (header) => {
+    const renderHeader = (header: Header<T, unknown>) => {
         return (
             <TableHeader key={header.id} colSpan={header.colSpan}>
                 {header.isPlaceholder ? null : (
@@ -88,14 +88,6 @@ const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => 
                     </div>
                 )}
             </TableHeader>
-        )
-    }
-
-    const renderCell = (cell) => {
-        return (
-            <TableData key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-            </TableData>
         )
     }
 
