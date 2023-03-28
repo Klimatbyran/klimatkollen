@@ -2,7 +2,15 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 import styled from 'styled-components'
-import { getCoreRowModel, useReactTable, flexRender, SortingState, getSortedRowModel, Row, Header } from '@tanstack/react-table'
+import {
+    getCoreRowModel,
+    useReactTable,
+    flexRender,
+    SortingState,
+    getSortedRowModel,
+    Row,
+    Header
+} from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
 import { devices } from '../utils/devices'
 
@@ -63,8 +71,8 @@ const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => 
     const handleRowClick = (row: Row<T>) => {
         const cells = row.getAllCells()
         const value = cells.at(1)?.renderValue()
-        const url = typeof value === 'string' ? `/kommun/${value.toLowerCase()}` : '/404'
-        router.push(url)
+        const route = typeof value === 'string' ? `/kommun/${value.toLowerCase()}` : '/404'
+        router.push(route)
     }
 
     const renderHeader = (header: Header<T, unknown>) => {
