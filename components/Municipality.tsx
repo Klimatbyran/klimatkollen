@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import ArrowRight from '../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../public/icons/arrow-left-white.svg'
 import Info from '../public/icons/info.svg'
+import EVCar from '../public/icons/ev_car.svg'
 import { H1, H2, H3, H5, Paragraph, ParagraphBold } from './Typography'
 import BackArrow from './BackArrow'
 import MetaTags from './MetaTags'
@@ -15,10 +16,10 @@ import PageWrapper from './PageWrapper'
 import DropDown from './DropDown'
 import Graph from './Graph'
 import ScoreCard from './ScoreCard'
+import FactSection from './FactSection'
 import { IconButton } from './shared'
 import { devices } from '../utils/devices'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
-import FactSection from './FactSection'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -88,6 +89,11 @@ const Bottom = styled.div`
   }
 `
 
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
 const StyledH2 = styled(H2)`
   margin-top: 32px;
   margin-bottom: 32px;
@@ -95,8 +101,7 @@ const StyledH2 = styled(H2)`
 `
 
 const StyledH5 = styled(H5)`
-  margin-top: 24px;
-  margin-bottom: 24px;
+  margin: 32px 0 32px 16px;
 `
 
 const DropDownSection = styled.div`
@@ -377,9 +382,12 @@ const Municipality = (props: Props) => {
         <Paragraph>
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </Paragraph>
-        <StyledH5> {/* FIXME add icon */}
-          Elbilarna
-        </StyledH5>
+        <FlexContainer>
+          <EVCar />
+          <StyledH5>
+            Elbilarna
+          </StyledH5>
+        </FlexContainer>
         <FactSection
           heading='Lorem ipsum'
           data={(municipality.ElectricCarChangePercent * 100).toFixed(1) + '%'}

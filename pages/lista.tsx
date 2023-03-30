@@ -8,7 +8,7 @@ import Kommuner from './index';
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
-  const viewMode = 'karta'
+  const viewMode = 'lista'
 
   res.setHeader(
     'Cache-Control',

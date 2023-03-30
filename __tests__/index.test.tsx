@@ -2,18 +2,17 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Home from '../pages'
 import { useRouter } from 'next/router'
-import { SpyInstanceFn } from 'vitest'
+import { SpyInstanceFn, vi } from 'vitest'
+import DropDown from '../components/DropDown'
 
-vi.mock('../public/icons/arrow-down.svg', () => ({ default: 'svg' }))
-vi.mock('../public/icons/arrow-right-white.svg', () => ({ default: 'svg' }))
-vi.mock('../public/icons/arrow-right-green.svg', () => ({ default: 'svg' }))
-vi.mock('../public/icons/arrow.svg', () => ({ default: 'svg' }))
-vi.mock('../public/icons/list.svg', () => ({ default: 'svg' }))
-vi.mock('../public/icons/map.svg', () => ({ default: 'svg' }))
-vi.mock('../public/icons/info.svg', () => ({ default: () => 'svg' }))
+vi.mock('../public/icons/arrow-down.svg', () => ({ default: () => <span>arrow-down</span> }))
+vi.mock('../public/icons/arrow-right-white.svg', () => ({ default: () => <span>arrow-right-white</span> }))
+vi.mock('../public/icons/arrow-right-green.svg', () => ({ default: () => <span>arrow-right-green</span> }))
+vi.mock('../public/icons/arrow.svg', () => ({ default: () => <span>arrow</span> }))
+vi.mock('../public/icons/list.svg', () => ({ default: () => <span>list</span> }))
+vi.mock('../public/icons/map.svg', () => ({ default: () => <span> map</span> }))
+vi.mock('../public/icons/info.svg', () => ({ default: () => <span>info</span> }))
 vi.mock('../components/Map', () => ({ default: () => <div /> }))
-vi.mock('../components/ComparisonTable', () => ({ default: () => <div /> }))
-
 vi.mock('next/router')
 
 const setup = () => {
