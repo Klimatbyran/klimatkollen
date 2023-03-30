@@ -1,14 +1,20 @@
-import { GetServerSideProps } from 'next';
-import { ReactElement } from 'react';
-import Footer from '../components/Footer';
-import Layout from '../components/Layout';
+import { GetServerSideProps, NextPage } from 'next'
 import { ClimateDataService } from '../utils/climateDataService';
-import Kommuner from './index';
+import StartPage from './StartPage'
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+interface MapPageProps {
+  viewMode: string;
+  dataSource: string;
+}
+
+const MapPage: NextPage<MapPageProps> = ({ viewMode, dataSource }) => {
+  return <StartPage municipalities={} viewMode={viewMode} dataSource={dataSource} />
+};
+
+export const getServerSideProps: GetServerSideProps<MapPageProps> = async (context, { res }) => {
   const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
-  const viewMode = 'karta'
+  const { viewMode, dataSource } = context.query
 
   res.setHeader(
     'Cache-Control',
@@ -16,17 +22,13 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   )
 
   return {
-    props: { municipalities, viewMode },
+    props: {
+      municipalities,
+      viewMode: viewMode || 'karta',
+      dataSource: dataSource || 'Elbilar',
+      url: '/',
+    },
   }
 }
 
-export default Kommuner
-
-Kommuner.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <>
-      <Layout>{page}</Layout>
-      <Footer />
-    </>
-  )
-}
+export default MapPage
