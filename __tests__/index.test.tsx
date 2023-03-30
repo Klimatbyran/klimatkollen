@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event'
 import Home from '../pages'
 import { useRouter } from 'next/router'
 import { SpyInstanceFn, vi } from 'vitest'
-import DropDown from '../components/DropDown'
 
 vi.mock('../public/icons/arrow-down.svg', () => ({ default: () => <span>arrow-down</span> }))
 vi.mock('../public/icons/arrow-right-white.svg', () => ({ default: () => <span>arrow-right-white</span> }))

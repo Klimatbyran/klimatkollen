@@ -5,7 +5,18 @@ import Icon from './../public/icons/arrow.svg'
 import { Paragraph } from './Typography'
 
 
-const Label = styled.div`
+const Container = styled.div`
+  padding-left: 0.87rem;
+  padding-top: 1.2rem;
+  padding-bottom: 0.5rem;
+  @media only screen and (${devices.tablet}) {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+`
+
+const LabelBox = styled.div`
   flex-shrink: 1;
   display: flex;
   align-items: center;
@@ -50,21 +61,39 @@ const StyledParagraph = styled(Paragraph)`
   }
 `
 
-type Props = {
-  color: string
-  label: string
-  rotateUp?: boolean
+type LabelProps = {
+  color: string;
+  text: string;
 }
 
-const MapLabel = ({ color, label, rotateUp = false}: Props) => {
+const Label = ({ color, text }: LabelProps) => {
   return (
-    <Label>
+    <LabelBox>
       <Square color={color}>
         {/* FIXME needed? <ArrowIcon rotateUp={rotateUp} />*/}
       </Square>
-      <StyledParagraph>{label}</StyledParagraph>
-    </Label>
+      <StyledParagraph>
+        {text}
+      </StyledParagraph>
+    </LabelBox>
   )
 }
 
-export default MapLabel
+const labelColors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
+
+type MapLabelsProps = {
+  labels: { [key: string]: string[] }
+  selectedData: string
+}
+
+const MapLabels = ({ labels, selectedData }: MapLabelsProps) => {
+  return (
+    <Container>
+      {labels[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'].map((label, i) => (
+        <Label key={i} color={labelColors[i]} text={label} />
+      ))}
+    </Container>
+  )
+}
+
+export default MapLabels

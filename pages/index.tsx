@@ -16,10 +16,11 @@ import { devices } from '../utils/devices'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import ComparisonTable from '../components/ComparisonTable'
-import MapLabel from '../components/MapLabel'
+import MapLabels from '../components/MapLabels'
 import InfoTooltip from '../components/InfoTooltip'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
+import ToggleButton from '../components/ToggleButton'
 
 const Container = styled.div`
   display: flex;
@@ -61,28 +62,6 @@ const InfoText = styled.div`
   margin-top: 3rem;
 `
 
-const ToggleButton = styled.button`
-  width: 112px;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  color: ${({ theme }) => theme.paperWhite};
-  background: transparent;
-  border-radius: 4px;
-  border: 1px solid white;
-  padding: 0.8rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    background: ${({ theme }) => theme.darkGrey};
-  }
-`
-
-const ToggleText = styled.p`
-  margin-left: 8px;
-`
-
 const MunicipalityContainer = styled.div`
   position: relative;
   overflow-y: scroll;
@@ -103,20 +82,6 @@ const MunicipalityContainer = styled.div`
   }
 `
 
-const MapLabels = styled.div`
-  padding-left: 0.87rem;
-  padding-top: 1.2rem;
-  @media only screen and (${devices.tablet}) {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-`
-
-const InfoBox = styled.div`
-  padding-bottom: 0.5rem;
-`
-
 type SelectedData = 'Utsläppen' | 'Elbilarna'
 
 type PropsType = {
@@ -128,14 +93,26 @@ const StartPage = ({ municipalities, viewMode = 'karta' }: PropsType) => {
   const [selectedData, setSelectedData] = useState<SelectedData>('Elbilarna')
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
   const router = useRouter()
+
+  const [rankedData, setRankedData] = useState<{
+    [key: string]: Array<{ name: string, dataPoint: number, rank: number }>
+  }>({})
+
   const municipalitiesName = municipalities.map((item) => item.Name)
+
   const data = municipalities.map((item) => ({
     name: item.Name,
     dataPoint: selectedData == 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCarChangePercent,
   }))
-  const [rankedData, setRankedData] = useState<{
-    [key: string]: Array<{ name: string, dataPoint: number, rank: number }>
-  }>({})
+
+  const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
+    const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint);
+    const rankedData = sortedData.map((item, index) => ({
+      ...item,
+      rank: index + 1,
+    }));
+    return rankedData;
+  }
 
   useMemo(() => {
     const dataSets = {
@@ -149,28 +126,19 @@ const StartPage = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       })),
     }
 
-    const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
-      const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint);
-      const rankedData = sortedData.map((item, index) => ({
-        ...item,
-        rank: index + 1,
-      }));
-      return rankedData;
-    }
-    
     type RankedData = {
       [key in SelectedData]: Array<{
-        name: string;
-        dataPoint: number;
-        rank: number;
+        name: string
+        dataPoint: number
+        rank: number
       }>
     }
-    
+
     const newRankedData: RankedData = {
       Elbilarna: [],
       Utsläppen: [],
     }
-    
+
     for (const dataSetKey in dataSets) {
       if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
         const sortAscending = dataSetKey === 'Elbilarna' ? false : true;
@@ -201,6 +169,7 @@ const StartPage = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       'På kartan visas andelen elbilar av totala antalet bilar som såldes 2022.'
     ],
   }
+
   const columnHeader = selectedData === 'Elbilarna' ?
     <>
       Andel elbilar
@@ -213,15 +182,8 @@ const StartPage = ({ municipalities, viewMode = 'karta' }: PropsType) => {
         text='På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.' />
     </>
 
-  const labelColors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
-
   const handleSelectData = () => {
     setSelectedData(selectedData == 'Elbilarna' ? 'Utsläppen' : 'Elbilarna')
-  }
-
-  type MuniciplaityItem = {
-    name: string,
-    dataPoint: number;
   }
 
   const handleToggle = () => {
@@ -241,6 +203,11 @@ const StartPage = ({ municipalities, viewMode = 'karta' }: PropsType) => {
       percentString = rowData > 0 ? '+' + percent : percent
     }
     return percentString
+  }
+
+  type MuniciplaityItem = {
+    name: string,
+    dataPoint: number;
   }
 
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
@@ -312,31 +279,13 @@ const StartPage = ({ municipalities, viewMode = 'karta' }: PropsType) => {
               {dataHeading[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]}
             </Paragraph>
           </InfoText>
-          <ToggleButton onClick={handleToggle}>
-            {toggleViewMode == 'karta' ?
-              <>
-                <ListIcon />
-                <ToggleText>
-                  Se lista
-                </ToggleText>
-              </> :
-              <>
-                <MapIcon />
-                <ToggleText>
-                  Se karta
-                </ToggleText>
-              </>
-            }
-          </ToggleButton>
+          <ToggleButton
+            handleClick={handleToggle}
+            text={toggleViewMode == 'karta' ? 'Se lista' : 'Se karta'}
+            icon={toggleViewMode == 'karta' ? <MapIcon /> : <ListIcon />} />
           <MunicipalityContainer>
             <div style={{ display: toggleViewMode == 'karta' ? 'block' : 'none' }}>
-              <MapLabels>
-                <InfoBox>
-                  {dataLabels[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'].map((label, i) => (
-                    <MapLabel key={i} color={labelColors[i]} label={label} />
-                  ))}
-                </InfoBox>
-              </MapLabels>
+              <MapLabels labels={dataLabels} selectedData={selectedData} />
               <Map data={data} boundaries={boundaries[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} />
             </div>
             <div style={{ display: toggleViewMode == 'lista' ? 'block' : 'none', width: '100%' }}>
