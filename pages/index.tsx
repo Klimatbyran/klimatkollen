@@ -87,10 +87,11 @@ type SelectedData = 'Utsläppen' | 'Elbilarna'
 type PropsType = {
   municipalities: Array<Municipality>
   viewMode: string
+  dataSource: SelectedData
 }
 
-const StartPage = ({ municipalities, viewMode = 'karta' }: PropsType) => {
-  const [selectedData, setSelectedData] = useState<SelectedData>('Utsläppen')
+const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppen' }: PropsType) => {
+  const [selectedData, setSelectedData] = useState<SelectedData>(dataSource)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
   const router = useRouter()
 
