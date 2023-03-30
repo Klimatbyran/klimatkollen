@@ -73,7 +73,6 @@ type Props = {
   trend: EmissionPerYear[]
   user: EmissionPerYear[]
   maxVisibleYear: number
-  municipality: string
 }
 
 type Dataset = Array<{ x: number; y: number }>
@@ -85,7 +84,6 @@ const Graph = ({
   trend,
   user,
   maxVisibleYear,
-  municipality,
 }: Props) => {
   const setup = useMemo(
     () => getSetup([historical, budget, trend]),

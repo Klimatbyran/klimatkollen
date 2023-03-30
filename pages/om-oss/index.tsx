@@ -51,7 +51,7 @@ const OmOss = () => {
         title='Om oss'
         description='Om Klimatkollen'
       />
-      <PageWrapper backgroundColor='black'>
+      <PageWrapper backgroundColor='darkestGrey'>
         <Container>
           <H2>
             Om oss

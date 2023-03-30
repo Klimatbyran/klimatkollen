@@ -5,7 +5,7 @@ import { devices } from '../utils/devices'
 
 const Button = styled.button<{ icon: boolean }>`
   height: 56px;
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.darkestGrey};
   background: ${({ theme }) => theme.main};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
@@ -16,7 +16,7 @@ const Button = styled.button<{ icon: boolean }>`
   padding-left: ${({ icon }) => (icon ? '20px' : '20px')};
   padding-right: ${({ icon }) => (icon ? '20px' : '20px')};
   cursor: pointer;
-  fill: ${({ theme }) => theme.black};
+  fill: ${({ theme }) => theme.darkestGrey};
   width: 100%;
 
   @media only screen and (${devices.tablet}) {
