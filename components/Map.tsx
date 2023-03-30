@@ -91,15 +91,24 @@ const Map = ({ emissionsLevels, children }: Props) => {
     fetchData()
   }, [])
 
-  const municipalityLines = municipalityData?.features?.map(({ geometry, properties }: { geometry: any, properties: any }) => {
-    const name = replaceLetters(properties.name)
-    const emissions = emissionsLevels.find((e) => e.name === name)?.emissions
-    return {
-      geometry: geometry.coordinates[0][0],
-      name,
-      emissions,
+  const municipalityLines = municipalityData?.features?.flatMap(({ geometry, properties }: { geometry: any, properties: any }) => {
+    const name = replaceLetters(properties.name);
+    const emissions = emissionsLevels.find((e) => e.name === name)?.emissions;
+  
+    if (geometry.type === 'MultiPolygon') {
+      return geometry.coordinates.map((coords: any) => ({
+        geometry: coords[0],
+        name,
+        emissions,
+      }));
+    } else {
+      return [{
+        geometry: geometry.coordinates[0][0],
+        name,
+        emissions,
+      }];
     }
-  })
+  });
 
   type Emissions = {
     emissions: number
