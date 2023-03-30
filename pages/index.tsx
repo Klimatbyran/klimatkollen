@@ -90,7 +90,7 @@ type PropsType = {
 }
 
 const StartPage = ({ municipalities, viewMode = 'karta' }: PropsType) => {
-  const [selectedData, setSelectedData] = useState<SelectedData>('Elbilarna')
+  const [selectedData, setSelectedData] = useState<SelectedData>('Utsläppen')
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
   const router = useRouter()
 
