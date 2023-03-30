@@ -8,11 +8,12 @@ vi.mock('../public/icons/arrow-down.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/arrow-right-white.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/arrow-right-green.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/arrow.svg', () => ({ default: 'svg' }))
-vi.mock('../components/Map', () => ({
-  default: function () {
-    return <div />
-  },
-}))
+vi.mock('../public/icons/list.svg', () => ({ default: 'svg' }))
+vi.mock('../public/icons/map.svg', () => ({ default: 'svg' }))
+vi.mock('../public/icons/info.svg', () => ({ default: () => 'svg' }))
+vi.mock('../components/Map', () => ({ default: () => <div /> }))
+vi.mock('../components/ComparisonTable', () => ({ default: () => <div /> }))
+
 vi.mock('next/router')
 
 const setup = () => {

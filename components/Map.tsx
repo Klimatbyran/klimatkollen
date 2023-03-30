@@ -111,15 +111,24 @@ const Map = ({ data, children, boundaries }: Props) => {
     fetchData()
   }, [])
 
-  const municipalityLines = municipalityData?.features?.map(({ geometry, properties }: { geometry: any, properties: any }) => {
-    const name = replaceLetters(properties.name)
-    const dataPoint = data.find((e) => e.name === name)?.dataPoint
-    return {
-      geometry: geometry.coordinates[0][0],
-      name,
-      dataPoint,
+  const municipalityLines = municipalityData?.features?.flatMap(({ geometry, properties }: { geometry: any, properties: any }) => {
+    const name = replaceLetters(properties.name);
+    const dataPoint = data.find((e) => e.name === name)?.dataPoint;
+  
+    if (geometry.type === 'MultiPolygon') {
+      return geometry.coordinates.map((coords: any) => ({
+        geometry: coords[0],
+        name,
+        dataPoint,
+      }));
+    } else {
+      return [{
+        geometry: geometry.coordinates[0][0],
+        name,
+        dataPoint,
+      }];
     }
-  })
+  });
 
   type MunicipalityData = {
     dataPoint: number
