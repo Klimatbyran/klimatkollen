@@ -180,7 +180,7 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
         getTooltip={({ object }) => object && {
           html: `
-          <p>${(object as unknown as MunicipalityData)?.name}: ${(object as unknown as MunicipalityData)?.dataPoint.toFixed(1)}</p>
+          <p>${(object as unknown as MunicipalityData)?.name}: ${((object as unknown as MunicipalityData)?.dataPoint*100).toFixed(1)}</p>
           `,
           style: {
             backgroundColor: 'black',
