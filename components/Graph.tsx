@@ -102,6 +102,7 @@ const Graph = ({
 
   return (
     <Container>
+      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{
@@ -190,17 +191,6 @@ const Graph = ({
                 callback: (a, _idx) => {
                   return ((a as number) / 1000).toString()
                 },
-              },
-              title: {
-                display: true,
-                text: 'Tusen ton CO₂',
-                color: 'white',
-                font: {
-                  family: 'Roboto',
-                  size: 15,
-                  weight: '300',
-                },
-                padding: { top: 10, bottom: 0 },
               },
             },
           },
