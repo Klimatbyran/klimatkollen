@@ -163,11 +163,11 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   const dataHeading = {
     'Utsläppen': [
       'Utsläppsförändring sedan Parisavtalet',
-      'På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.'
+      'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.'
     ],
     'Elbilarna': [
-      'Andel elbilar i nyförsäljning',
-      'På kartan visas andelen elbilar av totala antalet bilar som såldes 2022.'
+      'Ökningstakt andel elbilar sedan Parisavtalet',
+      'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015-2022, angivet i procentenheter per år.'
     ],
   }
 
@@ -175,7 +175,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
     <>
       Andel elbilar
       <InfoTooltip
-        text='Procent av nysålda bilar i kommunen som var elbilar 2022.' />
+        text='Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år.' />
     </> :
     <>
       Utsläppsförändring
@@ -224,7 +224,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
         header: () => {
           return (
             <div>
-              {selectedData === 'Elbilarna' ? 'Andel elbilar' : 'Utsläppsförändring'}
+              {selectedData === 'Elbilarna' ? 'Ökning elbilar' : 'Utsläppsförändring'}
               <InfoTooltip text={dataHeading[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]} />
             </div>
           )
@@ -240,7 +240,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
     <>
       <MetaTags
         title="Klimatkollen — Få koll på Sveriges klimatomställning"
-        description="Hur går det med utsläppsminskningarna i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
+        description="Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
       />
       <PageWrapper backgroundColor='darkestGrey'>
         <Container>

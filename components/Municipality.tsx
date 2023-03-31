@@ -160,30 +160,28 @@ const STEPS: {
   [index: number]: {
     text: string
     buttonText: string
-    body: ShareTextFn
+    body: string
     shareText: ShareTextFn
   }
 } = {
   0: {
     text: 'Historiska utsläpp',
     buttonText: 'Historiskt',
-    body: (name) => `Koldioxidutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
+    body: 'Koldioxidutsläpp i kommunen sedan 1990.',
     shareText: (_name) =>
       `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   1: {
     text: 'För att nå Parisavtalet',
     buttonText: 'Parisavtalet',
-    body: (name) =>
-      `För att vara i linje med Parisavtalet behöver ${name} minska sina utsläpp med X% per år.`,
+    body: 'Så mycket skulle utsläppen behöva minska för att vara i linje med 1,5-gradersmålet.',
     shareText: (_name) =>
       `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   2: {
     text: 'Om vi fortsätter som idag',
     buttonText: 'Trend',
-    body: (_name) =>
-      'Om klimatutsläppen följer nuvarande trend kommer koldioxidbudgeten att ta slut 2024.',
+    body: 'Utsläppen de kommande åren baserat på nuvarande trend.',
     shareText: (_name) =>
       `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
@@ -307,7 +305,9 @@ const Municipality = (props: Props) => {
             )}
           </HeaderSection>
           <GraphWrapper>
-            <H2>{text}</H2>
+            <H2>
+              {text}
+            </H2>
             <Paragraph>
               {body}
             </Paragraph>
@@ -367,7 +367,7 @@ const Municipality = (props: Props) => {
             <>
               <H3>Framtida utsläpp</H3>
               <TotalCo2 color="#EF3054">
-                Trend: {totalTrend} tusen ton CO₂
+                Trend: {totalTrend.toFixed(1)} tusen ton CO₂
               </TotalCo2>
               <TotalCo2 color="#6BA292">
                 Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
@@ -380,7 +380,8 @@ const Municipality = (props: Props) => {
           Omställning
         </StyledH2>
         <Paragraph>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Här visas nyckeltal för hur det går med klimatomställningen i kommunerna. Först ut är trafikutsläppen och övergången från
+          fossilbilar till laddbara bilar. Fler nyckeltal tillkommer.
         </Paragraph>
         <FlexContainer>
           <EVCar />
@@ -389,9 +390,12 @@ const Municipality = (props: Props) => {
           </StyledH5>
         </FlexContainer>
         <FactSection
-          heading='Lorem ipsum'
+          heading='Ökning elbilar'
           data={(municipality.ElectricCarChangePercent * 100).toFixed(1) + '%'}
-          info={<>Lorem ipsum</>}
+          info={
+            <>
+              Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år
+            </>}
         />
       </PageWrapper>
       <PageWrapper backgroundColor={'darkGrey'}>
@@ -420,21 +424,25 @@ const Municipality = (props: Props) => {
         {step === 0 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text={`Koldioxidutsläpp i kommunen sedan ${historicalEmissions[0].Year}.`}
+            text={`Koldioxidutsläpp i kommunen mellan 1990 och 2020, vilket är senast tillgängliga data. 
+            Basår för beräkningar av Sveriges klimatutsläpp är 1990.`}
             scrollY={scrollY}
           />
         )}
         {step === 1 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text="Den minskning av koldioxidutsläpp som krävs för att vara i linje med Parisavtalet och den utsläppsbudget som motsvarar 1,5 graders uppvärmning, visad som exponentiellt avtagande, det vill säga där utsläppen minskar med en viss procent varje år."
+            text="Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som 
+            motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande, 
+            det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är 2020, vilket är senast tillgängliga data."
             scrollY={scrollY}
           />
         )}
         {step === 2 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text="Trendlinjen är baserad på årliga utsläpp i kommunen sedan Parisavtalet 2015."
+            text="Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015. 
+            Hacket i kurvan för vissa kommuner beror på att genomsnittet är högre än det senaste årets nivå."
             scrollY={scrollY}
           />
         )}

@@ -287,6 +287,22 @@ const OmOss = () => {
               </>}
           />
           <ToggleSection
+            header='Postkodprojektet'
+            text={
+              <Paragraph>
+                Under 2023 får Klimatkollen stöd av{' '}
+                <a href='https://postkodstiftelsen.se/'
+                  target='_blank'
+                  rel='noreferrer'>
+                  Postkodstiftelsen
+                </a>{' '}
+                för att ta tempen på hur det går med klimatomställningen i kommunerna.
+                I dag kan du se hur det går med koldioxidutsläppen. Nu ska vi även visa vad kommunerna gör för att minska dem.
+                Vi utgår ifrån de största utsläppssektorerna och visar sedan hur det går med viktiga omställningar inom dessa sektorer,
+                genom att presentera statistik om utvalda nyckeltal t, ett nyckeltal per omställning.
+              </Paragraph>}
+          />
+          <ToggleSection
             header='Tidigare projekt'
             text={
               <>
@@ -295,25 +311,25 @@ const OmOss = () => {
                   utsläppseffekterna av partiernas klimatpolitik:
                   <OrderedList>
                     <ListItem>
-                      <b>Klimatmål</b><br/>
+                      <b>Klimatmål</b><br />
                       En{' '}
                       <a href='https://klimatkollen.se/partier'
                         target='_blank'
                         rel='noreferrer'>
                         analys
                       </a>{' '}
-                      av riksdagspartiernas klimatmål, tillsammans med forskarnätverket Researchers’ Desk, Världsnaturfonden WWF, Våra barns klimat 
+                      av riksdagspartiernas klimatmål, tillsammans med forskarnätverket Researchers’ Desk, Världsnaturfonden WWF, Våra barns klimat
                       och ClimateView, i samarbete med PwC och Naturskyddsföreningen. Analysen visade att sex av åtta partier missar Parisavtalets 1,5-gradersmål.
                     </ListItem>
                     <ListItem>
-                      <b>Utsläppsberäkning</b><br/>
+                      <b>Utsläppsberäkning</b><br />
                       <a href='https://klimatkollen.se/utslappsberakningar'
                         target='_blank'
                         rel='noreferrer'>
                         Utsläppsberäkning
                       </a>{' '}
-                      av riksdagspartiernas politik gällande tolv centrala klimatåtgärder. Bakom uträkningarna står Klimatkollen, 
-                      Världsnaturfonden WWF, ClimateView, Naturskyddsföreningen och Våra barns klimat. Beräkningarna visade att den 
+                      av riksdagspartiernas politik gällande tolv centrala klimatåtgärder. Bakom uträkningarna står Klimatkollen,
+                      Världsnaturfonden WWF, ClimateView, Naturskyddsföreningen och Våra barns klimat. Beräkningarna visade att den
                       nya regeringens politik kan öka utsläppen med 25 miljoner ton redan under mandatperioden 2022–2026.
                     </ListItem>
                   </OrderedList>
