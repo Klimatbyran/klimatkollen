@@ -84,14 +84,14 @@ const labelColors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91
 
 type MapLabelsProps = {
   labels: string[]
-  selectedData: string
+  rotations: boolean[]
 }
 
-const MapLabels = ({ labels, selectedData }: MapLabelsProps) => {
+const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
   return (
     <Container>
       {labels.map((label, i) => (
-        <Label key={i} color={labelColors[i]} text={label} />
+        <Label key={i} color={labelColors[i]} text={label} rotateUp={rotations[i]} />
       ))}
     </Container>
   )

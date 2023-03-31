@@ -251,7 +251,9 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
             icon={toggleViewMode === 'karta' ? <MapIcon /> : <ListIcon />} />
           <MunicipalityContainer>
             <div style={{ display: toggleViewMode === 'karta' ? 'block' : 'none' }}>
-              <MapLabels labels={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['labels']} selectedData={selectedData} />
+              <MapLabels 
+              labels={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['labels']}
+              rotations={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['labelRotateUp']} />
               <Map data={data} boundaries={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['boundaries']} />
             </div>
             <div style={{ display: toggleViewMode === 'lista' ? 'block' : 'none', width: '100%' }}>
