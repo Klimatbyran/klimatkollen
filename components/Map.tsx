@@ -179,12 +179,15 @@ const Map = ({ data, children, boundaries }: Props) => {
           // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
-          html: `<p>${(object as unknown as MunicipalityData)?.name}</p>`,
+          html: `
+          <p>${(object as unknown as MunicipalityData)?.name}: ${(object as unknown as MunicipalityData)?.dataPoint.toFixed(1)}</p>
+          `,
           style: {
             backgroundColor: 'black',
             border: '1px solid white',
             borderRadius: '5px',
-            fontSize: '0.6em'
+            fontSize: '0.7em',
+            color: 'white'
           }
         }}
         // controller={{
