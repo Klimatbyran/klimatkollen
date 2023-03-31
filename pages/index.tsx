@@ -184,17 +184,14 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
     </>
 
   const handleSelectData = () => {
-    setSelectedData(selectedData == 'Elbilarna' ? 'Utsläppen' : 'Elbilarna')
+    if (selectedData === 'Elbilarna' && router.pathname.includes('elbilarna')) {
+      router.push('/')
+    }
+    setSelectedData(selectedData === 'Elbilarna' ? 'Utsläppen' : 'Elbilarna')
   }
 
   const handleToggle = () => {
-    if (toggleViewMode == 'karta') {
-      setToggleViewMode('lista')
-      router.push('lista', undefined, { shallow: true })
-    } else {
-      setToggleViewMode('karta')
-      router.push('karta', undefined, { shallow: true })
-    }
+    setToggleViewMode(toggleViewMode == 'lista' ? 'karta' : 'lista')
   }
 
   const convertToPercent = (rowData: unknown) => {
