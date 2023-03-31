@@ -62,15 +62,16 @@ const StyledParagraph = styled(Paragraph)`
 `
 
 type LabelProps = {
-  color: string;
-  text: string;
+  color: string
+  text: string
+  rotateUp?: boolean
 }
 
-const Label = ({ color, text }: LabelProps) => {
+const Label = ({ color, text, rotateUp = true }: LabelProps) => {
   return (
     <LabelBox>
       <Square color={color}>
-        {/* FIXME needed? <ArrowIcon rotateUp={rotateUp} />*/}
+        <ArrowIcon rotateUp={rotateUp} />
       </Square>
       <StyledParagraph>
         {text}
@@ -82,14 +83,14 @@ const Label = ({ color, text }: LabelProps) => {
 const labelColors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
 
 type MapLabelsProps = {
-  labels: { [key: string]: string[] }
+  labels: string[]
   selectedData: string
 }
 
 const MapLabels = ({ labels, selectedData }: MapLabelsProps) => {
   return (
     <Container>
-      {labels[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'].map((label, i) => (
+      {labels.map((label, i) => (
         <Label key={i} color={labelColors[i]} text={label} />
       ))}
     </Container>

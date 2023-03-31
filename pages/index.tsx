@@ -95,6 +95,23 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
   const router = useRouter()
 
+  const dataSetDescriptions = {
+    'Utsläppen': {
+      'heading': 'Utsläppsförändring sedan Parisavtalet',
+      'body': 'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
+      'boundaries': [0, -0.01, -0.02, -0.03, -0.10],
+      'labels': ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
+      'tooltip': 'Genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015, angivet i procent',
+    },
+    'Elbilarna': {
+      'heading': 'Ökningstakt andel elbilar sedan Parisavtalet',
+      'body': 'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015-2022, angivet i procentenheter per år.',
+      'boundaries': [0.04, 0.05, 0.06, 0.07, 0.08],
+      'labels': ['4% -', '4-5%', '5-6%', '6-7%', '7-8%', '8% +'],
+      'tooltip': 'Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015-2022, angivet i procentenheter per år',
+    }
+  }
+
   const [rankedData, setRankedData] = useState<{
     [key: string]: Array<{ name: string, dataPoint: number, rank: number }>
   }>({})
@@ -103,7 +120,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
 
   const data = municipalities.map((item) => ({
     name: item.Name,
-    dataPoint: selectedData == 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCarChangePercent,
+    dataPoint: selectedData === 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCarChangePercent,
   }))
 
   const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
@@ -150,38 +167,12 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
     setRankedData(newRankedData)
   }, [municipalities])
 
-  const boundaries = {
-    'Utsläppen': [0, -0.01, -0.02, -0.03, -0.10],
-    'Elbilarna': [0.04, 0.05, 0.06, 0.07, 0.08]
-  }
-
-  const dataLabels = {
-    'Utsläppen': ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
-    'Elbilarna': ['4% -', '4-5%', '5-6%', '6-7%', '7-8%', '8% +']
-  }
-
-  const dataHeading = {
-    'Utsläppen': [
-      'Utsläppsförändring sedan Parisavtalet',
-      'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.'
-    ],
-    'Elbilarna': [
-      'Ökningstakt andel elbilar sedan Parisavtalet',
-      'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015-2022, angivet i procentenheter per år.'
-    ],
-  }
-
-  const columnHeader = selectedData === 'Elbilarna' ?
-    <>
-      Andel elbilar
-      <InfoTooltip
-        text='Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år.' />
-    </> :
-    <>
-      Utsläppsförändring
-      <InfoTooltip
-        text='På kartan visas genomsnittlig årlig förändring av utsläppen i Sveriges kommuner sedan Parisavtalet 2015.' />
-    </>
+  const columnHeader = (
+    <div>
+      {selectedData === 'Elbilarna' ? 'Ökning elbilar' : 'Utsläppsförändring'}
+      <InfoTooltip text={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['tooltip']} />
+    </div>
+  )
 
   const handleSelectData = () => {
     if (selectedData === 'Elbilarna' && router.pathname.includes('elbilarna')) {
@@ -191,13 +182,13 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   }
 
   const handleToggle = () => {
-    setToggleViewMode(toggleViewMode == 'lista' ? 'karta' : 'lista')
+    setToggleViewMode(toggleViewMode === 'lista' ? 'karta' : 'lista')
   }
 
   const convertToPercent = (rowData: unknown) => {
     let percentString = 'Data saknas'
-    if (typeof (rowData) == 'number') {
-      const percent = (rowData * 100).toFixed(1) + '%'
+    if (typeof (rowData) === 'number') {
+      const percent = (rowData * 100).toFixed(1)
       percentString = rowData > 0 ? '+' + percent : percent
     }
     return percentString
@@ -221,14 +212,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
         accessorKey: 'name',
       },
       {
-        header: () => {
-          return (
-            <div>
-              {selectedData === 'Elbilarna' ? 'Ökning elbilar' : 'Utsläppsförändring'}
-              <InfoTooltip text={dataHeading[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]} />
-            </div>
-          )
-        },
+        header: () => columnHeader,
         cell: (row) => convertToPercent(row.renderValue()),
         accessorKey: 'dataPoint',
       },
@@ -271,23 +255,23 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
           </RadioContainer>
           <InfoText>
             <ParagraphBold>
-              {dataHeading[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][0]}
+              {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['heading']}
             </ParagraphBold>
             <Paragraph>
-              {dataHeading[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen'][1]}
+              {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['body']}
             </Paragraph>
           </InfoText>
           <ToggleButton
             handleClick={handleToggle}
-            text={toggleViewMode == 'karta' ? 'Se lista' : 'Se karta'}
-            icon={toggleViewMode == 'karta' ? <MapIcon /> : <ListIcon />} />
+            text={toggleViewMode === 'karta' ? 'Se lista' : 'Se karta'}
+            icon={toggleViewMode === 'karta' ? <MapIcon /> : <ListIcon />} />
           <MunicipalityContainer>
-            <div style={{ display: toggleViewMode == 'karta' ? 'block' : 'none' }}>
-              <MapLabels labels={dataLabels} selectedData={selectedData} />
-              <Map data={data} boundaries={boundaries[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} />
+            <div style={{ display: toggleViewMode === 'karta' ? 'block' : 'none' }}>
+              <MapLabels labels={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['labels']} selectedData={selectedData} />
+              <Map data={data} boundaries={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['boundaries']} />
             </div>
-            <div style={{ display: toggleViewMode == 'lista' ? 'block' : 'none', width: '100%' }}>
-              <ComparisonTable data={rankedData[selectedData == 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} columns={cols} />
+            <div style={{ display: toggleViewMode === 'lista' ? 'block' : 'none', width: '100%' }}>
+              <ComparisonTable data={rankedData[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} columns={cols} />
             </div>
           </MunicipalityContainer>
           <DropDown

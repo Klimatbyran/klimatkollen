@@ -16,7 +16,6 @@ const Tooltip = styled.div`
   color: white;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid white;
   font: 0.8em "Roboto";
   z-index: 100;
 `

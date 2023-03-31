@@ -184,7 +184,6 @@ const Map = ({ data, children, boundaries }: Props) => {
           `,
           style: {
             backgroundColor: 'black',
-            border: '1px solid white',
             borderRadius: '5px',
             fontSize: '0.7em',
             color: 'white'
