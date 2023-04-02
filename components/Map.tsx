@@ -157,6 +157,20 @@ const Map = ({ data, children, boundaries }: Props) => {
     pickable: true,
   })
 
+  function formatDataPoint(object: unknown) {
+    const dataPoint = (object as unknown as MunicipalityData)?.dataPoint
+    
+    if (dataPoint !== undefined) {
+      if (dataPoint < 0) {
+        return '—' + Math.abs(dataPoint).toFixed(1)
+      } else {
+        return (dataPoint * 100).toFixed(1)
+      }
+    } else {
+      return ''
+    }
+  }
+
   return (
     <DeckGLWrapper>
       <NextNProgress
@@ -180,7 +194,7 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
         getTooltip={({ object }) => object && {
           html: `
-          <p>${(object as unknown as MunicipalityData)?.name}: ${((object as unknown as MunicipalityData)?.dataPoint*100).toFixed(1)}</p>
+          <p>${(object as unknown as MunicipalityData)?.name}: ${formatDataPoint(object)}</p>
           `,
           style: {
             backgroundColor: 'black',
