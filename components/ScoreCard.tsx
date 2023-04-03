@@ -105,12 +105,12 @@ const ScoreCard = ({
         info={
           <>Uppgift om politiskt styre är hämtad från{' '}
             <a
-              href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
+              href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html"
               target="_blank"
               rel="noreferrer">
               Sveriges Kommuner och Regioner (SKR)
             </a>
-            . Informationen gäller föregående mandatperiod, vi väntar på ny data från SKR i mars 2023.
+            . Data uppdaterad mars 2023.
           </>}
       />}
     </StyledDiv>
