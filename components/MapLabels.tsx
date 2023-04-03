@@ -38,12 +38,12 @@ const Square = styled.div<{ color: string }>`
   position: relative;
 `
 
-const ArrowIcon = styled(Icon) <{ rotateUp?: boolean }>`
+const ArrowIcon = styled(Icon) <{ rotateup?: boolean }>`
   position: absolute;
   z-index: 1;
   margin: auto;
   left: 0;
-  ${(props) => props.rotateUp && 'transform: rotate(-90deg)'};
+  ${(props) => props.rotateup && 'transform: rotate(-90deg)'};
   right: 0;
   top: 0;
   bottom: 0;
@@ -64,14 +64,14 @@ const StyledParagraph = styled(Paragraph)`
 type LabelProps = {
   color: string
   text: string
-  rotateUp?: boolean
+  rotateup?: boolean
 }
 
-const Label = ({ color, text, rotateUp = true }: LabelProps) => {
+const Label = ({ color, text, rotateup = true }: LabelProps) => {
   return (
     <LabelBox>
       <Square color={color}>
-        <ArrowIcon rotateUp={rotateUp} />
+        <ArrowIcon rotateup={rotateup} />
       </Square>
       <StyledParagraph>
         {text}
@@ -91,7 +91,7 @@ const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
   return (
     <Container>
       {labels.map((label, i) => (
-        <Label key={i} color={labelColors[i]} text={label} rotateUp={rotations[i]} />
+        <Label key={i} color={labelColors[i]} text={label} rotateup={rotations[i]} />
       ))}
     </Container>
   )
