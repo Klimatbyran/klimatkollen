@@ -1,4 +1,4 @@
-import { RawPoliticalRule } from "../resources/RawPoliticalRule"
+import RawPoliticalRule from "../data/RawPoliticalRule"
 
 export class PolitycalRuleService {
     public getPoliticalRule(municipalityName: string) : Array<string> {
@@ -38,7 +38,7 @@ export class PolitycalRuleService {
                         case 'SD':
                             return 'Sverigedemokraterna'
                         case 'ÖP':
-                            return rawmun? rawmun.annatparti : ''
+                            return rawmun? rawmun.other : ''
                     }
                 }) as string[] 
         }
