@@ -15,7 +15,7 @@ const Row = styled.div`
 
 const InfoSection = styled.div`
   background: ${({ theme }) => theme.main};
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.darkestGrey};
   padding: 15px 10px;
   border-radius: 4px;
   margin-bottom: 10px;
