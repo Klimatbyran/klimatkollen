@@ -7,17 +7,17 @@ import { useRouter } from 'next/router'
 import ArrowRight from '../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../public/icons/arrow-left-white.svg'
 import Info from '../public/icons/info.svg'
-import { H1, H2, H3, ParagraphBold } from './Typography'
+import EVCar from '../public/icons/ev_car.svg'
+import { H1, H2, H3, H5, Paragraph, ParagraphBold } from './Typography'
 import BackArrow from './BackArrow'
 import MetaTags from './MetaTags'
 import InfoModal from './InfoModal'
 import PageWrapper from './PageWrapper'
 import DropDown from './DropDown'
 import Graph from './Graph'
-import ShareButton from './Button'
 import ScoreCard from './ScoreCard'
+import FactSection from './FactSection'
 import { IconButton } from './shared'
-import { hasShareAPI } from '../utils/navigator'
 import { devices } from '../utils/devices'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
 
@@ -42,7 +42,7 @@ const InfoButtonWrapper = styled.div`
   }
 `
 
-const Flex = styled.div`
+const Grid = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -52,11 +52,13 @@ const Flex = styled.div`
   }
 `
 
-const Top = styled.div`
+const EmissionsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 48px;
 `
+
 const CoatOfArmsImage = styled.img`
   width: 60px;
 `
@@ -69,18 +71,8 @@ const HeaderSection = styled.div`
   margin-top: 20px;
 `
 
-const BottomContainer = styled.div`
-  margin-top: 0.5rem;
-
-  @media only screen and (${devices.tablet}) {
-    gap: 0;
-    grid-template-columns: 45% auto 40%;
-  }
-`
-
 const TotalCo2 = styled.div`
   font-weight: 500;
-  margin: 1rem 0 0 -5px;
   padding: 0.5rem 1rem;
   border-radius: 50px;
   background-color: ${(props) => props.color};
@@ -97,15 +89,19 @@ const Bottom = styled.div`
   }
 `
 
-const BottomHeader = styled.div`
-  margin-bottom: 20px;
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const StyledH2 = styled(H2)`
+  margin-top: 32px;
+  margin-bottom: 32px;
   width: 100%;
 `
 
-const BottomLeft = styled.div`
-  @media only screen and (${devices.tablet}) {
-    // width: 50%;
-  }
+const StyledH5 = styled(H5)`
+  margin: 32px 0 32px 16px;
 `
 
 const DropDownSection = styled.div`
@@ -120,18 +116,6 @@ const DropDownSection = styled.div`
     text-align: center;
     align-items: center;
     padding-right: 60px;
-  }
-`
-
-const BottomShare = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  margin-top: 3.5rem;
-
-  @media only screen and (${devices.tablet}) {
-    align-items: center;
   }
 `
 
@@ -165,15 +149,6 @@ const Circle = styled.span`
   display: inline-block;
 `
 
-const Line = styled.span`
-  width: 14px;
-  height: 4px;
-  margin-bottom: 3px;
-  margin-top: 3px;
-  background-color: ${(props) => props.color};
-  display: inline-block;
-`
-
 const MANDATE_MAX_CHANGE = 2
 const MANDATE_MIN_CHANGE = 1
 
@@ -185,30 +160,28 @@ const STEPS: {
   [index: number]: {
     text: string
     buttonText: string
-    body: ShareTextFn
+    body: string
     shareText: ShareTextFn
   }
 } = {
   0: {
     text: 'Historiska utsläpp',
     buttonText: 'Historiskt',
-    body: (name) => `Koldioxidutsläppen i ${name} sedan 1990 är totalt X ton koldioxid`,
+    body: 'Koldioxidutsläpp i kommunen sedan 1990.',
     shareText: (_name) =>
       `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   1: {
     text: 'För att nå Parisavtalet',
     buttonText: 'Parisavtalet',
-    body: (name) =>
-      `För att vara i linje med Parisavtalet behöver ${name} minska sina utsläpp med X% per år.`,
+    body: 'Så mycket skulle utsläppen behöva minska för att vara i linje med 1,5-gradersmålet.',
     shareText: (_name) =>
       `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
   2: {
     text: 'Om vi fortsätter som idag',
     buttonText: 'Trend',
-    body: (_name) =>
-      'Om klimatutsläppen följer nuvarande trend kommer koldioxidbudgeten att ta slut 2024.',
+    body: 'Utsläppen de kommande åren baserat på nuvarande trend.',
     shareText: (_name) =>
       `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
   },
@@ -243,9 +216,7 @@ const Municipality = (props: Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const emissionLastYear = Array.isArray(municipality.HistoricalEmission.EmissionPerYear)
-    ? municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.CO2Equivalent
-    : undefined
+  const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear?.[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.CO2Equivalent
   // FIXME replace with const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear.at(-1)?.CO2Equivalent when Node has been updated >16.0.0
 
   let scrollY = 0
@@ -275,7 +246,7 @@ const Municipality = (props: Props) => {
   )
 
   // Load mandate change values from ?g[] parameter in URL
-  const [mandateChanges, setMandateChanges] = useState<typeof defaultPeriods>(() => {
+  const [mandateChanges,] = useState<typeof defaultPeriods>(() => {
     if (typeof q === 'undefined') return defaultPeriods
 
     const g = (Array.isArray(q) ? q : [q])
@@ -298,30 +269,7 @@ const Municipality = (props: Props) => {
     }))
   })
 
-  const userEmissions = useMemo(() => {
-    const emissions: EmissionPerYear[] = []
-
-    let acc = 1
-    let total = 0
-    mandateChanges.forEach((mandateChange) => {
-      // Problem: This counts on budget to go at least all the way to 2050
-      ;[...trendingEmissions, ...budgetedEmissions.slice(trendingEmissions.length)]
-        .filter((e) => e.Year >= mandateChange.start && e.Year < mandateChange.end)
-        .forEach((budgeted) => {
-          acc = acc * mandateChange.change
-          // Problem: This is a clone of the budget and we cannot go "above it"
-          emissions.push({
-            Year: budgeted.Year,
-            CO2Equivalent: budgeted.CO2Equivalent * acc,
-          })
-          total += budgeted.CO2Equivalent * acc
-        })
-    })
-
-    return emissions
-  }, [mandateChanges, trendingEmissions, budgetedEmissions])
-
-  const totalTrend = municipality.EmissionTrend.FutureCO2Emission
+  const totalTrend = municipality.EmissionTrend.FutureCO2Emission / 1000
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
@@ -337,32 +285,6 @@ const Municipality = (props: Props) => {
     shareUrl = `${shareUrl}?${qry}`
   }
 
-  const handleClick = async () => {
-    async function share(name: string) {
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: `Klimatkollen ${name}`,
-            text: shareText(name),
-            url: shareUrl,
-          })
-        } catch {
-          // Avoid unhandled promise rejection
-          console.debug('Share cancelled')
-        }
-      } else {
-        if (process.env.NODE_ENV !== 'production') {
-          alert(
-            'This is a fake share dialog. Visit using https:// on a mobile device to actually test it',
-          )
-        }
-        // This should not be reached
-        throw new Error('This should not be reached.')
-      }
-    }
-    share(municipality.Name)
-  }
-
   return (
     <>
       <MetaTags
@@ -372,7 +294,7 @@ const Municipality = (props: Props) => {
       />
       <PageWrapper backgroundColor="darkestGrey">
         <BackArrow route={'/'} />
-        <Top>
+        <EmissionsContainer>
           <HeaderSection>
             <H1>{municipality.Name}</H1>
             {coatOfArmsImage && (
@@ -383,8 +305,12 @@ const Municipality = (props: Props) => {
             )}
           </HeaderSection>
           <GraphWrapper>
-            <H2>{text}</H2>
-            <p>{body}</p>
+            <H2>
+              {text}
+            </H2>
+            <Paragraph>
+              {body}
+            </Paragraph>
             <Legends>
               {step < 3 && (
                 <Legend>
@@ -415,11 +341,10 @@ const Municipality = (props: Props) => {
               historical={historicalEmissions}
               trend={trendingEmissions}
               budget={budgetedEmissions}
-              user={userEmissions}
               maxVisibleYear={END_YEAR}
             />
           </GraphWrapper>
-          <Flex>
+          <Grid>
             {onPreviousStep ? (
               <IconButton onClick={onPreviousStep}>
                 <ArrowLeft />
@@ -437,46 +362,56 @@ const Municipality = (props: Props) => {
                 <ArrowRight />
               </IconButton>
             )}
-          </Flex>
+          </Grid>
           {step > 1 && (
-            <BottomContainer>
+            <>
               <H3>Framtida utsläpp</H3>
               <TotalCo2 color="#EF3054">
-                Trend: {Math.round(totalTrend / 1000)} tusen ton CO₂
+                Trend: {totalTrend.toFixed(1)} tusen ton CO₂
               </TotalCo2>
               <TotalCo2 color="#6BA292">
                 Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
                 CO₂
               </TotalCo2>
-            </BottomContainer>
+            </>
           )}
-        </Top>
-        <BottomShare>
-          {hasShareAPI() && (
-            <ShareButton
-              handleClick={handleClick}
-              text="Dela i dina sociala medier"
-              shareIcon
-            />
-          )}
-        </BottomShare>
+        </EmissionsContainer>
+        <StyledH2>
+          Omställning
+        </StyledH2>
+        <Paragraph>
+          Här visas nyckeltal för hur det går med klimatomställningen i kommunerna. Först ut är trafikutsläppen och övergången från
+          fossilbilar till laddbara bilar. Fler nyckeltal tillkommer.
+        </Paragraph>
+        <FlexContainer>
+          <EVCar />
+          <StyledH5>
+            Elbilarna
+          </StyledH5>
+        </FlexContainer>
+        <FactSection
+          heading='Ökning elbilar'
+          data={(municipality.ElectricCarChangePercent * 100).toFixed(1) + '%'}
+          info={
+            <>
+              Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år.
+            </>}
+        />
       </PageWrapper>
       <PageWrapper backgroundColor={'darkGrey'}>
-        <BottomHeader>
+        <StyledH2>
           <H2>Fakta om {municipality.Name}</H2>
-        </BottomHeader>
+        </StyledH2>
         <Bottom>
-          <BottomLeft>
-            <ScoreCard
-              rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
-              budget={municipality.Budget.CO2Equivalent}
-              budgetRunsOut={municipality.BudgetRunsOut}
-              emissionChangePercent={municipality.EmissionChangePercent}
-              emissionLastYear={emissionLastYear}
-              population={municipality.Population}
-              politicalRule={municipality.PoliticalRule}
-            />
-          </BottomLeft>
+          <ScoreCard
+            rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
+            budget={municipality.Budget.CO2Equivalent}
+            budgetRunsOut={municipality.BudgetRunsOut}
+            emissionChangePercent={municipality.EmissionChangePercent}
+            emissionLastYear={emissionLastYear}
+            population={municipality.Population}
+            politicalRule={municipality.PoliticalRule}
+          />
         </Bottom>
         <DropDownSection>
           <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
@@ -489,21 +424,25 @@ const Municipality = (props: Props) => {
         {step === 0 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text={`Koldioxidutsläpp i kommunen sedan ${historicalEmissions[0].Year}.`}
+            text={`Koldioxidutsläpp i kommunen mellan 1990 och 2020, vilket är senast tillgängliga data. 
+            Basår för beräkningar av Sveriges klimatutsläpp är 1990.`}
             scrollY={scrollY}
           />
         )}
         {step === 1 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text="Den minskning av koldioxidutsläpp som krävs för att vara i linje med Parisavtalet och den utsläppsbudget som motsvarar 1,5 graders uppvärmning, visad som exponentiellt avtagande, det vill säga där utsläppen minskar med en viss procent varje år."
+            text="Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som 
+            motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande, 
+            det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är 2020, vilket är senast tillgängliga data."
             scrollY={scrollY}
           />
         )}
         {step === 2 && isOpen && (
           <InfoModal
             close={toggleModal}
-            text="Trendlinjen är baserad på årliga utsläpp i kommunen sedan Parisavtalet 2015."
+            text="Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015. 
+            Hacket i kurvan för vissa kommuner beror på att genomsnittet är högre än det senaste årets nivå."
             scrollY={scrollY}
           />
         )}

@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
 import styled from 'styled-components'
 
 import { devices } from '../utils/devices'
 import { H1 } from './Typography'
 import VisuallyHidden from './VisuallyHidden'
+
 
 const Header = styled.header`
   max-width: 840px;

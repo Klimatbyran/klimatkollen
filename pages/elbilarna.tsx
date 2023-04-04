@@ -3,12 +3,13 @@ import { ReactElement } from 'react';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
 import { ClimateDataService } from '../utils/climateDataService';
-import Kommuner from './index';
+import IndexPage from './index';
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
   const viewMode = 'lista'
+  const dataSource = 'Elbilarna'
 
   res.setHeader(
     'Cache-Control',
@@ -16,13 +17,17 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   )
 
   return {
-    props: { municipalities, viewMode },
+    props: {
+      municipalities,
+      viewMode,
+      dataSource
+    },
   }
 }
 
-export default Kommuner
+export default IndexPage
 
-Kommuner.getLayout = function getLayout(page: ReactElement) {
+IndexPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
       <Layout>{page}</Layout>

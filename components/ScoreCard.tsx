@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { devices } from '../utils/devices'
 import Link from 'next/link'
-import ScoreCardSection from './ScoreCardSection'
+import InfoSection from './FactSection'
 
 const StyledDiv = styled.div`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -10,29 +9,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // max-width: 450px;
-
-  @media only screen and (${devices.tablet}) {
-    background: ${(props) => props.theme.darkestGrey};
-  }
-
-  & div.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0.8rem 0;
-  }
-
-  & section.left {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 90%;
-  }
-
-  & section.right {
-    text-align: right;
-  }
+  background: ${(props) => props.theme.darkestGrey};
 `
 
 type Props = {
@@ -52,8 +29,9 @@ const ScoreCard = ({
   budget,
   budgetRunsOut,
   emissionChangePercent,
-  emissionLastYear,
-  population,
+  // Below removed until we've found a better way to weigh emission per capita
+  // emissionLastYear,
+  // population,
   politicalRule
 }: Props) => {
   const rankFormatted = rank + ' av 290 kommuner'
@@ -61,16 +39,16 @@ const ScoreCard = ({
 
   return (
     <StyledDiv>
-      {rank && <ScoreCardSection
+      {rank && <InfoSection
         heading='Kommunens utsläppsrankning'
         data={rankFormatted}
         info={
           <>
-            Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015
+            Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015.
           </>
         }
       />}
-      {budget && <ScoreCardSection
+      {budget && <InfoSection
         heading='Koldioxidbudget'
         data={formatter.format(Math.round(budget)) + ' ton'}
         info={
@@ -80,7 +58,7 @@ const ScoreCard = ({
           </>
         }
       />}
-      {budgetRunsOut && <ScoreCardSection
+      {budgetRunsOut && <InfoSection
         heading='Koldioxidbudgeten tar slut'
         data={budgetRunsOut === 'Aldrig' ? 'Med nuvarande trend håller kommunen sin budget' : budgetRunsOut}
         info={
@@ -89,7 +67,7 @@ const ScoreCard = ({
           </>
         }
       />}
-      {<ScoreCardSection
+      {<InfoSection
         heading='Utsläppsminskning för att klara Parisavtalet'
         data={'-' + emissionChangePercent.toFixed(1) + '% per år'}
         info={
@@ -121,18 +99,18 @@ const ScoreCard = ({
           </>
         }
       />} */}
-      {politicalRule && <ScoreCardSection
+      {politicalRule && <InfoSection
         heading='Här styr'
         data={politicalRuleFormatted}
         info={
           <>Uppgift om politiskt styre är hämtad från{' '}
             <a
-              href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
+              href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html"
               target="_blank"
               rel="noreferrer">
               Sveriges Kommuner och Regioner (SKR)
             </a>
-            . Informationen gäller föregående mandatperiod, vi väntar på ny data från SKR i mars 2023.
+            . Data uppdaterad mars 2023.
           </>}
       />}
     </StyledDiv>

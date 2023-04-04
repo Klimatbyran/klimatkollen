@@ -18,30 +18,49 @@ const INITIAL_VIEW_STATE = {
 const DeckGLWrapper = styled.div`
   width: 100%;`
 
-const getColor = (emission: number): RGBAColor => {
+const getColor = (dataPoint: number, boundaries: number[]): RGBAColor => {
+  const blue: RGBAColor = [145, 191, 200]
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
   const darkOrange: RGBAColor = [239, 127, 23]
   const red: RGBAColor = [239, 94, 48]
   const pink: RGBAColor = [239, 48, 84]
 
-  if (emission >= 0) {
+  if (boundaries[0] < boundaries[1]) {
+    if (dataPoint >= boundaries[4]) {
+      return blue
+    }
+    if (dataPoint >= boundaries[3]) {
+      return yellow
+    }
+    if (dataPoint >= boundaries[2]) {
+      return orange
+    }
+    if (dataPoint >= boundaries[1]) {
+      return darkOrange
+    }
+    if (dataPoint >= boundaries[0]) {
+      return red
+    }
     return pink
+  } else {
+    if (dataPoint >= boundaries[0]) {
+      return pink
+    }
+    if (dataPoint >= boundaries[1]) {
+      return red
+    }
+    if (dataPoint >= boundaries[2]) {
+      return darkOrange
+    }
+    if (dataPoint >= boundaries[3]) {
+      return orange
+    }
+    if (dataPoint >= boundaries[4]) {
+      return yellow
+    }
+    return blue
   }
-  if (emission >= -0.01) {
-    return red
-  }
-  if (emission >= -0.02) {
-    return darkOrange
-  }
-  if (emission >= -0.03) {
-    return orange
-  }
-  if (emission >= -0.1) {
-    return yellow
-  }
-
-  return [145, 191, 200]
 }
 
 const replaceLetters = (name: string) => {
@@ -75,11 +94,12 @@ const replaceLetters = (name: string) => {
 } */
 
 type Props = {
-  emissionsLevels: Array<{ name: string; emissions: number }>
+  data: Array<{ name: string; dataPoint: number }>
   children?: ReactNode
+  boundaries: number[]
 }
 
-const Map = ({ emissionsLevels, children }: Props) => {
+const Map = ({ data, children, boundaries }: Props) => {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
@@ -93,25 +113,25 @@ const Map = ({ emissionsLevels, children }: Props) => {
 
   const municipalityLines = municipalityData?.features?.flatMap(({ geometry, properties }: { geometry: any, properties: any }) => {
     const name = replaceLetters(properties.name);
-    const emissions = emissionsLevels.find((e) => e.name === name)?.emissions;
+    const dataPoint = data.find((e) => e.name === name)?.dataPoint;
   
     if (geometry.type === 'MultiPolygon') {
       return geometry.coordinates.map((coords: any) => ({
         geometry: coords[0],
         name,
-        emissions,
+        dataPoint,
       }));
     } else {
       return [{
         geometry: geometry.coordinates[0][0],
         name,
-        emissions,
+        dataPoint,
       }];
     }
   });
 
-  type Emissions = {
-    emissions: number
+  type MunicipalityData = {
+    dataPoint: number
     name: string
     geometry: [number, number][]
   }
@@ -132,7 +152,7 @@ const Map = ({ emissionsLevels, children }: Props) => {
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0, 80],
     getFillColor: (d) => {
-      return getColor((d as Emissions).emissions)
+      return getColor((d as MunicipalityData).dataPoint, boundaries)
     },
     pickable: true,
   })
@@ -159,12 +179,14 @@ const Map = ({ emissionsLevels, children }: Props) => {
           // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
-          html: `<p>${(object as unknown as Emissions)?.name}</p>`,
+          html: `
+          <p>${(object as unknown as MunicipalityData)?.name}: ${((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)}</p>
+          `,
           style: {
             backgroundColor: 'black',
-            border: '1px solid white',
             borderRadius: '5px',
-            fontSize: '0.6em'
+            fontSize: '0.7em',
+            color: 'white'
           }
         }}
         // controller={{
@@ -180,7 +202,7 @@ const Map = ({ emissionsLevels, children }: Props) => {
         // }}
         onClick={({ object }) => {
           // IDK what the correct type is
-          const name = (object as unknown as Emissions)?.name
+          const name = (object as unknown as MunicipalityData)?.name
           if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
         layers={[kommunLayer]}

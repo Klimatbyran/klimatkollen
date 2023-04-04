@@ -5,7 +5,6 @@ import NewsletterSubscribe from './NewsletterSubscribe'
 import PageWrapper from './PageWrapper'
 import PartnerSection from './PartnerSection'
 import Navigation from './Navigation'
-import Image from 'next/image'
 
 const Foot = styled.footer`
   width: 100%;

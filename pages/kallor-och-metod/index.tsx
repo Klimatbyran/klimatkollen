@@ -167,9 +167,8 @@ const KoM = () => {
                   där även metan, lustgas, vattenånga med flera inkluderas.
                 </Paragraph>
                 <Paragraph>
-                  De utsläpp och koldioxidbudgetar vi visar på Klimatkollen omfattar fossila utsläpp inom Sveriges gränser,
-                  så kallade territoriella koldioxidutsläpp, det är så världens länder rapporterar inom klimatkonventionen.
-                  Utsläpp från cementproduktion är exkluderat i IPCC:s globala koldioxidbudget och därmed även i koldioxidbudgeten för Sverige och kommunerna.
+                  Utsläpp från cementproduktion är exkluderat i IPCC:s globala koldioxidbudget och därmed även i koldioxidbudgeten för Sverige 
+                  och i utsläppsstatistiken för de tre kommunerna Gotland, Skövde och Mörbylånga, där cementproduktion sker idag.
                 </Paragraph>
                 <Paragraph>
                   Sverige har även hög klimatbelastning från varor vi importerar från andra länder och orsakar därför utsläpp i andra delar av världen.
