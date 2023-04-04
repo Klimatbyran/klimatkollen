@@ -92,13 +92,19 @@ const KoM = () => {
                     target='_blank'
                     rel='noreferrer'>
                     Sveriges Kommuner och Regioner
-                  </a>.
+                  </a>. 
                   Från{' '}
                   <a href='https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities'
                     target='_blank'
                     rel='noreferrer'>
                     Wikidata</a>{' '}
-                  hämtar vi kommunernas invånarantal och kommunvapen.
+                  hämtar vi kommunernas invånarantal och kommunvapen. 
+                  Statistiken om andel laddbara bilar kommer från{' '}
+                  <a href='https://www.trafa.se/vagtrafik/fordon/'
+                    target='_blank'
+                    rel='noreferrer'>
+                    Trafikanalys
+                  </a>.
                 </Paragraph>
               </>}
           />
