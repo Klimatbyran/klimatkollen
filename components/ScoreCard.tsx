@@ -44,7 +44,7 @@ const ScoreCard = ({
         data={rankFormatted}
         info={
           <>
-            Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015
+            Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015.
           </>
         }
       />}

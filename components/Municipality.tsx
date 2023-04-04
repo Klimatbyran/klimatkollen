@@ -394,7 +394,7 @@ const Municipality = (props: Props) => {
           data={(municipality.ElectricCarChangePercent * 100).toFixed(1) + '%'}
           info={
             <>
-              Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år
+              Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år.
             </>}
         />
       </PageWrapper>
