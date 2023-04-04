@@ -4,6 +4,7 @@ import { devices } from '../utils/devices'
 
 const ToggleBtn = styled.button`
   width: 112px;
+  height: 36px;
   margin-top: 3rem;
   margin-bottom: 1rem;
   color: ${({ theme }) => theme.paperWhite};
@@ -22,6 +23,7 @@ const ToggleBtn = styled.button`
 
 const ToggleText = styled.p`
   margin-left: 8px;
+  font-size: 14px;
 `
 
 type ToggleButtonProps = {
