@@ -29,7 +29,7 @@ export const dataSetDescriptions = {
         </a>
       </>,
     'boundaries': [0.04, 0.05, 0.06, 0.07, 0.08],
-    'labels': ['4% –', '4–5%', '5–6%', '6–7%', '7–8%', '8% +'],
+    'labels': ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
     'labelRotateUp': [true, true, true, true, true, true],
     'tooltip': 'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
   }
