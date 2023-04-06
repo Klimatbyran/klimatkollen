@@ -159,9 +159,8 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   )
 
   const handleSelectData = () => {
-    if (selectedData === 'Elbilarna' && router.pathname.includes('elbilarna')) {
-      router.push('/')
-    }
+    const path = router.pathname.includes('elbilarna') && selectedData === 'Elbilarna' ? '/' : '/elbilarna'
+    router.push(path, undefined, { shallow: true })
     setSelectedData(selectedData === 'Elbilarna' ? 'Utsläppen' : 'Elbilarna')
   }
 
