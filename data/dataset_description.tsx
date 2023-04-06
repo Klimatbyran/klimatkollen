@@ -1,9 +1,9 @@
 export const dataSetDescriptions = {
   'Utsläppen': {
     'heading': 'Utsläppsförändring sedan Parisavtalet',
-    'body':
+    'body': 'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
+    'source':
       <>
-        På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.
         Källa:{' '}
         <a href='https://nationellaemissionsdatabasen.smhi.se/'
           target='_blank'
@@ -18,18 +18,18 @@ export const dataSetDescriptions = {
   },
   'Elbilarna': {
     'heading': 'Ökningstakt andel elbilar sedan Parisavtalet',
-    'body': 
-    <>
-      På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.
-      Källa:{' '}
-      <a href='https://www.trafa.se/vagtrafik/fordon/'
-        target='_blank'
-        rel='noreferrer'>
-        Trafikanalys
-      </a>
-    </>,
+    'body': 'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
+    'source':
+      <>
+        Källa:{' '}
+        <a href='https://www.trafa.se/vagtrafik/fordon/'
+          target='_blank'
+          rel='noreferrer'>
+          Trafikanalys
+        </a>
+      </>,
     'boundaries': [0.04, 0.05, 0.06, 0.07, 0.08],
-    'labels': ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
+    'labels': ['4% –', '4–5%', '5–6%', '6–7%', '7–8%', '8% +'],
     'labelRotateUp': [true, true, true, true, true, true],
     'tooltip': 'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
   }
