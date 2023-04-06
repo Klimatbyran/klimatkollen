@@ -44,14 +44,14 @@ const FlexSection = styled.div`
 `
 
 const Copyright = styled.p`
-  color: ${({ theme }) => theme.lightGrey};
+  color: ${({ theme }) => theme.paperWhite};
   font-size: 13px;
   text-align: center;
   margin-top: 4rem;
 `
 
 const GHLink = styled.p`
-  color: ${({ theme }) => theme.lightGrey};
+  color: ${({ theme }) => theme.paperWhite};
   font-size: 13px;
   text-align: center;
 `

@@ -63,6 +63,11 @@ const InfoText = styled.div`
   margin-top: 3rem;
 `
 
+const ParagraphSource = styled(Paragraph)`
+  font-size: 13px;
+  color: ${({ theme }) => theme.lightGrey};
+`
+
 const MunicipalityContainer = styled.div`
   position: relative;
   overflow-y: scroll;
@@ -243,6 +248,9 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
             <Paragraph>
               {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['body']}
             </Paragraph>
+            <ParagraphSource>
+              {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['source']}
+            </ParagraphSource>
           </InfoText>
           <ToggleButton
             handleClick={handleToggle}

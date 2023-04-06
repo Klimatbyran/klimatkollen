@@ -11,7 +11,7 @@ const colorTheme: DefaultTheme = {
   red: '#EF3054',
   white: '#FFFFFF',
   paperWhite: '#F9FBFF',
-  lightGrey: '#F2F2F2',
+  lightGrey: '#B3B3B3',
   grey: '#6C6C6C',
   darkGrey: '#424242',
   darkestGrey: '#2D2D2D',
