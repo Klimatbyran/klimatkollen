@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend } from './types'
+import { Municipality, DataPerYear, EmissionSector, Budget, Emission, Trend, ElectricCarChangeYearly } from './types'
 import * as fs from 'fs'
 import * as path from 'path'
 
@@ -13,12 +13,12 @@ export class ClimateDataService {
     const jsonData: any[] = JSON.parse(climateDataFileContent)
     
     this.municipalities = jsonData.map((jsonData: any) => {
-      var emissions = new Array<EmissionPerYear>();
+      var emissions = new Array<DataPerYear>();
       Object.entries(jsonData.emissions).forEach(([year, emission]) => {
         let emissionByYear = {
           Year: Number(year),
           CO2Equivalent: emission
-        } as unknown as EmissionPerYear
+        } as unknown as DataPerYear
         emissions.push(emissionByYear)
       });
       const emission = {
@@ -52,6 +52,16 @@ export class ClimateDataService {
           }
         )
       } as unknown as Budget
+      const electricCarChangeYearly = {
+        ChangePerYear: Object.entries(jsonData.electricCarChangeYearly).map(
+          ([year, data]) => {
+            return {
+              Year: Number(year),
+              Data: data,
+            }
+          }
+        )
+      } as unknown as ElectricCarChangeYearly
       let municipality = {
         Name: jsonData.kommun,
         HistoricalEmission: emission,
@@ -62,8 +72,8 @@ export class ClimateDataService {
         BudgetRunsOut: jsonData.budgetRunsOut,
         ElectricCars: jsonData.electricCars,
         ElectricCarChangePercent: jsonData.electricCarChangePercent,
-        ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
-      } as Municipality
+        ElectricCarChangeYearly: electricCarChangeYearly,
+      } as unknown as Municipality
       return municipality
     })
     .sort((a: Municipality, b: Municipality) => {
@@ -78,18 +88,18 @@ export class ClimateDataService {
   }
 
   private getEmissionLevelChangeAverage(
-    emissions: Array<EmissionPerYear>,
+    emissions: Array<DataPerYear>,
     years: number
   ): number {
     let emissionsPercentages = 0
     emissions
       .slice(Math.max(emissions.length - years - 1, 1))
       .forEach(
-        (emission: EmissionPerYear, index: number, emissions: Array<EmissionPerYear>) => {
-          let previous = emissions[index - 1] as EmissionPerYear
+        (emission: DataPerYear, index: number, emissions: Array<DataPerYear>) => {
+          let previous = emissions[index - 1] as DataPerYear
           if (previous) {
-            let changeSinceLastYear = ((emission.CO2Equivalent - previous.CO2Equivalent) /
-              previous.CO2Equivalent) as number
+            let changeSinceLastYear = ((emission.DataPoint - previous.DataPoint) /
+              previous.DataPoint) as number
             emissionsPercentages += changeSinceLastYear
           }
         },

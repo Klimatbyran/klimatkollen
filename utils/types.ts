@@ -18,16 +18,16 @@ export type Municipality = {
   BudgetRunsOut: string
   ElectricCars: number
   ElectricCarChangePercent: number,
-  ElectricCarChangeYearly: Array<number>,
+  ElectricCarChangeYearly: ElectricCarChangeYearly,
 }
 
-export type EmissionPerYear = {
+export type DataPerYear = {
   Year: number
-  CO2Equivalent: number
+  DataPoint: number
 }
 
 export type Emission = {
-  EmissionPerYear: Array<EmissionPerYear>
+  EmissionPerYear: Array<DataPerYear>
   LargestEmissionSectors: Array<EmissionSector>
   EmissionLevelChangeAverage: number
   AverageEmissionChangeRank: number | null
@@ -36,11 +36,11 @@ export type Emission = {
 export type Budget = {
   CO2Equivalent: number
   PercentageOfNationalBudget: number
-  BudgetPerYear: Array<EmissionPerYear>
+  BudgetPerYear: Array<DataPerYear>
 }
 
 export type Trend = {
-  TrendPerYear: Array<EmissionPerYear>
+  TrendPerYear: Array<DataPerYear>
   FutureCO2Emission: number
 }
 
@@ -49,4 +49,8 @@ export type EmissionSector = {
   Year: string
   CO2Equivalent: number
   SubSectors: Array<EmissionSector>
+}
+
+export type ElectricCarChangeYearly = {
+  ChangePerYear: Array<DataPerYear>
 }

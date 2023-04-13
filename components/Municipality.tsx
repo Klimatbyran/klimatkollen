@@ -17,8 +17,8 @@ import Graph from './Graph'
 import ScoreCard from './ScoreCard'
 import { IconButton } from './shared'
 import { devices } from '../utils/devices'
-import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
-import Solutions from './Solutions'
+import { DataPerYear, Municipality as TMunicipality } from '../utils/types'
+import Solutions from './MunicipalitySolutions'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -183,9 +183,9 @@ type Props = {
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
   coatOfArmsImage: string | null
-  historicalEmissions: EmissionPerYear[]
-  budgetedEmissions: EmissionPerYear[]
-  trendingEmissions: EmissionPerYear[]
+  historicalEmissions: DataPerYear[]
+  budgetedEmissions: DataPerYear[]
+  trendingEmissions: DataPerYear[]
   municipalitiesName: Array<string>
 }
 
@@ -206,7 +206,7 @@ const Municipality = (props: Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear?.[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.CO2Equivalent
+  const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear?.[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.DataPoint  // dataPoint = CO2 quivalent
   // FIXME replace with const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear.at(-1)?.CO2Equivalent when Node has been updated >16.0.0
 
   let scrollY = 0
@@ -366,7 +366,9 @@ const Municipality = (props: Props) => {
             </>
           )}
         </EmissionsContainer>
-        <Solutions electricCarChangePercent={municipality.ElectricCarChangePercent} />
+        <Solutions
+          electricCarChangePercent={municipality.ElectricCarChangePercent}
+          electricCarChangeYearly={municipality.ElectricCarChangeYearly} />
       </PageWrapper>
       <PageWrapper backgroundColor={'darkGrey'}>
         <StyledH2>

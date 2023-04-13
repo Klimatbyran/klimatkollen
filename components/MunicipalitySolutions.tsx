@@ -1,8 +1,9 @@
 import styled from "styled-components"
 import { H2, H5, Paragraph } from "./Typography"
 import FactSection from './FactSection'
-import { Municipality as TMunicipality } from '../utils/types'
+import { DataPerYear, ElectricCarChangeYearly } from '../utils/types'
 import EVCar from '../public/icons/ev_car.svg'
+import Graph from "./Graph"
 
 
 const StyledH2 = styled(H2)`
@@ -22,9 +23,10 @@ const StyledH5 = styled(H5)`
 
 type SolutionsProps = {
   electricCarChangePercent: number
+  electricCarChangeYearly: ElectricCarChangeYearly
 }
 
-const Solutions = ({ electricCarChangePercent }: SolutionsProps) => {
+const Solutions = ({ electricCarChangePercent, electricCarChangeYearly }: SolutionsProps) => {
   return (
     <>
       <StyledH2>
@@ -48,6 +50,15 @@ const Solutions = ({ electricCarChangePercent }: SolutionsProps) => {
             Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år.
           </>}
       />
+      {electricCarChangeYearly.ChangePerYear.map((item, index) => (
+        <div key={index}>
+          <div>Year: {item.Year}</div>
+          <div>Data: {item.DataPoint}</div>
+        </div>
+      ))}
+      <Graph
+        historical={electricCarChangeYearly.ChangePerYear}
+        maxVisibleYear={2050} />
     </>
   )
 }

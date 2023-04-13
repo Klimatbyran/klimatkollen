@@ -9,7 +9,7 @@ import {
 } from 'chart.js'
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
-import { EmissionPerYear } from '../utils/types'
+import { DataPerYear } from '../utils/types'
 
 import styled from 'styled-components'
 
@@ -25,7 +25,7 @@ const YAxisTitle = styled.label`
   margin-bottom: 1rem;
 `
 
-function getSetup(emissions: EmissionPerYear[][]): {
+function getSetup(emissions: DataPerYear[][]): {
   labels: number[]
   adjustableYearStart: number
   minYear: number
@@ -55,24 +55,24 @@ function getSetup(emissions: EmissionPerYear[][]): {
   }
 }
 
-const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset =>
+const emissionPerYearToDataset = (perYear: DataPerYear[]): Dataset =>
   perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
 type Props = {
-  step: number
-  historical: EmissionPerYear[]
-  budget: EmissionPerYear[]
-  trend: EmissionPerYear[]
+  step?: number
+  historical: DataPerYear[]
+  budget?: DataPerYear[]
+  trend?: DataPerYear[]
   maxVisibleYear: number
 }
 
 type Dataset = Array<{ x: number; y: number }>
 
 const Graph = ({
-  step,
+  step = 0,
   historical,
-  budget,
-  trend,
+  budget = [],
+  trend = [],
   maxVisibleYear,
 }: Props) => {
   const setup = useMemo(
@@ -130,7 +130,7 @@ const Graph = ({
               backgroundColor: 'rgba(145, 223, 200, 0.6)',
               pointRadius: 0,
               tension: 0.15,
-              hidden: false,
+              hidden: budget.length === 0,
             },
             {
               // @ts-ignore
@@ -142,7 +142,7 @@ const Graph = ({
               backgroundColor: '#542E35',
               pointRadius: 0,
               tension: 0.15,
-              hidden: step < 2,
+              hidden: step < 2 || trend.length === 0,
             },
           ],
         }}
