@@ -63,7 +63,9 @@ type Props = {
   historical: DataPerYear[]
   budget?: DataPerYear[]
   trend?: DataPerYear[]
+  yLabel: strung
   maxVisibleYear: number
+  divideBy?: number
 }
 
 type Dataset = Array<{ x: number; y: number }>
@@ -73,7 +75,9 @@ const Graph = ({
   historical,
   budget = [],
   trend = [],
+  yLabel,
   maxVisibleYear,
+  divideBy = 1
 }: Props) => {
   const setup = useMemo(
     () => getSetup([historical, budget, trend]),
@@ -102,7 +106,7 @@ const Graph = ({
 
   return (
     <Container>
-      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
+      <YAxisTitle>{yLabel}</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{
@@ -189,7 +193,7 @@ const Graph = ({
                 },
                 color: 'white',
                 callback: (a, _idx) => {
-                  return ((a as number) / 1000).toString()
+                  return ((a as number) / divideBy).toFixed(0)
                 },
               },
             },

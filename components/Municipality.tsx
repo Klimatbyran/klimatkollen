@@ -331,7 +331,9 @@ const Municipality = (props: Props) => {
               historical={historicalEmissions}
               trend={trendingEmissions}
               budget={budgetedEmissions}
+              yLabel={'Tusen ton CO₂'}
               maxVisibleYear={END_YEAR}
+              divideBy={1000}
             />
           </GraphWrapper>
           <Grid>
