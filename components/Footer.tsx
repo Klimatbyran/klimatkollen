@@ -82,6 +82,12 @@ const Footer = () => {
             <PartnerSection
               link='https://www.klimatklubben.se/'
               logo={<img src="/icons/klimatklubben.svg" width={'auto'} height={90} alt="Klimatklubben logo" />} />
+            <PartnerSection
+              link='https://powercircle.org/'
+              logo={<img src="/icons/powercircle.png" width={'auto'} height={90} alt="Powercircle logo" />} />
+            <PartnerSection
+              link='https://www.2030sekretariatet.se//'
+              logo={<img src="/icons/2030.svg" width={'auto'} height={90} alt="2030-sekretariatet logo" />} />
           </FlexSection>
           <TextSection>
             <H5>Tidigare samarbetspartners</H5>
