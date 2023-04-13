@@ -7,8 +7,7 @@ import { useRouter } from 'next/router'
 import ArrowRight from '../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../public/icons/arrow-left-white.svg'
 import Info from '../public/icons/info.svg'
-import EVCar from '../public/icons/ev_car.svg'
-import { H1, H2, H3, H5, Paragraph, ParagraphBold } from './Typography'
+import { H1, H2, H3, Paragraph, ParagraphBold } from './Typography'
 import BackArrow from './BackArrow'
 import MetaTags from './MetaTags'
 import InfoModal from './InfoModal'
@@ -16,10 +15,10 @@ import PageWrapper from './PageWrapper'
 import DropDown from './DropDown'
 import Graph from './Graph'
 import ScoreCard from './ScoreCard'
-import FactSection from './FactSection'
 import { IconButton } from './shared'
 import { devices } from '../utils/devices'
 import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
+import Solutions from './Solutions'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -89,19 +88,10 @@ const Bottom = styled.div`
   }
 `
 
-const FlexContainer = styled.div`
-  display: flex;
-  align-items: center;
-`
-
 const StyledH2 = styled(H2)`
   margin-top: 32px;
   margin-bottom: 32px;
   width: 100%;
-`
-
-const StyledH5 = styled(H5)`
-  margin: 32px 0 32px 16px;
 `
 
 const DropDownSection = styled.div`
@@ -376,27 +366,7 @@ const Municipality = (props: Props) => {
             </>
           )}
         </EmissionsContainer>
-        <StyledH2>
-          Omställning
-        </StyledH2>
-        <Paragraph>
-          Här visas nyckeltal för hur det går med klimatomställningen i kommunerna. Först ut är trafikutsläppen och övergången från
-          fossilbilar till laddbara bilar. Fler nyckeltal tillkommer.
-        </Paragraph>
-        <FlexContainer>
-          <EVCar />
-          <StyledH5>
-            Elbilarna
-          </StyledH5>
-        </FlexContainer>
-        <FactSection
-          heading='Ökning elbilar'
-          data={(municipality.ElectricCarChangePercent * 100).toFixed(1) + '%'}
-          info={
-            <>
-              Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år.
-            </>}
-        />
+        <Solutions electricCarChangePercent={municipality.ElectricCarChangePercent} />
       </PageWrapper>
       <PageWrapper backgroundColor={'darkGrey'}>
         <StyledH2>
