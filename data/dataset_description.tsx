@@ -14,7 +14,7 @@ export const dataSetDescriptions = {
     'boundaries': [0, -0.01, -0.02, -0.03, -0.10],
     'labels': ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     'labelRotateUp': [true, false, false, false, false, false],
-    'tooltip': 'Genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015, angivet i procent',
+    'tooltip': 'Genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015, angivet i procent.',
   },
   'Elbilarna': {
     'heading': 'Ökningstakt andel elbilar sedan Parisavtalet',
