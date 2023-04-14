@@ -369,7 +369,6 @@ const Municipality = (props: Props) => {
           )}
         </EmissionsContainer>
         <Solutions
-          electricCarChangePercent={municipality.ElectricCarChangePercent}
           electricCarChangeYearly={municipality.ElectricCarChangeYearly} />
       </PageWrapper>
       <PageWrapper backgroundColor={'darkGrey'}>
