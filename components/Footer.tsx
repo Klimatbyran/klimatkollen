@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { H5, ParagraphBold } from './Typography'
+import { H5, Paragraph, ParagraphBold } from './Typography'
 import { devices } from '../utils/devices'
 import NewsletterSubscribe from './NewsletterSubscribe'
 import PageWrapper from './PageWrapper'
@@ -43,17 +43,58 @@ const FlexSection = styled.div`
   }
 `
 
+const BottomParent = styled.div`
+  flex-direction: column;
+  display: flex;
+  background-color: ${({ theme }) => theme.darkestGrey };
+
+  @media only screen and (${devices.tablet}) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+`
+
+const BottomContainer = styled.div`
+  flex: 1;
+  margin: 0 16px;
+  padding: 24px;
+
+  @media only screen and (max-width: ${devices.mobile}) {
+      align-self: flex-start;
+    }
+  }
+`
+
 const Copyright = styled.p`
   color: ${({ theme }) => theme.paperWhite};
   font-size: 13px;
-  text-align: center;
   margin-top: 4rem;
 `
 
 const GHLink = styled.p`
   color: ${({ theme }) => theme.paperWhite};
   font-size: 13px;
-  text-align: center;
+`
+
+const ContactList = styled.ul`
+  list-style: none;
+  margin-top: 32px;
+`
+
+const ContactListItem = styled.li`
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+`
+
+const ContactIcon = styled.img`
+  margin-right: 16px;
+`
+
+const ContactLink = styled.a`
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
 `
 
 const Footer = () => {
@@ -103,24 +144,64 @@ const Footer = () => {
               link='https://www.stormgeo.com/'
               logo={<img src="/icons/stormgeo.svg" width={180} height={'auto'} alt="StromGeo logo" />} />
           </FlexSection>
-          <Copyright>
-            CC BY-SA -{' '}
-            <a
-              href="http://creativecommons.org/licenses/by-sa/4.0/"
-              target="_blank"
-              rel="noreferrer license">
-              Attribution-ShareAlike 4.0 International license
-            </a>
-          </Copyright>
-          <GHLink>
-            Klimatkollen är{' '}
-            <a
-              href="https://github.com/Klimatbyran/klimatkollen"
-              target="_blank"
-              rel="noreferrer">
-              öppen källkod
-            </a>
-          </GHLink>
+          <BottomParent>
+            <BottomContainer>
+              <img src='/klimatkollen_logo.svg' height="40px" />
+              <Paragraph>
+                Klimatkollen är en medborgarplattform som tillgängliggör klimatdata.
+              </Paragraph>
+              <Copyright>
+                CC BY-SA -{' '}
+                <a
+                  href="http://creativecommons.org/licenses/by-sa/4.0/"
+                  target="_blank"
+                  rel="noreferrer license">
+                  Attribution-ShareAlike 4.0 International license
+                </a>
+              </Copyright>
+              <GHLink>
+                Klimatkollen är{' '}
+                <a
+                  href="https://github.com/Klimatbyran/klimatkollen"
+                  target="_blank"
+                  rel="noreferrer">
+                  öppen källkod
+                </a>
+              </GHLink>
+            </BottomContainer>
+            <BottomContainer>
+              <ParagraphBold>
+                Kontakt & följ oss
+              </ParagraphBold>
+              <ContactList>
+                <ContactListItem>
+                  <ContactIcon src='icons/icon_mail_circle.svg' />
+                  <ContactLink
+                    href="mailto:hej@klimatkollen.se">
+                    Mail
+                  </ContactLink>
+                </ContactListItem>
+                <ContactListItem>
+                  <ContactIcon src='icons/icon_linkedin_circle.svg' />
+                  <ContactLink
+                    href="https://www.linkedin.com/company/klimatkollen/"
+                    target="_blank"
+                    rel="noreferrer">
+                    LinkedIn
+                  </ContactLink>
+                </ContactListItem>
+                <ContactListItem>
+                  <ContactIcon src='icons/icon_twitter_circle.svg' />
+                  <ContactLink
+                    href="https://twitter.com/klimatkollen"
+                    target="_blank"
+                    rel="noreferrer">
+                    Twitter
+                  </ContactLink>
+                </ContactListItem>
+              </ContactList>
+            </BottomContainer>
+          </BottomParent>
         </ContentWrapper>
       </Foot>
     </PageWrapper >
