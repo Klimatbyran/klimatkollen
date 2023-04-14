@@ -43,9 +43,10 @@ const InfoSection = styled.div`
 type Props = {
   header: string
   text: JSX.Element
+  graph?: JSX.Element
 }
 
-const ToggleSection = ({ header, text }: Props) => {
+const ToggleSection = ({ header, text, graph }: Props) => {
   const [toggle, setToggle] = useState(false)
 
   return (
@@ -62,9 +63,11 @@ const ToggleSection = ({ header, text }: Props) => {
             />
           )}
         </HeaderSection>
+
         {toggle && (
           <InfoSection>
             {text}
+            {graph}
           </InfoSection>
         )}
       </TextSection>

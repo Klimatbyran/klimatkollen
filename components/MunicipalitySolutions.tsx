@@ -4,6 +4,7 @@ import FactSection from './FactSection'
 import { ElectricCarChangeYearly } from '../utils/types'
 import EVCar from '../public/icons/ev_car.svg'
 import Graph from "./Graph"
+import ToggleSection from "./ToggleSection"
 
 
 const StyledH2 = styled(H2)`
@@ -22,11 +23,10 @@ const StyledH5 = styled(H5)`
 `
 
 type SolutionsProps = {
-  electricCarChangePercent: number
   electricCarChangeYearly: ElectricCarChangeYearly
 }
 
-const Solutions = ({ electricCarChangePercent, electricCarChangeYearly }: SolutionsProps) => {
+const Solutions = ({ electricCarChangeYearly }: SolutionsProps) => {
   return (
     <>
       <StyledH2>
@@ -42,19 +42,16 @@ const Solutions = ({ electricCarChangePercent, electricCarChangeYearly }: Soluti
           Elbilarna
         </StyledH5>
       </FlexContainer>
-      <FactSection
-        heading='Ökning elbilar'
-        data={(electricCarChangePercent * 100).toFixed(1) + '%'}
-        info={
-          <>
-            Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år.
-          </>}
+      <ToggleSection
+        header='Ökning av laddbara bilar'
+        text={<>Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år.</>}
+        graph={
+          <Graph
+            historical={electricCarChangeYearly.ChangePerYear}
+            yLabel={'Procentenheter'}
+            maxVisibleYear={2050}
+            divideBy={0.01} />}
       />
-      <Graph
-        historical={electricCarChangeYearly.ChangePerYear}
-        yLabel={'Procentenheter'}
-        maxVisibleYear={2050}
-        divideBy={0.01} />
     </>
   )
 }

@@ -55,15 +55,15 @@ function getSetup(emissions: DataPerYear[][]): {
   }
 }
 
-const emissionPerYearToDataset = (perYear: DataPerYear[]): Dataset =>
-  perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
+const DataPerYearToDataset = (perYear: DataPerYear[]): Dataset =>
+  perYear.map((y) => ({ x: y.Year, y: y.DataPoint }))
 
 type Props = {
   step?: number
   historical: DataPerYear[]
   budget?: DataPerYear[]
   trend?: DataPerYear[]
-  yLabel: strung
+  yLabel: string
   maxVisibleYear: number
   divideBy?: number
 }
@@ -84,12 +84,9 @@ const Graph = ({
     [historical, budget, trend],
   )
 
-  const historicalDataset: Dataset = useMemo(
-    () => emissionPerYearToDataset(historical),
-    [historical],
-  )
-  const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
-  const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
+  const historicalDataset: Dataset = useMemo(() => DataPerYearToDataset(historical), [historical])
+  const budgetDataset: Dataset = useMemo(() => DataPerYearToDataset(budget), [budget])
+  const pledgeDataset: Dataset = useMemo(() => DataPerYearToDataset(trend), [trend])
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
