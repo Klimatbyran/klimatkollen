@@ -150,7 +150,7 @@ const Footer = () => {
       <PageWrapper backgroundColor={'darkestGrey'}>
         <BottomParent>
           <BottomContainer>
-            <img src='/klimatkollen_logo.svg' height="40px" />
+            <img src='/klimatkollen_logo.svg' height='36px' alt='Klimatkollen logo' />
             <Paragraph>
               Klimatkollen är en medborgarplattform som tillgängliggör klimatdata.
             </Paragraph>
