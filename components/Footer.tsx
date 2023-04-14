@@ -46,7 +46,6 @@ const FlexSection = styled.div`
 const BottomParent = styled.div`
   flex-direction: column;
   display: flex;
-  background-color: ${({ theme }) => theme.darkestGrey };
 
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
@@ -57,7 +56,7 @@ const BottomParent = styled.div`
 const BottomContainer = styled.div`
   flex: 1;
   margin: 0 16px;
-  padding: 24px;
+  padding: 16px;
 
   @media only screen and (max-width: ${devices.mobile}) {
       align-self: flex-start;
@@ -68,7 +67,7 @@ const BottomContainer = styled.div`
 const Copyright = styled.p`
   color: ${({ theme }) => theme.paperWhite};
   font-size: 13px;
-  margin-top: 4rem;
+  margin-top: 2rem;
 `
 
 const GHLink = styled.p`
@@ -99,112 +98,116 @@ const ContactLink = styled.a`
 
 const Footer = () => {
   return (
-    <PageWrapper backgroundColor={'darkGrey'}>
-      <Foot>
-        <ContentWrapper>
-          <Navigation />
-          <TextSection>
-            <ParagraphBold>Vill du få nyheter om Klimatkollen?</ParagraphBold>
-            <NewsletterSubscribe />
-          </TextSection>
-          <TextSection>
-            <H5>Samarbetspartners</H5>
-          </TextSection>
-          <FlexSection>
-            <PartnerSection
-              link='https://postkodstiftelsen.se/'
-              logo={<img src="/icons/postkodstiftelsen.svg" width={180} height={'auto'} alt="Postkodstiftelsen logo" />} />
-            <PartnerSection
-              link='https://www.wwf.se/'
-              logo={<img src='/WWF_Logo_Small_RGB_72dpi.jpg' width={'auto'} height={90} alt="WWF logo" />} />
-            <PartnerSection
-              link='https://www.climateview.global/'
-              logo={<img src="/icons/climateview.svg" width={180} height={'auto'} alt="ClimateViw logo" />} />
-            <PartnerSection
-              link='https://www.klimatklubben.se/'
-              logo={<img src="/icons/klimatklubben.svg" width={'auto'} height={90} alt="Klimatklubben logo" />} />
-          </FlexSection>
-          <TextSection>
-            <H5>Tidigare samarbetspartners</H5>
-          </TextSection>
-          <FlexSection>
-            <PartnerSection
-              link='https://www.pwc.se/'
-              logo={<img src='/pwc.png' width={'auto'} height={90} alt="PWC logo" />} />
-            <PartnerSection
-              link='https://varabarnsklimat.se/'
-              logo={<img src="/icons/vbk.svg" width={86} height={'auto'} alt="Våra barns klimat logo" />} />
-            <PartnerSection
-              link='https://www.wedonthavetime.org/'
-              logo={<img src="/icons/we-dont-have-time.svg" width={180} height={'auto'} alt="Wedonthavetime logo" />} />
-            <PartnerSection
-              link='https://argandpartners.com/'
-              logo={<img src="/icons/argand.svg" width={180} height={'auto'} alt="Argand logo" />} />
-            <PartnerSection
-              link='https://www.stormgeo.com/'
-              logo={<img src="/icons/stormgeo.svg" width={180} height={'auto'} alt="StromGeo logo" />} />
-          </FlexSection>
-          <BottomParent>
-            <BottomContainer>
-              <img src='/klimatkollen_logo.svg' height="40px" />
-              <Paragraph>
-                Klimatkollen är en medborgarplattform som tillgängliggör klimatdata.
-              </Paragraph>
-              <Copyright>
-                CC BY-SA -{' '}
-                <a
-                  href="http://creativecommons.org/licenses/by-sa/4.0/"
-                  target="_blank"
-                  rel="noreferrer license">
-                  Attribution-ShareAlike 4.0 International license
-                </a>
-              </Copyright>
-              <GHLink>
-                Klimatkollen är{' '}
-                <a
-                  href="https://github.com/Klimatbyran/klimatkollen"
+    <>
+      <PageWrapper backgroundColor={'darkGrey'}>
+        <Foot>
+          <ContentWrapper>
+            <Navigation />
+            <TextSection>
+              <ParagraphBold>Vill du få nyheter om Klimatkollen?</ParagraphBold>
+              <NewsletterSubscribe />
+            </TextSection>
+            <TextSection>
+              <H5>Samarbetspartners</H5>
+            </TextSection>
+            <FlexSection>
+              <PartnerSection
+                link='https://postkodstiftelsen.se/'
+                logo={<img src="/icons/postkodstiftelsen.svg" width={180} height={'auto'} alt="Postkodstiftelsen logo" />} />
+              <PartnerSection
+                link='https://www.wwf.se/'
+                logo={<img src='/WWF_Logo_Small_RGB_72dpi.jpg' width={'auto'} height={90} alt="WWF logo" />} />
+              <PartnerSection
+                link='https://www.climateview.global/'
+                logo={<img src="/icons/climateview.svg" width={180} height={'auto'} alt="ClimateViw logo" />} />
+              <PartnerSection
+                link='https://www.klimatklubben.se/'
+                logo={<img src="/icons/klimatklubben.svg" width={'auto'} height={90} alt="Klimatklubben logo" />} />
+            </FlexSection>
+            <TextSection>
+              <H5>Tidigare samarbetspartners</H5>
+            </TextSection>
+            <FlexSection>
+              <PartnerSection
+                link='https://www.pwc.se/'
+                logo={<img src='/pwc.png' width={'auto'} height={90} alt="PWC logo" />} />
+              <PartnerSection
+                link='https://varabarnsklimat.se/'
+                logo={<img src="/icons/vbk.svg" width={86} height={'auto'} alt="Våra barns klimat logo" />} />
+              <PartnerSection
+                link='https://www.wedonthavetime.org/'
+                logo={<img src="/icons/we-dont-have-time.svg" width={180} height={'auto'} alt="Wedonthavetime logo" />} />
+              <PartnerSection
+                link='https://argandpartners.com/'
+                logo={<img src="/icons/argand.svg" width={180} height={'auto'} alt="Argand logo" />} />
+              <PartnerSection
+                link='https://www.stormgeo.com/'
+                logo={<img src="/icons/stormgeo.svg" width={180} height={'auto'} alt="StromGeo logo" />} />
+            </FlexSection>
+          </ContentWrapper>
+        </Foot>
+      </PageWrapper>
+      <PageWrapper backgroundColor={'darkestGrey'}>
+        <BottomParent>
+          <BottomContainer>
+            <img src='/klimatkollen_logo.svg' height="40px" />
+            <Paragraph>
+              Klimatkollen är en medborgarplattform som tillgängliggör klimatdata.
+            </Paragraph>
+            <Copyright>
+              CC BY-SA -{' '}
+              <a
+                href="http://creativecommons.org/licenses/by-sa/4.0/"
+                target="_blank"
+                rel="noreferrer license">
+                Attribution-ShareAlike 4.0 International license
+              </a>
+            </Copyright>
+            <GHLink>
+              Klimatkollen är{' '}
+              <a
+                href="https://github.com/Klimatbyran/klimatkollen"
+                target="_blank"
+                rel="noreferrer">
+                öppen källkod
+              </a>
+            </GHLink>
+          </BottomContainer>
+          <BottomContainer>
+            <ParagraphBold>
+              Kontakt & följ oss
+            </ParagraphBold>
+            <ContactList>
+              <ContactListItem>
+                <ContactIcon src='icons/icon_mail_circle.svg' />
+                <ContactLink
+                  href="mailto:hej@klimatkollen.se">
+                  Mail
+                </ContactLink>
+              </ContactListItem>
+              <ContactListItem>
+                <ContactIcon src='icons/icon_linkedin_circle.svg' />
+                <ContactLink
+                  href="https://www.linkedin.com/company/klimatkollen/"
                   target="_blank"
                   rel="noreferrer">
-                  öppen källkod
-                </a>
-              </GHLink>
-            </BottomContainer>
-            <BottomContainer>
-              <ParagraphBold>
-                Kontakt & följ oss
-              </ParagraphBold>
-              <ContactList>
-                <ContactListItem>
-                  <ContactIcon src='icons/icon_mail_circle.svg' />
-                  <ContactLink
-                    href="mailto:hej@klimatkollen.se">
-                    Mail
-                  </ContactLink>
-                </ContactListItem>
-                <ContactListItem>
-                  <ContactIcon src='icons/icon_linkedin_circle.svg' />
-                  <ContactLink
-                    href="https://www.linkedin.com/company/klimatkollen/"
-                    target="_blank"
-                    rel="noreferrer">
-                    LinkedIn
-                  </ContactLink>
-                </ContactListItem>
-                <ContactListItem>
-                  <ContactIcon src='icons/icon_twitter_circle.svg' />
-                  <ContactLink
-                    href="https://twitter.com/klimatkollen"
-                    target="_blank"
-                    rel="noreferrer">
-                    Twitter
-                  </ContactLink>
-                </ContactListItem>
-              </ContactList>
-            </BottomContainer>
-          </BottomParent>
-        </ContentWrapper>
-      </Foot>
-    </PageWrapper >
+                  LinkedIn
+                </ContactLink>
+              </ContactListItem>
+              <ContactListItem>
+                <ContactIcon src='icons/icon_twitter_circle.svg' />
+                <ContactLink
+                  href="https://twitter.com/klimatkollen"
+                  target="_blank"
+                  rel="noreferrer">
+                  Twitter
+                </ContactLink>
+              </ContactListItem>
+            </ContactList>
+          </BottomContainer>
+        </BottomParent>
+      </PageWrapper >
+    </>
   )
 }
 
