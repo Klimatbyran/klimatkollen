@@ -179,14 +179,18 @@ const Footer = () => {
             </ParagraphBold>
             <ContactList>
               <ContactListItem>
-                <ContactIcon src='icons/icon_mail_circle.svg' />
+                <ContactIcon 
+                src='icons/icon_mail_circle.svg'
+                alt='Email icon' />
                 <ContactLink
                   href="mailto:hej@klimatkollen.se">
                   Mail
                 </ContactLink>
               </ContactListItem>
               <ContactListItem>
-                <ContactIcon src='icons/icon_linkedin_circle.svg' />
+                <ContactIcon 
+                src='icons/icon_linkedin_circle.svg' 
+                alt='Linkedin logo' />
                 <ContactLink
                   href="https://www.linkedin.com/company/klimatkollen/"
                   target="_blank"
@@ -195,7 +199,9 @@ const Footer = () => {
                 </ContactLink>
               </ContactListItem>
               <ContactListItem>
-                <ContactIcon src='icons/icon_twitter_circle.svg' />
+                <ContactIcon 
+                src='icons/icon_twitter_circle.svg'
+                alt='Twitter logo' />
                 <ContactLink
                   href="https://twitter.com/klimatkollen"
                   target="_blank"
