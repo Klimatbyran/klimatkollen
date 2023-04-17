@@ -46,6 +46,7 @@ const FlexSection = styled.div`
 const BottomParent = styled.div`
   flex-direction: column;
   display: flex;
+  align-items: flex-start;
 
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
@@ -54,13 +55,15 @@ const BottomParent = styled.div`
 `
 
 const BottomContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   flex: 1;
-  margin: 0 16px;
+  margin: 16px;
   padding: 16px;
 
-  @media only screen and (max-width: ${devices.mobile}) {
-      align-self: flex-start;
-    }
+  @media only screen and (${devices.mobile}) {
+    align-self: flex-start;
   }
 `
 
@@ -77,7 +80,11 @@ const GHLink = styled.p`
 
 const ContactList = styled.ul`
   list-style: none;
-  margin-top: 32px;
+  margin-top: 48px;
+
+  @media only screen and (${devices.mobile}) {
+    margin-top: 0;
+  }
 `
 
 const ContactListItem = styled.li`
@@ -174,9 +181,6 @@ const Footer = () => {
             </GHLink>
           </BottomContainer>
           <BottomContainer>
-            <ParagraphBold>
-              Kontakt & följ oss
-            </ParagraphBold>
             <ContactList>
               <ContactListItem>
                 <ContactIcon 
