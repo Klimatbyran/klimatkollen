@@ -59,10 +59,9 @@ const BottomContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
-  margin: 16px;
-  padding: 16px;
+  margin: 32px;
 
-  @media only screen and (${devices.mobile}) {
+  @media only screen and (${devices.tablet}) {
     align-self: flex-start;
   }
 `
@@ -81,9 +80,10 @@ const GHLink = styled.p`
 const ContactList = styled.ul`
   list-style: none;
   margin-top: 48px;
+  margin-left: 96px;
 
   @media only screen and (${devices.mobile}) {
-    margin-top: 0;
+    margin: 0;
   }
 `
 
