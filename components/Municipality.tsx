@@ -365,7 +365,7 @@ const Municipality = (props: Props) => {
           </Grid>
           {step > 1 && (
             <>
-              <H3>Framtida utsläpp</H3>
+              <H3>Totala framtida utsläpp</H3>
               <TotalCo2 color="#EF3054">
                 Trend: {totalTrend.toFixed(1)} tusen ton CO₂
               </TotalCo2>
