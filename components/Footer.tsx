@@ -80,7 +80,7 @@ const GHLink = styled.p`
 const ContactList = styled.ul`
   list-style: none;
   margin-top: 48px;
-  margin-left: 96px;
+  margin-left: 144px;
 
   @media only screen and (${devices.mobile}) {
     margin: 0;
