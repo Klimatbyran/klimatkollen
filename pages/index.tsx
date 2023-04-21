@@ -49,7 +49,8 @@ const RadioLabel = styled.label`
   margin-bottom: 8px;
   
   &:hover {
-    background: ${({ theme }) => theme.greenGraphThree};
+    background: ${({ theme }) => theme.grey};
+  }
 `
 
 const RadioInput = styled.input`
@@ -57,6 +58,10 @@ const RadioInput = styled.input`
   &:checked + ${RadioLabel} {
     color: ${({ theme }) => theme.darkestGrey};
     background: ${({ theme }) => theme.greenGraphTwo};
+
+    &:hover {
+      background: ${({ theme }) => theme.greenGraphThree};
+    }
   }
 `
 
