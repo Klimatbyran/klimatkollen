@@ -42,8 +42,8 @@ const RadioLabel = styled.label`
   line-height: 20px;
   font-weight: 700;
   text-decoration: none;
-  color: ${({ theme }) => theme.darkestGrey};
-  background: white;
+  color: white;
+  background: ${({ theme }) => theme.darkGrey};
   white-space: nowrap;
   cursor: pointer;
   margin-bottom: 8px;
@@ -55,6 +55,7 @@ const RadioLabel = styled.label`
 const RadioInput = styled.input`
   display: none;
   &:checked + ${RadioLabel} {
+    color: ${({ theme }) => theme.darkestGrey};
     background: ${({ theme }) => theme.greenGraphTwo};
   }
 `
