@@ -11,6 +11,7 @@
   "dependencies": {
     "@danmarshall/deckgl-typings": "^4.9.13",
     "@deck.gl/layers": "^8.6.6",
+    "@sideway/formula": "^3.0.1",
     "@tanstack/react-table": "^8.7.9",
     "@types/styled-components": "^5.1.19",
     "@types/wikidata-sdk": "^6.1.0",
