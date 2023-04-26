@@ -23,6 +23,7 @@
     "csv-parse": "^5.0.4",
     "d3-path": "^3.0.1",
     "deck.gl": "^8.6.6",
+    "decode-uri-component": "^0.4.1",
     "html-entities": "^2.3.2",
     "jotai": "^1.5.3",
     "md5": "^2.3.0",
