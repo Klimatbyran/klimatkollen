@@ -24,6 +24,7 @@
     "bezier-curve": "^1.0.0",
     "chart.js": "^3.7.1",
     "csv-parse": "^5.0.4",
+    "d3-color": "^3.1.0",
     "d3-path": "^3.0.1",
     "deck.gl": "^8.6.6",
     "decode-uri-component": "^0.4.1",
