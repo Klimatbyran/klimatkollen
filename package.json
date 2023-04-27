@@ -13,7 +13,7 @@
     "@deck.gl/layers": "^8.6.6",
     "@react-native-community/cli-tools": "^11.2.0",
     "@sideway/formula": "^3.0.1",
-    "@tanstack/react-table": "^8.7.9",
+    "@tanstack/react-table": "^8.8.5",
     "@types/styled-components": "^5.1.19",
     "@types/wikidata-sdk": "^6.1.0",
     "async": "^3.2.4",
