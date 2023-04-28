@@ -170,8 +170,6 @@ df_cars = df_raw_cars.filter(
 
 df_master = df_master.merge(df_cars, on='Kommun', how='left')
 
-df_master['klimatplan'] = ['value1' if i % 2 == 0 else 'value2' for i in range(len(df_master))]  # FIXME
-
 # LOAD CLIMATE PLANS
 
 path_plans_data = 'klimatplaner.xlsx'

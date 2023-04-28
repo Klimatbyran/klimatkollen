@@ -27,10 +27,20 @@ const getColor = (dataPoint: number | string, boundaries: number[] | string[]): 
   const pink: RGBAColor = [239, 48, 84]
 
   if (boundaries.length == 2) {
+<<<<<<< HEAD
       return (dataPoint === boundaries[0])? pink : blue
   }
 
   // FIXME refactor plz
+=======
+    if (dataPoint === boundaries[0]) {
+      return blue
+    } else {
+      return pink
+    }
+  }
+
+>>>>>>> 924cc60 (add frontend to klimatplaner dataset at start)
   if (boundaries[0] < boundaries[1]) {
     if (dataPoint >= boundaries[4]) {
       return blue
@@ -161,6 +171,13 @@ const Map = ({ data, children, boundaries }: Props) => {
     },
     pickable: true,
   })
+
+  const formatData = (dataPoint: number | string) => {
+    if (typeof dataPoint === 'number') {
+      dataPoint = (dataPoint * 100).toFixed(1)
+    }
+    return dataPoint
+  }
 
   return (
     <DeckGLWrapper>
