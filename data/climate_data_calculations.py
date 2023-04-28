@@ -169,6 +169,7 @@ df_cars = df_raw_cars.filter(
 
 df_master = df_master.merge(df_cars, on='Kommun', how='left')
 
+df_master['klimatplan'] = ['value1' if i % 2 == 0 else 'value2' for i in range(len(df_master))]  # FIXME
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -197,7 +198,8 @@ for i in range(len(df_cem)):
         'budgetRunsOut': df_master.iloc[i]['budgetRunsOut'],
         'electricCars': df_master.iloc[i]['electricCars'],
         'electricCarChangePercent': df_master.iloc[i]['electricCarChangePercent'],
-        'electricCarChangeYearly': df_master.iloc[i]['electricCarChangeYearly']
+        'electricCarChangeYearly': df_master.iloc[i]['electricCarChangeYearly'],
+        'klimatplan': df_master.iloc[i]['klimatplan']
     })
 
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file

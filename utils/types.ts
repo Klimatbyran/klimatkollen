@@ -19,6 +19,7 @@ export type Municipality = {
   ElectricCars: number
   ElectricCarChangePercent: number,
   ElectricCarChangeYearly: Array<number>,
+  Klimatplan: string
 }
 
 export type EmissionPerYear = {

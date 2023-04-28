@@ -80,14 +80,16 @@ const Label = ({ color, text, rotateup = true }: LabelProps) => {
   )
 }
 
-const labelColors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
-
 type MapLabelsProps = {
   labels: string[]
   rotations: boolean[]
+  isTwoElements?: boolean
 }
 
 const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
+  const colors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
+  const labelColors = labels.length === 2 ? ['#91BFC8', '#EF3054'] : colors;
+  
   return (
     <Container>
       {labels.map((label, i) => (
@@ -96,5 +98,6 @@ const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
     </Container>
   )
 }
+
 
 export default MapLabels

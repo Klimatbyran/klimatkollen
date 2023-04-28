@@ -32,5 +32,22 @@ export const dataSetDescriptions = {
     'labels': ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
     'labelRotateUp': [true, true, true, true, true, true],
     'tooltip': 'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
+  },
+  'Klimatplanerna': { // FIXME
+    'heading': 'Kommuner som har en aktiv klimatplan',
+    'body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+    'source':
+      <>
+        Källa:{' '}
+        <a href='www.klimatkollen.se'
+          target='_blank'
+          rel='noreferrer'>
+          Klimatkollen
+        </a>
+      </>,
+    'boundaries': ['value1', 'value2'],
+    'labels': ['Ja', 'Nej'],
+    'labelRotateUp': [true, false],
+    'tooltip': 'Om kommunen har en klimatplan',
   }
 }

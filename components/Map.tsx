@@ -18,13 +18,21 @@ const INITIAL_VIEW_STATE = {
 const DeckGLWrapper = styled.div`
   width: 100%;`
 
-const getColor = (dataPoint: number, boundaries: number[]): RGBAColor => {
+const getColor = (dataPoint: number | string, boundaries: number[] | string[]): RGBAColor => {
   const blue: RGBAColor = [145, 191, 200]
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
   const darkOrange: RGBAColor = [239, 127, 23]
   const red: RGBAColor = [239, 94, 48]
   const pink: RGBAColor = [239, 48, 84]
+
+  if (boundaries.length == 2) {
+    if (dataPoint === boundaries[0]) {
+      return blue
+    } else {
+      return pink
+    }
+  }
 
   if (boundaries[0] < boundaries[1]) {
     if (dataPoint >= boundaries[4]) {
@@ -94,9 +102,9 @@ const replaceLetters = (name: string) => {
 } */
 
 type Props = {
-  data: Array<{ name: string; dataPoint: number }>
+  data: Array<{ name: string; dataPoint: number | string }>
   children?: ReactNode
-  boundaries: number[]
+  boundaries: number[] | string[]
 }
 
 const Map = ({ data, children, boundaries }: Props) => {
@@ -114,7 +122,7 @@ const Map = ({ data, children, boundaries }: Props) => {
   const municipalityLines = municipalityData?.features?.flatMap(({ geometry, properties }: { geometry: any, properties: any }) => {
     const name = replaceLetters(properties.name);
     const dataPoint = data.find((e) => e.name === name)?.dataPoint;
-  
+
     if (geometry.type === 'MultiPolygon') {
       return geometry.coordinates.map((coords: any) => ({
         geometry: coords[0],
@@ -157,6 +165,13 @@ const Map = ({ data, children, boundaries }: Props) => {
     pickable: true,
   })
 
+  const formatData = (dataPoint: number | string) => {
+    if (typeof dataPoint === 'number') {
+      dataPoint = (dataPoint * 100).toFixed(1)
+    }
+    return dataPoint
+  }
+
   return (
     <DeckGLWrapper>
       <NextNProgress
@@ -180,8 +195,9 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
         getTooltip={({ object }) => object && {
           html: `
-          <p>${(object as unknown as MunicipalityData)?.name}: ${((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)}</p>
-          `,
+          <p>${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number'
+              ? ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
+              : (object as unknown as MunicipalityData)?.dataPoint}</p>          `,
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',

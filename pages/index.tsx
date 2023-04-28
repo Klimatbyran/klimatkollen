@@ -94,7 +94,7 @@ const MunicipalityContainer = styled.div`
   }
 `
 
-type SelectedData = 'Utsläppen' | 'Elbilarna'
+type SelectedData = 'Utsläppen' | 'Elbilarna' | 'Klimatplanerna'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -108,14 +108,18 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   const router = useRouter()
 
   const [rankedData, setRankedData] = useState<{
-    [key: string]: Array<{ name: string, dataPoint: number, rank: number }>
+    [key: string]: Array<{ name: string, dataPoint: number | string, rank?: number }>
   }>({})
 
   const municipalitiesName = municipalities.map((item) => item.Name)
 
   const data = municipalities.map((item) => ({
     name: item.Name,
-    dataPoint: selectedData === 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCarChangePercent,
+    dataPoint: selectedData === 'Utsläppen'
+      ? item.HistoricalEmission.EmissionLevelChangeAverage
+      : selectedData === 'Elbilarna'
+        ? item.ElectricCarChangePercent
+        : item.Klimatplan
   }))
 
   const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
@@ -137,25 +141,40 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
         name: item.Name,
         dataPoint: item.HistoricalEmission.EmissionLevelChangeAverage,
       })),
+      Klimatplanerna: municipalities.map((item) => ({
+        name: item.Name,
+        dataPoint: item.Klimatplan,
+      })),
     }
 
     type RankedData = {
       [key in SelectedData]: Array<{
         name: string
-        dataPoint: number
-        rank: number
+        dataPoint: number | string
+        rank?: number
       }>
     }
 
     const newRankedData: RankedData = {
       Elbilarna: [],
       Utsläppen: [],
+      Klimatplanerna: [],
     }
 
     for (const dataSetKey in dataSets) {
       if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
-        const sortAscending = dataSetKey === 'Elbilarna' ? false : true;
-        newRankedData[dataSetKey as SelectedData] = calculateRankings(dataSets[dataSetKey as SelectedData], sortAscending);
+        if (dataSetKey === 'Klimatplanerna') {
+          newRankedData[dataSetKey as SelectedData] = dataSets[dataSetKey as SelectedData];
+        } else {
+          const sortAscending = dataSetKey === 'Elbilarna' ? false : true;
+          newRankedData[dataSetKey as SelectedData] = calculateRankings(
+            dataSets[dataSetKey as SelectedData].map(item => ({
+              name: item.name,
+              dataPoint: Number(item.dataPoint)
+            })),
+            sortAscending
+          );
+        }
       }
     }
 
@@ -165,14 +184,14 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   const columnHeader = (
     <div>
       {selectedData === 'Elbilarna' ? 'Ökning elbilar' : 'Utsläppsförändring'}
-      <InfoTooltip text={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['tooltip']} />
+      <InfoTooltip text={dataSetDescriptions[selectedData]['tooltip']} />
     </div>
   )
 
-  const handleSelectData = () => {
+  const handleSelectData = (dataSetName: SelectedData) => {
     const path = router.pathname.includes('elbilarna') && selectedData === 'Elbilarna' ? '/' : '/elbilarna'
     router.push(path, undefined, { shallow: true })
-    setSelectedData(selectedData === 'Elbilarna' ? 'Utsläppen' : 'Elbilarna')
+    setSelectedData(dataSetName)
   }
 
   const handleToggle = () => {
@@ -180,17 +199,19 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   }
 
   const convertToPercent = (rowData: unknown) => {
-    let percentString = 'Data saknas'
+    let datatString = 'Data saknas'
     if (typeof (rowData) === 'number') {
       const percent = (rowData * 100).toFixed(1)
-      percentString = rowData > 0 ? '+' + percent : percent
+      datatString = rowData > 0 ? '+' + percent : percent
+    } else if (typeof (rowData) === 'string') {
+      datatString = rowData
     }
-    return percentString
+    return datatString
   }
 
   type MuniciplaityItem = {
     name: string,
-    dataPoint: number;
+    dataPoint: number | string;
   }
 
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
@@ -231,7 +252,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
               id="utslappen"
               value='Utsläppen'
               checked={selectedData === 'Utsläppen'}
-              onChange={() => handleSelectData()}
+              onChange={() => handleSelectData('Utsläppen')}
             />
             <RadioLabel htmlFor="utslappen">
               Utsläppen
@@ -241,21 +262,31 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
               id='elbilarna'
               value='Elbilarna'
               checked={selectedData === 'Elbilarna'}
-              onChange={() => handleSelectData()}
+              onChange={() => handleSelectData('Elbilarna')}
             />
             <RadioLabel htmlFor="elbilarna">
               Elbilarna
             </RadioLabel>
+            <RadioInput
+              type="radio"
+              id='klimatplanerna'
+              value='Klimatplanerna'
+              checked={selectedData === 'Klimatplanerna'}
+              onChange={() => handleSelectData('Klimatplanerna')}
+            />
+            <RadioLabel htmlFor="klimatplanerna">
+              Klimatplanerna
+            </RadioLabel>
           </RadioContainer>
           <InfoText>
             <ParagraphBold>
-              {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['heading']}
+              {dataSetDescriptions[selectedData]['heading']}
             </ParagraphBold>
             <Paragraph>
-              {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['body']}
+              {dataSetDescriptions[selectedData]['body']}
             </Paragraph>
             <ParagraphSource>
-              {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['source']}
+              {dataSetDescriptions[selectedData]['source']}
             </ParagraphSource>
           </InfoText>
           <ToggleButton
@@ -264,13 +295,13 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
             icon={toggleViewMode === 'karta' ? <MapIcon /> : <ListIcon />} />
           <MunicipalityContainer>
             <div style={{ display: toggleViewMode === 'karta' ? 'block' : 'none' }}>
-              <MapLabels 
-              labels={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['labels']}
-              rotations={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['labelRotateUp']} />
-              <Map data={data} boundaries={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['boundaries']} />
+              <MapLabels
+                labels={dataSetDescriptions[selectedData]['labels']}
+                rotations={dataSetDescriptions[selectedData]['labelRotateUp']} />
+              <Map data={data} boundaries={dataSetDescriptions[selectedData]['boundaries']} />
             </div>
             <div style={{ display: toggleViewMode === 'lista' ? 'block' : 'none', width: '100%' }}>
-              <ComparisonTable data={rankedData[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} columns={cols} />
+              <ComparisonTable data={rankedData[selectedData]} columns={cols} />
             </div>
           </MunicipalityContainer>
           <DropDown
