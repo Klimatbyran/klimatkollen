@@ -263,40 +263,52 @@ df_plans = df_plans.where(pd.notnull(df_plans), 'Saknas')
 
 df_master = df_master.merge(df_plans, on='Kommun', how='left')
 
-# LOAD KLIMATPLANER
+# LOAD CLIMATE PLANS
 
-path_klimatplaner_data = 'klimatplaner.xlsx'
-df_klimatplaner = pd.read_excel(path_klimatplaner_data)
+path_plans_data = 'klimatplaner.xlsx'
+df_plans = pd.read_excel(path_plans_data)
 
 # name columns after row 1
-df_klimatplaner.columns = df_klimatplaner.iloc[0]
-df_klimatplaner = df_klimatplaner.drop(0)  # drop usless rows
-df_klimatplaner = df_klimatplaner.reset_index(drop=True)
+df_plans.columns = df_plans.iloc[0]
+df_plans = df_plans.drop(0)  # drop usless rows
+df_plans = df_plans.reset_index(drop=True)
 
-municipalities_w_s = ['Alingsås', 'Bengtsfors', 'Bollnäs', 'Borås', 'Degerfors', 'Grums',
-                      'Hagfors', 'Hofors', 'Hällefors', 'Höganäs', 'Kramfors', 'Munkfors',
-                      'Mönsterås', 'Robertsfors', 'Sotenäs', 'Storfors', 'Strängnäs', 'Torsås',
-                      'Tranås', 'Vännäs', 'Västerås']
+municipalities_w_s = ['Alingsås kommun', 'Bengtsfors kommun', 'Bollnäs kommun', 'Borås stad', 'Degerfors kommun', 'Grums kommun',
+                      'Hagfors kommun', 'Hofors kommun', 'Hällefors kommun', 'Höganäs kommun', 'Kramfors kommun', 'Munkfors kommun',
+                      'Mönsterås kommun', 'Robertsfors kommun', 'Sotenäs kommun', 'Storfors kommun', 'Strängnäs kommun', 'Torsås kommun',
+                      'Tranås kommun', 'Vännäs kommun', 'Västerås stad']
 
-df_klimatplaner['Kommun'] = [kommun.replace('s kommun', '') if kommun.replace(' kommun', '') not in municipalities_w_s else kommun.replace(' kommun', '') for kommun in df_klimatplaner['Kommun']]
-df_klimatplaner['Kommun'] = df_klimatplaner['Kommun'].str.replace(' kommun', '')
 
 def clean_kommun(kommun):
-    kommun = kommun.replace(' kommun', '')
-    if kommun not in municipalities_w_s or not kommun.endswith('s'):
-        kommun = kommun.replace('s', '')
+    # Remove any whitespace
+    kommun = kommun.strip()
+
+    # Replace 'Falu kommun' with 'Falun'
+    if kommun == 'Falu kommun':
+        return 'Falun'
+
+    if kommun == 'Region Gotland (kommun)':
+        print(kommun)
+        return 'Gotland'
+
+    # Remove 'kommun' or 'stad' from municipalities in the list 'municipalities_w_s'
+    if kommun in municipalities_w_s:
+        kommun = re.sub(r'( kommun| stad)', '', kommun)
+
+    # Remove 'kommun', 'stad', 's kommun', or 's stad' from all other municipalities
+    kommun = re.sub(r'( kommun| stad|s kommun|s stad)', '', kommun)
+
     return kommun
 
-df_klimatplaner['Kommun'] = df_klimatplaner['Kommun'].apply(clean_kommun)
 
-df_klimatplaner = df_klimatplaner.rename(
-    columns={df_klimatplaner.columns[6]: 'cred'})
+df_plans['Kommun'] = df_plans['Kommun'].apply(clean_kommun)
 
-df_klimatplaner = df_klimatplaner.where(pd.notnull(df_klimatplaner), 'Saknas')
+df_plans = df_plans.rename(
+    columns={df_plans.columns[6]: 'cred'})
 
-print(df_klimatplaner)
+df_plans = df_plans.where(pd.notnull(df_plans), 'Saknas')
 
-df_master = df_master.merge(df_klimatplaner, on='Kommun', how='left')
+df_master = df_master.merge(df_plans, on='Kommun', how='left')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
