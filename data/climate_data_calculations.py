@@ -291,10 +291,17 @@ for i in range(len(df_cem)):
         'electricCars': df_master.iloc[i]['electricCars'],
         'electricCarChangePercent': df_master.iloc[i]['electricCarChangePercent'],
         'electricCarChangeYearly': df_master.iloc[i]['electricCarChangeYearly'],
+<<<<<<< HEAD
         'climatePlanContact': df_master.iloc[i]['Kontakt'],
         'climatePlanLink': df_master.iloc[i]['Länk till aktuell klimatplan'],
         'climatePlanYear': df_master.iloc[i]['Antagen år'],
         'climatePlanCred': df_master.iloc[i]['cred']
+=======
+        'klimatplanContact': df_master.iloc[i]['Kontakt'],
+        'klimatplanLink': df_master.iloc[i]['Länk till aktuell klimatplan'],
+        'klimatplanYear': df_master.iloc[i]['Antagen år'],
+        'klimatplanCred': df_master.iloc[i]['cred'],
+>>>>>>> 59b3758 (add climate plan data to master data file, types and service)
     })
 
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
