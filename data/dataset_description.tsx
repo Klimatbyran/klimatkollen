@@ -45,7 +45,7 @@ export const dataSetDescriptions = {
           Klimatkollen
         </a>
       </>,
-    'boundaries': ['value1', 'value2'],
+    'boundaries': ['Saknas', ''],
     'labels': ['Ja', 'Nej'],
     'labelRotateUp': [true, false],
     'tooltip': 'Om kommunen har en klimatplan',

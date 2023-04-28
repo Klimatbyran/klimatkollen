@@ -119,7 +119,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
       ? item.HistoricalEmission.EmissionLevelChangeAverage
       : selectedData === 'Elbilarna'
         ? item.ElectricCarChangePercent
-        : item.ClimatePlan
+        : item.ClimatePlan.Link
   }))
 
   const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
@@ -143,7 +143,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
       })),
       Klimatplanerna: municipalities.map((item) => ({
         name: item.Name,
-        dataPoint: item.ClimatePlan,
+        dataPoint: item.ClimatePlan.Link,
       })),
     }
 
