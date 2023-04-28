@@ -19,6 +19,7 @@ export type Municipality = {
   ElectricCars: number
   ElectricCarChangePercent: number,
   ElectricCarChangeYearly: Array<number>,
+  ClimatePlan: ClimatePlan
 }
 
 export type EmissionPerYear = {
@@ -42,6 +43,13 @@ export type Budget = {
 export type Trend = {
   TrendPerYear: Array<EmissionPerYear>
   FutureCO2Emission: number
+}
+
+export type ClimatePlan = {
+  Contact: string
+  Link: string
+  YearAdapted: string
+  Cred: string
 }
 
 export type EmissionSector = {

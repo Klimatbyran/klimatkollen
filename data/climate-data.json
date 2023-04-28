@@ -95,7 +95,11 @@
       "2020": 0.2733812949640288,
       "2021": 0.4172767203513909,
       "2022": 0.5561719833564494
-    }
+    },
+    "klimatplanContact": "kommun@ale.se",
+    "klimatplanLink": "https://www.ale.se/download/18.2dcf200c178661e144145a5/1617883886384/Energi-%20och%20klimatstrategi%202030.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Alingsås",
@@ -193,7 +197,11 @@
       "2020": 0.2166796570537802,
       "2021": 0.30501089324618735,
       "2022": 0.41009681881051174
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@alingsas.se",
+    "klimatplanLink": "Klimatstrategi-for-Alingsas-kommun.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Alvesta",
@@ -291,7 +299,11 @@
       "2020": 0.2671232876712329,
       "2021": 0.4394366197183099,
       "2022": 0.6109589041095891
-    }
+    },
+    "klimatplanContact": "klk@alvesta.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Aneby",
@@ -389,7 +401,11 @@
       "2020": 0.30973451327433627,
       "2021": 0.3629032258064516,
       "2022": 0.6271186440677966
-    }
+    },
+    "klimatplanContact": "info@aneby.se",
+    "klimatplanLink": "https://www.aneby.se/download/18.10e76864165add3787c19774/1538745539859/Milj%C3%B6m%C3%A5l%20f%C3%B6r%20Aneby%20kommun%202011-2025.pdf",
+    "klimatplanYear": 2011,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Arboga",
@@ -487,7 +503,11 @@
       "2020": 0.27319587628865977,
       "2021": 0.42,
       "2022": 0.5126903553299492
-    }
+    },
+    "klimatplanContact": "arboga.kommun@arboga.se",
+    "klimatplanLink": "https://www.arboga.se/download/18.626a0440182c91de14a1a5/1661251036439/Energi-%20och%20klimatstrategi%202009%20kf.pdf",
+    "klimatplanYear": 2009,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Arjeplog",
@@ -585,7 +605,11 @@
       "2020": 0.047619047619047616,
       "2021": 0.4583333333333333,
       "2022": 0.42857142857142855
-    }
+    },
+    "klimatplanContact": "kommun@arjeplog.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Arvidsjaur",
@@ -683,7 +707,11 @@
       "2020": 0.0875,
       "2021": 0.12903225806451613,
       "2022": 0.2641509433962264
-    }
+    },
+    "klimatplanContact": "kommun@arvidsjaur.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Arvika",
@@ -781,7 +809,11 @@
       "2020": 0.1813380281690141,
       "2021": 0.35108153078202997,
       "2022": 0.44571428571428573
-    }
+    },
+    "klimatplanContact": "arvika.kommun@arvika.se",
+    "klimatplanLink": "https://www.arvika.se/kommunochpolitik/planerochstyrandedokument/forfattningssamling/bestammelser/miljostrategi.2478.html",
+    "klimatplanYear": 2015,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Askersund",
@@ -879,7 +911,11 @@
       "2020": 0.25625,
       "2021": 0.375,
       "2022": 0.6209150326797386
-    }
+    },
+    "klimatplanContact": "kommun@askersund.se",
+    "klimatplanLink": "https://www.askersund.se/download/18.c8a52c6182e9506a5cabfd/1661845370147/Ekologiskt%20h%C3%A5llbarhetsprogram%202022-2025",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Avesta",
@@ -977,7 +1013,11 @@
       "2020": 0.2258485639686684,
       "2021": 0.34558823529411764,
       "2022": 0.442090395480226
-    }
+    },
+    "klimatplanContact": "kommun@avesta.se",
+    "klimatplanLink": "https://avesta.se/contentassets/dffc2e06c2e84440b5edf9ad69ce3cef/hallbarhetsprogram-for-avesta-kommun-2020.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Bengtsfors",
@@ -1075,7 +1115,11 @@
       "2020": 0.12142857142857143,
       "2021": 0.26356589147286824,
       "2022": 0.4260869565217391
-    }
+    },
+    "klimatplanContact": "kommun@bengtsfors.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Berg",
@@ -1173,7 +1217,11 @@
       "2020": 0.36666666666666664,
       "2021": 0.525,
       "2022": 0.6
-    }
+    },
+    "klimatplanContact": "bergs.kommun@berg.se",
+    "klimatplanLink": "https://berg.se/download/18.12a5b1201849980bbaa159b/1669973598681/Milj%C3%B6program.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Bjurholm",
@@ -1271,7 +1319,11 @@
       "2020": 0.1111111111111111,
       "2021": 0.1875,
       "2022": 0.56
-    }
+    },
+    "klimatplanContact": "kommunen@bjurholm.se",
+    "klimatplanLink": "https://www.bjurholm.se/download/18.23d7fdaa17507a9912f33be/1614325453270/Fossilfria%20transporter%20Handlingsplan%20beslutad.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Bjuv",
@@ -1369,7 +1421,11 @@
       "2020": 0.16058394160583941,
       "2021": 0.20215633423180593,
       "2022": 0.37012987012987014
-    }
+    },
+    "klimatplanContact": "info@bjuv.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Boden",
@@ -1467,7 +1523,11 @@
       "2020": 0.18289085545722714,
       "2021": 0.30532212885154064,
       "2022": 0.4503464203233256
-    }
+    },
+    "klimatplanContact": "kommunen@boden.se",
+    "klimatplanLink": "https://www.boden.se/kommunen/organisation-och-styrning/viktiga-styrdokument",
+    "klimatplanYear": 2018,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Bollebygd",
@@ -1565,7 +1625,11 @@
       "2020": 0.2598870056497175,
       "2021": 0.35267857142857145,
       "2022": 0.5515695067264574
-    }
+    },
+    "klimatplanContact": "kommunen@bollebygd.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Bollnäs",
@@ -1663,7 +1727,11 @@
       "2020": 0.17970049916805325,
       "2021": 0.2708688245315162,
       "2022": 0.299079754601227
-    }
+    },
+    "klimatplanContact": "bollnas@bollnas.se",
+    "klimatplanLink": "https://bollnas.se/download/18.5bba8c07182e92654f3ac6a/1662039598190/Programmet%20f%C3%B6r%20ekologisk%20h%C3%A5llbarhet%20-%20antagen%20version.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Borgholm",
@@ -1761,7 +1829,11 @@
       "2020": 0.15555555555555556,
       "2021": 0.36496350364963503,
       "2022": 0.5605095541401274
-    }
+    },
+    "klimatplanContact": "kommun@borgholm.se",
+    "klimatplanLink": "https://www.borgholm.se/wp-content/uploads/2020/05/Energi-och-klimatstrategi-KF-2019-11-27-220.pdf",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Borlänge",
@@ -1859,7 +1931,11 @@
       "2020": 0.21256038647342995,
       "2021": 0.3398590446358653,
       "2022": 0.5192012288786483
-    }
+    },
+    "klimatplanContact": "kommun@borlange.se",
+    "klimatplanLink": "https://www.borlange.se/bygga-bo-och-miljo/miljo-och-klimat/miljostrategi",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Borås",
@@ -1957,7 +2033,11 @@
       "2020": 0.24108953926398147,
       "2021": 0.36672231496939345,
       "2022": 0.5107079119571684
-    }
+    },
+    "klimatplanContact": "boras.stad@boras.se",
+    "klimatplanLink": "https://www.boras.se/download/18.499cdee21538963cd3f57af7/1610014986050/Energi-%20och%20klimatstrategi%20-%20strategi.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Frida Andersson, projektledare Klimatneutrala Borås 2030"
   },
   {
     "kommun": "Botkyrka",
@@ -2055,7 +2135,11 @@
       "2020": 0.18659881255301103,
       "2021": 0.36717557251908395,
       "2022": 0.45747599451303156
-    }
+    },
+    "klimatplanContact": "medborgarcenter@botkyrka.se",
+    "klimatplanLink": "https://www.botkyrka.se/download/18.1fbbaae6170bff9469deb3b/1584093805113/Klimatstrategi%20f%C3%B6r%20Botkyrka.pdf",
+    "klimatplanYear": 2018,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Boxholm",
@@ -2153,7 +2237,11 @@
       "2020": 0.2191780821917808,
       "2021": 0.3333333333333333,
       "2022": 0.49411764705882355
-    }
+    },
+    "klimatplanContact": "kommun@boxholm.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Bromölla",
@@ -2251,7 +2339,11 @@
       "2020": 0.2822085889570552,
       "2021": 0.28448275862068967,
       "2022": 0.538860103626943
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@bromolla.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Bräcke",
@@ -2349,7 +2441,11 @@
       "2020": 0.1836734693877551,
       "2021": 0.40384615384615385,
       "2022": 0.5217391304347826
-    }
+    },
+    "klimatplanContact": "bracke@bracke.se",
+    "klimatplanLink": "https://catalog.lansstyrelsen.se/store/35/resource/54",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Burlöv",
@@ -2447,7 +2543,11 @@
       "2020": 0.16115702479338842,
       "2021": 0.25443786982248523,
       "2022": 0.33620689655172414
-    }
+    },
+    "klimatplanContact": "burlovs.kommun@burlov.se",
+    "klimatplanLink": "https://burlov.se/download/18.2d13f512159f2c8ce94965e/1485857974493/Energi-%20och%20klimatstrategi%202009-2015.pdf",
+    "klimatplanYear": 2009,
+    "klimatplanCred": "Henrik Sundström"
   },
   {
     "kommun": "Båstad",
@@ -2545,7 +2645,11 @@
       "2020": 0.3007518796992481,
       "2021": 0.42574257425742573,
       "2022": 0.5771971496437055
-    }
+    },
+    "klimatplanContact": "bastads.kommun@bastad.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Dals-Ed",
@@ -2643,7 +2747,11 @@
       "2020": 0.17346938775510204,
       "2021": 0.26436781609195403,
       "2022": 0.5862068965517241
-    }
+    },
+    "klimatplanContact": "kommun@dalsed.se",
+    "klimatplanLink": "https://www.dalsed.se/politik-demokrati/utvecklingsplan-2020-2023/miljo/",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Danderyd",
@@ -2741,7 +2849,11 @@
       "2020": 0.5162790697674419,
       "2021": 0.6462818003913894,
       "2022": 0.731437598736177
-    }
+    },
+    "klimatplanContact": "kommunen@danderyd.se",
+    "klimatplanLink": "https://www.danderyd.se/contentassets/ca8882c4a3184e3abe2d6c966f612bd4/201214_miljo-klimatprogram_final_web.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Sofia Vänelid"
   },
   {
     "kommun": "Degerfors",
@@ -2839,7 +2951,11 @@
       "2020": 0.140625,
       "2021": 0.3106060606060606,
       "2022": 0.43283582089552236
-    }
+    },
+    "klimatplanContact": "kommun@degerfors.se",
+    "klimatplanLink": "https://degerfors.se/download/18.53e66ade178ef85bf04d94/1624438767997/Energi-%20och%20klimatprogram%20-2021-06-04.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Dorotea",
@@ -2937,7 +3053,11 @@
       "2020": 0.1111111111111111,
       "2021": 0.2,
       "2022": 0.2857142857142857
-    }
+    },
+    "klimatplanContact": "info@dorotea.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Eda",
@@ -3035,7 +3155,11 @@
       "2020": 0.1171875,
       "2021": 0.21904761904761905,
       "2022": 0.2897196261682243
-    }
+    },
+    "klimatplanContact": "kommun@eda.se",
+    "klimatplanLink": "https://eda.se/Userfiles/Filarkiv/1294/Dokument/Hallbarhetsstrategi_KF_2020-12-16_T.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ekerö",
@@ -3133,7 +3257,11 @@
       "2020": 0.3673469387755102,
       "2021": 0.5270049099836334,
       "2022": 0.64171974522293
-    }
+    },
+    "klimatplanContact": "info@ekero.se",
+    "klimatplanLink": "https://medborgare.ekero.se/welcome-sv/namnder-styrelser/kommunfullmaktige/mote-2020-04-21/agenda/energistrategi-for-ekero-kommun-2020-03-23pdf?downloadMode=open",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Fredrik Zandrén "
   },
   {
     "kommun": "Eksjö",
@@ -3231,7 +3359,11 @@
       "2020": 0.19727891156462585,
       "2021": 0.2703488372093023,
       "2022": 0.45170454545454547
-    }
+    },
+    "klimatplanContact": "kommun@eksjo.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Emmaboda",
@@ -3329,7 +3461,11 @@
       "2020": 0.11764705882352941,
       "2021": 0.28688524590163933,
       "2022": 0.4
-    }
+    },
+    "klimatplanContact": "kommunen@emmaboda.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Enköping",
@@ -3427,7 +3563,11 @@
       "2020": 0.25,
       "2021": 0.3940754039497307,
       "2022": 0.5200823892893924
-    }
+    },
+    "klimatplanContact": "kommunen@enkoping.se",
+    "klimatplanLink": "https://enkoping.se/download/18.1f87c14f1764bd37b954dfb9/1670497202700/klimatkontrakt-2030.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Eskilstuna",
@@ -3525,7 +3665,11 @@
       "2020": 0.26096687555953446,
       "2021": 0.42340511986997154,
       "2022": 0.5205595591352268
-    }
+    },
+    "klimatplanContact": "eskilstuna.kommun@eskilstuna.se",
+    "klimatplanLink": "https://www.eskilstuna.se/download/18.4e2a3bf1184b408adc47d8/1669619809640/Klimatprogram%20f%C3%B6r%20Eskilstuna%20kommunkoncern.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Eslöv",
@@ -3623,7 +3767,11 @@
       "2020": 0.2139240506329114,
       "2021": 0.3250620347394541,
       "2022": 0.41379310344827586
-    }
+    },
+    "klimatplanContact": "kommunen@eslov.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Essunga",
@@ -3721,7 +3869,11 @@
       "2020": 0.11864406779661017,
       "2021": 0.32,
       "2022": 0.40229885057471265
-    }
+    },
+    "klimatplanContact": "kommun@essunga.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Fagersta",
@@ -3819,7 +3971,11 @@
       "2020": 0.16621253405994552,
       "2021": 0.33691756272401435,
       "2022": 0.42857142857142855
-    }
+    },
+    "klimatplanContact": "info@fagersta.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Falkenberg",
@@ -3917,7 +4073,11 @@
       "2020": 0.2593939393939394,
       "2021": 0.36764705882352944,
       "2022": 0.4934640522875817
-    }
+    },
+    "klimatplanContact": "kommun@falkenberg.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Falköping",
@@ -4015,7 +4175,11 @@
       "2020": 0.18666666666666668,
       "2021": 0.30409356725146197,
       "2022": 0.4490861618798956
-    }
+    },
+    "klimatplanContact": "kommunen@falkoping.se",
+    "klimatplanLink": "https://www.falkoping.se/download/18.1adde54a17861a73b1e11aae/1626330208751/Klimatstrategi%202021-2030.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Falun",
@@ -4113,7 +4277,11 @@
       "2020": 0.27162629757785467,
       "2021": 0.41537267080745344,
       "2022": 0.5163249810174639
-    }
+    },
+    "klimatplanContact": "kontaktcenter@falun.se",
+    "klimatplanLink": "https://www.falun.se/download/18.7eb630aa16a59ef02cf6d5b8/1557238559519/energi_och_klimatprogram_2013_webb.pdf",
+    "klimatplanYear": 2012,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Filipstad",
@@ -4211,7 +4379,11 @@
       "2020": 0.1308411214953271,
       "2021": 0.2706766917293233,
       "2022": 0.3333333333333333
-    }
+    },
+    "klimatplanContact": "kommun@filipstad.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Finspång",
@@ -4309,7 +4481,11 @@
       "2020": 0.20761245674740483,
       "2021": 0.3343195266272189,
       "2022": 0.4863013698630137
-    }
+    },
+    "klimatplanContact": "kommun@finspang.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": 2015,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Flen",
@@ -4407,7 +4583,11 @@
       "2020": 0.1796116504854369,
       "2021": 0.3470319634703196,
       "2022": 0.48743718592964824
-    }
+    },
+    "klimatplanContact": "flenskommun@flen.se",
+    "klimatplanLink": "https://flen.se/nedladdning/forfattningssamling/planer_och_program/planer/Energi-och-klimatplan-for-Flens-kommun-2019-2023.pdf",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Forshaga",
@@ -4505,7 +4685,11 @@
       "2020": 0.23148148148148148,
       "2021": 0.44242424242424244,
       "2022": 0.4755244755244755
-    }
+    },
+    "klimatplanContact": "kommun@forshaga.se",
+    "klimatplanLink": "https://www.forshaga.se/download/18.658f116617a76142ce5bbc71/1626679776148/Milj%C3%B6-%20och%20klimatplan%20(2021-06-08).pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Färgelanda",
@@ -4603,7 +4787,11 @@
       "2020": 0.25,
       "2021": 0.234375,
       "2022": 0.44594594594594594
-    }
+    },
+    "klimatplanContact": "kommun@fargelanda.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Gagnef",
@@ -4701,7 +4889,11 @@
       "2020": 0.3103448275862069,
       "2021": 0.40601503759398494,
       "2022": 0.5290322580645161
-    }
+    },
+    "klimatplanContact": "registrator@gagnef.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Gislaved",
@@ -4799,7 +4991,11 @@
       "2020": 0.259581881533101,
       "2021": 0.37834036568213786,
       "2022": 0.5449275362318841
-    }
+    },
+    "klimatplanContact": "kommunen@gislaved.se",
+    "klimatplanLink": "Strategi för hållbar utveckling (gislaved.se)",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Gnesta",
@@ -4897,7 +5093,11 @@
       "2020": 0.2689655172413793,
       "2021": 0.4157303370786517,
       "2022": 0.5576923076923077
-    }
+    },
+    "klimatplanContact": "gnesta.kommun@gnesta.se",
+    "klimatplanLink": "https://www.gnesta.se/kommunverksamhet/styrningochekonomi/styrdokument/plan.4.34b79a7b16653c9fa8492dbf.html",
+    "klimatplanYear": 2013,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Gnosjö",
@@ -4995,7 +5195,11 @@
       "2020": 0.3374485596707819,
       "2021": 0.4161290322580645,
       "2022": 0.5661016949152542
-    }
+    },
+    "klimatplanContact": "kommun@gnosjo.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Gotland",
@@ -5093,7 +5297,11 @@
       "2020": 0.23824130879345604,
       "2021": 0.3936781609195402,
       "2022": 0.48024316109422494
-    }
+    },
+    "klimatplanContact": "regiongotland@gotland.se",
+    "klimatplanLink": "https://www.gotland.se/115066",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Grums",
@@ -5191,7 +5399,11 @@
       "2020": 0.24761904761904763,
       "2021": 0.32456140350877194,
       "2022": 0.5905511811023622
-    }
+    },
+    "klimatplanContact": "kommunstyrelse@grums.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Grästorp",
@@ -5289,7 +5501,11 @@
       "2020": 0.22727272727272727,
       "2021": 0.41346153846153844,
       "2022": 0.3969465648854962
-    }
+    },
+    "klimatplanContact": "kommun@grastorp.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Gullspång",
@@ -5387,7 +5603,11 @@
       "2020": 0.14942528735632185,
       "2021": 0.2597402597402597,
       "2022": 0.32989690721649484
-    }
+    },
+    "klimatplanContact": "kommun@gullspang.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Gällivare",
@@ -5485,7 +5705,11 @@
       "2020": 0.19166666666666668,
       "2021": 0.22950819672131148,
       "2022": 0.4897119341563786
-    }
+    },
+    "klimatplanContact": "post@gallivare.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Gävle",
@@ -5583,7 +5807,11 @@
       "2020": 0.2134387351778656,
       "2021": 0.30794430794430794,
       "2022": 0.47745013009540327
-    }
+    },
+    "klimatplanContact": "gavle.kommun@gavle.se",
+    "klimatplanLink": "https://app.climateview.global/public/board/505eb0d1-3347-4e97-8a55-4138713941d2",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Göteborg",
@@ -5681,7 +5909,11 @@
       "2020": 0.3041364066940322,
       "2021": 0.4498621640248105,
       "2022": 0.5794771968854282
-    }
+    },
+    "klimatplanContact": "stadsledningskontoret@stadshuset.goteborg.se",
+    "klimatplanLink": "https://www4.goteborg.se/prod/Stadsledningskontoret/LIS/Verksamhetshandbok/Forfattn.nsf//6B3CA866EF066429C12586B200449D53/$File/C12574360024D6C7WEBVCP4393.pdf?OpenElement",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Susanna Arolin"
   },
   {
     "kommun": "Götene",
@@ -5779,7 +6011,11 @@
       "2020": 0.14869888475836432,
       "2021": 0.28895184135977336,
       "2022": 0.447098976109215
-    }
+    },
+    "klimatplanContact": "gotene.kommun@gotene.se",
+    "klimatplanLink": "https://www.gotene.se/download/18.6b0120a216ade1dd99f5d17a/1560261659657/Antaget%20klimat%20och%20milj%C3%B6politiskt%20program,%20KF%2029%20april%202019%20%C2%A7%2070.pdf",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Sonja von Lochow"
   },
   {
     "kommun": "Habo",
@@ -5877,7 +6113,11 @@
       "2020": 0.2271186440677966,
       "2021": 0.3662420382165605,
       "2022": 0.5905511811023622
-    }
+    },
+    "klimatplanContact": "info@habokommun.se",
+    "klimatplanLink": "https://habokommun.se/contentassets/9b46e0c7ebec45209de948336c8fe7e5/klimatprogram-2021-2025.tga.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hagfors",
@@ -5975,7 +6215,11 @@
       "2020": 0.1724137931034483,
       "2021": 0.20270270270270271,
       "2022": 0.20754716981132076
-    }
+    },
+    "klimatplanContact": "kommun@hagfors.se",
+    "klimatplanLink": "https://www.hagfors.se/undersidor/miljo-och-energi/miljomal-och-hallbarhetsarbete/miljoverenskommelsen-2022-2025.html",
+    "klimatplanYear": "2022-2025",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hallsberg",
@@ -6073,7 +6317,11 @@
       "2020": 0.1411042944785276,
       "2021": 0.3333333333333333,
       "2022": 0.5608465608465608
-    }
+    },
+    "klimatplanContact": "kommun@hallsberg.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hallstahammar",
@@ -6171,7 +6419,11 @@
       "2020": 0.28095238095238095,
       "2021": 0.405982905982906,
       "2022": 0.6033755274261603
-    }
+    },
+    "klimatplanContact": "kommun@hallstahammar.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Halmstad",
@@ -6269,7 +6521,11 @@
       "2020": 0.24431818181818182,
       "2021": 0.33992746455654466,
       "2022": 0.49320943531093636
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@halmstad.se",
+    "klimatplanLink": "https://www.halmstad.se/download/18.1ab5eabc17db948137827c20/1643015898074/Plan-for-energi-och-klimat-anpassad.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hammarö",
@@ -6367,7 +6623,11 @@
       "2020": 0.31900138696255204,
       "2021": 0.46029173419773095,
       "2022": 0.4528301886792453
-    }
+    },
+    "klimatplanContact": "kommun@hammaro.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Haninge",
@@ -6465,7 +6725,11 @@
       "2020": 0.2308457711442786,
       "2021": 0.3701392222755641,
       "2022": 0.47905372104484967
-    }
+    },
+    "klimatplanContact": "haningekommun@haninge.se",
+    "klimatplanLink": "https://www.haninge.se/globalassets/globala-katalogen/styrdokument/regler-och-styrande-dokument/bygga-bo-och-miljo/klimat-miljopolitiskt-program/haninge-kommun-klimat-och-miljopolitiskt-program.pdf",
+    "klimatplanYear": 2017,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Haparanda",
@@ -6563,7 +6827,11 @@
       "2020": 0.09803921568627451,
       "2021": 0.1651376146788991,
       "2022": 0.31451612903225806
-    }
+    },
+    "klimatplanContact": "kommunen@haparanda.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Heby",
@@ -6661,7 +6929,11 @@
       "2020": 0.21604938271604937,
       "2021": 0.4319526627218935,
       "2022": 0.4838709677419355
-    }
+    },
+    "klimatplanContact": "information@heby.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hedemora",
@@ -6759,7 +7031,11 @@
       "2020": 0.23214285714285715,
       "2021": 0.40425531914893614,
       "2022": 0.5061224489795918
-    }
+    },
+    "klimatplanContact": "kommun@hedemora.se",
+    "klimatplanLink": "https://hedemora.se/wp-content/uploads/2022/10/Energi-_och_klimatstrategi_2020-2025.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Helsingborg",
@@ -6857,7 +7133,11 @@
       "2020": 0.2603010115963484,
       "2021": 0.3439040068566531,
       "2022": 0.4743110695936478
-    }
+    },
+    "klimatplanContact": "kontaktcenter@helsingborg.se",
+    "klimatplanLink": "https://helsingborg.se/bo-bygga-och-miljo/klimat-och-miljo/helsingborgs-klimat-och-energiplan/",
+    "klimatplanYear": 2018,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Herrljunga",
@@ -6955,7 +7235,11 @@
       "2020": 0.2608695652173913,
       "2021": 0.3614457831325301,
       "2022": 0.551948051948052
-    }
+    },
+    "klimatplanContact": "herrljunga.kommun@herrljunga.se",
+    "klimatplanLink": "https://herrljunga.se/kommun-och-politik/kommuninformation/klimat-2030.html",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hjo",
@@ -7053,7 +7337,11 @@
       "2020": 0.1597222222222222,
       "2021": 0.43147208121827413,
       "2022": 0.5252525252525253
-    }
+    },
+    "klimatplanContact": "kommunen@hjo.se",
+    "klimatplanLink": "https://hjo.se/bostad--miljo/kommunens-miljo--och-klimatarbete/energi-och-uppvarmning/klimat-2030/",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hofors",
@@ -7151,7 +7439,11 @@
       "2020": 0.10891089108910891,
       "2021": 0.2702702702702703,
       "2022": 0.4791666666666667
-    }
+    },
+    "klimatplanContact": "hofors.kommun@hofors.se",
+    "klimatplanLink": "https://www.hofors.se/download/18.786763791545c12c92f983/1464077744437/Milj%C3%B6policy.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Huddinge",
@@ -7249,7 +7541,11 @@
       "2020": 0.28342245989304815,
       "2021": 0.3985611510791367,
       "2022": 0.5150476190476191
-    }
+    },
+    "klimatplanContact": "servicecenter@huddinge.se",
+    "klimatplanLink": "https://www.huddinge.se/organisation-och-styrning/sa-arbetar-vi-med/miljo-och-klimat/klimat-och-energi/",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Maria Soxbo"
   },
   {
     "kommun": "Hudiksvall",
@@ -7347,7 +7643,11 @@
       "2020": 0.22959889349930843,
       "2021": 0.3163771712158809,
       "2022": 0.5223325062034739
-    }
+    },
+    "klimatplanContact": "kommun@hudiksvall.se",
+    "klimatplanLink": "https://www.hudiksvall.se/Sidor/Kommun-och-politik/Hallbarhet/Agenda-2030-Hudiksvalls-kommun/Mal-13-Bekampa-klimatforandringarna.html",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hultsfred",
@@ -7445,7 +7745,11 @@
       "2020": 0.15384615384615385,
       "2021": 0.21238938053097345,
       "2022": 0.3793103448275862
-    }
+    },
+    "klimatplanContact": "kommunen@hultsfred.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hylte",
@@ -7543,7 +7847,11 @@
       "2020": 0.3511450381679389,
       "2021": 0.3595505617977528,
       "2022": 0.5300546448087432
-    }
+    },
+    "klimatplanContact": "kommunen@hylte.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Anna Linell"
   },
   {
     "kommun": "Hällefors",
@@ -7641,7 +7949,11 @@
       "2020": 0.08391608391608392,
       "2021": 0.1450381679389313,
       "2022": 0.14285714285714285
-    }
+    },
+    "klimatplanContact": "kommun@hellefors.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Härjedalen",
@@ -7739,7 +8051,11 @@
       "2020": 0.12857142857142856,
       "2021": 0.1937984496124031,
       "2022": 0.3968253968253968
-    }
+    },
+    "klimatplanContact": "kommun@herjedalen.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Härnösand",
@@ -7837,7 +8153,11 @@
       "2020": 0.2087912087912088,
       "2021": 0.37305699481865284,
       "2022": 0.5428571428571428
-    }
+    },
+    "klimatplanContact": "kommun@harnosand.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Härryda",
@@ -7935,7 +8255,11 @@
       "2020": 0.3130227001194743,
       "2021": 0.45492227979274613,
       "2022": 0.6540483701366983
-    }
+    },
+    "klimatplanContact": "kommun@harryda.se",
+    "klimatplanLink": "https://www.harryda.se/download/18.c0a4fce181800179101eedd/1660123092984/Energi-%20och%20klimatplan.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hässleholm",
@@ -8033,7 +8357,11 @@
       "2020": 0.20342205323193915,
       "2021": 0.30058774139378674,
       "2022": 0.4054794520547945
-    }
+    },
+    "klimatplanContact": "kommunen@hassleholm.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Veronika Ekstrand"
   },
   {
     "kommun": "Håbo",
@@ -8131,7 +8459,11 @@
       "2020": 0.24161073825503357,
       "2021": 0.4116666666666667,
       "2022": 0.4085554866707998
-    }
+    },
+    "klimatplanContact": "kommun@habo.se",
+    "klimatplanLink": "https://www.habo.se/download/18.385a44c917cdfc2502fd07bb/1637050665118/H%C3%A5llbarhetsstrategi_AntagenKF20211108.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Höganäs",
@@ -8229,7 +8561,11 @@
       "2020": 0.24080882352941177,
       "2021": 0.3763779527559055,
       "2022": 0.5419354838709678
-    }
+    },
+    "klimatplanContact": "kommunen@hoganas.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Högsby",
@@ -8327,7 +8663,11 @@
       "2020": 0.22448979591836735,
       "2021": 0.26229508196721313,
       "2022": 0.3150684931506849
-    }
+    },
+    "klimatplanContact": "kommun@hogsby.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Hörby",
@@ -8425,7 +8765,11 @@
       "2020": 0.22983870967741934,
       "2021": 0.4134275618374558,
       "2022": 0.45794392523364486
-    }
+    },
+    "klimatplanContact": "kommunen@horby.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Höör",
@@ -8523,7 +8867,11 @@
       "2020": 0.23310810810810811,
       "2021": 0.4019607843137255,
       "2022": 0.4024390243902439
-    }
+    },
+    "klimatplanContact": "kommun@hoor.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Jokkmokk",
@@ -8621,7 +8969,11 @@
       "2020": 0.2727272727272727,
       "2021": 0.24324324324324326,
       "2022": 0.3898305084745763
-    }
+    },
+    "klimatplanContact": "kommun@jokkmokk.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Järfälla",
@@ -8719,7 +9071,11 @@
       "2020": 0.2443267776096823,
       "2021": 0.43021844660194175,
       "2022": 0.6007046388725779
-    }
+    },
+    "klimatplanContact": "kontakt@jarfalla.se",
+    "klimatplanLink": "https://www.jarfalla.se/byggaboochmiljo/klimatochmiljo/miljoochklimatarbete.4.6734bb8137ee0f195980002288.html",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Jönköping",
@@ -8817,7 +9173,11 @@
       "2020": 0.2023178157532901,
       "2021": 0.33393357342937174,
       "2022": 0.4945994599459946
-    }
+    },
+    "klimatplanContact": "kommunstyrelse@jonkoping.se",
+    "klimatplanLink": "https://www.jonkoping.se/kommunpolitik/saarbetarkommunenmed/hallbarutvecklingagenda2030/miljoochklimat.4.59343ac418311d21a251c3f7.html",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Marcus Björk"
   },
   {
     "kommun": "Kalix",
@@ -8915,7 +9275,11 @@
       "2020": 0.18090452261306533,
       "2021": 0.2761904761904762,
       "2022": 0.47619047619047616
-    }
+    },
+    "klimatplanContact": "kommun@kalix.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kalmar",
@@ -9013,7 +9377,11 @@
       "2020": 0.18652849740932642,
       "2021": 0.2855960264900662,
       "2022": 0.43770096463022506
-    }
+    },
+    "klimatplanContact": "kommun@kalmar.se",
+    "klimatplanLink": "https://kalmar.se/download/18.27a4559e1709e0628a5856/1584024404535/handlingsplan-fossilbranslefri-kommun-2030.pdf",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Karlsborg",
@@ -9111,7 +9479,11 @@
       "2020": 0.16666666666666666,
       "2021": 0.31297709923664124,
       "2022": 0.5131578947368421
-    }
+    },
+    "klimatplanContact": "kommun@karlsborg.se",
+    "klimatplanLink": "https://karlsborg.se/bygga-bo--miljo/energi-och-klimat/behallarsida---fristaende-sidor-om-energi-och-klimat/klimat-2030/",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Karlshamn",
@@ -9209,7 +9581,11 @@
       "2020": 0.14912280701754385,
       "2021": 0.26864035087719296,
       "2022": 0.39644970414201186
-    }
+    },
+    "klimatplanContact": "info@karlshamn.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Karlskoga",
@@ -9307,7 +9683,11 @@
       "2020": 0.18574108818011256,
       "2021": 0.3378607809847199,
       "2022": 0.5070422535211268
-    }
+    },
+    "klimatplanContact": "info@karlskoga.se",
+    "klimatplanLink": "https://karlskoga.se/download/18.52754ae1775ea851a920ca/1666080772061/miljoprogram-karlskoga-kommun.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Karlskrona",
@@ -9405,7 +9785,11 @@
       "2020": 0.23233908948194662,
       "2021": 0.35057085292142376,
       "2022": 0.5304054054054054
-    }
+    },
+    "klimatplanContact": "karlskrona.kommun@karlskrona.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Karlstad",
@@ -9503,7 +9887,11 @@
       "2020": 0.23139339675433687,
       "2021": 0.30685920577617326,
       "2022": 0.3419607843137255
-    }
+    },
+    "klimatplanContact": "karlstadskommun@karlstad.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Katrineholm",
@@ -9601,7 +9989,11 @@
       "2020": 0.26734104046242774,
       "2021": 0.3618421052631579,
       "2022": 0.47246376811594204
-    }
+    },
+    "klimatplanContact": "kommunen@katrineholm.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kil",
@@ -9699,7 +10091,11 @@
       "2020": 0.23417721518987342,
       "2021": 0.28921568627450983,
       "2022": 0.4824120603015075
-    }
+    },
+    "klimatplanContact": "kommun@kil.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kinda",
@@ -9797,7 +10193,11 @@
       "2020": 0.3192771084337349,
       "2021": 0.3177570093457944,
       "2022": 0.5754716981132075
-    }
+    },
+    "klimatplanContact": "kinda@kinda.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kiruna",
@@ -9895,7 +10295,11 @@
       "2020": 0.13190184049079753,
       "2021": 0.1697530864197531,
       "2022": 0.3168831168831169
-    }
+    },
+    "klimatplanContact": "kommun@kiruna.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": 2018,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Klippan",
@@ -9993,7 +10397,11 @@
       "2020": 0.245136186770428,
       "2021": 0.3779527559055118,
       "2022": 0.43673469387755104
-    }
+    },
+    "klimatplanContact": "kommun@klippan.se",
+    "klimatplanLink": "https://www.klippan.se/download/18.1b71982c18529d736e712692/1673968304934/Ha%CC%8Allbarhetsstrategi.pdf?query=klimat",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Knivsta",
@@ -10091,7 +10499,11 @@
       "2020": 0.3317422434367542,
       "2021": 0.5384615384615384,
       "2022": 0.6743362831858407
-    }
+    },
+    "klimatplanContact": "knivsta@knivsta.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kramfors",
@@ -10189,7 +10601,11 @@
       "2020": 0.28125,
       "2021": 0.4882154882154882,
       "2022": 0.533724340175953
-    }
+    },
+    "klimatplanContact": "kommun@kramfors.se",
+    "klimatplanLink": "Kramfors-kommun-Program-för-ekologisk-hållbarhet-2020-2031.pdf",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kristianstad",
@@ -10287,7 +10703,11 @@
       "2020": 0.2339688041594454,
       "2021": 0.4082941427960667,
       "2022": 0.5450490633363069
-    }
+    },
+    "klimatplanContact": "kommun@kristianstad.se",
+    "klimatplanLink": "https://www.kristianstad.se/sv/bygga-bo-och-miljo/samhallsutveckling-och-hallbarhet/klimat-och-miljo/klimat-och-miljoplan/",
+    "klimatplanYear": 2023,
+    "klimatplanCred": "Tomas Stanislawski"
   },
   {
     "kommun": "Kristinehamn",
@@ -10385,7 +10805,11 @@
       "2020": 0.1643598615916955,
       "2021": 0.31135531135531136,
       "2022": 0.4270650263620387
-    }
+    },
+    "klimatplanContact": "kommunen@kristinehamn.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Krokom",
@@ -10483,7 +10907,11 @@
       "2020": 0.30526315789473685,
       "2021": 0.5,
       "2022": 0.7046632124352331
-    }
+    },
+    "klimatplanContact": "krokoms.kommun@krokom.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kumla",
@@ -10581,7 +11009,11 @@
       "2020": 0.2626865671641791,
       "2021": 0.3817204301075269,
       "2022": 0.5411471321695761
-    }
+    },
+    "klimatplanContact": "kommun@kumla.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kungsbacka",
@@ -10679,7 +11111,11 @@
       "2020": 0.2435483870967742,
       "2021": 0.4542525773195876,
       "2022": 0.594327990135635
-    }
+    },
+    "klimatplanContact": "kommun@kungsbacka.se",
+    "klimatplanLink": "https://kungsbacka.se/download/18.533f690b17f7294399b6d9/1646918055968/ks_2018_384-klimatstrategi-for-kungsbacka-kommun-kf-2018-12-13--257-pdf.pdf?mark=Klimatstrategi",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kungsör",
@@ -10777,7 +11213,11 @@
       "2020": 0.2608695652173913,
       "2021": 0.4019607843137255,
       "2022": 0.5702479338842975
-    }
+    },
+    "klimatplanContact": "info@kungsor.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kungälv",
@@ -10875,7 +11315,11 @@
       "2020": 0.24234354194407456,
       "2021": 0.37776332899869963,
       "2022": 0.5230485556238476
-    }
+    },
+    "klimatplanContact": "kommun@kungalv.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Kävlinge",
@@ -10973,7 +11417,11 @@
       "2020": 0.3195084485407066,
       "2021": 0.5037688442211056,
       "2022": 0.6796875
-    }
+    },
+    "klimatplanContact": "kommunen@kavlinge.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Köping",
@@ -11071,7 +11519,11 @@
       "2020": 0.2505694760820046,
       "2021": 0.34968017057569295,
       "2022": 0.4668141592920354
-    }
+    },
+    "klimatplanContact": "kopings.kommun@koping.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Laholm",
@@ -11169,7 +11621,11 @@
       "2020": 0.2023121387283237,
       "2021": 0.34206219312602293,
       "2022": 0.4487369985141159
-    }
+    },
+    "klimatplanContact": "kommun@laholm.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Landskrona",
@@ -11267,7 +11723,11 @@
       "2020": 0.20211161387631976,
       "2021": 0.4315937940761636,
       "2022": 0.5321888412017167
-    }
+    },
+    "klimatplanContact": "kommun@landskrona.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Laxå",
@@ -11365,7 +11825,11 @@
       "2020": 0.16216216216216217,
       "2021": 0.45,
       "2022": 0.5
-    }
+    },
+    "klimatplanContact": "kommun@laxa.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Lekeberg",
@@ -11463,7 +11927,11 @@
       "2020": 0.19148936170212766,
       "2021": 0.5804195804195804,
       "2022": 0.6060606060606061
-    }
+    },
+    "klimatplanContact": "kontaktcenter@lekeberg.se",
+    "klimatplanLink": "https://lekeberg.se/download/18.4743cfc18120db3f63d6f13/1655444950983/H%C3%A5llbarhetsprogram%20f%C3%B6r%20Lekebergs%20kommun%202022-2030%20-%20%20antagen.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Leksand",
@@ -11561,7 +12029,11 @@
       "2020": 0.2345679012345679,
       "2021": 0.3869565217391304,
       "2022": 0.5540540540540541
-    }
+    },
+    "klimatplanContact": "kommun@leksand.se",
+    "klimatplanLink": "https://www.leksand.se/globalassets/medborgare-extern/boende-trafik-och-miljo/miljo/relaterad-information/miljo-och-klimat/energi--och-klimatplan.2015.pdf",
+    "klimatplanYear": 2012,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Lerum",
@@ -11659,7 +12131,11 @@
       "2020": 0.31561461794019935,
       "2021": 0.4953183520599251,
       "2022": 0.6437552388935457
-    }
+    },
+    "klimatplanContact": "kommun@lerum.se",
+    "klimatplanLink": "https://lerum.se/download/18.1190cede18418a07cdfb5d1/1667468393250/Energiplan,%20tillg%C3%A4nglighetsjust%20221103.pdf\n\nhttps://lerum.se/download/18.31127f2187793d50fb16192/1682078443919/Energiplan%20%C3%A5tg%C3%A4rdslista.pdf",
+    "klimatplanYear": 2013,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Lessebo",
@@ -11757,7 +12233,11 @@
       "2020": 0.3111111111111111,
       "2021": 0.45454545454545453,
       "2022": 0.52
-    }
+    },
+    "klimatplanContact": "info@lessebo.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Lidingö",
@@ -11855,7 +12335,11 @@
       "2020": 0.3689052437902484,
       "2021": 0.4925,
       "2022": 0.6043405676126878
-    }
+    },
+    "klimatplanContact": "lidingo.stad@lidingo.se",
+    "klimatplanLink": "https://lidingo.se/toppmeny/naturmiljo/klimatochmiljo/strategisktklimatochmiljoarbete.4.3d1e5816979fc250c25fe0.html",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Carina Kindkvist "
   },
   {
     "kommun": "Lidköping",
@@ -11953,7 +12437,11 @@
       "2020": 0.26823529411764707,
       "2021": 0.4114114114114114,
       "2022": 0.39380281690140845
-    }
+    },
+    "klimatplanContact": "kommun@lidkoping.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Lilla Edet",
@@ -12051,7 +12539,11 @@
       "2020": 0.23037974683544304,
       "2021": 0.31690140845070425,
       "2022": 0.565989847715736
-    }
+    },
+    "klimatplanContact": "kommunen@lillaedet.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Lindesberg",
@@ -12149,7 +12641,11 @@
       "2020": 0.22028985507246376,
       "2021": 0.3058823529411765,
       "2022": 0.47368421052631576
-    }
+    },
+    "klimatplanContact": "kommun@lindesberg.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Linköping",
@@ -12247,7 +12743,11 @@
       "2020": 0.27189235369500214,
       "2021": 0.4135514018691589,
       "2022": 0.5686148576321987
-    }
+    },
+    "klimatplanContact": "kontakt@linkoping.se",
+    "klimatplanLink": "https://static1.squarespace.com/static/5dd54ca29c9179411df12b85/t/6390ab3afd7221628a913d67/1670425403524/Viable-Cities-Klimatkontrakt-Linkoping-FINAL.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ljungby",
@@ -12345,7 +12845,11 @@
       "2020": 0.2015625,
       "2021": 0.3026874115983027,
       "2022": 0.4289940828402367
-    }
+    },
+    "klimatplanContact": "info@ljungby.se",
+    "klimatplanLink": "https://www.ljungby.se/globalassets/dokument-och-innehall/miljo-och-klimat/hallbar-utveckling/klimat--och-energiplan_digital-lasning.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ljusdal",
@@ -12443,7 +12947,11 @@
       "2020": 0.0979381443298969,
       "2021": 0.17149758454106281,
       "2022": 0.30710659898477155
-    }
+    },
+    "klimatplanContact": "kommun@ljusdal.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ljusnarsberg",
@@ -12541,7 +13049,11 @@
       "2020": 0.23529411764705882,
       "2021": 0.36538461538461536,
       "2022": 0.37735849056603776
-    }
+    },
+    "klimatplanContact": "kommun@ljusnarsberg.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Lomma",
@@ -12639,7 +13151,11 @@
       "2020": 0.31539888682745826,
       "2021": 0.511400651465798,
       "2022": 0.6360902255639098
-    }
+    },
+    "klimatplanContact": "info@lomma.se",
+    "klimatplanLink": "https://lomma.se/bygga-bo-och-miljo/klimat-miljo-och-hallbarhet/klimatarbete.html",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ludvika",
@@ -12737,7 +13253,11 @@
       "2020": 0.22791519434628976,
       "2021": 0.3433734939759036,
       "2022": 0.4346076458752515
-    }
+    },
+    "klimatplanContact": "info@ludvika.se",
+    "klimatplanLink": "https://www.ludvika.se/kommun-och-politik/styrande-dokument",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Luleå",
@@ -12835,7 +13355,11 @@
       "2020": 0.23802716225875625,
       "2021": 0.4187725631768953,
       "2022": 0.5405405405405406
-    }
+    },
+    "klimatplanContact": "lulea.kommun@lulea.se",
+    "klimatplanLink": "https://www.lulea.se/kommun--politik/hallbar-utveckling/klimat.html",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Lund",
@@ -12933,7 +13457,11 @@
       "2020": 0.5270969498910676,
       "2021": 0.6341385378339466,
       "2022": 0.6800592482873542
-    }
+    },
+    "klimatplanContact": "lunds.kommun@lund.se",
+    "klimatplanLink": "https://lund.se/download/18.2899fac318093d2b72817dd7/1666783006521/Lunds%20kommuns%20program%20f%C3%B6r%20ekologisk%20h%C3%A5llbar%20utveckling%202021-2030.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Klara Ekblom"
   },
   {
     "kommun": "Lycksele",
@@ -13031,7 +13559,11 @@
       "2020": 0.265625,
       "2021": 0.3333333333333333,
       "2022": 0.4444444444444444
-    }
+    },
+    "klimatplanContact": "kommun@lycksele.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Lysekil",
@@ -13129,7 +13661,11 @@
       "2020": 0.2081447963800905,
       "2021": 0.32265446224256294,
       "2022": 0.5138888888888888
-    }
+    },
+    "klimatplanContact": "registrator@lysekil.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Malmö",
@@ -13227,7 +13763,11 @@
       "2020": 0.21926062645893274,
       "2021": 0.33480251860332,
       "2022": 0.4970276008492569
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@malmo.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Malung-Sälen",
@@ -13325,7 +13865,11 @@
       "2020": 0.2832618025751073,
       "2021": 0.41798941798941797,
       "2022": 0.46959459459459457
-    }
+    },
+    "klimatplanContact": "kommun@malung-salen.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Malå",
@@ -13423,7 +13967,11 @@
       "2020": 0.0,
       "2021": 0.0,
       "2022": 0.4782608695652174
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@mala.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Mariestad",
@@ -13521,7 +14069,11 @@
       "2020": 0.1693121693121693,
       "2021": 0.3032679738562091,
       "2022": 0.42446941323345816
-    }
+    },
+    "klimatplanContact": "info@mariestad.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Mark",
@@ -13619,7 +14171,11 @@
       "2020": 0.210221793635487,
       "2021": 0.29989969909729186,
       "2022": 0.42648490749756574
-    }
+    },
+    "klimatplanContact": "ks@mark.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Markaryd",
@@ -13717,7 +14273,11 @@
       "2020": 0.20179372197309417,
       "2021": 0.3465346534653465,
       "2022": 0.46987951807228917
-    }
+    },
+    "klimatplanContact": "ks@markaryd.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Mellerud",
@@ -13815,7 +14375,11 @@
       "2020": 0.2302158273381295,
       "2021": 0.27439024390243905,
       "2022": 0.4090909090909091
-    }
+    },
+    "klimatplanContact": "kommunen@mellerud.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Mjölby",
@@ -13913,7 +14477,11 @@
       "2020": 0.25795644891122277,
       "2021": 0.45532646048109965,
       "2022": 0.6054421768707483
-    }
+    },
+    "klimatplanContact": "mjolbykommun@mjolby.se",
+    "klimatplanLink": "https://www.mjolby.se/download/18.12cf806d18409781a5e22559/1667205317237/Energi-%20och%20klimatstrategi.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Mora",
@@ -14011,7 +14579,11 @@
       "2020": 0.24102564102564103,
       "2021": 0.3515625,
       "2022": 0.5846501128668171
-    }
+    },
+    "klimatplanContact": "mora.kommun@mora.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Motala",
@@ -14109,7 +14681,11 @@
       "2020": 0.2187192118226601,
       "2021": 0.32097560975609757,
       "2022": 0.43954104148278905
-    }
+    },
+    "klimatplanContact": "motala.kommun@motala.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Mullsjö",
@@ -14207,7 +14783,11 @@
       "2020": 0.23,
       "2021": 0.4369747899159664,
       "2022": 0.5526315789473685
-    }
+    },
+    "klimatplanContact": "kommun@mullsjo.se",
+    "klimatplanLink": "https://www.mullsjo.se/download/18.6cf2c3af17a7603c29e1ac4a/1625644095092/Milj%C3%B6program_Mullsj%C3%B6%20kommun-2021-2030.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Munkedal",
@@ -14305,7 +14885,11 @@
       "2020": 0.24615384615384617,
       "2021": 0.355,
       "2022": 0.5694444444444444
-    }
+    },
+    "klimatplanContact": "munkedal.kommun@munkedal.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Munkfors",
@@ -14403,7 +14987,11 @@
       "2020": 0.1,
       "2021": 0.37777777777777777,
       "2022": 0.4
-    }
+    },
+    "klimatplanContact": "kommun@munkfors.se",
+    "klimatplanLink": "Energi-och-klimatplan-Munkfors.pdf",
+    "klimatplanYear": 2011,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Mölndal",
@@ -14501,7 +15089,11 @@
       "2020": 0.29051132027473925,
       "2021": 0.5240857946554149,
       "2022": 0.6259259259259259
-    }
+    },
+    "klimatplanContact": "kontakt@molndal.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Mönsterås",
@@ -14599,7 +15191,11 @@
       "2020": 0.18354430379746836,
       "2021": 0.3532934131736527,
       "2022": 0.4594594594594595
-    }
+    },
+    "klimatplanContact": "kommun@monsteras.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Mörbylånga",
@@ -14697,7 +15293,11 @@
       "2020": 0.19282511210762332,
       "2021": 0.3484848484848485,
       "2022": 0.5766871165644172
-    }
+    },
+    "klimatplanContact": "kommun@morbylanga.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Nacka",
@@ -14795,7 +15395,11 @@
       "2020": 0.4942429970785358,
       "2021": 0.5308678355679977,
       "2022": 0.6549006168608636
-    }
+    },
+    "klimatplanContact": "registrator@nacka.se",
+    "klimatplanLink": "https://storage.googleapis.com/klimatsekretariatet-static/rapporter/nacka/koldioxidbudget-nacka-2023-01-16.html",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Nora",
@@ -14893,7 +15497,11 @@
       "2020": 0.23369565217391305,
       "2021": 0.3515151515151515,
       "2022": 0.6176470588235294
-    }
+    },
+    "klimatplanContact": "nora.kommun@nora.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Norberg",
@@ -14991,7 +15599,11 @@
       "2020": 0.3088235294117647,
       "2021": 0.4262295081967213,
       "2022": 0.5529411764705883
-    }
+    },
+    "klimatplanContact": "info@norberg.se",
+    "klimatplanLink": "https://opengov.360online.com/Meetings/NORBERG/File/Details/245611.PDF?fileName=Energi-%20och%20klimatstrategi%20f%C3%B6r%20Norbergs%20kommun%202020-2030&fileSize=1674737",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Nordanstig",
@@ -15089,7 +15701,11 @@
       "2020": 0.20454545454545456,
       "2021": 0.41975308641975306,
       "2022": 0.5555555555555556
-    }
+    },
+    "klimatplanContact": "kommun@nordanstig.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Nordmaling",
@@ -15187,7 +15803,11 @@
       "2020": 0.24489795918367346,
       "2021": 0.4230769230769231,
       "2022": 0.6179775280898876
-    }
+    },
+    "klimatplanContact": "kommun@nordmaling.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Norrköping",
@@ -15285,7 +15905,11 @@
       "2020": 0.23770758710517748,
       "2021": 0.3519687406071536,
       "2022": 0.5096185197261167
-    }
+    },
+    "klimatplanContact": "norrkoping.kommun@norrkoping.se",
+    "klimatplanLink": "https://norrkoping.se/organisation/hallbar-utveckling/ekologisk-hallbarhet",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Henrik Perälä"
   },
   {
     "kommun": "Norrtälje",
@@ -15383,7 +16007,11 @@
       "2020": 0.2041851616994293,
       "2021": 0.30424799081515497,
       "2022": 0.47121111846459296
-    }
+    },
+    "klimatplanContact": "kontaktcenter@norrtalje.se",
+    "klimatplanLink": "https://www.norrtalje.se/globalassets/bygga-bo-och-miljo/miljo--och-klimatstrategi---tillganglighetsanpassad.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Tove Blomgren"
   },
   {
     "kommun": "Norsjö",
@@ -15481,7 +16109,11 @@
       "2020": 0.3333333333333333,
       "2021": 0.38235294117647056,
       "2022": 0.8367346938775511
-    }
+    },
+    "klimatplanContact": "info@norsjo.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "*"
   },
   {
     "kommun": "Nybro",
@@ -15579,7 +16211,11 @@
       "2020": 0.1519434628975265,
       "2021": 0.3191489361702128,
       "2022": 0.4963768115942029
-    }
+    },
+    "klimatplanContact": "kommun@nybro.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "*"
   },
   {
     "kommun": "Nykvarn",
@@ -15677,7 +16313,11 @@
       "2020": 0.17110266159695817,
       "2021": 0.34572490706319703,
       "2022": 0.47619047619047616
-    }
+    },
+    "klimatplanContact": "kommun@nykvarn.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "*"
   },
   {
     "kommun": "Nyköping",
@@ -15775,7 +16415,11 @@
       "2020": 0.24525436598329536,
       "2021": 0.337061894108874,
       "2022": 0.48012976480129765
-    }
+    },
+    "klimatplanContact": "kommun@nykoping.se",
+    "klimatplanLink": "https://nykoping.se/globalassets/nykoping.se/dokument/styrdokument/program-for-ekologisk-hallbarhet.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "*"
   },
   {
     "kommun": "Nynäshamn",
@@ -15873,7 +16517,11 @@
       "2020": 0.2222222222222222,
       "2021": 0.3854166666666667,
       "2022": 0.5340659340659341
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@nynashamn.se",
+    "klimatplanLink": "https://nynashamn.se/download/18.af2d0f618019134f8d4e5d6/1650369638283/Nyn%C3%A4shamns%20kommuns%20h%C3%A5llbarhetsprogram%202023-2030.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "*"
   },
   {
     "kommun": "Nässjö",
@@ -15971,7 +16619,11 @@
       "2020": 0.18317503392130258,
       "2021": 0.2973651191969887,
       "2022": 0.5061391541609823
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@nassjo.se",
+    "klimatplanLink": "https://nassjo.se/download/18.5887ffce168e1d826e1aa9a/1551969829610/Energi-%20och%20klimatstrategi.pdf",
+    "klimatplanYear": 2016,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ockelbo",
@@ -16069,7 +16721,11 @@
       "2020": 0.23333333333333334,
       "2021": 0.3076923076923077,
       "2022": 0.4625
-    }
+    },
+    "klimatplanContact": "kommun@ockelbo.se",
+    "klimatplanLink": "https://sandviken.se/download/18.69cc24a417ffd93f9a4c073f/1650969435744/Miljo%CC%88strategiskt%20program_Ockelbo%202022-2026.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Olofström",
@@ -16167,7 +16823,11 @@
       "2020": 0.13025210084033614,
       "2021": 0.2804878048780488,
       "2022": 0.3458333333333333
-    }
+    },
+    "klimatplanContact": "ks@olofstrom.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Sara Westerlund"
   },
   {
     "kommun": "Orsa",
@@ -16265,7 +16925,11 @@
       "2020": 0.15476190476190477,
       "2021": 0.27848101265822783,
       "2022": 0.5333333333333333
-    }
+    },
+    "klimatplanContact": "orsa.kommun@orsa.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Orust",
@@ -16363,7 +17027,11 @@
       "2020": 0.23728813559322035,
       "2021": 0.41566265060240964,
       "2022": 0.5798611111111112
-    }
+    },
+    "klimatplanContact": "kommun@orust.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Osby",
@@ -16461,7 +17129,11 @@
       "2020": 0.24279835390946503,
       "2021": 0.2384937238493724,
       "2022": 0.39299610894941633
-    }
+    },
+    "klimatplanContact": "kommun@osby.se",
+    "klimatplanLink": "https://www.osby.se/bygga-bo--miljo/natur-och-hallbarhet/klimatarbete.html",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Veronika Ekstrand"
   },
   {
     "kommun": "Oskarshamn",
@@ -16559,7 +17231,11 @@
       "2020": 0.18126272912423624,
       "2021": 0.35523613963039014,
       "2022": 0.45454545454545453
-    }
+    },
+    "klimatplanContact": "kommunen@oskarshamn.se",
+    "klimatplanLink": "https://www.oskarshamn.se/bygga-bo-miljo/hallbarhet-och-utveckling/hallbarhet-klimat-natur/energi-och-klimat/",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ovanåker",
@@ -16657,7 +17333,11 @@
       "2020": 0.2457627118644068,
       "2021": 0.33043478260869563,
       "2022": 0.45132743362831856
-    }
+    },
+    "klimatplanContact": "kommun@ovanaker.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Oxelösund",
@@ -16755,7 +17435,11 @@
       "2020": 0.21951219512195122,
       "2021": 0.36809815950920244,
       "2022": 0.4931506849315068
-    }
+    },
+    "klimatplanContact": "kommun@oxelosund.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Pajala",
@@ -16853,7 +17537,11 @@
       "2020": 0.15151515151515152,
       "2021": 0.15625,
       "2022": 0.375
-    }
+    },
+    "klimatplanContact": "kommun@pajala.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Partille",
@@ -16951,7 +17639,11 @@
       "2020": 0.2742927429274293,
       "2021": 0.4050387596899225,
       "2022": 0.560952380952381
-    }
+    },
+    "klimatplanContact": "kundcenter@partille.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Perstorp",
@@ -17049,7 +17741,11 @@
       "2020": 0.21794871794871795,
       "2021": 0.3225806451612903,
       "2022": 0.47297297297297297
-    }
+    },
+    "klimatplanContact": "kommunhuset@perstorp.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Piteå",
@@ -17147,7 +17843,11 @@
       "2020": 0.24660633484162897,
       "2021": 0.44749596122778673,
       "2022": 0.6323185011709602
-    }
+    },
+    "klimatplanContact": "kommun@pitea.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ragunda",
@@ -17245,7 +17945,11 @@
       "2020": 0.0967741935483871,
       "2021": 0.2777777777777778,
       "2022": 0.38181818181818183
-    }
+    },
+    "klimatplanContact": "ragunda.kommun@ragunda.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Kersti Rikka"
   },
   {
     "kommun": "Robertsfors",
@@ -17343,7 +18047,11 @@
       "2020": 0.20754716981132076,
       "2021": 0.4666666666666667,
       "2022": 0.8192771084337349
-    }
+    },
+    "klimatplanContact": "kommun@robertsfors.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ronneby",
@@ -17441,7 +18149,11 @@
       "2020": 0.19622641509433963,
       "2021": 0.3852295409181637,
       "2022": 0.43014705882352944
-    }
+    },
+    "klimatplanContact": "stadshuset@ronneby.se",
+    "klimatplanLink": "https://www.ronneby.se/download/18.2e5b091017e6102741ae787e/1643191137416/Program%20f%C3%B6r%20klimat%20och%20energi%20Ronneby%20kommun%202021-2025.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Rättvik",
@@ -17539,7 +18251,11 @@
       "2020": 0.24299065420560748,
       "2021": 0.30434782608695654,
       "2022": 0.5614973262032086
-    }
+    },
+    "klimatplanContact": "kommun@rattvik.se",
+    "klimatplanLink": "https://www.rattvik.se/download/18.8ea9806168b501487c822b2/1549447131739/Lokala%20ambitioner.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sala",
@@ -17637,7 +18353,11 @@
       "2020": 0.19109947643979058,
       "2021": 0.33163265306122447,
       "2022": 0.5307262569832403
-    }
+    },
+    "klimatplanContact": "kommun.info@sala.se",
+    "klimatplanLink": "https://www.sala.se/resources/files/_Nystruktur/Styrdokument/06%20Planer/Energi-%20och%20klimatstrategi%20Sala%20kommun%202020-2030%20med%20utblick%20mot%202045.pdf",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Sara Westerlund"
   },
   {
     "kommun": "Salem",
@@ -17735,7 +18455,11 @@
       "2020": 0.18620689655172415,
       "2021": 0.4171597633136095,
       "2022": 0.5090361445783133
-    }
+    },
+    "klimatplanContact": "info@salem.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sandviken",
@@ -17833,7 +18557,11 @@
       "2020": 0.1577574967405476,
       "2021": 0.2275064267352185,
       "2022": 0.3547008547008547
-    }
+    },
+    "klimatplanContact": "kommun@sandviken.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sigtuna",
@@ -17931,7 +18659,11 @@
       "2020": 0.316008316008316,
       "2021": 0.43105022831050227,
       "2022": 0.5832716506291635
-    }
+    },
+    "klimatplanContact": "sigtuna.kommun@sigtuna.se",
+    "klimatplanLink": "https://www.sigtuna.se/download/18.24e83a616b997088b4b830f/1566301462415/Plan%20f%C3%B6r%20Klimatsmart.pdf",
+    "klimatplanYear": 2018,
+    "klimatplanCred": "Helen Ericson"
   },
   {
     "kommun": "Simrishamn",
@@ -18029,7 +18761,11 @@
       "2020": 0.2431818181818182,
       "2021": 0.30544747081712065,
       "2022": 0.42823529411764705
-    }
+    },
+    "klimatplanContact": "simrishamns.kommun@simrishamn.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sjöbo",
@@ -18127,7 +18863,11 @@
       "2020": 0.19230769230769232,
       "2021": 0.3163538873994638,
       "2022": 0.5
-    }
+    },
+    "klimatplanContact": "kommun@sjobo.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Skara",
@@ -18225,7 +18965,11 @@
       "2020": 0.1975,
       "2021": 0.2753623188405797,
       "2022": 0.4943310657596372
-    }
+    },
+    "klimatplanContact": "skara.kommun@skara.se",
+    "klimatplanLink": "https://skara.se/download/18.a9ae3d177427fab272ada/1611824198185/milj%C3%B6strategi%202017web.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Skellefteå",
@@ -18323,7 +19067,11 @@
       "2020": 0.283921568627451,
       "2021": 0.44814814814814813,
       "2022": 0.5769230769230769
-    }
+    },
+    "klimatplanContact": "kundtjanst@skelleftea.se",
+    "klimatplanLink": "https://skelleftea.se/skelleftea-vaxer/skelleftea-vaxer/en-hallbar-plats",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Karin Degerfeldt"
   },
   {
     "kommun": "Skinnskatteberg",
@@ -18421,7 +19169,11 @@
       "2020": 0.175,
       "2021": 0.47368421052631576,
       "2022": 0.6
-    }
+    },
+    "klimatplanContact": "kommun@skinnskatteberg.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Skurup",
@@ -18519,7 +19271,11 @@
       "2020": 0.2231404958677686,
       "2021": 0.3563636363636364,
       "2022": 0.4580152671755725
-    }
+    },
+    "klimatplanContact": "kansli@skurup.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Skövde",
@@ -18617,7 +19373,11 @@
       "2020": 0.19880034275921166,
       "2021": 0.3125822007891276,
       "2022": 0.4500838926174497
-    }
+    },
+    "klimatplanContact": "skovdekommun@skovde.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Smedjebacken",
@@ -18715,7 +19475,11 @@
       "2020": 0.2642857142857143,
       "2021": 0.375886524822695,
       "2022": 0.5
-    }
+    },
+    "klimatplanContact": "kommun@smedjebacken.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sollefteå",
@@ -18813,7 +19577,11 @@
       "2020": 0.22167487684729065,
       "2021": 0.34051724137931033,
       "2022": 0.42433234421364985
-    }
+    },
+    "klimatplanContact": "kommun@solleftea.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sollentuna",
@@ -18911,7 +19679,11 @@
       "2020": 0.4370603929177783,
       "2021": 0.5860694183864915,
       "2022": 0.6611704598235021
-    }
+    },
+    "klimatplanContact": "sollentuna.kommun@sollentuna.se",
+    "klimatplanLink": "https://www.sollentuna.se/globalassets/kommun-och-politik/politik-och-demokrati/miljo-och-klimat/plan-for-miljo--och-klimatarbetet-i-sollentuna-kommun-2021-2030.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Solna",
@@ -19009,7 +19781,11 @@
       "2020": 0.5307766677408959,
       "2021": 0.6498606229547934,
       "2022": 0.5627859684799187
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@solna.se",
+    "klimatplanLink": "https://www.solna.se/download/18.5002ae1016ed574744199bd/1596180205909/Klimatstrategi_2019.pdf",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sorsele",
@@ -19107,7 +19883,11 @@
       "2020": 0.0,
       "2021": 0.0,
       "2022": 0.21428571428571427
-    }
+    },
+    "klimatplanContact": "kommun@sorsele.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sotenäs",
@@ -19205,7 +19985,11 @@
       "2020": 0.3251231527093596,
       "2021": 0.4271356783919598,
       "2022": 0.5887445887445888
-    }
+    },
+    "klimatplanContact": "info@sotenas.se",
+    "klimatplanLink": "https://www.sotenas.se/download/18.31f128a417e9f4ede9dc1776/1644237756609/H%C3%A5llbarhetsstrategi%202030%20antagen%20210218%20m%C3%A5l%202022.pdf https://www.sotenas.se/byggabomiljo/samhallsutvecklingochhallbarhet/klimatochmiljo.4.4aa539e4177d31e867be3eaa.html",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Staffanstorp",
@@ -19303,7 +20087,11 @@
       "2020": 0.3087557603686636,
       "2021": 0.45,
       "2022": 0.5562015503875969
-    }
+    },
+    "klimatplanContact": "kommunen@staffanstorp.se",
+    "klimatplanLink": "https://staffanstorp.se/wp-content/uploads/2021/11/6-17-miljoplan.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Stenungsund",
@@ -19401,7 +20189,11 @@
       "2020": 0.26644736842105265,
       "2021": 0.42391304347826086,
       "2022": 0.6045272969374168
-    }
+    },
+    "klimatplanContact": "kommun@stenungsund.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Stockholm",
@@ -19499,7 +20291,11 @@
       "2020": 0.44371911913877166,
       "2021": 0.5427802207664004,
       "2022": 0.6318091888327105
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@stockholm.se",
+    "klimatplanLink": "https://start.stockholm/globalassets/start/om-stockholms-stad/politik-och-demokrati/styrdokument/klimathandlingsplan-2020-2023.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Madeleine van der Veer"
   },
   {
     "kommun": "Storfors",
@@ -19597,7 +20393,11 @@
       "2020": 0.07575757575757576,
       "2021": 0.2857142857142857,
       "2022": 0.5172413793103449
-    }
+    },
+    "klimatplanContact": "storfors.kommun@storfors.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Storuman",
@@ -19695,7 +20495,11 @@
       "2020": 0.21739130434782608,
       "2021": 0.3333333333333333,
       "2022": 0.40425531914893614
-    }
+    },
+    "klimatplanContact": "ks@storuman.se",
+    "klimatplanLink": "Strategi för CO2-effektiva resor i Storumans kommun - Storumans kommun",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Strängnäs",
@@ -19793,7 +20597,11 @@
       "2020": 0.21895424836601307,
       "2021": 0.3390909090909091,
       "2022": 0.42768595041322316
-    }
+    },
+    "klimatplanContact": "kommun@strangnas.se",
+    "klimatplanLink": "Klimat och energiplan för Strängnäs kommun.pdf (strangnas.se)",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Strömstad",
@@ -19891,7 +20699,11 @@
       "2020": 0.2514124293785311,
       "2021": 0.4421364985163205,
       "2022": 0.5956284153005464
-    }
+    },
+    "klimatplanContact": "kommun@stromstad.se",
+    "klimatplanLink": "https://www.stromstad.se/download/18.52a121a217ce4d028c542f2/1636710420332/Strategi%20Agenda%202030%20antagen%20september%202021.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Sara Westerlund"
   },
   {
     "kommun": "Strömsund",
@@ -19989,7 +20801,11 @@
       "2020": 0.1411764705882353,
       "2021": 0.08029197080291971,
       "2022": 0.22875816993464052
-    }
+    },
+    "klimatplanContact": "kommun@stromsund.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sundbyberg",
@@ -20087,7 +20903,11 @@
       "2020": 0.4610318331503842,
       "2021": 0.6775294847920547,
       "2022": 0.6905537459283387
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@sundbyberg.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sundsvall",
@@ -20185,7 +21005,11 @@
       "2020": 0.1923743500866551,
       "2021": 0.3104026845637584,
       "2022": 0.534269902085994
-    }
+    },
+    "klimatplanContact": "sundsvalls.kommun@sundsvall.se",
+    "klimatplanLink": "https://sundsvall.se/download/18.75ef5e4f1817ff175a69ca1b/1659440126510/Klimatplan%202022-2024.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sunne",
@@ -20283,7 +21107,11 @@
       "2020": 0.1801470588235294,
       "2021": 0.29045643153526973,
       "2022": 0.3702290076335878
-    }
+    },
+    "klimatplanContact": "kommun@sunne.se",
+    "klimatplanLink": "https://sunne.se/globalassets/dokument/7.-kommun-och-politik/kommunfakta/forfattningssamling/bygga-bo-och-miljo/miljostrategi-2018-2030-kf-2018-05-07.pdf",
+    "klimatplanYear": 2018,
+    "klimatplanCred": "Sara Westerlund"
   },
   {
     "kommun": "Surahammar",
@@ -20381,7 +21209,11 @@
       "2020": 0.2037037037037037,
       "2021": 0.44516129032258067,
       "2022": 0.5974842767295597
-    }
+    },
+    "klimatplanContact": "kommunen@surahammar.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Svalöv",
@@ -20479,7 +21311,11 @@
       "2020": 0.18222222222222223,
       "2021": 0.33191489361702126,
       "2022": 0.522633744855967
-    }
+    },
+    "klimatplanContact": "info@svalov.se",
+    "klimatplanLink": "https://svalov.se/download/18.37f8c5ee180940ed9988850/1652432039176/Energi-%20och%20klimatplan%202022-2030.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Svedala",
@@ -20577,7 +21413,11 @@
       "2020": 0.23192019950124687,
       "2021": 0.3937007874015748,
       "2022": 0.5700934579439252
-    }
+    },
+    "klimatplanContact": "kommunen@svedala.se",
+    "klimatplanLink": "https://www.svedala.se/contentassets/ff83c3d46b1e464cb1c0a32030db2256/hallbarhetsstrategi-svedala-kommun-2021-tillganglighetsanpassad-webb.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Sara Westerlund"
   },
   {
     "kommun": "Svenljunga",
@@ -20675,7 +21515,11 @@
       "2020": 0.211340206185567,
       "2021": 0.3655913978494624,
       "2022": 0.5170454545454546
-    }
+    },
+    "klimatplanContact": "kansliet@svenljunga.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Säffle",
@@ -20773,7 +21617,11 @@
       "2020": 0.17964071856287425,
       "2021": 0.28205128205128205,
       "2022": 0.5275590551181102
-    }
+    },
+    "klimatplanContact": "kommun@saffle.se",
+    "klimatplanLink": "https://saffle.se/download/18.1112efe616fe8dd058623460/1580994326995/Huvuddokument.pdf",
+    "klimatplanYear": 2018,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Säter",
@@ -20871,7 +21719,11 @@
       "2020": 0.27450980392156865,
       "2021": 0.4666666666666667,
       "2022": 0.6158940397350994
-    }
+    },
+    "klimatplanContact": "kommun@sater.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sävsjö",
@@ -20969,7 +21821,11 @@
       "2020": 0.2153846153846154,
       "2021": 0.27044025157232704,
       "2022": 0.4946236559139785
-    }
+    },
+    "klimatplanContact": "kommun@savsjo.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Söderhamn",
@@ -21067,7 +21923,11 @@
       "2020": 0.16573033707865167,
       "2021": 0.30294906166219837,
       "2022": 0.5107913669064749
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@soderhamn.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Sara Westerlund"
   },
   {
     "kommun": "Söderköping",
@@ -21165,7 +22025,11 @@
       "2020": 0.2882882882882883,
       "2021": 0.42700729927007297,
       "2022": 0.562962962962963
-    }
+    },
+    "klimatplanContact": "kommun@soderkoping.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Södertälje",
@@ -21263,7 +22127,11 @@
       "2020": 0.3804869684499314,
       "2021": 0.47784200385356457,
       "2022": 0.5586734693877551
-    }
+    },
+    "klimatplanContact": "sodertalje.kommun@sodertalje.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Sölvesborg",
@@ -21361,7 +22229,11 @@
       "2020": 0.2226027397260274,
       "2021": 0.4223433242506812,
       "2022": 0.49050632911392406
-    }
+    },
+    "klimatplanContact": "info@solvesborg.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tanum",
@@ -21459,7 +22331,11 @@
       "2020": 0.3197969543147208,
       "2021": 0.4304932735426009,
       "2022": 0.5125
-    }
+    },
+    "klimatplanContact": "kommun@tanum.se",
+    "klimatplanLink": "https://www.tanum.se/download/18.29bde0b1171537ea620dbcc5/1587128543377/Klimat-%20och%20milj%C3%B6strategi.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tibro",
@@ -21557,7 +22433,11 @@
       "2020": 0.21965317919075145,
       "2021": 0.4039408866995074,
       "2022": 0.5792079207920792
-    }
+    },
+    "klimatplanContact": "kommun@tibro.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tidaholm",
@@ -21655,7 +22535,11 @@
       "2020": 0.16129032258064516,
       "2021": 0.3263157894736842,
       "2022": 0.47692307692307695
-    }
+    },
+    "klimatplanContact": "tidaholms.kommun@tidaholm.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tierp",
@@ -21753,7 +22637,11 @@
       "2020": 0.2072072072072072,
       "2021": 0.411214953271028,
       "2022": 0.6044444444444445
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@tierp.se",
+    "klimatplanLink": "Klimat- och energiplan för Tierps kommun.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "frida.johnson@tierp.se"
   },
   {
     "kommun": "Timrå",
@@ -21851,7 +22739,11 @@
       "2020": 0.24043715846994534,
       "2021": 0.34285714285714286,
       "2022": 0.5841584158415841
-    }
+    },
+    "klimatplanContact": "timra.kommun@timra.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tingsryd",
@@ -21949,7 +22841,11 @@
       "2020": 0.22083333333333333,
       "2021": 0.27956989247311825,
       "2022": 0.4375
-    }
+    },
+    "klimatplanContact": "kommunen@tingsryd.se",
+    "klimatplanLink": "https://tingsryd.se/wp-content/blogs.dir/1/files_mf/1647330611Milj%C3%B6program20222027TingsrydD%C3%A4rlivet%C3%A4rh%C3%A5llbart.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tjörn",
@@ -22047,7 +22943,11 @@
       "2020": 0.267741935483871,
       "2021": 0.4627659574468085,
       "2022": 0.577023498694517
-    }
+    },
+    "klimatplanContact": "kommun@tjorn.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tomelilla",
@@ -22145,7 +23045,11 @@
       "2020": 0.09298780487804878,
       "2021": 0.15014577259475217,
       "2022": 0.2219873150105708
-    }
+    },
+    "klimatplanContact": "kommun@tomelilla.se",
+    "klimatplanLink": "https://www.tomelilla.se/fileadmin/tomelilla/kommun_och_politik/pdf/Energi-_och_klimatplan_2020-2025.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Sara Westerlund"
   },
   {
     "kommun": "Torsby",
@@ -22243,7 +23147,11 @@
       "2020": 0.13333333333333333,
       "2021": 0.25206611570247933,
       "2022": 0.35587188612099646
-    }
+    },
+    "klimatplanContact": "torsby.kommun@torsby.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Torsås",
@@ -22341,7 +23249,11 @@
       "2020": 0.19318181818181818,
       "2021": 0.32989690721649484,
       "2022": 0.44660194174757284
-    }
+    },
+    "klimatplanContact": "info@torsas.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tranemo",
@@ -22439,7 +23351,11 @@
       "2020": 0.24890829694323144,
       "2021": 0.3076923076923077,
       "2022": 0.543859649122807
-    }
+    },
+    "klimatplanContact": "kommun@tranemo.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tranås",
@@ -22537,7 +23453,11 @@
       "2020": 0.2558139534883721,
       "2021": 0.3697674418604651,
       "2022": 0.5157232704402516
-    }
+    },
+    "klimatplanContact": "tranaskommun@tranas.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Sara Westerlund"
   },
   {
     "kommun": "Trelleborg",
@@ -22635,7 +23555,11 @@
       "2020": 0.2297142857142857,
       "2021": 0.3947100712105799,
       "2022": 0.5264976958525346
-    }
+    },
+    "klimatplanContact": "trelleborgs.kommun@trelleborg.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Trollhättan",
@@ -22733,7 +23657,11 @@
       "2020": 0.22916666666666666,
       "2021": 0.3987473903966597,
       "2022": 0.5810085836909872
-    }
+    },
+    "klimatplanContact": "trollhattans.stad@trollhattan.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Trosa",
@@ -22831,7 +23759,11 @@
       "2020": 0.24925816023738873,
       "2021": 0.4124293785310734,
       "2022": 0.5870307167235495
-    }
+    },
+    "klimatplanContact": "trosa@trosa.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Tyresö",
@@ -22929,7 +23861,11 @@
       "2020": 0.3091732729331823,
       "2021": 0.47342026078234706,
       "2022": 0.5770877944325482
-    }
+    },
+    "klimatplanContact": "kommun@tyreso.se",
+    "klimatplanLink": "https://app.climateview.global/public/board/db392fc1-257a-4768-a9db-215a92c6ac59",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Täby",
@@ -23027,7 +23963,11 @@
       "2020": 0.36947368421052634,
       "2021": 0.5116168800379327,
       "2022": 0.6
-    }
+    },
+    "klimatplanContact": "kc@taby.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Töreboda",
@@ -23125,7 +24065,11 @@
       "2020": 0.16312056737588654,
       "2021": 0.22602739726027396,
       "2022": 0.4658385093167702
-    }
+    },
+    "klimatplanContact": "kommunen@toreboda.se",
+    "klimatplanLink": "https://toreboda.se/download/18.178b2aa0182e97835b4558f/1662987466375/Strategi%20fo%CC%88r%20Agenda%202030%20To%CC%88reboda%20kommun.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Uddevalla",
@@ -23223,7 +24167,11 @@
       "2020": 0.2798165137614679,
       "2021": 0.4257234726688103,
       "2022": 0.6240359897172236
-    }
+    },
+    "klimatplanContact": "kommunen@uddevalla.se",
+    "klimatplanLink": "https://www.uddevalla.se/download/18.579c6dca18049edc75d3329/1652779490750/Energi%20och%20klimatplan%20f%C3%B6r%20Uddevalla%20kommun%202022%20TA.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Ulricehamn",
@@ -23321,7 +24269,11 @@
       "2020": 0.18811881188118812,
       "2021": 0.29475100942126514,
       "2022": 0.3800277392510402
-    }
+    },
+    "klimatplanContact": "kommun@ulricehamn.se",
+    "klimatplanLink": "https://www.ulricehamn.se/omkommunen/klimatloften22/",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Umeå",
@@ -23419,7 +24371,11 @@
       "2020": 0.28056768558951967,
       "2021": 0.42645074224021595,
       "2022": 0.5045161290322581
-    }
+    },
+    "klimatplanContact": "umea.kommun@umea.se",
+    "klimatplanLink": "https://www.umea.se/byggaboochmiljo/samhallsutvecklingochhallbarhet/klimatmiljoochhallbarhet/strategisktmiljoarbete/miljomal/programochplanerformiljomalen.4.4c35eecf182e743a9224108.html",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Upplands Väsby",
@@ -23517,7 +24473,11 @@
       "2020": 0.33175355450236965,
       "2021": 0.4268846503178928,
       "2022": 0.5114235500878734
-    }
+    },
+    "klimatplanContact": "upplands.vasby.kommun@upplandsvasby.se",
+    "klimatplanLink": "https://upplandsvasby.se/download/18.46d5f63317fbd916d941070/1649663540253/Klimat-%20och%20energistrategi%20f%C3%B6r%20Upplands%20V%C3%A4sby%20kommun%202022-2025.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Upplands-Bro",
@@ -23615,7 +24575,11 @@
       "2020": 0.22939068100358423,
       "2021": 0.4666666666666667,
       "2022": 0.5749167591564928
-    }
+    },
+    "klimatplanContact": "kommun@upplands-bro.se",
+    "klimatplanLink": "https://www.upplands-bro.se/download/18.55ef55a81825cf4a303808/1659449803945/Milj%C3%B6plan-2011-V2",
+    "klimatplanYear": 2010,
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Uppsala",
@@ -23713,7 +24677,11 @@
       "2020": 0.3136797454931071,
       "2021": 0.4467153284671533,
       "2022": 0.5378834044281942
-    }
+    },
+    "klimatplanContact": "uppsala.kommun@uppsala.se",
+    "klimatplanLink": "https://www.uppsala.se/contentassets/5d36faebce83404888c3a4677bad5584/miljo--och-klimatprogram.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Uppvidinge",
@@ -23811,7 +24779,11 @@
       "2020": 0.24060150375939848,
       "2021": 0.3935483870967742,
       "2022": 0.4911242603550296
-    }
+    },
+    "klimatplanContact": "ledningskontoret@uppvidinge.se",
+    "klimatplanLink": "https://www.uppvidinge.se/download/18.57203f4c17cb7cc4b2c7a190/1635761631493/Klimat-%20och%20energistrategi%202022-2030%20f%C3%B6r%20Uppvidinge%20kommun%20f%C3%B6r%20SAMR%C3%85D.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Vadstena",
@@ -23909,7 +24881,11 @@
       "2020": 0.2631578947368421,
       "2021": 0.4503311258278146,
       "2022": 0.5804195804195804
-    }
+    },
+    "klimatplanContact": "vadstena.kommun@vadstena.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Vaggeryd",
@@ -24007,7 +24983,11 @@
       "2020": 0.21649484536082475,
       "2021": 0.43703703703703706,
       "2022": 0.5134099616858238
-    }
+    },
+    "klimatplanContact": "info@vaggeryd.se",
+    "klimatplanLink": "https://www.vaggeryd.se/download/18.1a18992817d52e74471ea1f5/1639407815746/Milj%C3%B6program%202022-2025%20antaget%20KF%20211129%20%C2%A7155.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Valdemarsvik",
@@ -24105,7 +25085,11 @@
       "2020": 0.24,
       "2021": 0.29411764705882354,
       "2022": 0.46078431372549017
-    }
+    },
+    "klimatplanContact": "kommun@valdemarsvik.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Vallentuna",
@@ -24203,7 +25187,11 @@
       "2020": 0.3379501385041551,
       "2021": 0.5242346938775511,
       "2022": 0.6213942307692307
-    }
+    },
+    "klimatplanContact": "kommun@vallentuna.se",
+    "klimatplanLink": "https://dok.vallentuna.se/file/f%C3%B6rfattningssamling/2.%20bygga,%20bo%20och%20milj%C3%B6/2.5%20strategier/2.5.2%20Milj%C3%B6-%20och%20klimatstrategi.pdf",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Eva Lenke för Klimatsmart Vallentuna http://www.klimatsmartvallentuna.se/"
   },
   {
     "kommun": "Vansbro",
@@ -24301,7 +25289,11 @@
       "2020": 0.23529411764705882,
       "2021": 0.3387096774193548,
       "2022": 0.5147058823529411
-    }
+    },
+    "klimatplanContact": "vansbro.kommun@vansbro.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Vara",
@@ -24399,7 +25391,11 @@
       "2020": 0.23859649122807017,
       "2021": 0.3893805309734513,
       "2022": 0.6307277628032345
-    }
+    },
+    "klimatplanContact": "vara.kommun@vara.se",
+    "klimatplanLink": "https://vara.se/innehall/2022/02/Milj%C3%B6strategi-2021-2030-antagen-av-KF-2021-10-04-%C2%A7-89.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Sonja von Lochow"
   },
   {
     "kommun": "Varberg",
@@ -24497,7 +25493,11 @@
       "2020": 0.27150192554557123,
       "2021": 0.38030382399161866,
       "2022": 0.5243568691844553
-    }
+    },
+    "klimatplanContact": "ks@varberg.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Johanna Thomsen"
   },
   {
     "kommun": "Vaxholm",
@@ -24595,7 +25595,11 @@
       "2020": 0.3108108108108108,
       "2021": 0.48214285714285715,
       "2022": 0.603988603988604
-    }
+    },
+    "klimatplanContact": "kansliet@vaxholm.se",
+    "klimatplanLink": "https://www.vaxholm.se/download/18.3d1f64e117fc1ceca46442bb/1648807192906/H%C3%A5llbarhetsstrategi%20f%C3%B6r%20Vaxholms%20stad%202021-2030,%20version%202.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Vellinge",
@@ -24693,7 +25697,11 @@
       "2020": 0.26297273526824977,
       "2021": 0.46791226645004064,
       "2022": 0.6086637298091042
-    }
+    },
+    "klimatplanContact": "vellinge.kommun@vellinge.se",
+    "klimatplanLink": "https://vellinge.se/siteassets/boende-miljo-och-trafik/pdf/vellinge_program-for-hallbar-utveckling_2021_slutlig-version.pdf",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Vetlanda",
@@ -24791,7 +25799,11 @@
       "2020": 0.22099447513812154,
       "2021": 0.3647342995169082,
       "2022": 0.4652956298200514
-    }
+    },
+    "klimatplanContact": "kommun@vetlanda.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Vilhelmina",
@@ -24889,7 +25901,11 @@
       "2020": 0.13636363636363635,
       "2021": 0.34375,
       "2022": 0.38
-    }
+    },
+    "klimatplanContact": "vilhelmina.kommun@vilhelmina.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Vimmerby",
@@ -24987,7 +26003,11 @@
       "2020": 0.15065913370998116,
       "2021": 0.30210772833723654,
       "2022": 0.42857142857142855
-    }
+    },
+    "klimatplanContact": "kommun@vimmerby.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Vindeln",
@@ -25085,7 +26105,11 @@
       "2020": 0.26666666666666666,
       "2021": 0.3541666666666667,
       "2022": 0.6551724137931034
-    }
+    },
+    "klimatplanContact": "vindelns.kommun@vindeln.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Vingåker",
@@ -25183,7 +26207,11 @@
       "2020": 0.20202020202020202,
       "2021": 0.36923076923076925,
       "2022": 0.44
-    }
+    },
+    "klimatplanContact": "kommun@vingaker.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Vänersborg",
@@ -25281,7 +26309,11 @@
       "2020": 0.2114695340501792,
       "2021": 0.3084693084693085,
       "2022": 0.5336658354114713
-    }
+    },
+    "klimatplanContact": "kommun@vanersborg.se",
+    "klimatplanLink": "https://www.vanersborg.se/download/18.2875b421183ed3f970726814/1666862824047/Miljoaktivitetsplan%202022.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Vännäs",
@@ -25379,7 +26411,11 @@
       "2020": 0.24719101123595505,
       "2021": 0.3879310344827586,
       "2022": 0.6444444444444445
-    }
+    },
+    "klimatplanContact": "vannas.kommun@vannas.se",
+    "klimatplanLink": "https://vannas.se/download/18.63a3ca3817647f452194fb8/1615467500524/Energistrategi,%202011-02-15.pdf",
+    "klimatplanYear": 2011,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Värmdö",
@@ -25477,7 +26513,11 @@
       "2020": 0.4001874414245548,
       "2021": 0.5347166799680766,
       "2022": 0.6562763268744735
-    }
+    },
+    "klimatplanContact": "varmdo.kommun@varmdo.se",
+    "klimatplanLink": "https://www.varmdo.se/download/18.2c63bbd2171ac475b0b666dd/1588078930801/Milj%C3%B6-%20och%20klimatplan%202020-2030,%20beslutad%20KF%201%20april%202020-RD.pdf",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Brand Core AB"
   },
   {
     "kommun": "Värnamo",
@@ -25575,7 +26615,11 @@
       "2020": 0.21948051948051947,
       "2021": 0.31408450704225355,
       "2022": 0.45900439238653
-    }
+    },
+    "klimatplanContact": "kontaktcenter@varnamo.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Västervik",
@@ -25673,7 +26717,11 @@
       "2020": 0.23007246376811594,
       "2021": 0.30092592592592593,
       "2022": 0.4221879815100154
-    }
+    },
+    "klimatplanContact": "kommun@vastervik.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Västerås",
@@ -25771,7 +26819,11 @@
       "2020": 0.28936282253817797,
       "2021": 0.41858141858141856,
       "2022": 0.5449010654490106
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@vasteras.se",
+    "klimatplanLink": "https://www.vasteras.se/download/18.4651ec33169110b990c26ef/1554823302843/Klimatprogram%20med%20handlingsplan%202017-2020_190306.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Växjö",
@@ -25869,7 +26921,11 @@
       "2020": 0.2487985212569316,
       "2021": 0.39363005308289095,
       "2022": 0.5051875498802874
-    }
+    },
+    "klimatplanContact": "kommunstyrelsen@vaxjo.se",
+    "klimatplanLink": "https://vaxjo.se/download/18.5975292f184b921397ce18b0/1670511806917/V%C3%A4xj%C3%B6%20kommun%20klimatkontrakt%202022.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Vårgårda",
@@ -25967,7 +27023,11 @@
       "2020": 0.3148148148148148,
       "2021": 0.37662337662337664,
       "2022": 0.5362318840579711
-    }
+    },
+    "klimatplanContact": "kommunen@vargarda.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ydre",
@@ -26065,7 +27125,11 @@
       "2020": 0.1323529411764706,
       "2021": 0.3424657534246575,
       "2022": 0.47435897435897434
-    }
+    },
+    "klimatplanContact": "ydre.kommun@ydre.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ystad",
@@ -26163,7 +27227,11 @@
       "2020": 0.20361083249749248,
       "2021": 0.34465534465534464,
       "2022": 0.36587982832618027
-    }
+    },
+    "klimatplanContact": "kommunen@ystad.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Älmhult",
@@ -26261,7 +27329,11 @@
       "2020": 0.2613333333333333,
       "2021": 0.36058700209643607,
       "2022": 0.4956140350877193
-    }
+    },
+    "klimatplanContact": "info@almhult.se",
+    "klimatplanLink": "https://www.almhult.se/stadsutvecklingplanering/strategiskplanering/miljoplan2030.1994.html",
+    "klimatplanYear": 2020,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Älvdalen",
@@ -26359,7 +27431,11 @@
       "2020": 0.14583333333333334,
       "2021": 0.2786885245901639,
       "2022": 0.35294117647058826
-    }
+    },
+    "klimatplanContact": "kommun@alvdalen.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Älvkarleby",
@@ -26457,7 +27533,11 @@
       "2020": 0.16304347826086957,
       "2021": 0.40860215053763443,
       "2022": 0.6018518518518519
-    }
+    },
+    "klimatplanContact": "kommun@alvkarleby.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Älvsbyn",
@@ -26555,7 +27635,11 @@
       "2020": 0.20408163265306123,
       "2021": 0.35384615384615387,
       "2022": 0.4107142857142857
-    }
+    },
+    "klimatplanContact": "kommunen@alvsbyn.se",
+    "klimatplanLink": "http://www3.alvsbyn.se/styrdoc/Styrdok.nsf/Formnytt.xsp?documentId=D921B3CF75BFCEFFC125868C00428F58&action=openDocument",
+    "klimatplanYear": 2021,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ängelholm",
@@ -26653,7 +27737,11 @@
       "2020": 0.20408163265306123,
       "2021": 0.34813248766737137,
       "2022": 0.44216691068814057
-    }
+    },
+    "klimatplanContact": "info@engelholm.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Åmål",
@@ -26751,7 +27839,11 @@
       "2020": 0.2222222222222222,
       "2021": 0.2907801418439716,
       "2022": 0.46417445482866043
-    }
+    },
+    "klimatplanContact": "kommun@amal.se",
+    "klimatplanLink": "https://www.amal.se/media/467592/antagen-energi-och-klimatstrategi-20171027.pdf",
+    "klimatplanYear": 2017,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ånge",
@@ -26849,7 +27941,11 @@
       "2020": 0.16666666666666666,
       "2021": 0.25196850393700787,
       "2022": 0.47
-    }
+    },
+    "klimatplanContact": "ange@ange.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Åre",
@@ -26947,7 +28043,11 @@
       "2020": 0.2624113475177305,
       "2021": 0.5028901734104047,
       "2022": 0.5628140703517588
-    }
+    },
+    "klimatplanContact": "kundtjanst@are.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Årjäng",
@@ -27045,7 +28145,11 @@
       "2020": 0.10526315789473684,
       "2021": 0.22302158273381295,
       "2022": 0.3558282208588957
-    }
+    },
+    "klimatplanContact": "kommun@arjang.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Åsele",
@@ -27143,7 +28247,11 @@
       "2020": 0.1111111111111111,
       "2021": 0.35,
       "2022": 0.6923076923076923
-    }
+    },
+    "klimatplanContact": "kommun@asele.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Åstorp",
@@ -27241,7 +28349,11 @@
       "2020": 0.2576419213973799,
       "2021": 0.36254980079681276,
       "2022": 0.508695652173913
-    }
+    },
+    "klimatplanContact": "kommun@astorp.se",
+    "klimatplanLink": "https://medborgarportalen.astorp.se/welcome-sv/namnder-styrelser/bygg-och-miljonamndens-arbetsutskott/bygg-och-miljonamndens-arbetsutskott/agenda/02-verksamhetsplan-for-strategiskt-arbetsmiljoarbete-2022pdf?downloadMode=open",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Åtvidaberg",
@@ -27339,7 +28451,11 @@
       "2020": 0.24503311258278146,
       "2021": 0.4010152284263959,
       "2022": 0.5478723404255319
-    }
+    },
+    "klimatplanContact": "kontakt@atvidaberg.se",
+    "klimatplanLink": "https://www.atvidaberg.se/download/18.1dfa69ad1630328ad7c3895c/1656507587248/hallbarhetsprogram.pdf",
+    "klimatplanYear": 2022,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Öckerö",
@@ -27437,7 +28553,11 @@
       "2020": 0.20920502092050208,
       "2021": 0.3931888544891641,
       "2022": 0.5780141843971631
-    }
+    },
+    "klimatplanContact": "kommun@ockero.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Ödeshög",
@@ -27535,7 +28655,11 @@
       "2020": 0.19753086419753085,
       "2021": 0.3108108108108108,
       "2022": 0.5714285714285714
-    }
+    },
+    "klimatplanContact": "kommun@odeshog.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": 2012,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Örebro",
@@ -27633,7 +28757,11 @@
       "2020": 0.2382172131147541,
       "2021": 0.3542545274125527,
       "2022": 0.5105608157319738
-    }
+    },
+    "klimatplanContact": "kommun@orebro.se",
+    "klimatplanLink": "https://www.orebro.se/download/18.1d8f9a39155628f73841694a/1485339455931/Klimatstrategi%20%C3%96rebro%20kommun.pdf",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Örkelljunga",
@@ -27731,7 +28859,11 @@
       "2020": 0.08056872037914692,
       "2021": 0.15942028985507245,
       "2022": 0.2697095435684647
-    }
+    },
+    "klimatplanContact": "kommunkontor@orkelljunga.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Örnsköldsvik",
@@ -27829,7 +28961,11 @@
       "2020": 0.17722681359044995,
       "2021": 0.31940575673166205,
       "2022": 0.45716510903426794
-    }
+    },
+    "klimatplanContact": "kommunen@ornskoldsvik.se",
+    "klimatplanLink": "https://www.ornskoldsvik.se/marknad/framtid-ornskoldsvik/framtid-ornskoldsvik/satsningar-pa-ett-hallbart-samhalle/klimatmalen-ska-nas-med-en-offensiv-strategi",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Östersund",
@@ -27927,7 +29063,11 @@
       "2020": 0.2288072018004501,
       "2021": 0.30080296479308216,
       "2022": 0.5006666666666667
-    }
+    },
+    "klimatplanContact": "kundcenter@ostersund.se",
+    "klimatplanLink": "https://ostersund.se/bygga-bo-och-miljo/klimat-och-miljo/klimatprogram-och-strategi.html",
+    "klimatplanYear": 2019,
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Österåker",
@@ -28025,7 +29165,11 @@
       "2020": 0.29809104258443464,
       "2021": 0.44616376531270147,
       "2022": 0.564381806534273
-    }
+    },
+    "klimatplanContact": "kommun@osteraker.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Östhammar",
@@ -28123,7 +29267,11 @@
       "2020": 0.1813031161473088,
       "2021": 0.3234567901234568,
       "2022": 0.42021276595744683
-    }
+    },
+    "klimatplanContact": "kommunen@osthammar.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Östra Göinge",
@@ -28221,7 +29369,11 @@
       "2020": 0.1989795918367347,
       "2021": 0.410958904109589,
       "2022": 0.5129533678756477
-    }
+    },
+    "klimatplanContact": "kommun@ostragoinge.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Överkalix",
@@ -28319,7 +29471,11 @@
       "2020": 0.18181818181818182,
       "2021": 0.21428571428571427,
       "2022": 0.23333333333333334
-    }
+    },
+    "klimatplanContact": "kommun@overkalix.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   },
   {
     "kommun": "Övertorneå",
@@ -28417,6 +29573,10 @@
       "2020": 0.2413793103448276,
       "2021": 0.3409090909090909,
       "2022": 0.47368421052631576
-    }
+    },
+    "klimatplanContact": "kommun@overtornea.se",
+    "klimatplanLink": "Saknas",
+    "klimatplanYear": "Saknas",
+    "klimatplanCred": "Saknas"
   }
 ]

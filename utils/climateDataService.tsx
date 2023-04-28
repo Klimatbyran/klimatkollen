@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend } from './types'
+import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend, ClimatePlan } from './types'
 import * as fs from 'fs'
 import * as path from 'path'
 
@@ -11,24 +11,28 @@ export class ClimateDataService {
   constructor() {
     const climateDataFileContent = fs.readFileSync(CLIMATE_DATA_FILE_PATH, { encoding: 'utf-8' })
     const jsonData: any[] = JSON.parse(climateDataFileContent)
-    
+
     this.municipalities = jsonData.map((jsonData: any) => {
-      var emissions = new Array<EmissionPerYear>();
+      var emissions = new Array<EmissionPerYear>()
+
       Object.entries(jsonData.emissions).forEach(([year, emission]) => {
         let emissionByYear = {
           Year: Number(year),
           CO2Equivalent: emission
         } as unknown as EmissionPerYear
         emissions.push(emissionByYear)
-      });
+      })
+
       const emission = {
         EmissionPerYear: emissions,
         LargestEmissionSectors: new Array<EmissionSector>()
       } as Emission
+
       emission.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(
         emission.EmissionPerYear,
         5,
       )
+
       const trend = {
         FutureCO2Emission: jsonData.futureEmission,
         TrendPerYear: Object.entries(jsonData.trend).map(
@@ -40,6 +44,7 @@ export class ClimateDataService {
           }
         )
       } as unknown as Trend
+
       const budget = {
         PercentageOfNationalBudget: 1,
         CO2Equivalent: jsonData.budget,
@@ -52,6 +57,14 @@ export class ClimateDataService {
           }
         )
       } as unknown as Budget
+
+      const climatePlan = {
+        Contact: jsonData.climatePlanContact,
+        Link: jsonData.climatePlanLink,
+        YearAdapted: jsonData.climatePlanYear,
+        Cred: jsonData.climatePlanCred,
+      } as unknown as ClimatePlan
+
       let municipality = {
         Name: jsonData.kommun,
         HistoricalEmission: emission,
@@ -63,15 +76,16 @@ export class ClimateDataService {
         ElectricCars: jsonData.electricCars,
         ElectricCarChangePercent: jsonData.electricCarChangePercent,
         ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
+        ClimatePlan: climatePlan
       } as Municipality
       return municipality
     })
-    .sort((a: Municipality, b: Municipality) => {
-      return (
-        a.HistoricalEmission.EmissionLevelChangeAverage -
-        b.HistoricalEmission.EmissionLevelChangeAverage
-      )
-    })
+      .sort((a: Municipality, b: Municipality) => {
+        return (
+          a.HistoricalEmission.EmissionLevelChangeAverage -
+          b.HistoricalEmission.EmissionLevelChangeAverage
+        )
+      })
     this.municipalities.forEach((municipality: Municipality, index: number) => {
       municipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
     })

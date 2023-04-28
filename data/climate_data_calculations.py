@@ -4,6 +4,7 @@ import datetime
 import json
 import numpy as np
 import pandas as pd
+import re
 
 
 # Budget i ton från och med 2020
@@ -156,7 +157,7 @@ df_master = df_master.merge(df_trafa, on='Kommun', how='left')
 path_cars_data = 'kpi1_calculations.xlsx'  # calculations based on trafa data
 df_raw_cars = pd.read_excel(path_cars_data)
 
-df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row 0
+df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row
 df_raw_cars = df_raw_cars.drop([0, 1])  # drop usless rows
 df_raw_cars = df_raw_cars.reset_index(drop=True)
 
@@ -169,6 +170,53 @@ df_cars = df_raw_cars.filter(
 
 df_master = df_master.merge(df_cars, on='Kommun', how='left')
 
+
+# LOAD CLIMATE PLANS
+
+path_plans_data = 'klimatplaner.xlsx'
+df_plans = pd.read_excel(path_plans_data)
+
+# name columns after row 1
+df_plans.columns = df_plans.iloc[0]
+df_plans = df_plans.drop(0)  # drop usless rows
+df_plans = df_plans.reset_index(drop=True)
+
+municipalities_w_s = ['Alingsås kommun', 'Bengtsfors kommun', 'Bollnäs kommun', 'Borås stad', 'Degerfors kommun', 'Grums kommun',
+                      'Hagfors kommun', 'Hofors kommun', 'Hällefors kommun', 'Höganäs kommun', 'Kramfors kommun', 'Munkfors kommun',
+                      'Mönsterås kommun', 'Robertsfors kommun', 'Sotenäs kommun', 'Storfors kommun', 'Strängnäs kommun', 'Torsås kommun',
+                      'Tranås kommun', 'Vännäs kommun', 'Västerås stad']
+
+
+def clean_kommun(kommun):
+    # Remove any whitespace
+    kommun = kommun.strip()
+
+    # Replace 'Falu kommun' with 'Falun'
+    if kommun == 'Falu kommun':
+        return 'Falun'
+
+    if kommun == 'Region Gotland (kommun)':
+        print(kommun)
+        return 'Gotland'
+
+    # Remove 'kommun' or 'stad' from municipalities in the list 'municipalities_w_s'
+    if kommun in municipalities_w_s:
+        kommun = re.sub(r'( kommun| stad)', '', kommun)
+
+    # Remove 'kommun', 'stad', 's kommun', or 's stad' from all other municipalities
+    kommun = re.sub(r'( kommun| stad|s kommun|s stad)', '', kommun)
+
+    return kommun
+
+
+df_plans['Kommun'] = df_plans['Kommun'].apply(clean_kommun)
+
+df_plans = df_plans.rename(
+    columns={df_plans.columns[6]: 'cred'})
+
+df_plans = df_plans.where(pd.notnull(df_plans), 'Saknas')
+
+df_master = df_master.merge(df_plans, on='Kommun', how='left')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -197,7 +245,11 @@ for i in range(len(df_cem)):
         'budgetRunsOut': df_master.iloc[i]['budgetRunsOut'],
         'electricCars': df_master.iloc[i]['electricCars'],
         'electricCarChangePercent': df_master.iloc[i]['electricCarChangePercent'],
-        'electricCarChangeYearly': df_master.iloc[i]['electricCarChangeYearly']
+        'electricCarChangeYearly': df_master.iloc[i]['electricCarChangeYearly'],
+        'klimatplanContact': df_master.iloc[i]['Kontakt'],
+        'klimatplanLink': df_master.iloc[i]['Länk till aktuell klimatplan'],
+        'klimatplanYear': df_master.iloc[i]['Antagen år'],
+        'klimatplanCred': df_master.iloc[i]['cred'],
     })
 
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
