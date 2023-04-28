@@ -76,11 +76,7 @@ export class ClimateDataService {
         ElectricCars: jsonData.electricCars,
         ElectricCarChangePercent: jsonData.electricCarChangePercent,
         ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
-<<<<<<< HEAD
-        Klimatplan: jsonData.klimatplan,
-=======
         ClimatePlan: climatePlan
->>>>>>> d1e773e (add climate plan data to master data file, types and service)
       } as Municipality
       return municipality
     })
