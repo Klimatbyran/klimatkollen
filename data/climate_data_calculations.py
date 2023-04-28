@@ -294,7 +294,7 @@ for i in range(len(df_cem)):
         'climatePlanContact': df_master.iloc[i]['Kontakt'],
         'climatePlanLink': df_master.iloc[i]['Länk till aktuell klimatplan'],
         'climatePlanYear': df_master.iloc[i]['Antagen år'],
-        'climatePlanCred': df_master.iloc[i]['cred'],
+        'climatePlanCred': df_master.iloc[i]['cred']
     })
 
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
