@@ -263,6 +263,41 @@ df_plans = df_plans.where(pd.notnull(df_plans), 'Saknas')
 
 df_master = df_master.merge(df_plans, on='Kommun', how='left')
 
+# LOAD KLIMATPLANER
+
+path_klimatplaner_data = 'klimatplaner.xlsx'
+df_klimatplaner = pd.read_excel(path_klimatplaner_data)
+
+# name columns after row 1
+df_klimatplaner.columns = df_klimatplaner.iloc[0]
+df_klimatplaner = df_klimatplaner.drop(0)  # drop usless rows
+df_klimatplaner = df_klimatplaner.reset_index(drop=True)
+
+municipalities_w_s = ['Alingsås', 'Bengtsfors', 'Bollnäs', 'Borås', 'Degerfors', 'Grums',
+                      'Hagfors', 'Hofors', 'Hällefors', 'Höganäs', 'Kramfors', 'Munkfors',
+                      'Mönsterås', 'Robertsfors', 'Sotenäs', 'Storfors', 'Strängnäs', 'Torsås',
+                      'Tranås', 'Vännäs', 'Västerås']
+
+df_klimatplaner['Kommun'] = [kommun.replace('s kommun', '') if kommun.replace(' kommun', '') not in municipalities_w_s else kommun.replace(' kommun', '') for kommun in df_klimatplaner['Kommun']]
+df_klimatplaner['Kommun'] = df_klimatplaner['Kommun'].str.replace(' kommun', '')
+
+def clean_kommun(kommun):
+    kommun = kommun.replace(' kommun', '')
+    if kommun not in municipalities_w_s or not kommun.endswith('s'):
+        kommun = kommun.replace('s', '')
+    return kommun
+
+df_klimatplaner['Kommun'] = df_klimatplaner['Kommun'].apply(clean_kommun)
+
+df_klimatplaner = df_klimatplaner.rename(
+    columns={df_klimatplaner.columns[6]: 'cred'})
+
+df_klimatplaner = df_klimatplaner.where(pd.notnull(df_klimatplaner), 'Saknas')
+
+print(df_klimatplaner)
+
+df_master = df_master.merge(df_klimatplaner, on='Kommun', how='left')
+
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
 temp = []  # remane the columns
