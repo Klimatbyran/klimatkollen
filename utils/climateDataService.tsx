@@ -76,7 +76,7 @@ export class ClimateDataService {
         ElectricCars: jsonData.electricCars,
         ElectricCarChangePercent: jsonData.electricCarChangePercent,
         ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
-        ClimatePlan: climatePlan,
+        ClimatePlan: climatePlan
       } as Municipality
       return municipality
     })
