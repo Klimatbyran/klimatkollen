@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import InfoSection from './FactSection'
+import FactSection from './FactSection'
+import { InfoHeading, Row, SectionLeft, SectionRight } from './shared'
+import { ParagraphBold } from './Typography'
+import Icon from './../public/icons/arrow.svg'
+
 
 const StyledDiv = styled.div`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -12,6 +16,53 @@ const StyledDiv = styled.div`
   background: ${(props) => props.theme.darkestGrey};
 `
 
+const ToggleBtn = styled.button`
+  height: 36px;
+  color: ${({ theme }) => theme.paperWhite};
+  background: transparent;
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: ${({ theme }) => theme.darkGrey};
+  }
+  & a {
+    text-decoration: none;
+  }
+`
+
+const Square = styled.div`
+  background-color: white;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  border-radius: 4px;
+  margin-left: 8px;
+`
+
+const ArrowIcon = styled(Icon)`
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  z-index: 1;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: rotate(-90deg);
+`
+
+const WhiteLine = styled.hr`
+  background-color: #FFF;
+  height: 3px;
+  margin: 16px 0;
+`
+
 type Props = {
   rank: number | null
   budget: number | null
@@ -20,6 +71,8 @@ type Props = {
   emissionLastYear: number | undefined
   population: number | null
   politicalRule: Array<string> | null
+  climatePlanLink: string
+  climatePlanYear: number | string
 }
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
@@ -32,14 +85,34 @@ const ScoreCard = ({
   // Below removed until we've found a better way to weigh emission per capita
   // emissionLastYear,
   // population,
-  politicalRule
+  politicalRule,
+  climatePlanLink,
+  climatePlanYear
 }: Props) => {
   const rankFormatted = rank + ' av 290 kommuner'
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
 
   return (
     <StyledDiv>
-      {rank && <InfoSection
+      <Row>
+        <SectionLeft>
+          <InfoHeading>Klimatplan</InfoHeading>
+          <ParagraphBold>{climatePlanYear != 'Saknas' && 'Antagen '}{climatePlanYear}</ParagraphBold>
+        </SectionLeft>
+        <SectionRight>
+          <ToggleBtn>
+            <a href={climatePlanLink}
+              target='_blank' >
+              Öppna
+            </a>
+            <Square>
+              <ArrowIcon />
+            </Square>
+          </ToggleBtn>
+        </SectionRight>
+      </Row>
+      <WhiteLine />
+      {rank && <FactSection
         heading='Kommunens utsläppsrankning'
         data={rankFormatted}
         info={
@@ -48,7 +121,7 @@ const ScoreCard = ({
           </>
         }
       />}
-      {budget && <InfoSection
+      {budget && <FactSection
         heading='Koldioxidbudget'
         data={formatter.format(Math.round(budget)) + ' ton'}
         info={
@@ -58,7 +131,7 @@ const ScoreCard = ({
           </>
         }
       />}
-      {budgetRunsOut && <InfoSection
+      {budgetRunsOut && <FactSection
         heading='Koldioxidbudgeten tar slut'
         data={budgetRunsOut === 'Aldrig' ? 'Med nuvarande trend håller kommunen sin budget' : budgetRunsOut}
         info={
@@ -67,7 +140,7 @@ const ScoreCard = ({
           </>
         }
       />}
-      {<InfoSection
+      {<FactSection
         heading='Utsläppsminskning för att klara Parisavtalet'
         data={'-' + emissionChangePercent.toFixed(1) + '% per år'}
         info={
@@ -99,7 +172,7 @@ const ScoreCard = ({
           </>
         }
       />} */}
-      {politicalRule && <InfoSection
+      {politicalRule && <FactSection
         heading='Här styr'
         data={politicalRuleFormatted}
         info={

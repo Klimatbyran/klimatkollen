@@ -156,7 +156,7 @@ df_master = df_master.merge(df_trafa, on='Kommun', how='left')
 path_cars_data = 'kpi1_calculations.xlsx'  # calculations based on trafa data
 df_raw_cars = pd.read_excel(path_cars_data)
 
-df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row 0
+df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row
 df_raw_cars = df_raw_cars.drop([0, 1])  # drop usless rows
 df_raw_cars = df_raw_cars.reset_index(drop=True)
 
@@ -170,6 +170,41 @@ df_cars = df_raw_cars.filter(
 df_master = df_master.merge(df_cars, on='Kommun', how='left')
 
 df_master['klimatplan'] = ['value1' if i % 2 == 0 else 'value2' for i in range(len(df_master))]  # FIXME
+
+# LOAD KLIMATPLANER
+
+path_klimatplaner_data = 'klimatplaner.xlsx'
+df_klimatplaner = pd.read_excel(path_klimatplaner_data)
+
+# name columns after row 1
+df_klimatplaner.columns = df_klimatplaner.iloc[0]
+df_klimatplaner = df_klimatplaner.drop(0)  # drop usless rows
+df_klimatplaner = df_klimatplaner.reset_index(drop=True)
+
+municipalities_w_s = ['Alingsås', 'Bengtsfors', 'Bollnäs', 'Borås', 'Degerfors', 'Grums',
+                      'Hagfors', 'Hofors', 'Hällefors', 'Höganäs', 'Kramfors', 'Munkfors',
+                      'Mönsterås', 'Robertsfors', 'Sotenäs', 'Storfors', 'Strängnäs', 'Torsås',
+                      'Tranås', 'Vännäs', 'Västerås']
+
+df_klimatplaner['Kommun'] = [kommun.replace('s kommun', '') if kommun.replace(' kommun', '') not in municipalities_w_s else kommun.replace(' kommun', '') for kommun in df_klimatplaner['Kommun']]
+df_klimatplaner['Kommun'] = df_klimatplaner['Kommun'].str.replace(' kommun', '')
+
+def clean_kommun(kommun):
+    kommun = kommun.replace(' kommun', '')
+    if kommun not in municipalities_w_s or not kommun.endswith('s'):
+        kommun = kommun.replace('s', '')
+    return kommun
+
+df_klimatplaner['Kommun'] = df_klimatplaner['Kommun'].apply(clean_kommun)
+
+df_klimatplaner = df_klimatplaner.rename(
+    columns={df_klimatplaner.columns[6]: 'cred'})
+
+df_klimatplaner = df_klimatplaner.where(pd.notnull(df_klimatplaner), 'Saknas')
+
+print(df_klimatplaner)
+
+df_master = df_master.merge(df_klimatplaner, on='Kommun', how='left')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -199,7 +234,14 @@ for i in range(len(df_cem)):
         'electricCars': df_master.iloc[i]['electricCars'],
         'electricCarChangePercent': df_master.iloc[i]['electricCarChangePercent'],
         'electricCarChangeYearly': df_master.iloc[i]['electricCarChangeYearly'],
+<<<<<<< HEAD
         'klimatplan': df_master.iloc[i]['klimatplan']
+=======
+        'klimatplanContact': df_master.iloc[i]['Kontakt'],
+        'klimatplanLink': df_master.iloc[i]['Länk till aktuell klimatplan'],
+        'klimatplanYear': df_master.iloc[i]['Antagen år'],
+        'klimatplanCred': df_master.iloc[i]['cred'],
+>>>>>>> a145434 (klimatplaner added)
     })
 
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
