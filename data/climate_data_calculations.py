@@ -288,7 +288,6 @@ def clean_kommun(kommun):
         return 'Falun'
 
     if kommun == 'Region Gotland (kommun)':
-        print(kommun)
         return 'Gotland'
 
     # Remove 'kommun' or 'stad' from municipalities in the list 'municipalities_w_s'
