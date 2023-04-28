@@ -186,12 +186,16 @@ const Map = ({ data, children, boundaries }: Props) => {
         getTooltip={({ object }) => object && {
           html: `
 <<<<<<< HEAD
+<<<<<<< HEAD
           <p>${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number' ? ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1) : (object as unknown as MunicipalityData)?.dataPoint}</p>          `,
 =======
           <p>${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number'
               ? ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
               : (object as unknown as MunicipalityData)?.dataPoint}</p>          `,
 >>>>>>> 209371c (rebase added climate plans to data)
+=======
+          <p>${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number' ? ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1) : (object as unknown as MunicipalityData)?.dataPoint}</p>          `,
+>>>>>>> 8b845cb (minor refactoring)
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
