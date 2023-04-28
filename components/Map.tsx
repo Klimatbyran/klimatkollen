@@ -165,13 +165,6 @@ const Map = ({ data, children, boundaries }: Props) => {
     pickable: true,
   })
 
-  const formatData = (dataPoint: number | string) => {
-    if (typeof dataPoint === 'number') {
-      dataPoint = (dataPoint * 100).toFixed(1)
-    }
-    return dataPoint
-  }
-
   return (
     <DeckGLWrapper>
       <NextNProgress
@@ -195,9 +188,7 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
         getTooltip={({ object }) => object && {
           html: `
-          <p>${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number'
-              ? ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
-              : (object as unknown as MunicipalityData)?.dataPoint}</p>          `,
+          <p>${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number' ? ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1) : (object as unknown as MunicipalityData)?.dataPoint}</p>          `,
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
