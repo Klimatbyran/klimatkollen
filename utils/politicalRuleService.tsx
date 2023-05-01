@@ -1,4 +1,4 @@
-import RawPoliticalRule from "../data/RawPoliticalRule"
+import RawPoliticalRule from "../data/politics/RawPoliticalRule"
 
 export class PolitycalRuleService {
     public getPoliticalRule(municipalityName: string) : Array<string> {
