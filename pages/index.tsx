@@ -122,6 +122,8 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
         : item.ClimatePlan.Link
   }))
 
+  const selectedDataset = dataSetDescriptions[selectedData]
+
   const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
     const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint);
     const rankedData = sortedData.map((item, index) => ({
@@ -166,7 +168,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
         if (dataSetKey === 'Klimatplanerna') {
           newRankedData[dataSetKey as SelectedData] = dataSets[dataSetKey as SelectedData];
         } else {
-          const sortAscending = dataSetKey === 'Elbilarna' ? false : true;
+          const sortAscending = dataSetKey === 'Elbilarna' ? false : true
           newRankedData[dataSetKey as SelectedData] = calculateRankings(
             dataSets[dataSetKey as SelectedData].map(item => ({
               name: item.name,
@@ -183,8 +185,8 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
 
   const columnHeader = (
     <div>
-      {dataSetDescriptions[selectedData]['columnHeader']}
-      <InfoTooltip text={dataSetDescriptions[selectedData]['tooltip']} />
+      {selectedDataset['columnHeader']}
+      <InfoTooltip text={selectedDataset['tooltip']} />
     </div>
   )
 
@@ -198,16 +200,22 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
     setToggleViewMode(toggleViewMode === 'lista' ? 'karta' : 'lista')
   }
 
-  const convertToPercent = (rowData: unknown) => {
-    let datatString = 'Data saknas'
-    if (typeof (rowData) === 'number') {
+  const boundaries: Array<string | number> = dataSetDescriptions[selectedData].boundaries
+  const isLinkData = selectedDataset.hasOwnProperty('dataIsLink')
+
+  const formatData = (rowData: unknown) => {
+    let dataString: JSX.Element = <span>Data saknas</span>
+    if (isLinkData) {
+      dataString = boundaries.includes(rowData as unknown as string) ? <i>{rowData}</i> : <a href={rowData as string}>Länk</a>
+    } else if (typeof (rowData) === 'number') {
       const percent = (rowData * 100).toFixed(1)
-      datatString = rowData > 0 ? '+' + percent : percent
+      dataString = rowData > 0 ? <span>+{percent}</span> : <span>{percent}</span>
     } else if (typeof (rowData) === 'string') {
-      datatString = rowData
+      dataString = <span>{rowData}</span>
     }
-    return datatString
+    return dataString
   }
+
 
   type MuniciplaityItem = {
     name: string,
@@ -228,7 +236,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
       },
       {
         header: () => columnHeader,
-        cell: (row) => convertToPercent(row.renderValue()),
+        cell: (row) => formatData(row.renderValue()),
         accessorKey: 'dataPoint',
       },
     ],
@@ -280,13 +288,13 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
           </RadioContainer>
           <InfoText>
             <ParagraphBold>
-              {dataSetDescriptions[selectedData]['heading']}
+              {selectedDataset['heading']}
             </ParagraphBold>
             <Paragraph>
-              {dataSetDescriptions[selectedData]['body']}
+              {selectedDataset['body']}
             </Paragraph>
             <ParagraphSource>
-              {dataSetDescriptions[selectedData]['source']}
+              {selectedDataset['source']}
             </ParagraphSource>
           </InfoText>
           <ToggleButton
@@ -296,9 +304,9 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
           <MunicipalityContainer>
             <div style={{ display: toggleViewMode === 'karta' ? 'block' : 'none' }}>
               <MapLabels
-                labels={dataSetDescriptions[selectedData]['labels']}
-                rotations={dataSetDescriptions[selectedData]['labelRotateUp']} />
-              <Map data={data} boundaries={dataSetDescriptions[selectedData]['boundaries']} />
+                labels={selectedDataset['labels']}
+                rotations={selectedDataset['labelRotateUp']} />
+              <Map data={data} boundaries={selectedDataset['boundaries']} />
             </div>
             <div style={{ display: toggleViewMode === 'lista' ? 'block' : 'none', width: '100%' }}>
               <ComparisonTable data={rankedData[selectedData]} columns={cols} />

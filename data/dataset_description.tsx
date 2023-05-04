@@ -51,6 +51,7 @@ export const dataSetDescriptions = {
     'labels': ['Ja', 'Nej'],
     'labelRotateUp': [true, false],
     'columnHeader': 'Klimatplan',
+    'dataIsLink': true,
     'tooltip': 'Om kommunen har en klimatplan',
   }
 }
