@@ -94,7 +94,7 @@ const MunicipalityContainer = styled.div`
   }
 `
 
-type SelectedData = 'Utsläppen' | 'Elbilarna' | 'Klimatplanerna'
+type SelectedData = keyof typeof dataSetDescriptions
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -183,7 +183,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
 
   const columnHeader = (
     <div>
-      {selectedData === 'Elbilarna' ? 'Ökning elbilar' : 'Utsläppsförändring'}
+      {dataSetDescriptions[selectedData]['columnHeader']}
       <InfoTooltip text={dataSetDescriptions[selectedData]['tooltip']} />
     </div>
   )
