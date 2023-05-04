@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-import Icon from '../public/icons/share.svg'
-import { devices } from '../utils/devices'
 
 const ToggleBtn = styled.button`
   width: 112px;

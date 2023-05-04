@@ -15,6 +15,25 @@ export const IconButton = styled.button`
   gap: 1rem;
 `
 
+export const ToggleBtn = styled.button`
+  width: 112px;
+  height: 36px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.paperWhite};
+  background: transparent;
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: ${({ theme }) => theme.darkGrey};
+  }
+`
+
 export const UnorderedList = styled.ul`
   list-style-position: inside;
   margin: 16px;
