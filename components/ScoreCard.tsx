@@ -1,14 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import FactSection from './FactSection'
-<<<<<<< HEAD
 import Icon from './../public/icons/arrow.svg'
-=======
-import { InfoHeading, Row, SectionLeft, SectionRight } from './shared'
-import { ParagraphBold } from './Typography'
-import Icon from './../public/icons/arrow.svg'
-
->>>>>>> 271e28e (klimatplaner added)
 
 const StyledDiv = styled.div`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -90,38 +83,12 @@ const ScoreCard = ({
   // emissionLastYear,
   // population,
   politicalRule,
-<<<<<<< HEAD
-=======
-  climatePlanLink,
-  climatePlanYear
->>>>>>> 271e28e (klimatplaner added)
 }: Props) => {
   const rankFormatted = rank + ' av 290 kommuner'
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
 
   return (
     <StyledDiv>
-<<<<<<< HEAD
-=======
-      <Row>
-        <SectionLeft>
-          <InfoHeading>Klimatplan</InfoHeading>
-          <ParagraphBold>{climatePlanYear != 'Saknas' && 'Antagen '}{climatePlanYear}</ParagraphBold>
-        </SectionLeft>
-        <SectionRight>
-          <ToggleBtn>
-            <a href={climatePlanLink}
-              target='_blank' >
-              Öppna
-            </a>
-            <Square>
-              <ArrowIcon />
-            </Square>
-          </ToggleBtn>
-        </SectionRight>
-      </Row>
-      <WhiteLine />
->>>>>>> 271e28e (klimatplaner added)
       {rank && <FactSection
         heading='Kommunens utsläppsrankning'
         data={rankFormatted}
