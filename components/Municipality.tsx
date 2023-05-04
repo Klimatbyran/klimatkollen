@@ -411,6 +411,8 @@ const Municipality = (props: Props) => {
             emissionLastYear={emissionLastYear}
             population={municipality.Population}
             politicalRule={municipality.PoliticalRule}
+            climatePlanLink={municipality.ClimatePlan.Link}
+            climatePlanYear={municipality.ClimatePlan.YearAdapted}
           />
         </Bottom>
         <DropDownSection>

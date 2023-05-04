@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { H3 } from './Typography'
 
 export const IconButton = styled.button`
   border: none;
@@ -26,4 +27,27 @@ export const OrderedList = styled.ol`
 
 export const ListItem = styled.li`
   margin: 8px;
+`
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.8rem 0;
+`
+
+export const SectionLeft = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 90%;
+`
+
+export const SectionRight = styled.section`
+  text-align: right; 
+`
+
+export const InfoHeading = styled(H3)`
+  font-weight: 200;
+  font-size: inherit;
 `

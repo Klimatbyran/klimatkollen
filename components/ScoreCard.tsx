@@ -3,8 +3,11 @@ import Link from 'next/link'
 import FactSection from './FactSection'
 import { InfoHeading, Row, SectionLeft, SectionRight } from './shared'
 import { ParagraphBold } from './Typography'
+<<<<<<< HEAD
 import Icon from './../public/icons/arrow.svg'
 
+=======
+>>>>>>> 49d87ee (add climate plan data to scorecard)
 
 const StyledDiv = styled.div`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -16,6 +19,7 @@ const StyledDiv = styled.div`
   background: ${(props) => props.theme.darkestGrey};
 `
 
+<<<<<<< HEAD
 const ToggleBtn = styled.button`
   height: 36px;
   color: ${({ theme }) => theme.paperWhite};
@@ -57,6 +61,8 @@ const ArrowIcon = styled(Icon)`
   transform: rotate(-90deg);
 `
 
+=======
+>>>>>>> 49d87ee (add climate plan data to scorecard)
 const WhiteLine = styled.hr`
   background-color: #FFF;
   height: 3px;
@@ -100,6 +106,7 @@ const ScoreCard = ({
           <ParagraphBold>{climatePlanYear != 'Saknas' && 'Antagen '}{climatePlanYear}</ParagraphBold>
         </SectionLeft>
         <SectionRight>
+<<<<<<< HEAD
           <ToggleBtn>
             <a href={climatePlanLink}
               target='_blank' >
@@ -109,6 +116,9 @@ const ScoreCard = ({
               <ArrowIcon />
             </Square>
           </ToggleBtn>
+=======
+          hej
+>>>>>>> 49d87ee (add climate plan data to scorecard)
         </SectionRight>
       </Row>
       <WhiteLine />

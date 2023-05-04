@@ -216,7 +216,6 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
     return dataString
   }
 
-
   type MuniciplaityItem = {
     name: string,
     dataPoint: number | string;
