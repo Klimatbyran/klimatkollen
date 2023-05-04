@@ -167,7 +167,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     if (isLinkData) {
       dataString = boundaries.includes(rowData as string) ?
         <i style={{ color: 'grey' }}>{rowData as string}</i>
-        : <a href={rowData as string}>Länk</a>
+        : <a href={rowData as string}>Finns</a>
     } else if (typeof (rowData) === 'number') {
       const percent = (rowData * 100).toFixed(1)
       dataString = rowData > 0 ? <span>+{percent}</span> : <span>{percent}</span>
@@ -176,6 +176,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     }
     return dataString
   }
+
 
   type MuniciplaityItem = {
     name: string,
