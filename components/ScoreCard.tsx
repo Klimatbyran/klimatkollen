@@ -3,16 +3,7 @@ import Link from 'next/link'
 import FactSection from './FactSection'
 import { InfoHeading, Row, SectionLeft, SectionRight } from './shared'
 import { ParagraphBold } from './Typography'
-<<<<<<< HEAD
-<<<<<<< HEAD
 import Icon from './../public/icons/arrow.svg'
-
-=======
->>>>>>> 49d87ee (add climate plan data to scorecard)
-=======
-import Icon from './../public/icons/arrow.svg'
-
->>>>>>> 029aeef (add button to plan link)
 
 const StyledDiv = styled.div`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -24,10 +15,6 @@ const StyledDiv = styled.div`
   background: ${(props) => props.theme.darkestGrey};
 `
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 029aeef (add button to plan link)
 const ToggleBtn = styled.button`
   height: 36px;
   color: ${({ theme }) => theme.paperWhite};
@@ -69,11 +56,6 @@ const ArrowIcon = styled(Icon)`
   transform: rotate(-90deg);
 `
 
-<<<<<<< HEAD
-=======
->>>>>>> 49d87ee (add climate plan data to scorecard)
-=======
->>>>>>> 029aeef (add button to plan link)
 const WhiteLine = styled.hr`
   background-color: #FFF;
   height: 3px;
@@ -117,10 +99,6 @@ const ScoreCard = ({
           <ParagraphBold>{climatePlanYear != 'Saknas' && 'Antagen '}{climatePlanYear}</ParagraphBold>
         </SectionLeft>
         <SectionRight>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 029aeef (add button to plan link)
           <ToggleBtn>
             <a href={climatePlanLink}
               target='_blank' >
@@ -130,12 +108,6 @@ const ScoreCard = ({
               <ArrowIcon />
             </Square>
           </ToggleBtn>
-<<<<<<< HEAD
-=======
-          hej
->>>>>>> 49d87ee (add climate plan data to scorecard)
-=======
->>>>>>> 029aeef (add button to plan link)
         </SectionRight>
       </Row>
       <WhiteLine />
