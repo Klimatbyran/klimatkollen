@@ -191,7 +191,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   )
 
   const handleSelectData = (dataSetName: SelectedData) => {
-    const path = router.pathname.includes('elbilarna') && selectedData === 'Elbilarna' ? '/' : '/elbilarna'
+    const path = dataSetName === 'Elbilarna' ? '/elbilarna' : '/'
     router.push(path, undefined, { shallow: true })
     setSelectedData(dataSetName)
   }
@@ -206,7 +206,9 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   const formatData = (rowData: unknown) => {
     let dataString: JSX.Element = <span>Data saknas</span>
     if (isLinkData) {
-      dataString = boundaries.includes(rowData as unknown as string) ? <i>{rowData}</i> : <a href={rowData as string}>Länk</a>
+      dataString = boundaries.includes(rowData as unknown as string) ?
+        <i style={{ color: 'grey' }}>{rowData}</i>
+        : <a href={rowData as string}>Länk</a>
     } else if (typeof (rowData) === 'number') {
       const percent = (rowData * 100).toFixed(1)
       dataString = rowData > 0 ? <span>+{percent}</span> : <span>{percent}</span>
