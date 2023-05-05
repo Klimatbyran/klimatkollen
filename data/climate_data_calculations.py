@@ -262,7 +262,6 @@ df_plans = df_plans.where(pd.notnull(df_plans), 'Saknas')
 
 df_master = df_master.merge(df_plans, on='Kommun', how='left')
 
-
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
 temp = []  # remane the columns

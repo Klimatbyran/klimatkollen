@@ -162,7 +162,6 @@ const Map = ({ data, children, boundaries }: Props) => {
     pickable: true,
   })
 
-<<<<<<< HEAD
   const formatData = (object: unknown) => {
     if (typeof (object as unknown as MunicipalityData)?.dataPoint === 'number') {
       return ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
@@ -171,15 +170,6 @@ const Map = ({ data, children, boundaries }: Props) => {
       const tooltipString = (boundaries as string[]).includes(data as unknown as string) ? 'Nej' : 'Ja'
       return tooltipString
     }
-=======
-  const dataPointPercent = (object: unknown) => {
-    return ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
-  }
-
-  const dataPointString = (object: unknown) => {
-    const data: string = (object as unknown as MunicipalityData).dataPoint as unknown as string
-    return (boundaries as string[]).includes(data) ? 'Nej' : 'Ja'
->>>>>>> b173cac (fix map tooltip)
   }
 
   return (
@@ -200,15 +190,7 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
         getTooltip={({ object }) => object && {
           html: `
-<<<<<<< HEAD
           <p>${(object as unknown as MunicipalityData)?.name}: ${formatData(object)}</p>`,
-=======
-          <p>
-            ${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number'
-              ? dataPointPercent(object)
-              : dataPointString(object)}
-          </p>`,
->>>>>>> b173cac (fix map tooltip)
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
