@@ -9,7 +9,7 @@ import PageWrapper from './PageWrapper'
 import DropDown from './DropDown'
 import ScoreCard from './ScoreCard'
 import { devices } from '../utils/devices'
-import { EmissionPerYear, Municipality as TMunicipality } from '../utils/types'
+import { Municipality as TMunicipality } from '../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityIssues from './MunicipalityIssues'
 

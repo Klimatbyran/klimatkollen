@@ -201,13 +201,13 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
   }
 
   const boundaries: Array<string | number> = dataSetDescriptions[selectedData].boundaries
-  const isLinkData = selectedDataset.hasOwnProperty('dataIsLink')
+  const isLinkData = 'dataIsLink' in selectedDataset
 
   const formatData = (rowData: unknown) => {
     let dataString: JSX.Element = <span>Data saknas</span>
     if (isLinkData) {
-      dataString = boundaries.includes(rowData as unknown as string) ?
-        <i style={{ color: 'grey' }}>{rowData}</i>
+      dataString = boundaries.includes(rowData as string) ?
+        <i style={{ color: 'grey' }}>{rowData as string}</i>
         : <a href={rowData as string}>Länk</a>
     } else if (typeof (rowData) === 'number') {
       const percent = (rowData * 100).toFixed(1)
