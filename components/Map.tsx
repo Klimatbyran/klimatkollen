@@ -185,13 +185,8 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
       />
       <DeckGL
-        // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
         controller={{
-          // Removed this to make desktop map zoomable
-          // Wonder why it was set to false in first place tho
-          // could be that it has to be reversed
-          // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
           html: `
@@ -203,17 +198,6 @@ const Map = ({ data, children, boundaries }: Props) => {
             color: 'white'
           }
         }}
-        // controller={{
-        //   scrollZoom: true,
-        //   dragPan: false,
-        //   dragRotate: false,
-        //   doubleClickZoom: true,
-        //   touchZoom: false,
-        //   touchRotate: false,
-
-        //   keyboard: false,
-        //   inertia: false,
-        // }}
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as MunicipalityData)?.name
