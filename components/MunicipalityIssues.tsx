@@ -1,17 +1,16 @@
+import styled from 'styled-components'
+import { useMemo, useState } from 'react'
+import { useRouter } from 'next/router'
+import Graph from './Graph'
+import { H2, H3, Paragraph } from './Typography'
+import InfoModal from './InfoModal'
+import MetaTags from './MetaTags'
+import { IconButton } from './shared'
 import { Municipality as TMunicipality } from '../utils/types'
-
+import { devices } from '../utils/devices'
 import ArrowRight from '../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../public/icons/arrow-left-white.svg'
 import Info from '../public/icons/info.svg'
-import styled from 'styled-components'
-import { devices } from '../utils/devices'
-import { IconButton } from './shared'
-import Graph from './Graph'
-import { H2, H3, Paragraph } from './Typography'
-import { useMemo, useState } from 'react'
-import InfoModal from './InfoModal'
-import MetaTags from './MetaTags'
-import { useRouter } from 'next/router'
 
 
 const GraphWrapper = styled.div`
