@@ -4,7 +4,29 @@ import { useState } from 'react'
 import { H3, Paragraph, ParagraphBold } from './Typography'
 import Icon from '../public/icons/info.svg'
 import IconGreen from '../public/icons/info-green.svg'
-import { InfoHeading, Row, SectionLeft, SectionRight } from './shared'
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.8rem 0;
+`
+
+const SectionLeft = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 90%;
+`
+
+const SectionRight = styled.section`
+  text-align: right; 
+`
+
+const InfoHeading = styled(H3)`
+  font-weight: 200;
+  font-size: inherit;
+`
 
 const InfoSection = styled.div`
   background: ${({ theme }) => theme.main};

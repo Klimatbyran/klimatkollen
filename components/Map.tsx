@@ -29,7 +29,11 @@ const getColor = (dataPoint: number | string, boundaries: number[] | string[]): 
   if (boundaries.length == 2) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       return (dataPoint === boundaries[0])? pink : blue
+=======
+    return (dataPoint === boundaries[0]) ? pink : blue
+>>>>>>> 4c50d05 (undo climate plan to scorecard)
   }
 
   // FIXME refactor plz
@@ -179,6 +183,14 @@ const Map = ({ data, children, boundaries }: Props) => {
     pickable: true,
   })
 
+  const dataPointNumber = (object: unknown) => {
+    return ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
+  }
+
+  const dataPointString = (object: unknown) => {
+    return 'FIXME FORTSÄTT HÄR'
+  }
+
   return (
     <DeckGLWrapper>
       <NextNProgress
@@ -192,19 +204,14 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
       />
       <DeckGL
-        // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
         controller={{
-          // Removed this to make desktop map zoomable
-          // Wonder why it was set to false in first place tho
-          // could be that it has to be reversed
-          // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
           html: `
           <p>${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number'
-              ? ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
-              : (object as unknown as MunicipalityData)?.dataPoint}</p>          `,
+              ? dataPointNumber(object)
+              : dataPointString(object)}</p>`,
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
@@ -212,17 +219,6 @@ const Map = ({ data, children, boundaries }: Props) => {
             color: 'white'
           }
         }}
-        // controller={{
-        //   scrollZoom: true,
-        //   dragPan: false,
-        //   dragRotate: false,
-        //   doubleClickZoom: true,
-        //   touchZoom: false,
-        //   touchRotate: false,
-
-        //   keyboard: false,
-        //   inertia: false,
-        // }}
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as MunicipalityData)?.name
