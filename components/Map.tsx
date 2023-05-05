@@ -162,11 +162,14 @@ const Map = ({ data, children, boundaries }: Props) => {
     pickable: true,
   })
 
-  const formatData = (dataPoint: number | string) => {
-    if (typeof dataPoint === 'number') {
-      dataPoint = (dataPoint * 100).toFixed(1)
+  const formatData = (object: unknown) => {
+    if (typeof (object as unknown as MunicipalityData)?.dataPoint === 'number') {
+      return ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
+    } else {
+      const data = (object as unknown as MunicipalityData)?.dataPoint
+      const tooltipString = (boundaries as string[]).includes(data as unknown as string) ? 'Nej' : 'Ja'
+      return tooltipString
     }
-    return dataPoint
   }
 
   return (
@@ -192,9 +195,7 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
         getTooltip={({ object }) => object && {
           html: `
-          <p>${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number'
-              ? ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
-              : (object as unknown as MunicipalityData)?.dataPoint}</p>          `,
+          <p>${(object as unknown as MunicipalityData)?.name}: ${formatData(object)}</p>`,
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
