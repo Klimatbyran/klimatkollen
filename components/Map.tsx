@@ -27,31 +27,10 @@ const getColor = (dataPoint: number | string, boundaries: number[] | string[]): 
   const pink: RGBAColor = [239, 48, 84]
 
   if (boundaries.length == 2) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      return (dataPoint === boundaries[0])? pink : blue
-=======
-    return (dataPoint === boundaries[0]) ? pink : blue
->>>>>>> 4c50d05 (undo climate plan to scorecard)
-  }
-
-  // FIXME refactor plz
-=======
-    if (dataPoint === boundaries[0]) {
-      return blue
-    } else {
-      return pink
-    }
-  }
-
->>>>>>> 924cc60 (add frontend to klimatplaner dataset at start)
-=======
       return (dataPoint === boundaries[0])? pink : blue
   }
 
   // FIXME refactor plz
->>>>>>> 5de60a4 (general refactoring and fixes)
   if (boundaries[0] < boundaries[1]) {
     if (dataPoint >= boundaries[4]) {
       return blue
@@ -183,13 +162,11 @@ const Map = ({ data, children, boundaries }: Props) => {
     pickable: true,
   })
 
-  const dataPointPercent = (object: unknown) => {
-    return ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
-  }
-
-  const dataPointString = (object: unknown) => {
-    const data: string = (object as unknown as MunicipalityData).dataPoint as unknown as string
-    return (boundaries as string[]).includes(data) ? 'Nej' : 'Ja'
+  const formatData = (dataPoint: number | string) => {
+    if (typeof dataPoint === 'number') {
+      dataPoint = (dataPoint * 100).toFixed(1)
+    }
+    return dataPoint
   }
 
   return (
@@ -205,16 +182,19 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
       />
       <DeckGL
+        // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
         controller={{
+          // Removed this to make desktop map zoomable
+          // Wonder why it was set to false in first place tho
+          // could be that it has to be reversed
+          // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
           html: `
-          <p>
-            ${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number'
-              ? dataPointPercent(object)
-              : dataPointString(object)}
-          </p>`,
+          <p>${(object as unknown as MunicipalityData)?.name}: ${typeof (object as unknown as MunicipalityData)?.dataPoint === 'number'
+              ? ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
+              : (object as unknown as MunicipalityData)?.dataPoint}</p>          `,
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
@@ -222,6 +202,17 @@ const Map = ({ data, children, boundaries }: Props) => {
             color: 'white'
           }
         }}
+        // controller={{
+        //   scrollZoom: true,
+        //   dragPan: false,
+        //   dragRotate: false,
+        //   doubleClickZoom: true,
+        //   touchZoom: false,
+        //   touchRotate: false,
+
+        //   keyboard: false,
+        //   inertia: false,
+        // }}
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as MunicipalityData)?.name

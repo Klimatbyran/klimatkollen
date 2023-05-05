@@ -2,13 +2,6 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import FactSection from './FactSection'
 import Icon from './../public/icons/arrow.svg'
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> c63917e (klimatplaner added)
-=======
->>>>>>> 169a46f (messy merge :( but everything back to normal)
 
 const StyledDiv = styled.div`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
