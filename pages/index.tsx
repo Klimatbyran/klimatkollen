@@ -119,7 +119,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
       ? item.HistoricalEmission.EmissionLevelChangeAverage
       : selectedData === 'Elbilarna'
         ? item.ElectricCarChangePercent
-        : item.ClimatePlan.Link
+        : item.ClimatePlan.Link // fixme fortsät här
   }))
 
   const selectedDataset = dataSetDescriptions[selectedData]
@@ -145,7 +145,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
       })),
       Klimatplanerna: municipalities.map((item) => ({
         name: item.Name,
-        dataPoint: item.ClimatePlan.Link,
+        dataPoint: item.ClimatePlan?.Link,
       })),
     }
 
