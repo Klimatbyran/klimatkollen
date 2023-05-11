@@ -77,7 +77,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
 
   const municipalitiesName = municipalities.map((item) => item.Name)
 
-  const data = municipalities.map((item) => ({
+  const data = municipalities.map((item) => ({ // Fixme refactor
     name: item.Name,
     dataPoint: selectedData === 'Utsläppen'
       ? item.HistoricalEmission.EmissionLevelChangeAverage
@@ -97,7 +97,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     return rankedData
   }
 
-  useMemo(() => {
+  useMemo(() => {  // Fixme refactor
     const dataSets = {
       Elbilarna: municipalities.map((item) => ({
         name: item.Name,
@@ -134,7 +134,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
         } else {
           const sortAscending = dataSetKey === 'Elbilarna' ? false : true
           newRankedData[dataSetKey] = calculateRankings(
-            dataSets[dataSetKey].map(item => ({
+            dataSets[dataSetKey].map((item: { name: any; dataPoint: any }) => ({  // Fixme
               name: item.name,
               dataPoint: Number(item.dataPoint)
             })),
