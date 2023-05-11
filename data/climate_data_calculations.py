@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import json
-from data.cars.car_data_calculations import car_calculations
-from data.emissions.emission_data_calculations import emission_calculations
+from cars.car_data_calculations import car_calculations
+from emissions.emission_data_calculations import emission_calculations
 import numpy as np
 import pandas as pd
 import re
@@ -24,7 +24,6 @@ def clean_kommun(kommun):
         return 'Falun'
 
     if kommun == 'Region Gotland (kommun)':
-        print(kommun)
         return 'Gotland'
 
     # Remove 'kommun' or 'stad' from municipalities in the list 'municipalities_w_s'
@@ -68,7 +67,7 @@ df = get_climate_plans(df)
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
 temp = []  # remane the columns
-for i in range(len(df_cem)):
+for i in range(len(df)):
     temp.append({
         'kommun': df.iloc[i]['Kommun'],
         'emissions': {

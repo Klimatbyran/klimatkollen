@@ -3,7 +3,8 @@
 import numpy as np
 import pandas as pd
 
-PATH_TRAFA_DATA = 'kpi1_trafa.xlsx'  # data on sold cars by trafa
+PATH_TRAFA_DATA = 'cars/kpi1_trafa.xlsx'  # data on sold cars by trafa
+PATH_CARS_DATA = 'cars/kpi1_calculations.xlsx'  # calculations based on trafa data
 
 
 def car_calculations(df):
@@ -36,8 +37,7 @@ def car_calculations(df):
 
     # LOAD AND PREP DATA ON CHANGE RATE OF PERCENTAGE OF NEWLY REGISTERED RECHARGABLE CARS PER MUNICIPALITY AND YEAR
 
-    path_cars_data = 'kpi1_calculations.xlsx'  # calculations based on trafa data
-    df_raw_cars = pd.read_excel(path_cars_data)
+    df_raw_cars = pd.read_excel(PATH_CARS_DATA)
 
     df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row
     df_raw_cars = df_raw_cars.drop([0, 1])  # drop usless rows

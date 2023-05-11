@@ -8,7 +8,7 @@ import pandas as pd
 # Budget in metric tonnes from 2020 +40948459*50.81/46.29+40948459*50.81/46.29*1.05
 BUDGET = 170000000
 PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
-PATH_CRUNCHED_DATA = 'output_extra.xlsx'
+PATH_CRUNCHED_DATA = 'emissions/output_extra.xlsx'
 
 
 def get_n_prep_data_from_smhi():
@@ -86,12 +86,10 @@ def calculate_municiplaity_paris_path(df):
         keys = range(2020, 2050+1)
         for idx, value in enumerate(keys):
             dicts[value] = df.iloc[i][2020] * \
-                np.exp(-(df.iloc[i][2020]) /
-                       (df.iloc[i]['Budget'])*idx)
-            temp.append(dicts)
+                np.exp(-(df.iloc[i][2020])/(df.iloc[i]['Budget'])*idx)
+        temp.append(dicts)
 
-            # add the exponential path to the dataframe
-            df['Paris Path'] = temp
+    df['Paris Path'] = temp  # add the exponential path to the dataframe
 
     return df
 
@@ -108,7 +106,7 @@ def calculate_linear_emissions(df):
         keys = range(2021, 2050+1)
         for idx, value in enumerate(keys):
             dicts[value] = max(0, fit[0]*value+fit[1])
-            temp.append(dicts)
+        temp.append(dicts)
 
     df['Linear Path'] = temp  # add the linear trend to the dataframe
 
@@ -118,7 +116,7 @@ def calculate_linear_emissions(df):
         temp.append(np.trapz(list(df.iloc[i]['Linear Path'].values()), list(
             df.iloc[i]['Linear Path'].keys())))
 
-        # Add the emission form the linear trend to the dataframe
+    # Add the emission form the linear trend to the dataframe
     df['Linear Emission'] = temp
 
     return df
@@ -130,7 +128,7 @@ def emission_calculations():
     df_budgeted = calculate_municipality_budgets(df_cem)
     df_paris = calculate_municiplaity_paris_path(df_budgeted)
     df_linear = calculate_linear_emissions(df_paris)
-    
+
     # LOAD CRUNCHED DATA FROM CLIMATE VIEW
     # fix while rest of calculations are missing
 
