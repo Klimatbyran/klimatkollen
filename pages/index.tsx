@@ -1,11 +1,11 @@
-
+import React from 'react'
 import { GetServerSideProps } from 'next'
 import { ReactElement, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { ColumnDef } from '@tanstack/react-table'
 
 import DropDown from '../components/DropDown'
-import Map from '../components/Map'
+import Map from '../components/Map/Map'
 import MetaTags from '../components/MetaTags'
 import { H2, Paragraph, ParagraphBold } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
@@ -15,13 +15,12 @@ import { devices } from '../utils/devices'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import ComparisonTable from '../components/ComparisonTable'
-import MapLabels from '../components/MapLabels'
+import MapLabels from '../components/Map/MapLabels'
 import InfoTooltip from '../components/InfoTooltip'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
 import { dataSetDescriptions } from '../data/dataset_descriptions'
-import React from 'react'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 
 const DEFAULT_VIEWMODE = 'karta'
@@ -87,7 +86,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
         : item.ClimatePlan.Link 
   }))
 
-  const selectedDataset = dataSetDescriptions[selectedData as keyof typeof dataSetDescriptions]
+  const selectedDataset = dataSetDescriptions[selectedData]
 
   const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
     const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint)
@@ -126,16 +125,16 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
       Elbilarna: [],
       Utsläppen: [],
       Klimatplanerna: [],
-    }
+    }    
 
     for (const dataSetKey in dataSets) {
       if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
         if (dataSetKey === 'Klimatplanerna') {
-          newRankedData[dataSetKey as SelectedData] = dataSets[dataSetKey as SelectedData]
+          newRankedData[dataSetKey] = dataSets[dataSetKey]
         } else {
           const sortAscending = dataSetKey === 'Elbilarna' ? false : true
-          newRankedData[dataSetKey as SelectedData] = calculateRankings(
-            dataSets[dataSetKey as SelectedData].map(item => ({
+          newRankedData[dataSetKey] = calculateRankings(
+            dataSets[dataSetKey].map(item => ({
               name: item.name,
               dataPoint: Number(item.dataPoint)
             })),

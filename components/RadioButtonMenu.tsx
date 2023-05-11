@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { dataSetDescriptions } from "../data/dataset_description"
+import { dataSetDescriptions } from "../data/dataset_descriptions"
 import router from "next/router"
 import { SelectedData } from "../utils/types"
 

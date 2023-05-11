@@ -1,15 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
 
-import { H1, H2, ParagraphBold } from './Typography'
-import BackArrow from './BackArrow'
-import PageWrapper from './PageWrapper'
-import DropDown from './DropDown'
+import { H1, H2, ParagraphBold } from '../Typography'
+import BackArrow from '../BackArrow'
+import PageWrapper from '../PageWrapper'
+import DropDown from '../DropDown'
 import ScoreCard from './ScoreCard'
-import { devices } from '../utils/devices'
-import { Municipality as TMunicipality } from '../utils/types'
+import { devices } from '../../utils/devices'
+import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityIssues from './MunicipalityIssues'
 
@@ -121,6 +120,7 @@ const Municipality = (props: Props) => {
             emissionLastYear={emissionLastYear}
             population={municipality.Population}
             politicalRule={municipality.PoliticalRule}
+            climatePlan={municipality.ClimatePlan}
           />
         </Bottom>
         <DropDownSection>

@@ -1,8 +1,8 @@
-import { Municipality as TMunicipality } from '../utils/types'
-import EVCar from '../public/icons/ev_car.svg'
-import { H2, H5, Paragraph } from './Typography'
+import EVCar from '../../public/icons/ev_car.svg'
+import { H2, H5, Paragraph } from '../Typography'
 import styled from 'styled-components'
-import FactSection from './FactSection'
+import FactSection from '../FactSection'
+import { Municipality } from '../../utils/types'
 
 
 const StyledH2 = styled(H2)`
@@ -21,7 +21,7 @@ const FlexContainer = styled.div`
 `
 
 type SolutionsProps = {
-  municipality: TMunicipality
+  municipality: Municipality
 }
 
 const MunicipalitySolutions = ({ municipality }: SolutionsProps) => {

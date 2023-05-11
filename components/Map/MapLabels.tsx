@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { devices } from '../utils/devices'
+import { devices } from '../../utils/devices'
 
-import Icon from './../public/icons/arrow.svg'
-import { Paragraph } from './Typography'
+import Icon from '../../public/icons/arrow.svg'
+import { Paragraph } from '../Typography'
 
 
 const Container = styled.div`
@@ -39,6 +39,7 @@ const Square = styled.div<{ color: string }>`
 `
 
 const ArrowIcon = styled(Icon) <{ rotateup?: boolean }>`
+  color: black;
   position: absolute;
   z-index: 1;
   margin: auto;

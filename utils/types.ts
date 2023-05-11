@@ -1,4 +1,4 @@
-import { dataSetDescriptions } from "../data/dataset_description"
+import { dataSetDescriptions } from "../data/dataset_descriptions"
 
 export type Image = {
   ImageUrl: string
@@ -48,10 +48,9 @@ export type Trend = {
 }
 
 export type ClimatePlan = {
-  Contact: string
   Link: string
   YearAdapted: string
-  Cred: string
+  Comment: string
 }
 
 export type EmissionSector = {
