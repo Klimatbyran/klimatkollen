@@ -1,4 +1,18 @@
-export const dataSetDescriptions = {
+type DataSetDescriptions = {
+  [key: string]: {
+    heading: string
+    body: string
+    source: React.ReactNode
+    boundaries: number[] | string[]
+    labels: string[]
+    labelRotateUp: boolean[]
+    columnHeader: string
+    tooltip: string
+    dataIsLink?: boolean
+  }
+}
+
+export const dataSetDescriptions: DataSetDescriptions = {
   'Utsläppen': {
     'heading': 'Utsläppsförändring sedan Parisavtalet',
     'body': 'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',

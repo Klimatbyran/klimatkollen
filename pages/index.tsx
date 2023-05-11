@@ -20,7 +20,7 @@ import InfoTooltip from '../components/InfoTooltip'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
-import { dataSetDescriptions } from '../data/dataset_description'
+import { dataSetDescriptions } from '../data/dataset_descriptions'
 import React from 'react'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 
@@ -87,15 +87,15 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
         : item.ClimatePlan.Link 
   }))
 
-  const selectedDataset = dataSetDescriptions[selectedData]
+  const selectedDataset = dataSetDescriptions[selectedData as keyof typeof dataSetDescriptions]
 
   const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
-    const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint);
+    const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint)
     const rankedData = sortedData.map((item, index) => ({
       ...item,
       rank: index + 1,
-    }));
-    return rankedData;
+    }))
+    return rankedData
   }
 
   useMemo(() => {
@@ -131,7 +131,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     for (const dataSetKey in dataSets) {
       if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
         if (dataSetKey === 'Klimatplanerna') {
-          newRankedData[dataSetKey as SelectedData] = dataSets[dataSetKey as SelectedData];
+          newRankedData[dataSetKey as SelectedData] = dataSets[dataSetKey as SelectedData]
         } else {
           const sortAscending = dataSetKey === 'Elbilarna' ? false : true
           newRankedData[dataSetKey as SelectedData] = calculateRankings(
@@ -140,7 +140,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
               dataPoint: Number(item.dataPoint)
             })),
             sortAscending
-          );
+          )
         }
       }
     }
@@ -180,7 +180,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
 
   type MuniciplaityItem = {
     name: string,
-    dataPoint: number | string;
+    dataPoint: number | string
   }
 
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
