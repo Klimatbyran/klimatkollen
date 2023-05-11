@@ -1,3 +1,5 @@
+import { dataSetDescriptions } from "../data/dataset_description"
+
 export type Image = {
   ImageUrl: string
   Description: string
@@ -58,3 +60,5 @@ export type EmissionSector = {
   CO2Equivalent: number
   SubSectors: Array<EmissionSector>
 }
+
+export type SelectedData = keyof typeof dataSetDescriptions

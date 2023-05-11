@@ -1,7 +1,6 @@
 
 import { GetServerSideProps } from 'next'
 import { ReactElement, useMemo, useState } from 'react'
-import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { ColumnDef } from '@tanstack/react-table'
 
@@ -10,7 +9,7 @@ import Map from '../components/Map'
 import MetaTags from '../components/MetaTags'
 import { H2, Paragraph, ParagraphBold } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
-import { Municipality } from '../utils/types'
+import { Municipality, SelectedData } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
 import Layout from '../components/Layout'
@@ -22,47 +21,15 @@ import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
 import { dataSetDescriptions } from '../data/dataset_description'
+import React from 'react'
+import RadioButtonMenu from '../components/RadioButtonMenu'
+
+const DEFAULT_VIEWMODE = 'karta'
+const DEFAULT_DATASET = 'Utsläppen'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const RadioContainer = styled.div`
-  margin-top: 30px;
-  gap: 16px;
-  display: flex;
-  font-weight: bolder;
-`
-
-const RadioLabel = styled.label`
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 700;
-  text-decoration: none;
-  color: white;
-  background: ${({ theme }) => theme.darkGrey};
-  white-space: nowrap;
-  cursor: pointer;
-  margin-bottom: 8px;
-  
-  &:hover {
-    background: ${({ theme }) => theme.grey};
-  }
-`
-
-const RadioInput = styled.input`
-  display: none;
-  &:checked + ${RadioLabel} {
-    color: ${({ theme }) => theme.darkestGrey};
-    background: ${({ theme }) => theme.greenGraphTwo};
-
-    &:hover {
-      background: ${({ theme }) => theme.greenGraphThree};
-    }
-  }
 `
 
 const InfoText = styled.div`
@@ -94,18 +61,16 @@ const MunicipalityContainer = styled.div`
   }
 `
 
-type SelectedData = keyof typeof dataSetDescriptions
-
 type PropsType = {
   municipalities: Array<Municipality>
   viewMode: string
-  dataSource: SelectedData
+  dataset: SelectedData
 }
 
-const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppen' }: PropsType) => {
-  const [selectedData, setSelectedData] = useState<SelectedData>(dataSource)
+
+const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFAULT_DATASET }: PropsType) => {
+  const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
-  const router = useRouter()
 
   const [rankedData, setRankedData] = useState<{
     [key: string]: Array<{ name: string, dataPoint: number | string, rank?: number }>
@@ -119,7 +84,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
       ? item.HistoricalEmission.EmissionLevelChangeAverage
       : selectedData === 'Elbilarna'
         ? item.ElectricCarChangePercent
-        : item.ClimatePlan.Link // fixme fortsät här
+        : item.ClimatePlan.Link 
   }))
 
   const selectedDataset = dataSetDescriptions[selectedData]
@@ -190,12 +155,6 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
     </div>
   )
 
-  const handleSelectData = (dataSetName: SelectedData) => {
-    const path = dataSetName === 'Elbilarna' ? '/elbilarna' : '/'
-    router.push(path, undefined, { shallow: true })
-    setSelectedData(dataSetName)
-  }
-
   const handleToggle = () => {
     setToggleViewMode(toggleViewMode === 'lista' ? 'karta' : 'lista')
   }
@@ -227,17 +186,17 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
     () => [
       {
         header: 'Ranking',
-        cell: (row) => row.cell.row.index + 1,
+        cell: (row: { cell: { row: { index: number } } }) => row.cell.row.index + 1,
         accessorKey: 'index',
       },
       {
         header: 'Kommun',
-        cell: (row) => row.renderValue(),
+        cell: (row: { renderValue: () => any }) => row.renderValue(),
         accessorKey: 'name',
       },
       {
         header: () => columnHeader,
-        cell: (row) => formatData(row.renderValue()),
+        cell: (row: { renderValue: () => unknown }) => formatData(row.renderValue()),
         accessorKey: 'dataPoint',
       },
     ],
@@ -255,38 +214,7 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
           <H2>
             Hur går det med?
           </H2>
-          <RadioContainer>
-            <RadioInput
-              type="radio"
-              id="utslappen"
-              value='Utsläppen'
-              checked={selectedData === 'Utsläppen'}
-              onChange={() => handleSelectData('Utsläppen')}
-            />
-            <RadioLabel htmlFor="utslappen">
-              Utsläppen
-            </RadioLabel>
-            <RadioInput
-              type="radio"
-              id='elbilarna'
-              value='Elbilarna'
-              checked={selectedData === 'Elbilarna'}
-              onChange={() => handleSelectData('Elbilarna')}
-            />
-            <RadioLabel htmlFor="elbilarna">
-              Elbilarna
-            </RadioLabel>
-            <RadioInput
-              type="radio"
-              id='klimatplanerna'
-              value='Klimatplanerna'
-              checked={selectedData === 'Klimatplanerna'}
-              onChange={() => handleSelectData('Klimatplanerna')}
-            />
-            <RadioLabel htmlFor="klimatplanerna">
-              Klimatplanerna
-            </RadioLabel>
-          </RadioContainer>
+          <RadioButtonMenu selectedData={selectedData} setSelectedData={setSelectedData} />
           <InfoText>
             <ParagraphBold>
               {selectedDataset['heading']}
