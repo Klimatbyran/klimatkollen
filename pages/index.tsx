@@ -21,7 +21,7 @@ import InfoTooltip from '../components/InfoTooltip'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
-import { dataSetDescriptions } from '../data/dataset_description'
+import { dataSetDescriptions } from '../data/dataset_descriptions'
 
 const Container = styled.div`
   display: flex;
