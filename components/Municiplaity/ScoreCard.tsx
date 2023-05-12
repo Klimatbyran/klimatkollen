@@ -160,8 +160,8 @@ const ScoreCard = ({
           </SectionRight>
         </Row>
         <FactSection
-          heading='Energi och klimatplan'
-          data={climatePlanYearFormatted}
+          heading={climatePlanYearFormatted}
+          data={''}
           info={
             <>
               Lorem ipsum.

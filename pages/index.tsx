@@ -195,7 +195,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
     () => [
       {
-        header: isClimatePlan ? 'Har plan' : 'Ranking',
+        header: isClimatePlan ? 'Har plan?' : 'Ranking',
         cell: (row) => isClimatePlan ? row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja' : row.cell.row.index + 1,
         accessorKey: 'index',
       },
