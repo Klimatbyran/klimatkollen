@@ -184,7 +184,7 @@ const KoM = () => {
                   Inte heller  utsläpp från skog och mark (så kallade biogena utsläpp) inkluderas i koldioxidbudgeten.
                 </Paragraph>
                 <Paragraph>
-                  Egentligen är alltså de klimatpåverkande utsläppen mycket större är de territoriella fossila koldioxidutsläpp som vanligtvis
+                  Egentligen är alltså de klimatpåverkande utsläppen mycket större än de territoriella fossila koldioxidutsläpp som vanligtvis
                   rapporteras av myndigheter och i media och som idag visas på Klimatkollen. Journalisten Alexandra Urisman Otto beskriver detta i{' '}
                   <a href='https://www.dn.se/sverige/sverige-ska-ga-fore-anda-ar-klimatmalen-langt-ifran-tillrackliga/'
                     target='_blank'
