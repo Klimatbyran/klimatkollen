@@ -19,6 +19,7 @@ const DeckGLWrapper = styled.div`
   width: 100%;`
 
 const getColor = (dataPoint: number | string, boundaries: number[] | string[]): RGBAColor => {
+  const green: RGBAColor = [145, 223, 200]
   const blue: RGBAColor = [145, 191, 200]
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
@@ -27,7 +28,7 @@ const getColor = (dataPoint: number | string, boundaries: number[] | string[]): 
   const pink: RGBAColor = [239, 48, 84]
 
   if (boundaries.length == 2) {
-      return (dataPoint === boundaries[0])? pink : blue
+      return (dataPoint === boundaries[0])? pink : green
   }
 
   // FIXME refactor plz
