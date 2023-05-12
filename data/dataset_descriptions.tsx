@@ -63,7 +63,7 @@ export const dataSetDescriptions: DataSetDescriptions = {
       </>,
     'boundaries': ['Saknas', ''],
     'labels': ['Ja', 'Nej'],
-    'labelRotateUp': [true, false],
+    'labelRotateUp': [],
     'columnHeader': 'Klimatplan',
     'dataIsLink': true,
     'tooltip': 'Om kommunen har en klimatplan',

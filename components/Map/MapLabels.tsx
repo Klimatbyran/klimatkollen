@@ -68,11 +68,11 @@ type LabelProps = {
   rotateup?: boolean
 }
 
-const Label = ({ color, text, rotateup = true }: LabelProps) => {
+const Label = ({ color, text, rotateup }: LabelProps) => {
   return (
     <LabelBox>
       <Square color={color}>
-        <ArrowIcon rotateup={rotateup} />
+        {rotateup !== undefined && <ArrowIcon rotateup={rotateup} />}
       </Square>
       <StyledParagraph>
         {text}
@@ -90,7 +90,7 @@ type MapLabelsProps = {
 const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
   const colors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
   const labelColors = labels.length === 2 ? ['#91BFC8', '#EF3054'] : colors;
-  
+
   return (
     <Container>
       {labels.map((label, i) => (
