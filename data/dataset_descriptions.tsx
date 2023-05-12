@@ -15,7 +15,6 @@ type DataSetDescriptions = {
 
 export const dataSetDescriptions: DataSetDescriptions = {
   'Utsläppen': {
-    'dataKey': 'HistoricalEmission.EmissionLevelChangeAverage',
     'heading': 'Utsläppsförändring sedan Parisavtalet',
     'body': 'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
     'source':
@@ -31,10 +30,9 @@ export const dataSetDescriptions: DataSetDescriptions = {
     'labels': ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     'labelRotateUp': [true, false, false, false, false, false],
     'columnHeader': 'Utsläppsförändring',
-    'tooltip': 'Genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015, angivet i procent.',
+    'tooltip': 'Genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015, angivet i procent',
   },
   'Elbilarna': {
-    'dataKey': 'HistoricalEmission.EmissionLevelChangeAverage',
     'heading': 'Ökningstakt andel elbilar sedan Parisavtalet',
     'body': 'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
     'source':

@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 
 path_political_rule = 'politicalRule2022.xlsx'
+
 df = pd.read_excel(path_political_rule)
 
 df['Kommun'] = df['Unnamed: 1']
