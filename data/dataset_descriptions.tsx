@@ -66,6 +66,6 @@ export const dataSetDescriptions: DataSetDescriptions = {
     'labelRotateUp': [],
     'columnHeader': 'Klimatplan',
     'dataIsLink': true,
-    'tooltip': 'Om kommunen har en klimatplan',
+    'tooltip': 'Avser nu gällande klimathandlingsplan eller motsvarande',
   }
 }

@@ -164,7 +164,7 @@ const ScoreCard = ({
           data={''}
           info={
             <>
-              Lorem ipsum.
+              Här listas inte anpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande.
               <CommentContainer>
                 <b>Kommentar:</b> {climatePlan.Comment}
               </CommentContainer>
