@@ -22,7 +22,7 @@ export const dataSetDescriptions: DataSetDescriptions = {
         <a href='https://nationellaemissionsdatabasen.smhi.se/'
           target='_blank'
           rel='noreferrer'>
-          SMHI
+          Nationella emissionsdatabasen
         </a>
       </>,
     'boundaries': [0, -0.01, -0.02, -0.03, -0.10],
@@ -49,16 +49,16 @@ export const dataSetDescriptions: DataSetDescriptions = {
     'columnHeader': 'Ökning elbilar',
     'tooltip': 'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
   },
-  'Klimatplanerna': { // FIXME
-    'heading': 'Kommuner som har en aktiv klimatplan',
-    'body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+  'Klimatplanerna': {
+    'heading': 'Kommuner som har klimatplaner',
+    'body': 'På kartan och i listan visas vilka kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer.',
     'source':
       <>
         Källa:{' '}
-        <a href='www.klimatkollen.se'
+        <a href='https://docs.google.com/spreadsheets/d/13CMqmfdd6QUD6agKFyVhwZUol4PKzvy253_EwtsFyvw/edit?fbclid=IwAR0v0cq0_xhFVlhhVn5fP-TNkOPVRXbOTKzTVWI_PMr_yU2rXOLjcN6jSps#gid=0'
           target='_blank'
           rel='noreferrer'>
-          Klimatkollen
+          allmänhetens öppna sammanställning
         </a>
       </>,
     'boundaries': ['Saknas', ''],

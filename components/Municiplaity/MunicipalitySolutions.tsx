@@ -31,8 +31,7 @@ const MunicipalitySolutions = ({ municipality }: SolutionsProps) => {
         Omställning
       </StyledH2>
       <Paragraph>
-        Här visas nyckeltal för hur det går med klimatomställningen i kommunerna. Först ut är trafikutsläppen och övergången från
-        fossilbilar till laddbara bilar. Fler nyckeltal tillkommer.
+        Här visas nyckeltal för hur det går med klimatomställningen i kommunerna.
       </Paragraph>
       <FlexContainer>
         <EVCar />
@@ -41,7 +40,7 @@ const MunicipalitySolutions = ({ municipality }: SolutionsProps) => {
         </StyledH5>
       </FlexContainer>
       <FactSection
-        heading='Ökning elbilar'
+        heading='Förändringstakt andel laddbara bilar'
         data={(municipality.ElectricCarChangePercent * 100).toFixed(1) + '%'}
         info={
           <>
