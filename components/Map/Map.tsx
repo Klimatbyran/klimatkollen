@@ -18,7 +18,8 @@ const INITIAL_VIEW_STATE = {
 const DeckGLWrapper = styled.div`
   width: 100%;`
 
-const getColor = (dataPoint: number, boundaries: number[]): RGBAColor => {
+const getColor = (dataPoint: number | string, boundaries: number[] | string[]): RGBAColor => {
+  const green: RGBAColor = [145, 223, 200]
   const blue: RGBAColor = [145, 191, 200]
   const yellow: RGBAColor = [239, 191, 23]
   const orange: RGBAColor = [239, 153, 23]
@@ -26,6 +27,11 @@ const getColor = (dataPoint: number, boundaries: number[]): RGBAColor => {
   const red: RGBAColor = [239, 94, 48]
   const pink: RGBAColor = [239, 48, 84]
 
+  if (boundaries.length == 2) {
+      return (dataPoint === boundaries[0])? pink : green
+  }
+
+  // FIXME refactor plz
   if (boundaries[0] < boundaries[1]) {
     if (dataPoint >= boundaries[4]) {
       return blue
@@ -94,9 +100,9 @@ const replaceLetters = (name: string) => {
 } */
 
 type Props = {
-  data: Array<{ name: string; dataPoint: number }>
+  data: Array<{ name: string; dataPoint: number | string }>
   children?: ReactNode
-  boundaries: number[]
+  boundaries: number[] | string[]
 }
 
 const Map = ({ data, children, boundaries }: Props) => {
@@ -114,7 +120,7 @@ const Map = ({ data, children, boundaries }: Props) => {
   const municipalityLines = municipalityData?.features?.flatMap(({ geometry, properties }: { geometry: any, properties: any }) => {
     const name = replaceLetters(properties.name);
     const dataPoint = data.find((e) => e.name === name)?.dataPoint;
-  
+
     if (geometry.type === 'MultiPolygon') {
       return geometry.coordinates.map((coords: any) => ({
         geometry: coords[0],
@@ -157,6 +163,16 @@ const Map = ({ data, children, boundaries }: Props) => {
     pickable: true,
   })
 
+  const formatData = (object: unknown) => {
+    if (typeof (object as unknown as MunicipalityData)?.dataPoint === 'number') {
+      return ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
+    } else {
+      const data = (object as unknown as MunicipalityData)?.dataPoint
+      const tooltipString = (boundaries as string[]).includes(data as unknown as string) ? 'Nej' : 'Ja'
+      return tooltipString
+    }
+  }
+
   return (
     <DeckGLWrapper>
       <NextNProgress
@@ -170,18 +186,12 @@ const Map = ({ data, children, boundaries }: Props) => {
         }}
       />
       <DeckGL
-        // touchAction="unset"
         initialViewState={INITIAL_VIEW_STATE}
         controller={{
-          // Removed this to make desktop map zoomable
-          // Wonder why it was set to false in first place tho
-          // could be that it has to be reversed
-          // scrollZoom: false
         }}
         getTooltip={({ object }) => object && {
           html: `
-          <p>${(object as unknown as MunicipalityData)?.name}: ${((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)}</p>
-          `,
+          <p>${(object as unknown as MunicipalityData)?.name}: ${formatData(object)}</p>`,
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
@@ -189,17 +199,6 @@ const Map = ({ data, children, boundaries }: Props) => {
             color: 'white'
           }
         }}
-        // controller={{
-        //   scrollZoom: true,
-        //   dragPan: false,
-        //   dragRotate: false,
-        //   doubleClickZoom: true,
-        //   touchZoom: false,
-        //   touchRotate: false,
-
-        //   keyboard: false,
-        //   inertia: false,
-        // }}
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as MunicipalityData)?.name

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { devices } from '../utils/devices'
+import { devices } from '../../utils/devices'
 
-import Icon from './../public/icons/arrow.svg'
-import { Paragraph } from './Typography'
+import Icon from '../../public/icons/arrow.svg'
+import { Paragraph } from '../Typography'
 
 
 const Container = styled.div`
@@ -39,6 +39,7 @@ const Square = styled.div<{ color: string }>`
 `
 
 const ArrowIcon = styled(Icon) <{ rotateup?: boolean }>`
+  color: black;
   position: absolute;
   z-index: 1;
   margin: auto;
@@ -67,11 +68,11 @@ type LabelProps = {
   rotateup?: boolean
 }
 
-const Label = ({ color, text, rotateup = true }: LabelProps) => {
+const Label = ({ color, text, rotateup }: LabelProps) => {
   return (
     <LabelBox>
       <Square color={color}>
-        <ArrowIcon rotateup={rotateup} />
+        {rotateup !== undefined && <ArrowIcon rotateup={rotateup} />}
       </Square>
       <StyledParagraph>
         {text}
@@ -80,14 +81,16 @@ const Label = ({ color, text, rotateup = true }: LabelProps) => {
   )
 }
 
-const labelColors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
-
 type MapLabelsProps = {
   labels: string[]
   rotations: boolean[]
+  isTwoElements?: boolean
 }
 
 const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
+  const colors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
+  const labelColors = labels.length === 2 ? ['#EF3054', '#91DFC8'] : colors;
+
   return (
     <Container>
       {labels.map((label, i) => (
@@ -96,5 +99,6 @@ const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
     </Container>
   )
 }
+
 
 export default MapLabels

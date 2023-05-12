@@ -9,7 +9,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
   const viewMode = 'lista'
-  const dataSource = 'Elbilarna'
+  const dataset = 'Elbilarna'
 
   res.setHeader(
     'Cache-Control',
@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     props: {
       municipalities,
       viewMode,
-      dataSource
+      dataset
     },
   }
 }

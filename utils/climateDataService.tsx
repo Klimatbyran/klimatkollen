@@ -59,10 +59,9 @@ export class ClimateDataService {
       } as unknown as Budget
 
       const climatePlan = {
-        Contact: jsonData.climatePlanContact,
         Link: jsonData.climatePlanLink,
         YearAdapted: jsonData.climatePlanYear,
-        Cred: jsonData.climatePlanCred,
+        Comment: jsonData.climatePlanComment,
       } as unknown as ClimatePlan
 
       let municipality = {
@@ -76,7 +75,7 @@ export class ClimateDataService {
         ElectricCars: jsonData.electricCars,
         ElectricCarChangePercent: jsonData.electricCarChangePercent,
         ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
-        ClimatePlan: climatePlan
+        ClimatePlan: climatePlan,
       } as Municipality
       return municipality
     })

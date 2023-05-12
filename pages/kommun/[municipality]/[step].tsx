@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
-import Municipality from '../../../components/Municipality'
+import Municipality from '../../../components/Municiplaity/Municipality'
 import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
@@ -55,9 +55,6 @@ export default function Step({
       onNextStep={stepIndex < STEPS.length - 1 ? onNext : undefined}
       onPreviousStep={stepIndex > 0 ? onPrevious : undefined}
       coatOfArmsImage={municipality.CoatOfArmsImage?.ImageUrl || null}
-      historicalEmissions={municipality.HistoricalEmission.EmissionPerYear}
-      budgetedEmissions={municipality.Budget.BudgetPerYear}
-      trendingEmissions={municipality.EmissionTrend.TrendPerYear || []}
       municipalitiesName={municipalitiesName}
     />
   )
