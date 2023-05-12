@@ -62,7 +62,7 @@ export const dataSetDescriptions: DataSetDescriptions = {
         </a>
       </>,
     'boundaries': ['Saknas', ''],
-    'labels': ['Ja', 'Nej'],
+    'labels': ['Nej', 'Ja'],
     'labelRotateUp': [],
     'columnHeader': 'Klimatplan',
     'dataIsLink': true,
