@@ -1,5 +1,6 @@
 type DataSetDescriptions = {
   [key: string]: {
+    dataKey: string
     heading: string
     body: string
     source: React.ReactNode
@@ -14,6 +15,7 @@ type DataSetDescriptions = {
 
 export const dataSetDescriptions: DataSetDescriptions = {
   'Utsläppen': {
+    'dataKey': 'HistoricalEmission.EmissionLevelChangeAverage',
     'heading': 'Utsläppsförändring sedan Parisavtalet',
     'body': 'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
     'source':
@@ -32,6 +34,7 @@ export const dataSetDescriptions: DataSetDescriptions = {
     'tooltip': 'Genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015, angivet i procent.',
   },
   'Elbilarna': {
+    'dataKey': 'HistoricalEmission.EmissionLevelChangeAverage',
     'heading': 'Ökningstakt andel elbilar sedan Parisavtalet',
     'body': 'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
     'source':
@@ -50,6 +53,7 @@ export const dataSetDescriptions: DataSetDescriptions = {
     'tooltip': 'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
   },
   'Klimatplanerna': { // FIXME
+    'dataKey': 'HistoricalEmission.EmissionLevelChangeAverage',
     'heading': 'Kommuner som har en aktiv klimatplan',
     'body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     'source':

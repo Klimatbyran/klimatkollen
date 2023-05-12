@@ -89,8 +89,8 @@ const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => 
                     >
                         {flexRender(header.column.columnDef.header, header.getContext())}
                         {{
-                            asc: ' ↑',
-                            desc: ' ↓',
+                            asc: '', // ' ↑',
+                            desc: '' // ' ↓',
                         }[header.column.getIsSorted() as string] ?? null}
                     </div>
                 )}

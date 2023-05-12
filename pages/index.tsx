@@ -70,7 +70,6 @@ type PropsType = {
 const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFAULT_DATASET }: PropsType) => {
   const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
-
   const [rankedData, setRankedData] = useState<{
     [key: string]: Array<{ name: string, dataPoint: number | string, rank?: number }>
   }>({})
@@ -83,8 +82,12 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
       ? item.HistoricalEmission.EmissionLevelChangeAverage
       : selectedData === 'Elbilarna'
         ? item.ElectricCarChangePercent
-        : item.ClimatePlan.Link 
+        : item.ClimatePlan.Link
   }))
+
+  const handleToggle = () => {
+    setToggleViewMode(toggleViewMode === 'lista' ? 'karta' : 'lista')
+  }
 
   const selectedDataset = dataSetDescriptions[selectedData]
 
@@ -97,8 +100,12 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     return rankedData
   }
 
+  type DataSets = {
+    [key: string]: Array<{ name: string; dataPoint: number | string }>
+  }
+
   useMemo(() => {  // Fixme refactor
-    const dataSets = {
+    const dataSets: DataSets = {
       Elbilarna: municipalities.map((item) => ({
         name: item.Name,
         dataPoint: item.ElectricCarChangePercent,
@@ -125,7 +132,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
       Elbilarna: [],
       Utsläppen: [],
       Klimatplanerna: [],
-    }    
+    }
 
     for (const dataSetKey in dataSets) {
       if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
@@ -134,7 +141,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
         } else {
           const sortAscending = dataSetKey === 'Elbilarna' ? false : true
           newRankedData[dataSetKey] = calculateRankings(
-            dataSets[dataSetKey].map((item: { name: any; dataPoint: any }) => ({  // Fixme
+            dataSets[dataSetKey].map((item: { name: string; dataPoint: number | string }) => ({
               name: item.name,
               dataPoint: Number(item.dataPoint)
             })),
@@ -147,17 +154,6 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     setRankedData(newRankedData)
   }, [municipalities])
 
-  const columnHeader = (
-    <div>
-      {selectedDataset['columnHeader']}
-      <InfoTooltip text={selectedDataset['tooltip']} />
-    </div>
-  )
-
-  const handleToggle = () => {
-    setToggleViewMode(toggleViewMode === 'lista' ? 'karta' : 'lista')
-  }
-
   const boundaries: Array<string | number> = dataSetDescriptions[selectedData].boundaries
   const isLinkData = 'dataIsLink' in selectedDataset
 
@@ -166,7 +162,13 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     if (isLinkData) {
       dataString = boundaries.includes(rowData as string) ?
         <i style={{ color: 'grey' }}>{rowData as string}</i>
-        : <a href={rowData as string}>Öppna</a>
+        : <a
+          href={rowData as string}
+          target='_blank'
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}>
+          Öppna
+        </a>
     } else if (typeof (rowData) === 'number') {
       const percent = (rowData * 100).toFixed(1)
       dataString = rowData > 0 ? <span>+{percent}</span> : <span>{percent}</span>
@@ -176,22 +178,30 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     return dataString
   }
 
-
   type MuniciplaityItem = {
     name: string,
     dataPoint: number | string
   }
 
+  const columnHeader = (
+    <div>
+      {selectedDataset['columnHeader']}
+      <InfoTooltip text={selectedDataset['tooltip']} />
+    </div>
+  )
+
+  const isClimatePlan = selectedData === 'Klimatplanerna'
+
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
     () => [
       {
-        header: 'Ranking',
-        cell: (row: { cell: { row: { index: number } } }) => row.cell.row.index + 1,
+        header: isClimatePlan ? 'Har plan' : 'Ranking',
+        cell: (row) => isClimatePlan ? row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja' : row.cell.row.index + 1,
         accessorKey: 'index',
       },
       {
         header: 'Kommun',
-        cell: (row: { renderValue: () => any }) => row.renderValue(),
+        cell: (row: { renderValue: () => unknown }) => row.renderValue(),
         accessorKey: 'name',
       },
       {
@@ -200,7 +210,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
         accessorKey: 'dataPoint',
       },
     ],
-    [columnHeader]
+    [isClimatePlan, columnHeader, formatData]
   )
 
   return (

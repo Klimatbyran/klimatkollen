@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import Link from 'next/link'
 import FactSection from '../FactSection'
 import { ClimatePlan } from '../../utils/types'
-import { H5, ParagraphBold } from '../Typography'
+import { H5 } from '../Typography'
 import PlanIcon from '../../public/icons/climatePlan.svg'
 import Icon from '../../public/icons/boxedArrow.svg'
 

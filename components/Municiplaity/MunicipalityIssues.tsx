@@ -82,7 +82,6 @@ const TotalCo2 = styled.div`
   color: #2d2d2d;
 `
 
-const START_YEAR = 2020
 const END_YEAR = 2050
 
 const MANDATE_MAX_CHANGE = 2

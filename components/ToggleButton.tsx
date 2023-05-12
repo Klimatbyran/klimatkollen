@@ -25,7 +25,7 @@ const ToggleText = styled.p`
 `
 
 type ToggleButtonProps = {
-  handleClick?: (e: any) => void
+  handleClick?: (e: unknown) => void
   text: string
   icon: JSX.Element
 }
