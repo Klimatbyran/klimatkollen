@@ -50,7 +50,6 @@ export const dataSetDescriptions: DataSetDescriptions = {
     'tooltip': 'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
   },
   'Klimatplanerna': { // FIXME
-    'dataKey': 'HistoricalEmission.EmissionLevelChangeAverage',
     'heading': 'Kommuner som har en aktiv klimatplan',
     'body': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     'source':
