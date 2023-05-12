@@ -1,6 +1,5 @@
 type DataSetDescriptions = {
   [key: string]: {
-    dataKey: string
     heading: string
     body: string
     source: React.ReactNode
