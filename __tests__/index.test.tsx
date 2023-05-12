@@ -11,7 +11,7 @@ vi.mock('../public/icons/arrow.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/list.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/map.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/info.svg', () => ({ default: () => 'svg' }))
-vi.mock('../components/Map', () => ({ default: () => <div /> }))
+vi.mock('../components/Map/Map', () => ({ default: () => <div /> }))
 vi.mock('../components/ComparisonTable', () => ({ default: () => <div /> }))
 
 vi.mock('next/router')
