@@ -51,7 +51,11 @@ type MenuProps = {
 
 const RadioButtonMenu = ({ selectedData, setSelectedData }: MenuProps) => {
   const handleSelectData = (dataSetName: string) => {
+<<<<<<< HEAD
     const path = dataSetName === 'Elbilarna' ? '/elbilarna' : dataSetName === 'Klimatplanerna' ? '/klimatplanerna' : '/'
+=======
+    const path = dataSetName === 'Elbilarna' ? '/elbilarna' : '/'
+>>>>>>> f226657 (Feat/klimatplaner at start (#214))
     router.push(path, undefined, { shallow: true })
     setSelectedData(dataSetName as SelectedData)
   }
