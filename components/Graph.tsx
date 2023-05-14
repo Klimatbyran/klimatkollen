@@ -149,19 +149,21 @@ const Graph = ({
         }}
         options={{
           responsive: true,
+          interaction: {
+            intersect: false,
+            mode: 'nearest',
+          },
           plugins: {
             tooltip: {
               enabled: true,
               displayColors: false,
-              usePointStyle: false,
-              backgroundColor: 'black',
-              bodyColor: 'white',
+              padding: 8,
               callbacks: {
-                title: function() {
+                title: function () {
                   return ''
                 },
-                label: function(context) {
-                  return `${(context.parsed.y/1000).toFixed(1)}`
+                label: function (context) {
+                  return `${(context.parsed.y / 1000).toFixed(1)}`
                 },
               },
             },
