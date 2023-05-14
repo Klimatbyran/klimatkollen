@@ -6,6 +6,7 @@ import {
   LinearScale,
   PointElement,
   LineElement,
+  Tooltip
 } from 'chart.js'
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
@@ -13,7 +14,7 @@ import { EmissionPerYear } from '../utils/types'
 
 import styled from 'styled-components'
 
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
 const Container = styled.div`
   display: flex;
@@ -148,6 +149,23 @@ const Graph = ({
         }}
         options={{
           responsive: true,
+          plugins: {
+            tooltip: {
+              enabled: true,
+              displayColors: false,
+              usePointStyle: false,
+              backgroundColor: 'black',
+              bodyColor: 'white',
+              callbacks: {
+                title: function() {
+                  return ''
+                },
+                label: function(context) {
+                  return `${(context.parsed.y/1000).toFixed(1)}`
+                },
+              },
+            },
+          },
           scales: {
             x: {
               min: step === 0 ? setup.minYear : step < 3 ? 2016 : 2022,
