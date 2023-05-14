@@ -157,13 +157,21 @@ const Graph = ({
             tooltip: {
               enabled: true,
               displayColors: false,
-              padding: 8,
+              padding: {
+                top: 8,
+                left: 8,
+                right: 8,
+                bottom: 1,
+              },
+              titleFont: {
+                weight: 'normal'
+              },
               callbacks: {
-                title: function () {
-                  return ''
+                title: function (tooltipItems) {
+                  return `${(tooltipItems[0].parsed.y / 1000).toFixed(1)}`
                 },
                 label: function (context) {
-                  return `${(context.parsed.y / 1000).toFixed(1)}`
+                  return ''
                 },
               },
             },
