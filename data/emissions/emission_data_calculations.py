@@ -11,30 +11,32 @@ PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?coun
 PATH_CRUNCHED_DATA = 'emissions/output_extra.xlsx'
 
 
-def get_n_prep_data_from_smhi():
+def get_n_prep_data_from_smhi(df):
     # Download data from SMHI and load it in to a pandas dataframe
-    df = pd.read_excel(PATH_SMHI)
+    df_smhi = pd.read_excel(PATH_SMHI)
 
-    df = df.drop([0, 1, 2])  # remove the first 4 rows
-    df = df.reset_index(drop=True)  # reset index
+    df_smhi = df_smhi.drop([0, 1, 2])  # remove the first 4 rows
+    df_smhi = df_smhi.reset_index(drop=True)  # reset index
 
     # Put the first 4 elements in row 1 in to row 0
-    df.iloc[0, [0, 1, 2, 3]] = df.iloc[1, [0, 1, 2, 3]]
+    df_smhi.iloc[0, [0, 1, 2, 3]] = df_smhi.iloc[1, [0, 1, 2, 3]]
 
-    df = df.drop([1])  # remove row 1
-    df = df.reset_index(drop=True)  # reset index
+    df_smhi = df_smhi.drop([1])  # remove row 1
+    df_smhi = df_smhi.reset_index(drop=True)  # reset index
     # change the coloum names to the first rows entries
-    df = df.rename(columns=df.iloc[0])
-    df = df.drop([0])  # remove row 0
+    df_smhi = df_smhi.rename(columns=df_smhi.iloc[0])
+    df_smhi = df_smhi.drop([0])  # remove row 0
 
-    df = df[(df['Huvudsektor'] == 'Alla') & (df['Undersektor'] == 'Alla')
-            & (df['Län'] != 'Alla') & (df['Kommun'] != 'Alla')]
-    df = df.reset_index(drop=True)
+    df_smhi = df_smhi[(df_smhi['Huvudsektor'] == 'Alla') & (df_smhi['Undersektor'] == 'Alla')
+            & (df_smhi['Län'] != 'Alla') & (df_smhi['Kommun'] != 'Alla')]
+    df_smhi = df_smhi.reset_index(drop=True)
 
     # Remove said columns
-    df = df.drop(columns=['Huvudsektor', 'Undersektor', 'Län'])
-    df = df.sort_values(by=['Kommun'])  # sort by Kommun
-    df = df.reset_index(drop=True)
+    df_smhi = df_smhi.drop(columns=['Huvudsektor', 'Undersektor', 'Län'])
+    df_smhi = df_smhi.sort_values(by=['Kommun'])  # sort by Kommun
+    df_smhi = df_smhi.reset_index(drop=True)
+
+    df = df.merge(df_smhi, on='Kommun', how='left')
 
     return df
 
@@ -122,8 +124,8 @@ def calculate_linear_emissions(df):
     return df
 
 
-def emission_calculations():
-    df_smhi = get_n_prep_data_from_smhi()
+def emission_calculations(df):
+    df_smhi = get_n_prep_data_from_smhi(df)
     df_cem = deduct_cement(df_smhi)
     df_budgeted = calculate_municipality_budgets(df_cem)
     df_paris = calculate_municiplaity_paris_path(df_budgeted)

@@ -39,3 +39,8 @@ yarn-error.log*
 *.tsbuildinfo
 
 /.vscode/
+
+# python
+data/cars/__pycache__/car_data_calculations.cpython-37.pyc
+data/emissions/__pycache__/emission_data_calculations.cpython-37.pyc
+data/__pycache__/

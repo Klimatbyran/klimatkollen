@@ -9,9 +9,17 @@ import pandas as pd
 import re
 
 # Get emission calculations
-df = emission_calculations()
+df = get_municipalities()
+print('Municipalities loaded and prepped')
+
+df = emission_calculations(df)
+print('Climate data and calculations all done')
+
 df = car_calculations(df)
+print('Hybrid car data and calculations finished')
+
 df = get_climate_plans(df)
+print('Climate plans added')
 
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
@@ -20,6 +28,7 @@ temp = []  # remane the columns
 for i in range(len(df)):
     temp.append({
         'kommun': df.iloc[i]['Kommun'],
+        'län': df.iloc[i]['Län'],
         'emissions': {
             '1990': df.iloc[i][1990],
             '2000': df.iloc[i][2000],
@@ -49,3 +58,8 @@ for i in range(len(df)):
 
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
     json.dump(temp, json_file, ensure_ascii=False, default=str)
+print('Cliamte data JSON file created and saved')
+
+temp_df = pd.DataFrame(temp)
+temp_df.to_excel('climate-data.xlsx', index=False)
+print('Cliamte data xlsx file created and saved')
