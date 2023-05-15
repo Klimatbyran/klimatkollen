@@ -62,8 +62,8 @@ const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset =>
 type Props = {
   step: number
   historical: EmissionPerYear[]
-  budget: EmissionPerYear[]
   trend: EmissionPerYear[]
+  budget: EmissionPerYear[]
   maxVisibleYear: number
 }
 
@@ -77,23 +77,23 @@ const Graph = ({
   maxVisibleYear,
 }: Props) => {
   const setup = useMemo(
-    () => getSetup([historical, budget, trend]),
-    [historical, budget, trend],
+    () => getSetup([historical, trend, budget]),
+    [historical, trend, budget],
   )
 
   const historicalDataset: Dataset = useMemo(
     () => emissionPerYearToDataset(historical),
     [historical],
   )
-  const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
   const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
+  const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
       Math.max(
-        pledgeDataset.length,
         budgetDataset.length,
+        pledgeDataset.length,
         historicalDataset.length,
       ) > setup.labels.length
     ) {
@@ -131,7 +131,7 @@ const Graph = ({
               backgroundColor: 'rgba(145, 223, 200, 0.6)',
               pointRadius: 0,
               tension: 0.15,
-              hidden: false,
+              hidden: step < 2,
             },
             {
               // @ts-ignore
@@ -143,7 +143,7 @@ const Graph = ({
               backgroundColor: '#542E35',
               pointRadius: 0,
               tension: 0.15,
-              hidden: step < 2,
+              hidden: false,
             },
           ],
         }}
