@@ -61,5 +61,11 @@ with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataf
 print('Cliamte data JSON file created and saved')
 
 temp_df = pd.DataFrame(temp)
-temp_df.to_excel('climate-data.xlsx', index=False)
-print('Cliamte data xlsx file created and saved')
+
+writer = pd.ExcelWriter('climate-data.xlsx', engine='xlsxwriter')
+
+# Group the data by 'Län' and save each group on a separate tab
+for län, group in temp_df.groupby('län'):
+    group.to_excel(writer, sheet_name=län, index=False)
+
+writer.save()
