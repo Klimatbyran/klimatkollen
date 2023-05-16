@@ -8,7 +8,7 @@ import pandas as pd
 # Budget in metric tonnes from 2020 +40948459*50.81/46.29+40948459*50.81/46.29*1.05
 BUDGET = 170000000
 PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
-PATH_CRUNCHED_DATA = 'emissions/output_extra.xlsx'
+PATH_CRUNCHED_DATA = 'issues/emissions/output_extra.xlsx'
 
 
 def get_n_prep_data_from_smhi(df):

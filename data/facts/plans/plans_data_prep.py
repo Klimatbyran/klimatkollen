@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import re
 
-PATH_PLANS_DATA = 'plans/klimatplaner.xlsx'
+PATH_PLANS_DATA = 'facts/plans/klimatplaner.xlsx'
 
 MUNICIPALITIES_W_S = ['Alingsås kommun', 'Bengtsfors kommun', 'Bollnäs kommun', 'Borås stad', 'Degerfors kommun', 'Grums kommun',
                       'Hagfors kommun', 'Hofors kommun', 'Hällefors kommun', 'Höganäs kommun', 'Kramfors kommun', 'Munkfors kommun',

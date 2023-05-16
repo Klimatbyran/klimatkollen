@@ -3,8 +3,8 @@
 import numpy as np
 import pandas as pd
 
-PATH_TRAFA_DATA = 'cars/kpi1_trafa.xlsx'  # data on sold cars by trafa
-PATH_CARS_DATA = 'cars/kpi1_calculations.xlsx'  # calculations based on trafa data
+PATH_TRAFA_DATA = 'solutions/cars/kpi1_trafa.xlsx'  # data on sold cars by trafa
+PATH_CARS_DATA = 'solutions/cars/kpi1_calculations.xlsx'  # calculations based on trafa data
 
 
 def car_calculations(df):
