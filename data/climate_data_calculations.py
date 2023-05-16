@@ -6,6 +6,7 @@ from solutions.cars.car_data_calculations import car_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municiapalities_counties import get_municipalities
 from issues.emissions.emission_data_calculations import emission_calculations
+
 import numpy as np
 import pandas as pd
 import re
