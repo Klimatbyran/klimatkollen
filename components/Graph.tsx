@@ -154,7 +154,6 @@ const Graph = ({
               max: step > 0 ? maxVisibleYear : 2020,
               grid: {
                 display: true,
-                drawBorder: false,
                 color: 'rgba(255, 255, 255, 0.2)',
                 drawTicks: false,
               },
@@ -176,7 +175,6 @@ const Graph = ({
             y: {
               //suggestedMax: step > 3 ? totalRemainingCO2 : 1350_000,
               grid: {
-                drawBorder: false,
                 display: false,
               },
               beginAtZero: true,
