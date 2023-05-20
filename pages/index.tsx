@@ -66,7 +66,6 @@ type PropsType = {
   dataset: SelectedData
 }
 
-
 const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFAULT_DATASET }: PropsType) => {
   const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
@@ -95,7 +94,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint)
     const rankedData = sortedData.map((item, index) => ({
       ...item,
-      rank: index + 1,
+      index: index + 1,
     }))
     return rankedData
   }
@@ -196,7 +195,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     () => [
       {
         header: isClimatePlan ? 'Har plan?' : 'Ranking',
-        cell: (row) => isClimatePlan ? row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja' : row.cell.row.index + 1,
+        cell: (row) => isClimatePlan ? (row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja') : row.cell.row.original.index,
         accessorKey: 'index',
       },
       {
