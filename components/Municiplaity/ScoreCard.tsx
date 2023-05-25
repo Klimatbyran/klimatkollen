@@ -142,7 +142,7 @@ const ScoreCard = ({
 
   return (
     <StyledDiv>
-      <LightContainer>
+      {/* <LightContainer>
         <Row>
           <SectionLeft>
             <PlanIcon />
@@ -171,7 +171,7 @@ const ScoreCard = ({
             </>
           }
         />
-      </LightContainer>
+      </LightContainer> */}
       <DarkContainer>
         {rank && <FactSection
           heading='Kommunens utsläppsrankning'

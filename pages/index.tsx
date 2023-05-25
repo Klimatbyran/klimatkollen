@@ -20,7 +20,7 @@ import InfoTooltip from '../components/InfoTooltip'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
-import { DEFAULT_DATASET, dataSetDescriptions } from '../data/dataset_descriptions'
+import { default_dataset, dataSetDescriptions } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 
 
@@ -67,7 +67,7 @@ type PropsType = {
   dataset: SelectedData
 }
 
-const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = DEFAULT_DATASET }: PropsType) => {
+const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = default_dataset }: PropsType) => {
   const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
   const [rankedData, setRankedData] = useState<{
