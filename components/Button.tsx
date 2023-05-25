@@ -32,7 +32,7 @@ const Button = styled.button<{ icon: boolean }>`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.greenGraphTwo};
+    background: ${({ theme }) => theme.green};
   }
 
   &:focus {

@@ -5,6 +5,7 @@ import { ReactNode, useEffect, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar';
+import { colorTheme } from '../../Theme'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -176,7 +177,7 @@ const Map = ({ data, children, boundaries }: Props) => {
   return (
     <DeckGLWrapper>
       <NextNProgress
-        color="#6BA292"
+        color={colorTheme.dustyGreen}
         startPosition={0.3}
         stopDelayMs={20}
         height={5}

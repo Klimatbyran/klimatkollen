@@ -11,6 +11,7 @@ import { devices } from '../../utils/devices'
 import ArrowRight from '../../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../../public/icons/arrow-left-white.svg'
 import Info from '../../public/icons/info.svg'
+import { colorTheme } from '../../Theme'
 
 
 const GraphWrapper = styled.div`
@@ -76,7 +77,7 @@ const Circle = styled.span`
 
 const TotalCo2 = styled.div`
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   border-radius: 50px;
   background-color: ${(props) => props.color};
   color: #2d2d2d;
@@ -151,16 +152,16 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
         `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
     },
     1: {
-      text: 'För att nå Parisavtalet',
-      buttonText: 'Parisavtalet',
-      body: 'Så mycket skulle utsläppen behöva minska för att vara i linje med 1,5-gradersmålet.',
+      text: 'Om vi fortsätter som idag',
+      buttonText: 'Trend',
+      body: 'Utsläppen de kommande åren baserat på nuvarande trend.',
       shareText: (_name) =>
         `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
     },
     2: {
-      text: 'Om vi fortsätter som idag',
-      buttonText: 'Trend',
-      body: 'Utsläppen de kommande åren baserat på nuvarande trend.',
+      text: 'För att nå Parisavtalet',
+      buttonText: 'Parisavtalet',
+      body: 'Så mycket skulle utsläppen behöva minska för att vara i linje med 1,5-gradersmålet.',
       shareText: (_name) =>
         `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
     },
@@ -209,20 +210,20 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
         <Legends>
           {step < 3 && (
             <Legend>
-              <Circle color="rgb(239, 94, 48)" />
+              <Circle color={colorTheme.rust} />
               Historiskt
             </Legend>
           )}
           {step > 0 && (
             <Legend>
-              <Circle color="#6BA292" />
-              Parisavtalet
+              <Circle color={colorTheme.red} />
+              Trend
             </Legend>
           )}
           {step > 1 && (
             <Legend>
-              <Circle color="#EF3054" />
-              Trend
+              <Circle color={colorTheme.green} />
+              Parisavtalet
             </Legend>
           )}
           <InfoButtonWrapper>
@@ -261,11 +262,16 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
       {
         step > 1 && (
           <>
-            <H3>Totala framtida utsläpp</H3>
-            <TotalCo2 color="#EF3054">
+            <H3>
+              Totala utsläpp
+            </H3>
+            <TotalCo2 color={colorTheme.rust}>
               Trend: {totalTrend.toFixed(1)} tusen ton CO₂
             </TotalCo2>
-            <TotalCo2 color="#6BA292">
+            <TotalCo2 color={colorTheme.red}>
+              Trend: {totalTrend.toFixed(1)} tusen ton CO₂
+            </TotalCo2>
+            <TotalCo2 color={colorTheme.green}>
               Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
               CO₂
             </TotalCo2>

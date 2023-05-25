@@ -89,7 +89,7 @@ type MapLabelsProps = {
 
 const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
   const colors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
-  const labelColors = labels.length === 2 ? ['#EF3054', '#91DFC8'] : colors;
+  const labelColors = labels.length === 2 ? ['#EF3054', '#91DFC8'] : colors
 
   return (
     <Container>
