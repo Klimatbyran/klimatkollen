@@ -29,10 +29,10 @@ def get_municipalities():
 
 
 def export_to_xslx(df):
+    df['KPI1: Förändringstakt andel laddbara bilar (%)'] = df['electricCarChangePercent'].apply(lambda x: round(x*100, 1))
+
     df.rename(columns={'kommun': 'Kommun'}, inplace=True)
     df.rename(columns={'län': 'Län'}, inplace=True)
-    df.rename(columns={
-        'electricCarChangePercent': 'KPI1: Förändringstakt andel laddbara bilar'}, inplace=True)
     df.rename(
         columns={'climatePlanLink': 'KPI2: Klimatplan länk'}, inplace=True)
     df.rename(
@@ -40,7 +40,7 @@ def export_to_xslx(df):
 
     filtered_df = df[['Kommun',
                       'Län',
-                      'KPI1: Förändringstakt andel laddbara bilar',
+                      'KPI1: Förändringstakt andel laddbara bilar (%)',
                       'KPI2: Klimatplan länk',
                       'KPI2: Klimatplan antagen år']]
 
