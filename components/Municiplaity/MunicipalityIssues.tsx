@@ -80,7 +80,7 @@ const TotalCo2 = styled.div`
   padding: 1rem;
   border-radius: 50px;
   background-color: ${(props) => props.color};
-  color: #2d2d2d;
+  color: ${({ theme }) => theme.darkestGrey};
 `
 
 const END_YEAR = 2050
@@ -167,6 +167,7 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
     },
   }
 
+  const totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce((total, year) => total + year.CO2Equivalent, 0) / 1000
   const totalTrend = municipality.EmissionTrend.FutureCO2Emission / 1000
 
   const stepConfig = STEPS[step]
@@ -259,25 +260,19 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
           </IconButton>
         )}
       </Grid>
-      {
-        step > 1 && (
-          <>
-            <H3>
-              Totala utsläpp
-            </H3>
-            <TotalCo2 color={colorTheme.rust}>
-              Trend: {totalTrend.toFixed(1)} tusen ton CO₂
-            </TotalCo2>
-            <TotalCo2 color={colorTheme.red}>
-              Trend: {totalTrend.toFixed(1)} tusen ton CO₂
-            </TotalCo2>
-            <TotalCo2 color={colorTheme.green}>
-              Parisavtalet: {Math.round(municipality.Budget.CO2Equivalent / 1000)} tusen ton
-              CO₂
-            </TotalCo2>
-          </>
-        )
-      }
+      <H3>
+        Totala utsläpp
+      </H3>
+      <TotalCo2 color={colorTheme.rust}>
+        Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
+      </TotalCo2>
+      <TotalCo2 color={step > 0 ? colorTheme.red : colorTheme.redDark}>
+        Trend: {totalTrend.toFixed(1)} tusen ton CO₂
+      </TotalCo2>
+      <TotalCo2 color={step > 1 ? colorTheme.green : colorTheme.greenDark}>
+        Parisavtalet: {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton
+        CO₂
+      </TotalCo2>
       {step === 0 && isOpen && (
         <InfoModal
           close={toggleModal}

@@ -7,9 +7,11 @@ export const colorTheme = {
   rust: '#EF5E30',
   rustOpaque: 'rgb(239, 94, 48, 0.6)',
   red: '#EF3054',
-  redOpaque: 'rgba(84, 46, 53, 0.6)',
+  redOpaque: 'rgba(239, 48, 84, 0.6)',
+  redDark: 'rgba(239, 48, 84, 0.2)',
   green: '#94D3C1',
   greenOpaqe: 'rgba(145, 223, 200, 0.6)',
+  greenDark: 'rgba(145, 223, 200, 0.2)',
 
   orange: '#EF9917',
   darkOrange: '#EF7F17',
