@@ -91,12 +91,12 @@ const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = DEFA
 
   const selectedDataset = dataSetDescriptions[selectedData]
 
-  const calculateStringRankings = (data: Array<{ name: string, dataPoint: string }>) => {
+  const calculateStringRankings = (data: Array<{ name: string, dataPoint: string | number }>) => {
     const rankedData = data.map((item) => ({
       ...item,
       index: item.dataPoint === 'Saknas' ? -1 : 1,
-    }))
-    return rankedData
+    }));
+    return rankedData;
   }
 
   const calculateNumberRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
@@ -132,7 +132,7 @@ const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = DEFA
       [key in SelectedData]: Array<{
         name: string
         dataPoint: number | string
-        index?: number
+        index: number
       }>
     }
 
@@ -146,7 +146,7 @@ const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = DEFA
       if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
         if (dataSetKey === 'Klimatplanerna') {
           newRankedData[dataSetKey] = calculateStringRankings(
-            dataSets[dataSetKey].map((item: { name: string; dataPoint: string }) => ({
+            dataSets[dataSetKey].map((item: { name: string; dataPoint: string | number }) => ({
               name: item.name,
               dataPoint: item.dataPoint
             })))
