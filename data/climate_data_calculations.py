@@ -1,17 +1,29 @@
 # -*- coding: utf-8 -*-
 
 import json
-from cars.car_data_calculations import car_calculations
-from plans.plans_data_prep import get_climate_plans
-from emissions.emission_data_calculations import emission_calculations
+from facts.municiapalities_counties import export_to_xslx
+from solutions.cars.car_data_calculations import car_calculations
+from facts.plans.plans_data_prep import get_climate_plans
+from facts.municiapalities_counties import get_municipalities
+from issues.emissions.emission_data_calculations import emission_calculations
+
 import numpy as np
 import pandas as pd
 import re
 
+
 # Get emission calculations
-df = emission_calculations()
+df = get_municipalities()
+print('Municipalities loaded and prepped')
+
+df = emission_calculations(df)
+print('Climate data and calculations all done')
+
 df = car_calculations(df)
+print('Hybrid car data and calculations finished')
+
 df = get_climate_plans(df)
+print('Climate plans added')
 
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
@@ -20,6 +32,7 @@ temp = []  # remane the columns
 for i in range(len(df)):
     temp.append({
         'kommun': df.iloc[i]['Kommun'],
+        'län': df.iloc[i]['Län'],
         'emissions': {
             '1990': df.iloc[i][1990],
             '2000': df.iloc[i][2000],
@@ -49,3 +62,8 @@ for i in range(len(df)):
 
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
     json.dump(temp, json_file, ensure_ascii=False, default=str)
+
+print('Cliamte data JSON file created and saved')
+
+temp_df = pd.DataFrame(temp)
+export_to_xslx(temp_df)
