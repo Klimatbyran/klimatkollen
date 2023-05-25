@@ -12,6 +12,8 @@ type DataSetDescriptions = {
   }
 }
 
+export const DEFAULT_DATASET = 'Utsläppen'
+
 export const dataSetDescriptions: DataSetDescriptions = {
   'Utsläppen': {
     'heading': 'Utsläppsförändring sedan Parisavtalet',

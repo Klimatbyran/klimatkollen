@@ -20,11 +20,9 @@ import InfoTooltip from '../components/InfoTooltip'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
-import { dataSetDescriptions } from '../data/dataset_descriptions'
+import { DEFAULT_DATASET, dataSetDescriptions } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 
-const DEFAULT_VIEWMODE = 'karta'
-const DEFAULT_DATASET = 'Utsläppen'
 
 const Container = styled.div`
   display: flex;
@@ -60,13 +58,16 @@ const MunicipalityContainer = styled.div`
   }
 `
 
+const default_viewmode = 'karta'
+const secondary_viewmode = 'lista'
+
 type PropsType = {
   municipalities: Array<Municipality>
   viewMode: string
   dataset: SelectedData
 }
 
-const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFAULT_DATASET }: PropsType) => {
+const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = DEFAULT_DATASET }: PropsType) => {
   const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
   const [rankedData, setRankedData] = useState<{
@@ -85,7 +86,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
   }))
 
   const handleToggle = () => {
-    setToggleViewMode(toggleViewMode === 'lista' ? 'karta' : 'lista')
+    setToggleViewMode(toggleViewMode === default_viewmode ? secondary_viewmode : default_viewmode)
   }
 
   const selectedDataset = dataSetDescriptions[selectedData]
@@ -249,16 +250,16 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
           </InfoText>
           <ToggleButton
             handleClick={handleToggle}
-            text={toggleViewMode === 'karta' ? 'Se lista' : 'Se karta'}
-            icon={toggleViewMode === 'karta' ? <MapIcon /> : <ListIcon />} />
+            text={toggleViewMode === default_viewmode ? 'Se lista' : 'Se karta'}
+            icon={toggleViewMode === default_viewmode ? <MapIcon /> : <ListIcon />} />
           <MunicipalityContainer>
-            <div style={{ display: toggleViewMode === 'karta' ? 'block' : 'none' }}>
+            <div style={{ display: toggleViewMode === default_viewmode ? 'block' : 'none' }}>
               <MapLabels
                 labels={selectedDataset['labels']}
                 rotations={selectedDataset['labelRotateUp']} />
               <Map data={data} boundaries={selectedDataset['boundaries']} />
             </div>
-            <div style={{ display: toggleViewMode === 'lista' ? 'block' : 'none', width: '100%' }}>
+            <div style={{ display: toggleViewMode === secondary_viewmode ? 'block' : 'none', width: '100%' }}>
               <ComparisonTable data={rankedData[selectedData]} columns={cols} />
             </div>
           </MunicipalityContainer>
