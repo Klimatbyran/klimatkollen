@@ -67,5 +67,3 @@ print('Cliamte data JSON file created and saved')
 
 temp_df = pd.DataFrame(temp)
 export_to_xslx(temp_df)
-
-print('Cliamte data xlsx file created and saved')
