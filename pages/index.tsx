@@ -90,7 +90,15 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
 
   const selectedDataset = dataSetDescriptions[selectedData]
 
-  const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
+  const calculateStringRankings = (data: Array<{ name: string, dataPoint: string }>) => {
+    const rankedData = data.map((item) => ({
+      ...item,
+      index: item.dataPoint === 'Saknas' ? -1 : 1,
+    }))
+    return rankedData
+  }
+
+  const calculateNumberRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
     const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint)
     const rankedData = sortedData.map((item, index) => ({
       ...item,
@@ -123,7 +131,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
       [key in SelectedData]: Array<{
         name: string
         dataPoint: number | string
-        rank?: number
+        index?: number
       }>
     }
 
@@ -136,10 +144,14 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     for (const dataSetKey in dataSets) {
       if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
         if (dataSetKey === 'Klimatplanerna') {
-          newRankedData[dataSetKey] = dataSets[dataSetKey]
+          newRankedData[dataSetKey] = calculateStringRankings(
+            dataSets[dataSetKey].map((item: { name: string; dataPoint: string }) => ({
+              name: item.name,
+              dataPoint: item.dataPoint
+            })))
         } else {
           const sortAscending = dataSetKey === 'Elbilarna' ? false : true
-          newRankedData[dataSetKey] = calculateRankings(
+          newRankedData[dataSetKey] = calculateNumberRankings(
             dataSets[dataSetKey].map((item: { name: string; dataPoint: number | string }) => ({
               name: item.name,
               dataPoint: Number(item.dataPoint)
@@ -195,7 +207,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     () => [
       {
         header: isClimatePlan ? 'Har plan?' : 'Ranking',
-        cell: (row) => isClimatePlan ? (row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja') : row.cell.row.original.index,
+        cell: (row) => isClimatePlan ? (row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja') : row.cell.row.index + 1,
         accessorKey: 'index',
       },
       {
