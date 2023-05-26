@@ -251,7 +251,7 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
           <div></div>
         )}
         <span style={{ textAlign: 'center' }}>
-          {step + 1} / {Object.keys(STEPS).length}
+          {STEPS[step].buttonText}
         </span>
         {onNextStep && (
           <IconButton onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
