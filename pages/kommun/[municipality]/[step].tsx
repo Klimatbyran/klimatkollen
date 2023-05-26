@@ -9,8 +9,8 @@ import { PolitycalRuleService } from '../../../utils/politicalRuleService'
 
 export const STEPS = [
   'historiska-utslapp',
-  'parisavtalet',
   'framtida-prognos',
+  'parisavtalet',
 ]
 
 type Props = {
