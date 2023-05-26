@@ -20,11 +20,9 @@ import InfoTooltip from '../components/InfoTooltip'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
-import { dataSetDescriptions } from '../data/dataset_descriptions'
+import { default_dataset, dataSetDescriptions } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 
-const DEFAULT_VIEWMODE = 'karta'
-const DEFAULT_DATASET = 'Utsläppen'
 
 const Container = styled.div`
   display: flex;
@@ -60,14 +58,16 @@ const MunicipalityContainer = styled.div`
   }
 `
 
+const default_viewmode = 'karta'
+const secondary_viewmode = 'lista'
+
 type PropsType = {
   municipalities: Array<Municipality>
   viewMode: string
   dataset: SelectedData
 }
 
-
-const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFAULT_DATASET }: PropsType) => {
+const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = default_dataset }: PropsType) => {
   const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
   const [rankedData, setRankedData] = useState<{
@@ -86,16 +86,24 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
   }))
 
   const handleToggle = () => {
-    setToggleViewMode(toggleViewMode === 'lista' ? 'karta' : 'lista')
+    setToggleViewMode(toggleViewMode === default_viewmode ? secondary_viewmode : default_viewmode)
   }
 
   const selectedDataset = dataSetDescriptions[selectedData]
 
-  const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
+  const calculateStringRankings = (data: Array<{ name: string, dataPoint: string | number }>) => {
+    const rankedData = data.map((item) => ({
+      ...item,
+      index: item.dataPoint === 'Saknas' ? -1 : 1,
+    }));
+    return rankedData;
+  }
+
+  const calculateNumberRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
     const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint)
     const rankedData = sortedData.map((item, index) => ({
       ...item,
-      rank: index + 1,
+      index: index + 1,
     }))
     return rankedData
   }
@@ -124,7 +132,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
       [key in SelectedData]: Array<{
         name: string
         dataPoint: number | string
-        rank?: number
+        index: number
       }>
     }
 
@@ -137,10 +145,14 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     for (const dataSetKey in dataSets) {
       if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
         if (dataSetKey === 'Klimatplanerna') {
-          newRankedData[dataSetKey] = dataSets[dataSetKey]
+          newRankedData[dataSetKey] = calculateStringRankings(
+            dataSets[dataSetKey].map((item: { name: string; dataPoint: string | number }) => ({
+              name: item.name,
+              dataPoint: item.dataPoint
+            })))
         } else {
           const sortAscending = dataSetKey === 'Elbilarna' ? false : true
-          newRankedData[dataSetKey] = calculateRankings(
+          newRankedData[dataSetKey] = calculateNumberRankings(
             dataSets[dataSetKey].map((item: { name: string; dataPoint: number | string }) => ({
               name: item.name,
               dataPoint: Number(item.dataPoint)
@@ -196,7 +208,7 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
     () => [
       {
         header: isClimatePlan ? 'Har plan?' : 'Ranking',
-        cell: (row) => isClimatePlan ? row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja' : row.cell.row.index + 1,
+        cell: (row) => isClimatePlan ? (row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja') : row.cell.row.index + 1,
         accessorKey: 'index',
       },
       {
@@ -238,16 +250,16 @@ const StartPage = ({ municipalities, viewMode = DEFAULT_VIEWMODE, dataset = DEFA
           </InfoText>
           <ToggleButton
             handleClick={handleToggle}
-            text={toggleViewMode === 'karta' ? 'Se lista' : 'Se karta'}
-            icon={toggleViewMode === 'karta' ? <MapIcon /> : <ListIcon />} />
+            text={toggleViewMode === default_viewmode ? 'Se lista' : 'Se karta'}
+            icon={toggleViewMode === default_viewmode ? <MapIcon /> : <ListIcon />} />
           <MunicipalityContainer>
-            <div style={{ display: toggleViewMode === 'karta' ? 'block' : 'none' }}>
+            <div style={{ display: toggleViewMode === default_viewmode ? 'block' : 'none' }}>
               <MapLabels
                 labels={selectedDataset['labels']}
                 rotations={selectedDataset['labelRotateUp']} />
               <Map data={data} boundaries={selectedDataset['boundaries']} />
             </div>
-            <div style={{ display: toggleViewMode === 'lista' ? 'block' : 'none', width: '100%' }}>
+            <div style={{ display: toggleViewMode === secondary_viewmode ? 'block' : 'none', width: '100%' }}>
               <ComparisonTable data={rankedData[selectedData]} columns={cols} />
             </div>
           </MunicipalityContainer>

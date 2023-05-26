@@ -9,7 +9,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
   const viewMode = 'lista'
-  const dataset = 'Klimatplanerna'
+  const dataset = 'Utsläppen' // FIXME change at launch 'Klimatplanerna'
 
   res.setHeader(
     'Cache-Control',
