@@ -51,6 +51,13 @@ export const ParagraphSmall = styled.p`
   margin: 0;
 `
 
+export const ParagraphItalic = styled.p`
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12px;
+  margin-bottom: 11.2px;
+`
+
 export const ParagraphBold = styled.p`
   font-weight: bold;
   font-size: 16px;

@@ -2,8 +2,7 @@ import styled, { css } from 'styled-components'
 import Link from 'next/link'
 import FactSection from '../FactSection'
 import { ClimatePlan } from '../../utils/types'
-import { H5 } from '../Typography'
-import PlanIcon from '../../public/icons/climatePlan.svg'
+import { ParagraphItalic } from '../Typography'
 import Icon from '../../public/icons/boxedArrow.svg'
 
 const StyledDiv = styled.div`
@@ -107,6 +106,7 @@ const CommentContainer = styled.div`
 `
 
 type Props = {
+  name: string
   rank: number | null
   budget: number | null
   budgetRunsOut: string
@@ -120,6 +120,7 @@ type Props = {
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
 const ScoreCard = ({
+  name,
   rank,
   budget,
   budgetRunsOut,
@@ -164,7 +165,7 @@ const ScoreCard = ({
           data={''}
           info={
             <>
-              Här listas inte anpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande.
+              Avser nu gällande klimathandlingsplan eller motsvarande. Inte klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande.
               <CommentContainer>
                 <b>Kommentar:</b> {climatePlan.Comment}
               </CommentContainer>
@@ -182,6 +183,15 @@ const ScoreCard = ({
             </>
           }
         />}
+        {['Gotland', 'Skövde', 'Mörbylånga'].includes(name) &&
+          <ParagraphItalic>
+            Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget, läs mer{' '}
+            <a
+              href='/kallor-och-metod'>
+              här
+            </a>
+          </ParagraphItalic>
+        }
         {budget && <FactSection
           heading='Koldioxidbudget'
           data={formatter.format(Math.round(budget)) + ' ton'}

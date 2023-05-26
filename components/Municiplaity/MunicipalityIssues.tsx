@@ -270,7 +270,7 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
         Trend: {totalTrend.toFixed(1)} tusen ton CO₂
       </TotalCo2>
       <TotalCo2 color={step > 1 ? colorTheme.green : colorTheme.greenDark}>
-        Parisavtalet: {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton
+        Koldioxidbudget för att klara Parisavtalet: {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton
         CO₂
       </TotalCo2>
       {step === 0 && isOpen && (
