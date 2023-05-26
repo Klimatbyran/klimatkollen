@@ -1,21 +1,35 @@
 import React, { ReactNode } from 'react'
 import { ThemeProvider, DefaultTheme } from 'styled-components'
 
-const colorTheme: DefaultTheme = {
+export const colorTheme = {
   main: '#91DFC8',
-  greenGraphOne: '#6BA292',
-  greenGraphTwo: '#94D3C1',
-  greenGraphThree: '#D5F2E9',
-  yellow: '#EFBF17',
-  darkYellow: '#BF9812',
+
+  rust: '#EF5E30',
+  rustOpaque: 'rgb(239, 94, 48, 0.6)',
   red: '#EF3054',
+  redOpaque: 'rgba(239, 48, 84, 0.6)',
+  redDark: 'rgba(239, 48, 84, 0.2)',
+  green: '#94D3C1',
+  greenOpaqe: 'rgba(145, 223, 200, 0.6)',
+  greenDark: 'rgba(145, 223, 200, 0.2)',
+
+  orange: '#EF9917',
+  darkOrange: '#EF7F17',
+  yellow: '#EFBF17',
+  blue: '#91BFC8',
+
   white: '#FFFFFF',
   paperWhite: '#F9FBFF',
+  mint: '#D5F2E9',
+
   lightGrey: '#B3B3B3',
   grey: '#6C6C6C',
   darkGrey: '#424242',
   darkestGrey: '#2D2D2D',
+
+  dustyGreen: '#6BA292',
   darkGreen: '#2D7B64',
+
   gradient: 'linear-gradient(rgba(45,45,45, 1), rgba(0,0,0, 0.0))',
 }
 

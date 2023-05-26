@@ -32,7 +32,7 @@ const Button = styled.button<{ icon: boolean }>`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.greenGraphTwo};
+    background: ${({ theme }) => theme.green};
   }
 
   &:focus {
@@ -47,7 +47,7 @@ const Button = styled.button<{ icon: boolean }>`
 `
 
 type ShareButtonProps = {
-  handleClick?: (e: any) => void
+  handleClick?: (e: unknown) => void
   text: string
   shareIcon?: boolean
 }

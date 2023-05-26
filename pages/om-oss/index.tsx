@@ -171,7 +171,7 @@ const OmOss = () => {
               </>}
           />
           <ToggleSection
-            header='Medborgardrivet – din hjälp behövs'
+            header='Stöd oss'
             text={
               <>
                 <Paragraph>

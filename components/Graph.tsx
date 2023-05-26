@@ -6,14 +6,16 @@ import {
   LinearScale,
   PointElement,
   LineElement,
+  Tooltip
 } from 'chart.js'
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import { EmissionPerYear } from '../utils/types'
 
 import styled from 'styled-components'
+import { colorTheme } from '../Theme'
 
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
 const Container = styled.div`
   display: flex;
@@ -61,8 +63,8 @@ const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset =>
 type Props = {
   step: number
   historical: EmissionPerYear[]
-  budget: EmissionPerYear[]
   trend: EmissionPerYear[]
+  budget: EmissionPerYear[]
   maxVisibleYear: number
 }
 
@@ -76,23 +78,23 @@ const Graph = ({
   maxVisibleYear,
 }: Props) => {
   const setup = useMemo(
-    () => getSetup([historical, budget, trend]),
-    [historical, budget, trend],
+    () => getSetup([historical, trend, budget]),
+    [historical, trend, budget],
   )
 
   const historicalDataset: Dataset = useMemo(
     () => emissionPerYearToDataset(historical),
     [historical],
   )
-  const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
   const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
+  const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
       Math.max(
-        pledgeDataset.length,
         budgetDataset.length,
+        pledgeDataset.length,
         historicalDataset.length,
       ) > setup.labels.length
     ) {
@@ -114,8 +116,8 @@ const Graph = ({
               fill: true,
               data: historicalDataset,
               borderWidth: 2,
-              borderColor: 'rgb(239, 94, 48)',
-              backgroundColor: 'rgb(239, 94, 48, 0.6)',
+              borderColor: colorTheme.rust,
+              backgroundColor: colorTheme.rustOpaque,
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
@@ -126,11 +128,11 @@ const Graph = ({
               fill: true,
               data: budgetDataset,
               borderWidth: 2,
-              borderColor: '#6BA292',
-              backgroundColor: 'rgba(145, 223, 200, 0.6)',
+              borderColor: colorTheme.green,
+              backgroundColor: colorTheme.greenOpaqe,
               pointRadius: 0,
               tension: 0.15,
-              hidden: false,
+              hidden: step < 2,
             },
             {
               // @ts-ignore
@@ -138,23 +140,49 @@ const Graph = ({
               fill: true,
               data: pledgeDataset,
               borderWidth: 2,
-              borderColor: '#EF3054',
-              backgroundColor: '#542E35',
+              borderColor: colorTheme.red,
+              backgroundColor: colorTheme.redOpaque,
               pointRadius: 0,
               tension: 0.15,
-              hidden: step < 2,
+              hidden: false,
             },
           ],
         }}
         options={{
           responsive: true,
+          interaction: {
+            intersect: false,
+            mode: 'nearest',
+          },
+          plugins: {
+            tooltip: {
+              enabled: true,
+              displayColors: false,
+              padding: {
+                top: 8,
+                left: 8,
+                right: 8,
+                bottom: 1,
+              },
+              titleFont: {
+                weight: 'normal'
+              },
+              callbacks: {
+                title: function (tooltipItems) {
+                  return `${(tooltipItems[0].parsed.y / 1000).toFixed(1)}`
+                },
+                label: function (context) {
+                  return ''
+                },
+              },
+            },
+          },
           scales: {
             x: {
               min: step === 0 ? setup.minYear : step < 3 ? 2016 : 2022,
               max: step > 0 ? maxVisibleYear : 2020,
               grid: {
                 display: true,
-                drawBorder: false,
                 color: 'rgba(255, 255, 255, 0.2)',
                 drawTicks: false,
               },
@@ -176,7 +204,6 @@ const Graph = ({
             y: {
               //suggestedMax: step > 3 ? totalRemainingCO2 : 1350_000,
               grid: {
-                drawBorder: false,
                 display: false,
               },
               beginAtZero: true,

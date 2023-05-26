@@ -1,68 +1,32 @@
-
+import React from 'react'
 import { GetServerSideProps } from 'next'
 import { ReactElement, useMemo, useState } from 'react'
-import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { ColumnDef } from '@tanstack/react-table'
 
 import DropDown from '../components/DropDown'
-import Map from '../components/Map'
+import Map from '../components/Map/Map'
 import MetaTags from '../components/MetaTags'
 import { H2, Paragraph, ParagraphBold } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
-import { Municipality } from '../utils/types'
+import { Municipality, SelectedData } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer'
 import ComparisonTable from '../components/ComparisonTable'
-import MapLabels from '../components/MapLabels'
+import MapLabels from '../components/Map/MapLabels'
 import InfoTooltip from '../components/InfoTooltip'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
-import { dataSetDescriptions } from '../data/dataset_description'
+import { default_dataset, dataSetDescriptions } from '../data/dataset_descriptions'
+import RadioButtonMenu from '../components/RadioButtonMenu'
+
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const RadioContainer = styled.div`
-  margin-top: 30px;
-  gap: 16px;
-  display: flex;
-  font-weight: bolder;
-`
-
-const RadioLabel = styled.label`
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 700;
-  text-decoration: none;
-  color: white;
-  background: ${({ theme }) => theme.darkGrey};
-  white-space: nowrap;
-  cursor: pointer;
-  margin-bottom: 8px;
-  
-  &:hover {
-    background: ${({ theme }) => theme.grey};
-  }
-`
-
-const RadioInput = styled.input`
-  display: none;
-  &:checked + ${RadioLabel} {
-    color: ${({ theme }) => theme.darkestGrey};
-    background: ${({ theme }) => theme.greenGraphTwo};
-
-    &:hover {
-      background: ${({ theme }) => theme.greenGraphThree};
-    }
-  }
 `
 
 const InfoText = styled.div`
@@ -94,41 +58,62 @@ const MunicipalityContainer = styled.div`
   }
 `
 
-type SelectedData = 'Utsläppen' | 'Elbilarna'
+const default_viewmode = 'karta'
+const secondary_viewmode = 'lista'
 
 type PropsType = {
   municipalities: Array<Municipality>
   viewMode: string
-  dataSource: SelectedData
+  dataset: SelectedData
 }
 
-const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppen' }: PropsType) => {
-  const [selectedData, setSelectedData] = useState<SelectedData>(dataSource)
+const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = default_dataset }: PropsType) => {
+  const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
-  const router = useRouter()
-
   const [rankedData, setRankedData] = useState<{
-    [key: string]: Array<{ name: string, dataPoint: number, rank: number }>
+    [key: string]: Array<{ name: string, dataPoint: number | string, rank?: number }>
   }>({})
 
   const municipalitiesName = municipalities.map((item) => item.Name)
 
-  const data = municipalities.map((item) => ({
+  const data = municipalities.map((item) => ({ // Fixme refactor
     name: item.Name,
-    dataPoint: selectedData === 'Utsläppen' ? item.HistoricalEmission.EmissionLevelChangeAverage : item.ElectricCarChangePercent,
+    dataPoint: selectedData === 'Utsläppen'
+      ? item.HistoricalEmission.EmissionLevelChangeAverage
+      : selectedData === 'Elbilarna'
+        ? item.ElectricCarChangePercent
+        : item.ClimatePlan.Link
   }))
 
-  const calculateRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
-    const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint);
-    const rankedData = sortedData.map((item, index) => ({
+  const handleToggle = () => {
+    setToggleViewMode(toggleViewMode === default_viewmode ? secondary_viewmode : default_viewmode)
+  }
+
+  const selectedDataset = dataSetDescriptions[selectedData]
+
+  const calculateStringRankings = (data: Array<{ name: string, dataPoint: string | number }>) => {
+    const rankedData = data.map((item) => ({
       ...item,
-      rank: index + 1,
+      index: item.dataPoint === 'Saknas' ? -1 : 1,
     }));
     return rankedData;
   }
 
-  useMemo(() => {
-    const dataSets = {
+  const calculateNumberRankings = (data: Array<{ name: string, dataPoint: number }>, sortAscending: boolean) => {
+    const sortedData = data.sort((a, b) => sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint)
+    const rankedData = sortedData.map((item, index) => ({
+      ...item,
+      index: index + 1,
+    }))
+    return rankedData
+  }
+
+  type DataSets = {
+    [key: string]: Array<{ name: string; dataPoint: number | string }>
+  }
+
+  useMemo(() => {  // Fixme refactor
+    const dataSets: DataSets = {
       Elbilarna: municipalities.map((item) => ({
         name: item.Name,
         dataPoint: item.ElectricCarChangePercent,
@@ -137,81 +122,107 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
         name: item.Name,
         dataPoint: item.HistoricalEmission.EmissionLevelChangeAverage,
       })),
+      Klimatplanerna: municipalities.map((item) => ({
+        name: item.Name,
+        dataPoint: item.ClimatePlan?.Link,
+      })),
     }
 
     type RankedData = {
       [key in SelectedData]: Array<{
         name: string
-        dataPoint: number
-        rank: number
+        dataPoint: number | string
+        index: number
       }>
     }
 
     const newRankedData: RankedData = {
       Elbilarna: [],
       Utsläppen: [],
+      Klimatplanerna: [],
     }
 
     for (const dataSetKey in dataSets) {
       if (Object.prototype.hasOwnProperty.call(dataSets, dataSetKey)) {
-        const sortAscending = dataSetKey === 'Elbilarna' ? false : true;
-        newRankedData[dataSetKey as SelectedData] = calculateRankings(dataSets[dataSetKey as SelectedData], sortAscending);
+        if (dataSetKey === 'Klimatplanerna') {
+          newRankedData[dataSetKey] = calculateStringRankings(
+            dataSets[dataSetKey].map((item: { name: string; dataPoint: string | number }) => ({
+              name: item.name,
+              dataPoint: item.dataPoint
+            })))
+        } else {
+          const sortAscending = dataSetKey === 'Elbilarna' ? false : true
+          newRankedData[dataSetKey] = calculateNumberRankings(
+            dataSets[dataSetKey].map((item: { name: string; dataPoint: number | string }) => ({
+              name: item.name,
+              dataPoint: Number(item.dataPoint)
+            })),
+            sortAscending
+          )
+        }
       }
     }
 
     setRankedData(newRankedData)
   }, [municipalities])
 
-  const columnHeader = (
-    <div>
-      {selectedData === 'Elbilarna' ? 'Ökning elbilar' : 'Utsläppsförändring'}
-      <InfoTooltip text={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['tooltip']} />
-    </div>
-  )
+  const boundaries: Array<string | number> = dataSetDescriptions[selectedData].boundaries
+  const isLinkData = 'dataIsLink' in selectedDataset
 
-  const handleSelectData = () => {
-    const path = router.pathname.includes('elbilarna') && selectedData === 'Elbilarna' ? '/' : '/elbilarna'
-    router.push(path, undefined, { shallow: true })
-    setSelectedData(selectedData === 'Elbilarna' ? 'Utsläppen' : 'Elbilarna')
-  }
-
-  const handleToggle = () => {
-    setToggleViewMode(toggleViewMode === 'lista' ? 'karta' : 'lista')
-  }
-
-  const convertToPercent = (rowData: unknown) => {
-    let percentString = 'Data saknas'
-    if (typeof (rowData) === 'number') {
+  const formatData = (rowData: unknown) => {
+    let dataString: JSX.Element = <span>Data saknas</span>
+    if (isLinkData) {
+      dataString = boundaries.includes(rowData as string) ?
+        <i style={{ color: 'grey' }}>{rowData as string}</i>
+        : <a
+          href={rowData as string}
+          target='_blank'
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}>
+          Öppna
+        </a>
+    } else if (typeof (rowData) === 'number') {
       const percent = (rowData * 100).toFixed(1)
-      percentString = rowData > 0 ? '+' + percent : percent
+      dataString = rowData > 0 ? <span>+{percent}</span> : <span>{percent}</span>
+    } else if (typeof (rowData) === 'string') {
+      dataString = <span>{rowData}</span>
     }
-    return percentString
+    return dataString
   }
 
   type MuniciplaityItem = {
     name: string,
-    dataPoint: number;
+    dataPoint: number | string
   }
+
+  const columnHeader = (
+    <div>
+      {selectedDataset['columnHeader']}
+      <InfoTooltip text={selectedDataset['tooltip']} />
+    </div>
+  )
+
+  const isClimatePlan = selectedData === 'Klimatplanerna'
 
   const cols = useMemo<ColumnDef<MuniciplaityItem>[]>(
     () => [
       {
-        header: 'Ranking',
-        cell: (row) => row.cell.row.index + 1,
+        header: isClimatePlan ? 'Har plan?' : 'Ranking',
+        cell: (row) => isClimatePlan ? (row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja') : row.cell.row.index + 1,
         accessorKey: 'index',
       },
       {
         header: 'Kommun',
-        cell: (row) => row.renderValue(),
+        cell: (row: { renderValue: () => unknown }) => row.renderValue(),
         accessorKey: 'name',
       },
       {
         header: () => columnHeader,
-        cell: (row) => convertToPercent(row.renderValue()),
+        cell: (row: { renderValue: () => unknown }) => formatData(row.renderValue()),
         accessorKey: 'dataPoint',
       },
     ],
-    [columnHeader]
+    [isClimatePlan, columnHeader, formatData]
   )
 
   return (
@@ -225,52 +236,31 @@ const StartPage = ({ municipalities, viewMode = 'karta', dataSource = 'Utsläppe
           <H2>
             Hur går det med?
           </H2>
-          <RadioContainer>
-            <RadioInput
-              type="radio"
-              id="utslappen"
-              value='Utsläppen'
-              checked={selectedData === 'Utsläppen'}
-              onChange={() => handleSelectData()}
-            />
-            <RadioLabel htmlFor="utslappen">
-              Utsläppen
-            </RadioLabel>
-            <RadioInput
-              type="radio"
-              id='elbilarna'
-              value='Elbilarna'
-              checked={selectedData === 'Elbilarna'}
-              onChange={() => handleSelectData()}
-            />
-            <RadioLabel htmlFor="elbilarna">
-              Elbilarna
-            </RadioLabel>
-          </RadioContainer>
+          <RadioButtonMenu selectedData={selectedData} setSelectedData={setSelectedData} />
           <InfoText>
             <ParagraphBold>
-              {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['heading']}
+              {selectedDataset['heading']}
             </ParagraphBold>
             <Paragraph>
-              {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['body']}
+              {selectedDataset['body']}
             </Paragraph>
             <ParagraphSource>
-              {dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['source']}
+              {selectedDataset['source']}
             </ParagraphSource>
           </InfoText>
           <ToggleButton
             handleClick={handleToggle}
-            text={toggleViewMode === 'karta' ? 'Se lista' : 'Se karta'}
-            icon={toggleViewMode === 'karta' ? <MapIcon /> : <ListIcon />} />
+            text={toggleViewMode === default_viewmode ? 'Se lista' : 'Se karta'}
+            icon={toggleViewMode === default_viewmode ? <MapIcon /> : <ListIcon />} />
           <MunicipalityContainer>
-            <div style={{ display: toggleViewMode === 'karta' ? 'block' : 'none' }}>
-              <MapLabels 
-              labels={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['labels']}
-              rotations={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['labelRotateUp']} />
-              <Map data={data} boundaries={dataSetDescriptions[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']['boundaries']} />
+            <div style={{ display: toggleViewMode === default_viewmode ? 'block' : 'none' }}>
+              <MapLabels
+                labels={selectedDataset['labels']}
+                rotations={selectedDataset['labelRotateUp']} />
+              <Map data={data} boundaries={selectedDataset['boundaries']} />
             </div>
-            <div style={{ display: toggleViewMode === 'lista' ? 'block' : 'none', width: '100%' }}>
-              <ComparisonTable data={rankedData[selectedData === 'Elbilarna' ? 'Elbilarna' : 'Utsläppen']} columns={cols} />
+            <div style={{ display: toggleViewMode === secondary_viewmode ? 'block' : 'none', width: '100%' }}>
+              <ComparisonTable data={rankedData[selectedData]} columns={cols} />
             </div>
           </MunicipalityContainer>
           <DropDown

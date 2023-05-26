@@ -70,7 +70,7 @@ const RoundButton = styled.button`
 `
 
 const MunicipalitiesWrapper = styled.ul`
-  background-color: #f9fbff;
+  background-color: ${({ theme }) => theme.paperWhite};
   border-radius: 4px;
   max-height: 195px;
   overflow-y: scroll;

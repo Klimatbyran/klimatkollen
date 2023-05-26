@@ -1,3 +1,5 @@
+import { dataSetDescriptions } from "../data/dataset_descriptions"
+
 export type Image = {
   ImageUrl: string
   Description: string
@@ -19,6 +21,7 @@ export type Municipality = {
   ElectricCars: number
   ElectricCarChangePercent: number,
   ElectricCarChangeYearly: Array<number>,
+  ClimatePlan: ClimatePlan
 }
 
 export type EmissionPerYear = {
@@ -44,9 +47,17 @@ export type Trend = {
   FutureCO2Emission: number
 }
 
+export type ClimatePlan = {
+  Link: string
+  YearAdapted: string
+  Comment: string
+}
+
 export type EmissionSector = {
   Name: string
   Year: string
   CO2Equivalent: number
   SubSectors: Array<EmissionSector>
 }
+
+export type SelectedData = keyof typeof dataSetDescriptions
