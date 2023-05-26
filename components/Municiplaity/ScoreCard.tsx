@@ -183,8 +183,7 @@ const ScoreCard = ({
             </>
           }
         />}
-
-{name === ('Gotland' || 'Skövde' || 'Mörbylånga') &&
+        {['Gotland', 'Skövde', 'Mörbylånga'].includes(name) &&
           <ParagraphItalic>
             Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget, läs mer{' '}
             <a
