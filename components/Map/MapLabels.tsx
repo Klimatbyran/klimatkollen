@@ -3,6 +3,7 @@ import { devices } from '../../utils/devices'
 
 import Icon from '../../public/icons/arrow.svg'
 import { Paragraph } from '../Typography'
+import { colorTheme } from '../../Theme'
 
 
 const Container = styled.div`
@@ -88,8 +89,8 @@ type MapLabelsProps = {
 }
 
 const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
-  const colors = ['#EF3054', '#EF5E30', '#EF7F17', '#EF9917', '#EFBF17', '#91BFC8']
-  const labelColors = labels.length === 2 ? ['#EF3054', '#91DFC8'] : colors;
+  const colors = [colorTheme.red, colorTheme.rust, colorTheme.darkOrange, colorTheme.orange, colorTheme.yellow, colorTheme.blue]
+  const labelColors = labels.length === 2 ? [colorTheme.red, colorTheme.main] : colors
 
   return (
     <Container>

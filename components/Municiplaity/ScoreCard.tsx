@@ -49,7 +49,7 @@ const SectionRight = styled.section`
 const LinkButton = styled.button`
   height: 36px;
   color: black;
-  background: ${({ theme }) => theme.greenGraphTwo};
+  background: ${({ theme }) => theme.green};
   border-radius: 4px;
   border: 1px solid transparent;
   padding: 0.8rem 1rem 0.8rem 0.8rem;
@@ -58,7 +58,7 @@ const LinkButton = styled.button`
   align-items: center;
   justify-content: center;
   &:hover {
-    background: ${({ theme }) => theme.greenGraphThree};
+    background: ${({ theme }) => theme.mint};
   }
   & a {
     text-decoration: none;

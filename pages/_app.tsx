@@ -7,7 +7,7 @@ import { NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
 
 import '../styles/globals.css'
-import Theme from '../Theme'
+import Theme, { colorTheme } from '../Theme'
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -75,9 +75,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <CookieConsent
           location="bottom"
           buttonText="OK"
-          style={{ background: '#6C6C6C' }}
+          style={{ background: colorTheme.grey }}
           buttonStyle={{
-            backgroundColor: '#91DFC8',
+            backgroundColor: colorTheme.main,
             fontSize: '13px',
           }}
           expires={150}>

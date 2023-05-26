@@ -20,7 +20,7 @@ font-size: 16px;
 cursor: pointer;
 width: 100%;
 &:hover {
-  background: ${({ theme }) => theme.greenGraphTwo};
+  background: ${({ theme }) => theme.green};
 }
 `
 

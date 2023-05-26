@@ -34,10 +34,10 @@ const RadioInput = styled.input`
   display: none;
   &:checked + ${RadioLabel} {
     color: ${({ theme }) => theme.darkestGrey};
-    background: ${({ theme }) => theme.greenGraphTwo};
+    background: ${({ theme }) => theme.green};
 
     &:hover {
-      background: ${({ theme }) => theme.greenGraphThree};
+      background: ${({ theme }) => theme.mint};
     }
   }
 `

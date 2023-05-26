@@ -5,7 +5,7 @@ export const IconButton = styled.button`
   background-color: none;
   cursor: pointer;
   background-color: inherit;
-  color: #fff;
+  color: ${({ theme }) => theme.white};
   font-family: 'Roboto';
   font-weight: 300;
   font-size: 16px;
