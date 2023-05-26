@@ -113,6 +113,7 @@ const Municipality = (props: Props) => {
         </StyledH2>
         <Bottom>
           <ScoreCard
+            name={municipality.Name}
             rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
             budget={municipality.Budget.CO2Equivalent}
             budgetRunsOut={municipality.BudgetRunsOut}

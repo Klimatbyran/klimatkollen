@@ -68,6 +68,6 @@ export const dataSetDescriptions: DataSetDescriptions = {
   //   'labelRotateUp': [],
   //   'columnHeader': 'Klimatplan',
   //   'dataIsLink': true,
-  //   'tooltip': 'Avser nu gällande klimathandlingsplan eller motsvarande',
+  //   'tooltip': 'Avser nu gällande klimathandlingsplan eller motsvarande. Inte anpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande.',
   // }
 }
