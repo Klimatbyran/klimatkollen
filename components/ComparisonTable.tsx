@@ -37,7 +37,7 @@ const TableData = styled.td`
 const TableHeader = styled.th`
     position: sticky;
     top: 0;
-    background: ${({ theme }) => theme.darkGrey};
+    background: ${({ theme }) => theme.lightBlack};
     padding: 1.2rem 1rem 0.6rem 0.87rem;  
     fontWeight: bold;
     text-align: left; 
@@ -45,7 +45,7 @@ const TableHeader = styled.th`
 
 const TableRow = styled.tr`
     :hover {
-        background-color: ${({ theme }) => theme.darkGrey};
+        background-color: ${({ theme }) => theme.lightBlack};
         cursor: pointer;
     }
 `

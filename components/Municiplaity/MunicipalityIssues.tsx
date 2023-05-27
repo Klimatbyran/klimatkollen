@@ -80,7 +80,7 @@ const TotalCo2 = styled.div`
   padding: 1rem;
   border-radius: 50px;
   background-color: ${(props) => props.color};
-  color: ${({ theme }) => theme.darkestGrey};
+  color: ${({ theme }) => theme.black};
 `
 
 const END_YEAR = 2050

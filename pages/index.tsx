@@ -35,7 +35,7 @@ const InfoText = styled.div`
 
 const ParagraphSource = styled(Paragraph)`
   font-size: 13px;
-  color: ${({ theme }) => theme.lightGrey};
+  color: ${({ theme }) => theme.lightlightBlack};
 `
 
 const MunicipalityContainer = styled.div`
@@ -173,7 +173,7 @@ const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = defa
     let dataString: JSX.Element = <span>Data saknas</span>
     if (isLinkData) {
       dataString = boundaries.includes(rowData as string) ?
-        <i style={{ color: 'grey' }}>{rowData as string}</i>
+        <i style={{ color: 'lightBlack' }}>{rowData as string}</i>
         : <a
           href={rowData as string}
           target='_blank'
@@ -231,7 +231,7 @@ const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = defa
         title="Klimatkollen — Få koll på Sveriges klimatomställning"
         description="Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
       />
-      <PageWrapper backgroundColor='darkestGrey'>
+      <PageWrapper backgroundColor='black'>
         <Container>
           <H2>
             Hur går det med?

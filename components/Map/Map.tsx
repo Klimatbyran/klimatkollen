@@ -177,7 +177,7 @@ const Map = ({ data, children, boundaries }: Props) => {
   return (
     <DeckGLWrapper>
       <NextNProgress
-        color={colorTheme.dustyGreen}
+        color={colorTheme.darkGreenOne}
         startPosition={0.3}
         stopDelayMs={20}
         height={5}

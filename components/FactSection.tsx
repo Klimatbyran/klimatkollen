@@ -29,8 +29,8 @@ const InfoHeading = styled(H3)`
 `
 
 const InfoSection = styled.div`
-  background: ${({ theme }) => theme.main};
-  color: ${({ theme }) => theme.darkestGrey};
+  background: ${({ theme }) => theme.midGreen};
+  color: ${({ theme }) => theme.black};
   padding: 15px 10px;
   border-radius: 4px;
   margin-bottom: 10px;

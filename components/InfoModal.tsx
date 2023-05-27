@@ -28,7 +28,7 @@ const Modal = styled.div<{ scrollY: number }>`
       padding: 3rem 2rem 2.5rem 2rem;
       display: flex;
       flex-direction: column;
-      background: ${({ theme }) => theme.darkestGrey};
+      background: ${({ theme }) => theme.black};
       color: ${({ theme }) => theme.white};
       z-index: 10;
       border-radius: 16px;

@@ -5,8 +5,8 @@ import { devices } from '../utils/devices'
 
 const Button = styled.button<{ icon: boolean }>`
   height: 56px;
-  color: ${({ theme }) => theme.darkestGrey};
-  background: ${({ theme }) => theme.main};
+  color: ${({ theme }) => theme.black};
+  background: ${({ theme }) => theme.midGreen};
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   border: 0;
@@ -16,7 +16,7 @@ const Button = styled.button<{ icon: boolean }>`
   padding-left: ${({ icon }) => (icon ? '20px' : '20px')};
   padding-right: ${({ icon }) => (icon ? '20px' : '20px')};
   cursor: pointer;
-  fill: ${({ theme }) => theme.darkestGrey};
+  fill: ${({ theme }) => theme.black};
   width: 100%;
 
   @media only screen and (${devices.tablet}) {
@@ -32,17 +32,17 @@ const Button = styled.button<{ icon: boolean }>`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.green};
+    background: ${({ theme }) => theme.lightGreen};
   }
 
   &:focus {
-    border: 2px solid ${({ theme }) => theme.white};
+    border: 2px solid ${({ theme }) => theme.offWhite};
   }
 
   &:disabled {
-    background: ${({ theme }) => theme.grey};
-    color: ${({ theme }) => theme.white};
-    fill: ${({ theme }) => theme.white};
+    background: ${({ theme }) => theme.lightBlack};
+    color: ${({ theme }) => theme.offWhite};
+    fill: ${({ theme }) => theme.offWhite};
   }
 `
 

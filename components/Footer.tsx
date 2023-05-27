@@ -67,13 +67,13 @@ const BottomContainer = styled.div`
 `
 
 const Copyright = styled.p`
-  color: ${({ theme }) => theme.paperWhite};
+  color: ${({ theme }) => theme.offWhite};
   font-size: 13px;
   margin-top: 2rem;
 `
 
 const GHLink = styled.p`
-  color: ${({ theme }) => theme.paperWhite};
+  color: ${({ theme }) => theme.offWhite};
   font-size: 13px;
 `
 
@@ -106,7 +106,7 @@ const ContactLink = styled.a`
 const Footer = () => {
   return (
     <>
-      <PageWrapper backgroundColor={'darkGrey'}>
+      <PageWrapper backgroundColor={'lightBlack'}>
         <Foot>
           <ContentWrapper>
             <Navigation />
@@ -154,7 +154,7 @@ const Footer = () => {
           </ContentWrapper>
         </Foot>
       </PageWrapper>
-      <PageWrapper backgroundColor={'darkestGrey'}>
+      <PageWrapper backgroundColor={'black'}>
         <BottomParent>
           <BottomContainer>
             <img src='/klimatkollen_logo.svg' height='36px' alt='Klimatkollen logo' />

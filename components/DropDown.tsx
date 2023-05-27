@@ -36,7 +36,7 @@ const Input = styled.input`
   background-color: transparent;
   border: 1px solid white;
   border-radius: 4px;
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.offWhite};
   padding-left: 0.8rem;
   outline: none;
   font-size: 16px;
@@ -44,7 +44,7 @@ const Input = styled.input`
   font-family: Roboto;
 
   ::placeholder {
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.offWhite};
   }
 
   @media only screen and (${devices.tablet}) {
@@ -70,7 +70,7 @@ const RoundButton = styled.button`
 `
 
 const MunicipalitiesWrapper = styled.ul`
-  background-color: ${({ theme }) => theme.paperWhite};
+  background-color: ${({ theme }) => theme.offWhite};
   border-radius: 4px;
   max-height: 195px;
   overflow-y: scroll;
@@ -87,7 +87,7 @@ const MunicipalitiesWrapper = styled.ul`
 `
 
 const Municipality = styled.li`
-  color: ${({ theme }) => theme.darkestGrey};
+  color: ${({ theme }) => theme.black};
   text-decoration: none;
   width: 305px;
   height: 56px;

@@ -87,7 +87,7 @@ const Municipality = (props: Props) => {
 
   return (
     <>
-      <PageWrapper backgroundColor="darkestGrey">
+      <PageWrapper backgroundColor="black">
         <BackArrow route={'/'} />
         <StyledContainer>
           <HeaderSection>
@@ -107,7 +107,7 @@ const Municipality = (props: Props) => {
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>
-      <PageWrapper backgroundColor={'darkGrey'}>
+      <PageWrapper backgroundColor={'lightBlack'}>
         <StyledH2>
           <H2>Fakta om {municipality.Name}</H2>
         </StyledH2>

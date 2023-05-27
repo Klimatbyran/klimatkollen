@@ -12,20 +12,20 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: ${(props) => props.theme.darkestGrey};
+  background: ${(props) => props.theme.black};
 `
 
 const LightContainer = styled.div`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   padding: 15px 15px 0 15px;
-  background: ${({ theme }) => theme.grey};
+  background: ${({ theme }) => theme.lightBlack};
 `
 
 const DarkContainer = styled.div`
   border-radius: 4px;
   padding: 15px 15px;
-  background: ${({ theme }) => theme.darkestGrey};
+  background: ${({ theme }) => theme.black};
 `
 
 const Row = styled.div`
@@ -66,18 +66,18 @@ const LinkButton = styled.button`
   ${({ disabled }) =>
     disabled &&
     css`
-      color: ${({ theme }) => theme.grey};
-      background: ${({ theme }) => theme.lightGrey};
+      color: ${({ theme }) => theme.lightBlack};
+      background: ${({ theme }) => theme.lightlightBlack};
       cursor: not-allowed;
 
       /* Remove hover effect */
       &:hover {
-        background: ${({ theme }) => theme.lightGrey};
+        background: ${({ theme }) => theme.lightlightBlack};
       }
 
-      /* Set color of ArrowIcon to grey */
+      /* Set color of ArrowIcon to lightBlack */
       & ${ArrowIcon} {
-        fill: ${({ theme }) => theme.grey};
+        fill: ${({ theme }) => theme.lightBlack};
       }
     `}
 `

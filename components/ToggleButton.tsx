@@ -15,7 +15,7 @@ const ToggleBtn = styled.button`
   align-items: center;
   justify-content: center;
   &:hover {
-    background: ${({ theme }) => theme.darkGrey};
+    background: ${({ theme }) => theme.lightBlack};
   }
 `
 

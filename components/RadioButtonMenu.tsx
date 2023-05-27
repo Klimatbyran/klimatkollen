@@ -20,20 +20,20 @@ const RadioLabel = styled.label`
   font-weight: 700;
   text-decoration: none;
   color: white;
-  background: ${({ theme }) => theme.darkGrey};
+  background: ${({ theme }) => theme.lightBlack};
   white-space: nowrap;
   cursor: pointer;
   margin-bottom: 8px;
   
   &:hover {
-    background: ${({ theme }) => theme.grey};
+    background: ${({ theme }) => theme.lightBlack};
   }
 `
 
 const RadioInput = styled.input`
   display: none;
   &:checked + ${RadioLabel} {
-    color: ${({ theme }) => theme.darkestGrey};
+    color: ${({ theme }) => theme.black};
     background: ${({ theme }) => theme.green};
 
     &:hover {
