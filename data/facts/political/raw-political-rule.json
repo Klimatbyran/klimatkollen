@@ -1,1 +1,1452 @@
-[{"kommun": "Upplands V\u00e4sby kommun", "styre": ",,,L,,,S,,\u00d6P", "other": "V\u00e4sbys B\u00e4sta"}, {"kommun": "Vallentuna kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "\u00d6ster\u00e5kers kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "V\u00e4rmd\u00f6 kommun", "styre": ",,,L,C,MP,S,,", "other": ""}, {"kommun": "J\u00e4rf\u00e4lla kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Eker\u00f6 kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Huddinge kommun", "styre": ",,,,C,MP,S,,\u00d6P", "other": "Huddingepartiet"}, {"kommun": "Botkyrka kommun", "styre": ",,KD,L,C,MP,S,,", "other": ""}, {"kommun": "Salems kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Haninge kommun", "styre": ",M,KD,L,,,,,", "other": ""}, {"kommun": "Tyres\u00f6 kommun", "styre": ",,,L,,MP,S,,", "other": ""}, {"kommun": "Upplands-Bro kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Nykvarns kommun", "styre": ",,,,C,MP,S,,\u00d6P", "other": "Nykvarnspartiet"}, {"kommun": "T\u00e4by kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Danderyds kommun", "styre": ",M,KD,L,,,,,", "other": ""}, {"kommun": "Sollentuna kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Stockholms stad", "styre": ",,,,,MP,S,V,", "other": ""}, {"kommun": "S\u00f6dert\u00e4lje kommun", "styre": ",M,,,,MP,S,,", "other": ""}, {"kommun": "Nacka kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Sundbybergs stad", "styre": ",,,,C,MP,S,V,", "other": ""}, {"kommun": "Solna stad", "styre": ",,,,C,MP,S,V,", "other": ""}, {"kommun": "Liding\u00f6 stad", "styre": ",M,,,,,,,\u00d6P", "other": "Liding\u00f6partiet"}, {"kommun": "Vaxholms stad", "styre": ",M,KD,L,,,S,V,", "other": ""}, {"kommun": "Norrt\u00e4lje kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Sigtuna kommun", "styre": ",M,KD,L,C,,,,\u00d6P", "other": "Samling f\u00f6r Sigtuna (SfS)"}, {"kommun": "Nyn\u00e4shamns kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "H\u00e5bo kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "\u00c4lvkarleby kommun", "styre": ",,,,C,MP,S,V,\u00d6P", "other": "Kommunens v\u00e4l "}, {"kommun": "Knivsta kommun", "styre": "SD,,KD,,,,,,\u00d6P", "other": "Knivsta.nu (KNU)"}, {"kommun": "Heby kommun", "styre": ",,,,C,MP,S,V,", "other": ""}, {"kommun": "Tierps kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Uppsala kommun", "styre": ",,,,,MP,S,V,", "other": ""}, {"kommun": "Enk\u00f6pings kommun", "styre": ",M,KD,L,C,MP,,,\u00d6P", "other": "Nystart Enk\u00f6ping"}, {"kommun": "\u00d6sthammars kommun", "styre": "SD,M,KD,,,,,,\u00d6P", "other": "Lokalpartiet BOA"}, {"kommun": "Ving\u00e5kers kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "Gnesta kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Nyk\u00f6pings kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Oxel\u00f6sunds kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Flens kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Katrineholms kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Eskilstuna kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Str\u00e4ngn\u00e4s kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Trosa kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "\u00d6desh\u00f6gs kommun", "styre": ",M,,,C,,S,,", "other": ""}, {"kommun": "Ydre kommun", "styre": ",M,,,C,,,,", "other": ""}, {"kommun": "Kinda kommun", "styre": ",M,KD,,,,S,,", "other": ""}, {"kommun": "Boxholms kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "\u00c5tvidabergs kommun", "styre": ",,,L,C,MP,S,V,", "other": ""}, {"kommun": "Finsp\u00e5ngs kommun", "styre": ",,,L,C,,S,,", "other": ""}, {"kommun": "Valdemarsviks kommun", "styre": "SD,M,KD,,,,,,\u00d6P", "other": "Landsbygdspartiet Oberoende (LPo)"}, {"kommun": "Link\u00f6pings kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Norrk\u00f6pings kommun", "styre": ",M,KD,L,,,,,", "other": ""}, {"kommun": "S\u00f6derk\u00f6pings kommun", "styre": ",M,KD,,,,S,,", "other": ""}, {"kommun": "Motala kommun", "styre": "SD,M,KD,,,,,,", "other": ""}, {"kommun": "Vadstena kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Mj\u00f6lby kommun", "styre": ",,KD,L,C,MP,S,,", "other": ""}, {"kommun": "Aneby kommun", "styre": ",,KD,,C,,S,,", "other": ""}, {"kommun": "Gnosj\u00f6 kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "Mullsj\u00f6 kommun", "styre": ",,KD,L,C,,S,,", "other": ""}, {"kommun": "Habo kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Gislaveds kommun", "styre": ",M,,L,C,,S,,\u00d6P", "other": "Westbopartiet"}, {"kommun": "Vaggeryds kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "J\u00f6nk\u00f6pings kommun", "styre": ",,,L,C,,S,,", "other": ""}, {"kommun": "N\u00e4ssj\u00f6 kommun", "styre": ",,KD,,C,,S,V,", "other": ""}, {"kommun": "V\u00e4rnamo kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "S\u00e4vsj\u00f6 kommun", "styre": ",,KD,,C,,S,,", "other": ""}, {"kommun": "Vetlanda kommun", "styre": "SD,M,,,,,,,\u00d6P", "other": "Vetlanda fram\u00e5tanda"}, {"kommun": "Eksj\u00f6 kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Tran\u00e5s kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Uppvidinge kommun", "styre": "SD,,KD,,C,,,,\u00d6P", "other": "LPo"}, {"kommun": "Lessebo kommun", "styre": ",,,,C,,S,V,", "other": ""}, {"kommun": "Tingsryds kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "Alvesta kommun", "styre": ",,KD,,C,,S,,", "other": ""}, {"kommun": "\u00c4lmhults kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Markaryds kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "V\u00e4xj\u00f6 kommun", "styre": ",,,,,MP,S,V,", "other": ""}, {"kommun": "Ljungby kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "H\u00f6gsby kommun", "styre": ",,,,C,,S,V,", "other": ""}, {"kommun": "Tors\u00e5s kommun", "styre": ",M,,,C,,S,V,", "other": ""}, {"kommun": "M\u00f6rbyl\u00e5nga kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Hultsfreds kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "M\u00f6nster\u00e5s kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Emmaboda kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "Kalmar kommun", "styre": ",,,,C,,S,V,", "other": ""}, {"kommun": "Nybro kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Oskarshamns kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "V\u00e4sterviks kommun", "styre": ",M,KD,L,,,,,\u00d6P", "other": "Westervikspartiet (W)"}, {"kommun": "Vimmerby kommun", "styre": ",,,,C,,S,V,", "other": ""}, {"kommun": "Borgholms kommun", "styre": ",,,,C,,S,V,", "other": ""}, {"kommun": "Region Gotland (kommun)", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Olofstr\u00f6ms kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Karlskrona kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Ronneby kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Karlshamns kommun", "styre": "SD,M,KD,,,,,,", "other": ""}, {"kommun": "S\u00f6lvesborgs kommun", "styre": ",M,,,C,,S,,\u00d6P", "other": "SoL"}, {"kommun": "Sval\u00f6vs kommun", "styre": "SD,M,KD,,,,,,", "other": ""}, {"kommun": "Staffanstorps kommun", "styre": "SD,M,,,,,,,", "other": ""}, {"kommun": "Burl\u00f6vs kommun", "styre": ",M,,L,C,,,,", "other": ""}, {"kommun": "Vellinge kommun", "styre": ",M,,,,,,,", "other": ""}, {"kommun": "\u00d6stra G\u00f6inge kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "\u00d6rkelljunga kommun", "styre": "SD,M,,,,,,,", "other": ""}, {"kommun": "Bjuvs kommun", "styre": "SD,M,,,,,,,", "other": ""}, {"kommun": "K\u00e4vlinge kommun", "styre": "SD,M,KD,,,,,,", "other": ""}, {"kommun": "Lomma kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Svedala kommun", "styre": ",M,KD,L,C,,,,\u00d6P", "other": "Barapartiet"}, {"kommun": "Skurups kommun", "styre": "SD,M,KD,,,,,,", "other": ""}, {"kommun": "Sj\u00f6bo kommun", "styre": ",M,,L,C,,S,,", "other": ""}, {"kommun": "H\u00f6rby kommun", "styre": "SD,M,,,,,,,", "other": ""}, {"kommun": "H\u00f6\u00f6rs kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Tomelilla kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Brom\u00f6lla kommun", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "Osby kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "Perstorps kommun", "styre": ",M,KD,,C,,S,,\u00d6P", "other": "Perstorps Framtid"}, {"kommun": "Klippans kommun", "styre": "SD,,KD,,,,,,\u00d6P", "other": "V\u00e5r Framtid Klippan (VF)"}, {"kommun": "\u00c5storps kommun", "styre": "SD,M,KD,,,,,,", "other": ""}, {"kommun": "B\u00e5stads kommun", "styre": ",M,KD,L,,,S,,", "other": ""}, {"kommun": "Malm\u00f6 stad", "styre": ",,,L,,MP,S,,", "other": ""}, {"kommun": "Lunds kommun", "styre": ",M,KD,,,,S,,", "other": ""}, {"kommun": "Landskrona stad", "styre": ",M,,L,,MP,,,", "other": ""}, {"kommun": "Helsingborgs stad", "styre": ",M,KD,L,,,,,", "other": ""}, {"kommun": "H\u00f6gan\u00e4s kommun", "styre": ",M,KD,,C,MP,,,", "other": ""}, {"kommun": "Esl\u00f6vs kommun", "styre": ",M,,L,,,S,,", "other": ""}, {"kommun": "Ystads kommun", "styre": ",M,KD,L,,,,,", "other": ""}, {"kommun": "Trelleborgs kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Kristianstads kommun", "styre": "SD,M,KD,,,,,,", "other": ""}, {"kommun": "Simrishamns kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "\u00c4ngelholms kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "H\u00e4ssleholms kommun", "styre": "SD,M,KD,,,,,,", "other": ""}, {"kommun": "Hylte kommun", "styre": ",,,L,,,S,V,\u00d6P", "other": "Kommunens v\u00e4l"}, {"kommun": "Halmstads kommun", "styre": ",M,KD,,,,S,,", "other": ""}, {"kommun": "Laholms kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Falkenbergs kommun", "styre": ",,KD,L,,MP,S,V,", "other": ""}, {"kommun": "Varbergs kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Kungsbacka kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "H\u00e4rryda kommun", "styre": ",M,KD,L,C,,,,\u00d6P", "other": "\u00c4ven KommunPartiet och SportPartiet i H\u00e4rryda kommun \u00e4r med i denna koalition"}, {"kommun": "Partille kommun", "styre": ",M,KD,L,,,,,", "other": ""}, {"kommun": "\u00d6cker\u00f6 kommun", "styre": ",M,KD,L,,,,,", "other": ""}, {"kommun": "Stenungsunds kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Tj\u00f6rns kommun", "styre": "SD,M,,L,C,,,,\u00d6P", "other": "Tj\u00f6rnpartiet"}, {"kommun": "Orust kommun", "styre": ",M,,L,,,S,,", "other": ""}, {"kommun": "Soten\u00e4s kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "Munkedals kommun", "styre": "SD,M,KD,,,,,,", "other": ""}, {"kommun": "Tanums kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Dals-Eds kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "F\u00e4rgelanda kommun", "styre": ",M,,L,,,S,,", "other": ""}, {"kommun": "Ale kommun", "styre": "SD,M,KD,,,,,,\u00d6P", "other": "FiA, Framtid i Ale"}, {"kommun": "Lerums kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "V\u00e5rg\u00e5rda kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Bollebygds kommun", "styre": ",M,,,,MP,S,V,", "other": ""}, {"kommun": "Gr\u00e4storps kommun", "styre": ",M,,,C,,,,", "other": ""}, {"kommun": "Essunga kommun", "styre": ",M,KD,,C,MP,,,", "other": ""}, {"kommun": "Karlsborgs kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Gullsp\u00e5ngs kommun", "styre": ",M,KD,,,,,V,\u00d6P", "other": "Feministiskt Initiativ"}, {"kommun": "Tranemo kommun", "styre": ",,,L,C,,S,,", "other": ""}, {"kommun": "Bengtsfors kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Melleruds kommun", "styre": ",M,KD,,,,,,\u00d6P", "other": "Kommunpartiet i Mellerud KIM"}, {"kommun": "Lilla Edets kommun", "styre": ",M,,,C,,S,,", "other": ""}, {"kommun": "Marks kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Svenljunga kommun", "styre": "SD,M,KD,,,,,,\u00d6P", "other": "Landsbygdspartiet oberoende"}, {"kommun": "Herrljunga kommun", "styre": ",,,L,C,,S,V,", "other": ""}, {"kommun": "Vara kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "G\u00f6tene kommun", "styre": ",M,KD,L,C,MP,,,\u00d6P", "other": "G\u00f6tenes framtid"}, {"kommun": "Tibro kommun", "styre": ",,,L,C,,S,,", "other": ""}, {"kommun": "T\u00f6reboda kommun", "styre": ",M,,L,,,,,", "other": ""}, {"kommun": "G\u00f6teborgs stad", "styre": ",,,,,MP,S,V,", "other": ""}, {"kommun": "M\u00f6lndals stad", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Kung\u00e4lvs kommun", "styre": ",M,,,,MP,S,,", "other": ""}, {"kommun": "Lysekils kommun", "styre": ",,,,,MP,S,,", "other": ""}, {"kommun": "Uddevalla kommun", "styre": "SD,M,KD,,,,,,\u00d6P", "other": "Uddevalla Partiet"}, {"kommun": "Str\u00f6mstads kommun", "styre": ",M,KD,,,,S,V,", "other": ""}, {"kommun": "V\u00e4nersborgs kommun", "styre": ",,KD,,C,MP,S,,", "other": ""}, {"kommun": "Trollh\u00e4ttans stad", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "Alings\u00e5s kommun", "styre": ",M,,L,C,,,,", "other": ""}, {"kommun": "Bor\u00e5s stad", "styre": ",,,L,C,MP,S,,", "other": ""}, {"kommun": "Ulricehamns kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "\u00c5m\u00e5ls kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Mariestads kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "Lidk\u00f6pings kommun", "styre": ",M,KD,L,,,,V,", "other": ""}, {"kommun": "Skara kommun", "styre": ",,,L,C,MP,S,,", "other": ""}, {"kommun": "Sk\u00f6vde kommun", "styre": ",M,KD,,,,S,,", "other": ""}, {"kommun": "Hjo kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Tidaholms kommun", "styre": "SD,M,KD,L,,,,,\u00d6P", "other": "Vi Tidaholm"}, {"kommun": "Falk\u00f6pings kommun", "styre": ",M,KD,L,C,MP,,V,", "other": ""}, {"kommun": "Kils kommun", "styre": ",,,,C,MP,S,,", "other": ""}, {"kommun": "Eda kommun", "styre": ",M,KD,L,C,,,V,\u00d6P", "other": "HEL"}, {"kommun": "Torsby kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "Storfors kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "Hammar\u00f6 kommun", "styre": ",,,,C,MP,S,V,", "other": ""}, {"kommun": "Munkfors kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "Forshaga kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Grums kommun", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "\u00c5rj\u00e4ngs kommun", "styre": ",M,KD,L,,,,,", "other": ""}, {"kommun": "Sunne kommun", "styre": ",M,,L,,,,,\u00d6P", "other": "Hela Sunne"}, {"kommun": "Karlstads kommun", "styre": ",,,,C,MP,S,,", "other": ""}, {"kommun": "Kristinehamns kommun", "styre": ",,,,C,MP,S,V,", "other": ""}, {"kommun": "Filipstads kommun", "styre": "SD,M,,L,C,,,,", "other": ""}, {"kommun": "Hagfors kommun", "styre": ",,,,,,,,\u00d6P", "other": "Oberoende realister"}, {"kommun": "Arvika kommun", "styre": ",,,,C,MP,S,V,", "other": ""}, {"kommun": "S\u00e4ffle kommun", "styre": ",M,KD,L,C,MP,,,", "other": ""}, {"kommun": "Lekebergs kommun", "styre": ",M,KD,L,,,,V,\u00d6P", "other": "Framtidspartiet i Lekeberg"}, {"kommun": "Lax\u00e5 kommun", "styre": ",,KD,,C,,,V,", "other": ""}, {"kommun": "Hallsbergs kommun", "styre": ",,KD,L,C,,S,,", "other": ""}, {"kommun": "Degerfors kommun", "styre": ",M,,,,MP,,V,", "other": ""}, {"kommun": "H\u00e4llefors kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "Ljusnarsbergs kommun", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "\u00d6rebro kommun", "styre": ",M,,,C,,S,,", "other": ""}, {"kommun": "Kumla kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Askersunds kommun", "styre": ",M,KD,L,,,,,", "other": ""}, {"kommun": "Karlskoga kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Nora kommun", "styre": ",M,KD,,,,S,,", "other": ""}, {"kommun": "Lindesbergs kommun", "styre": "SD,M,,,,,,,", "other": ""}, {"kommun": "Skinnskattebergs kommun", "styre": "SD,,,,C,,,,", "other": ""}, {"kommun": "Surahammars kommun", "styre": ",M,KD,,C,,S,,", "other": ""}, {"kommun": "Kungs\u00f6rs kommun", "styre": ",,,,C,,S,V,", "other": ""}, {"kommun": "Hallstahammars kommun", "styre": ",,,L,,MP,S,V,", "other": ""}, {"kommun": "Norbergs kommun", "styre": ",,,,,,S,,\u00d6P", "other": "Partiet f\u00f6r Norbergs Framtid (PNF)"}, {"kommun": "V\u00e4ster\u00e5s stad", "styre": ",,KD,,C,,S,V,", "other": ""}, {"kommun": "Sala kommun", "styre": ",,,,C,MP,S,V,", "other": ""}, {"kommun": "Fagersta kommun", "styre": ",M,,L,C,,S,,", "other": ""}, {"kommun": "K\u00f6pings kommun", "styre": ",,KD,,C,,S,V,", "other": ""}, {"kommun": "Arboga kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Vansbro kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Malung-S\u00e4lens kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Gagnefs kommun", "styre": ",M,,,C,,S,,", "other": ""}, {"kommun": "Leksands kommun", "styre": ",M,,L,C,,S,,", "other": ""}, {"kommun": "R\u00e4ttviks kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "Orsa kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "\u00c4lvdalens kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Smedjebackens kommun", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "Mora kommun", "styre": ",M,KD,,C,,,,\u00d6P", "other": "Morapartiet"}, {"kommun": "Falu kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "Borl\u00e4nge kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "S\u00e4ters kommun", "styre": ",,KD,,C,,S,,", "other": ""}, {"kommun": "Hedemora kommun", "styre": ",M,,,,MP,S,,", "other": ""}, {"kommun": "Avesta kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Ludvika kommun", "styre": ",M,KD,,,,S,,", "other": ""}, {"kommun": "Ockelbo kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "Hofors kommun", "styre": ",,,L,C,,S,,", "other": ""}, {"kommun": "Ovan\u00e5kers kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Nordanstigs kommun", "styre": ",M,,L,,,S,,", "other": ""}, {"kommun": "Ljusdals kommun", "styre": "SD,M,KD,L,,,,,\u00d6P", "other": "Ljusdalsbygdens Parti "}, {"kommun": "G\u00e4vle kommun", "styre": ",,KD,L,C,MP,S,,", "other": ""}, {"kommun": "Sandvikens kommun", "styre": ",,,L,C,,S,,", "other": ""}, {"kommun": "S\u00f6derhamns kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Bolln\u00e4s kommun", "styre": ",M,,,C,,S,,", "other": ""}, {"kommun": "Hudiksvalls kommun", "styre": ",M,,,,MP,S,,", "other": ""}, {"kommun": "\u00c5nge kommun", "styre": ",M,KD,,C,,S,,", "other": ""}, {"kommun": "Timr\u00e5 kommun", "styre": ",M,,,,,S,,", "other": ""}, {"kommun": "H\u00e4rn\u00f6sands kommun", "styre": ",,KD,,,MP,S,V,", "other": ""}, {"kommun": "Sundsvalls kommun", "styre": ",,,,C,,S,V,", "other": ""}, {"kommun": "Kramfors kommun", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "Sollefte\u00e5 kommun", "styre": ",,,,C,,,V,\u00d6P", "other": "V\u00e4stra Initiativet"}, {"kommun": "\u00d6rnsk\u00f6ldsviks kommun", "styre": ",M,KD,,C,,,,", "other": ""}, {"kommun": "Ragunda kommun", "styre": ",M,KD,,C,,,,\u00d6P", "other": "Allt f\u00f6r Ragunda"}, {"kommun": "Br\u00e4cke kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Krokoms kommun", "styre": ",M,KD,,,,S,,", "other": ""}, {"kommun": "Str\u00f6msunds kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "\u00c5re kommun", "styre": ",,,,,,S,V,\u00d6P", "other": "V\u00e4stj\u00e4mtlands v\u00e4l"}, {"kommun": "Bergs kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "H\u00e4rjedalens kommun", "styre": ",M,,,C,,S,,", "other": ""}, {"kommun": "\u00d6stersunds kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Nordmalings kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Bjurholms kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Vindelns kommun", "styre": ",,KD,,,,S,,", "other": ""}, {"kommun": "Robertsfors kommun", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "Norsj\u00f6 kommun", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "Mal\u00e5 kommun", "styre": ",,,,,,,V,", "other": ""}, {"kommun": "Storumans kommun", "styre": ",,KD,,C,,S,,", "other": ""}, {"kommun": "Sorsele kommun", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "Dorotea kommun", "styre": ",,KD,L,C,,S,V,", "other": ""}, {"kommun": "V\u00e4nn\u00e4s kommun", "styre": ",M,,,,,S,V,", "other": ""}, {"kommun": "Vilhelmina kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "\u00c5sele kommun", "styre": ",,,,,,S,,\u00d6P", "other": "\u00c5sele partiet"}, {"kommun": "Ume\u00e5 kommun", "styre": ",,,,,MP,S,,", "other": ""}, {"kommun": "Lycksele kommun", "styre": ",M,KD,L,C,,,,", "other": ""}, {"kommun": "Skellefte\u00e5 kommun", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "Arvidsjaurs kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "Arjeplogs kommun", "styre": ",,,L,,,S,,", "other": ""}, {"kommun": "Jokkmokks kommun", "styre": ",,,,,MP,,V,\u00d6P", "other": "Samernas V\u00e4l, Framtid i Jokkmokk"}, {"kommun": "\u00d6verkalix kommun", "styre": ",,,,,,S,,", "other": ""}, {"kommun": "Kalix kommun", "styre": ",,,,C,MP,S,,", "other": ""}, {"kommun": "\u00d6vertorne\u00e5 kommun", "styre": ",,KD,,C,,,V,\u00d6P", "other": "Framtid S "}, {"kommun": "Pajala kommun", "styre": ",M,KD,,C,,S,,\u00d6P", "other": "Sjukv\u00e5rdspartiet"}, {"kommun": "G\u00e4llivare kommun", "styre": ",,,,,MP,S,,", "other": ""}, {"kommun": "\u00c4lvsbyns kommun", "styre": "SD,M,KD,L,,,,,", "other": ""}, {"kommun": "Lule\u00e5 kommun", "styre": ",,,,,MP,S,V,", "other": ""}, {"kommun": "Pite\u00e5 kommun", "styre": ",,,,C,,S,,", "other": ""}, {"kommun": "Bodens kommun", "styre": ",,,,,,S,,\u00d6P", "other": "SJVP"}, {"kommun": "Haparanda stad", "styre": ",,,,,,S,V,", "other": ""}, {"kommun": "Kiruna kommun", "styre": ",,,,,,S,V,\u00d6P", "other": "Feministiskt Initiativ och S\u00e1melistu"}]
+[
+  {
+    "kommun": "Upplands V\u00e4sby kommun",
+    "styre": ",,,L,,,S,,\u00d6P",
+    "other": "V\u00e4sbys B\u00e4sta"
+  },
+  {
+    "kommun": "Vallentuna kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00d6ster\u00e5kers kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "V\u00e4rmd\u00f6 kommun",
+    "styre": ",,,L,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "J\u00e4rf\u00e4lla kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Eker\u00f6 kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Huddinge kommun",
+    "styre": ",,,,C,MP,S,,\u00d6P",
+    "other": "Huddingepartiet"
+  },
+  {
+    "kommun": "Botkyrka kommun",
+    "styre": ",,KD,L,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Salems kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Haninge kommun",
+    "styre": ",M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Tyres\u00f6 kommun",
+    "styre": ",,,L,,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Upplands-Bro kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Nykvarns kommun",
+    "styre": ",,,,C,MP,S,,\u00d6P",
+    "other": "Nykvarnspartiet"
+  },
+  {
+    "kommun": "T\u00e4by kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Danderyds kommun",
+    "styre": ",M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Sollentuna kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Stockholms stad",
+    "styre": ",,,,,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "S\u00f6dert\u00e4lje kommun",
+    "styre": ",M,,,,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Nacka kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Sundbybergs stad",
+    "styre": ",,,,C,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Solna stad",
+    "styre": ",,,,C,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Liding\u00f6 stad",
+    "styre": ",M,,,,,,,\u00d6P",
+    "other": "Liding\u00f6partiet"
+  },
+  {
+    "kommun": "Vaxholms stad",
+    "styre": ",M,KD,L,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Norrt\u00e4lje kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Sigtuna kommun",
+    "styre": ",M,KD,L,C,,,,\u00d6P",
+    "other": "Samling f\u00f6r Sigtuna (SfS)"
+  },
+  {
+    "kommun": "Nyn\u00e4shamns kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00e5bo kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c4lvkarleby kommun",
+    "styre": ",,,,C,MP,S,V,\u00d6P",
+    "other": "Kommunens v\u00e4l "
+  },
+  {
+    "kommun": "Knivsta kommun",
+    "styre": "SD,,KD,,,,,,\u00d6P",
+    "other": "Knivsta.nu (KNU)"
+  },
+  {
+    "kommun": "Heby kommun",
+    "styre": ",,,,C,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Tierps kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Uppsala kommun",
+    "styre": ",,,,,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Enk\u00f6pings kommun",
+    "styre": ",M,KD,L,C,MP,,,\u00d6P",
+    "other": "Nystart Enk\u00f6ping"
+  },
+  {
+    "kommun": "\u00d6sthammars kommun",
+    "styre": "SD,M,KD,,,,,,\u00d6P",
+    "other": "Lokalpartiet BOA"
+  },
+  {
+    "kommun": "Ving\u00e5kers kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Gnesta kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Nyk\u00f6pings kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Oxel\u00f6sunds kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Flens kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Katrineholms kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Eskilstuna kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Str\u00e4ngn\u00e4s kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Trosa kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00d6desh\u00f6gs kommun",
+    "styre": ",M,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ydre kommun",
+    "styre": ",M,,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Kinda kommun",
+    "styre": ",M,KD,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Boxholms kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c5tvidabergs kommun",
+    "styre": ",,,L,C,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Finsp\u00e5ngs kommun",
+    "styre": ",,,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Valdemarsviks kommun",
+    "styre": "SD,M,KD,,,,,,\u00d6P",
+    "other": "Landsbygdspartiet Oberoende (LPo)"
+  },
+  {
+    "kommun": "Link\u00f6pings kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Norrk\u00f6pings kommun",
+    "styre": ",M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "S\u00f6derk\u00f6pings kommun",
+    "styre": ",M,KD,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Motala kommun",
+    "styre": "SD,M,KD,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Vadstena kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Mj\u00f6lby kommun",
+    "styre": ",,KD,L,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Aneby kommun",
+    "styre": ",,KD,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Gnosj\u00f6 kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Mullsj\u00f6 kommun",
+    "styre": ",,KD,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Habo kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Gislaveds kommun",
+    "styre": ",M,,L,C,,S,,\u00d6P",
+    "other": "Westbopartiet"
+  },
+  {
+    "kommun": "Vaggeryds kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "J\u00f6nk\u00f6pings kommun",
+    "styre": ",,,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "N\u00e4ssj\u00f6 kommun",
+    "styre": ",,KD,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "V\u00e4rnamo kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "S\u00e4vsj\u00f6 kommun",
+    "styre": ",,KD,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Vetlanda kommun",
+    "styre": "SD,M,,,,,,,\u00d6P",
+    "other": "Vetlanda fram\u00e5tanda"
+  },
+  {
+    "kommun": "Eksj\u00f6 kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Tran\u00e5s kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Uppvidinge kommun",
+    "styre": "SD,,KD,,C,,,,\u00d6P",
+    "other": "LPo"
+  },
+  {
+    "kommun": "Lessebo kommun",
+    "styre": ",,,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Tingsryds kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Alvesta kommun",
+    "styre": ",,KD,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c4lmhults kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Markaryds kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "V\u00e4xj\u00f6 kommun",
+    "styre": ",,,,,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Ljungby kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00f6gsby kommun",
+    "styre": ",,,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Tors\u00e5s kommun",
+    "styre": ",M,,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "M\u00f6rbyl\u00e5nga kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Hultsfreds kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "M\u00f6nster\u00e5s kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Emmaboda kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Kalmar kommun",
+    "styre": ",,,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Nybro kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Oskarshamns kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "V\u00e4sterviks kommun",
+    "styre": ",M,KD,L,,,,,\u00d6P",
+    "other": "Westervikspartiet (W)"
+  },
+  {
+    "kommun": "Vimmerby kommun",
+    "styre": ",,,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Borgholms kommun",
+    "styre": ",,,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Gotland kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Olofstr\u00f6ms kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Karlskrona kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ronneby kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Karlshamns kommun",
+    "styre": "SD,M,KD,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "S\u00f6lvesborgs kommun",
+    "styre": ",M,,,C,,S,,\u00d6P",
+    "other": "SoL"
+  },
+  {
+    "kommun": "Sval\u00f6vs kommun",
+    "styre": "SD,M,KD,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Staffanstorps kommun",
+    "styre": "SD,M,,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Burl\u00f6vs kommun",
+    "styre": ",M,,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Vellinge kommun",
+    "styre": ",M,,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00d6stra G\u00f6inge kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00d6rkelljunga kommun",
+    "styre": "SD,M,,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Bjuvs kommun",
+    "styre": "SD,M,,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "K\u00e4vlinge kommun",
+    "styre": "SD,M,KD,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Lomma kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Svedala kommun",
+    "styre": ",M,KD,L,C,,,,\u00d6P",
+    "other": "Barapartiet"
+  },
+  {
+    "kommun": "Skurups kommun",
+    "styre": "SD,M,KD,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Sj\u00f6bo kommun",
+    "styre": ",M,,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00f6rby kommun",
+    "styre": "SD,M,,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00f6\u00f6rs kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Tomelilla kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Brom\u00f6lla kommun",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Osby kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Perstorps kommun",
+    "styre": ",M,KD,,C,,S,,\u00d6P",
+    "other": "Perstorps Framtid"
+  },
+  {
+    "kommun": "Klippans kommun",
+    "styre": "SD,,KD,,,,,,\u00d6P",
+    "other": "V\u00e5r Framtid Klippan (VF)"
+  },
+  {
+    "kommun": "\u00c5storps kommun",
+    "styre": "SD,M,KD,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "B\u00e5stads kommun",
+    "styre": ",M,KD,L,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Malm\u00f6 stad",
+    "styre": ",,,L,,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Lunds kommun",
+    "styre": ",M,KD,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Landskrona stad",
+    "styre": ",M,,L,,MP,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Helsingborgs stad",
+    "styre": ",M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00f6gan\u00e4s kommun",
+    "styre": ",M,KD,,C,MP,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Esl\u00f6vs kommun",
+    "styre": ",M,,L,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ystads kommun",
+    "styre": ",M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Trelleborgs kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Kristianstads kommun",
+    "styre": "SD,M,KD,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Simrishamns kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c4ngelholms kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00e4ssleholms kommun",
+    "styre": "SD,M,KD,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Hylte kommun",
+    "styre": ",,,L,,,S,V,\u00d6P",
+    "other": "Kommunens v\u00e4l"
+  },
+  {
+    "kommun": "Halmstads kommun",
+    "styre": ",M,KD,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Laholms kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Falkenbergs kommun",
+    "styre": ",,KD,L,,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Varbergs kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Kungsbacka kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00e4rryda kommun",
+    "styre": ",M,KD,L,C,,,,\u00d6P",
+    "other": "\u00c4ven KommunPartiet och SportPartiet i H\u00e4rryda kommun \u00e4r med i denna koalition"
+  },
+  {
+    "kommun": "Partille kommun",
+    "styre": ",M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00d6cker\u00f6 kommun",
+    "styre": ",M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Stenungsunds kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Tj\u00f6rns kommun",
+    "styre": "SD,M,,L,C,,,,\u00d6P",
+    "other": "Tj\u00f6rnpartiet"
+  },
+  {
+    "kommun": "Orust kommun",
+    "styre": ",M,,L,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Soten\u00e4s kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Munkedals kommun",
+    "styre": "SD,M,KD,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Tanums kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Dals-Eds kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "F\u00e4rgelanda kommun",
+    "styre": ",M,,L,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ale kommun",
+    "styre": "SD,M,KD,,,,,,\u00d6P",
+    "other": "FiA, Framtid i Ale"
+  },
+  {
+    "kommun": "Lerums kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "V\u00e5rg\u00e5rda kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Bollebygds kommun",
+    "styre": ",M,,,,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Gr\u00e4storps kommun",
+    "styre": ",M,,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Essunga kommun",
+    "styre": ",M,KD,,C,MP,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Karlsborgs kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Gullsp\u00e5ngs kommun",
+    "styre": ",M,KD,,,,,V,\u00d6P",
+    "other": "Feministiskt Initiativ"
+  },
+  {
+    "kommun": "Tranemo kommun",
+    "styre": ",,,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Bengtsfors kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Melleruds kommun",
+    "styre": ",M,KD,,,,,,\u00d6P",
+    "other": "Kommunpartiet i Mellerud KIM"
+  },
+  {
+    "kommun": "Lilla Edets kommun",
+    "styre": ",M,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Marks kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Svenljunga kommun",
+    "styre": "SD,M,KD,,,,,,\u00d6P",
+    "other": "Landsbygdspartiet oberoende"
+  },
+  {
+    "kommun": "Herrljunga kommun",
+    "styre": ",,,L,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Vara kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "G\u00f6tene kommun",
+    "styre": ",M,KD,L,C,MP,,,\u00d6P",
+    "other": "G\u00f6tenes framtid"
+  },
+  {
+    "kommun": "Tibro kommun",
+    "styre": ",,,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "T\u00f6reboda kommun",
+    "styre": ",M,,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "G\u00f6teborgs stad",
+    "styre": ",,,,,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "M\u00f6lndals stad",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Kung\u00e4lvs kommun",
+    "styre": ",M,,,,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Lysekils kommun",
+    "styre": ",,,,,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Uddevalla kommun",
+    "styre": "SD,M,KD,,,,,,\u00d6P",
+    "other": "Uddevalla Partiet"
+  },
+  {
+    "kommun": "Str\u00f6mstads kommun",
+    "styre": ",M,KD,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "V\u00e4nersborgs kommun",
+    "styre": ",,KD,,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Trollh\u00e4ttans stad",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Alings\u00e5s kommun",
+    "styre": ",M,,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Bor\u00e5s stad",
+    "styre": ",,,L,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ulricehamns kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c5m\u00e5ls kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Mariestads kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Lidk\u00f6pings kommun",
+    "styre": ",M,KD,L,,,,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Skara kommun",
+    "styre": ",,,L,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Sk\u00f6vde kommun",
+    "styre": ",M,KD,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Hjo kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Tidaholms kommun",
+    "styre": "SD,M,KD,L,,,,,\u00d6P",
+    "other": "Vi Tidaholm"
+  },
+  {
+    "kommun": "Falk\u00f6pings kommun",
+    "styre": ",M,KD,L,C,MP,,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Kils kommun",
+    "styre": ",,,,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Eda kommun",
+    "styre": ",M,KD,L,C,,,V,\u00d6P",
+    "other": "HEL"
+  },
+  {
+    "kommun": "Torsby kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Storfors kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Hammar\u00f6 kommun",
+    "styre": ",,,,C,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Munkfors kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Forshaga kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Grums kommun",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c5rj\u00e4ngs kommun",
+    "styre": ",M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Sunne kommun",
+    "styre": ",M,,L,,,,,\u00d6P",
+    "other": "Hela Sunne"
+  },
+  {
+    "kommun": "Karlstads kommun",
+    "styre": ",,,,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Kristinehamns kommun",
+    "styre": ",,,,C,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Filipstads kommun",
+    "styre": "SD,M,,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Hagfors kommun",
+    "styre": ",,,,,,,,\u00d6P",
+    "other": "Oberoende realister"
+  },
+  {
+    "kommun": "Arvika kommun",
+    "styre": ",,,,C,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "S\u00e4ffle kommun",
+    "styre": ",M,KD,L,C,MP,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Lekebergs kommun",
+    "styre": ",M,KD,L,,,,V,\u00d6P",
+    "other": "Framtidspartiet i Lekeberg"
+  },
+  {
+    "kommun": "Lax\u00e5 kommun",
+    "styre": ",,KD,,C,,,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Hallsbergs kommun",
+    "styre": ",,KD,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Degerfors kommun",
+    "styre": ",M,,,,MP,,V,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00e4llefors kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ljusnarsbergs kommun",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00d6rebro kommun",
+    "styre": ",M,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Kumla kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Askersunds kommun",
+    "styre": ",M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Karlskoga kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Nora kommun",
+    "styre": ",M,KD,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Lindesbergs kommun",
+    "styre": "SD,M,,,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Skinnskattebergs kommun",
+    "styre": "SD,,,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Surahammars kommun",
+    "styre": ",M,KD,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Kungs\u00f6rs kommun",
+    "styre": ",,,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Hallstahammars kommun",
+    "styre": ",,,L,,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Norbergs kommun",
+    "styre": ",,,,,,S,,\u00d6P",
+    "other": "Partiet f\u00f6r Norbergs Framtid (PNF)"
+  },
+  {
+    "kommun": "V\u00e4ster\u00e5s stad",
+    "styre": ",,KD,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Sala kommun",
+    "styre": ",,,,C,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Fagersta kommun",
+    "styre": ",M,,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "K\u00f6pings kommun",
+    "styre": ",,KD,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Arboga kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Vansbro kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Malung-S\u00e4lens kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Gagnefs kommun",
+    "styre": ",M,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Leksands kommun",
+    "styre": ",M,,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "R\u00e4ttviks kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Orsa kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c4lvdalens kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Smedjebackens kommun",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Mora kommun",
+    "styre": ",M,KD,,C,,,,\u00d6P",
+    "other": "Morapartiet"
+  },
+  {
+    "kommun": "Falun kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Borl\u00e4nge kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "S\u00e4ters kommun",
+    "styre": ",,KD,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Hedemora kommun",
+    "styre": ",M,,,,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Avesta kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ludvika kommun",
+    "styre": ",M,KD,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ockelbo kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Hofors kommun",
+    "styre": ",,,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ovan\u00e5kers kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Nordanstigs kommun",
+    "styre": ",M,,L,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ljusdals kommun",
+    "styre": "SD,M,KD,L,,,,,\u00d6P",
+    "other": "Ljusdalsbygdens Parti "
+  },
+  {
+    "kommun": "G\u00e4vle kommun",
+    "styre": ",,KD,L,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Sandvikens kommun",
+    "styre": ",,,L,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "S\u00f6derhamns kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Bolln\u00e4s kommun",
+    "styre": ",M,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Hudiksvalls kommun",
+    "styre": ",M,,,,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c5nge kommun",
+    "styre": ",M,KD,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Timr\u00e5 kommun",
+    "styre": ",M,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00e4rn\u00f6sands kommun",
+    "styre": ",,KD,,,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Sundsvalls kommun",
+    "styre": ",,,,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Kramfors kommun",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Sollefte\u00e5 kommun",
+    "styre": ",,,,C,,,V,\u00d6P",
+    "other": "V\u00e4stra Initiativet"
+  },
+  {
+    "kommun": "\u00d6rnsk\u00f6ldsviks kommun",
+    "styre": ",M,KD,,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Ragunda kommun",
+    "styre": ",M,KD,,C,,,,\u00d6P",
+    "other": "Allt f\u00f6r Ragunda"
+  },
+  {
+    "kommun": "Br\u00e4cke kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Krokoms kommun",
+    "styre": ",M,KD,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Str\u00f6msunds kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c5re kommun",
+    "styre": ",,,,,,S,V,\u00d6P",
+    "other": "V\u00e4stj\u00e4mtlands v\u00e4l"
+  },
+  {
+    "kommun": "Bergs kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "H\u00e4rjedalens kommun",
+    "styre": ",M,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00d6stersunds kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Nordmalings kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Bjurholms kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Vindelns kommun",
+    "styre": ",,KD,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Robertsfors kommun",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Norsj\u00f6 kommun",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Mal\u00e5 kommun",
+    "styre": ",,,,,,,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Storumans kommun",
+    "styre": ",,KD,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Sorsele kommun",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Dorotea kommun",
+    "styre": ",,KD,L,C,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "V\u00e4nn\u00e4s kommun",
+    "styre": ",M,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Vilhelmina kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c5sele kommun",
+    "styre": ",,,,,,S,,\u00d6P",
+    "other": "\u00c5sele partiet"
+  },
+  {
+    "kommun": "Ume\u00e5 kommun",
+    "styre": ",,,,,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Lycksele kommun",
+    "styre": ",M,KD,L,C,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Skellefte\u00e5 kommun",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Arvidsjaurs kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Arjeplogs kommun",
+    "styre": ",,,L,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Jokkmokks kommun",
+    "styre": ",,,,,MP,,V,\u00d6P",
+    "other": "Samernas V\u00e4l, Framtid i Jokkmokk"
+  },
+  {
+    "kommun": "\u00d6verkalix kommun",
+    "styre": ",,,,,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Kalix kommun",
+    "styre": ",,,,C,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00d6vertorne\u00e5 kommun",
+    "styre": ",,KD,,C,,,V,\u00d6P",
+    "other": "Framtid S "
+  },
+  {
+    "kommun": "Pajala kommun",
+    "styre": ",M,KD,,C,,S,,\u00d6P",
+    "other": "Sjukv\u00e5rdspartiet"
+  },
+  {
+    "kommun": "G\u00e4llivare kommun",
+    "styre": ",,,,,MP,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "\u00c4lvsbyns kommun",
+    "styre": "SD,M,KD,L,,,,,",
+    "other": ""
+  },
+  {
+    "kommun": "Lule\u00e5 kommun",
+    "styre": ",,,,,MP,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Pite\u00e5 kommun",
+    "styre": ",,,,C,,S,,",
+    "other": ""
+  },
+  {
+    "kommun": "Bodens kommun",
+    "styre": ",,,,,,S,,\u00d6P",
+    "other": "SJVP"
+  },
+  {
+    "kommun": "Haparanda stad",
+    "styre": ",,,,,,S,V,",
+    "other": ""
+  },
+  {
+    "kommun": "Kiruna kommun",
+    "styre": ",,,,,,S,V,\u00d6P",
+    "other": "Feministiskt Initiativ och S\u00e1melistu"
+  }
+]
