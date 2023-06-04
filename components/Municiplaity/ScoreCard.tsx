@@ -2,8 +2,9 @@ import styled, { css } from 'styled-components'
 import Link from 'next/link'
 import FactSection from '../FactSection'
 import { ClimatePlan } from '../../utils/types'
-import { ParagraphItalic } from '../Typography'
+import { H5, ParagraphItalic } from '../Typography'
 import Icon from '../../public/icons/boxedArrow.svg'
+import PlanIcon from '../../public/icons/climatePlan.svg'
 
 const StyledDiv = styled.div`
   border-radius: 4px;
@@ -143,7 +144,7 @@ const ScoreCard = ({
 
   return (
     <StyledDiv>
-      {/* <LightContainer>
+      <LightContainer>
         <Row>
           <SectionLeft>
             <PlanIcon />
@@ -172,7 +173,7 @@ const ScoreCard = ({
             </>
           }
         />
-      </LightContainer> */}
+      </LightContainer>
       <DarkContainer>
         {rank && <FactSection
           heading='Kommunens utsläppsrankning'
