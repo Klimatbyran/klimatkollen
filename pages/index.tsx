@@ -251,7 +251,7 @@ const StartPage = ({ municipalities, viewMode = default_viewmode, dataset = defa
           <ToggleButton
             handleClick={handleToggle}
             text={toggleViewMode === default_viewmode ? 'Se lista' : 'Se karta'}
-            icon={toggleViewMode === default_viewmode ? <MapIcon /> : <ListIcon />} />
+            icon={toggleViewMode === default_viewmode ? <ListIcon /> : <MapIcon />} />
           <MunicipalityContainer>
             <div style={{ display: toggleViewMode === default_viewmode ? 'block' : 'none' }}>
               <MapLabels
