@@ -211,19 +211,19 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
         <Legends>
           {step < 3 && (
             <Legend>
-              <Circle color={colorTheme.rust} />
+              <Circle color={colorTheme.darkOrange} />
               Historiskt
             </Legend>
           )}
           {step > 0 && (
             <Legend>
-              <Circle color={colorTheme.red} />
+              <Circle color={colorTheme.darkRed} />
               Trend
             </Legend>
           )}
           {step > 1 && (
             <Legend>
-              <Circle color={colorTheme.green} />
+              <Circle color={colorTheme.lightGreen} />
               Parisavtalet
             </Legend>
           )}
@@ -263,13 +263,13 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
       <H3>
         Totala utsläpp
       </H3>
-      <TotalCo2 color={colorTheme.rust}>
+      <TotalCo2 color={colorTheme.darkOrange}>
         Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
       </TotalCo2>
-      <TotalCo2 color={step > 0 ? colorTheme.red : colorTheme.redDark}>
+      <TotalCo2 color={step > 0 ? colorTheme.darkRed : colorTheme.darkDarkRed}>
         Trend: {totalTrend.toFixed(1)} tusen ton CO₂
       </TotalCo2>
-      <TotalCo2 color={step > 1 ? colorTheme.green : colorTheme.greenDark}>
+      <TotalCo2 color={step > 1 ? colorTheme.lightGreen : colorTheme.lightGreenDark}>
         Koldioxidbudget för att klara Parisavtalet: {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton
         CO₂
       </TotalCo2>

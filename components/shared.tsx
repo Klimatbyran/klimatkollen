@@ -1,11 +1,21 @@
 import styled from 'styled-components'
+import { colorTheme } from '../Theme'
+
+export const mapColors = [
+  colorTheme.red,
+  colorTheme.orange,
+  colorTheme.darkYellow,
+  colorTheme.lightYellow,
+  colorTheme.beige,
+  colorTheme.lightBlue,
+]
 
 export const IconButton = styled.button`
   border: none;
   background-color: none;
   cursor: pointer;
   background-color: inherit;
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.offWhite};
   font-family: 'Roboto';
   font-weight: 300;
   font-size: 16px;

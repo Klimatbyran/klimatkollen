@@ -1,6 +1,7 @@
 import { useState } from "react"
 import styled from "styled-components"
 import Info from '../public/icons/info.svg'
+import { colorTheme } from "../Theme"
 
 const Wrapper = styled.div`
   position: relative;
@@ -13,7 +14,7 @@ const Tooltip = styled.div`
   top: 10px;
   right: 10px;
   background: black;
-  color: white;
+  color: ${colorTheme.offWhite};
   padding: 10px;
   border-radius: 5px;
   font: 0.8em "Roboto";

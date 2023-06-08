@@ -5,7 +5,7 @@ const ToggleBtn = styled.button`
   height: 36px;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  color: ${({ theme }) => theme.paperWhite};
+  color: ${({ theme }) => theme.offWhite};
   background: transparent;
   border-radius: 4px;
   border: 1px solid white;

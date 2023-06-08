@@ -77,7 +77,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           buttonText="OK"
           style={{ background: colorTheme.lightBlack }}
           buttonStyle={{
-            backgroundColor: colorTheme.main,
+            backgroundColor: colorTheme.midGreen,
             fontSize: '13px',
           }}
           expires={150}>

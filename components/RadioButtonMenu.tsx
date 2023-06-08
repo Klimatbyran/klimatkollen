@@ -19,14 +19,14 @@ const RadioLabel = styled.label`
   line-height: 20px;
   font-weight: 700;
   text-decoration: none;
-  color: white;
+  color: ${({ theme }) => theme.offWhite};
   background: ${({ theme }) => theme.lightBlack};
   white-space: nowrap;
   cursor: pointer;
   margin-bottom: 8px;
   
   &:hover {
-    background: ${({ theme }) => theme.lightBlack};
+    background: ${({ theme }) => theme.darkGreenTwo};
   }
 `
 
@@ -34,10 +34,10 @@ const RadioInput = styled.input`
   display: none;
   &:checked + ${RadioLabel} {
     color: ${({ theme }) => theme.black};
-    background: ${({ theme }) => theme.green};
+    background: ${({ theme }) => theme.midGreen};
 
     &:hover {
-      background: ${({ theme }) => theme.mint};
+      background: ${({ theme }) => theme.lightGreen};
     }
   }
 `

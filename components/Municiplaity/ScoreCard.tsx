@@ -15,11 +15,11 @@ const StyledDiv = styled.div`
   background: ${(props) => props.theme.black};
 `
 
-const LightContainer = styled.div`
+const GreenContainer = styled.div`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   padding: 15px 15px 0 15px;
-  background: ${({ theme }) => theme.lightBlack};
+  background: ${({ theme }) => theme.midGreen};
 `
 
 const DarkContainer = styled.div`
@@ -49,7 +49,7 @@ const SectionRight = styled.section`
 const LinkButton = styled.button`
   height: 36px;
   color: black;
-  background: ${({ theme }) => theme.green};
+  background: ${({ theme }) => theme.lightGreen};
   border-radius: 4px;
   border: 1px solid transparent;
   padding: 0.8rem 1rem 0.8rem 0.8rem;
@@ -58,7 +58,7 @@ const LinkButton = styled.button`
   align-items: center;
   justify-content: center;
   &:hover {
-    background: ${({ theme }) => theme.mint};
+    background: ${({ theme }) => theme.lightGreen};
   }
   & a {
     text-decoration: none;
@@ -67,12 +67,12 @@ const LinkButton = styled.button`
     disabled &&
     css`
       color: ${({ theme }) => theme.lightBlack};
-      background: ${({ theme }) => theme.lightlightBlack};
+      background: ${({ theme }) => theme.darkGreenOne};
       cursor: not-allowed;
 
       /* Remove hover effect */
       &:hover {
-        background: ${({ theme }) => theme.lightlightBlack};
+        background: ${({ theme }) => theme.darkGreenOne};
       }
 
       /* Set color of ArrowIcon to lightBlack */
@@ -144,7 +144,7 @@ const ScoreCard = ({
 
   return (
     <StyledDiv>
-      <LightContainer>
+      <GreenContainer>
         <Row>
           <SectionLeft>
             <PlanIcon />
@@ -173,7 +173,7 @@ const ScoreCard = ({
             </>
           }
         />
-      </LightContainer>
+      </GreenContainer>
       <DarkContainer>
         {rank && <FactSection
           heading='Kommunens utsläppsrankning'

@@ -8,9 +8,12 @@ export const colorTheme = {
 
   red: '#EF3030',
   darkRed: '#8B1A1A',
+  darkRedOpaque: 'rgba(139, 26, 26, 0.6)',
+  darkDarkRed: '#450d0d',
 
   orange: '#FF6813',
   darkOrange: '#B55018',
+  darkOrangeOpaque: 'rgb(181, 80, 24, 0.6)',
 
   darkYellow: '#FFA137',
   lightYellow: '#FFE07A',
@@ -20,6 +23,9 @@ export const colorTheme = {
   lightBlue: '#81DFFF',
 
   lightGreen: '#67FFEE',
+  lightGreenOpaqe: 'rgba(103, 255, 238, 0.6)',
+  lightGreenDark: 'rgb(0, 179, 159, 0.2)',
+
   midGreen: '#30ACB4',
   darkGreenOne: '#216675',
   darkGreenTwo: '#1B3940',
@@ -28,31 +34,6 @@ export const colorTheme = {
   gradientGreen: 'linear-gradient(#216675, #30ACB4)',
   gradientOrange: 'linear-gradient(#EF3030, #FF6813)',
   gradientRed: 'linear-gradient(#EF3030, #8B1A1A)',
-
-  // Old color scheme
-
-  main: '#91DFC8',
-
-  rust: '#EF5E30',
-  rustOpaque: 'rgb(239, 94, 48, 0.6)',
-  // red: '#EF3054',
-  redOpaque: 'rgba(239, 48, 84, 0.6)',
-  redDark: 'rgba(239, 48, 84, 0.2)',
-  green: '#94D3C1',
-  greenOpaqe: 'rgba(145, 223, 200, 0.6)',
-  greenDark: 'rgba(145, 223, 200, 0.2)',
-
-  // orange: '#EF9917',
-  yellow: '#EFBF17',
-  blue: '#91BFC8',
-
-  white: '#FFFFFF',
-  paperWhite: '#F9FBFF',
-  mint: '#D5F2E9',
-
-  lightlightBlack: '#B3B3B3',
-
-  gradient: 'linear-gradient(rgba(45,45,45, 1), rgba(0,0,0, 0.0))',
 }
 
 type Props = {

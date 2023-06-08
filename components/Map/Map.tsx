@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar';
 import { colorTheme } from '../../Theme'
+import { mapColors } from '../shared'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -19,54 +20,61 @@ const INITIAL_VIEW_STATE = {
 const DeckGLWrapper = styled.div`
   width: 100%;`
 
+const hexToRGBA = (hex: string): RGBAColor => {
+  const hexValue = hex.replace('#', '')
+  const red = parseInt(hexValue.substring(0, 2), 16)
+  const green = parseInt(hexValue.substring(2, 4), 16)
+  const blue = parseInt(hexValue.substring(4, 6), 16)
+  return [red, green, blue]
+}
+
 const getColor = (dataPoint: number | string, boundaries: number[] | string[]): RGBAColor => {
-  const green: RGBAColor = [145, 223, 200]
-  const blue: RGBAColor = [145, 191, 200]
-  const yellow: RGBAColor = [239, 191, 23]
-  const orange: RGBAColor = [239, 153, 23]
-  const darkOrange: RGBAColor = [239, 127, 23]
-  const red: RGBAColor = [239, 94, 48]
-  const pink: RGBAColor = [239, 48, 84]
+  const lightBlue: RGBAColor = hexToRGBA(mapColors[5])
+  const beige: RGBAColor = hexToRGBA(mapColors[4])
+  const lightYellow: RGBAColor = hexToRGBA(mapColors[3])
+  const darkYellow: RGBAColor = hexToRGBA(mapColors[2])
+  const orange: RGBAColor = hexToRGBA(mapColors[1])
+  const red: RGBAColor = hexToRGBA(mapColors[0])
 
   if (boundaries.length == 2) {
-      return (dataPoint === boundaries[0])? pink : green
+      return (dataPoint === boundaries[0])? red : lightBlue
   }
 
   // FIXME refactor plz
   if (boundaries[0] < boundaries[1]) {
     if (dataPoint >= boundaries[4]) {
-      return blue
+      return lightBlue
     }
     if (dataPoint >= boundaries[3]) {
-      return yellow
+      return beige
     }
     if (dataPoint >= boundaries[2]) {
-      return orange
+      return lightYellow
     }
     if (dataPoint >= boundaries[1]) {
-      return darkOrange
+      return darkYellow
     }
     if (dataPoint >= boundaries[0]) {
-      return red
+      return orange
     }
-    return pink
+    return red
   } else {
     if (dataPoint >= boundaries[0]) {
-      return pink
-    }
-    if (dataPoint >= boundaries[1]) {
       return red
     }
-    if (dataPoint >= boundaries[2]) {
-      return darkOrange
-    }
-    if (dataPoint >= boundaries[3]) {
+    if (dataPoint >= boundaries[1]) {
       return orange
     }
-    if (dataPoint >= boundaries[4]) {
-      return yellow
+    if (dataPoint >= boundaries[2]) {
+      return darkYellow
     }
-    return blue
+    if (dataPoint >= boundaries[3]) {
+      return lightYellow
+    }
+    if (dataPoint >= boundaries[4]) {
+      return beige
+    }
+    return lightBlue
   }
 }
 
@@ -197,7 +205,7 @@ const Map = ({ data, children, boundaries }: Props) => {
             backgroundColor: 'black',
             borderRadius: '5px',
             fontSize: '0.7em',
-            color: 'white'
+            color: colorTheme.offWhite
           }
         }}
         onClick={({ object }) => {

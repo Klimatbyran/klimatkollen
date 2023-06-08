@@ -35,7 +35,7 @@ const InfoText = styled.div`
 
 const ParagraphSource = styled(Paragraph)`
   font-size: 13px;
-  color: ${({ theme }) => theme.lightlightBlack};
+  color: ${({ theme }) => theme.midGreen};
 `
 
 const MunicipalityContainer = styled.div`
@@ -44,7 +44,7 @@ const MunicipalityContainer = styled.div`
   z-index: 150;
   // TODO: Hardcoding this is not good.
   height: 380px;
-  border: 1px solid ${({ theme }) => theme.paperWhite};
+  border: 1px solid ${({ theme }) => theme.offWhite};
   border-radius: 8px;
   display: flex;
   margin-bottom: 32px;

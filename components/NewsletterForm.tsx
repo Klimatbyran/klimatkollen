@@ -17,19 +17,19 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   background: transparent;
   height: 55px;
-  border: 1px solid ${({ theme }) => theme.white};
+  border: 1px solid ${({ theme }) => theme.offWhite};
   border-radius: 5px;
   padding: 15px;
-  color: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.offWhite};
   font-size: 16px;
   font-family: Roboto;
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.offWhite};
   }
   :-ms-input-placeholder {
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.offWhite};
   }
 
   @media only screen and (${devices.tablet}) {
