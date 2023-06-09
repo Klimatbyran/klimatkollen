@@ -144,7 +144,7 @@ const ScoreCard = ({
 
   return (
     <StyledDiv>
-      <LightContainer>
+      {/* <LightContainer> FIXME uncomment on launch climate plans
         <Row>
           <SectionLeft>
             <PlanIcon />
@@ -173,7 +173,7 @@ const ScoreCard = ({
             </>
           }
         />
-      </LightContainer>
+      </LightContainer> */}
       <DarkContainer>
         {rank && <FactSection
           heading='Kommunens utsläppsrankning'
