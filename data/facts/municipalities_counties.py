@@ -17,18 +17,18 @@ def get_municipalities():
     # Iterate through the rows of the dataframe
     for i, row in df.iterrows():
         if len(row['Kod']) == 4:  # Check if it is a four-digit code row
-            kod = row['Kod']
-            kommun = row['Namn']
+            code = row['Kod']
+            municipality = row['Namn']
             # Lookup the county (Län) based on the two-digit code
-            län = df.loc[df['Kod'] == kod[:2], 'Namn'].values[0]
+            county = df.loc[df['Kod'] == code[:2], 'Namn'].values[0]
             result = result.append(
-                {'Kommun': kommun, 'Kod': kod, 'Län': län}, ignore_index=True)
+                {'Kommun': municipality, 'Kod': code, 'Län': county}, ignore_index=True)
 
     # Return the resulting dataframe
     return result
 
 
-def export_to_xslx(df):
+def export_to_xlsx(df):
     df['KPI1: Förändringstakt andel laddbara bilar (%)'] = df['electricCarChangePercent'].apply(lambda x: round(x*100, 1))
 
     df.rename(columns={'kommun': 'Kommun'}, inplace=True)
@@ -54,4 +54,4 @@ def export_to_xslx(df):
     # Save the Excel file
     writer.save()
 
-    print('Cliamte data xlsx file created and saved')
+    print('Climate data xlsx file created and saved')
