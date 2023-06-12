@@ -51,23 +51,23 @@ export const dataSetDescriptions: DataSetDescriptions = {
     'columnHeader': 'Ökning elbilar',
     'tooltip': 'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
   },
-  // 'Klimatplanerna': { FIXME
-  //   'heading': 'Kommuner som har klimatplaner',
-  //   'body': 'På kartan och i listan visas vilka kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer.',
-  //   'source':
-  //     <>
-  //       Källa:{' '}
-  //       <a href='https://docs.google.com/spreadsheets/d/13CMqmfdd6QUD6agKFyVhwZUol4PKzvy253_EwtsFyvw/edit?fbclid=IwAR0v0cq0_xhFVlhhVn5fP-TNkOPVRXbOTKzTVWI_PMr_yU2rXOLjcN6jSps#gid=0'
-  //         target='_blank'
-  //         rel='noreferrer'>
-  //         allmänhetens öppna sammanställning
-  //       </a>
-  //     </>,
-  //   'boundaries': ['Saknas', ''],
-  //   'labels': ['Nej', 'Ja'],
-  //   'labelRotateUp': [],
-  //   'columnHeader': 'Klimatplan',
-  //   'dataIsLink': true,
-  //   'tooltip': 'Avser nu gällande klimathandlingsplan eller motsvarande. Inte anpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande.',
-  // }
+  'Klimatplanerna': { 
+    'heading': 'Kommuner som har klimatplaner',
+    'body': 'På kartan och i listan visas vilka kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer.',
+    'source':
+      <>
+        Källa:{' '}
+        <a href='https://docs.google.com/spreadsheets/d/13CMqmfdd6QUD6agKFyVhwZUol4PKzvy253_EwtsFyvw/edit?fbclid=IwAR0v0cq0_xhFVlhhVn5fP-TNkOPVRXbOTKzTVWI_PMr_yU2rXOLjcN6jSps#gid=0'
+          target='_blank'
+          rel='noreferrer'>
+          allmänhetens öppna sammanställning
+        </a>
+      </>,
+    'boundaries': ['Saknas', ''],
+    'labels': ['Nej', 'Ja'],
+    'labelRotateUp': [],
+    'columnHeader': 'Klimatplan',
+    'dataIsLink': true,
+    'tooltip': 'Avser nu gällande klimathandlingsplan eller motsvarande. Inte anpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande.',
+  }
 }
