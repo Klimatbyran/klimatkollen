@@ -118,7 +118,7 @@ const StartPage = ({
                 labels={datasetDescription.labels}
                 rotations={datasetDescription.labelRotateUp}
               />
-              <Map data={municipalityData} boundaries={datasetDescription.boundaries} />
+              <Map data={municipalityData} dataType={datasetDescription.dataType} boundaries={datasetDescription.boundaries} />
             </div>
             <div
               style={{

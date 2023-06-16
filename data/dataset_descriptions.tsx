@@ -107,7 +107,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Cykelväglängd',
     dataType: 'Number',
-    unit: 'm',
     tooltip:
       'Antal meter cykelväg per invånare per kommun år 2022 totalt för alla väghållare (statlig, kommunal, enskild)',
   },

@@ -118,7 +118,12 @@ const formatData = (rowData: unknown, selectedData: SelectedData) => {
     const percent = (rowNumber * 100).toFixed(1)
     dataString = rowNumber > 0 ? <span>+{percent}</span> : <span>{percent}</span>
   } else if (dataType === 'Number') {
-    dataString = <span>{(rowData as number).toFixed(1)} {datasetDescriptions[selectedData].unit}</span>
+    const rowNumber = rowData as number
+    dataString = (
+      <span>
+        {rowNumber.toFixed(1)}
+      </span>
+    )
   }
   return dataString
 }

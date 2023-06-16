@@ -107,11 +107,12 @@ const replaceLetters = (name: string) => {
 
 type Props = {
   data: Array<{ name: string; dataPoint: number | string }>
-  children?: ReactNode
+  dataType: DatasetType
   boundaries: number[] | string[]
+  children?: ReactNode
 }
 
-const Map = ({ data, children, boundaries }: Props) => {
+const Map = ({ data, dataType, boundaries, children }: Props) => {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
@@ -176,16 +177,15 @@ const Map = ({ data, children, boundaries }: Props) => {
 
   const formatData = (object: unknown) => {
     const municipality = object as unknown as MunicipalityData
-    const dataType = municipality?.dataType
     let dataString = municipality?.dataPoint.toFixed(1)
 
-    if (dataType === 'Percent') {
-      dataString = (municipality?.dataPoint * 100).toFixed(1)
-    } else if (dataType === 'Link') {
+    if (dataType === 'Link') {
       const data = municipality?.dataPoint
       dataString = (boundaries as string[]).includes(data as unknown as string)
         ? 'Nej'
         : 'Ja'
+    } else if (dataType === 'Percent') {
+      dataString = (municipality?.dataPoint * 100).toFixed(1)
     }
 
     return dataString
