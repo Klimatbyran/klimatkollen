@@ -1,4 +1,4 @@
-import { dataSetDescriptions } from "../data/dataset_descriptions"
+import { datasetDescriptions } from "../data/dataset_descriptions"
 
 export type Image = {
   ImageUrl: string
@@ -21,7 +21,8 @@ export type Municipality = {
   ElectricCars: number
   ElectricCarChangePercent: number,
   ElectricCarChangeYearly: Array<number>,
-  ClimatePlan: ClimatePlan
+  ClimatePlan: ClimatePlan,
+  BicycleMetrePerCapita: number,
 }
 
 export type EmissionPerYear = {
@@ -60,4 +61,31 @@ export type EmissionSector = {
   SubSectors: Array<EmissionSector>
 }
 
-export type SelectedData = keyof typeof dataSetDescriptions
+export type SelectedData = keyof typeof datasetDescriptions
+
+export type DatasetType = 'Percent' | 'Link' | 'Number'
+
+export type DatasetDescription = {
+  heading: string
+  body: string | JSX.Element
+  source: React.ReactNode
+  boundaries: number[] | string[]
+  labels: string[]
+  labelRotateUp: boolean[]
+  columnHeader: string
+  tooltip: string
+  dataType: DatasetType
+}
+
+export type DatasetDescriptions = {
+  [key: string]: DatasetDescription
+}
+
+export type RankedData = {
+  [key: string]: {
+    name: string;
+    dataPoint: number | string;
+    rank?: number | undefined;
+}[]
+
+}
