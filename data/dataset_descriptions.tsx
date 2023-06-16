@@ -93,6 +93,13 @@ export const datasetDescriptions: DatasetDescriptions = {
           rel="noreferrer">
           Nationella Vägdatabasen/Trafikverket
         </a>
+        {' '}och{' '}
+        <a
+          href="https://nvdb2012.trafikverket.se/SeTransportnatverket" // fixme
+          target="_blank"
+          rel="noreferrer">
+          SCB
+        </a>
       </>
     ),
     boundaries: [1, 2, 3, 4, 5],
