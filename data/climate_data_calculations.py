@@ -3,13 +3,13 @@
 import json
 from facts.municipalities_counties import export_to_xlsx
 from solutions.cars.car_data_calculations import car_calculations
+from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
 from issues.emissions.emission_data_calculations import emission_calculations
 
 import numpy as np
 import pandas as pd
-import re
 
 
 # Notebook from ClimateView that our calculations are based on: 
@@ -29,6 +29,8 @@ print('Hybrid car data and calculations finished')
 df = get_climate_plans(df)
 print('Climate plans added')
 
+df = bicycle_calculations(df)
+print('Bicycle data added')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -62,12 +64,13 @@ for i in range(len(df)):
         'climatePlanLink': df.iloc[i]['Länk till aktuell klimatplan'],
         'climatePlanYear': df.iloc[i]['Antagen år'],
         'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
+        'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita']
     })
 
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
     json.dump(temp, json_file, ensure_ascii=False, default=str)
 
-print('Cliamte data JSON file created and saved')
+print('Climate data JSON file created and saved')
 
 temp_df = pd.DataFrame(temp)
 export_to_xlsx(temp_df)
