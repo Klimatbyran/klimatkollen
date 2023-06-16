@@ -67,7 +67,7 @@ type DataType = 'Percent' | 'Link' | 'Number'
 
 export type DatasetDescription = {
   heading: string
-  body: string
+  body: string | JSX.Element
   source: React.ReactNode
   boundaries: number[] | string[]
   labels: string[]

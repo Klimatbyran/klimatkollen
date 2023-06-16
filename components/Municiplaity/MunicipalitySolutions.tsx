@@ -62,10 +62,9 @@ const MunicipalitySolutions = ({ municipality }: SolutionsProps) => {
       <SolutionSection
         icon={<Bike />}
         title="Cyklarna"
-        heading="Lorem ipsum"
+        heading="Antal meter cykelväg per invånare"
         data={municipality.BicycleMetrePerCapita.toFixed(1) + ' meter'}
-        info="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua."
+        info="Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild)."
       />
     </>
   )
