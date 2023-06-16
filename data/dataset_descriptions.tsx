@@ -69,25 +69,28 @@ export const datasetDescriptions: DatasetDescriptions = {
       'Avser nu gällande klimathandlingsplan eller motsvarande. Inte anpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande',
   },
 
-  Cykelvägarna: {
-    heading: 'Lorem ipsum',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  Cyklarna: {
+    heading: 'Antal meter cykelväg per capita',
+    body: 'På kartan och i listan visas antal meter cykelväg per invånare per kommun år 2022.',
     source: (
       <>
         Källa:{' '}
-        <a href="/" target="_blank" rel="noreferrer">
-          Lorem ipsum
+        <a
+          href="https://nvdb2012.trafikverket.se/SeTransportnatverket"
+          target="_blank"
+          rel="noreferrer">
+          Nationella Vägdatabasen/Trafikverket
         </a>
       </>
     ),
     boundaries: [1, 2, 3, 4, 5],
     labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
     labelRotateUp: [],
-    columnHeader: 'Lorem ipsum',
+    columnHeader: 'Cykelväglängd',
     dataType: 'Number',
     unit: 'm',
     tooltip:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+      'Antal meter cykelväg per invånare per kommun år 2022 totalt för alla väghållare (statlig, kommunal, enskild)',
   },
 }
 

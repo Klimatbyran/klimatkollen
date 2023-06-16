@@ -61,7 +61,7 @@ const MunicipalitySolutions = ({ municipality }: SolutionsProps) => {
       />
       <SolutionSection
         icon={<Bike />}
-        title="Cykelvägarna"
+        title="Cyklarna"
         heading="Lorem ipsum"
         data={municipality.BicycleMetrePerCapita.toFixed(1) + ' meter'}
         info="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

@@ -47,7 +47,7 @@ export const rankData = (municipalities: Municipality[]) => {
       name: item.Name,
       dataPoint: item.ClimatePlan?.Link,
     })),
-    Cykelvägarna: municipalities.map((item) => ({
+    Cyklarna: municipalities.map((item) => ({
       name: item.Name,
       dataPoint: item.BicycleMetrePerCapita,
     })),
@@ -65,7 +65,7 @@ export const rankData = (municipalities: Municipality[]) => {
     Elbilarna: [],
     Utsläppen: [],
     Klimatplanerna: [],
-    Cykelvägarna: [],
+    Cyklarna: [],
   }
 
   for (const datasetKey in datasets) {
