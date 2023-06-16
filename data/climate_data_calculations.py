@@ -67,7 +67,7 @@ for i in range(len(df)):
 with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
     json.dump(temp, json_file, ensure_ascii=False, default=str)
 
-print('Cliamte data JSON file created and saved')
+print('Climate data JSON file created and saved')
 
 temp_df = pd.DataFrame(temp)
 export_to_xlsx(temp_df)

@@ -37,9 +37,17 @@ def export_to_xlsx(df):
         columns={'climatePlanLink': 'KPI2: Klimatplan länk'}, inplace=True)
     df.rename(
         columns={'climatePlanYear': 'KPI2: Klimatplan antagen år'}, inplace=True)
+        
+    emissions_keys = df['emissions'].iloc[0].keys()
+    last_year = int(list(emissions_keys)[-1])
+    second_last_year = int(list(emissions_keys)[-2])
+
+    emission_diff_label = f'Utsläppsförändring {second_last_year}-{last_year} (%)'
+    df[emission_diff_label] = df['emissions'].apply(lambda x: round(((x[str(last_year)] / x[str(second_last_year)]) - 1) * 100, 1))
 
     filtered_df = df[['Kommun',
                       'Län',
+                      emission_diff_label,
                       'KPI1: Förändringstakt andel laddbara bilar (%)',
                       'KPI2: Klimatplan länk',
                       'KPI2: Klimatplan antagen år']]
