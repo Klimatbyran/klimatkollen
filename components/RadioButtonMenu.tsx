@@ -59,7 +59,7 @@ const RadioButtonMenu = ({ selectedData, setSelectedData }: MenuProps) => {
       datasetName !== default_dataset
         ? '/' + replaceLetters(datasetName).toLowerCase()
         : '/'
-    router.push(path, undefined, { shallow: true })
+    router.push(path, undefined, { shallow: true, scroll: false })
     setSelectedData(datasetName)
   }
 

@@ -63,7 +63,7 @@ export type EmissionSector = {
 
 export type SelectedData = keyof typeof datasetDescriptions
 
-type DataType = 'Percent' | 'Link' | 'Number'
+export type DatasetType = 'Percent' | 'Link' | 'Number'
 
 export type DatasetDescription = {
   heading: string
@@ -74,7 +74,7 @@ export type DatasetDescription = {
   labelRotateUp: boolean[]
   columnHeader: string
   tooltip: string
-  dataType: DataType
+  dataType: DatasetType
   unit?: string
 }
 

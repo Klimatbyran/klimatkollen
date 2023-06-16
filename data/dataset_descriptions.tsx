@@ -95,7 +95,7 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
         {' '}och{' '}
         <a
-          href="https://nvdb2012.trafikverket.se/SeTransportnatverket" // fixme
+          href="https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik" // fixme
           target="_blank"
           rel="noreferrer">
           SCB
