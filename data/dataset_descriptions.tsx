@@ -48,7 +48,19 @@ export const datasetDescriptions: DatasetDescriptions = {
 
   Klimatplanerna: {
     heading: 'Kommuner som har klimatplaner',
-    body: 'På kartan och i listan visas vilka kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer.',
+    body: (
+      <>
+        På kartan och i listan visas vilka kommuner som har eller saknar aktuella
+        klimatplaner, samt länkar till befintliga planer. Klicka{' '}
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
+          target="_blank"
+          rel="noreferrer">
+          här
+        </a>
+        {' '}för att redigera informationen.
+      </>
+    ),
     source: (
       <>
         Källa:{' '}
@@ -70,7 +82,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Cyklarna: {
-    heading: 'Antal meter cykelväg per capita',
+    heading: 'Antal meter cykelväg per invånare',
     body: 'På kartan och i listan visas antal meter cykelväg per invånare per kommun år 2022.',
     source: (
       <>
