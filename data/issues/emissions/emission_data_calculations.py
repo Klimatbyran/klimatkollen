@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 
 # Budget in metric tonnes from 2020 +40948459*50.81/46.29+40948459*50.81/46.29*1.05
 BUDGET = 170000000
-CURRENT_YEAR = 2020
+CURRENT_YEAR = 2021
 
 PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
 PATH_CRUNCHED_DATA = 'issues/emissions/output_extra.xlsx'
@@ -59,13 +59,13 @@ def deduct_cement(df):
 
     cement_deduction = {'Mörbylånga':
                         {2010: 248025000/1000, 2015: 255970000/1000, 2016: 239538000/1000,
-                         2017: 255783000/1000, 2018: 241897000/1000, 2019: 65176000/1000, 2020: 0},
+                         2017: 255783000/1000, 2018: 241897000/1000, 2019: 65176000/1000, 2020: 0, 2021: 0},
                         'Skövde':
                         {2010: 356965000/1000, 2015: 358634000/1000, 2016: 384926000/1000, 2017: 407633130 /
-                         1000, 2018: 445630340/1000, 2019: 440504330/1000, 2020: 459092473/1000},
+                         1000, 2018: 445630340/1000, 2019: 440504330/1000, 2020: 459092473/1000, 2021: 0},
                         'Gotland':
                         {2010: 1579811000/1000, 2015: 1926036000/1000, 2016: 1903887000/1000, 2017: 1757110000 /
-                         1000, 2018: 1740412000/1000, 2019: 1536480000/1000, 2020: 1624463000/1000}
+                         1000, 2018: 1740412000/1000, 2019: 1536480000/1000, 2020: 1624463000/1000, 2021: 0}
                         }
 
     # Deduct cement from given municipalities
@@ -135,8 +135,8 @@ def calculate_trend(df):
         # Adding all the years we will use for the curve fit. This starts in 2015 to the latest year. NOTE: this can be changed
         x = np.arange(2015, latest+1)
         # Adding all the emissions from the respective years. Note is needs to be changed in parallel with the line above
-        # 7:13 to access correct columns
-        y = np.array(df.iloc[i][7:13], dtype=float)
+        # 7:14 to access correct columns
+        y = np.array(df.iloc[i][7:14], dtype=float)
         # Fit a straight line to the data defined above using least squares
         fit = np.polyfit(x, y, 1)
 
