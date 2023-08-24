@@ -2,10 +2,12 @@ import pandas as pd
 import json
 
 
+PATH_CONSUMPTION_DATA = 'issues/consumption/consumption_data_raw.json'
+
 def get_consumption_emissions(df):
 
     # Parse JSON data
-    with open('issues/consumption/consumption_data_raw.json', 'r') as file:
+    with open(PATH_CONSUMPTION_DATA, 'r') as file:
         data = json.load(file)
 
     # List to store each municipality's emission properties
