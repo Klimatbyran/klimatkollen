@@ -5,31 +5,38 @@ export default function Document() {
     <Html>
       <Head>
         <link
-          href="/fonts/roboto/roboto-v29-latin-300.woff2"
+          href="/fonts/Anonymous_Pro/AnonymousPro-Regular.tff"
           rel="preload"
           as="font"
-          type="font/woff2"
+          type="font/tff"
           crossOrigin="anonymous"
         />
         <link
-          href="/fonts/roboto/roboto-v29-latin-regular.woff2"
+          href="/fonts/Anonymous_Pro/AnonymousPro-Italic.tff"
           rel="preload"
           as="font"
-          type="font/woff2"
+          type="font/tff"
           crossOrigin="anonymous"
         />
         <link
-          href="/fonts/roboto/roboto-v29-latin-500.woff2"
+          href="/fonts/Anonymous_Pro/AnonymousPro-Bold.tff"
           rel="preload"
           as="font"
-          type="font/woff2"
+          type="font/tff"
           crossOrigin="anonymous"
         />
         <link
-          href="/fonts/roboto/roboto-v29-latin-700.woff2"
+          href="/fonts/Source_Serif_4/SourceSerif4-VariableFont_opsz,wght.tff"
           rel="preload"
           as="font"
-          type="font/woff2"
+          type="font/tff"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="/fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.tff"
+          rel="preload"
+          as="font"
+          type="font/tff"
           crossOrigin="anonymous"
         />
       </Head>
