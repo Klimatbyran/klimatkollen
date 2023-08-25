@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { devices } from '../utils/devices'
 
-type BackgroundColors = 'lightBlack' | 'black' | 'gradient'
+type BackgroundColors = 'midGreen' | 'lightBlack' | 'black' | 'gradient'
 
 const Wrap = styled.div<{ background: BackgroundColors }>`
   background: ${({ background, theme }) => theme[background]};

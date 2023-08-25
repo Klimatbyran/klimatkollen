@@ -60,6 +60,7 @@ const BottomContainer = styled.div`
   align-items: flex-start;
   flex: 1;
   margin: 32px;
+  color: ${({ theme }) => theme.black};
 
   @media only screen and (${devices.tablet}) {
     align-self: flex-start;
@@ -67,13 +68,11 @@ const BottomContainer = styled.div`
 `
 
 const Copyright = styled.p`
-  color: ${({ theme }) => theme.offWhite};
   font-size: 13px;
   margin-top: 2rem;
 `
 
 const GHLink = styled.p`
-  color: ${({ theme }) => theme.offWhite};
   font-size: 13px;
 `
 
@@ -106,7 +105,7 @@ const ContactLink = styled.a`
 const Footer = () => {
   return (
     <>
-      <PageWrapper backgroundColor={'lightBlack'}>
+      <PageWrapper backgroundColor={'black'}>
         <Foot>
           <ContentWrapper>
             <Navigation />
@@ -134,10 +133,10 @@ const Footer = () => {
           </ContentWrapper>
         </Foot>
       </PageWrapper>
-      <PageWrapper backgroundColor={'black'}>
+      <PageWrapper backgroundColor={'midGreen'}>
         <BottomParent>
           <BottomContainer>
-            <img src='/klimatkollen_logo.svg' height='36px' alt='Klimatkollen logo' />
+            <img src='/klimatkollen_logo_black.svg' height='36px' alt='Klimatkollen logo' />
             <Paragraph>
               Klimatkollen är en medborgarplattform som tillgängliggör klimatdata.
             </Paragraph>
