@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@danmarshall/deckgl-typings": "^4.9.13",
-    "@tanstack/react-table": "^8.8.5",
+    "@tanstack/react-table": "^8.9.3",
     "@types/styled-components": "^5.1.19",
     "@types/wikidata-sdk": "^6.1.0",
     "axios": "^1.4.0",
