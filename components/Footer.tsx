@@ -68,11 +68,13 @@ const BottomContainer = styled.div`
 `
 
 const Copyright = styled.p`
+  font-family: 'Anonymous Pro';
   font-size: 13px;
   margin-top: 2rem;
 `
 
 const GHLink = styled.p`
+  font-family: 'Anonymous Pro';
   font-size: 13px;
 `
 
