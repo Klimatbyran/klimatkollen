@@ -8,18 +8,17 @@ const RadioContainer = styled.div`
   margin-top: 30px;
   gap: 16px;
   display: flex;
-  font-weight: bolder;
 `
 
 const RadioLabel = styled.label`
   padding: 0.5rem 1rem;
   border-radius: 4px;
+  font-family: 'Anonymous Pro';
   font-size: 14px;
   line-height: 20px;
-  font-weight: 700;
   text-decoration: none;
   color: ${({ theme }) => theme.offWhite};
-  background: ${({ theme }) => theme.lightBlack};
+  border: 1px solid ${({ theme }) => theme.lightBlack};
   white-space: nowrap;
   cursor: pointer;
   margin-bottom: 8px;

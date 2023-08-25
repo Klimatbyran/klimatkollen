@@ -3,6 +3,30 @@ import Button from './Button'
 import styled from 'styled-components'
 import { devices } from '../utils/devices'
 import { EmailFormFields } from 'react-mailchimp-subscribe'
+import { ParagraphBold } from './Typography'
+
+const Container = styled.div`
+  width: 100%;
+  background: ${({ theme }) => theme.offWhite};
+  display: flex;
+  padding: 16px;
+  border-radius: 8px;
+  color: ${({ theme }) => theme.black};
+  gap: 1.5rem;
+  flex-direction: column;
+`
+
+const ParagraphBoldGreen = styled(ParagraphBold)`
+  color: ${({ theme }) => theme.midGreen};
+  padding: 0;
+  margin: 0;
+`
+
+const Paragraph = styled.p`
+  font-family: 'Anonymous Pro';
+  padding: 0;
+  margin: 0;
+`
 
 const StyledForm = styled.form`
   display: flex;
@@ -15,14 +39,13 @@ const StyledForm = styled.form`
 `
 
 const StyledInput = styled.input`
-  background: transparent;
   height: 55px;
-  border: 1px solid ${({ theme }) => theme.offWhite};
+  border: 1px solid ${({ theme }) => theme.midGreen};
   border-radius: 5px;
   padding: 15px;
-  color: ${({ theme }) => theme.offWhite};
+  color: ${({ theme }) => theme.black};
   font-size: 16px;
-  font-family: Roboto;
+  font-family: 'Borna';
 
   ::placeholder,
   ::-webkit-input-placeholder {
@@ -35,12 +58,6 @@ const StyledInput = styled.input`
   @media only screen and (${devices.tablet}) {
     min-width: 400px;
   }
-`
-
-const Container = styled.div`
-  display: flex;
-  gap: 1.5rem;
-  flex-direction: column;
 `
 
 const EmailValidation = styled.div`
@@ -100,11 +117,13 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
 
   return (
     <Container>
+      <ParagraphBoldGreen>Vill du få nyheter om Klimatkollen?</ParagraphBoldGreen>
+      {/* <Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Paragraph> */}
       <StyledForm onSubmit={handleFormSubmit}>
         <StyledInput
           onChange={(event) => setEmail(event.target.value)}
           type="email"
-          placeholder="E-postadress"
+          placeholder="Ange mailadress"
           value={email}
           required
           disabled={showThanks}

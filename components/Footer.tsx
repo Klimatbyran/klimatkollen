@@ -112,7 +112,6 @@ const Footer = () => {
           <ContentWrapper>
             <Navigation />
             <TextSection>
-              <ParagraphBold>Vill du få nyheter om Klimatkollen?</ParagraphBold>
               <NewsletterSubscribe />
             </TextSection>
             <TextSection>
