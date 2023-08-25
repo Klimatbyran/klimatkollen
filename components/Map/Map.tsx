@@ -4,8 +4,9 @@ import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
 import { ReactNode, useEffect, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import NextNProgress from 'nextjs-progressbar';
+import NextNProgress from 'nextjs-progressbar'
 import { colorTheme } from '../../Theme'
+import { DatasetType } from '../../utils/types'
 import { mapColors } from '../shared'
 
 const INITIAL_VIEW_STATE = {
@@ -18,7 +19,8 @@ const INITIAL_VIEW_STATE = {
 }
 
 const DeckGLWrapper = styled.div`
-  width: 100%;`
+  width: 100%;
+`
 
 const hexToRGBA = (hex: string): RGBAColor => {
   const hexValue = hex.replace('#', '')
@@ -110,11 +112,12 @@ const replaceLetters = (name: string) => {
 
 type Props = {
   data: Array<{ name: string; dataPoint: number | string }>
-  children?: ReactNode
+  dataType: DatasetType
   boundaries: number[] | string[]
+  children?: ReactNode
 }
 
-const Map = ({ data, children, boundaries }: Props) => {
+const Map = ({ data, dataType, boundaries, children }: Props) => {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
@@ -126,28 +129,33 @@ const Map = ({ data, children, boundaries }: Props) => {
     fetchData()
   }, [])
 
-  const municipalityLines = municipalityData?.features?.flatMap(({ geometry, properties }: { geometry: any, properties: any }) => {
-    const name = replaceLetters(properties.name);
-    const dataPoint = data.find((e) => e.name === name)?.dataPoint;
+  const municipalityLines = municipalityData?.features?.flatMap(
+    ({ geometry, properties }: { geometry: any; properties: any }) => {
+      const name = replaceLetters(properties.name)
+      const dataPoint = data.find((e) => e.name === name)?.dataPoint
 
-    if (geometry.type === 'MultiPolygon') {
-      return geometry.coordinates.map((coords: any) => ({
-        geometry: coords[0],
-        name,
-        dataPoint,
-      }));
-    } else {
-      return [{
-        geometry: geometry.coordinates[0][0],
-        name,
-        dataPoint,
-      }];
-    }
-  });
+      if (geometry.type === 'MultiPolygon') {
+        return geometry.coordinates.map((coords: any) => ({
+          geometry: coords[0],
+          name,
+          dataPoint,
+        }))
+      } else {
+        return [
+          {
+            geometry: geometry.coordinates[0][0],
+            name,
+            dataPoint,
+          },
+        ]
+      }
+    },
+  )
 
   type MunicipalityData = {
-    dataPoint: number
     name: string
+    dataPoint: number
+    dataType: DatasetType
     geometry: [number, number][]
   }
 
@@ -173,13 +181,19 @@ const Map = ({ data, children, boundaries }: Props) => {
   })
 
   const formatData = (object: unknown) => {
-    if (typeof (object as unknown as MunicipalityData)?.dataPoint === 'number') {
-      return ((object as unknown as MunicipalityData)?.dataPoint * 100).toFixed(1)
-    } else {
-      const data = (object as unknown as MunicipalityData)?.dataPoint
-      const tooltipString = (boundaries as string[]).includes(data as unknown as string) ? 'Nej' : 'Ja'
-      return tooltipString
+    const municipality = object as unknown as MunicipalityData
+    let dataString = municipality?.dataPoint.toFixed(1)
+
+    if (dataType === 'Link') {
+      const data = municipality?.dataPoint
+      dataString = (boundaries as string[]).includes(data as unknown as string)
+        ? 'Nej'
+        : 'Ja'
+    } else if (dataType === 'Percent') {
+      dataString = (municipality?.dataPoint * 100).toFixed(1)
     }
+
+    return dataString
   }
 
   return (
@@ -191,31 +205,32 @@ const Map = ({ data, children, boundaries }: Props) => {
         height={5}
         showOnShallow={false}
         options={{
-          showSpinner: false
+          showSpinner: false,
         }}
       />
       <DeckGL
         initialViewState={INITIAL_VIEW_STATE}
-        controller={{
-        }}
-        getTooltip={({ object }) => object && {
-          html: `
+        controller={{}}
+        getTooltip={({ object }) =>
+          object && {
+            html: `
           <p>${(object as unknown as MunicipalityData)?.name}: ${formatData(object)}</p>`,
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
             fontSize: '0.7em',
             color: colorTheme.offWhite
+            },
           }
-        }}
+        }
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as MunicipalityData)?.name
           if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
         layers={[kommunLayer]}
-      // FIXME needs to be adapted to mobile before reintroducing
-      /*onViewStateChange={({ viewState }) => {
+        // FIXME needs to be adapted to mobile before reintroducing
+        /*onViewStateChange={({ viewState }) => {
         viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))
         viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
         return viewState

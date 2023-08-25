@@ -56,7 +56,7 @@ const StyledIcon = styled.div`
 type Props = {
   heading: string
   data: string
-  info?: JSX.Element
+  info?: JSX.Element | string
 }
 
 const FactSection = ({ heading, data, info }: Props) => {

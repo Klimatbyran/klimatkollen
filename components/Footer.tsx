@@ -131,26 +131,6 @@ const Footer = () => {
                 link='https://www.klimatklubben.se/'
                 logo={<img src="/icons/klimatklubben.svg" width={'auto'} height={90} alt="Klimatklubben logo" />} />
             </FlexSection>
-            <TextSection>
-              <H5>Tidigare samarbetspartners</H5>
-            </TextSection>
-            <FlexSection>
-              <PartnerSection
-                link='https://www.pwc.se/'
-                logo={<img src='/pwc.png' width={'auto'} height={90} alt="PWC logo" />} />
-              <PartnerSection
-                link='https://varabarnsklimat.se/'
-                logo={<img src="/icons/vbk.svg" width={86} height={'auto'} alt="Våra barns klimat logo" />} />
-              <PartnerSection
-                link='https://www.wedonthavetime.org/'
-                logo={<img src="/icons/we-dont-have-time.svg" width={180} height={'auto'} alt="Wedonthavetime logo" />} />
-              <PartnerSection
-                link='https://argandpartners.com/'
-                logo={<img src="/icons/argand.svg" width={180} height={'auto'} alt="Argand logo" />} />
-              <PartnerSection
-                link='https://www.stormgeo.com/'
-                logo={<img src="/icons/stormgeo.svg" width={180} height={'auto'} alt="StromGeo logo" />} />
-            </FlexSection>
           </ContentWrapper>
         </Foot>
       </PageWrapper>

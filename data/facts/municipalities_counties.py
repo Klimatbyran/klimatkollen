@@ -17,18 +17,18 @@ def get_municipalities():
     # Iterate through the rows of the dataframe
     for i, row in df.iterrows():
         if len(row['Kod']) == 4:  # Check if it is a four-digit code row
-            kod = row['Kod']
-            kommun = row['Namn']
+            code = row['Kod']
+            municipality = row['Namn']
             # Lookup the county (Län) based on the two-digit code
-            län = df.loc[df['Kod'] == kod[:2], 'Namn'].values[0]
+            county = df.loc[df['Kod'] == code[:2], 'Namn'].values[0]
             result = result.append(
-                {'Kommun': kommun, 'Kod': kod, 'Län': län}, ignore_index=True)
+                {'Kommun': municipality, 'Kod': code, 'Län': county}, ignore_index=True)
 
     # Return the resulting dataframe
     return result
 
 
-def export_to_xslx(df):
+def export_to_xlsx(df):
     df['KPI1: Förändringstakt andel laddbara bilar (%)'] = df['electricCarChangePercent'].apply(lambda x: round(x*100, 1))
 
     df.rename(columns={'kommun': 'Kommun'}, inplace=True)
@@ -37,9 +37,17 @@ def export_to_xslx(df):
         columns={'climatePlanLink': 'KPI2: Klimatplan länk'}, inplace=True)
     df.rename(
         columns={'climatePlanYear': 'KPI2: Klimatplan antagen år'}, inplace=True)
+        
+    emissions_keys = df['emissions'].iloc[0].keys()
+    last_year = int(list(emissions_keys)[-1])
+    second_last_year = int(list(emissions_keys)[-2])
+
+    emission_diff_label = f'Utsläppsförändring {second_last_year}-{last_year} (%)'
+    df[emission_diff_label] = df['emissions'].apply(lambda x: round(((x[str(last_year)] / x[str(second_last_year)]) - 1) * 100, 1))
 
     filtered_df = df[['Kommun',
                       'Län',
+                      emission_diff_label,
                       'KPI1: Förändringstakt andel laddbara bilar (%)',
                       'KPI2: Klimatplan länk',
                       'KPI2: Klimatplan antagen år']]
@@ -54,4 +62,4 @@ def export_to_xslx(df):
     # Save the Excel file
     writer.save()
 
-    print('Cliamte data xlsx file created and saved')
+    print('Climate data xlsx file created and saved')

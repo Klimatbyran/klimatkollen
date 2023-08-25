@@ -13,7 +13,7 @@ export class ClimateDataService {
     const jsonData: any[] = JSON.parse(climateDataFileContent)
 
     this.municipalities = jsonData.map((jsonData: any) => {
-      var emissions = new Array<EmissionPerYear>()
+      let emissions = new Array<EmissionPerYear>()
 
       Object.entries(jsonData.emissions).forEach(([year, emission]) => {
         let emissionByYear = {
@@ -64,7 +64,7 @@ export class ClimateDataService {
         Comment: jsonData.climatePlanComment,
       } as unknown as ClimatePlan
 
-      let municipality = {
+      const municipality = {
         Name: jsonData.kommun,
         HistoricalEmission: emission,
         EmissionTrend: trend,
@@ -76,6 +76,7 @@ export class ClimateDataService {
         ElectricCarChangePercent: jsonData.electricCarChangePercent,
         ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
         ClimatePlan: climatePlan,
+        BicycleMetrePerCapita: jsonData.bicycleMetrePerCapita
       } as Municipality
       return municipality
     })

@@ -1,34 +1,42 @@
 # -*- coding: utf-8 -*-
 
 import datetime
+from math import isnan
 import numpy as np
 import pandas as pd
+from dateutil.relativedelta import relativedelta
 
 
 # Budget in metric tonnes from 2020 +40948459*50.81/46.29+40948459*50.81/46.29*1.05
 BUDGET = 170000000
+CURRENT_YEAR = 2020
+
 PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
 PATH_CRUNCHED_DATA = 'issues/emissions/output_extra.xlsx'
+
+YEAR_OFFSET = 1
+YEAR_SECONDS = 60 * 60 * 24 * 365  # a year in seconds
 
 
 def get_n_prep_data_from_smhi(df):
     # Download data from SMHI and load it in to a pandas dataframe
     df_smhi = pd.read_excel(PATH_SMHI)
 
-    df_smhi = df_smhi.drop([0, 1, 2])  # remove the first 4 rows
-    df_smhi = df_smhi.reset_index(drop=True)  # reset index
+    # remove the first 4 rows and reset the index
+    df_smhi = df_smhi.drop([0, 1, 2]).reset_index(drop=True)
 
     # Put the first 4 elements in row 1 in to row 0
     df_smhi.iloc[0, [0, 1, 2, 3]] = df_smhi.iloc[1, [0, 1, 2, 3]]
 
-    df_smhi = df_smhi.drop([1])  # remove row 1
-    df_smhi = df_smhi.reset_index(drop=True)  # reset index
-    # change the coloum names to the first rows entries
+    df_smhi = df_smhi.drop([1]).reset_index(
+        drop=True)  # remove row 1 and reset the index
+
+    # Change the column names to the first rows entries
     df_smhi = df_smhi.rename(columns=df_smhi.iloc[0])
     df_smhi = df_smhi.drop([0])  # remove row 0
 
     df_smhi = df_smhi[(df_smhi['Huvudsektor'] == 'Alla') & (df_smhi['Undersektor'] == 'Alla')
-            & (df_smhi['Län'] != 'Alla') & (df_smhi['Kommun'] != 'Alla')]
+                      & (df_smhi['Län'] != 'Alla') & (df_smhi['Kommun'] != 'Alla')]
     df_smhi = df_smhi.reset_index(drop=True)
 
     # Remove said columns
@@ -42,9 +50,10 @@ def get_n_prep_data_from_smhi(df):
 
 
 def deduct_cement(df):
-    # https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=1441 Sources for cement deduction
-    # https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=5932
-    # https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=834
+    # Sources for cement deduction
+    # Mörbylånga: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=1441
+    # Skövde: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=5932
+    # Gotland: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=834
 
     df_cem = df.copy()  # copy dataframe
 
@@ -59,7 +68,7 @@ def deduct_cement(df):
                          1000, 2018: 1740412000/1000, 2019: 1536480000/1000, 2020: 1624463000/1000}
                         }
 
-    # Deduct cement from given kommuns
+    # Deduct cement from given municipalities
     for i in cement_deduction.keys():
         for j in cement_deduction[i].keys():
             df_cem.loc[df_cem['Kommun'] == i, j] = df_cem.loc[df_cem['Kommun']
@@ -69,58 +78,169 @@ def deduct_cement(df):
 
 
 def calculate_municipality_budgets(df):
-   # Calculate each kommuns procentage of the total budget using grandfathering
-    year_range = [2015, 2016, 2017, 2018, 2019]
-    df['Andel'] = [df[year_range].sum(axis=1)[i]/df[year_range].sum(
+    # Applying GF to get the share of the budget for each municipality
+    years_range = range(2015, CURRENT_YEAR)
+    df['budgetShare'] = [df[years_range].sum(axis=1)[i]/df[years_range].sum(
         axis=0).sum() for i in range(len(df))]
 
-    # Update each kommuns budget given the new 2020 data
-    df['Budget'] = BUDGET*df['Andel']-df[2020]
+    # Find all the years that has been reported after (and including) the year the budget starts "eating"
+    years_past = [i for i in df.columns if type(
+        i) == int and i >= CURRENT_YEAR]
+
+    # Each municipalities gets its share of the budget
+    df['Budget'] = BUDGET*df['budgetShare']
+    for i in range(len(years_past)):
+        # Subtracting years that have passed since the budget started "eating"
+        df['Budget'] = df['Budget'] - df[years_past[i]]
 
     return df
 
 
-def calculate_municiplaity_paris_path(df):
-    # Create an exponential curve that satisfy each kommuns budget
+def calculate_paris_path(df):
+    # Find all the years that has been reported after (and including) the year the budget starts "eating"
+    years_past = [i for i in df.columns if type(
+        i) == int and i >= CURRENT_YEAR]
+
+    # Create an exponential curve that satisfy each municipality's budget
     temp = []
+    latest = int(sorted(years_past)[-1])  # The latest year in the dataframe
     for i in range(len(df)):
-        dicts = {}
-        keys = range(2020, 2050+1)
-        for idx, value in enumerate(keys):
-            dicts[value] = df.iloc[i][2020] * \
-                np.exp(-(df.iloc[i][2020])/(df.iloc[i]['Budget'])*idx)
+        dicts = {}  # We'll store the exponential path och each municipality in a dictionary where the keys are the years
+        # We take the time horizon from the latest year until 2050
+        keys = range(latest, 2050+1)
+        for value in keys:
+            # Calculated what the emission level has to be at future date if one where to follow the exponential decay curve
+            dicts[value] = df.iloc[i][latest] * \
+                np.exp(-(df.iloc[i][latest]) /
+                       (df.iloc[i]['Budget'])*(value-latest))
         temp.append(dicts)
 
-    df['Paris Path'] = temp  # add the exponential path to the dataframe
+    df['parisPath'] = temp  # add the exponential path to the dataframe
 
     return df
 
 
-def calculate_linear_emissions(df):
-    # Calculate the linerar trend
+def calculate_trend(df):
+    # Find all the years that has been reported after (and including) the year the budget starts "eating"
+    years_past = [i for i in df.columns if type(
+        i) == int and i >= CURRENT_YEAR]
+
+    # Create an exponential curve that satisfy each municipality's budget
     temp = []
+    latest = int(sorted(years_past)[-1])  # The latest year in the dataframe
+    df = df.sort_values('Kommun', ascending=True)
     for i in range(len(df)):
-        dicts = {2020: df.iloc[i][2020]}
-        x = np.arange(2015, 2020+1)
-        y = np.array(df.iloc[i][5:10+1], dtype=float)
+        # Add the latest datapoint to the dict
+        dicts = {latest: df.iloc[i][latest]}
+        # Adding all the years we will use for the curve fit. This starts in 2015 to the latest year. NOTE: this can be changed
+        x = np.arange(2015, latest+1)
+        # Adding all the emissions from the respective years. Note is needs to be changed in parallel with the line above
+        # 7:13 to access correct columns
+        y = np.array(df.iloc[i][7:13], dtype=float)
+        # Fit a straight line to the data defined above using least squares
         fit = np.polyfit(x, y, 1)
 
-        keys = range(2021, 2050+1)
+        # The rest of the keys for the dict we defined above. note that it starts at the latest plus 1 since we already have the latest in the dictionary already
+        keys = range(latest+1, 2050+1)
         for idx, value in enumerate(keys):
+            # Add the value for each year using the coefficient from the fit above. Max function so we don't get negative values
             dicts[value] = max(0, fit[0]*value+fit[1])
         temp.append(dicts)
 
-    df['Linear Path'] = temp  # add the linear trend to the dataframe
+    df['trend'] = temp
 
     # Calculate the emission from the linear trend using the trapezoidal rule
     temp = []
     for i in range(len(df)):
-        temp.append(np.trapz(list(df.iloc[i]['Linear Path'].values()), list(
-            df.iloc[i]['Linear Path'].keys())))
+        temp.append(np.trapz(list(df.iloc[i]['trend'].values()), list(
+            df.iloc[i]['trend'].keys())))
 
     # Add the emission form the linear trend to the dataframe
-    df['Linear Emission'] = temp
+    df['trendEmission'] = temp
 
+    return df
+
+
+def calculate_change_percent(df):
+    # Calculate what yearly decrease that is needed to reach Paris goal
+    temp = []
+    for i in range(len(df)):
+        # arbitrarily chosen years
+        start = df.iloc[i]['parisPath'][CURRENT_YEAR+1]
+        final = df.iloc[i]['parisPath'][CURRENT_YEAR+2]
+        temp.append(((start-final)/start)*100)
+
+    df['emissionChangePercent'] = temp
+    return df
+
+
+def calculate_hit_net_zero(df):
+    # Find all the years that has been reported after (and including) the year the budget starts "eating"
+    years_past = [i for i in df.columns if type(
+        i) == int and i >= CURRENT_YEAR]
+
+    # Create an exponential curve that satisfy each municipality's budget
+    temp = []
+    latest = int(sorted(years_past)[-1])  # The latest year in the dataframe
+
+    temp = []  # Temporary list that we will append to
+    for i in range(len(df)):
+        last_year = latest  # Year of the last datapoint
+        # We start at the last year +1 since if you look at the figure above of the linear trend you can see that from last year to last year +1 the line can go upwards.
+        fit = np.polyfit([last_year+1, last_year+2], [df.iloc[i]['trend']
+                         [last_year+1], df.iloc[i]['trend'][last_year+2]], 1)
+
+        if fit[0] < 0:  # If the slope is negative we will reach the x-axis
+            temp_f = -fit[1]/fit[0]  # Find where the line cross the x-axis
+            # Initiate the first day of our starting point date. Start at last_year+1 since the line can go up between last_year and last_year+1
+            my_date = datetime.datetime(int(last_year+1), 1, 1, 0, 0, 0)
+            # Add the length between the starting date and the net zero date to the starting date to get the date when net zero is reached
+            temp.append(
+                (my_date + relativedelta(seconds=int((temp_f-int(last_year+1)) * YEAR_SECONDS))).date())
+
+        else:  # If the slope is not negative you will never reach net zero
+            temp.append('Aldrig')
+
+    df['hitNetZero'] = temp
+    return df
+
+
+def calculate_budget_runs_out(df):
+    last_year = CURRENT_YEAR  # Year of the last datapoint
+
+    temp = []  # Temporary list that we will append to
+    for i in range(len(df)):
+        # Applying the trapezoidal method to calculate the emission of the linear trend
+        temp.append(np.trapz(list(df.iloc[i]['trend'].values()), list(
+            df.iloc[i]['trend'].keys())))
+
+    df['kumulativt'] = temp
+
+    temp = []  # Temporary list that we will append to
+
+    for i in range(len(df)):
+        # Get the line coefficient for the trend betwwne last_year+1 and last_year+2
+        fit = np.polyfit([last_year+1, last_year+2], [df.iloc[i]['trend']
+                         [last_year+1], df.iloc[i]['trend'][last_year+2]], 1)
+
+        B = df.iloc[i]['Budget']-np.trapz(list(df.iloc[i]['trend'].values())[:2], list(
+            df.iloc[i]['trend'].keys())[:2])  # Remove the "anomaly" from the budget
+
+        # Find the value where the straight line cross the x-axis
+        x = (
+            np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])
+
+        # Initiate the first day of our starting point date. Start at last_year+1 since the line can go up between last_year and last_year+1
+        my_date = datetime.datetime(last_year+1, 1, 1, 0, 0, 0)
+
+        # If the trends cumulative emission is larger than the budget than the municipality will run out of budget
+        if df.iloc[i]['kumulativt'] > df.iloc[i]['Budget']:
+            temp.append(
+                (my_date + relativedelta(seconds=int((x-last_year+2) * YEAR_SECONDS))).date())
+        else:
+            temp.append('Aldrig')
+
+    df['budgetRunsOut'] = temp
     return df
 
 
@@ -128,23 +248,11 @@ def emission_calculations(df):
     df_smhi = get_n_prep_data_from_smhi(df)
     df_cem = deduct_cement(df_smhi)
     df_budgeted = calculate_municipality_budgets(df_cem)
-    df_paris = calculate_municiplaity_paris_path(df_budgeted)
-    df_linear = calculate_linear_emissions(df_paris)
+    df_paris = calculate_paris_path(df_budgeted)
+    df_trend = calculate_trend(df_paris)
 
-    # LOAD CRUNCHED DATA FROM CLIMATE VIEW
-    # fix while rest of calculations are missing
+    df_change_percent = calculate_change_percent(df_trend)
+    df_net_zero = calculate_hit_net_zero(df_change_percent)
+    df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
 
-    df_raw_crunched = pd.read_excel(PATH_CRUNCHED_DATA)
-
-    df_raw_crunched['emissionChangePercent'] = df_raw_crunched['Procent minskning varje år med exponentiellt avtagande bana']
-    df_raw_crunched['hitNetZero'] = [i.date() if type(
-        i) is datetime.datetime else i for i in df_raw_crunched['När netto noll nås']]
-    df_raw_crunched['budgetRunsOut'] = [i.date() if type(
-        i) is datetime.datetime else i for i in df_raw_crunched['Budget tar slut']]
-
-    df_crunched = df_raw_crunched.filter(
-        ['Kommun', 'emissionChangePercent', 'hitNetZero', 'budgetRunsOut'], axis=1)
-
-    df_linear = df_cem.merge(df_crunched, on='Kommun', how='left')
-
-    return df_linear
+    return df_budget_runs_out
