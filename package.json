@@ -39,7 +39,7 @@
     "@babel/plugin-syntax-jsx": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
     "@iteam/eslint-config-react": "^0.3.2",
-    "@svgr/webpack": "^8.0.1",
+    "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "13.5.0",
