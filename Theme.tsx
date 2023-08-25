@@ -36,6 +36,10 @@ export const colorTheme = {
   gradientRed: 'linear-gradient(#EF3030, #8B1A1A)',
 }
 
+export const spacingTheme = {
+  smallSpacing: '8px',
+}
+
 type Props = {
   children: ReactNode
 }

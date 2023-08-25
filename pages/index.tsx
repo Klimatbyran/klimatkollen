@@ -20,6 +20,7 @@ import ToggleButton from '../components/ToggleButton'
 import { default_dataset, datasetDescriptions, data } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
+import { spacingTheme } from '../Theme'
 
 const Container = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ const Container = styled.div`
 `
 
 const InfoText = styled.div`
-  margin-top: 3rem;
+  padding: 1rem 1rem 0 1rem;
 `
 
 const ParagraphSource = styled(Paragraph)`
@@ -35,16 +36,20 @@ const ParagraphSource = styled(Paragraph)`
   color: ${({ theme }) => theme.midGreen};
 `
 
-const MunicipalityContainer = styled.div`
+const InfoContainer = styled.div`
+  background: ${({ theme }) => theme.lightBlack};
+  border-radius: ${({ theme }) => spacingTheme.smallSpacing};
+  margin-bottom: 1rem;
+`
+
+const ComparisonContainer = styled.div`
   position: relative;
   overflow-y: scroll;
   z-index: 150;
   // TODO: Hardcoding this is not good.
   height: 380px;
-  border: 1px solid ${({ theme }) => theme.offWhite};
   border-radius: 8px;
   display: flex;
-  margin-bottom: 32px;
   @media only screen and (${devices.tablet}) {
     height: 500px;
   }
@@ -99,39 +104,41 @@ const StartPage = ({
             selectedData={selectedData}
             setSelectedData={setSelectedData}
           />
-          <InfoText>
-            <ParagraphBold>{datasetDescription.heading}</ParagraphBold>
-            <Paragraph>{datasetDescription.body}</Paragraph>
-            <ParagraphSource>{datasetDescription.source}</ParagraphSource>
-          </InfoText>
           <ToggleButton
             handleClick={handleToggle}
             text={toggleViewMode === default_view_mode ? 'Se lista' : 'Se karta'}
             icon={toggleViewMode === default_view_mode ? <ListIcon /> : <MapIcon />}
           />
-          <MunicipalityContainer>
-            <div
-              style={{
-                display: toggleViewMode === default_view_mode ? 'block' : 'none',
-              }}>
-              <MapLabels
-                labels={datasetDescription.labels}
-                rotations={datasetDescription.labelRotateUp}
-              />
-              <Map
-                data={municipalityData}
-                dataType={datasetDescription.dataType}
-                boundaries={datasetDescription.boundaries}
-              />
-            </div>
-            <div
-              style={{
-                display: toggleViewMode === secondary_view_mode ? 'block' : 'none',
-                width: '100%',
-              }}>
-              <ComparisonTable data={rankedData[selectedData]} columns={cols} />
-            </div>
-          </MunicipalityContainer>
+          <InfoContainer>
+            <ComparisonContainer>
+              <div
+                style={{
+                  display: toggleViewMode === default_view_mode ? 'block' : 'none',
+                }}>
+                <MapLabels
+                  labels={datasetDescription.labels}
+                  rotations={datasetDescription.labelRotateUp}
+                />
+                <Map
+                  data={municipalityData}
+                  dataType={datasetDescription.dataType}
+                  boundaries={datasetDescription.boundaries}
+                />
+              </div>
+              <div
+                style={{
+                  display: toggleViewMode === secondary_view_mode ? 'block' : 'none',
+                  width: '100%',
+                }}>
+                <ComparisonTable data={rankedData[selectedData]} columns={cols} />
+              </div>
+            </ComparisonContainer>
+            <InfoText>
+              <ParagraphBold>{datasetDescription.heading}</ParagraphBold>
+              <Paragraph>{datasetDescription.body}</Paragraph>
+              <ParagraphSource>{datasetDescription.source}</ParagraphSource>
+            </InfoText>
+          </InfoContainer>
           <DropDown
             className="startpage"
             municipalitiesName={municipalityNames}
