@@ -59,7 +59,7 @@ const Partier = () => {
           </Paragraph>
           <Figure>
             <Image
-              src="/image1-31.png"
+              src="/images/image1-31.png"
               alt="Diagram gällande partiernas utsläppsmål jämfört med Sveriges koldioxidbudget."
               layout={'responsive'}
               width={936}

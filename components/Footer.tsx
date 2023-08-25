@@ -122,7 +122,7 @@ const Footer = () => {
                 logo={<img src="/icons/postkodstiftelsen.svg" width={180} height={'auto'} alt="Postkodstiftelsen logo" />} />
               <PartnerSection
                 link='https://www.wwf.se/'
-                logo={<img src='/WWF_Logo_Small_RGB_72dpi.jpg' width={'auto'} height={90} alt="WWF logo" />} />
+                logo={<img src='/partners/WWF_Logo_Small_RGB_72dpi.jpg' width={'auto'} height={90} alt="WWF logo" />} />
               <PartnerSection
                 link='https://www.climateview.global/'
                 logo={<img src="/icons/climateview.svg" width={180} height={'auto'} alt="ClimateViw logo" />} />
@@ -136,7 +136,7 @@ const Footer = () => {
       <PageWrapper backgroundColor={'midGreen'}>
         <BottomParent>
           <BottomContainer>
-            <img src='/klimatkollen_logo_black.svg' height='36px' alt='Klimatkollen logo' />
+            <img src='/logos/klimatkollen_logo_black.svg' height='36px' alt='Klimatkollen logo' />
             <Paragraph>
               Klimatkollen är en medborgarplattform som tillgängliggör klimatdata.
             </Paragraph>
