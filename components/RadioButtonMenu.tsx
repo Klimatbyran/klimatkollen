@@ -12,13 +12,13 @@ const RadioContainer = styled.div`
 
 const RadioLabel = styled.label`
   padding: 0.5rem 1rem;
-  border-radius: 4px;
   font-family: 'Anonymous Pro';
   font-size: 14px;
   line-height: 20px;
   text-decoration: none;
   color: ${({ theme }) => theme.offWhite};
   border: 1px solid ${({ theme }) => theme.lightBlack};
+  border-radius: 8px;
   white-space: nowrap;
   cursor: pointer;
   margin-bottom: 8px;
