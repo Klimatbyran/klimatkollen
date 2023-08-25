@@ -33,7 +33,7 @@ const InfoText = styled.div`
 
 const ParagraphSource = styled(Paragraph)`
   font-size: 13px;
-  color: ${({ theme }) => theme.midGreen};
+  color: ${({ theme }) => theme.grey};
 `
 
 const InfoContainer = styled.div`
