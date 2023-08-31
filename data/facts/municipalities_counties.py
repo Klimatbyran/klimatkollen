@@ -29,7 +29,8 @@ def get_municipalities():
 
 
 def export_to_xlsx(df):
-    df['KPI1: Förändringstakt andel laddbara bilar (%)'] = df['electricCarChangePercent'].apply(lambda x: round(x*100, 1))
+    df['KPI1: Förändringstakt andel laddbara bilar (%)'] = df['electricCarChangePercent'].apply(
+        lambda x: round(x*100, 1))
 
     df.rename(columns={'kommun': 'Kommun'}, inplace=True)
     df.rename(columns={'län': 'Län'}, inplace=True)
@@ -37,23 +38,33 @@ def export_to_xlsx(df):
         columns={'climatePlanLink': 'KPI2: Klimatplan länk'}, inplace=True)
     df.rename(
         columns={'climatePlanYear': 'KPI2: Klimatplan antagen år'}, inplace=True)
-        
+
     emissions_keys = df['emissions'].iloc[0].keys()
     last_year = int(list(emissions_keys)[-1])
     second_last_year = int(list(emissions_keys)[-2])
 
     emission_diff_label = f'Utsläppsförändring {second_last_year}-{last_year} (%)'
-    df[emission_diff_label] = df['emissions'].apply(lambda x: round(((x[str(last_year)] / x[str(second_last_year)]) - 1) * 100, 1))
+    df[emission_diff_label] = df['emissions'].apply(lambda x: round(
+        ((x[str(last_year)] / x[str(second_last_year)]) - 1) * 100, 1))
+
+    emission_diff_abs_label = f'Utsläppsförändring {second_last_year}-{last_year} (kton)'
+    df[emission_diff_abs_label] = df['emissions'].apply(
+        lambda x: round((x[str(last_year)]-x[str(second_last_year)])/1000, 1))
+
+
+
 
     filtered_df = df[['Kommun',
                       'Län',
                       emission_diff_label,
+                      emission_diff_abs_label,
                       'KPI1: Förändringstakt andel laddbara bilar (%)',
                       'KPI2: Klimatplan länk',
                       'KPI2: Klimatplan antagen år']]
 
     # Create an ExcelWriter object
     writer = pd.ExcelWriter('climate-data.xlsx', engine='xlsxwriter')
+    print('Created Excel with municipality emission and KPI:s')
 
     # Group the data by 'Län' and save each group on a separate tab
     for län, group in filtered_df.groupby('Län'):
