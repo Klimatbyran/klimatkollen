@@ -49,7 +49,8 @@ for i in range(len(df)):
             '2017': df.iloc[i][2017],
             '2018': df.iloc[i][2018],
             '2019': df.iloc[i][2019],
-            '2020': df.iloc[i][2020]
+            '2020': df.iloc[i][2020],
+            '2021': df.iloc[i][2021]
         },
         'budget': df.iloc[i]['Budget'],
         'emissionBudget': df.iloc[i]['parisPath'],
