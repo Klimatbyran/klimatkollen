@@ -104,13 +104,13 @@ const StartPage = ({
             selectedData={selectedData}
             setSelectedData={setSelectedData}
           />
-          <ToggleButton
-            handleClick={handleToggle}
-            text={toggleViewMode === default_view_mode ? 'Se lista' : 'Se karta'}
-            icon={toggleViewMode === default_view_mode ? <ListIcon /> : <MapIcon />}
-          />
           <InfoContainer>
             <ComparisonContainer>
+              <ToggleButton
+                handleClick={handleToggle}
+                text={toggleViewMode === default_view_mode ? 'Listvy' : 'Kartvy'}
+                icon={toggleViewMode === default_view_mode ? <ListIcon /> : <MapIcon />}
+              />
               <div
                 style={{
                   display: toggleViewMode === default_view_mode ? 'block' : 'none',
