@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
-import ArrowDown from '../public/icons/arrow-down.svg'
 import ArrowRightWhite from '../public/icons/arrow-right-white.svg'
 import ArrowRightGreen from '../public/icons/arrow-right-green.svg'
 import { devices } from '../utils/devices'
@@ -34,9 +33,8 @@ const Input = styled.input`
   width: 100%;
   height: 56px;
   background-color: transparent;
-  border: 1px solid white;
-  border-radius: 4px;
-  color: ${({ theme }) => theme.offWhite};
+  border: none;
+  color: ${({ theme }) => theme.midGreen};
   padding-left: 0.8rem;
   outline: none;
   font-size: 16px;
@@ -44,7 +42,7 @@ const Input = styled.input`
   font-family: Borna;
 
   ::placeholder {
-    color: ${({ theme }) => theme.offWhite};
+    color: ${({ theme }) => theme.midGreen};
   }
 
   @media only screen and (${devices.tablet}) {
@@ -70,7 +68,7 @@ const RoundButton = styled.button`
 `
 
 const MunicipalitiesWrapper = styled.ul`
-  background-color: ${({ theme }) => theme.offWhite};
+  background-color: ${({ theme }) => theme.midGreen};
   border-radius: 4px;
   max-height: 195px;
   overflow-y: scroll;
@@ -187,9 +185,6 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
               onChange={(e) => onInputChange(e.target.value)}
               value={selectedMunicipality}
             />
-            <Btn onClick={() => setShowDropDown((current) => !current)}>
-              <ArrowDown />
-            </Btn>
           </Flex>
           {showDropDown && (
             <MunicipalitiesWrapper className={className}>
