@@ -67,6 +67,12 @@ const RoundButton = styled.button`
   background: none;
 `
 
+const HorizontalLine = styled.div`
+  height: 1px;
+  background-color: ${({ theme }) => theme.midGreen};
+  width: 100%;
+`
+
 const MunicipalitiesWrapper = styled.ul`
   background-color: ${({ theme }) => theme.midGreen};
   border-radius: 4px;
@@ -186,6 +192,7 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
               value={selectedMunicipality}
             />
           </Flex>
+          <HorizontalLine />
           {showDropDown && (
             <MunicipalitiesWrapper className={className}>
               {municipalities.map((name, i) => (
