@@ -25,6 +25,7 @@ import { spacingTheme } from '../Theme'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `
 
 const InfoText = styled.div`

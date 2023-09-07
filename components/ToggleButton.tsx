@@ -17,9 +17,6 @@ const ToggleBtn = styled.button`
   align-items: center;
   justify-content: center;
   z-index: 150;
-  &:hover {
-    background: ${({ theme }) => theme.lightBlack};
-  }
 `
 
 const ToggleText = styled.p`
@@ -32,7 +29,7 @@ const IconContainer = styled.div`
   border-radius: 12px;
   border: none;
   background: ${({ theme }) => theme.darkGreenOne};
-  padding: 8px;
+  padding: 8px 8px 5px 8px;
 `
 
 type ToggleButtonProps = {
