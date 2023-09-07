@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
 import json
-from facts.municipalities_counties import export_to_xlsx
+import numpy as np
+import pandas as pd
+
 from solutions.cars.car_data_calculations import car_calculations
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
 from issues.emissions.emission_data_calculations import emission_calculations
-
-import numpy as np
-import pandas as pd
+from export_data import export_to_xlsx
 
 
-# Notebook from ClimateView that our calculations are based on: 
+# Notebook from ClimateView that our calculations are based on:
 # https://colab.research.google.com/drive/1qqMbdBTu5ulAPUe-0CRBmFuh8aNOiHEb?usp=sharing
 
 
@@ -68,7 +68,7 @@ for i in range(len(df)):
         'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita']
     })
 
-with open('climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
+with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
     json.dump(temp, json_file, ensure_ascii=False, default=str)
 
 print('Climate data JSON file created and saved')
