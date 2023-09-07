@@ -3,7 +3,7 @@ import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend,
 import * as fs from 'fs'
 import * as path from 'path'
 
-const CLIMATE_DATA_FILE_PATH = path.resolve('./data/climate-data.json')
+const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
 
 export class ClimateDataService {
   municipalities: Array<Municipality>

@@ -6,7 +6,7 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Tooltip
+  Tooltip,
 } from 'chart.js'
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
@@ -70,13 +70,7 @@ type Props = {
 
 type Dataset = Array<{ x: number; y: number }>
 
-const Graph = ({
-  step,
-  historical,
-  budget,
-  trend,
-  maxVisibleYear,
-}: Props) => {
+const Graph = ({ step, historical, budget, trend, maxVisibleYear }: Props) => {
   const setup = useMemo(
     () => getSetup([historical, trend, budget]),
     [historical, trend, budget],
@@ -92,11 +86,8 @@ const Graph = ({
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
-      Math.max(
-        budgetDataset.length,
-        pledgeDataset.length,
-        historicalDataset.length,
-      ) > setup.labels.length
+      Math.max(budgetDataset.length, pledgeDataset.length, historicalDataset.length) >
+      setup.labels.length
     ) {
       throw new Error('Dataset length larger than label length')
     }
@@ -165,7 +156,7 @@ const Graph = ({
                 bottom: 1,
               },
               titleFont: {
-                weight: 'normal'
+                weight: 'normal',
               },
               callbacks: {
                 title: function (tooltipItems) {
@@ -179,8 +170,8 @@ const Graph = ({
           },
           scales: {
             x: {
-              min: step === 0 ? setup.minYear : step < 3 ? 2016 : 2022,
-              max: step > 0 ? maxVisibleYear : 2020,
+              min: step === 0 ? setup.minYear : 2016,
+              max: step > 0 ? maxVisibleYear : 2021,
               grid: {
                 display: true,
                 color: 'rgba(255, 255, 255, 0.2)',

@@ -119,11 +119,7 @@ const formatData = (rowData: unknown, selectedData: SelectedData) => {
     dataString = rowNumber > 0 ? <span>+{percent}</span> : <span>{percent}</span>
   } else if (dataType === 'Number') {
     const rowNumber = rowData as number
-    dataString = (
-      <span>
-        {rowNumber.toFixed(1)}
-      </span>
-    )
+    dataString = <span>{rowNumber.toFixed(1)}</span>
   }
   return dataString
 }
