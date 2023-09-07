@@ -10,7 +10,6 @@ from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
 from issues.emissions.emission_data_calculations import emission_calculations
 from export_data import export_to_xlsx
-from export_data import dataframe_to_pdf
 
 
 # Notebook from ClimateView that our calculations are based on:
@@ -76,4 +75,3 @@ print('Climate data JSON file created and saved')
 
 temp_df = pd.DataFrame(temp)
 export_to_xlsx(temp_df)
-dataframe_to_pdf(temp_df)
