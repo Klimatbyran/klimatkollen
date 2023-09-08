@@ -37,7 +37,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.11",
     "@babel/plugin-syntax-jsx": "^7.22.5",
-    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-react": "^7.22.15",
     "@iteam/eslint-config-react": "^0.3.2",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^5.17.0",
