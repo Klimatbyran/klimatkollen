@@ -17,7 +17,7 @@ const Tooltip = styled.div`
   color: ${colorTheme.offWhite};
   padding: 10px;
   border-radius: 5px;
-  font: 0.8em "Roboto";
+  font: 0.8em "Borna";
   z-index: 100;
 `
 

@@ -188,7 +188,7 @@ const Graph = ({
               },
               ticks: {
                 font: {
-                  family: 'Roboto',
+                  family: 'Borna',
                   size: 15,
                   weight: '300',
                 },
@@ -210,7 +210,7 @@ const Graph = ({
               ticks: {
                 stepSize: 50_000,
                 font: {
-                  family: 'Roboto',
+                  family: 'Borna',
                   size: 15,
                   weight: '300',
                 },
