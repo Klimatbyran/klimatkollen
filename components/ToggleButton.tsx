@@ -1,10 +1,10 @@
 import styled from 'styled-components'
+import { devices } from '../utils/devices'
 
 const ToggleBtn = styled.button`
   width: 112px;
-  height: 36px;
+  height: 32px;
   margin-top: 1rem;
-  margin-right: 1rem;
   position: absolute;
   top: 0;
   right: 0;
@@ -17,18 +17,24 @@ const ToggleBtn = styled.button`
   align-items: center;
   justify-content: center;
   z-index: 150;
+  @media only screen and (${devices.mobile}) {
+    margin-right: 0;
+  }
 `
 
 const ToggleText = styled.p`
   margin-right: 8px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Borna';
+  @media only screen and (${devices.mobile}) {
+    font-size: 12px;
+  }
 `
 
 const IconContainer = styled.div`
   border-radius: 12px;
   border: none;
-  background: ${({ theme }) => theme.darkGreenOne};
+  background: ${({ theme }) => theme.midGreen};
   padding: 8px 8px 5px 8px;
 `
 

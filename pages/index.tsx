@@ -38,19 +38,24 @@ const ParagraphSource = styled(Paragraph)`
 `
 
 const InfoContainer = styled.div`
+  position: relative;
   background: ${({ theme }) => theme.lightBlack};
-  border-radius: ${({ theme }) => spacingTheme.smallSpacing};
+  border-radius: ${spacingTheme.smallSpacing};
   margin-bottom: 1rem;
+  z-index: 15;
 `
 
-const ComparisonContainer = styled.div`
+const ComparisonContainer = styled.div<{ viewMode: string }>`
   position: relative;
   overflow-y: scroll;
-  z-index: 150;
+  z-index: 100;
   // TODO: Hardcoding this is not good.
   height: 380px;
   border-radius: 8px;
   display: flex;
+  @media only screen and (${devices.mobile}) {
+    margin-top: ${({ viewMode }) => (viewMode === secondary_view_mode ? '32px' : '0')};
+  }
   @media only screen and (${devices.tablet}) {
     height: 500px;
   }
@@ -106,12 +111,12 @@ const StartPage = ({
             setSelectedData={setSelectedData}
           />
           <InfoContainer>
-            <ComparisonContainer>
-              <ToggleButton
-                handleClick={handleToggle}
-                text={toggleViewMode === default_view_mode ? 'Listvy' : 'Kartvy'}
-                icon={toggleViewMode === default_view_mode ? <ListIcon /> : <MapIcon />}
-              />
+            <ToggleButton
+              handleClick={handleToggle}
+              text={toggleViewMode === default_view_mode ? 'Listvy' : 'Kartvy'}
+              icon={toggleViewMode === default_view_mode ? <ListIcon /> : <MapIcon />}
+            />
+            <ComparisonContainer viewMode={toggleViewMode}>
               <div
                 style={{
                   display: toggleViewMode === default_view_mode ? 'block' : 'none',
