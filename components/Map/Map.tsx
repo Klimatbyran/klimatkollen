@@ -177,7 +177,7 @@ const Map = ({ data, dataType, boundaries, children }: Props) => {
 
   const formatData = (object: unknown) => {
     const municipality = object as unknown as MunicipalityData
-    let dataString = municipality?.dataPoint.toFixed(1)
+    let dataString = municipality?.dataPoint.toString()
 
     if (dataType === 'Link') {
       const data = municipality?.dataPoint
