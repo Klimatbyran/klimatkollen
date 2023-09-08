@@ -1,7 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
-import Image from 'next/image'
 
 import MetaTags from '../../components/MetaTags'
 import { H2, Paragraph } from '../../components/Typography'
@@ -12,12 +11,13 @@ import Footer from '../../components/Footer'
 import { UnorderedList, ListItem, OrderedList } from '../../components/shared'
 import ToggleSection from '../../components/ToggleSection'
 
-import Ola from './assets/ola.jpeg'
-import Frida from './assets/frida.jpg'
-import Anna from './assets/anna.jpeg'
-import CJ from './assets/carl-johan.jpg'
-import Christian from './assets/christian.jpeg'
-import Maria from './assets/maria.jpg'
+
+const Ola = '/board/ola.jpeg'
+const Frida = '/board/frida.jpg'
+const Anna = '/board/anna.jpeg'
+const CJ = '/board/carl-johan.jpg'
+const Christian = '/board/christian.jpeg'
+const Maria = '/board/maria.jpg'
 
 const Container = styled.section`
   display: flex;
@@ -40,8 +40,10 @@ const GridItem = styled.div`
   min-height: 200px;
 `
 
-const GridImage = styled(Image)`
+const GridImage = styled.img`
   border-radius: 50%;
+  width: 200px;
+  height: 200px;
 `
 
 const OmOss = () => {
