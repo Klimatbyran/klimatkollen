@@ -13,7 +13,7 @@
     "@tanstack/react-table": "^8.9.3",
     "@types/styled-components": "^5.1.19",
     "@types/wikidata-sdk": "^6.1.0",
-    "axios": "^1.4.0",
+    "axios": "^1.5.0",
     "babel-plugin-styled-components": "^2.1.4",
     "chart.js": "^4.4.0",
     "deck.gl": "^8.6.6",
