@@ -9,6 +9,7 @@ const RadioContainer = styled.div`
   gap: 16px;
   display: flex;
   font-weight: bolder;
+  flex-wrap: wrap;
 `
 
 const RadioLabel = styled.label`
