@@ -118,7 +118,6 @@ function Municipality(props: Props) {
             budget={municipality.Budget.CO2Equivalent}
             budgetRunsOut={municipality.BudgetRunsOut}
             emissionChangePercent={municipality.EmissionChangePercent}
-            population={municipality.Population}
             politicalRule={municipality.PoliticalRule}
             climatePlan={municipality.ClimatePlan}
           />
