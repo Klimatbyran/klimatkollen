@@ -80,7 +80,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             backgroundColor: colorTheme.main,
             fontSize: '13px',
           }}
-          expires={150}>
+          expires={150}
+        >
           Denna sida använder cookies för att förbättra användarupplevelsen.
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}

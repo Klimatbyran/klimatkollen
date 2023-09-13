@@ -12,7 +12,6 @@ import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityIssues from './MunicipalityIssues'
 
-
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,7 +71,7 @@ type Props = {
   municipalitiesName: Array<string>
 }
 
-const Municipality = (props: Props) => {
+function Municipality(props: Props) {
   const {
     step,
     municipality,
@@ -88,7 +87,7 @@ const Municipality = (props: Props) => {
   return (
     <>
       <PageWrapper backgroundColor="darkestGrey">
-        <BackArrow route={'/'} />
+        <BackArrow route="/" />
         <StyledContainer>
           <HeaderSection>
             <H1>{municipality.Name}</H1>
@@ -103,13 +102,17 @@ const Municipality = (props: Props) => {
             municipality={municipality}
             step={step}
             onNextStep={onNextStep}
-            onPreviousStep={onPreviousStep} />
+            onPreviousStep={onPreviousStep}
+          />
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>
-      <PageWrapper backgroundColor={'darkGrey'}>
+      <PageWrapper backgroundColor="darkGrey">
         <StyledH2>
-          <H2>Fakta om {municipality.Name}</H2>
+          <H2>
+            Fakta om
+            {municipality.Name}
+          </H2>
         </StyledH2>
         <Bottom>
           <ScoreCard

@@ -55,24 +55,23 @@ const getColor = (
       return red
     }
     return pink
-  } else {
-    if (dataPoint >= boundaries[0]) {
-      return pink
-    }
-    if (dataPoint >= boundaries[1]) {
-      return red
-    }
-    if (dataPoint >= boundaries[2]) {
-      return darkOrange
-    }
-    if (dataPoint >= boundaries[3]) {
-      return orange
-    }
-    if (dataPoint >= boundaries[4]) {
-      return yellow
-    }
-    return blue
   }
+  if (dataPoint >= boundaries[0]) {
+    return pink
+  }
+  if (dataPoint >= boundaries[1]) {
+    return red
+  }
+  if (dataPoint >= boundaries[2]) {
+    return darkOrange
+  }
+  if (dataPoint >= boundaries[3]) {
+    return orange
+  }
+  if (dataPoint >= boundaries[4]) {
+    return yellow
+  }
+  return blue
 }
 
 const replaceLetters = (name: string) => {
@@ -112,7 +111,9 @@ type Props = {
   children?: ReactNode
 }
 
-const Map = ({ data, dataType, boundaries, children }: Props) => {
+function Map({
+  data, dataType, boundaries, children,
+}: Props) {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
@@ -135,15 +136,14 @@ const Map = ({ data, dataType, boundaries, children }: Props) => {
           name,
           dataPoint,
         }))
-      } else {
-        return [
-          {
-            geometry: geometry.coordinates[0][0],
-            name,
-            dataPoint,
-          },
-        ]
       }
+      return [
+        {
+          geometry: geometry.coordinates[0][0],
+          name,
+          dataPoint,
+        },
+      ]
     },
   )
 
@@ -169,9 +169,7 @@ const Map = ({ data, dataType, boundaries, children }: Props) => {
     polygonOffset: 1,
     getPolygon: (k: any) => k.geometry,
     getLineColor: () => [0, 0, 0, 80],
-    getFillColor: (d) => {
-      return getColor((d as MunicipalityData).dataPoint, boundaries)
-    },
+    getFillColor: (d) => getColor((d as MunicipalityData).dataPoint, boundaries),
     pickable: true,
   })
 
@@ -206,18 +204,16 @@ const Map = ({ data, dataType, boundaries, children }: Props) => {
       <DeckGL
         initialViewState={INITIAL_VIEW_STATE}
         controller={{}}
-        getTooltip={({ object }) =>
-          object && {
-            html: `
+        getTooltip={({ object }) => object && {
+          html: `
           <p>${(object as unknown as MunicipalityData)?.name}: ${formatData(object)}</p>`,
-            style: {
-              backgroundColor: 'black',
-              borderRadius: '5px',
-              fontSize: '0.7em',
-              color: 'white',
-            },
-          }
-        }
+          style: {
+            backgroundColor: 'black',
+            borderRadius: '5px',
+            fontSize: '0.7em',
+            color: 'white',
+          },
+        }}
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as MunicipalityData)?.name
@@ -225,11 +221,11 @@ const Map = ({ data, dataType, boundaries, children }: Props) => {
         }}
         layers={[kommunLayer]}
         // FIXME needs to be adapted to mobile before reintroducing
-        /*onViewStateChange={({ viewState }) => {
+        /* onViewStateChange={({ viewState }) => {
         viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))
         viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
         return viewState
-      }}*/
+      }} */
       />
       {children}
     </DeckGLWrapper>

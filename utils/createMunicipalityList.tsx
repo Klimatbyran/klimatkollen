@@ -1,6 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { DatasetDescription, Municipality, SelectedData } from './types'
 import { useMemo } from 'react'
+import { DatasetDescription, Municipality, SelectedData } from './types'
 import { data, datasetDescriptions, default_dataset } from '../data/dataset_descriptions'
 import InfoTooltip from '../components/InfoTooltip'
 
@@ -18,9 +18,7 @@ export const calculateNumberRankings = (
   data: Array<{ name: string; dataPoint: number }>,
   sortAscending: boolean,
 ) => {
-  const sortedData = data.sort((a, b) =>
-    sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint,
-  )
+  const sortedData = data.sort((a, b) => (sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint))
   const rankedData = sortedData.map((item, index) => ({
     ...item,
     index: index + 1,
@@ -80,7 +78,7 @@ export const rankData = (municipalities: Municipality[]) => {
           ),
         )
       } else {
-        const sortAscending = datasetKey === default_dataset ? true : false
+        const sortAscending = datasetKey === default_dataset
         newRankedData[datasetKey] = calculateNumberRankings(
           datasets[datasetKey].map(
             (item: { name: string; dataPoint: number | string }) => ({
@@ -98,8 +96,8 @@ export const rankData = (municipalities: Municipality[]) => {
 }
 
 const formatData = (rowData: unknown, selectedData: SelectedData) => {
-  const boundaries: Array<string | number> = datasetDescriptions[selectedData].boundaries
-  const dataType = datasetDescriptions[selectedData].dataType
+  const { boundaries } = datasetDescriptions[selectedData]
+  const { dataType } = datasetDescriptions[selectedData]
   let dataString: JSX.Element = <span>Data saknas</span>
   if (dataType === 'Link') {
     dataString = boundaries.includes(rowData as string) ? (
@@ -109,14 +107,20 @@ const formatData = (rowData: unknown, selectedData: SelectedData) => {
         href={rowData as string}
         target="_blank"
         rel="noreferrer"
-        onClick={(e) => e.stopPropagation()}>
+        onClick={(e) => e.stopPropagation()}
+      >
         Öppna
       </a>
     )
   } else if (dataType === 'Percent') {
     const rowNumber = rowData as number
     const percent = (rowNumber * 100).toFixed(1)
-    dataString = rowNumber > 0 ? <span>+{percent}</span> : <span>{percent}</span>
+    dataString = rowNumber > 0 ? (
+      <span>
+        +
+        {percent}
+      </span>
+    ) : <span>{percent}</span>
   } else if (dataType === 'Number') {
     const rowNumber = rowData as number
     dataString = <span>{rowNumber.toFixed(1)}</span>
@@ -151,12 +155,11 @@ export const listColumns = (
     () => [
       {
         header: isClimatePlan ? 'Har plan?' : 'Ranking',
-        cell: (row) =>
-          isClimatePlan
-            ? row.row.original.dataPoint === 'Saknas'
-              ? 'Nej'
-              : 'Ja'
-            : row.cell.row.index + 1,
+        cell: (row) => (isClimatePlan
+          ? row.row.original.dataPoint === 'Saknas'
+            ? 'Nej'
+            : 'Ja'
+          : row.cell.row.index + 1),
         accessorKey: 'index',
       },
       {
@@ -166,8 +169,7 @@ export const listColumns = (
       },
       {
         header: () => columnHeader(datasetDescription),
-        cell: (row: { renderValue: () => unknown }) =>
-          formatData(row.renderValue(), selectedData),
+        cell: (row: { renderValue: () => unknown }) => formatData(row.renderValue(), selectedData),
         accessorKey: 'dataPoint',
       },
     ],

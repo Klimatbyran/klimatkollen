@@ -59,7 +59,7 @@ type Props = {
   info?: JSX.Element | string
 }
 
-const FactSection = ({ heading, data, info }: Props) => {
+function FactSection({ heading, data, info }: Props) {
   const [toggle, setToggle] = useState(false)
 
   return (
@@ -69,11 +69,13 @@ const FactSection = ({ heading, data, info }: Props) => {
           <InfoHeading>{heading}</InfoHeading>
           <ParagraphBold>{data}</ParagraphBold>
         </SectionLeft>
-        {info && <SectionRight>
+        {info && (
+        <SectionRight>
           <StyledIcon onClick={() => setToggle(!toggle)}>
             {toggle ? <IconGreen /> : <Icon />}
           </StyledIcon>
-        </SectionRight>}
+        </SectionRight>
+        )}
       </Row>
       <section>
         {toggle ? (

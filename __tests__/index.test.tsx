@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Home from '../pages'
 import { useRouter } from 'next/router'
 import { SpyInstanceFn } from 'vitest'
+import Home from '../pages'
 
 vi.mock('../public/icons/arrow-down.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/arrow-right-white.svg', () => ({ default: 'svg' }))
@@ -16,36 +16,34 @@ vi.mock('../components/ComparisonTable', () => ({ default: () => <div /> }))
 
 vi.mock('next/router')
 
-const setup = () => {
-  return render(
-    <Home
-      municipalities={[
-        {
-          County: '',
-          CoatOfArmsImage: null,
-          Population: null,
-          Image: null,
-          Budget: {
-            BudgetPerYear: [],
-            CO2Equivalent: 0,
-            PercentageOfNationalBudget: 0,
-          },
-          PoliticalRule: [],
-          EmissionTrend: {
-            TrendPerYear: [],
-          },
-          HistoricalEmission: {
-            AverageEmissionChangeRank: 0,
-            LargestEmissionSectors: [],
-            EmissionPerYear: [],
-            EmissionLevelChangeAverage: 0,
-          },
-          Name: 'Sollentuna',
+const setup = () => render(
+  <Home
+    municipalities={[
+      {
+        County: '',
+        CoatOfArmsImage: null,
+        Population: null,
+        Image: null,
+        Budget: {
+          BudgetPerYear: [],
+          CO2Equivalent: 0,
+          PercentageOfNationalBudget: 0,
         },
-      ]}
-    />,
-  )
-}
+        PoliticalRule: [],
+        EmissionTrend: {
+          TrendPerYear: [],
+        },
+        HistoricalEmission: {
+          AverageEmissionChangeRank: 0,
+          LargestEmissionSectors: [],
+          EmissionPerYear: [],
+          EmissionLevelChangeAverage: 0,
+        },
+        Name: 'Sollentuna',
+      },
+    ]}
+  />,
+)
 
 beforeEach(vi.clearAllMocks)
 
@@ -74,9 +72,8 @@ test('dropdown shows error text if nothing is selected', () => {
 test('dropdown closes when clicking outside', () => {
   const router = {
     push: vi.fn(),
-  }
-
-  ;(useRouter as SpyInstanceFn).mockReturnValue(router)
+  };
+  (useRouter as SpyInstanceFn).mockReturnValue(router)
 
   setup()
 
@@ -96,9 +93,8 @@ test('dropdown closes when clicking outside', () => {
 test('dropdown handles selecting from list', () => {
   const router = {
     push: vi.fn(),
-  }
-
-  ;(useRouter as SpyInstanceFn).mockReturnValue(router)
+  };
+  (useRouter as SpyInstanceFn).mockReturnValue(router)
 
   setup()
 
@@ -112,9 +108,8 @@ test('dropdown handles selecting from list', () => {
 test('dropdown handles typing and clicking the green arrow', () => {
   const router = {
     push: vi.fn(),
-  }
-
-  ;(useRouter as SpyInstanceFn).mockReturnValue(router)
+  };
+  (useRouter as SpyInstanceFn).mockReturnValue(router)
 
   setup()
 
@@ -127,9 +122,8 @@ test('dropdown handles typing and clicking the green arrow', () => {
 test('dropdown handles typing with lowercase letters and clicking the green arrow', () => {
   const router = {
     push: vi.fn(),
-  }
-
-  ;(useRouter as SpyInstanceFn).mockReturnValue(router)
+  };
+  (useRouter as SpyInstanceFn).mockReturnValue(router)
 
   setup()
 
@@ -142,9 +136,8 @@ test('dropdown handles typing with lowercase letters and clicking the green arro
 test('dropdown handles typing and pressing enter', () => {
   const router = {
     push: vi.fn(),
-  }
-
-  ;(useRouter as SpyInstanceFn).mockReturnValue(router)
+  };
+  (useRouter as SpyInstanceFn).mockReturnValue(router)
 
   setup()
 

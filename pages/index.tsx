@@ -65,11 +65,11 @@ type PropsType = {
   dataset: SelectedData
 }
 
-const StartPage = ({
+function StartPage({
   municipalities,
   viewMode = default_view_mode,
   dataset = default_dataset,
-}: PropsType) => {
+}: PropsType) {
   const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
 
@@ -113,7 +113,8 @@ const StartPage = ({
             <div
               style={{
                 display: toggleViewMode === default_view_mode ? 'block' : 'none',
-              }}>
+              }}
+            >
               <MapLabels
                 labels={datasetDescription.labels}
                 rotations={datasetDescription.labelRotateUp}
@@ -124,7 +125,8 @@ const StartPage = ({
               style={{
                 display: toggleViewMode === secondary_view_mode ? 'block' : 'none',
                 width: '100%',
-              }}>
+              }}
+            >
               <ComparisonTable data={rankedData[selectedData]} columns={cols} />
             </div>
           </MunicipalityContainer>
@@ -145,7 +147,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   res.setHeader(
     'Cache-Control',
-    'public, stale-while-revalidate=60, max-age=' + 60 * 60 * 24 * 7,
+    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
   return {

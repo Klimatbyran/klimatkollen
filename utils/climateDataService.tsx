@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend, ClimatePlan } from './types'
 import * as fs from 'fs'
 import * as path from 'path'
+import {
+  Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend, ClimatePlan,
+} from './types'
 
 const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
 
@@ -13,19 +15,19 @@ export class ClimateDataService {
     const jsonData: any[] = JSON.parse(climateDataFileContent)
 
     this.municipalities = jsonData.map((jsonData: any) => {
-      let emissions = new Array<EmissionPerYear>()
+      const emissions = new Array<EmissionPerYear>()
 
       Object.entries(jsonData.emissions).forEach(([year, emission]) => {
-        let emissionByYear = {
+        const emissionByYear = {
           Year: Number(year),
-          CO2Equivalent: emission
+          CO2Equivalent: emission,
         } as unknown as EmissionPerYear
         emissions.push(emissionByYear)
       })
 
       const emission = {
         EmissionPerYear: emissions,
-        LargestEmissionSectors: new Array<EmissionSector>()
+        LargestEmissionSectors: new Array<EmissionSector>(),
       } as Emission
 
       emission.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(
@@ -36,26 +38,22 @@ export class ClimateDataService {
       const trend = {
         FutureCO2Emission: jsonData.futureEmission,
         TrendPerYear: Object.entries(jsonData.trend).map(
-          ([year, emission]) => {
-            return {
-              Year: Number(year),
-              CO2Equivalent: emission,
-            }
-          }
-        )
+          ([year, emission]) => ({
+            Year: Number(year),
+            CO2Equivalent: emission,
+          }),
+        ),
       } as unknown as Trend
 
       const budget = {
         PercentageOfNationalBudget: 1,
         CO2Equivalent: jsonData.budget,
         BudgetPerYear: Object.entries(jsonData.emissionBudget).map(
-          ([year, emission]) => {
-            return {
-              Year: Number(year),
-              CO2Equivalent: emission,
-            }
-          }
-        )
+          ([year, emission]) => ({
+            Year: Number(year),
+            CO2Equivalent: emission,
+          }),
+        ),
       } as unknown as Budget
 
       const climatePlan = {
@@ -76,16 +74,14 @@ export class ClimateDataService {
         ElectricCarChangePercent: jsonData.electricCarChangePercent,
         ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
         ClimatePlan: climatePlan,
-        BicycleMetrePerCapita: jsonData.bicycleMetrePerCapita
+        BicycleMetrePerCapita: jsonData.bicycleMetrePerCapita,
       } as Municipality
       return municipality
     })
-      .sort((a: Municipality, b: Municipality) => {
-        return (
-          a.HistoricalEmission.EmissionLevelChangeAverage -
-          b.HistoricalEmission.EmissionLevelChangeAverage
-        )
-      })
+      .sort((a: Municipality, b: Municipality) => (
+        a.HistoricalEmission.EmissionLevelChangeAverage
+          - b.HistoricalEmission.EmissionLevelChangeAverage
+      ))
     this.municipalities.forEach((municipality: Municipality, index: number) => {
       municipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
     })
@@ -93,17 +89,17 @@ export class ClimateDataService {
 
   private getEmissionLevelChangeAverage(
     emissions: Array<EmissionPerYear>,
-    years: number
+    years: number,
   ): number {
     let emissionsPercentages = 0
     emissions
       .slice(Math.max(emissions.length - years - 1, 1))
       .forEach(
         (emission: EmissionPerYear, index: number, emissions: Array<EmissionPerYear>) => {
-          let previous = emissions[index - 1] as EmissionPerYear
+          const previous = emissions[index - 1] as EmissionPerYear
           if (previous) {
-            let changeSinceLastYear = ((emission.CO2Equivalent - previous.CO2Equivalent) /
-              previous.CO2Equivalent) as number
+            const changeSinceLastYear = ((emission.CO2Equivalent - previous.CO2Equivalent)
+              / previous.CO2Equivalent) as number
             emissionsPercentages += changeSinceLastYear
           }
         },
@@ -116,7 +112,7 @@ export class ClimateDataService {
   }
 
   public getMunicipality(name: string): Municipality {
-    const mun = this.municipalities.filter(kommun => kommun.Name.toLowerCase() === name)[0]
+    const mun = this.municipalities.filter((kommun) => kommun.Name.toLowerCase() === name)[0]
     return mun
   }
 }

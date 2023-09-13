@@ -1,5 +1,5 @@
-import { useState } from "react"
-import styled from "styled-components"
+import { useState } from 'react'
+import styled from 'styled-components'
 import Info from '../public/icons/info.svg'
 
 const Wrapper = styled.div`
@@ -28,7 +28,7 @@ type TooltipProps = {
   text: string
 }
 
-const InfoTooltip = ({ text }: TooltipProps) => {
+function InfoTooltip({ text }: TooltipProps) {
   const [show, setShow] = useState(false)
 
   return (
@@ -37,10 +37,12 @@ const InfoTooltip = ({ text }: TooltipProps) => {
         onMouseOver={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
       />
-      {show &&
+      {show
+        && (
         <Tooltip>
           {text}
-        </Tooltip>}
+        </Tooltip>
+        )}
     </Wrapper>
   )
 }

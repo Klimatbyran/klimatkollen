@@ -1,18 +1,17 @@
 import styled from 'styled-components'
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
-import Graph from './../Graph'
-import { H2, H3, Paragraph } from './../Typography'
-import InfoModal from './../InfoModal'
-import MetaTags from './../MetaTags'
-import { IconButton } from './../shared'
+import Graph from '../Graph'
+import { H2, H3, Paragraph } from '../Typography'
+import InfoModal from '../InfoModal'
+import MetaTags from '../MetaTags'
+import { IconButton } from '../shared'
 import { Municipality as TMunicipality } from '../../utils/types'
 import { devices } from '../../utils/devices'
 import ArrowRight from '../../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../../public/icons/arrow-left-white.svg'
 import Info from '../../public/icons/info.svg'
 import { colorTheme } from '../../Theme'
-
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -95,13 +94,14 @@ type IssuesProps = {
   onPreviousStep: (() => void) | undefined
 }
 
-const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: IssuesProps) => {
+function MunicipalityIssues({
+  municipality, step, onNextStep, onPreviousStep,
+}: IssuesProps) {
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
   const q = router.query['g[]']
 
-  const range = (start: number, end: number) =>
-    Array.from({ length: end - start }, (_, i) => i + start)
+  const range = (start: number, end: number) => Array.from({ length: end - start }, (_, i) => i + start)
 
   const adjustablePeriods = range(2020, 2051).map((i) => [i, i + 1])
 
@@ -111,7 +111,7 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
   )
 
   // Load mandate change values from ?g[] parameter in URL
-  const [mandateChanges,] = useState<typeof defaultPeriods>(() => {
+  const [mandateChanges] = useState<typeof defaultPeriods>(() => {
     if (typeof q === 'undefined') return defaultPeriods
 
     const g = (Array.isArray(q) ? q : [q])
@@ -148,22 +148,19 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
       text: 'Historiska utsläpp',
       buttonText: 'Historiskt',
       body: 'Koldioxidutsläpp i kommunen sedan 1990.',
-      shareText: (_name) =>
-        `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
+      shareText: (_name) => 'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
     1: {
       text: 'Om vi fortsätter som idag',
       buttonText: 'Trend',
       body: 'Utsläppen de kommande åren baserat på nuvarande trend.',
-      shareText: (_name) =>
-        `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
+      shareText: (_name) => 'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
     2: {
       text: 'För att nå Parisavtalet',
       buttonText: 'Parisavtalet',
       body: 'Så mycket skulle utsläppen behöva minska för att vara i linje med 1,5-gradersmålet.',
-      shareText: (_name) =>
-        `Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.`,
+      shareText: (_name) => 'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
   }
 
@@ -184,7 +181,7 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
   }
 
   const toggleModal = () => {
-    const body = document.body
+    const { body } = document
     if (!isOpen) {
       body.style.overflow = 'hidden'
       setIsOpen(true)
@@ -248,7 +245,7 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
             {STEPS[step - 1].buttonText}
           </IconButton>
         ) : (
-          <div></div>
+          <div />
         )}
         <span style={{ textAlign: 'center' }}>
           {STEPS[step].buttonText}
@@ -264,13 +261,25 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
         Totala utsläpp
       </H3>
       <TotalCo2 color={colorTheme.rust}>
-        Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
+        Historiskt:
+        {' '}
+        {totalHistorical.toFixed(1)}
+        {' '}
+        tusen ton CO₂
       </TotalCo2>
       <TotalCo2 color={step > 0 ? colorTheme.red : colorTheme.redDark}>
-        Trend: {totalTrend.toFixed(1)} tusen ton CO₂
+        Trend:
+        {' '}
+        {totalTrend.toFixed(1)}
+        {' '}
+        tusen ton CO₂
       </TotalCo2>
       <TotalCo2 color={step > 1 ? colorTheme.green : colorTheme.greenDark}>
-        Koldioxidbudget för att klara Parisavtalet: {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton
+        Koldioxidbudget för att klara Parisavtalet:
+        {' '}
+        {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)}
+        {' '}
+        tusen ton
         CO₂
       </TotalCo2>
       {step === 0 && isOpen && (
@@ -284,8 +293,8 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
       {step === 1 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text="Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som 
-          motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande, 
+          text="Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
+          motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande,
           det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är 2020, vilket är senast tillgängliga data."
           scrollY={scrollY}
         />
@@ -293,7 +302,7 @@ const MunicipalityIssues = ({ municipality, step, onNextStep, onPreviousStep }: 
       {step === 2 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text="Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015. 
+          text="Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.
           Hacket i kurvan för vissa kommuner beror på att genomsnittet är högre än det senaste årets nivå."
           scrollY={scrollY}
         />

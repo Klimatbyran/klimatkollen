@@ -7,7 +7,9 @@ type Props = {
   url?: string
 }
 
-export default function MetaTags({ title, description, imageUrl, url }: Props) {
+export default function MetaTags({
+  title, description, imageUrl, url,
+}: Props) {
   return (
     <Head>
       <title>{title}</title>

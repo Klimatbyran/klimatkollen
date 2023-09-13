@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { ThemeProvider, DefaultTheme } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 
 export const colorTheme = {
   main: '#91DFC8',
@@ -37,7 +37,7 @@ type Props = {
   children: ReactNode
 }
 
-const Theme = ({ children }: Props) => {
+function Theme({ children }: Props) {
   return <ThemeProvider theme={colorTheme}>{children}</ThemeProvider>
 }
 

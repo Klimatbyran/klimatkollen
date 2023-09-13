@@ -63,9 +63,8 @@ const LinkButton = styled.button`
   & a {
     text-decoration: none;
   }
-  ${({ disabled }) =>
-    disabled &&
-    css`
+  ${({ disabled }) => disabled
+    && css`
       color: ${({ theme }) => theme.grey};
       background: ${({ theme }) => theme.lightGrey};
       cursor: not-allowed;
@@ -120,7 +119,7 @@ type Props = {
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-const ScoreCard = ({
+function ScoreCard({
   name,
   rank,
   budget,
@@ -130,10 +129,10 @@ const ScoreCard = ({
   // emissionLastYear,
   // population,
   politicalRule,
-  climatePlan
-}: Props) => {
+  climatePlan,
+}: Props) {
   const climatePlanYearFormatted = climatePlan.YearAdapted !== 'Saknas' ? `Antagen ${climatePlan.YearAdapted}` : climatePlan.YearAdapted
-  const rankFormatted = rank + ' av 290 kommuner'
+  const rankFormatted = `${rank} av 290 kommuner`
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
 
   const handleButtonClick = () => {
@@ -153,7 +152,8 @@ const ScoreCard = ({
           <SectionRight>
             <LinkButton
               onClick={handleButtonClick}
-              disabled={climatePlan.Link === 'Saknas'}>
+              disabled={climatePlan.Link === 'Saknas'}
+            >
               Öppna
               <Square>
                 <ArrowIcon />
@@ -163,65 +163,78 @@ const ScoreCard = ({
         </Row>
         <FactSection
           heading={climatePlanYearFormatted}
-          data={''}
-          info={
+          data=""
+          info={(
             <>
               Avser nu gällande klimathandlingsplan eller motsvarande. Inte klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande.
               <CommentContainer>
-                <b>Kommentar:</b> {climatePlan.Comment}
+                <b>Kommentar:</b>
+                {' '}
+                {climatePlan.Comment}
               </CommentContainer>
             </>
-          }
+          )}
         />
       </LightContainer>
       <DarkContainer>
-        {rank && <FactSection
-          heading='Kommunens utsläppsrankning'
+        {rank && (
+        <FactSection
+          heading="Kommunens utsläppsrankning"
           data={rankFormatted}
-          info={
+          info={(
             <>
               Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015.
             </>
-          }
-        />}
-        {['Gotland', 'Skövde', 'Mörbylånga'].includes(name) &&
+          )}
+        />
+        )}
+        {['Gotland', 'Skövde', 'Mörbylånga'].includes(name)
+          && (
           <ParagraphItalic>
-            Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget, läs mer{' '}
+            Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget, läs mer
+            {' '}
             <a
-              href='/kallor-och-metod'>
+              href="/kallor-och-metod"
+            >
               här
             </a>
           </ParagraphItalic>
-        }
-        {budget && <FactSection
-          heading='Koldioxidbudget'
-          data={formatter.format(Math.round(budget)) + ' ton'}
-          info={
+          )}
+        {budget && (
+        <FactSection
+          heading="Koldioxidbudget"
+          data={`${formatter.format(Math.round(budget))} ton`}
+          info={(
             <>
-              Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om koldioxidbudgetar{' '}
-              <Link href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">här</Link>.
+              Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om koldioxidbudgetar
+              {' '}
+              <Link href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">här</Link>
+              .
             </>
-          }
-        />}
-        {budgetRunsOut && <FactSection
-          heading='Koldioxidbudgeten tar slut'
+          )}
+        />
+        )}
+        {budgetRunsOut && (
+        <FactSection
+          heading="Koldioxidbudgeten tar slut"
           data={budgetRunsOut === 'Aldrig' ? 'Med nuvarande trend håller kommunen sin budget' : budgetRunsOut}
-          info={
+          info={(
             <>
               Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend.
             </>
-          }
-        />}
-        {<FactSection
-          heading='Utsläppsminskning för att klara Parisavtalet'
-          data={'-' + emissionChangePercent.toFixed(1) + '% per år'}
-          info={
+          )}
+        />
+        )}
+        <FactSection
+          heading="Utsläppsminskning för att klara Parisavtalet"
+          data={`-${emissionChangePercent.toFixed(1)}% per år`}
+          info={(
             <>
               Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska överskrida sin koldioxidbudget.
             </>
-          }
-        />}
-        {/* Hide until we've found a better way to weight the values  
+          )}
+        />
+        {/* Hide until we've found a better way to weight the values
       {emissionLastYear && population && <ScoreCardSection
         heading='Koldioxidutsläpp per invånare'
         data={(emissionLastYear / population).toFixed(1) + ' ton koldioxid per år'}
@@ -244,20 +257,26 @@ const ScoreCard = ({
           </>
         }
       />} */}
-        {politicalRule && <FactSection
-          heading='Här styr'
+        {politicalRule && (
+        <FactSection
+          heading="Här styr"
           data={politicalRuleFormatted}
-          info={
-            <>Uppgift om politiskt styre är hämtad från{' '}
+          info={(
+            <>
+              Uppgift om politiskt styre är hämtad från
+              {' '}
               <a
                 href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html"
                 target="_blank"
-                rel="noreferrer">
+                rel="noreferrer"
+              >
                 Sveriges Kommuner och Regioner (SKR)
               </a>
               . Data uppdaterad mars 2023.
-            </>}
-        />}
+            </>
+          )}
+        />
+        )}
       </DarkContainer>
     </StyledDiv>
   )

@@ -1,21 +1,19 @@
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import NewsletterForm from './NewsletterForm'
 
-const NewsletterSubscribe = () => {
+function NewsletterSubscribe() {
   const MAILCHIMP_URL = process.env.NEXT_PUBLIC_MAILCHIMP_URL
   if (typeof MAILCHIMP_URL === 'undefined') throw new Error('Must have a mailchimp URL')
 
   return (
     <MailchimpSubscribe
       url={MAILCHIMP_URL}
-      render={({ subscribe, status }) => {
-        return (
-          <NewsletterForm
-            status={status}
-            onValidated={(formData) => subscribe(formData)}
-          />
-        )
-      }}
+      render={({ subscribe, status }) => (
+        <NewsletterForm
+          status={status}
+          onValidated={(formData) => subscribe(formData)}
+        />
+      )}
     />
   )
 }

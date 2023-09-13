@@ -1,8 +1,8 @@
 import { useState, FC, useEffect } from 'react'
-import Button from './Button'
 import styled from 'styled-components'
-import { devices } from '../utils/devices'
 import { EmailFormFields } from 'react-mailchimp-subscribe'
+import Button from './Button'
+import { devices } from '../utils/devices'
 
 const StyledForm = styled.form`
   display: flex;
@@ -115,7 +115,7 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
             <span>Tack för din intresseanmälan!</span>
           </EmailValidation>
         ) : (
-          <Button text={'Skicka'} />
+          <Button text="Skicka" />
         )}
       </StyledForm>
     </Container>

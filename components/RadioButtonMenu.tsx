@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { datasetDescriptions, default_dataset } from '../data/dataset_descriptions'
 import router from 'next/router'
+import { datasetDescriptions, default_dataset } from '../data/dataset_descriptions'
 import { SelectedData } from '../utils/types'
 
 const RadioContainer = styled.div`
@@ -42,10 +42,9 @@ const RadioInput = styled.input`
   }
 `
 
-const replaceLetters = (word: string) => {
+const replaceLetters = (word: string) =>
   // replace å ä ö
-  return word.replace('å', 'a').replace('ä', 'a').replace('ö', 'o')
-}
+  word.replace('å', 'a').replace('ä', 'a').replace('ö', 'o')
 
 const datasetKeys = Object.keys(datasetDescriptions)
 
@@ -54,12 +53,11 @@ type MenuProps = {
   setSelectedData: React.Dispatch<React.SetStateAction<SelectedData>>
 }
 
-const RadioButtonMenu = ({ selectedData, setSelectedData }: MenuProps) => {
+function RadioButtonMenu({ selectedData, setSelectedData }: MenuProps) {
   const handleSelectData = (datasetName: string) => {
-    const path =
-      datasetName !== default_dataset
-        ? '/' + replaceLetters(datasetName).toLowerCase()
-        : '/'
+    const path = datasetName !== default_dataset
+      ? `/${replaceLetters(datasetName).toLowerCase()}`
+      : '/'
     router.push(path, undefined, { shallow: true, scroll: false })
     setSelectedData(datasetName)
   }

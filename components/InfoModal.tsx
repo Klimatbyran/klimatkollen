@@ -49,7 +49,7 @@ const Modal = styled.div<{ scrollY: number }>`
 
 type Props = { text: string; close: () => void; scrollY: number }
 
-const InfoModal = ({ text, close, scrollY }: Props) => {
+function InfoModal({ text, close, scrollY }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const activeElement = document.activeElement as HTMLElement
 

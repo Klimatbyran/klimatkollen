@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import Icon from '../public/icons/share.svg'
 import { devices } from '../utils/devices'
 
-
 const Button = styled.button<{ icon: boolean }>`
   height: 56px;
   color: ${({ theme }) => theme.darkestGrey};
@@ -52,9 +51,9 @@ type ShareButtonProps = {
   shareIcon?: boolean
 }
 
-const ShareButton = ({ handleClick, text, shareIcon = false }: ShareButtonProps) => {
+function ShareButton({ handleClick, text, shareIcon = false }: ShareButtonProps) {
   return (
-    <Button type="submit" onClick={handleClick} icon={shareIcon} >
+    <Button type="submit" onClick={handleClick} icon={shareIcon}>
       {shareIcon && <Icon />}
       <span>{text}</span>
     </Button>
