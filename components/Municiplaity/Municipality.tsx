@@ -81,12 +81,6 @@ function Municipality(props: Props) {
     municipalitiesName,
   } = props
 
-  const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear?.
-    [municipality.HistoricalEmission.EmissionPerYear.length - 1]?.CO2Equivalent
-  // FIXME replace with
-  // const emissionLastYear = municipality.HistoricalEmission.EmissionPerYear.at(-1)?.CO2Equivalent
-  // when Node has been updated >16.0.0
-
   return (
     <>
       <PageWrapper backgroundColor="darkestGrey">
@@ -124,7 +118,6 @@ function Municipality(props: Props) {
             budget={municipality.Budget.CO2Equivalent}
             budgetRunsOut={municipality.BudgetRunsOut}
             emissionChangePercent={municipality.EmissionChangePercent}
-            emissionLastYear={emissionLastYear}
             population={municipality.Population}
             politicalRule={municipality.PoliticalRule}
             climatePlan={municipality.ClimatePlan}
