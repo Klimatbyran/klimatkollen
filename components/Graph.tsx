@@ -43,7 +43,7 @@ function getSetup(emissions: EmissionPerYear[][]): {
   }))
   // const years = Array.from(all).sort()
   const labels: number[] = []
-  for (let i = minYear; i <= maxYear; i++) {
+  for (let i = minYear; i <= maxYear; i += 1) {
     labels.push(i)
   }
 
@@ -55,6 +55,8 @@ function getSetup(emissions: EmissionPerYear[][]): {
   }
 }
 
+type Dataset = Array<{ x: number; y: number }>
+
 const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
 type Props = {
@@ -64,8 +66,6 @@ type Props = {
   budget: EmissionPerYear[]
   maxVisibleYear: number
 }
-
-type Dataset = Array<{ x: number; y: number }>
 
 function Graph({
   step, historical, budget, trend, maxVisibleYear,
@@ -161,7 +161,7 @@ function Graph({
                 title(tooltipItems) {
                   return `${(tooltipItems[0].parsed.y / 1000).toFixed(1)}`
                 },
-                label(context) {
+                label() {
                   return ''
                 },
               },
@@ -205,7 +205,7 @@ function Graph({
                   weight: '300',
                 },
                 color: 'white',
-                callback: (a, _idx) => ((a as number) / 1000).toString(),
+                callback: (a) => ((a as number) / 1000).toString(),
               },
             },
           },

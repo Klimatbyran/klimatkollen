@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// Fixme revisit when there's time
 import RawPoliticalRule from '../data/facts/political/RawPoliticalRule'
 
 export class PolitycalRuleService {

@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 import { GetServerSideProps } from 'next'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
@@ -58,8 +59,10 @@ function KoM() {
                   fortfarande utsläppen globalt.
                 </Paragraph>
                 <Paragraph>
-                  Enligt Parisavtalet ska rika länder ta ett större ansvar, eftersom deras stora historiska utsläpp innebär att de redan använt
-                  mycket av det utsläppsutrymme som återstår för att hejda uppvärmningen. Bland dessa länder ingår Sverige, som både ska gå före med att minska
+                  Enligt Parisavtalet ska rika länder ta ett större ansvar, 
+                  eftersom deras stora historiska utsläpp innebär att de redan använt
+                  mycket av det utsläppsutrymme som återstår för att hejda uppvärmningen. 
+                  Bland dessa länder ingår Sverige, som både ska gå före med att minska
                   utsläppen och även hjälpa andra mer sårbara länder att ställa om.
                 </Paragraph>
                 <Paragraph>
@@ -188,7 +191,8 @@ function KoM() {
                   Sveriges koldioxidbudget var i början av 2022 170 miljoner ton, motsvarande 3,5 år med nuvarande utsläppstakt.
                 </Paragraph>
                 <Paragraph>
-                  Den nationella koldioxidbudgeten har sedan fördelats enligt Tyndall-modellen på kommunerna av företaget ClimateView för Klimatkollens räkning.
+                  Den nationella koldioxidbudgeten har sedan fördelats enligt Tyndall-modellen 
+                  på kommunerna av företaget ClimateView för Klimatkollens räkning.
                 </Paragraph>
                 <Paragraph>
                   De lokala koldioxidbudgetarna gör det möjligt att jämföra hur det går, med hur det borde gå.
@@ -225,7 +229,8 @@ function KoM() {
                   och i utsläppsstatistiken för de tre kommunerna Gotland, Skövde och Mörbylånga, där cementproduktion sker idag.
                 </Paragraph>
                 <Paragraph>
-                  Sverige har även hög klimatbelastning från varor vi importerar från andra länder och orsakar därför utsläpp i andra delar av världen.
+                  Sverige har även hög klimatbelastning från varor vi importerar från 
+                  andra länder och orsakar därför utsläpp i andra delar av världen.
                   Dessa konsumtionsbaserade utsläpp inkluderas inte i koldioxidbudgeten.
                 </Paragraph>
                 <Paragraph>

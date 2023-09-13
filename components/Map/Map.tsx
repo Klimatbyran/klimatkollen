@@ -33,7 +33,7 @@ const getColor = (
   const red: RGBAColor = [239, 94, 48]
   const pink: RGBAColor = [239, 48, 84]
 
-  if (boundaries.length == 2) {
+  if (boundaries.length === 2) {
     return dataPoint === boundaries[0] ? pink : green
   }
 
@@ -178,12 +178,16 @@ function Map({
     let dataString = municipality?.dataPoint.toFixed(1)
 
     if (dataType === 'Link') {
-      const data = municipality?.dataPoint
-      dataString = (boundaries as string[]).includes(data as unknown as string)
+      const linkData = municipality?.dataPoint
+      dataString = (boundaries as string[]).includes(linkData as unknown as string)
         ? 'Nej'
         : 'Ja'
     } else if (dataType === 'Percent') {
-      dataString = (municipality?.dataPoint * 100).toFixed(1)
+      if (municipality?.dataPoint !== undefined) {
+        dataString = (municipality.dataPoint * 100).toFixed(1)
+      } else {
+        dataString = 'N/A'
+      }
     }
 
     return dataString

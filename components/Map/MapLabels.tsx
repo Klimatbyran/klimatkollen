@@ -84,7 +84,6 @@ function Label({ color, text, rotateup }: LabelProps) {
 type MapLabelsProps = {
   labels: string[]
   rotations: boolean[]
-  isTwoElements?: boolean
 }
 
 function MapLabels({ labels, rotations }: MapLabelsProps) {
@@ -94,7 +93,7 @@ function MapLabels({ labels, rotations }: MapLabelsProps) {
   return (
     <Container>
       {labels.map((label, i) => (
-        <Label key={i} color={labelColors[i]} text={label} rotateup={rotations[i]} />
+        <Label color={labelColors[i]} text={label} rotateup={rotations[i]} />
       ))}
     </Container>
   )

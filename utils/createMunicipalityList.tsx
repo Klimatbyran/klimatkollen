@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { DatasetDescription, Municipality, SelectedData } from './types'
-import { data, datasetDescriptions, default_dataset } from '../data/dataset_descriptions'
+import { datasetDescriptions, defaultDataset } from '../data/dataset_descriptions'
 import InfoTooltip from '../components/InfoTooltip'
 
 export const calculateStringRankings = (
@@ -18,7 +18,9 @@ export const calculateNumberRankings = (
   data: Array<{ name: string; dataPoint: number }>,
   sortAscending: boolean,
 ) => {
-  const sortedData = data.sort((a, b) => (sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint))
+  const sortedData = data.sort(
+    (a, b) => (sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint),
+  )
   const rankedData = sortedData.map((item, index) => ({
     ...item,
     index: index + 1,
@@ -66,45 +68,40 @@ export const rankData = (municipalities: Municipality[]) => {
     Cyklarna: [],
   }
 
-  for (const datasetKey in datasets) {
-    if (Object.prototype.hasOwnProperty.call(datasets, datasetKey)) {
-      if (datasetKey === 'Klimatplanerna') {
-        newRankedData[datasetKey] = calculateStringRankings(
-          datasets[datasetKey].map(
-            (item: { name: string; dataPoint: string | number }) => ({
-              name: item.name,
-              dataPoint: item.dataPoint,
-            }),
-          ),
-        )
-      } else {
-        const sortAscending = datasetKey === default_dataset
-        newRankedData[datasetKey] = calculateNumberRankings(
-          datasets[datasetKey].map(
-            (item: { name: string; dataPoint: number | string }) => ({
-              name: item.name,
-              dataPoint: Number(item.dataPoint),
-            }),
-          ),
-          sortAscending,
-        )
-      }
+  Object.keys(datasets).forEach((datasetKey) => {
+    if (datasetKey === 'Klimatplanerna') {
+      newRankedData[datasetKey as SelectedData] = calculateStringRankings(
+        datasets[datasetKey].map((item) => ({
+          name: item.name,
+          dataPoint: item.dataPoint,
+        })),
+      )
+    } else {
+      const sortAscending = datasetKey === defaultDataset
+      newRankedData[datasetKey as SelectedData] = calculateNumberRankings(
+        datasets[datasetKey].map((item) => ({
+          name: item.name,
+          dataPoint: Number(item.dataPoint),
+        })),
+        sortAscending,
+      )
     }
-  }
-
+  })
   return newRankedData
 }
 
-const formatData = (rowData: unknown, selectedData: SelectedData) => {
-  const { boundaries } = datasetDescriptions[selectedData]
+const formatData = (rowData: string | number, selectedData: SelectedData) => {
+  const { boundaries } = datasetDescriptions[selectedData] as { boundaries: string[] }
   const { dataType } = datasetDescriptions[selectedData]
   let dataString: JSX.Element = <span>Data saknas</span>
   if (dataType === 'Link') {
-    dataString = boundaries.includes(rowData as string) ? (
-      <i style={{ color: 'grey' }}>{rowData as string}</i>
+    const stringData = rowData as string
+    const inBoundaries = boundaries.includes(stringData)
+    dataString = inBoundaries ? (
+      <i style={{ color: 'grey' }}>{stringData}</i>
     ) : (
       <a
-        href={rowData as string}
+        href={stringData}
         target="_blank"
         rel="noreferrer"
         onClick={(e) => e.stopPropagation()}
@@ -113,9 +110,9 @@ const formatData = (rowData: unknown, selectedData: SelectedData) => {
       </a>
     )
   } else if (dataType === 'Percent') {
-    const rowNumber = rowData as number
-    const percent = (rowNumber * 100).toFixed(1)
-    dataString = rowNumber > 0 ? (
+    const numberData = rowData as number
+    const percent = (numberData * 100).toFixed(1)
+    dataString = numberData > 0 ? (
       <span>
         +
         {percent}
@@ -155,11 +152,12 @@ export const listColumns = (
     () => [
       {
         header: isClimatePlan ? 'Har plan?' : 'Ranking',
-        cell: (row) => (isClimatePlan
-          ? row.row.original.dataPoint === 'Saknas'
-            ? 'Nej'
-            : 'Ja'
-          : row.cell.row.index + 1),
+        cell: (row) => {
+          if (isClimatePlan) {
+            return row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja'
+          }
+          return row.cell.row.index + 1
+        },
         accessorKey: 'index',
       },
       {
@@ -169,7 +167,7 @@ export const listColumns = (
       },
       {
         header: () => columnHeader(datasetDescription),
-        cell: (row: { renderValue: () => unknown }) => formatData(row.renderValue(), selectedData),
+        cell: (row: { renderValue: () => unknown }) => formatData(row.renderValue() as string | number, selectedData),
         accessorKey: 'dataPoint',
       },
     ],

@@ -197,6 +197,7 @@ function OmOss() {
                   Hos oss kan alla bidra. Du kan exempelvis hjälpa oss att
                   {' '}
                   <a
+                    // eslint-disable-next-line max-len
                     href="https://www.linkedin.com/posts/ospannar_klimatkollens-kommundata-activity-7027238300889272320-wvS3?utm_source=share&utm_medium=member_desktop"
                     target="_blank"
                     rel="noreferrer"
@@ -331,6 +332,7 @@ function OmOss() {
                   {' '}
                   {' '}
                   <a
+                    // eslint-disable-next-line max-len
                     href="https://www.mynewsdesk.com/se/klimatbyraan/pressreleases/klimatkollen-faar-stoed-av-postkodstiftelsen-och-rekryterar-toppnamn-3223979"
                     target="_blank"
                     rel="noreferrer"
@@ -390,7 +392,8 @@ function OmOss() {
                     </a>
                     {' '}
                     av riksdagspartiernas klimatmål, tillsammans med forskarnätverket Researchers’ Desk, Världsnaturfonden WWF, Våra barns klimat
-                    och ClimateView, i samarbete med PwC och Naturskyddsföreningen. Analysen visade att sex av åtta partier missar Parisavtalets 1,5-gradersmål.
+                    och ClimateView, i samarbete med PwC och Naturskyddsföreningen.
+                    Analysen visade att sex av åtta partier missar Parisavtalets 1,5-gradersmål.
                   </ListItem>
                   <ListItem>
                     <b>Utsläppsberäkning</b>

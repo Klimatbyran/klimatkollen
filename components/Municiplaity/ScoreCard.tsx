@@ -46,6 +46,19 @@ const SectionRight = styled.section`
   text-align: right; 
 `
 
+const ArrowIcon = styled(Icon)`
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  z-index: 1;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  fill: black;
+`
+
 const LinkButton = styled.button`
   height: 36px;
   color: black;
@@ -88,19 +101,6 @@ const Square = styled.div`
   border-radius: 4px;
 `
 
-const ArrowIcon = styled(Icon)`
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  z-index: 1;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  fill: black;
-`
-
 const CommentContainer = styled.div`
   margin-top: 8px;
 `
@@ -111,8 +111,6 @@ type Props = {
   budget: number | null
   budgetRunsOut: string
   emissionChangePercent: number
-  emissionLastYear: number | undefined
-  population: number | null
   politicalRule: Array<string> | null
   climatePlan: ClimatePlan
 }
@@ -125,9 +123,6 @@ function ScoreCard({
   budget,
   budgetRunsOut,
   emissionChangePercent,
-  // Below removed until we've found a better way to weigh emission per capita
-  // emissionLastYear,
-  // population,
   politicalRule,
   climatePlan,
 }: Props) {
@@ -166,7 +161,8 @@ function ScoreCard({
           data=""
           info={(
             <>
-              Avser nu gällande klimathandlingsplan eller motsvarande. Inte klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande.
+              Avser nu gällande klimathandlingsplan eller motsvarande.
+              Inte klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande.
               <CommentContainer>
                 <b>Kommentar:</b>
                 {' '}
@@ -234,29 +230,6 @@ function ScoreCard({
             </>
           )}
         />
-        {/* Hide until we've found a better way to weight the values
-      {emissionLastYear && population && <ScoreCardSection
-        heading='Koldioxidutsläpp per invånare'
-        data={(emissionLastYear / population).toFixed(1) + ' ton koldioxid per år'}
-        info={
-          <>
-            Kommunens utsläpp utslaget på dess {formatter.format(population)} invånare.
-            Invånarantal hämtat från{' '}
-            <a href="https://www.wikidata.org/wiki/Wikidata:Country_subdivision_task_force/Sweden/Municipalities"
-              target="_blank"
-              rel="noreferrer">
-              Wikidata
-            </a>,
-            utsläpp från{' '}
-            <a
-              href="https://nationellaemissionsdatabasen.smhi.se/"
-              target="_blank"
-              rel="noreferrer">
-              nationella emissionsdatabasen
-            </a>.
-          </>
-        }
-      />} */}
         {politicalRule && (
         <FactSection
           heading="Här styr"

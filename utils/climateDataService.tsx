@@ -14,10 +14,10 @@ export class ClimateDataService {
     const climateDataFileContent = fs.readFileSync(CLIMATE_DATA_FILE_PATH, { encoding: 'utf-8' })
     const jsonData: any[] = JSON.parse(climateDataFileContent)
 
-    this.municipalities = jsonData.map((jsonData: any) => {
+    this.municipalities = jsonData.map((data: any) => {
       const emissions = new Array<EmissionPerYear>()
 
-      Object.entries(jsonData.emissions).forEach(([year, emission]) => {
+      Object.entries(data.emissions).forEach(([year, emission]) => {
         const emissionByYear = {
           Year: Number(year),
           CO2Equivalent: emission,
@@ -36,45 +36,45 @@ export class ClimateDataService {
       )
 
       const trend = {
-        FutureCO2Emission: jsonData.futureEmission,
-        TrendPerYear: Object.entries(jsonData.trend).map(
-          ([year, emission]) => ({
+        FutureCO2Emission: data.futureEmission,
+        TrendPerYear: Object.entries(data.trend).map(
+          ([year, emissionTrend]) => ({
             Year: Number(year),
-            CO2Equivalent: emission,
+            CO2Equivalent: emissionTrend,
           }),
         ),
       } as unknown as Trend
 
       const budget = {
         PercentageOfNationalBudget: 1,
-        CO2Equivalent: jsonData.budget,
-        BudgetPerYear: Object.entries(jsonData.emissionBudget).map(
-          ([year, emission]) => ({
+        CO2Equivalent: data.budget,
+        BudgetPerYear: Object.entries(data.emissionBudget).map(
+          ([year, emissionBudget]) => ({
             Year: Number(year),
-            CO2Equivalent: emission,
+            CO2Equivalent: emissionBudget,
           }),
         ),
       } as unknown as Budget
 
       const climatePlan = {
-        Link: jsonData.climatePlanLink,
-        YearAdapted: jsonData.climatePlanYear,
-        Comment: jsonData.climatePlanComment,
+        Link: data.climatePlanLink,
+        YearAdapted: data.climatePlanYear,
+        Comment: data.climatePlanComment,
       } as unknown as ClimatePlan
 
       const municipality = {
-        Name: jsonData.kommun,
+        Name: data.kommun,
         HistoricalEmission: emission,
         EmissionTrend: trend,
         Budget: budget,
-        EmissionChangePercent: jsonData.emissionChangePercent,
-        HitNetZero: jsonData.hitNetZero,
-        BudgetRunsOut: jsonData.budgetRunsOut,
-        ElectricCars: jsonData.electricCars,
-        ElectricCarChangePercent: jsonData.electricCarChangePercent,
-        ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
+        EmissionChangePercent: data.emissionChangePercent,
+        HitNetZero: data.hitNetZero,
+        BudgetRunsOut: data.budgetRunsOut,
+        ElectricCars: data.electricCars,
+        ElectricCarChangePercent: data.electricCarChangePercent,
+        ElectricCarChangeYearly: data.electricCarChangeYearly,
         ClimatePlan: climatePlan,
-        BicycleMetrePerCapita: jsonData.bicycleMetrePerCapita,
+        BicycleMetrePerCapita: data.bicycleMetrePerCapita,
       } as Municipality
       return municipality
     })
@@ -83,7 +83,9 @@ export class ClimateDataService {
           - b.HistoricalEmission.EmissionLevelChangeAverage
       ))
     this.municipalities.forEach((municipality: Municipality, index: number) => {
-      municipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
+      const updatedMunicipality = { ...municipality }
+      updatedMunicipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
+      return updatedMunicipality
     })
   }
 
@@ -95,8 +97,8 @@ export class ClimateDataService {
     emissions
       .slice(Math.max(emissions.length - years - 1, 1))
       .forEach(
-        (emission: EmissionPerYear, index: number, emissions: Array<EmissionPerYear>) => {
-          const previous = emissions[index - 1] as EmissionPerYear
+        (emission: EmissionPerYear, index: number, historicEmissions: Array<EmissionPerYear>) => {
+          const previous = historicEmissions[index - 1] as EmissionPerYear
           if (previous) {
             const changeSinceLastYear = ((emission.CO2Equivalent - previous.CO2Equivalent)
               / previous.CO2Equivalent) as number

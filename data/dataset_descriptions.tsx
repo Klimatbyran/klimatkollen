@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 import { DatasetDescriptions, Municipality, SelectedData } from '../utils/types'
 
-export const default_dataset = 'Utsläppen'
+export const defaultDataset = 'Utsläppen'
 
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
@@ -125,14 +126,25 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 }
 
-export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => ({
-  name: item.Name,
-  dataPoint:
-      selectedData === 'Utsläppen'
-        ? item.HistoricalEmission.EmissionLevelChangeAverage
-        : selectedData === 'Elbilarna'
-          ? item.ElectricCarChangePercent
-          : selectedData === 'Klimatplanerna'
-            ? item.ClimatePlan.Link
-            : item.BicycleMetrePerCapita,
-}))
+export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
+  let dataPoint
+
+  switch (selectedData) {
+    case 'Utsläppen':
+      dataPoint = item.HistoricalEmission.EmissionLevelChangeAverage
+      break
+    case 'Elbilarna':
+      dataPoint = item.ElectricCarChangePercent
+      break
+    case 'Klimatplanerna':
+      dataPoint = item.ClimatePlan.Link
+      break
+    default:
+      dataPoint = item.BicycleMetrePerCapita
+  }
+
+  return {
+    name: item.Name,
+    dataPoint,
+  }
+})

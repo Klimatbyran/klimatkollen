@@ -1,3 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable max-len */
 import styled from 'styled-components'
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -181,6 +185,7 @@ function MunicipalityIssues({
   }
 
   const toggleModal = () => {
+    // eslint-disable-next-line no-shadow
     const { body } = document
     if (!isOpen) {
       body.style.overflow = 'hidden'

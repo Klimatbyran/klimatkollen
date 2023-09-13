@@ -30,7 +30,8 @@ function Partier() {
     <>
       <MetaTags
         title="Klimatkollen – Analys av partiernas klimatmål"
-        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen, Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
+        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen,
+         Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
       />
       <PageWrapper backgroundColor="darkestGrey">
         <Container>

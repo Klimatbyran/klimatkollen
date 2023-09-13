@@ -191,8 +191,8 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
           </Flex>
           {showDropDown && (
             <MunicipalitiesWrapper className={className}>
-              {municipalities.map((name, i) => (
-                <Municipality key={i} onClick={() => onMunicipalityClick(name)}>
+              {municipalities.map((name) => (
+                <Municipality onClick={() => onMunicipalityClick(name)}>
                   {name}
                 </Municipality>
               ))}

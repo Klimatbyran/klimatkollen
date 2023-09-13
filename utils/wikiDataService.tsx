@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios'
 
+// FIXME revisit
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import WikiDataSdk from 'wikidata-sdk'
-// @ts-ignore
 import md5 from 'md5'
 
 export type WikiDataImage = {
@@ -17,20 +19,18 @@ export type WikiDataMunicipality = {
 }
 
 export class WikiDataService {
-  constructor() {}
-
   public async getMunicipalityByName(name: string): Promise<WikiDataMunicipality> {
     const promise = new Promise<WikiDataMunicipality>((resolve, reject) => {
       function toTitleCase(str:string) {
-        return str.toLowerCase().replace(/(?:^|[\s\-\/])(\w|[\p{L}])/gu, (match) => match.toUpperCase())
+        return str.toLowerCase().replace(/(?:^|[\s\-/])(\w|[\p{L}])/gu, (match) => match.toUpperCase())
       }
 
-      const pageName = `${toTitleCase(name)} Municipality`
-      const url = WikiDataSdk.getEntitiesFromSitelinks(pageName)
+      const urlName = `${toTitleCase(name)} Municipality`
+      const url = WikiDataSdk.getEntitiesFromSitelinks(urlName)
       axios.get(url).then((response) => {
         const pageName = Object.getOwnPropertyNames(response.data.entities).shift()
 
-        if (pageName && pageName != '-1') {
+        if (pageName && pageName !== '-1') {
           const page = response.data.entities[pageName]
 
           const municipality: WikiDataMunicipality = {
@@ -41,7 +41,7 @@ export class WikiDataService {
 
           resolve(municipality)
         } else {
-          reject('Kommun-sida hittades ej i Wikidata')
+          reject(new Error('Kommun-sida hittades ej i Wikidata'))
         }
       })
     })
@@ -64,7 +64,7 @@ export class WikiDataService {
       if (date1 < date2) return 1
       return 0
     })
-    return parseInt(page.claims.P1082[0].mainsnak.datavalue.value.amount)
+    return parseInt(page.claims.P1082[0].mainsnak.datavalue.value.amount, 10)
   }
 
   getImageFromPage(page: any): WikiDataImage | null {
@@ -74,10 +74,10 @@ export class WikiDataService {
 
   getPreferredImageUrl(listOfImages: Array<any>): WikiDataImage {
     let bestImage = listOfImages
-      .filter((vapen: any) => vapen.rank == 'preferred')
+      .filter((vapen: any) => vapen.rank === 'preferred')
       .shift()
 
-    if (!bestImage) bestImage = listOfImages[0]
+    if (!bestImage) [bestImage] = listOfImages
     const imageUrl = bestImage.mainsnak.datavalue.value.replace(/ /g, '_')
 
     const imageUrlHash = md5(imageUrl)

@@ -26,8 +26,10 @@ module.exports = {
     'import/extensions': 'off',
     'max-len': ['error', { code: 150 }],
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-    'react/require-default-props': 'off',
+    'react/require-default-props': 'off', // fixme revisit and refactor files when there's time to spare
     'class-methods-use-this': 'off',
-    'import/prefer-default-export': 'off', // fixme revisit
+    'import/prefer-default-export': 'off', // fixme revisit and refactor files when there's time to spare
+    'import/no-extraneous-dependencies': 'off', // fixme revisit and refactor files when there's time to spare
+    'react/react-in-jsx-scope': 'off',
   },
 }

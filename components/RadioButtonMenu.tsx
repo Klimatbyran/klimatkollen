@@ -1,7 +1,7 @@
-import React from 'react'
+import { Fragment } from 'react'
 import styled from 'styled-components'
 import router from 'next/router'
-import { datasetDescriptions, default_dataset } from '../data/dataset_descriptions'
+import { datasetDescriptions, defaultDataset } from '../data/dataset_descriptions'
 import { SelectedData } from '../utils/types'
 
 const RadioContainer = styled.div`
@@ -42,9 +42,7 @@ const RadioInput = styled.input`
   }
 `
 
-const replaceLetters = (word: string) =>
-  // replace å ä ö
-  word.replace('å', 'a').replace('ä', 'a').replace('ö', 'o')
+const replaceLetters = (word: string) => word.replace('å', 'a').replace('ä', 'a').replace('ö', 'o') // replace å ä ö
 
 const datasetKeys = Object.keys(datasetDescriptions)
 
@@ -55,7 +53,7 @@ type MenuProps = {
 
 function RadioButtonMenu({ selectedData, setSelectedData }: MenuProps) {
   const handleSelectData = (datasetName: string) => {
-    const path = datasetName !== default_dataset
+    const path = datasetName !== defaultDataset
       ? `/${replaceLetters(datasetName).toLowerCase()}`
       : '/'
     router.push(path, undefined, { shallow: true, scroll: false })
@@ -65,7 +63,7 @@ function RadioButtonMenu({ selectedData, setSelectedData }: MenuProps) {
   return (
     <RadioContainer>
       {datasetKeys.map((option) => (
-        <React.Fragment key={option}>
+        <Fragment key={option}>
           <RadioInput
             type="radio"
             id={option}
@@ -74,7 +72,7 @@ function RadioButtonMenu({ selectedData, setSelectedData }: MenuProps) {
             onChange={() => handleSelectData(option)}
           />
           <RadioLabel htmlFor={option}>{option}</RadioLabel>
-        </React.Fragment>
+        </Fragment>
       ))}
     </RadioContainer>
   )

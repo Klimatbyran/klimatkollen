@@ -69,7 +69,10 @@ type Props = {
   onValidated: (value: EmailFormFields) => void
 }
 
+// fixme revisit, remove exception and refactor
+// eslint-disable-next-line react/function-component-definition
 const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
   const [showThanks, setThanks] = useState(false)
