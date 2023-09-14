@@ -1,6 +1,6 @@
-import Link from "next/link"
-import styled from "styled-components"
-import ArrowRightWhite from "../public/icons/arrow-right-white.svg"
+import Link from 'next/link'
+import styled from 'styled-components'
+import ArrowRightWhite from '../public/icons/arrow-right-white.svg'
 
 const Nav = styled.nav`
   margin-top: 28px;
@@ -43,11 +43,11 @@ const StyledLink = styled.a`
 `
 
 const menuItems = [
-  { path: "/kallor-och-metod", label: "Källor och metod" },
-  { path: "/om-oss", label: "Om oss" },
+  { path: '/kallor-och-metod', label: 'Källor och metod' },
+  { path: '/om-oss', label: 'Om oss' },
 ]
 
-const Navigation = () => {
+function Navigation() {
   return (
     <Nav>
       <NavList>

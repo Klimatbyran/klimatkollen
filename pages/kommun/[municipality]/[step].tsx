@@ -67,7 +67,7 @@ interface Params extends ParsedUrlQuery {
 const cache = new Map()
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
-  res.setHeader('Cache-Control', 'public, stale-while-revalidate=60, max-age=' + ((60*60)*24)*7)
+  res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${((60 * 60) * 24) * 7}`)
 
   const id = (params as Params).municipality as string
 
@@ -85,10 +85,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   municipality.CoatOfArmsImage = wikiDataMunicipality.CoatOfArmsImage
   municipality.Image = wikiDataMunicipality.Image
 
-  municipality.HistoricalEmission.AverageEmissionChangeRank =
-    municipalities.find((m) => {
-      return m.Name == municipality.Name
-    })?.HistoricalEmission.AverageEmissionChangeRank || null
+  municipality.HistoricalEmission.AverageEmissionChangeRank = municipalities.find(
+    (m) => m.Name === municipality.Name,
+  )?.HistoricalEmission.AverageEmissionChangeRank || null
 
   municipality.PoliticalRule = new PolitycalRuleService().getPoliticalRule(id)
 
@@ -99,9 +98,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   )
   const minBudget = Math.min(...municipality.Budget.BudgetPerYear.map((f) => f.Year))
   const needed = minBudget - maxHistorical
-  
+
   if (needed > 0) {
-    municipality.HistoricalEmission.EmissionPerYear.slice(municipality.HistoricalEmission.EmissionPerYear.length-needed).forEach((emission) => {
+    municipality.HistoricalEmission.EmissionPerYear.slice(municipality.HistoricalEmission.EmissionPerYear.length - needed).forEach((emission) => {
       municipality.Budget.BudgetPerYear.unshift(emission)
       municipality.EmissionTrend.TrendPerYear.unshift(emission)
     })

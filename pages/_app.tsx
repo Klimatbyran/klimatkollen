@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Provider } from 'jotai'
@@ -80,7 +81,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             backgroundColor: colorTheme.main,
             fontSize: '13px',
           }}
-          expires={150}>
+          expires={150}
+        >
           Denna sida använder cookies för att förbättra användarupplevelsen.
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}

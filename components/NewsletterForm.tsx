@@ -1,8 +1,8 @@
 import { useState, FC, useEffect } from 'react'
-import Button from './Button'
 import styled from 'styled-components'
-import { devices } from '../utils/devices'
 import { EmailFormFields } from 'react-mailchimp-subscribe'
+import Button from './Button'
+import { devices } from '../utils/devices'
 
 const StyledForm = styled.form`
   display: flex;
@@ -69,7 +69,10 @@ type Props = {
   onValidated: (value: EmailFormFields) => void
 }
 
+// fixme revisit, remove exception and refactor
+// eslint-disable-next-line react/function-component-definition
 const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
   const [showThanks, setThanks] = useState(false)
@@ -115,7 +118,7 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
             <span>Tack för din intresseanmälan!</span>
           </EmailValidation>
         ) : (
-          <Button text={'Skicka'} />
+          <Button text="Skicka" />
         )}
       </StyledForm>
     </Container>

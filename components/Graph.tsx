@@ -10,9 +10,9 @@ import {
 } from 'chart.js'
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
+import styled from 'styled-components'
 import { EmissionPerYear } from '../utils/types'
 
-import styled from 'styled-components'
 import { colorTheme } from '../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
@@ -37,15 +37,13 @@ function getSetup(emissions: EmissionPerYear[][]): {
   let maxYear = new Date().getFullYear()
 
   // const all = new Set<number>()
-  emissions.forEach((e) =>
-    e.forEach((t) => {
-      minYear = Math.min(minYear, t.Year)
-      maxYear = Math.max(maxYear, t.Year)
-    }),
-  )
+  emissions.forEach((e) => e.forEach((t) => {
+    minYear = Math.min(minYear, t.Year)
+    maxYear = Math.max(maxYear, t.Year)
+  }))
   // const years = Array.from(all).sort()
   const labels: number[] = []
-  for (let i = minYear; i <= maxYear; i++) {
+  for (let i = minYear; i <= maxYear; i += 1) {
     labels.push(i)
   }
 
@@ -57,8 +55,9 @@ function getSetup(emissions: EmissionPerYear[][]): {
   }
 }
 
-const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset =>
-  perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
+type Dataset = Array<{ x: number; y: number }>
+
+const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
 type Props = {
   step: number
@@ -68,9 +67,9 @@ type Props = {
   maxVisibleYear: number
 }
 
-type Dataset = Array<{ x: number; y: number }>
-
-const Graph = ({ step, historical, budget, trend, maxVisibleYear }: Props) => {
+function Graph({
+  step, historical, budget, trend, maxVisibleYear,
+}: Props) {
   const setup = useMemo(
     () => getSetup([historical, trend, budget]),
     [historical, trend, budget],
@@ -86,8 +85,8 @@ const Graph = ({ step, historical, budget, trend, maxVisibleYear }: Props) => {
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
-      Math.max(budgetDataset.length, pledgeDataset.length, historicalDataset.length) >
-      setup.labels.length
+      Math.max(budgetDataset.length, pledgeDataset.length, historicalDataset.length)
+      > setup.labels.length
     ) {
       throw new Error('Dataset length larger than label length')
     }
@@ -159,10 +158,10 @@ const Graph = ({ step, historical, budget, trend, maxVisibleYear }: Props) => {
                 weight: 'normal',
               },
               callbacks: {
-                title: function (tooltipItems) {
+                title(tooltipItems) {
                   return `${(tooltipItems[0].parsed.y / 1000).toFixed(1)}`
                 },
-                label: function (context) {
+                label() {
                   return ''
                 },
               },
@@ -193,7 +192,7 @@ const Graph = ({ step, historical, budget, trend, maxVisibleYear }: Props) => {
               },
             },
             y: {
-              //suggestedMax: step > 3 ? totalRemainingCO2 : 1350_000,
+              // suggestedMax: step > 3 ? totalRemainingCO2 : 1350_000,
               grid: {
                 display: false,
               },
@@ -206,9 +205,7 @@ const Graph = ({ step, historical, budget, trend, maxVisibleYear }: Props) => {
                   weight: '300',
                 },
                 color: 'white',
-                callback: (a, _idx) => {
-                  return ((a as number) / 1000).toString()
-                },
+                callback: (a) => ((a as number) / 1000).toString(),
               },
             },
           },
