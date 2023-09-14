@@ -107,8 +107,7 @@ function Municipality(props: Props) {
       <PageWrapper backgroundColor="darkGrey">
         <StyledH2>
           <H2>
-            Fakta om
-            {municipality.Name}
+            Fakta om {municipality.Name}
           </H2>
         </StyledH2>
         <Bottom>
