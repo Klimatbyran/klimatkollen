@@ -54,7 +54,7 @@ type TableProps<T extends object> = {
   columns: ColumnDef<T>[]
 }
 
-const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => {
+function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const router = useRouter()
 
@@ -74,27 +74,26 @@ const ComparisonTable = <T extends object>({ data, columns }: TableProps<T>) => 
     router.push(route)
   }
 
-  const renderHeader = (header: Header<T, unknown>) => {
-    return (
-      <TableHeader key={header.id} colSpan={header.colSpan}>
-        {header.isPlaceholder ? null : (
-          // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-          <div
-            {...{
-              className: header.column.getCanSort() ? 'cursor-pointer select-none' : '',
-              onClick: header.column.getToggleSortingHandler(),
-              onKeyDown: header.column.getToggleSortingHandler(),
-            }}>
-            {flexRender(header.column.columnDef.header, header.getContext())}
-            {{
-              asc: '', // ' ↑',
-              desc: '', // ' ↓',
-            }[header.column.getIsSorted() as string] ?? null}
-          </div>
-        )}
-      </TableHeader>
-    )
-  }
+  const renderHeader = (header: Header<T, unknown>) => (
+    <TableHeader key={header.id} colSpan={header.colSpan}>
+      {header.isPlaceholder ? null : (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+        <div
+          {...{
+            className: header.column.getCanSort() ? 'cursor-pointer select-none' : '',
+            onClick: header.column.getToggleSortingHandler(),
+            onKeyDown: header.column.getToggleSortingHandler(),
+          }}
+        >
+          {flexRender(header.column.columnDef.header, header.getContext())}
+          {{
+            asc: '', // ' ↑',
+            desc: '', // ' ↓',
+          }[header.column.getIsSorted() as string] ?? null}
+        </div>
+      )}
+    </TableHeader>
+  )
 
   return (
     <StyledTable>

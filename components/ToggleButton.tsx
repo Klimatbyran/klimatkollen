@@ -30,14 +30,14 @@ type ToggleButtonProps = {
   icon: JSX.Element
 }
 
-const ToggleButton = ({ handleClick, text, icon }: ToggleButtonProps) => {
+function ToggleButton({ handleClick, text, icon }: ToggleButtonProps) {
   return (
     <ToggleBtn onClick={handleClick}>
       {icon}
       <ToggleText>
         {text}
       </ToggleText>
-    </ToggleBtn >
+    </ToggleBtn>
   )
 }
 

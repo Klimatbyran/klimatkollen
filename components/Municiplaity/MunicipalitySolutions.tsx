@@ -1,5 +1,5 @@
-import { H2, H5, Paragraph } from '../Typography'
 import styled from 'styled-components'
+import { H2, H5, Paragraph } from '../Typography'
 import FactSection from '../FactSection'
 import { Municipality } from '../../utils/types'
 import EVCar from '../../public/icons/ev_car.svg'
@@ -28,7 +28,9 @@ type SolutionSectionProps = {
   info: string
 }
 
-const SolutionSection = ({ icon, title, heading, data, info }: SolutionSectionProps) => {
+function SolutionSection({
+  icon, title, heading, data, info,
+}: SolutionSectionProps) {
   return (
     <>
       <FlexContainer>
@@ -44,7 +46,7 @@ type SolutionsProps = {
   municipality: Municipality
 }
 
-const MunicipalitySolutions = ({ municipality }: SolutionsProps) => {
+function MunicipalitySolutions({ municipality }: SolutionsProps) {
   return (
     <>
       <StyledH2>Omställning</StyledH2>
@@ -55,7 +57,7 @@ const MunicipalitySolutions = ({ municipality }: SolutionsProps) => {
         icon={<EVCar />}
         title="Elbilarna"
         heading="Förändringstakt andel laddbara bilar"
-        data={(municipality.ElectricCarChangePercent * 100).toFixed(1) + '%'}
+        data={`${(municipality.ElectricCarChangePercent * 100).toFixed(1)}%`}
         info="Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet
             2015 i procentenheter per år."
       />
@@ -63,7 +65,7 @@ const MunicipalitySolutions = ({ municipality }: SolutionsProps) => {
         icon={<Bike />}
         title="Cyklarna"
         heading="Antal meter cykelväg per invånare"
-        data={municipality.BicycleMetrePerCapita.toFixed(1) + ' meter'}
+        data={`${municipality.BicycleMetrePerCapita.toFixed(1)} meter`}
         info="Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild)."
       />
     </>

@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next'
-import React, { ReactElement, useState } from 'react'
+import { ReactElement, useState } from 'react'
 import styled from 'styled-components'
 
 import DropDown from '../components/DropDown'
@@ -17,7 +17,7 @@ import MapLabels from '../components/Map/MapLabels'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
-import { default_dataset, datasetDescriptions, data } from '../data/dataset_descriptions'
+import { defaultDataset, datasetDescriptions, data } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 
@@ -56,8 +56,8 @@ const MunicipalityContainer = styled.div`
   }
 `
 
-const default_view_mode = 'karta'
-const secondary_view_mode = 'lista'
+const defaultViewMode = 'karta'
+const secondaryViewMode = 'lista'
 
 type PropsType = {
   municipalities: Array<Municipality>
@@ -65,11 +65,11 @@ type PropsType = {
   dataset: SelectedData
 }
 
-const StartPage = ({
+function StartPage({
   municipalities,
-  viewMode = default_view_mode,
-  dataset = default_dataset,
-}: PropsType) => {
+  viewMode = defaultViewMode,
+  dataset = defaultDataset,
+}: PropsType) {
   const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
 
@@ -79,7 +79,7 @@ const StartPage = ({
 
   const handleToggle = () => {
     setToggleViewMode(
-      toggleViewMode === default_view_mode ? secondary_view_mode : default_view_mode,
+      toggleViewMode === defaultViewMode ? secondaryViewMode : defaultViewMode,
     )
   }
 
@@ -106,14 +106,15 @@ const StartPage = ({
           </InfoText>
           <ToggleButton
             handleClick={handleToggle}
-            text={toggleViewMode === default_view_mode ? 'Se lista' : 'Se karta'}
-            icon={toggleViewMode === default_view_mode ? <ListIcon /> : <MapIcon />}
+            text={toggleViewMode === defaultViewMode ? 'Se lista' : 'Se karta'}
+            icon={toggleViewMode === defaultViewMode ? <ListIcon /> : <MapIcon />}
           />
           <MunicipalityContainer>
             <div
               style={{
-                display: toggleViewMode === default_view_mode ? 'block' : 'none',
-              }}>
+                display: toggleViewMode === defaultViewMode ? 'block' : 'none',
+              }}
+            >
               <MapLabels
                 labels={datasetDescription.labels}
                 rotations={datasetDescription.labelRotateUp}
@@ -122,9 +123,10 @@ const StartPage = ({
             </div>
             <div
               style={{
-                display: toggleViewMode === secondary_view_mode ? 'block' : 'none',
+                display: toggleViewMode === secondaryViewMode ? 'block' : 'none',
                 width: '100%',
-              }}>
+              }}
+            >
               <ComparisonTable data={rankedData[selectedData]} columns={cols} />
             </div>
           </MunicipalityContainer>
@@ -145,7 +147,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   res.setHeader(
     'Cache-Control',
-    'public, stale-while-revalidate=60, max-age=' + 60 * 60 * 24 * 7,
+    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
   return {

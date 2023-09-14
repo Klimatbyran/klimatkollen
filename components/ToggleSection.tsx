@@ -5,7 +5,6 @@ import { H5 } from './Typography'
 import ArrowUp from '../public/icons/arrow-up-green.svg'
 import ArrowDown from '../public/icons/arrow-down-round.svg'
 
-
 const TextSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -45,30 +44,28 @@ type Props = {
   text: JSX.Element
 }
 
-const ToggleSection = ({ header, text }: Props) => {
+function ToggleSection({ header, text }: Props) {
   const [toggle, setToggle] = useState(false)
 
   return (
-    <>
-      <TextSection>
-        <HeaderSection onClick={() => setToggle(!toggle)}>
-          <H5>{header}</H5>
-          {toggle ? (
-            <ArrowUp className="arrow" onClick={() => setToggle(!toggle)} />
-          ) : (
-            <ArrowDown
-              className="arrow"
-              onClick={() => setToggle(!toggle)}
-            />
-          )}
-        </HeaderSection>
-        {toggle && (
-          <InfoSection>
-            {text}
-          </InfoSection>
+    <TextSection>
+      <HeaderSection onClick={() => setToggle(!toggle)}>
+        <H5>{header}</H5>
+        {toggle ? (
+          <ArrowUp className="arrow" onClick={() => setToggle(!toggle)} />
+        ) : (
+          <ArrowDown
+            className="arrow"
+            onClick={() => setToggle(!toggle)}
+          />
         )}
-      </TextSection>
-    </>
+      </HeaderSection>
+      {toggle && (
+      <InfoSection>
+        {text}
+      </InfoSection>
+      )}
+    </TextSection>
   )
 }
 

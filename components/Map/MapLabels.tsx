@@ -5,7 +5,6 @@ import Icon from '../../public/icons/arrow.svg'
 import { Paragraph } from '../Typography'
 import { colorTheme } from '../../Theme'
 
-
 const Container = styled.div`
   padding-left: 0.87rem;
   padding-top: 1.2rem;
@@ -69,7 +68,7 @@ type LabelProps = {
   rotateup?: boolean
 }
 
-const Label = ({ color, text, rotateup }: LabelProps) => {
+function Label({ color, text, rotateup }: LabelProps) {
   return (
     <LabelBox>
       <Square color={color}>
@@ -85,21 +84,19 @@ const Label = ({ color, text, rotateup }: LabelProps) => {
 type MapLabelsProps = {
   labels: string[]
   rotations: boolean[]
-  isTwoElements?: boolean
 }
 
-const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
+function MapLabels({ labels, rotations }: MapLabelsProps) {
   const colors = [colorTheme.red, colorTheme.rust, colorTheme.darkOrange, colorTheme.orange, colorTheme.yellow, colorTheme.blue]
   const labelColors = labels.length === 2 ? [colorTheme.red, colorTheme.main] : colors
 
   return (
     <Container>
       {labels.map((label, i) => (
-        <Label key={i} color={labelColors[i]} text={label} rotateup={rotations[i]} />
+        <Label color={labelColors[i]} text={label} rotateup={rotations[i]} />
       ))}
     </Container>
   )
 }
-
 
 export default MapLabels
