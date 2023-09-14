@@ -9,8 +9,8 @@ from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
 from issues.emissions.emission_data_calculations import emission_calculations
+from issues.consumption.consumption_data_calculations import get_consumption_emissions
 from export_data import export_to_xlsx
-
 
 # Notebook from ClimateView that our calculations are based on:
 # https://colab.research.google.com/drive/1qqMbdBTu5ulAPUe-0CRBmFuh8aNOiHEb?usp=sharing
@@ -31,6 +31,9 @@ print('Climate plans added')
 
 df = bicycle_calculations(df)
 print('Bicycle data added')
+
+df = get_consumption_emissions(df)
+print('Consumption emission data added')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -65,7 +68,8 @@ for i in range(len(df)):
         'climatePlanLink': df.iloc[i]['Länk till aktuell klimatplan'],
         'climatePlanYear': df.iloc[i]['Antagen år'],
         'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
-        'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita']
+        'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
+        'totalConsumptionEmission': df.iloc[i]['Total emissions'],
     })
 
 with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file

@@ -75,6 +75,7 @@ export class ClimateDataService {
         ElectricCarChangeYearly: data.electricCarChangeYearly,
         ClimatePlan: climatePlan,
         BicycleMetrePerCapita: data.bicycleMetrePerCapita,
+        TotalConsumptionEmission: data.totalConsumptionEmission/1000,
       } as Municipality
       return municipality
     })

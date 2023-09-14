@@ -128,6 +128,29 @@ export const datasetDescriptions: DatasetDescriptions = {
     tooltip:
       'Antal meter cykelväg per invånare per kommun år 2022 totalt för alla väghållare (statlig, kommunal, enskild)',
   },
+
+  Konsumtionen: {
+    heading: 'Lorem ipsum',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Koldioxidutsläpp i ton per person och år.',
+    source: (
+      <>
+        Källa:{' '}
+        <a
+          href="https://nvdb2012.trafikverket.se/SeTransportnatverket"
+          target="_blank"
+          rel="noreferrer">
+          Nationella Vägdatabasen/Trafikverket
+        </a>
+      </>
+    ),
+    boundaries: [7, 6.7, 6.4, 6.1, 5.8],
+    labels: ['7 ton +', '7-6.7 ton', '6.7-6.4 ton', '6.4-6.1 ton', '6.1-5.8 ton', '5.8 ton -'],
+    labelRotateUp: [],
+    columnHeader: 'Lorem ipsum',
+    dataType: 'Number',
+    tooltip:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  },
 }
 
 export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
@@ -143,6 +166,8 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
     case 'Klimatplanerna':
       dataPoint = item.ClimatePlan.Link
       break
+    case 'Konsumtionen':
+      dataPoint = item.TotalConsumptionEmission
     default:
       dataPoint = item.BicycleMetrePerCapita
   }

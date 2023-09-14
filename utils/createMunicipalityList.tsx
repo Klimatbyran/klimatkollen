@@ -51,6 +51,10 @@ export const rankData = (municipalities: Municipality[]) => {
       name: item.Name,
       dataPoint: item.BicycleMetrePerCapita,
     })),
+    Konsumtionen: municipalities.map((item) => ({
+      name: item.Name,
+      dataPoint: item.TotalConsumptionEmission,
+    })),
   }
 
   type RankedData = {
