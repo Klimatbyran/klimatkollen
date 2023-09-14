@@ -1,76 +1,47 @@
-import RawPoliticalRule from "../data/facts/political/RawPoliticalRule"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// Fixme revisit when there's time
+import RawPoliticalRule from '../data/facts/political/RawPoliticalRule'
 
 export class PolitycalRuleService {
-    public getPoliticalRule(municipalityName: string) : Array<string> {
-        
-        const rawmun = RawPoliticalRule
-            .find((rawPM:any) => {
-                return rawPM.kommun.toLowerCase() == municipalityName.toLowerCase() + " kommun" || 
-                    rawPM.kommun.toLowerCase() == municipalityName.toLowerCase() + "s kommun" || 
-                    rawPM.kommun.toLowerCase() == municipalityName.toLowerCase() + " stad" || 
-                    rawPM.kommun.toLowerCase() == municipalityName.toLowerCase() + "s stad" ||  
-                    rawPM.kommun.toLowerCase() == "region " + municipalityName.toLowerCase()|| 
-                    rawPM.kommun.toLowerCase() == municipalityName.toLowerCase()
-            })
-            
-        let rule:Array<string> | null = []
-        
-        if (rawmun) {
-           rule = rawmun.styre
-                .split(',')
-                .filter((rawMun:any) => rawMun != '' && rawMun != ' ')
-                .map((partyShort:string) => {
-                    switch(partyShort) {
-                        case 'M':
-                            return 'Moderaterna'
-                        case 'S':
-                            return 'Socialdemokraterna'
-                        case 'L':
-                            return 'Liberalerna'
-                        case 'KD':
-                            return 'Kristdemokraterna'
-                        case 'V':
-                            return 'Vänsterpartiet'
-                        case 'C':
-                            return 'Centerpartiet'
-                        case 'MP':
-                            return 'Miljöpartiet'
-                        case 'SD':
-                            return 'Sverigedemokraterna'
-                        case 'ÖP':
-                            return rawmun? rawmun.other : ''
-                    }
-                }) as string[] 
-        }
+  public getPoliticalRule(municipalityName: string) : Array<string> {
+    const rawMunicipality = RawPoliticalRule
+      .find((rawPM: any) => rawPM.kommun.toLowerCase() === `${municipalityName.toLowerCase()} kommun`
+                    || rawPM.kommun.toLowerCase() === `${municipalityName.toLowerCase()}s kommun`
+                    || rawPM.kommun.toLowerCase() === `${municipalityName.toLowerCase()} stad`
+                    || rawPM.kommun.toLowerCase() === `${municipalityName.toLowerCase()}s stad`
+                    || rawPM.kommun.toLowerCase() === `region ${municipalityName.toLowerCase()}`
+                    || rawPM.kommun.toLowerCase() === municipalityName.toLowerCase())
 
-        return rule
+    let rule:Array<string> | null = []
+
+    if (rawMunicipality) {
+      rule = rawMunicipality.styre
+        .split(',')
+        .filter((rawMun: any) => rawMun !== '' && rawMun !== ' ')
+        .map((partyShort:string) => {
+          switch (partyShort) {
+            case 'M':
+              return 'Moderaterna'
+            case 'L':
+              return 'Liberalerna'
+            case 'KD':
+              return 'Kristdemokraterna'
+            case 'V':
+              return 'Vänsterpartiet'
+            case 'C':
+              return 'Centerpartiet'
+            case 'MP':
+              return 'Miljöpartiet'
+            case 'SD':
+              return 'Sverigedemokraterna'
+            case 'ÖP':
+              return rawMunicipality ? rawMunicipality.other : ''
+            default:
+              return 'Socialdemokraterna'
+          }
+        }) as string[]
     }
 
-    private tsvJSON(tsv:any) {
-        const lines = tsv.split("\n");
-        const result = [];
-        const headers = lines[0].split("\t");
-      
-        for (let i = 2; i < lines.length; i++) {
-            const currentline = lines[i].split("\t");
-            const obj = {
-                kommun: currentline[0],
-                styre: currentline[12],
-                annatparti: currentline[11]
-            }
-      
-          result.push(obj);
-        }
-      
-        return result;
-      }
-      
-    private readFromTSV() {
-          
-        const { readFileSync } = require('fs');
-        const tsvFileData = readFileSync('./resources/politisk-majoritet-kommuner2.tsv');
-        const jsonRes = this.tsvJSON(tsvFileData.toString());
-        
-        console.log(JSON.stringify(jsonRes));
-    }
+    return rule
+  }
 }

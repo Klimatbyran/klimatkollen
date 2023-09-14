@@ -13,14 +13,14 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   res.setHeader(
     'Cache-Control',
-    'public, stale-while-revalidate=60, max-age=' + 60 * 60 * 24 * 7,
+    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
   return {
     props: {
       municipalities,
       viewMode,
-      dataset
+      dataset,
     },
   }
 }

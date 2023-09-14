@@ -12,7 +12,7 @@ export default function Index() {
     if (municipality) router.replace(`/kommun/${municipality}/${STEPS[0]}`)
   }, [municipality, router])
 
-  return <></>
+  return ''
 }
 
 interface Params extends ParsedUrlQuery {

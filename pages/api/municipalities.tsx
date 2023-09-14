@@ -9,15 +9,14 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
   switch (method) {
     case 'GET':
       try {
-        const municipalities = new ClimateDataService().getMunicipalities();
+        const municipalities = new ClimateDataService().getMunicipalities()
         if (municipalities.length < 1) {
           res.status(404).json('Inga kommuner hittades')
         } else {
-          res.setHeader('Cache-Control', 'public, stale-while-revalidate=60, max-age=' + ((60*60)*24)*7)
+          res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${((60 * 60) * 24) * 7}`)
           res.status(200).json(municipalities)
         }
-      }
-      catch(error){
+      } catch (error) {
         res.status(500).json(error)
       }
       break

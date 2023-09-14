@@ -24,16 +24,16 @@ width: 100%;
 }
 `
 
-const FourOhFour = () => {
+function FourOhFour() {
   const handleClick = () => {
-    router.push(`/`)
+    router.push('/')
   }
 
   return (
-      <Wrapper>
-        <H1>404 - Sidan hittades inte</H1>
-        <Button onClick={handleClick}>Gå till startsidan</Button>
-      </Wrapper>
+    <Wrapper>
+      <H1>404 - Sidan hittades inte</H1>
+      <Button onClick={handleClick}>Gå till startsidan</Button>
+    </Wrapper>
   )
 }
 

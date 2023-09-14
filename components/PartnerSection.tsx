@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 import { devices } from '../utils/devices'
 
-
 const IconSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,12 +17,14 @@ type PartnerProps = {
   logo: JSX.Element
 }
 
-const PartnerSection = ({ link, logo }: PartnerProps) => (
-  <IconSection>
-    <a href={link} target="_blank" rel="noreferrer">
-      {logo}
-    </a>
-  </IconSection>
-)
+function PartnerSection({ link, logo }: PartnerProps) {
+  return (
+    <IconSection>
+      <a href={link} target="_blank" rel="noreferrer">
+        {logo}
+      </a>
+    </IconSection>
+  )
+}
 
 export default PartnerSection
