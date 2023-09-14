@@ -23,7 +23,7 @@ module.exports = {
     async redirects() {
       return [
         {
-          source: '/ke',
+          source: '/partier?fbclid=IwAR3RYrLXKF2LrjgG-Pk3muzntQfsxv1PsJwrA58t79UoRO-bdUuiac-K118',
           destination: '/',
           permanent: true,  // 301 redirect
         },
