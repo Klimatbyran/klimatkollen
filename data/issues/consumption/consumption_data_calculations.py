@@ -5,6 +5,7 @@ import json
 PATH_CONSUMPTION_DATA = 'issues/consumption/consumption_data_raw.json'
 OUTPUT_EXCEL_PATH = 'output/consumption_emissions.xlsx'
 
+
 def get_consumption_emissions(df):
 
     # Parse JSON data
@@ -24,13 +25,14 @@ def get_consumption_emissions(df):
             properties['Kommun'] = properties.pop('kom_namn')
 
             total_emissions_list.append(
-                {'Kommun': properties['Kommun'], 'Konsumtionsutsläpp (ton/person/år)': properties['Total emissions']})
+                {'Kommun': properties['Kommun'], 'Konsumtionsutsläpp (kg/person/år)': properties['Total emissions']})
 
             # Remove unwanted 'geoid' and 'län' key
             properties.pop('geoid', None)
             län = properties.pop('län', None)
 
             features_list.append(properties)
+
     # Convert to pandas DataFrame
     df_consumption = pd.DataFrame(features_list)
 
