@@ -21,7 +21,6 @@ import { defaultDataset, datasetDescriptions, data } from '../data/dataset_descr
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import { spacingTheme } from '../Theme'
-import Header from '../components/Header'
 
 const Container = styled.div`
   display: flex;
@@ -121,7 +120,8 @@ function StartPage({
               <div
                 style={{
                   display: toggleViewMode === defaultViewMode ? 'block' : 'none',
-                }}>
+                }}
+              >
                 <MapLabels
                   labels={datasetDescription.labels}
                   rotations={datasetDescription.labelRotateUp}
@@ -136,7 +136,8 @@ function StartPage({
                 style={{
                   display: toggleViewMode === secondaryViewMode ? 'block' : 'none',
                   width: '100%',
-                }}>
+                }}
+              >
                 <ComparisonTable data={rankedData[selectedData]} columns={cols} />
               </div>
             </ComparisonContainer>

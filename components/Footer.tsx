@@ -116,47 +116,47 @@ function Footer() {
             <FlexSection>
               <PartnerSection
                 link="https://postkodstiftelsen.se/"
-                logo={
+                logo={(
                   <img
                     src="/icons/postkodstiftelsen.svg"
                     width={90}
                     height="auto"
                     alt="Postkodstiftelsen logo"
                   />
-                }
+                )}
               />
               <PartnerSection
                 link="https://www.wwf.se/"
-                logo={
+                logo={(
                   <img
                     src="/partners/WWF_Logo_Small_RGB_72dpi.jpg"
                     width={45}
                     height={45}
                     alt="WWF logo"
                   />
-                }
+                )}
               />
               <PartnerSection
                 link="https://www.climateview.global/"
-                logo={
+                logo={(
                   <img
                     src="/icons/climateview.svg"
                     width={90}
                     height="auto"
                     alt="ClimateViw logo"
                   />
-                }
+                )}
               />
               <PartnerSection
                 link="https://www.klimatklubben.se/"
-                logo={
+                logo={(
                   <img
                     src="/icons/klimatklubben.svg"
                     width="auto"
                     height={45}
                     alt="Klimatklubben logo"
                   />
-                }
+                )}
               />
             </FlexSection>
           </ContentWrapper>
@@ -174,20 +174,24 @@ function Footer() {
               Klimatkollen är en medborgarplattform som tillgängliggör klimatdata.
             </Paragraph>
             <Copyright>
-              CC BY-SA -{' '}
+              CC BY-SA -
+              {' '}
               <a
                 href="http://creativecommons.org/licenses/by-sa/4.0/"
                 target="_blank"
-                rel="noreferrer license">
+                rel="noreferrer license"
+              >
                 Attribution-ShareAlike 4.0 International license
               </a>
             </Copyright>
             <GHLink>
-              Klimatkollen är{' '}
+              Klimatkollen är
+              {' '}
               <a
                 href="https://github.com/Klimatbyran/klimatkollen"
                 target="_blank"
-                rel="noreferrer">
+                rel="noreferrer"
+              >
                 öppen källkod
               </a>
             </GHLink>
@@ -203,7 +207,8 @@ function Footer() {
                 <ContactLink
                   href="https://www.linkedin.com/company/klimatkollen/"
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   LinkedIn
                 </ContactLink>
               </ContactListItem>
@@ -212,7 +217,8 @@ function Footer() {
                 <ContactLink
                   href="https://twitter.com/klimatkollen"
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   Twitter
                 </ContactLink>
               </ContactListItem>
