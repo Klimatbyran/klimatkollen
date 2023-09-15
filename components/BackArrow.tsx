@@ -13,14 +13,16 @@ type BackArrowProps = {
   route: string
 }
 
-const BackArrow = ({ route }: BackArrowProps) => (
-  <Link href={route}>
-    <StyledButton>
-      <a href={route}>
-        <ArrowLeftIcon />
-      </a>
-    </StyledButton>
-  </Link>
-)
+function BackArrow({ route }: BackArrowProps) {
+  return (
+    <Link href={route}>
+      <StyledButton>
+        <a href={route}>
+          <ArrowLeftIcon />
+        </a>
+      </StyledButton>
+    </Link>
+  )
+}
 
 export default BackArrow

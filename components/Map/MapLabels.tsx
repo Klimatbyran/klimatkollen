@@ -69,7 +69,7 @@ type LabelProps = {
   rotateup?: boolean
 }
 
-const Label = ({ color, text, rotateup }: LabelProps) => {
+function Label({ color, text, rotateup }: LabelProps) {
   return (
     <LabelBox>
       <Square color={color}>
@@ -83,7 +83,6 @@ const Label = ({ color, text, rotateup }: LabelProps) => {
 type MapLabelsProps = {
   labels: string[]
   rotations: boolean[]
-  isTwoElements?: boolean
 }
 
 const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
@@ -92,7 +91,7 @@ const MapLabels = ({ labels, rotations }: MapLabelsProps) => {
   return (
     <Container>
       {labels.map((label, i) => (
-        <Label key={i} color={labelColors[i]} text={label} rotateup={rotations[i]} />
+        <Label color={labelColors[i]} text={label} rotateup={rotations[i]} />
       ))}
     </Container>
   )

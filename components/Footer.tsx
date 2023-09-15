@@ -104,7 +104,7 @@ const ContactLink = styled.a`
   font-size: 13px;
 `
 
-const Footer = () => {
+function Footer() {
   return (
     <>
       <PageWrapper backgroundColor={'black'}>
@@ -119,17 +119,21 @@ const Footer = () => {
             </TextSection>
             <FlexSection>
               <PartnerSection
-                link='https://postkodstiftelsen.se/'
-                logo={<img src="/icons/postkodstiftelsen.svg" width={180} height={'auto'} alt="Postkodstiftelsen logo" />} />
+                link="https://postkodstiftelsen.se/"
+                logo={<img src="/icons/postkodstiftelsen.svg" width={180} height="auto" alt="Postkodstiftelsen logo" />}
+              />
               <PartnerSection
-                link='https://www.wwf.se/'
-                logo={<img src='/partners/WWF_Logo_Small_RGB_72dpi.jpg' width={'auto'} height={90} alt="WWF logo" />} />
+                link="https://www.wwf.se/"
+                logo={<img src="/WWF_Logo_Small_RGB_72dpi.jpg" width="auto" height={90} alt="WWF logo" />}
+              />
               <PartnerSection
-                link='https://www.climateview.global/'
-                logo={<img src="/icons/climateview.svg" width={180} height={'auto'} alt="ClimateViw logo" />} />
+                link="https://www.climateview.global/"
+                logo={<img src="/icons/climateview.svg" width={180} height="auto" alt="ClimateViw logo" />}
+              />
               <PartnerSection
-                link='https://www.klimatklubben.se/'
-                logo={<img src="/icons/klimatklubben.svg" width={'auto'} height={90} alt="Klimatklubben logo" />} />
+                link="https://www.klimatklubben.se/"
+                logo={<img src="/icons/klimatklubben.svg" width="auto" height={90} alt="Klimatklubben logo" />}
+              />
             </FlexSection>
           </ContentWrapper>
         </Foot>
@@ -142,20 +146,24 @@ const Footer = () => {
               Klimatkollen är en medborgarplattform som tillgängliggör klimatdata.
             </Paragraph>
             <Copyright>
-              CC BY-SA -{' '}
+              CC BY-SA -
+              {' '}
               <a
                 href="http://creativecommons.org/licenses/by-sa/4.0/"
                 target="_blank"
-                rel="noreferrer license">
+                rel="noreferrer license"
+              >
                 Attribution-ShareAlike 4.0 International license
               </a>
             </Copyright>
             <GHLink>
-              Klimatkollen är{' '}
+              Klimatkollen är
+              {' '}
               <a
                 href="https://github.com/Klimatbyran/klimatkollen"
                 target="_blank"
-                rel="noreferrer">
+                rel="noreferrer"
+              >
                 öppen källkod
               </a>
             </GHLink>
@@ -163,40 +171,46 @@ const Footer = () => {
           <BottomContainer>
             <ContactList>
               <ContactListItem>
-                <ContactIcon 
-                src='icons/icon_mail_circle.svg'
-                alt='Email icon' />
+                <ContactIcon
+                  src="icons/icon_mail_circle.svg"
+                  alt="Email icon"
+                />
                 <ContactLink
-                  href="mailto:hej@klimatkollen.se">
+                  href="mailto:hej@klimatkollen.se"
+                >
                   Mail
                 </ContactLink>
               </ContactListItem>
               <ContactListItem>
-                <ContactIcon 
-                src='icons/icon_linkedin_circle.svg' 
-                alt='Linkedin logo' />
+                <ContactIcon
+                  src="icons/icon_linkedin_circle.svg"
+                  alt="Linkedin logo"
+                />
                 <ContactLink
                   href="https://www.linkedin.com/company/klimatkollen/"
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   LinkedIn
                 </ContactLink>
               </ContactListItem>
               <ContactListItem>
-                <ContactIcon 
-                src='icons/icon_twitter_circle.svg'
-                alt='Twitter logo' />
+                <ContactIcon
+                  src="icons/icon_twitter_circle.svg"
+                  alt="Twitter logo"
+                />
                 <ContactLink
                   href="https://twitter.com/klimatkollen"
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   Twitter
                 </ContactLink>
               </ContactListItem>
             </ContactList>
           </BottomContainer>
         </BottomParent>
-      </PageWrapper >
+      </PageWrapper>
     </>
   )
 }

@@ -24,7 +24,7 @@ const Figure = styled.figure`
   }
 `
 
-const Utslappsberakningar = () => {
+function Utslappsberakningar() {
   return (
     <>
       <MetaTags
@@ -50,8 +50,9 @@ const Utslappsberakningar = () => {
           <Paragraph>
             Det visar unika beräkningar av riksdagspartiernas politik för tolv centrala
             klimatåtgärder. Bakom uträkningarna står Klimatkollen, Världsnaturfonden WWF,
-            ClimateView, Naturskyddsföreningen och Våra barns klimat.{' '}
-            <a href="/utslappsberakningar.pdf" target={'_blank'}>
+            ClimateView, Naturskyddsföreningen och Våra barns klimat.
+            {' '}
+            <a href="/utslappsberakningar.pdf" target="_blank">
               Rapporten finns här
             </a>
             .
@@ -59,8 +60,10 @@ const Utslappsberakningar = () => {
 
           <Paragraph>
             Beräkningarna är den andra delen i Klimatkollens partigranskning. Under
-            Almedalsveckan i juli 2022 presenterades del ett, en{' '}
-            <a href="https://klimatkollen.se/partier">analys av partiernas klimatmål</a>{' '}
+            Almedalsveckan i juli 2022 presenterades del ett, en
+            {' '}
+            <a href="https://klimatkollen.se/partier">analys av partiernas klimatmål</a>
+            {' '}
             som visade att endast två av riksdagens åtta partier (MP och V) har klimatmål
             i närheten av Parisavtalets 1,5-gradersmål.
           </Paragraph>
@@ -84,9 +87,13 @@ const Utslappsberakningar = () => {
 
           <Figure>
             <Image
-              src="/images/totala-utslapp-alla-partier.jpg"
-              alt="Potentiell kumulativ utsläppsminskning eller utsläppsökning med partiernas politik under nästa mandatperiod, jämfört med en fortsättning av redan beslutade åtgärder. Positiva värden (SD, KD och M) innebär att utsläppen riskerar att öka under mandatperioden 2023–2026. Streckad area avser effekten av återvätning av torvmarker samt av konsumtionsbaserade utsläpp från livsmedelsproduktion och flyg som delvis äger rum utanför Sveriges gränser."
-              layout={'responsive'}
+              src="/totala-utslapp-alla-partier.jpg"
+              alt="Potentiell kumulativ utsläppsminskning eller utsläppsökning med partiernas politik under nästa mandatperiod
+                , jämfört med en fortsättning av redan beslutade åtgärder. Positiva värden (SD, KD och M)
+                innebär att utsläppen riskerar att öka under mandatperioden 2023–2026.
+                Streckad area avser effekten av återvätning av torvmarker samt av konsumtionsbaserade utsläpp
+                från livsmedelsproduktion och flyg som delvis äger rum utanför Sveriges gränser."
+              layout="responsive"
               width={800}
               height={800}
             />
@@ -125,9 +132,11 @@ const Utslappsberakningar = () => {
 
           <Figure>
             <Image
-              src="/images/utslapp-partiers-politik.jpg"
-              alt="Potential för kumulativ utsläppsminskning eller utsläppsökning med partiernas politik under nästa mandatperiod, jämfört med en fortsättning av redan beslutade åtgärder. Positivt värde betyder att utsläppen ökar, negativt värde betyder att utsläppen minskar."
-              layout={'responsive'}
+              src="/utslapp-partiers-politik.jpg"
+              alt="Potential för kumulativ utsläppsminskning eller utsläppsökning med partiernas politik under nästa mandatperiod,
+               jämfört med en fortsättning av redan beslutade åtgärder.
+               Positivt värde betyder att utsläppen ökar, negativt värde betyder att utsläppen minskar."
+              layout="responsive"
               width={800}
               height={800}
             />
@@ -145,8 +154,10 @@ const Utslappsberakningar = () => {
           </Paragraph>
 
           <Paragraph>
-            Åtgärderna som beräknats har i huvudsak valts ut från{' '}
-            <a href="https://www.klimatpolitiskaradet.se/panorama/">Panorama</a>, ett
+            Åtgärderna som beräknats har i huvudsak valts ut från
+            {' '}
+            <a href="https://www.klimatpolitiskaradet.se/panorama/">Panorama</a>
+            , ett
             oberoende analysverktyg som utvecklats av bland andra Klimatpolitiska rådet
             och ClimateView. Det är befintliga åtgärder och nya förslag som både kan
             genomföras och ge effekt under mandatperioden 2023-2026.
@@ -178,9 +189,9 @@ const Utslappsberakningar = () => {
           </Paragraph>
 
           <Paragraph>
-            <a href="/utslappsberakningar.pdf" target={'_blank'}>
-              Här finns hela analysen: “Utsläppsberäkning av riksdagspartiernas politik för
-              kommande mandatperiod, åren 2023-2026”.
+            <a href="/utslappsberakningar.pdf" target="_blank">
+              Här finns hela analysen: “Utsläppsberäkning av riksdagspartiernas politik
+              för kommande mandatperiod, åren 2023-2026”.
             </a>
           </Paragraph>
         </Container>
@@ -195,7 +206,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   res.setHeader(
     'Cache-Control',
-    'public, stale-while-revalidate=60, max-age=' + 60 * 60 * 24 * 7,
+    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
   return {

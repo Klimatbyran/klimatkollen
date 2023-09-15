@@ -1,4 +1,9 @@
-import { useRef, useEffect } from 'react'
+import {
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react'
 import styled from 'styled-components'
 
 import Close from '../public/icons/close.svg'
@@ -47,54 +52,55 @@ const Modal = styled.div<{ scrollY: number }>`
   }
 `
 
-type Props = { text: string; close: () => void; scrollY: number }
+type Props = {
+  text: string
+  close: () => void
+  scrollY: number
+}
 
-const InfoModal = ({ text, close, scrollY }: Props) => {
+function InfoModal({ text, close, scrollY }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const activeElement = document.activeElement as HTMLElement
 
-  let focusableElements: HTMLElement[] | undefined
-  let activeIndex = -1
+  const focusableElementsRef = useRef<HTMLElement[] | undefined>(undefined)
 
-  const handleKeydown = (evt: KeyboardEvent) => {
-    // todo: replace keyCode with KeyboardEvent.code
-    const listener = keyListenersMap.get(evt.keyCode)
-    return listener && listener(evt)
-  }
+  const handleTab = useCallback((evt: KeyboardEvent) => {
+    const total = focusableElementsRef.current?.length || 0
+    const focusedElementIndex = focusableElementsRef.current?.indexOf(evt.target as HTMLElement) || -1
 
-  const handleTab = (evt: KeyboardEvent) => {
-    const total = focusableElements?.length
+    let newIndex = 0
+
     if (!evt.shiftKey) {
-      activeIndex + 1 === total ? (activeIndex = 0) : (activeIndex += 1)
-      if (focusableElements) focusableElements[activeIndex].focus()
-      return evt.preventDefault()
+      newIndex = (focusedElementIndex + 1) % total
+    } else {
+      newIndex = (focusedElementIndex - 1 + total) % total
     }
-    if (evt.shiftKey) {
-      total && activeIndex - 1 < 0 ? (activeIndex = total - 1) : (activeIndex -= 1)
-      if (focusableElements) {
-        const typecastElement = focusableElements[activeIndex] as HTMLElement
-        typecastElement.focus()
-      }
-      return evt.preventDefault()
-    }
-  }
 
-  const handleEscape = (evt: KeyboardEvent) => {
+    focusableElementsRef.current?.[newIndex].focus()
+    evt.preventDefault()
+  }, [])
+
+  const handleEscape = useCallback((evt: KeyboardEvent) => {
     if (evt.key === 'Escape') close()
-  }
+  }, [close])
 
-  const keyListenersMap = new Map([
-    [9, handleTab],
-    [27, handleEscape],
-  ])
+  const keyListenersMap = useMemo(() => new Map([
+    ['Tab', handleTab],
+    ['Escape', handleEscape],
+  ]), [handleTab, handleEscape])
+
+  const handleKeydown = useCallback((evt: KeyboardEvent) => {
+    const listener = keyListenersMap.get(evt.code)
+    return listener && listener(evt)
+  }, [keyListenersMap])
 
   useEffect(() => {
     if (ref.current) {
-      focusableElements = Array.from(
+      focusableElementsRef.current = Array.from(
         ref.current.querySelectorAll('a, button, textarea') as NodeListOf<HTMLElement>,
       )
     }
-  }, [ref])
+  }, [])
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeydown)
@@ -102,7 +108,7 @@ const InfoModal = ({ text, close, scrollY }: Props) => {
       document.removeEventListener('keydown', handleKeydown)
       activeElement.focus()
     }
-  }, [])
+  }, [activeElement, handleKeydown])
 
   return (
     <Modal ref={ref} scrollY={scrollY}>

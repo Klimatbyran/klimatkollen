@@ -6,7 +6,6 @@ import { devices } from '../utils/devices'
 import { H1 } from './Typography'
 import VisuallyHidden from './VisuallyHidden'
 
-
 const Header = styled.header`
   max-width: 840px;
   padding: 20px;

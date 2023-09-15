@@ -111,7 +111,7 @@ type Props = {
   className: string
 }
 
-const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
+function DropDown({ municipalitiesName, placeholder, className }: Props) {
   const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMunicipality, setSelectedMunicipality] = useState<string>('')
@@ -153,9 +153,7 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
     } else {
       setShowDropDown(true)
     }
-    const filteredMunicipalities = sortedMunicipalities.filter((test) =>
-      test.toLowerCase().includes(value.toLowerCase()),
-    )
+    const filteredMunicipalities = sortedMunicipalities.filter((test) => test.toLowerCase().includes(value.toLowerCase()))
     setMunicipalities(filteredMunicipalities)
   }
 
@@ -195,8 +193,8 @@ const DropDown = ({ municipalitiesName, placeholder, className }: Props) => {
           <HorizontalLine />
           {showDropDown && (
             <MunicipalitiesWrapper className={className}>
-              {municipalities.map((name, i) => (
-                <Municipality key={i} onClick={() => onMunicipalityClick(name)}>
+              {municipalities.map((name) => (
+                <Municipality onClick={() => onMunicipalityClick(name)}>
                   {name}
                 </Municipality>
               ))}

@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend, ClimatePlan } from './types'
 import * as fs from 'fs'
 import * as path from 'path'
+import {
+  Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend, ClimatePlan,
+} from './types'
 
-const CLIMATE_DATA_FILE_PATH = path.resolve('./data/climate-data.json')
+const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
 
 export class ClimateDataService {
   municipalities: Array<Municipality>
@@ -12,20 +14,20 @@ export class ClimateDataService {
     const climateDataFileContent = fs.readFileSync(CLIMATE_DATA_FILE_PATH, { encoding: 'utf-8' })
     const jsonData: any[] = JSON.parse(climateDataFileContent)
 
-    this.municipalities = jsonData.map((jsonData: any) => {
-      let emissions = new Array<EmissionPerYear>()
+    this.municipalities = jsonData.map((data: any) => {
+      const emissions = new Array<EmissionPerYear>()
 
-      Object.entries(jsonData.emissions).forEach(([year, emission]) => {
-        let emissionByYear = {
+      Object.entries(data.emissions).forEach(([year, emission]) => {
+        const emissionByYear = {
           Year: Number(year),
-          CO2Equivalent: emission
+          CO2Equivalent: emission,
         } as unknown as EmissionPerYear
         emissions.push(emissionByYear)
       })
 
       const emission = {
         EmissionPerYear: emissions,
-        LargestEmissionSectors: new Array<EmissionSector>()
+        LargestEmissionSectors: new Array<EmissionSector>(),
       } as Emission
 
       emission.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(
@@ -34,76 +36,72 @@ export class ClimateDataService {
       )
 
       const trend = {
-        FutureCO2Emission: jsonData.futureEmission,
-        TrendPerYear: Object.entries(jsonData.trend).map(
-          ([year, emission]) => {
-            return {
-              Year: Number(year),
-              CO2Equivalent: emission,
-            }
-          }
-        )
+        FutureCO2Emission: data.futureEmission,
+        TrendPerYear: Object.entries(data.trend).map(
+          ([year, emissionTrend]) => ({
+            Year: Number(year),
+            CO2Equivalent: emissionTrend,
+          }),
+        ),
       } as unknown as Trend
 
       const budget = {
         PercentageOfNationalBudget: 1,
-        CO2Equivalent: jsonData.budget,
-        BudgetPerYear: Object.entries(jsonData.emissionBudget).map(
-          ([year, emission]) => {
-            return {
-              Year: Number(year),
-              CO2Equivalent: emission,
-            }
-          }
-        )
+        CO2Equivalent: data.budget,
+        BudgetPerYear: Object.entries(data.emissionBudget).map(
+          ([year, emissionBudget]) => ({
+            Year: Number(year),
+            CO2Equivalent: emissionBudget,
+          }),
+        ),
       } as unknown as Budget
 
       const climatePlan = {
-        Link: jsonData.climatePlanLink,
-        YearAdapted: jsonData.climatePlanYear,
-        Comment: jsonData.climatePlanComment,
+        Link: data.climatePlanLink,
+        YearAdapted: data.climatePlanYear,
+        Comment: data.climatePlanComment,
       } as unknown as ClimatePlan
 
       const municipality = {
-        Name: jsonData.kommun,
+        Name: data.kommun,
         HistoricalEmission: emission,
         EmissionTrend: trend,
         Budget: budget,
-        EmissionChangePercent: jsonData.emissionChangePercent,
-        HitNetZero: jsonData.hitNetZero,
-        BudgetRunsOut: jsonData.budgetRunsOut,
-        ElectricCars: jsonData.electricCars,
-        ElectricCarChangePercent: jsonData.electricCarChangePercent,
-        ElectricCarChangeYearly: jsonData.electricCarChangeYearly,
+        EmissionChangePercent: data.emissionChangePercent,
+        HitNetZero: data.hitNetZero,
+        BudgetRunsOut: data.budgetRunsOut,
+        ElectricCars: data.electricCars,
+        ElectricCarChangePercent: data.electricCarChangePercent,
+        ElectricCarChangeYearly: data.electricCarChangeYearly,
         ClimatePlan: climatePlan,
-        BicycleMetrePerCapita: jsonData.bicycleMetrePerCapita
+        BicycleMetrePerCapita: data.bicycleMetrePerCapita,
       } as Municipality
       return municipality
     })
-      .sort((a: Municipality, b: Municipality) => {
-        return (
-          a.HistoricalEmission.EmissionLevelChangeAverage -
-          b.HistoricalEmission.EmissionLevelChangeAverage
-        )
-      })
+      .sort((a: Municipality, b: Municipality) => (
+        a.HistoricalEmission.EmissionLevelChangeAverage
+          - b.HistoricalEmission.EmissionLevelChangeAverage
+      ))
     this.municipalities.forEach((municipality: Municipality, index: number) => {
-      municipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
+      const updatedMunicipality = { ...municipality }
+      updatedMunicipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
+      return updatedMunicipality
     })
   }
 
   private getEmissionLevelChangeAverage(
     emissions: Array<EmissionPerYear>,
-    years: number
+    years: number,
   ): number {
     let emissionsPercentages = 0
     emissions
       .slice(Math.max(emissions.length - years - 1, 1))
       .forEach(
-        (emission: EmissionPerYear, index: number, emissions: Array<EmissionPerYear>) => {
-          let previous = emissions[index - 1] as EmissionPerYear
+        (emission: EmissionPerYear, index: number, historicEmissions: Array<EmissionPerYear>) => {
+          const previous = historicEmissions[index - 1] as EmissionPerYear
           if (previous) {
-            let changeSinceLastYear = ((emission.CO2Equivalent - previous.CO2Equivalent) /
-              previous.CO2Equivalent) as number
+            const changeSinceLastYear = ((emission.CO2Equivalent - previous.CO2Equivalent)
+              / previous.CO2Equivalent) as number
             emissionsPercentages += changeSinceLastYear
           }
         },
@@ -116,7 +114,7 @@ export class ClimateDataService {
   }
 
   public getMunicipality(name: string): Municipality {
-    const mun = this.municipalities.filter(kommun => kommun.Name.toLowerCase() === name)[0]
+    const mun = this.municipalities.filter((kommun) => kommun.Name.toLowerCase() === name)[0]
     return mun
   }
 }

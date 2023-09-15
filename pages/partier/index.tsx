@@ -25,12 +25,13 @@ const Figure = styled.figure`
   }
 `
 
-const Partier = () => {
+function Partier() {
   return (
     <>
       <MetaTags
         title="Klimatkollen – Analys av partiernas klimatmål"
-        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen, Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
+        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen,
+         Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
       />
       <PageWrapper backgroundColor='black'>
         <Container>
@@ -61,7 +62,7 @@ const Partier = () => {
             <Image
               src="/images/image1-31.png"
               alt="Diagram gällande partiernas utsläppsmål jämfört med Sveriges koldioxidbudget."
-              layout={'responsive'}
+              layout="responsive"
               width={936}
               height={452}
             />
@@ -75,14 +76,18 @@ const Partier = () => {
           </Paragraph>
           <Paragraph>
             Den framräknade nationella koldioxidbudgeten ligger även till grund för
-            jämförelsen på{' '}
+            jämförelsen på
+            {' '}
             <Link href="/">
               <a href="/">startsidan</a>
-            </Link>{' '}
-            på Klimatkollen. Läs mer om hur den är beräknad{' '}
+            </Link>
+            {' '}
+            på Klimatkollen. Läs mer om hur den är beräknad
+            {' '}
             <a
               href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
-              target="_blank">
+              target="_blank"
+            >
               här
             </a>
           </Paragraph>
@@ -131,11 +136,14 @@ const Partier = () => {
             bio-CCS.
           </Paragraph>
           <Paragraph>
-            PM med analysen av partiernas klimatmål i sin helhet finns{' '}
+            PM med analysen av partiernas klimatmål i sin helhet finns
+            {' '}
             <a href="/Carbon_budgets-Analysis_final.pdf" target="_blank">
               här
-            </a>{' '}
-            och en fördjupning om skog och mark finns{' '}
+            </a>
+            {' '}
+            och en fördjupning om skog och mark finns
+            {' '}
             <a href="/Klimatkollen_LULUCF_final.pdf" target="_blank">
               här
             </a>
@@ -153,7 +161,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   res.setHeader(
     'Cache-Control',
-    'public, stale-while-revalidate=60, max-age=' + 60 * 60 * 24 * 7,
+    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
   return {

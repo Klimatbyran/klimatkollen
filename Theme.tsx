@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 export const colorTheme = {
@@ -45,7 +45,7 @@ type Props = {
   children: ReactNode
 }
 
-const Theme = ({ children }: Props) => {
+function Theme({ children }: Props) {
   return <ThemeProvider theme={colorTheme}>{children}</ThemeProvider>
 }
 
