@@ -84,7 +84,7 @@ function Municipality(props: Props) {
   return (
     <>
       <PageWrapper backgroundColor="black">
-        <BackArrow route={'/'} />
+        <BackArrow route="/" />
         <StyledContainer>
           <HeaderSection>
             <H1>{municipality.Name}</H1>
@@ -104,10 +104,12 @@ function Municipality(props: Props) {
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>
-      <PageWrapper backgroundColor={'lightBlack'}>
+      <PageWrapper backgroundColor="lightBlack">
         <StyledH2>
           <H2>
-            Fakta om {municipality.Name}
+            Fakta om
+            {' '}
+            {municipality.Name}
           </H2>
         </StyledH2>
         <Bottom>

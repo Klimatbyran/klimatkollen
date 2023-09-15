@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import ArrowDown from '../public/icons/arrow-down.svg'
 import ArrowRightWhite from '../public/icons/arrow-right-white.svg'
 import ArrowRightGreen from '../public/icons/arrow-right-green.svg'
 import { devices } from '../utils/devices'
@@ -29,20 +30,21 @@ const Flex = styled.div`
   width: 100%;
 `
 
-const Input = styled.input`
+const StyledInput = styled.input`
   width: 100%;
   height: 56px;
   background-color: transparent;
-  border: none;
-  color: ${({ theme }) => theme.midGreen};
-  padding-left: 0.8rem;
-  outline: none;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: ${({ theme }) => theme.offWhite};
   font-size: 16px;
   font-weight: 300;
   font-family: Borna;
+  padding-left: 0.8rem;
+  outline: none;
 
   ::placeholder {
-    color: ${({ theme }) => theme.midGreen};
+    color: ${({ theme }) => theme.white};
   }
 
   @media only screen and (${devices.tablet}) {
@@ -67,31 +69,17 @@ const RoundButton = styled.button`
   background: none;
 `
 
-const HorizontalLine = styled.div`
-  height: 1px;
-  background-color: ${({ theme }) => theme.midGreen};
-  width: 100%;
-`
-
 const MunicipalitiesWrapper = styled.ul`
-  background-color: ${({ theme }) => theme.midGreen};
+  background-color: ${({ theme }) => theme.lightBlack};
   border-radius: 4px;
   max-height: 195px;
   overflow-y: scroll;
   position: absolute;
-  z-index: 2;
-
-  &.startpage {
-    bottom: auto;
-  }
-
-  &.municipality-page {
-    bottom: 100%;
-  }
+  z-index: 20;
 `
 
 const Municipality = styled.li`
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.offWhite};
   text-decoration: none;
   width: 305px;
   height: 56px;
@@ -177,7 +165,7 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
       <Container>
         <SearchDropDown ref={ref}>
           <Flex>
-            <Input
+            <StyledInput
               aria-label={placeholder}
               type="text"
               placeholder={placeholder}
@@ -189,8 +177,10 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
               onChange={(e) => onInputChange(e.target.value)}
               value={selectedMunicipality}
             />
+            <Btn onClick={() => setShowDropDown((current) => !current)}>
+              <ArrowDown />
+            </Btn>
           </Flex>
-          <HorizontalLine />
           {showDropDown && (
             <MunicipalitiesWrapper className={className}>
               {municipalities.map((name) => (

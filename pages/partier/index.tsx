@@ -33,7 +33,7 @@ function Partier() {
         description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen,
          Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
       />
-      <PageWrapper backgroundColor='black'>
+      <PageWrapper backgroundColor="black">
         <Container>
           <H2>
             Analys av riksdagspartiernas klimatmål – sex av åtta partier missar helt

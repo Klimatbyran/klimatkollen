@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import Info from '../public/icons/info.svg'
-import { colorTheme } from "../Theme"
+import { colorTheme } from '../Theme'
 
 const Wrapper = styled.div`
   position: relative;

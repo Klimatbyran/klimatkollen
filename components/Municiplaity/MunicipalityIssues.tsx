@@ -265,21 +265,21 @@ function MunicipalityIssues({
       <H3>
         Totala utsläpp
       </H3>
-      <TotalCo2 color={colorTheme.rust}>
+      <TotalCo2 color={colorTheme.darkOrange}>
         Historiskt:
         {' '}
         {totalHistorical.toFixed(1)}
         {' '}
         tusen ton CO₂
       </TotalCo2>
-      <TotalCo2 color={step > 0 ? colorTheme.red : colorTheme.redDark}>
+      <TotalCo2 color={step > 0 ? colorTheme.darkRed : colorTheme.darkDarkRed}>
         Trend:
         {' '}
         {totalTrend.toFixed(1)}
         {' '}
         tusen ton CO₂
       </TotalCo2>
-      <TotalCo2 color={step > 1 ? colorTheme.green : colorTheme.greenDark}>
+      <TotalCo2 color={step > 1 ? colorTheme.midGreen : colorTheme.darkGreenOne}>
         Koldioxidbudget för att klara Parisavtalet:
         {' '}
         {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)}

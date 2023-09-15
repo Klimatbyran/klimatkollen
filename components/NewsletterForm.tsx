@@ -7,7 +7,7 @@ import Button from './Button'
 
 const Container = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.offWhite};
+  background: ${({ theme }) => theme.lightBlack};
   display: flex;
   padding: 16px;
   border-radius: 8px;
@@ -41,9 +41,10 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   height: 55px;
   border: 1px solid ${({ theme }) => theme.midGreen};
+  background: ${({ theme }) => theme.lightBlack};
   border-radius: 5px;
   padding: 15px;
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.offWhite};
   font-size: 16px;
   font-family: 'Borna';
 

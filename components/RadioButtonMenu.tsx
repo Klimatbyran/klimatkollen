@@ -6,6 +6,7 @@ import { SelectedData } from '../utils/types'
 
 const RadioContainer = styled.div`
   margin-top: 30px;
+  margin-bottom: 30px;
   gap: 16px;
   display: flex;
   font-weight: bolder;
@@ -19,7 +20,7 @@ const RadioLabel = styled.label`
   line-height: 20px;
   text-decoration: none;
   color: ${({ theme }) => theme.offWhite};
-  border: 1px solid ${({ theme }) => theme.lightBlack};
+  border: 1px solid ${({ theme }) => theme.midGreen};
   border-radius: 8px;
   white-space: nowrap;
   cursor: pointer;

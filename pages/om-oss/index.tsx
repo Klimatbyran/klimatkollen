@@ -52,7 +52,7 @@ function OmOss() {
         title="Om oss"
         description="Om Klimatkollen"
       />
-      <PageWrapper backgroundColor='black'>
+      <PageWrapper backgroundColor="black">
         <Container>
           <H2>
             Om oss

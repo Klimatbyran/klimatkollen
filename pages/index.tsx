@@ -21,6 +21,7 @@ import { defaultDataset, datasetDescriptions, data } from '../data/dataset_descr
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import { spacingTheme } from '../Theme'
+import Header from '../components/Header'
 
 const Container = styled.div`
   display: flex;
@@ -45,6 +46,9 @@ const InfoContainer = styled.div`
   z-index: 15;
 `
 
+const defaultViewMode = 'karta'
+const secondaryViewMode = 'lista'
+
 const ComparisonContainer = styled.div<{ viewMode: string }>`
   position: relative;
   overflow-y: scroll;
@@ -54,7 +58,7 @@ const ComparisonContainer = styled.div<{ viewMode: string }>`
   border-radius: 8px;
   display: flex;
   @media only screen and (${devices.mobile}) {
-    margin-top: ${({ viewMode }) => (viewMode === secondary_view_mode ? '32px' : '0')};
+    margin-top: ${({ viewMode }) => (viewMode === secondaryViewMode ? '32px' : '0')};
   }
   @media only screen and (${devices.tablet}) {
     height: 500px;
@@ -66,9 +70,6 @@ const ComparisonContainer = styled.div<{ viewMode: string }>`
     display: none;
   }
 `
-
-const defaultViewMode = 'karta'
-const secondaryViewMode = 'lista'
 
 type PropsType = {
   municipalities: Array<Municipality>

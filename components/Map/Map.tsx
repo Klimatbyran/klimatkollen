@@ -38,8 +38,8 @@ const getColor = (dataPoint: number | string, boundaries: number[] | string[]): 
   const orange: RGBAColor = hexToRGBA(mapColors[1])
   const red: RGBAColor = hexToRGBA(mapColors[0])
 
-  if (boundaries.length == 2) {
-      return (dataPoint === boundaries[0])? red : lightBlue
+  if (boundaries.length === 2) {
+    return (dataPoint === boundaries[0]) ? red : lightBlue
   }
 
   // FIXME refactor plz
@@ -60,24 +60,23 @@ const getColor = (dataPoint: number | string, boundaries: number[] | string[]): 
       return orange
     }
     return red
-  } else {
-    if (dataPoint >= boundaries[0]) {
-      return red
-    }
-    if (dataPoint >= boundaries[1]) {
-      return orange
-    }
-    if (dataPoint >= boundaries[2]) {
-      return darkYellow
-    }
-    if (dataPoint >= boundaries[3]) {
-      return lightYellow
-    }
-    if (dataPoint >= boundaries[4]) {
-      return beige
-    }
-    return lightBlue
   }
+  if (dataPoint >= boundaries[0]) {
+    return red
+  }
+  if (dataPoint >= boundaries[1]) {
+    return orange
+  }
+  if (dataPoint >= boundaries[2]) {
+    return darkYellow
+  }
+  if (dataPoint >= boundaries[3]) {
+    return lightYellow
+  }
+  if (dataPoint >= boundaries[4]) {
+    return beige
+  }
+  return lightBlue
 }
 
 const replaceLetters = (name: string) => {
@@ -221,10 +220,9 @@ function Map({
             backgroundColor: 'black',
             borderRadius: '5px',
             fontSize: '0.7em',
-            color: colorTheme.offWhite
-            },
-          }
-        }
+            color: colorTheme.offWhite,
+          },
+        }}
         onClick={({ object }) => {
           // IDK what the correct type is
           const name = (object as unknown as MunicipalityData)?.name
