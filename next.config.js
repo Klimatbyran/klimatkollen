@@ -19,24 +19,24 @@ module.exports = {
     defaultLocale: 'sv',
   },
 
-    // Redirects configuration
-    async redirects() {
-      return [
-        {
-          source: '/partier/:path*',
-          destination: '/partier',
-          permanent: true,  // 301 redirect
-        },
-        {
-          source: '/kommuner',
-          destination: '/',
-          permanent: true,  // 301 redirect
-        },
-        {
-          source: '/kommuner/kommun/ume%C3%A5/parisavtalet',
-          destination: '/',
-          permanent: true,  // 301 redirect
-        },
-      ]
-    },
+  // Redirects configuration
+  async redirects() {
+    return [
+      {
+        source: '/partier/:path*',
+        destination: '/partier',
+        permanent: true, // 301 redirect
+      },
+      {
+        source: '/kommuner',
+        destination: '/',
+        permanent: true, // 301 redirect
+      },
+      {
+        source: '/kommuner/kommun/ume%C3%A5/parisavtalet',
+        destination: '/',
+        permanent: true, // 301 redirect
+      },
+    ]
+  },
 }
