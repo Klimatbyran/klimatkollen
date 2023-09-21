@@ -27,6 +27,7 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
   margin-top: 3rem;
+  align-items: center;
 `
 
 const InfoText = styled.div`
