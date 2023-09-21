@@ -12,7 +12,6 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: ${(props) => props.theme.black};
 `
 
 const GreenContainer = styled.div`
@@ -25,7 +24,7 @@ const GreenContainer = styled.div`
 const DarkContainer = styled.div`
   border-radius: 4px;
   padding: 15px 15px;
-  background: ${({ theme }) => theme.black};
+  background: ${({ theme }) => theme.lightBlack};
 `
 
 const Row = styled.div`

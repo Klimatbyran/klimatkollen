@@ -24,6 +24,13 @@ export const IconButton = styled.button`
   gap: 1rem;
 `
 
+export const Square = styled.div<{ color: string }>`
+  background-color: ${(props) => props.color};
+  width: 20px;
+  height: 20px;
+  position: relative;
+`
+
 export const UnorderedList = styled.ul`
   list-style-position: inside;
   margin: 16px;
