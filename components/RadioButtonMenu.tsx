@@ -42,24 +42,14 @@ const RadioInput = styled.input`
   }
 `
 
-const replaceLetters = (word: string) => word.replace('å', 'a').replace('ä', 'a').replace('ö', 'o') // replace å ä ö
-
 const datasetKeys = Object.keys(datasetDescriptions)
 
 type MenuProps = {
   selectedData: SelectedData
-  setSelectedData: React.Dispatch<React.SetStateAction<SelectedData>>
+  handleDataChange: (newData: SelectedData) => void
 }
 
-function RadioButtonMenu({ selectedData, setSelectedData }: MenuProps) {
-  const handleSelectData = (datasetName: string) => {
-    const path = datasetName !== defaultDataset
-      ? `/${replaceLetters(datasetName).toLowerCase()}`
-      : '/'
-    router.push(path, undefined, { shallow: true, scroll: false })
-    setSelectedData(datasetName)
-  }
-
+function RadioButtonMenu({ selectedData, handleDataChange }: MenuProps) {
   return (
     <RadioContainer>
       {datasetKeys.map((option) => (
@@ -69,7 +59,7 @@ function RadioButtonMenu({ selectedData, setSelectedData }: MenuProps) {
             id={option}
             value={option}
             checked={selectedData === option}
-            onChange={() => handleSelectData(option)}
+            onChange={() => handleDataChange(option)}
           />
           <RadioLabel htmlFor={option}>{option}</RadioLabel>
         </Fragment>

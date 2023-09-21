@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next'
 import { ReactElement, useState } from 'react'
 import styled from 'styled-components'
 
+import { useRouter } from 'next/router'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map/Map'
 import MetaTags from '../components/MetaTags'
@@ -61,17 +62,30 @@ const secondaryViewMode = 'lista'
 
 type PropsType = {
   municipalities: Array<Municipality>
-  viewMode: string
-  dataset: SelectedData
 }
 
 function StartPage({
   municipalities,
-  viewMode = defaultViewMode,
-  dataset = defaultDataset,
 }: PropsType) {
-  const [selectedData, setSelectedData] = useState<SelectedData>(dataset)
-  const [toggleViewMode, setToggleViewMode] = useState(viewMode)
+  const router = useRouter()
+  const { dataset: routeDataset } = router.query
+
+  let initialViewMode = 'karta'
+  let initialDataset = 'Utsläppen'
+
+  if (['Cyklarna', 'Klimatplanerna', 'Elbilarna'].includes(routeDataset as string)) {
+    initialViewMode = 'lista'
+    initialDataset = routeDataset as string
+  }
+
+  const [selectedData, setSelectedData] = useState<SelectedData>(initialDataset)
+  const [toggleViewMode, setToggleViewMode] = useState(initialViewMode)
+
+  const handleDataChange = (newData: SelectedData) => {
+    const newDataString = newData as string
+    setSelectedData(newDataString)
+    router.push(`/${newDataString}`, undefined, { shallow: true, scroll: false })
+  }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
   const municipalityData = data(municipalities, selectedData) // get all municipality names and data points for map and list
@@ -97,7 +111,7 @@ function StartPage({
           <H2>Hur går det med?</H2>
           <RadioButtonMenu
             selectedData={selectedData}
-            setSelectedData={setSelectedData}
+            handleDataChange={handleDataChange}
           />
           <InfoText>
             <ParagraphBold>{datasetDescription.heading}</ParagraphBold>
@@ -141,7 +155,7 @@ function StartPage({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
   const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
 
@@ -150,8 +164,10 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
+  const dataset = (params?.dataset || defaultDataset).toString().toLocaleLowerCase()
+
   return {
-    props: { municipalities },
+    props: { municipalities, dataset },
   }
 }
 
