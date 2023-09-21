@@ -17,7 +17,7 @@ import { devices } from '../utils/devices'
 const StyledTable = styled.table`
   width: 98%;
   margin-left: 1%;
-  margin-top: 8px;
+  margin-top: 60px;
   overflow-y: auto;
   border-collapse: collapse;
 
