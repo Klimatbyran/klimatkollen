@@ -19,6 +19,7 @@ const Container = styled.section`
 
 const Figure = styled.figure`
   margin: 22.4px 2px;
+  
   @media only screen and (${devices.tablet}) {
     width: 95%;
   }

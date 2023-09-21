@@ -8,7 +8,6 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding-top: 3rem;
 `
 
 export default function Layout({ children }: { children: JSX.Element }) {
