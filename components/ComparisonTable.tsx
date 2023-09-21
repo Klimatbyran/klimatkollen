@@ -17,13 +17,11 @@ import { devices } from '../utils/devices'
 const StyledTable = styled.table`
   width: 98%;
   margin-left: 1%;
-  margin-top: 60px;
   overflow-y: auto;
   border-collapse: collapse;
 
   @media only screen and (${devices.mobile}) {
     font-size: 0.8em;
-    margin-top: 30px;
   }
 
   .data-header {

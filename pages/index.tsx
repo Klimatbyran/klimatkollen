@@ -58,12 +58,15 @@ const ComparisonContainer = styled.div<{ viewMode: string }>`
   height: 380px;
   border-radius: 8px;
   display: flex;
+
   @media only screen and (${devices.mobile}) {
-    margin-top: ${({ viewMode }) => (viewMode === secondaryViewMode ? '32px' : '0')};
+    margin-top: ${({ viewMode }) => (viewMode === secondaryViewMode ? '64px' : '0')};
   }
+
   @media only screen and (${devices.tablet}) {
     height: 500px;
   }
+
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   ::-webkit-scrollbar {
