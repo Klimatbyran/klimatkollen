@@ -15,38 +15,61 @@ import type { ColumnDef } from '@tanstack/react-table'
 import { devices } from '../utils/devices'
 
 const StyledTable = styled.table`
+  width: 98%;
+  margin-left: 1%;
+  margin-top: 8px;
   overflow-y: auto;
-  width: 100%;
   border-collapse: collapse;
 
   @media only screen and (${devices.mobile}) {
     font-size: 0.8em;
+    margin-top: 30px;
+  }
+
+  .data-header {
+    text-align: right;
+  }
+
+  #first-header {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  #last-header {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  .data-column {
+    color: ${({ theme }) => theme.darkYellow};
+    text-align: right;
   }
 `
 
 const TableData = styled.td`
-  padding: 0.5rem 1rem 0.2rem 0.87rem;
+  padding: 1rem;
   overflow: hidden;
+  border-bottom: 1px solid ${({ theme }) => theme.midGreen};
 
   @media only screen and (${devices.mobile}) {
-    padding: 0.3rem 0rem 0.1rem 0.87rem;
+    padding: 0.75rem;
   }
 `
 
 const TableHeader = styled.th`
-    position: sticky;
-    top: 0;
-    background: ${({ theme }) => theme.lightBlack};
-    padding: 1.2rem 1rem 0.6rem 0.87rem;  
-    fontWeight: bold;
-    text-align: left; 
+  padding: 1rem;
+  background: ${({ theme }) => theme.black};
+  position: sticky;
+  top: 0;
+  font-weight: bold;
+  text-align: left;
 `
 
 const TableRow = styled.tr`
-    :hover {
-        background-color: ${({ theme }) => theme.lightBlack};
-        cursor: pointer;
-    }
+  border-bottom: 1px solid ${({ theme }) => theme.midGreen};
+  :hover {
+    cursor: pointer;
+  }
 `
 
 type TableProps<T extends object> = {
@@ -74,10 +97,16 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
     router.push(route)
   }
 
-  const renderHeader = (header: Header<T, unknown>) => (
-    <TableHeader key={header.id} colSpan={header.colSpan}>
+  const renderHeader = (header: Header<T, unknown>, index: number) => (
+    <TableHeader
+      key={header.id}
+      colSpan={header.colSpan}
+      className={header.index > 1 ? 'data-header' : ''}
+      // eslint-disable-next-line no-nested-ternary
+      id={index === 0 ? 'first-header' : index === header.headerGroup.headers.length - 1 ? 'last-header' : ''}
+    >
       {header.isPlaceholder ? null : (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div
           {...{
             className: header.column.getCanSort() ? 'cursor-pointer select-none' : '',
@@ -86,10 +115,6 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
           }}
         >
           {flexRender(header.column.columnDef.header, header.getContext())}
-          {{
-            asc: '', // ' ↑',
-            desc: '', // ' ↓',
-          }[header.column.getIsSorted() as string] ?? null}
         </div>
       )}
     </TableHeader>
@@ -99,14 +124,14 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
     <StyledTable>
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
-          {headerGroup.headers.map((header) => renderHeader(header))}
+          {headerGroup.headers.map((header, index) => renderHeader(header, index))}
         </tr>
       ))}
       <tbody>
         {table.getRowModel().rows.map((row) => (
           <TableRow key={row.id} onClick={() => handleRowClick(row)}>
-            {row.getVisibleCells().map((cell) => (
-              <TableData key={cell.id}>
+            {row.getVisibleCells().map((cell, columnIndex) => (
+              <TableData key={cell.id} className={columnIndex > 1 ? 'data-column' : ''}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </TableData>
             ))}
