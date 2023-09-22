@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map/Map'
 import MetaTags from '../components/MetaTags'
-import { H2, Paragraph, ParagraphBold } from '../components/Typography'
+import { H2Regular, H4Regular, Paragraph } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality, SelectedData } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -40,11 +40,15 @@ const ParagraphSource = styled(Paragraph)`
 `
 
 const InfoContainer = styled.div`
+  width: 100%;
   position: relative;
   background: ${({ theme }) => theme.lightBlack};
   border-radius: ${spacingTheme.smallSpacing};
-  margin-bottom: 1rem;
+  margin-bottom: 32px;
   z-index: 15;
+  ::-webkit-scrollbar{
+    display: none;
+  }
 `
 
 const defaultViewMode = 'karta'
@@ -99,6 +103,8 @@ function StartPage({
   const cols = listColumns(selectedData, datasetDescription)
   const rankedData = rankData(municipalities)
 
+  const isDefaultViewMode = toggleViewMode === defaultViewMode
+
   return (
     <>
       <MetaTags
@@ -107,7 +113,7 @@ function StartPage({
       />
       <PageWrapper backgroundColor="black">
         <Container>
-          <H2>Hur går det med?</H2>
+          <H2Regular>Hur går det med?</H2Regular>
           <RadioButtonMenu
             selectedData={selectedData}
             setSelectedData={setSelectedData}
@@ -115,36 +121,29 @@ function StartPage({
           <InfoContainer>
             <ToggleButton
               handleClick={handleToggle}
-              text={toggleViewMode === defaultViewMode ? 'Listvy' : 'Kartvy'}
-              icon={toggleViewMode === defaultViewMode ? <ListIcon /> : <MapIcon />}
+              text={isDefaultViewMode ? 'Listvy' : 'Kartvy'}
+              icon={isDefaultViewMode ? <ListIcon /> : <MapIcon />}
             />
             <ComparisonContainer viewMode={toggleViewMode}>
-              <div
-                style={{
-                  display: toggleViewMode === defaultViewMode ? 'block' : 'none',
-                }}
-              >
-                <MapLabels
-                  labels={datasetDescription.labels}
-                  rotations={datasetDescription.labelRotateUp}
-                />
-                <Map
-                  data={municipalityData}
-                  dataType={datasetDescription.dataType}
-                  boundaries={datasetDescription.boundaries}
-                />
-              </div>
-              <div
-                style={{
-                  display: toggleViewMode === secondaryViewMode ? 'block' : 'none',
-                  width: '100%',
-                }}
-              >
+              {isDefaultViewMode && (
+                <>
+                  <MapLabels
+                    labels={datasetDescription.labels}
+                    rotations={datasetDescription.labelRotateUp}
+                  />
+                  <Map
+                    data={municipalityData}
+                    dataType={datasetDescription.dataType}
+                    boundaries={datasetDescription.boundaries}
+                  />
+                </>
+              )}
+              {toggleViewMode === secondaryViewMode && (
                 <ComparisonTable data={rankedData[selectedData]} columns={cols} />
-              </div>
+              )}
             </ComparisonContainer>
             <InfoText>
-              <ParagraphBold>{datasetDescription.heading}</ParagraphBold>
+              <H4Regular>{datasetDescription.heading}</H4Regular>
               <Paragraph>{datasetDescription.body}</Paragraph>
               <ParagraphSource>{datasetDescription.source}</ParagraphSource>
             </InfoText>

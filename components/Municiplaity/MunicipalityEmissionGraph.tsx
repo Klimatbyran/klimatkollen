@@ -203,13 +203,13 @@ function MunicipalityEmissionGraph({
         <Legends>
           {step < 3 && (
             <Legend>
-              <Circle color={colorTheme.darkOrange} />
+              <Circle color={colorTheme.orange} />
               Historiskt
             </Legend>
           )}
           {step > 0 && (
             <Legend>
-              <Circle color={colorTheme.darkRed} />
+              <Circle color={colorTheme.red} />
               Trend
             </Legend>
           )}

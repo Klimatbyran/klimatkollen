@@ -4,7 +4,7 @@ import { devices } from '../utils/devices'
 const ToggleBtn = styled.button`
   width: 112px;
   height: 32px;
-  margin-top: 1rem;
+  margin: 16px;
   position: absolute;
   top: 0;
   right: 0;
@@ -15,7 +15,7 @@ const ToggleBtn = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
   z-index: 150;
   @media only screen and (${devices.mobile}) {
     margin-right: 0;

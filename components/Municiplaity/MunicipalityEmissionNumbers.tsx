@@ -58,15 +58,15 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
       <H4>Utsläppen i siffror</H4>
       <TotalCo2Container>
         <TotalCo2>
-          <Square color={colorTheme.darkOrange} />
+          <Square color={colorTheme.orange} />
           Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
         </TotalCo2>
         <TotalCo2>
-          <Square color={step > 0 ? colorTheme.darkRed : colorTheme.darkDarkRed} />
+          <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
           Trend: {totalTrend.toFixed(1)} tusen ton CO₂
         </TotalCo2>
         <TotalCo2>
-          <Square color={step > 1 ? colorTheme.midGreen : colorTheme.darkGreenOne} />
+          <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
           Koldioxidbudget för att klara Parisavtalet:{' '}
           {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂
         </TotalCo2>

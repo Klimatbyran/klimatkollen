@@ -22,12 +22,6 @@ const ParagraphBoldGreen = styled(ParagraphBold)`
   margin: 0;
 `
 
-const Paragraph = styled.p`
-  font-family: 'Anonymous Pro';
-  padding: 0;
-  margin: 0;
-`
-
 const StyledForm = styled.form`
   display: flex;
   gap: 1.5rem;
@@ -63,7 +57,7 @@ const StyledInput = styled.input`
 
 const EmailValidation = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.darkGreen};
+  background: ${({ theme }) => theme.darkGreenOne};
   height: 56px;
   border-radius: 4px;
   border: 0;

@@ -23,7 +23,7 @@ export const colorTheme = {
 
   lightBlue: '#81DFFF',
 
-  lightGreen: '#67FFEE',
+  lightGreen: '#15D8D8',
   lightGreenOpaqe: 'rgba(103, 255, 238, 0.6)',
   lightGreenDark: 'rgb(0, 179, 159, 0.2)',
 
