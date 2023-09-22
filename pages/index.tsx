@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next'
-import { ReactElement, useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { useRouter } from 'next/router'
@@ -69,8 +69,8 @@ function StartPage({ municipalities }: PropsType) {
   const router = useRouter()
   const { dataset: routeDataset } = router.query
 
-  let initialViewMode = defaultViewMode
-  let initialDataset = defaultDataset
+  const [toggleViewMode, setToggleViewMode] = useState(defaultViewMode)
+  const [selectedData, setSelectedData] = useState<SelectedData>(defaultDataset)
 
   const validDatasetsMap = Object.keys(datasetDescriptions).reduce<
     Record<string, string>
@@ -80,17 +80,18 @@ function StartPage({ municipalities }: PropsType) {
     return acc
   }, {})
 
-  if (routeDataset) {
-    const routeDatasetNormalized = normalizeString(routeDataset as string)
+  useEffect(() => {
+    if (routeDataset) {
+      const routeDatasetNormalized = normalizeString(routeDataset as string)
 
-    if (validDatasetsMap[routeDatasetNormalized]) {
-      initialViewMode = 'lista'
-      initialDataset = validDatasetsMap[routeDatasetNormalized]
+      if (validDatasetsMap[routeDatasetNormalized]) {
+        setToggleViewMode(secondaryViewMode)
+        setSelectedData(validDatasetsMap[routeDatasetNormalized])
+      }
     }
-  }
-
-  const [selectedData, setSelectedData] = useState<SelectedData>(initialDataset)
-  const [toggleViewMode, setToggleViewMode] = useState(initialViewMode)
+  // Disable exhaustive-deps so that it only runs on first mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleDataChange = (newData: SelectedData) => {
     const newDataString = newData as string
