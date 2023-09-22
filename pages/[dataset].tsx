@@ -4,15 +4,13 @@ import StartPage, { getServerSideProps as getIndexServerSideProps } from './inde
 import { datasetDescriptions } from '../data/dataset_descriptions'
 import Footer from '../components/Footer'
 import Layout from '../components/Layout'
-import { toTitleCase } from '../utils/shared'
+import { normalizeString } from '../utils/shared'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params } = context
-  const dataset = toTitleCase(params?.dataset?.toString() as string)
+  const dataset = normalizeString(params?.dataset?.toString() as string)
 
-  const validDatasets: (keyof typeof datasetDescriptions)[] = Object.keys(
-    datasetDescriptions,
-  ) as (keyof typeof datasetDescriptions)[]
+  const validDatasets: string[] = Object.keys(datasetDescriptions).map(normalizeString)
 
   if (!validDatasets.includes(dataset)) {
     return {

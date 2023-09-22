@@ -21,6 +21,7 @@ import ToggleButton from '../components/ToggleButton'
 import { defaultDataset, datasetDescriptions, data } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
+import { normalizeString } from '../utils/shared'
 
 const Container = styled.div`
   display: flex;
@@ -64,20 +65,28 @@ type PropsType = {
   municipalities: Array<Municipality>
 }
 
-function StartPage({
-  municipalities,
-}: PropsType) {
+function StartPage({ municipalities }: PropsType) {
   const router = useRouter()
   const { dataset: routeDataset } = router.query
 
-  let initialViewMode = 'karta'
-  let initialDataset = 'Utsläppen'
+  let initialViewMode = defaultViewMode
+  let initialDataset = defaultDataset
 
-  const toTitleCase = (str: string) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+  const validDatasetsMap = Object.keys(datasetDescriptions).reduce<
+    Record<string, string>
+  >((acc, key) => {
+    const normalizedKey = normalizeString(key)
+    acc[normalizedKey] = key
+    return acc
+  }, {})
 
-  if (['cyklarna', 'klimatplanerna', 'elbilarna', 'utslappen'].includes(routeDataset as string)) {
-    initialViewMode = 'lista'
-    initialDataset = toTitleCase(routeDataset as string)
+  if (routeDataset) {
+    const routeDatasetNormalized = normalizeString(routeDataset as string)
+
+    if (validDatasetsMap[routeDatasetNormalized]) {
+      initialViewMode = 'lista'
+      initialDataset = validDatasetsMap[routeDatasetNormalized]
+    }
   }
 
   const [selectedData, setSelectedData] = useState<SelectedData>(initialDataset)
@@ -136,7 +145,11 @@ function StartPage({
                 labels={datasetDescription.labels}
                 rotations={datasetDescription.labelRotateUp}
               />
-              <Map data={municipalityData} dataType={datasetDescription.dataType} boundaries={datasetDescription.boundaries} />
+              <Map
+                data={municipalityData}
+                dataType={datasetDescription.dataType}
+                boundaries={datasetDescription.boundaries}
+              />
             </div>
             <div
               style={{

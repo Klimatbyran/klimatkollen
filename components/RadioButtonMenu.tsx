@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import styled from 'styled-components'
 import router from 'next/router'
-import { datasetDescriptions, defaultDataset } from '../data/dataset_descriptions'
+import { datasetDescriptions } from '../data/dataset_descriptions'
 import { SelectedData } from '../utils/types'
 
 const RadioContainer = styled.div`
