@@ -5,7 +5,9 @@ import styled from 'styled-components'
 import DropDown from '../components/DropDown'
 import Map from '../components/Map/Map'
 import MetaTags from '../components/MetaTags'
-import { H2Regular, H4Regular, Paragraph } from '../components/Typography'
+import {
+  H2Regular, H4Regular, H5, Paragraph,
+} from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality, SelectedData } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -46,9 +48,22 @@ const InfoContainer = styled.div`
   border-radius: ${spacingTheme.smallSpacing};
   margin-bottom: 32px;
   z-index: 15;
-  ::-webkit-scrollbar{
+  ::-webkit-scrollbar {
     display: none;
   }
+`
+
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const FloatingH5 = styled(H5)`
+  position: absolute;
+  margin: 16px;
+  margin-top: 80px;
+  z-index: 200;
 `
 
 const defaultViewMode = 'karta'
@@ -119,11 +134,14 @@ function StartPage({
             setSelectedData={setSelectedData}
           />
           <InfoContainer>
-            <ToggleButton
-              handleClick={handleToggle}
-              text={isDefaultViewMode ? 'Listvy' : 'Kartvy'}
-              icon={isDefaultViewMode ? <ListIcon /> : <MapIcon />}
-            />
+            <TitleContainer>
+              <FloatingH5>{datasetDescription.title}</FloatingH5>
+              <ToggleButton
+                handleClick={handleToggle}
+                text={isDefaultViewMode ? 'Listvy' : 'Kartvy'}
+                icon={isDefaultViewMode ? <ListIcon /> : <MapIcon />}
+              />
+            </TitleContainer>
             <ComparisonContainer viewMode={toggleViewMode}>
               {isDefaultViewMode && (
                 <>

@@ -5,12 +5,12 @@ import { datasetDescriptions, defaultDataset } from '../data/dataset_description
 import { SelectedData } from '../utils/types'
 
 const RadioContainer = styled.div`
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 32px 0;
   gap: 16px;
   display: flex;
   font-weight: bolder;
   flex-wrap: wrap;
+  justify-content: center;
 `
 
 const RadioLabel = styled.label`
