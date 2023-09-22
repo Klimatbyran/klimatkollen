@@ -48,13 +48,8 @@ const DropDownSection = styled.div`
   flex-direction: column;
   gap: 10px;
   margin-top: 30px;
-
-  @media only screen and (${devices.tablet}) {
-    margin-top: 50px;
-    text-align: center;
-    align-items: center;
-    padding-right: 60px;
-  }
+  text-align: center;
+  align-items: center;
 `
 
 const StyledH2 = styled(H2)`

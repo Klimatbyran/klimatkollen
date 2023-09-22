@@ -6,7 +6,7 @@ import DropDown from '../components/DropDown'
 import Map from '../components/Map/Map'
 import MetaTags from '../components/MetaTags'
 import {
-  H2Regular, H4Regular, H5, Paragraph,
+  H2Regular, H4Regular, H5Regular, Paragraph,
 } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality, SelectedData } from '../utils/types'
@@ -59,7 +59,7 @@ const TitleContainer = styled.div`
   align-items: center;
 `
 
-const FloatingH5 = styled(H5)`
+const FloatingH5 = styled(H5Regular)`
   position: absolute;
   margin: 16px;
   margin-top: 80px;
