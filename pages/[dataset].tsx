@@ -4,10 +4,11 @@ import StartPage, { getServerSideProps as getIndexServerSideProps } from './inde
 import { datasetDescriptions } from '../data/dataset_descriptions'
 import Footer from '../components/Footer'
 import Layout from '../components/Layout'
+import { toTitleCase } from '../utils/shared'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params } = context
-  const dataset = params?.dataset?.toString() as string
+  const dataset = toTitleCase(params?.dataset?.toString() as string)
 
   const validDatasets: (keyof typeof datasetDescriptions)[] = Object.keys(
     datasetDescriptions,

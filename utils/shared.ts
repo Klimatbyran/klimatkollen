@@ -1,4 +1,4 @@
-const replaceLetters = (name: string) => {
+export const replaceLetters = (name: string) => {
   let replacedWord = name
 
   if (replacedWord.includes('Ã¥')) {
@@ -25,4 +25,4 @@ const replaceLetters = (name: string) => {
   return replacedWord
 }
 
-export default replaceLetters
+export const toTitleCase = (str: string) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())

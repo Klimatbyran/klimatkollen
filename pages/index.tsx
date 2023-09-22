@@ -73,9 +73,11 @@ function StartPage({
   let initialViewMode = 'karta'
   let initialDataset = 'Utsläppen'
 
-  if (['Cyklarna', 'Klimatplanerna', 'Elbilarna'].includes(routeDataset as string)) {
+  const toTitleCase = (str: string) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
+
+  if (['cyklarna', 'klimatplanerna', 'elbilarna', 'utslappen'].includes(routeDataset as string)) {
     initialViewMode = 'lista'
-    initialDataset = routeDataset as string
+    initialDataset = toTitleCase(routeDataset as string)
   }
 
   const [selectedData, setSelectedData] = useState<SelectedData>(initialDataset)
@@ -84,7 +86,8 @@ function StartPage({
   const handleDataChange = (newData: SelectedData) => {
     const newDataString = newData as string
     setSelectedData(newDataString)
-    router.push(`/${newDataString}`, undefined, { shallow: true, scroll: false })
+    const newDataLowerCase = newDataString.toLowerCase()
+    router.push(`/${newDataLowerCase}`, undefined, { shallow: true, scroll: false })
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
