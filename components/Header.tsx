@@ -8,8 +8,12 @@ const HeaderContainer = styled.header`
   position: relative;
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 16px;
   background-color: ${({ theme }) => theme.midGreen};
+
+  @media only screen and (${devices.mobile}) {
+    padding: 8px;
+  }
 `
 
 const LogoContainer = styled.div`

@@ -17,8 +17,9 @@ const ToggleBtn = styled.button`
   align-items: center;
   justify-content: right;
   z-index: 150;
+
   @media only screen and (${devices.mobile}) {
-    margin-right: 0;
+    margin-right: 8px;
   }
 `
 

@@ -28,8 +28,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 32px;
   align-items: center;
+
+  @media only and ${devices.mobile} {
+    margin-top: 16px;
+  }
 `
 
 const InfoText = styled.div`
@@ -61,8 +65,7 @@ const TitleContainer = styled.div`
 
 const FloatingH5 = styled(H5Regular)`
   position: absolute;
-  margin: 16px;
-  margin-top: 80px;
+  margin: 60px 0 0 16px;
   z-index: 200;
 `
 
