@@ -31,7 +31,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Elbilarna: {
-    title: 'Ökningstakt',
+    title: 'Elbilsökning',
     heading: 'Ökningstakt andel elbilar sedan Parisavtalet',
     body: 'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
     source: (
@@ -94,7 +94,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Cyklarna: {
-    title: 'Meter cykelväg',
+    title: 'Cykelvägslängd',
     heading: 'Antal meter cykelväg per invånare',
     body: 'På kartan och i listan visas antal meter cykelväg per invånare per kommun år 2022.',
     source: (

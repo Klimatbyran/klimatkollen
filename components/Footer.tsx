@@ -185,7 +185,7 @@ function Footer() {
               </a>
             </Copyright>
             <GHLink>
-              Klimatkollen är
+              Klimatkollen är utvecklad med
               {' '}
               <a
                 href="https://github.com/Klimatbyran/klimatkollen"
