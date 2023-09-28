@@ -130,26 +130,28 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Konsumtionen: {
-    heading: 'Lorem ipsum',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Koldioxidutsläpp i ton per person och år.',
+    heading: 'Hushållens konsumtionsutsläpp',
+    body: 'På kartan och i listan visas hushållens konsumtionsbaserade utsläpp (CO2e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara nere på högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
     source: (
       <>
-        Källa:{' '}
+        Källa:
+        {' '}
         <a
-          href="https://nvdb2012.trafikverket.se/SeTransportnatverket"
+          href="https://www.sei.org/tools/konsumtionskompassen/"
           target="_blank"
-          rel="noreferrer">
-          Nationella Vägdatabasen/Trafikverket
+          rel="noreferrer"
+        >
+          Stockholm Environment Institute
         </a>
       </>
     ),
     boundaries: [7, 6.7, 6.4, 6.1, 5.8],
-    labels: ['7 ton +', '7-6.7 ton', '6.7-6.4 ton', '6.4-6.1 ton', '6.1-5.8 ton', '5.8 ton -'],
+    labels: ['7 ton +', '7-6,7 ton', '6,7-6,4 ton', '6,4-6,1 ton', '6,1-5,8 ton', '5,8 ton -'],
     labelRotateUp: [],
-    columnHeader: 'Lorem ipsum',
+    columnHeader: 'Ton/år',
     dataType: 'Number',
     tooltip:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Avser antal ton växthusgasutsläpp (CO2e) per år och medborgare (år 2019).',
   },
 }
 
@@ -168,6 +170,7 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       break
     case 'Konsumtionen':
       dataPoint = item.TotalConsumptionEmission
+      break
     default:
       dataPoint = item.BicycleMetrePerCapita
   }
