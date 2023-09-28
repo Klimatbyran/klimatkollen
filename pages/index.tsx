@@ -18,7 +18,13 @@ import MapLabels from '../components/Map/MapLabels'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
-import { defaultDataset, datasetDescriptions, data } from '../data/dataset_descriptions'
+import {
+  defaultDataset,
+  datasetDescriptions,
+  data,
+  defaultViewMode,
+  secondaryViewMode,
+} from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import { normalizeString } from '../utils/shared'
@@ -58,18 +64,16 @@ const MunicipalityContainer = styled.div`
   }
 `
 
-const defaultViewMode = 'karta'
-const secondaryViewMode = 'lista'
-
 type PropsType = {
   municipalities: Array<Municipality>
 }
 
 function StartPage({ municipalities }: PropsType) {
   const router = useRouter()
-  const { dataset: routeDataset } = router.query
+  const routeDataset = router.query.dataset
+  const viewMode = router.query.viewMode || defaultViewMode
 
-  const [toggleViewMode, setToggleViewMode] = useState(defaultViewMode)
+  const [toggleViewMode, setToggleViewMode] = useState(viewMode)
   const [selectedData, setSelectedData] = useState<SelectedData>(defaultDataset)
 
   const validDatasetsMap = Object.keys(datasetDescriptions).reduce<
@@ -85,12 +89,12 @@ function StartPage({ municipalities }: PropsType) {
       const routeDatasetNormalized = normalizeString(routeDataset as string)
 
       if (validDatasetsMap[routeDatasetNormalized]) {
-        setToggleViewMode(secondaryViewMode)
+        setToggleViewMode(toggleViewMode)
         setSelectedData(validDatasetsMap[routeDatasetNormalized])
       }
     }
-  // Disable exhaustive-deps so that it only runs on first mount
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // Disable exhaustive-deps so that it only runs on first mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleDataChange = (newData: SelectedData) => {
@@ -105,9 +109,12 @@ function StartPage({ municipalities }: PropsType) {
   const datasetDescription = datasetDescriptions[selectedData] // get description of selected dataset
 
   const handleToggle = () => {
-    setToggleViewMode(
-      toggleViewMode === defaultViewMode ? secondaryViewMode : defaultViewMode,
-    )
+    const newViewMode = toggleViewMode === defaultViewMode ? secondaryViewMode : defaultViewMode
+    setToggleViewMode(newViewMode)
+    router.replace(`/${normalizeString(selectedData as string)}/${newViewMode}`, undefined, {
+      shallow: true,
+      scroll: false,
+    })
   }
 
   const cols = listColumns(selectedData, datasetDescription)

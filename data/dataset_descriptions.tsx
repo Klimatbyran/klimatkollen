@@ -1,6 +1,9 @@
 /* eslint-disable max-len */
 import { DatasetDescriptions, Municipality, SelectedData } from '../utils/types'
 
+export const defaultViewMode = 'karta'
+export const secondaryViewMode = 'lista'
+
 export const defaultDataset = 'Utsläppen'
 
 export const datasetDescriptions: DatasetDescriptions = {
