@@ -5,11 +5,14 @@ import Link from 'next/link'
 import { devices } from '../utils/devices'
 
 const HeaderContainer = styled.header`
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 16px;
   background-color: ${({ theme }) => theme.midGreen};
+  z-index: 1000;
 
   @media only screen and (${devices.mobile}) {
     padding: 8px;

@@ -208,23 +208,26 @@ function Map({
   })
 
   const formatData = (object: unknown) => {
+    // Fixme refactor
     const municipality = object as unknown as MunicipalityData
-    let dataString = municipality?.dataPoint.toString()
+    let municipalityDataPoint = municipality?.dataPoint.toString()
 
     if (dataType === 'Link') {
       const linkData = municipality?.dataPoint
-      dataString = (boundaries as string[]).includes(linkData as unknown as string)
+      municipalityDataPoint = (boundaries as string[]).includes(linkData as unknown as string)
         ? 'Nej'
         : 'Ja'
     } else if (dataType === 'Percent') {
       if (municipality?.dataPoint !== undefined) {
-        dataString = (municipality.dataPoint * 100).toFixed(1)
+        municipalityDataPoint = (municipality.dataPoint * 100).toFixed(1)
       } else {
-        dataString = 'N/A'
+        municipalityDataPoint = 'N/A'
       }
+    } else {
+      municipalityDataPoint = municipality?.dataPoint.toFixed(1)
     }
 
-    return dataString
+    return municipalityDataPoint
   }
 
   return (
