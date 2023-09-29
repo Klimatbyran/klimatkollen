@@ -146,14 +146,14 @@ function StartPage({
               <Paragraph>{datasetDescription.body}</Paragraph>
               <ParagraphSource>{datasetDescription.source}</ParagraphSource>
             </InfoText>
-              {isSecondaryViewMode && (
+            {isSecondaryViewMode && (
               <ToggleButton
                 handleClick={handleToggle}
                 text={isDefaultViewMode ? 'Listvy' : 'Kartvy'}
                 icon={isDefaultViewMode ? <ListIcon /> : <MapIcon />}
                 viewMode={toggleViewMode}
               />
-              )}
+            )}
             <ComparisonContainer viewMode={toggleViewMode}>
               {isDefaultViewMode && (
               <ToggleButton
