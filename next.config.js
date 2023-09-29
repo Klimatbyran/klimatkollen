@@ -23,14 +23,29 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: 'http://www.klimatkollen.se//:path*',
+        destination: 'https://www.klimatkollen.se/:path*',
+        permanent: true, // 301 redirect
+      },
+      {
+        source: 'http://klimatkollen.se//:path*',
+        destination: 'https://www.klimatkollen.se/:path*',
+        permanent: true,
+      },
+      {
+        source: 'https://klimatkollen.se//:path*',
+        destination: 'https://www.klimatkollen.se/:path*',
+        permanent: true,
+      },
+      {
         source: '/partier/:path*',
         destination: '/partier',
-        permanent: true, // 301 redirect
+        permanent: true,
       },
       {
         source: '/kommuner',
         destination: '/',
-        permanent: true, // 301 redirect
+        permanent: true,
       },
       {
         source: '/kommuner/kommun/ume%C3%A5/parisavtalet',
