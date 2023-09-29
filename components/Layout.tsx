@@ -7,7 +7,11 @@ import Header from './Header'
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 56px auto;
+
+  @media only screen and (max-width: 600px) {
+    margin: 32px auto;
+  }
 `
 
 export default function Layout({ children }: { children: JSX.Element }) {
