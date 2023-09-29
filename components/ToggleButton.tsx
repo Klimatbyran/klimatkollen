@@ -30,6 +30,7 @@ const ToggleBtn = styled.button<{ viewMode: string }>`
       background: ${({ theme }) => theme.midGreen};
       justify-content: center;
       color: ${({ theme }) => theme.black};
+      border-radius: 8px;
 
       @media only screen and (${devices.mobile}) {
         width: 96%;
