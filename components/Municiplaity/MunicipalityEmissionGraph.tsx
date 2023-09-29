@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-restricted-globals */
@@ -52,10 +53,7 @@ const Legends = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
-
-  @media all and (${devices.tablet}) {
-    justify-content: center;
-  }
+  justify-content: center;
 `
 
 const Legend = styled.label`
@@ -78,14 +76,6 @@ const Circle = styled.span`
   display: inline-block;
 `
 
-const TotalCo2 = styled.div`
-  font-weight: 500;
-  padding: 1rem;
-  border-radius: 50px;
-  background-color: ${(props) => props.color};
-  color: ${({ theme }) => theme.darkestGrey};
-`
-
 const END_YEAR = 2050
 
 const MANDATE_MAX_CHANGE = 2
@@ -98,14 +88,18 @@ type IssuesProps = {
   onPreviousStep: (() => void) | undefined
 }
 
-function MunicipalityIssues({
-  municipality, step, onNextStep, onPreviousStep,
+function MunicipalityEmissionGraph({
+  municipality,
+  step,
+  onNextStep,
+  onPreviousStep,
 }: IssuesProps) {
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
   const q = router.query['g[]']
 
-  const range = (start: number, end: number) => Array.from({ length: end - start }, (_, i) => i + start)
+  const range = (start: number, end: number) =>
+    Array.from({ length: end - start }, (_, i) => i + start)
 
   const adjustablePeriods = range(2020, 2051).map((i) => [i, i + 1])
 
@@ -152,24 +146,24 @@ function MunicipalityIssues({
       text: 'Historiska utsläpp',
       buttonText: 'Historiskt',
       body: 'Koldioxidutsläpp i kommunen sedan 1990.',
-      shareText: (_name) => 'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
+      shareText: (_name) =>
+        'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
     1: {
       text: 'Om vi fortsätter som idag',
       buttonText: 'Trend',
       body: 'Utsläppen de kommande åren baserat på nuvarande trend.',
-      shareText: (_name) => 'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
+      shareText: (_name) =>
+        'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
     2: {
       text: 'För att nå Parisavtalet',
       buttonText: 'Parisavtalet',
       body: 'Så mycket skulle utsläppen behöva minska för att vara i linje med 1,5-gradersmålet.',
-      shareText: (_name) => 'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
+      shareText: (_name) =>
+        'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
   }
-
-  const totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce((total, year) => total + year.CO2Equivalent, 0) / 1000
-  const totalTrend = municipality.EmissionTrend.FutureCO2Emission / 1000
 
   const stepConfig = STEPS[step]
   if (!stepConfig) {
@@ -204,16 +198,12 @@ function MunicipalityIssues({
         url={shareUrl}
       />
       <GraphWrapper>
-        <H2>
-          {text}
-        </H2>
-        <Paragraph>
-          {body}
-        </Paragraph>
+        <H2>{text}</H2>
+        <Paragraph>{body}</Paragraph>
         <Legends>
           {step < 3 && (
             <Legend>
-              <Circle color={colorTheme.rust} />
+              <Circle color={colorTheme.orange} />
               Historiskt
             </Legend>
           )}
@@ -225,7 +215,7 @@ function MunicipalityIssues({
           )}
           {step > 1 && (
             <Legend>
-              <Circle color={colorTheme.green} />
+              <Circle color={colorTheme.lightGreen} />
               Parisavtalet
             </Legend>
           )}
@@ -242,51 +232,24 @@ function MunicipalityIssues({
           budget={municipality.Budget.BudgetPerYear}
           maxVisibleYear={END_YEAR}
         />
+        <Grid>
+          {onPreviousStep ? (
+            <IconButton onClick={onPreviousStep}>
+              <ArrowLeft />
+              {STEPS[step - 1].buttonText}
+            </IconButton>
+          ) : (
+            <div />
+          )}
+          <span style={{ textAlign: 'center' }}>{STEPS[step].buttonText}</span>
+          {onNextStep && (
+            <IconButton onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
+              {STEPS[step + 1]?.buttonText}
+              <ArrowRight />
+            </IconButton>
+          )}
+        </Grid>
       </GraphWrapper>
-      <Grid>
-        {onPreviousStep ? (
-          <IconButton onClick={onPreviousStep}>
-            <ArrowLeft />
-            {STEPS[step - 1].buttonText}
-          </IconButton>
-        ) : (
-          <div />
-        )}
-        <span style={{ textAlign: 'center' }}>
-          {STEPS[step].buttonText}
-        </span>
-        {onNextStep && (
-          <IconButton onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
-            {STEPS[step + 1]?.buttonText}
-            <ArrowRight />
-          </IconButton>
-        )}
-      </Grid>
-      <H3>
-        Totala utsläpp
-      </H3>
-      <TotalCo2 color={colorTheme.rust}>
-        Historiskt:
-        {' '}
-        {totalHistorical.toFixed(1)}
-        {' '}
-        tusen ton CO₂
-      </TotalCo2>
-      <TotalCo2 color={step > 0 ? colorTheme.red : colorTheme.redDark}>
-        Trend:
-        {' '}
-        {totalTrend.toFixed(1)}
-        {' '}
-        tusen ton CO₂
-      </TotalCo2>
-      <TotalCo2 color={step > 1 ? colorTheme.green : colorTheme.greenDark}>
-        Koldioxidbudget för att klara Parisavtalet:
-        {' '}
-        {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)}
-        {' '}
-        tusen ton
-        CO₂
-      </TotalCo2>
       {step === 0 && isOpen && (
         <InfoModal
           close={toggleModal}
@@ -316,4 +279,4 @@ function MunicipalityIssues({
   )
 }
 
-export default MunicipalityIssues
+export default MunicipalityEmissionGraph

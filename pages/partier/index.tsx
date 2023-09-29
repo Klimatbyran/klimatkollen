@@ -33,7 +33,7 @@ function Partier() {
         description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen,
          Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
       />
-      <PageWrapper backgroundColor="darkestGrey">
+      <PageWrapper backgroundColor="black">
         <Container>
           <H2>
             Analys av riksdagspartiernas klimatmål – sex av åtta partier missar helt
@@ -60,7 +60,7 @@ function Partier() {
           </Paragraph>
           <Figure>
             <Image
-              src="/image1-31.png"
+              src="/images/image1-31.png"
               alt="Diagram gällande partiernas utsläppsmål jämfört med Sveriges koldioxidbudget."
               layout="responsive"
               width={936}

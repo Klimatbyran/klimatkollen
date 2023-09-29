@@ -2,35 +2,43 @@ import { ReactNode } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 export const colorTheme = {
-  main: '#91DFC8',
+  black: '#181818',
+  lightBlack: '#262626',
+  grey: '#939393',
+  offWhite: '#FFFDFA',
 
-  rust: '#EF5E30',
-  rustOpaque: 'rgb(239, 94, 48, 0.6)',
-  red: '#EF3054',
-  redOpaque: 'rgba(239, 48, 84, 0.6)',
-  redDark: 'rgba(239, 48, 84, 0.2)',
-  green: '#94D3C1',
-  greenOpaqe: 'rgba(145, 223, 200, 0.6)',
-  greenDark: 'rgba(145, 223, 200, 0.2)',
+  red: '#EF3030',
+  darkRed: '#8B1A1A',
+  darkRedOpaque: 'rgba(139, 26, 26, 0.6)',
+  darkDarkRed: '#450d0d',
 
-  orange: '#EF9917',
-  darkOrange: '#EF7F17',
-  yellow: '#EFBF17',
-  blue: '#91BFC8',
+  orange: '#FF6813',
+  darkOrange: '#B55018',
+  darkOrangeOpaque: 'rgb(181, 80, 24, 0.6)',
 
-  white: '#FFFFFF',
-  paperWhite: '#F9FBFF',
-  mint: '#D5F2E9',
+  darkYellow: '#FFA137',
+  lightYellow: '#FFE07A',
 
-  lightGrey: '#B3B3B3',
-  grey: '#6C6C6C',
-  darkGrey: '#424242',
-  darkestGrey: '#2D2D2D',
+  beige: '#FFF0D0',
 
-  dustyGreen: '#6BA292',
-  darkGreen: '#2D7B64',
+  lightBlue: '#81DFFF',
 
-  gradient: 'linear-gradient(rgba(45,45,45, 1), rgba(0,0,0, 0.0))',
+  lightGreen: '#15D8D8',
+  lightGreenOpaqe: 'rgba(103, 255, 238, 0.6)',
+  lightGreenDark: 'rgb(0, 179, 159, 0.2)',
+
+  midGreen: '#30ACB4',
+  darkGreenOne: '#216675',
+  darkGreenTwo: '#1B3940',
+
+  gradientBlack: 'linear-gradient(#181818, #404040)',
+  gradientGreen: 'linear-gradient(#216675, #30ACB4)',
+  gradientOrange: 'linear-gradient(#EF3030, #FF6813)',
+  gradientRed: 'linear-gradient(#EF3030, #8B1A1A)',
+}
+
+export const spacingTheme = {
+  smallSpacing: '8px',
 }
 
 type Props = {

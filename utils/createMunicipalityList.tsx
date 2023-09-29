@@ -135,7 +135,7 @@ const columnHeader = (datasetDescription: DatasetDescription) => {
   return (
     <div>
       {datasetDescription.columnHeader}
-      <InfoTooltip text={text} />
+      {/* <InfoTooltip text={text} /> */}
     </div>
   )
 }

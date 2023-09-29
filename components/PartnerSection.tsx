@@ -8,7 +8,7 @@ const IconSection = styled.div`
   align-items: center;
 
   @media only screen and (${devices.tablet}) {
-    flex: 0 1 350px;
+    flex: 0 1 150px;
   }
 `
 

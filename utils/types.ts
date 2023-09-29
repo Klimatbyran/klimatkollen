@@ -66,6 +66,7 @@ export type SelectedData = keyof typeof datasetDescriptions
 export type DatasetType = 'Percent' | 'Link' | 'Number'
 
 export type DatasetDescription = {
+  title: string
   heading: string
   body: string | JSX.Element
   source: React.ReactNode

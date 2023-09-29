@@ -5,6 +5,7 @@ export const defaultDataset = 'Utsläppen'
 
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
+    title: 'Utsläppsförändring',
     heading: 'Utsläppsförändring sedan Parisavtalet',
     body: 'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
     source: (
@@ -30,6 +31,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Elbilarna: {
+    title: 'Elbilsökning',
     heading: 'Ökningstakt andel elbilar sedan Parisavtalet',
     body: 'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
     source: (
@@ -51,6 +53,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Klimatplanerna: {
+    title: 'Klimatplan',
     heading: 'Kommuner som har klimatplaner',
     body: (
       <>
@@ -91,6 +94,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Cyklarna: {
+    title: 'Cykelvägslängd',
     heading: 'Antal meter cykelväg per invånare',
     body: 'På kartan och i listan visas antal meter cykelväg per invånare per kommun år 2022.',
     source: (
