@@ -19,7 +19,7 @@ const INITIAL_VIEW_STATE = {
 }
 
 const DeckGLWrapper = styled.div`
-  width: 100%;
+  height: 100%;
 `
 
 const hexToRGBA = (hex: string): RGBAColor => {
@@ -30,7 +30,10 @@ const hexToRGBA = (hex: string): RGBAColor => {
   return [red, green, blue]
 }
 
-const getColor = (dataPoint: number | string, boundaries: number[] | string[]): RGBAColor => {
+const getColor = (
+  dataPoint: number | string,
+  boundaries: number[] | string[],
+): RGBAColor => {
   const lightBlue: RGBAColor = hexToRGBA(mapColors[5])
   const beige: RGBAColor = hexToRGBA(mapColors[4])
   const lightYellow: RGBAColor = hexToRGBA(mapColors[3])
@@ -39,7 +42,7 @@ const getColor = (dataPoint: number | string, boundaries: number[] | string[]): 
   const red: RGBAColor = hexToRGBA(mapColors[0])
 
   if (boundaries.length === 2) {
-    return (dataPoint === boundaries[0]) ? red : lightBlue
+    return dataPoint === boundaries[0] ? red : lightBlue
   }
 
   // FIXME refactor plz
@@ -122,12 +125,38 @@ function Map({
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
+  const [initialViewState, setInitialViewState] = useState(INITIAL_VIEW_STATE)
+
+  // Update zoom based on window size
+  const updateZoom = () => {
+    let newZoom = 3.5
+    const width = window.innerWidth
+
+    if (width <= 768) {
+      // Tablet or mobile
+      newZoom = 3
+    }
+
+    setInitialViewState((prevState) => ({
+      ...prevState,
+      zoom: newZoom,
+    }))
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/api/map')
       setMunicipalityData(response.data)
     }
     fetchData()
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('resize', updateZoom)
+    updateZoom() // Initial call to set correct zoom
+
+    // Cleanup
+    return () => window.removeEventListener('resize', updateZoom)
   }, [])
 
   const municipalityLines = municipalityData?.features?.flatMap(
@@ -211,7 +240,7 @@ function Map({
         }}
       />
       <DeckGL
-        initialViewState={INITIAL_VIEW_STATE}
+        initialViewState={initialViewState}
         controller={{}}
         getTooltip={({ object }) => object && {
           html: `

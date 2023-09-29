@@ -6,7 +6,7 @@ import DropDown from '../components/DropDown'
 import Map from '../components/Map/Map'
 import MetaTags from '../components/MetaTags'
 import {
-  H2Regular, H4Regular, H5Regular, Paragraph,
+  H2Regular, H5Regular, Paragraph,
 } from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality, SelectedData } from '../utils/types'
@@ -81,7 +81,7 @@ const ComparisonContainer = styled.div<{ viewMode: string }>`
   overflow-y: scroll;
   z-index: 100;
   // TODO: Hardcoding this is not good.
-  height: 380px;
+  height: 400px;
   border-radius: 8px;
   display: flex;
   margin-top: ${({ viewMode }) => (viewMode === secondaryViewMode ? '64px' : '0')};
@@ -168,7 +168,6 @@ function StartPage({
               )}
             </ComparisonContainer>
             <InfoText>
-              <H4Regular>{datasetDescription.heading}</H4Regular>
               <Paragraph>{datasetDescription.body}</Paragraph>
               <ParagraphSource>{datasetDescription.source}</ParagraphSource>
             </InfoText>
