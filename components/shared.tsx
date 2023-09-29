@@ -1,17 +1,34 @@
 import styled from 'styled-components'
+import { colorTheme } from '../Theme'
+
+export const mapColors = [
+  colorTheme.red,
+  colorTheme.orange,
+  colorTheme.darkYellow,
+  colorTheme.lightYellow,
+  colorTheme.beige,
+  colorTheme.lightBlue,
+]
 
 export const IconButton = styled.button`
   border: none;
   background-color: none;
   cursor: pointer;
   background-color: inherit;
-  color: ${({ theme }) => theme.white};
-  font-family: 'Roboto';
+  color: ${({ theme }) => theme.offWhite};
+  font-family: 'Borna';
   font-weight: 300;
   font-size: 16px;
   display: flex;
   align-items: center;
   gap: 1rem;
+`
+
+export const Square = styled.div<{ color: string }>`
+  background-color: ${(props) => props.color};
+  width: 20px;
+  height: 20px;
+  position: relative;
 `
 
 export const UnorderedList = styled.ul`
@@ -25,5 +42,7 @@ export const OrderedList = styled.ol`
 `
 
 export const ListItem = styled.li`
+  font-family: 'Anonymous Pro';
+  font-size: 15px;
   margin: 8px;
 `

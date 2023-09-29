@@ -4,7 +4,6 @@ import { devices } from '../utils/devices'
 import NewsletterSubscribe from './NewsletterSubscribe'
 import PageWrapper from './PageWrapper'
 import PartnerSection from './PartnerSection'
-import Navigation from './Navigation'
 
 const Foot = styled.footer`
   width: 100%;
@@ -25,22 +24,20 @@ const TextSection = styled.div`
 
   gap: 15px;
   margin-bottom: 40px;
-  max-width: 750px;
 `
 
 const FlexSection = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: stretch;
   gap: 60px 28px;
   padding-bottom: 60px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
 
-  @media only screen and (${devices.tablet}) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: space-between;
-  }
+const StyledH5 = styled(H5)`
+  color: ${({ theme }) => theme.midGreen};
 `
 
 const BottomParent = styled.div`
@@ -60,6 +57,7 @@ const BottomContainer = styled.div`
   align-items: flex-start;
   flex: 1;
   margin: 32px;
+  color: ${({ theme }) => theme.black};
 
   @media only screen and (${devices.tablet}) {
     align-self: flex-start;
@@ -67,13 +65,13 @@ const BottomContainer = styled.div`
 `
 
 const Copyright = styled.p`
-  color: ${({ theme }) => theme.paperWhite};
+  font-family: 'Anonymous Pro';
   font-size: 13px;
   margin-top: 2rem;
 `
 
 const GHLink = styled.p`
-  color: ${({ theme }) => theme.paperWhite};
+  font-family: 'Anonymous Pro';
   font-size: 13px;
 `
 
@@ -106,42 +104,72 @@ const ContactLink = styled.a`
 function Footer() {
   return (
     <>
-      <PageWrapper backgroundColor="darkGrey">
+      <PageWrapper backgroundColor="black">
         <Foot>
           <ContentWrapper>
-            <Navigation />
             <TextSection>
-              <ParagraphBold>Vill du få nyheter om Klimatkollen?</ParagraphBold>
               <NewsletterSubscribe />
             </TextSection>
             <TextSection>
-              <H5>Samarbetspartners</H5>
+              <StyledH5>Samarbetspartners</StyledH5>
             </TextSection>
             <FlexSection>
               <PartnerSection
                 link="https://postkodstiftelsen.se/"
-                logo={<img src="/icons/postkodstiftelsen.svg" width={180} height="auto" alt="Postkodstiftelsen logo" />}
+                logo={(
+                  <img
+                    src="/icons/postkodstiftelsen.svg"
+                    width={90}
+                    height="auto"
+                    alt="Postkodstiftelsen logo"
+                  />
+                )}
               />
               <PartnerSection
                 link="https://www.wwf.se/"
-                logo={<img src="/WWF_Logo_Small_RGB_72dpi.jpg" width="auto" height={90} alt="WWF logo" />}
+                logo={(
+                  <img
+                    src="/partners/WWF_Logo_Small_RGB_72dpi.jpg"
+                    width={45}
+                    height={45}
+                    alt="WWF logo"
+                  />
+                )}
               />
               <PartnerSection
                 link="https://www.climateview.global/"
-                logo={<img src="/icons/climateview.svg" width={180} height="auto" alt="ClimateViw logo" />}
+                logo={(
+                  <img
+                    src="/icons/climateview.svg"
+                    width={90}
+                    height="auto"
+                    alt="ClimateViw logo"
+                  />
+                )}
               />
               <PartnerSection
                 link="https://www.klimatklubben.se/"
-                logo={<img src="/icons/klimatklubben.svg" width="auto" height={90} alt="Klimatklubben logo" />}
+                logo={(
+                  <img
+                    src="/icons/klimatklubben.svg"
+                    width="auto"
+                    height={45}
+                    alt="Klimatklubben logo"
+                  />
+                )}
               />
             </FlexSection>
           </ContentWrapper>
         </Foot>
       </PageWrapper>
-      <PageWrapper backgroundColor="darkestGrey">
+      <PageWrapper backgroundColor="midGreen">
         <BottomParent>
           <BottomContainer>
-            <img src="/klimatkollen_logo.svg" height="36px" alt="Klimatkollen logo" />
+            <img
+              src="/logos/klimatkollen_logo_black.svg"
+              height="36px"
+              alt="Klimatkollen logo"
+            />
             <Paragraph>
               Klimatkollen är en medborgarplattform som tillgängliggör klimatdata.
             </Paragraph>
@@ -157,7 +185,7 @@ function Footer() {
               </a>
             </Copyright>
             <GHLink>
-              Klimatkollen är
+              Klimatkollen är utvecklad med
               {' '}
               <a
                 href="https://github.com/Klimatbyran/klimatkollen"
@@ -171,21 +199,11 @@ function Footer() {
           <BottomContainer>
             <ContactList>
               <ContactListItem>
-                <ContactIcon
-                  src="icons/icon_mail_circle.svg"
-                  alt="Email icon"
-                />
-                <ContactLink
-                  href="mailto:hej@klimatkollen.se"
-                >
-                  Mail
-                </ContactLink>
+                <ContactIcon src="icons/icon_mail_circle.svg" alt="Email icon" />
+                <ContactLink href="mailto:hej@klimatkollen.se">Mail</ContactLink>
               </ContactListItem>
               <ContactListItem>
-                <ContactIcon
-                  src="icons/icon_linkedin_circle.svg"
-                  alt="Linkedin logo"
-                />
+                <ContactIcon src="icons/icon_linkedin_circle.svg" alt="Linkedin logo" />
                 <ContactLink
                   href="https://www.linkedin.com/company/klimatkollen/"
                   target="_blank"
@@ -195,10 +213,7 @@ function Footer() {
                 </ContactLink>
               </ContactListItem>
               <ContactListItem>
-                <ContactIcon
-                  src="icons/icon_twitter_circle.svg"
-                  alt="Twitter logo"
-                />
+                <ContactIcon src="icons/icon_twitter_circle.svg" alt="Twitter logo" />
                 <ContactLink
                   href="https://twitter.com/klimatkollen"
                   target="_blank"

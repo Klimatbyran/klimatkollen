@@ -28,7 +28,7 @@ function KoM() {
         title="Källor och metod"
         description="Om Klimatkollens källor och metod"
       />
-      <PageWrapper backgroundColor="darkestGrey">
+      <PageWrapper backgroundColor="black">
         <Container>
           <H2>
             Källor och metod

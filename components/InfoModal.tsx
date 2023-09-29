@@ -33,8 +33,8 @@ const Modal = styled.div<{ scrollY: number }>`
       padding: 3rem 2rem 2.5rem 2rem;
       display: flex;
       flex-direction: column;
-      background: ${({ theme }) => theme.darkestGrey};
-      color: ${({ theme }) => theme.white};
+      background: ${({ theme }) => theme.black};
+      color: ${({ theme }) => theme.offWhite};
       z-index: 10;
       border-radius: 16px;
       box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);

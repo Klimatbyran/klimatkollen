@@ -106,8 +106,8 @@ function Graph({
               fill: true,
               data: historicalDataset,
               borderWidth: 2,
-              borderColor: colorTheme.rust,
-              backgroundColor: colorTheme.rustOpaque,
+              borderColor: colorTheme.orange,
+              backgroundColor: colorTheme.darkOrangeOpaque,
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
@@ -118,8 +118,8 @@ function Graph({
               fill: true,
               data: budgetDataset,
               borderWidth: 2,
-              borderColor: colorTheme.green,
-              backgroundColor: colorTheme.greenOpaqe,
+              borderColor: colorTheme.lightGreen,
+              backgroundColor: colorTheme.lightGreenOpaqe,
               pointRadius: 0,
               tension: 0.15,
               hidden: step < 2,
@@ -131,7 +131,7 @@ function Graph({
               data: pledgeDataset,
               borderWidth: 2,
               borderColor: colorTheme.red,
-              backgroundColor: colorTheme.redOpaque,
+              backgroundColor: colorTheme.darkRedOpaque,
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
@@ -178,7 +178,7 @@ function Graph({
               },
               ticks: {
                 font: {
-                  family: 'Roboto',
+                  family: 'Borna',
                   size: 15,
                   weight: '300',
                 },
@@ -200,7 +200,7 @@ function Graph({
               ticks: {
                 stepSize: 50_000,
                 font: {
-                  family: 'Roboto',
+                  family: 'Borna',
                   size: 15,
                   weight: '300',
                 },

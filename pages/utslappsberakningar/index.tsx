@@ -19,6 +19,7 @@ const Container = styled.section`
 
 const Figure = styled.figure`
   margin: 22.4px 2px;
+  
   @media only screen and (${devices.tablet}) {
     width: 95%;
   }
@@ -30,9 +31,9 @@ function Utslappsberakningar() {
       <MetaTags
         title="Unik utsläppsberäkning av riksdagspartiernas klimatåtgärder"
         description="Den nya regeringens politik kan öka utsläppen med 25 miljoner ton"
-        imageUrl="/totala-utslapp-alla-partier.jpg"
+        imageUrl="/images/totala-utslapp-alla-partier.jpg"
       />
-      <PageWrapper backgroundColor="darkestGrey">
+      <PageWrapper backgroundColor="black">
         <Container>
           <H2>
             Unik utsläppsberäkning av riksdagspartiernas klimatåtgärder - den nya

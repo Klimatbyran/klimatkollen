@@ -1,43 +1,62 @@
-/* courtesy of https://google-webfonts-helper.herokuapp.com/fonts/roboto?subsets=latin */
 
-/* roboto-300 - latin */
+/* AnonymousPro-Regular - latin */
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local(''), url('/roboto/roboto-v29-latin-300.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/roboto/roboto-v29-latin-300.woff')
-      format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* roboto-regular - latin */
-@font-face {
-  font-family: 'Roboto';
+  font-family: 'Anonymous Pro';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local(''), url('/roboto/roboto-v29-latin-regular.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/roboto/roboto-v29-latin-regular.woff')
-      format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local('Anonymous Pro Regular'), 
+       url('/fonts/Anonymous_Pro/AnonymousPro-Regular.ttf') format('truetype');
 }
-/* roboto-500 - latin */
+
+/* AnonymousPro-Italic - latin */
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
+  font-family: 'Anonymous Pro';
+  font-style: italic;
+  font-weight: 400;
   font-display: swap;
-  src: local(''), url('/roboto/roboto-v29-latin-500.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/roboto/roboto-v29-latin-500.woff')
-      format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local('Anonymous Pro Italic'), 
+       url('/fonts/Anonymous_Pro/AnonymousPro-Italic.ttf') format('truetype');
 }
-/* roboto-700 - latin */
+
+/* AnonymousPro-Bold - latin */
 @font-face {
-  font-family: 'Roboto';
-  font-style: normal;
+  font-family: 'Anonymous Pro';
+  font-style: bold;
   font-weight: 700;
   font-display: swap;
-  src: local(''), url('/roboto/roboto-v29-latin-700.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/roboto/roboto-v29-latin-700.woff')
+  src: local('Anonymous Pro Bold'), 
+       url('/fonts/Anonymous_Pro/AnonymousPro-Bold.ttf') format('truetype');
+}
+
+/* Source Serif 4-Regular - latin */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Source Serif 4 Regular'), 
+       url('/fonts/Source_Serif_4/SourceSerif4-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+/* Source Serif 4-Italic - latin */
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Source Serif 4 Italic'), 
+       url('/fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+/* Borna-regular - latin */
+@font-face {
+  font-family: 'Borna';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Borna Regular'), url('/fonts/Borna/webfontkit/borna-regular-webfont.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/Borna/webfontkit/borna-regular-webfont.woff')
       format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
@@ -53,9 +72,9 @@ html {
 }
 
 body {
-  background: #2d2d2d;
+  background: #181818;
   color: #fff;
-  font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  font-family: Borna, 'Source Serif 4', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
   font-size: 16px;
   line-height: 19px;
   font-weight: 300;

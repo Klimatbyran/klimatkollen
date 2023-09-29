@@ -3,12 +3,14 @@ import { devices } from '../../utils/devices'
 
 import Icon from '../../public/icons/arrow.svg'
 import { Paragraph } from '../Typography'
-import { colorTheme } from '../../Theme'
+import { mapColors } from '../shared'
 
 const Container = styled.div`
   padding-left: 0.87rem;
   padding-top: 1.2rem;
   padding-bottom: 0.5rem;
+  margin-top: 40px;
+
   @media only screen and (${devices.tablet}) {
     position: absolute;
     left: 0;
@@ -38,7 +40,7 @@ const Square = styled.div<{ color: string }>`
   position: relative;
 `
 
-const ArrowIcon = styled(Icon) <{ rotateup?: boolean }>`
+const ArrowIcon = styled(Icon)<{ rotateup?: boolean }>`
   color: black;
   position: absolute;
   z-index: 1;
@@ -74,9 +76,7 @@ function Label({ color, text, rotateup }: LabelProps) {
       <Square color={color}>
         {rotateup !== undefined && <ArrowIcon rotateup={rotateup} />}
       </Square>
-      <StyledParagraph>
-        {text}
-      </StyledParagraph>
+      <StyledParagraph>{text}</StyledParagraph>
     </LabelBox>
   )
 }
@@ -87,8 +87,7 @@ type MapLabelsProps = {
 }
 
 function MapLabels({ labels, rotations }: MapLabelsProps) {
-  const colors = [colorTheme.red, colorTheme.rust, colorTheme.darkOrange, colorTheme.orange, colorTheme.yellow, colorTheme.blue]
-  const labelColors = labels.length === 2 ? [colorTheme.red, colorTheme.main] : colors
+  const labelColors = labels.length === 2 ? [mapColors[0], mapColors[mapColors.length - 1]] : mapColors
 
   return (
     <Container>

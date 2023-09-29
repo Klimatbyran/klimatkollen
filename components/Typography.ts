@@ -9,7 +9,14 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   font-weight: bold;
-  font-size: 30px;
+  font-size: 32px;
+  line-height: 1.25;
+  margin: 0 0 8px 0;
+`
+
+export const H2Regular = styled.h2`
+  font-weight: regular;
+  font-size: 32px;
   line-height: 1.25;
   margin: 0 0 8px 0;
 `
@@ -28,8 +35,23 @@ export const H4 = styled.h4`
   margin: 0;
 `
 
+export const H4Regular = styled.h4`
+  font-weight: regular;
+  font-size: 20px;
+  line-height: 1.25;
+  margin: 0;
+  color: ${({ theme }) => theme.midGreen}
+`
+
 export const H5 = styled.h5`
   font-weight: bold;
+  font-size: 18px;
+  line-height: 1.25;
+  margin: 0;
+`
+
+export const H5Regular = styled.h5`
+  font-weight: regular;
   font-size: 18px;
   line-height: 1.25;
   margin: 0;
@@ -41,14 +63,6 @@ export const Paragraph = styled.p`
   font-size: 16px;
   line-height: 1.5;
   margin: 11.2px 0;
-`
-
-export const ParagraphSmall = styled.p`
-  font-family: Nunito Sans;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-  margin: 0;
 `
 
 export const ParagraphItalic = styled.p`
