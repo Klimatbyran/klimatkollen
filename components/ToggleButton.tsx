@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { devices } from '../utils/devices'
 
-const ToggleBtn = styled.button`
+const ToggleBtn = styled.button<{ viewMode: string }>`
   height: 32px;
   margin: 16px;
   position: absolute;
@@ -20,6 +20,17 @@ const ToggleBtn = styled.button`
   @media only screen and (${devices.mobile}) {
     margin: 12px;
   }
+
+  ${({ viewMode }) => viewMode === 'lista'
+  && css`
+      position: static;
+      width: 98%;
+      height: 40px;
+      margin: 1%;
+      background: ${({ theme }) => theme.midGreen};
+      justify-content: center;
+      color: ${({ theme }) => theme.black};
+    `}
 `
 
 const ToggleText = styled.p`
@@ -42,11 +53,14 @@ type ToggleButtonProps = {
   handleClick?: (e: unknown) => void
   text: string
   icon: JSX.Element
+  viewMode: string
 }
 
-function ToggleButton({ handleClick, text, icon }: ToggleButtonProps) {
+function ToggleButton({
+  handleClick, text, icon, viewMode,
+}: ToggleButtonProps) {
   return (
-    <ToggleBtn onClick={handleClick}>
+    <ToggleBtn onClick={handleClick} viewMode={viewMode}>
       <ToggleText>{text}</ToggleText>
       <IconContainer>{icon}</IconContainer>
     </ToggleBtn>

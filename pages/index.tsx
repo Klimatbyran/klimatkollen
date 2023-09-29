@@ -84,7 +84,6 @@ const ComparisonContainer = styled.div<{ viewMode: string }>`
   height: 380px;
   border-radius: 8px;
   display: flex;
-  margin-top: ${({ viewMode }) => (viewMode === secondaryViewMode ? '64px' : '0')};
 
   @media only screen and (${devices.tablet}) {
     height: 500px;
@@ -126,6 +125,7 @@ function StartPage({
   const rankedData = rankData(municipalities)
 
   const isDefaultViewMode = toggleViewMode === defaultViewMode
+  const isSecondaryViewMode = toggleViewMode === secondaryViewMode
 
   return (
     <>
@@ -141,15 +141,28 @@ function StartPage({
             setSelectedData={setSelectedData}
           />
           <InfoContainer>
-            <TitleContainer>
-              <FloatingH5>{datasetDescription.title}</FloatingH5>
+            <InfoText>
+              <H4Regular>{datasetDescription.heading}</H4Regular>
+              <Paragraph>{datasetDescription.body}</Paragraph>
+              <ParagraphSource>{datasetDescription.source}</ParagraphSource>
+            </InfoText>
+              {isSecondaryViewMode && (
               <ToggleButton
                 handleClick={handleToggle}
                 text={isDefaultViewMode ? 'Listvy' : 'Kartvy'}
                 icon={isDefaultViewMode ? <ListIcon /> : <MapIcon />}
+                viewMode={toggleViewMode}
               />
-            </TitleContainer>
+              )}
             <ComparisonContainer viewMode={toggleViewMode}>
+              {isDefaultViewMode && (
+              <ToggleButton
+                handleClick={handleToggle}
+                text={isDefaultViewMode ? 'Listvy' : 'Kartvy'}
+                icon={isDefaultViewMode ? <ListIcon /> : <MapIcon />}
+                viewMode={toggleViewMode}
+              />
+              )}
               {isDefaultViewMode && (
                 <>
                   <MapLabels
@@ -163,15 +176,10 @@ function StartPage({
                   />
                 </>
               )}
-              {toggleViewMode === secondaryViewMode && (
+              {isSecondaryViewMode && (
                 <ComparisonTable data={rankedData[selectedData]} columns={cols} />
               )}
             </ComparisonContainer>
-            <InfoText>
-              <H4Regular>{datasetDescription.heading}</H4Regular>
-              <Paragraph>{datasetDescription.body}</Paragraph>
-              <ParagraphSource>{datasetDescription.source}</ParagraphSource>
-            </InfoText>
           </InfoContainer>
           <DropDown
             className="startpage"
