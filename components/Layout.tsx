@@ -7,10 +7,10 @@ import Header from './Header'
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  margin: 32px auto;
+  margin: 56px auto 32px auto;
 
   @media only screen and (max-width: 600px) {
-    margin: 16px auto;
+    margin: 32px auto 16px auto;
   }
 `
 
