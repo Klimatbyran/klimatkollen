@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { devices } from '../utils/devices'
 
 const ToggleBtn = styled.button`
-  width: 112px;
   height: 32px;
   margin: 16px;
   position: absolute;
@@ -19,7 +18,7 @@ const ToggleBtn = styled.button`
   z-index: 150;
 
   @media only screen and (${devices.mobile}) {
-    margin-right: 8px;
+    margin: 12px;
   }
 `
 

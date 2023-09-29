@@ -67,6 +67,10 @@ const FloatingH5 = styled(H5Regular)`
   position: absolute;
   margin: 60px 0 0 16px;
   z-index: 200;
+
+  @media only screen and (${devices.mobile}) {
+    margin: 55px 0 0 16px;
+  }
 `
 
 const defaultViewMode = 'karta'

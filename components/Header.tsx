@@ -25,13 +25,13 @@ const LogoContainer = styled.div`
 `
 
 const NavigationList = styled.ul`
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin-left: auto;
+  display: none;
 
-  @media only screen and (${devices.mobile}) {
-    display: none;
+  @media only screen and (${devices.laptop}) {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin-left: auto;
   }
 `
 
@@ -50,11 +50,11 @@ const NavigationLink = styled.a`
 `
 
 const HamburgerMenu = styled.div`
-  display: none;
+display: block;
   margin-left: auto;
 
-  @media only screen and (${devices.mobile}) {
-    display: block;
+  @media only screen and (${devices.laptop}) {
+    display: none;
   }
 `
 

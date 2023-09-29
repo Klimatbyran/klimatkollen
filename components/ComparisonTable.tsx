@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import styled from 'styled-components'
@@ -48,9 +48,13 @@ const TableData = styled.td`
   padding: 1rem;
   overflow: hidden;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
+  max-width: 150px;
 
   @media only screen and (${devices.mobile}) {
     padding: 0.75rem;
+    max-width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `
 
@@ -79,6 +83,20 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const router = useRouter()
 
+  const [resizeCount, setResizeCount] = useState(0)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setResizeCount((prevCount) => prevCount + 1)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, []) // Empty dependency array ensures this effect runs once when the component mounts
+
   const table = useReactTable({
     data,
     columns,
@@ -100,8 +118,14 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
       key={header.id}
       colSpan={header.colSpan}
       className={header.index > 1 ? 'data-header' : ''}
-      // eslint-disable-next-line no-nested-ternary
-      id={index === 0 ? 'first-header' : index === header.headerGroup.headers.length - 1 ? 'last-header' : ''}
+      id={
+        // eslint-disable-next-line no-nested-ternary
+        index === 0
+          ? 'first-header'
+          : index === header.headerGroup.headers.length - 1
+            ? 'last-header'
+            : ''
+      }
     >
       {header.isPlaceholder ? null : (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
@@ -119,7 +143,7 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
   )
 
   return (
-    <StyledTable>
+    <StyledTable key={resizeCount}>
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
           {headerGroup.headers.map((header, index) => renderHeader(header, index))}
