@@ -59,6 +59,7 @@ export type Municipality = {
   ElectricCarChangeYearly: Array<number>,
   ClimatePlan: ClimatePlan,
   BicycleMetrePerCapita: number,
+  TotalConsumptionEmission: number,
 }
 
 export type SelectedData = keyof typeof datasetDescriptions

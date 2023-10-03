@@ -46,3 +46,12 @@ export const ListItem = styled.li`
   font-size: 15px;
   margin: 8px;
 `
+
+export const LoadingContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+  font-size: 10px;
+`

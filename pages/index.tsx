@@ -22,7 +22,6 @@ import ToggleButton from '../components/ToggleButton'
 import { defaultDataset, datasetDescriptions, data } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
-import { spacingTheme } from '../Theme'
 
 const Container = styled.div`
   display: flex;
@@ -49,7 +48,7 @@ const InfoContainer = styled.div`
   width: 100%;
   position: relative;
   background: ${({ theme }) => theme.lightBlack};
-  border-radius: ${spacingTheme.smallSpacing};
+  border-radius: 8px;
   margin-bottom: 32px;
   z-index: 15;
   ::-webkit-scrollbar {
@@ -76,7 +75,7 @@ const FloatingH5 = styled(H5Regular)`
 const defaultViewMode = 'karta'
 const secondaryViewMode = 'lista'
 
-const ComparisonContainer = styled.div<{ viewMode: string }>`
+const ComparisonContainer = styled.div<{ $viewMode: string }>`
   position: relative;
   overflow-y: scroll;
   z-index: 100;
@@ -84,7 +83,7 @@ const ComparisonContainer = styled.div<{ viewMode: string }>`
   height: 400px;
   border-radius: 8px;
   display: flex;
-  margin-top: ${({ viewMode }) => (viewMode === secondaryViewMode ? '64px' : '0')};
+  margin-top: ${({ $viewMode }) => ($viewMode === secondaryViewMode ? '64px' : '0')};
 
   @media only screen and (${devices.tablet}) {
     height: 500px;
@@ -149,7 +148,7 @@ function StartPage({
                 icon={isDefaultViewMode ? <ListIcon /> : <MapIcon />}
               />
             </TitleContainer>
-            <ComparisonContainer viewMode={toggleViewMode}>
+            <ComparisonContainer $viewMode={toggleViewMode}>
               {isDefaultViewMode && (
                 <>
                   <MapLabels
