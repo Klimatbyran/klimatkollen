@@ -23,6 +23,7 @@ const LabelBox = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
   &:first-child div {
     border-top-left-radius: 10%;
     border-top-right-radius: 10%;
@@ -54,7 +55,6 @@ const ArrowIcon = styled(Icon)<{ rotateup?: boolean }>`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
-  width: 5em;
   font-size: 0.7em;
   margin: 0;
   line-height: 0;

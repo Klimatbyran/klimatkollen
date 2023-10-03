@@ -165,7 +165,7 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
               value={selectedMunicipality}
             />
             <Btn onClick={() => setShowDropDown((current) => !current)}>
-              <ArrowDown />
+              <ArrowDown aria-label="Visa kommun" />
             </Btn>
           </Flex>
           {showDropDown && (

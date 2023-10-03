@@ -57,8 +57,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     heading: 'Kommuner som har klimatplaner',
     body: (
       <>
-        På kartan och i listan visas vilka kommuner som har eller saknar aktuella
-        klimatplaner, samt länkar till befintliga planer. Klicka
+        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka
         {' '}
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
@@ -128,6 +127,32 @@ export const datasetDescriptions: DatasetDescriptions = {
     tooltip:
       'Antal meter cykelväg per invånare per kommun år 2022 totalt för alla väghållare (statlig, kommunal, enskild)',
   },
+
+  Konsumtionen: {
+    title: 'Konsumtionsutsläpp',
+    heading: 'Hushållens konsumtionsutsläpp',
+    body: 'På kartan och i listan visas hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="https://www.sei.org/tools/konsumtionskompassen/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Stockholm Environment Institute
+        </a>
+      </>
+    ),
+    boundaries: [7, 6.7, 6.4, 6.1, 5.8],
+    labels: ['7 t +', '6,7-7 t', '6,4-6,7 t', '6,1-6,4 t', '5,8-6,1 t', '5,8 t -'],
+    labelRotateUp: [],
+    columnHeader: 'Ton CO₂e/person och år',
+    dataType: 'Number',
+    tooltip:
+      'Avser antal ton växthusgasutsläpp (CO₂e) per år och medborgare (år 2019).',
+  },
 }
 
 export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
@@ -142,6 +167,9 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       break
     case 'Klimatplanerna':
       dataPoint = item.ClimatePlan.Link
+      break
+    case 'Konsumtionen':
+      dataPoint = item.TotalConsumptionEmission
       break
     default:
       dataPoint = item.BicycleMetrePerCapita
