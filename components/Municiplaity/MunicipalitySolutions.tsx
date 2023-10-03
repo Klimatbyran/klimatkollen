@@ -4,6 +4,7 @@ import FactSection from '../FactSection'
 import { Municipality } from '../../utils/types'
 import EVCar from '../../public/icons/ev_car.svg'
 import Bike from '../../public/icons/bike.svg'
+import Basket from '../../public/icons/basket_fill.svg'
 
 const StyledH2 = styled(H2)`
   margin-top: 32px;
@@ -69,11 +70,11 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         info="Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild)."
       />
       <SolutionSection
-        icon={<Bike />}
+        icon={<Basket />}
         title="Hushållens konsumtionsutsläpp"
         heading="Ton CO₂e/person och år"
         data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton/person och år`}
-        info="Hushållens konsumtionsutsläpp (CO2e) i ton per invånare år 2019."
+        info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019."
       />
     </>
   )
