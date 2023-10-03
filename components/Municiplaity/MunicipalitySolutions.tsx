@@ -72,8 +72,8 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
       <SolutionSection
         icon={<Basket />}
         title="Hushållens konsumtionsutsläpp"
-        heading="Ton CO₂e/person och år"
-        data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton/person och år`}
+        heading="Utsläppta ton CO₂e per person och år"
+        data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton`}
         info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019."
       />
     </>
