@@ -23,6 +23,13 @@ def export_to_xlsx(df):
     emission_diff_abs_label = f'Utsläppsförändring {second_last_year}-{last_year} (kton)'
     df[emission_diff_abs_label] = df['emissions'].apply(
         lambda x: round((x[str(last_year)]-x[str(second_last_year)])/1000, 1))
+    
+    print(df.columns.tolist)
+
+    consumption_label = f'Konsumtionsutsläpp (kg/person/år)'
+    df.rename(
+        columns={'totalConsumptionEmission': consumption_label}, inplace=True)
+
 
     filtered_df = df[['Kommun',
                       'Län',
@@ -30,7 +37,8 @@ def export_to_xlsx(df):
                       emission_diff_abs_label,
                       'KPI1: Förändringstakt andel laddbara bilar (%)',
                       'KPI2: Klimatplan länk',
-                      'KPI2: Klimatplan antagen år']]
+                      'KPI2: Klimatplan antagen år',
+                      consumption_label,]]
 
     # Create an ExcelWriter object
     writer = pd.ExcelWriter(
