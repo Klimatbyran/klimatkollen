@@ -22,7 +22,6 @@ import ToggleButton from '../components/ToggleButton'
 import { defaultDataset, datasetDescriptions, data } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
-import { spacingTheme } from '../Theme'
 
 const Container = styled.div`
   display: flex;

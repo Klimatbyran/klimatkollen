@@ -146,7 +146,7 @@ export const datasetDescriptions: DatasetDescriptions = {
       </>
     ),
     boundaries: [7, 6.7, 6.4, 6.1, 5.8],
-    labels: ['7 ton +', '7-6,7 ton', '6,7-6,4 ton', '6,4-6,1 ton', '6,1-5,8 ton', '5,8 ton -'],
+    labels: ['7 t +', '7-6,7 t', '6,7-6,4 t', '6,4-6,1 t', '6,1-5,8 t', '5,8 t -'],
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person och år',
     dataType: 'Number',
