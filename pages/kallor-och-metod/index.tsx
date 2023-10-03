@@ -138,6 +138,26 @@ function KoM() {
                     Trafikanalys
                   </a>
                   .
+                  Cykelvägsdata kommer från Trafikverkets
+                  {' '}
+                  <a
+                    href="https://nvdb2012.trafikverket.se/SeTransportnatverket"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Nationella vägdatabas
+                  </a>
+                  .
+                  För hushållens konsumtionsbaserade utsläpp kommer data från
+                  {' '}
+                  <a
+                    href="https://www.sei.org/tools/konsumtionskompassen/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Stockholm Environment Institute
+                  </a>
+                  .
                 </Paragraph>
               </>
             )}

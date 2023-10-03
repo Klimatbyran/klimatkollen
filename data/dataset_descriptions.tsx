@@ -57,8 +57,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     heading: 'Kommuner som har klimatplaner',
     body: (
       <>
-        På kartan och i listan visas vilka kommuner som har eller saknar aktuella
-        klimatplaner, samt länkar till befintliga planer. Klicka
+        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka
         {' '}
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
@@ -131,7 +130,7 @@ export const datasetDescriptions: DatasetDescriptions = {
 
   Konsumtionen: {
     heading: 'Hushållens konsumtionsutsläpp',
-    body: 'På kartan och i listan visas hushållens konsumtionsbaserade utsläpp (CO2e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara nere på högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
+    body: 'På kartan och i listan visas hushållens konsumtionsutsläpp (CO2e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
     source: (
       <>
         Källa:
@@ -148,10 +147,10 @@ export const datasetDescriptions: DatasetDescriptions = {
     boundaries: [7, 6.7, 6.4, 6.1, 5.8],
     labels: ['7 ton +', '7-6,7 ton', '6,7-6,4 ton', '6,4-6,1 ton', '6,1-5,8 ton', '5,8 ton -'],
     labelRotateUp: [],
-    columnHeader: 'Ton/år',
+    columnHeader: 'Ton CO₂e/person och år',
     dataType: 'Number',
     tooltip:
-      'Avser antal ton växthusgasutsläpp (CO2e) per år och medborgare (år 2019).',
+      'Avser antal ton växthusgasutsläpp (CO₂e) per år och medborgare (år 2019).',
   },
 }
 

@@ -68,6 +68,13 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         data={`${municipality.BicycleMetrePerCapita.toFixed(1)} meter`}
         info="Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild)."
       />
+      <SolutionSection
+        icon={<Bike />}
+        title="Hushållens konsumtionsutsläpp"
+        heading="Ton CO₂e/person och år"
+        data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton/person och år`}
+        info="Hushållens konsumtionsutsläpp (CO2e) i ton per invånare år 2019."
+      />
     </>
   )
 }
