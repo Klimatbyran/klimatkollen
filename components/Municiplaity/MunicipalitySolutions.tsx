@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import { H2, H5, Paragraph } from '../Typography'
 import FactSection from '../FactSection'
 import { Municipality } from '../../utils/types'
-import EVCar from '../../public/icons/ev_car.svg'
-import Bike from '../../public/icons/bike.svg'
-import Basket from '../../public/icons/basket_fill.svg'
+import EVCar from '../../public/icons/evcars_32.svg'
+import Bike from '../../public/icons/bikelanes_32.svg'
+import Basket from '../../public/icons/consumtion_32.svg'
 
 const StyledH2 = styled(H2)`
   margin-top: 32px;
