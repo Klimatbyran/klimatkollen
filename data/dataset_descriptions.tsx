@@ -129,6 +129,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Konsumtionen: {
+    title: 'Konsumtionsutsläpp',
     heading: 'Hushållens konsumtionsutsläpp',
     body: 'På kartan och i listan visas hushållens konsumtionsutsläpp (CO2e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
     source: (
