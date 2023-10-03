@@ -23,8 +23,6 @@ def export_to_xlsx(df):
     emission_diff_abs_label = f'Utsläppsförändring {second_last_year}-{last_year} (kton)'
     df[emission_diff_abs_label] = df['emissions'].apply(
         lambda x: round((x[str(last_year)]-x[str(second_last_year)])/1000, 1))
-    
-    print(df.columns.tolist)
 
     consumption_label = f'Konsumtionsutsläpp (kg/person/år)'
     df.rename(
