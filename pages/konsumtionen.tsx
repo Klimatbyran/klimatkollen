@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { ReactElement } from 'react'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer/Footer'
 import Layout from '../components/Layout'
 import { ClimateDataService } from '../utils/climateDataService'
 import IndexPage from './index'

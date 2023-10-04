@@ -58,7 +58,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         icon={<EVCar />}
         title="Elbilarna"
         heading="Förändringstakt andel laddbara bilar"
-        data={`${(municipality.ElectricCarChangePercent * 100).toFixed(1)}%`}
+        data={`${(municipality.ElectricCarChangePercent * 100).toFixed(1)} procentenheter`}
         info="Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet
             2015 i procentenheter per år."
       />
@@ -72,7 +72,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
       <SolutionSection
         icon={<Basket />}
         title="Hushållens konsumtionsutsläpp"
-        heading="Utsläppta ton CO₂e per person och år"
+        heading="CO₂e per person och år"
         data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton`}
         info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019."
       />

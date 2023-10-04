@@ -1,9 +1,9 @@
 import { useState, FC, useEffect } from 'react'
 import styled from 'styled-components'
 import { EmailFormFields } from 'react-mailchimp-subscribe'
-import { ParagraphBold } from './Typography'
-import { devices } from '../utils/devices'
-import Button from './Button'
+import { ParagraphBold } from '../Typography'
+import { devices } from '../../utils/devices'
+import Button from '../Button'
 
 const Container = styled.div`
   width: 100%;
