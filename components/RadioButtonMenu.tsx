@@ -3,28 +3,33 @@ import styled from 'styled-components'
 import router from 'next/router'
 import { datasetDescriptions, defaultDataset } from '../data/dataset_descriptions'
 import { SelectedData } from '../utils/types'
+import { devices } from '../utils/devices'
 
 const RadioContainer = styled.div`
-  margin: 32px 0;
-  gap: 16px;
+  margin: 16px 0 32px 0;
+  gap: 8px;
   display: flex;
   font-weight: bolder;
   flex-wrap: wrap;
   justify-content: center;
+
+  @media only screen and (${devices.tablet}) {
+    gap: 16px;
+  }
+  
 `
 
 const RadioLabel = styled.label`
   padding: 0.5rem 1rem;
   font-family: 'Anonymous Pro';
   font-size: 14px;
-  line-height: 20px;
+  line-height: 24px;
   text-decoration: none;
   color: ${({ theme }) => theme.offWhite};
   border: 1px solid ${({ theme }) => theme.midGreen};
   border-radius: 8px;
   white-space: nowrap;
   cursor: pointer;
-  margin-bottom: 8px;
 
   &:hover {
     background: ${({ theme }) => theme.darkGreenTwo};
