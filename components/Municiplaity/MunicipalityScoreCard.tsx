@@ -11,6 +11,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 64px;
 `
 
 const StyledH4 = styled(H4)`
@@ -139,6 +140,7 @@ function Scorecard({
     <StyledDiv>
       <StyledH4>
         Fakta om
+        {' '}
         {name}
       </StyledH4>
       <GreyContainer>
