@@ -5,6 +5,7 @@ import { ClimatePlan } from '../../utils/types'
 import { H4, H5, ParagraphItalic } from '../Typography'
 import Icon from '../../public/icons/boxedArrow.svg'
 import PlanIcon from '../../public/icons/climatePlan.svg'
+import FactSection from '../FactSection'
 
 const StyledDiv = styled.div`
   display: flex;
@@ -18,19 +19,17 @@ const StyledH4 = styled(H4)`
   width: 100%;
 `
 
-const GreenContainer = styled.div`
-  padding: 16px;
-`
-
-const DarkContainer = styled.div`
-  padding: 16px;
+const GreyContainer = styled.div`
+  background: ${({ theme }) => theme.lightBlack};
+  border-radius: 8px;
+  padding: 16px 16px 0 16px;
+  margin-bottom: 8px;
 `
 
 const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 32px;
 `
 
 const SectionLeft = styled.section`
@@ -140,10 +139,9 @@ function Scorecard({
     <StyledDiv>
       <StyledH4>
         Fakta om
-        {' '}
         {name}
       </StyledH4>
-      <GreenContainer>
+      <GreyContainer>
         <Row>
           <SectionLeft>
             <PlanIcon />
@@ -161,7 +159,7 @@ function Scorecard({
             </LinkButton>
           </SectionRight>
         </Row>
-        <ScorecardSection
+        <FactSection
           heading={climatePlanYearFormatted}
           data=""
           info={(
@@ -177,92 +175,90 @@ function Scorecard({
             </>
           )}
         />
-      </GreenContainer>
-      <DarkContainer>
-        {rank && (
-          <ScorecardSection
-            heading="Kommunens utsläppsrankning"
-            data={rankFormatted}
-            info={(
-              <>
-                Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan
-                Parisavtalet 2015.
-              </>
-            )}
-          />
-        )}
-        {['Gotland', 'Skövde', 'Mörbylånga'].includes(name) && (
-          <ParagraphItalic>
-            Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s
-            koldioxidbudget, läs mer
-            {' '}
-            <a href="/kallor-och-metod">här</a>
-          </ParagraphItalic>
-        )}
-        {budget && (
-          <ScorecardSection
-            heading="Koldioxidbudget"
-            data={`${formatter.format(Math.round(budget))} ton`}
-            info={(
-              <>
-                Mängden koldioxid kvar att släppa ut för att klara Parisavtalets
-                1,5-gradersmål, läs mer om koldioxidbudgetar
-                {' '}
-                <Link href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">
-                  här
-                </Link>
-                .
-              </>
-            )}
-          />
-        )}
-        {budgetRunsOut && (
-          <ScorecardSection
-            heading="Koldioxidbudgeten tar slut"
-            data={
-              budgetRunsOut === 'Aldrig'
-                ? 'Med nuvarande trend håller kommunen sin budget'
-                : budgetRunsOut
-            }
-            info={(
-              <>
-                Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt
-                nuvarande trend.
-              </>
-            )}
-          />
-        )}
+      </GreyContainer>
+      {rank && (
         <ScorecardSection
-          heading="Utsläppsminskning för att klara Parisavtalet"
-          data={`-${emissionChangePercent.toFixed(1)}% per år`}
+          heading="Kommunens utsläppsrankning"
+          data={rankFormatted}
           info={(
             <>
-              Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska
-              överskrida sin koldioxidbudget.
+              Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan
+              Parisavtalet 2015.
             </>
           )}
         />
-        {politicalRule && (
-          <ScorecardSection
-            heading="Här styr"
-            data={politicalRuleFormatted}
-            info={(
-              <>
-                Uppgift om politiskt styre är hämtad från
-                {' '}
-                <a
-                  href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Sveriges Kommuner och Regioner (SKR)
-                </a>
-                . Data uppdaterad mars 2023.
-              </>
-            )}
-          />
+      )}
+      {['Gotland', 'Skövde', 'Mörbylånga'].includes(name) && (
+        <ParagraphItalic>
+          Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget,
+          läs mer
+          {' '}
+          <a href="/kallor-och-metod">här</a>
+        </ParagraphItalic>
+      )}
+      {budget && (
+        <ScorecardSection
+          heading="Koldioxidbudget"
+          data={`${formatter.format(Math.round(budget))} ton`}
+          info={(
+            <>
+              Mängden koldioxid kvar att släppa ut för att klara Parisavtalets
+              1,5-gradersmål, läs mer om koldioxidbudgetar
+              {' '}
+              <Link href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">
+                här
+              </Link>
+              .
+            </>
+          )}
+        />
+      )}
+      {budgetRunsOut && (
+        <ScorecardSection
+          heading="Koldioxidbudgeten tar slut"
+          data={
+            budgetRunsOut === 'Aldrig'
+              ? 'Med nuvarande trend håller kommunen sin budget'
+              : budgetRunsOut
+          }
+          info={(
+            <>
+              Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt
+              nuvarande trend.
+            </>
+          )}
+        />
+      )}
+      <ScorecardSection
+        heading="Utsläppsminskning för att klara Parisavtalet"
+        data={`-${emissionChangePercent.toFixed(1)}% per år`}
+        info={(
+          <>
+            Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska
+            överskrida sin koldioxidbudget.
+          </>
         )}
-      </DarkContainer>
+      />
+      {politicalRule && (
+        <ScorecardSection
+          heading="Här styr"
+          data={politicalRuleFormatted}
+          info={(
+            <>
+              Uppgift om politiskt styre är hämtad från
+              {' '}
+              <a
+                href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Sveriges Kommuner och Regioner (SKR)
+              </a>
+              . Data uppdaterad mars 2023.
+            </>
+          )}
+        />
+      )}
     </StyledDiv>
   )
 }

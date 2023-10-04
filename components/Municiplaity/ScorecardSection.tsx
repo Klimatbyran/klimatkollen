@@ -6,7 +6,7 @@ import IconGreen from '../../public/icons/remove_light_green.svg'
 import { H3, Paragraph, ParagraphBold } from '../Typography'
 
 const BorderContainer = styled.div`
-padding: 16px 0;
+  padding: 16px 0;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
 `
 
@@ -14,17 +14,26 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `
 
-const SectionLeft = styled.section`
-  display: flex;
-  flex-direction: column;
+const SectionLeft = styled.div`
   gap: 0.5rem;
-  width: 90%;
+  flex: 3;
 `
 
-const SectionRight = styled.section`
+const SectionRight = styled.div`
   text-align: right; 
+  flex: 1;
+`
+
+const StyledIcon = styled.div`
+  margin-left: 16px;
+  flex: 0.2;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const InfoHeading = styled(H3)`
@@ -35,14 +44,6 @@ const InfoHeading = styled(H3)`
 const InfoParagraph = styled(Paragraph)`
   margin: 16px 0 0 0;
   font-size: 13px;
-`
-
-const StyledIcon = styled.div`
-  margin-left: 12px;
-
-  &:hover {
-    cursor: pointer;
-  }
 `
 
 type Props = {
