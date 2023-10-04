@@ -6,37 +6,21 @@ import PageWrapper from '../PageWrapper'
 import Partners from './FooterPartners'
 import SocialList from './FooterSocialLinks'
 
-const Foot = styled.footer`
+const Foot = styled.div`
   width: 100%;
-  display: flex;
 
   @media only screen and (${devices.tablet}) {
     justify-content: center;
   }
 `
 
-const ContentWrapper = styled.div`
-  flex: 1 1 0;
-`
-
-const TextSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 40px;
-`
-
-const FlexSection = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 64px 32px;
-  padding-bottom: 64px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`
-
 const StyledH5 = styled(H5)`
   color: ${({ theme }) => theme.midGreen};
+  margin: 16px;
+
+  @media only screen and (${devices.tablet}) {
+    margin: 32px;
+  }
 `
 
 const BottomParent = styled.div`
@@ -96,17 +80,9 @@ function Footer() {
     <>
       <PageWrapper backgroundColor="black">
         <Foot>
-          <ContentWrapper>
-            <TextSection>
-              <NewsletterSubscribe />
-            </TextSection>
-            <TextSection>
-              <StyledH5>Samarbetspartners</StyledH5>
-            </TextSection>
-            <FlexSection>
-              <Partners />
-            </FlexSection>
-          </ContentWrapper>
+          <NewsletterSubscribe />
+          <StyledH5>Samarbetspartners</StyledH5>
+          <Partners />
         </Foot>
       </PageWrapper>
       <PageWrapper backgroundColor="midGreen">

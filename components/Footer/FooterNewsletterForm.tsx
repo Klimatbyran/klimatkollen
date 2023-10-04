@@ -8,10 +8,16 @@ const Container = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.darkGreenOne};
   display: flex;
-  padding: 32px;
+  padding: 16px 16px 8px 16px;
   border-radius: 8px;
   color: ${({ theme }) => theme.offWhite};
   flex-direction: column;
+  margin-bottom: 40px;
+
+  @media only screen and (${devices.tablet}) {
+    padding: 32px 32px 16px 32px;
+    margin-bottom: 80px;
+  }
 `
 
 const HorizontalContainer = styled.div`
@@ -21,22 +27,29 @@ const HorizontalContainer = styled.div`
 
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 `
 
 const StyledParagraph = styled(Paragraph)`
   font-family: 'Anonymous Pro';
   font-size: 14px;
+  flex-grow: 1;
+
+  @media only screen and (${devices.tablet}) {
+    width: 340px;
+  }
 `
 
 const StyledForm = styled.form`
   display: flex;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
-
-  @media only screen and (${devices.tablet}) {
-    
-  }
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-grow: 1;
 `
 
 const StyledInput = styled.input`
@@ -45,7 +58,7 @@ const StyledInput = styled.input`
   color: ${({ theme }) => theme.midGreen};
   font-size: 16px;
   font-family: 'Borna';
-  width: 95%;
+  width: 100%;
 
   ::placeholder,
   ::-webkit-input-placeholder {
@@ -56,30 +69,24 @@ const StyledInput = styled.input`
   }
 
   @media only screen and (${devices.tablet}) {
-    min-width: 400px;
+    min-width: 340px;
   }
 `
 
 const ArrowButton = styled.button`
   background: transparent;
   border: none;
+  right: 0;
+  cursor: pointer;
 `
 
 const EmailValidation = styled.div`
-  width: 100%;
-  background: ${({ theme }) => theme.darkGreenOne};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  align-items: left;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
 
-  span {
-    font-weight: bold;
-    font-size: 16px;
-    display: block;
-    flex-grow: 1;
-    text-align: center;
+  @media only screen and (${devices.tablet}) {
+    width: 365px;
   }
 `
 
@@ -131,23 +138,25 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
         </div>
         <div>
           <StyledForm onSubmit={handleFormSubmit}>
-            <StyledInput
-              onChange={(event) => setEmail(event.target.value)}
-              type="email"
-              placeholder="Ange mailadress"
-              value={email}
-              required
-              disabled={showThanks}
-              id="signup"
-            />
             {showThanks ? (
               <EmailValidation>
-                <span>Tack för din intresseanmälan!</span>
+                Tack för ditt intresse!
               </EmailValidation>
             ) : (
-              <ArrowButton>
-                <img src="/icons/arrow-right-bold-green.svg" alt="Arrow-icon" />
-              </ArrowButton>
+              <>
+                <StyledInput
+                  onChange={(event) => setEmail(event.target.value)}
+                  type="email"
+                  placeholder="Ange mailadress"
+                  value={email}
+                  required
+                  disabled={showThanks}
+                  id="signup"
+                />
+                <ArrowButton>
+                  <img src="/icons/arrow-right-bold-green.svg" alt="Arrow-icon" />
+                </ArrowButton>
+              </>
             )}
           </StyledForm>
         </div>

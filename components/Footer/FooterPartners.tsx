@@ -1,80 +1,57 @@
 import styled from 'styled-components'
-
 import { devices } from '../../utils/devices'
 
-const IconSection = styled.div`
+const PartnerContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
+  width: 100%;
+  padding: 8px 16px;
+  margin-bottom: 48px;
 
   @media only screen and (${devices.tablet}) {
-    flex: 0 1 150px;
+    padding: 16px 32px;
   }
 `
 
-type PartnerProps = {
-  link: string
-  logo: JSX.Element
-}
-
-function PartnerSection({ link, logo }: PartnerProps) {
-  return (
-    <IconSection>
-      <a href={link} target="_blank" rel="noreferrer">
-        {logo}
-      </a>
-    </IconSection>
-  )
-}
-
 function Partners() {
   return (
-    <>
-      <PartnerSection
-        link="https://postkodstiftelsen.se/"
-        logo={(
-          <img
-            src="/icons/postkodstiftelsen.svg"
-            width={90}
-            height="auto"
-            alt="Postkodstiftelsen logo"
-          />
-      )}
-      />
-      <PartnerSection
-        link="https://www.wwf.se/"
-        logo={(
-          <img
-            src="/partners/WWF_Logo_Small_RGB_72dpi.jpg"
-            width={45}
-            height={45}
-            alt="WWF logo"
-          />
-        )}
-      />
-      <PartnerSection
-        link="https://www.climateview.global/"
-        logo={(
-          <img
-            src="/icons/climateview.svg"
-            width={90}
-            height="auto"
-            alt="ClimateViw logo"
-          />
-        )}
-      />
-      <PartnerSection
-        link="https://www.klimatklubben.se/"
-        logo={(
-          <img
-            src="/icons/klimatklubben.svg"
-            width="auto"
-            height={45}
-            alt="Klimatklubben logo"
-          />
-        )}
-      />
-    </>
+    <PartnerContainer>
+      <a href="https://postkodstiftelsen.se/" target="_blank" rel="noreferrer">
+        <img
+          src="/icons/postkodstiftelsen.svg"
+          width={90}
+          height="auto"
+          alt="Postkodstiftelsen logo"
+        />
+      </a>
+      <a href="https://www.wwf.se/" target="_blank" rel="noreferrer">
+        <img
+          src="/partners/WWF_Logo_Small_RGB_72dpi.jpg"
+          width={45}
+          height="auto"
+          alt="WWF logo"
+        />
+      </a>
+      <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">
+        <img
+          src="/icons/climateview.svg"
+          width={90}
+          height="auto"
+          alt="ClimateView logo"
+        />
+      </a>
+      <a href="https://www.klimatklubben.se/" target="_blank" rel="noreferrer">
+        <img
+          src="/icons/klimatklubben.svg"
+          width="auto"
+          height={45}
+          alt="Klimatklubben logo"
+        />
+      </a>
+    </PartnerContainer>
   )
 }
 
