@@ -9,12 +9,14 @@ const Container = styled.div`
   padding-left: 0.87rem;
   padding-top: 1.2rem;
   padding-bottom: 0.5rem;
-  margin-top: 40px;
+  margin-top: 30px;
 
   @media only screen and (${devices.tablet}) {
     position: absolute;
     left: 0;
     top: 0;
+    margin-top: 36px;
+  
   }
 `
 
@@ -23,22 +25,15 @@ const LabelBox = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-
-  &:first-child div {
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
-  }
-  &:last-child div {
-    border-bottom-left-radius: 10%;
-    border-bottom-right-radius: 10%;
-  }
 `
 
 const Square = styled.div<{ color: string }>`
   background-color: ${(props) => props.color};
+  border-radius: 4px;
   width: 20px;
   height: 20px;
   position: relative;
+  margin-bottom: 1px;
 `
 
 const ArrowIcon = styled(Icon)<{ rotateup?: boolean }>`
@@ -55,6 +50,7 @@ const ArrowIcon = styled(Icon)<{ rotateup?: boolean }>`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
+  font-family: 'Anonymous Pro';
   font-size: 0.7em;
   margin: 0;
   line-height: 0;
