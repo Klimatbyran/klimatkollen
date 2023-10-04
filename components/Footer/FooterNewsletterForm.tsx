@@ -1,53 +1,58 @@
 import { useState, FC, useEffect } from 'react'
 import styled from 'styled-components'
 import { EmailFormFields } from 'react-mailchimp-subscribe'
-import { ParagraphBold } from '../Typography'
+import { H5, Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
-import Button from '../Button'
 
 const Container = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.lightBlack};
+  background: ${({ theme }) => theme.darkGreenOne};
   display: flex;
-  padding: 16px;
+  padding: 32px;
   border-radius: 8px;
-  color: ${({ theme }) => theme.black};
-  gap: 1.5rem;
+  color: ${({ theme }) => theme.offWhite};
   flex-direction: column;
 `
 
-const ParagraphBoldGreen = styled(ParagraphBold)`
-  color: ${({ theme }) => theme.midGreen};
-  padding: 0;
-  margin: 0;
-`
-
-const StyledForm = styled.form`
+const HorizontalContainer = styled.div`
   display: flex;
-  gap: 1.5rem;
   flex-direction: column;
+  flex-wrap: wrap;
 
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
   }
 `
 
+const StyledParagraph = styled(Paragraph)`
+  font-family: 'Anonymous Pro';
+  font-size: 14px;
+`
+
+const StyledForm = styled.form`
+  display: flex;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme.midGreen};
+
+  @media only screen and (${devices.tablet}) {
+    
+  }
+`
+
 const StyledInput = styled.input`
-  height: 55px;
-  border: 1px solid ${({ theme }) => theme.midGreen};
-  background: ${({ theme }) => theme.lightBlack};
-  border-radius: 5px;
-  padding: 15px;
-  color: ${({ theme }) => theme.offWhite};
+  background: ${({ theme }) => theme.darkGreenOne};
+  border: none;
+  color: ${({ theme }) => theme.midGreen};
   font-size: 16px;
   font-family: 'Borna';
+  width: 95%;
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.offWhite};
+    color: ${({ theme }) => theme.midGreen};
   }
   :-ms-input-placeholder {
-    color: ${({ theme }) => theme.offWhite};
+    color: ${({ theme }) => theme.midGreen};
   }
 
   @media only screen and (${devices.tablet}) {
@@ -55,12 +60,14 @@ const StyledInput = styled.input`
   }
 `
 
+const ArrowButton = styled.button`
+  background: transparent;
+  border: none;
+`
+
 const EmailValidation = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.darkGreenOne};
-  height: 56px;
-  border-radius: 4px;
-  border: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,26 +122,36 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
 
   return (
     <Container>
-      <ParagraphBoldGreen>Vill du få nyheter om Klimatkollen?</ParagraphBoldGreen>
-      {/* <Paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Paragraph> */}
-      <StyledForm onSubmit={handleFormSubmit}>
-        <StyledInput
-          onChange={(event) => setEmail(event.target.value)}
-          type="email"
-          placeholder="Ange mailadress"
-          value={email}
-          required
-          disabled={showThanks}
-          id="signup"
-        />
-        {showThanks ? (
-          <EmailValidation>
-            <span>Tack för din intresseanmälan!</span>
-          </EmailValidation>
-        ) : (
-          <Button text="Skicka" />
-        )}
-      </StyledForm>
+      <H5>Vill du få nyheter om Klimatkollen?</H5>
+      <HorizontalContainer>
+        <div>
+          <StyledParagraph>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </StyledParagraph>
+        </div>
+        <div>
+          <StyledForm onSubmit={handleFormSubmit}>
+            <StyledInput
+              onChange={(event) => setEmail(event.target.value)}
+              type="email"
+              placeholder="Ange mailadress"
+              value={email}
+              required
+              disabled={showThanks}
+              id="signup"
+            />
+            {showThanks ? (
+              <EmailValidation>
+                <span>Tack för din intresseanmälan!</span>
+              </EmailValidation>
+            ) : (
+              <ArrowButton>
+                <img src="/icons/arrow-right-bold-green.svg" alt="Arrow-icon" />
+              </ArrowButton>
+            )}
+          </StyledForm>
+        </div>
+      </HorizontalContainer>
     </Container>
   )
 }

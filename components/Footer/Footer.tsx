@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { H5, Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
-import NewsletterSubscribe from './NewsletterSubscribe'
+import NewsletterSubscribe from './FooterNewsletterSubscribe'
 import PageWrapper from '../PageWrapper'
 import Partners from './FooterPartners'
 import SocialList from './FooterSocialLinks'
