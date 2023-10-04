@@ -6,7 +6,7 @@ import { H1, H2, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 import DropDown from '../DropDown'
-import ScoreCard from './MunicipalityScoreCard'
+import Scorecard from './MunicipalityScorecard'
 import { devices } from '../../utils/devices'
 import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
@@ -50,12 +50,6 @@ const DropDownSection = styled.div`
   margin-top: 30px;
   text-align: center;
   align-items: center;
-`
-
-const StyledH2 = styled(H2)`
-  margin-top: 32px;
-  margin-bottom: 32px;
-  width: 100%;
 `
 
 type Props = {
@@ -102,15 +96,8 @@ function Municipality(props: Props) {
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>
       <PageWrapper backgroundColor="black">
-        <StyledH2>
-          <H2>
-            Fakta om
-            {' '}
-            {municipality.Name}
-          </H2>
-        </StyledH2>
         <Bottom>
-          <ScoreCard
+          <Scorecard
             name={municipality.Name}
             rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
             budget={municipality.Budget.CO2Equivalent}

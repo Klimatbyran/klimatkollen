@@ -1,30 +1,29 @@
 import styled, { css } from 'styled-components'
 import Link from 'next/link'
-import FactSection from '../FactSection'
+import ScorecardSection from './ScorecardSection'
 import { ClimatePlan } from '../../utils/types'
-import { H5, ParagraphItalic } from '../Typography'
+import { H4, H5, ParagraphItalic } from '../Typography'
 import Icon from '../../public/icons/boxedArrow.svg'
 import PlanIcon from '../../public/icons/climatePlan.svg'
 
 const StyledDiv = styled.div`
-  border-radius: 4px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `
 
+const StyledH4 = styled(H4)`
+  margin-top: 32px;
+  margin-bottom: 32px;
+  width: 100%;
+`
+
 const GreenContainer = styled.div`
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  padding: 15px 15px 0 15px;
-  background: ${({ theme }) => theme.midGreen};
+  padding: 16px;
 `
 
 const DarkContainer = styled.div`
-  border-radius: 4px;
-  padding: 15px 15px;
-  background: ${({ theme }) => theme.lightBlack};
+  padding: 16px;
 `
 
 const Row = styled.div`
@@ -116,7 +115,7 @@ type Props = {
 
 const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
 
-function ScoreCard({
+function Scorecard({
   name,
   rank,
   budget,
@@ -139,6 +138,11 @@ function ScoreCard({
 
   return (
     <StyledDiv>
+      <StyledH4>
+        Fakta om
+        {' '}
+        {name}
+      </StyledH4>
       <GreenContainer>
         <Row>
           <SectionLeft>
@@ -157,7 +161,7 @@ function ScoreCard({
             </LinkButton>
           </SectionRight>
         </Row>
-        <FactSection
+        <ScorecardSection
           heading={climatePlanYearFormatted}
           data=""
           info={(
@@ -176,7 +180,7 @@ function ScoreCard({
       </GreenContainer>
       <DarkContainer>
         {rank && (
-          <FactSection
+          <ScorecardSection
             heading="Kommunens utsläppsrankning"
             data={rankFormatted}
             info={(
@@ -196,7 +200,7 @@ function ScoreCard({
           </ParagraphItalic>
         )}
         {budget && (
-          <FactSection
+          <ScorecardSection
             heading="Koldioxidbudget"
             data={`${formatter.format(Math.round(budget))} ton`}
             info={(
@@ -213,7 +217,7 @@ function ScoreCard({
           />
         )}
         {budgetRunsOut && (
-          <FactSection
+          <ScorecardSection
             heading="Koldioxidbudgeten tar slut"
             data={
               budgetRunsOut === 'Aldrig'
@@ -228,7 +232,7 @@ function ScoreCard({
             )}
           />
         )}
-        <FactSection
+        <ScorecardSection
           heading="Utsläppsminskning för att klara Parisavtalet"
           data={`-${emissionChangePercent.toFixed(1)}% per år`}
           info={(
@@ -239,7 +243,7 @@ function ScoreCard({
           )}
         />
         {politicalRule && (
-          <FactSection
+          <ScorecardSection
             heading="Här styr"
             data={politicalRuleFormatted}
             info={(
@@ -263,4 +267,4 @@ function ScoreCard({
   )
 }
 
-export default ScoreCard
+export default Scorecard
