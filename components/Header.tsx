@@ -53,7 +53,7 @@ const NavigationLink = styled.a`
 `
 
 const HamburgerMenu = styled.div`
-display: block;
+  display: block;
   margin-left: auto;
 
   @media only screen and (${devices.laptop}) {
@@ -76,13 +76,21 @@ const FullScreenMenu = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 1000;
-  padding: 5rem 1rem 1rem 1rem;
+  padding: 3rem 1rem 1rem 1rem;
+
+  @media only screen and (${devices.tablet}) {
+   padding-top: 4rem;
+  }
 `
 
 const CloseButtonContainer = styled.div`
   position: absolute;
-  top: 2rem;
+  top: 1rem;
   right: 1rem;
+
+  @media only screen and ($(devices.tablet)) {
+    top: 1.2rem;
+  }
 `
 
 const Separator = styled.hr`
@@ -106,7 +114,6 @@ const HamburgerNavigationLink = styled.a`
   }
 `
 
-// Header Component
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
