@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Icon from '../../public/icons/add_light_green.svg'
 import IconGreen from '../../public/icons/remove_light_green.svg'
 import { H3, Paragraph, ParagraphBold } from '../Typography'
+import { devices } from '../../utils/devices'
 
 const BorderContainer = styled.div`
   padding: 16px 0;
@@ -17,33 +18,34 @@ const Row = styled.div`
   align-items: center;
 `
 
-const SectionLeft = styled.div`
-  gap: 0.5rem;
-  flex: 3;
+const InfoParagraph = styled(Paragraph)`
+  margin: 16px 0 0 0;
+  font-size: 12px;
+
+  @media only screen and (${devices.tablet}) {
+    font-size: 13px;
+  }
+`
+
+const StyledParagraph = styled(Paragraph)`
+  font-size: 14px;
+  flex: 1;
+
+  @media only screen and (${devices.tablet}) {
+    font-size: 16px;
+  }
 `
 
 const SectionRight = styled.div`
   text-align: right; 
-  flex: 1;
 `
 
 const StyledIcon = styled.div`
   margin-left: 16px;
-  flex: 0.2;
 
   &:hover {
     cursor: pointer;
   }
-`
-
-const InfoHeading = styled(H3)`
-  font-weight: 200;
-  font-size: inherit;
-`
-
-const InfoParagraph = styled(Paragraph)`
-  margin: 16px 0 0 0;
-  font-size: 13px;
 `
 
 type Props = {
@@ -58,10 +60,8 @@ function ScorecardSection({ heading, data, info }: Props) {
   return (
     <BorderContainer>
       <Row>
-        <SectionLeft>
-          <InfoHeading>{heading}</InfoHeading>
-          <ParagraphBold>{data}</ParagraphBold>
-        </SectionLeft>
+        <StyledParagraph>{heading}</StyledParagraph>
+        <StyledParagraph>{data}</StyledParagraph>
         {info && (
         <SectionRight>
           <StyledIcon onClick={() => setToggle(!toggle)}>
