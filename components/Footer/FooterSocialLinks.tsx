@@ -13,7 +13,7 @@ const ContactList = styled.ul`
 `
 
 const ContactListItem = styled.li`
-  width: 112px;
+  width: 128px;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
