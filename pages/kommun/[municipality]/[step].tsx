@@ -118,7 +118,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
       municipalitiesName,
     },
   }
-  cache.set(id, result.props)
+  cache.set(id, result)
 
   return result
 }
