@@ -1,11 +1,13 @@
 import { GetServerSideProps } from 'next'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
-import Municipality from '../../../components/Municiplaity/Municipality'
 import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
-import { PolitycalRuleService } from '../../../utils/politicalRuleService'
+import { PolitycalRuleService as PoliticalRuleService } from '../../../utils/politicalRuleService'
+
+const Municipality = dynamic(() => import('../../../components/Municiplaity/Municipality'))
 
 export const STEPS = [
   'historiska-utslapp',
@@ -70,15 +72,16 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${((60 * 60) * 24) * 7}`)
 
   const id = (params as Params).municipality as string
-
   if (cache.get(id)) return cache.get(id)
 
   const climateDataService = new ClimateDataService()
+  const wikiDataService = new WikiDataService()
+  const politicalRuleService = new PoliticalRuleService()
 
   const [municipality, municipalities, wikiDataMunicipality] = await Promise.all([
     climateDataService.getMunicipality(id),
     climateDataService.getMunicipalities(),
-    new WikiDataService().getMunicipalityByName(id),
+    wikiDataService.getMunicipalityByName(id),
   ])
 
   municipality.Population = wikiDataMunicipality.Population
@@ -89,7 +92,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
     (m) => m.Name === municipality.Name,
   )?.HistoricalEmission.AverageEmissionChangeRank || null
 
-  municipality.PoliticalRule = new PolitycalRuleService().getPoliticalRule(id)
+  municipality.PoliticalRule = politicalRuleService.getPoliticalRule(id)
 
   // Fill the gap between budget/trend and historical emissions by putting
   // historical data into budget and trend emissions
@@ -106,7 +109,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
     })
   }
 
-  const municipalitiesName = municipalities.map((item) => item.Name)
+  const municipalitiesName = municipalities.map((m) => m.Name)
 
   const result = {
     props: {
@@ -115,8 +118,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
       municipalitiesName,
     },
   }
-
-  cache.set(id, result)
+  cache.set(id, result.props)
 
   return result
 }
