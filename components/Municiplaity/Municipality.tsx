@@ -87,7 +87,7 @@ function Municipality(props: Props) {
           </HeaderSection>
           <MunicipalityEmissionGraph
             municipality={municipality}
-            step={step}
+            chart={step}
             onNextStep={onNextStep}
             onPreviousStep={onPreviousStep}
           />

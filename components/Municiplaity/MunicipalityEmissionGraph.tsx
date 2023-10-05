@@ -83,14 +83,14 @@ const MANDATE_MIN_CHANGE = 1
 
 type IssuesProps = {
   municipality: TMunicipality
-  step: number
+  chart: number
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
 }
 
 function MunicipalityEmissionGraph({
   municipality,
-  step,
+  chart: step,
   onNextStep,
   onPreviousStep,
 }: IssuesProps) {
@@ -134,7 +134,7 @@ function MunicipalityEmissionGraph({
 
   type ShareTextFn = (name: string) => string
 
-  const STEPS: {
+  const CHARTS: {
     [index: number]: {
       text: string
       buttonText: string
@@ -165,7 +165,7 @@ function MunicipalityEmissionGraph({
     },
   }
 
-  const stepConfig = STEPS[step]
+  const stepConfig = CHARTS[step]
   if (!stepConfig) {
     throw new Error('Render a sort of 500 page I guess')
   }
@@ -200,31 +200,11 @@ function MunicipalityEmissionGraph({
       <GraphWrapper>
         <H2>{text}</H2>
         <Paragraph>{body}</Paragraph>
-        <Legends>
-          {step < 3 && (
-            <Legend>
-              <Circle color={colorTheme.orange} />
-              Historiskt
-            </Legend>
-          )}
-          {step > 0 && (
-            <Legend>
-              <Circle color={colorTheme.red} />
-              Trend
-            </Legend>
-          )}
-          {step > 1 && (
-            <Legend>
-              <Circle color={colorTheme.lightGreen} />
-              Parisavtalet
-            </Legend>
-          )}
-          <InfoButtonWrapper>
-            <InfoButton type="button" aria-label="Om grafen" onClick={toggleModal}>
-              <Info />
-            </InfoButton>
-          </InfoButtonWrapper>
-        </Legends>
+        <InfoButtonWrapper>
+          <InfoButton type="button" aria-label="Om grafen" onClick={toggleModal}>
+            <Info />
+          </InfoButton>
+        </InfoButtonWrapper>
         <Graph
           step={step}
           historical={municipality.HistoricalEmission.EmissionPerYear}
@@ -236,15 +216,15 @@ function MunicipalityEmissionGraph({
           {onPreviousStep ? (
             <IconButton onClick={onPreviousStep}>
               <ArrowLeft />
-              {STEPS[step - 1].buttonText}
+              {CHARTS[step - 1].buttonText}
             </IconButton>
           ) : (
             <div />
           )}
-          <span style={{ textAlign: 'center' }}>{STEPS[step].buttonText}</span>
+          <span style={{ textAlign: 'center' }}>{CHARTS[step].buttonText}</span>
           {onNextStep && (
             <IconButton onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
-              {STEPS[step + 1]?.buttonText}
+              {CHARTS[step + 1]?.buttonText}
               <ArrowRight />
             </IconButton>
           )}
