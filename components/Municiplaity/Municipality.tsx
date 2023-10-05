@@ -2,11 +2,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 
+import { useState } from 'react'
 import { H1, H2, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 import DropDown from '../DropDown'
-import Scorecard from './MunicipalityScorecard'
+import Scorecard from './MunicipalityScoreCard'
 import { devices } from '../../utils/devices'
 import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
@@ -54,7 +55,7 @@ const DropDownSection = styled.div`
 
 type Props = {
   municipality: TMunicipality
-  step: number
+  charts: number[]
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
   coatOfArmsImage: string | null
@@ -63,13 +64,20 @@ type Props = {
 
 function Municipality(props: Props) {
   const {
-    step,
+    charts,
     municipality,
     onNextStep,
     onPreviousStep,
     coatOfArmsImage,
     municipalitiesName,
   } = props
+  const [selectedCharts, setSelectedCharts] = useState<number[]>([0])
+
+  const toggleCharts = (chart: number) => {
+    setSelectedCharts((prevSelectedCharts) => (prevSelectedCharts.includes(chart)
+      ? prevSelectedCharts.filter((s) => s !== chart)
+      : [...prevSelectedCharts, chart]))
+  }
 
   return (
     <>
@@ -87,11 +95,10 @@ function Municipality(props: Props) {
           </HeaderSection>
           <MunicipalityEmissionGraph
             municipality={municipality}
-            chart={step}
-            onNextStep={onNextStep}
-            onPreviousStep={onPreviousStep}
+            selectedCharts={selectedCharts}
+            handleSelectCharts={toggleCharts}
           />
-          <MunicipalityEmissionNumbers municipality={municipality} step={step} />
+          <MunicipalityEmissionNumbers municipality={municipality} charts={selectedCharts} />
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>

@@ -60,7 +60,7 @@ type Dataset = Array<{ x: number; y: number }>
 const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
 type Props = {
-  step: number
+  charts: number[]
   historical: EmissionPerYear[]
   trend: EmissionPerYear[]
   budget: EmissionPerYear[]
@@ -68,7 +68,7 @@ type Props = {
 }
 
 function Graph({
-  step, historical, budget, trend, maxVisibleYear,
+  charts, historical, budget, trend, maxVisibleYear,
 }: Props) {
   const setup = useMemo(
     () => getSetup([historical, trend, budget]),
@@ -122,7 +122,7 @@ function Graph({
               backgroundColor: colorTheme.lightGreenOpaqe,
               pointRadius: 0,
               tension: 0.15,
-              hidden: step < 2,
+              hidden: !charts.includes(2),
             },
             {
               // @ts-ignore
@@ -134,7 +134,7 @@ function Graph({
               backgroundColor: colorTheme.darkRedOpaque,
               pointRadius: 0,
               tension: 0.15,
-              hidden: false,
+              hidden: !charts.includes(1),
             },
           ],
         }}
@@ -169,8 +169,8 @@ function Graph({
           },
           scales: {
             x: {
-              min: step === 0 ? setup.minYear : 2016,
-              max: step > 0 ? maxVisibleYear : 2021,
+              min: charts.length === 1 && charts.includes(0) ? setup.minYear : 2016,
+              max: charts.length > 1 ? maxVisibleYear : 2021,
               grid: {
                 display: true,
                 color: 'rgba(255, 255, 255, 0.2)',

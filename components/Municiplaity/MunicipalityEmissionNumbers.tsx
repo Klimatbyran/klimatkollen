@@ -40,10 +40,10 @@ const StyledText = styled.p<{$color: string}>`
 
 type EmissionsProps = {
   municipality: TMunicipality
-  step: number
+  charts: number[]
 }
 
-function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
+function MunicipalityEmissionNumbers({ municipality, charts }: EmissionsProps) {
   const totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
     (total, year) => total + year.CO2Equivalent,
     0,
@@ -61,14 +61,14 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
-          <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={charts.includes(1) ? colorTheme.red : colorTheme.darkRed} />
+          <StyledText $color={charts.includes(1) ? colorTheme.offWhite : colorTheme.grey}>
             Trend: {totalTrend.toFixed(1)} tusen ton CO₂
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
-          <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={charts.includes(2) ? colorTheme.lightGreen : colorTheme.darkGreenOne} />
+          <StyledText $color={charts.includes(2) ? colorTheme.offWhite : colorTheme.grey}>
             Koldioxidbudget för att klara Parisavtalet:{' '}
             {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂
           </StyledText>

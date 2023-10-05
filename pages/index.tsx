@@ -20,7 +20,7 @@ import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
 import { defaultDataset, datasetDescriptions, data } from '../data/dataset_descriptions'
-import RadioButtonMenu from '../components/RadioButtonMenu'
+import RadioMenu from '../components/RadioMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 
 const Container = styled.div`
@@ -135,7 +135,7 @@ function StartPage({
       <PageWrapper backgroundColor="black">
         <Container>
           <H2Regular>Hur går det med?</H2Regular>
-          <RadioButtonMenu
+          <RadioMenu
             selectedData={selectedData}
             setSelectedData={setSelectedData}
           />
