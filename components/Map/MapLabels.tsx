@@ -3,7 +3,7 @@ import { devices } from '../../utils/devices'
 
 import Icon from '../../public/icons/arrow.svg'
 import { Paragraph } from '../Typography'
-import { mapColors } from '../shared'
+import { Square, mapColors } from '../shared'
 
 const Container = styled.div`
   padding-left: 0.87rem;
@@ -25,15 +25,6 @@ const LabelBox = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-`
-
-const Square = styled.div<{ color: string }>`
-  background-color: ${(props) => props.color};
-  border-radius: 4px;
-  width: 20px;
-  height: 20px;
-  position: relative;
-  margin-bottom: 1px;
 `
 
 const ArrowIcon = styled(Icon)<{ rotateup?: boolean }>`

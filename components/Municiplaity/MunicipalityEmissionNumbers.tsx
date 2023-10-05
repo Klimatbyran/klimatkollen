@@ -17,27 +17,20 @@ const Container = styled.div`
 `
 
 const TotalCo2Container = styled.div`
-  margin: 8px 0;
   flex-direction: column;
-  
-  @media all and (${devices.tablet}) {
-    margin: 16px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  margin-top: 16px;
 `
 
 const TotalCo2 = styled.div`
   display: flex;  
   align-items: center;
-  font-weight: 500;
   gap: 8px;
-  padding: 0.5rem 1rem 0.5rem 0rem;
-  font-size: 12px;
+  padding: 2px 0;
+  font-size: 13px;
+  font-family: 'Anonymous Pro', monospace;
 
   @media all and (${devices.tablet}) {
-    font-size: 14px;
+    font-size: 15px;
   }
 `
 
