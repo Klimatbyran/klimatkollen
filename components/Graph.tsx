@@ -17,6 +17,8 @@ import { colorTheme } from '../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
+const END_YEAR = 2050
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,11 +66,10 @@ type Props = {
   historical: EmissionPerYear[]
   trend: EmissionPerYear[]
   budget: EmissionPerYear[]
-  maxVisibleYear: number
 }
 
 function Graph({
-  charts, historical, budget, trend, maxVisibleYear,
+  charts, historical, budget, trend,
 }: Props) {
   const setup = useMemo(
     () => getSetup([historical, trend, budget]),
@@ -91,6 +92,8 @@ function Graph({
       throw new Error('Dataset length larger than label length')
     }
   }
+
+  const onlyHistorical = charts.every((n) => n !== 1 && n !== 2)
 
   return (
     <Container>
@@ -169,8 +172,8 @@ function Graph({
           },
           scales: {
             x: {
-              min: charts.length === 1 && charts.includes(0) ? setup.minYear : 2016,
-              max: charts.length > 1 ? maxVisibleYear : 2021,
+              min: onlyHistorical ? setup.minYear : 2016,
+              max: onlyHistorical ? 2021 : END_YEAR,
               grid: {
                 display: true,
                 color: 'rgba(255, 255, 255, 0.2)',

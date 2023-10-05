@@ -55,19 +55,13 @@ const DropDownSection = styled.div`
 
 type Props = {
   municipality: TMunicipality
-  charts: number[]
-  onNextStep: (() => void) | undefined
-  onPreviousStep: (() => void) | undefined
   coatOfArmsImage: string | null
   municipalitiesName: Array<string>
 }
 
 function Municipality(props: Props) {
   const {
-    charts,
     municipality,
-    onNextStep,
-    onPreviousStep,
     coatOfArmsImage,
     municipalitiesName,
   } = props
