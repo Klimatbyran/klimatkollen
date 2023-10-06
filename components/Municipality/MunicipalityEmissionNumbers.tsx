@@ -50,15 +50,13 @@ function MunicipalityEmissionNumbers({ municipality, charts }: EmissionsProps) {
   ) / 1000
   const totalTrend = municipality.EmissionTrend.FutureCO2Emission / 1000
 
-  const onlyHistorical = charts.every((n) => n !== 1 && n !== 2)
-
   return (
     <Container>
       <H4>Utsläppen i siffror</H4>
       <TotalCo2Container>
         <TotalCo2>
-          <Square color={onlyHistorical ? colorTheme.orange : colorTheme.darkOrange} />
-          <StyledText $color={onlyHistorical ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={charts.includes(0) ? colorTheme.orange : colorTheme.darkOrange} />
+          <StyledText $color={charts.includes(0) ? colorTheme.offWhite : colorTheme.grey}>
             Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
           </StyledText>
         </TotalCo2>

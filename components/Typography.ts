@@ -18,7 +18,7 @@ export const H2Regular = styled.h2`
   font-weight: regular;
   font-size: 32px;
   line-height: 1.25;
-  margin: 0 0 8px 0;
+  margin: 0 0 32px 0;
 `
 
 export const H3 = styled.h3`

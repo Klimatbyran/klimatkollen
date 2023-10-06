@@ -9,34 +9,17 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Graph from '../Graph'
-import InfoModal from '../InfoModal'
 import MetaTags from '../MetaTags'
 import {
-  IconButton, MenuContainer, MenuInput, MenuLabel,
+  MenuContainer, MenuInput, MenuLabel,
 } from '../shared'
 import { Municipality as TMunicipality } from '../../utils/types'
-import { devices } from '../../utils/devices'
-import Info from '../../public/icons/info.svg'
+import { colorTheme } from '../../Theme'
 
 const GraphWrapper = styled.div`
   display: flex;
   gap: 1rem;
   flex-direction: column;
-`
-
-const InfoButton = styled(IconButton)`
-  height: 21px;
-`
-
-const InfoButtonWrapper = styled.div`
-  @media only screen and (${devices.tablet}) {
-    display: flex;
-    justify-content: start;
-    width: 100%;
-    margin-top: -50px;
-    margin-right: 1rem;
-    justify-content: end;
-  }
 `
 
 type EmissionGraphProps = {
@@ -50,15 +33,9 @@ function MunicipalityEmissionGraph({
   selectedCharts = [0],
   handleSelectCharts,
 }: EmissionGraphProps) {
-  const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
 
-  const toggleModal = () => {
-    // eslint-disable-next-line no-shadow
-    const { body } = document
-    setIsOpen(!isOpen)
-    body.style.overflow = isOpen ? '' : 'hidden'
-  }
+  const numberInCharts = (n: number) => selectedCharts.includes(n)
 
   return (
     <>
@@ -69,11 +46,6 @@ function MunicipalityEmissionGraph({
         url={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`}
       />
       <GraphWrapper>
-        <InfoButtonWrapper>
-          <InfoButton type="button" aria-label="Om grafen" onClick={toggleModal}>
-            <Info />
-          </InfoButton>
-        </InfoButtonWrapper>
         <Graph
           charts={selectedCharts}
           historical={municipality.HistoricalEmission.EmissionPerYear}
@@ -82,40 +54,52 @@ function MunicipalityEmissionGraph({
         />
       </GraphWrapper>
       <MenuContainer>
-        <MenuLabel>
-          <MenuInput
-            type="checkbox"
-            onChange={() => handleSelectCharts(0)}
-            checked={selectedCharts.includes(0)}
-          />
+        <MenuInput
+          id="historical"
+          type="checkbox"
+          onChange={() => handleSelectCharts(0)}
+          checked={numberInCharts(0)}
+          $backgroundColor={colorTheme.orange}
+          $hoverColor={colorTheme.lightOrange}
+        />
+        <MenuLabel
+          htmlFor="historical"
+          $borderColor={colorTheme.orange}
+          $backgroundColor={colorTheme.darkOrangeOpaque}
+        >
           Historiskt
         </MenuLabel>
-        <MenuLabel>
-          <MenuInput
-            type="checkbox"
-            onChange={() => handleSelectCharts(1)}
-            checked={selectedCharts.includes(1)}
-          />
+        <MenuInput
+          id="trend"
+          type="checkbox"
+          onChange={() => handleSelectCharts(1)}
+          checked={numberInCharts(1)}
+          $backgroundColor={colorTheme.red}
+          $hoverColor={colorTheme.lightRed}
+        />
+        <MenuLabel
+          htmlFor="trend"
+          $borderColor={colorTheme.red}
+          $backgroundColor={colorTheme.darkRedOpaque}
+        >
           Trend
         </MenuLabel>
-        <MenuLabel>
-          <MenuInput
-            type="checkbox"
-            onChange={() => handleSelectCharts(2)}
-            checked={selectedCharts.includes(2)}
-          />
+        <MenuInput
+          id="paris"
+          type="checkbox"
+          onChange={() => handleSelectCharts(2)}
+          checked={numberInCharts(2)}
+          $backgroundColor={colorTheme.lightGreen}
+          $hoverColor={colorTheme.lighterGreen}
+        />
+        <MenuLabel
+          htmlFor="paris"
+          $borderColor={colorTheme.lightGreen}
+          $backgroundColor={colorTheme.darkGreenOne}
+        >
           Parisavtalet
         </MenuLabel>
       </MenuContainer>
-      {isOpen && (
-        <InfoModal
-          close={toggleModal}
-          // Fixme
-          text="Some information text..."
-          // Additional logic for scrolling may be required here
-          scrollY={window.scrollY}
-        />
-      )}
     </>
   )
 }

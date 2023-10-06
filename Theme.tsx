@@ -7,11 +7,13 @@ export const colorTheme = {
   grey: '#939393',
   offWhite: '#FFFDFA',
 
+  lightRed: '#ff4e4e',
   red: '#EF3030',
   darkRed: '#8B1A1A',
   darkRedOpaque: 'rgba(139, 26, 26, 0.6)',
   darkDarkRed: '#450d0d',
 
+  lightOrange: '#ff8e4e',
   orange: '#FF6813',
   darkOrange: '#B55018',
   darkOrangeOpaque: 'rgb(181, 80, 24, 0.6)',
@@ -23,6 +25,7 @@ export const colorTheme = {
 
   lightBlue: '#81DFFF',
 
+  lighterGreen: '#03eaea',
   lightGreen: '#15D8D8',
   lightGreenOpaqe: 'rgba(103, 255, 238, 0.6)',
   lightGreenDark: 'rgb(0, 179, 159, 0.2)',

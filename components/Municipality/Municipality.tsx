@@ -3,11 +3,11 @@
 import styled from 'styled-components'
 
 import { useState } from 'react'
-import { H1, H2, ParagraphBold } from '../Typography'
+import { H2, H4, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 import DropDown from '../DropDown'
-import Scorecard from './MunicipalityScoreCard'
+import Scorecard from './MunicipalityScorecard'
 import { devices } from '../../utils/devices'
 import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
@@ -21,16 +21,22 @@ const StyledContainer = styled.div`
   margin-bottom: 48px;
 `
 
-const CoatOfArmsImage = styled.img`
-  width: 60px;
-`
-
 const HeaderSection = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   margin-top: 20px;
+`
+
+const CoatOfArmsImage = styled.img`
+  width: 30px;
+  margin-right: 24px;
+`
+
+const StyledH2 = styled(H2)`
+  font-family: 'Anonymous Pro', monospace;
+  font-weight: 400;
 `
 
 const Bottom = styled.div`
@@ -73,25 +79,30 @@ function Municipality(props: Props) {
       : [...prevSelectedCharts, chart]))
   }
 
+  const infoHeading = 'CO₂-utsläpp'
+  const infoText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+
   return (
     <>
       <PageWrapper backgroundColor="lightBlack">
         <BackArrow route="/" />
         <StyledContainer>
           <HeaderSection>
-            <H1>{municipality.Name}</H1>
             {coatOfArmsImage && (
               <CoatOfArmsImage
                 src={coatOfArmsImage}
                 alt={`Kommunvapen för ${municipality.Name}`}
               />
             )}
+            <StyledH2>{municipality.Name}</StyledH2>
           </HeaderSection>
           <MunicipalityEmissionGraph
             municipality={municipality}
             selectedCharts={selectedCharts}
             handleSelectCharts={toggleCharts}
           />
+          <H4>{infoHeading}</H4>
+          {infoText}
           <MunicipalityEmissionNumbers municipality={municipality} charts={selectedCharts} />
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />

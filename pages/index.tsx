@@ -49,7 +49,7 @@ const InfoContainer = styled.div`
   position: relative;
   background: ${({ theme }) => theme.lightBlack};
   border-radius: 8px;
-  margin-bottom: 32px;
+  margin: 32px 0;
   z-index: 15;
   ::-webkit-scrollbar {
     display: none;

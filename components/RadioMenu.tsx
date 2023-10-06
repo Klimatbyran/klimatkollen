@@ -3,6 +3,7 @@ import router from 'next/router'
 import { datasetDescriptions, defaultDataset } from '../data/dataset_descriptions'
 import { SelectedData } from '../utils/types'
 import { MenuContainer, MenuInput, MenuLabel } from './shared'
+import { colorTheme } from '../Theme'
 
 const replaceLetters = (word: string) => word.replace('å', 'a').replace('ä', 'a').replace('ö', 'o') // replace å ä ö
 
@@ -32,8 +33,15 @@ function RadioMenu({ selectedData, setSelectedData }: MenuProps) {
             value={option}
             checked={selectedData === option}
             onChange={() => handleSelectData(option)}
+            $backgroundColor={colorTheme.midGreen}
           />
-          <MenuLabel htmlFor={option}>{option}</MenuLabel>
+          <MenuLabel
+            htmlFor={option}
+            $borderColor={colorTheme.midGreen}
+            $backgroundColor={colorTheme.darkGreenTwo}
+          >
+            {option}
+          </MenuLabel>
         </Fragment>
       ))}
     </MenuContainer>

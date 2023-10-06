@@ -62,7 +62,6 @@ export const LoadingContainer = styled.div`
 // For radio and checkbox menus
 
 export const MenuContainer = styled.div`
-  margin: 16px 0 32px 0;
   gap: 8px;
   display: flex;
   font-weight: bolder;
@@ -72,34 +71,33 @@ export const MenuContainer = styled.div`
   @media only screen and (${devices.tablet}) {
     gap: 16px;
   }
-  
 `
 
-export const MenuLabel = styled.label`
+export const MenuLabel = styled.label<{$borderColor: string, $backgroundColor: string}>`
   padding: 0.5rem 1rem;
   font-family: 'Anonymous Pro';
   font-size: 14px;
   line-height: 24px;
   text-decoration: none;
   color: ${({ theme }) => theme.offWhite};
-  border: 1px solid ${({ theme }) => theme.midGreen};
+  border: 1px solid ${(props) => props.$borderColor};
   border-radius: 8px;
   white-space: nowrap;
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.darkGreenTwo};
+    background: ${(props) => props.$backgroundColor};
   }
 `
 
-export const MenuInput = styled.input`
+export const MenuInput = styled.input<{$backgroundColor: string, $hoverColor: string}>`
   display: none;
   &:checked + ${MenuLabel} {
     color: ${({ theme }) => theme.black};
-    background: ${({ theme }) => theme.midGreen};
+    background: ${(props) => props.$backgroundColor};
 
     &:hover {
-      background: ${({ theme }) => theme.lightGreen};
+      background: ${(props) => props.$hoverColor};
     }
   }
 `

@@ -7,7 +7,7 @@ import { H3, Paragraph, ParagraphBold } from '../Typography'
 import { devices } from '../../utils/devices'
 
 const BorderContainer = styled.div`
-  padding: 16px 0;
+  padding: 8px 0;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
 `
 
@@ -29,6 +29,7 @@ const InfoParagraph = styled(Paragraph)`
 
 const StyledParagraph = styled(Paragraph)`
   font-size: 14px;
+  padding: 0 8px 0 0;
   flex: 1;
 
   @media only screen and (${devices.tablet}) {
