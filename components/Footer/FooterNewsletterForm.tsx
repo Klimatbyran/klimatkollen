@@ -133,15 +133,14 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
       <HorizontalContainer>
         <div>
           <StyledParagraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Med vårt nyhetsbrev får du uppdateringar om hur det går med utsläppen och
+            omställningen direkt i din mejl.
           </StyledParagraph>
         </div>
         <div>
           <StyledForm onSubmit={handleFormSubmit}>
             {showThanks ? (
-              <EmailValidation>
-                Tack för ditt intresse!
-              </EmailValidation>
+              <EmailValidation>Tack för ditt intresse!</EmailValidation>
             ) : (
               <>
                 <StyledInput
