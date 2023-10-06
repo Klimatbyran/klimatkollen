@@ -14,6 +14,15 @@ import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
 
+/**
+ * FIXME
+ *
+ * - routing
+ * - info section under graph text
+ * - decide/implement historical graph vs other graphs
+ *
+ * */
+
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
