@@ -2,16 +2,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 
-import { H1, H2, ParagraphBold } from '../Typography'
+import { H1, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 import DropDown from '../DropDown'
-import Scorecard from './MunicipalityScorecard'
 import { devices } from '../../utils/devices'
 import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
+import Scorecard from './MunicipalityScorecard'
 
 const StyledContainer = styled.div`
   display: flex;
