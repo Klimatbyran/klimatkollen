@@ -3,7 +3,7 @@ import { ParsedUrlQuery } from 'querystring'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import StartPage from '../..'
 import { ClimateDataService } from '../../../utils/climateDataService'
-import { isValidDataset, isValidDataView } from '../../../utils/shared'
+import { isValidDataset, isValidDataView, normalizeString } from '../../../utils/shared'
 import Layout from '../../../components/Layout'
 import Footer from '../../../components/Footer/Footer'
 
@@ -18,7 +18,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   const dataset = (params as Params).dataset as string
   const dataView = (params as Params).dataView as string
 
-  if (!isValidDataset(dataset) || !isValidDataView(dataView)) {
+  const normalizedDataset = normalizeString(dataset)
+  const normalizedDataView = normalizeString(dataView)
+
+  if (!isValidDataset(normalizedDataset) || !isValidDataView(normalizedDataView)) {
     return {
       notFound: true, // Return a 404 page
     }
@@ -29,28 +32,27 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
 
   res.setHeader(
     'Cache-Control',
-    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`
+    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
-  if (cache.get(dataset)) return cache.get(dataset)
+  if (cache.get(normalizedDataset)) return cache.get(normalizedDataset)
 
   const result = {
     props: {
       municipalities,
-      dataset,
-    }
+      normalizedDataset,
+    },
   }
 
-  cache.set(dataset, result)
+  cache.set(normalizedDataset, result)
   return result
 }
 
 type Props = {
   municipalities: Array<TMunicipality>
-  dataset: string
 }
 
-export default function DataView({ municipalities, dataset }: Props) {
+export default function DataView({ municipalities }: Props) {
   return (
     <>
       <Layout>

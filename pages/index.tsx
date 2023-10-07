@@ -6,9 +6,7 @@ import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import DropDown from '../components/DropDown'
 import MetaTags from '../components/MetaTags'
-import {
-  H2Regular, H5Regular, Paragraph,
-} from '../components/Typography'
+import { H2Regular, H5Regular, Paragraph } from '../components/Typography'
 import { Municipality, SelectedData } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
@@ -28,13 +26,18 @@ import {
 } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
-import { isValidDataset, normalizeString, validDatasetsMap } from '../utils/shared'
+import {
+  isValidDataView,
+  isValidDataset,
+  normalizeString,
+  validDatasetsMap,
+} from '../utils/shared'
 
 /**
  * FIXME
- * - fixa så att man inte kan skriva fel typ av dataset
+ * - varför kan man skriva in ex versaler i url:en och det inte rättas till?
  *
-*/
+ */
 
 const Map = dynamic(() => import('../components/Map/Map'))
 
@@ -116,19 +119,21 @@ type PropsType = {
 function StartPage({ municipalities }: PropsType) {
   const router = useRouter()
   const routeDataset = router.query.dataset
-  const dataView = router.query.dataView || defaultDataView
+  const { dataView } = router.query
 
-  const [selectedDataView, setSelectedDataView] = useState(dataView)
+  const normalizedRouteDataset = normalizeString(routeDataset as string)
+  const normalizedDataView = normalizeString(dataView as string)
+
   const [selectedDataset, setSelectedDataset] = useState<SelectedData>(defaultDataset)
+  const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
 
   useEffect(() => {
-    if (routeDataset) {
-      const normalizedRouteDataset = normalizeString(routeDataset as string)
+    if (normalizedRouteDataset && isValidDataset(normalizedRouteDataset)) {
+      setSelectedDataset(validDatasetsMap[normalizedRouteDataset])
+    }
 
-      if (isValidDataset(normalizedRouteDataset)) {
-        setSelectedDataView(selectedDataView)
-        setSelectedDataset(validDatasetsMap[normalizedRouteDataset])
-      }
+    if (normalizedDataView && isValidDataView(normalizedDataView)) {
+      setSelectedDataView(selectedDataView)
     }
     // Disable exhaustive-deps so that it only runs on first mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -138,7 +143,10 @@ function StartPage({ municipalities }: PropsType) {
     const newDataString = newData as string
     setSelectedDataset(newDataString)
     const normalizedDataset = normalizeString(newDataString)
-    router.push(`/${normalizedDataset}/${selectedDataView}`, undefined, { shallow: true, scroll: false })
+    router.push(`/${normalizedDataset}/${selectedDataView}`, undefined, {
+      shallow: true,
+      scroll: false,
+    })
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
@@ -148,10 +156,14 @@ function StartPage({ municipalities }: PropsType) {
   const handleToggle = () => {
     const newDataView = selectedDataView === defaultDataView ? secondaryDataView : defaultDataView
     setSelectedDataView(newDataView)
-    router.replace(`/${normalizeString(selectedDataset as string)}/${newDataView}`, undefined, {
-      shallow: true,
-      scroll: false,
-    })
+    router.replace(
+      `/${normalizeString(selectedDataset as string)}/${newDataView}`,
+      undefined,
+      {
+        shallow: true,
+        scroll: false,
+      },
+    )
   }
 
   const cols = listColumns(selectedDataset, datasetDescription)
@@ -215,7 +227,7 @@ function StartPage({ municipalities }: PropsType) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,

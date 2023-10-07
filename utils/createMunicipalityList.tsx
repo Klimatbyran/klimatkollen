@@ -133,13 +133,11 @@ type MunicipalityItem = {
   dataPoint: number | string
 }
 
-const columnHeader = (datasetDescription: DatasetDescription) => {
-  return (
-    <div>
-      {datasetDescription.columnHeader}
-    </div>
-  )
-}
+const columnHeader = (datasetDescription: DatasetDescription) => (
+  <div>
+    {datasetDescription.columnHeader}
+  </div>
+)
 
 export const listColumns = (
   selectedData: SelectedData,
