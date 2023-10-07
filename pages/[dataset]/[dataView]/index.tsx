@@ -3,22 +3,22 @@ import { ParsedUrlQuery } from 'querystring'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import StartPage from '../..'
 import { ClimateDataService } from '../../../utils/climateDataService'
-import { isValidDataset, isValidViewMode } from '../../../utils/shared'
+import { isValidDataset, isValidDataView } from '../../../utils/shared'
 import Layout from '../../../components/Layout'
 import Footer from '../../../components/Footer/Footer'
 
 interface Params extends ParsedUrlQuery {
   dataset: string
-  viewMode: string
+  dataView: string
 }
 
 const cache = new Map()
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
   const dataset = (params as Params).dataset as string
-  const viewMode = (params as Params).viewMode as string
+  const dataView = (params as Params).dataView as string
 
-  if (!isValidDataset(dataset) || !isValidViewMode(viewMode)) {
+  if (!isValidDataset(dataset) || !isValidDataView(dataView)) {
     return {
       notFound: true, // Return a 404 page
     }
@@ -50,7 +50,7 @@ type Props = {
   dataset: string
 }
 
-export default function ViewMode({ municipalities, dataset }: Props) {
+export default function DataView({ municipalities, dataset }: Props) {
   return (
     <>
       <Layout>

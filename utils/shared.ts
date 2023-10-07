@@ -1,4 +1,4 @@
-import { datasetDescriptions, defaultViewMode, secondaryViewMode } from '../data/dataset_descriptions'
+import { datasetDescriptions, defaultDataView, secondaryDataView } from '../data/dataset_descriptions'
 
 export const normalizeString = (input: string) =>
   input.replace('ä', 'a').replace('ö', 'o').replace('å', 'a').toLowerCase()
@@ -22,6 +22,6 @@ export const isValidDataset = (dataset: string) => {
   return validDatasetsMap[normalizedDataset]
 }
 
-export const isValidViewMode = (viewMode: string) => {
-  return [defaultViewMode, secondaryViewMode].includes(viewMode)
+export const isValidDataView = (dataView: string) => {
+  return [defaultDataView, secondaryDataView].includes(dataView)
 }

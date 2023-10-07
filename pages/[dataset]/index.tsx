@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { defaultViewMode } from '../../data/dataset_descriptions'
+import { defaultDataView } from '../../data/dataset_descriptions'
 import { isValidDataset } from '../../utils/shared'
 
 interface Params extends ParsedUrlQuery {
@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   if (isValidDataset(dataset)) {
     return {
       redirect: {
-        destination: `/${dataset}/${defaultViewMode}`,
+        destination: `/${dataset}/${defaultDataView}`,
         permanent: true,
         shallow: true,
       }

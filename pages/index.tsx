@@ -23,8 +23,8 @@ import {
   defaultDataset,
   datasetDescriptions,
   data,
-  defaultViewMode,
-  secondaryViewMode,
+  defaultDataView,
+  secondaryDataView,
 } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
@@ -87,7 +87,7 @@ const FloatingH5 = styled(H5Regular)`
   }
 `
 
-const ComparisonContainer = styled.div<{ $viewMode: string }>`
+const ComparisonContainer = styled.div<{ $dataView: string }>`
   position: relative;
   overflow-y: scroll;
   z-index: 100;
@@ -95,7 +95,7 @@ const ComparisonContainer = styled.div<{ $viewMode: string }>`
   height: 400px;
   border-radius: 8px;
   display: flex;
-  margin-top: ${({ $viewMode }) => ($viewMode === secondaryViewMode ? '64px' : '0')};
+  margin-top: ${({ $dataView }) => ($dataView === secondaryDataView ? '64px' : '0')};
 
   @media only screen and (${devices.tablet}) {
     height: 500px;
@@ -116,18 +116,18 @@ type PropsType = {
 function StartPage({ municipalities }: PropsType) {
   const router = useRouter()
   const routeDataset = router.query.dataset
-  const viewMode = router.query.viewMode || defaultViewMode
+  const dataView = router.query.dataView || defaultDataView
 
-  const [toggleViewMode, setToggleViewMode] = useState(viewMode)
-  const [selectedData, setSelectedData] = useState<SelectedData>(defaultDataset)
+  const [selectedDataView, setSelectedDataView] = useState(dataView)
+  const [selectedDataset, setSelectedDataset] = useState<SelectedData>(defaultDataset)
 
   useEffect(() => {
     if (routeDataset) {
       const normalizedRouteDataset = normalizeString(routeDataset as string)
 
       if (isValidDataset(normalizedRouteDataset)) {
-        setToggleViewMode(toggleViewMode)
-        setSelectedData(validDatasetsMap[normalizedRouteDataset])
+        setSelectedDataView(selectedDataView)
+        setSelectedDataset(validDatasetsMap[normalizedRouteDataset])
       }
     }
     // Disable exhaustive-deps so that it only runs on first mount
@@ -136,28 +136,28 @@ function StartPage({ municipalities }: PropsType) {
 
   const handleDataChange = (newData: SelectedData) => {
     const newDataString = newData as string
-    setSelectedData(newDataString)
+    setSelectedDataset(newDataString)
     const normalizedDataset = normalizeString(newDataString)
-    router.push(`/${normalizedDataset}/${toggleViewMode}`, undefined, { shallow: true, scroll: false })
+    router.push(`/${normalizedDataset}/${selectedDataView}`, undefined, { shallow: true, scroll: false })
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
-  const municipalityData = data(municipalities, selectedData) // get all municipality names and data points for map and list
-  const datasetDescription = datasetDescriptions[selectedData] // get description of selected dataset
+  const municipalityData = data(municipalities, selectedDataset) // get all municipality names and data points for map and list
+  const datasetDescription = datasetDescriptions[selectedDataset] // get description of selected dataset
 
   const handleToggle = () => {
-    const newViewMode = toggleViewMode === defaultViewMode ? secondaryViewMode : defaultViewMode
-    setToggleViewMode(newViewMode)
-    router.replace(`/${normalizeString(selectedData as string)}/${newViewMode}`, undefined, {
+    const newDataView = selectedDataView === defaultDataView ? secondaryDataView : defaultDataView
+    setSelectedDataView(newDataView)
+    router.replace(`/${normalizeString(selectedDataset as string)}/${newDataView}`, undefined, {
       shallow: true,
       scroll: false,
     })
   }
 
-  const cols = listColumns(selectedData, datasetDescription)
+  const cols = listColumns(selectedDataset, datasetDescription)
   const rankedData = rankData(municipalities)
 
-  const isDefaultViewMode = toggleViewMode === defaultViewMode
+  const isDefaultDataView = selectedDataView === defaultDataView
 
   return (
     <>
@@ -169,7 +169,7 @@ function StartPage({ municipalities }: PropsType) {
         <Container>
           <H2Regular>Hur går det med?</H2Regular>
           <RadioButtonMenu
-            selectedData={selectedData}
+            selectedData={selectedDataset}
             handleDataChange={handleDataChange}
           />
           <InfoContainer>
@@ -177,12 +177,12 @@ function StartPage({ municipalities }: PropsType) {
               <FloatingH5>{datasetDescription.title}</FloatingH5>
               <ToggleButton
                 handleClick={handleToggle}
-                text={isDefaultViewMode ? 'Listvy' : 'Kartvy'}
-                icon={isDefaultViewMode ? <ListIcon /> : <MapIcon />}
+                text={isDefaultDataView ? 'Listvy' : 'Kartvy'}
+                icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
               />
             </TitleContainer>
-            <ComparisonContainer $viewMode={toggleViewMode.toString()}>
-              {isDefaultViewMode && (
+            <ComparisonContainer $dataView={selectedDataView.toString()}>
+              {isDefaultDataView && (
                 <>
                   <MapLabels
                     labels={datasetDescription.labels}
@@ -195,8 +195,8 @@ function StartPage({ municipalities }: PropsType) {
                   />
                 </>
               )}
-              {toggleViewMode === secondaryViewMode && (
-                <ComparisonTable data={rankedData[selectedData]} columns={cols} />
+              {selectedDataView === secondaryDataView && (
+                <ComparisonTable data={rankedData[selectedDataset]} columns={cols} />
               )}
             </ComparisonContainer>
             <InfoText>
@@ -223,11 +223,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
 
   const dataset = (params?.dataset || defaultDataset).toString()
   const normalizedDataset = normalizeString(dataset)
-  const viewMode = (params?.viewMode || defaultViewMode).toString().toLocaleLowerCase()
+  const dataView = (params?.dataView || defaultDataView).toString().toLocaleLowerCase()
 
   return {
     redirect: {
-      destination: `/${normalizedDataset}/${viewMode}`,
+      destination: `/${normalizedDataset}/${dataView}`,
       permanent: true,
     },
   }
