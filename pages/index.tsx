@@ -221,13 +221,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
-  const dataset = (params?.dataset || defaultDataset).toString()
-  const normalizedDataset = normalizeString(dataset)
-  const dataView = (params?.dataView || defaultDataView).toString().toLocaleLowerCase()
+  const normalizedDataset = normalizeString(defaultDataset)
 
   return {
     redirect: {
-      destination: `/${normalizedDataset}/${dataView}`,
+      destination: `/${normalizedDataset}/${defaultDataView}`,
       permanent: true,
     },
   }

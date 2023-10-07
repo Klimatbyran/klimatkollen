@@ -10,18 +10,18 @@ interface Params extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const dataset = (params as Params).dataset as string
 
-  if (isValidDataset(dataset)) {
-    return {
-      redirect: {
-        destination: `/${dataset}/${defaultDataView}`,
-        permanent: true,
-        shallow: true,
-      }
-    }
-  } else {
+  if (!isValidDataset(dataset)) {
     return {
       notFound: true, // Return a 404 page when the dataset is not valid
     }
+  }
+
+  return {
+    redirect: {
+      destination: `/${dataset}/${defaultDataView}`,
+      permanent: true,
+      shallow: true,
+    },
   }
 }
 
