@@ -7,7 +7,7 @@ import { H2, Paragraph } from '../../components/Typography'
 import { ClimateDataService } from '../../utils/climateDataService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
-import Footer from '../../components/Footer'
+import Footer from '../../components/Footer/Footer'
 import { UnorderedList, ListItem, OrderedList } from '../../components/shared'
 import ToggleSection from '../../components/ToggleSection'
 
@@ -52,7 +52,7 @@ function OmOss() {
         title="Om oss"
         description="Om Klimatkollen"
       />
-      <PageWrapper backgroundColor="darkestGrey">
+      <PageWrapper backgroundColor="black">
         <Container>
           <H2>
             Om oss

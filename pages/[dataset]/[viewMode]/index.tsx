@@ -4,7 +4,7 @@ import { Municipality as TMunicipality } from '../../../utils/types'
 import StartPage from '../..'
 import { ClimateDataService } from '../../../utils/climateDataService'
 import Layout from '../../../components/Layout'
-import Footer from '../../../components/Footer'
+import Footer from '../../../components/Footer/Footer'
 
 type Props = {
   municipalities: Array<TMunicipality>
@@ -49,3 +49,4 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   cache.set(dataset, result)
   return result
 }
+

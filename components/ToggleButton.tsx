@@ -1,27 +1,41 @@
 import styled from 'styled-components'
+import { devices } from '../utils/devices'
 
 const ToggleBtn = styled.button`
-  width: 112px;
-  height: 36px;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  color: ${({ theme }) => theme.paperWhite};
+  height: 32px;
+  margin: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: ${({ theme }) => theme.offWhite};
   background: transparent;
   border-radius: 4px;
-  border: 1px solid white;
-  padding: 0.8rem;
+  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  &:hover {
-    background: ${({ theme }) => theme.darkGrey};
+  justify-content: right;
+  z-index: 150;
+
+  @media only screen and (${devices.mobile}) {
+    margin: 12px;
   }
 `
 
 const ToggleText = styled.p`
-  margin-left: 8px;
+  margin-right: 8px;
   font-size: 14px;
+  font-family: 'Borna';
+  @media only screen and (${devices.mobile}) {
+    font-size: 12px;
+  }
+`
+
+const IconContainer = styled.div`
+  border-radius: 12px;
+  border: none;
+  background: ${({ theme }) => theme.midGreen};
+  padding: 8px 8px 5px 8px;
 `
 
 type ToggleButtonProps = {
@@ -33,10 +47,8 @@ type ToggleButtonProps = {
 function ToggleButton({ handleClick, text, icon }: ToggleButtonProps) {
   return (
     <ToggleBtn onClick={handleClick}>
-      {icon}
-      <ToggleText>
-        {text}
-      </ToggleText>
+      <ToggleText>{text}</ToggleText>
+      <IconContainer>{icon}</IconContainer>
     </ToggleBtn>
   )
 }

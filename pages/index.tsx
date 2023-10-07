@@ -1,18 +1,20 @@
 import { GetServerSideProps } from 'next'
+import dynamic from 'next/dynamic'
 import { ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { useRouter } from 'next/router'
 import DropDown from '../components/DropDown'
-import Map from '../components/Map/Map'
 import MetaTags from '../components/MetaTags'
-import { H2, Paragraph, ParagraphBold } from '../components/Typography'
+import {
+  H2Regular, H5Regular, Paragraph,
+} from '../components/Typography'
 import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality, SelectedData } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
 import Layout from '../components/Layout'
-import Footer from '../components/Footer'
+import Footer from '../components/Footer/Footer'
 import ComparisonTable from '../components/ComparisonTable'
 import MapLabels from '../components/Map/MapLabels'
 import ListIcon from '../public/icons/list.svg'
@@ -38,33 +40,71 @@ import { normalizeString } from '../utils/shared'
  *
 */
 
+const Map = dynamic(() => import('../components/Map/Map'))
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-top: 32px;
+  align-items: center;
+
+  @media only and ${devices.mobile} {
+    margin-top: 16px;
+  }
 `
 
 const InfoText = styled.div`
-  margin-top: 3rem;
+  padding: 1rem 1rem 0 1rem;
 `
 
 const ParagraphSource = styled(Paragraph)`
   font-size: 13px;
-  color: ${({ theme }) => theme.lightGrey};
+  color: ${({ theme }) => theme.grey};
 `
 
-const MunicipalityContainer = styled.div`
+const InfoContainer = styled.div`
+  width: 100%;
+  position: relative;
+  background: ${({ theme }) => theme.lightBlack};
+  border-radius: 8px;
+  margin-bottom: 32px;
+  z-index: 15;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`
+
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const FloatingH5 = styled(H5Regular)`
+  position: absolute;
+  margin: 60px 0 0 16px;
+  z-index: 200;
+
+  @media only screen and (${devices.mobile}) {
+    margin: 55px 0 0 16px;
+  }
+`
+
+const ComparisonContainer = styled.div<{ $viewMode: string }>`
   position: relative;
   overflow-y: scroll;
-  z-index: 150;
+  z-index: 100;
   // TODO: Hardcoding this is not good.
-  height: 380px;
-  border: 1px solid ${({ theme }) => theme.paperWhite};
+  height: 400px;
   border-radius: 8px;
   display: flex;
-  margin-bottom: 32px;
+  margin-top: ${({ $viewMode }) => ($viewMode === secondaryViewMode ? '64px' : '0')};
+
   @media only screen and (${devices.tablet}) {
     height: 500px;
   }
+
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   ::-webkit-scrollbar {
@@ -129,54 +169,53 @@ function StartPage({ municipalities }: PropsType) {
   const cols = listColumns(selectedData, datasetDescription)
   const rankedData = rankData(municipalities)
 
+  const isDefaultViewMode = toggleViewMode === defaultViewMode
+
   return (
     <>
       <MetaTags
         title="Klimatkollen — Få koll på Sveriges klimatomställning"
         description="Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
       />
-      <PageWrapper backgroundColor="darkestGrey">
+      <PageWrapper backgroundColor="black">
         <Container>
-          <H2>Hur går det med?</H2>
+          <H2Regular>Hur går det med?</H2Regular>
           <RadioButtonMenu
             selectedData={selectedData}
             handleDataChange={handleDataChange}
           />
-          <InfoText>
-            <ParagraphBold>{datasetDescription.heading}</ParagraphBold>
-            <Paragraph>{datasetDescription.body}</Paragraph>
-            <ParagraphSource>{datasetDescription.source}</ParagraphSource>
-          </InfoText>
-          <ToggleButton
-            handleClick={handleToggle}
-            text={toggleViewMode === defaultViewMode ? 'Se lista' : 'Se karta'}
-            icon={toggleViewMode === defaultViewMode ? <ListIcon /> : <MapIcon />}
-          />
-          <MunicipalityContainer>
-            <div
-              style={{
-                display: toggleViewMode === defaultViewMode ? 'block' : 'none',
-              }}
-            >
-              <MapLabels
-                labels={datasetDescription.labels}
-                rotations={datasetDescription.labelRotateUp}
+          <InfoContainer>
+            <TitleContainer>
+              <FloatingH5>{datasetDescription.title}</FloatingH5>
+              <ToggleButton
+                handleClick={handleToggle}
+                text={isDefaultViewMode ? 'Listvy' : 'Kartvy'}
+                icon={isDefaultViewMode ? <ListIcon /> : <MapIcon />}
               />
-              <Map
-                data={municipalityData}
-                dataType={datasetDescription.dataType}
-                boundaries={datasetDescription.boundaries}
-              />
-            </div>
-            <div
-              style={{
-                display: toggleViewMode === secondaryViewMode ? 'block' : 'none',
-                width: '100%',
-              }}
-            >
-              <ComparisonTable data={rankedData[selectedData]} columns={cols} />
-            </div>
-          </MunicipalityContainer>
+            </TitleContainer>
+            <ComparisonContainer $viewMode={toggleViewMode.toString()}>
+              {isDefaultViewMode && (
+                <>
+                  <MapLabels
+                    labels={datasetDescription.labels}
+                    rotations={datasetDescription.labelRotateUp}
+                  />
+                  <Map
+                    data={municipalityData}
+                    dataType={datasetDescription.dataType}
+                    boundaries={datasetDescription.boundaries}
+                  />
+                </>
+              )}
+              {toggleViewMode === secondaryViewMode && (
+                <ComparisonTable data={rankedData[selectedData]} columns={cols} />
+              )}
+            </ComparisonContainer>
+            <InfoText>
+              <Paragraph>{datasetDescription.body}</Paragraph>
+              <ParagraphSource>{datasetDescription.source}</ParagraphSource>
+            </InfoText>
+          </InfoContainer>
           <DropDown
             className="startpage"
             municipalitiesName={municipalityNames}

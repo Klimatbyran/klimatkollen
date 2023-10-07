@@ -59,6 +59,7 @@ export type Municipality = {
   ElectricCarChangeYearly: Array<number>,
   ClimatePlan: ClimatePlan,
   BicycleMetrePerCapita: number,
+  TotalConsumptionEmission: number,
 }
 
 export type SelectedData = keyof typeof datasetDescriptions
@@ -66,6 +67,7 @@ export type SelectedData = keyof typeof datasetDescriptions
 export type DatasetType = 'Percent' | 'Link' | 'Number'
 
 export type DatasetDescription = {
+  title: string
   heading: string
   body: string | JSX.Element
   source: React.ReactNode

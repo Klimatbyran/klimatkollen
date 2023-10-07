@@ -1,43 +1,43 @@
 import { Fragment } from 'react'
 import styled from 'styled-components'
-import router from 'next/router'
 import { datasetDescriptions } from '../data/dataset_descriptions'
 import { SelectedData } from '../utils/types'
 
 const RadioContainer = styled.div`
-  margin-top: 30px;
+  margin: 32px 0;
   gap: 16px;
   display: flex;
   font-weight: bolder;
   flex-wrap: wrap;
+  justify-content: center;
 `
 
 const RadioLabel = styled.label`
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  font-family: 'Anonymous Pro';
   font-size: 14px;
   line-height: 20px;
-  font-weight: 700;
   text-decoration: none;
-  color: white;
-  background: ${({ theme }) => theme.darkGrey};
+  color: ${({ theme }) => theme.offWhite};
+  border: 1px solid ${({ theme }) => theme.midGreen};
+  border-radius: 8px;
   white-space: nowrap;
   cursor: pointer;
   margin-bottom: 8px;
 
   &:hover {
-    background: ${({ theme }) => theme.grey};
+    background: ${({ theme }) => theme.darkGreenTwo};
   }
 `
 
 const RadioInput = styled.input`
   display: none;
   &:checked + ${RadioLabel} {
-    color: ${({ theme }) => theme.darkestGrey};
-    background: ${({ theme }) => theme.green};
+    color: ${({ theme }) => theme.black};
+    background: ${({ theme }) => theme.midGreen};
 
     &:hover {
-      background: ${({ theme }) => theme.mint};
+      background: ${({ theme }) => theme.lightGreen};
     }
   }
 `

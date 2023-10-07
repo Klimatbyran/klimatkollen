@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { devices } from '../utils/devices'
 
-type BackgroundColors = 'darkGrey' | 'darkestGrey' | 'gradient'
+type BackgroundColors = 'midGreen' | 'lightBlack' | 'black' | 'gradient'
 
-const Wrap = styled.div<{ background: BackgroundColors }>`
-  background: ${({ background, theme }) => theme[background]};
+const Wrap = styled.div<{ $background: BackgroundColors }>`
+  background: ${({ $background, theme }) => theme[$background]};
   width: 100%;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@ const Wrap = styled.div<{ background: BackgroundColors }>`
 const WrapInner = styled.div`
   width: 100%;
   max-width: 840px;
-  padding: 40px 20px;
+  padding: 20px 20px;
 
   @media only screen and (${devices.tablet}) {
     padding: 30px 20px;
@@ -27,7 +27,7 @@ type Props = {
 
 export default function PageWrapper({ children, backgroundColor }: Props) {
   return (
-    <Wrap background={backgroundColor}>
+    <Wrap $background={backgroundColor}>
       <WrapInner>{children}</WrapInner>
     </Wrap>
   )

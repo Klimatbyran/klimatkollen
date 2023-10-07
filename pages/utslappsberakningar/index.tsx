@@ -8,7 +8,7 @@ import { H2, Paragraph } from '../../components/Typography'
 import { ClimateDataService } from '../../utils/climateDataService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
-import Footer from '../../components/Footer'
+import Footer from '../../components/Footer/Footer'
 import { devices } from '../../utils/devices'
 
 const Container = styled.section`
@@ -19,6 +19,7 @@ const Container = styled.section`
 
 const Figure = styled.figure`
   margin: 22.4px 2px;
+  
   @media only screen and (${devices.tablet}) {
     width: 95%;
   }
@@ -30,9 +31,9 @@ function Utslappsberakningar() {
       <MetaTags
         title="Unik utsläppsberäkning av riksdagspartiernas klimatåtgärder"
         description="Den nya regeringens politik kan öka utsläppen med 25 miljoner ton"
-        imageUrl="/totala-utslapp-alla-partier.jpg"
+        imageUrl="/images/totala-utslapp-alla-partier.jpg"
       />
-      <PageWrapper backgroundColor="darkestGrey">
+      <PageWrapper backgroundColor="black">
         <Container>
           <H2>
             Unik utsläppsberäkning av riksdagspartiernas klimatåtgärder - den nya

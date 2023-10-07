@@ -8,6 +8,7 @@ export const defaultDataset = 'Utsläppen'
 
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
+    title: 'Utsläppsförändring',
     heading: 'Utsläppsförändring sedan Parisavtalet',
     body: 'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
     source: (
@@ -33,6 +34,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Elbilarna: {
+    title: 'Elbilsökning',
     heading: 'Ökningstakt andel elbilar sedan Parisavtalet',
     body: 'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
     source: (
@@ -54,11 +56,11 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Klimatplanerna: {
+    title: 'Klimatplan',
     heading: 'Kommuner som har klimatplaner',
     body: (
       <>
-        På kartan och i listan visas vilka kommuner som har eller saknar aktuella
-        klimatplaner, samt länkar till befintliga planer. Klicka
+        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka
         {' '}
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
@@ -94,6 +96,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Cyklarna: {
+    title: 'Cykelvägslängd',
     heading: 'Antal meter cykelväg per invånare',
     body: 'På kartan och i listan visas antal meter cykelväg per invånare per kommun år 2022.',
     source: (
@@ -127,6 +130,32 @@ export const datasetDescriptions: DatasetDescriptions = {
     tooltip:
       'Antal meter cykelväg per invånare per kommun år 2022 totalt för alla väghållare (statlig, kommunal, enskild)',
   },
+
+  Konsumtionen: {
+    title: 'Konsumtionsutsläpp',
+    heading: 'Hushållens konsumtionsutsläpp',
+    body: 'På kartan och i listan visas hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="https://www.sei.org/tools/konsumtionskompassen/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Stockholm Environment Institute
+        </a>
+      </>
+    ),
+    boundaries: [7, 6.7, 6.4, 6.1, 5.8],
+    labels: ['7 ton +', '6,7-7 ton', '6,4-6,7 ton', '6,1-6,4 ton', '5,8-6,1 ton', '5,8 ton -'],
+    labelRotateUp: [],
+    columnHeader: 'Ton CO₂e/person och år',
+    dataType: 'Number',
+    tooltip:
+      'Avser antal ton växthusgasutsläpp (CO₂e) per år och medborgare (år 2019).',
+  },
 }
 
 export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
@@ -141,6 +170,9 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       break
     case 'Klimatplanerna':
       dataPoint = item.ClimatePlan.Link
+      break
+    case 'Konsumtionen':
+      dataPoint = item.TotalConsumptionEmission
       break
     default:
       dataPoint = item.BicycleMetrePerCapita

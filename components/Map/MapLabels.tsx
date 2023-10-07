@@ -3,12 +3,14 @@ import { devices } from '../../utils/devices'
 
 import Icon from '../../public/icons/arrow.svg'
 import { Paragraph } from '../Typography'
-import { colorTheme } from '../../Theme'
+import { mapColors } from '../shared'
 
 const Container = styled.div`
   padding-left: 0.87rem;
   padding-top: 1.2rem;
   padding-bottom: 0.5rem;
+  margin-top: 40px;
+
   @media only screen and (${devices.tablet}) {
     position: absolute;
     left: 0;
@@ -21,6 +23,7 @@ const LabelBox = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
   &:first-child div {
     border-top-left-radius: 10%;
     border-top-right-radius: 10%;
@@ -38,13 +41,13 @@ const Square = styled.div<{ color: string }>`
   position: relative;
 `
 
-const ArrowIcon = styled(Icon) <{ rotateup?: boolean }>`
+const ArrowIcon = styled(Icon)<{ $rotateUp?: boolean }>`
   color: black;
   position: absolute;
   z-index: 1;
   margin: auto;
   left: 0;
-  ${(props) => props.rotateup && 'transform: rotate(-90deg)'};
+  ${(props) => props.$rotateUp && 'transform: rotate(-90deg)'};
   right: 0;
   top: 0;
   bottom: 0;
@@ -52,7 +55,6 @@ const ArrowIcon = styled(Icon) <{ rotateup?: boolean }>`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
-  width: 5em;
   font-size: 0.7em;
   margin: 0;
   line-height: 0;
@@ -65,18 +67,16 @@ const StyledParagraph = styled(Paragraph)`
 type LabelProps = {
   color: string
   text: string
-  rotateup?: boolean
+  rotateUp?: boolean
 }
 
-function Label({ color, text, rotateup }: LabelProps) {
+function Label({ color, text, rotateUp }: LabelProps) {
   return (
     <LabelBox>
       <Square color={color}>
-        {rotateup !== undefined && <ArrowIcon rotateup={rotateup} />}
+        {rotateUp !== undefined && <ArrowIcon $rotateUp={rotateUp} />}
       </Square>
-      <StyledParagraph>
-        {text}
-      </StyledParagraph>
+      <StyledParagraph>{text}</StyledParagraph>
     </LabelBox>
   )
 }
@@ -87,13 +87,12 @@ type MapLabelsProps = {
 }
 
 function MapLabels({ labels, rotations }: MapLabelsProps) {
-  const colors = [colorTheme.red, colorTheme.rust, colorTheme.darkOrange, colorTheme.orange, colorTheme.yellow, colorTheme.blue]
-  const labelColors = labels.length === 2 ? [colorTheme.red, colorTheme.main] : colors
+  const labelColors = labels.length === 2 ? [mapColors[0], mapColors[mapColors.length - 1]] : mapColors
 
   return (
     <Container>
       {labels.map((label, i) => (
-        <Label color={labelColors[i]} text={label} rotateup={rotations[i]} />
+        <Label key={label} color={labelColors[i]} text={label} rotateUp={rotations[i]} />
       ))}
     </Container>
   )

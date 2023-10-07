@@ -8,7 +8,7 @@ import { H2, Paragraph } from '../../components/Typography'
 import { ClimateDataService } from '../../utils/climateDataService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
-import Footer from '../../components/Footer'
+import Footer from '../../components/Footer/Footer'
 import ToggleSection from '../../components/ToggleSection'
 
 const Container = styled.section`
@@ -28,7 +28,7 @@ function KoM() {
         title="Källor och metod"
         description="Om Klimatkollens källor och metod"
       />
-      <PageWrapper backgroundColor="darkestGrey">
+      <PageWrapper backgroundColor="black">
         <Container>
           <H2>
             Källor och metod

@@ -2,7 +2,6 @@ import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { DatasetDescription, Municipality, SelectedData } from './types'
 import { datasetDescriptions, defaultDataset } from '../data/dataset_descriptions'
-import InfoTooltip from '../components/InfoTooltip'
 
 export const calculateStringRankings = (
   data: Array<{ name: string; dataPoint: string | number }>,
@@ -50,6 +49,10 @@ export const rankData = (municipalities: Municipality[]) => {
     Cyklarna: municipalities.map((item) => ({
       name: item.Name,
       dataPoint: item.BicycleMetrePerCapita,
+    })),
+    Konsumtionen: municipalities.map((item) => ({
+      name: item.Name,
+      dataPoint: item.TotalConsumptionEmission,
     })),
   }
 
@@ -131,11 +134,9 @@ type MunicipalityItem = {
 }
 
 const columnHeader = (datasetDescription: DatasetDescription) => {
-  const text = datasetDescription.tooltip.toString()
   return (
     <div>
       {datasetDescription.columnHeader}
-      <InfoTooltip text={text} />
     </div>
   )
 }
