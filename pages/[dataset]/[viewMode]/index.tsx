@@ -1,13 +1,10 @@
 import { GetServerSideProps } from 'next'
-import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import StartPage from '../..'
 import { ClimateDataService } from '../../../utils/climateDataService'
 import Layout from '../../../components/Layout'
 import Footer from '../../../components/Footer'
-
-export const VIEWMODES = ['kartap', 'lista']
 
 type Props = {
   municipalities: Array<TMunicipality>
@@ -40,10 +37,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   )
 
   const dataset = (params as Params).dataset as string
-
-  console.log('viewmode params')
-  console.log(dataset)
-
   if (cache.get(dataset)) return cache.get(dataset)
 
   const result = {
@@ -54,6 +47,5 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   }
 
   cache.set(dataset, result)
-
   return result
 }

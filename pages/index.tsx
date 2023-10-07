@@ -29,6 +29,15 @@ import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import { normalizeString } from '../utils/shared'
 
+/**
+ * FIXME
+ *
+ * - ta bort "hopp" när man byter från default-läge
+ * - lägg till routing så att man får url direkt på start? ATT DISKUTERA
+ * - fixa så att viewMode håller sig när man hoppar mellan dataset
+ *
+*/
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;

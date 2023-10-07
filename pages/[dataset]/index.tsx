@@ -2,9 +2,11 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { ParsedUrlQuery } from 'querystring'
-import { VIEWMODES } from './[viewMode]'
 import { defaultViewMode } from '../../data/dataset_descriptions'
 
+export const VIEWMODES = ['kartap', 'lista']
+
+// fixme förstå och skriv om
 export default function Index() {
   const router = useRouter()
   const dataset = router.query.dataset as string
