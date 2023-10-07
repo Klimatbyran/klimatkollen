@@ -9,7 +9,6 @@ import MetaTags from '../components/MetaTags'
 import {
   H2Regular, H5Regular, Paragraph,
 } from '../components/Typography'
-import { ClimateDataService } from '../utils/climateDataService'
 import { Municipality, SelectedData } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
@@ -33,10 +32,7 @@ import { normalizeString } from '../utils/shared'
 
 /**
  * FIXME
- *
- * - ta bort "hopp" när man byter från default-läge
- * - lägg till routing så att man får url direkt på start? ATT DISKUTERA
- * - fixa så att viewMode håller sig när man hoppar mellan dataset
+ * - fixa så att man inte kan skriva fel typ av dataset
  *
 */
 
@@ -149,8 +145,8 @@ function StartPage({ municipalities }: PropsType) {
   const handleDataChange = (newData: SelectedData) => {
     const newDataString = newData as string
     setSelectedData(newDataString)
-    const newDataLowerCase = newDataString.toLowerCase()
-    router.push(`/${newDataLowerCase}`, undefined, { shallow: true, scroll: false })
+    const normalizedDataset = normalizeString(newDataString)
+    router.push(`/${normalizedDataset}/${toggleViewMode}`, undefined, { shallow: true, scroll: false })
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
@@ -228,18 +224,20 @@ function StartPage({ municipalities }: PropsType) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
-  const municipalities = new ClimateDataService().getMunicipalities()
-  if (municipalities.length < 1) throw new Error('No municipalities found')
-
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
-  const dataset = (params?.dataset || defaultDataset).toString().toLocaleLowerCase()
+  const dataset = (params?.dataset || defaultDataset).toString()
+  const normalizedDataset = normalizeString(dataset)
+  const viewMode = (params?.viewMode || defaultViewMode).toString().toLocaleLowerCase()
 
   return {
-    props: { municipalities, dataset },
+    redirect: {
+      destination: `/${normalizedDataset}/${viewMode}`,
+      permanent: true,
+    },
   }
 }
 
