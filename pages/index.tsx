@@ -28,7 +28,7 @@ import {
 } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
-import { normalizeString } from '../utils/shared'
+import { isValidDataset, normalizeString, validDatasetsMap } from '../utils/shared'
 
 /**
  * FIXME
@@ -121,21 +121,13 @@ function StartPage({ municipalities }: PropsType) {
   const [toggleViewMode, setToggleViewMode] = useState(viewMode)
   const [selectedData, setSelectedData] = useState<SelectedData>(defaultDataset)
 
-  const validDatasetsMap = Object.keys(datasetDescriptions).reduce<
-    Record<string, string>
-  >((acc, key) => {
-    const normalizedKey = normalizeString(key)
-    acc[normalizedKey] = key
-    return acc
-  }, {})
-
   useEffect(() => {
     if (routeDataset) {
-      const routeDatasetNormalized = normalizeString(routeDataset as string)
+      const normalizedRouteDataset = normalizeString(routeDataset as string)
 
-      if (validDatasetsMap[routeDatasetNormalized]) {
+      if (isValidDataset(normalizedRouteDataset)) {
         setToggleViewMode(toggleViewMode)
-        setSelectedData(validDatasetsMap[routeDatasetNormalized])
+        setSelectedData(validDatasetsMap[normalizedRouteDataset])
       }
     }
     // Disable exhaustive-deps so that it only runs on first mount

@@ -1,22 +1,7 @@
 import { GetServerSideProps } from 'next'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import { ParsedUrlQuery } from 'querystring'
 import { defaultViewMode } from '../../data/dataset_descriptions'
-
-export const VIEWMODES = ['kartap', 'lista']
-
-// fixme förstå och skriv om
-export default function Index() {
-  const router = useRouter()
-  const dataset = router.query.dataset as string
-
-  useEffect(() => {
-    if (dataset) router.replace(`/${dataset}/${VIEWMODES[0]}`)
-  }, [dataset, router])
-
-  return ''
-}
+import { isValidDataset } from '../../utils/shared'
 
 interface Params extends ParsedUrlQuery {
   id: string
@@ -25,12 +10,21 @@ interface Params extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const dataset = (params as Params).dataset as string
 
-  return {
-    redirect: {
-      destination: `/${dataset}/${defaultViewMode}`,
-      permanent: true,
-      shallow: true,
-    },
+  if (isValidDataset(dataset)) {
+    return {
+      redirect: {
+        destination: `/${dataset}/${defaultViewMode}`,
+        permanent: true,
+        shallow: true,
+      }
+    }
+  } else {
+    return {
+      notFound: true, // Return a 404 page when the dataset is not valid
+    }
   }
 }
 
+export default function Index() {
+  return ''
+}
