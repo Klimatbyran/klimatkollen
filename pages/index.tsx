@@ -33,12 +33,6 @@ import {
   validDatasetsMap,
 } from '../utils/shared'
 
-/**
- * FIXME
- * - varför kan man skriva in ex versaler i url:en och det inte rättas till?
- *
- */
-
 const Map = dynamic(() => import('../components/Map/Map'))
 
 const Container = styled.div`
