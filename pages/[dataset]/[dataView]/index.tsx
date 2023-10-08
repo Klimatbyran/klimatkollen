@@ -25,6 +25,13 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
     return {
       notFound: true, // Return a 404 page
     }
+  } if (dataset !== normalizedDataset || dataView !== normalizedDataView) {
+    return {
+      redirect: {
+        destination: `/${normalizedDataset}/${normalizedDataView}`,
+        permanent: true,
+      }, // Redirect to the lower case non-åäö url
+    }
   }
 
   const municipalities = new ClimateDataService().getMunicipalities()
