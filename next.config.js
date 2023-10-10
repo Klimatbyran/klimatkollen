@@ -28,11 +28,6 @@ module.exports = withBundleAnalyzer({
   async redirects() {
     return [
       {
-        source: '/partier/:path*',
-        destination: '/partier',
-        permanent: true,
-      },
-      {
         source: '/kommuner',
         destination: '/',
         permanent: true,

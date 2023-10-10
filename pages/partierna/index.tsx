@@ -6,7 +6,6 @@ import Link from 'next/link'
 
 import MetaTags from '../../components/MetaTags'
 import { H2, Paragraph } from '../../components/Typography'
-import { ClimateDataService } from '../../utils/climateDataService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
@@ -156,16 +155,13 @@ function Partier() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const municipalities = new ClimateDataService().getMunicipalities()
-  if (municipalities.length < 1) throw new Error('No municipalities found')
-
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
   return {
-    props: { municipalities },
+    props: { },
   }
 }
 
