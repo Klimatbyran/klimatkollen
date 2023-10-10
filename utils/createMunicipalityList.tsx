@@ -2,7 +2,6 @@ import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { DatasetDescription, Municipality, SelectedData } from './types'
 import { datasetDescriptions, defaultDataset } from '../data/dataset_descriptions'
-import InfoTooltip from '../components/InfoTooltip'
 
 export const calculateStringRankings = (
   data: Array<{ name: string; dataPoint: string | number }>,
@@ -134,15 +133,11 @@ type MunicipalityItem = {
   dataPoint: number | string
 }
 
-const columnHeader = (datasetDescription: DatasetDescription) => {
-  const text = datasetDescription.tooltip.toString()
-  return (
-    <div>
-      {datasetDescription.columnHeader}
-      {/* <InfoTooltip text={text} /> */}
-    </div>
-  )
-}
+const columnHeader = (datasetDescription: DatasetDescription) => (
+  <div>
+    {datasetDescription.columnHeader}
+  </div>
+)
 
 export const listColumns = (
   selectedData: SelectedData,
