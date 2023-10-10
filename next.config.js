@@ -1,6 +1,11 @@
-/** @type {import('next').NextConfig} */
+/** @type {require('next').NextConfig} */
 
-module.exports = {
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+module.exports = withBundleAnalyzer({
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -23,20 +28,15 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/partier/:path*',
-        destination: '/partier',
-        permanent: true, // 301 redirect
-      },
-      {
         source: '/kommuner',
         destination: '/',
-        permanent: true, // 301 redirect
+        permanent: true,
       },
       {
         source: '/kommuner/kommun/ume%C3%A5/parisavtalet',
         destination: '/',
-        permanent: true, // 301 redirect
+        permanent: true,
       },
     ]
   },
-}
+})
