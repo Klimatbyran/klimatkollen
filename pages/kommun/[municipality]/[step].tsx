@@ -7,7 +7,7 @@ import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import { PolitycalRuleService as PoliticalRuleService } from '../../../utils/politicalRuleService'
 
-const Municipality = dynamic(() => import('../../../components/Municiplaity/Municipality'))
+const Municipality = dynamic(() => import('../../../components/Municipality/Municipality'))
 
 export const CHARTS = [
   'historiska-utslapp',

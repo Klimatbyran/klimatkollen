@@ -127,7 +127,7 @@ function Scorecard({
   const climatePlanYearFormatted = climatePlan.YearAdapted !== 'Saknas'
     ? `Antagen ${climatePlan.YearAdapted}`
     : climatePlan.YearAdapted
-  const rankFormatted = `${rank} av 290 kommuner`
+  const rankFormatted = `${rank} av 290`
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
 
   const handleButtonClick = () => {
@@ -140,7 +140,6 @@ function Scorecard({
     <StyledDiv>
       <StyledH4>
         Fakta om
-        {' '}
         {name}
       </StyledH4>
       <GreyContainer>
@@ -180,12 +179,12 @@ function Scorecard({
       </GreyContainer>
       {rank && (
         <ScorecardSection
-          heading="Kommunens utsläppsrankning"
+          heading="Kommunens plats i utsläppsrankning"
           data={rankFormatted}
           info={(
             <>
-              Genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan
-              Parisavtalet 2015.
+              Rankning av Sveriges 290 kommuner baserat på genomsnittlig årlig procentuell
+              förändring av koldioxidutsläppen sedan Parisavtalet 2015.
             </>
           )}
         />
