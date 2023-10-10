@@ -48,7 +48,7 @@ const Container = styled.div`
 `
 
 const InfoText = styled.div`
-  padding: 1rem 1rem 0 1rem;
+  padding: 0 16px;
 `
 
 const ParagraphSource = styled(Paragraph)`

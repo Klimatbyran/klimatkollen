@@ -7,9 +7,9 @@ import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import { PolitycalRuleService as PoliticalRuleService } from '../../../utils/politicalRuleService'
 
-const Municipality = dynamic(() => import('../../../components/Municiplaity/Municipality'))
+const Municipality = dynamic(() => import('../../../components/Municipality/Municipality'))
 
-export const STEPS = [
+export const CHARTS = [
   'historiska-utslapp',
   'framtida-prognos',
   'parisavtalet',
@@ -28,12 +28,12 @@ export default function Step({
 }: Props) {
   const router = useRouter()
   const { step } = router.query
-  const stepString = typeof step === 'string' ? step : STEPS[0]
-  const stepIndex = STEPS.indexOf(stepString) > -1 ? STEPS.indexOf(stepString) : 1
+  const stepString = typeof step === 'string' ? step : CHARTS[0]
+  const stepIndex = CHARTS.indexOf(stepString) > -1 ? CHARTS.indexOf(stepString) : 1
   const stepNum = stepIndex
 
   const onNext = () => {
-    const next = STEPS[stepIndex + 1]
+    const next = CHARTS[stepIndex + 1]
     if (!next) throw new Error(`Assertion failed: No step with index ${stepIndex + 1}`)
     router.replace(`/kommun/${id}/${next}`, undefined, {
       shallow: true,
@@ -42,7 +42,7 @@ export default function Step({
   }
 
   const onPrevious = () => {
-    const prev = STEPS[stepIndex - 1]
+    const prev = CHARTS[stepIndex - 1]
     if (!prev) throw new Error(`Assertion failed: No step with index ${stepIndex - 1}`)
     router.replace(`/kommun/${id}/${prev}`, undefined, {
       shallow: true,
@@ -54,7 +54,7 @@ export default function Step({
     <Municipality
       municipality={municipality}
       step={stepNum}
-      onNextStep={stepIndex < STEPS.length - 1 ? onNext : undefined}
+      onNextStep={stepIndex < CHARTS.length - 1 ? onNext : undefined}
       onPreviousStep={stepIndex > 0 ? onPrevious : undefined}
       coatOfArmsImage={municipality.CoatOfArmsImage?.ImageUrl || null}
       municipalitiesName={municipalitiesName}

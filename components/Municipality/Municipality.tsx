@@ -2,16 +2,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 
-import { H1, H2, ParagraphBold } from '../Typography'
+import { H1, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 import DropDown from '../DropDown'
-import ScoreCard from './MunicipalityScoreCard'
 import { devices } from '../../utils/devices'
 import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
+import Scorecard from './MunicipalityScorecard'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -52,12 +52,6 @@ const DropDownSection = styled.div`
   align-items: center;
 `
 
-const StyledH2 = styled(H2)`
-  margin-top: 32px;
-  margin-bottom: 32px;
-  width: 100%;
-`
-
 type Props = {
   municipality: TMunicipality
   step: number
@@ -93,7 +87,7 @@ function Municipality(props: Props) {
           </HeaderSection>
           <MunicipalityEmissionGraph
             municipality={municipality}
-            step={step}
+            chart={step}
             onNextStep={onNextStep}
             onPreviousStep={onPreviousStep}
           />
@@ -102,15 +96,8 @@ function Municipality(props: Props) {
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>
       <PageWrapper backgroundColor="black">
-        <StyledH2>
-          <H2>
-            Fakta om
-            {' '}
-            {municipality.Name}
-          </H2>
-        </StyledH2>
         <Bottom>
-          <ScoreCard
+          <Scorecard
             name={municipality.Name}
             rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
             budget={municipality.Budget.CO2Equivalent}

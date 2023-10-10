@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { useState } from 'react'
 
 import { H3, Paragraph, ParagraphBold } from './Typography'
-import Icon from '../public/icons/info.svg'
-import IconGreen from '../public/icons/info-green.svg'
+import Icon from '../public/icons/add_light_white.svg'
+import IconGreen from '../public/icons/remove_light_white.svg'
 
 const Row = styled.div`
   display: flex;

@@ -17,28 +17,25 @@ const Container = styled.div`
 `
 
 const TotalCo2Container = styled.div`
-  margin: 8px 0;
   flex-direction: column;
-  
-  @media all and (${devices.tablet}) {
-    margin: 16px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  margin-top: 16px;
 `
 
 const TotalCo2 = styled.div`
   display: flex;  
   align-items: center;
-  font-weight: 500;
   gap: 8px;
-  padding: 0.5rem 1rem 0.5rem 0rem;
-  font-size: 12px;
+  padding: 2px 0;
+  font-size: 13px;
+  font-family: 'Anonymous Pro', monospace;
 
   @media all and (${devices.tablet}) {
-    font-size: 14px;
+    font-size: 15px;
   }
+`
+
+const StyledText = styled.p<{$color: string}>`
+  color: ${({ $color }) => $color};
 `
 
 type EmissionsProps = {
@@ -59,16 +56,22 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
       <TotalCo2Container>
         <TotalCo2>
           <Square color={colorTheme.orange} />
-          Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
+          <StyledText $color={colorTheme.offWhite}>
+            Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
+          </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
-          Trend: {totalTrend.toFixed(1)} tusen ton CO₂
+          <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
+            Trend: {totalTrend.toFixed(1)} tusen ton CO₂
+          </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
-          Koldioxidbudget för att klara Parisavtalet:{' '}
-          {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂
+          <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
+            Koldioxidbudget för att klara Parisavtalet:{' '}
+            {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂
+          </StyledText>
         </TotalCo2>
       </TotalCo2Container>
     </Container>
