@@ -39,12 +39,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 32px;
   align-items: center;
-
-  @media only and ${devices.mobile} {
-    margin-top: 16px;
-  }
 `
 
 const InfoText = styled.div`
