@@ -104,7 +104,7 @@ function KoM() {
                   </a>
                   ,
                   som hanteras av SMHI och utgår från Sveriges officiella utsläppsstatistik, med Naturvårdsverket som ansvarig myndighet.
-                  Kommunal utsläppsdata har 1,5–2 års fördröjning, 2020 års siffror släpptes i september 2022.
+                  Kommunal utsläppsdata har 1,5–2 års fördröjning, 2021 års siffror släpptes i juli 2023.
                 </Paragraph>
                 <Paragraph>
                   Uppgifter om politiskt styre i kommunerna hämtas från

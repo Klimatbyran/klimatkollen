@@ -233,7 +233,7 @@ function MunicipalityEmissionGraph({
       {step === 0 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text={`Koldioxidutsläpp i kommunen mellan 1990 och 2020, vilket är senast tillgängliga data. 
+          text={`Koldioxidutsläpp i kommunen mellan 1990 och 2021, vilket är senast tillgängliga data. 
           Basår för beräkningar av Sveriges klimatutsläpp är 1990.`}
           scrollY={scrollY}
         />
@@ -243,7 +243,7 @@ function MunicipalityEmissionGraph({
           close={toggleModal}
           text="Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
           motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande,
-          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är 2020, vilket är senast tillgängliga data."
+          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är 2021, vilket är senast tillgängliga data."
           scrollY={scrollY}
         />
       )}

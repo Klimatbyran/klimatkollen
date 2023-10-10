@@ -1,9 +1,9 @@
 import { GetServerSideProps } from 'next'
+import dynamic from 'next/dynamic'
 import { ReactElement, useState } from 'react'
 import styled from 'styled-components'
 
 import DropDown from '../components/DropDown'
-import Map from '../components/Map/Map'
 import MetaTags from '../components/MetaTags'
 import {
   H2Regular, H5Regular, Paragraph,
@@ -22,6 +22,8 @@ import ToggleButton from '../components/ToggleButton'
 import { defaultDataset, datasetDescriptions, data } from '../data/dataset_descriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
+
+const Map = dynamic(() => import('../components/Map/Map'))
 
 const Container = styled.div`
   display: flex;
