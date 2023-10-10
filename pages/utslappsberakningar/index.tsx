@@ -88,15 +88,15 @@ function Utslappsberakningar() {
 
           <Figure>
             <Image
-              src="/totala-utslapp-alla-partier.jpg"
+              src="/images/totala-utslapp-alla-partier.jpg"
               alt="Potentiell kumulativ utsläppsminskning eller utsläppsökning med partiernas politik under nästa mandatperiod
                 , jämfört med en fortsättning av redan beslutade åtgärder. Positiva värden (SD, KD och M)
                 innebär att utsläppen riskerar att öka under mandatperioden 2023–2026.
                 Streckad area avser effekten av återvätning av torvmarker samt av konsumtionsbaserade utsläpp
                 från livsmedelsproduktion och flyg som delvis äger rum utanför Sveriges gränser."
               layout="responsive"
-              width={800}
-              height={800}
+              width={80}
+              height={80}
             />
           </Figure>
 
@@ -133,7 +133,7 @@ function Utslappsberakningar() {
 
           <Figure>
             <Image
-              src="/utslapp-partiers-politik.jpg"
+              src="/images/utslapp-partiers-politik.jpg"
               alt="Potential för kumulativ utsläppsminskning eller utsläppsökning med partiernas politik under nästa mandatperiod,
                jämfört med en fortsättning av redan beslutade åtgärder.
                Positivt värde betyder att utsläppen ökar, negativt värde betyder att utsläppen minskar."
