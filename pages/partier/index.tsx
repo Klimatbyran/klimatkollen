@@ -6,7 +6,6 @@ import Link from 'next/link'
 
 import MetaTags from '../../components/MetaTags'
 import { H2, Paragraph } from '../../components/Typography'
-import { ClimateDataService } from '../../utils/climateDataService'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
@@ -162,7 +161,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   )
 
   return {
-    props: {},
+    props: { },
   }
 }
 
