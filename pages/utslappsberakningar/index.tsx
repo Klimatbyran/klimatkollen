@@ -63,7 +63,7 @@ function Utslappsberakningar() {
             Beräkningarna är den andra delen i Klimatkollens partigranskning. Under
             Almedalsveckan i juli 2022 presenterades del ett, en
             {' '}
-            <a href="/partier">analys av partiernas klimatmål</a>
+            <a href="/partierna">analys av partiernas klimatmål</a>
             {' '}
             som visade att endast två av riksdagens åtta partier (MP och V) har klimatmål
             i närheten av Parisavtalets 1,5-gradersmål.

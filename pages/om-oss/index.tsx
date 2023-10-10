@@ -383,10 +383,7 @@ function OmOss() {
                     <br />
                     En
                     {' '}
-                    <a
-                      href="/partier"
-                      rel="noreferrer"
-                    >
+                    <a href="/partierna">
                       analys
                     </a>
                     {' '}
