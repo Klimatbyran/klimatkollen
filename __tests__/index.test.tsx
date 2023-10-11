@@ -1,7 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { useRouter } from 'next/router'
-import { SpyInstanceFn } from 'vitest'
 import Home from '../pages'
 
 vi.mock('../public/icons/arrow-down.svg', () => ({ default: 'svg' }))
@@ -11,10 +9,19 @@ vi.mock('../public/icons/arrow.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/list.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/map.svg', () => ({ default: 'svg' }))
 vi.mock('../public/icons/info.svg', () => ({ default: () => 'svg' }))
-vi.mock('../components/Map/Map', () => ({ default: () => <div /> }))
 vi.mock('../components/ComparisonTable', () => ({ default: () => <div /> }))
 
-vi.mock('next/router')
+vi.mock('../components/Map/Map', async () => vi.importActual('../components/Map/Map'))
+
+// Mock router
+const mockRouter = {
+  query: { dataset: 'utslappen', dataView: 'karta' },
+  push: vi.fn(),
+}
+
+vi.mock('next/router', () => ({
+  useRouter: () => mockRouter,
+}))
 
 const setup = () => render(
   <Home
@@ -32,6 +39,7 @@ const setup = () => render(
         PoliticalRule: [],
         EmissionTrend: {
           TrendPerYear: [],
+          FutureCO2Emission: 0,
         },
         HistoricalEmission: {
           AverageEmissionChangeRank: 0,
@@ -39,6 +47,19 @@ const setup = () => render(
           EmissionPerYear: [],
           EmissionLevelChangeAverage: 0,
         },
+        EmissionChangePercent: 0,
+        HitNetZero: 0,
+        BudgetRunsOut: '',
+        ElectricCars: 0,
+        ElectricCarChangePercent: 0,
+        ElectricCarChangeYearly: [],
+        ClimatePlan: {
+          Link: '',
+          YearAdapted: '',
+          Comment: '',
+        },
+        BicycleMetrePerCapita: 0,
+        TotalConsumptionEmission: 0,
         Name: 'Sollentuna',
       },
     ]}
@@ -47,101 +68,79 @@ const setup = () => render(
 
 beforeEach(vi.clearAllMocks)
 
-// test('renders logo and subtitle', () => {
-//   setup()
-
-//   expect(screen.getByText(/Få koll på Sveriges klimatomställning/i)).toBeInTheDocument()
-//   expect(screen.getByAltText(/Klimatkollen/i)).toBeInTheDocument()
-// })
-
-test('dropdown shows error text if nothing is selected', () => {
+test('dropdown shows error text if nothing is selected on enter', () => {
   vi.useFakeTimers()
 
   setup()
 
-  userEvent.click(screen.getByLabelText(/visa kommun/i))
+  // User presses enter in empty dropdown
+  userEvent.type(screen.getByPlaceholderText(/hur går det i din kommun?/i), '{enter}')
 
+  // Error text is shown
   expect(screen.getByText(/välj en kommun i listan/i)).toBeInTheDocument()
 
-  vi.runOnlyPendingTimers()
+  vi.advanceTimersByTime(2000)
+
+  // Error text disappears after two seconds
+  expect(screen.queryByText(/välj en kommun i listan/i)).not.toBeInTheDocument()
+})
+
+test('dropdown shows error text if invalid municipality is selected on enter', () => {
+  vi.useFakeTimers()
+
+  setup()
+
+  // User presses enter in empty dropdown
+  userEvent.type(screen.getByPlaceholderText(/hur går det i din kommun?/i), 'foobar{enter}')
+
+  // Error text is shown
+  expect(screen.getByText(/välj en kommun i listan/i)).toBeInTheDocument()
+
+  vi.advanceTimersByTime(2000)
 
   // Error text disappears after two seconds
   expect(screen.queryByText(/välj en kommun i listan/i)).not.toBeInTheDocument()
 })
 
 test('dropdown closes when clicking outside', () => {
-  const router = {
-    push: vi.fn(),
-  };
-  (useRouter as SpyInstanceFn).mockReturnValue(router)
-
   setup()
 
-  userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'llen')
+  userEvent.type(screen.getByPlaceholderText(/hur går det i din kommun/i), 'llen')
 
   // Opens dropdown
   expect(screen.getByText(/sollentuna/i)).toBeInTheDocument()
 
   // Click outside
-  // userEvent.click(screen.getByText(/få koll på sveriges klimatomställning/i))
+  userEvent.click(screen.getByText(/hur går det med?/i))
 
   // Dropdown is closed
-  // expect(screen.queryByText(/sollentuna/i)).not.toBeInTheDocument()
-  expect(router.push).not.toHaveBeenCalled()
+  expect(screen.queryByText(/sollentuna/i)).not.toBeInTheDocument()
+  expect(mockRouter.push).not.toHaveBeenCalled()
 })
 
 test('dropdown handles selecting from list', () => {
-  const router = {
-    push: vi.fn(),
-  };
-  (useRouter as SpyInstanceFn).mockReturnValue(router)
-
   setup()
 
   userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'llen')
   userEvent.click(screen.getByText(/sollentuna/i))
-  userEvent.click(screen.getByLabelText(/visa kommun/i))
+  userEvent.type(screen.getByPlaceholderText(/hur går det i din kommun?/i), '{enter}')
 
-  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
-})
-
-test('dropdown handles typing and clicking the green arrow', () => {
-  const router = {
-    push: vi.fn(),
-  };
-  (useRouter as SpyInstanceFn).mockReturnValue(router)
-
-  setup()
-
-  userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'Sollentuna')
-  userEvent.click(screen.getByLabelText(/visa kommun/i))
-
-  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
-})
-
-test('dropdown handles typing with lowercase letters and clicking the green arrow', () => {
-  const router = {
-    push: vi.fn(),
-  };
-  (useRouter as SpyInstanceFn).mockReturnValue(router)
-
-  setup()
-
-  userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'sollentuna')
-  userEvent.click(screen.getByLabelText(/visa kommun/i))
-
-  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
+  expect(mockRouter.push).toHaveBeenCalledWith('/kommun/sollentuna')
 })
 
 test('dropdown handles typing and pressing enter', () => {
-  const router = {
-    push: vi.fn(),
-  };
-  (useRouter as SpyInstanceFn).mockReturnValue(router)
-
   setup()
 
-  userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'sollentuna{Enter}')
+  userEvent.type(screen.getByLabelText(/hur går det i din kommun/i), 'Sollentuna')
+  userEvent.type(screen.getByPlaceholderText(/hur går det i din kommun?/i), '{enter}')
 
-  expect(router.push).toHaveBeenCalledWith('/kommun/sollentuna')
+  expect(mockRouter.push).toHaveBeenCalledWith('/kommun/sollentuna')
+})
+
+test('dropdown handles typing with lowercase letters and pressing enter', () => {
+  setup()
+
+  userEvent.type(screen.getByPlaceholderText(/hur går det i din kommun?/i), 'sollentuna{enter}')
+
+  expect(mockRouter.push).toHaveBeenCalledWith('/kommun/sollentuna')
 })
