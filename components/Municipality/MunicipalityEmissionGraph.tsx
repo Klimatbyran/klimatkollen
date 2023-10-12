@@ -6,7 +6,6 @@
 /* eslint-disable max-len */
 
 import styled from 'styled-components'
-import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Graph from '../Graph'
 import MetaTags from '../MetaTags'

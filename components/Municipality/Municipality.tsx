@@ -13,6 +13,7 @@ import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
+import { chartDescriptions } from '../../data/chart_descriptions'
 
 /**
  * FIXME
@@ -75,11 +76,7 @@ type Props = {
 }
 
 function Municipality(props: Props) {
-  const {
-    municipality,
-    coatOfArmsImage,
-    municipalitiesName,
-  } = props
+  const { municipality, coatOfArmsImage, municipalitiesName } = props
   const [selectedCharts, setSelectedCharts] = useState<number[]>([0])
 
   const toggleCharts = (chart: number) => {
@@ -89,7 +86,21 @@ function Municipality(props: Props) {
   }
 
   const infoHeading = 'CO₂-utsläpp'
-  const infoText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+  const chartTexts = selectedCharts
+    .map((index) => Object.values(chartDescriptions)[index]?.text)
+    .filter((text) => text !== undefined)
+    .reduce((acc, text, index, array) => {
+      if (index === array.length - 1) {
+        if (array.length === 1) {
+          return text
+        }
+        return `${acc} och ${text}`
+      } if (index === array.length - 2) {
+        return acc + text
+      }
+      return `${acc + text}, `
+    }, '')
+  const infoText = `Grafen ovan visar ${chartTexts}.`
 
   return (
     <>
@@ -112,7 +123,10 @@ function Municipality(props: Props) {
           />
           <H4>{infoHeading}</H4>
           {infoText}
-          <MunicipalityEmissionNumbers municipality={municipality} charts={selectedCharts} />
+          <MunicipalityEmissionNumbers
+            municipality={municipality}
+            charts={selectedCharts}
+          />
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>

@@ -2,14 +2,14 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { ParsedUrlQuery } from 'querystring'
-import { CHARTS } from './[step]'
+import { defaultChart } from './[chart]'
 
 export default function Index() {
   const router = useRouter()
   const municipality = router.query.municipality as string
 
   useEffect(() => {
-    if (municipality) router.replace(`/kommun/${municipality}/${CHARTS[0]}`)
+    if (municipality) router.replace(`/kommun/${municipality}/${defaultChart}`)
   }, [municipality, router])
 
   return ''

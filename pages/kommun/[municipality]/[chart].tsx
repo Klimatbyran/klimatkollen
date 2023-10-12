@@ -1,6 +1,5 @@
 import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
@@ -9,47 +8,15 @@ import { PolitycalRuleService as PoliticalRuleService } from '../../../utils/pol
 
 const Municipality = dynamic(() => import('../../../components/Municipality/Municipality'))
 
-export const CHARTS = [
-  'historiska-utslapp',
-  'framtida-prognos',
-  'parisavtalet',
-]
-
 type Props = {
   municipality: TMunicipality
-  id: string
   municipalitiesName: Array<string>
 }
 
-export default function Step({
-  id,
+export default function Chart({
   municipality,
   municipalitiesName,
 }: Props) {
-  const router = useRouter()
-  const { step } = router.query
-  const stepString = typeof step === 'string' ? step : CHARTS[0]
-  const stepIndex = CHARTS.indexOf(stepString) > -1 ? CHARTS.indexOf(stepString) : 1
-  const stepNum = stepIndex
-
-  const onNext = () => {
-    const next = CHARTS[stepIndex + 1]
-    if (!next) throw new Error(`Assertion failed: No step with index ${stepIndex + 1}`)
-    router.replace(`/kommun/${id}/${next}`, undefined, {
-      shallow: true,
-      scroll: false,
-    })
-  }
-
-  const onPrevious = () => {
-    const prev = CHARTS[stepIndex - 1]
-    if (!prev) throw new Error(`Assertion failed: No step with index ${stepIndex - 1}`)
-    router.replace(`/kommun/${id}/${prev}`, undefined, {
-      shallow: true,
-      scroll: false,
-    })
-  }
-
   return (
     <Municipality
       municipality={municipality}

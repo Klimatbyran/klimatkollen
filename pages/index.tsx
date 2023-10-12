@@ -35,6 +35,15 @@ import RadioMenu from '../components/RadioMenu'
 
 const Map = dynamic(() => import('../components/Map/Map'))
 
+/* todo
+
+- gör så att historiskt tar bort de andra graferna
+- gör så att det baseras på grafnamn istället för siffror?
+- fixa en "Läs mer"-komponent man kan fälla ut på kommunvyn
+- fixa så att alla grafnamnen man tittar på läggs till i urlen?
+
+*/
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -127,16 +136,6 @@ function StartPage({ municipalities }: PropsType) {
     // Disable exhaustive-deps so that it only runs on first mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const handleDataChange = (newData: SelectedData) => {
-    const newDataString = newData as string
-    setSelectedDataset(newDataString)
-    const normalizedDataset = normalizeString(newDataString)
-    router.push(`/${normalizedDataset}/${selectedDataView}`, undefined, {
-      shallow: true,
-      scroll: false,
-    })
-  }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
   const municipalityData = data(municipalities, selectedDataset) // get all municipality names and data points for map and list

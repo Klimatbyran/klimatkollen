@@ -69,7 +69,7 @@ function MunicipalityEmissionNumbers({ municipality, charts }: EmissionsProps) {
         <TotalCo2>
           <Square color={charts.includes(2) ? colorTheme.lightGreen : colorTheme.darkGreenOne} />
           <StyledText $color={charts.includes(2) ? colorTheme.offWhite : colorTheme.grey}>
-            Koldioxidbudget för att klara Parisavtalet:{' '}
+            Parisavtalet:{' '}
             {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂
           </StyledText>
         </TotalCo2>

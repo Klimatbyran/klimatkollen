@@ -34,6 +34,7 @@ function RadioMenu({ selectedData, setSelectedData }: MenuProps) {
             checked={selectedData === option}
             onChange={() => handleSelectData(option)}
             $backgroundColor={colorTheme.midGreen}
+            $hoverColor={colorTheme.lightGreen}
           />
           <MenuLabel
             htmlFor={option}
