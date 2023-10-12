@@ -169,7 +169,7 @@ function Graph({
           },
           scales: {
             x: {
-              min: step === 0 ? setup.minYear : 2016,
+              min: step === 0 ? setup.minYear : 2015,
               max: step > 0 ? maxVisibleYear : 2021,
               grid: {
                 display: true,
