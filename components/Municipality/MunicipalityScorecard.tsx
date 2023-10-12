@@ -127,7 +127,7 @@ function Scorecard({
   const climatePlanYearFormatted = climatePlan.YearAdapted !== 'Saknas'
     ? `Antagen ${climatePlan.YearAdapted}`
     : climatePlan.YearAdapted
-  const rankFormatted = `${rank} av 290 kommuner`
+  const rankFormatted = `${rank} av 290`
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
 
   const handleButtonClick = () => {
@@ -168,7 +168,17 @@ function Scorecard({
             <>
               Avser nu gällande klimathandlingsplan eller motsvarande. Inte
               klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller
-              liknande.
+              liknande. Klicka
+              {' '}
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                här
+              </a>
+              {' '}
+              för att redigera informationen.
               <CommentContainer>
                 <b>Kommentar:</b>
                 {' '}

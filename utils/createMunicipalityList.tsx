@@ -69,6 +69,7 @@ export const rankData = (municipalities: Municipality[]) => {
     Utsläppen: [],
     Klimatplanerna: [],
     Cyklarna: [],
+    Konsumtionen: [],
   }
 
   Object.keys(datasets).forEach((datasetKey) => {

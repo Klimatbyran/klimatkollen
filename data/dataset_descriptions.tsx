@@ -1,6 +1,9 @@
 /* eslint-disable max-len */
 import { DatasetDescriptions, Municipality, SelectedData } from '../utils/types'
 
+export const defaultDataView = 'karta'
+export const secondaryDataView = 'lista'
+
 export const defaultDataset = 'Utsläppen'
 
 export const datasetDescriptions: DatasetDescriptions = {
@@ -148,7 +151,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     boundaries: [7, 6.7, 6.4, 6.1, 5.8],
     labels: ['7 ton +', '6,7-7 ton', '6,4-6,7 ton', '6,1-6,4 ton', '5,8-6,1 ton', '5,8 ton -'],
     labelRotateUp: [],
-    columnHeader: 'Ton CO₂e/person och år',
+    columnHeader: 'Ton CO₂e/person/år',
     dataType: 'Number',
     tooltip:
       'Avser antal ton växthusgasutsläpp (CO₂e) per år och medborgare (år 2019).',

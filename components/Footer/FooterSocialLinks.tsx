@@ -53,25 +53,25 @@ function SocialList() {
   return (
     <ContactList>
       <SocialListItem
-        icon="icons/icon_mail_circle.svg"
+        icon="/icons/icon_mail_circle.svg"
         alt="Email icon"
         link="mailto:hej@klimatkollen.se"
         text="Maila oss"
       />
       <SocialListItem
-        icon="icons/x_circle.svg"
+        icon="/icons/x_circle.svg"
         alt="X (Twitter) logo"
         link="https://twitter.com/klimatkollen"
         text="X (Twitter)"
       />
       <SocialListItem
-        icon="icons/icon_linkedin_circle.svg"
+        icon="/icons/icon_linkedin_circle.svg"
         alt="Linkedin logo"
         link="https://www.linkedin.com/company/klimatkollen/"
         text="LinkedIn"
       />
       <ContactListItem>
-        <ContactIcon src="icons/github.svg" alt="GitHub logo" />
+        <ContactIcon src="/icons/github.svg" alt="GitHub logo" />
         <ContactLink
           href="https://github.com/Klimatbyran/klimatkollen"
           target="_blank"

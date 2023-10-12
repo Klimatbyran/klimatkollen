@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import Icon from '../../public/icons/add_light_green.svg'
 import IconGreen from '../../public/icons/remove_light_green.svg'
-import { H3, Paragraph, ParagraphBold } from '../Typography'
+import { Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
 
 const BorderContainer = styled.div`
