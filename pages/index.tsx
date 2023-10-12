@@ -35,15 +35,6 @@ import RadioMenu from '../components/RadioMenu'
 
 const Map = dynamic(() => import('../components/Map/Map'))
 
-/* todo
-
-- gör så att historiskt tar bort de andra graferna
-- gör så att det baseras på grafnamn istället för siffror?
-- fixa en "Läs mer"-komponent man kan fälla ut på kommunvyn
-- fixa så att alla grafnamnen man tittar på läggs till i urlen?
-
-*/
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;

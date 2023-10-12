@@ -1,9 +1,11 @@
-export const chartDescriptions = {
-  'historiska-utslapp':
+import { ChartDescriptions } from '../utils/types'
+
+export const chartDescriptions: ChartDescriptions = {
+  historiskt:
   {
     text: 'historiska koldioxidutsläpp i kommunen sedan 1990',
   },
-  'framtida-prognos': {
+  trend: {
     text: 'utsläppstrenden om vi fortsätter släppa ut som idag',
   },
   parisavtalet: {
@@ -11,4 +13,5 @@ export const chartDescriptions = {
   },
 }
 
-export const defaultChart = Object.keys(chartDescriptions)[0]
+export const chartsKeys = Object.keys(chartDescriptions)
+export const defaultChart = chartsKeys[1]

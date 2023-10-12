@@ -158,6 +158,8 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 }
 
+export const datasetKeys = Object.keys(datasetDescriptions)
+
 export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
   let dataPoint
 

@@ -2,7 +2,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import { H2, H4, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
@@ -13,16 +14,8 @@ import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
-import { chartDescriptions } from '../../data/chart_descriptions'
-
-/**
- * FIXME
- *
- * - routing
- * - info section under graph text
- * - decide/implement historical graph vs other graphs
- *
- * */
+import { chartDescriptions, chartsKeys, defaultChart } from '../../data/chart_descriptions'
+import { normalizeString } from '../../utils/shared'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -75,31 +68,79 @@ type Props = {
   municipalitiesName: Array<string>
 }
 
+/* todo
+- fixa en "Läs mer"-komponent man kan fälla ut på kommunvyn
+- fixa så att grafer från urlen visas markerade på grafen
+*/
+
 function Municipality(props: Props) {
   const { municipality, coatOfArmsImage, municipalitiesName } = props
-  const [selectedCharts, setSelectedCharts] = useState<number[]>([0])
+  const router = useRouter()
+  // fixme fortsätt här, är routeCharts undefined
+  const routeCharts = router.query.charts as string | string[]
+  const [selectedCharts, setSelectedCharts] = useState<string[]>([routeCharts as string])
 
-  const toggleCharts = (chart: number) => {
-    setSelectedCharts((prevSelectedCharts) => (prevSelectedCharts.includes(chart)
-      ? prevSelectedCharts.filter((s) => s !== chart)
-      : [...prevSelectedCharts, chart]))
+  console.log('routeCharts', routeCharts)
+
+  useEffect(() => {
+    if (routeCharts) {
+      const charts = (routeCharts as string)?.split('+')
+      setSelectedCharts(charts)
+    } else {
+      // If there are no charts in the URL, set it to the default chart
+      setSelectedCharts([defaultChart])
+    }
+  }, [routeCharts])
+
+  const toggleCharts = (chart: string) => {
+    setSelectedCharts((prevSelectedCharts) => {
+      let updatedCharts
+
+      // Check if the selected chart is in selectedCharts already
+      if (prevSelectedCharts.includes(chart)) {
+        // If already selected, remove it
+        updatedCharts = prevSelectedCharts.filter((s) => s !== chart)
+      } else if (chart === chartsKeys[0]) {
+        // If the selected chart is the first chart in chartsKeys, select only that chart
+        // Used since historical emissions (first chart) cancels the other charts
+        updatedCharts = [chart]
+      } else {
+        // If a different chart is selected
+        updatedCharts = [...prevSelectedCharts, chart]
+
+        // Check if the first chart in chartsKeys is in the previous selection
+        const firstChartIndex = prevSelectedCharts.indexOf(chartsKeys[0])
+        if (firstChartIndex !== -1) {
+          // If it's in the selection, remove it
+          updatedCharts.splice(firstChartIndex, 1)
+        }
+      }
+
+      const chartsString = updatedCharts.join('+')
+      const normalizedMunicipalityName = normalizeString(municipality.Name)
+      router.push(`/kommun/${normalizedMunicipalityName}/${chartsString}`, undefined, { shallow: true })
+
+      return updatedCharts
+    })
   }
 
   const infoHeading = 'CO₂-utsläpp'
+
   const chartTexts = selectedCharts
-    .map((index) => Object.values(chartDescriptions)[index]?.text)
-    .filter((text) => text !== undefined)
-    .reduce((acc, text, index, array) => {
+    .map((chart) => chartDescriptions[chart]?.text)
+    .reduce((acc: string, text: string, index: number, array: string[]) => {
       if (index === array.length - 1) {
         if (array.length === 1) {
           return text
         }
         return `${acc} och ${text}`
-      } if (index === array.length - 2) {
+      }
+      if (index === array.length - 2) {
         return acc + text
       }
       return `${acc + text}, `
     }, '')
+
   const infoText = `Grafen ovan visar ${chartTexts}.`
 
   return (

@@ -83,6 +83,14 @@ export type DatasetDescriptions = {
   [key: string]: DatasetDescription
 }
 
+type ChartDescription = {
+  text: string,
+}
+
+export type ChartDescriptions = {
+  [key: string]: ChartDescription
+}
+
 export type RankedData = {
   [key: string]: {
     name: string;

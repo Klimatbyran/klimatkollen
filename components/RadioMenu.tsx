@@ -1,13 +1,11 @@
 import { Fragment } from 'react'
 import router from 'next/router'
-import { datasetDescriptions, defaultDataset } from '../data/dataset_descriptions'
+import { datasetKeys, defaultDataset } from '../data/dataset_descriptions'
 import { SelectedData } from '../utils/types'
 import { MenuContainer, MenuInput, MenuLabel } from './shared'
 import { colorTheme } from '../Theme'
 
 const replaceLetters = (word: string) => word.replace('å', 'a').replace('ä', 'a').replace('ö', 'o') // replace å ä ö
-
-const datasetKeys = Object.keys(datasetDescriptions)
 
 type MenuProps = {
   selectedData: SelectedData

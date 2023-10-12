@@ -62,7 +62,7 @@ type Dataset = Array<{ x: number; y: number }>
 const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
 type Props = {
-  charts: number[]
+  charts: string[]
   historical: EmissionPerYear[]
   trend: EmissionPerYear[]
   budget: EmissionPerYear[]
@@ -93,7 +93,7 @@ function Graph({
     }
   }
 
-  const onlyHistorical = charts.every((n) => n !== 1 && n !== 2)
+  const onlyHistorical = charts.every((n) => n !== 'trend' && n !== 'parisavtalet')
 
   return (
     <Container>
@@ -125,7 +125,7 @@ function Graph({
               backgroundColor: colorTheme.lightGreenOpaqe,
               pointRadius: 0,
               tension: 0.15,
-              hidden: !charts.includes(2),
+              hidden: !charts.includes('parisavtalet'),
             },
             {
               // @ts-ignore
@@ -137,7 +137,7 @@ function Graph({
               backgroundColor: colorTheme.darkRedOpaque,
               pointRadius: 0,
               tension: 0.15,
-              hidden: !charts.includes(1),
+              hidden: !charts.includes('trend'),
             },
           ],
         }}

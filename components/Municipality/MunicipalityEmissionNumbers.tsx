@@ -40,7 +40,7 @@ const StyledText = styled.p<{$color: string}>`
 
 type EmissionsProps = {
   municipality: TMunicipality
-  charts: number[]
+  charts: string[]
 }
 
 function MunicipalityEmissionNumbers({ municipality, charts }: EmissionsProps) {
@@ -55,20 +55,20 @@ function MunicipalityEmissionNumbers({ municipality, charts }: EmissionsProps) {
       <H4>Utsläppen i siffror</H4>
       <TotalCo2Container>
         <TotalCo2>
-          <Square color={charts.includes(0) ? colorTheme.orange : colorTheme.darkOrange} />
-          <StyledText $color={charts.includes(0) ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={charts.includes('historiskt') ? colorTheme.orange : colorTheme.darkOrange} />
+          <StyledText $color={charts.includes('historiskt') ? colorTheme.offWhite : colorTheme.grey}>
             Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={charts.includes(1) ? colorTheme.red : colorTheme.darkRed} />
-          <StyledText $color={charts.includes(1) ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={charts.includes('trend') ? colorTheme.red : colorTheme.darkRed} />
+          <StyledText $color={charts.includes('trend') ? colorTheme.offWhite : colorTheme.grey}>
             Trend: {totalTrend.toFixed(1)} tusen ton CO₂
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={charts.includes(2) ? colorTheme.lightGreen : colorTheme.darkGreenOne} />
-          <StyledText $color={charts.includes(2) ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={charts.includes('parisavtalet') ? colorTheme.lightGreen : colorTheme.darkGreenOne} />
+          <StyledText $color={charts.includes('parisavtalet') ? colorTheme.offWhite : colorTheme.grey}>
             Parisavtalet:{' '}
             {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂
           </StyledText>

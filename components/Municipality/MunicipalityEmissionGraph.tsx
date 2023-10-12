@@ -14,6 +14,7 @@ import {
 } from '../shared'
 import { Municipality as TMunicipality } from '../../utils/types'
 import { colorTheme } from '../../Theme'
+import { defaultChart } from '../../data/chart_descriptions'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -23,18 +24,18 @@ const GraphWrapper = styled.div`
 
 type EmissionGraphProps = {
   municipality: TMunicipality
-  selectedCharts: number[]
-  handleSelectCharts: (chart: number) => void
+  selectedCharts: string[]
+  handleSelectCharts: (chart: string) => void
 }
 
 function MunicipalityEmissionGraph({
   municipality,
-  selectedCharts = [0],
+  selectedCharts = [defaultChart],
   handleSelectCharts,
 }: EmissionGraphProps) {
   const router = useRouter()
 
-  const numberInCharts = (n: number) => selectedCharts.includes(n)
+  const numberInCharts = (s: string) => selectedCharts.includes(s)
 
   return (
     <>
@@ -56,8 +57,8 @@ function MunicipalityEmissionGraph({
         <MenuInput
           id="historical"
           type="checkbox"
-          onChange={() => handleSelectCharts(0)}
-          checked={numberInCharts(0)}
+          onChange={() => handleSelectCharts('historiskt')}
+          checked={numberInCharts('historiskt')}
           $backgroundColor={colorTheme.orange}
           $hoverColor={colorTheme.lightOrange}
         />
@@ -71,8 +72,8 @@ function MunicipalityEmissionGraph({
         <MenuInput
           id="trend"
           type="checkbox"
-          onChange={() => handleSelectCharts(1)}
-          checked={numberInCharts(1)}
+          onChange={() => handleSelectCharts('trend')}
+          checked={numberInCharts('trend')}
           $backgroundColor={colorTheme.red}
           $hoverColor={colorTheme.lightRed}
         />
@@ -86,8 +87,8 @@ function MunicipalityEmissionGraph({
         <MenuInput
           id="paris"
           type="checkbox"
-          onChange={() => handleSelectCharts(2)}
-          checked={numberInCharts(2)}
+          onChange={() => handleSelectCharts('parisavtalet')}
+          checked={numberInCharts('parisavtalet')}
           $backgroundColor={colorTheme.lightGreen}
           $hoverColor={colorTheme.lighterGreen}
         />

@@ -28,11 +28,12 @@ export default function Chart({
 
 interface Params extends ParsedUrlQuery {
   id: string
+  chart: string
 }
 
 const cache = new Map()
 
-export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, res, query }) => {
   res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${((60 * 60) * 24) * 7}`)
 
   const id = (params as Params).municipality as string
@@ -74,12 +75,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   }
 
   const municipalitiesName = municipalities.map((m) => m.Name)
+  const charts = (query.charts as string)?.split('+') || []
 
   const result = {
     props: {
       municipality,
       id,
       municipalitiesName,
+      charts,
     },
   }
   cache.set(id, result)
