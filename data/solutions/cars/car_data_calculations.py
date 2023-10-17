@@ -3,8 +3,11 @@
 import numpy as np
 import pandas as pd
 
-PATH_TRAFA_DATA = 'solutions/cars/kpi1_trafa.xlsx'  # data on sold cars by trafa
-PATH_CARS_DATA = 'solutions/cars/kpi1_calculations.xlsx'  # calculations based on trafa data
+# data on sold cars by trafa
+PATH_TRAFA_DATA = 'solutions/cars/sources/kpi1_trafa.xlsx'
+# calculations based on trafa data
+PATH_CARS_DATA = 'solutions/cars/sources/kpi1_calculations.xlsx'
+PATH_CHARGING_POINT = 'solutions/cars/sources/charging_points_powercircle.csv'
 
 
 def car_calculations(df):
@@ -53,3 +56,69 @@ def car_calculations(df):
     df = df.merge(df_cars, on='Kommun', how='left')
 
     return df
+
+# Function to calculate percental change over years
+
+
+def get_emission_level_change_average(df, year_range):
+    print(df.loc[:, year_range])
+    percent_changes = df.loc[:, year_range].pct_change(axis=1)*100
+    print(percent_changes)
+    avg_percent_changes = percent_changes.loc[:, year_range].mean(axis=1)
+    return avg_percent_changes
+
+
+def charging_point_calculations(df):
+    charging_point_df = pd.read_csv(PATH_CHARGING_POINT)
+    filtered_csv = charging_point_df[charging_point_df['år-månad'].str.endswith(
+        '-12')]
+
+    print(filtered_csv)
+
+    return df
+
+
+PATH_CHARGING_POINT2 = 'sources/charging_points_powercircle.csv'
+PATH_POPULATION = 'sources/population_scb.xlsx'
+
+# Load charging point data, filter for december and set correct column headers
+df_charging_raw = pd.read_csv(PATH_CHARGING_POINT2)
+df_charging_filtered = df_charging_raw[df_charging_raw['år-månad'].str.endswith(
+    '-12')].reset_index(drop=True)
+df_charging_filtered.rename(columns={'år-månad': 'year'}, inplace=True)
+df_charging_filtered['year'] = df_charging_filtered['year'].str[:-3]
+df_charging_melted = pd.melt(df_charging_filtered, id_vars=[
+                             'year'], var_name='Kommun', value_name='Value')
+df_charging_pivoted = df_charging_melted.pivot(
+    index='Kommun', columns='year', values='Value').reset_index()
+df_charging_pivoted['Kommun'] = df_charging_pivoted['Kommun'].str.title()
+
+# Load population data, set correct column headers and drop unwanted rows
+df_population = pd.read_excel(PATH_POPULATION)
+df_population.columns = df_population.iloc[4]
+df_population = df_population[5:]
+df_population.reset_index(drop=True, inplace=True)  # reset index
+
+# Keep only the columns with years between 2013 and 2022 to harmonize with PowerCircle data
+year_range = range(2015, 2023)
+df_population_filtered = df_population[[
+    'Kommun'] + [year for year in year_range]]
+df_population_filtered.columns = [int(col) if isinstance(
+    col, float) else col for col in df_population_filtered.columns]
+
+df_merged = df_charging_pivoted.merge(
+    df_population_filtered, on='Kommun', how='left')
+
+df_result = pd.DataFrame()
+df_result['Kommun'] = df_population_filtered['Kommun']
+df_result = df_result.drop(index=range(290, len(df_result)))
+
+# Calculate _charging/_population for each year from 2015 to 2022
+for year in year_range:
+    df_result[year] = df_charging_pivoted[f'{year}'] / \
+        df_population_filtered[year]
+
+# Calculate percental change for last 5 years and add it to DataFrame
+df_result['AvgPercentChange_5y'] = get_emission_level_change_average(
+    df_result, year_range)
+# #print(result.head())
