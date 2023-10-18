@@ -60,6 +60,18 @@ To recalculate and refresh the site's data, navigate to the /data folder and exe
 
 The results will be saved in the `/data/output` folder, primarily in the `climate-data.json` file.
 
+#### Handling Data Inconsistencies for Municipalities
+
+Given that Klimatkollen focuses on data related to municipalities, it's often necessary to standardize the naming conventions for Swedish municipalities as they can vary across different datasets. The following are known cases:
+
+- Falun: also called Falu kommun.
+- Gotland: also called Region Gotland or Region Gotland (kommun).
+- Upplands Väsby: alternate spelling includes Upplands-Väsby.
+- Stockholm: also called Stockholms stad.
+- Malmö: also called Malmö stad.
+
+In the list, the term appearing before the colon (:) is the standardized name that we use in the repository. Any alternative names listed after "also known as" should be converted to this standard version when incorporating new data sets.
+
 ### Utilizing Data on the Website
 
 We use a TypeScript utility service located at `utils/climateDataService.tsx` to source the data from `climate-data.json` and display it on the website.
