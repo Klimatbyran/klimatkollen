@@ -68,18 +68,21 @@ def get_emission_level_change_average(df, year_range):
     return avg_percent_changes
 
 
-def charging_point_calculations(df):
-    charging_point_df = pd.read_csv(PATH_CHARGING_POINT)
-    filtered_csv = charging_point_df[charging_point_df['år-månad'].str.endswith(
-        '-12')]
-
-    print(filtered_csv)
-
-    return df
-
-
 PATH_CHARGING_POINT2 = 'sources/charging_points_powercircle.csv'
 PATH_POPULATION = 'sources/population_scb.xlsx'
+
+
+def convert_column_name_to_float(df, year_range):
+    for year in year_range:
+        df.rename(columns={f'{year}': float(year)}, inplace=True)
+    return df
+
+def convert_column_to_float(df, year_range):
+    for year in year_range:
+        df[year] = df[year].astype(float)
+    return df
+
+year_range = range(2015, 2023)
 
 # Load charging point data, filter for december and set correct column headers
 df_charging_raw = pd.read_csv(PATH_CHARGING_POINT2)
@@ -92,33 +95,40 @@ df_charging_melted = pd.melt(df_charging_filtered, id_vars=[
 df_charging_pivoted = df_charging_melted.pivot(
     index='Kommun', columns='year', values='Value').reset_index()
 df_charging_pivoted['Kommun'] = df_charging_pivoted['Kommun'].str.title()
+df_charging_renamed = convert_column_name_to_float(df_charging_pivoted, year_range)
+df_charging_float = convert_column_to_float(df_charging_renamed, year_range)
 
-# Load population data, set correct column headers and drop unwanted rows
-df_population = pd.read_excel(PATH_POPULATION)
-df_population.columns = df_population.iloc[4]
-df_population = df_population[5:]
-df_population.reset_index(drop=True, inplace=True)  # reset index
+# Remove duplicate occurrences of Pajala
+df_charging_duplicates_removed = df_charging_float.drop(index=172, inplace=True)
 
-# Keep only the columns with years between 2013 and 2022 to harmonize with PowerCircle data
-year_range = range(2015, 2023)
-df_population_filtered = df_population[[
-    'Kommun'] + [year for year in year_range]]
-df_population_filtered.columns = [int(col) if isinstance(
-    col, float) else col for col in df_population_filtered.columns]
+duplicate_rows = df_charging_float[df_charging_float.duplicated(subset=['Kommun'], keep=False)]
 
-df_merged = df_charging_pivoted.merge(
-    df_population_filtered, on='Kommun', how='left')
+# Print the duplicate rows
+print(duplicate_rows)
 
-df_result = pd.DataFrame()
-df_result['Kommun'] = df_population_filtered['Kommun']
-df_result = df_result.drop(index=range(290, len(df_result)))
+# # Load population data, set correct column headers and drop unwanted rows
+# df_population = pd.read_excel(PATH_POPULATION)
+# df_population.columns = df_population.iloc[4]
+# df_population = df_population[5:]
+# df_population.reset_index(drop=True, inplace=True)  # reset index
 
-# Calculate _charging/_population for each year from 2015 to 2022
-for year in year_range:
-    df_result[year] = df_charging_pivoted[f'{year}'] / \
-        df_population_filtered[year]
+# # Keep only the columns with years between 2013 and 2022 to harmonize with PowerCircle data
+# df_population_filtered = df_population[[
+#     'Kommun'] + [year for year in year_range]]
+# df_population_filtered.columns = [int(col) if isinstance(
+#     col, float) else col for col in df_population_filtered.columns]
+# df_population_float = convert_column_to_float(df_population_filtered, year_range)
 
-# Calculate percental change for last 5 years and add it to DataFrame
-df_result['AvgPercentChange_5y'] = get_emission_level_change_average(
-    df_result, year_range)
-# #print(result.head())
+# print(df_charging_pivoted[df_charging_pivoted['Kommun'] == 'Pajala'])
+# print(df_population_filtered[df_population_filtered['Kommun'] == 'Pajala'])
+
+# df_result = pd.DataFrame()
+# df_result['Kommun'] = df_population_filtered['Kommun']
+# df_result = df_result.drop(index=range(290, len(df_result)))
+
+# # Calculate _charging/_population for each year from 2015 to 2022
+# for year in year_range:
+#     df_result[year] = df_charging_pivoted[year] / \
+#         df_population_filtered[year]
+
+# print(df_result[df_result['Kommun'] == 'Pajala'])

@@ -10,7 +10,7 @@ from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
 from issues.emissions.emission_data_calculations import emission_calculations
 from issues.consumption.consumption_data_calculations import get_consumption_emissions
-from export_data import export_to_xlsx
+from export_data import export_to_county_xlsx
 
 # Notebook from ClimateView that our calculations are based on:
 # https://colab.research.google.com/drive/1qqMbdBTu5ulAPUe-0CRBmFuh8aNOiHEb?usp=sharing
@@ -78,4 +78,4 @@ with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # sav
 print('Climate data JSON file created and saved')
 
 temp_df = pd.DataFrame(temp)
-export_to_xlsx(temp_df)
+export_to_county_xlsx(temp_df)

@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def export_to_xlsx(df):
+def export_to_county_xlsx(df):
     df['KPI1: Förändringstakt andel laddbara bilar (%)'] = df['electricCarChangePercent'].apply(
         lambda x: round(x*100, 1))
 
