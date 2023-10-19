@@ -49,7 +49,7 @@ function Partners() {
       </a>
       <a href="https://researchersdesk.se/" target="_blank" rel="noreferrer">
         <img
-          src="/partners/researchersdesk-logo.svg"
+          src="/partners/researchersdesk-logo2.svg"
           width="auto"
           height={60}
           alt="Researchers desk logo"
