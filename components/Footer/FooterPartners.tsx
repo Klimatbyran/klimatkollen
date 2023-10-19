@@ -25,7 +25,7 @@ function Partners() {
     <PartnerContainer>
       <a href="https://postkodstiftelsen.se/" target="_blank" rel="noreferrer">
         <img
-          src="/icons/postkodstiftelsen.svg"
+          src="/partners/postkodstiftelsen.svg"
           width={90}
           height="auto"
           alt="Postkodstiftelsen logo"
@@ -33,7 +33,7 @@ function Partners() {
       </a>
       <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">
         <img
-          src="/icons/climateview.svg"
+          src="/partners/climateview.svg"
           width={90}
           height="auto"
           alt="ClimateView logo"
@@ -49,7 +49,7 @@ function Partners() {
       </a>
       <a href="https://researchersdesk.se/" target="_blank" rel="noreferrer">
         <img
-          src="/partners/researchersdesk-logo2.svg"
+          src="/partners/researchersdesk-logo.svg"
           width="auto"
           height={60}
           alt="Researchers desk logo"
@@ -57,7 +57,7 @@ function Partners() {
       </a>
       <a href="https://www.klimatklubben.se/" target="_blank" rel="noreferrer">
         <img
-          src="/icons/klimatklubben.svg"
+          src="/partners/klimatklubben.svg"
           width="auto"
           height={45}
           alt="Klimatklubben logo"
