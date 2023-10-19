@@ -8,6 +8,7 @@ PATH_TRAFA_DATA = 'solutions/cars/sources/kpi1_trafa.xlsx'
 # calculations based on trafa data
 PATH_CARS_DATA = 'solutions/cars/sources/kpi1_calculations.xlsx'
 PATH_CHARGING_POINT = 'solutions/cars/sources/charging_points_powercircle.csv'
+PATH_POPULATION = 'solutions/cars/sources/population_scb.xlsx'
 
 
 def car_calculations(df):
@@ -57,30 +58,20 @@ def car_calculations(df):
 
     return df
 
-# Function to calculate percental change over years
-
-
-def get_emission_level_change_average(df, year_range):
-    print(df.loc[:, year_range])
-    percent_changes = df.loc[:, year_range].pct_change(axis=1)*100
-    print(percent_changes)
-    avg_percent_changes = percent_changes.loc[:, year_range].mean(axis=1)
-    return avg_percent_changes
-
-
-PATH_CHARGING_POINT2 = 'sources/charging_points_powercircle.csv'
-PATH_POPULATION = 'sources/population_scb.xlsx'
-
 
 def convert_column_name_to_float(df, year_range):
     for year in year_range:
         df.rename(columns={f'{year}': float(year)}, inplace=True)
     return df
 
+
 def convert_column_to_float(df, year_range):
     for year in year_range:
         df[year] = df[year].astype(float)
     return df
+
+
+
 
 year_range = range(2015, 2023)
 
@@ -101,34 +92,32 @@ df_charging_float = convert_column_to_float(df_charging_renamed, year_range)
 # Remove duplicate occurrences of Pajala
 df_charging_duplicates_removed = df_charging_float.drop(index=172, inplace=True)
 
-duplicate_rows = df_charging_float[df_charging_float.duplicated(subset=['Kommun'], keep=False)]
+# Load population data, set correct column headers and drop unwanted rows
+df_population = pd.read_excel(PATH_POPULATION)
+df_population.columns = df_population.iloc[4]
+df_population = df_population[5:]
+df_population.reset_index(drop=True, inplace=True)  # reset index
 
-# Print the duplicate rows
-print(duplicate_rows)
+# Keep only the columns with years between 2013 and 2022 to harmonize with PowerCircle data
+df_population_filtered = df_population[[
+    'Kommun'] + [year for year in year_range]]
+df_population_filtered.columns = [int(col) if isinstance(
+    col, float) else col for col in df_population_filtered.columns]
+df_population_float = convert_column_to_float(df_population_filtered, year_range)
 
-# # Load population data, set correct column headers and drop unwanted rows
-# df_population = pd.read_excel(PATH_POPULATION)
-# df_population.columns = df_population.iloc[4]
-# df_population = df_population[5:]
-# df_population.reset_index(drop=True, inplace=True)  # reset index
+print(df_charging_pivoted[df_charging_pivoted['Kommun'] == 'Pajala'])
+print(df_population_filtered[df_population_filtered['Kommun'] == 'Pajala'])
 
-# # Keep only the columns with years between 2013 and 2022 to harmonize with PowerCircle data
-# df_population_filtered = df_population[[
-#     'Kommun'] + [year for year in year_range]]
-# df_population_filtered.columns = [int(col) if isinstance(
-#     col, float) else col for col in df_population_filtered.columns]
-# df_population_float = convert_column_to_float(df_population_filtered, year_range)
+df_result = pd.DataFrame()
+df_result['Kommun'] = df_population_filtered['Kommun']
+df_result = df_result.drop(index=range(290, len(df_result)))
 
-# print(df_charging_pivoted[df_charging_pivoted['Kommun'] == 'Pajala'])
-# print(df_population_filtered[df_population_filtered['Kommun'] == 'Pajala'])
+# Calculate _charging/_population for each year from 2015 to 2022
+for year in year_range:
+    df_result[year] = df_charging_pivoted[year] / \
+        df_population_filtered[year]
 
-# df_result = pd.DataFrame()
-# df_result['Kommun'] = df_population_filtered['Kommun']
-# df_result = df_result.drop(index=range(290, len(df_result)))
+df_result_melted = pd.melt(df_result, id_vars=['Kommun'], value_vars=year_range, var_name='Year', value_name='ChargingPointsPerCapita')
 
-# # Calculate _charging/_population for each year from 2015 to 2022
-# for year in year_range:
-#     df_result[year] = df_charging_pivoted[year] / \
-#         df_population_filtered[year]
 
-# print(df_result[df_result['Kommun'] == 'Pajala'])
+print(df_result_melted)
