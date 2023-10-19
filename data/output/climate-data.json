@@ -100,7 +100,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Klimatstrategi 2030",
     "bicycleMetrePerCapita": 2.881007594,
-    "totalConsumptionEmission": 5889.8
+    "totalConsumptionEmission": 5889.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00010152627838505533,
+      "2017": 9.926215134169341e-5,
+      "2018": 0.00019401151134967342,
+      "2019": 0.0002866059486656901,
+      "2020": 0.00028241496171708296,
+      "2021": 0.0002799552071668533,
+      "2022": 0.00027782922763474715
+    }
   },
   {
     "kommun": "Alingsås",
@@ -203,7 +213,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatstrategi 2022–2030",
     "bicycleMetrePerCapita": 2.865584307,
-    "totalConsumptionEmission": 6066.6
+    "totalConsumptionEmission": 6066.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00032186184699182965,
+      "2018": 0.0003165327489651814,
+      "2019": 0.00031385803959439886,
+      "2020": 0.0004567088120763425,
+      "2021": 0.00045396984684490955,
+      "2022": 0.0004739448802104315
+    }
   },
   {
     "kommun": "Alvesta",
@@ -306,7 +326,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Energi– och klimatplan planerad hösten 2023.",
     "bicycleMetrePerCapita": 3.202529861,
-    "totalConsumptionEmission": 6030.8
+    "totalConsumptionEmission": 6030.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00010075566750629723,
+      "2017": 0.0004993508439029262,
+      "2018": 0.0004962779156327543,
+      "2019": 0.0005960067547432204,
+      "2020": 0.0005933544303797469,
+      "2021": 0.0005915118055897866,
+      "2022": 0.0007898504220763192
+    }
   },
   {
     "kommun": "Aneby",
@@ -409,7 +439,17 @@
     "climatePlanYear": 2011,
     "climatePlanComment": "Miljömål 2011–2025",
     "bicycleMetrePerCapita": 2.482518504,
-    "totalConsumptionEmission": 6113.7
+    "totalConsumptionEmission": 6113.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0017709563164108619,
+      "2018": 0.001756440281030445,
+      "2019": 0.0017523364485981308,
+      "2020": 0.0017592728338953233,
+      "2021": 0.0017411491584445734,
+      "2022": 0.0029308323563892145
+    }
   },
   {
     "kommun": "Arboga",
@@ -512,7 +552,17 @@
     "climatePlanYear": 2009,
     "climatePlanComment": "Energi- och klimatstrategi antagen år 2009, vilken beskriver energiläget och befintliga utsläpp av växthusgaser, den innehåller också övergripande mål och strategier.",
     "bicycleMetrePerCapita": 3.288451193,
-    "totalConsumptionEmission": 6176.1
+    "totalConsumptionEmission": 6176.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0007937653341030451,
+      "2016": 0.0007911961447169676,
+      "2017": 0.0010047366154729439,
+      "2018": 0.0014146272457207527,
+      "2019": 0.0014197487044793071,
+      "2020": 0.0014246028919438706,
+      "2021": 0.0018439716312056737,
+      "2022": 0.0025562735212667754
+    }
   },
   {
     "kommun": "Arjeplog",
@@ -615,7 +665,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.358501088,
-    "totalConsumptionEmission": 6239.6
+    "totalConsumptionEmission": 6239.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0010771992818671453,
+      "2020": 0.0011037527593818985,
+      "2021": 0.0011082379017362395,
+      "2022": 0.0029996250468691415
+    }
   },
   {
     "kommun": "Arvidsjaur",
@@ -718,7 +778,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Kommer under 2023.",
     "bicycleMetrePerCapita": 3.522716618,
-    "totalConsumptionEmission": 6424.3
+    "totalConsumptionEmission": 6424.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00015453562046051616,
+      "2016": 0.0001552312946289972,
+      "2017": 0.00015527950310559007,
+      "2018": 0.00015787811809283233,
+      "2019": 0.0001607717041800643,
+      "2020": 0.001790073230268511,
+      "2021": 0.0017906560312550871,
+      "2022": 0.0027818687612502046
+    }
   },
   {
     "kommun": "Arvika",
@@ -821,7 +891,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas för efter år 2020. Hade en miljöstrategi som gällde 2015–2020",
     "bicycleMetrePerCapita": 2.049167865,
-    "totalConsumptionEmission": 6148.4
+    "totalConsumptionEmission": 6148.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0001160945783831895,
+      "2016": 0.00011514546710677823,
+      "2017": 0.00034535686876438986,
+      "2018": 0.0004984280346599187,
+      "2019": 0.0008062967940103666,
+      "2020": 0.0008098102730217492,
+      "2021": 0.0008122534230679972,
+      "2022": 0.00112263858779808
+    }
   },
   {
     "kommun": "Askersund",
@@ -924,7 +1004,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Ekologiskt hållbarhetsprogram 2022–2025.",
     "bicycleMetrePerCapita": 2.926919348,
-    "totalConsumptionEmission": 6451.7
+    "totalConsumptionEmission": 6451.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0003579418344519016,
+      "2018": 0.0003535755325731459,
+      "2019": 0.0003515865342357388,
+      "2020": 0.0003487054310870892,
+      "2021": 0.0012138026703658747,
+      "2022": 0.001217708967556754
+    }
   },
   {
     "kommun": "Avesta",
@@ -1027,7 +1117,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Hållbarhetsprogram 2020–2030.",
     "bicycleMetrePerCapita": 2.915797667,
-    "totalConsumptionEmission": 6232.0
+    "totalConsumptionEmission": 6232.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00017558491725560774,
+      "2016": 0.00017270411467553215,
+      "2017": 0.0001719986240110079,
+      "2018": 0.00017150452343180553,
+      "2019": 0.00017257744412805246,
+      "2020": 0.00017340789872978714,
+      "2021": 0.0003053435114503817,
+      "2022": 0.00030525030525030525
+    }
   },
   {
     "kommun": "Bengtsfors",
@@ -1130,7 +1230,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.461809581,
-    "totalConsumptionEmission": 6014.7
+    "totalConsumptionEmission": 6014.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0004251248804336274,
+      "2022": 0.0004321988114532685
+    }
   },
   {
     "kommun": "Berg",
@@ -1233,7 +1343,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljöprogram 2040",
     "bicycleMetrePerCapita": 2.184422467,
-    "totalConsumptionEmission": 6488.9
+    "totalConsumptionEmission": 6488.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0017064846416382253,
+      "2016": 0.0031069058042649342,
+      "2017": 0.005616399887672002,
+      "2018": 0.007608848809356066,
+      "2019": 0.006939526979181419,
+      "2020": 0.0064606741573033704,
+      "2021": 0.0064470918009810795,
+      "2022": 0.006828316610925307
+    }
   },
   {
     "kommun": "Bjurholm",
@@ -1336,7 +1456,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Handlingsplan för fossilfria transporter",
     "bicycleMetrePerCapita": 1.762300157,
-    "totalConsumptionEmission": 6118.0
+    "totalConsumptionEmission": 6118.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Bjuv",
@@ -1439,7 +1569,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.303408188,
-    "totalConsumptionEmission": 5852.6
+    "totalConsumptionEmission": 5852.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0002592520578132089,
+      "2018": 0.0005160957357589833,
+      "2019": 0.0005090677696468342,
+      "2020": 0.0005096515257692552,
+      "2021": 0.0005049867440979674,
+      "2022": 0.0004980699788320259
+    }
   },
   {
     "kommun": "Boden",
@@ -1542,7 +1682,17 @@
     "climatePlanYear": 2018,
     "climatePlanComment": "Borgmästaravtalet. Kommunen jobbar med uppdatering av planen.",
     "bicycleMetrePerCapita": 4.240521656,
-    "totalConsumptionEmission": 6657.4
+    "totalConsumptionEmission": 6657.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 7.126567844925884e-5,
+      "2019": 7.122507122507122e-5,
+      "2020": 0.0001781895937277263,
+      "2021": 0.0001775568181818182,
+      "2022": 0.00039218482601254993
+    }
   },
   {
     "kommun": "Bollebygd",
@@ -1645,7 +1795,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.022400756,
-    "totalConsumptionEmission": 6010.1
+    "totalConsumptionEmission": 6010.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00021593608291945585,
+      "2018": 0.00021215657154980376,
+      "2019": 0.00021063717746182202,
+      "2020": 0.00020955574182732607,
+      "2021": 0.00020759809009757111,
+      "2022": 0.00020612181799443472
+    }
   },
   {
     "kommun": "Bollnäs",
@@ -1748,7 +1908,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Program för ekologisk hållbarhet 2021–2026",
     "bicycleMetrePerCapita": 2.564056644,
-    "totalConsumptionEmission": 6108.5
+    "totalConsumptionEmission": 6108.5,
+    "ChargingPointsPerCapita": {
+      "2015": 7.52049334436339e-5,
+      "2016": 7.426937502320919e-5,
+      "2017": 0.0012630953265472917,
+      "2018": 0.0012596791523100293,
+      "2019": 0.0016364177328176137,
+      "2020": 0.0016412398821291356,
+      "2021": 0.0016446753635106343,
+      "2022": 0.001953125
+    }
   },
   {
     "kommun": "Borgholm",
@@ -1851,7 +2021,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Energi– och klimatstrategi, ska följas upp årligen.",
     "bicycleMetrePerCapita": 2.378697008,
-    "totalConsumptionEmission": 6336.3
+    "totalConsumptionEmission": 6336.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00037449676996535904,
+      "2016": 0.00036596523330283625,
+      "2017": 0.0031316201528967485,
+      "2018": 0.003127011864250897,
+      "2019": 0.0038748962081372822,
+      "2020": 0.003875968992248062,
+      "2021": 0.005507113354749885,
+      "2022": 0.006907985631389887
+    }
   },
   {
     "kommun": "Borlänge",
@@ -1954,7 +2134,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Finns både Miljöstrategi 2021–2030 och Handlingsplan för miljöstrategin 2022.",
     "bicycleMetrePerCapita": 3.548200249,
-    "totalConsumptionEmission": 6102.9
+    "totalConsumptionEmission": 6102.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0002549619518318036,
+      "2016": 0.00023254011316952173,
+      "2017": 0.0005003463936571473,
+      "2018": 0.0004978553921568627,
+      "2019": 0.0005704506560182544,
+      "2020": 0.0005725846470969959,
+      "2021": 0.0008229035097791557,
+      "2022": 0.0009774234351642454
+    }
   },
   {
     "kommun": "Borås",
@@ -2057,7 +2247,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Energi– och klimatstrategi 2020–2024 kopplad till Borås koldioxidbudget.",
     "bicycleMetrePerCapita": 1.84645402,
-    "totalConsumptionEmission": 6052.0
+    "totalConsumptionEmission": 6052.0,
+    "ChargingPointsPerCapita": {
+      "2015": 4.6088046604232724e-5,
+      "2016": 0.0001274117218784128,
+      "2017": 0.00018013798569704393,
+      "2018": 0.00017828807787623242,
+      "2019": 0.000388764700165225,
+      "2020": 0.0011959829044796595,
+      "2021": 0.0015250983863757878,
+      "2022": 0.00170387522390668
+    }
   },
   {
     "kommun": "Botkyrka",
@@ -2160,7 +2360,17 @@
     "climatePlanYear": 2018,
     "climatePlanComment": "Klimatstrategi 2018–2023",
     "bicycleMetrePerCapita": 2.586763621,
-    "totalConsumptionEmission": 5526.3
+    "totalConsumptionEmission": 5526.3,
+    "ChargingPointsPerCapita": {
+      "2015": 4.4730220855465474e-5,
+      "2016": 4.4113592500689275e-5,
+      "2017": 4.351373402230079e-5,
+      "2018": 4.296178549180504e-5,
+      "2019": 4.228061645138786e-5,
+      "2020": 4.2173184180838615e-5,
+      "2021": 8.392958307979605e-5,
+      "2022": 8.387238816141241e-5
+    }
   },
   {
     "kommun": "Boxholm",
@@ -2263,7 +2473,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.23972865,
-    "totalConsumptionEmission": 6151.9
+    "totalConsumptionEmission": 6151.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Bromölla",
@@ -2366,7 +2586,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 6.400184489,
-    "totalConsumptionEmission": 5789.3
+    "totalConsumptionEmission": 5789.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.00031350419311858296,
+      "2021": 0.0006324110671936759,
+      "2022": 0.001029050898440592
+    }
   },
   {
     "kommun": "Bräcke",
@@ -2469,7 +2699,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.9315229039,
-    "totalConsumptionEmission": 6315.8
+    "totalConsumptionEmission": 6315.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00030983733539891554,
+      "2016": 0.00030807147258163895,
+      "2017": 0.00030764497769573913,
+      "2018": 0.001097867001254705,
+      "2019": 0.000952683391552874,
+      "2020": 0.000970716712506067,
+      "2021": 0.0016194331983805667,
+      "2022": 0.0016228497241155468
+    }
   },
   {
     "kommun": "Burlöv",
@@ -2572,7 +2812,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Miljöprogram 2030",
     "bicycleMetrePerCapita": 3.346646362,
-    "totalConsumptionEmission": 5458.4
+    "totalConsumptionEmission": 5458.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00022132462789796933,
+      "2018": 0.00065359477124183,
+      "2019": 0.0006278777731268313,
+      "2020": 0.0006213753106876554,
+      "2021": 0.000405001771882752,
+      "2022": 0.0015089025248968917
+    }
   },
   {
     "kommun": "Båstad",
@@ -2675,7 +2925,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Nytt miljö– och energiprogram är under utveckling.",
     "bicycleMetrePerCapita": 4.70562181,
-    "totalConsumptionEmission": 6894.6
+    "totalConsumptionEmission": 6894.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0002737101409607226,
+      "2017": 0.0010813733441470668,
+      "2018": 0.0011372758897511372,
+      "2019": 0.0013220518244315177,
+      "2020": 0.0018166482839161746,
+      "2021": 0.0023663341007930418,
+      "2022": 0.0028437815975733065
+    }
   },
   {
     "kommun": "Dals-Ed",
@@ -2778,7 +3038,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Utvecklingsplan 2020–2023. Planerar att ta fram fler strategier.",
     "bicycleMetrePerCapita": 3.066064022,
-    "totalConsumptionEmission": 6512.5
+    "totalConsumptionEmission": 6512.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.00021003990758244065,
+      "2021": 0.00021026072329688813,
+      "2022": 0.00021505376344086021
+    }
   },
   {
     "kommun": "Danderyd",
@@ -2881,7 +3151,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Miljö– och klimatprogram 2021–2030",
     "bicycleMetrePerCapita": 1.840451379,
-    "totalConsumptionEmission": 8185.7
+    "totalConsumptionEmission": 8185.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00012337682366367477,
+      "2016": 0.00012250022968793067,
+      "2017": 0.00042568718073461445,
+      "2018": 0.002079127369150571,
+      "2019": 0.002404358279818608,
+      "2020": 0.0027207141110295917,
+      "2021": 0.002774136511904399,
+      "2022": 0.0027835556099351524
+    }
   },
   {
     "kommun": "Degerfors",
@@ -2984,7 +3264,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Energi– och klimatprogram 2021–2030. Status oklart, vattenstämplat \"Samrådsunderlag\".",
     "bicycleMetrePerCapita": 4.576541722,
-    "totalConsumptionEmission": 6230.0
+    "totalConsumptionEmission": 6230.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0008274720728175424,
+      "2018": 0.0008277289187790998,
+      "2019": 0.0008276432857438444,
+      "2020": 0.0008306510227390718,
+      "2021": 0.0008391021606880638,
+      "2022": 0.0012591815320041973
+    }
   },
   {
     "kommun": "Dorotea",
@@ -3087,7 +3377,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.000001742,
-    "totalConsumptionEmission": 6529.4
+    "totalConsumptionEmission": 6529.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0003779289493575208,
+      "2018": 0.0003894080996884735,
+      "2019": 0.0003920031360250882,
+      "2020": 0.00040032025620496394,
+      "2021": 0.00040666937779585197,
+      "2022": 0.005387484459179445
+    }
   },
   {
     "kommun": "Eda",
@@ -3190,7 +3490,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Hållbarhetsstrategi.",
     "bicycleMetrePerCapita": 2.101732193,
-    "totalConsumptionEmission": 6451.3
+    "totalConsumptionEmission": 6451.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0011757789535567313,
+      "2016": 0.001172882946281961,
+      "2017": 0.002088651659317707,
+      "2018": 0.002099125364431487,
+      "2019": 0.0022185894441849605,
+      "2020": 0.004093567251461989,
+      "2021": 0.004122497055359246,
+      "2022": 0.004100761570005858
+    }
   },
   {
     "kommun": "Ekerö",
@@ -3293,7 +3603,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Energistrategi 2020–2030. Särskild klimatplan saknas.",
     "bicycleMetrePerCapita": 2.383422446,
-    "totalConsumptionEmission": 6275.4
+    "totalConsumptionEmission": 6275.4,
+    "ChargingPointsPerCapita": {
+      "2015": 7.411799584939223e-5,
+      "2016": 7.297672042618404e-5,
+      "2017": 7.206428133895435e-5,
+      "2018": 0.0002472799208704253,
+      "2019": 0.00024398745207389336,
+      "2020": 0.0002423906644966931,
+      "2021": 0.0001718449271377509,
+      "2022": 0.00017168560931222744
+    }
   },
   {
     "kommun": "Eksjö",
@@ -3396,7 +3716,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Ny plan antas under 2023.",
     "bicycleMetrePerCapita": 3.939870961,
-    "totalConsumptionEmission": 6054.3
+    "totalConsumptionEmission": 6054.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00011911852293031566,
+      "2016": 0.00011676104851421566,
+      "2017": 0.0005741846577859439,
+      "2018": 0.0005660270560932813,
+      "2019": 0.0005632850785782684,
+      "2020": 0.0005621767483696875,
+      "2021": 0.00056072670180554,
+      "2022": 0.0005599731212901781
+    }
   },
   {
     "kommun": "Emmaboda",
@@ -3499,7 +3829,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.326560451,
-    "totalConsumptionEmission": 5993.2
+    "totalConsumptionEmission": 5993.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0004278990158322636,
+      "2017": 0.0004269854824935952,
+      "2018": 0.000425531914893617,
+      "2019": 0.00042350449973530967,
+      "2020": 0.0010683760683760685,
+      "2021": 0.0010719262514738985,
+      "2022": 0.0014978067829250026
+    }
   },
   {
     "kommun": "Enköping",
@@ -3602,7 +3942,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatkontrakt 2030 via Viable Cities.",
     "bicycleMetrePerCapita": 2.661227955,
-    "totalConsumptionEmission": 6128.2
+    "totalConsumptionEmission": 6128.2,
+    "ChargingPointsPerCapita": {
+      "2015": 9.548134533215572e-5,
+      "2016": 0.00016283614031822833,
+      "2017": 0.00022832614105988995,
+      "2018": 0.0004051407864232821,
+      "2019": 0.00048579062424095217,
+      "2020": 0.0004757785467128028,
+      "2021": 0.0006317252416349049,
+      "2022": 0.0011285738170874436
+    }
   },
   {
     "kommun": "Eskilstuna",
@@ -3705,7 +4055,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatprogram. Gäller tills vidare.",
     "bicycleMetrePerCapita": 2.152677677,
-    "totalConsumptionEmission": 5961.4
+    "totalConsumptionEmission": 5961.4,
+    "ChargingPointsPerCapita": {
+      "2015": 1.9595355900651545e-5,
+      "2016": 0.00013502565487442613,
+      "2017": 0.0002674077681956661,
+      "2018": 0.0006230882519542313,
+      "2019": 0.000786082594821213,
+      "2020": 0.0008319700864688011,
+      "2021": 0.000873662784753655,
+      "2022": 0.001102689078744973
+    }
   },
   {
     "kommun": "Eslöv",
@@ -3808,7 +4168,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.499086285,
-    "totalConsumptionEmission": 5919.6
+    "totalConsumptionEmission": 5919.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 6.083095078776081e-5,
+      "2017": 6.0175713082200024e-5,
+      "2018": 5.9600083440116814e-5,
+      "2019": 8.87757819666795e-5,
+      "2020": 8.791724057087594e-5,
+      "2021": 8.67227473766369e-5,
+      "2022": 8.64528399757932e-5
+    }
   },
   {
     "kommun": "Essunga",
@@ -3911,7 +4281,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.015159633,
-    "totalConsumptionEmission": 5891.2
+    "totalConsumptionEmission": 5891.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.00035267148651031563,
+      "2019": 0.00035373187124159886,
+      "2020": 0.000703358537014243,
+      "2021": 0.000702000702000702,
+      "2022": 0.0013993353157250306
+    }
   },
   {
     "kommun": "Fagersta",
@@ -4014,7 +4394,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.199243979,
-    "totalConsumptionEmission": 6185.6
+    "totalConsumptionEmission": 6185.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00022313127556712533,
+      "2017": 0.0003727171077152441,
+      "2018": 0.00037136066547831253,
+      "2019": 0.00037338510940183704,
+      "2020": 0.0003768749528906309,
+      "2021": 0.00037540355882573765,
+      "2022": 0.000374784498913125
+    }
   },
   {
     "kommun": "Falkenberg",
@@ -4117,7 +4507,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plans saknas. Har klimatinitiativ och koldioxidbudget. ",
     "bicycleMetrePerCapita": 2.948644735,
-    "totalConsumptionEmission": 5960.6
+    "totalConsumptionEmission": 5960.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003725348669352022,
+      "2016": 0.00043312740784644493,
+      "2017": 0.0007014368141192443,
+      "2018": 0.0008500928390863739,
+      "2019": 0.0016752264862124452,
+      "2020": 0.0016937742937178347,
+      "2021": 0.0016462489042823852,
+      "2022": 0.002616075036688857
+    }
   },
   {
     "kommun": "Falköping",
@@ -4220,7 +4620,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Klimatstrategi 2021–2030. Kommunen står även bakom Västra Götalandsregionens kraftsamling för klimatet, Klimat 2030",
     "bicycleMetrePerCapita": 3.429514807,
-    "totalConsumptionEmission": 5721.4
+    "totalConsumptionEmission": 5721.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00012092995132569459,
+      "2018": 0.00012064545317448349,
+      "2019": 0.00012031522589183661,
+      "2020": 0.00012034418436729045,
+      "2021": 0.00030057108506161706,
+      "2022": 0.0004811740647179117
+    }
   },
   {
     "kommun": "Falun",
@@ -4323,7 +4733,17 @@
     "climatePlanYear": 2012,
     "climatePlanComment": "Energi– och klimatprogram, vision 2050",
     "bicycleMetrePerCapita": 3.120604367,
-    "totalConsumptionEmission": 6238.4
+    "totalConsumptionEmission": 6238.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0005607935228348112,
+      "2016": 0.0006587501083470573,
+      "2017": 0.0007884813164209805,
+      "2018": 0.0009843354886886276,
+      "2019": 0.0011446655220011446,
+      "2020": 0.0011759172154280338,
+      "2021": 0.001754767117335428,
+      "2022": 0.0020395198769601122
+    }
   },
   {
     "kommun": "Filipstad",
@@ -4426,7 +4846,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.  ",
     "bicycleMetrePerCapita": 1.736768242,
-    "totalConsumptionEmission": 5901.1
+    "totalConsumptionEmission": 5901.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0015511391177896268
+    }
   },
   {
     "kommun": "Finspång",
@@ -4529,7 +4959,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbetet med att ta fram en ny energi– och klimatstrategi påbörjas under 2023.",
     "bicycleMetrePerCapita": 3.168529867,
-    "totalConsumptionEmission": 6127.4
+    "totalConsumptionEmission": 6127.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0006488390415720443,
+      "2018": 0.0006434414927842633,
+      "2019": 0.0006389193136181087,
+      "2020": 0.0006432345508844476,
+      "2021": 0.0006395906619763352,
+      "2022": 0.0008218052321599781
+    }
   },
   {
     "kommun": "Flen",
@@ -4632,7 +5072,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Energi– och klimatplan 2019–2023",
     "bicycleMetrePerCapita": 2.556806018,
-    "totalConsumptionEmission": 6102.8
+    "totalConsumptionEmission": 6102.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00017825311942959,
+      "2017": 0.0002964895635673624,
+      "2018": 0.000299311583358276,
+      "2019": 0.00030147723846849563,
+      "2020": 0.00042602397906396443,
+      "2021": 0.00042902672223584214,
+      "2022": 0.0004981940465811433
+    }
   },
   {
     "kommun": "Forshaga",
@@ -4735,7 +5185,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Miljö– och klimatplan 2021–2030",
     "bicycleMetrePerCapita": 6.449194915,
-    "totalConsumptionEmission": 5927.7
+    "totalConsumptionEmission": 5927.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Färgelanda",
@@ -4838,7 +5298,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.231146482,
-    "totalConsumptionEmission": 5767.2
+    "totalConsumptionEmission": 5767.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0004562043795620438,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Gagnef",
@@ -4941,7 +5411,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbete med plan pågår. ",
     "bicycleMetrePerCapita": 0.9615165799,
-    "totalConsumptionEmission": 5892.4
+    "totalConsumptionEmission": 5892.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0001947230065232207,
+      "2019": 0.00019409937888198756,
+      "2020": 0.0001927153594141453,
+      "2021": 0.00019043991620643687,
+      "2022": 0.00019049433279359938
+    }
   },
   {
     "kommun": "Gislaved",
@@ -5044,7 +5524,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Strategi för hållbar utveckling",
     "bicycleMetrePerCapita": 4.057533422,
-    "totalConsumptionEmission": 5973.2
+    "totalConsumptionEmission": 5973.2,
+    "ChargingPointsPerCapita": {
+      "2015": 6.832467887400929e-5,
+      "2016": 6.784720808738721e-5,
+      "2017": 0.00013500286881096223,
+      "2018": 0.00013397193288006162,
+      "2019": 0.00013349798084303974,
+      "2020": 0.00013497553568415726,
+      "2021": 0.00013533631073216944,
+      "2022": 0.00013568060784912317
+    }
   },
   {
     "kommun": "Gnesta",
@@ -5147,7 +5637,17 @@
     "climatePlanYear": 2013,
     "climatePlanComment": "Miljö– och hållbarhetsplan, gäller tills vidare",
     "bicycleMetrePerCapita": 1.698479193,
-    "totalConsumptionEmission": 6087.3
+    "totalConsumptionEmission": 6087.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0009390553103577801,
+      "2016": 0.002209741276125587,
+      "2017": 0.002722570106180234,
+      "2018": 0.0029367268843997507,
+      "2019": 0.003255609326880774,
+      "2020": 0.0030645302512914805,
+      "2021": 0.0030400416920003475,
+      "2022": 0.0038753014123320702
+    }
   },
   {
     "kommun": "Gnosjö",
@@ -5250,7 +5750,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.272521996,
-    "totalConsumptionEmission": 5800.6
+    "totalConsumptionEmission": 5800.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.00020802995631370917,
+      "2021": 0.0002089864158829676,
+      "2022": 0.00021190930281839374
+    }
   },
   {
     "kommun": "Gotland",
@@ -5353,7 +5863,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Kommer under 2023 ta fram ett internt hållbarhetsprogram.",
     "bicycleMetrePerCapita": 2.965998404,
-    "totalConsumptionEmission": 6204.3
+    "totalConsumptionEmission": 6204.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00012197034378212611,
+      "2016": 0.00012068341292691758,
+      "2017": 0.0001194641180988139,
+      "2018": 0.00011814545393171192,
+      "2019": 0.00011728043427269376,
+      "2020": 0.00011642605282416339,
+      "2021": 0.00011475221717676759,
+      "2022": 0.00011442956860052638
+    }
   },
   {
     "kommun": "Grums",
@@ -5456,7 +5976,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.282694987,
-    "totalConsumptionEmission": 6226.9
+    "totalConsumptionEmission": 6226.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.011626607043040804,
+      "2016": 0.014454374931038287,
+      "2017": 0.015092664521140827,
+      "2018": 0.015306122448979591,
+      "2019": 0.016359014037802586,
+      "2020": 0.016919163994249697,
+      "2021": 0.01759982400175998,
+      "2022": 0.0228445908841296
+    }
   },
   {
     "kommun": "Grästorp",
@@ -5559,7 +6089,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.834894831,
-    "totalConsumptionEmission": 6103.6
+    "totalConsumptionEmission": 6103.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0005243838489774515,
+      "2017": 0.0005217391304347826,
+      "2018": 0.003838771593090211,
+      "2019": 0.0038643948708940805,
+      "2020": 0.004573438874230431,
+      "2021": 0.004537521815008726,
+      "2022": 0.007438894792773645
+    }
   },
   {
     "kommun": "Gullspång",
@@ -5662,7 +6202,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 4.147110951,
-    "totalConsumptionEmission": 6029.8
+    "totalConsumptionEmission": 6029.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Gällivare",
@@ -5765,7 +6315,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.568772462,
-    "totalConsumptionEmission": 6701.6
+    "totalConsumptionEmission": 6701.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 5.610098176718093e-5,
+      "2018": 5.6721497447532616e-5,
+      "2019": 5.704831992697815e-5,
+      "2020": 5.7267208796243274e-5,
+      "2021": 5.7309874491374865e-5,
+      "2022": 5.74052812858783e-5
+    }
   },
   {
     "kommun": "Gävle",
@@ -5868,7 +6428,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Klimatplan 2035",
     "bicycleMetrePerCapita": 2.8248516,
-    "totalConsumptionEmission": 6330.1
+    "totalConsumptionEmission": 6330.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 3.887118090647594e-5,
+      "2021": 3.878374185541421e-5,
+      "2022": 0.0005797493550288425
+    }
   },
   {
     "kommun": "Göteborg",
@@ -5971,7 +6541,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Miljö– och klimatprogram 2021–2030",
     "bicycleMetrePerCapita": 1.303877809,
-    "totalConsumptionEmission": 6268.6
+    "totalConsumptionEmission": 6268.6,
+    "ChargingPointsPerCapita": {
+      "2015": 5.654973640526095e-5,
+      "2016": 8.263868927852831e-5,
+      "2017": 0.00014715294509776806,
+      "2018": 0.000139892422726923,
+      "2019": 0.00014845990115332629,
+      "2020": 0.00016636480886913092,
+      "2021": 0.00027912565590274176,
+      "2022": 0.00037363384888102527
+    }
   },
   {
     "kommun": "Götene",
@@ -6074,7 +6654,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Klimat– och miljöpolitiskt program 2019–2024",
     "bicycleMetrePerCapita": 3.76946887,
-    "totalConsumptionEmission": 5959.1
+    "totalConsumptionEmission": 5959.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.004483282674772037,
+      "2016": 0.007457627118644068,
+      "2017": 0.014423803050898656,
+      "2018": 0.03551995163240629,
+      "2019": 0.0641326569243583,
+      "2020": 0.07897529179930271,
+      "2021": 0.10857272110382267,
+      "2022": 0.11954802259887005
+    }
   },
   {
     "kommun": "Habo",
@@ -6177,7 +6767,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Klimatprogram 2021–2025",
     "bicycleMetrePerCapita": 1.781741558,
-    "totalConsumptionEmission": 6088.9
+    "totalConsumptionEmission": 6088.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Hagfors",
@@ -6280,7 +6880,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljööverenskommelse 2022–2025",
     "bicycleMetrePerCapita": 5.447849972,
-    "totalConsumptionEmission": 6389.1
+    "totalConsumptionEmission": 6389.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00033950093362756747,
+      "2018": 0.0005129081894340913,
+      "2019": 0.0006892986386351886,
+      "2020": 0.0006946253364591474,
+      "2021": 0.0006924608326841513,
+      "2022": 0.0006903097765122098
+    }
   },
   {
     "kommun": "Hallsberg",
@@ -6383,7 +6993,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.284930497,
-    "totalConsumptionEmission": 6134.7
+    "totalConsumptionEmission": 6134.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.00025106703489831785,
+      "2020": 0.0002501563477173233,
+      "2021": 0.00012348728081007656,
+      "2022": 0.00036832412523020257
+    }
   },
   {
     "kommun": "Hallstahammar",
@@ -6486,7 +7106,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.03456596,
-    "totalConsumptionEmission": 6200.3
+    "totalConsumptionEmission": 6200.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0008564786492108161,
+      "2020": 0.0007317073170731707,
+      "2021": 0.0009633911368015414,
+      "2022": 0.0009574531745556819
+    }
   },
   {
     "kommun": "Halmstad",
@@ -6589,7 +7219,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Plan för energi och klimat. Gäller tills vidare.",
     "bicycleMetrePerCapita": 2.855029528,
-    "totalConsumptionEmission": 6215.6
+    "totalConsumptionEmission": 6215.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 5.9248726152387724e-5,
+      "2019": 5.838450086117139e-5,
+      "2020": 5.782909574570619e-5,
+      "2021": 5.737618696986794e-5,
+      "2022": 5.7062426294366035e-5
+    }
   },
   {
     "kommun": "Hammarö",
@@ -6692,7 +7332,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.259755972,
-    "totalConsumptionEmission": 6432.4
+    "totalConsumptionEmission": 6432.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0011673151750972762,
+      "2016": 0.0015262321144674086,
+      "2017": 0.0030913812291331767,
+      "2018": 0.00303342838075593,
+      "2019": 0.0039835828102366,
+      "2020": 0.005279577633789297,
+      "2021": 0.009066507605129734,
+      "2022": 0.011533888228299644
+    }
   },
   {
     "kommun": "Haninge",
@@ -6795,7 +7445,17 @@
     "climatePlanYear": 2017,
     "climatePlanComment": "Klimat– och miljöpolitisk program. ",
     "bicycleMetrePerCapita": 2.076686121,
-    "totalConsumptionEmission": 5779.9
+    "totalConsumptionEmission": 5779.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 7.001738765126674e-5,
+      "2017": 6.81531628747004e-5,
+      "2018": 8.889975441442843e-5,
+      "2019": 8.686682230305662e-5,
+      "2020": 8.538798164158395e-5,
+      "2021": 8.363126973175271e-5,
+      "2022": 8.189756661855185e-5
+    }
   },
   {
     "kommun": "Haparanda",
@@ -6898,7 +7558,17 @@
     "climatePlanYear": 2012,
     "climatePlanComment": "Klimatstrategi 2020–2050",
     "bicycleMetrePerCapita": 2.869357799,
-    "totalConsumptionEmission": 6173.1
+    "totalConsumptionEmission": 6173.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00040687620791374224,
+      "2016": 0.00040551500405515005,
+      "2017": 0.000815910249872514,
+      "2018": 0.0008175779253960143,
+      "2019": 0.0008260196179659267,
+      "2020": 0.0008332465368190813,
+      "2021": 0.002527379949452401,
+      "2022": 0.0033190578158458243
+    }
   },
   {
     "kommun": "Heby",
@@ -7001,7 +7671,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbete med handlingsplan pågår 2023",
     "bicycleMetrePerCapita": 2.222548283,
-    "totalConsumptionEmission": 6058.8
+    "totalConsumptionEmission": 6058.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0022189862006795646
+    }
   },
   {
     "kommun": "Hedemora",
@@ -7104,7 +7784,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Energi– och klimatstrategi 2020–2025 ",
     "bicycleMetrePerCapita": 1.72905197,
-    "totalConsumptionEmission": 6114.4
+    "totalConsumptionEmission": 6114.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 6.424257998201208e-5,
+      "2018": 0.0004528692501779129,
+      "2019": 0.00045187528242205153,
+      "2020": 0.00045272280429439917,
+      "2021": 0.00045283995342217624,
+      "2022": 0.0004532798031470569
+    }
   },
   {
     "kommun": "Helsingborg",
@@ -7207,7 +7897,17 @@
     "climatePlanYear": 2018,
     "climatePlanComment": "Klimat– och energiplan 2018–2024 ",
     "bicycleMetrePerCapita": 3.099622293,
-    "totalConsumptionEmission": 6386.7
+    "totalConsumptionEmission": 6386.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 6.978172277117177e-5,
+      "2018": 6.876869648935804e-5,
+      "2019": 0.00010830276036660484,
+      "2020": 0.00010718113612004287,
+      "2021": 0.00010658921183939671,
+      "2022": 7.948335817188276e-5
+    }
   },
   {
     "kommun": "Herrljunga",
@@ -7310,7 +8010,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Står bakom klimatlöften inom Västra Götalands klimat 2030. Har miljömål från 2014 (med målår 2020).",
     "bicycleMetrePerCapita": 3.29488126,
-    "totalConsumptionEmission": 5999.6
+    "totalConsumptionEmission": 5999.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0009626698042571398,
+      "2016": 0.002530044275774826,
+      "2017": 0.004955192409066948,
+      "2018": 0.009269012007583738,
+      "2019": 0.019230769230769232,
+      "2020": 0.020542143159678103,
+      "2021": 0.039153773287022416,
+      "2022": 0.06546180519071136
+    }
   },
   {
     "kommun": "Hjo",
@@ -7413,7 +8123,17 @@
     "climatePlanYear": 2018,
     "climatePlanComment": "Hållbarhetsstrategi",
     "bicycleMetrePerCapita": 2.510562925,
-    "totalConsumptionEmission": 6153.7
+    "totalConsumptionEmission": 6153.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.00043591979075850045,
+      "2019": 0.00043431053203040176,
+      "2020": 0.0004334164048109221,
+      "2021": 0.00043322863641286687,
+      "2022": 0.0006491398896462187
+    }
   },
   {
     "kommun": "Hofors",
@@ -7516,7 +8236,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Hänvisar till  Sandvikens kommun Energi- och klimatstrategi från 2007.",
     "bicycleMetrePerCapita": 3.464511233,
-    "totalConsumptionEmission": 6425.2
+    "totalConsumptionEmission": 6425.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00021197668256491787,
+      "2016": 0.00020911752404851526,
+      "2017": 0.00020703933747412008,
+      "2018": 0.00020828993959591752,
+      "2019": 0.00020859407592824363,
+      "2020": 0.0012539184952978057,
+      "2021": 0.001252871163082063,
+      "2022": 0.001266891891891892
+    }
   },
   {
     "kommun": "Huddinge",
@@ -7619,7 +8349,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljöprogram 2022–2025",
     "bicycleMetrePerCapita": 2.050996867,
-    "totalConsumptionEmission": 6031.7
+    "totalConsumptionEmission": 6031.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Hudiksvall",
@@ -7722,7 +8462,17 @@
     "climatePlanYear": 2017,
     "climatePlanComment": "Energi– och klimatstrategi 2017–2050",
     "bicycleMetrePerCapita": 2.080051418,
-    "totalConsumptionEmission": 6218.1
+    "totalConsumptionEmission": 6218.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00010818120351588912,
+      "2016": 0.00040215555376819754,
+      "2017": 0.00040105879521937915,
+      "2018": 0.00040074806305102857,
+      "2019": 0.0009572685936128912,
+      "2020": 0.0011990088193759825,
+      "2021": 0.001934082238236541,
+      "2022": 0.0019369560602844407
+    }
   },
   {
     "kommun": "Hultsfred",
@@ -7825,7 +8575,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.781709192,
-    "totalConsumptionEmission": 5728.2
+    "totalConsumptionEmission": 5728.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00014368848336805806,
+      "2016": 0.00034230163620182103,
+      "2017": 0.0005487344811029564,
+      "2018": 0.0005571030640668524,
+      "2019": 0.0007733408323959505,
+      "2020": 0.001063301906854753,
+      "2021": 0.0012805919180421173,
+      "2022": 0.002417519908987486
+    }
   },
   {
     "kommun": "Hylte",
@@ -7928,7 +8688,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.649667798,
-    "totalConsumptionEmission": 5849.4
+    "totalConsumptionEmission": 5849.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00019022256039566293,
+      "2016": 0.00018258170531312764,
+      "2017": 0.000272975432211101,
+      "2018": 0.000916254352208173,
+      "2019": 0.001664355062413315,
+      "2020": 0.001690299558644004,
+      "2021": 0.0016950748658065731,
+      "2022": 0.0017201834862385322
+    }
   },
   {
     "kommun": "Hällefors",
@@ -8031,7 +8801,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Saknas",
     "bicycleMetrePerCapita": 1.564050556,
-    "totalConsumptionEmission": 6045.2
+    "totalConsumptionEmission": 6045.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.00028640985249892595,
+      "2019": 0.00028518465706544986,
+      "2020": 0.0002900232018561485,
+      "2021": 0.0002920134326179004,
+      "2022": 0.0009014423076923077
+    }
   },
   {
     "kommun": "Härjedalen",
@@ -8134,7 +8914,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.525898392,
-    "totalConsumptionEmission": 6683.0
+    "totalConsumptionEmission": 6683.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0009744689144416293,
+      "2016": 0.001568627450980392,
+      "2017": 0.0023636005515067955,
+      "2018": 0.0035478466541835024,
+      "2019": 0.003865213082259663,
+      "2020": 0.006653426017874876,
+      "2021": 0.006624480917540043,
+      "2022": 0.007560137457044674
+    }
   },
   {
     "kommun": "Härnösand",
@@ -8237,7 +9027,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Har eget klimatlöfte. ",
     "bicycleMetrePerCapita": 2.233581042,
-    "totalConsumptionEmission": 6107.7
+    "totalConsumptionEmission": 6107.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00023936806829968882,
+      "2016": 0.0003165934544303297,
+      "2017": 0.0003969829297340214,
+      "2018": 0.0018312101910828026,
+      "2019": 0.0022237223523805744,
+      "2020": 0.002229831966233973,
+      "2021": 0.0022389253158483927,
+      "2022": 0.002572450661200209
+    }
   },
   {
     "kommun": "Härryda",
@@ -8340,7 +9140,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Energi– och klimatplan.",
     "bicycleMetrePerCapita": 3.211264818,
-    "totalConsumptionEmission": 6205.1
+    "totalConsumptionEmission": 6205.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00030012823661018797,
+      "2016": 0.00037727713700549747,
+      "2017": 0.0005613172244199722,
+      "2018": 0.0007142479233902968,
+      "2019": 0.00073728835874345,
+      "2020": 0.0007321027035506982,
+      "2021": 0.0007178382812900579,
+      "2022": 0.0031437050450178563
+    }
   },
   {
     "kommun": "Hässleholm",
@@ -8443,7 +9253,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Ny energi– och klimatplan hösten 2023.",
     "bicycleMetrePerCapita": 3.359049704,
-    "totalConsumptionEmission": 6088.8
+    "totalConsumptionEmission": 6088.8,
+    "ChargingPointsPerCapita": {
+      "2015": 3.9178812098417176e-5,
+      "2016": 3.8709427681111735e-5,
+      "2017": 0.00023075591792781185,
+      "2018": 0.0002302334951363174,
+      "2019": 0.00034519129350848597,
+      "2020": 0.0003460872909055951,
+      "2021": 0.00034410904433271523,
+      "2022": 0.00034371479310278983
+    }
   },
   {
     "kommun": "Håbo",
@@ -8546,7 +9366,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Hållbarhetsstrategi 2021. Uppdateras senast 2026.",
     "bicycleMetrePerCapita": 3.741361443,
-    "totalConsumptionEmission": 6181.4
+    "totalConsumptionEmission": 6181.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.000142294739837784,
+      "2018": 0.0001391207568169171,
+      "2019": 0.0001367739582383514,
+      "2020": 0.0001362459693900722,
+      "2021": 0.0001342642320085929,
+      "2022": 0.0001317812431363936
+    }
   },
   {
     "kommun": "Höganäs",
@@ -8649,7 +9479,17 @@
     "climatePlanYear": 2015,
     "climatePlanComment": "Miljöprogram 2015–2025",
     "bicycleMetrePerCapita": 3.869861408,
-    "totalConsumptionEmission": 6602.1
+    "totalConsumptionEmission": 6602.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0003558338967370032
+    }
   },
   {
     "kommun": "Högsby",
@@ -8752,7 +9592,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Hade en energi- och klimatstrategi fram till 2010. ",
     "bicycleMetrePerCapita": 2.926082874,
-    "totalConsumptionEmission": 5669.7
+    "totalConsumptionEmission": 5669.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.001642845408247084,
+      "2018": 0.001969149983590417,
+      "2019": 0.00827562911670326,
+      "2020": 0.008549991275519107,
+      "2021": 0.011160318866253321,
+      "2022": 0.011640401146131804
+    }
   },
   {
     "kommun": "Hörby",
@@ -8855,7 +9705,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.95921921,
-    "totalConsumptionEmission": 6171.6
+    "totalConsumptionEmission": 6171.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0003197953309881676,
+      "2019": 0.0003198771671678076,
+      "2020": 0.0003194275857663068,
+      "2021": 0.00031756113051762465,
+      "2022": 0.0003181066293421555
+    }
   },
   {
     "kommun": "Höör",
@@ -8958,7 +9818,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Ny miljö– och klimatstrategi kommer under 2023.",
     "bicycleMetrePerCapita": 3.594365932,
-    "totalConsumptionEmission": 6011.7
+    "totalConsumptionEmission": 6011.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00012137395314965408,
+      "2018": 0.00012021398088597704,
+      "2019": 0.00011966732483695327,
+      "2020": 0.00023767082590612002,
+      "2021": 0.0002359325232983367,
+      "2022": 0.0004046944556859571
+    }
   },
   {
     "kommun": "Jokkmokk",
@@ -9061,7 +9931,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.  ",
     "bicycleMetrePerCapita": 1.773408665,
-    "totalConsumptionEmission": 6223.4
+    "totalConsumptionEmission": 6223.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003943217665615142,
+      "2016": 0.0003917727717923604,
+      "2017": 0.000393623302499508,
+      "2018": 0.0003999200159968006,
+      "2019": 0.0022344099126548854,
+      "2020": 0.0022675736961451248,
+      "2021": 0.002301255230125523,
+      "2022": 0.0016806722689075631
+    }
   },
   {
     "kommun": "Järfälla",
@@ -9164,7 +10044,17 @@
     "climatePlanYear": 2023,
     "climatePlanComment": "Miljöplan 2023–2030",
     "bicycleMetrePerCapita": 2.422133029,
-    "totalConsumptionEmission": 5996.9
+    "totalConsumptionEmission": 5996.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 5.231972584463658e-5,
+      "2018": 5.0968399592252805e-5,
+      "2019": 5.000625078134767e-5,
+      "2020": 4.921623151315304e-5,
+      "2021": 3.6070698569195625e-5,
+      "2022": 0.00012871518839223029
+    }
   },
   {
     "kommun": "Jönköping",
@@ -9267,7 +10157,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Hållbarhetsprogram 2022–2030",
     "bicycleMetrePerCapita": 2.698136433,
-    "totalConsumptionEmission": 6166.6
+    "totalConsumptionEmission": 6166.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 2.2173440652786093e-5,
+      "2017": 8.001105607320285e-5,
+      "2018": 9.337604688914108e-5,
+      "2019": 0.00010632190018500011,
+      "2020": 0.00014744395374472537,
+      "2021": 0.00018804978443922858,
+      "2022": 0.00028253648855382663
+    }
   },
   {
     "kommun": "Kalix",
@@ -9370,7 +10270,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Hade en miljöplan 2017–2019.",
     "bicycleMetrePerCapita": 2.483080714,
-    "totalConsumptionEmission": 6289.7
+    "totalConsumptionEmission": 6289.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0014771048744460858,
+      "2016": 0.002773839610429637,
+      "2017": 0.003401570907291731,
+      "2018": 0.0034250840702453604,
+      "2019": 0.004909983633387889,
+      "2020": 0.005691879585125221,
+      "2021": 0.007927447995941146,
+      "2022": 0.009345794392523364
+    }
   },
   {
     "kommun": "Kalmar",
@@ -9473,7 +10383,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Handlingsplan Fossilbränslefri kommun 2030",
     "bicycleMetrePerCapita": 2.898366807,
-    "totalConsumptionEmission": 6169.9
+    "totalConsumptionEmission": 6169.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 6.008622373105406e-5,
+      "2017": 5.930230834235222e-5,
+      "2018": 5.838563713326522e-5,
+      "2019": 0.00010076727079044727,
+      "2020": 0.00024172105390379503,
+      "2021": 0.00023833557649170033,
+      "2022": 0.00027770835069010526
+    }
   },
   {
     "kommun": "Karlsborg",
@@ -9576,7 +10496,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.403046603,
-    "totalConsumptionEmission": 6340.2
+    "totalConsumptionEmission": 6340.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0013305736250739208,
+      "2016": 0.004484304932735426,
+      "2017": 0.006758700028760426,
+      "2018": 0.006771358593862556,
+      "2019": 0.007636887608069165,
+      "2020": 0.008187302499281816,
+      "2021": 0.009045226130653266,
+      "2022": 0.013320107694487743
+    }
   },
   {
     "kommun": "Karlshamn",
@@ -9679,7 +10609,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas men har ett miljöråd. ",
     "bicycleMetrePerCapita": 3.701085608,
-    "totalConsumptionEmission": 6011.4
+    "totalConsumptionEmission": 6011.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Karlskoga",
@@ -9782,7 +10722,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Miljöprogram 2021–2030. ",
     "bicycleMetrePerCapita": 3.623405516,
-    "totalConsumptionEmission": 6230.6
+    "totalConsumptionEmission": 6230.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00013208730971171946,
+      "2016": 0.0003274608684262231,
+      "2017": 0.0006904941965606813,
+      "2018": 0.00082185476182649,
+      "2019": 0.000822882722754353,
+      "2020": 0.0008260912665631299,
+      "2021": 0.0008213687288497552,
+      "2022": 0.0011559548186802298
+    }
   },
   {
     "kommun": "Karlskrona",
@@ -9885,7 +10835,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Hållbarhetsprogram 2021–2025",
     "bicycleMetrePerCapita": 1.512487322,
-    "totalConsumptionEmission": 6165.4
+    "totalConsumptionEmission": 6165.4,
+    "ChargingPointsPerCapita": {
+      "2015": 7.647598654022637e-5,
+      "2016": 9.054963629229422e-5,
+      "2017": 9.000090000900009e-5,
+      "2018": 8.998875140607424e-5,
+      "2019": 9.006034042808682e-5,
+      "2020": 0.00018041043373675112,
+      "2021": 0.00020986988067398212,
+      "2022": 0.00026993791427971567
+    }
   },
   {
     "kommun": "Karlstad",
@@ -9988,7 +10948,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. Ny Energi– och klimatplan samt handlingsplan beslutas maj 2023.",
     "bicycleMetrePerCapita": 2.913788973,
-    "totalConsumptionEmission": 6351.9
+    "totalConsumptionEmission": 6351.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00021289708106896746,
+      "2016": 0.00023282112685425396,
+      "2017": 0.00029631255487269534,
+      "2018": 0.0006594808480275036,
+      "2019": 0.0006709408081109288,
+      "2020": 0.0007276331885097229,
+      "2021": 0.0007232097937279893,
+      "2022": 0.0010470010159019758
+    }
   },
   {
     "kommun": "Katrineholm",
@@ -10091,7 +11061,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Ska påbörjas 2023",
     "bicycleMetrePerCapita": 2.805132199,
-    "totalConsumptionEmission": 5768.7
+    "totalConsumptionEmission": 5768.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00047815432430817044,
+      "2016": 0.0005041219382005812,
+      "2017": 0.0004980517387865116,
+      "2018": 0.0014761215629522431,
+      "2019": 0.0018702344986332902,
+      "2020": 0.0030202790162519775,
+      "2021": 0.0035381429064549534,
+      "2022": 0.004941625245636343
+    }
   },
   {
     "kommun": "Kil",
@@ -10194,7 +11174,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.45585916,
-    "totalConsumptionEmission": 6153.6
+    "totalConsumptionEmission": 6153.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00042365700728690055,
+      "2016": 0.000423728813559322,
+      "2017": 0.0018471872376154492,
+      "2018": 0.001839157331549908,
+      "2019": 0.0023992719450649457,
+      "2020": 0.0023937267849773007,
+      "2021": 0.003049283006428218,
+      "2022": 0.0030540652084193147
+    }
   },
   {
     "kommun": "Kinda",
@@ -10297,7 +11287,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.666942945,
-    "totalConsumptionEmission": 6124.1
+    "totalConsumptionEmission": 6124.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0003972983710766786
+    }
   },
   {
     "kommun": "Kiruna",
@@ -10400,7 +11400,17 @@
     "climatePlanYear": 2015,
     "climatePlanComment": "Åtgärdsplan för hållbar energi för kommunkoncernen",
     "bicycleMetrePerCapita": 1.255295331,
-    "totalConsumptionEmission": 6496.0
+    "totalConsumptionEmission": 6496.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 8.652015919709292e-5,
+      "2018": 0.00030445372303409884,
+      "2019": 0.00030611798661827087,
+      "2020": 0.00030885986586657254,
+      "2021": 0.000310352471735757,
+      "2022": 0.0003121794585916247
+    }
   },
   {
     "kommun": "Klippan",
@@ -10503,7 +11513,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Hållbarhetsstrategi 2021–2023",
     "bicycleMetrePerCapita": 2.953589832,
-    "totalConsumptionEmission": 6164.1
+    "totalConsumptionEmission": 6164.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.00011275228323373548,
+      "2021": 0.00011246696282966878,
+      "2022": 0.0008396305625524769
+    }
   },
   {
     "kommun": "Knivsta",
@@ -10606,7 +11626,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.840850954,
-    "totalConsumptionEmission": 6273.3
+    "totalConsumptionEmission": 6273.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00022143489813994686,
+      "2018": 0.00021367521367521368,
+      "2019": 0.0005309264666843643,
+      "2020": 0.0005233957918978332,
+      "2021": 0.0005045917852457363,
+      "2022": 0.0004966969651815428
+    }
   },
   {
     "kommun": "Kramfors",
@@ -10709,7 +11739,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Program för Ekologisk hållbarhet 2020–2031",
     "bicycleMetrePerCapita": 2.479463175,
-    "totalConsumptionEmission": 6163.1
+    "totalConsumptionEmission": 6163.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00010746910263299302,
+      "2018": 0.00010855995223362102,
+      "2019": 0.0001093972213105787,
+      "2020": 0.00011029614514972701,
+      "2021": 0.00011108025548458761,
+      "2022": 0.00022341376228775692
+    }
   },
   {
     "kommun": "Kristianstad",
@@ -10812,7 +11852,17 @@
     "climatePlanYear": 2023,
     "climatePlanComment": "Remissversion, kommer klubbas 2023",
     "bicycleMetrePerCapita": 4.197073098,
-    "totalConsumptionEmission": 6072.5
+    "totalConsumptionEmission": 6072.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.000162380968950439,
+      "2021": 0.00023083759421059315,
+      "2022": 0.00029975327999262147
+    }
   },
   {
     "kommun": "Kristinehamn",
@@ -10915,7 +11965,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.445690665,
-    "totalConsumptionEmission": 5767.0
+    "totalConsumptionEmission": 5767.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003296250515039143,
+      "2016": 0.0005674678772648048,
+      "2017": 0.0005679513184584179,
+      "2018": 0.002999671268902038,
+      "2019": 0.00383426097711812,
+      "2020": 0.0038859032658123192,
+      "2021": 0.0043570272625420145,
+      "2022": 0.004947407807757868
+    }
   },
   {
     "kommun": "Krokom",
@@ -11018,7 +12078,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.078378995,
-    "totalConsumptionEmission": 6107.5
+    "totalConsumptionEmission": 6107.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0002705444707473791,
+      "2016": 0.00026948730041096813,
+      "2017": 0.0004020100502512563,
+      "2018": 0.0008076457127473415,
+      "2019": 0.0014699986636375784,
+      "2020": 0.0014614056064833267,
+      "2021": 0.0013027618551328818,
+      "2022": 0.002704094772083441
+    }
   },
   {
     "kommun": "Kumla",
@@ -11121,7 +12191,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Nya handlingsplanen för ökad ekologisk hållbarhet förväntas hösten 2023.",
     "bicycleMetrePerCapita": 3.84927185,
-    "totalConsumptionEmission": 6108.8
+    "totalConsumptionEmission": 6108.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0010399924364186443,
+      "2016": 0.0009374707040404988,
+      "2017": 0.0009764716823212127,
+      "2018": 0.001432532347504621,
+      "2019": 0.0014260741558561045,
+      "2020": 0.0014179855456957278,
+      "2021": 0.0014902456647398843,
+      "2022": 0.0022687841985853463
+    }
   },
   {
     "kommun": "Kungsbacka",
@@ -11224,7 +12304,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatstrategi",
     "bicycleMetrePerCapita": 2.391165078,
-    "totalConsumptionEmission": 6550.5
+    "totalConsumptionEmission": 6550.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 5.887201224537855e-5,
+      "2021": 5.861595995357616e-5,
+      "2022": 0.0001748231372594725
+    }
   },
   {
     "kommun": "Kungsör",
@@ -11327,7 +12417,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plans saknas. ",
     "bicycleMetrePerCapita": 0.7854633489,
-    "totalConsumptionEmission": 5957.7
+    "totalConsumptionEmission": 5957.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00047944384513963804,
+      "2016": 0.0004743833017077799,
+      "2017": 0.001046146693014065,
+      "2018": 0.0014999423099111573,
+      "2019": 0.006570605187319885,
+      "2020": 0.006746712407089766,
+      "2021": 0.009559576647319904,
+      "2022": 0.011641177813284638
+    }
   },
   {
     "kommun": "Kungälv",
@@ -11430,7 +12530,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.359773817,
-    "totalConsumptionEmission": 6141.1
+    "totalConsumptionEmission": 6141.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00013602357742008615,
+      "2018": 0.00026615800913809166,
+      "2019": 0.0002589779005524862,
+      "2020": 0.00025504782146652496,
+      "2021": 0.0002485964657869114,
+      "2022": 0.00024455857177794083
+    }
   },
   {
     "kommun": "Kävlinge",
@@ -11533,7 +12643,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Ska tas fram 2023.",
     "bicycleMetrePerCapita": 4.384705605,
-    "totalConsumptionEmission": 6198.9
+    "totalConsumptionEmission": 6198.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00013287270794578793,
+      "2016": 0.00013101008777675882,
+      "2017": 0.00041991020381795276,
+      "2018": 0.000412816360229907,
+      "2019": 0.0005361930294906167,
+      "2020": 0.0005309181761399126,
+      "2021": 0.000525648557558517,
+      "2022": 0.0007391438250692947
+    }
   },
   {
     "kommun": "Köping",
@@ -11636,7 +12756,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.951098729,
-    "totalConsumptionEmission": 6160.5
+    "totalConsumptionEmission": 6160.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003912822318738506,
+      "2016": 0.0006165703275529866,
+      "2017": 0.0009189768724153775,
+      "2018": 0.0011420740063956144,
+      "2019": 0.0014496070801861601,
+      "2020": 0.0014951121334100057,
+      "2021": 0.0014923659740557916,
+      "2022": 0.001339969372128637
+    }
   },
   {
     "kommun": "Laholm",
@@ -11739,7 +12869,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.734875322,
-    "totalConsumptionEmission": 6146.9
+    "totalConsumptionEmission": 6146.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00012399256044637322,
+      "2016": 0.00012163477132662991,
+      "2017": 0.0005169602735912832,
+      "2018": 0.0007453611078419834,
+      "2019": 0.0007335057715322549,
+      "2020": 0.0007316979242885201,
+      "2021": 0.0007219119267449371,
+      "2022": 0.0007149576669802446
+    }
   },
   {
     "kommun": "Landskrona",
@@ -11842,7 +12982,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.130120968,
-    "totalConsumptionEmission": 6015.8
+    "totalConsumptionEmission": 6015.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00018197948181342553,
+      "2016": 0.00017932796843827755,
+      "2017": 0.0002870644349247008,
+      "2018": 0.0006553795740032769,
+      "2019": 0.001063137339986982,
+      "2020": 0.0010150091782744845,
+      "2021": 0.0010110135949062125,
+      "2022": 0.001510509743851587
+    }
   },
   {
     "kommun": "Laxå",
@@ -11945,7 +13095,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.420762914,
-    "totalConsumptionEmission": 6576.6
+    "totalConsumptionEmission": 6576.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003536067892503536,
+      "2016": 0.0007006480994920302,
+      "2017": 0.000708842814105972,
+      "2018": 0.0012417952811779316,
+      "2019": 0.0031673411930318494,
+      "2020": 0.003887612652412087,
+      "2021": 0.003941239699032604,
+      "2022": 0.003945480631276901
+    }
   },
   {
     "kommun": "Lekeberg",
@@ -12048,7 +13208,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Hållbarhetsprogram 2022–2030",
     "bicycleMetrePerCapita": 1.332483676,
-    "totalConsumptionEmission": 6034.4
+    "totalConsumptionEmission": 6034.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0006072382803011902,
+      "2020": 0.0009442870632672333,
+      "2021": 0.0009299081715680576,
+      "2022": 0.0013704888076747374
+    }
   },
   {
     "kommun": "Leksand",
@@ -12151,7 +13321,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Pågår ett arbete att ta fram ny plan.",
     "bicycleMetrePerCapita": 2.762561296,
-    "totalConsumptionEmission": 6495.5
+    "totalConsumptionEmission": 6495.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00012897401173663506,
+      "2017": 0.0001278772378516624,
+      "2018": 0.00012655024044545685,
+      "2019": 0.00012652622255962547,
+      "2020": 0.00012657426745142712,
+      "2021": 0.00012490632025980515,
+      "2022": 0.00012412337863836653
+    }
   },
   {
     "kommun": "Lerum",
@@ -12254,7 +13434,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbete med ny energiplan pågår, beslut hösten 2023.",
     "bicycleMetrePerCapita": 2.62316211,
-    "totalConsumptionEmission": 6157.9
+    "totalConsumptionEmission": 6157.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0002488738458475399,
+      "2016": 0.00036862282512533176,
+      "2017": 0.0006022645145748012,
+      "2018": 0.0005933027980159955,
+      "2019": 0.0005872956211238489,
+      "2020": 0.0008600650860065086,
+      "2021": 0.0008525542063181179,
+      "2022": 0.0008498713708195516
+    }
   },
   {
     "kommun": "Lessebo",
@@ -12357,7 +13547,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Energi, miljö– och klimatstrategiskt program för Lessebo kommun 2019 –2030",
     "bicycleMetrePerCapita": 2.771482457,
-    "totalConsumptionEmission": 5777.4
+    "totalConsumptionEmission": 5777.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0024982966159436746,
+      "2018": 0.0025056947608200456,
+      "2019": 0.0025191801213786786,
+      "2020": 0.0027729636048526864,
+      "2021": 0.0027991602519244225,
+      "2022": 0.002828520919269299
+    }
   },
   {
     "kommun": "Lidingö",
@@ -12460,7 +13660,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Miljöprogram 2021–2030. ",
     "bicycleMetrePerCapita": 2.616293985,
-    "totalConsumptionEmission": 7483.1
+    "totalConsumptionEmission": 7483.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00016954540637914591,
+      "2018": 0.00020912627044209294,
+      "2019": 0.0002078008436714253,
+      "2020": 0.00027080512446620144,
+      "2021": 0.00026992234541754913,
+      "2022": 0.000268417575156921
+    }
   },
   {
     "kommun": "Lidköping",
@@ -12563,7 +13773,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.994218922,
-    "totalConsumptionEmission": 6172.0
+    "totalConsumptionEmission": 6172.0,
+    "ChargingPointsPerCapita": {
+      "2015": 5.1270219692891383e-5,
+      "2016": 5.097489486427934e-5,
+      "2017": 0.000151875664456032,
+      "2018": 0.0003761378168961107,
+      "2019": 0.0004240564743445833,
+      "2020": 0.0005207300138861337,
+      "2021": 0.0006178942165101335,
+      "2022": 0.00039548162246335613
+    }
   },
   {
     "kommun": "Lilla Edet",
@@ -12666,7 +13886,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.530883986,
-    "totalConsumptionEmission": 6077.2
+    "totalConsumptionEmission": 6077.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00030353619669145547,
+      "2016": 0.0002913752913752914,
+      "2017": 0.0005730248549530836,
+      "2018": 0.0005695571693008686,
+      "2019": 0.0007796441987383939,
+      "2020": 0.0010502730709984595,
+      "2021": 0.0010338410641670688,
+      "2022": 0.0038120321596894925
+    }
   },
   {
     "kommun": "Lindesberg",
@@ -12769,7 +13999,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbetar utifrån Örebro läns klimat– och energiprogram.",
     "bicycleMetrePerCapita": 2.033057359,
-    "totalConsumptionEmission": 6139.5
+    "totalConsumptionEmission": 6139.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Linköping",
@@ -12872,7 +14112,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. ",
     "bicycleMetrePerCapita": 3.315704358,
-    "totalConsumptionEmission": 6282.7
+    "totalConsumptionEmission": 6282.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00011355034065102195,
+      "2018": 0.00011798750574412856,
+      "2019": 0.00011652795751022686,
+      "2020": 0.00017616756572872626,
+      "2021": 0.00019936324587529526,
+      "2022": 0.00019799247628590112
+    }
   },
   {
     "kommun": "Ljungby",
@@ -12975,7 +14225,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Klimat- och energiplan ",
     "bicycleMetrePerCapita": 4.84998266,
-    "totalConsumptionEmission": 6147.5
+    "totalConsumptionEmission": 6147.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003618206816701643,
+      "2016": 0.0004641530991145387,
+      "2017": 0.005795667385235184,
+      "2018": 0.006579638119903405,
+      "2019": 0.008309666561481015,
+      "2020": 0.010598218372592514,
+      "2021": 0.011360039390848661,
+      "2022": 0.014991398377979848
+    }
   },
   {
     "kommun": "Ljusdal",
@@ -13078,7 +14338,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.610765974,
-    "totalConsumptionEmission": 6353.1
+    "totalConsumptionEmission": 6353.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00042045514269196406,
+      "2016": 0.000734252897676614,
+      "2017": 0.000998528484338869,
+      "2018": 0.0009982661692849262,
+      "2019": 0.0016359702358963533,
+      "2020": 0.0017490857051995548,
+      "2021": 0.0027121888959795786,
+      "2022": 0.004155346012466038
+    }
   },
   {
     "kommun": "Ljusnarsberg",
@@ -13181,7 +14451,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.489763659,
-    "totalConsumptionEmission": 6088.1
+    "totalConsumptionEmission": 6088.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00039952057530962844,
+      "2017": 0.0008093889113719142,
+      "2018": 0.0016508460586050352,
+      "2019": 0.0025151959756864388,
+      "2020": 0.002139495079161318,
+      "2021": 0.002172024326672459,
+      "2022": 0.0024352446313925173
+    }
   },
   {
     "kommun": "Lomma",
@@ -13284,7 +14564,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Energi– och klimatplan 2021–2025",
     "bicycleMetrePerCapita": 4.057055311,
-    "totalConsumptionEmission": 6598.4
+    "totalConsumptionEmission": 6598.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00016485328058028355,
+      "2018": 0.0001615313168840609,
+      "2019": 0.0001610695014898929,
+      "2020": 0.00016079755587715066,
+      "2021": 0.00016235084016559786,
+      "2022": 0.0001618057521944905
+    }
   },
   {
     "kommun": "Ludvika",
@@ -13387,7 +14677,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.737941809,
-    "totalConsumptionEmission": 6222.7
+    "totalConsumptionEmission": 6222.7,
+    "ChargingPointsPerCapita": {
+      "2015": 7.586677793794098e-5,
+      "2016": 0.00014851668956298965,
+      "2017": 0.00022228808535862477,
+      "2018": 0.00044533511467379205,
+      "2019": 0.0004833073090936129,
+      "2020": 0.0004886483235603668,
+      "2021": 0.000490621579801487,
+      "2022": 0.0006450878457860585
+    }
   },
   {
     "kommun": "Luleå",
@@ -13490,7 +14790,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.867407965,
-    "totalConsumptionEmission": 6627.2
+    "totalConsumptionEmission": 6627.2,
+    "ChargingPointsPerCapita": {
+      "2015": 2.628535380086216e-5,
+      "2016": 5.210368633580826e-5,
+      "2017": 5.16328901510262e-5,
+      "2018": 5.139274334463974e-5,
+      "2019": 0.00012803277639075603,
+      "2020": 0.00012730906822492965,
+      "2021": 0.00024091191499613272,
+      "2022": 0.00047953157336833073
+    }
   },
   {
     "kommun": "Lund",
@@ -13593,7 +14903,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Program för ekologisk hållbar utveckling 2021–2030",
     "bicycleMetrePerCapita": 3.243323968,
-    "totalConsumptionEmission": 6171.1
+    "totalConsumptionEmission": 6171.1,
+    "ChargingPointsPerCapita": {
+      "2015": 9.41506753171166e-5,
+      "2016": 0.00010966577246882961,
+      "2017": 0.0002226363441463133,
+      "2018": 0.00036600839379249766,
+      "2019": 0.0004242205947092488,
+      "2020": 0.0005637560444970264,
+      "2021": 0.0007301218439894486,
+      "2022": 0.0006932328015952144
+    }
   },
   {
     "kommun": "Lycksele",
@@ -13696,7 +15016,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Pågående arbete med att ta fram klimatstrategi och koldioxidbudget. Nuvarande klimatarbete ingår i översiktsplanen.",
     "bicycleMetrePerCapita": 3.367278473,
-    "totalConsumptionEmission": 6113.7
+    "totalConsumptionEmission": 6113.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00032848813336618213,
+      "2016": 0.001312874374333306,
+      "2017": 0.0027739251040221915,
+      "2018": 0.002780503761858031,
+      "2019": 0.010534912209064924,
+      "2020": 0.041788380395975336,
+      "2021": 0.04329745596868884,
+      "2022": 0.04549538511802663
+    }
   },
   {
     "kommun": "Lysekil",
@@ -13799,7 +15129,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.570420853,
-    "totalConsumptionEmission": 6492.7
+    "totalConsumptionEmission": 6492.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00047876342247452297,
+      "2018": 0.0004790910957497776,
+      "2019": 0.0004809343868086568,
+      "2020": 0.0016010023666991507,
+      "2021": 0.0017524183373054817,
+      "2022": 0.002328863796753705
+    }
   },
   {
     "kommun": "Malmö",
@@ -13902,7 +15242,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. ",
     "bicycleMetrePerCapita": 1.555072408,
-    "totalConsumptionEmission": 6184.8
+    "totalConsumptionEmission": 6184.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 1.7983832534551437e-5,
+      "2018": 1.768278845785455e-5,
+      "2019": 2.3244597083965295e-5,
+      "2020": 4.598375049216983e-5,
+      "2021": 7.675928005481181e-5,
+      "2022": 4.477064836293326e-5
+    }
   },
   {
     "kommun": "Malung-Sälen",
@@ -14005,7 +15355,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.157542207,
-    "totalConsumptionEmission": 6838.9
+    "totalConsumptionEmission": 6838.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.002989238740534077,
+      "2016": 0.004162124665543554,
+      "2017": 0.0065256080680245205,
+      "2018": 0.02068078369285573,
+      "2019": 0.029986190570132177,
+      "2020": 0.033506927385280535,
+      "2021": 0.0362106087296927,
+      "2022": 0.04513550399688048
+    }
   },
   {
     "kommun": "Malå",
@@ -14108,7 +15468,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.123764229,
-    "totalConsumptionEmission": 6081.2
+    "totalConsumptionEmission": 6081.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0077195239626889674,
+      "2016": 0.012258064516129033,
+      "2017": 0.01149058410469199,
+      "2018": 0.013452914798206279,
+      "2019": 0.014341590612777053,
+      "2020": 0.018518518518518517,
+      "2021": 0.02043506921555702,
+      "2022": 0.04088361358391032
+    }
   },
   {
     "kommun": "Mariestad",
@@ -14211,7 +15581,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. ",
     "bicycleMetrePerCapita": 4.177182145,
-    "totalConsumptionEmission": 6077.1
+    "totalConsumptionEmission": 6077.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0001631787214947171,
+      "2021": 0.00016179266270274642,
+      "2022": 0.00016149870801033592
+    }
   },
   {
     "kommun": "Mark",
@@ -14314,7 +15694,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.164699341,
-    "totalConsumptionEmission": 6018.4
+    "totalConsumptionEmission": 6018.4,
+    "ChargingPointsPerCapita": {
+      "2015": 5.898661003952103e-5,
+      "2016": 5.844876965339879e-5,
+      "2017": 0.00014499478018791323,
+      "2018": 0.00014375664874500445,
+      "2019": 0.00014386833170282557,
+      "2020": 0.00014328289775332416,
+      "2021": 0.00014204141927786143,
+      "2022": 0.0009340768207421664
+    }
   },
   {
     "kommun": "Markaryd",
@@ -14417,7 +15807,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.936381161,
-    "totalConsumptionEmission": 6465.5
+    "totalConsumptionEmission": 6465.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.00019280825219319386,
+      "2021": 0.0001937984496124031,
+      "2022": 0.0001967342120794806
+    }
   },
   {
     "kommun": "Mellerud",
@@ -14520,7 +15920,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbete pågår med Energi– och Klimatstrategi som bör vara klart under 2023.",
     "bicycleMetrePerCapita": 2.458987795,
-    "totalConsumptionEmission": 5737.5
+    "totalConsumptionEmission": 5737.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0003199317478937827,
+      "2018": 0.00032071840923669016,
+      "2019": 0.000966702470461869,
+      "2020": 0.0009664948453608248,
+      "2021": 0.0009710832973672853,
+      "2022": 0.0033466479542264924
+    }
   },
   {
     "kommun": "Mjölby",
@@ -14623,7 +16033,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Energi och klimatstrategi. 2020–2023.",
     "bicycleMetrePerCapita": 3.49516978,
-    "totalConsumptionEmission": 6184.6
+    "totalConsumptionEmission": 6184.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00014804396905881046,
+      "2018": 0.00014612939758155847,
+      "2019": 0.00025217955184091075,
+      "2020": 0.00039341917024320457,
+      "2021": 0.0013088542219392267,
+      "2022": 0.0012995679814548136
+    }
   },
   {
     "kommun": "Mora",
@@ -14726,7 +16146,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas, men planeras att tas fram. Klimatarbetet har hittills ingått i Strategi Hållbara Mora, som genomgår revidering just nu.",
     "bicycleMetrePerCapita": 2.867186548,
-    "totalConsumptionEmission": 6031.3
+    "totalConsumptionEmission": 6031.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0001479362887716357,
+      "2017": 0.0004909421179242967,
+      "2018": 0.0008827856792545365,
+      "2019": 0.001270151441133366,
+      "2020": 0.0012687878196369314,
+      "2021": 0.0013546202225447508,
+      "2022": 0.001692538323903477
+    }
   },
   {
     "kommun": "Motala",
@@ -14829,7 +16259,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.46608596,
-    "totalConsumptionEmission": 6026.2
+    "totalConsumptionEmission": 6026.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00018646714681956971,
+      "2016": 0.00018493689028618984,
+      "2017": 0.00018370111828055753,
+      "2018": 0.00013734062764666835,
+      "2019": 0.00020607698120119982,
+      "2020": 0.0002978918423464711,
+      "2021": 0.0006182167880203325,
+      "2022": 0.0009833516282473473
+    }
   },
   {
     "kommun": "Mullsjö",
@@ -14932,7 +16372,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Miljöprogram. 2021–2030.",
     "bicycleMetrePerCapita": 4.702254358,
-    "totalConsumptionEmission": 6191.3
+    "totalConsumptionEmission": 6191.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0002794466955428252,
+      "2016": 0.0002767783005812344,
+      "2017": 0.0002729257641921397,
+      "2018": 0.00027307482250136535,
+      "2019": 0.0008230452674897119,
+      "2020": 0.0013540961408259986,
+      "2021": 0.0018842530282637954,
+      "2022": 0.002124269782262347
+    }
   },
   {
     "kommun": "Munkedal",
@@ -15035,7 +16485,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Saknas",
     "bicycleMetrePerCapita": 4.059255886,
-    "totalConsumptionEmission": 6009.4
+    "totalConsumptionEmission": 6009.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00019598236158745714,
+      "2016": 0.00019303156066016793,
+      "2017": 0.00019188333493236112,
+      "2018": 0.00019042178425211843,
+      "2019": 0.00019024065442785123,
+      "2020": 0.000189000189000189,
+      "2021": 0.00018889308651303362,
+      "2022": 0.0030251465305350727
+    }
   },
   {
     "kommun": "Munkfors",
@@ -15138,7 +16598,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 5.564399594,
-    "totalConsumptionEmission": 6768.9
+    "totalConsumptionEmission": 6768.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.002184002184002184,
+      "2016": 0.002140181915462814,
+      "2017": 0.002125963327132607,
+      "2018": 0.002111375032990235,
+      "2019": 0.001336898395721925,
+      "2020": 0.0013422818791946308,
+      "2021": 0.0005434782608695652,
+      "2022": 0.0029721696838692245
+    }
   },
   {
     "kommun": "Mölndal",
@@ -15241,7 +16711,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Energiplan för minimerad klimatpåverkan.",
     "bicycleMetrePerCapita": 2.435578685,
-    "totalConsumptionEmission": 6112.1
+    "totalConsumptionEmission": 6112.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Mönsterås",
@@ -15344,7 +16824,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.988480191,
-    "totalConsumptionEmission": 6080.6
+    "totalConsumptionEmission": 6080.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0006847230675593427,
+      "2016": 0.0010451661067562524,
+      "2017": 0.001407615943102682,
+      "2018": 0.0011057869517139699,
+      "2019": 0.002903946388682055,
+      "2020": 0.010479493365500603,
+      "2021": 0.010484235933021571,
+      "2022": 0.01062066887616752
+    }
   },
   {
     "kommun": "Mörbylånga",
@@ -15447,7 +16937,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Ny Miljö– och klimatstrategi 2023–2030 på väg.",
     "bicycleMetrePerCapita": 1.776288274,
-    "totalConsumptionEmission": 6056.4
+    "totalConsumptionEmission": 6056.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 6.704210244033253e-5,
+      "2017": 6.666666666666667e-5,
+      "2018": 6.645401382243488e-5,
+      "2019": 0.0008525149190110827,
+      "2020": 0.000839413701814425,
+      "2021": 0.0008268668108383158,
+      "2022": 0.0010634970284641853
+    }
   },
   {
     "kommun": "Nacka",
@@ -15550,7 +17050,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities.",
     "bicycleMetrePerCapita": 1.620929483,
-    "totalConsumptionEmission": 6684.8
+    "totalConsumptionEmission": 6684.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 2.0129027063476887e-5,
+      "2017": 5.927038160247355e-5,
+      "2018": 5.788376939106274e-5,
+      "2019": 0.00010457367215203111,
+      "2020": 0.0001032815360781184,
+      "2021": 0.0001293493726555426,
+      "2022": 0.0001278702299837422
+    }
   },
   {
     "kommun": "Nora",
@@ -15653,7 +17163,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.316199818,
-    "totalConsumptionEmission": 6066.4
+    "totalConsumptionEmission": 6066.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00019043991620643687,
+      "2016": 0.00028129395218002813,
+      "2017": 0.0003721968921559505,
+      "2018": 0.0009313588525658936,
+      "2019": 0.010255454036919635,
+      "2020": 0.012726932434961633,
+      "2021": 0.013058483350433728,
+      "2022": 0.019530884964022055
+    }
   },
   {
     "kommun": "Norberg",
@@ -15756,7 +17276,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Energi– och Klimatstrategi. 2020–2030.",
     "bicycleMetrePerCapita": 3.706902197,
-    "totalConsumptionEmission": 6173.4
+    "totalConsumptionEmission": 6173.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0001725327812284334,
+      "2018": 0.0001725625539257981,
+      "2019": 0.0012302284710017574,
+      "2020": 0.0012218537266538664,
+      "2021": 0.003325166258312916,
+      "2022": 0.003376577216989515
+    }
   },
   {
     "kommun": "Nordanstig",
@@ -15859,7 +17389,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Inom projektet One Planet City Challenge kommer en strategi tas fram.",
     "bicycleMetrePerCapita": 1.186808953,
-    "totalConsumptionEmission": 6042.8
+    "totalConsumptionEmission": 6042.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Nordmaling",
@@ -15962,7 +17502,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.052393812,
-    "totalConsumptionEmission": 6118.7
+    "totalConsumptionEmission": 6118.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0004206393718452047,
+      "2017": 0.00042235675066873153,
+      "2018": 0.0004214667041303737,
+      "2019": 0.00041999160016799666,
+      "2020": 0.0004220596510973551,
+      "2021": 0.0007042253521126761,
+      "2022": 0.0007076139258420605
+    }
   },
   {
     "kommun": "Norrköping",
@@ -16065,7 +17615,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbete pågår med Färdplan för ett fossilfritt Norrköping 2030",
     "bicycleMetrePerCapita": 2.278943414,
-    "totalConsumptionEmission": 5986.6
+    "totalConsumptionEmission": 5986.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 3.5479361655325096e-5,
+      "2018": 3.529179254072673e-5,
+      "2019": 3.4923273567971164e-5,
+      "2020": 3.484854820948159e-5,
+      "2021": 3.461213639950712e-5,
+      "2022": 3.44542447629548e-5
+    }
   },
   {
     "kommun": "Norrtälje",
@@ -16168,7 +17728,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Miljö– och klimatstrategi.",
     "bicycleMetrePerCapita": 1.818370128,
-    "totalConsumptionEmission": 6411.6
+    "totalConsumptionEmission": 6411.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00010226865976921373,
+      "2016": 0.00030292830696735106,
+      "2017": 0.0005920273648204184,
+      "2018": 0.0007608994803218442,
+      "2019": 0.0010379738749960077,
+      "2020": 0.0016490506180013506,
+      "2021": 0.0018683796053241097,
+      "2022": 0.0022870385899644748
+    }
   },
   {
     "kommun": "Norsjö",
@@ -16271,7 +17841,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.847955759,
-    "totalConsumptionEmission": 6011.2
+    "totalConsumptionEmission": 6011.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0011973180076628352,
+      "2016": 0.0012121212121212121,
+      "2017": 0.0041605482134116495,
+      "2018": 0.0056179775280898875,
+      "2019": 0.007777220270948319,
+      "2020": 0.011913814955640051,
+      "2021": 0.013850415512465374,
+      "2022": 0.01444134785913352
+    }
   },
   {
     "kommun": "Nybro",
@@ -16374,7 +17954,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Senaste gällde fram till 2022.",
     "bicycleMetrePerCapita": 4.169016844,
-    "totalConsumptionEmission": 5901.6
+    "totalConsumptionEmission": 5901.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 9.850760971285031e-5
+    }
   },
   {
     "kommun": "Nykvarn",
@@ -16477,7 +18067,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.383318392,
-    "totalConsumptionEmission": 6183.7
+    "totalConsumptionEmission": 6183.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0001918649270913277,
+      "2017": 0.0001876172607879925,
+      "2018": 0.00018309988098507736,
+      "2019": 0.0003631741420010895,
+      "2020": 0.0003564427018356799,
+      "2021": 0.00034782608695652176,
+      "2022": 0.0003429355281207133
+    }
   },
   {
     "kommun": "Nyköping",
@@ -16580,7 +18180,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Program för ekologisk hållbarhet.",
     "bicycleMetrePerCapita": 2.56992368,
-    "totalConsumptionEmission": 5862.4
+    "totalConsumptionEmission": 5862.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 5.35609076788488e-5,
+      "2019": 0.0001236945804103126,
+      "2020": 0.00012265423770391266,
+      "2021": 0.00012145819235507435,
+      "2022": 0.00012064597300977233
+    }
   },
   {
     "kommun": "Nynäshamn",
@@ -16683,7 +18293,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Hållbarhetsprogram 2023–2030",
     "bicycleMetrePerCapita": 3.320688035,
-    "totalConsumptionEmission": 6008.5
+    "totalConsumptionEmission": 6008.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0002909090909090909,
+      "2016": 0.0006125684635341597,
+      "2017": 0.0008538190615105482,
+      "2018": 0.001519971721456345,
+      "2019": 0.0018197725284339458,
+      "2020": 0.0018048661969386692,
+      "2021": 0.00183081878284455,
+      "2022": 0.0017974236927071198
+    }
   },
   {
     "kommun": "Nässjö",
@@ -16786,7 +18406,17 @@
     "climatePlanYear": 2016,
     "climatePlanComment": "Energi– och Klimatstrategi.",
     "bicycleMetrePerCapita": 2.650691253,
-    "totalConsumptionEmission": 5824.9
+    "totalConsumptionEmission": 5824.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00022712524334847503,
+      "2017": 0.00035281288087754184,
+      "2018": 0.00034946151157988373,
+      "2019": 0.00034878559198427296,
+      "2020": 0.0003485093305452587,
+      "2021": 0.0005978226669183814,
+      "2022": 0.0005947908840470824
+    }
   },
   {
     "kommun": "Ockelbo",
@@ -16889,7 +18519,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljöstrategiskt program 2022–2026",
     "bicycleMetrePerCapita": 2.931178356,
-    "totalConsumptionEmission": 5936.7
+    "totalConsumptionEmission": 5936.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0037250253979004403,
+      "2019": 0.004400812457684496,
+      "2020": 0.004418762746430999,
+      "2021": 0.005797101449275362,
+      "2022": 0.006528087957395637
+    }
   },
   {
     "kommun": "Olofström",
@@ -16992,7 +18632,17 @@
     "climatePlanYear": 2023,
     "climatePlanComment": "Ny Handlingsplan för klimat och energi beslutad men ej publicerad",
     "bicycleMetrePerCapita": 3.389695099,
-    "totalConsumptionEmission": 5971.9
+    "totalConsumptionEmission": 5971.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0019284972556000593,
+      "2018": 0.00214560520864161,
+      "2019": 0.0027558468642931624,
+      "2020": 0.0027796559236721507,
+      "2021": 0.0027897157505843324,
+      "2022": 0.0025077893456949617
+    }
   },
   {
     "kommun": "Orsa",
@@ -17095,7 +18745,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.911915595,
-    "totalConsumptionEmission": 5669.7
+    "totalConsumptionEmission": 5669.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0011851851851851852,
+      "2016": 0.0011660107855997668,
+      "2017": 0.0017424132423406419,
+      "2018": 0.0017411491584445734,
+      "2019": 0.002315149761250181,
+      "2020": 0.0023265958993747273,
+      "2021": 0.0023128071697022263,
+      "2022": 0.004038073262186328
+    }
   },
   {
     "kommun": "Orust",
@@ -17198,7 +18858,17 @@
     "climatePlanYear": 2018,
     "climatePlanComment": "Klimatstrategi till 2030",
     "bicycleMetrePerCapita": 1.250142775,
-    "totalConsumptionEmission": 6443.1
+    "totalConsumptionEmission": 6443.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00013324450366422385,
+      "2016": 0.00013251176041873715,
+      "2017": 0.0003309504898067249,
+      "2018": 0.0004632693580410324,
+      "2019": 0.00045998160073597056,
+      "2020": 0.00045706823375775386,
+      "2021": 0.0009775171065493646,
+      "2022": 0.0009730781706130393
+    }
   },
   {
     "kommun": "Osby",
@@ -17301,7 +18971,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Klimat– och energiplan. Gäller till 2030.",
     "bicycleMetrePerCapita": 2.069387541,
-    "totalConsumptionEmission": 5941.6
+    "totalConsumptionEmission": 5941.6,
+    "ChargingPointsPerCapita": {
+      "2015": 7.71962328238382e-5,
+      "2016": 7.605141075366947e-5,
+      "2017": 7.586102260658473e-5,
+      "2018": 7.537499057812617e-5,
+      "2019": 0.0024227740763173833,
+      "2020": 0.0024246097893620244,
+      "2021": 0.002185545255859522,
+      "2022": 0.0021906632421815984
+    }
   },
   {
     "kommun": "Oskarshamn",
@@ -17404,7 +19084,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Hade energi– och klimatprogram som gällde fram till 2020",
     "bicycleMetrePerCapita": 3.578830864,
-    "totalConsumptionEmission": 5958.5
+    "totalConsumptionEmission": 5958.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00014854426619132502,
+      "2018": 0.00014854426619132502,
+      "2019": 0.00014759058372075862,
+      "2020": 0.00014734593141046894,
+      "2021": 0.00014695077149155033,
+      "2022": 0.0001479946721918011
+    }
   },
   {
     "kommun": "Ovanåker",
@@ -17507,7 +19197,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.630530428,
-    "totalConsumptionEmission": 6103.6
+    "totalConsumptionEmission": 6103.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0006018399105837848,
+      "2017": 0.002067361529847532,
+      "2018": 0.004964053406367682,
+      "2019": 0.005912596401028277,
+      "2020": 0.005911583276216587,
+      "2021": 0.005721116898642302,
+      "2022": 0.00576492858372053
+    }
   },
   {
     "kommun": "Oxelösund",
@@ -17610,7 +19310,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.679544476,
-    "totalConsumptionEmission": 6190.4
+    "totalConsumptionEmission": 6190.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00016777116013757235,
+      "2017": 0.0002498334443704197,
+      "2018": 0.000248714972641353,
+      "2019": 0.000250354669114579,
+      "2020": 0.00025010421008753647,
+      "2021": 0.0002472799208704253,
+      "2022": 0.00024822108224391857
+    }
   },
   {
     "kommun": "Pajala",
@@ -17713,7 +19423,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.945928683,
-    "totalConsumptionEmission": 6688.8
+    "totalConsumptionEmission": 6688.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Partille",
@@ -17816,7 +19536,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbete pågår med ny Klimat– och energiplan.",
     "bicycleMetrePerCapita": 2.384192387,
-    "totalConsumptionEmission": 6384.1
+    "totalConsumptionEmission": 6384.1,
+    "ChargingPointsPerCapita": {
+      "2015": NaN,
+      "2016": NaN,
+      "2017": NaN,
+      "2018": NaN,
+      "2019": NaN,
+      "2020": NaN,
+      "2021": NaN,
+      "2022": NaN
+    }
   },
   {
     "kommun": "Perstorp",
@@ -17919,7 +19649,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Energi– och klimatprogram. Gäller till 2030. ",
     "bicycleMetrePerCapita": 3.362789196,
-    "totalConsumptionEmission": 5974.1
+    "totalConsumptionEmission": 5974.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0005453306066803,
+      "2018": 0.0005348308597406071,
+      "2019": 0.0005339028296849973,
+      "2020": 0.0005350454788657035,
+      "2021": 0.0005287508261731659,
+      "2022": 0.0005374899220639613
+    }
   },
   {
     "kommun": "Piteå",
@@ -18022,7 +19762,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Handlingsplan klimat och energi, gäller tillsvidare.",
     "bicycleMetrePerCapita": 3.046185101,
-    "totalConsumptionEmission": 6605.3
+    "totalConsumptionEmission": 6605.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 4.772814051164567e-5,
+      "2017": 9.482268158543523e-5,
+      "2018": 0.0003799031247032007,
+      "2019": 0.0005439795652893735,
+      "2020": 0.0005446881068535974,
+      "2021": 0.000543439737258701,
+      "2022": 0.0005429394268448137
+    }
   },
   {
     "kommun": "Ragunda",
@@ -18125,7 +19875,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.487975575,
-    "totalConsumptionEmission": 6312.0
+    "totalConsumptionEmission": 6312.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00037126415444588826,
+      "2016": 0.0009233610341643582,
+      "2017": 0.0009184423218221896,
+      "2018": 0.0009358038555118847,
+      "2019": 0.004920514761544285,
+      "2020": 0.0069124423963133645,
+      "2021": 0.00690978886756238,
+      "2022": 0.009277155005798222
+    }
   },
   {
     "kommun": "Robertsfors",
@@ -18228,7 +19988,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.337627834,
-    "totalConsumptionEmission": 5986.9
+    "totalConsumptionEmission": 5986.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0014795088030773783
+    }
   },
   {
     "kommun": "Ronneby",
@@ -18331,7 +20101,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Program för klimat och energi 2021–2025",
     "bicycleMetrePerCapita": 3.962831222,
-    "totalConsumptionEmission": 6076.0
+    "totalConsumptionEmission": 6076.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.00020205421788179828,
+      "2019": 0.00020247696824486215,
+      "2020": 0.00023832221163012392,
+      "2021": 0.00023972602739726027,
+      "2022": 0.00047996160307175426
+    }
   },
   {
     "kommun": "Rättvik",
@@ -18434,7 +20214,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.793276136,
-    "totalConsumptionEmission": 6586.6
+    "totalConsumptionEmission": 6586.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0003691058410999354,
+      "2018": 0.0003667369579169341,
+      "2019": 0.000547945205479452,
+      "2020": 0.0007241785100027156,
+      "2021": 0.0007205259839682969,
+      "2022": 0.000721240533717995
+    }
   },
   {
     "kommun": "Sala",
@@ -18537,7 +20327,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Energi– och klimatstrategi. 2020–2030 med utblick mot 2045.",
     "bicycleMetrePerCapita": 1.058042274,
-    "totalConsumptionEmission": 6148.8
+    "totalConsumptionEmission": 6148.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.000768917635352119,
+      "2016": 0.0008499977631637811,
+      "2017": 0.0018558614290133002,
+      "2018": 0.001840813464235624,
+      "2019": 0.002009260068140124,
+      "2020": 0.002186557047273363,
+      "2021": 0.0020871380120010435,
+      "2022": 0.002088681954658196
+    }
   },
   {
     "kommun": "Salem",
@@ -18640,7 +20440,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.830194816,
-    "totalConsumptionEmission": 6075.5
+    "totalConsumptionEmission": 6075.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00036527456471447707,
+      "2016": 0.0005416792055371652,
+      "2017": 0.00054005400540054,
+      "2018": 0.0005361610866198022,
+      "2019": 0.0007761194029850746,
+      "2020": 0.0006486231499498791,
+      "2021": 0.000811500115928588,
+      "2022": 0.0008068234209313047
+    }
   },
   {
     "kommun": "Sandviken",
@@ -18743,7 +20553,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbete pågår med att ta fram en hållbarhetsplan. ",
     "bicycleMetrePerCapita": 3.210885786,
-    "totalConsumptionEmission": 6202.0
+    "totalConsumptionEmission": 6202.0,
+    "ChargingPointsPerCapita": {
+      "2015": 5.2200240121104554e-5,
+      "2016": 0.0001283730005905158,
+      "2017": 0.00017830306426551873,
+      "2018": 0.0001785349928586003,
+      "2019": 0.0001784166794107152,
+      "2020": 0.0003817765334690761,
+      "2021": 0.0003821656050955414,
+      "2022": 0.0003836513376643307
+    }
   },
   {
     "kommun": "Sigtuna",
@@ -18846,7 +20666,17 @@
     "climatePlanYear": 2018,
     "climatePlanComment": "Plan för klimatsmart Sigtuna",
     "bicycleMetrePerCapita": 2.417291994,
-    "totalConsumptionEmission": 6010.3
+    "totalConsumptionEmission": 6010.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Simrishamn",
@@ -18949,7 +20779,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Klimatplan finns men saknas på kommunens webbplats. Lämnas ut på begäran. Ska arbetas in i kommunens hållbarhetspolicy.",
     "bicycleMetrePerCapita": 3.729507637,
-    "totalConsumptionEmission": 6254.4
+    "totalConsumptionEmission": 6254.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.001445086705202312,
+      "2018": 0.0030086108517481066,
+      "2019": 0.0032856993845832897,
+      "2020": 0.003276642221875488,
+      "2021": 0.008304354595941246,
+      "2022": 0.008388382090804235
+    }
   },
   {
     "kommun": "Sjöbo",
@@ -19052,7 +20892,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Hållbara Sjöbo 2034 – Kommunalt miljömålsprogram. ",
     "bicycleMetrePerCapita": 2.627200704,
-    "totalConsumptionEmission": 6132.8
+    "totalConsumptionEmission": 6132.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.004969212487847035,
+      "2016": 0.006989648916871198,
+      "2017": 0.007812909653400452,
+      "2018": 0.011486451208687933,
+      "2019": 0.017996463122854467,
+      "2020": 0.017824026375437875,
+      "2021": 0.018464379135251577,
+      "2022": 0.02046349823502328
+    }
   },
   {
     "kommun": "Skara",
@@ -19155,7 +21005,17 @@
     "climatePlanYear": 2017,
     "climatePlanComment": "Miljöstrategi. ",
     "bicycleMetrePerCapita": 3.680481651,
-    "totalConsumptionEmission": 6113.9
+    "totalConsumptionEmission": 6113.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.000320666987333654,
+      "2016": 0.00031613889035249484,
+      "2017": 0.0007429814785331422,
+      "2018": 0.0010621913006532476,
+      "2019": 0.001221001221001221,
+      "2020": 0.0012302754747258624,
+      "2021": 0.0013346145633141148,
+      "2022": 0.0013329778725673154
+    }
   },
   {
     "kommun": "Skellefteå",
@@ -19258,7 +21118,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities.",
     "bicycleMetrePerCapita": 3.352954207,
-    "totalConsumptionEmission": 6176.7
+    "totalConsumptionEmission": 6176.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 5.500323143984709e-5,
+      "2018": 5.519753818979674e-5,
+      "2019": 0.00017909049580514954,
+      "2020": 0.0001784733662822625,
+      "2021": 0.0002180044418405025,
+      "2022": 0.000228488481492433
+    }
   },
   {
     "kommun": "Skinnskatteberg",
@@ -19361,7 +21231,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.952591988,
-    "totalConsumptionEmission": 6703.6
+    "totalConsumptionEmission": 6703.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0004515692029803567,
+      "2017": 0.0009027307605506658,
+      "2018": 0.0009031384059607134,
+      "2019": 0.0009105394946505805,
+      "2020": 0.0009161704076958314,
+      "2021": 0.0009151223976206818,
+      "2022": 0.0029532030895047705
+    }
   },
   {
     "kommun": "Skurup",
@@ -19464,7 +21344,17 @@
     "climatePlanYear": 2017,
     "climatePlanComment": "Klimatstrategi och energiplan, gäller till 2030",
     "bicycleMetrePerCapita": 4.412308506,
-    "totalConsumptionEmission": 5808.7
+    "totalConsumptionEmission": 5808.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0003894080996884735,
+      "2017": 0.0017261219792865361,
+      "2018": 0.003743892378958056,
+      "2019": 0.0037132607464283466,
+      "2020": 0.004675227527739683,
+      "2021": 0.004933308971313722,
+      "2022": 0.005976929053852131
+    }
   },
   {
     "kommun": "Skövde",
@@ -19567,7 +21457,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Energi– och klimatplan 2021–2030",
     "bicycleMetrePerCapita": 3.108804107,
-    "totalConsumptionEmission": 6036.7
+    "totalConsumptionEmission": 6036.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Smedjebacken",
@@ -19670,7 +21570,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.874182105,
-    "totalConsumptionEmission": 6344.6
+    "totalConsumptionEmission": 6344.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00036717459151826694,
+      "2018": 0.0005506102597045058,
+      "2019": 0.0005507618872774004,
+      "2020": 0.000552791597567717,
+      "2021": 0.0005487972194274216,
+      "2022": 0.0005493499359091741
+    }
   },
   {
     "kommun": "Sollefteå",
@@ -19773,7 +21683,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.558660435,
-    "totalConsumptionEmission": 6071.1
+    "totalConsumptionEmission": 6071.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00015164535206995905,
+      "2016": 0.0001511639625113373,
+      "2017": 0.00015221472423765793,
+      "2018": 0.00015384615384615385,
+      "2019": 0.0022466039707419016,
+      "2020": 0.002490462060194998,
+      "2021": 0.003667481662591687,
+      "2022": 0.008517705040981411
+    }
   },
   {
     "kommun": "Sollentuna",
@@ -19876,7 +21796,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Plan för miljö– och klimatarbetet 2021–2030",
     "bicycleMetrePerCapita": 1.370438966,
-    "totalConsumptionEmission": 6657.6
+    "totalConsumptionEmission": 6657.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 4.223983779902285e-5,
+      "2017": 0.00011134617525887985,
+      "2018": 0.00011030222810500772,
+      "2019": 0.0001353967802645653,
+      "2020": 0.0007298283551831329,
+      "2021": 0.0007189646908451829,
+      "2022": 0.0007345514645119823
+    }
   },
   {
     "kommun": "Solna",
@@ -19979,7 +21909,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Klimatstrategi",
     "bicycleMetrePerCapita": 1.307139177,
-    "totalConsumptionEmission": 6978.6
+    "totalConsumptionEmission": 6978.6,
+    "ChargingPointsPerCapita": {
+      "2015": 2.6261193833871688e-5,
+      "2016": 2.5598689347105427e-5,
+      "2017": 2.50918990803819e-5,
+      "2018": 4.941321803582458e-5,
+      "2019": 7.278991617027988e-5,
+      "2020": 0.00012024722830138766,
+      "2021": 9.502654804185919e-5,
+      "2022": 0.00033937975424224695
+    }
   },
   {
     "kommun": "Sorsele",
@@ -20082,7 +22022,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.773361199,
-    "totalConsumptionEmission": 6375.6
+    "totalConsumptionEmission": 6375.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.000794912559618442,
+      "2018": 0.0019825535289452814,
+      "2019": 0.0036159100040176776,
+      "2020": 0.007780507780507781,
+      "2021": 0.013821138211382113,
+      "2022": 0.013957307060755337
+    }
   },
   {
     "kommun": "Sotenäs",
@@ -20185,7 +22135,17 @@
     "climatePlanYear": 2018,
     "climatePlanComment": "Hållbarhetsstrategi 2030. ",
     "bicycleMetrePerCapita": 1.432852918,
-    "totalConsumptionEmission": 6663.6
+    "totalConsumptionEmission": 6663.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00033311125916055963,
+      "2016": 0.0025372311086596802,
+      "2017": 0.0036371652154744845,
+      "2018": 0.0070874861572535995,
+      "2019": 0.007615053526100872,
+      "2020": 0.008351648351648353,
+      "2021": 0.016876712328767123,
+      "2022": 0.01703056768558952
+    }
   },
   {
     "kommun": "Staffanstorp",
@@ -20288,7 +22248,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljöplan",
     "bicycleMetrePerCapita": 4.478156915,
-    "totalConsumptionEmission": 5848.9
+    "totalConsumptionEmission": 5848.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0001545415910056794,
+      "2021": 7.621370322383964e-5,
+      "2022": 0.0005228172380312197
+    }
   },
   {
     "kommun": "Stenungsund",
@@ -20391,7 +22361,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.347065342,
-    "totalConsumptionEmission": 6323.3
+    "totalConsumptionEmission": 6323.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 7.62660158633313e-5,
+      "2018": 0.00015092631022903068,
+      "2019": 0.0002987638645105874,
+      "2020": 0.00029581422866439876,
+      "2021": 0.0003628973726230222,
+      "2022": 0.0012199497667743093
+    }
   },
   {
     "kommun": "Stockholm",
@@ -20494,7 +22474,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Klimathandlingsplan 2020–2023",
     "bicycleMetrePerCapita": 1.218575773,
-    "totalConsumptionEmission": 6981.8
+    "totalConsumptionEmission": 6981.8,
+    "ChargingPointsPerCapita": {
+      "2015": 3.24845481832475e-6,
+      "2016": 0.0,
+      "2017": 3.1586893965955645e-6,
+      "2018": 3.1180039785730765e-6,
+      "2019": 3.079851304779005e-6,
+      "2020": 3.0751852030288525e-6,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Storfors",
@@ -20597,7 +22587,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.950304305,
-    "totalConsumptionEmission": 6219.8
+    "totalConsumptionEmission": 6219.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.000744047619047619,
+      "2016": 0.0007414730598121602,
+      "2017": 0.001212709192335678,
+      "2018": 0.003945745992601726,
+      "2019": 0.004982561036372696,
+      "2020": 0.005012531328320802,
+      "2021": 0.005065856129685917,
+      "2022": 0.006955177743431221
+    }
   },
   {
     "kommun": "Storuman",
@@ -20700,7 +22700,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Strategi för koldioxideffektiva resor i Storumans kommun",
     "bicycleMetrePerCapita": 3.261116272,
-    "totalConsumptionEmission": 6942.8
+    "totalConsumptionEmission": 6942.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.06999831734814067,
+      "2016": 0.08306492625868792,
+      "2017": 0.12876990850559134,
+      "2018": 0.17489851150202976,
+      "2019": 0.2563226247436774,
+      "2020": 0.36422931685547544,
+      "2021": 0.4068526170798898,
+      "2022": 0.5242735340177483
+    }
   },
   {
     "kommun": "Strängnäs",
@@ -20803,7 +22813,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Klimat– och energiplan 2021–2040",
     "bicycleMetrePerCapita": 2.468682063,
-    "totalConsumptionEmission": 6398.4
+    "totalConsumptionEmission": 6398.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 8.045052292839903e-5,
+      "2021": 7.86802696110572e-5,
+      "2022": 7.78694907335306e-5
+    }
   },
   {
     "kommun": "Strömstad",
@@ -20906,7 +22926,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Strategi Agenda 2030. Gäller 2021–2025. ",
     "bicycleMetrePerCapita": 4.20120415,
-    "totalConsumptionEmission": 6236.3
+    "totalConsumptionEmission": 6236.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0010591617491299743,
+      "2018": 0.0010563645966950878,
+      "2019": 0.0010591617491299743,
+      "2020": 0.0018876472364844459,
+      "2021": 0.001882955486932289,
+      "2022": 0.0030850263355906697
+    }
   },
   {
     "kommun": "Strömsund",
@@ -21009,7 +23039,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.501032709,
-    "totalConsumptionEmission": 6304.1
+    "totalConsumptionEmission": 6304.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0002540435261241426,
+      "2017": 0.00033924179458909336,
+      "2018": 0.00213620439203623,
+      "2019": 0.0042223179663937955,
+      "2020": 0.005135793871866295,
+      "2021": 0.005491153142159854,
+      "2022": 0.006580679126085812
+    }
   },
   {
     "kommun": "Sundbyberg",
@@ -21112,7 +23152,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 0.7312642807,
-    "totalConsumptionEmission": 6735.9
+    "totalConsumptionEmission": 6735.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0006723053567555845,
+      "2016": 0.0009005235602094241,
+      "2017": 0.00133538361929427,
+      "2018": 0.0013646072304406298,
+      "2019": 0.001469073148395467,
+      "2020": 0.0018370864188178254,
+      "2021": 0.004592636845642596,
+      "2022": 0.005733308673941187
+    }
   },
   {
     "kommun": "Sundsvall",
@@ -21215,7 +23265,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatplan 2022–2024.",
     "bicycleMetrePerCapita": 2.684605556,
-    "totalConsumptionEmission": 6210.2
+    "totalConsumptionEmission": 6210.2,
+    "ChargingPointsPerCapita": {
+      "2015": 2.048487703952557e-5,
+      "2016": 2.0340706839562675e-5,
+      "2017": 2.0240866309078028e-5,
+      "2018": 0.00012139605462822458,
+      "2019": 0.00012066486339731922,
+      "2020": 0.00012067699795854745,
+      "2021": 0.00016099332883893623,
+      "2022": 0.00026167208462072645
+    }
   },
   {
     "kommun": "Sunne",
@@ -21318,7 +23378,17 @@
     "climatePlanYear": 2018,
     "climatePlanComment": "Miljöstrategi. ",
     "bicycleMetrePerCapita": 2.987040734,
-    "totalConsumptionEmission": 6363.6
+    "totalConsumptionEmission": 6363.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00015142337976983646,
+      "2016": 0.000148975791433892,
+      "2017": 0.00015002625459455406,
+      "2018": 0.00015081818867355404,
+      "2019": 0.00037577032917480833,
+      "2020": 0.0003749531308586427,
+      "2021": 0.0006739049045301385,
+      "2022": 0.0006707407959457445
+    }
   },
   {
     "kommun": "Surahammar",
@@ -21421,7 +23491,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 0.6599069754,
-    "totalConsumptionEmission": 6040.2
+    "totalConsumptionEmission": 6040.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.009013520280420632,
+      "2016": 0.009344865294760911,
+      "2017": 0.009365348211617016,
+      "2018": 0.00951625693893735,
+      "2019": 0.010290916287354047,
+      "2020": 0.01070154577883472,
+      "2021": 0.01168432518071096,
+      "2022": 0.016346058008571713
+    }
   },
   {
     "kommun": "Svalöv",
@@ -21524,7 +23604,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimatplan 2022–2030",
     "bicycleMetrePerCapita": 2.955402172,
-    "totalConsumptionEmission": 6000.6
+    "totalConsumptionEmission": 6000.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003661662394727206,
+      "2016": 0.00035922120842014514,
+      "2017": 0.00035650623885918,
+      "2018": 0.00035403242937053034,
+      "2019": 0.0003504345388281469,
+      "2020": 0.0003502381619501261,
+      "2021": 0.0003469331112961421,
+      "2022": 0.0006221484861053505
+    }
   },
   {
     "kommun": "Svedala",
@@ -21627,7 +23717,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Hållbarhetsstrategi.",
     "bicycleMetrePerCapita": 3.437934295,
-    "totalConsumptionEmission": 5950.1
+    "totalConsumptionEmission": 5950.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Svenljunga",
@@ -21730,7 +23830,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 4.050901246,
-    "totalConsumptionEmission": 6070.4
+    "totalConsumptionEmission": 6070.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00018763486255746317,
+      "2018": 0.00018721332958906674,
+      "2019": 0.00018552875695732838,
+      "2020": 0.00018602920658543392,
+      "2021": 0.0001840942562592047,
+      "2022": 0.0018491124260355029
+    }
   },
   {
     "kommun": "Säffle",
@@ -21833,7 +23943,17 @@
     "climatePlanYear": 2018,
     "climatePlanComment": "Energi- och klimatplan till 2030. ",
     "bicycleMetrePerCapita": 3.257070608,
-    "totalConsumptionEmission": 5995.4
+    "totalConsumptionEmission": 5995.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00025586899507452183,
+      "2017": 0.0003815095059451898,
+      "2018": 0.0006392635683692387,
+      "2019": 0.0008411517308314461,
+      "2020": 0.0008430609597924773,
+      "2021": 0.0008443751623798389,
+      "2022": 0.0008529064427240519
+    }
   },
   {
     "kommun": "Säter",
@@ -21936,7 +24056,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Kretsloppsplan och Plan för klimatneutralitet kommer under 2023.",
     "bicycleMetrePerCapita": 2.146936866,
-    "totalConsumptionEmission": 6320.1
+    "totalConsumptionEmission": 6320.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Sävsjö",
@@ -22039,7 +24169,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 4.341989408,
-    "totalConsumptionEmission": 5823.0
+    "totalConsumptionEmission": 5823.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0009568545581071677,
+      "2018": 0.0009457484309173759,
+      "2019": 0.0009420227798235849,
+      "2020": 0.0009384864772630321,
+      "2021": 0.0009394482876419848,
+      "2022": 0.0012743182397417382
+    }
   },
   {
     "kommun": "Söderhamn",
@@ -22142,7 +24282,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbete med ny energi– och klimatplan pågår 2023.",
     "bicycleMetrePerCapita": 2.8062868,
-    "totalConsumptionEmission": 6077.3
+    "totalConsumptionEmission": 6077.3,
+    "ChargingPointsPerCapita": {
+      "2015": 7.756447547023463e-5,
+      "2016": 7.694675284702985e-5,
+      "2017": 0.00023272050267628578,
+      "2018": 0.00023327242331169085,
+      "2019": 0.00023398198338727918,
+      "2020": 0.00023536795857523928,
+      "2021": 0.0002357934449422306,
+      "2022": 0.00039591416580885263
+    }
   },
   {
     "kommun": "Söderköping",
@@ -22245,7 +24395,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Mål och strategier för miljö och klimat 2022–2025",
     "bicycleMetrePerCapita": 2.754640529,
-    "totalConsumptionEmission": 6070.9
+    "totalConsumptionEmission": 6070.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0009577233547680941,
+      "2019": 0.0009571995077259674,
+      "2020": 0.0009578544061302681,
+      "2021": 0.0009541334423771553,
+      "2022": 0.000943777807738978
+    }
   },
   {
     "kommun": "Södertälje",
@@ -22348,7 +24508,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljö– och klimatstrategi, gäller till 2030",
     "bicycleMetrePerCapita": 2.64348271,
-    "totalConsumptionEmission": 5805.2
+    "totalConsumptionEmission": 5805.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 3.1702084940452915e-5,
+      "2017": 3.123958680439853e-5,
+      "2018": 3.080683090130518e-5,
+      "2019": 3.0309459582335645e-5,
+      "2020": 6.992238615137197e-5,
+      "2021": 6.91638095426296e-5,
+      "2022": 0.0003612364048190889
+    }
   },
   {
     "kommun": "Sölvesborg",
@@ -22451,7 +24621,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.856791173,
-    "totalConsumptionEmission": 6169.9
+    "totalConsumptionEmission": 6169.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0004662004662004662,
+      "2016": 0.00045879451740551703,
+      "2017": 0.00045832139788026354,
+      "2018": 0.0004579803068468056,
+      "2019": 0.0013752005500802201,
+      "2020": 0.001374885426214482,
+      "2021": 0.0017103762827822121,
+      "2022": 0.0017129153819801302
+    }
   },
   {
     "kommun": "Tanum",
@@ -22554,7 +24734,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Klimat– och miljöstrategi 2020–2024.",
     "bicycleMetrePerCapita": 0.9730676817,
-    "totalConsumptionEmission": 6397.7
+    "totalConsumptionEmission": 6397.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0008028904054596548,
+      "2016": 0.0012692368713311123,
+      "2017": 0.0014103267256914517,
+      "2018": 0.002019731220383749,
+      "2019": 0.0028813955299431507,
+      "2020": 0.0028655514250309788,
+      "2021": 0.0031623602005399153,
+      "2022": 0.004841312533620226
+    }
   },
   {
     "kommun": "Tibro",
@@ -22657,7 +24847,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Med i Klimat 2023 (VGR)",
     "bicycleMetrePerCapita": 4.240325727,
-    "totalConsumptionEmission": 5766.0
+    "totalConsumptionEmission": 5766.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0007285974499089253,
+      "2016": 0.0008130081300813008,
+      "2017": 0.00072007200720072,
+      "2018": 0.0008058739255014327,
+      "2019": 0.0012455516014234875,
+      "2020": 0.0012392670620518722,
+      "2021": 0.0012410247318500134,
+      "2022": 0.0007895429423633652
+    }
   },
   {
     "kommun": "Tidaholm",
@@ -22760,7 +24960,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Med i Klimat 2023 (VGR). Har koldioxidbudget. ",
     "bicycleMetrePerCapita": 1.823552052,
-    "totalConsumptionEmission": 5926.7
+    "totalConsumptionEmission": 5926.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0007103954534690978,
+      "2016": 0.0016410096116277252,
+      "2017": 0.003274343182349731,
+      "2018": 0.003274087932647334,
+      "2019": 0.003269500233535731,
+      "2020": 0.0032838154808444097,
+      "2021": 0.00787524366471735,
+      "2022": 0.008489757769296674
+    }
   },
   {
     "kommun": "Tierp",
@@ -22863,7 +25073,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Klimat– och energiplan från år 2020. En ny plan kommer att antas under 2023. ",
     "bicycleMetrePerCapita": 2.626499349,
-    "totalConsumptionEmission": 6128.0
+    "totalConsumptionEmission": 6128.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.00018617640214102862,
+      "2022": 0.0001868634962160142
+    }
   },
   {
     "kommun": "Timrå",
@@ -22966,7 +25186,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.304277754,
-    "totalConsumptionEmission": 5798.3
+    "totalConsumptionEmission": 5798.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00011119141602268305,
+      "2016": 0.00011116051578479324,
+      "2017": 0.00011092623405435385,
+      "2018": 0.00011074197120708749,
+      "2019": 0.00027810223037988765,
+      "2020": 0.00027834994154651225,
+      "2021": 0.0002789711543826368,
+      "2022": 0.00028162667567872027
+    }
   },
   {
     "kommun": "Tingsryd",
@@ -23069,7 +25299,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljöprogram 2022–2027",
     "bicycleMetrePerCapita": 7.862331476,
-    "totalConsumptionEmission": 6139.2
+    "totalConsumptionEmission": 6139.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0002420721374969741,
+      "2017": 0.00024094450244960245,
+      "2018": 0.00024179898444426533,
+      "2019": 0.0002420721374969741,
+      "2020": 0.0005659309564233164,
+      "2021": 0.0005682279405795925,
+      "2022": 0.0005692445311864683
+    }
   },
   {
     "kommun": "Tjörn",
@@ -23172,7 +25412,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.30836914,
-    "totalConsumptionEmission": 6612.2
+    "totalConsumptionEmission": 6612.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003917727717923604,
+      "2016": 0.00038501026694045176,
+      "2017": 0.00037998733375554147,
+      "2018": 0.00037683708076874763,
+      "2019": 0.0003746253746253746,
+      "2020": 0.0007431721062736112,
+      "2021": 0.000980872976949485,
+      "2022": 0.0006144393241167435
+    }
   },
   {
     "kommun": "Tomelilla",
@@ -23275,7 +25525,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Energi– och klimatplan 2020–2025.",
     "bicycleMetrePerCapita": 2.16884948,
-    "totalConsumptionEmission": 5948.3
+    "totalConsumptionEmission": 5948.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0008688097306689834
+    }
   },
   {
     "kommun": "Torsby",
@@ -23378,7 +25638,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.423811628,
-    "totalConsumptionEmission": 6675.2
+    "totalConsumptionEmission": 6675.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0003443526170798898,
+      "2020": 0.00034635033336219586,
+      "2021": 0.0003486750348675035,
+      "2022": 0.0003505389536412234
+    }
   },
   {
     "kommun": "Torsås",
@@ -23481,7 +25751,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Arbete med klimatplan pågår under 2023.",
     "bicycleMetrePerCapita": 4.048930845,
-    "totalConsumptionEmission": 6200.0
+    "totalConsumptionEmission": 6200.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0018353804884935763,
+      "2018": 0.0018315018315018315,
+      "2019": 0.001824561403508772,
+      "2020": 0.0018184361449153728,
+      "2021": 0.0018276395332489808,
+      "2022": 0.001846066458392502
+    }
   },
   {
     "kommun": "Tranemo",
@@ -23584,7 +25864,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Med i Klimat 2023 (VGR)",
     "bicycleMetrePerCapita": 5.111060036,
-    "totalConsumptionEmission": 5934.1
+    "totalConsumptionEmission": 5934.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0031160518780528885,
+      "2019": 0.003937667560321716,
+      "2020": 0.004459402608329828,
+      "2021": 0.004775069112842423,
+      "2022": 0.005946398659966499
+    }
   },
   {
     "kommun": "Tranås",
@@ -23687,7 +25977,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Ekologisk hållbarhetsstrategi 2022–2035. Arbete pågår med plan.",
     "bicycleMetrePerCapita": 3.802454138,
-    "totalConsumptionEmission": 5902.1
+    "totalConsumptionEmission": 5902.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0001059658789869662,
+      "2022": 0.00010636034886194426
+    }
   },
   {
     "kommun": "Trelleborg",
@@ -23790,7 +26090,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.093715921,
-    "totalConsumptionEmission": 6045.5
+    "totalConsumptionEmission": 6045.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.00021797414826601566,
+      "2021": 0.0002811965996841946,
+      "2022": 6.431006023708976e-5
+    }
   },
   {
     "kommun": "Trollhättan",
@@ -23893,7 +26203,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.937878473,
-    "totalConsumptionEmission": 6070.9
+    "totalConsumptionEmission": 6070.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00020778141395252195,
+      "2017": 0.0002575637899653147,
+      "2018": 0.00025541479362484675,
+      "2019": 0.00025398760540485624,
+      "2020": 0.00025316882985366843,
+      "2021": 0.0002535754133279237,
+      "2022": 0.00032054526436548907
+    }
   },
   {
     "kommun": "Trosa",
@@ -23996,7 +26316,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.260746269,
-    "totalConsumptionEmission": 6537.8
+    "totalConsumptionEmission": 6537.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0007451564828614009,
+      "2016": 0.0010444283763155781,
+      "2017": 0.0010065035614741406,
+      "2018": 0.0031557592606506874,
+      "2019": 0.003928129773768822,
+      "2020": 0.0037738486267384166,
+      "2021": 0.0036839950880065493,
+      "2022": 0.0037262872628726286
+    }
   },
   {
     "kommun": "Tyresö",
@@ -24099,7 +26429,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Klimatplan 2030",
     "bicycleMetrePerCapita": 2.17324803,
-    "totalConsumptionEmission": 6055.7
+    "totalConsumptionEmission": 6055.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003031812374125647,
+      "2016": 0.0002972209838014564,
+      "2017": 0.0002959580585151361,
+      "2018": 0.0018540121656528622,
+      "2019": 0.0021310491796495148,
+      "2020": 0.002115945601709191,
+      "2021": 0.00199747258570788,
+      "2022": 0.001991303287682367
+    }
   },
   {
     "kommun": "Täby",
@@ -24202,7 +26542,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.354569043,
-    "totalConsumptionEmission": 6863.7
+    "totalConsumptionEmission": 6863.7,
+    "ChargingPointsPerCapita": {
+      "2015": 5.85814501837993e-5,
+      "2016": 5.764851699190038e-5,
+      "2017": 0.00022725658689013565,
+      "2018": 0.00022409905178088715,
+      "2019": 0.00022261179285972674,
+      "2020": 0.00021991615696515703,
+      "2021": 0.00021634777905483064,
+      "2022": 0.00021294435497823974
+    }
   },
   {
     "kommun": "Töreboda",
@@ -24305,7 +26655,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Strategi för Agenda 2030",
     "bicycleMetrePerCapita": 5.452574406,
-    "totalConsumptionEmission": 5912.2
+    "totalConsumptionEmission": 5912.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0005380393844829441,
+      "2016": 0.0005299417064122947,
+      "2017": 0.0007435734013171871,
+      "2018": 0.0007517182130584193,
+      "2019": 0.0007532551382761218,
+      "2020": 0.0007542290701433035,
+      "2021": 0.000760291082871728,
+      "2022": 0.0007620291748312649
+    }
   },
   {
     "kommun": "Uddevalla",
@@ -24408,7 +26768,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Energi– och klimatplan 2022–2030. Finns även separat åtgärdsplan.",
     "bicycleMetrePerCapita": 2.291437576,
-    "totalConsumptionEmission": 6099.2
+    "totalConsumptionEmission": 6099.2,
+    "ChargingPointsPerCapita": {
+      "2015": 3.6913990402362495e-5,
+      "2016": 3.6255528968167646e-5,
+      "2017": 0.00010759822821584204,
+      "2018": 0.00015997440409534473,
+      "2019": 0.00017635751194822142,
+      "2020": 0.0008628735450014968,
+      "2021": 0.0009978642204404608,
+      "2022": 0.0009950769875353514
+    }
   },
   {
     "kommun": "Ulricehamn",
@@ -24511,7 +26881,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Står bakom klimatlöften inom Västra Götalands klimat 2030",
     "bicycleMetrePerCapita": 6.208408392,
-    "totalConsumptionEmission": 5938.7
+    "totalConsumptionEmission": 5938.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 8.372755055050864e-5,
+      "2017": 8.231807704972011e-5,
+      "2018": 8.181632235631008e-5,
+      "2019": 0.00016215339711366953,
+      "2020": 0.00016191709844559586,
+      "2021": 0.00016065547433528798,
+      "2022": 0.00015931177314003505
+    }
   },
   {
     "kommun": "Umeå",
@@ -24614,7 +26994,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Program och planer för att nå Umeå kommuns miljömål",
     "bicycleMetrePerCapita": 2.639826356,
-    "totalConsumptionEmission": 6242.3
+    "totalConsumptionEmission": 6242.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00010763638772282802,
+      "2016": 0.0002034306545584741,
+      "2017": 0.0002318516149664215,
+      "2018": 0.00022813269456178857,
+      "2019": 0.0004887471780668886,
+      "2020": 0.0007909448335176311,
+      "2021": 0.0008320801239723047,
+      "2022": 0.0010360343328165765
+    }
   },
   {
     "kommun": "Upplands Väsby",
@@ -24717,7 +27107,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Klimat– och energistrategi för Upplands Väsby 2022–2025",
     "bicycleMetrePerCapita": 3.734221098,
-    "totalConsumptionEmission": 6207.6
+    "totalConsumptionEmission": 6207.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0001406436792386489,
+      "2016": 0.0001822697136087125,
+      "2017": 0.0003587041811456115,
+      "2018": 0.001163735370968096,
+      "2019": 0.001175565340058992,
+      "2020": 0.0012504238724991522,
+      "2021": 0.0017356754496026768,
+      "2022": 0.0014006739474645771
+    }
   },
   {
     "kommun": "Upplands-Bro",
@@ -24820,7 +27220,17 @@
     "climatePlanYear": 2023,
     "climatePlanComment": "Miljö– och klimatstrategi 2023–2045",
     "bicycleMetrePerCapita": 2.711961788,
-    "totalConsumptionEmission": 5788.8
+    "totalConsumptionEmission": 5788.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0005040908914653535,
+      "2016": 0.0009344047841524949,
+      "2017": 0.0010864054465126384,
+      "2018": 0.001043260536931423,
+      "2019": 0.0024875621890547263,
+      "2020": 0.0029806259314456036,
+      "2021": 0.003539025802715398,
+      "2022": 0.004583555709038395
+    }
   },
   {
     "kommun": "Uppsala",
@@ -24923,7 +27333,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljö– och klimatprogram. Se även tillhörande handlingsplan.",
     "bicycleMetrePerCapita": 2.036415643,
-    "totalConsumptionEmission": 6360.6
+    "totalConsumptionEmission": 6360.6,
+    "ChargingPointsPerCapita": {
+      "2015": 3.807239465844303e-5,
+      "2016": 3.7285781533284553e-5,
+      "2017": 3.6377856798566714e-5,
+      "2018": 2.664724378675099e-5,
+      "2019": 0.00013866800712406885,
+      "2020": 0.00019671654428901936,
+      "2021": 0.00021044125321975117,
+      "2022": 0.0003056083257619559
+    }
   },
   {
     "kommun": "Uppvidinge",
@@ -25026,7 +27446,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Förslag på remiss för klimat– och energistrategi 2022–2030 ",
     "bicycleMetrePerCapita": 0.2710671217,
-    "totalConsumptionEmission": 5849.5
+    "totalConsumptionEmission": 5849.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0009413241292751804,
+      "2018": 0.0009393591483143722,
+      "2019": 0.0009386733416770963,
+      "2020": 0.0009475679090334807,
+      "2021": 0.002328288707799767,
+      "2022": 0.002335952431514122
+    }
   },
   {
     "kommun": "Vadstena",
@@ -25129,7 +27559,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.322477247,
-    "totalConsumptionEmission": 6092.0
+    "totalConsumptionEmission": 6092.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.003780207911435129,
+      "2016": 0.00557974959172564,
+      "2017": 0.008354669182050937,
+      "2018": 0.009315943571998934,
+      "2019": 0.01225094238018309,
+      "2020": 0.014414657146706183,
+      "2021": 0.02523910733262487,
+      "2022": 0.05507285122309852
+    }
   },
   {
     "kommun": "Vaggeryd",
@@ -25232,7 +27672,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljöprogram 2022–2025",
     "bicycleMetrePerCapita": 4.665683814,
-    "totalConsumptionEmission": 6103.4
+    "totalConsumptionEmission": 6103.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0001465845793022574,
+      "2017": 0.00014450867052023122,
+      "2018": 0.0001430615164520744,
+      "2019": 0.00014010507880910682,
+      "2020": 0.00013762730525736306,
+      "2021": 0.0001356300013563,
+      "2022": 0.00013464386697185942
+    }
   },
   {
     "kommun": "Valdemarsvik",
@@ -25335,7 +27785,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.338655645,
-    "totalConsumptionEmission": 5970.0
+    "totalConsumptionEmission": 5970.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00025611473940325265,
+      "2017": 0.00101010101010101,
+      "2018": 0.001005530417295123,
+      "2019": 0.0010161310809094373,
+      "2020": 0.0010339925035543493,
+      "2021": 0.0010443864229765013,
+      "2022": 0.0007863695937090433
+    }
   },
   {
     "kommun": "Vallentuna",
@@ -25438,7 +27898,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Miljö– och klimatstrategi",
     "bicycleMetrePerCapita": 2.091930929,
-    "totalConsumptionEmission": 6034.4
+    "totalConsumptionEmission": 6034.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 6.1003507701692846e-5,
+      "2017": 0.00012057272042200452,
+      "2018": 0.00011964584828906437,
+      "2019": 0.00011733646230566149,
+      "2020": 0.00011723673026759284,
+      "2021": 0.00023360392454593236,
+      "2022": 0.00022954864996700238
+    }
   },
   {
     "kommun": "Vansbro",
@@ -25541,7 +28011,17 @@
     "climatePlanYear": 2013,
     "climatePlanComment": "Energi– och klimatplan 2010–2020 (gäller fortfarande)",
     "bicycleMetrePerCapita": 1.225521451,
-    "totalConsumptionEmission": 6068.2
+    "totalConsumptionEmission": 6068.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00043878894251864854,
+      "2018": 0.00044072278536800354,
+      "2019": 0.000440852314474651,
+      "2020": 0.0004411116012351125,
+      "2021": 0.00044273907910271547,
+      "2022": 0.0004411764705882353
+    }
   },
   {
     "kommun": "Vara",
@@ -25644,7 +28124,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Miljöstrategi 2021–2030",
     "bicycleMetrePerCapita": 3.471290972,
-    "totalConsumptionEmission": 5938.1
+    "totalConsumptionEmission": 5938.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0009899764880584086,
+      "2022": 0.0009899152385077028
+    }
   },
   {
     "kommun": "Varberg",
@@ -25747,7 +28237,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Pågår arbete med att ta fram en energi– och klimatstrategi.",
     "bicycleMetrePerCapita": 2.756270158,
-    "totalConsumptionEmission": 6109.0
+    "totalConsumptionEmission": 6109.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 6.286342920006286e-5,
+      "2019": 6.191854615253634e-5,
+      "2020": 6.116488523938407e-5,
+      "2021": 6.000780101413184e-5,
+      "2022": 8.849557522123894e-5
+    }
   },
   {
     "kommun": "Vaxholm",
@@ -25850,7 +28350,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Hållbara Vaxholm 2021–2030. Vaxholms stads hållbarhetsstrategi 2021–2030",
     "bicycleMetrePerCapita": 1.176474976,
-    "totalConsumptionEmission": 6794.8
+    "totalConsumptionEmission": 6794.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0007908611599297012,
+      "2016": 0.0007744600292573789,
+      "2017": 0.0007607133801031189,
+      "2018": 0.0007485652499376195,
+      "2019": 0.0007498125468632841,
+      "2020": 0.0010095911155981827,
+      "2021": 0.0012504168056018672,
+      "2022": 0.0029414236490461383
+    }
   },
   {
     "kommun": "Vellinge",
@@ -25953,7 +28463,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Program för hållbar utveckling. 2020–2030.",
     "bicycleMetrePerCapita": 3.894732092,
-    "totalConsumptionEmission": 6916.6
+    "totalConsumptionEmission": 6916.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0005480716531571811,
+      "2016": 0.0017301528774427773,
+      "2017": 0.0020676166526962837,
+      "2018": 0.002164442861448259,
+      "2019": 0.0023752320629026975,
+      "2020": 0.0024109440606799406,
+      "2021": 0.0024030759371996154,
+      "2022": 0.0030141984611723647
+    }
   },
   {
     "kommun": "Vetlanda",
@@ -26056,7 +28576,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Har ett miljöbokslut 2021 där Jönköpings mål finns.",
     "bicycleMetrePerCapita": 3.620286389,
-    "totalConsumptionEmission": 5926.8
+    "totalConsumptionEmission": 5926.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.00014543339150668993,
+      "2019": 0.0001456346027816209,
+      "2020": 0.00014544396771143918,
+      "2021": 0.00014481734911842438,
+      "2022": 7.227261229357136e-5
+    }
   },
   {
     "kommun": "Vilhelmina",
@@ -26159,7 +28689,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.7632882299,
-    "totalConsumptionEmission": 6379.0
+    "totalConsumptionEmission": 6379.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0017680860468542803,
+      "2018": 0.002665876777251185,
+      "2019": 0.009148170365926815,
+      "2020": 0.009328643523474537,
+      "2021": 0.00940632228218967,
+      "2022": 0.009228844048177694
+    }
   },
   {
     "kommun": "Vimmerby",
@@ -26262,7 +28802,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.100303789,
-    "totalConsumptionEmission": 6024.9
+    "totalConsumptionEmission": 6024.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0008265513733468973,
+      "2018": 0.0008246637909160112,
+      "2019": 0.0009586502204895507,
+      "2020": 0.0009571209800918836,
+      "2021": 0.0009628963923481833,
+      "2022": 0.0016069936363052003
+    }
   },
   {
     "kommun": "Vindeln",
@@ -26365,7 +28915,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.284967346,
-    "totalConsumptionEmission": 6110.8
+    "totalConsumptionEmission": 6110.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00018477457501847746,
+      "2018": 0.0001839587932303164,
+      "2019": 0.00018439977872026554,
+      "2020": 0.00018231540565177758,
+      "2021": 0.00018018018018018018,
+      "2022": 0.0009084302325581395
+    }
   },
   {
     "kommun": "Vingåker",
@@ -26468,7 +29028,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Med i Glokala Sverige 2021",
     "bicycleMetrePerCapita": 1.591330664,
-    "totalConsumptionEmission": 5846.1
+    "totalConsumptionEmission": 5846.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00022338880822070814,
+      "2016": 0.00021980437410704473,
+      "2017": 0.000326797385620915,
+      "2018": 0.00032837127845884414,
+      "2019": 0.00032927230819888045,
+      "2020": 0.0020778652668416446,
+      "2021": 0.0020964360587002098,
+      "2022": 0.0027836543814719963
+    }
   },
   {
     "kommun": "Vänersborg",
@@ -26571,7 +29141,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljöaktivitetsplan 2022",
     "bicycleMetrePerCapita": 3.86479684,
-    "totalConsumptionEmission": 6074.0
+    "totalConsumptionEmission": 6074.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 5.1084263492631096e-5,
+      "2018": 5.074725330491487e-5,
+      "2019": 5.051653153494481e-5,
+      "2020": 5.047445992327882e-5,
+      "2021": 5.045917852457362e-5,
+      "2022": 5.012028869286287e-5
+    }
   },
   {
     "kommun": "Vännäs",
@@ -26674,7 +29254,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.657717693,
-    "totalConsumptionEmission": 6079.2
+    "totalConsumptionEmission": 6079.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0006900517538815411,
+      "2017": 0.0009115770282588879,
+      "2018": 0.000910643141718839,
+      "2019": 0.001352569882777277,
+      "2020": 0.0015560742469712125,
+      "2021": 0.0015462778882261983,
+      "2022": 0.0033470936070512107
+    }
   },
   {
     "kommun": "Värmdö",
@@ -26777,7 +29367,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Miljö– och klimatplan 2020–2030",
     "bicycleMetrePerCapita": 1.391918951,
-    "totalConsumptionEmission": 6374.5
+    "totalConsumptionEmission": 6374.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0004389237589430716,
+      "2021": 0.0004326007959854646,
+      "2022": 0.00043050562886109734
+    }
   },
   {
     "kommun": "Värnamo",
@@ -26880,7 +29480,17 @@
     "climatePlanYear": 2023,
     "climatePlanComment": "Plan för Värnamo kommuns miljöarbete 2023–2035. Planen har en tillhörande åtgärdsplan med konkreta åtgärder",
     "bicycleMetrePerCapita": 4.133826968,
-    "totalConsumptionEmission": 6017.5
+    "totalConsumptionEmission": 6017.5,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00017924894691243688,
+      "2016": 0.0005013861853359287,
+      "2017": 0.0004969888323685904,
+      "2018": 0.000493784129197165,
+      "2019": 0.0008391203703703704,
+      "2020": 0.0008398494063133507,
+      "2021": 0.0015867978419549348,
+      "2022": 0.0025077827741265997
+    }
   },
   {
     "kommun": "Västervik",
@@ -26983,7 +29593,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Energi– och klimatstrategi 2021–2030",
     "bicycleMetrePerCapita": 3.089136601,
-    "totalConsumptionEmission": 6020.3
+    "totalConsumptionEmission": 6020.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003051402258037671,
+      "2016": 0.0006037652999615786,
+      "2017": 0.0007660529123690186,
+      "2018": 0.0007633587786259542,
+      "2019": 0.0008724338177158593,
+      "2020": 0.0010912563088255353,
+      "2021": 0.001306229079924892,
+      "2022": 0.001364256480218281
+    }
   },
   {
     "kommun": "Västerås",
@@ -27086,7 +29706,17 @@
     "climatePlanYear": 2017,
     "climatePlanComment": "Klimatprogram med handlingsplan 2017–2020. ",
     "bicycleMetrePerCapita": 2.882234152,
-    "totalConsumptionEmission": 6397.4
+    "totalConsumptionEmission": 6397.4,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 2.71333604666938e-5,
+      "2017": 0.0002064822092264244,
+      "2018": 0.00021699391101934534,
+      "2019": 0.00024018331829482828,
+      "2020": 0.0002507216282762567,
+      "2021": 0.00030604827911603053,
+      "2022": 0.0003025470681298179
+    }
   },
   {
     "kommun": "Växjö",
@@ -27189,7 +29819,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Hållbarhetsprogram Hållbara Växjö 2030",
     "bicycleMetrePerCapita": 2.872379738,
-    "totalConsumptionEmission": 6123.9
+    "totalConsumptionEmission": 6123.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0001702456076633223,
+      "2016": 0.0002011173184357542,
+      "2017": 0.000505161432022842,
+      "2018": 0.001058692622640898,
+      "2019": 0.0014023308438419616,
+      "2020": 0.001496958643881972,
+      "2021": 0.001656336267513933,
+      "2022": 0.0026972214501168454
+    }
   },
   {
     "kommun": "Vårgårda",
@@ -27292,7 +29932,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Förberedande arbete pågår.",
     "bicycleMetrePerCapita": 2.061869332,
-    "totalConsumptionEmission": 5657.8
+    "totalConsumptionEmission": 5657.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0003348401138456387,
+      "2021": 0.0003284072249589491,
+      "2022": 0.0006521030322791001
+    }
   },
   {
     "kommun": "Ydre",
@@ -27395,7 +30045,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.709752197,
-    "totalConsumptionEmission": 6152.7
+    "totalConsumptionEmission": 6152.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.011208310552214325,
+      "2016": 0.012789115646258504,
+      "2017": 0.01687650683096705,
+      "2018": 0.0168314186481432,
+      "2019": 0.021617293835068056,
+      "2020": 0.02227589908749329,
+      "2021": 0.02408660351826793,
+      "2022": 0.03231061634537062
+    }
   },
   {
     "kommun": "Ystad",
@@ -27498,7 +30158,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Miljöprogram 2021–2025",
     "bicycleMetrePerCapita": 4.385902002,
-    "totalConsumptionEmission": 6411.7
+    "totalConsumptionEmission": 6411.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.00013401232913428035,
+      "2018": 0.00013233639912657976,
+      "2019": 0.00013097148096002096,
+      "2020": 0.00012915724895059736,
+      "2021": 0.00012674271229404308,
+      "2022": 0.00012612726240776944
+    }
   },
   {
     "kommun": "Älmhult",
@@ -27601,7 +30271,17 @@
     "climatePlanYear": 2020,
     "climatePlanComment": "Miljöplan 2030",
     "bicycleMetrePerCapita": 3.376752163,
-    "totalConsumptionEmission": 5705.8
+    "totalConsumptionEmission": 5705.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00012370113805047008,
+      "2016": 0.00012035142616440005,
+      "2017": 0.00011663167716351762,
+      "2018": 0.00011384335154826958,
+      "2019": 0.00028327006968443717,
+      "2020": 0.00027957951241333037,
+      "2021": 0.00027834994154651225,
+      "2022": 0.00038691134202962634
+    }
   },
   {
     "kommun": "Älvdalen",
@@ -27704,7 +30384,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Beslut om utveckling av klimatplan väntas före sommaren 2023",
     "bicycleMetrePerCapita": 0.7569722078,
-    "totalConsumptionEmission": 5794.9
+    "totalConsumptionEmission": 5794.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0005685856432125089,
+      "2016": 0.000568262537292229,
+      "2017": 0.0005659309564233164,
+      "2018": 0.0008425782895660722,
+      "2019": 0.0008533636751528943,
+      "2020": 0.0011374946679937438,
+      "2021": 0.0014200511218403862,
+      "2022": 0.003134796238244514
+    }
   },
   {
     "kommun": "Älvkarleby",
@@ -27807,7 +30497,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.9894422704,
-    "totalConsumptionEmission": 6136.6
+    "totalConsumptionEmission": 6136.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.002582589045518132,
+      "2016": 0.002541026998411858,
+      "2017": 0.0035098915124441607,
+      "2018": 0.009689097103918229,
+      "2019": 0.011102886750555145,
+      "2020": 0.012722111239617286,
+      "2021": 0.012984314947543367,
+      "2022": 0.012675324675324675
+    }
   },
   {
     "kommun": "Älvsbyn",
@@ -27910,7 +30610,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Energi– och klimatstrategi",
     "bicycleMetrePerCapita": 2.224133783,
-    "totalConsumptionEmission": 6267.0
+    "totalConsumptionEmission": 6267.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.002444091409018697,
+      "2016": 0.002563163676309044,
+      "2017": 0.004109257916364515,
+      "2018": 0.004545454545454545,
+      "2019": 0.005331019092486983,
+      "2020": 0.006580581077725354,
+      "2021": 0.006617555250343364,
+      "2022": 0.006699532296801921
+    }
   },
   {
     "kommun": "Ängelholm",
@@ -28013,7 +30723,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. Ny hållbarhetsplan under utveckling.",
     "bicycleMetrePerCapita": 3.702963484,
-    "totalConsumptionEmission": 6461.6
+    "totalConsumptionEmission": 6461.6,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 9.035872413481521e-5
+    }
   },
   {
     "kommun": "Åmål",
@@ -28116,7 +30836,17 @@
     "climatePlanYear": 2017,
     "climatePlanComment": "Energi– och klimatstrategi",
     "bicycleMetrePerCapita": 2.91731537,
-    "totalConsumptionEmission": 5851.1
+    "totalConsumptionEmission": 5851.1,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Ånge",
@@ -28219,7 +30949,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.864452459,
-    "totalConsumptionEmission": 6333.8
+    "totalConsumptionEmission": 6333.8,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.000526592943654555,
+      "2017": 0.0017932489451476794,
+      "2018": 0.002550207204335352,
+      "2019": 0.0025762129669386004,
+      "2020": 0.0034684587036635595,
+      "2021": 0.0043322863641286685,
+      "2022": 0.008093623537132232
+    }
   },
   {
     "kommun": "Åre",
@@ -28322,7 +31062,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.3319469352,
-    "totalConsumptionEmission": 6697.7
+    "totalConsumptionEmission": 6697.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.00036075036075036075,
+      "2017": 0.0003549875754348598,
+      "2018": 0.00034695116662329775,
+      "2019": 0.0003410932037179159,
+      "2020": 0.00033197775749024816,
+      "2021": 0.00040746475429875314,
+      "2022": 0.0005677210056772101
+    }
   },
   {
     "kommun": "Årjäng",
@@ -28425,7 +31175,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.410277256,
-    "totalConsumptionEmission": 6339.9
+    "totalConsumptionEmission": 6339.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0004053095551727632,
+      "2016": 0.0004016870857601928,
+      "2017": 0.002010454362685967,
+      "2018": 0.002796923384277295,
+      "2019": 0.0027805362462760674,
+      "2020": 0.003001200480192077,
+      "2021": 0.0040233353450010055,
+      "2022": 0.004539035707080896
+    }
   },
   {
     "kommun": "Åsele",
@@ -28528,7 +31288,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.7939140036,
-    "totalConsumptionEmission": 6179.7
+    "totalConsumptionEmission": 6179.7,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Åstorp",
@@ -28631,7 +31401,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Verksamhetsplan för miljöstrategiskt arbete 2022.",
     "bicycleMetrePerCapita": 2.783975275,
-    "totalConsumptionEmission": 5651.9
+    "totalConsumptionEmission": 5651.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.00012547051442910915,
+      "2020": 0.00012450974288738095,
+      "2021": 0.0008584743684081432,
+      "2022": 0.0009791322440487118
+    }
   },
   {
     "kommun": "Åtvidaberg",
@@ -28734,7 +31514,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Hållbarhetsprogram. Gäller tillsvidare.",
     "bicycleMetrePerCapita": 2.773036069,
-    "totalConsumptionEmission": 5883.9
+    "totalConsumptionEmission": 5883.9,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0007747266936386331,
+      "2017": 0.0030091995529189235,
+      "2018": 0.0030337176042298693,
+      "2019": 0.005476832130748501,
+      "2020": 0.007963594994311717,
+      "2021": 0.007939277612982028,
+      "2022": 0.007908917086737355
+    }
   },
   {
     "kommun": "Öckerö",
@@ -28837,7 +31627,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.588384851,
-    "totalConsumptionEmission": 5835.0
+    "totalConsumptionEmission": 5835.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0004642884779076066,
+      "2018": 0.0004634994206257242,
+      "2019": 0.0004645401052957572,
+      "2020": 0.000463893613731251,
+      "2021": 0.0004650441791970237,
+      "2022": 0.00046875
+    }
   },
   {
     "kommun": "Ödeshög",
@@ -28940,7 +31740,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.229829471,
-    "totalConsumptionEmission": 6225.3
+    "totalConsumptionEmission": 6225.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0003819709702062643,
+      "2016": 0.00037488284910965324,
+      "2017": 0.0003743215422047539,
+      "2018": 0.00037572797294758596,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Örebro",
@@ -29043,7 +31853,17 @@
     "climatePlanYear": 2016,
     "climatePlanComment": "Miljöstrategi med mål och delmål 2020 och 2030",
     "bicycleMetrePerCapita": 3.428744851,
-    "totalConsumptionEmission": 6087.2
+    "totalConsumptionEmission": 6087.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0,
+      "2021": 0.0,
+      "2022": 0.0
+    }
   },
   {
     "kommun": "Örkelljunga",
@@ -29146,7 +31966,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.810645387,
-    "totalConsumptionEmission": 6067.0
+    "totalConsumptionEmission": 6067.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0012206286237412267,
+      "2016": 0.0012050612572805785,
+      "2017": 0.001293918582661491,
+      "2018": 0.0012777668566935326,
+      "2019": 0.0016536964980544747,
+      "2020": 0.0016266385991771121,
+      "2021": 0.0016192018287455947,
+      "2022": 0.0018173122907699664
+    }
   },
   {
     "kommun": "Örnsköldsvik",
@@ -29249,7 +32079,17 @@
     "climatePlanYear": 2021,
     "climatePlanComment": "Klimatstrategi, gäller till 2026.",
     "bicycleMetrePerCapita": 1.88221786,
-    "totalConsumptionEmission": 6131.3
+    "totalConsumptionEmission": 6131.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.00010796027062041169,
+      "2016": 0.0001786862983346437,
+      "2017": 0.0012647179322752453,
+      "2018": 0.0006596658881420599,
+      "2019": 0.0012857602057216328,
+      "2020": 0.0013259985306502769,
+      "2021": 0.002203392866739516,
+      "2022": 0.003473909678348363
+    }
   },
   {
     "kommun": "Östersund",
@@ -29352,7 +32192,17 @@
     "climatePlanYear": 2019,
     "climatePlanComment": "Klimatprogram Färden mot ett fossilbränslefritt och energieffektivt Östersund 2030",
     "bicycleMetrePerCapita": 2.810475703,
-    "totalConsumptionEmission": 6318.8
+    "totalConsumptionEmission": 6318.8,
+    "ChargingPointsPerCapita": {
+      "2015": 4.912717387744408e-5,
+      "2016": 4.858693011579885e-5,
+      "2017": 9.58451142952988e-5,
+      "2018": 0.00014234425166463694,
+      "2019": 9.40748522240863e-5,
+      "2020": 9.377197780729858e-5,
+      "2021": 0.00021764815620919098,
+      "2022": 0.0002008838891120932
+    }
   },
   {
     "kommun": "Österåker",
@@ -29455,7 +32305,17 @@
     "climatePlanYear": 2022,
     "climatePlanComment": "Miljö– och klimatprogram 2030.",
     "bicycleMetrePerCapita": 2.148302014,
-    "totalConsumptionEmission": 6228.0
+    "totalConsumptionEmission": 6228.0,
+    "ChargingPointsPerCapita": {
+      "2015": 9.494422027059102e-5,
+      "2016": 0.0002771810685330192,
+      "2017": 0.00045320643553138455,
+      "2018": 0.0004461198724097165,
+      "2019": 0.0006582700662658533,
+      "2020": 0.0009861932938856016,
+      "2021": 0.0011610067587179169,
+      "2022": 0.0012414017664536612
+    }
   },
   {
     "kommun": "Östhammar",
@@ -29558,7 +32418,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 0.5546263587,
-    "totalConsumptionEmission": 6300.2
+    "totalConsumptionEmission": 6300.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.003988313314473867,
+      "2016": 0.004674182018146824,
+      "2017": 0.006704063483376659,
+      "2018": 0.008436139332365748,
+      "2019": 0.009348314606741574,
+      "2020": 0.009887196081075009,
+      "2021": 0.010016097299230907,
+      "2022": 0.011099176512710347
+    }
   },
   {
     "kommun": "Östra Göinge",
@@ -29661,7 +32531,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.503834265,
-    "totalConsumptionEmission": 5512.2
+    "totalConsumptionEmission": 5512.2,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0,
+      "2018": 0.0,
+      "2019": 0.0,
+      "2020": 0.0017979623093826995,
+      "2021": 0.0018071079579680075,
+      "2022": 0.0016464293064416546
+    }
   },
   {
     "kommun": "Överkalix",
@@ -29764,7 +32644,17 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.802995124,
-    "totalConsumptionEmission": 6722.3
+    "totalConsumptionEmission": 6722.3,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.002079002079002079,
+      "2018": 0.0021199273167777106,
+      "2019": 0.0021116138763197585,
+      "2020": 0.002128306476132563,
+      "2021": 0.002152521525215252,
+      "2022": 0.0022151898734177216
+    }
   },
   {
     "kommun": "Övertorneå",
@@ -29867,6 +32757,16 @@
     "climatePlanYear": "Saknas",
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.960456236,
-    "totalConsumptionEmission": 7105.0
+    "totalConsumptionEmission": 7105.0,
+    "ChargingPointsPerCapita": {
+      "2015": 0.0,
+      "2016": 0.0,
+      "2017": 0.0004483299708585519,
+      "2018": 0.00045351473922902497,
+      "2019": 0.00046522447080716444,
+      "2020": 0.00047427080863172874,
+      "2021": 0.0004749465685110425,
+      "2022": 0.00048555474629764507
+    }
   }
 ]

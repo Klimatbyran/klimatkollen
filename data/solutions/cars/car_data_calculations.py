@@ -71,53 +71,55 @@ def convert_column_to_float(df, year_range):
     return df
 
 
+def charging_point_calculations(df):
+    year_range = range(2015, 2023)
 
+    # Load charging point data, filter for december and set correct column headers
+    df_charging_raw = pd.read_csv(PATH_CHARGING_POINT)
+    df_charging_filtered = df_charging_raw[df_charging_raw['år-månad'].str.endswith(
+        '-12')].reset_index(drop=True)
+    df_charging_filtered.rename(columns={'år-månad': 'year'}, inplace=True)
+    df_charging_filtered['year'] = df_charging_filtered['year'].str[:-3]
+    df_charging_melted = pd.melt(df_charging_filtered, id_vars=[
+                                'year'], var_name='Kommun', value_name='Value')
+    df_charging_pivoted = df_charging_melted.pivot(
+        index='Kommun', columns='year', values='Value').reset_index()
+    df_charging_pivoted['Kommun'] = df_charging_pivoted['Kommun'].str.title()
+    df_charging_renamed = convert_column_name_to_float(df_charging_pivoted, year_range)
+    df_charging_float = convert_column_to_float(df_charging_renamed, year_range)
 
-year_range = range(2015, 2023)
+    # Remove duplicate occurrences of Pajala
+    df_charging_duplicates_removed = df_charging_float.drop(index=172, inplace=True)
 
-# Load charging point data, filter for december and set correct column headers
-df_charging_raw = pd.read_csv(PATH_CHARGING_POINT2)
-df_charging_filtered = df_charging_raw[df_charging_raw['år-månad'].str.endswith(
-    '-12')].reset_index(drop=True)
-df_charging_filtered.rename(columns={'år-månad': 'year'}, inplace=True)
-df_charging_filtered['year'] = df_charging_filtered['year'].str[:-3]
-df_charging_melted = pd.melt(df_charging_filtered, id_vars=[
-                             'year'], var_name='Kommun', value_name='Value')
-df_charging_pivoted = df_charging_melted.pivot(
-    index='Kommun', columns='year', values='Value').reset_index()
-df_charging_pivoted['Kommun'] = df_charging_pivoted['Kommun'].str.title()
-df_charging_renamed = convert_column_name_to_float(df_charging_pivoted, year_range)
-df_charging_float = convert_column_to_float(df_charging_renamed, year_range)
+    # Load population data, set correct column headers and drop unwanted rows
+    df_population = pd.read_excel(PATH_POPULATION)
+    df_population.columns = df_population.iloc[4]
+    df_population = df_population[5:]
+    df_population.reset_index(drop=True, inplace=True)  # reset index
 
-# Remove duplicate occurrences of Pajala
-df_charging_duplicates_removed = df_charging_float.drop(index=172, inplace=True)
+    # Keep only the columns with years between 2013 and 2022 to harmonize with PowerCircle data
+    df_population_filtered = df_population[[
+        'Kommun'] + [year for year in year_range]]
+    df_population_filtered.columns = [int(col) if isinstance(
+        col, float) else col for col in df_population_filtered.columns]
 
-# Load population data, set correct column headers and drop unwanted rows
-df_population = pd.read_excel(PATH_POPULATION)
-df_population.columns = df_population.iloc[4]
-df_population = df_population[5:]
-df_population.reset_index(drop=True, inplace=True)  # reset index
+    df_result = pd.DataFrame()
+    df_result['Kommun'] = df_population_filtered['Kommun']
+    df_result = df_result.drop(index=range(290, len(df_result)))
 
-# Keep only the columns with years between 2013 and 2022 to harmonize with PowerCircle data
-df_population_filtered = df_population[[
-    'Kommun'] + [year for year in year_range]]
-df_population_filtered.columns = [int(col) if isinstance(
-    col, float) else col for col in df_population_filtered.columns]
-df_population_float = convert_column_to_float(df_population_filtered, year_range)
+    # Calculate _charging/_population for each year from 2015 to 2022
+    for year in year_range:
+        df_result[year] = df_charging_pivoted[year] / \
+            df_population_filtered[year]
 
-print(df_charging_pivoted[df_charging_pivoted['Kommun'] == 'Pajala'])
-print(df_population_filtered[df_population_filtered['Kommun'] == 'Pajala'])
+    df_result['chargingPointsPerCapita'] = df_result.apply(
+        lambda x: {2015: x[2015], 2016: x[2016], 2017: x[2017], 2018: x[2018], 2019: x[2019], 2020: x[2020], 2021: x[2021], 2022: x[2022]}, axis=1)
 
-df_result = pd.DataFrame()
-df_result['Kommun'] = df_population_filtered['Kommun']
-df_result = df_result.drop(index=range(290, len(df_result)))
+    df_result_filtered = df_result.filter(
+        ['Kommun', 'chargingPointsPerCapita'], axis=1)
+    
+    print(df_result_filtered.head(5))
+    df = df.merge(df_result_filtered, on='Kommun', how='left')
+    print(df.columns)
 
-# Calculate _charging/_population for each year from 2015 to 2022
-for year in year_range:
-    df_result[year] = df_charging_pivoted[year] / \
-        df_population_filtered[year]
-
-df_result_melted = pd.melt(df_result, id_vars=['Kommun'], value_vars=year_range, var_name='Year', value_name='ChargingPointsPerCapita')
-
-
-print(df_result_melted)
+    return df

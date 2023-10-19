@@ -4,7 +4,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from solutions.cars.car_data_calculations import car_calculations
+from solutions.cars.car_data_calculations import car_calculations, charging_point_calculations
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
@@ -18,22 +18,25 @@ from export_data import export_to_county_xlsx
 
 # Get emission calculations
 df = get_municipalities()
-print('Municipalities loaded and prepped')
+print('1. Municipalities loaded and prepped')
 
 df = emission_calculations(df)
-print('Climate data and calculations all done')
+print('2. Climate data and calculations all done')
 
 df = car_calculations(df)
-print('Hybrid car data and calculations finished')
+print('3. Hybrid car data and calculations finished')
 
 df = get_climate_plans(df)
-print('Climate plans added')
+print('4. Climate plans added')
 
 df = bicycle_calculations(df)
-print('Bicycle data added')
+print('5. Bicycle data added')
 
 df = get_consumption_emissions(df)
-print('Consumption emission data added')
+print('6. Consumption emission data added')
+
+df = charging_point_calculations(df)
+print('7. Charging point calculations added')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -70,6 +73,7 @@ for i in range(len(df)):
         'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
         'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
         'totalConsumptionEmission': df.iloc[i]['Total emissions'],
+        'ChargingPointsPerCapita': df.iloc[i]['chargingPointsPerCapita'],
     })
 
 with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
