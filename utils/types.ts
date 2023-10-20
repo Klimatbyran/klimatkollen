@@ -41,6 +41,16 @@ export type ClimatePlan = {
   Comment: string
 }
 
+export type ChargingPointsPerYear = {
+  Year: number
+  NumberOf: number
+}
+
+export type ChargingPoints = {
+  ChargingPointsPerYear: Array<ChargingPointsPerYear>
+  ChargingPointsChangeAverage: number
+}
+
 export type Municipality = {
   County: string
   Name: string
@@ -60,6 +70,7 @@ export type Municipality = {
   ClimatePlan: ClimatePlan,
   BicycleMetrePerCapita: number,
   TotalConsumptionEmission: number,
+  ChargingPointsPerCapita: ChargingPoints,
 }
 
 export type SelectedData = keyof typeof datasetDescriptions

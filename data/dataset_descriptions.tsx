@@ -160,6 +160,43 @@ export const datasetDescriptions: DatasetDescriptions = {
       'Avser antal ton växthusgasutsläpp (CO₂e) per år och medborgare (år 2019).',
     sortAscending: true,
   },
+
+  Laddpunkterna: {
+    title: 'Laddpunkterna',
+    heading: 'Laddpunkter per capita',
+    body: 'Lorem ipsum.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="https://powercircle.org/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          PowerCircle
+        </a>
+        {' '}
+        och
+        {' '}
+        <a
+          href="https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik" // fixme
+          target="_blank"
+          rel="noreferrer"
+        >
+          SCB
+        </a>
+      </>
+    ),
+    boundaries: [7, 6.7, 6.4, 6.1, 5.8],
+    labels: ['7 ton +', '6,7-7 ton', '6,4-6,7 ton', '6,1-6,4 ton', '5,8-6,1 ton', '5,8 ton -'],
+    labelRotateUp: [],
+    columnHeader: 'Laddpunkter/person',
+    dataType: 'Number',
+    tooltip:
+      'Lorem ipsum.',
+    sortAscending: true,
+  },
 }
 
 export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
@@ -177,6 +214,9 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       break
     case 'Konsumtionen':
       dataPoint = item.TotalConsumptionEmission
+      break
+    case 'Laddpunkterna':
+      dataPoint = item.ChargingPointsPerCapita.ChargingPointsChangeAverage
       break
     default:
       dataPoint = item.BicycleMetrePerCapita

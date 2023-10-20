@@ -101,7 +101,7 @@
     "climatePlanComment": "Klimatstrategi 2030",
     "bicycleMetrePerCapita": 2.881007594,
     "totalConsumptionEmission": 5889.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00010152627838505533,
       "2017": 9.926215134169341e-5,
@@ -214,7 +214,7 @@
     "climatePlanComment": "Klimatstrategi 2022–2030",
     "bicycleMetrePerCapita": 2.865584307,
     "totalConsumptionEmission": 6066.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00032186184699182965,
@@ -327,7 +327,7 @@
     "climatePlanComment": "Plan saknas. Energi– och klimatplan planerad hösten 2023.",
     "bicycleMetrePerCapita": 3.202529861,
     "totalConsumptionEmission": 6030.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00010075566750629723,
       "2017": 0.0004993508439029262,
@@ -440,7 +440,7 @@
     "climatePlanComment": "Miljömål 2011–2025",
     "bicycleMetrePerCapita": 2.482518504,
     "totalConsumptionEmission": 6113.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0017709563164108619,
@@ -553,7 +553,7 @@
     "climatePlanComment": "Energi- och klimatstrategi antagen år 2009, vilken beskriver energiläget och befintliga utsläpp av växthusgaser, den innehåller också övergripande mål och strategier.",
     "bicycleMetrePerCapita": 3.288451193,
     "totalConsumptionEmission": 6176.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0007937653341030451,
       "2016": 0.0007911961447169676,
       "2017": 0.0010047366154729439,
@@ -666,7 +666,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.358501088,
     "totalConsumptionEmission": 6239.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -779,7 +779,7 @@
     "climatePlanComment": "Plan saknas. Kommer under 2023.",
     "bicycleMetrePerCapita": 3.522716618,
     "totalConsumptionEmission": 6424.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00015453562046051616,
       "2016": 0.0001552312946289972,
       "2017": 0.00015527950310559007,
@@ -892,7 +892,7 @@
     "climatePlanComment": "Plan saknas för efter år 2020. Hade en miljöstrategi som gällde 2015–2020",
     "bicycleMetrePerCapita": 2.049167865,
     "totalConsumptionEmission": 6148.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0001160945783831895,
       "2016": 0.00011514546710677823,
       "2017": 0.00034535686876438986,
@@ -1005,7 +1005,7 @@
     "climatePlanComment": "Ekologiskt hållbarhetsprogram 2022–2025.",
     "bicycleMetrePerCapita": 2.926919348,
     "totalConsumptionEmission": 6451.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0003579418344519016,
@@ -1118,7 +1118,7 @@
     "climatePlanComment": "Hållbarhetsprogram 2020–2030.",
     "bicycleMetrePerCapita": 2.915797667,
     "totalConsumptionEmission": 6232.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00017558491725560774,
       "2016": 0.00017270411467553215,
       "2017": 0.0001719986240110079,
@@ -1231,7 +1231,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.461809581,
     "totalConsumptionEmission": 6014.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -1344,7 +1344,7 @@
     "climatePlanComment": "Miljöprogram 2040",
     "bicycleMetrePerCapita": 2.184422467,
     "totalConsumptionEmission": 6488.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0017064846416382253,
       "2016": 0.0031069058042649342,
       "2017": 0.005616399887672002,
@@ -1457,7 +1457,7 @@
     "climatePlanComment": "Handlingsplan för fossilfria transporter",
     "bicycleMetrePerCapita": 1.762300157,
     "totalConsumptionEmission": 6118.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -1570,7 +1570,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.303408188,
     "totalConsumptionEmission": 5852.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0002592520578132089,
@@ -1683,7 +1683,7 @@
     "climatePlanComment": "Borgmästaravtalet. Kommunen jobbar med uppdatering av planen.",
     "bicycleMetrePerCapita": 4.240521656,
     "totalConsumptionEmission": 6657.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -1796,7 +1796,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.022400756,
     "totalConsumptionEmission": 6010.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00021593608291945585,
@@ -1909,7 +1909,7 @@
     "climatePlanComment": "Program för ekologisk hållbarhet 2021–2026",
     "bicycleMetrePerCapita": 2.564056644,
     "totalConsumptionEmission": 6108.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 7.52049334436339e-5,
       "2016": 7.426937502320919e-5,
       "2017": 0.0012630953265472917,
@@ -2022,7 +2022,7 @@
     "climatePlanComment": "Energi– och klimatstrategi, ska följas upp årligen.",
     "bicycleMetrePerCapita": 2.378697008,
     "totalConsumptionEmission": 6336.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00037449676996535904,
       "2016": 0.00036596523330283625,
       "2017": 0.0031316201528967485,
@@ -2135,7 +2135,7 @@
     "climatePlanComment": "Finns både Miljöstrategi 2021–2030 och Handlingsplan för miljöstrategin 2022.",
     "bicycleMetrePerCapita": 3.548200249,
     "totalConsumptionEmission": 6102.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0002549619518318036,
       "2016": 0.00023254011316952173,
       "2017": 0.0005003463936571473,
@@ -2248,7 +2248,7 @@
     "climatePlanComment": "Energi– och klimatstrategi 2020–2024 kopplad till Borås koldioxidbudget.",
     "bicycleMetrePerCapita": 1.84645402,
     "totalConsumptionEmission": 6052.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 4.6088046604232724e-5,
       "2016": 0.0001274117218784128,
       "2017": 0.00018013798569704393,
@@ -2361,7 +2361,7 @@
     "climatePlanComment": "Klimatstrategi 2018–2023",
     "bicycleMetrePerCapita": 2.586763621,
     "totalConsumptionEmission": 5526.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 4.4730220855465474e-5,
       "2016": 4.4113592500689275e-5,
       "2017": 4.351373402230079e-5,
@@ -2474,7 +2474,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.23972865,
     "totalConsumptionEmission": 6151.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -2587,7 +2587,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 6.400184489,
     "totalConsumptionEmission": 5789.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -2700,7 +2700,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.9315229039,
     "totalConsumptionEmission": 6315.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00030983733539891554,
       "2016": 0.00030807147258163895,
       "2017": 0.00030764497769573913,
@@ -2813,7 +2813,7 @@
     "climatePlanComment": "Miljöprogram 2030",
     "bicycleMetrePerCapita": 3.346646362,
     "totalConsumptionEmission": 5458.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00022132462789796933,
@@ -2926,7 +2926,7 @@
     "climatePlanComment": "Plan saknas. Nytt miljö– och energiprogram är under utveckling.",
     "bicycleMetrePerCapita": 4.70562181,
     "totalConsumptionEmission": 6894.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0002737101409607226,
       "2017": 0.0010813733441470668,
@@ -3039,7 +3039,7 @@
     "climatePlanComment": "Utvecklingsplan 2020–2023. Planerar att ta fram fler strategier.",
     "bicycleMetrePerCapita": 3.066064022,
     "totalConsumptionEmission": 6512.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -3152,7 +3152,7 @@
     "climatePlanComment": "Miljö– och klimatprogram 2021–2030",
     "bicycleMetrePerCapita": 1.840451379,
     "totalConsumptionEmission": 8185.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00012337682366367477,
       "2016": 0.00012250022968793067,
       "2017": 0.00042568718073461445,
@@ -3265,7 +3265,7 @@
     "climatePlanComment": "Energi– och klimatprogram 2021–2030. Status oklart, vattenstämplat \"Samrådsunderlag\".",
     "bicycleMetrePerCapita": 4.576541722,
     "totalConsumptionEmission": 6230.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0008274720728175424,
@@ -3378,7 +3378,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.000001742,
     "totalConsumptionEmission": 6529.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0003779289493575208,
@@ -3491,7 +3491,7 @@
     "climatePlanComment": "Hållbarhetsstrategi.",
     "bicycleMetrePerCapita": 2.101732193,
     "totalConsumptionEmission": 6451.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0011757789535567313,
       "2016": 0.001172882946281961,
       "2017": 0.002088651659317707,
@@ -3604,7 +3604,7 @@
     "climatePlanComment": "Energistrategi 2020–2030. Särskild klimatplan saknas.",
     "bicycleMetrePerCapita": 2.383422446,
     "totalConsumptionEmission": 6275.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 7.411799584939223e-5,
       "2016": 7.297672042618404e-5,
       "2017": 7.206428133895435e-5,
@@ -3717,7 +3717,7 @@
     "climatePlanComment": "Plan saknas. Ny plan antas under 2023.",
     "bicycleMetrePerCapita": 3.939870961,
     "totalConsumptionEmission": 6054.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00011911852293031566,
       "2016": 0.00011676104851421566,
       "2017": 0.0005741846577859439,
@@ -3830,7 +3830,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.326560451,
     "totalConsumptionEmission": 5993.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0004278990158322636,
       "2017": 0.0004269854824935952,
@@ -3943,7 +3943,7 @@
     "climatePlanComment": "Klimatkontrakt 2030 via Viable Cities.",
     "bicycleMetrePerCapita": 2.661227955,
     "totalConsumptionEmission": 6128.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 9.548134533215572e-5,
       "2016": 0.00016283614031822833,
       "2017": 0.00022832614105988995,
@@ -4056,7 +4056,7 @@
     "climatePlanComment": "Klimatprogram. Gäller tills vidare.",
     "bicycleMetrePerCapita": 2.152677677,
     "totalConsumptionEmission": 5961.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 1.9595355900651545e-5,
       "2016": 0.00013502565487442613,
       "2017": 0.0002674077681956661,
@@ -4169,7 +4169,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.499086285,
     "totalConsumptionEmission": 5919.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 6.083095078776081e-5,
       "2017": 6.0175713082200024e-5,
@@ -4282,7 +4282,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.015159633,
     "totalConsumptionEmission": 5891.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -4395,7 +4395,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.199243979,
     "totalConsumptionEmission": 6185.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00022313127556712533,
       "2017": 0.0003727171077152441,
@@ -4508,7 +4508,7 @@
     "climatePlanComment": "Plans saknas. Har klimatinitiativ och koldioxidbudget. ",
     "bicycleMetrePerCapita": 2.948644735,
     "totalConsumptionEmission": 5960.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003725348669352022,
       "2016": 0.00043312740784644493,
       "2017": 0.0007014368141192443,
@@ -4621,7 +4621,7 @@
     "climatePlanComment": "Klimatstrategi 2021–2030. Kommunen står även bakom Västra Götalandsregionens kraftsamling för klimatet, Klimat 2030",
     "bicycleMetrePerCapita": 3.429514807,
     "totalConsumptionEmission": 5721.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00012092995132569459,
@@ -4734,7 +4734,7 @@
     "climatePlanComment": "Energi– och klimatprogram, vision 2050",
     "bicycleMetrePerCapita": 3.120604367,
     "totalConsumptionEmission": 6238.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0005607935228348112,
       "2016": 0.0006587501083470573,
       "2017": 0.0007884813164209805,
@@ -4847,7 +4847,7 @@
     "climatePlanComment": "Plan saknas.  ",
     "bicycleMetrePerCapita": 1.736768242,
     "totalConsumptionEmission": 5901.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -4960,7 +4960,7 @@
     "climatePlanComment": "Plan saknas. Arbetet med att ta fram en ny energi– och klimatstrategi påbörjas under 2023.",
     "bicycleMetrePerCapita": 3.168529867,
     "totalConsumptionEmission": 6127.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0006488390415720443,
@@ -5073,7 +5073,7 @@
     "climatePlanComment": "Energi– och klimatplan 2019–2023",
     "bicycleMetrePerCapita": 2.556806018,
     "totalConsumptionEmission": 6102.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00017825311942959,
       "2017": 0.0002964895635673624,
@@ -5186,7 +5186,7 @@
     "climatePlanComment": "Miljö– och klimatplan 2021–2030",
     "bicycleMetrePerCapita": 6.449194915,
     "totalConsumptionEmission": 5927.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -5299,7 +5299,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.231146482,
     "totalConsumptionEmission": 5767.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -5412,7 +5412,7 @@
     "climatePlanComment": "Plan saknas. Arbete med plan pågår. ",
     "bicycleMetrePerCapita": 0.9615165799,
     "totalConsumptionEmission": 5892.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -5525,7 +5525,7 @@
     "climatePlanComment": "Strategi för hållbar utveckling",
     "bicycleMetrePerCapita": 4.057533422,
     "totalConsumptionEmission": 5973.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 6.832467887400929e-5,
       "2016": 6.784720808738721e-5,
       "2017": 0.00013500286881096223,
@@ -5638,7 +5638,7 @@
     "climatePlanComment": "Miljö– och hållbarhetsplan, gäller tills vidare",
     "bicycleMetrePerCapita": 1.698479193,
     "totalConsumptionEmission": 6087.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0009390553103577801,
       "2016": 0.002209741276125587,
       "2017": 0.002722570106180234,
@@ -5751,7 +5751,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.272521996,
     "totalConsumptionEmission": 5800.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -5864,7 +5864,7 @@
     "climatePlanComment": "Kommer under 2023 ta fram ett internt hållbarhetsprogram.",
     "bicycleMetrePerCapita": 2.965998404,
     "totalConsumptionEmission": 6204.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00012197034378212611,
       "2016": 0.00012068341292691758,
       "2017": 0.0001194641180988139,
@@ -5977,7 +5977,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.282694987,
     "totalConsumptionEmission": 6226.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.011626607043040804,
       "2016": 0.014454374931038287,
       "2017": 0.015092664521140827,
@@ -6090,7 +6090,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.834894831,
     "totalConsumptionEmission": 6103.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0005243838489774515,
       "2017": 0.0005217391304347826,
@@ -6203,7 +6203,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 4.147110951,
     "totalConsumptionEmission": 6029.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -6316,7 +6316,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.568772462,
     "totalConsumptionEmission": 6701.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 5.610098176718093e-5,
@@ -6429,7 +6429,7 @@
     "climatePlanComment": "Klimatplan 2035",
     "bicycleMetrePerCapita": 2.8248516,
     "totalConsumptionEmission": 6330.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -6542,7 +6542,7 @@
     "climatePlanComment": "Miljö– och klimatprogram 2021–2030",
     "bicycleMetrePerCapita": 1.303877809,
     "totalConsumptionEmission": 6268.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 5.654973640526095e-5,
       "2016": 8.263868927852831e-5,
       "2017": 0.00014715294509776806,
@@ -6655,7 +6655,7 @@
     "climatePlanComment": "Klimat– och miljöpolitiskt program 2019–2024",
     "bicycleMetrePerCapita": 3.76946887,
     "totalConsumptionEmission": 5959.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.004483282674772037,
       "2016": 0.007457627118644068,
       "2017": 0.014423803050898656,
@@ -6768,7 +6768,7 @@
     "climatePlanComment": "Klimatprogram 2021–2025",
     "bicycleMetrePerCapita": 1.781741558,
     "totalConsumptionEmission": 6088.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -6881,7 +6881,7 @@
     "climatePlanComment": "Miljööverenskommelse 2022–2025",
     "bicycleMetrePerCapita": 5.447849972,
     "totalConsumptionEmission": 6389.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00033950093362756747,
@@ -6994,7 +6994,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.284930497,
     "totalConsumptionEmission": 6134.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -7107,7 +7107,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.03456596,
     "totalConsumptionEmission": 6200.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -7220,7 +7220,7 @@
     "climatePlanComment": "Plan för energi och klimat. Gäller tills vidare.",
     "bicycleMetrePerCapita": 2.855029528,
     "totalConsumptionEmission": 6215.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -7333,7 +7333,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.259755972,
     "totalConsumptionEmission": 6432.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0011673151750972762,
       "2016": 0.0015262321144674086,
       "2017": 0.0030913812291331767,
@@ -7446,7 +7446,7 @@
     "climatePlanComment": "Klimat– och miljöpolitisk program. ",
     "bicycleMetrePerCapita": 2.076686121,
     "totalConsumptionEmission": 5779.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 7.001738765126674e-5,
       "2017": 6.81531628747004e-5,
@@ -7559,7 +7559,7 @@
     "climatePlanComment": "Klimatstrategi 2020–2050",
     "bicycleMetrePerCapita": 2.869357799,
     "totalConsumptionEmission": 6173.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00040687620791374224,
       "2016": 0.00040551500405515005,
       "2017": 0.000815910249872514,
@@ -7672,7 +7672,7 @@
     "climatePlanComment": "Plan saknas. Arbete med handlingsplan pågår 2023",
     "bicycleMetrePerCapita": 2.222548283,
     "totalConsumptionEmission": 6058.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -7785,7 +7785,7 @@
     "climatePlanComment": "Energi– och klimatstrategi 2020–2025 ",
     "bicycleMetrePerCapita": 1.72905197,
     "totalConsumptionEmission": 6114.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 6.424257998201208e-5,
@@ -7898,7 +7898,7 @@
     "climatePlanComment": "Klimat– och energiplan 2018–2024 ",
     "bicycleMetrePerCapita": 3.099622293,
     "totalConsumptionEmission": 6386.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 6.978172277117177e-5,
@@ -8011,7 +8011,7 @@
     "climatePlanComment": "Plan saknas. Står bakom klimatlöften inom Västra Götalands klimat 2030. Har miljömål från 2014 (med målår 2020).",
     "bicycleMetrePerCapita": 3.29488126,
     "totalConsumptionEmission": 5999.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0009626698042571398,
       "2016": 0.002530044275774826,
       "2017": 0.004955192409066948,
@@ -8124,7 +8124,7 @@
     "climatePlanComment": "Hållbarhetsstrategi",
     "bicycleMetrePerCapita": 2.510562925,
     "totalConsumptionEmission": 6153.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -8237,7 +8237,7 @@
     "climatePlanComment": "Plan saknas. Hänvisar till  Sandvikens kommun Energi- och klimatstrategi från 2007.",
     "bicycleMetrePerCapita": 3.464511233,
     "totalConsumptionEmission": 6425.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00021197668256491787,
       "2016": 0.00020911752404851526,
       "2017": 0.00020703933747412008,
@@ -8350,7 +8350,7 @@
     "climatePlanComment": "Miljöprogram 2022–2025",
     "bicycleMetrePerCapita": 2.050996867,
     "totalConsumptionEmission": 6031.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -8463,7 +8463,7 @@
     "climatePlanComment": "Energi– och klimatstrategi 2017–2050",
     "bicycleMetrePerCapita": 2.080051418,
     "totalConsumptionEmission": 6218.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00010818120351588912,
       "2016": 0.00040215555376819754,
       "2017": 0.00040105879521937915,
@@ -8576,7 +8576,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.781709192,
     "totalConsumptionEmission": 5728.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00014368848336805806,
       "2016": 0.00034230163620182103,
       "2017": 0.0005487344811029564,
@@ -8689,7 +8689,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.649667798,
     "totalConsumptionEmission": 5849.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00019022256039566293,
       "2016": 0.00018258170531312764,
       "2017": 0.000272975432211101,
@@ -8802,7 +8802,7 @@
     "climatePlanComment": "Saknas",
     "bicycleMetrePerCapita": 1.564050556,
     "totalConsumptionEmission": 6045.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -8915,7 +8915,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.525898392,
     "totalConsumptionEmission": 6683.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0009744689144416293,
       "2016": 0.001568627450980392,
       "2017": 0.0023636005515067955,
@@ -9028,7 +9028,7 @@
     "climatePlanComment": "Plan saknas. Har eget klimatlöfte. ",
     "bicycleMetrePerCapita": 2.233581042,
     "totalConsumptionEmission": 6107.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00023936806829968882,
       "2016": 0.0003165934544303297,
       "2017": 0.0003969829297340214,
@@ -9141,7 +9141,7 @@
     "climatePlanComment": "Energi– och klimatplan.",
     "bicycleMetrePerCapita": 3.211264818,
     "totalConsumptionEmission": 6205.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00030012823661018797,
       "2016": 0.00037727713700549747,
       "2017": 0.0005613172244199722,
@@ -9254,7 +9254,7 @@
     "climatePlanComment": "Plan saknas. Ny energi– och klimatplan hösten 2023.",
     "bicycleMetrePerCapita": 3.359049704,
     "totalConsumptionEmission": 6088.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 3.9178812098417176e-5,
       "2016": 3.8709427681111735e-5,
       "2017": 0.00023075591792781185,
@@ -9367,7 +9367,7 @@
     "climatePlanComment": "Hållbarhetsstrategi 2021. Uppdateras senast 2026.",
     "bicycleMetrePerCapita": 3.741361443,
     "totalConsumptionEmission": 6181.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.000142294739837784,
@@ -9480,7 +9480,7 @@
     "climatePlanComment": "Miljöprogram 2015–2025",
     "bicycleMetrePerCapita": 3.869861408,
     "totalConsumptionEmission": 6602.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -9593,7 +9593,7 @@
     "climatePlanComment": "Plan saknas. Hade en energi- och klimatstrategi fram till 2010. ",
     "bicycleMetrePerCapita": 2.926082874,
     "totalConsumptionEmission": 5669.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.001642845408247084,
@@ -9706,7 +9706,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.95921921,
     "totalConsumptionEmission": 6171.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -9819,7 +9819,7 @@
     "climatePlanComment": "Plan saknas. Ny miljö– och klimatstrategi kommer under 2023.",
     "bicycleMetrePerCapita": 3.594365932,
     "totalConsumptionEmission": 6011.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00012137395314965408,
@@ -9932,7 +9932,7 @@
     "climatePlanComment": "Plan saknas.  ",
     "bicycleMetrePerCapita": 1.773408665,
     "totalConsumptionEmission": 6223.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003943217665615142,
       "2016": 0.0003917727717923604,
       "2017": 0.000393623302499508,
@@ -10045,7 +10045,7 @@
     "climatePlanComment": "Miljöplan 2023–2030",
     "bicycleMetrePerCapita": 2.422133029,
     "totalConsumptionEmission": 5996.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 5.231972584463658e-5,
@@ -10158,7 +10158,7 @@
     "climatePlanComment": "Hållbarhetsprogram 2022–2030",
     "bicycleMetrePerCapita": 2.698136433,
     "totalConsumptionEmission": 6166.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 2.2173440652786093e-5,
       "2017": 8.001105607320285e-5,
@@ -10271,7 +10271,7 @@
     "climatePlanComment": "Plan saknas. Hade en miljöplan 2017–2019.",
     "bicycleMetrePerCapita": 2.483080714,
     "totalConsumptionEmission": 6289.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0014771048744460858,
       "2016": 0.002773839610429637,
       "2017": 0.003401570907291731,
@@ -10384,7 +10384,7 @@
     "climatePlanComment": "Handlingsplan Fossilbränslefri kommun 2030",
     "bicycleMetrePerCapita": 2.898366807,
     "totalConsumptionEmission": 6169.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 6.008622373105406e-5,
       "2017": 5.930230834235222e-5,
@@ -10497,7 +10497,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.403046603,
     "totalConsumptionEmission": 6340.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0013305736250739208,
       "2016": 0.004484304932735426,
       "2017": 0.006758700028760426,
@@ -10610,7 +10610,7 @@
     "climatePlanComment": "Plan saknas men har ett miljöråd. ",
     "bicycleMetrePerCapita": 3.701085608,
     "totalConsumptionEmission": 6011.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -10723,7 +10723,7 @@
     "climatePlanComment": "Miljöprogram 2021–2030. ",
     "bicycleMetrePerCapita": 3.623405516,
     "totalConsumptionEmission": 6230.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00013208730971171946,
       "2016": 0.0003274608684262231,
       "2017": 0.0006904941965606813,
@@ -10836,7 +10836,7 @@
     "climatePlanComment": "Hållbarhetsprogram 2021–2025",
     "bicycleMetrePerCapita": 1.512487322,
     "totalConsumptionEmission": 6165.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 7.647598654022637e-5,
       "2016": 9.054963629229422e-5,
       "2017": 9.000090000900009e-5,
@@ -10949,7 +10949,7 @@
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. Ny Energi– och klimatplan samt handlingsplan beslutas maj 2023.",
     "bicycleMetrePerCapita": 2.913788973,
     "totalConsumptionEmission": 6351.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00021289708106896746,
       "2016": 0.00023282112685425396,
       "2017": 0.00029631255487269534,
@@ -11062,7 +11062,7 @@
     "climatePlanComment": "Plan saknas. Ska påbörjas 2023",
     "bicycleMetrePerCapita": 2.805132199,
     "totalConsumptionEmission": 5768.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00047815432430817044,
       "2016": 0.0005041219382005812,
       "2017": 0.0004980517387865116,
@@ -11175,7 +11175,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.45585916,
     "totalConsumptionEmission": 6153.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00042365700728690055,
       "2016": 0.000423728813559322,
       "2017": 0.0018471872376154492,
@@ -11288,7 +11288,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.666942945,
     "totalConsumptionEmission": 6124.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -11401,7 +11401,7 @@
     "climatePlanComment": "Åtgärdsplan för hållbar energi för kommunkoncernen",
     "bicycleMetrePerCapita": 1.255295331,
     "totalConsumptionEmission": 6496.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 8.652015919709292e-5,
@@ -11514,7 +11514,7 @@
     "climatePlanComment": "Hållbarhetsstrategi 2021–2023",
     "bicycleMetrePerCapita": 2.953589832,
     "totalConsumptionEmission": 6164.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -11627,7 +11627,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.840850954,
     "totalConsumptionEmission": 6273.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00022143489813994686,
@@ -11740,7 +11740,7 @@
     "climatePlanComment": "Program för Ekologisk hållbarhet 2020–2031",
     "bicycleMetrePerCapita": 2.479463175,
     "totalConsumptionEmission": 6163.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00010746910263299302,
@@ -11853,7 +11853,7 @@
     "climatePlanComment": "Remissversion, kommer klubbas 2023",
     "bicycleMetrePerCapita": 4.197073098,
     "totalConsumptionEmission": 6072.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -11966,7 +11966,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.445690665,
     "totalConsumptionEmission": 5767.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003296250515039143,
       "2016": 0.0005674678772648048,
       "2017": 0.0005679513184584179,
@@ -12079,7 +12079,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.078378995,
     "totalConsumptionEmission": 6107.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0002705444707473791,
       "2016": 0.00026948730041096813,
       "2017": 0.0004020100502512563,
@@ -12192,7 +12192,7 @@
     "climatePlanComment": "Plan saknas. Nya handlingsplanen för ökad ekologisk hållbarhet förväntas hösten 2023.",
     "bicycleMetrePerCapita": 3.84927185,
     "totalConsumptionEmission": 6108.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0010399924364186443,
       "2016": 0.0009374707040404988,
       "2017": 0.0009764716823212127,
@@ -12305,7 +12305,7 @@
     "climatePlanComment": "Klimatstrategi",
     "bicycleMetrePerCapita": 2.391165078,
     "totalConsumptionEmission": 6550.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -12418,7 +12418,7 @@
     "climatePlanComment": "Plans saknas. ",
     "bicycleMetrePerCapita": 0.7854633489,
     "totalConsumptionEmission": 5957.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00047944384513963804,
       "2016": 0.0004743833017077799,
       "2017": 0.001046146693014065,
@@ -12531,7 +12531,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.359773817,
     "totalConsumptionEmission": 6141.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00013602357742008615,
@@ -12644,7 +12644,7 @@
     "climatePlanComment": "Plan saknas. Ska tas fram 2023.",
     "bicycleMetrePerCapita": 4.384705605,
     "totalConsumptionEmission": 6198.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00013287270794578793,
       "2016": 0.00013101008777675882,
       "2017": 0.00041991020381795276,
@@ -12757,7 +12757,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.951098729,
     "totalConsumptionEmission": 6160.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003912822318738506,
       "2016": 0.0006165703275529866,
       "2017": 0.0009189768724153775,
@@ -12870,7 +12870,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.734875322,
     "totalConsumptionEmission": 6146.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00012399256044637322,
       "2016": 0.00012163477132662991,
       "2017": 0.0005169602735912832,
@@ -12983,7 +12983,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.130120968,
     "totalConsumptionEmission": 6015.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00018197948181342553,
       "2016": 0.00017932796843827755,
       "2017": 0.0002870644349247008,
@@ -13096,7 +13096,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.420762914,
     "totalConsumptionEmission": 6576.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003536067892503536,
       "2016": 0.0007006480994920302,
       "2017": 0.000708842814105972,
@@ -13209,7 +13209,7 @@
     "climatePlanComment": "Hållbarhetsprogram 2022–2030",
     "bicycleMetrePerCapita": 1.332483676,
     "totalConsumptionEmission": 6034.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -13322,7 +13322,7 @@
     "climatePlanComment": "Plan saknas. Pågår ett arbete att ta fram ny plan.",
     "bicycleMetrePerCapita": 2.762561296,
     "totalConsumptionEmission": 6495.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00012897401173663506,
       "2017": 0.0001278772378516624,
@@ -13435,7 +13435,7 @@
     "climatePlanComment": "Plan saknas. Arbete med ny energiplan pågår, beslut hösten 2023.",
     "bicycleMetrePerCapita": 2.62316211,
     "totalConsumptionEmission": 6157.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0002488738458475399,
       "2016": 0.00036862282512533176,
       "2017": 0.0006022645145748012,
@@ -13548,7 +13548,7 @@
     "climatePlanComment": "Energi, miljö– och klimatstrategiskt program för Lessebo kommun 2019 –2030",
     "bicycleMetrePerCapita": 2.771482457,
     "totalConsumptionEmission": 5777.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0024982966159436746,
@@ -13661,7 +13661,7 @@
     "climatePlanComment": "Miljöprogram 2021–2030. ",
     "bicycleMetrePerCapita": 2.616293985,
     "totalConsumptionEmission": 7483.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00016954540637914591,
@@ -13774,7 +13774,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.994218922,
     "totalConsumptionEmission": 6172.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 5.1270219692891383e-5,
       "2016": 5.097489486427934e-5,
       "2017": 0.000151875664456032,
@@ -13887,7 +13887,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.530883986,
     "totalConsumptionEmission": 6077.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00030353619669145547,
       "2016": 0.0002913752913752914,
       "2017": 0.0005730248549530836,
@@ -14000,7 +14000,7 @@
     "climatePlanComment": "Plan saknas. Arbetar utifrån Örebro läns klimat– och energiprogram.",
     "bicycleMetrePerCapita": 2.033057359,
     "totalConsumptionEmission": 6139.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -14113,7 +14113,7 @@
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. ",
     "bicycleMetrePerCapita": 3.315704358,
     "totalConsumptionEmission": 6282.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00011355034065102195,
@@ -14226,7 +14226,7 @@
     "climatePlanComment": "Klimat- och energiplan ",
     "bicycleMetrePerCapita": 4.84998266,
     "totalConsumptionEmission": 6147.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003618206816701643,
       "2016": 0.0004641530991145387,
       "2017": 0.005795667385235184,
@@ -14339,7 +14339,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.610765974,
     "totalConsumptionEmission": 6353.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00042045514269196406,
       "2016": 0.000734252897676614,
       "2017": 0.000998528484338869,
@@ -14452,7 +14452,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.489763659,
     "totalConsumptionEmission": 6088.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00039952057530962844,
       "2017": 0.0008093889113719142,
@@ -14565,7 +14565,7 @@
     "climatePlanComment": "Energi– och klimatplan 2021–2025",
     "bicycleMetrePerCapita": 4.057055311,
     "totalConsumptionEmission": 6598.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00016485328058028355,
@@ -14678,7 +14678,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.737941809,
     "totalConsumptionEmission": 6222.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 7.586677793794098e-5,
       "2016": 0.00014851668956298965,
       "2017": 0.00022228808535862477,
@@ -14791,7 +14791,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.867407965,
     "totalConsumptionEmission": 6627.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 2.628535380086216e-5,
       "2016": 5.210368633580826e-5,
       "2017": 5.16328901510262e-5,
@@ -14904,7 +14904,7 @@
     "climatePlanComment": "Program för ekologisk hållbar utveckling 2021–2030",
     "bicycleMetrePerCapita": 3.243323968,
     "totalConsumptionEmission": 6171.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 9.41506753171166e-5,
       "2016": 0.00010966577246882961,
       "2017": 0.0002226363441463133,
@@ -15017,7 +15017,7 @@
     "climatePlanComment": "Plan saknas. Pågående arbete med att ta fram klimatstrategi och koldioxidbudget. Nuvarande klimatarbete ingår i översiktsplanen.",
     "bicycleMetrePerCapita": 3.367278473,
     "totalConsumptionEmission": 6113.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00032848813336618213,
       "2016": 0.001312874374333306,
       "2017": 0.0027739251040221915,
@@ -15130,7 +15130,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.570420853,
     "totalConsumptionEmission": 6492.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00047876342247452297,
@@ -15243,7 +15243,7 @@
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. ",
     "bicycleMetrePerCapita": 1.555072408,
     "totalConsumptionEmission": 6184.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 1.7983832534551437e-5,
@@ -15356,7 +15356,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.157542207,
     "totalConsumptionEmission": 6838.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.002989238740534077,
       "2016": 0.004162124665543554,
       "2017": 0.0065256080680245205,
@@ -15469,7 +15469,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.123764229,
     "totalConsumptionEmission": 6081.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0077195239626889674,
       "2016": 0.012258064516129033,
       "2017": 0.01149058410469199,
@@ -15582,7 +15582,7 @@
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. ",
     "bicycleMetrePerCapita": 4.177182145,
     "totalConsumptionEmission": 6077.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -15695,7 +15695,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.164699341,
     "totalConsumptionEmission": 6018.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 5.898661003952103e-5,
       "2016": 5.844876965339879e-5,
       "2017": 0.00014499478018791323,
@@ -15808,7 +15808,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.936381161,
     "totalConsumptionEmission": 6465.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -15921,7 +15921,7 @@
     "climatePlanComment": "Plan saknas. Arbete pågår med Energi– och Klimatstrategi som bör vara klart under 2023.",
     "bicycleMetrePerCapita": 2.458987795,
     "totalConsumptionEmission": 5737.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0003199317478937827,
@@ -16034,7 +16034,7 @@
     "climatePlanComment": "Energi och klimatstrategi. 2020–2023.",
     "bicycleMetrePerCapita": 3.49516978,
     "totalConsumptionEmission": 6184.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00014804396905881046,
@@ -16147,7 +16147,7 @@
     "climatePlanComment": "Plan saknas, men planeras att tas fram. Klimatarbetet har hittills ingått i Strategi Hållbara Mora, som genomgår revidering just nu.",
     "bicycleMetrePerCapita": 2.867186548,
     "totalConsumptionEmission": 6031.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0001479362887716357,
       "2017": 0.0004909421179242967,
@@ -16260,7 +16260,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.46608596,
     "totalConsumptionEmission": 6026.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00018646714681956971,
       "2016": 0.00018493689028618984,
       "2017": 0.00018370111828055753,
@@ -16373,7 +16373,7 @@
     "climatePlanComment": "Miljöprogram. 2021–2030.",
     "bicycleMetrePerCapita": 4.702254358,
     "totalConsumptionEmission": 6191.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0002794466955428252,
       "2016": 0.0002767783005812344,
       "2017": 0.0002729257641921397,
@@ -16486,7 +16486,7 @@
     "climatePlanComment": "Saknas",
     "bicycleMetrePerCapita": 4.059255886,
     "totalConsumptionEmission": 6009.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00019598236158745714,
       "2016": 0.00019303156066016793,
       "2017": 0.00019188333493236112,
@@ -16599,7 +16599,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 5.564399594,
     "totalConsumptionEmission": 6768.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.002184002184002184,
       "2016": 0.002140181915462814,
       "2017": 0.002125963327132607,
@@ -16712,7 +16712,7 @@
     "climatePlanComment": "Energiplan för minimerad klimatpåverkan.",
     "bicycleMetrePerCapita": 2.435578685,
     "totalConsumptionEmission": 6112.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -16825,7 +16825,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.988480191,
     "totalConsumptionEmission": 6080.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0006847230675593427,
       "2016": 0.0010451661067562524,
       "2017": 0.001407615943102682,
@@ -16938,7 +16938,7 @@
     "climatePlanComment": "Plan saknas. Ny Miljö– och klimatstrategi 2023–2030 på väg.",
     "bicycleMetrePerCapita": 1.776288274,
     "totalConsumptionEmission": 6056.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 6.704210244033253e-5,
       "2017": 6.666666666666667e-5,
@@ -17051,7 +17051,7 @@
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities.",
     "bicycleMetrePerCapita": 1.620929483,
     "totalConsumptionEmission": 6684.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 2.0129027063476887e-5,
       "2017": 5.927038160247355e-5,
@@ -17164,7 +17164,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.316199818,
     "totalConsumptionEmission": 6066.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00019043991620643687,
       "2016": 0.00028129395218002813,
       "2017": 0.0003721968921559505,
@@ -17277,7 +17277,7 @@
     "climatePlanComment": "Energi– och Klimatstrategi. 2020–2030.",
     "bicycleMetrePerCapita": 3.706902197,
     "totalConsumptionEmission": 6173.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0001725327812284334,
@@ -17390,7 +17390,7 @@
     "climatePlanComment": "Plan saknas. Inom projektet One Planet City Challenge kommer en strategi tas fram.",
     "bicycleMetrePerCapita": 1.186808953,
     "totalConsumptionEmission": 6042.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -17503,7 +17503,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.052393812,
     "totalConsumptionEmission": 6118.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0004206393718452047,
       "2017": 0.00042235675066873153,
@@ -17616,7 +17616,7 @@
     "climatePlanComment": "Plan saknas. Arbete pågår med Färdplan för ett fossilfritt Norrköping 2030",
     "bicycleMetrePerCapita": 2.278943414,
     "totalConsumptionEmission": 5986.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 3.5479361655325096e-5,
@@ -17729,7 +17729,7 @@
     "climatePlanComment": "Miljö– och klimatstrategi.",
     "bicycleMetrePerCapita": 1.818370128,
     "totalConsumptionEmission": 6411.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00010226865976921373,
       "2016": 0.00030292830696735106,
       "2017": 0.0005920273648204184,
@@ -17842,7 +17842,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 1.847955759,
     "totalConsumptionEmission": 6011.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0011973180076628352,
       "2016": 0.0012121212121212121,
       "2017": 0.0041605482134116495,
@@ -17955,7 +17955,7 @@
     "climatePlanComment": "Plan saknas. Senaste gällde fram till 2022.",
     "bicycleMetrePerCapita": 4.169016844,
     "totalConsumptionEmission": 5901.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -18068,7 +18068,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.383318392,
     "totalConsumptionEmission": 6183.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0001918649270913277,
       "2017": 0.0001876172607879925,
@@ -18181,7 +18181,7 @@
     "climatePlanComment": "Program för ekologisk hållbarhet.",
     "bicycleMetrePerCapita": 2.56992368,
     "totalConsumptionEmission": 5862.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -18294,7 +18294,7 @@
     "climatePlanComment": "Hållbarhetsprogram 2023–2030",
     "bicycleMetrePerCapita": 3.320688035,
     "totalConsumptionEmission": 6008.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0002909090909090909,
       "2016": 0.0006125684635341597,
       "2017": 0.0008538190615105482,
@@ -18407,7 +18407,7 @@
     "climatePlanComment": "Energi– och Klimatstrategi.",
     "bicycleMetrePerCapita": 2.650691253,
     "totalConsumptionEmission": 5824.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00022712524334847503,
       "2017": 0.00035281288087754184,
@@ -18520,7 +18520,7 @@
     "climatePlanComment": "Miljöstrategiskt program 2022–2026",
     "bicycleMetrePerCapita": 2.931178356,
     "totalConsumptionEmission": 5936.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -18633,7 +18633,7 @@
     "climatePlanComment": "Ny Handlingsplan för klimat och energi beslutad men ej publicerad",
     "bicycleMetrePerCapita": 3.389695099,
     "totalConsumptionEmission": 5971.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0019284972556000593,
@@ -18746,7 +18746,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.911915595,
     "totalConsumptionEmission": 5669.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0011851851851851852,
       "2016": 0.0011660107855997668,
       "2017": 0.0017424132423406419,
@@ -18859,7 +18859,7 @@
     "climatePlanComment": "Klimatstrategi till 2030",
     "bicycleMetrePerCapita": 1.250142775,
     "totalConsumptionEmission": 6443.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00013324450366422385,
       "2016": 0.00013251176041873715,
       "2017": 0.0003309504898067249,
@@ -18972,7 +18972,7 @@
     "climatePlanComment": "Klimat– och energiplan. Gäller till 2030.",
     "bicycleMetrePerCapita": 2.069387541,
     "totalConsumptionEmission": 5941.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 7.71962328238382e-5,
       "2016": 7.605141075366947e-5,
       "2017": 7.586102260658473e-5,
@@ -19085,7 +19085,7 @@
     "climatePlanComment": "Plan saknas. Hade energi– och klimatprogram som gällde fram till 2020",
     "bicycleMetrePerCapita": 3.578830864,
     "totalConsumptionEmission": 5958.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00014854426619132502,
@@ -19198,7 +19198,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.630530428,
     "totalConsumptionEmission": 6103.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0006018399105837848,
       "2017": 0.002067361529847532,
@@ -19311,7 +19311,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.679544476,
     "totalConsumptionEmission": 6190.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00016777116013757235,
       "2017": 0.0002498334443704197,
@@ -19424,7 +19424,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.945928683,
     "totalConsumptionEmission": 6688.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -19537,15 +19537,15 @@
     "climatePlanComment": "Plan saknas. Arbete pågår med ny Klimat– och energiplan.",
     "bicycleMetrePerCapita": 2.384192387,
     "totalConsumptionEmission": 6384.1,
-    "ChargingPointsPerCapita": {
-      "2015": NaN,
-      "2016": NaN,
-      "2017": NaN,
-      "2018": NaN,
-      "2019": NaN,
-      "2020": NaN,
-      "2021": NaN,
-      "2022": NaN
+    "chargingPointsPerCapita": {
+      "2015": 0,
+      "2016": 0,
+      "2017": 0,
+      "2018": 0,
+      "2019": 0,
+      "2020": 0,
+      "2021": 0,
+      "2022": 0
     }
   },
   {
@@ -19650,7 +19650,7 @@
     "climatePlanComment": "Energi– och klimatprogram. Gäller till 2030. ",
     "bicycleMetrePerCapita": 3.362789196,
     "totalConsumptionEmission": 5974.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0005453306066803,
@@ -19763,7 +19763,7 @@
     "climatePlanComment": "Handlingsplan klimat och energi, gäller tillsvidare.",
     "bicycleMetrePerCapita": 3.046185101,
     "totalConsumptionEmission": 6605.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 4.772814051164567e-5,
       "2017": 9.482268158543523e-5,
@@ -19876,7 +19876,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.487975575,
     "totalConsumptionEmission": 6312.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00037126415444588826,
       "2016": 0.0009233610341643582,
       "2017": 0.0009184423218221896,
@@ -19989,7 +19989,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.337627834,
     "totalConsumptionEmission": 5986.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -20102,7 +20102,7 @@
     "climatePlanComment": "Program för klimat och energi 2021–2025",
     "bicycleMetrePerCapita": 3.962831222,
     "totalConsumptionEmission": 6076.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -20215,7 +20215,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.793276136,
     "totalConsumptionEmission": 6586.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0003691058410999354,
@@ -20328,7 +20328,7 @@
     "climatePlanComment": "Energi– och klimatstrategi. 2020–2030 med utblick mot 2045.",
     "bicycleMetrePerCapita": 1.058042274,
     "totalConsumptionEmission": 6148.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.000768917635352119,
       "2016": 0.0008499977631637811,
       "2017": 0.0018558614290133002,
@@ -20441,7 +20441,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.830194816,
     "totalConsumptionEmission": 6075.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00036527456471447707,
       "2016": 0.0005416792055371652,
       "2017": 0.00054005400540054,
@@ -20554,7 +20554,7 @@
     "climatePlanComment": "Plan saknas. Arbete pågår med att ta fram en hållbarhetsplan. ",
     "bicycleMetrePerCapita": 3.210885786,
     "totalConsumptionEmission": 6202.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 5.2200240121104554e-5,
       "2016": 0.0001283730005905158,
       "2017": 0.00017830306426551873,
@@ -20667,7 +20667,7 @@
     "climatePlanComment": "Plan för klimatsmart Sigtuna",
     "bicycleMetrePerCapita": 2.417291994,
     "totalConsumptionEmission": 6010.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -20780,7 +20780,7 @@
     "climatePlanComment": "Klimatplan finns men saknas på kommunens webbplats. Lämnas ut på begäran. Ska arbetas in i kommunens hållbarhetspolicy.",
     "bicycleMetrePerCapita": 3.729507637,
     "totalConsumptionEmission": 6254.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.001445086705202312,
@@ -20893,7 +20893,7 @@
     "climatePlanComment": "Hållbara Sjöbo 2034 – Kommunalt miljömålsprogram. ",
     "bicycleMetrePerCapita": 2.627200704,
     "totalConsumptionEmission": 6132.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.004969212487847035,
       "2016": 0.006989648916871198,
       "2017": 0.007812909653400452,
@@ -21006,7 +21006,7 @@
     "climatePlanComment": "Miljöstrategi. ",
     "bicycleMetrePerCapita": 3.680481651,
     "totalConsumptionEmission": 6113.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.000320666987333654,
       "2016": 0.00031613889035249484,
       "2017": 0.0007429814785331422,
@@ -21119,7 +21119,7 @@
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities.",
     "bicycleMetrePerCapita": 3.352954207,
     "totalConsumptionEmission": 6176.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 5.500323143984709e-5,
@@ -21232,7 +21232,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.952591988,
     "totalConsumptionEmission": 6703.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0004515692029803567,
       "2017": 0.0009027307605506658,
@@ -21345,7 +21345,7 @@
     "climatePlanComment": "Klimatstrategi och energiplan, gäller till 2030",
     "bicycleMetrePerCapita": 4.412308506,
     "totalConsumptionEmission": 5808.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0003894080996884735,
       "2017": 0.0017261219792865361,
@@ -21458,7 +21458,7 @@
     "climatePlanComment": "Energi– och klimatplan 2021–2030",
     "bicycleMetrePerCapita": 3.108804107,
     "totalConsumptionEmission": 6036.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -21571,7 +21571,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.874182105,
     "totalConsumptionEmission": 6344.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00036717459151826694,
@@ -21684,7 +21684,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.558660435,
     "totalConsumptionEmission": 6071.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00015164535206995905,
       "2016": 0.0001511639625113373,
       "2017": 0.00015221472423765793,
@@ -21797,7 +21797,7 @@
     "climatePlanComment": "Plan för miljö– och klimatarbetet 2021–2030",
     "bicycleMetrePerCapita": 1.370438966,
     "totalConsumptionEmission": 6657.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 4.223983779902285e-5,
       "2017": 0.00011134617525887985,
@@ -21910,7 +21910,7 @@
     "climatePlanComment": "Klimatstrategi",
     "bicycleMetrePerCapita": 1.307139177,
     "totalConsumptionEmission": 6978.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 2.6261193833871688e-5,
       "2016": 2.5598689347105427e-5,
       "2017": 2.50918990803819e-5,
@@ -22023,7 +22023,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.773361199,
     "totalConsumptionEmission": 6375.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.000794912559618442,
@@ -22136,7 +22136,7 @@
     "climatePlanComment": "Hållbarhetsstrategi 2030. ",
     "bicycleMetrePerCapita": 1.432852918,
     "totalConsumptionEmission": 6663.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00033311125916055963,
       "2016": 0.0025372311086596802,
       "2017": 0.0036371652154744845,
@@ -22249,7 +22249,7 @@
     "climatePlanComment": "Miljöplan",
     "bicycleMetrePerCapita": 4.478156915,
     "totalConsumptionEmission": 5848.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -22362,7 +22362,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.347065342,
     "totalConsumptionEmission": 6323.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 7.62660158633313e-5,
@@ -22475,7 +22475,7 @@
     "climatePlanComment": "Klimathandlingsplan 2020–2023",
     "bicycleMetrePerCapita": 1.218575773,
     "totalConsumptionEmission": 6981.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 3.24845481832475e-6,
       "2016": 0.0,
       "2017": 3.1586893965955645e-6,
@@ -22588,7 +22588,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.950304305,
     "totalConsumptionEmission": 6219.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.000744047619047619,
       "2016": 0.0007414730598121602,
       "2017": 0.001212709192335678,
@@ -22701,7 +22701,7 @@
     "climatePlanComment": "Strategi för koldioxideffektiva resor i Storumans kommun",
     "bicycleMetrePerCapita": 3.261116272,
     "totalConsumptionEmission": 6942.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.06999831734814067,
       "2016": 0.08306492625868792,
       "2017": 0.12876990850559134,
@@ -22814,7 +22814,7 @@
     "climatePlanComment": "Klimat– och energiplan 2021–2040",
     "bicycleMetrePerCapita": 2.468682063,
     "totalConsumptionEmission": 6398.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -22927,7 +22927,7 @@
     "climatePlanComment": "Strategi Agenda 2030. Gäller 2021–2025. ",
     "bicycleMetrePerCapita": 4.20120415,
     "totalConsumptionEmission": 6236.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0010591617491299743,
@@ -23040,7 +23040,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.501032709,
     "totalConsumptionEmission": 6304.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0002540435261241426,
       "2017": 0.00033924179458909336,
@@ -23153,7 +23153,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 0.7312642807,
     "totalConsumptionEmission": 6735.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0006723053567555845,
       "2016": 0.0009005235602094241,
       "2017": 0.00133538361929427,
@@ -23266,7 +23266,7 @@
     "climatePlanComment": "Klimatplan 2022–2024.",
     "bicycleMetrePerCapita": 2.684605556,
     "totalConsumptionEmission": 6210.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 2.048487703952557e-5,
       "2016": 2.0340706839562675e-5,
       "2017": 2.0240866309078028e-5,
@@ -23379,7 +23379,7 @@
     "climatePlanComment": "Miljöstrategi. ",
     "bicycleMetrePerCapita": 2.987040734,
     "totalConsumptionEmission": 6363.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00015142337976983646,
       "2016": 0.000148975791433892,
       "2017": 0.00015002625459455406,
@@ -23492,7 +23492,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 0.6599069754,
     "totalConsumptionEmission": 6040.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.009013520280420632,
       "2016": 0.009344865294760911,
       "2017": 0.009365348211617016,
@@ -23605,7 +23605,7 @@
     "climatePlanComment": "Klimatplan 2022–2030",
     "bicycleMetrePerCapita": 2.955402172,
     "totalConsumptionEmission": 6000.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003661662394727206,
       "2016": 0.00035922120842014514,
       "2017": 0.00035650623885918,
@@ -23718,7 +23718,7 @@
     "climatePlanComment": "Hållbarhetsstrategi.",
     "bicycleMetrePerCapita": 3.437934295,
     "totalConsumptionEmission": 5950.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -23831,7 +23831,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 4.050901246,
     "totalConsumptionEmission": 6070.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00018763486255746317,
@@ -23944,7 +23944,7 @@
     "climatePlanComment": "Energi- och klimatplan till 2030. ",
     "bicycleMetrePerCapita": 3.257070608,
     "totalConsumptionEmission": 5995.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00025586899507452183,
       "2017": 0.0003815095059451898,
@@ -24057,7 +24057,7 @@
     "climatePlanComment": "Plan saknas. Kretsloppsplan och Plan för klimatneutralitet kommer under 2023.",
     "bicycleMetrePerCapita": 2.146936866,
     "totalConsumptionEmission": 6320.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -24170,7 +24170,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 4.341989408,
     "totalConsumptionEmission": 5823.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0009568545581071677,
@@ -24283,7 +24283,7 @@
     "climatePlanComment": "Plan saknas. Arbete med ny energi– och klimatplan pågår 2023.",
     "bicycleMetrePerCapita": 2.8062868,
     "totalConsumptionEmission": 6077.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 7.756447547023463e-5,
       "2016": 7.694675284702985e-5,
       "2017": 0.00023272050267628578,
@@ -24396,7 +24396,7 @@
     "climatePlanComment": "Mål och strategier för miljö och klimat 2022–2025",
     "bicycleMetrePerCapita": 2.754640529,
     "totalConsumptionEmission": 6070.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -24509,7 +24509,7 @@
     "climatePlanComment": "Miljö– och klimatstrategi, gäller till 2030",
     "bicycleMetrePerCapita": 2.64348271,
     "totalConsumptionEmission": 5805.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 3.1702084940452915e-5,
       "2017": 3.123958680439853e-5,
@@ -24622,7 +24622,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.856791173,
     "totalConsumptionEmission": 6169.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0004662004662004662,
       "2016": 0.00045879451740551703,
       "2017": 0.00045832139788026354,
@@ -24735,7 +24735,7 @@
     "climatePlanComment": "Klimat– och miljöstrategi 2020–2024.",
     "bicycleMetrePerCapita": 0.9730676817,
     "totalConsumptionEmission": 6397.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0008028904054596548,
       "2016": 0.0012692368713311123,
       "2017": 0.0014103267256914517,
@@ -24848,7 +24848,7 @@
     "climatePlanComment": "Plan saknas. Med i Klimat 2023 (VGR)",
     "bicycleMetrePerCapita": 4.240325727,
     "totalConsumptionEmission": 5766.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0007285974499089253,
       "2016": 0.0008130081300813008,
       "2017": 0.00072007200720072,
@@ -24961,7 +24961,7 @@
     "climatePlanComment": "Plan saknas. Med i Klimat 2023 (VGR). Har koldioxidbudget. ",
     "bicycleMetrePerCapita": 1.823552052,
     "totalConsumptionEmission": 5926.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0007103954534690978,
       "2016": 0.0016410096116277252,
       "2017": 0.003274343182349731,
@@ -25074,7 +25074,7 @@
     "climatePlanComment": "Klimat– och energiplan från år 2020. En ny plan kommer att antas under 2023. ",
     "bicycleMetrePerCapita": 2.626499349,
     "totalConsumptionEmission": 6128.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -25187,7 +25187,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.304277754,
     "totalConsumptionEmission": 5798.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00011119141602268305,
       "2016": 0.00011116051578479324,
       "2017": 0.00011092623405435385,
@@ -25300,7 +25300,7 @@
     "climatePlanComment": "Miljöprogram 2022–2027",
     "bicycleMetrePerCapita": 7.862331476,
     "totalConsumptionEmission": 6139.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0002420721374969741,
       "2017": 0.00024094450244960245,
@@ -25413,7 +25413,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.30836914,
     "totalConsumptionEmission": 6612.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003917727717923604,
       "2016": 0.00038501026694045176,
       "2017": 0.00037998733375554147,
@@ -25526,7 +25526,7 @@
     "climatePlanComment": "Energi– och klimatplan 2020–2025.",
     "bicycleMetrePerCapita": 2.16884948,
     "totalConsumptionEmission": 5948.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -25639,7 +25639,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.423811628,
     "totalConsumptionEmission": 6675.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -25752,7 +25752,7 @@
     "climatePlanComment": "Plan saknas. Arbete med klimatplan pågår under 2023.",
     "bicycleMetrePerCapita": 4.048930845,
     "totalConsumptionEmission": 6200.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0018353804884935763,
@@ -25865,7 +25865,7 @@
     "climatePlanComment": "Plan saknas. Med i Klimat 2023 (VGR)",
     "bicycleMetrePerCapita": 5.111060036,
     "totalConsumptionEmission": 5934.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -25978,7 +25978,7 @@
     "climatePlanComment": "Ekologisk hållbarhetsstrategi 2022–2035. Arbete pågår med plan.",
     "bicycleMetrePerCapita": 3.802454138,
     "totalConsumptionEmission": 5902.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -26091,7 +26091,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.093715921,
     "totalConsumptionEmission": 6045.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -26204,7 +26204,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.937878473,
     "totalConsumptionEmission": 6070.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00020778141395252195,
       "2017": 0.0002575637899653147,
@@ -26317,7 +26317,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.260746269,
     "totalConsumptionEmission": 6537.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0007451564828614009,
       "2016": 0.0010444283763155781,
       "2017": 0.0010065035614741406,
@@ -26430,7 +26430,7 @@
     "climatePlanComment": "Klimatplan 2030",
     "bicycleMetrePerCapita": 2.17324803,
     "totalConsumptionEmission": 6055.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003031812374125647,
       "2016": 0.0002972209838014564,
       "2017": 0.0002959580585151361,
@@ -26543,7 +26543,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.354569043,
     "totalConsumptionEmission": 6863.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 5.85814501837993e-5,
       "2016": 5.764851699190038e-5,
       "2017": 0.00022725658689013565,
@@ -26656,7 +26656,7 @@
     "climatePlanComment": "Strategi för Agenda 2030",
     "bicycleMetrePerCapita": 5.452574406,
     "totalConsumptionEmission": 5912.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0005380393844829441,
       "2016": 0.0005299417064122947,
       "2017": 0.0007435734013171871,
@@ -26769,7 +26769,7 @@
     "climatePlanComment": "Energi– och klimatplan 2022–2030. Finns även separat åtgärdsplan.",
     "bicycleMetrePerCapita": 2.291437576,
     "totalConsumptionEmission": 6099.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 3.6913990402362495e-5,
       "2016": 3.6255528968167646e-5,
       "2017": 0.00010759822821584204,
@@ -26882,7 +26882,7 @@
     "climatePlanComment": "Plan saknas. Står bakom klimatlöften inom Västra Götalands klimat 2030",
     "bicycleMetrePerCapita": 6.208408392,
     "totalConsumptionEmission": 5938.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 8.372755055050864e-5,
       "2017": 8.231807704972011e-5,
@@ -26995,7 +26995,7 @@
     "climatePlanComment": "Program och planer för att nå Umeå kommuns miljömål",
     "bicycleMetrePerCapita": 2.639826356,
     "totalConsumptionEmission": 6242.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00010763638772282802,
       "2016": 0.0002034306545584741,
       "2017": 0.0002318516149664215,
@@ -27108,7 +27108,7 @@
     "climatePlanComment": "Klimat– och energistrategi för Upplands Väsby 2022–2025",
     "bicycleMetrePerCapita": 3.734221098,
     "totalConsumptionEmission": 6207.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0001406436792386489,
       "2016": 0.0001822697136087125,
       "2017": 0.0003587041811456115,
@@ -27221,7 +27221,7 @@
     "climatePlanComment": "Miljö– och klimatstrategi 2023–2045",
     "bicycleMetrePerCapita": 2.711961788,
     "totalConsumptionEmission": 5788.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0005040908914653535,
       "2016": 0.0009344047841524949,
       "2017": 0.0010864054465126384,
@@ -27334,7 +27334,7 @@
     "climatePlanComment": "Miljö– och klimatprogram. Se även tillhörande handlingsplan.",
     "bicycleMetrePerCapita": 2.036415643,
     "totalConsumptionEmission": 6360.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 3.807239465844303e-5,
       "2016": 3.7285781533284553e-5,
       "2017": 3.6377856798566714e-5,
@@ -27447,7 +27447,7 @@
     "climatePlanComment": "Förslag på remiss för klimat– och energistrategi 2022–2030 ",
     "bicycleMetrePerCapita": 0.2710671217,
     "totalConsumptionEmission": 5849.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0009413241292751804,
@@ -27560,7 +27560,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.322477247,
     "totalConsumptionEmission": 6092.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.003780207911435129,
       "2016": 0.00557974959172564,
       "2017": 0.008354669182050937,
@@ -27673,7 +27673,7 @@
     "climatePlanComment": "Miljöprogram 2022–2025",
     "bicycleMetrePerCapita": 4.665683814,
     "totalConsumptionEmission": 6103.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0001465845793022574,
       "2017": 0.00014450867052023122,
@@ -27786,7 +27786,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.338655645,
     "totalConsumptionEmission": 5970.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00025611473940325265,
       "2017": 0.00101010101010101,
@@ -27899,7 +27899,7 @@
     "climatePlanComment": "Miljö– och klimatstrategi",
     "bicycleMetrePerCapita": 2.091930929,
     "totalConsumptionEmission": 6034.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 6.1003507701692846e-5,
       "2017": 0.00012057272042200452,
@@ -28012,7 +28012,7 @@
     "climatePlanComment": "Energi– och klimatplan 2010–2020 (gäller fortfarande)",
     "bicycleMetrePerCapita": 1.225521451,
     "totalConsumptionEmission": 6068.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00043878894251864854,
@@ -28125,7 +28125,7 @@
     "climatePlanComment": "Miljöstrategi 2021–2030",
     "bicycleMetrePerCapita": 3.471290972,
     "totalConsumptionEmission": 5938.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -28238,7 +28238,7 @@
     "climatePlanComment": "Plan saknas. Pågår arbete med att ta fram en energi– och klimatstrategi.",
     "bicycleMetrePerCapita": 2.756270158,
     "totalConsumptionEmission": 6109.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -28351,7 +28351,7 @@
     "climatePlanComment": "Hållbara Vaxholm 2021–2030. Vaxholms stads hållbarhetsstrategi 2021–2030",
     "bicycleMetrePerCapita": 1.176474976,
     "totalConsumptionEmission": 6794.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0007908611599297012,
       "2016": 0.0007744600292573789,
       "2017": 0.0007607133801031189,
@@ -28464,7 +28464,7 @@
     "climatePlanComment": "Program för hållbar utveckling. 2020–2030.",
     "bicycleMetrePerCapita": 3.894732092,
     "totalConsumptionEmission": 6916.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0005480716531571811,
       "2016": 0.0017301528774427773,
       "2017": 0.0020676166526962837,
@@ -28577,7 +28577,7 @@
     "climatePlanComment": "Plan saknas. Har ett miljöbokslut 2021 där Jönköpings mål finns.",
     "bicycleMetrePerCapita": 3.620286389,
     "totalConsumptionEmission": 5926.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -28690,7 +28690,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.7632882299,
     "totalConsumptionEmission": 6379.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0017680860468542803,
@@ -28803,7 +28803,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.100303789,
     "totalConsumptionEmission": 6024.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0008265513733468973,
@@ -28916,7 +28916,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.284967346,
     "totalConsumptionEmission": 6110.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00018477457501847746,
@@ -29029,7 +29029,7 @@
     "climatePlanComment": "Plan saknas. Med i Glokala Sverige 2021",
     "bicycleMetrePerCapita": 1.591330664,
     "totalConsumptionEmission": 5846.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00022338880822070814,
       "2016": 0.00021980437410704473,
       "2017": 0.000326797385620915,
@@ -29142,7 +29142,7 @@
     "climatePlanComment": "Miljöaktivitetsplan 2022",
     "bicycleMetrePerCapita": 3.86479684,
     "totalConsumptionEmission": 6074.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 5.1084263492631096e-5,
@@ -29255,7 +29255,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.657717693,
     "totalConsumptionEmission": 6079.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0006900517538815411,
       "2017": 0.0009115770282588879,
@@ -29368,7 +29368,7 @@
     "climatePlanComment": "Miljö– och klimatplan 2020–2030",
     "bicycleMetrePerCapita": 1.391918951,
     "totalConsumptionEmission": 6374.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -29481,7 +29481,7 @@
     "climatePlanComment": "Plan för Värnamo kommuns miljöarbete 2023–2035. Planen har en tillhörande åtgärdsplan med konkreta åtgärder",
     "bicycleMetrePerCapita": 4.133826968,
     "totalConsumptionEmission": 6017.5,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00017924894691243688,
       "2016": 0.0005013861853359287,
       "2017": 0.0004969888323685904,
@@ -29594,7 +29594,7 @@
     "climatePlanComment": "Energi– och klimatstrategi 2021–2030",
     "bicycleMetrePerCapita": 3.089136601,
     "totalConsumptionEmission": 6020.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003051402258037671,
       "2016": 0.0006037652999615786,
       "2017": 0.0007660529123690186,
@@ -29707,7 +29707,7 @@
     "climatePlanComment": "Klimatprogram med handlingsplan 2017–2020. ",
     "bicycleMetrePerCapita": 2.882234152,
     "totalConsumptionEmission": 6397.4,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 2.71333604666938e-5,
       "2017": 0.0002064822092264244,
@@ -29820,7 +29820,7 @@
     "climatePlanComment": "Hållbarhetsprogram Hållbara Växjö 2030",
     "bicycleMetrePerCapita": 2.872379738,
     "totalConsumptionEmission": 6123.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0001702456076633223,
       "2016": 0.0002011173184357542,
       "2017": 0.000505161432022842,
@@ -29933,7 +29933,7 @@
     "climatePlanComment": "Plan saknas. Förberedande arbete pågår.",
     "bicycleMetrePerCapita": 2.061869332,
     "totalConsumptionEmission": 5657.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -30046,7 +30046,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.709752197,
     "totalConsumptionEmission": 6152.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.011208310552214325,
       "2016": 0.012789115646258504,
       "2017": 0.01687650683096705,
@@ -30159,7 +30159,7 @@
     "climatePlanComment": "Miljöprogram 2021–2025",
     "bicycleMetrePerCapita": 4.385902002,
     "totalConsumptionEmission": 6411.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.00013401232913428035,
@@ -30272,7 +30272,7 @@
     "climatePlanComment": "Miljöplan 2030",
     "bicycleMetrePerCapita": 3.376752163,
     "totalConsumptionEmission": 5705.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00012370113805047008,
       "2016": 0.00012035142616440005,
       "2017": 0.00011663167716351762,
@@ -30385,7 +30385,7 @@
     "climatePlanComment": "Plan saknas. Beslut om utveckling av klimatplan väntas före sommaren 2023",
     "bicycleMetrePerCapita": 0.7569722078,
     "totalConsumptionEmission": 5794.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0005685856432125089,
       "2016": 0.000568262537292229,
       "2017": 0.0005659309564233164,
@@ -30498,7 +30498,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.9894422704,
     "totalConsumptionEmission": 6136.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.002582589045518132,
       "2016": 0.002541026998411858,
       "2017": 0.0035098915124441607,
@@ -30611,7 +30611,7 @@
     "climatePlanComment": "Energi– och klimatstrategi",
     "bicycleMetrePerCapita": 2.224133783,
     "totalConsumptionEmission": 6267.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.002444091409018697,
       "2016": 0.002563163676309044,
       "2017": 0.004109257916364515,
@@ -30724,7 +30724,7 @@
     "climatePlanComment": "Plan saknas. Ny hållbarhetsplan under utveckling.",
     "bicycleMetrePerCapita": 3.702963484,
     "totalConsumptionEmission": 6461.6,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -30837,7 +30837,7 @@
     "climatePlanComment": "Energi– och klimatstrategi",
     "bicycleMetrePerCapita": 2.91731537,
     "totalConsumptionEmission": 5851.1,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -30950,7 +30950,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.864452459,
     "totalConsumptionEmission": 6333.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.000526592943654555,
       "2017": 0.0017932489451476794,
@@ -31063,7 +31063,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.3319469352,
     "totalConsumptionEmission": 6697.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.00036075036075036075,
       "2017": 0.0003549875754348598,
@@ -31176,7 +31176,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.410277256,
     "totalConsumptionEmission": 6339.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0004053095551727632,
       "2016": 0.0004016870857601928,
       "2017": 0.002010454362685967,
@@ -31289,7 +31289,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.7939140036,
     "totalConsumptionEmission": 6179.7,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -31402,7 +31402,7 @@
     "climatePlanComment": "Verksamhetsplan för miljöstrategiskt arbete 2022.",
     "bicycleMetrePerCapita": 2.783975275,
     "totalConsumptionEmission": 5651.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -31515,7 +31515,7 @@
     "climatePlanComment": "Hållbarhetsprogram. Gäller tillsvidare.",
     "bicycleMetrePerCapita": 2.773036069,
     "totalConsumptionEmission": 5883.9,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0007747266936386331,
       "2017": 0.0030091995529189235,
@@ -31628,7 +31628,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.588384851,
     "totalConsumptionEmission": 5835.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0004642884779076066,
@@ -31741,7 +31741,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.229829471,
     "totalConsumptionEmission": 6225.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0003819709702062643,
       "2016": 0.00037488284910965324,
       "2017": 0.0003743215422047539,
@@ -31854,7 +31854,7 @@
     "climatePlanComment": "Miljöstrategi med mål och delmål 2020 och 2030",
     "bicycleMetrePerCapita": 3.428744851,
     "totalConsumptionEmission": 6087.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -31967,7 +31967,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.810645387,
     "totalConsumptionEmission": 6067.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0012206286237412267,
       "2016": 0.0012050612572805785,
       "2017": 0.001293918582661491,
@@ -32080,7 +32080,7 @@
     "climatePlanComment": "Klimatstrategi, gäller till 2026.",
     "bicycleMetrePerCapita": 1.88221786,
     "totalConsumptionEmission": 6131.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.00010796027062041169,
       "2016": 0.0001786862983346437,
       "2017": 0.0012647179322752453,
@@ -32193,7 +32193,7 @@
     "climatePlanComment": "Klimatprogram Färden mot ett fossilbränslefritt och energieffektivt Östersund 2030",
     "bicycleMetrePerCapita": 2.810475703,
     "totalConsumptionEmission": 6318.8,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 4.912717387744408e-5,
       "2016": 4.858693011579885e-5,
       "2017": 9.58451142952988e-5,
@@ -32306,7 +32306,7 @@
     "climatePlanComment": "Miljö– och klimatprogram 2030.",
     "bicycleMetrePerCapita": 2.148302014,
     "totalConsumptionEmission": 6228.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 9.494422027059102e-5,
       "2016": 0.0002771810685330192,
       "2017": 0.00045320643553138455,
@@ -32419,7 +32419,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 0.5546263587,
     "totalConsumptionEmission": 6300.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.003988313314473867,
       "2016": 0.004674182018146824,
       "2017": 0.006704063483376659,
@@ -32532,7 +32532,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.503834265,
     "totalConsumptionEmission": 5512.2,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0,
@@ -32645,7 +32645,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.802995124,
     "totalConsumptionEmission": 6722.3,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.002079002079002079,
@@ -32758,7 +32758,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.960456236,
     "totalConsumptionEmission": 7105.0,
-    "ChargingPointsPerCapita": {
+    "chargingPointsPerCapita": {
       "2015": 0.0,
       "2016": 0.0,
       "2017": 0.0004483299708585519,

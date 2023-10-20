@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from math import isnan
 import numpy as np
 import pandas as pd
 from dateutil.relativedelta import relativedelta

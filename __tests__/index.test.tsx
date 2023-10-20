@@ -60,6 +60,7 @@ const setup = () => render(
         },
         BicycleMetrePerCapita: 0,
         TotalConsumptionEmission: 0,
+        ChargingPointsPerCapita: [],
         Name: 'Sollentuna',
       },
     ]}

@@ -2,8 +2,9 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import {
-  Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend, ClimatePlan,
+  Municipality, EmissionPerYear, EmissionSector, Budget, Emission, Trend, ClimatePlan, ChargingPoints, ChargingPointsPerYear,
 } from './types'
+import { currentYear } from './shared'
 
 const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
 
@@ -32,7 +33,7 @@ export class ClimateDataService {
 
       emission.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(
         emission.EmissionPerYear,
-        5,
+        currentYear - 2015,
       )
 
       const trend = {
@@ -62,6 +63,26 @@ export class ClimateDataService {
         Comment: data.climatePlanComment,
       } as unknown as ClimatePlan
 
+      const chargingPoints = new Array<ChargingPointsPerYear>()
+
+      Object.entries(data.chargingPointsPerCapita).forEach(([year, chargingPoint]) => {
+        const chargingPointByYear = {
+          Year: Number(year),
+          NumberOf: chargingPoint,
+        } as unknown as ChargingPointsPerYear
+        chargingPoints.push(chargingPointByYear)
+      })
+
+      const chargingPoint = {
+        ChargingPointsPerYear: chargingPoints,
+        ChargingPointsChangeAverage: data.chargingPointsPerCapita,
+      } as ChargingPoints
+
+      chargingPoint.ChargingPointsChangeAverage = this.getChargingPointChangeAverage(
+        chargingPoint.ChargingPointsPerYear,
+        currentYear - 2015,
+      )
+
       const municipality = {
         Name: data.kommun,
         HistoricalEmission: emission,
@@ -76,6 +97,7 @@ export class ClimateDataService {
         ClimatePlan: climatePlan,
         BicycleMetrePerCapita: data.bicycleMetrePerCapita,
         TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
+        ChargingPointsPerCapita: chargingPoint,
       } as Municipality
       return municipality
     })
@@ -108,6 +130,34 @@ export class ClimateDataService {
         },
       )
     return emissionsPercentages / years
+  }
+
+  private getChargingPointChangeAverage(
+    chargingPoints: Array<ChargingPointsPerYear>,
+    years: number,
+  ): number {
+    console.log('hejson')
+    console.log(chargingPoints)
+    console.log('slut hejson')
+    let chargingPointPercentages = 0
+    chargingPoints
+      .slice(Math.max(chargingPoints.length - years - 1, 1))
+      .forEach(
+        (chargingPoint: ChargingPointsPerYear, index: number, historicNumbers: Array<ChargingPointsPerYear>) => {
+          const previous = historicNumbers[index - 1] as ChargingPointsPerYear
+          if (previous) {
+            // fortsätt här!
+            console.log('today ', chargingPoint.NumberOf)
+            console.log('yesterday ', previous.NumberOf)
+            const changeSinceLastYear = ((chargingPoint.NumberOf * 100 - previous.NumberOf * 100)
+              / (previous.NumberOf * 100)) as number
+            console.log('changeSince ', changeSinceLastYear)
+            chargingPointPercentages += changeSinceLastYear
+          }
+        },
+      )
+    console.log('chargingPointP ', chargingPointPercentages)
+    return (chargingPointPercentages / years)
   }
 
   public getMunicipalities(): Array<Municipality> {

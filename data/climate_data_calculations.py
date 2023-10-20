@@ -73,7 +73,7 @@ for i in range(len(df)):
         'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
         'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
         'totalConsumptionEmission': df.iloc[i]['Total emissions'],
-        'ChargingPointsPerCapita': df.iloc[i]['chargingPointsPerCapita'],
+        'chargingPointsPerCapita': df.iloc[i]['chargingPointsPerCapita'],
     })
 
 with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file
