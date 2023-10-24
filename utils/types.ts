@@ -77,6 +77,7 @@ export type DatasetDescription = {
   columnHeader: string
   tooltip: string
   dataType: DatasetType
+  sortAscending?: boolean
 }
 
 export type DatasetDescriptions = {

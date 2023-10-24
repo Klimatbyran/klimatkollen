@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { DatasetDescription, Municipality, SelectedData } from './types'
-import { datasetDescriptions, defaultDataset } from '../data/dataset_descriptions'
+import { datasetDescriptions } from '../data/dataset_descriptions'
 
 export const calculateStringRankings = (
   data: Array<{ name: string; dataPoint: string | number }>,
@@ -73,7 +73,10 @@ export const rankData = (municipalities: Municipality[]) => {
   }
 
   Object.keys(datasets).forEach((datasetKey) => {
+    const sortAscending = datasetDescriptions[datasetKey]?.sortAscending || false
+
     if (datasetKey === 'Klimatplanerna') {
+      // special case for climate plans
       newRankedData[datasetKey as SelectedData] = calculateStringRankings(
         datasets[datasetKey].map((item) => ({
           name: item.name,
@@ -81,7 +84,7 @@ export const rankData = (municipalities: Municipality[]) => {
         })),
       )
     } else {
-      const sortAscending = datasetKey === defaultDataset
+      // all other datasets
       newRankedData[datasetKey as SelectedData] = calculateNumberRankings(
         datasets[datasetKey].map((item) => ({
           name: item.name,
@@ -91,6 +94,7 @@ export const rankData = (municipalities: Municipality[]) => {
       )
     }
   })
+
   return newRankedData
 }
 

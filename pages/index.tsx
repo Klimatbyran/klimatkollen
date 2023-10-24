@@ -24,6 +24,7 @@ import {
   defaultDataView,
   secondaryDataView,
 } from '../data/dataset_descriptions'
+import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import {
   isValidDataView,
@@ -31,7 +32,6 @@ import {
   normalizeString,
   validDatasetsMap,
 } from '../utils/shared'
-import RadioMenu from '../components/RadioMenu'
 
 const Map = dynamic(() => import('../components/Map/Map'))
 
@@ -56,7 +56,7 @@ const InfoContainer = styled.div`
   position: relative;
   background: ${({ theme }) => theme.lightBlack};
   border-radius: 8px;
-  margin: 32px 0;
+  margin-bottom: 32px;
   z-index: 15;
   ::-webkit-scrollbar {
     display: none;
@@ -128,6 +128,16 @@ function StartPage({ municipalities }: PropsType) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const handleDataChange = (newData: SelectedData) => {
+    const newDataString = newData as string
+    setSelectedDataset(newDataString)
+    const normalizedDataset = normalizeString(newDataString)
+    router.push(`/${normalizedDataset}/${selectedDataView}`, undefined, {
+      shallow: true,
+      scroll: false,
+    })
+  }
+
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
   const municipalityData = data(municipalities, selectedDataset) // get all municipality names and data points for map and list
   const datasetDescription = datasetDescriptions[selectedDataset] // get description of selected dataset
@@ -159,9 +169,9 @@ function StartPage({ municipalities }: PropsType) {
       <PageWrapper backgroundColor="black">
         <Container>
           <H2Regular>Hur går det med?</H2Regular>
-          <RadioMenu
+          <RadioButtonMenu
             selectedData={selectedDataset}
-            setSelectedData={setSelectedDataset}
+            handleDataChange={handleDataChange}
           />
           <InfoContainer>
             <TitleContainer>

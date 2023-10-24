@@ -31,6 +31,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     dataType: 'Percent',
     tooltip:
       'Genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015, angivet i procent',
+    sortAscending: true,
   },
 
   Elbilarna: {
@@ -53,6 +54,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     dataType: 'Percent',
     tooltip:
       'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
+    sortAscending: false,
   },
 
   Klimatplanerna: {
@@ -129,6 +131,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     dataType: 'Number',
     tooltip:
       'Antal meter cykelväg per invånare per kommun år 2022 totalt för alla väghållare (statlig, kommunal, enskild)',
+    sortAscending: false,
   },
 
   Konsumtionen: {
@@ -155,6 +158,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     dataType: 'Number',
     tooltip:
       'Avser antal ton växthusgasutsläpp (CO₂e) per år och medborgare (år 2019).',
+    sortAscending: true,
   },
 }
 

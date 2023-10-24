@@ -14,7 +14,11 @@ import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
-import { chartDescriptions, chartsKeys, defaultChart } from '../../data/chart_descriptions'
+import {
+  chartDescriptions,
+  chartsKeys,
+  defaultChart,
+} from '../../data/chart_descriptions'
 import { normalizeString } from '../../utils/shared'
 
 const StyledContainer = styled.div`
@@ -118,7 +122,9 @@ function Municipality(props: Props) {
 
       const chartsString = updatedCharts.join('+')
       const normalizedMunicipalityName = normalizeString(municipality.Name)
-      router.push(`/kommun/${normalizedMunicipalityName}/${chartsString}`, undefined, { shallow: true })
+      router.push(`/kommun/${normalizedMunicipalityName}/${chartsString}`, undefined, {
+        shallow: true,
+      })
 
       return updatedCharts
     })
