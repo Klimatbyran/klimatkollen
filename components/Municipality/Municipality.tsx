@@ -75,6 +75,7 @@ type Props = {
 /* todo
 - fixa en "Läs mer"-komponent man kan fälla ut på kommunvyn
 - fixa så att grafer från urlen visas markerade på grafen
+- om man klickar av historiskt ska de(t) datasetet man hade öppet komma tillbaka
 */
 
 function Municipality(props: Props) {
