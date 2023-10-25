@@ -11,17 +11,17 @@ const Wrapper = styled.div`
 `
 
 const Button = styled.button`
-height: 56px;
-background: ${({ theme }) => theme.midGreen};
-border: 0;
-border-radius: 4px;
-font-weight: bold;
-font-size: 16px;
-cursor: pointer;
-width: 100%;
-&:hover {
-  background: ${({ theme }) => theme.lightGreen};
-}
+  height: 56px;
+  background: ${({ theme }) => theme.midGreen};
+  border: 0;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  &:hover {
+    background: ${({ theme }) => theme.lightGreen};
+  }
 `
 
 function FourOhFour() {
