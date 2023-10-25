@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import ShareButton from '../../components/Button'
 
-describe('ShareButton Component', () => {
+describe('ShareButton', () => {
   it('should render the ShareButton with the correct text', () => {
     const text = 'Share This'
     render(<ShareButton text={text} />)

@@ -4,7 +4,7 @@ import BackArrow from '../../components/BackArrow'
 
 vi.mock('../../public/icons/arrow-left.svg', () => ({ default: 'svg' }))
 
-describe('BackArrow Component', () => {
+describe('BackArrow', () => {
   it('should render the BackArrow with the correct route', () => {
     const route = '/some-route'
     render(<BackArrow route={route} />)
