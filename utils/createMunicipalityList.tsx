@@ -54,6 +54,10 @@ export const rankData = (municipalities: Municipality[]) => {
       name: item.Name,
       dataPoint: item.TotalConsumptionEmission,
     })),
+    Vindkraftverken: municipalities.map((item) => ({
+      name: item.Name,
+      dataPoint: item.WindPower,
+    })),
   }
 
   type RankedData = {
@@ -70,6 +74,7 @@ export const rankData = (municipalities: Municipality[]) => {
     Klimatplanerna: [],
     Cyklarna: [],
     Konsumtionen: [],
+    Vindkraften: [],
   }
 
   Object.keys(datasets).forEach((datasetKey) => {
@@ -102,7 +107,7 @@ const formatData = (rowData: string | number, selectedData: SelectedData) => {
   const { boundaries } = datasetDescriptions[selectedData] as { boundaries: string[] }
   const { dataType } = datasetDescriptions[selectedData]
   let dataString: JSX.Element = <span>Data saknas</span>
-  if (dataType === 'Link') {
+  if (dataType === 'Binary') {
     const stringData = rowData as string
     const inBoundaries = boundaries.includes(stringData)
     dataString = inBoundaries ? (

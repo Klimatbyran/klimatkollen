@@ -60,6 +60,7 @@ const setup = () => render(
         },
         BicycleMetrePerCapita: 0,
         TotalConsumptionEmission: 0,
+        WindPower: 0,
         Name: 'Sollentuna',
       },
     ]}

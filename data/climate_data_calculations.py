@@ -6,6 +6,7 @@ import pandas as pd
 
 from solutions.cars.car_data_calculations import car_calculations
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
+from solutions.wind.wind_calculations import calculate_wind_data
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
 from issues.emissions.emission_data_calculations import emission_calculations
@@ -27,13 +28,16 @@ df = car_calculations(df)
 print('Hybrid car data and calculations finished')
 
 df = get_climate_plans(df)
-print('Climate plans added')
+print('Add climate plans')
 
 df = bicycle_calculations(df)
-print('Bicycle data added')
+print('Add bicycle data')
 
 df = get_consumption_emissions(df)
-print('Consumption emission data added')
+print('Add consumption emission data')
+
+df = calculate_wind_data(df)
+print('Add wind data')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -70,6 +74,7 @@ for i in range(len(df)):
         'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
         'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
         'totalConsumptionEmission': df.iloc[i]['Total emissions'],
+        'windPower': df.iloc[i]['windPower'],
     })
 
 with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file

@@ -212,7 +212,7 @@ function Map({
     const municipality = object as unknown as MunicipalityData
     let municipalityDataPoint = municipality?.dataPoint.toString()
 
-    if (dataType === 'Link') {
+    if (dataType === 'Binary') {
       const linkData = municipality?.dataPoint
       municipalityDataPoint = (boundaries as string[]).includes(linkData as unknown as string)
         ? 'Nej'

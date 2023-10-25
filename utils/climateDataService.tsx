@@ -76,6 +76,7 @@ export class ClimateDataService {
         ClimatePlan: climatePlan,
         BicycleMetrePerCapita: data.bicycleMetrePerCapita,
         TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
+        WindPower: data.windPower,
       } as Municipality
       return municipality
     })

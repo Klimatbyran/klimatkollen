@@ -60,11 +60,12 @@ export type Municipality = {
   ClimatePlan: ClimatePlan,
   BicycleMetrePerCapita: number,
   TotalConsumptionEmission: number,
+  WindPower: number,
 }
 
 export type SelectedData = keyof typeof datasetDescriptions
 
-export type DatasetType = 'Percent' | 'Link' | 'Number'
+export type DatasetType = 'Percent' | 'Binary' | 'Number'
 
 export type DatasetDescription = {
   title: string

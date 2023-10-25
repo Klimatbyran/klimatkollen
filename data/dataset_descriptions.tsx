@@ -92,7 +92,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['Nej', 'Ja'],
     labelRotateUp: [],
     columnHeader: 'Klimatplan',
-    dataType: 'Link',
+    dataType: 'Binary',
     tooltip:
       'Avser nu gällande klimathandlingsplan eller motsvarande. Inte anpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande',
   },
@@ -160,6 +160,33 @@ export const datasetDescriptions: DatasetDescriptions = {
       'Avser antal ton växthusgasutsläpp (CO₂e) per år och medborgare (år 2019).',
     sortAscending: true,
   },
+
+  Vindkraften: {
+    title: 'Vindkraftverk',
+    heading: 'Lorem ipsum',
+    body: 'Lorem ipsum.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Lorem ipsum
+        </a>
+      </>
+    ),
+    boundaries: [80, 60, 40, 20, -0.5],
+    labels: ['>80%', '60-80%', '40-60%', '20-40%', '0-20%', 'Inga ansökninar'],
+    labelRotateUp: [],
+    columnHeader: 'Lorem/Ipsum',
+    dataType: 'Number',
+    tooltip:
+      'Lorem ipsum.',
+    sortAscending: true,
+  },
 }
 
 export const datasetKeys = Object.keys(datasetDescriptions)
@@ -179,6 +206,9 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       break
     case 'Konsumtionen':
       dataPoint = item.TotalConsumptionEmission
+      break
+    case 'Vindkraften':
+      dataPoint = item.WindPower
       break
     default:
       dataPoint = item.BicycleMetrePerCapita
