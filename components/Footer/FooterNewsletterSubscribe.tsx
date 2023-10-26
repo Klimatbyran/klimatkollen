@@ -9,7 +9,7 @@ function NewsletterSubscribe() {
     <MailchimpSubscribe
       url={MAILCHIMP_URL}
       render={({ subscribe, status }) => (
-        <NewsletterForm 
+        <NewsletterForm
           status={status}
           onValidated={(formData) => subscribe(formData)}
         />
