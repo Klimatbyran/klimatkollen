@@ -4,3 +4,5 @@
 // Used for __tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
+
+process.env.NEXT_PUBLIC_MAILCHIMP_URL = 'test-mailchimp-url'
