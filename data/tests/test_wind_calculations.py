@@ -2,6 +2,8 @@
 import unittest
 from data.solutions.wind.wind_calculations import get_municipality_by_coordinates
 
+# fixme fortsätt här: hur ska jag lägga testen på ett bra sätt
+
 
 class TestWind(unittest.TestCase):
 
