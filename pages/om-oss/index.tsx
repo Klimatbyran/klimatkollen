@@ -36,12 +36,23 @@ const Grid = styled.div`
 
 const GridItem = styled.div`
   min-height: 200px;
+  display: flex;
+  flex-direction: column;
+
+  & > img {
+    flex-shrink: 0; // make sure image doesn't shrink
+  }
+
+  & > b {
+    clear: both; // make sure text appears below the image
+  }
 `
 
 const GridImage = styled.img`
   border-radius: 50%;
   width: 200px;
   height: 200px;
+  margin-bottom: 16px;
 `
 
 function OmOss() {
@@ -246,14 +257,14 @@ function OmOss() {
                       <GridImage src={Ola} alt="Ola Spännar" />
                       <b>Ola Spännar</b>
                       {' '}
-                      – Opinionsbildare, medgrundare av Klimatkollen,
+                      Opinionsbildare, medgrundare av Klimatkollen,
                       tidigare kommunikationschef på Centerpartiet och kundansvarig på Forsman & Bodenfors.
                     </GridItem>
                     <GridItem>
                       <GridImage src={Frida} alt="Frida Berry Eklund" />
                       <b>Frida Berry Eklund</b>
                       {' '}
-                      – Specialist på klimatkommunikation, föreläsare och medgrundare till Klimatkollen.
+                      Specialist på klimatkommunikation, föreläsare och medgrundare till Klimatkollen.
                       Utsedd till en av Sveriges 101 hållbarhetsmäktigaste 2021. Initiativtagare till den
                       internationella plattformen Our Kids’ Climate och författare till boken “Prata med barn om klimatet” (Natur & Kultur, 2020).
                     </GridItem>
@@ -268,21 +279,21 @@ function OmOss() {
                       <GridImage src={Anna} alt="Anna Loverus" />
                       <b>Anna Loverus</b>
                       {' '}
-                      – Digital strateg och tidigare chef för sociala medier på Spotify och H&M.
+                      Digital strateg och tidigare chef för sociala medier på Spotify och H&M.
                       VD och grundare av Better Odds.
                     </GridItem>
                     <GridItem>
                       <GridImage src={Maria} alt="Maria Soxbo" />
                       <b>Maria Soxbo</b>
                       {' '}
-                      – Journalist, författare, föreläsare och grundare av Klimatklubben.
+                      Journalist, författare, föreläsare och grundare av Klimatklubben.
                       Utsedd till en av Sveriges 101 hållbarhetsmäktigaste 2021.
                     </GridItem>
                     <GridItem>
                       <GridImage src={CJ} alt="Carl-Johan Schultz" />
                       <b>Carl-Johan Schultz</b>
                       {' '}
-                      – Hållbarhetsstrateg på Doings, tidigare planner på Forsman & Bodenfors,
+                      Hållbarhetsstrateg på Doings, tidigare planner på Forsman & Bodenfors,
                       författare till boken ”Hållbariseringen”, Årets marknadsföringsbok 2022.
                     </GridItem>
                   </Grid>
