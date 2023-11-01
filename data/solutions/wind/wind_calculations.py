@@ -28,14 +28,20 @@ def get_municipality_by_coordinates(north, east):
         raise ValueError(
             "Coordinates do not fall within any known municipality")
 
-def determine_turbine_count_for_municipality(municipality, df_vbk, project):
+
+def determine_turbine_count_for_municipality(municipality, df, project):
+    # Check for empty dataframe or missing columns
+    if df.empty or 'Projekteringsområde' not in df.columns:
+        return 0
+    
     # Determine how many wind turbines are situated in the given municipality
-    rows_for_project = df_vbk[df_vbk['Projekteringsområde'] == project]
+    rows_for_project = df[df['Projekteringsområde'] == project]
     count = 0
 
     for _, row in rows_for_project.iterrows():
         try:
-            municipality_name = get_municipality_by_coordinates(row['N-Koordinat'], row['E-Koordinat'])
+            municipality_name = get_municipality_by_coordinates(
+                row['N-Koordinat'], row['E-Koordinat'])
         except ValueError:
             municipality_name = None
         if municipality_name is None:
@@ -44,6 +50,26 @@ def determine_turbine_count_for_municipality(municipality, df_vbk, project):
             count += 1
 
     return count
+
+
+def calculate_split_municipalities(df_multiple_municipalities, df_source):
+    # Calculate amount of turbines for rows with multiple municipalities
+    rows = []
+    for _, row in df_multiple_municipalities.iterrows():
+        municipalities = row['Kommun'].split('/')
+        for municipality in municipalities:
+            turbine_count = determine_turbine_count_for_municipality(
+                municipality, df_source, row['Projektnamn'])
+            rows.append({
+                'Kommun': municipality.strip(),
+                'Antal verk i ursprunglig ansökan': turbine_count,
+                # FIXME This assumes vetoed turbine count is same as total verk, adjust if needed.
+                'Antal verk som ej fått tillstånd pga veto': turbine_count
+            })
+
+    df_split = pd.DataFrame(rows)
+    return df_split
+
 
 def calculate_wind_data(df=None):
     # Read the data
@@ -57,18 +83,7 @@ def calculate_wind_data(df=None):
     df_two_municipalities = df_westander[df_westander['Kommun'].str.contains('/')][['Kommun', 'Projektnamn', 'Antal verk i ursprunglig ansökan',
                                                                                     'Antal verk som ej fått tillstånd pga veto']].reset_index(drop=True)
 
-    rows = []
-    for _, row in df_two_municipalities.iterrows():
-        municipalities = row['Kommun'].split('/')
-        for municipality in municipalities:
-            verk_count = determine_turbine_count_for_municipality(municipality, df_vbk, row['Projektnamn'])
-            rows.append({
-                'Kommun': municipality.strip(),
-                'Antal verk i ursprunglig ansökan': verk_count,
-                'Antal verk som ej fått tillstånd pga veto': verk_count # This assumes vetoed verk count is same as total verk, adjust if needed.
-            })
-
-    df_split = pd.DataFrame(rows)
+    df_split = calculate_split_municipalities(df_two_municipalities, df_vbk)
 
     # Remove rows with two municipalities from the original df
     df_westander = df_westander[~df_westander['Kommun'].str.contains(
@@ -97,6 +112,3 @@ def calculate_wind_data(df=None):
     # df_result['windPower'] = df_result['windPower'].fillna(-1)
 
     return df_filtered
-
-
-print(calculate_wind_data().head(20))
