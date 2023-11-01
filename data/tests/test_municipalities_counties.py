@@ -26,11 +26,7 @@ class TestGetMunicipalities(unittest.TestCase):
             'Län': ['County1', 'County1', 'County2']
         })
 
-        unique_types = expected_df['Kod'].apply(type).unique()
-        print(unique_types)
         result = get_municipalities(PATH_MOCK_XLSX)
-        print(result)
-        print(expected_df)
         assert_frame_equal(expected_df, result)
 
 if __name__ == '__main__':

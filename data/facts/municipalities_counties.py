@@ -21,7 +21,7 @@ def add_county(df):
 
 def get_municipalities(path):
     # Load the data
-    df = pd.read_excel(path)
+    df = pd.read_excel(path, dtype={"Kod": str})
 
     # Set column names to 'Kod' and 'Namn'
     df.columns = ['Kod', 'Namn']
