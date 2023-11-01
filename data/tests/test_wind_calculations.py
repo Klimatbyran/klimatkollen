@@ -1,11 +1,10 @@
 
 import unittest
-from data.solutions.wind.wind_calculations import get_municipality_by_coordinates
+import pandas as pd
 
-# fixme fortsätt här: hur ska jag lägga testen på ett bra sätt
+from solutions.wind.wind_calculations import determine_turbine_count_for_municipality, get_municipality_by_coordinates
 
-
-class TestWind(unittest.TestCase):
+class TestGetMunicipalityByCoordinates(unittest.TestCase):
 
     def test_get_municipality_by_coordinates(self):
         north = 6707005
@@ -21,6 +20,32 @@ class TestWind(unittest.TestCase):
         with self.assertRaises(ValueError):
             get_municipality_by_coordinates(north, east)
 
+
+class TestDeterminePowerCountForMunicipality(unittest.TestCase):
+
+    def test_empty_dataframe(self):
+        empty_df = pd.DataFrame()
+        self.assertEqual(determine_turbine_count_for_municipality('SomeMunicipality', empty_df, 'SomeProject'), 0)
+
+
+    # fixme fortsätt här, få tester att funka
+    def test_no_matching_rows(self):
+        df = pd.DataFrame({
+            'Projekteringsområde': ['Project1'],
+            'N-Koordinat': [123],
+            'E-Koordinat': [456],
+            'Kommun': ['OtherMunicipality']
+        })
+        self.assertEqual(determine_turbine_count_for_municipality('SomeMunicipality', df, 'Project1'), 0)
+
+    # def test_matching_rows(self):
+    #     df = pd.DataFrame({
+    #         'Projekteringsområde': ['Project1', 'Project1', 'Project2'],
+    #         'N-Koordinat': [123, 124, 125],
+    #         'E-Koordinat': [456, 457, 458],
+    #         'Kommun': ['SomeMunicipality', 'SomeMunicipality', 'OtherMunicipality']
+    #     })
+    #     self.assertEqual(determine_turbine_count_for_municipality('SomeMunicipality', df, 'Project1'), 2)
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,4 +2,3 @@ pandas
 geopandas
 shapely
 numpy
-dotenv
