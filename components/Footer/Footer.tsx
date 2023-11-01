@@ -5,6 +5,7 @@ import NewsletterSubscribe from './FooterNewsletterSubscribe'
 import PageWrapper from '../PageWrapper'
 import Partners from './FooterPartners'
 import SocialList from './FooterSocialLinks'
+import Supporters from './FooterSupporters'
 
 const Foot = styled.div`
   width: 100%;
@@ -81,7 +82,9 @@ function Footer() {
       <PageWrapper backgroundColor="black">
         <Foot>
           <NewsletterSubscribe />
-          <StyledH5>Samarbetspartners</StyledH5>
+          <StyledH5>Med stöd från</StyledH5>
+          <Supporters />
+          <StyledH5>Partners</StyledH5>
           <Partners />
         </Foot>
       </PageWrapper>
