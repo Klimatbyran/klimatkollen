@@ -238,9 +238,9 @@ function OmOss() {
                       <GridImage src={Frida} alt="Frida Berry Eklund" />
                       <b>Frida Berry Eklund</b>
                       {' '}
-                      Specialist på klimatkommunikation, föreläsare och medgrundare till Klimatkollen.
-                      Utsedd till en av Sveriges 101 hållbarhetsmäktigaste 2021. Initiativtagare till den
-                      internationella plattformen Our Kids’ Climate och författare till boken “Prata med barn om klimatet” (Natur & Kultur, 2020).
+                      Klimatspecialist och medgrundare till Klimatkollen. Initiativtagare till
+                      Our Kids’ Climate och författare till boken “Prata med barn om klimatet” (Natur & Kultur).
+                      EU Climate Pact Ambassador och Climate Reality Leader.
                     </GridItem>
                     <GridItem>
                       <GridImage src={Christian} alt="Christian Landgren" />
