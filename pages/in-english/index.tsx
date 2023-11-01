@@ -9,8 +9,8 @@ import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
 import { Grid, GridImage, GridItem } from '../../components/shared'
 
-const Ola = '/board/ola.jpeg'
-const Frida = '/board/frida.jpg'
+const Ola = '/team/ola.jpg'
+const Frida = '/team/frida.jpg'
 const Elvira = '/team/elvira.jpg'
 
 const Container = styled.section`

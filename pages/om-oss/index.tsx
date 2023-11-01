@@ -12,8 +12,8 @@ import {
 } from '../../components/shared'
 import ToggleSection from '../../components/ToggleSection'
 
-const Ola = '/board/ola.jpeg'
-const Frida = '/board/frida.jpg'
+const Ola = '/team/ola.jpg'
+const Frida = '/team/frida.jpg'
 const Anna = '/board/anna.jpeg'
 const CJ = '/board/carl-johan.jpg'
 const Christian = '/board/christian.jpeg'
