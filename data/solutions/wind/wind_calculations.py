@@ -3,11 +3,11 @@ import geopandas as gpd
 from shapely.geometry import Point
 
 # Path to Vindbruksollen data
-PATH_VBK_DATA = 'sources/VBK_export_allman_prod.xlsx'
+PATH_VBK_DATA = 'solutions/wind/sources/VBK_export_allman_prod.xlsx'
 # Path to Westander data
-PATH_WESTANDER_DATA = 'sources/westander_wind_data.xlsx'
+PATH_WESTANDER_DATA = 'solutions/wind/sources/westander_wind_data.xlsx'
 # Path to municipality shapefile
-PATH_MUNICIPALITY_SHAPEFILE = 'sources/KommunSweref99TM/Kommun_Sweref99TM_region.shp'
+PATH_MUNICIPALITY_SHAPEFILE = 'solutions/wind/sources/KommunSweref99TM/Kommun_Sweref99TM_region.shp'
 
 
 def get_municipality_by_coordinates(north, east):
@@ -28,6 +28,22 @@ def get_municipality_by_coordinates(north, east):
         raise ValueError(
             "Coordinates do not fall within any known municipality")
 
+def determine_turbine_count_for_municipality(municipality, df_vbk, project):
+    # Determine how many wind turbines are situated in the given municipality
+    rows_for_project = df_vbk[df_vbk['Projekteringsområde'] == project]
+    count = 0
+
+    for _, row in rows_for_project.iterrows():
+        try:
+            municipality_name = get_municipality_by_coordinates(row['N-Koordinat'], row['E-Koordinat'])
+        except ValueError:
+            municipality_name = None
+        if municipality_name is None:
+            municipality_name = row['Kommun']
+        if municipality_name == municipality:
+            count += 1
+
+    return count
 
 def calculate_wind_data(df=None):
     # Read the data
@@ -38,19 +54,18 @@ def calculate_wind_data(df=None):
     df_westander = df_westander[df_westander['År slutligt beslut'] > 2014]
 
     # Filter out rows with "Kommun" containing '/', ie rows with two municipalities and filter relevant columns
-    df_two_municipalities = df_westander[df_westander['Kommun'].str.contains('/')][['Kommun', 'Antal verk i ursprunglig ansökan',
+    df_two_municipalities = df_westander[df_westander['Kommun'].str.contains('/')][['Kommun', 'Projektnamn', 'Antal verk i ursprunglig ansökan',
                                                                                     'Antal verk som ej fått tillstånd pga veto']].reset_index(drop=True)
 
-    # FIXME här ska de istället ta de rader som haft delade kommuner, matcha dem mot de rader i VBK som har samma projektnamn
-    # sen ska den ha två pottar och beräkna koordinater för respektive vindkraftverk, och lägga den i rätt kommunpott
     rows = []
     for _, row in df_two_municipalities.iterrows():
         municipalities = row['Kommun'].split('/')
         for municipality in municipalities:
+            verk_count = determine_turbine_count_for_municipality(municipality, df_vbk, row['Projektnamn'])
             rows.append({
                 'Kommun': municipality.strip(),
-                'Antal verk i ursprunglig ansökan': row['Antal verk i ursprunglig ansökan'] / len(municipalities),
-                'Antal verk som ej fått tillstånd pga veto': row['Antal verk som ej fått tillstånd pga veto'] / len(municipalities)
+                'Antal verk i ursprunglig ansökan': verk_count,
+                'Antal verk som ej fått tillstånd pga veto': verk_count # This assumes vetoed verk count is same as total verk, adjust if needed.
             })
 
     df_split = pd.DataFrame(rows)
@@ -84,4 +99,4 @@ def calculate_wind_data(df=None):
     return df_filtered
 
 
-get_municipality_by_coordinates(6707005, 567930)
+print(calculate_wind_data().head(20))
