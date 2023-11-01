@@ -16,28 +16,29 @@ from export_data import export_to_xlsx
 # Notebook from ClimateView that our calculations are based on:
 # https://colab.research.google.com/drive/1qqMbdBTu5ulAPUe-0CRBmFuh8aNOiHEb?usp=sharing
 
+PATH_MUNICIPALITIES = 'facts/kommunlankod_2023.xls'
 
 # Get emission calculations
-df = get_municipalities()
-print('Municipalities loaded and prepped')
+df = get_municipalities(PATH_MUNICIPALITIES)
+print('1. Municipalities loaded and prepped')
 
 df = emission_calculations(df)
-print('Climate data and calculations all done')
+print('2. Climate data and calculations all done')
 
 df = car_calculations(df)
-print('Hybrid car data and calculations finished')
+print('3. Hybrid car data and calculations finished')
 
 df = get_climate_plans(df)
-print('Add climate plans')
+print('4. Add climate plans')
 
 df = bicycle_calculations(df)
-print('Add bicycle data')
+print('5. Add bicycle data')
 
 df = get_consumption_emissions(df)
-print('Add consumption emission data')
+print('6. Add consumption emission data')
 
 df = calculate_wind_data(df)
-print('Add wind data')
+print('7. Add wind data')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 

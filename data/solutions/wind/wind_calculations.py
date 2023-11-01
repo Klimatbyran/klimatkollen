@@ -107,8 +107,8 @@ def calculate_wind_data(df=None):
     # df_filtered.to_excel('wind_output.xlsx', index=False)
 
     # Merge output_df with df
-    # df_result = df.merge(df_filtered, on='Kommun', how='left')
-    # # Fill NaN with the string 'NaN'
-    # df_result['windPower'] = df_result['windPower'].fillna(-1)
+    df_result = df.merge(df_filtered, on='Kommun', how='left')
+    # Fill NaN with the string 'NaN'
+    df_result['windPower'] = df_result['windPower'].fillna(-1)
 
-    return df_filtered
+    return df_result
