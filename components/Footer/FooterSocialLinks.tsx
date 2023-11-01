@@ -36,7 +36,7 @@ type SocialListItemProps = {
   text: string
 }
 
-function SocialListItem({
+export function SocialListItem({
   icon, alt, link, text,
 }: SocialListItemProps): JSX.Element {
   return (
@@ -59,19 +59,19 @@ function SocialList() {
         text="Maila oss"
       />
       <SocialListItem
-        icon="/icons/x_circle.svg"
+        icon="/icons/some/x_circle.svg"
         alt="X (Twitter) logo"
         link="https://twitter.com/klimatkollen"
         text="X (Twitter)"
       />
       <SocialListItem
-        icon="/icons/icon_linkedin_circle.svg"
+        icon="/icons/some/linkedin_black.svg"
         alt="Linkedin logo"
         link="https://www.linkedin.com/company/klimatkollen/"
         text="LinkedIn"
       />
       <ContactListItem>
-        <ContactIcon src="/icons/github.svg" alt="GitHub logo" />
+        <ContactIcon src="/icons/some/github.svg" alt="GitHub logo" />
         <ContactLink
           href="https://github.com/Klimatbyran/klimatkollen"
           target="_blank"

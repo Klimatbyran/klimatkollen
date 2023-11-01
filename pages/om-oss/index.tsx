@@ -7,7 +7,9 @@ import { H2, Paragraph } from '../../components/Typography'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
-import { UnorderedList, ListItem, OrderedList } from '../../components/shared'
+import {
+  UnorderedList, ListItem, OrderedList, Grid, GridImage, GridItem,
+} from '../../components/shared'
 import ToggleSection from '../../components/ToggleSection'
 
 const Ola = '/board/ola.jpeg'
@@ -25,34 +27,6 @@ const Container = styled.section`
 
 const AiryParagraph = styled(Paragraph)`
   margin-bottom: 32px;
-`
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 32px;
-  margin-top: 32px;
-`
-
-const GridItem = styled.div`
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-
-  & > img {
-    flex-shrink: 0; // make sure image doesn't shrink
-  }
-
-  & > b {
-    clear: both; // make sure text appears below the image
-  }
-`
-
-const GridImage = styled.img`
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 16px;
 `
 
 function OmOss() {
@@ -272,7 +246,7 @@ function OmOss() {
                       <GridImage src={Christian} alt="Christian Landgren" />
                       <b>Christian Landgren</b>
                       {' '}
-                      – Digital entreprenör och en av Sveriges mest inflytelserika personer inom tech.
+                      Digital entreprenör och en av Sveriges mest inflytelserika personer inom tech.
                       VD och grundare av Iteam och Öppna skolplattformen.
                     </GridItem>
                     <GridItem>

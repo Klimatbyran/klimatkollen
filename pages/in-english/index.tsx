@@ -3,12 +3,11 @@ import { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import MetaTags from '../../components/MetaTags'
-import {
-  H2, H4, H5, Paragraph,
-} from '../../components/Typography'
+import { H2, H4, Paragraph } from '../../components/Typography'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
+import { Grid, GridImage, GridItem } from '../../components/shared'
 
 const Ola = '/board/ola.jpeg'
 const Frida = '/board/frida.jpg'
@@ -24,39 +23,11 @@ const PaddedParagraph = styled(Paragraph)`
   padding-bottom: 24px;
 `
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 32px;
-  margin: 32px 0;
-`
-
-const GridItem = styled.div`
-  min-height: 200px;
+const SocialMediaContainer = styled.div`
   display: flex;
-  flex-direction: column;
-
-  & > img {
-    flex-shrink: 0; // make sure image doesn't shrink
-  }
-
-  & > b {
-    clear: both; // make sure text appears below the image
-  }
-`
-
-const GridImage = styled.img`
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 16px;
-`
-
-const TeamImg = styled.img`
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 16px;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
 `
 
 function InEnglish() {
@@ -82,16 +53,16 @@ function InEnglish() {
             compare climate action across local governments and companies. Read more about
             the project here (LÄNK).
           </PaddedParagraph>
-          <H4>Want to use your skills for climate impact?</H4>
-          <Paragraph>
+          <H4>- Want to use your skills for climate impact?</H4>
+          <PaddedParagraph>
             We are currently looking for people that share our vision and want to help us
             grow. We’re especially interested in AI aficionados, data visualizers, UX
             specialists and climate data scientists. Please write us a message at
             {' '}
             <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
             .
-          </Paragraph>
-          <H4>Interested in taking Klimatkollen to your country?</H4>
+          </PaddedParagraph>
+          <H4>- Interested in taking Klimatkollen to your country?</H4>
           <PaddedParagraph>
             Do drop us a line if you want to hear more about what we do and want to
             collaborate. We’re especially looking for co-funders and partner organisations
@@ -123,7 +94,7 @@ function InEnglish() {
             the support of WWF, ClimateView, Klimatklubben and Våra barns klimat.
           </Paragraph>
           <Paragraph>
-            Klimatkollen is a platform for - and by – citizens, and we welcome
+            Klimatkollen is a platform for – and by – citizens, and we welcome
             contributions through
             {' '}
             <a
@@ -157,20 +128,22 @@ function InEnglish() {
               also an author and public speaker, as well as a EU Climate Pact Ambassador
               and Climate Reality Leader.
               {' '}
-              <a
-                href=" https://www.linkedin.com/in/fridaberryeklund/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://twitter.com/klimatfrida"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Twitter
-              </a>
+              <SocialMediaContainer>
+                <a
+                  href=" https://www.linkedin.com/in/fridaberryeklund/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
+                </a>
+                <a
+                  href="https://twitter.com/klimatfrida"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/icons/some/x_white.svg" alt="X logo" />
+                </a>
+              </SocialMediaContainer>
             </GridItem>
             <GridItem>
               <GridImage src={Ola} alt="Ola Spännar" />
@@ -179,34 +152,34 @@ function InEnglish() {
               initiatives, including the international platform, Our Kids’ Climate. She’s
               also an author and public speaker, as well as a EU Climate Pact Ambassador
               and Climate Reality Leader.
-              <a
-                href=" https://www.linkedin.com/in/ospannar/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://twitter.com/olaspannar"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Twitter
-              </a>
+              <SocialMediaContainer>
+                <a
+                  href=" https://www.linkedin.com/in/ospannar/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
+                </a>
+                <a href="https://twitter.com/olaspannar" target="_blank" rel="noreferrer">
+                  <img src="/icons/some/x_white.svg" alt="X logo" />
+                </a>
+              </SocialMediaContainer>
             </GridItem>
             <GridItem>
               <GridImage src={Elvira} alt="Elvira Boman" />
               <b>Elvira Boman, Tech Lead</b>
               Tech Lead Full Stack Developer and Engineering Physicist at Klimatkollen and
               Precist. Extensive experience in green and circular tech at multiple award
-              winning startups and part of the leadership team at IT consultant Precisit.
-              <a
-                href=" https://www.linkedin.com/in/elviraboman/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                LinkedIn
-              </a>
+              winning startups and part of the leadership team at IT consulting agency Precisit.
+              <SocialMediaContainer>
+                <a
+                  href=" https://www.linkedin.com/in/elviraboman/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
+                </a>
+              </SocialMediaContainer>
             </GridItem>
           </Grid>
           <H2>Klimatkollen wins the Google.org Impact Challenge: Tech for Social Good</H2>
