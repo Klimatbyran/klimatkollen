@@ -42,7 +42,7 @@ describe('#getEmissionLevelChangeAverage()', () => {
     ]
 
     const result = climateDataService.getEmissionLevelChangeAverage(data)
-    expect(result * 100).toBeCloseTo(-10) // average yearly change should be close to -10%
+    expect(result * 100).toBe(-10)
   })
 
   test('calculate average yearly change in emissions with data pre 2015', () => {
@@ -61,6 +61,36 @@ describe('#getEmissionLevelChangeAverage()', () => {
     ]
 
     const result = climateDataService.getEmissionLevelChangeAverage(data)
-    expect(result * 100).toBeCloseTo(4.33)
+    expect(result * 100).toBe(4.332031644555692)
+
+    const extendedData = [
+      { Year: 2000, CO2Equivalent: 50 },
+      { Year: 2001, CO2Equivalent: 51.25 },
+      { Year: 2002, CO2Equivalent: 52.53 },
+      { Year: 2003, CO2Equivalent: 53.84 },
+      { Year: 2004, CO2Equivalent: 55.19 },
+      { Year: 2005, CO2Equivalent: 56.57 },
+      { Year: 2006, CO2Equivalent: 58 },
+      { Year: 2007, CO2Equivalent: 59.45 },
+      { Year: 2008, CO2Equivalent: 60.94 },
+      { Year: 2009, CO2Equivalent: 62.47 },
+      { Year: 2010, CO2Equivalent: 64.03 },
+      { Year: 2011, CO2Equivalent: 65.63 },
+      { Year: 2012, CO2Equivalent: 67.28 },
+      { Year: 2013, CO2Equivalent: 68.96 },
+      { Year: 2014, CO2Equivalent: 70.68 },
+      { Year: 2015, CO2Equivalent: 74.22 },
+      { Year: 2016, CO2Equivalent: 77.93 },
+      { Year: 2017, CO2Equivalent: 81.83 },
+      { Year: 2018, CO2Equivalent: 85.92 },
+      { Year: 2019, CO2Equivalent: 90.21 },
+      { Year: 2020, CO2Equivalent: 94.72 },
+      { Year: 2021, CO2Equivalent: 99.46 },
+    ]
+
+    // average yearly change for whole series is approximately 4.33%
+    // average yearly change for 2015-2021 is approximately 4.57%
+    const extendedResult = climateDataService.getEmissionLevelChangeAverage(extendedData)
+    expect(extendedResult * 100).toBe(4.999666044374538)
   })
 })
