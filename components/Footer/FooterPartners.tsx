@@ -39,14 +39,6 @@ function Partners() {
           alt="ClimateView logo"
         />
       </a>
-      <a href="https://www.wwf.se/" target="_blank" rel="noreferrer">
-        <img
-          src="/partners/WWF_Logo_Small_RGB_72dpi.jpg"
-          width={45}
-          height="auto"
-          alt="WWF logo"
-        />
-      </a>
       <a href="https://researchersdesk.se/" target="_blank" rel="noreferrer">
         <img
           src="/partners/researchersdesk-logo.svg"
