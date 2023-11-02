@@ -25,6 +25,8 @@ print('1. Municipalities loaded and prepped')
 df = emission_calculations(df)
 print('2. Climate data and calculations all done')
 
+print(df.head(5))
+
 df = car_calculations(df)
 print('3. Hybrid car data and calculations finished')
 

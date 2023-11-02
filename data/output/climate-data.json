@@ -97,7 +97,7 @@
       "2022": 0.5561719833564494
     },
     "climatePlanLink": "https://www.ale.se/download/18.2dcf200c178661e144145a5/1617883886384/Energi-%20och%20klimatstrategi%202030.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Klimatstrategi 2030",
     "bicycleMetrePerCapita": 2.881007594,
     "totalConsumptionEmission": 5889.8,
@@ -201,7 +201,7 @@
       "2022": 0.41009681881051174
     },
     "climatePlanLink": "https://www.alingsas.se/wp-content/uploads/2022/06/Klimatstrategi-for-Alingsas-kommun.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatstrategi 2022–2030",
     "bicycleMetrePerCapita": 2.865584307,
     "totalConsumptionEmission": 6066.6,
@@ -409,7 +409,7 @@
       "2022": 0.6271186440677966
     },
     "climatePlanLink": "https://www.aneby.se/download/18.10e76864165add3787c19774/1538745539859/Milj%C3%B6m%C3%A5l%20f%C3%B6r%20Aneby%20kommun%202011-2025.pdf",
-    "climatePlanYear": 2011,
+    "climatePlanYear": 2011.0,
     "climatePlanComment": "Miljömål 2011–2025",
     "bicycleMetrePerCapita": 2.482518504,
     "totalConsumptionEmission": 6113.7,
@@ -513,7 +513,7 @@
       "2022": 0.5126903553299492
     },
     "climatePlanLink": "https://www.arboga.se/download/18.626a0440182c91de14a1a5/1661251036439/Energi-%20och%20klimatstrategi%202009%20kf.pdf",
-    "climatePlanYear": 2009,
+    "climatePlanYear": 2009.0,
     "climatePlanComment": "Energi- och klimatstrategi antagen år 2009, vilken beskriver energiläget och befintliga utsläpp av växthusgaser, den innehåller också övergripande mål och strategier.",
     "bicycleMetrePerCapita": 3.288451193,
     "totalConsumptionEmission": 6176.1,
@@ -929,11 +929,11 @@
       "2022": 0.6209150326797386
     },
     "climatePlanLink": "https://www.askersund.se/download/18.c8a52c6182e9506a5cabfd/1661845370147/Ekologiskt%20h%C3%A5llbarhetsprogram%202022-2025",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Ekologiskt hållbarhetsprogram 2022–2025.",
     "bicycleMetrePerCapita": 2.926919348,
     "totalConsumptionEmission": 6451.7,
-    "windPower": 44.0
+    "windPower": 60.0
   },
   {
     "kommun": "Avesta",
@@ -1033,7 +1033,7 @@
       "2022": 0.442090395480226
     },
     "climatePlanLink": "https://avesta.se/contentassets/dffc2e06c2e84440b5edf9ad69ce3cef/hallbarhetsprogram-for-avesta-kommun-2020.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Hållbarhetsprogram 2020–2030.",
     "bicycleMetrePerCapita": 2.915797667,
     "totalConsumptionEmission": 6232.0,
@@ -1241,7 +1241,7 @@
       "2022": 0.6
     },
     "climatePlanLink": "https://berg.se/download/18.12a5b1201849980bbaa159b/1669973598681/Milj%C3%B6program.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljöprogram 2040",
     "bicycleMetrePerCapita": 2.184422467,
     "totalConsumptionEmission": 6488.9,
@@ -1345,7 +1345,7 @@
       "2022": 0.56
     },
     "climatePlanLink": "https://www.bjurholm.se/download/18.23d7fdaa17507a9912f33be/1614325453270/Fossilfria%20transporter%20Handlingsplan%20beslutad.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Handlingsplan för fossilfria transporter",
     "bicycleMetrePerCapita": 1.762300157,
     "totalConsumptionEmission": 6118.0,
@@ -1553,7 +1553,7 @@
       "2022": 0.4503464203233256
     },
     "climatePlanLink": "https://www.boden.se/kommunen/organisation-och-styrning/viktiga-styrdokument",
-    "climatePlanYear": 2018,
+    "climatePlanYear": 2018.0,
     "climatePlanComment": "Borgmästaravtalet. Kommunen jobbar med uppdatering av planen.",
     "bicycleMetrePerCapita": 4.240521656,
     "totalConsumptionEmission": 6657.4,
@@ -1661,7 +1661,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 2.022400756,
     "totalConsumptionEmission": 6010.1,
-    "windPower": 0.0
+    "windPower": 100.0
   },
   {
     "kommun": "Bollnäs",
@@ -1761,7 +1761,7 @@
       "2022": 0.299079754601227
     },
     "climatePlanLink": "https://bollnas.se/download/18.5bba8c07182e92654f3ac6a/1662039598190/Programmet%20f%C3%B6r%20ekologisk%20h%C3%A5llbarhet%20-%20antagen%20version.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Program för ekologisk hållbarhet 2021–2026",
     "bicycleMetrePerCapita": 2.564056644,
     "totalConsumptionEmission": 6108.5,
@@ -1865,7 +1865,7 @@
       "2022": 0.5605095541401274
     },
     "climatePlanLink": "https://www.borgholm.se/wp-content/uploads/2020/05/Energi-och-klimatstrategi-KF-2019-11-27-220.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Energi– och klimatstrategi, ska följas upp årligen.",
     "bicycleMetrePerCapita": 2.378697008,
     "totalConsumptionEmission": 6336.3,
@@ -1969,7 +1969,7 @@
       "2022": 0.5192012288786483
     },
     "climatePlanLink": "https://www.borlange.se/bygga-bo-och-miljo/miljo-och-klimat/miljostrategi",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Finns både Miljöstrategi 2021–2030 och Handlingsplan för miljöstrategin 2022.",
     "bicycleMetrePerCapita": 3.548200249,
     "totalConsumptionEmission": 6102.9,
@@ -2073,11 +2073,11 @@
       "2022": 0.5107079119571684
     },
     "climatePlanLink": "https://www.boras.se/download/18.499cdee21538963cd3f57af7/1610014986050/Energi-%20och%20klimatstrategi%20-%20strategi.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Energi– och klimatstrategi 2020–2024 kopplad till Borås koldioxidbudget.",
     "bicycleMetrePerCapita": 1.84645402,
     "totalConsumptionEmission": 6052.0,
-    "windPower": 0.0
+    "windPower": 100.0
   },
   {
     "kommun": "Botkyrka",
@@ -2177,7 +2177,7 @@
       "2022": 0.45747599451303156
     },
     "climatePlanLink": "https://www.botkyrka.se/download/18.1fbbaae6170bff9469deb3b/1584093805113/Klimatstrategi%20f%C3%B6r%20Botkyrka.pdf",
-    "climatePlanYear": 2018,
+    "climatePlanYear": 2018.0,
     "climatePlanComment": "Klimatstrategi 2018–2023",
     "bicycleMetrePerCapita": 2.586763621,
     "totalConsumptionEmission": 5526.3,
@@ -2493,7 +2493,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.9315229039,
     "totalConsumptionEmission": 6315.8,
-    "windPower": 5.911330049261084
+    "windPower": 53.57142857142857
   },
   {
     "kommun": "Burlöv",
@@ -2593,7 +2593,7 @@
       "2022": 0.33620689655172414
     },
     "climatePlanLink": "https://burlov.se/download/18.1c32a37617b4106947ea55dd/1629702323432/Milj%C3%B6program%202030.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Miljöprogram 2030",
     "bicycleMetrePerCapita": 3.346646362,
     "totalConsumptionEmission": 5458.4,
@@ -2801,7 +2801,7 @@
       "2022": 0.5862068965517241
     },
     "climatePlanLink": "https://www.dalsed.se/politik-demokrati/utvecklingsplan-2020-2023/miljo/",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Utvecklingsplan 2020–2023. Planerar att ta fram fler strategier.",
     "bicycleMetrePerCapita": 3.066064022,
     "totalConsumptionEmission": 6512.5,
@@ -2905,7 +2905,7 @@
       "2022": 0.731437598736177
     },
     "climatePlanLink": "https://www.danderyd.se/contentassets/ca8882c4a3184e3abe2d6c966f612bd4/201214_miljo-klimatprogram_final_web.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Miljö– och klimatprogram 2021–2030",
     "bicycleMetrePerCapita": 1.840451379,
     "totalConsumptionEmission": 8185.7,
@@ -3009,11 +3009,11 @@
       "2022": 0.43283582089552236
     },
     "climatePlanLink": "https://degerfors.se/download/18.53e66ade178ef85bf04d94/1624438767997/Energi-%20och%20klimatprogram%20-2021-06-04.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Energi– och klimatprogram 2021–2030. Status oklart, vattenstämplat \"Samrådsunderlag\".",
     "bicycleMetrePerCapita": 4.576541722,
     "totalConsumptionEmission": 6230.0,
-    "windPower": 100.0
+    "windPower": -1.0
   },
   {
     "kommun": "Dorotea",
@@ -3217,7 +3217,7 @@
       "2022": 0.2897196261682243
     },
     "climatePlanLink": "https://eda.se/Userfiles/Filarkiv/1294/Dokument/Hallbarhetsstrategi_KF_2020-12-16_T.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Hållbarhetsstrategi.",
     "bicycleMetrePerCapita": 2.101732193,
     "totalConsumptionEmission": 6451.3,
@@ -3321,7 +3321,7 @@
       "2022": 0.64171974522293
     },
     "climatePlanLink": "https://medborgare.ekero.se/welcome-sv/namnder-styrelser/kommunfullmaktige/mote-2020-04-21/agenda/energistrategi-for-ekero-kommun-2020-03-23pdf?downloadMode=open",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Energistrategi 2020–2030. Särskild klimatplan saknas.",
     "bicycleMetrePerCapita": 2.383422446,
     "totalConsumptionEmission": 6275.4,
@@ -3429,7 +3429,7 @@
     "climatePlanComment": "Plan saknas. Ny plan antas under 2023.",
     "bicycleMetrePerCapita": 3.939870961,
     "totalConsumptionEmission": 6054.3,
-    "windPower": 14.492753623188406
+    "windPower": 0.0
   },
   {
     "kommun": "Emmaboda",
@@ -3633,7 +3633,7 @@
       "2022": 0.5200823892893924
     },
     "climatePlanLink": "https://enkoping.se/download/18.1f87c14f1764bd37b954dfb9/1670497202700/klimatkontrakt-2030.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatkontrakt 2030 via Viable Cities.",
     "bicycleMetrePerCapita": 2.661227955,
     "totalConsumptionEmission": 6128.2,
@@ -3737,7 +3737,7 @@
       "2022": 0.5205595591352268
     },
     "climatePlanLink": "https://www.eskilstuna.se/download/18.4e2a3bf1184b408adc47d8/1669619809640/Klimatprogram%20f%C3%B6r%20Eskilstuna%20kommunkoncern.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatprogram. Gäller tills vidare.",
     "bicycleMetrePerCapita": 2.152677677,
     "totalConsumptionEmission": 5961.4,
@@ -4257,7 +4257,7 @@
       "2022": 0.4490861618798956
     },
     "climatePlanLink": "https://www.falkoping.se/download/18.1adde54a17861a73b1e11aae/1626330208751/Klimatstrategi%202021-2030.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Klimatstrategi 2021–2030. Kommunen står även bakom Västra Götalandsregionens kraftsamling för klimatet, Klimat 2030",
     "bicycleMetrePerCapita": 3.429514807,
     "totalConsumptionEmission": 5721.4,
@@ -4361,7 +4361,7 @@
       "2022": 0.5163249810174639
     },
     "climatePlanLink": "https://www.falun.se/download/18.7eb630aa16a59ef02cf6d5b8/1557238559519/energi_och_klimatprogram_2013_webb.pdf",
-    "climatePlanYear": 2012,
+    "climatePlanYear": 2012.0,
     "climatePlanComment": "Energi– och klimatprogram, vision 2050",
     "bicycleMetrePerCapita": 3.120604367,
     "totalConsumptionEmission": 6238.4,
@@ -4673,7 +4673,7 @@
       "2022": 0.48743718592964824
     },
     "climatePlanLink": "https://flen.se/nedladdning/forfattningssamling/planer_och_program/planer/Energi-och-klimatplan-for-Flens-kommun-2019-2023.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Energi– och klimatplan 2019–2023",
     "bicycleMetrePerCapita": 2.556806018,
     "totalConsumptionEmission": 6102.8,
@@ -4777,7 +4777,7 @@
       "2022": 0.4755244755244755
     },
     "climatePlanLink": "https://www.forshaga.se/download/18.658f116617a76142ce5bbc71/1626679776148/Milj%C3%B6-%20och%20klimatplan%20(2021-06-08).pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Miljö– och klimatplan 2021–2030",
     "bicycleMetrePerCapita": 6.449194915,
     "totalConsumptionEmission": 5927.7,
@@ -5089,11 +5089,11 @@
       "2022": 0.5449275362318841
     },
     "climatePlanLink": "https://www.gislaved.se/download/18.6c7bb61c1851412f92b21f8c/1672839511150/Strategi%20f%C3%B6r%20h%C3%A5llbar%20utveckling%20Gislaveds%20kommun%20antagen%20den%2014%20juni%202021.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Strategi för hållbar utveckling",
     "bicycleMetrePerCapita": 4.057533422,
     "totalConsumptionEmission": 5973.2,
-    "windPower": 28.08219178082192
+    "windPower": 18.0
   },
   {
     "kommun": "Gnesta",
@@ -5193,7 +5193,7 @@
       "2022": 0.5576923076923077
     },
     "climatePlanLink": "https://www.gnesta.se/kommunverksamhet/styrningochekonomi/styrdokument/plan.4.34b79a7b16653c9fa8492dbf.html",
-    "climatePlanYear": 2013,
+    "climatePlanYear": 2013.0,
     "climatePlanComment": "Miljö– och hållbarhetsplan, gäller tills vidare",
     "bicycleMetrePerCapita": 1.698479193,
     "totalConsumptionEmission": 6087.3,
@@ -5301,7 +5301,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 4.272521996,
     "totalConsumptionEmission": 5800.6,
-    "windPower": 100.0
+    "windPower": -1.0
   },
   {
     "kommun": "Gotland",
@@ -5401,7 +5401,7 @@
       "2022": 0.48024316109422494
     },
     "climatePlanLink": "https://www.gotland.se/115066",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Kommer under 2023 ta fram ett internt hållbarhetsprogram.",
     "bicycleMetrePerCapita": 2.965998404,
     "totalConsumptionEmission": 6204.3,
@@ -5821,7 +5821,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.568772462,
     "totalConsumptionEmission": 6701.6,
-    "windPower": 0.0
+    "windPower": -1.0
   },
   {
     "kommun": "Gävle",
@@ -5921,7 +5921,7 @@
       "2022": 0.47745013009540327
     },
     "climatePlanLink": "https://app.climateview.global/public/board/505eb0d1-3347-4e97-8a55-4138713941d2",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Klimatplan 2035",
     "bicycleMetrePerCapita": 2.8248516,
     "totalConsumptionEmission": 6330.1,
@@ -6025,7 +6025,7 @@
       "2022": 0.5794771968854282
     },
     "climatePlanLink": "https://www4.goteborg.se/prod/Stadsledningskontoret/LIS/Verksamhetshandbok/Forfattn.nsf//6B3CA866EF066429C12586B200449D53/$File/C12574360024D6C7WEBVCP4393.pdf?OpenElement",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Miljö– och klimatprogram 2021–2030",
     "bicycleMetrePerCapita": 1.303877809,
     "totalConsumptionEmission": 6268.6,
@@ -6129,7 +6129,7 @@
       "2022": 0.447098976109215
     },
     "climatePlanLink": "https://www.gotene.se/download/18.6b0120a216ade1dd99f5d17a/1560261659657/Antaget%20klimat%20och%20milj%C3%B6politiskt%20program,%20KF%2029%20april%202019%20%C2%A7%2070.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Klimat– och miljöpolitiskt program 2019–2024",
     "bicycleMetrePerCapita": 3.76946887,
     "totalConsumptionEmission": 5959.1,
@@ -6233,11 +6233,11 @@
       "2022": 0.5905511811023622
     },
     "climatePlanLink": "https://habokommun.se/contentassets/9b46e0c7ebec45209de948336c8fe7e5/klimatprogram-2021-2025.tga.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Klimatprogram 2021–2025",
     "bicycleMetrePerCapita": 1.781741558,
     "totalConsumptionEmission": 6088.9,
-    "windPower": 31.57894736842105
+    "windPower": 100.0
   },
   {
     "kommun": "Hagfors",
@@ -6337,7 +6337,7 @@
       "2022": 0.20754716981132076
     },
     "climatePlanLink": "https://www.hagfors.se/undersidor/miljo-och-energi/miljomal-och-hallbarhetsarbete/miljoverenskommelsen-2022-2025.html",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljööverenskommelse 2022–2025",
     "bicycleMetrePerCapita": 5.447849972,
     "totalConsumptionEmission": 6389.1,
@@ -6445,7 +6445,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 3.284930497,
     "totalConsumptionEmission": 6134.7,
-    "windPower": 100.0
+    "windPower": -1.0
   },
   {
     "kommun": "Hallstahammar",
@@ -6649,7 +6649,7 @@
       "2022": 0.49320943531093636
     },
     "climatePlanLink": "https://www.halmstad.se/download/18.1ab5eabc17db948137827c20/1643015898074/Plan-for-energi-och-klimat-anpassad.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Plan för energi och klimat. Gäller tills vidare.",
     "bicycleMetrePerCapita": 2.855029528,
     "totalConsumptionEmission": 6215.6,
@@ -6857,7 +6857,7 @@
       "2022": 0.47905372104484967
     },
     "climatePlanLink": "https://www.haninge.se/globalassets/globala-katalogen/styrdokument/regler-och-styrande-dokument/bygga-bo-och-miljo/klimat-miljopolitiskt-program/haninge-kommun-klimat-och-miljopolitiskt-program.pdf",
-    "climatePlanYear": 2017,
+    "climatePlanYear": 2017.0,
     "climatePlanComment": "Klimat– och miljöpolitisk program. ",
     "bicycleMetrePerCapita": 2.076686121,
     "totalConsumptionEmission": 5779.9,
@@ -6961,7 +6961,7 @@
       "2022": 0.31451612903225806
     },
     "climatePlanLink": "/data/climatePlans/Haparanda klimatstrategi 2020_2050.pdf",
-    "climatePlanYear": 2012,
+    "climatePlanYear": 2012.0,
     "climatePlanComment": "Klimatstrategi 2020–2050",
     "bicycleMetrePerCapita": 2.869357799,
     "totalConsumptionEmission": 6173.1,
@@ -7169,11 +7169,11 @@
       "2022": 0.5061224489795918
     },
     "climatePlanLink": "https://hedemora.se/wp-content/uploads/2022/10/Energi-_och_klimatstrategi_2020-2025.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Energi– och klimatstrategi 2020–2025 ",
     "bicycleMetrePerCapita": 1.72905197,
     "totalConsumptionEmission": 6114.4,
-    "windPower": 44.44444444444444
+    "windPower": 46.15384615384615
   },
   {
     "kommun": "Helsingborg",
@@ -7273,7 +7273,7 @@
       "2022": 0.4743110695936478
     },
     "climatePlanLink": "https://helsingborg.se/bo-bygga-och-miljo/klimat-och-miljo/helsingborgs-klimat-och-energiplan/",
-    "climatePlanYear": 2018,
+    "climatePlanYear": 2018.0,
     "climatePlanComment": "Klimat– och energiplan 2018–2024 ",
     "bicycleMetrePerCapita": 3.099622293,
     "totalConsumptionEmission": 6386.7,
@@ -7481,7 +7481,7 @@
       "2022": 0.5252525252525253
     },
     "climatePlanLink": "https://hjo.se/globalassets/dokument/styrdokument/ovrigt/hallbarhetsstrategi-for-hjo-kommun.pdf",
-    "climatePlanYear": 2018,
+    "climatePlanYear": 2018.0,
     "climatePlanComment": "Hållbarhetsstrategi",
     "bicycleMetrePerCapita": 2.510562925,
     "totalConsumptionEmission": 6153.7,
@@ -7589,7 +7589,7 @@
     "climatePlanComment": "Plan saknas. Hänvisar till  Sandvikens kommun Energi- och klimatstrategi från 2007.",
     "bicycleMetrePerCapita": 3.464511233,
     "totalConsumptionEmission": 6425.2,
-    "windPower": 72.72727272727273
+    "windPower": 100.0
   },
   {
     "kommun": "Huddinge",
@@ -7689,7 +7689,7 @@
       "2022": 0.5150476190476191
     },
     "climatePlanLink": "https://www.huddinge.se/organisation-och-styrning/sa-arbetar-vi-med/miljo-och-klimat/klimat-och-energi/",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljöprogram 2022–2025",
     "bicycleMetrePerCapita": 2.050996867,
     "totalConsumptionEmission": 6031.7,
@@ -7793,7 +7793,7 @@
       "2022": 0.5223325062034739
     },
     "climatePlanLink": "https://www.hudiksvall.se/Sidor/Kommun-och-politik/Forfattningssamling---Styrdokument/Policy-riktlinjer-planer-och-program/Energi--och-klimatstrategi-2017-2050.html",
-    "climatePlanYear": 2017,
+    "climatePlanYear": 2017.0,
     "climatePlanComment": "Energi– och klimatstrategi 2017–2050",
     "bicycleMetrePerCapita": 2.080051418,
     "totalConsumptionEmission": 6218.1,
@@ -8317,7 +8317,7 @@
     "climatePlanComment": "Plan saknas. Har eget klimatlöfte. ",
     "bicycleMetrePerCapita": 2.233581042,
     "totalConsumptionEmission": 6107.7,
-    "windPower": 0.0
+    "windPower": 71.42857142857143
   },
   {
     "kommun": "Härryda",
@@ -8417,7 +8417,7 @@
       "2022": 0.6540483701366983
     },
     "climatePlanLink": "https://www.harryda.se/download/18.c0a4fce181800179101eedd/1660123092984/Energi-%20och%20klimatplan.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Energi– och klimatplan.",
     "bicycleMetrePerCapita": 3.211264818,
     "totalConsumptionEmission": 6205.1,
@@ -8625,7 +8625,7 @@
       "2022": 0.4085554866707998
     },
     "climatePlanLink": "https://www.habo.se/download/18.385a44c917cdfc2502fd07bb/1637050665118/H%C3%A5llbarhetsstrategi_AntagenKF20211108.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Hållbarhetsstrategi 2021. Uppdateras senast 2026.",
     "bicycleMetrePerCapita": 3.741361443,
     "totalConsumptionEmission": 6181.4,
@@ -8729,7 +8729,7 @@
       "2022": 0.5419354838709678
     },
     "climatePlanLink": "https://www.hoganas.se/download/18.765ba991784b13246f10c29/1618312885309/Milj%C3%B6program%202015-2025_2021.pdf",
-    "climatePlanYear": 2015,
+    "climatePlanYear": 2015.0,
     "climatePlanComment": "Miljöprogram 2015–2025",
     "bicycleMetrePerCapita": 3.869861408,
     "totalConsumptionEmission": 6602.1,
@@ -9249,7 +9249,7 @@
       "2022": 0.6007046388725779
     },
     "climatePlanLink": "https://www.jarfalla.se/download/18.5e2d810118697502d1121381/1677764821650/Miljoplan-2023-2030-Jarfalla-kommun-med-bolag.pdf",
-    "climatePlanYear": 2023,
+    "climatePlanYear": 2023.0,
     "climatePlanComment": "Miljöplan 2023–2030",
     "bicycleMetrePerCapita": 2.422133029,
     "totalConsumptionEmission": 5996.9,
@@ -9353,7 +9353,7 @@
       "2022": 0.4945994599459946
     },
     "climatePlanLink": "https://www.jonkoping.se/download/18.6751acba183a2e89e794ecfe/1666359577980/Program%20f%C3%B6r%20h%C3%A5llbarhet%20i%20J%C3%B6nk%C3%B6pings%20kommun%202022-2030.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Hållbarhetsprogram 2022–2030",
     "bicycleMetrePerCapita": 2.698136433,
     "totalConsumptionEmission": 6166.6,
@@ -9561,7 +9561,7 @@
       "2022": 0.43770096463022506
     },
     "climatePlanLink": "https://kalmar.se/download/18.27a4559e1709e0628a5856/1584024404535/handlingsplan-fossilbranslefri-kommun-2030.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Handlingsplan Fossilbränslefri kommun 2030",
     "bicycleMetrePerCapita": 2.898366807,
     "totalConsumptionEmission": 6169.9,
@@ -9873,7 +9873,7 @@
       "2022": 0.5070422535211268
     },
     "climatePlanLink": "https://karlskoga.se/download/18.52754ae1775ea851a920ca/1666080772061/miljoprogram-karlskoga-kommun.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Miljöprogram 2021–2030. ",
     "bicycleMetrePerCapita": 3.623405516,
     "totalConsumptionEmission": 6230.6,
@@ -9977,7 +9977,7 @@
       "2022": 0.5304054054054054
     },
     "climatePlanLink": "https://www.karlskrona.se/globalassets/kommun-och-politik/sa-arbetar-vi-med/hallbarhetsprogram_karlskrona_kommun_210517.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Hållbarhetsprogram 2021–2025",
     "bicycleMetrePerCapita": 1.512487322,
     "totalConsumptionEmission": 6165.4,
@@ -10081,7 +10081,7 @@
       "2022": 0.3419607843137255
     },
     "climatePlanLink": "https://static1.squarespace.com/static/5dd54ca29c9179411df12b85/t/6390ab2cd964d14c504ed938/1670425390573/Viable-Cities-Klimatkontrakt-Karlstad-FINAL.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. Ny Energi– och klimatplan samt handlingsplan beslutas maj 2023.",
     "bicycleMetrePerCapita": 2.913788973,
     "totalConsumptionEmission": 6351.9,
@@ -10497,7 +10497,7 @@
       "2022": 0.3168831168831169
     },
     "climatePlanLink": "https://kiruna.se/download/18.22bd3f5d17597b58e4e4c2/1604915931895/atgardsplan-for-hallbar-energi-tillika-energiplan-for-kiruna-kommunkoncern.pdf",
-    "climatePlanYear": 2015,
+    "climatePlanYear": 2015.0,
     "climatePlanComment": "Åtgärdsplan för hållbar energi för kommunkoncernen",
     "bicycleMetrePerCapita": 1.255295331,
     "totalConsumptionEmission": 6496.0,
@@ -10809,11 +10809,11 @@
       "2022": 0.533724340175953
     },
     "climatePlanLink": "https://www.kramfors.se/download/18.22be0c416e405e2b6c7c6cb/1575389653000/Kramfors-kommun-Program-f%C3%B6r-ekologisk-h%C3%A5llbarhet-2020-2031.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Program för Ekologisk hållbarhet 2020–2031",
     "bicycleMetrePerCapita": 2.479463175,
     "totalConsumptionEmission": 6163.1,
-    "windPower": 5.6191467221644125
+    "windPower": 30.392156862745097
   },
   {
     "kommun": "Kristianstad",
@@ -10913,7 +10913,7 @@
       "2022": 0.5450490633363069
     },
     "climatePlanLink": "https://www.kristianstad.se/sv/bygga-bo-och-miljo/samhallsutveckling-och-hallbarhet/klimat-och-miljo/klimat-och-miljoplan/",
-    "climatePlanYear": 2023,
+    "climatePlanYear": 2023.0,
     "climatePlanComment": "Remissversion, kommer klubbas 2023",
     "bicycleMetrePerCapita": 4.197073098,
     "totalConsumptionEmission": 6072.5,
@@ -11329,7 +11329,7 @@
       "2022": 0.594327990135635
     },
     "climatePlanLink": "https://kungsbacka.se/download/18.5c06deb5186a19d6e5c23920/1678800987979/Klimatstrategi%202022.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatstrategi",
     "bicycleMetrePerCapita": 2.391165078,
     "totalConsumptionEmission": 6550.5,
@@ -12061,7 +12061,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.420762914,
     "totalConsumptionEmission": 6576.6,
-    "windPower": 88.23529411764706
+    "windPower": 100.0
   },
   {
     "kommun": "Lekeberg",
@@ -12161,7 +12161,7 @@
       "2022": 0.6060606060606061
     },
     "climatePlanLink": "https://lekeberg.se/download/18.4743cfc18120db3f63d6f13/1655444950983/H%C3%A5llbarhetsprogram%20f%C3%B6r%20Lekebergs%20kommun%202022-2030%20-%20%20antagen.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Hållbarhetsprogram 2022–2030",
     "bicycleMetrePerCapita": 1.332483676,
     "totalConsumptionEmission": 6034.4,
@@ -12473,7 +12473,7 @@
       "2022": 0.52
     },
     "climatePlanLink": "https://www.lessebo.se/download/18.751dad0a1754f2bbde74234/1603372637882/Energi-%20%20milj%C3%B6-%20och%20klimatstrategiskt%20program%202019-2030%20%20antaget%202020-10-19%20.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Energi, miljö– och klimatstrategiskt program för Lessebo kommun 2019 –2030",
     "bicycleMetrePerCapita": 2.771482457,
     "totalConsumptionEmission": 5777.4,
@@ -12577,7 +12577,7 @@
       "2022": 0.6043405676126878
     },
     "climatePlanLink": "https://lidingo.se/download/18.3e1246071764a836a72c45/1607961656265/Milj%C3%B6program%202021-2030%20f%C3%B6r%20Liding%C3%B6%20stads%20verksamheter%20med%20underskrift%2020-12-11.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Miljöprogram 2021–2030. ",
     "bicycleMetrePerCapita": 2.616293985,
     "totalConsumptionEmission": 7483.1,
@@ -12993,7 +12993,7 @@
       "2022": 0.5686148576321987
     },
     "climatePlanLink": "https://static1.squarespace.com/static/5dd54ca29c9179411df12b85/t/6390ab3afd7221628a913d67/1670425403524/Viable-Cities-Klimatkontrakt-Linkoping-FINAL.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. ",
     "bicycleMetrePerCapita": 3.315704358,
     "totalConsumptionEmission": 6282.7,
@@ -13097,7 +13097,7 @@
       "2022": 0.4289940828402367
     },
     "climatePlanLink": "https://www.ljungby.se/globalassets/dokument-och-innehall/miljo-och-klimat/hallbar-utveckling/klimat--och-energiplan_digital-lasning.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Klimat- och energiplan ",
     "bicycleMetrePerCapita": 4.84998266,
     "totalConsumptionEmission": 6147.5,
@@ -13409,7 +13409,7 @@
       "2022": 0.6360902255639098
     },
     "climatePlanLink": "https://lomma.se/bygga-bo-och-miljo/klimat-miljo-och-hallbarhet/klimatarbete.html",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Energi– och klimatplan 2021–2025",
     "bicycleMetrePerCapita": 4.057055311,
     "totalConsumptionEmission": 6598.4,
@@ -13721,7 +13721,7 @@
       "2022": 0.6800592482873542
     },
     "climatePlanLink": "https://lund.se/download/18.2899fac318093d2b72817dd7/1666783006521/Lunds%20kommuns%20program%20f%C3%B6r%20ekologisk%20h%C3%A5llbar%20utveckling%202021-2030.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Program för ekologisk hållbar utveckling 2021–2030",
     "bicycleMetrePerCapita": 3.243323968,
     "totalConsumptionEmission": 6171.1,
@@ -14033,7 +14033,7 @@
       "2022": 0.4970276008492569
     },
     "climatePlanLink": "https://static1.squarespace.com/static/5dd54ca29c9179411df12b85/t/6390ab4da16fc858ade542fa/1670425421810/Viable-Cities-Klimatkontrakt-Malmo-FINAL.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. ",
     "bicycleMetrePerCapita": 1.555072408,
     "totalConsumptionEmission": 6184.8,
@@ -14345,7 +14345,7 @@
       "2022": 0.42446941323345816
     },
     "climatePlanLink": "https://static1.squarespace.com/static/5dd54ca29c9179411df12b85/t/6390ab5329d52f430f6fe71a/1670425427707/Viable-Cities-Klimatkontrakt-Mariestad-FINAL.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities. ",
     "bicycleMetrePerCapita": 4.177182145,
     "totalConsumptionEmission": 6077.1,
@@ -14761,7 +14761,7 @@
       "2022": 0.6054421768707483
     },
     "climatePlanLink": "https://www.mjolby.se/download/18.12cf806d18409781a5e22559/1667205317237/Energi-%20och%20klimatstrategi.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Energi och klimatstrategi. 2020–2023.",
     "bicycleMetrePerCapita": 3.49516978,
     "totalConsumptionEmission": 6184.6,
@@ -15073,11 +15073,11 @@
       "2022": 0.5526315789473685
     },
     "climatePlanLink": "https://www.mullsjo.se/download/18.6cf2c3af17a7603c29e1ac4a/1625644095092/Milj%C3%B6program_Mullsj%C3%B6%20kommun-2021-2030.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Miljöprogram. 2021–2030.",
     "bicycleMetrePerCapita": 4.702254358,
     "totalConsumptionEmission": 6191.3,
-    "windPower": 64.86486486486487
+    "windPower": 100.0
   },
   {
     "kommun": "Munkedal",
@@ -15385,7 +15385,7 @@
       "2022": 0.6259259259259259
     },
     "climatePlanLink": "https://www.molndal.se/download/18.5bcdb531818002396aa89b1/1658749356043/M%C3%B6lndals%20stad%20Energiplan%20f%C3%B6r%20minimerad%20klimatp%C3%A5verkan.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Energiplan för minimerad klimatpåverkan.",
     "bicycleMetrePerCapita": 2.435578685,
     "totalConsumptionEmission": 6112.1,
@@ -15697,7 +15697,7 @@
       "2022": 0.6549006168608636
     },
     "climatePlanLink": "https://static1.squarespace.com/static/5dd54ca29c9179411df12b85/t/6390ab5d7343c933175d7561/1670425438238/Viable-Cities-Klimatkontrakt-Nacka-FINAL.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities.",
     "bicycleMetrePerCapita": 1.620929483,
     "totalConsumptionEmission": 6684.8,
@@ -15905,7 +15905,7 @@
       "2022": 0.5529411764705883
     },
     "climatePlanLink": "https://opengov.360online.com/Meetings/NORBERG/File/Details/245611.PDF?fileName=Energi-%20och%20klimatstrategi%20f%C3%B6r%20Norbergs%20kommun%202020-2030&fileSize=1674737",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Energi– och Klimatstrategi. 2020–2030.",
     "bicycleMetrePerCapita": 3.706902197,
     "totalConsumptionEmission": 6173.4,
@@ -16321,7 +16321,7 @@
       "2022": 0.47121111846459296
     },
     "climatePlanLink": "https://www.norrtalje.se/globalassets/bo--miljo/miljo--och-klimatstrategi---tillganglighetsanpassad.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Miljö– och klimatstrategi.",
     "bicycleMetrePerCapita": 1.818370128,
     "totalConsumptionEmission": 6411.6,
@@ -16737,7 +16737,7 @@
       "2022": 0.48012976480129765
     },
     "climatePlanLink": "https://nykoping.se/globalassets/nykoping.se/dokument/styrdokument/program-for-ekologisk-hallbarhet.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Program för ekologisk hållbarhet.",
     "bicycleMetrePerCapita": 2.56992368,
     "totalConsumptionEmission": 5862.4,
@@ -16841,7 +16841,7 @@
       "2022": 0.5340659340659341
     },
     "climatePlanLink": "https://nynashamn.se/download/18.af2d0f618019134f8d4e5d6/1650369638283/Nyn%C3%A4shamns%20kommuns%20h%C3%A5llbarhetsprogram%202023-2030.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Hållbarhetsprogram 2023–2030",
     "bicycleMetrePerCapita": 3.320688035,
     "totalConsumptionEmission": 6008.5,
@@ -16945,7 +16945,7 @@
       "2022": 0.5061391541609823
     },
     "climatePlanLink": "https://nassjo.se/download/18.5887ffce168e1d826e1aa9a/1551969829610/Energi-%20och%20klimatstrategi.pdf",
-    "climatePlanYear": 2016,
+    "climatePlanYear": 2016.0,
     "climatePlanComment": "Energi– och Klimatstrategi.",
     "bicycleMetrePerCapita": 2.650691253,
     "totalConsumptionEmission": 5824.9,
@@ -17049,7 +17049,7 @@
       "2022": 0.4625
     },
     "climatePlanLink": "https://sandviken.se/download/18.69cc24a417ffd93f9a4c073f/1650969435744/Miljo%CC%88strategiskt%20program_Ockelbo%202022-2026.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljöstrategiskt program 2022–2026",
     "bicycleMetrePerCapita": 2.931178356,
     "totalConsumptionEmission": 5936.7,
@@ -17153,7 +17153,7 @@
       "2022": 0.3458333333333333
     },
     "climatePlanLink": "/data/climatePlans/Olofstr%C3%B6m_Handlingsplan%20f%C3%B6r%20klimat%20och%20energi.pdf",
-    "climatePlanYear": 2023,
+    "climatePlanYear": 2023.0,
     "climatePlanComment": "Ny Handlingsplan för klimat och energi beslutad men ej publicerad",
     "bicycleMetrePerCapita": 3.389695099,
     "totalConsumptionEmission": 5971.9,
@@ -17361,7 +17361,7 @@
       "2022": 0.5798611111111112
     },
     "climatePlanLink": "https://www.orust.se/download/18.1c4985fe183bfdb97a25a9/1665396992481/Energi-%20och%20klimatstrategi%202017-2030%20Orust.pdf",
-    "climatePlanYear": 2018,
+    "climatePlanYear": 2018.0,
     "climatePlanComment": "Klimatstrategi till 2030",
     "bicycleMetrePerCapita": 1.250142775,
     "totalConsumptionEmission": 6443.1,
@@ -17465,7 +17465,7 @@
       "2022": 0.39299610894941633
     },
     "climatePlanLink": "https://www.osby.se/bygga-bo--miljo/natur-och-hallbarhet/klimatarbete.html",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Klimat– och energiplan. Gäller till 2030.",
     "bicycleMetrePerCapita": 2.069387541,
     "totalConsumptionEmission": 5941.6,
@@ -17677,7 +17677,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.630530428,
     "totalConsumptionEmission": 6103.6,
-    "windPower": 0.0
+    "windPower": -1.0
   },
   {
     "kommun": "Oxelösund",
@@ -17885,7 +17885,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 3.945928683,
     "totalConsumptionEmission": 6688.8,
-    "windPower": 0.0
+    "windPower": -1.0
   },
   {
     "kommun": "Partille",
@@ -18089,7 +18089,7 @@
       "2022": 0.47297297297297297
     },
     "climatePlanLink": "https://www.perstorp.se/download/18.6ee8abfe17bedf7491a2a38/1643719465669/Klimat-%20och%20energiprogram.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Energi– och klimatprogram. Gäller till 2030. ",
     "bicycleMetrePerCapita": 3.362789196,
     "totalConsumptionEmission": 5974.1,
@@ -18193,11 +18193,11 @@
       "2022": 0.6323185011709602
     },
     "climatePlanLink": "https://www.pitea.se/contentassets/9c4b5902081c401a985a37bee096f992/handlingsplan-miljo-klimat-och-energi.pdf?t=638201013076470932",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Handlingsplan klimat och energi, gäller tillsvidare.",
     "bicycleMetrePerCapita": 3.046185101,
     "totalConsumptionEmission": 6605.3,
-    "windPower": 2.6539278131634823
+    "windPower": 5.016008537886873
   },
   {
     "kommun": "Ragunda",
@@ -18301,7 +18301,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.487975575,
     "totalConsumptionEmission": 6312.0,
-    "windPower": 44.35946462715105
+    "windPower": 95.97989949748744
   },
   {
     "kommun": "Robertsfors",
@@ -18505,7 +18505,7 @@
       "2022": 0.43014705882352944
     },
     "climatePlanLink": "https://www.ronneby.se/download/18.2e5b091017e6102741ae787e/1643191137416/Program%20f%C3%B6r%20klimat%20och%20energi%20Ronneby%20kommun%202021-2025.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Program för klimat och energi 2021–2025",
     "bicycleMetrePerCapita": 3.962831222,
     "totalConsumptionEmission": 6076.0,
@@ -18613,7 +18613,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.793276136,
     "totalConsumptionEmission": 6586.6,
-    "windPower": 0.0
+    "windPower": -1.0
   },
   {
     "kommun": "Sala",
@@ -18713,7 +18713,7 @@
       "2022": 0.5307262569832403
     },
     "climatePlanLink": "https://www.sala.se/resources/files/_Nystruktur/Styrdokument/06%20Planer/Energi-%20och%20klimatstrategi%20Sala%20kommun%202020-2030%20med%20utblick%20mot%202045.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Energi– och klimatstrategi. 2020–2030 med utblick mot 2045.",
     "bicycleMetrePerCapita": 1.058042274,
     "totalConsumptionEmission": 6148.8,
@@ -19025,7 +19025,7 @@
       "2022": 0.5832716506291635
     },
     "climatePlanLink": "https://www.sigtuna.se/download/18.24e83a616b997088b4b830f/1566301462415/Plan%20f%C3%B6r%20Klimatsmart.pdf",
-    "climatePlanYear": 2018,
+    "climatePlanYear": 2018.0,
     "climatePlanComment": "Plan för klimatsmart Sigtuna",
     "bicycleMetrePerCapita": 2.417291994,
     "totalConsumptionEmission": 6010.3,
@@ -19233,7 +19233,7 @@
       "2022": 0.5
     },
     "climatePlanLink": "https://www.sjobo.se/bygga-bo-och-miljo/hallbarhet-miljo-och-natur/lokala-miljomal.html",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Hållbara Sjöbo 2034 – Kommunalt miljömålsprogram. ",
     "bicycleMetrePerCapita": 2.627200704,
     "totalConsumptionEmission": 6132.8,
@@ -19337,7 +19337,7 @@
       "2022": 0.4943310657596372
     },
     "climatePlanLink": "https://skara.se/download/18.a9ae3d177427fab272ada/1611824198185/milj%C3%B6strategi%202017web.pdf",
-    "climatePlanYear": 2017,
+    "climatePlanYear": 2017.0,
     "climatePlanComment": "Miljöstrategi. ",
     "bicycleMetrePerCapita": 3.680481651,
     "totalConsumptionEmission": 6113.9,
@@ -19441,11 +19441,11 @@
       "2022": 0.5769230769230769
     },
     "climatePlanLink": "https://static1.squarespace.com/static/5dd54ca29c9179411df12b85/t/6390ab7bb0c4e669d7aee685/1670425468289/Viable-Cities-Klimatkontrakt-Skelleftea-FINAL.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatkontrakt 2030 inom Viable Cities.",
     "bicycleMetrePerCapita": 3.352954207,
     "totalConsumptionEmission": 6176.7,
-    "windPower": 9.836065573770492
+    "windPower": 34.645669291338585
   },
   {
     "kommun": "Skinnskatteberg",
@@ -19649,7 +19649,7 @@
       "2022": 0.4580152671755725
     },
     "climatePlanLink": "https://www.skurup.se/36987",
-    "climatePlanYear": 2017,
+    "climatePlanYear": 2017.0,
     "climatePlanComment": "Klimatstrategi och energiplan, gäller till 2030",
     "bicycleMetrePerCapita": 4.412308506,
     "totalConsumptionEmission": 5808.7,
@@ -19753,7 +19753,7 @@
       "2022": 0.4500838926174497
     },
     "climatePlanLink": "https://skovde.se/globalassets/energi--och-klimatplanen_webb.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Energi– och klimatplan 2021–2030",
     "bicycleMetrePerCapita": 3.108804107,
     "totalConsumptionEmission": 6036.7,
@@ -19965,7 +19965,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.558660435,
     "totalConsumptionEmission": 6071.1,
-    "windPower": 29.592406476828593
+    "windPower": 56.75675675675676
   },
   {
     "kommun": "Sollentuna",
@@ -20065,7 +20065,7 @@
       "2022": 0.6611704598235021
     },
     "climatePlanLink": "https://www.sollentuna.se/globalassets/kommun-och-politik/politik-och-demokrati/miljo-och-klimat/plan-for-miljo--och-klimatarbetet-i-sollentuna-kommun-2021-2030.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Plan för miljö– och klimatarbetet 2021–2030",
     "bicycleMetrePerCapita": 1.370438966,
     "totalConsumptionEmission": 6657.6,
@@ -20169,7 +20169,7 @@
       "2022": 0.5627859684799187
     },
     "climatePlanLink": "https://www.solna.se/download/18.5002ae1016ed574744199bd/1596180205909/Klimatstrategi_2019.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Klimatstrategi",
     "bicycleMetrePerCapita": 1.307139177,
     "totalConsumptionEmission": 6978.6,
@@ -20377,7 +20377,7 @@
       "2022": 0.5887445887445888
     },
     "climatePlanLink": "https://www.sotenas.se/download/18.31f128a417e9f4ede9dc1776/1644237756609/H%C3%A5llbarhetsstrategi%202030%20antagen%20210218%20m%C3%A5l%202022.pdf",
-    "climatePlanYear": 2018,
+    "climatePlanYear": 2018.0,
     "climatePlanComment": "Hållbarhetsstrategi 2030. ",
     "bicycleMetrePerCapita": 1.432852918,
     "totalConsumptionEmission": 6663.6,
@@ -20481,7 +20481,7 @@
       "2022": 0.5562015503875969
     },
     "climatePlanLink": "https://staffanstorp.se/wp-content/uploads/2021/11/6-17-miljoplan.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljöplan",
     "bicycleMetrePerCapita": 4.478156915,
     "totalConsumptionEmission": 5848.9,
@@ -20689,7 +20689,7 @@
       "2022": 0.6318091888327105
     },
     "climatePlanLink": "https://start.stockholm/globalassets/start/om-stockholms-stad/politik-och-demokrati/styrdokument/klimathandlingsplan-2020-2023.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Klimathandlingsplan 2020–2023",
     "bicycleMetrePerCapita": 1.218575773,
     "totalConsumptionEmission": 6981.8,
@@ -20897,11 +20897,11 @@
       "2022": 0.40425531914893614
     },
     "climatePlanLink": "https://www.storuman.se/kommun/Trafik--infrastruktur/strategi-for-co2-effektiva-resor-i-storumans-kommun/",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Strategi för koldioxideffektiva resor i Storumans kommun",
     "bicycleMetrePerCapita": 3.261116272,
     "totalConsumptionEmission": 6942.8,
-    "windPower": 43.17548746518106
+    "windPower": 88.10572687224669
   },
   {
     "kommun": "Strängnäs",
@@ -21001,7 +21001,7 @@
       "2022": 0.42768595041322316
     },
     "climatePlanLink": "https://www.strangnas.se/download/18.269b989517934ecd2754df9c/1620303852652/Klimat%20och%20energiplan%20f%C3%B6r%20Str%C3%A4ngn%C3%A4s%20kommun.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Klimat– och energiplan 2021–2040",
     "bicycleMetrePerCapita": 2.468682063,
     "totalConsumptionEmission": 6398.4,
@@ -21105,7 +21105,7 @@
       "2022": 0.5956284153005464
     },
     "climatePlanLink": "https://www.stromstad.se/download/18.52a121a217ce4d028c542f2/1636710420332/Strategi%20Agenda%202030%20antagen%20september%202021.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Strategi Agenda 2030. Gäller 2021–2025. ",
     "bicycleMetrePerCapita": 4.20120415,
     "totalConsumptionEmission": 6236.3,
@@ -21213,7 +21213,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.501032709,
     "totalConsumptionEmission": 6304.1,
-    "windPower": 72.20447284345047
+    "windPower": 74.24242424242425
   },
   {
     "kommun": "Sundbyberg",
@@ -21417,11 +21417,11 @@
       "2022": 0.534269902085994
     },
     "climatePlanLink": "https://sundsvall.se/download/18.75ef5e4f1817ff175a69ca1b/1659440126510/Klimatplan%202022-2024.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatplan 2022–2024.",
     "bicycleMetrePerCapita": 2.684605556,
     "totalConsumptionEmission": 6210.2,
-    "windPower": 34.909090909090914
+    "windPower": 45.714285714285715
   },
   {
     "kommun": "Sunne",
@@ -21521,7 +21521,7 @@
       "2022": 0.3702290076335878
     },
     "climatePlanLink": "https://sunne.se/globalassets/dokument/7.-kommun-och-politik/kommunfakta/forfattningssamling/bygga-bo-och-miljo/miljostrategi-2018-2030-kf-2018-05-07.pdf",
-    "climatePlanYear": 2018,
+    "climatePlanYear": 2018.0,
     "climatePlanComment": "Miljöstrategi. ",
     "bicycleMetrePerCapita": 2.987040734,
     "totalConsumptionEmission": 6363.6,
@@ -21729,7 +21729,7 @@
       "2022": 0.522633744855967
     },
     "climatePlanLink": "https://svalov.se/download/18.37f8c5ee180940ed9988850/1652432039176/Energi-%20och%20klimatplan%202022-2030.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimatplan 2022–2030",
     "bicycleMetrePerCapita": 2.955402172,
     "totalConsumptionEmission": 6000.6,
@@ -21833,7 +21833,7 @@
       "2022": 0.5700934579439252
     },
     "climatePlanLink": "https://www.svedala.se/contentassets/ff83c3d46b1e464cb1c0a32030db2256/hallbarhetsstrategi-svedala-kommun-2021-tillganglighetsanpassad-webb.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Hållbarhetsstrategi.",
     "bicycleMetrePerCapita": 3.437934295,
     "totalConsumptionEmission": 5950.1,
@@ -22041,7 +22041,7 @@
       "2022": 0.5275590551181102
     },
     "climatePlanLink": "https://saffle.se/download/18.1112efe616fe8dd058623460/1580994326995/Huvuddokument.pdf",
-    "climatePlanYear": 2018,
+    "climatePlanYear": 2018.0,
     "climatePlanComment": "Energi- och klimatplan till 2030. ",
     "bicycleMetrePerCapita": 3.257070608,
     "totalConsumptionEmission": 5995.4,
@@ -22457,11 +22457,11 @@
       "2022": 0.562962962962963
     },
     "climatePlanLink": "/data/climatePlans/Söderköping Mål och strategier för Miljö och klimat.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Mål och strategier för miljö och klimat 2022–2025",
     "bicycleMetrePerCapita": 2.754640529,
     "totalConsumptionEmission": 6070.9,
-    "windPower": 0.0
+    "windPower": -1.0
   },
   {
     "kommun": "Södertälje",
@@ -22561,7 +22561,7 @@
       "2022": 0.5586734693877551
     },
     "climatePlanLink": "https://www.sodertalje.se/globalassets/styrande-dokument/miljo--och-klimatstrategi-2022-2030_antagen-av-kf.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljö– och klimatstrategi, gäller till 2030",
     "bicycleMetrePerCapita": 2.64348271,
     "totalConsumptionEmission": 5805.2,
@@ -22769,11 +22769,11 @@
       "2022": 0.5125
     },
     "climatePlanLink": "https://www.tanum.se/download/18.29bde0b1171537ea620dbcc5/1587128543377/Klimat-%20och%20milj%C3%B6strategi.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Klimat– och miljöstrategi 2020–2024.",
     "bicycleMetrePerCapita": 0.9730676817,
     "totalConsumptionEmission": 6397.7,
-    "windPower": 0.0
+    "windPower": -1.0
   },
   {
     "kommun": "Tibro",
@@ -23081,7 +23081,7 @@
       "2022": 0.6044444444444445
     },
     "climatePlanLink": "https://www.tierp.se/download/18.219c09301768e745e724cb0e/1610000652093/Klimat-%20och%20energiplan%20f%C3%B6r%20Tierps%20kommun.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Klimat– och energiplan från år 2020. En ny plan kommer att antas under 2023. ",
     "bicycleMetrePerCapita": 2.626499349,
     "totalConsumptionEmission": 6128.0,
@@ -23189,7 +23189,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 2.304277754,
     "totalConsumptionEmission": 5798.3,
-    "windPower": 0.0
+    "windPower": -1.0
   },
   {
     "kommun": "Tingsryd",
@@ -23289,7 +23289,7 @@
       "2022": 0.4375
     },
     "climatePlanLink": "https://tingsryd.se/wp-content/blogs.dir/1/files_mf/1647330611Milj%C3%B6program20222027TingsrydD%C3%A4rlivet%C3%A4rh%C3%A5llbart.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljöprogram 2022–2027",
     "bicycleMetrePerCapita": 7.862331476,
     "totalConsumptionEmission": 6139.2,
@@ -23497,7 +23497,7 @@
       "2022": 0.2219873150105708
     },
     "climatePlanLink": "https://www.tomelilla.se/fileadmin/tomelilla/kommun_och_politik/pdf/Energi-_och_klimatplan_2020-2025.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Energi– och klimatplan 2020–2025.",
     "bicycleMetrePerCapita": 2.16884948,
     "totalConsumptionEmission": 5948.3,
@@ -23605,7 +23605,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.423811628,
     "totalConsumptionEmission": 6675.2,
-    "windPower": 0.0
+    "windPower": 100.0
   },
   {
     "kommun": "Torsås",
@@ -23813,7 +23813,7 @@
     "climatePlanComment": "Plan saknas. Med i Klimat 2023 (VGR)",
     "bicycleMetrePerCapita": 5.111060036,
     "totalConsumptionEmission": 5934.1,
-    "windPower": 0.0
+    "windPower": -1.0
   },
   {
     "kommun": "Tranås",
@@ -23913,7 +23913,7 @@
       "2022": 0.5157232704402516
     },
     "climatePlanLink": "https://tranas.se/download/18.671539701847d6e7ad0319/1669301841956/Strategi%20f%C3%B6r%20ekologisk%20h%C3%A5llbarhet%202022%20-2035_tillg%C3%A4nglig.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Ekologisk hållbarhetsstrategi 2022–2035. Arbete pågår med plan.",
     "bicycleMetrePerCapita": 3.802454138,
     "totalConsumptionEmission": 5902.1,
@@ -24329,7 +24329,7 @@
       "2022": 0.5770877944325482
     },
     "climatePlanLink": "https://app.climateview.global/public/board/db392fc1-257a-4768-a9db-215a92c6ac59",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Klimatplan 2030",
     "bicycleMetrePerCapita": 2.17324803,
     "totalConsumptionEmission": 6055.7,
@@ -24537,7 +24537,7 @@
       "2022": 0.4658385093167702
     },
     "climatePlanLink": "https://toreboda.se/download/18.178b2aa0182e97835b4558f/1662987466375/Strategi%20fo%CC%88r%20Agenda%202030%20To%CC%88reboda%20kommun.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Strategi för Agenda 2030",
     "bicycleMetrePerCapita": 5.452574406,
     "totalConsumptionEmission": 5912.2,
@@ -24641,7 +24641,7 @@
       "2022": 0.6240359897172236
     },
     "climatePlanLink": "https://www.uddevalla.se/download/18.579c6dca18049edc75d3329/1652779490750/Energi%20och%20klimatplan%20f%C3%B6r%20Uddevalla%20kommun%202022%20TA.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Energi– och klimatplan 2022–2030. Finns även separat åtgärdsplan.",
     "bicycleMetrePerCapita": 2.291437576,
     "totalConsumptionEmission": 6099.2,
@@ -24849,7 +24849,7 @@
       "2022": 0.5045161290322581
     },
     "climatePlanLink": "https://www.umea.se/byggaboochmiljo/samhallsutvecklingochhallbarhet/klimatmiljoochhallbarhet/strategisktmiljoarbete/miljomal/programochplanerformiljomalen.4.4c35eecf182e743a9224108.html",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Program och planer för att nå Umeå kommuns miljömål",
     "bicycleMetrePerCapita": 2.639826356,
     "totalConsumptionEmission": 6242.3,
@@ -24953,7 +24953,7 @@
       "2022": 0.5114235500878734
     },
     "climatePlanLink": "https://upplandsvasby.se/download/18.46d5f63317fbd916d941070/1649663540253/Klimat-%20och%20energistrategi%20f%C3%B6r%20Upplands%20V%C3%A4sby%20kommun%202022-2025.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Klimat– och energistrategi för Upplands Väsby 2022–2025",
     "bicycleMetrePerCapita": 3.734221098,
     "totalConsumptionEmission": 6207.6,
@@ -25057,7 +25057,7 @@
       "2022": 0.5749167591564928
     },
     "climatePlanLink": "https://www.upplands-bro.se/download/18.600d84bf187eae331ea77/1683275082167/Milj%C3%B6-%20och%20klimatstrategi%202023-2045",
-    "climatePlanYear": 2023,
+    "climatePlanYear": 2023.0,
     "climatePlanComment": "Miljö– och klimatstrategi 2023–2045",
     "bicycleMetrePerCapita": 2.711961788,
     "totalConsumptionEmission": 5788.8,
@@ -25161,7 +25161,7 @@
       "2022": 0.5378834044281942
     },
     "climatePlanLink": "https://www.uppsala.se/contentassets/5d36faebce83404888c3a4677bad5584/miljo--och-klimatprogram.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljö– och klimatprogram. Se även tillhörande handlingsplan.",
     "bicycleMetrePerCapita": 2.036415643,
     "totalConsumptionEmission": 6360.6,
@@ -25265,11 +25265,11 @@
       "2022": 0.4911242603550296
     },
     "climatePlanLink": "https://www.uppvidinge.se/download/18.57203f4c17cb7cc4b2c7a190/1635761631493/Klimat-%20och%20energistrategi%202022-2030%20f%C3%B6r%20Uppvidinge%20kommun%20f%C3%B6r%20SAMR%C3%85D.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Förslag på remiss för klimat– och energistrategi 2022–2030 ",
     "bicycleMetrePerCapita": 0.2710671217,
     "totalConsumptionEmission": 5849.5,
-    "windPower": 25.17814726840855
+    "windPower": 26.923076923076923
   },
   {
     "kommun": "Vadstena",
@@ -25473,7 +25473,7 @@
       "2022": 0.5134099616858238
     },
     "climatePlanLink": "https://www.vaggeryd.se/download/18.1a18992817d52e74471ea1f5/1639407815746/Milj%C3%B6program%202022-2025%20antaget%20KF%20211129%20%C2%A7155.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljöprogram 2022–2025",
     "bicycleMetrePerCapita": 4.665683814,
     "totalConsumptionEmission": 6103.4,
@@ -25681,7 +25681,7 @@
       "2022": 0.6213942307692307
     },
     "climatePlanLink": "https://dok.vallentuna.se/file/f%C3%B6rfattningssamling/2.%20bygga,%20bo%20och%20milj%C3%B6/2.5%20strategier/2.5.2%20Milj%C3%B6-%20och%20klimatstrategi.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Miljö– och klimatstrategi",
     "bicycleMetrePerCapita": 2.091930929,
     "totalConsumptionEmission": 6034.4,
@@ -25785,7 +25785,7 @@
       "2022": 0.5147058823529411
     },
     "climatePlanLink": "/data/climatePlans/Vansbro_Energi och klimatplan.pdf",
-    "climatePlanYear": 2013,
+    "climatePlanYear": 2013.0,
     "climatePlanComment": "Energi– och klimatplan 2010–2020 (gäller fortfarande)",
     "bicycleMetrePerCapita": 1.225521451,
     "totalConsumptionEmission": 6068.2,
@@ -25889,7 +25889,7 @@
       "2022": 0.6307277628032345
     },
     "climatePlanLink": "https://vara.se/innehall/2022/02/Milj%C3%B6strategi-2021-2030-antagen-av-KF-2021-10-04-%C2%A7-89.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Miljöstrategi 2021–2030",
     "bicycleMetrePerCapita": 3.471290972,
     "totalConsumptionEmission": 5938.1,
@@ -26097,7 +26097,7 @@
       "2022": 0.603988603988604
     },
     "climatePlanLink": "https://www.vaxholm.se/download/18.3d1f64e117fc1ceca46442bb/1648807192906/H%C3%A5llbarhetsstrategi%20f%C3%B6r%20Vaxholms%20stad%202021-2030,%20version%202.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Hållbara Vaxholm 2021–2030. Vaxholms stads hållbarhetsstrategi 2021–2030",
     "bicycleMetrePerCapita": 1.176474976,
     "totalConsumptionEmission": 6794.8,
@@ -26201,7 +26201,7 @@
       "2022": 0.6086637298091042
     },
     "climatePlanLink": "https://vellinge.se/siteassets/boende-miljo-och-trafik/pdf/vellinge_program-for-hallbar-utveckling_2021_slutlig-version.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Program för hållbar utveckling. 2020–2030.",
     "bicycleMetrePerCapita": 3.894732092,
     "totalConsumptionEmission": 6916.6,
@@ -26309,7 +26309,7 @@
     "climatePlanComment": "Plan saknas. Har ett miljöbokslut 2021 där Jönköpings mål finns.",
     "bicycleMetrePerCapita": 3.620286389,
     "totalConsumptionEmission": 5926.8,
-    "windPower": 30.76923076923077
+    "windPower": 21.73913043478261
   },
   {
     "kommun": "Vilhelmina",
@@ -26413,7 +26413,7 @@
     "climatePlanComment": "Plan saknas.",
     "bicycleMetrePerCapita": 0.7632882299,
     "totalConsumptionEmission": 6379.0,
-    "windPower": 56.36363636363636
+    "windPower": -1.0
   },
   {
     "kommun": "Vimmerby",
@@ -26825,7 +26825,7 @@
       "2022": 0.5336658354114713
     },
     "climatePlanLink": "https://www.vanersborg.se/download/18.2875b421183ed3f970726814/1666862824047/Miljoaktivitetsplan%202022.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljöaktivitetsplan 2022",
     "bicycleMetrePerCapita": 3.86479684,
     "totalConsumptionEmission": 6074.0,
@@ -27033,7 +27033,7 @@
       "2022": 0.6562763268744735
     },
     "climatePlanLink": "https://www.varmdo.se/download/18.2c63bbd2171ac475b0b666dd/1588078930801/Milj%C3%B6-%20och%20klimatplan%202020-2030,%20beslutad%20KF%201%20april%202020-RD.pdf",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Miljö– och klimatplan 2020–2030",
     "bicycleMetrePerCapita": 1.391918951,
     "totalConsumptionEmission": 6374.5,
@@ -27137,7 +27137,7 @@
       "2022": 0.45900439238653
     },
     "climatePlanLink": "https://kommun.varnamo.se/kommun-och-politik/styrdokument/planer.html",
-    "climatePlanYear": 2023,
+    "climatePlanYear": 2023.0,
     "climatePlanComment": "Plan för Värnamo kommuns miljöarbete 2023–2035. Planen har en tillhörande åtgärdsplan med konkreta åtgärder",
     "bicycleMetrePerCapita": 4.133826968,
     "totalConsumptionEmission": 6017.5,
@@ -27241,7 +27241,7 @@
       "2022": 0.4221879815100154
     },
     "climatePlanLink": "https://www.vastervik.se/Bygga-bo-och-miljo/Energi-och-uppvarmning/kommunens-energi-och-klimatstrategi/",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Energi– och klimatstrategi 2021–2030",
     "bicycleMetrePerCapita": 3.089136601,
     "totalConsumptionEmission": 6020.3,
@@ -27345,7 +27345,7 @@
       "2022": 0.5449010654490106
     },
     "climatePlanLink": "https://www.vasteras.se/download/18.4651ec33169110b990c26ef/1554823302843/Klimatprogram%20med%20handlingsplan%202017-2020_190306.pdf",
-    "climatePlanYear": 2017,
+    "climatePlanYear": 2017.0,
     "climatePlanComment": "Klimatprogram med handlingsplan 2017–2020. ",
     "bicycleMetrePerCapita": 2.882234152,
     "totalConsumptionEmission": 6397.4,
@@ -27449,11 +27449,11 @@
       "2022": 0.5051875498802874
     },
     "climatePlanLink": "https://vaxjo.se/download/18.58d9f57a16d9ce07d02dd012/1571219603597/H%C3%A5llbarhetsprogrammet%20H%C3%A5llbara%20V%C3%A4xj%C3%B6%202030_antaget%20av%20KF.pdf",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Hållbarhetsprogram Hållbara Växjö 2030",
     "bicycleMetrePerCapita": 2.872379738,
     "totalConsumptionEmission": 6123.9,
-    "windPower": 0.0
+    "windPower": 38.095238095238095
   },
   {
     "kommun": "Vårgårda",
@@ -27557,7 +27557,7 @@
     "climatePlanComment": "Plan saknas. Förberedande arbete pågår.",
     "bicycleMetrePerCapita": 2.061869332,
     "totalConsumptionEmission": 5657.8,
-    "windPower": 0.0
+    "windPower": -1.0
   },
   {
     "kommun": "Ydre",
@@ -27761,7 +27761,7 @@
       "2022": 0.36587982832618027
     },
     "climatePlanLink": "https://ystad.se/globalassets/dokument/lou/avd-f-strat-miljoarb/miljoprogram-2021_2025_webb.pdf?_gl=1*bzsvyx*_ga*Nzk5ODg1NzcyLjE2Nzc3NTI1Mzc.*_up*MQ..)%20och%20en%20sida%20om%20hur%20kommunen%20arbetar%20med%20h%C3%A5llbar%20utveckling%20(https://ystad.se/kommun--politik/hallbarhet/hallbar-kommun/?_gl=1*u0ebdu*_ga*Nzk5ODg1NzcyLjE2Nzc3NTI1Mzc.*_up*MQ..).",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Miljöprogram 2021–2025",
     "bicycleMetrePerCapita": 4.385902002,
     "totalConsumptionEmission": 6411.7,
@@ -27865,7 +27865,7 @@
       "2022": 0.4956140350877193
     },
     "climatePlanLink": "https://www.almhult.se/stadsutvecklingplanering/strategiskplanering/miljoplan2030.1994.html",
-    "climatePlanYear": 2020,
+    "climatePlanYear": 2020.0,
     "climatePlanComment": "Miljöplan 2030",
     "bicycleMetrePerCapita": 3.376752163,
     "totalConsumptionEmission": 5705.8,
@@ -28177,7 +28177,7 @@
       "2022": 0.4107142857142857
     },
     "climatePlanLink": "http://www3.alvsbyn.se/styrdoc/Styrdok.nsf/Formnytt.xsp?documentId=D921B3CF75BFCEFFC125868C00428F58&action=openDocument",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Energi– och klimatstrategi",
     "bicycleMetrePerCapita": 2.224133783,
     "totalConsumptionEmission": 6267.0,
@@ -28385,7 +28385,7 @@
       "2022": 0.46417445482866043
     },
     "climatePlanLink": "https://www.amal.se/media/467592/antagen-energi-och-klimatstrategi-20171027.pdf",
-    "climatePlanYear": 2017,
+    "climatePlanYear": 2017.0,
     "climatePlanComment": "Energi– och klimatstrategi",
     "bicycleMetrePerCapita": 2.91731537,
     "totalConsumptionEmission": 5851.1,
@@ -28493,7 +28493,7 @@
     "climatePlanComment": "Plan saknas. ",
     "bicycleMetrePerCapita": 1.864452459,
     "totalConsumptionEmission": 6333.8,
-    "windPower": 34.714003944773175
+    "windPower": 38.84297520661157
   },
   {
     "kommun": "Åre",
@@ -28905,7 +28905,7 @@
       "2022": 0.508695652173913
     },
     "climatePlanLink": "https://medborgarportalen.astorp.se/welcome-sv/namnder-styrelser/bygg-och-miljonamndens-arbetsutskott/bygg-och-miljonamndens-arbetsutskott/agenda/02-verksamhetsplan-for-strategiskt-arbetsmiljoarbete-2022pdf?downloadMode=open",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Verksamhetsplan för miljöstrategiskt arbete 2022.",
     "bicycleMetrePerCapita": 2.783975275,
     "totalConsumptionEmission": 5651.9,
@@ -29009,7 +29009,7 @@
       "2022": 0.5478723404255319
     },
     "climatePlanLink": "https://www.atvidaberg.se/download/18.1dfa69ad1630328ad7c3895c/1656507587248/hallbarhetsprogram.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Hållbarhetsprogram. Gäller tillsvidare.",
     "bicycleMetrePerCapita": 2.773036069,
     "totalConsumptionEmission": 5883.9,
@@ -29321,7 +29321,7 @@
       "2022": 0.5105608157319738
     },
     "climatePlanLink": "https://www.orebro.se/download/18.1d8f9a39155628f73841694a/1485339455931/Klimatstrategi%20%C3%96rebro%20kommun.pdf",
-    "climatePlanYear": 2016,
+    "climatePlanYear": 2016.0,
     "climatePlanComment": "Miljöstrategi med mål och delmål 2020 och 2030",
     "bicycleMetrePerCapita": 3.428744851,
     "totalConsumptionEmission": 6087.2,
@@ -29529,11 +29529,11 @@
       "2022": 0.45716510903426794
     },
     "climatePlanLink": "https://www.ornskoldsvik.se/download/18.54f6f67017d0e18071cc1e0b/1645188359669/Klimatstrategi%202021-2026.pdf",
-    "climatePlanYear": 2021,
+    "climatePlanYear": 2021.0,
     "climatePlanComment": "Klimatstrategi, gäller till 2026.",
     "bicycleMetrePerCapita": 1.88221786,
     "totalConsumptionEmission": 6131.3,
-    "windPower": 47.04
+    "windPower": 0.0
   },
   {
     "kommun": "Östersund",
@@ -29633,7 +29633,7 @@
       "2022": 0.5006666666666667
     },
     "climatePlanLink": "https://ostersund.se/bygga-bo-och-miljo/klimat-och-miljo/klimatprogram-och-strategi.html",
-    "climatePlanYear": 2019,
+    "climatePlanYear": 2019.0,
     "climatePlanComment": "Klimatprogram Färden mot ett fossilbränslefritt och energieffektivt Östersund 2030",
     "bicycleMetrePerCapita": 2.810475703,
     "totalConsumptionEmission": 6318.8,
@@ -29737,7 +29737,7 @@
       "2022": 0.564381806534273
     },
     "climatePlanLink": "https://www.osteraker.se/download/18.4d8ccb9818167a07633123/1655380479130/Milj%C3%B6-%20och%20klimatprogram%202030.pdf",
-    "climatePlanYear": 2022,
+    "climatePlanYear": 2022.0,
     "climatePlanComment": "Miljö– och klimatprogram 2030.",
     "bicycleMetrePerCapita": 2.148302014,
     "totalConsumptionEmission": 6228.0,
