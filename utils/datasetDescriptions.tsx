@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { DatasetDescriptions, Municipality, SelectedData } from '../utils/types'
+import { DatasetDescriptions, Municipality, SelectedData } from './types'
 
 export const defaultDataView = 'karta'
 export const secondaryDataView = 'lista'

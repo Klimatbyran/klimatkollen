@@ -14,7 +14,6 @@ describe('Partners component', () => {
     // Checking partner URL
     expect(links[0]).toHaveAttribute('href', 'https://postkodstiftelsen.se/')
     expect(links[1]).toHaveAttribute('href', 'https://www.climateview.global/')
-    expect(links[2]).toHaveAttribute('href', 'https://www.wwf.se/')
     expect(links[3]).toHaveAttribute('href', 'https://researchersdesk.se/')
     expect(links[4]).toHaveAttribute('href', 'https://www.klimatklubben.se/')
   })
@@ -26,7 +25,6 @@ describe('Partners component', () => {
     // Checking image alt text
     expect(images[0]).toHaveAttribute('alt', 'Postkodstiftelsen logo')
     expect(images[1]).toHaveAttribute('alt', 'ClimateView logo')
-    expect(images[2]).toHaveAttribute('alt', 'WWF logo')
     expect(images[3]).toHaveAttribute('alt', 'Researchers desk logo')
     expect(images[4]).toHaveAttribute('alt', 'Klimatklubben logo')
   })
