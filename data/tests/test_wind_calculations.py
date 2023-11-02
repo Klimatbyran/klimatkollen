@@ -7,18 +7,20 @@ from solutions.wind.wind_calculations import calculate_split_municipalities, det
 class TestGetMunicipalityByCoordinates(unittest.TestCase):
 
     def test_get_municipality_by_coordinates(self):
+        source_municipality = 'Hofors'
         north = 6707005
         east = 567930
-        municipality = get_municipality_by_coordinates(north, east)
+        municipality = get_municipality_by_coordinates(source_municipality, north, east)
         self.assertEqual(municipality, 'Hedemora',
                          'Incorrect municipality, shoud be Hedemora.')
 
-    def test_get_municipality_by_coordinates_raises_error(self):
+    def test_get_municipality_by_coordinates_incorrect_returns_source(self):
+        source_municipality = 'Hedemora'
         north = 0
         east = 0
 
         with self.assertRaises(ValueError):
-            get_municipality_by_coordinates(north, east)
+            get_municipality_by_coordinates(source_municipality, north, east)
 
 
 class TestDeterminePowerCountForMunicipality(unittest.TestCase):

@@ -10,7 +10,7 @@ PATH_WESTANDER_DATA = 'solutions/wind/sources/westander_wind_data.xlsx'
 PATH_MUNICIPALITY_SHAPEFILE = 'solutions/wind/sources/KommunSweref99TM/Kommun_Sweref99TM_region.shp'
 
 
-def get_municipality_by_coordinates(north, east):
+def get_municipality_by_coordinates(source_municipality, north, east):
     # Load the shapefile
     gdf = gpd.read_file(PATH_MUNICIPALITY_SHAPEFILE)
 
@@ -20,13 +20,12 @@ def get_municipality_by_coordinates(north, east):
     # Find the municipality that contains the point
     municipality_row = gdf[gdf.geometry.contains(point)]
 
-    if not municipality_row.empty:
+    if municipality_row.empty:
+        return source_municipality
+    else:
         # Extract the name of the municipality
         municipality = municipality_row['KnNamn'].values[0]
         return municipality
-    else:
-        raise ValueError(
-            "Coordinates do not fall within any known municipality")
 
 
 def determine_turbine_count_for_municipality(municipality, df, project):
@@ -53,59 +52,91 @@ def determine_turbine_count_for_municipality(municipality, df, project):
 
 
 def calculate_split_municipalities(df_multiple_municipalities, df_source):
-
-    # Calculate amount of turbines for rows with multiple municipalities
-    rows = []
-
     # Fill NaN with 0
     df_multiple_municipalities = df_multiple_municipalities.fillna(0)
 
     # Group by desired columns
-    grouped_source_df = df_source.groupby(['Projekteringsområde', 'Status', 'Inlämningsdatum', 'Överklagan inlämningsdatum']).size().reset_index(name='Counts')
-    print((grouped_source_df['Projekteringsområde'] == 'Laxåskogen').unique())
+    grouped_source_df = df_source.groupby(['Projekteringsområde', 'Status', 'Inlämningsdatum',
+                                           'Överklagan inlämningsdatum', 'Laga kraft', 'Kommun'], dropna=False).agg({
+                                               'N-Koordinat': lambda x: list(x),
+                                               'E-Koordinat': lambda y: list(y)
+                                           }).reset_index()
+
+    # Combine the N-koordinat and E-koordinat lists into the desired format
+    grouped_source_df['Coordinates'] = list(
+        zip(grouped_source_df['N-Koordinat'], grouped_source_df['E-Koordinat']))
+    grouped_source_df['Coordinates'] = grouped_source_df['Coordinates'].apply(
+        lambda x: [[a, b] for a, b in zip(x[0], x[1])])
+
+    # Drop the individual 'N-koordinat' and 'E-koordinat' columns
+    grouped_source_df = grouped_source_df.drop(
+        columns=['N-Koordinat', 'E-Koordinat'])
+
+    grouped_source_df.to_excel('grouped_source.xlsx', index=False)
+
+    results = []
+    declared = 0
+    placed = 0
 
     for _, row in df_multiple_municipalities.iterrows():
-        municipalities = row['Kommun'].split('/')
-
-        # Determine if there are as many or more turbines in source data as in Westander data
-        turbines_in_source = grouped_source_df[grouped_source_df['Projekteringsområde']
-                                    == row['Projektnamn']]
-        # print(row['Projektnamn'])
-        
-        # print(turbines_in_source)
-        
-        total_turbines = row['Antal verk i ursprunglig ansökan']
-        vetoed_turbines = row['Antal verk som ej fått tillstånd pga veto']
         project_year = row['År slutligt beslut']
+        total_turbines = row['Antal verk i ursprunglig ansökan']
 
-        enough_turbines = turbines_in_source.shape[0] >= total_turbines
+        # Extract turbines in source data for the current project name
+        turbines_in_source = grouped_source_df[grouped_source_df['Projekteringsområde']
+                                               == row['Projektnamn']]
+        
+        # Extract the year and assign to a new Series
+        year_series = turbines_in_source['Laga kraft'].combine_first(
+            turbines_in_source['Överklagan inlämningsdatum'].combine_first(
+                turbines_in_source['Inlämningsdatum']
+            )
+        ).dt.year
 
-        if enough_turbines:
-            for _, turbine in turbines_in_source.iterrows():
-                total_turbines_to_assign = total_turbines
-                vetoed_turbines_to_assign = vetoed_turbines
+        # Assign the new Series to the DataFrame using .loc
+        turbines_in_source.loc[:, 'Year'] = year_series
 
-                turbine_year = turbine['Överklagan inlämningsdatum'] if turbine['Överklagan inlämningsdatum'] else (
-                    turbine['Inlämningsdatum'] if turbine['Inlämningsdatum'] else None)
+        # Filter out rows that have the same year as 'År slutligt beslut'
+        turbines_in_source = turbines_in_source[turbines_in_source['Year']
+                                                == project_year]
+        
+        # Dictionary to store counts of turbines per municipality
+        municipality_counts = {}
 
-                if turbine_year == project_year:
-                    while total_turbines_to_assign > 0:
-                        for municipality in municipalities:
-                            # Check if there's already a row with the given Kommun and Year
-                            existing_row = next((row for row in rows if row['Kommun'] == municipality and row['Year'] == project_year), None)
-    
-                            if existing_row:
-                                # If the row exists, increment the 'Antal verk i ursprunglig ansökan' count
-                                existing_row['Antal verk i ursprunglig ansökan'] += 1
-                            else:
-                                # If not, append a new row
-                                rows.append({
-                                    'Kommun': municipality,
-                                    'Year': project_year,
-                                    'Antal verk i ursprunglig ansökan': 1,
-                                })
-                            
-                            total_turbines_to_assign -= 1
+        for _, turbine_row in turbines_in_source.iterrows():
+            for coords in turbine_row['Coordinates']:
+                north, east = coords
+                # Determine the municipality for the given coordinates
+                municipality_name = get_municipality_by_coordinates(
+                    turbine_row['Kommun'], north, east)
+
+                # Update the count for the municipality
+                municipality_counts[municipality_name] = municipality_counts.get(
+                    municipality_name, 0) + 1
+
+        # Calculate the total number of turbines placed
+        total_turbines_placed = sum(municipality_counts.values())
+
+        # Compare the total turbines from the row and the total turbines placed
+        if total_turbines > total_turbines_placed:
+            print(
+                f"For project {row['Projektnamn']}, more turbines were declared ({total_turbines}) than placed ({total_turbines_placed}).")
+        elif total_turbines < total_turbines_placed:
+            print(
+                f"For project {row['Projektnamn']}, fewer turbines were declared ({total_turbines}) than placed ({total_turbines_placed}).")
+        else:
+            print(
+                f"For project {row['Projektnamn']}, amount placed and declared matched: {total_turbines}.")
+        
+        declared += total_turbines
+        placed += total_turbines_placed
+
+        # Add the computed counts for each municipality to the results list
+        for municipality_name, count in municipality_counts.items():
+            results.append({
+                "Kommun": municipality_name,
+                "Total": count
+            })
 
         ''' det jag vill veta är
         1. är det lika många eller fler snurror i vbk som i westander
@@ -132,28 +163,62 @@ def calculate_split_municipalities(df_multiple_municipalities, df_source):
             håll koll på hur många snurror som placerats ut, om det finns kvar på slutet läggs de till som okända på båda kommunerna
         '''
 
-        vetoed_turbines = row['Antal verk som ej fått tillstånd pga veto']
+    # Convert the results to a DataFrame and append to the existing data or save to Excel
 
-        # # total number of turbines are same as in source data
-        # if turbine_count_source >= total_turbines:
-        #     for municipality in municipalities:
-        #         rows.append({
-        #             'Kommun': municipality.strip(),
-        #             'Antal verk i ursprunglig ansökan':  determine_turbine_count_for_municipality(
-        #                 municipality, df_source, row['Projektnamn']),
-        #             'Antal verk som ej fått tillstånd pga veto': 0 if vetoed_turbines == 0 else '?'
-        #         })
-        # else:
-        #     for municipality in municipalities:
-        #         rows.append({
-        #             'Kommun': municipality.strip(),
-        #             'Antal verk i ursprunglig ansökan':  determine_turbine_count_for_municipality(
-        #                 municipality, df_source, row['Projektnamn']),
-        #             'Antal verk som ej fått tillstånd pga veto': 0
-        #         })
+    print('declared', declared)
+    print('placed', placed)
+    results_df = pd.DataFrame(results)
+    results_df.to_excel('results.xlsx', index=False)
+    # if enough_turbines:
+    #     for _, turbine in turbines_in_source.iterrows():
+    #         total_turbines_to_assign = total_turbines
+    #         vetoed_turbines_to_assign = vetoed_turbines
 
-    df_split = pd.DataFrame(rows)
-    return df_split
+    #         turbine_year = turbine['Överklagan inlämningsdatum'] if turbine['Överklagan inlämningsdatum'] else (
+    #             turbine['Inlämningsdatum'] if turbine['Inlämningsdatum'] else None)
+
+    #         if turbine_year == project_year:
+    #             while total_turbines_to_assign > 0:
+    #                 for municipality in municipalities:
+    #                     # Check if there's already a row with the given Kommun and Year
+    #                     existing_row = next(
+    #                         (row for row in rows if row['Kommun'] == municipality and row['Year'] == project_year), None)
+
+    #                     if existing_row:
+    #                         # If the row exists, increment the 'Antal verk i ursprunglig ansökan' count
+    #                         existing_row['Antal verk i ursprunglig ansökan'] += 1
+    #                     else:
+    #                         # If not, append a new row
+    #                         rows.append({
+    #                             'Kommun': municipality,
+    #                             'Year': project_year,
+    #                             'Antal verk i ursprunglig ansökan': 1,
+    #                         })
+
+    #                     total_turbines_to_assign -= 1
+
+    # vetoed_turbines = row['Antal verk som ej fått tillstånd pga veto']
+
+    # # total number of turbines are same as in source data
+    # if turbine_count_source >= total_turbines:
+    #     for municipality in municipalities:
+    #         rows.append({
+    #             'Kommun': municipality.strip(),
+    #             'Antal verk i ursprunglig ansökan':  determine_turbine_count_for_municipality(
+    #                 municipality, df_source, row['Projektnamn']),
+    #             'Antal verk som ej fått tillstånd pga veto': 0 if vetoed_turbines == 0 else '?'
+    #         })
+    # else:
+    #     for municipality in municipalities:
+    #         rows.append({
+    #             'Kommun': municipality.strip(),
+    #             'Antal verk i ursprunglig ansökan':  determine_turbine_count_for_municipality(
+    #                 municipality, df_source, row['Projektnamn']),
+    #             'Antal verk som ej fått tillstånd pga veto': 0
+    #         })
+
+    # df_split = pd.DataFrame(rows)
+    # return df_split
 
 
 def calculate_wind_data(df=None):
@@ -163,6 +228,7 @@ def calculate_wind_data(df=None):
 
     # Filter out rows with "År slutligt beslut" 2014 or earlier
     df_westander = df_westander[df_westander['År slutligt beslut'] > 2014]
+    print('totalt antal totala verk: ', df_westander['Antal verk i ursprunglig ansökan'].sum())
 
     # Filter out rows with "Kommun" containing '/', ie rows with two municipalities and filter relevant columns
     df_two_municipalities = df_westander[df_westander['Kommun'].str.contains('/')][['Kommun', 'Projektnamn', 'Antal verk i ursprunglig ansökan', 'År slutligt beslut',
