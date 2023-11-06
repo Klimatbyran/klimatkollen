@@ -169,7 +169,7 @@ function InEnglish() {
               <GridImage src={Elvira} alt="Elvira Boman" />
               <b>Elvira Boman, Tech Lead</b>
               Tech Lead Full Stack Developer and Engineering Physicist at Klimatkollen and
-              Precist. Extensive experience in green and circular tech at multiple award
+              Precisit. Extensive experience in green and circular tech at multiple award
               winning startups and part of the leadership team at IT consulting agency Precisit.
               <SocialMediaContainer>
                 <a
