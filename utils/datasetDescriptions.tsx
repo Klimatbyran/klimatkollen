@@ -27,7 +27,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     boundaries: [0, -0.01, -0.02, -0.03, -0.1],
     labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     labelRotateUp: [true, false, false, false, false, false],
-    columnHeader: 'Utsläppsförändring',
+    columnHeader: 'Utsläppsförändring i %',
     dataType: 'Percent',
     tooltip:
       'Genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015, angivet i procent',
@@ -50,7 +50,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
     labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
     labelRotateUp: [true, true, true, true, true, true],
-    columnHeader: 'Ökning elbilar',
+    columnHeader: 'Ökning elbilar i procentenheter',
     dataType: 'Percent',
     tooltip:
       'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
@@ -127,7 +127,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     boundaries: [1, 2, 3, 4, 5],
     labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
     labelRotateUp: [],
-    columnHeader: 'Cykelväglängd',
+    columnHeader: 'Cykelväglängd i meter',
     dataType: 'Number',
     tooltip:
       'Antal meter cykelväg per invånare per kommun år 2022 totalt för alla väghållare (statlig, kommunal, enskild)',
