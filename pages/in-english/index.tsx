@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import MetaTags from '../../components/MetaTags'
-import { H2, H4, Paragraph } from '../../components/Typography'
+import { H2, H4, Paragraph, ParagraphItalic } from '../../components/Typography'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
@@ -30,6 +30,11 @@ const SocialMediaContainer = styled.div`
   margin-top: 12px;
 `
 
+const RoundedImage = styled.img`
+  border-radius: 16px;
+  margin: 8px 0;
+`
+
 function InEnglish() {
   return (
     <>
@@ -47,13 +52,74 @@ function InEnglish() {
             emissions in line with the Paris Agreement.
           </Paragraph>
           <PaddedParagraph>
-            As proud winners of the 2023 Google.org Impact Challenge: Tech for Social Good
-            (LÄNK), we will be scaling up and supercharging our citizen platform with AI,
+            As proud winners of the 2023 Google.org Impact Challenge: Tech for Social
+            Good, we will be scaling up and supercharging our citizen platform with AI,
             allowing us to add corporate emissions data and new features to analyze and
             compare climate action across local governments and companies. Read more about
-            the project here (LÄNK).
+            the project here.
           </PaddedParagraph>
-          <H4>- Want to use your skills for climate impact?</H4>
+
+          <H2>Our team</H2>
+          <Grid>
+            <GridItem>
+              <GridImage src={Frida} alt="Frida Berry Eklund" />
+              <b>Frida Berry Eklund, Co-founder</b>
+              Senior climate communications specialist and founder of several climate
+              initiatives, including the international platform, Our Kids’ Climate. She’s
+              also an author and public speaker, as well as a EU Climate Pact Ambassador
+              and Climate Reality Leader.{' '}
+              <SocialMediaContainer>
+                <a
+                  href=" https://www.linkedin.com/in/fridaberryeklund/"
+                  target="_blank"
+                  rel="noreferrer">
+                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
+                </a>
+                <a
+                  href="https://twitter.com/klimatfrida"
+                  target="_blank"
+                  rel="noreferrer">
+                  <img src="/icons/some/x_white.svg" alt="X logo" />
+                </a>
+              </SocialMediaContainer>
+            </GridItem>
+            <GridItem>
+              <GridImage src={Ola} alt="Ola Spännar" />
+              <b>Ola Spännar, Co-founder</b>
+              Senior climate communications specialist and founder of several climate
+              initiatives, including the international platform, Our Kids’ Climate. She’s
+              also an author and public speaker, as well as a EU Climate Pact Ambassador
+              and Climate Reality Leader.
+              <SocialMediaContainer>
+                <a
+                  href=" https://www.linkedin.com/in/ospannar/"
+                  target="_blank"
+                  rel="noreferrer">
+                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
+                </a>
+                <a href="https://twitter.com/olaspannar" target="_blank" rel="noreferrer">
+                  <img src="/icons/some/x_white.svg" alt="X logo" />
+                </a>
+              </SocialMediaContainer>
+            </GridItem>
+            <GridItem>
+              <GridImage src={Elvira} alt="Elvira Boman" />
+              <b>Elvira Boman, Tech Lead</b>
+              Tech Lead Full Stack Developer and Engineering Physicist at Klimatkollen and
+              Precisit. Extensive experience in green and circular tech at multiple award
+              winning startups and part of the leadership team at IT consulting agency
+              Precisit.
+              <SocialMediaContainer>
+                <a
+                  href=" https://www.linkedin.com/in/elviraboman/"
+                  target="_blank"
+                  rel="noreferrer">
+                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
+                </a>
+              </SocialMediaContainer>
+            </GridItem>
+          </Grid>
+          <H4>Want to use your skills for climate impact?</H4>
           <PaddedParagraph>
             We are currently looking for people that share our vision and want to help us
             grow. We’re especially interested in AI aficionados, data visualizers, UX
@@ -62,7 +128,7 @@ function InEnglish() {
             <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
             .
           </PaddedParagraph>
-          <H4>- Interested in taking Klimatkollen to your country?</H4>
+          <H4>Interested in taking Klimatkollen to your country?</H4>
           <PaddedParagraph>
             Do drop us a line if you want to hear more about what we do and want to
             collaborate. We’re especially looking for co-funders and partner organisations
@@ -70,6 +136,12 @@ function InEnglish() {
             using tech and AI for good.
           </PaddedParagraph>
           <H2>Klimatkollen today</H2>
+          <RoundedImage src="board/whole_board.jpg" alt="Klimatkollen board" />
+          <ParagraphItalic>
+            Jona Granath / Klimatkollens styrelse från vänster till höger i bild:
+            Christian Landgren, Maria Soxbo, Ola Spännar, Frida Berry Eklund, Carl-Johan
+            Schultz och Anna Loverus.
+          </ParagraphItalic>
           <Paragraph>
             Klimatkollen gives citizens knowledge about how Sweden’s 290 municipalities
             are tracking compared to the Paris Agreement. We do this by presenting
@@ -95,93 +167,23 @@ function InEnglish() {
           </Paragraph>
           <Paragraph>
             Klimatkollen is a platform for – and by – citizens, and we welcome
-            contributions through
-            {' '}
+            contributions through{' '}
             <a
               href="https://github.com/Klimatbyran/klimatkollen"
               target="_blank"
-              rel="noreferrer"
-            >
+              rel="noreferrer">
               Github
-            </a>
-            {' '}
-            and
-            {' '}
+            </a>{' '}
+            and{' '}
             <a href="https://discord.gg/5xeqknPa" target="_blank" rel="noreferrer">
               Discord
             </a>
             .
           </Paragraph>
           <PaddedParagraph>
-            If you want to support our work, please don’t hesitate to contact us via
-            {' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
-            .
+            If you want to support our work, please don’t hesitate to contact us via{' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
           </PaddedParagraph>
-          <H2>Our team</H2>
-          <Grid>
-            <GridItem>
-              <GridImage src={Frida} alt="Frida Berry Eklund" />
-              <b>Frida Berry Eklund, Co-founder</b>
-              Senior climate communications specialist and founder of several climate
-              initiatives, including the international platform, Our Kids’ Climate. She’s
-              also an author and public speaker, as well as a EU Climate Pact Ambassador
-              and Climate Reality Leader.
-              {' '}
-              <SocialMediaContainer>
-                <a
-                  href=" https://www.linkedin.com/in/fridaberryeklund/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
-                </a>
-                <a
-                  href="https://twitter.com/klimatfrida"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src="/icons/some/x_white.svg" alt="X logo" />
-                </a>
-              </SocialMediaContainer>
-            </GridItem>
-            <GridItem>
-              <GridImage src={Ola} alt="Ola Spännar" />
-              <b>Ola Spännar, Co-founder</b>
-              Senior climate communications specialist and founder of several climate
-              initiatives, including the international platform, Our Kids’ Climate. She’s
-              also an author and public speaker, as well as a EU Climate Pact Ambassador
-              and Climate Reality Leader.
-              <SocialMediaContainer>
-                <a
-                  href=" https://www.linkedin.com/in/ospannar/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
-                </a>
-                <a href="https://twitter.com/olaspannar" target="_blank" rel="noreferrer">
-                  <img src="/icons/some/x_white.svg" alt="X logo" />
-                </a>
-              </SocialMediaContainer>
-            </GridItem>
-            <GridItem>
-              <GridImage src={Elvira} alt="Elvira Boman" />
-              <b>Elvira Boman, Tech Lead</b>
-              Tech Lead Full Stack Developer and Engineering Physicist at Klimatkollen and
-              Precisit. Extensive experience in green and circular tech at multiple award
-              winning startups and part of the leadership team at IT consulting agency Precisit.
-              <SocialMediaContainer>
-                <a
-                  href=" https://www.linkedin.com/in/elviraboman/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
-                </a>
-              </SocialMediaContainer>
-            </GridItem>
-          </Grid>
           <H2>Klimatkollen wins the Google.org Impact Challenge: Tech for Social Good</H2>
           <Paragraph>
             In November 2023, Klimatkollen was one of two Swedish winners of the
@@ -214,12 +216,8 @@ function InEnglish() {
             beyond our platform.
           </Paragraph>
           <Paragraph>
-            <b>Want to know more?</b>
-            {' '}
-            Please drop us a line at
-            {' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
-            .
+            <b>Want to know more?</b> Please drop us a line at{' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
           </Paragraph>
         </Container>
       </PageWrapper>

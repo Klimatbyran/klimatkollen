@@ -242,7 +242,7 @@ function OmOss() {
             )}
           />
           <ToggleSection
-            header="Teamet"
+            header="Vårt team"
             text={(
               <Paragraph>
                 Lorem ipsum
@@ -266,7 +266,7 @@ function OmOss() {
                   </GridItem>
                   <GridItem>
                     <GridImage src={Elvira} alt="Elvira Boman" />
-                    <b>Elvira Boman, Tech Lead</b>
+                    <b>Elvira Boman</b>
                     Tech lead och teknisk fysiker på Klimatkollen
                     och Precisit. Lång erfarenhet av grön och cirkulär tech vid flera prisbelönta
                     startups och del av ledarteamet på IT-konsultbyrån Precisit.
