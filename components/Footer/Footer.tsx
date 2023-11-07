@@ -18,6 +18,7 @@ const Foot = styled.div`
 const StyledH5 = styled(H5)`
   color: ${({ theme }) => theme.midGreen};
   margin: 16px;
+  text-align: center;
 
   @media only screen and (${devices.tablet}) {
     margin: 32px;
