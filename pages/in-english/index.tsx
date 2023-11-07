@@ -3,7 +3,9 @@ import { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import MetaTags from '../../components/MetaTags'
-import { H2, H4, Paragraph, ParagraphItalic } from '../../components/Typography'
+import {
+  H2, H4, Paragraph, ParagraphItalic,
+} from '../../components/Typography'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
@@ -67,18 +69,21 @@ function InEnglish() {
               Senior climate communications specialist and founder of several climate
               initiatives, including the international platform, Our Kids’ Climate. She’s
               also an author and public speaker, as well as a EU Climate Pact Ambassador
-              and Climate Reality Leader.{' '}
+              and Climate Reality Leader.
+              {' '}
               <SocialMediaContainer>
                 <a
                   href=" https://www.linkedin.com/in/fridaberryeklund/"
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
                 </a>
                 <a
                   href="https://twitter.com/klimatfrida"
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   <img src="/icons/some/x_white.svg" alt="X logo" />
                 </a>
               </SocialMediaContainer>
@@ -94,7 +99,8 @@ function InEnglish() {
                 <a
                   href=" https://www.linkedin.com/in/ospannar/"
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
                 </a>
                 <a href="https://twitter.com/olaspannar" target="_blank" rel="noreferrer">
@@ -113,7 +119,8 @@ function InEnglish() {
                 <a
                   href=" https://www.linkedin.com/in/elviraboman/"
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
                 </a>
               </SocialMediaContainer>
@@ -138,9 +145,9 @@ function InEnglish() {
           <H2>Klimatkollen today</H2>
           <RoundedImage src="board/whole_board.jpg" alt="Klimatkollen board" />
           <ParagraphItalic>
-            Jona Granath / Klimatkollens styrelse från vänster till höger i bild:
+            Jona Granath / Klimatkollen&apos;s board from left to right in picture:
             Christian Landgren, Maria Soxbo, Ola Spännar, Frida Berry Eklund, Carl-Johan
-            Schultz och Anna Loverus.
+            Schultz and Anna Loverus.
           </ParagraphItalic>
           <Paragraph>
             Klimatkollen gives citizens knowledge about how Sweden’s 290 municipalities
@@ -167,22 +174,28 @@ function InEnglish() {
           </Paragraph>
           <Paragraph>
             Klimatkollen is a platform for – and by – citizens, and we welcome
-            contributions through{' '}
+            contributions through
+            {' '}
             <a
               href="https://github.com/Klimatbyran/klimatkollen"
               target="_blank"
-              rel="noreferrer">
+              rel="noreferrer"
+            >
               Github
-            </a>{' '}
-            and{' '}
+            </a>
+            {' '}
+            and
+            {' '}
             <a href="https://discord.gg/5xeqknPa" target="_blank" rel="noreferrer">
               Discord
             </a>
             .
           </Paragraph>
           <PaddedParagraph>
-            If you want to support our work, please don’t hesitate to contact us via{' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
+            If you want to support our work, please don’t hesitate to contact us via
+            {' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+            .
           </PaddedParagraph>
           <H2>Klimatkollen wins the Google.org Impact Challenge: Tech for Social Good</H2>
           <Paragraph>
@@ -216,8 +229,12 @@ function InEnglish() {
             beyond our platform.
           </Paragraph>
           <Paragraph>
-            <b>Want to know more?</b> Please drop us a line at{' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
+            <b>Want to know more?</b>
+            {' '}
+            Please drop us a line at
+            {' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+            .
           </Paragraph>
         </Container>
       </PageWrapper>

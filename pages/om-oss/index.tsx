@@ -284,23 +284,6 @@ function OmOss() {
                   sitter:
                   <Grid>
                     <GridItem>
-                      <GridImage src={Ola} alt="Ola Spännar" />
-                      <b>Ola Spännar</b>
-                      {' '}
-                      Opinionsbildare, medgrundare av Klimatkollen,
-                      tidigare kommunikationschef på Centerpartiet och kundansvarig på
-                      Forsman & Bodenfors.
-                    </GridItem>
-                    <GridItem>
-                      <GridImage src={Frida} alt="Frida Berry Eklund" />
-                      <b>Frida Berry Eklund</b>
-                      {' '}
-                      Klimatspecialist och medgrundare till
-                      Klimatkollen. Initiativtagare till Our Kids’ Climate och författare
-                      till boken “Prata med barn om klimatet” (Natur & Kultur). EU Climate
-                      Pact Ambassador och Climate Reality Leader.
-                    </GridItem>
-                    <GridItem>
                       <GridImage src={Christian} alt="Christian Landgren" />
                       <b>Christian Landgren</b>
                       {' '}
@@ -330,6 +313,23 @@ function OmOss() {
                       Hållbarhetsstrateg på Doings, tidigare
                       planner på Forsman & Bodenfors, författare till boken
                       ”Hållbariseringen”, Årets marknadsföringsbok 2022.
+                    </GridItem>
+                    <GridItem>
+                      <GridImage src={Ola} alt="Ola Spännar" />
+                      <b>Ola Spännar</b>
+                      {' '}
+                      Opinionsbildare, medgrundare av Klimatkollen,
+                      tidigare kommunikationschef på Centerpartiet och kundansvarig på
+                      Forsman & Bodenfors.
+                    </GridItem>
+                    <GridItem>
+                      <GridImage src={Frida} alt="Frida Berry Eklund" />
+                      <b>Frida Berry Eklund</b>
+                      {' '}
+                      Klimatspecialist och medgrundare till
+                      Klimatkollen. Initiativtagare till Our Kids’ Climate och författare
+                      till boken “Prata med barn om klimatet” (Natur & Kultur). EU Climate
+                      Pact Ambassador och Climate Reality Leader.
                     </GridItem>
                   </Grid>
                 </Paragraph>
