@@ -245,7 +245,6 @@ function OmOss() {
             header="Vårt team"
             text={(
               <Paragraph>
-                Lorem ipsum
                 <Grid>
                   <GridItem>
                     <GridImage src={Ola} alt="Ola Spännar" />
