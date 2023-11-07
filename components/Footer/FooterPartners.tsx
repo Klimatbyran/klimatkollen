@@ -51,6 +51,14 @@ function Partners() {
           alt="Klimatklubben logo"
         />
       </a>
+      <a href="https://exponentialroadmap.org/" target="_blank" rel="noreferrer">
+        <img
+          src="/logos/partners/exponential_roadmap.svg"
+          width={105}
+          height="auto"
+          alt="Exponential Roadmap logo"
+        />
+      </a>
     </PartnerContainer>
   )
 }
