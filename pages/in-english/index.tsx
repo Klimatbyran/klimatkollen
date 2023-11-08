@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
-
+import Image from 'next/image'
 import MetaTags from '../../components/MetaTags'
 import {
   H2, H4, Paragraph, ParagraphItalic,
@@ -32,7 +32,7 @@ const SocialMediaContainer = styled.div`
   margin-top: 12px;
 `
 
-const RoundedImage = styled.img`
+const RoundedImage = styled(Image)`
   border-radius: 16px;
   margin: 8px 0;
 `
@@ -162,7 +162,13 @@ function InEnglish() {
             using tech and AI for good.
           </PaddedParagraph>
           <H2>Klimatkollen today</H2>
-          <RoundedImage src="board/whole_board.jpg" alt="Klimatkollen board" />
+          <RoundedImage
+            src="/board/whole_board.jpg"
+            alt="Klimatkollen board"
+            layout="responsive"
+            width="9192px"
+            height="6128px"
+          />
           <ParagraphItalic>
             Jona Granath / Klimatkollen&apos;s board from left to right in picture:
             Christian Landgren, Maria Soxbo, Ola Spännar, Frida Berry Eklund, Carl-Johan
