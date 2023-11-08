@@ -247,7 +247,12 @@ function OmOss() {
               <Paragraph>
                 <Grid>
                   <GridItem>
-                    <GridImage src={Ola} alt="Ola Spännar" />
+                    <GridImage
+                      src={Ola}
+                      alt="Ola Spännar"
+                      width="200px"
+                      height="200px"
+                    />
                     <b>Ola Spännar</b>
                     {' '}
                     Opinionsbildare, medgrundare av Klimatkollen,
@@ -255,7 +260,12 @@ function OmOss() {
                     Forsman & Bodenfors.
                   </GridItem>
                   <GridItem>
-                    <GridImage src={Frida} alt="Frida Berry Eklund" />
+                    <GridImage
+                      src={Frida}
+                      alt="Frida Berry Eklund"
+                      width="200px"
+                      height="200px"
+                    />
                     <b>Frida Berry Eklund</b>
                     {' '}
                     Klimatspecialist och medgrundare till
@@ -264,7 +274,12 @@ function OmOss() {
                     Pact Ambassador och Climate Reality Leader.
                   </GridItem>
                   <GridItem>
-                    <GridImage src={Elvira} alt="Elvira Boman" />
+                    <GridImage
+                      src={Elvira}
+                      alt="Elvira Boman"
+                      width="200px"
+                      height="200px"
+                    />
                     <b>Elvira Boman</b>
                     Tech lead och teknisk fysiker på Klimatkollen
                     och Precisit. Lång erfarenhet av grön och cirkulär tech vid flera prisbelönta
@@ -283,7 +298,12 @@ function OmOss() {
                   sitter:
                   <Grid>
                     <GridItem>
-                      <GridImage src={Christian} alt="Christian Landgren" />
+                      <GridImage
+                        src={Christian}
+                        alt="Christian Landgren"
+                        width="200px"
+                        height="200px"
+                      />
                       <b>Christian Landgren</b>
                       {' '}
                       Digital entreprenör och en av Sveriges
@@ -291,14 +311,24 @@ function OmOss() {
                       Öppna skolplattformen.
                     </GridItem>
                     <GridItem>
-                      <GridImage src={Anna} alt="Anna Loverus" />
+                      <GridImage
+                        src={Anna}
+                        alt="Anna Loverus"
+                        width="200px"
+                        height="200px"
+                      />
                       <b>Anna Loverus</b>
                       {' '}
                       Digital strateg och tidigare chef för sociala
                       medier på Spotify och H&M. VD och grundare av Better Odds.
                     </GridItem>
                     <GridItem>
-                      <GridImage src={Maria} alt="Maria Soxbo" />
+                      <GridImage
+                        src={Maria}
+                        alt="Maria Soxbo"
+                        width="200px"
+                        height="200px"
+                      />
                       <b>Maria Soxbo</b>
                       {' '}
                       Journalist, författare, föreläsare och grundare
@@ -306,7 +336,12 @@ function OmOss() {
                       hållbarhetsmäktigaste 2021.
                     </GridItem>
                     <GridItem>
-                      <GridImage src={CJ} alt="Carl-Johan Schultz" />
+                      <GridImage
+                        src={CJ}
+                        alt="Carl-Johan Schultz"
+                        width="200px"
+                        height="200px"
+                      />
                       <b>Carl-Johan Schultz</b>
                       {' '}
                       Hållbarhetsstrateg på Doings, tidigare
@@ -314,7 +349,12 @@ function OmOss() {
                       ”Hållbariseringen”, Årets marknadsföringsbok 2022.
                     </GridItem>
                     <GridItem>
-                      <GridImage src={Ola} alt="Ola Spännar" />
+                      <GridImage
+                        src={Ola}
+                        alt="Ola Spännar"
+                        width="200px"
+                        height="200px"
+                      />
                       <b>Ola Spännar</b>
                       {' '}
                       Opinionsbildare, medgrundare av Klimatkollen,
@@ -322,7 +362,12 @@ function OmOss() {
                       Forsman & Bodenfors.
                     </GridItem>
                     <GridItem>
-                      <GridImage src={Frida} alt="Frida Berry Eklund" />
+                      <GridImage
+                        src={Frida}
+                        alt="Frida Berry Eklund"
+                        width="200px"
+                        height="200px"
+                      />
                       <b>Frida Berry Eklund</b>
                       {' '}
                       Klimatspecialist och medgrundare till
