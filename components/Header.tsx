@@ -131,16 +131,16 @@ function Header() {
   return (
     <HeaderContainer>
       <Link href="/">
-        <a href="/">
-          <LogoContainer>
-            <Image
-              src="/logos/klimatkollen_logo_black.svg"
-              width="150"
-              height="30"
-              alt="Klimatkollen logotyp"
-            />
-          </LogoContainer>
-        </a>
+
+        <LogoContainer>
+          <Image
+            src="/logos/klimatkollen_logo_black.svg"
+            width="150"
+            height="30"
+            alt="Klimatkollen logotyp"
+          />
+        </LogoContainer>
+
       </Link>
       <NavigationList>
         {navigationItems.map((item) => (
@@ -172,7 +172,7 @@ function Header() {
         )}
       </HamburgerMenu>
     </HeaderContainer>
-  )
+  );
 }
 
 export default Header

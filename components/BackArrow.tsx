@@ -15,14 +15,14 @@ type BackArrowProps = {
 
 function BackArrow({ route }: BackArrowProps) {
   return (
-    <Link href={route}>
+    <Link href={route} legacyBehavior>
       <StyledButton>
         <a href={route}>
           <ArrowLeftIcon />
         </a>
       </StyledButton>
     </Link>
-  )
+  );
 }
 
 export default BackArrow
