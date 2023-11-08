@@ -2,17 +2,25 @@ import styled from 'styled-components'
 import { devices } from '../../utils/devices'
 
 const PartnerContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   justify-items: center;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
   margin-bottom: 48px;
   padding: 8px 16px;
 
+  img {
+    margin: 16px;
+  }
+
   @media only screen and (${devices.tablet}) {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
     padding: 16px 32px;
   }
 `
