@@ -2,16 +2,17 @@ import styled from 'styled-components'
 import { devices } from '../../utils/devices'
 
 const PartnerContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  justify-items: center;
   align-items: center;
   width: 100%;
   margin-bottom: 48px;
   padding: 8px 16px;
 
   @media only screen and (${devices.tablet}) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     padding: 16px 32px;
   }
 `
