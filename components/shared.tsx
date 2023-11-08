@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Image from 'next/image'
 import { colorTheme } from '../Theme'
 
 export const mapColors = [
@@ -81,9 +82,6 @@ export const GridItem = styled.div`
   }
 `
 
-export const GridImage = styled.img`
+export const GridImage = styled(Image)`
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 16px;
 `

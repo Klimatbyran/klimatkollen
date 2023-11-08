@@ -83,7 +83,12 @@ function InEnglish() {
           <H2>Our team</H2>
           <Grid>
             <GridItem>
-              <GridImage src={Frida} alt="Frida Berry Eklund" />
+              <GridImage
+                src={Frida}
+                alt="Frida Berry Eklund"
+                width="200px"
+                height="200px"
+              />
               <b>Frida Berry Eklund, Co-founder</b>
               Senior climate communications specialist and founder of several climate
               initiatives, including the international platform, Our Kids’ Climate. She’s
@@ -96,19 +101,34 @@ function InEnglish() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
+                  <Image
+                    src="/icons/some/linkedin_white.svg"
+                    alt="LinkedIn logo"
+                    width="24px"
+                    height="24px"
+                  />
                 </a>
                 <a
                   href="https://twitter.com/klimatfrida"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img src="/icons/some/x_white.svg" alt="X logo" />
+                  <Image
+                    src="/icons/some/x_white.svg"
+                    alt="X logo"
+                    width="24px"
+                    height="24px"
+                  />
                 </a>
               </SocialMediaContainer>
             </GridItem>
             <GridItem>
-              <GridImage src={Ola} alt="Ola Spännar" />
+              <GridImage
+                src={Ola}
+                alt="Ola Spännar"
+                width="200px"
+                height="200px"
+              />
               <b>Ola Spännar, Co-founder</b>
               Senior climate communications specialist and founder of several climate
               initiatives, including the international platform, Our Kids’ Climate. She’s
@@ -120,15 +140,30 @@ function InEnglish() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
+                  <Image
+                    src="/icons/some/linkedin_white.svg"
+                    alt="LinkedIn logo"
+                    width="24px"
+                    height="24px"
+                  />
                 </a>
                 <a href="https://twitter.com/olaspannar" target="_blank" rel="noreferrer">
-                  <img src="/icons/some/x_white.svg" alt="X logo" />
+                  <Image
+                    src="/icons/some/x_white.svg"
+                    alt="X logo"
+                    width="24px"
+                    height="24px"
+                  />
                 </a>
               </SocialMediaContainer>
             </GridItem>
             <GridItem>
-              <GridImage src={Elvira} alt="Elvira Boman" />
+              <GridImage
+                src={Elvira}
+                alt="Elvira Boman"
+                width="200px"
+                height="200px"
+              />
               <b>Elvira Boman, Tech Lead</b>
               Tech Lead Full Stack Developer and Engineering Physicist at Klimatkollen and
               Precisit. Extensive experience in green and circular tech at multiple award
@@ -140,7 +175,12 @@ function InEnglish() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
+                  <Image
+                    src="/icons/some/linkedin_white.svg"
+                    alt="LinkedIn logo"
+                    width="24px"
+                    height="24px"
+                  />
                 </a>
               </SocialMediaContainer>
             </GridItem>
