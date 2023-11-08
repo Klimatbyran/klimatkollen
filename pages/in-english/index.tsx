@@ -163,11 +163,11 @@ function InEnglish() {
           </PaddedParagraph>
           <H2>Klimatkollen today</H2>
           <RoundedImage
-            src="board/whole_board.jpg"
+            src="/board/whole_board.jpg"
             alt="Klimatkollen board"
             layout="responsive"
-            width="100%"
-            height="auto"
+            width="9192px"
+            height="6128px"
           />
           <ParagraphItalic>
             Jona Granath / Klimatkollen&apos;s board from left to right in picture:
