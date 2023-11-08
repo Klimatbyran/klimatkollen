@@ -104,8 +104,8 @@ function InEnglish() {
                   <Image
                     src="/icons/some/linkedin_white.svg"
                     alt="LinkedIn logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
                 <a
@@ -116,8 +116,8 @@ function InEnglish() {
                   <Image
                     src="/icons/some/x_white.svg"
                     alt="X logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
               </SocialMediaContainer>
@@ -143,16 +143,16 @@ function InEnglish() {
                   <Image
                     src="/icons/some/linkedin_white.svg"
                     alt="LinkedIn logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
                 <a href="https://twitter.com/olaspannar" target="_blank" rel="noreferrer">
                   <Image
                     src="/icons/some/x_white.svg"
                     alt="X logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
               </SocialMediaContainer>
@@ -178,8 +178,8 @@ function InEnglish() {
                   <Image
                     src="/icons/some/linkedin_white.svg"
                     alt="LinkedIn logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
               </SocialMediaContainer>
@@ -206,8 +206,8 @@ function InEnglish() {
             src="/board/whole_board.jpg"
             alt="Klimatkollen board"
             layout="responsive"
-            width="9192px"
-            height="6128px"
+            width="9192"
+            height="6128"
           />
           <ParagraphItalic>
             Jona Granath / Klimatkollen&apos;s board from left to right in picture:
