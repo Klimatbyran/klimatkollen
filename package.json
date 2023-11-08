@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@danmarshall/deckgl-typings": "^4.9.13",
-    "@tanstack/react-table": "^8.9.7",
-    "@types/styled-components": "^5.1.19",
+    "@tanstack/react-table": "^8.10.7",
+    "@types/styled-components": "^5.1.30",
     "@types/wikidata-sdk": "^6.1.0",
     "@vitejs/plugin-react": "4.1.1",
     "axios": "^1.6.0",
