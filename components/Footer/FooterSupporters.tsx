@@ -28,7 +28,7 @@ const SupporterContainer = styled.div`
 function Supporters() {
   return (
     <SupporterContainer>
-      <a href="https://postkodstiftelsen.se/" target="_blank" rel="noreferrer">
+      <a href="https://www.google.org/" target="_blank" rel="noreferrer">
         <img
           src="/logos/supporters/google_org_white.svg"
           height={45}
