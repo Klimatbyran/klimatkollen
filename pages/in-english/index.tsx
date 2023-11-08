@@ -86,8 +86,8 @@ function InEnglish() {
               <GridImage
                 src={Frida}
                 alt="Frida Berry Eklund"
-                width="200px"
-                height="200px"
+                width="200"
+                height="200"
               />
               <b>Frida Berry Eklund, Co-founder</b>
               Senior climate communications specialist and founder of several climate
@@ -126,8 +126,8 @@ function InEnglish() {
               <GridImage
                 src={Ola}
                 alt="Ola Spännar"
-                width="200px"
-                height="200px"
+                width="200"
+                height="200"
               />
               <b>Ola Spännar, Co-founder</b>
               Senior climate communications specialist and founder of several climate
@@ -161,8 +161,8 @@ function InEnglish() {
               <GridImage
                 src={Elvira}
                 alt="Elvira Boman"
-                width="200px"
-                height="200px"
+                width="200"
+                height="200"
               />
               <b>Elvira Boman, Tech Lead</b>
               Tech Lead Full Stack Developer and Engineering Physicist at Klimatkollen and
