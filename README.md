@@ -65,9 +65,9 @@ Feel free to explore the repository to understand more about how we collect, pro
 
 ## Partners
 
-This work wouldn't have been possible without our partners.
+This work wouldn't have been possible without our current and former partners.
 
-WWF, ClimateView, Våra Barns Klimat, Klimatklubben.se, We Don't Have Time, Argand, StormGeo, Iteam, Precisit.
+Postkodstiftelsen, ClimateView, Klimatklubben.se, Researcher's Desk, WWF, We Don't Have Time, Våra Barns Klimat, Argand, StormGeo, Iteam, Precisit.
 
 ## LICENSE
 
