@@ -3,9 +3,7 @@ import { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import MetaTags from '../../components/MetaTags'
-import {
-  H2, H4, Paragraph, ParagraphItalic,
-} from '../../components/Typography'
+import { H2, H4, Paragraph, ParagraphItalic } from '../../components/Typography'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
@@ -54,11 +52,29 @@ function InEnglish() {
             emissions in line with the Paris Agreement.
           </Paragraph>
           <PaddedParagraph>
-            As proud winners of the 2023 Google.org Impact Challenge: Tech for Social
-            Good, we will be scaling up and supercharging our citizen platform with AI,
+            As proud winners of the{' '}
+            <a
+              href="https://blog.google/outreach-initiatives/sustainability/boosting-sustainable-solutions-from-sweden/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              2023 Google.org Impact Challenge: Tech for Social Good
+            </a>
+            , we will be scaling up and supercharging our citizen platform with AI,
             allowing us to add corporate emissions data and new features to analyze and
             compare climate action across local governments and companies. Read more about
-            the project here.
+            the project
+            {' '}
+            <a
+              // eslint-disable-next-line max-len
+              href="https://www.mynewsdesk.com/se/klimatbyraan/pressreleases/klimatkollen-faar-maangmiljonstoed-fraan-google-punkt-org-foer-att-oeka-oeppenheten-om-foeretagens-utslaepp-3284663"
+              target="_blank"
+              rel="noreferrer"
+            >
+              here
+            </a>
+            {' '}
+            (in Swedish).
           </PaddedParagraph>
 
           <H2>Our team</H2>
@@ -69,21 +85,18 @@ function InEnglish() {
               Senior climate communications specialist and founder of several climate
               initiatives, including the international platform, Our Kids’ Climate. She’s
               also an author and public speaker, as well as a EU Climate Pact Ambassador
-              and Climate Reality Leader.
-              {' '}
+              and Climate Reality Leader.{' '}
               <SocialMediaContainer>
                 <a
                   href=" https://www.linkedin.com/in/fridaberryeklund/"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
                 </a>
                 <a
                   href="https://twitter.com/klimatfrida"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   <img src="/icons/some/x_white.svg" alt="X logo" />
                 </a>
               </SocialMediaContainer>
@@ -99,8 +112,7 @@ function InEnglish() {
                 <a
                   href=" https://www.linkedin.com/in/ospannar/"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
                 </a>
                 <a href="https://twitter.com/olaspannar" target="_blank" rel="noreferrer">
@@ -119,8 +131,7 @@ function InEnglish() {
                 <a
                   href=" https://www.linkedin.com/in/elviraboman/"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   <img src="/icons/some/linkedin_white.svg" alt="LinkedIn logo" />
                 </a>
               </SocialMediaContainer>
@@ -130,10 +141,8 @@ function InEnglish() {
           <PaddedParagraph>
             We are currently looking for people that share our vision and want to help us
             grow. We’re especially interested in AI aficionados, data visualizers, UX
-            specialists and climate data scientists. Please write us a message at
-            {' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
-            .
+            specialists and climate data scientists. Please write us a message at{' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
           </PaddedParagraph>
           <H4>Interested in taking Klimatkollen to your country?</H4>
           <PaddedParagraph>
@@ -174,28 +183,22 @@ function InEnglish() {
           </Paragraph>
           <Paragraph>
             Klimatkollen is a platform for – and by – citizens, and we welcome
-            contributions through
-            {' '}
+            contributions through{' '}
             <a
               href="https://github.com/Klimatbyran/klimatkollen"
               target="_blank"
-              rel="noreferrer"
-            >
+              rel="noreferrer">
               Github
-            </a>
-            {' '}
-            and
-            {' '}
+            </a>{' '}
+            and{' '}
             <a href="https://discord.gg/5xeqknPa" target="_blank" rel="noreferrer">
               Discord
             </a>
             .
           </Paragraph>
           <PaddedParagraph>
-            If you want to support our work, please don’t hesitate to contact us via
-            {' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
-            .
+            If you want to support our work, please don’t hesitate to contact us via{' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
           </PaddedParagraph>
           <H2>Klimatkollen wins the Google.org Impact Challenge: Tech for Social Good</H2>
           <Paragraph>
@@ -229,12 +232,8 @@ function InEnglish() {
             beyond our platform.
           </Paragraph>
           <Paragraph>
-            <b>Want to know more?</b>
-            {' '}
-            Please drop us a line at
-            {' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
-            .
+            <b>Want to know more?</b> Please drop us a line at{' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
           </Paragraph>
         </Container>
       </PageWrapper>
