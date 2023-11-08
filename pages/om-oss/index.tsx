@@ -250,8 +250,8 @@ function OmOss() {
                     <GridImage
                       src={Ola}
                       alt="Ola Spännar"
-                      width="200px"
-                      height="200px"
+                      width="200"
+                      height="200"
                     />
                     <b>Ola Spännar</b>
                     {' '}
@@ -263,8 +263,8 @@ function OmOss() {
                     <GridImage
                       src={Frida}
                       alt="Frida Berry Eklund"
-                      width="200px"
-                      height="200px"
+                      width="200"
+                      height="200"
                     />
                     <b>Frida Berry Eklund</b>
                     {' '}
@@ -277,8 +277,8 @@ function OmOss() {
                     <GridImage
                       src={Elvira}
                       alt="Elvira Boman"
-                      width="200px"
-                      height="200px"
+                      width="200"
+                      height="200"
                     />
                     <b>Elvira Boman</b>
                     Tech lead och teknisk fysiker på Klimatkollen
@@ -301,8 +301,8 @@ function OmOss() {
                       <GridImage
                         src={Christian}
                         alt="Christian Landgren"
-                        width="200px"
-                        height="200px"
+                        width="200"
+                        height="200"
                       />
                       <b>Christian Landgren</b>
                       {' '}
@@ -314,8 +314,8 @@ function OmOss() {
                       <GridImage
                         src={Anna}
                         alt="Anna Loverus"
-                        width="200px"
-                        height="200px"
+                        width="200"
+                        height="200"
                       />
                       <b>Anna Loverus</b>
                       {' '}
@@ -326,8 +326,8 @@ function OmOss() {
                       <GridImage
                         src={Maria}
                         alt="Maria Soxbo"
-                        width="200px"
-                        height="200px"
+                        width="200"
+                        height="200"
                       />
                       <b>Maria Soxbo</b>
                       {' '}
@@ -339,8 +339,8 @@ function OmOss() {
                       <GridImage
                         src={CJ}
                         alt="Carl-Johan Schultz"
-                        width="200px"
-                        height="200px"
+                        width="200"
+                        height="200"
                       />
                       <b>Carl-Johan Schultz</b>
                       {' '}
@@ -352,8 +352,8 @@ function OmOss() {
                       <GridImage
                         src={Ola}
                         alt="Ola Spännar"
-                        width="200px"
-                        height="200px"
+                        width="200"
+                        height="200"
                       />
                       <b>Ola Spännar</b>
                       {' '}
@@ -365,8 +365,8 @@ function OmOss() {
                       <GridImage
                         src={Frida}
                         alt="Frida Berry Eklund"
-                        width="200px"
-                        height="200px"
+                        width="200"
+                        height="200"
                       />
                       <b>Frida Berry Eklund</b>
                       {' '}

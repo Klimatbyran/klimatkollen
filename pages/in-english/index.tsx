@@ -86,8 +86,8 @@ function InEnglish() {
               <GridImage
                 src={Frida}
                 alt="Frida Berry Eklund"
-                width="200px"
-                height="200px"
+                width="200"
+                height="200"
               />
               <b>Frida Berry Eklund, Co-founder</b>
               Senior climate communications specialist and founder of several climate
@@ -104,8 +104,8 @@ function InEnglish() {
                   <Image
                     src="/icons/some/linkedin_white.svg"
                     alt="LinkedIn logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
                 <a
@@ -116,8 +116,8 @@ function InEnglish() {
                   <Image
                     src="/icons/some/x_white.svg"
                     alt="X logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
               </SocialMediaContainer>
@@ -126,8 +126,8 @@ function InEnglish() {
               <GridImage
                 src={Ola}
                 alt="Ola Spännar"
-                width="200px"
-                height="200px"
+                width="200"
+                height="200"
               />
               <b>Ola Spännar, Co-founder</b>
               Senior climate communications specialist and founder of several climate
@@ -143,16 +143,16 @@ function InEnglish() {
                   <Image
                     src="/icons/some/linkedin_white.svg"
                     alt="LinkedIn logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
                 <a href="https://twitter.com/olaspannar" target="_blank" rel="noreferrer">
                   <Image
                     src="/icons/some/x_white.svg"
                     alt="X logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
               </SocialMediaContainer>
@@ -161,8 +161,8 @@ function InEnglish() {
               <GridImage
                 src={Elvira}
                 alt="Elvira Boman"
-                width="200px"
-                height="200px"
+                width="200"
+                height="200"
               />
               <b>Elvira Boman, Tech Lead</b>
               Tech Lead Full Stack Developer and Engineering Physicist at Klimatkollen and
@@ -178,8 +178,8 @@ function InEnglish() {
                   <Image
                     src="/icons/some/linkedin_white.svg"
                     alt="LinkedIn logo"
-                    width="24px"
-                    height="24px"
+                    width="24"
+                    height="24"
                   />
                 </a>
               </SocialMediaContainer>
@@ -206,8 +206,8 @@ function InEnglish() {
             src="/board/whole_board.jpg"
             alt="Klimatkollen board"
             layout="responsive"
-            width="9192px"
-            height="6128px"
+            width="9192"
+            height="6128"
           />
           <ParagraphItalic>
             Jona Granath / Klimatkollen&apos;s board from left to right in picture:
