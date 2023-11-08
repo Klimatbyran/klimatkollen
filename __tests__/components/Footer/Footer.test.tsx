@@ -6,7 +6,8 @@ describe('Footer component', () => {
     render(
       <Footer />,
     )
-    expect(screen.getByText('Samarbetspartners')).toBeInTheDocument()
+    expect(screen.getByText('Med stöd från')).toBeInTheDocument()
+    expect(screen.getByText('Partners')).toBeInTheDocument()
   })
 
   it('should display the newsletter subscription', () => {
