@@ -140,6 +140,7 @@ function Scorecard({
     <StyledDiv>
       <StyledH4>
         Fakta om
+        {' '}
         {name}
       </StyledH4>
       <GreyContainer>
