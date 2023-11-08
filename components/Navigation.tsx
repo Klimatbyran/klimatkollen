@@ -63,7 +63,7 @@ function Navigation() {
         ))}
       </NavList>
     </Nav>
-  );
+  )
 }
 
 export default Navigation

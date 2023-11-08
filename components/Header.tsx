@@ -172,7 +172,7 @@ function Header() {
         )}
       </HamburgerMenu>
     </HeaderContainer>
-  );
+  )
 }
 
 export default Header

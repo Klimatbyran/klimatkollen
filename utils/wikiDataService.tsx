@@ -22,7 +22,7 @@ export class WikiDataService {
   public async getMunicipalityByName(name: string): Promise<WikiDataMunicipality> {
     const promise = new Promise<WikiDataMunicipality>((resolve, reject) => {
       function toTitleCase(str:string) {
-        return str.toLowerCase().replace(/(?:^|[\s\-/])(\w|[\p{L}])/gu, (match) => match.toUpperCase());
+        return str.toLowerCase().replace(/(?:^|[\s\-/])(\w|[\p{L}])/gu, (match) => match.toUpperCase())
       }
 
       const urlName = `${toTitleCase(name)} Municipality`

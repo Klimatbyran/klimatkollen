@@ -22,7 +22,7 @@ function BackArrow({ route }: BackArrowProps) {
         </a>
       </StyledButton>
     </Link>
-  );
+  )
 }
 
 export default BackArrow
