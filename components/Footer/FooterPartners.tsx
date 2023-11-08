@@ -2,20 +2,25 @@ import styled from 'styled-components'
 import { devices } from '../../utils/devices'
 
 const PartnerContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  grid-gap: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   justify-items: center;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  padding: 8px 16px;
   margin-bottom: 48px;
+  padding: 8px 16px;
+
+  img {
+    margin: 16px;
+  }
 
   @media only screen and (${devices.tablet}) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex-wrap: wrap;
+    justify-items: center;
     padding: 16px 32px;
   }
 `
@@ -23,17 +28,9 @@ const PartnerContainer = styled.div`
 function Partners() {
   return (
     <PartnerContainer>
-      <a href="https://postkodstiftelsen.se/" target="_blank" rel="noreferrer">
-        <img
-          src="/partners/postkodstiftelsen.svg"
-          width={90}
-          height="auto"
-          alt="Postkodstiftelsen logo"
-        />
-      </a>
       <a href="https://www.climateview.global/" target="_blank" rel="noreferrer">
         <img
-          src="/partners/climateview.svg"
+          src="/logos/partners/climateview.svg"
           width={90}
           height="auto"
           alt="ClimateView logo"
@@ -41,7 +38,7 @@ function Partners() {
       </a>
       <a href="https://researchersdesk.se/" target="_blank" rel="noreferrer">
         <img
-          src="/partners/researchersdesk-logo.svg"
+          src="/logos/partners/researchersdesk-logo.svg"
           width="auto"
           height={60}
           alt="Researchers desk logo"
@@ -49,7 +46,7 @@ function Partners() {
       </a>
       <a href="https://www.klimatklubben.se/" target="_blank" rel="noreferrer">
         <img
-          src="/partners/klimatklubben.svg"
+          src="/logos/partners/klimatklubben.svg"
           width="auto"
           height={45}
           alt="Klimatklubben logo"
@@ -57,7 +54,7 @@ function Partners() {
       </a>
       <a href="https://exponentialroadmap.org/" target="_blank" rel="noreferrer">
         <img
-          src="/partners/exponential_roadmap.svg"
+          src="/logos/partners/exponential_roadmap.svg"
           width={105}
           height="auto"
           alt="Exponential Roadmap logo"
