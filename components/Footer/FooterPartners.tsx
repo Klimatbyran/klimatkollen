@@ -39,14 +39,6 @@ function Partners() {
           alt="ClimateView logo"
         />
       </a>
-      <a href="https://www.wwf.se/" target="_blank" rel="noreferrer">
-        <img
-          src="/partners/WWF_Logo_Small_RGB_72dpi.jpg"
-          width={45}
-          height="auto"
-          alt="WWF logo"
-        />
-      </a>
       <a href="https://researchersdesk.se/" target="_blank" rel="noreferrer">
         <img
           src="/partners/researchersdesk-logo.svg"
@@ -61,6 +53,14 @@ function Partners() {
           width="auto"
           height={45}
           alt="Klimatklubben logo"
+        />
+      </a>
+      <a href="https://exponentialroadmap.org/" target="_blank" rel="noreferrer">
+        <img
+          src="/partners/exponential_roadmap.svg"
+          width={105}
+          height="auto"
+          alt="Exponential Roadmap logo"
         />
       </a>
     </PartnerContainer>
