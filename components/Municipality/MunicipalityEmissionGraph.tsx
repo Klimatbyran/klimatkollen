@@ -242,17 +242,17 @@ function MunicipalityEmissionGraph({
       {step === 1 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text="Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
-          motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande,
-          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är 2021, vilket är senast tillgängliga data."
+          text="Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.
+          Hacket i kurvan för vissa kommuner beror på att genomsnittet är högre än det senaste årets nivå."
           scrollY={scrollY}
         />
       )}
       {step === 2 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text="Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.
-          Hacket i kurvan för vissa kommuner beror på att genomsnittet är högre än det senaste årets nivå."
+          text="Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
+          motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande,
+          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är 2021, vilket är senast tillgängliga data."
           scrollY={scrollY}
         />
       )}

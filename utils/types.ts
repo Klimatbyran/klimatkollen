@@ -1,4 +1,4 @@
-import { datasetDescriptions } from '../data/dataset_descriptions'
+import { datasetDescriptions } from './datasetDescriptions'
 
 export type Image = {
   ImageUrl: string

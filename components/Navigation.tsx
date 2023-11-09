@@ -53,7 +53,7 @@ function Navigation() {
       <NavList>
         {menuItems.map((item) => (
           <NavItem key={item.path}>
-            <Link href={item.path} passHref>
+            <Link href={item.path} passHref legacyBehavior>
               <StyledLinkWrapper>
                 <StyledLink>{item.label}</StyledLink>
                 <ArrowRightWhite />

@@ -54,11 +54,11 @@ We utilize Python libraries such as Pandas and NumPy to perform various calculat
 
 ### How to Update Data on Site
 
-To recalculate and refresh the site's data, navigate to the /data folder and execute the following command:
+To recalculate and refresh the site's data, navigate to the `/data` folder and execute the following command:
 
 `python3 climate_data_calculations.py`
 
-The results will be saved in the `/data/output` folder, primarily in the `climate-data.json` file.
+The results will be saved in the `/data/output` folder, primarily in the `climate-data.json` file. The climate data is sourced using a TypeScript utility service located at `utils/climateDataService.tsx`. This service is responsible for fetching and manipulating the data found in `climate-data.json` for use throughout the website. To add or edit the descriptions of datasets that appear in the national overview on the website's homepage, make the necessary changes in `utils/datasetDescriptions.tsx`.
 
 #### Handling Data Inconsistencies for Municipalities
 
@@ -72,17 +72,17 @@ Given that Klimatkollen focuses on data related to municipalities, it's often ne
 
 In the list, the term appearing before the colon (:) is the standardized name that we use in the repository. Any alternative names listed after "also known as" should be converted to this standard version when incorporating new data sets.
 
-### Utilizing Data on the Website
-
-We use a TypeScript utility service located at `utils/climateDataService.tsx` to source the data from `climate-data.json` and display it on the website.
-
 Feel free to explore the repository to understand more about how we collect, process, and display climate data.
 
-## Partners
+## Supporters and Partners
 
-This work wouldn't have been possible without our partners.
+This work wouldn't have been possible without the support from
 
-WWF, ClimateView, Våra Barns Klimat, Klimatklubben.se, We Don't Have Time, Argand, StormGeo, Iteam, Precisit.
+Google.org, Postkodstiftelsen.
+
+We'd also like to thank our current and former partners
+
+ClimateView, Klimatklubben.se, Researcher's Desk, Exponential Roadmap, WWF, We Don't Have Time, Våra Barns Klimat, Argand, StormGeo, Iteam, Precisit.
 
 ## LICENSE
 

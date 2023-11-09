@@ -1,7 +1,11 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { DatasetDescription, Municipality, SelectedData } from './types'
+<<<<<<< HEAD
 import { datasetDescriptions } from '../data/dataset_descriptions'
+=======
+import { datasetDescriptions } from './datasetDescriptions'
+>>>>>>> origin/staging
 
 export const calculateStringRankings = (
   data: Array<{ name: string; dataPoint: string | number }>,

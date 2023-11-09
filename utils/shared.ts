@@ -1,4 +1,4 @@
-import { datasetDescriptions, defaultDataView, secondaryDataView } from '../data/dataset_descriptions'
+import { datasetDescriptions, defaultDataView, secondaryDataView } from './datasetDescriptions'
 
 export const currentYear = 2021
 
