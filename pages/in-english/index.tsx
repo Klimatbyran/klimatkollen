@@ -83,12 +83,7 @@ function InEnglish() {
           <H2>Our team</H2>
           <Grid>
             <GridItem>
-              <GridImage
-                src={Frida}
-                alt="Frida Berry Eklund"
-                width="200"
-                height="200"
-              />
+              <GridImage src={Frida} alt="Frida Berry Eklund" width="200" height="200" />
               <b>Frida Berry Eklund, Co-founder</b>
               Senior climate communications specialist and founder of several climate
               initiatives, including the international platform, Our Kids’ Climate. She’s
@@ -123,17 +118,12 @@ function InEnglish() {
               </SocialMediaContainer>
             </GridItem>
             <GridItem>
-              <GridImage
-                src={Ola}
-                alt="Ola Spännar"
-                width="200"
-                height="200"
-              />
+              <GridImage src={Ola} alt="Ola Spännar" width="200" height="200" />
               <b>Ola Spännar, Co-founder</b>
-              Senior climate communications specialist and founder of several climate
-              initiatives, including the international platform, Our Kids’ Climate. She’s
-              also an author and public speaker, as well as a EU Climate Pact Ambassador
-              and Climate Reality Leader.
+              Senior marketing and communications executive, previously head of
+              Communications and Campaigns for the Swedish Centre Party, program director
+              at Berghs School of Communication and Account Director at Forsman &
+              Bodenfors.
               <SocialMediaContainer>
                 <a
                   href=" https://www.linkedin.com/in/ospannar/"
@@ -158,12 +148,7 @@ function InEnglish() {
               </SocialMediaContainer>
             </GridItem>
             <GridItem>
-              <GridImage
-                src={Elvira}
-                alt="Elvira Boman"
-                width="200"
-                height="200"
-              />
+              <GridImage src={Elvira} alt="Elvira Boman" width="200" height="200" />
               <b>Elvira Boman, Tech Lead</b>
               Tech Lead Full Stack Developer and Engineering Physicist at Klimatkollen and
               Precisit. Extensive experience in green and circular tech at multiple award
