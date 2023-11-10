@@ -51,7 +51,7 @@ function InEnglish() {
             We believe that data transparency and citizen engagement are key to generating the public pressure needed
             to make sure local governments and companies cut emissions in line with the Paris Agreement.
           </Paragraph>
-          <PaddedParagraph>
+          <Paragraph>
             As proud winners of the
             {' '}
             <a
@@ -61,8 +61,11 @@ function InEnglish() {
             >
               2023 Google.org Impact Challenge
             </a>
-            , we will be scaling up and supercharging our citizen platform with AI,allowing us to add corporate emissions
-            data and new features to analyze and compare climate action across local governments and companies. Read more about
+            , we will be scaling up and supercharging our citizen platform with AI, allowing us to add corporate emissions
+            data and new features to analyze and compare climate action across local governments and companies.
+          </Paragraph>
+          <PaddedParagraph>
+            Read more about
             the project
             {' '}
             <a
@@ -75,22 +78,6 @@ function InEnglish() {
             </a>
             {' '}
             (in Swedish).
-          </PaddedParagraph>
-          <H4>Want to use your skills for climate impact?</H4>
-          <PaddedParagraph>
-            We are currently looking for people that share our vision and want to help us
-            grow. We’re especially interested in AI aficionados, data visualizers, UX
-            specialists and climate data scientists. Please write us a message at
-            {' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
-            .
-          </PaddedParagraph>
-          <H4>Interested in taking Klimatkollen to your country?</H4>
-          <PaddedParagraph>
-            Do drop us a line if you want to hear more about what we do and want to
-            collaborate. We’re especially looking for co-funders and partner organisations
-            in high-emitting countries, with an interest in climate data transparency and
-            using tech and AI for good.
           </PaddedParagraph>
           <H2>Our team</H2>
           <Grid>
@@ -180,6 +167,22 @@ function InEnglish() {
               </SocialMediaContainer>
             </GridItem>
           </Grid>
+          <H4>Want to use your skills for climate impact?</H4>
+          <PaddedParagraph>
+            We are currently looking for people that share our vision and want to help us
+            grow. We’re especially interested in AI aficionados, data visualizers, UX
+            specialists and climate data scientists. Please write us a message at
+            {' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+            .
+          </PaddedParagraph>
+          <H4>Interested in taking Klimatkollen to your country?</H4>
+          <PaddedParagraph>
+            Drop us a line if you want to hear more about us or collaborate.
+            We’re especially looking for co-funders and partner organisations
+            in high-emitting countries, with an interest in climate data transparency
+            and using tech and AI for good.
+          </PaddedParagraph>
           <H2>Klimatkollen receives support from Google.org Impact Challenge</H2>
           <RoundedImage
             src="/board/impact_challenge.png"
@@ -189,7 +192,7 @@ function InEnglish() {
             alt="Klimatkollen receives support from Google.org Impact Challenge"
           />
           <Paragraph>
-            In November 2023, Klimatkollen was one of two Swedish winners of the
+            In November 2023, Klimatkollen was one of two Swedish recipients of the
             {' '}
             <a
               href="https://blog.google/outreach-initiatives/sustainability/boosting-sustainable-solutions-from-sweden/"
@@ -226,7 +229,7 @@ function InEnglish() {
           </Paragraph>
           <Paragraph>
             There is a big gap between what companies say and what they actually do, to
-            bring emissions down. And it’s hard for ordinary citizens to know what’s
+            bring emissions down. And it is hard for ordinary citizens to know what’s
             greenwashing and real action.
           </Paragraph>
           <Paragraph>
@@ -243,6 +246,13 @@ function InEnglish() {
             .
           </PaddedParagraph>
           <H2>Klimatkollen today</H2>
+          <RoundedImage
+            src="/board/whole_board.jpg"
+            alt="Klimatkollen board"
+            layout="responsive"
+            width="9192"
+            height="6128"
+          />
           <Paragraph>
             Klimatkollen gives citizens knowledge about how Sweden’s 290 municipalities
             are tracking compared to the Paris Agreement. We do this by presenting
@@ -333,7 +343,7 @@ function InEnglish() {
             .
           </Paragraph>
           <PaddedParagraph>
-            If you want to support our work, please don’t hesitate to contact us via
+            If you want to support our work, please do not hesitate to contact us via
             {' '}
             <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
             .
