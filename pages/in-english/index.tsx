@@ -179,7 +179,7 @@ function InEnglish() {
           <H4>Interested in taking Klimatkollen to your country?</H4>
           <PaddedParagraph>
             Drop us a line if you want to hear more about us or collaborate.
-            We’re especially looking for co-funders and partner organisations
+            We are especially looking for co-funders and partner organisations
             in high-emitting countries, with an interest in climate data transparency
             and using tech and AI for good.
           </PaddedParagraph>
