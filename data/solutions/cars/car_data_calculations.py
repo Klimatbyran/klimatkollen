@@ -49,7 +49,7 @@ def car_calculations(df):
 
     df_raw_cars['electricCarChangePercent'] = df_raw_cars['Procentenheter förändring av andel laddbara bilar 2015-2022']
     df_raw_cars['electricCarChangeYearly'] = df_raw_cars.apply(
-        lambda x: {2015: x[2015], 2016: x[2016], 2017: x[2017], 2018: x[2018], 2019: x[2019], 2020: x[2020], 2021: x[2021], 2022: x[2022]}, axis=1)
+        lambda x: {2015: x.loc[2015], 2016: x.loc[2016], 2017: x.loc[2017], 2018: x.loc[2018], 2019: x.loc[2019], 2020: x.loc[2020], 2021: x.loc[2021], 2022: x.loc[2022]}, axis=1)
 
     df_cars = df_raw_cars.filter(
         ['Kommun', 'electricCarChangePercent', 'electricCarChangeYearly'], axis=1)
@@ -57,6 +57,23 @@ def car_calculations(df):
     df = df.merge(df_cars, on='Kommun', how='left')
 
     return df
+
+
+def get_population_data():
+    # Use if population data is needed again at a later stage
+    # Load population data, set correct column headers and drop unwanted rows
+    df_population = pd.read_excel(PATH_POPULATION)
+    df_population.columns = df_population.iloc[4]
+    df_population = df_population[5:]
+    df_population.reset_index(drop=True, inplace=True)  # reset index
+
+    # Keep only the columns with years between 2013 and 2022 to harmonize with PowerCircle data
+    df_population_filtered = df_population[[
+        'Kommun'] + [year for year in year_range]]
+    df_population_filtered.columns = [int(col) if isinstance(
+        col, float) else col for col in df_population_filtered.columns]
+
+    return df_population_filtered
 
 
 def convert_column_name_to_float(df, year_range):
@@ -91,35 +108,26 @@ def charging_point_calculations(df):
     # Remove duplicate occurrences of Pajala
     df_charging_duplicates_removed = df_charging_float.drop(index=172, inplace=True)
 
-    # Load population data, set correct column headers and drop unwanted rows
-    df_population = pd.read_excel(PATH_POPULATION)
-    df_population.columns = df_population.iloc[4]
-    df_population = df_population[5:]
-    df_population.reset_index(drop=True, inplace=True)  # reset index
-
-    # Keep only the columns with years between 2013 and 2022 to harmonize with PowerCircle data
-    df_population_filtered = df_population[[
-        'Kommun'] + [year for year in year_range]]
-    df_population_filtered.columns = [int(col) if isinstance(
-        col, float) else col for col in df_population_filtered.columns]
-
     df_result = pd.DataFrame()
-    df_result['Kommun'] = df_population_filtered['Kommun']
+    df_result['Kommun'] = df_charging_float['Kommun']
     df_result = df_result.drop(index=range(290, len(df_result)))
 
-    # Calculate _charging/_population for each year from 2015 to 2022
     for year in year_range:
-        df_result[year] = df_charging_pivoted[year] / \
-            df_population_filtered[year]
+        df_result[year] = df_charging_pivoted[year]
 
-    df_result['chargingPointsPerCapita'] = df_result.apply(
-        lambda x: {2015: x[2015], 2016: x[2016], 2017: x[2017], 2018: x[2018], 2019: x[2019], 2020: x[2020], 2021: x[2021], 2022: x[2022]}, axis=1)
+    df_result['ChargingPointsPerYear'] = df_result.apply(
+        lambda x: {2015: x.loc[2015], 2016: x.loc[2016], 2017: x.loc[2017], 2018: x.loc[2018], 2019: x.loc[2019], 2020: x.loc[2020], 2021: x.loc[2021], 2022: x.loc[2022]}, axis=1)
 
     df_result_filtered = df_result.filter(
-        ['Kommun', 'chargingPointsPerCapita'], axis=1)
+        ['Kommun', 'ChargingPointsPerYear'], axis=1)
     
-    print(df_result_filtered.head(5))
+    df_result_filtered['ChargingPointsYearlyAverage'] = df_result_filtered['ChargingPointsPerYear'].apply(
+        # fixme fortsätt här
+        lambda x: (x[6] - x[0]) / len(x) if len(x) > 0 else 0
+    )
+
+    print(df_result_filtered.head(10))
+    
     df = df.merge(df_result_filtered, on='Kommun', how='left')
-    print(df.columns)
 
     return df

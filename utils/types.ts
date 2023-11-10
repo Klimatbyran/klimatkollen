@@ -70,7 +70,7 @@ export type Municipality = {
   ClimatePlan: ClimatePlan,
   BicycleMetrePerCapita: number,
   TotalConsumptionEmission: number,
-  ChargingPointsPerCapita: ChargingPoints,
+  ChargingPoints: ChargingPoints,
 }
 
 export type SelectedData = keyof typeof datasetDescriptions

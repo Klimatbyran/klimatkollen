@@ -76,6 +76,13 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton`}
         info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019."
       />
+      <SolutionSection
+        icon={<Basket />}
+        title="Laddbilarna"
+        heading="Lorem ipsum"
+        data={`${municipality.ChargingPoints.ChargingPointsChangeAverage.toFixed(1)} lorem`}
+        info="Lorem ipsum."
+      />
     </>
   )
 }

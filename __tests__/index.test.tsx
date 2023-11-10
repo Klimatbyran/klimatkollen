@@ -60,14 +60,19 @@ const setup = () => render(
         },
         BicycleMetrePerCapita: 0,
         TotalConsumptionEmission: 0,
-        ChargingPointsPerCapita: [],
+        ChargingPoints: {
+          ChargingPointsPerYear: [],
+          ChargingPointsChangeAverage: 0,
+        },
         Name: 'Sollentuna',
       },
     ]}
   />,
 )
 
-beforeEach(vi.clearAllMocks)
+beforeEach(() => {
+  vi.resetAllMocks()
+})
 
 test('dropdown shows error text if nothing is selected on enter', () => {
   vi.useFakeTimers()

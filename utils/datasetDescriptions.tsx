@@ -188,14 +188,14 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [7, 6.7, 6.4, 6.1, 5.8],
-    labels: ['7 ton +', '6,7-7 ton', '6,4-6,7 ton', '6,1-6,4 ton', '5,8-6,1 ton', '5,8 ton -'],
+    boundaries: [0, 1, 2, 3, 4],
+    labels: ['5 st -', '5-10', '10-20', '20-30', '30-40', '40 +'],
     labelRotateUp: [],
     columnHeader: 'Laddpunkter/person',
     dataType: 'Number',
     tooltip:
       'Lorem ipsum.',
-    sortAscending: true,
+    sortAscending: false,
   },
 }
 
@@ -216,7 +216,7 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       dataPoint = item.TotalConsumptionEmission
       break
     case 'Laddpunkterna':
-      dataPoint = item.ChargingPointsPerCapita.ChargingPointsChangeAverage
+      dataPoint = item.ChargingPoints.ChargingPointsChangeAverage
       break
     default:
       dataPoint = item.BicycleMetrePerCapita

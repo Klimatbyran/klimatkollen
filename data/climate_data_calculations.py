@@ -36,7 +36,7 @@ df = get_consumption_emissions(df)
 print('6. Consumption emission data added')
 
 df = charging_point_calculations(df)
-print('7. Charging point calculations added')
+print('7. Charging points added')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -73,7 +73,8 @@ for i in range(len(df)):
         'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
         'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
         'totalConsumptionEmission': df.iloc[i]['Total emissions'],
-        'chargingPointsPerCapita': df.iloc[i]['chargingPointsPerCapita'],
+        'chargingPointsPerYear': df.iloc[i]['ChargingPointsPerYear'],
+        'chargingPointsYearlyAverage': df.iloc[i]['ChargingPointsYearlyAverage'],
     })
 
 with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file

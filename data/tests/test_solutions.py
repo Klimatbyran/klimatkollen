@@ -7,9 +7,11 @@ from data.solutions.cars.car_data_calculations import charging_point_calculation
 
 class TestChargingPointCalculations(unittest.TestCase):
 
+    # FIXME!
+
     @patch('pandas.read_csv')
     @patch('pandas.read_excel')
-    def test_charging_point_calculations(self, mock_read_excel, mock_read_csv):
+    def test_charging_point_calculations(self):
         # Sample data for the main DataFrame (df)
         df = pd.DataFrame({
             'Kommun': ['Pajala', 'Sollentuna'],
@@ -35,11 +37,11 @@ class TestChargingPointCalculations(unittest.TestCase):
         # Call the function
         df_result = charging_point_calculations(df, df_charging_raw, df_population)
 
-        # Verify the ChargingPointsPerCapita calculations
+        # Verify the ChargingPointsPerYear calculations
         expected_df = pd.DataFrame({
             'Kommun': ['Pajala', 'Sollentuna'],
             'Year': [2015, 2016],
-            'ChargingPointsPerCapita': [0.1, 0.18181818181818182, 0.15, 0.18181818181818182]
+            'ChargingPointsPerYear': [0.1, 0.18181818181818182, 0.15, 0.18181818181818182]
         })
 
         pd.testing.assert_frame_equal(df_result, expected_df)
