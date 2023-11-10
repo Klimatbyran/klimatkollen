@@ -161,7 +161,7 @@ function InEnglish() {
             <GridItem>
               <GridImage src={Elvira} alt="Elvira Boman" width="200" height="200" />
               <b>Elvira Boman, Tech Lead</b>
-              Teach Lead at Klimatkollen and Full Stack Developer and Engineering Physicist at Precist.
+              Teach Lead at Klimatkollen and Full Stack Developer and Engineering Physicist at Precisit.
               Extensive experience in green and circular tech at multiple award winning startups
               and part of the leadership team at IT consultancy firm Precisit.
               <SocialMediaContainer>
@@ -190,6 +190,7 @@ function InEnglish() {
           />
           <Paragraph>
             In November 2023, Klimatkollen was one of two Swedish winners of the
+            {' '}
             <a
               href="https://blog.google/outreach-initiatives/sustainability/boosting-sustainable-solutions-from-sweden/"
               target="_blank"
@@ -213,13 +214,13 @@ function InEnglish() {
           <Paragraph>
             Companies are part of the problem as well as the solutions to climate change.
             In 2019–2020, large and medium sized Swedish companies emitted a whopping
+            {' '}
             <a
               href="https://www.regeringen.se/contentassets/4a8366fdf6d84c2f929ab6e4a216e23f/sveriges-globala-klimatavtryck-sou-202215.pdf"
               target="_blank"
               rel="noreferrer"
             >
-              250
-              million tonnes of CO2
+              250 million tonnes of CO2
             </a>
             , five times the amount of our territorial emissions.
           </Paragraph>
@@ -263,6 +264,7 @@ function InEnglish() {
           </Paragraph>
           <Paragraph>
             Klimatkollen was founded in 2021, by Frida Berry Eklund and Ola Spännar with the support of
+            {' '}
             <a
               href="www.wwf.se"
               target="_blank"
@@ -271,6 +273,7 @@ function InEnglish() {
               WWF
             </a>
             ,
+            {' '}
             <a
               href="www.climateview.global"
               target="_blank"
@@ -279,6 +282,7 @@ function InEnglish() {
               ClimateView
             </a>
             ,
+            {' '}
             <a
               href="www.klimatklubben.se"
               target="_blank"
@@ -287,7 +291,9 @@ function InEnglish() {
               Klimatklubben
             </a>
             ,
+            {' '}
             Argand,
+            {' '}
             <a
               href="https://app.wedonthavetime.org/"
               target="_blank"
@@ -295,8 +301,9 @@ function InEnglish() {
             >
               We Don’t Have Time
             </a>
-
+            {' '}
             and
+            {' '}
             <a
               href="https://varabarnsklimat.se/"
               target="_blank"
