@@ -11,33 +11,40 @@ PATH_CHARGING_POINT = 'solutions/cars/sources/charging_points_powercircle.csv'
 PATH_POPULATION = 'solutions/cars/sources/population_scb.xlsx'
 
 
-def car_calculations(df):
+def get_plugin_cars():
     # LOAD AND PREP DATA FROM TRAFA ON SHARE OF ELECTIC OR HYBRID CARS IN SALES
 
-    df_raw_trafa = pd.read_excel(
+    df_trafa = pd.read_excel(
         PATH_TRAFA_DATA, sheet_name='Tabell 5 Personbil')
 
-    df_raw_trafa.columns = df_raw_trafa.iloc[3]  # name columns after row 4
-    df_raw_trafa = df_raw_trafa.drop([0, 1, 2, 3, 4, 5])  # drop usless rows
-    df_raw_trafa = df_raw_trafa.reset_index(drop=True)
+    df_trafa.columns = df_trafa.iloc[3]  # name columns after row 4
+    df_trafa = df_trafa.drop([0, 1, 2, 3, 4, 5])  # drop usless rows
+    df_trafa = df_trafa.reset_index(drop=True)
 
     # Clean data in columns
-    df_raw_trafa['Kommun'] = df_raw_trafa['Municipality'].str.strip()
-    df_raw_trafa = df_raw_trafa.drop(
-        df_raw_trafa[df_raw_trafa['Kommun'] == 'Okänd Kommun   '].index)
-    df_raw_trafa = df_raw_trafa.dropna(subset=['Kommun'])
-    df_raw_trafa['electricity'] = df_raw_trafa['Electricity'].replace(' –', 0)
-    df_raw_trafa['plugIn'] = df_raw_trafa['Plug-in '].replace(' –', 0)
+    df_trafa['Kommun'] = df_trafa['Municipality'].str.strip()
+    df_trafa = df_trafa.drop(
+        df_trafa[df_trafa['Kommun'] == 'Okänd Kommun   '].index)
+    df_trafa = df_trafa.dropna(subset=['Kommun'])
+    df_trafa['electricity'] = df_trafa['Electricity'].replace(' –', 0)
+    df_trafa['plugIn'] = df_trafa['Plug-in '].replace(' –', 0)
 
-    df_raw_trafa['electricCars'] = (
-        (df_raw_trafa['electricity'] + df_raw_trafa['plugIn'])/df_raw_trafa['Total'])
-
-    df_trafa = df_raw_trafa.filter(['Kommun', 'electricCars'], axis=1)
-    # special solution for Upplands-Väsby which is named differently in the two dataframes
+    # special solution for Upplands-Väsby
     df_trafa.loc[df_trafa['Kommun'] ==
                  'Upplands-Väsby', 'Kommun'] = 'Upplands Väsby'
 
-    df = df.merge(df_trafa, on='Kommun', how='left')
+    return df_trafa
+
+
+def car_calculations(df):
+    df_plugin_cars = get_plugin_cars()
+
+    df_plugin_cars['electricCars'] = (
+        (df_plugin_cars['electricity'] + df_plugin_cars['plugIn'])/df_plugin_cars['Total'])
+
+    df_plugin_cars = df_plugin_cars.filter(['Kommun', 'electricCars'], axis=1)
+
+    df = df.merge(df_plugin_cars, on='Kommun', how='left')
 
     # LOAD AND PREP DATA ON CHANGE RATE OF PERCENTAGE OF NEWLY REGISTERED RECHARGABLE CARS PER MUNICIPALITY AND YEAR
 
@@ -88,7 +95,7 @@ def convert_column_to_float(df, year_range):
     return df
 
 
-def charging_point_calculations(df):
+def charging_point_calculations():
     year_range = range(2015, 2023)
 
     # Load charging point data, filter for december and set correct column headers
@@ -111,23 +118,35 @@ def charging_point_calculations(df):
     df_result = pd.DataFrame()
     df_result['Kommun'] = df_charging_float['Kommun']
     df_result = df_result.drop(index=range(290, len(df_result)))
-
     for year in year_range:
         df_result[year] = df_charging_pivoted[year]
 
-    df_result['ChargingPointsPerYear'] = df_result.apply(
-        lambda x: {2015: x.loc[2015], 2016: x.loc[2016], 2017: x.loc[2017], 2018: x.loc[2018], 2019: x.loc[2019], 2020: x.loc[2020], 2021: x.loc[2021], 2022: x.loc[2022]}, axis=1)
+    df_plugin_cars = get_plugin_cars()
+    df_plugin_cars['electricCars'] = df_plugin_cars['electricity'] + df_plugin_cars['plugIn']
+    df_plugin_cars = df_plugin_cars.filter(['Kommun', 'electricCars'], axis=1)
+
+    df_result = df_result.merge(df_plugin_cars, on='Kommun', how='left')
+
+    print(df_result.head(10))   
+    df_result['CPEV'] = df_result[2022] / df_result['electricCars']
 
     df_result_filtered = df_result.filter(
-        ['Kommun', 'ChargingPointsPerYear'], axis=1)
+        ['Kommun', 'CPEV'], axis=1)
     
-    df_result_filtered['ChargingPointsYearlyAverage'] = df_result_filtered['ChargingPointsPerYear'].apply(
-        # fixme fortsätt här
-        lambda x: (x[6] - x[0]) / len(x) if len(x) > 0 else 0
-    )
+    # df_result_filtered['ChargingPointsYearlyAverage'] = df_result_filtered['ChargingPointsPerYear'].apply(
+    #     # fixme fortsätt här
+    #     lambda x: (x[6] - x[0]) / len(x) if len(x) > 0 else 0
+    # )
 
     print(df_result_filtered.head(10))
-    
-    df = df.merge(df_result_filtered, on='Kommun', how='left')
 
-    return df
+    df_result_filtered.to_excel('output/cpev.xlsx')
+    smallest = df_result_filtered['CPEV'].min()
+    largest = df_result_filtered['CPEV'].max()
+    mean = df_result_filtered['CPEV'].mean()
+    
+    # df = df.merge(df_result_filtered, on='Kommun', how='left')
+
+    # return df
+
+charging_point_calculations()
