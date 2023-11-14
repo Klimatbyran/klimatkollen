@@ -144,7 +144,8 @@ function KoM() {
                   >
                     Trafikanalys
                   </a>
-                  . Cykelvägsdata kommer från Trafikverkets
+                  .
+                  Cykelvägsdata tas från Trafikverkets
                   {' '}
                   <a
                     href="https://nvdb2012.trafikverket.se/SeTransportnatverket"

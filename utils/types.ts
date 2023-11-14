@@ -79,14 +79,12 @@ export type DatasetType = 'Percent' | 'Link' | 'Number'
 
 export type DatasetDescription = {
   title: string
-  heading: string
   body: string | JSX.Element
   source: React.ReactNode
   boundaries: number[] | string[]
   labels: string[]
   labelRotateUp: boolean[]
   columnHeader: string
-  tooltip: string
   dataType: DatasetType
   sortAscending?: boolean
 }

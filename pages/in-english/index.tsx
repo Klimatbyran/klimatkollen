@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import MetaTags from '../../components/MetaTags'
 import {
-  H2, H4, Paragraph, ParagraphItalic,
+  H2, H4, Paragraph,
 } from '../../components/Typography'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
@@ -45,15 +45,13 @@ function InEnglish() {
         <Container>
           <H2>About us</H2>
           <Paragraph>
-            Klimatkollen (Climate Checker) is a Swedish open source platform visualising
-            climate data for citizens.
+            Klimatkollen (Climate Checker) is a Swedish open source platform visualizing climate data for citizens.
           </Paragraph>
           <Paragraph>
-            We believe that data transparency and citizen engagement are key to generating
-            the public pressure needed to make sure local governments and companies cut
-            emissions in line with the Paris Agreement.
+            We believe that data transparency and citizen engagement are key to generating the public pressure needed
+            to make sure local governments and companies cut emissions in line with the Paris Agreement.
           </Paragraph>
-          <PaddedParagraph>
+          <Paragraph>
             As proud winners of the
             {' '}
             <a
@@ -61,11 +59,13 @@ function InEnglish() {
               target="_blank"
               rel="noreferrer"
             >
-              2023 Google.org Impact Challenge: Tech for Social Good
+              2023 Google.org Impact Challenge
             </a>
-            , we will be scaling up and supercharging our citizen platform with AI,
-            allowing us to add corporate emissions data and new features to analyze and
-            compare climate action across local governments and companies. Read more about
+            , we will be scaling up and supercharging our citizen platform with AI, allowing us to add corporate emissions
+            data and new features to analyze and compare climate action across local governments and companies.
+          </Paragraph>
+          <PaddedParagraph>
+            Read more about
             the project
             {' '}
             <a
@@ -79,16 +79,14 @@ function InEnglish() {
             {' '}
             (in Swedish).
           </PaddedParagraph>
-
           <H2>Our team</H2>
           <Grid>
             <GridItem>
               <GridImage src={Frida} alt="Frida Berry Eklund" width="200" height="200" />
               <b>Frida Berry Eklund, Co-founder</b>
-              Senior climate communications specialist and founder of several climate
-              initiatives, including the international platform, Our Kids’ Climate. She’s
-              also an author and public speaker, as well as a EU Climate Pact Ambassador
-              and Climate Reality Leader.
+              Senior climate communications specialist and co-founder of several climate initiatives,
+              including the international platform, Our Kids’ Climate. She’s also an author and public speaker,
+              as well as a EU Climate Pact Ambassador and Climate Reality Leader.
               {' '}
               <SocialMediaContainer>
                 <a
@@ -150,10 +148,9 @@ function InEnglish() {
             <GridItem>
               <GridImage src={Elvira} alt="Elvira Boman" width="200" height="200" />
               <b>Elvira Boman, Tech Lead</b>
-              Tech Lead Full Stack Developer and Engineering Physicist at Klimatkollen and
-              Precisit. Extensive experience in green and circular tech at multiple award
-              winning startups and part of the leadership team at IT consulting agency
-              Precisit.
+              Teach Lead at Klimatkollen and Full Stack Developer and Engineering Physicist at Precisit.
+              Extensive experience in green and circular tech at multiple award winning startups
+              and part of the leadership team at IT consultancy firm Precisit.
               <SocialMediaContainer>
                 <a
                   href=" https://www.linkedin.com/in/elviraboman/"
@@ -181,10 +178,72 @@ function InEnglish() {
           </PaddedParagraph>
           <H4>Interested in taking Klimatkollen to your country?</H4>
           <PaddedParagraph>
-            Do drop us a line if you want to hear more about what we do and want to
-            collaborate. We’re especially looking for co-funders and partner organisations
-            in high-emitting countries, with an interest in climate data transparency and
-            using tech and AI for good.
+            Drop us a line if you want to hear more about us or collaborate.
+            We are especially looking for co-funders and partner organisations
+            in high-emitting countries, with an interest in climate data transparency
+            and using tech and AI for good.
+          </PaddedParagraph>
+          <H2>Klimatkollen receives support from Google.org Impact Challenge</H2>
+          <RoundedImage
+            src="/board/impact_challenge.png"
+            width={2000}
+            height={1125}
+            layout="responsive"
+            alt="Klimatkollen receives support from Google.org Impact Challenge"
+          />
+          <Paragraph>
+            In November 2023, Klimatkollen was one of two Swedish recipients of the
+            {' '}
+            <a
+              href="https://blog.google/outreach-initiatives/sustainability/boosting-sustainable-solutions-from-sweden/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Google.org Impact Challenge: Tech for Social Good
+            </a>
+            .
+          </Paragraph>
+          <Paragraph>
+            During 2024–2026 we will build and integrate AI solutions into our platform,
+            allowing for more and better climate data availability for citizens,
+            increasing transparency of municipalities, governments and companies to cut
+            emissions in line with the Paris Agreement.
+          </Paragraph>
+          <Paragraph>
+            A key focus of the project is to increase the public availability and
+            transparency of corporate climate data, making it easier for citizens to know
+            if a company is in line with the Paris Agreement, or not.
+          </Paragraph>
+          <Paragraph>
+            Companies are part of the problem as well as the solutions to climate change.
+            In 2019–2020, large and medium sized Swedish companies emitted a whopping
+            {' '}
+            <a
+              href="https://www.regeringen.se/contentassets/4a8366fdf6d84c2f929ab6e4a216e23f/sveriges-globala-klimatavtryck-sou-202215.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              250 million tonnes of CO2
+            </a>
+            , five times the amount of our territorial emissions.
+          </Paragraph>
+          <Paragraph>
+            There is a big gap between what companies say and what they actually do, to
+            bring emissions down. And it is hard for ordinary citizens to know what’s
+            greenwashing and real action.
+          </Paragraph>
+          <Paragraph>
+            Our AI solutions will increase both quantity and quality of climate data
+            freely available to citizens, driving interaction and action both on and
+            beyond our platform.
+          </Paragraph>
+          <PaddedParagraph>
+            <b>Want to know more?</b>
+            {' '}
+            Please drop us a line at
+            {' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+            .
           </PaddedParagraph>
           <H2>Klimatkollen today</H2>
           <RoundedImage
@@ -194,11 +253,6 @@ function InEnglish() {
             width="9192"
             height="6128"
           />
-          <ParagraphItalic>
-            Jona Granath / Klimatkollen&apos;s board from left to right in picture:
-            Christian Landgren, Maria Soxbo, Ola Spännar, Frida Berry Eklund, Carl-Johan
-            Schultz and Anna Loverus.
-          </ParagraphItalic>
           <Paragraph>
             Klimatkollen gives citizens knowledge about how Sweden’s 290 municipalities
             are tracking compared to the Paris Agreement. We do this by presenting
@@ -219,8 +273,55 @@ function InEnglish() {
             sector, media and research institutions. See some of our partners below.
           </Paragraph>
           <Paragraph>
-            Klimatkollen was founded in 2021, by Frida Berry Eklund and Ola Spännar with
-            the support of WWF, ClimateView, Klimatklubben and Våra barns klimat.
+            Klimatkollen was founded in 2021, by Frida Berry Eklund and Ola Spännar with the support of
+            {' '}
+            <a
+              href="www.wwf.se"
+              target="_blank"
+              rel="noreferrer"
+            >
+              WWF
+            </a>
+            ,
+            {' '}
+            <a
+              href="www.climateview.global"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ClimateView
+            </a>
+            ,
+            {' '}
+            <a
+              href="www.klimatklubben.se"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Klimatklubben
+            </a>
+            ,
+            {' '}
+            Argand,
+            {' '}
+            <a
+              href="https://app.wedonthavetime.org/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              We Don’t Have Time
+            </a>
+            {' '}
+            and
+            {' '}
+            <a
+              href="https://varabarnsklimat.se/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Våra barns klimat
+            </a>
+            .
           </Paragraph>
           <Paragraph>
             Klimatkollen is a platform for – and by – citizens, and we welcome
@@ -236,56 +337,17 @@ function InEnglish() {
             {' '}
             and
             {' '}
-            <a href="https://discord.gg/5xeqknPa" target="_blank" rel="noreferrer">
+            <a href="https://discord.gg/N5P64QPQ6v" target="_blank" rel="noreferrer">
               Discord
             </a>
             .
           </Paragraph>
           <PaddedParagraph>
-            If you want to support our work, please don’t hesitate to contact us via
+            If you want to support our work, please do not hesitate to contact us via
             {' '}
             <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
             .
           </PaddedParagraph>
-          <H2>Klimatkollen wins the Google.org Impact Challenge: Tech for Social Good</H2>
-          <Paragraph>
-            In November 2023, Klimatkollen was one of two Swedish winners of the
-            Google.org Impact Challenge: Tech for Social Good.
-          </Paragraph>
-          <Paragraph>
-            During 2024–2026 we will build and integrate AI solutions into our platform,
-            allowing for more and better climate data availability for citizens,
-            increasing transparency of municipalities, governments and companies to cut
-            emissions in line with the Paris Agreement.
-          </Paragraph>
-          <Paragraph>
-            A key focus of the project is to increase the public availability and
-            transparency of corporate climate data, making it easier for citizens to know
-            if a company is in line with the Paris Agreement, or not.
-          </Paragraph>
-          <Paragraph>
-            Companies are part of the problem as well as the solutions to climate change.
-            In 2019–2020, large and medium sized Swedish companies emitted a whopping 250
-            million tonnes of CO2, five times the amount of our territorial emissions.
-          </Paragraph>
-          <Paragraph>
-            There is a big gap between what companies say and what they actually do, to
-            bring emissions down. And it’s hard for ordinary citizens to know what’s
-            greenwashing and real action.
-          </Paragraph>
-          <Paragraph>
-            Our AI solutions will increase both quantity and quality of climate data
-            freely available to citizens, driving interaction and action both on and
-            beyond our platform.
-          </Paragraph>
-          <Paragraph>
-            <b>Want to know more?</b>
-            {' '}
-            Please drop us a line at
-            {' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
-            .
-          </Paragraph>
         </Container>
       </PageWrapper>
     </>
