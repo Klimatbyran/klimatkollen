@@ -9,8 +9,7 @@ export const defaultDataset = 'Utsläppen'
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
     title: 'Utsläppsförändring',
-    heading: 'Utsläppsförändring sedan Parisavtalet',
-    body: 'På kartan och i listan visas genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
+    body: 'Genomsnittlig årlig förändring av koldioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
     source: (
       <>
         Källa:
@@ -29,15 +28,12 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
     dataType: 'Percent',
-    tooltip:
-      'Genomsnittlig årlig förändring av kolidioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015, angivet i procent',
     sortAscending: true,
   },
 
   Elbilarna: {
     title: 'Elbilsökning',
-    heading: 'Ökningstakt andel elbilar sedan Parisavtalet',
-    body: 'På kartan och i listan visas ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
+    body: 'Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
     source: (
       <>
         Källa:
@@ -59,7 +55,6 @@ export const datasetDescriptions: DatasetDescriptions = {
 
   Klimatplanerna: {
     title: 'Klimatplan',
-    heading: 'Kommuner som har klimatplaner',
     body: (
       <>
         Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka
@@ -93,14 +88,11 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Klimatplan',
     dataType: 'Link',
-    tooltip:
-      'Avser nu gällande klimathandlingsplan eller motsvarande. Inte anpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande',
   },
 
   Cyklarna: {
     title: 'Cykelvägslängd',
-    heading: 'Antal meter cykelväg per invånare',
-    body: 'På kartan och i listan visas antal meter cykelväg per invånare per kommun år 2022.',
+    body: 'Antal meter cykelväg per invånare per kommun år 2022.',
     source: (
       <>
         Källa:
@@ -129,15 +121,12 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Cykelväglängd',
     dataType: 'Number',
-    tooltip:
-      'Antal meter cykelväg per invånare per kommun år 2022 totalt för alla väghållare (statlig, kommunal, enskild)',
     sortAscending: false,
   },
 
   Konsumtionen: {
     title: 'Konsumtionsutsläpp',
-    heading: 'Hushållens konsumtionsutsläpp',
-    body: 'På kartan och i listan visas hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
+    body: 'Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
     source: (
       <>
         Källa:
@@ -156,8 +145,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person/år',
     dataType: 'Number',
-    tooltip:
-      'Avser antal ton växthusgasutsläpp (CO₂e) per år och medborgare (år 2019).',
     sortAscending: true,
   },
 }
