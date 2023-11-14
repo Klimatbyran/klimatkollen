@@ -33,7 +33,7 @@ Looking for ideas on what needs to be done? Take a look at our [issues](https://
 
 Feedback? Either submit an [issue](https://github.com/Klimatbyran/klimatkollen/issues) or send an email to [hej@klimatkollen.se](mailto:hej@klimatkollen.se).
 
-Please star this repo if you want to follow the progress and feel free to join our [Discord](https://discord.gg/5xeqknPa).
+Please star this repo if you want to follow the progress and feel free to join our [Discord](https://discord.gg/N5P64QPQ6v).
 
 ## Climate Data Pipeline Overview
 
