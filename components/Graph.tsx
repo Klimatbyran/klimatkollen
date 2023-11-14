@@ -17,8 +17,6 @@ import { colorTheme } from '../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
-const END_YEAR = 2050
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -62,14 +60,15 @@ type Dataset = Array<{ x: number; y: number }>
 const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
 type Props = {
-  charts: string[]
+  step: number
   historical: EmissionPerYear[]
   trend: EmissionPerYear[]
   budget: EmissionPerYear[]
+  maxVisibleYear: number
 }
 
 function Graph({
-  charts, historical, budget, trend,
+  step, historical, budget, trend, maxVisibleYear,
 }: Props) {
   const setup = useMemo(
     () => getSetup([historical, trend, budget]),
@@ -92,8 +91,6 @@ function Graph({
       throw new Error('Dataset length larger than label length')
     }
   }
-
-  const onlyHistorical = charts.every((n) => n !== 'trend' && n !== 'parisavtalet')
 
   return (
     <Container>
@@ -125,7 +122,7 @@ function Graph({
               backgroundColor: colorTheme.lightGreenOpaqe,
               pointRadius: 0,
               tension: 0.15,
-              hidden: !charts.includes('parisavtalet'),
+              hidden: step < 2,
             },
             {
               // @ts-ignore
@@ -137,7 +134,7 @@ function Graph({
               backgroundColor: colorTheme.darkRedOpaque,
               pointRadius: 0,
               tension: 0.15,
-              hidden: !charts.includes('trend'),
+              hidden: false,
             },
           ],
         }}
@@ -172,8 +169,8 @@ function Graph({
           },
           scales: {
             x: {
-              min: onlyHistorical ? setup.minYear : 2016,
-              max: onlyHistorical ? 2021 : END_YEAR,
+              min: step === 0 ? setup.minYear : 2015,
+              max: step > 0 ? maxVisibleYear : 2021,
               grid: {
                 display: true,
                 color: 'rgba(255, 255, 255, 0.2)',

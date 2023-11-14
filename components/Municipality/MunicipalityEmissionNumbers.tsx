@@ -40,10 +40,10 @@ const StyledText = styled.p<{$color: string}>`
 
 type EmissionsProps = {
   municipality: TMunicipality
-  charts: string[]
+  step: number
 }
 
-function MunicipalityEmissionNumbers({ municipality, charts }: EmissionsProps) {
+function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
   const totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
     (total, year) => total + year.CO2Equivalent,
     0,
@@ -55,21 +55,21 @@ function MunicipalityEmissionNumbers({ municipality, charts }: EmissionsProps) {
       <H4>Utsläppen i siffror</H4>
       <TotalCo2Container>
         <TotalCo2>
-          <Square color={charts.includes('historiskt') ? colorTheme.orange : colorTheme.darkOrange} />
-          <StyledText $color={charts.includes('historiskt') ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={colorTheme.orange} />
+          <StyledText $color={colorTheme.offWhite}>
             Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={charts.includes('trend') ? colorTheme.red : colorTheme.darkRed} />
-          <StyledText $color={charts.includes('trend') ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
+          <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
             Trend: {totalTrend.toFixed(1)} tusen ton CO₂
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={charts.includes('parisavtalet') ? colorTheme.lightGreen : colorTheme.darkGreenOne} />
-          <StyledText $color={charts.includes('parisavtalet') ? colorTheme.offWhite : colorTheme.grey}>
-            Parisavtalet:{' '}
+          <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
+          <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
+            Koldioxidbudget för att klara Parisavtalet:{' '}
             {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂
           </StyledText>
         </TotalCo2>

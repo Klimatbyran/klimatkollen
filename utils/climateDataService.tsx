@@ -68,24 +68,24 @@ export class ClimateDataService {
           Comment: data.climatePlanComment,
         } as unknown as ClimatePlan
 
-      const municipality = {
-        Name: data.kommun,
-        HistoricalEmission: emission,
-        EmissionTrend: trend,
-        Budget: budget,
-        EmissionChangePercent: data.emissionChangePercent,
-        HitNetZero: data.hitNetZero,
-        BudgetRunsOut: data.budgetRunsOut,
-        ElectricCars: data.electricCars,
-        ElectricCarChangePercent: data.electricCarChangePercent,
-        ElectricCarChangeYearly: data.electricCarChangeYearly,
-        ClimatePlan: climatePlan,
-        BicycleMetrePerCapita: data.bicycleMetrePerCapita,
-        TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
-        WindPower: data.windPower,
-      } as Municipality
-      return municipality
-    })
+        const municipality = {
+          Name: data.kommun,
+          HistoricalEmission: emission,
+          EmissionTrend: trend,
+          Budget: budget,
+          EmissionChangePercent: data.emissionChangePercent,
+          HitNetZero: data.hitNetZero,
+          BudgetRunsOut: data.budgetRunsOut,
+          ElectricCars: data.electricCars,
+          ElectricCarChangePercent: data.electricCarChangePercent,
+          ElectricCarChangeYearly: data.electricCarChangeYearly,
+          ClimatePlan: climatePlan,
+          BicycleMetrePerCapita: data.bicycleMetrePerCapita,
+          TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
+          WindPower: data.windPower,
+        } as Municipality
+        return municipality
+      })
       .sort((a: Municipality, b: Municipality) => (
         a.HistoricalEmission.EmissionLevelChangeAverage
           - b.HistoricalEmission.EmissionLevelChangeAverage

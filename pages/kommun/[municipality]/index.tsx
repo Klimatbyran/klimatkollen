@@ -1,8 +1,17 @@
 import { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import { ParsedUrlQuery } from 'querystring'
-import { defaultChart } from '../../../data/chart_descriptions'
+import { CHARTS } from './[step]'
 
 export default function Index() {
+  const router = useRouter()
+  const municipality = router.query.municipality as string
+
+  useEffect(() => {
+    if (municipality) router.replace(`/kommun/${municipality}/${CHARTS[0]}`)
+  }, [municipality, router])
+
   return ''
 }
 
@@ -15,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   return {
     redirect: {
-      destination: `/kommun/${id}/${defaultChart}`,
+      destination: `/kommun/${id}/framtida-prognos`,
       permanent: true,
     },
   }

@@ -148,7 +148,6 @@ export const datasetDescriptions: DatasetDescriptions = {
 
   Vindkraften: {
     title: 'Vindkraftverk',
-    heading: 'Lorem ipsum',
     body: 'Lorem ipsum.',
     source: (
       <>
@@ -168,8 +167,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Lorem/Ipsum',
     dataType: 'Number',
-    tooltip:
-      'Lorem ipsum.',
     sortAscending: true,
   },
 }
