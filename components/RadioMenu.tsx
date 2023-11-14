@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import router from 'next/router'
-import { datasetKeys, defaultDataset } from '../data/dataset_descriptions'
+import { datasetKeys, defaultDataset } from '../utils/datasetDescriptions'
 import { SelectedData } from '../utils/types'
 import { MenuContainer, MenuInput, MenuLabel } from './shared'
 import { colorTheme } from '../Theme'

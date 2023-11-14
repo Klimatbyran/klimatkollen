@@ -79,7 +79,7 @@ const FullScreenMenu = styled.div`
   padding: 3rem 1rem 1rem 1rem;
 
   @media only screen and (${devices.tablet}) {
-   padding-top: 4rem;
+    padding-top: 4rem;
   }
 `
 
@@ -98,13 +98,13 @@ const Separator = styled.hr`
   border: 0.5px solid black;
 `
 
-const HamburgerNavigationItem = styled.li`
+const HamburgerItem = styled.li`
   padding: 1rem 0;
   font-size: 1.5rem;
   list-style-type: none;
 `
 
-const HamburgerNavigationLink = styled.a`
+const HamburgerLink = styled.a`
   text-decoration: none;
   color: ${({ theme }) => theme.black};
   font-family: 'Anonymous Pro';
@@ -114,30 +114,40 @@ const HamburgerNavigationLink = styled.a`
   }
 `
 
+type NavItem = {
+  href: string
+  label: string
+}
+
+const navigationItems: NavItem[] = [
+  { href: '/kallor-och-metod', label: 'Källor och metod' },
+  { href: '/om-oss', label: 'Om oss' },
+  { href: '/in-english', label: 'In English' },
+]
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <HeaderContainer>
       <Link href="/">
-        <a href="/">
-          <LogoContainer>
-            <Image
-              src="/logos/klimatkollen_logo_black.svg"
-              width="150"
-              height="30"
-              alt="Klimatkollen logotyp"
-            />
-          </LogoContainer>
-        </a>
+
+        <LogoContainer>
+          <Image
+            src="/logos/klimatkollen_logo_black.svg"
+            width="150"
+            height="30"
+            alt="Klimatkollen logotyp"
+          />
+        </LogoContainer>
+
       </Link>
       <NavigationList>
-        <NavigationItem>
-          <NavigationLink href="/kallor-och-metod">Källor och metod</NavigationLink>
-        </NavigationItem>
-        <NavigationItem>
-          <NavigationLink href="/om-oss">Om oss</NavigationLink>
-        </NavigationItem>
+        {navigationItems.map((item) => (
+          <NavigationItem key={item.label}>
+            <NavigationLink href={item.href}>{item.label}</NavigationLink>
+          </NavigationItem>
+        ))}
       </NavigationList>
       <HamburgerMenu>
         <HamburgerButton type="button" onClick={() => setMenuOpen(!menuOpen)}>
@@ -151,23 +161,13 @@ function Header() {
               </HamburgerButton>
             </CloseButtonContainer>
             <Separator />
-            <HamburgerNavigationItem>
-              <HamburgerNavigationLink href="/">
-                Hem
-              </HamburgerNavigationLink>
-            </HamburgerNavigationItem>
-            <Separator />
-            <HamburgerNavigationItem>
-              <HamburgerNavigationLink href="/kallor-och-metod">
-                Källor och metod
-              </HamburgerNavigationLink>
-            </HamburgerNavigationItem>
-            <Separator />
-            <HamburgerNavigationItem>
-              <HamburgerNavigationLink href="/om-oss">
-                Om oss
-              </HamburgerNavigationLink>
-            </HamburgerNavigationItem>
+            {navigationItems.map((item) => (
+              <HamburgerItem key={item.label}>
+                <HamburgerLink href={item.href}>
+                  {item.label}
+                </HamburgerLink>
+              </HamburgerItem>
+            ))}
           </FullScreenMenu>
         )}
       </HamburgerMenu>

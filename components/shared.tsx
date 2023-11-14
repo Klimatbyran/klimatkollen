@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Image from 'next/image'
 import { colorTheme } from '../Theme'
 import { devices } from '../utils/devices'
 
@@ -100,4 +101,33 @@ export const MenuInput = styled.input<{$backgroundColor: string, $hoverColor: st
       background: ${(props) => props.$hoverColor};
     }
   }
+`
+
+// For image grids like team or board
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 32px;
+  margin: 32px 0;
+`
+
+export const GridItem = styled.div`
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > img {
+    flex-shrink: 0;
+  }
+
+  & > b {
+    clear: both;
+    margin-bottom: 8px;
+  }
+`
+
+export const GridImage = styled(Image)`
+  border-radius: 50%;
 `

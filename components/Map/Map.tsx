@@ -45,8 +45,10 @@ const getColor = (
     return dataPoint === boundaries[0] ? red : lightBlue
   }
 
-  // FIXME refactor plz
-  if (boundaries[0] < boundaries[1]) {
+  const ascending = boundaries[0] < boundaries[1]
+
+  // FIXME refactor plz fortsätt här!
+  if (ascending) {
     if (dataPoint >= boundaries[4]) {
       return lightBlue
     }

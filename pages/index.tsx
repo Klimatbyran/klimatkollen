@@ -23,7 +23,7 @@ import {
   data,
   defaultDataView,
   secondaryDataView,
-} from '../data/dataset_descriptions'
+} from '../utils/datasetDescriptions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import {

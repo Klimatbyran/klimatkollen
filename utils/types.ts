@@ -1,4 +1,4 @@
-import { datasetDescriptions } from '../data/dataset_descriptions'
+import { datasetDescriptions } from './datasetDescriptions'
 
 export type Image = {
   ImageUrl: string
@@ -69,14 +69,12 @@ export type DatasetType = 'Percent' | 'Binary' | 'Number'
 
 export type DatasetDescription = {
   title: string
-  heading: string
   body: string | JSX.Element
   source: React.ReactNode
   boundaries: number[] | string[]
   labels: string[]
   labelRotateUp: boolean[]
   columnHeader: string
-  tooltip: string
   dataType: DatasetType
   sortAscending?: boolean
 }

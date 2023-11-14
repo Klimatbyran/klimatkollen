@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import styled from 'styled-components'
-import { datasetKeys } from '../data/dataset_descriptions'
+import { datasetDescriptions } from '../utils/datasetDescriptions'
 import { SelectedData } from '../utils/types'
 import { devices } from '../utils/devices'
 
