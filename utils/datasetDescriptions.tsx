@@ -48,8 +48,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [true, true, true, true, true, true],
     columnHeader: 'Ökning elbilar',
     dataType: 'Percent',
-    tooltip:
-      'Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år',
     sortAscending: false,
   },
 
