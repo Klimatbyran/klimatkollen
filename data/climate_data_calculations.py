@@ -4,7 +4,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from solutions.cars.car_data_calculations import car_calculations, charging_point_calculations
+from solutions.cars.car_data_calculations import get_electric_car_change, charging_point_calculations
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
@@ -23,7 +23,7 @@ print('1. Municipalities loaded and prepped')
 df = emission_calculations(df)
 print('2. Climate data and calculations all done')
 
-df = car_calculations(df)
+df = get_electric_car_change(df)
 print('3. Hybrid car data and calculations finished')
 
 df = get_climate_plans(df)
@@ -65,7 +65,6 @@ for i in range(len(df)):
         'emissionChangePercent': df.iloc[i]['emissionChangePercent'],
         'hitNetZero': df.iloc[i]['hitNetZero'],
         'budgetRunsOut': df.iloc[i]['budgetRunsOut'],
-        'electricCars': df.iloc[i]['electricCars'],
         'electricCarChangePercent': df.iloc[i]['electricCarChangePercent'],
         'electricCarChangeYearly': df.iloc[i]['electricCarChangeYearly'],
         'climatePlanLink': df.iloc[i]['Länk till aktuell klimatplan'],
