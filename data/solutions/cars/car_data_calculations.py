@@ -88,12 +88,6 @@ def get_electric_car_change(df):
     return df
 
 
-def convert_column_to_float(df, year_range):
-    for year in year_range:
-        df.rename(columns={f'{year}': float(year)}, inplace=True)
-    return df
-
-
 def load_charging_point_data():
     df_charging_raw = pd.read_csv(PATH_CHARGING_POINT)
     df_charging_filtered = df_charging_raw[df_charging_raw['år-månad'].str.endswith('-12')].reset_index(drop=True)
@@ -109,43 +103,57 @@ def pivot_charging_data(df_charging_filtered):
     return df_charging_pivoted
 
 
-def merge_trafa_charging_data(df_result, df_trafa, df_charging, year_range):
-    df_result = df_result.merge(df_trafa, on='Kommun', how='left')
-    df_result = df_result.merge(df_charging, on='Kommun', how='left')
+def convert_column_to_float(df, year_range):
     for year in year_range:
-        c = df_result[f'{year}.0_y']
-        ev = df_result[f'{year}_x']
-        df_result[year] = c / ev
-    return df_result
+        df.rename(columns={f'{year}': float(year)}, inplace=True)
+    return df
+
+
+def calculate_average_yearly_change(df, year_range):    
+    # Calculate yearly changes for each municipality
+    df_yearly_changes = df[year_range].diff(axis=1)     
+    # Using 'iloc[:, 1:]' to exclude the first year, 2015, as it will have NaN values after diff()
+    df['cpevChangeAverage'] = (df_yearly_changes.iloc[:, 1:].mean(axis=1)*100).round(2)
+
+    print(df[df['Kommun'] == 'Sorsele'])
+    print(df_yearly_changes.iloc[196])
+
+    return df
 
 
 def charging_point_calculations():
     year_range = range(2015, 2023)
     df_result = pd.DataFrame()
 
+
     # Load and process charging point data
     df_charging_filtered = load_charging_point_data()
     df_charging_pivoted = pivot_charging_data(df_charging_filtered)
+
+    df_result['Kommun'] = df_charging_pivoted['Kommun'] # Assign Kommun column to result df
+    df_result = df_result.drop(index=range(290, len(df_result)))
     df_charging_float = convert_column_to_float(df_charging_pivoted, year_range)
 
-    # Load and process TRAFA data and merge with charging data
+    # Load and process Trafa data for each year
     for year, path in trafa_paths.items():
-        df_trafa = load_and_process_trafa_data(path, year)
-        df_result = merge_trafa_charging_data(df_result, df_trafa, df_charging_float, year_range)
+        df_year = load_and_process_trafa_data(path, year)
+        df_result = df_result.merge(df_year, on='Kommun', how='left')
 
-    # Calculate the average yearly change
+    df_result = df_result.merge(df_charging_float, on='Kommun', how='left')
+
+    for year in year_range:
+        c = df_result[f'{year}.0_y']
+        ev = df_result[f'{year}_x']
+        df_result[year] = c/ev
+        
     df_result = calculate_average_yearly_change(df_result, year_range)
     df_result = df_result.filter(['Kommun', 'cpevChangeAverage'], axis=1)
-
-    # Save the result
     df_result.to_excel('output/cpev.xlsx')
 
-    # smallest = df_result_filtered['CPEV'].min()
-    # largest = df_result_filtered['CPEV'].max()
-    # mean = df_result_filtered['CPEV'].mean()
-    # print(smallest, largest, mean) 
-
-    # # fixme fortsätt här - dubbelräkna cpev!
+    smallest = df_result['cpevChangeAverage'].min()
+    largest = df_result['cpevChangeAverage'].max()
+    mean = df_result['cpevChangeAverage'].mean()
+    print(smallest, largest, mean) 
     
     # # df = df.merge(df_result_filtered, on='Kommun', how='left')
 
