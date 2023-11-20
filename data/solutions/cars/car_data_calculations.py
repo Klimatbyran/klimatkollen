@@ -21,6 +21,26 @@ PATH_CHARGING_POINT = 'solutions/cars/sources/charging_points_powercircle.csv'
 PATH_POPULATION = 'solutions/cars/sources/population_scb.xlsx'
 
 
+def get_electric_car_change(df):
+    # LOAD AND PREP DATA ON CHANGE RATE OF PERCENTAGE OF NEWLY REGISTERED RECHARGABLE CARS PER MUNICIPALITY AND YEAR
+    df_raw_cars = pd.read_excel(PATH_CARS_DATA)
+
+    df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row
+    df_raw_cars = df_raw_cars.drop([0, 1])  # drop usless rows
+    df_raw_cars = df_raw_cars.reset_index(drop=True)
+
+    df_raw_cars['electricCarChangePercent'] = df_raw_cars['Procentenheter förändring av andel laddbara bilar 2015-2022']
+    df_raw_cars['electricCarChangeYearly'] = df_raw_cars.apply(
+        lambda x: {2015: x.loc[2015], 2016: x.loc[2016], 2017: x.loc[2017], 2018: x.loc[2018], 2019: x.loc[2019], 2020: x.loc[2020], 2021: x.loc[2021], 2022: x.loc[2022]}, axis=1)
+
+    df_cars = df_raw_cars.filter(
+        ['Kommun', 'electricCarChangePercent', 'electricCarChangeYearly'], axis=1)
+
+    df = df.merge(df_cars, on='Kommun', how='left')
+
+    return df
+
+
 def set_dataframe_columns(df, header_row):
     df.columns = df.iloc[header_row]
     return df.drop(range(header_row + 4))
@@ -68,26 +88,6 @@ def load_and_process_trafa_data(path, year):
     return process_common_data(df, year)
 
 
-def get_electric_car_change(df):
-    # LOAD AND PREP DATA ON CHANGE RATE OF PERCENTAGE OF NEWLY REGISTERED RECHARGABLE CARS PER MUNICIPALITY AND YEAR
-    df_raw_cars = pd.read_excel(PATH_CARS_DATA)
-
-    df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row
-    df_raw_cars = df_raw_cars.drop([0, 1])  # drop usless rows
-    df_raw_cars = df_raw_cars.reset_index(drop=True)
-
-    df_raw_cars['electricCarChangePercent'] = df_raw_cars['Procentenheter förändring av andel laddbara bilar 2015-2022']
-    df_raw_cars['electricCarChangeYearly'] = df_raw_cars.apply(
-        lambda x: {2015: x.loc[2015], 2016: x.loc[2016], 2017: x.loc[2017], 2018: x.loc[2018], 2019: x.loc[2019], 2020: x.loc[2020], 2021: x.loc[2021], 2022: x.loc[2022]}, axis=1)
-
-    df_cars = df_raw_cars.filter(
-        ['Kommun', 'electricCarChangePercent', 'electricCarChangeYearly'], axis=1)
-
-    df = df.merge(df_cars, on='Kommun', how='left')
-
-    return df
-
-
 def load_charging_point_data():
     df_charging_raw = pd.read_csv(PATH_CHARGING_POINT)
     df_charging_filtered = df_charging_raw[df_charging_raw['år-månad'].str.endswith('-12')].reset_index(drop=True)
@@ -109,50 +109,58 @@ def convert_column_to_float(df, year_range):
     return df
 
 
-def calculate_average_yearly_change(df, year_range):    
-    # Calculate yearly changes for each municipality
-    df_yearly_changes = df[year_range].diff(axis=1)     
-    # Using 'iloc[:, 1:]' to exclude the first year, 2015, as it will have NaN values after diff()
-    df['cpevChangeAverage'] = (df_yearly_changes.iloc[:, 1:].mean(axis=1)*100).round(2)
-
-    print(df[df['Kommun'] == 'Sorsele'])
-    print(df_yearly_changes.iloc[196])
-
-    return df
+def calculate_average_yearly_change(df, column_name, year_range):
+    # reimplement if needed
+    return
 
 
-def charging_point_calculations():
-    year_range = range(2015, 2023)
-    df_result = pd.DataFrame()
-
-
-    # Load and process charging point data
-    df_charging_filtered = load_charging_point_data()
-    df_charging_pivoted = pivot_charging_data(df_charging_filtered)
-
-    df_result['Kommun'] = df_charging_pivoted['Kommun'] # Assign Kommun column to result df
-    df_result = df_result.drop(index=range(290, len(df_result)))
-    df_charging_float = convert_column_to_float(df_charging_pivoted, year_range)
+def calculate_cpev(df_result, df_charging_points, year_range):
+    # Calculate yearly changes in CPEV for each municipality
 
     # Load and process Trafa data for each year
     for year, path in trafa_paths.items():
         df_year = load_and_process_trafa_data(path, year)
         df_result = df_result.merge(df_year, on='Kommun', how='left')
 
-    df_result = df_result.merge(df_charging_float, on='Kommun', how='left')
+    df_result = df_result.merge(df_charging_points, on='Kommun', how='left')
 
     for year in year_range:
         c = df_result[f'{year}.0_y']
         ev = df_result[f'{year}_x']
         df_result[year] = c/ev
         
-    df_result = calculate_average_yearly_change(df_result, year_range)
-    df_result = df_result.filter(['Kommun', 'cpevChangeAverage'], axis=1)
+    # df_result = calculate_average_yearly_change(df_result, 'cpev', year_range)
+    # df_result = df_result.filter(['Kommun', 'cpevAverageYearlyChange'], axis=1)
     df_result.to_excel('output/cpev.xlsx')
 
-    smallest = df_result['cpevChangeAverage'].min()
-    largest = df_result['cpevChangeAverage'].max()
-    mean = df_result['cpevChangeAverage'].mean()
+    return df_result
+
+
+def charging_points_per_population_density(df_result, df_charging_points, year_range):
+    return
+
+
+def charging_point_calculations():
+    year_range = range(2015, 2023) # IMPORTANT! This needs to be updated with new data to match current year range!
+    df_result = pd.DataFrame()
+
+    # Load and process charging point data
+    df_charging_filtered = load_charging_point_data()
+    df_charging_pivoted = pivot_charging_data(df_charging_filtered)
+
+    df_result['Kommun'] = df_charging_pivoted['Kommun'] # Assign municipality column to result dataframe
+    df_result = df_result.drop(index=range(290, len(df_result)))
+    df_charging_float = convert_column_to_float(df_charging_pivoted, year_range)
+
+    # Add charging points per electric vehicle (CPEV)
+    # df_result = calculate_cpev(df_result, df_charging_float, year_range)
+
+    # Add charging points/population density
+    df_cppd = charging_points_per_population_density(df_charging_float, year_range)
+
+    smallest = df_result['cpevAverageYearlyChange'].min()
+    largest = df_result['cpevAverageYearlyChange'].max()
+    mean = df_result['cpevAverageYearlyChange'].mean()
     print(smallest, largest, mean) 
     
     # # df = df.merge(df_result_filtered, on='Kommun', how='left')

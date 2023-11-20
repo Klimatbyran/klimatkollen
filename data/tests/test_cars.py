@@ -3,16 +3,12 @@ import unittest
 from unittest.mock import patch
 import pandas as pd
 
-from data.solutions.cars.car_data_calculations import charging_point_calculations
+from data.solutions.cars.car_data_calculations import charging_points_per_population_density
 
 class TestChargingPointCalculations(unittest.TestCase):
 
-    # FIXME!
-
-    @patch('pandas.read_csv')
-    @patch('pandas.read_excel')
-    def test_charging_point_calculations(self):
-        # Sample data for the main DataFrame (df)
+    def test_charging_points_per_population_density(self):
+        # Sample data
         df = pd.DataFrame({
             'Kommun': ['Pajala', 'Sollentuna'],
         })
@@ -31,11 +27,8 @@ class TestChargingPointCalculations(unittest.TestCase):
             2016: [110, 220]
         })
 
-        print(df_charging_raw)
-        print(df_population)
-
         # Call the function
-        df_result = charging_point_calculations(df, df_charging_raw, df_population)
+        df_result = charging_points_per_population_density(df_charging, year_range)
 
         # Verify the ChargingPointsPerYear calculations
         expected_df = pd.DataFrame({
