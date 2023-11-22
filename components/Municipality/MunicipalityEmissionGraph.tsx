@@ -208,6 +208,7 @@ function MunicipalityEmissionGraph({
         <Graph
           step={step}
           historical={municipality.HistoricalEmission.EmissionPerYear}
+          sectorHistorical={municipality.HistoricalEmission.SectorEmissionsPerYear}
           trend={municipality.EmissionTrend.TrendPerYear}
           budget={municipality.Budget.BudgetPerYear}
           maxVisibleYear={END_YEAR}
