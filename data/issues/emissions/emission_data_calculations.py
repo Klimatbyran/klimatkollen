@@ -11,11 +11,13 @@ from dateutil.relativedelta import relativedelta
 BUDGET = 170000000
 CURRENT_YEAR = 2021
 
-PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
+#PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
+PATH_SMHI = 'C:/Users/Ludvig/Downloads/Lansrapport_alla_CO2.xlsx'
 PATH_CRUNCHED_DATA = 'issues/emissions/output_extra.xlsx'
 
 YEAR_OFFSET = 1
 YEAR_SECONDS = 60 * 60 * 24 * 365  # a year in seconds
+lan = 'Län'
 
 
 def get_n_prep_data_from_smhi(df):
@@ -31,12 +33,46 @@ def get_n_prep_data_from_smhi(df):
     df_smhi = df_smhi.drop([1]).reset_index(
         drop=True)  # remove row 1 and reset the index
 
+    print(df_smhi.iloc[0])
+
     # Change the column names to the first rows entries
     df_smhi = df_smhi.rename(columns=df_smhi.iloc[0])
-    df_smhi = df_smhi.drop([0])  # remove row 0
+    df_smhi = df_smhi.drop([0])  # remove row 0o
 
-    df_smhi = df_smhi[(df_smhi['Huvudsektor'] == 'Alla') & (df_smhi['Undersektor'] == 'Alla')
-                      & (df_smhi['Län'] != 'Alla') & (df_smhi['Kommun'] != 'Alla')]
+    # Just extracting transport emissions
+    df_smhi_transports = df_smhi[(df_smhi['Huvudsektor'] == 'Transporter') 
+                    & (df_smhi['Undersektor'] == 'Alla')
+                    & (df_smhi['Län'] != 'Alla') 
+                    & (df_smhi['Kommun'] != 'Alla')]
+    df_smhi_transports.reset_index(drop=True)
+
+    print(df_smhi_transports)
+
+    # Remove said columns
+    df_smhi_transports = df_smhi_transports.drop(columns=['Huvudsektor', 'Undersektor', 'Län'])
+    df_smhi_transports = df_smhi_transports.sort_values(by=['Kommun'])  # sort by Kommun
+    df_smhi_transports = df_smhi_transports.reset_index(drop=True)
+
+    print(df_smhi_transports)
+
+    df_transports = df.copy()
+    print("HEY")
+    print(df_transports.columns)
+    print(df_smhi_transports.columns)
+    print(df_transports["Kommun"])
+    print(df_smhi_transports["Kommun"])
+    df_transports = df_transports.merge(df_smhi_transports, on='Kommun', how='left')
+    print(df_transports)
+    print("HEY2")
+    print(df_transports[df_transports['Kommun'] == 'Ale'])
+
+
+
+    # Same for total emissions
+    df_smhi = df_smhi[(df_smhi['Huvudsektor'] == 'Alla') 
+                    & (df_smhi['Undersektor'] == 'Alla')
+                    & (df_smhi['Län'] != 'Alla') 
+                    & (df_smhi['Kommun'] != 'Alla')]
     df_smhi = df_smhi.reset_index(drop=True)
 
     # Remove said columns
@@ -46,7 +82,7 @@ def get_n_prep_data_from_smhi(df):
 
     df = df.merge(df_smhi, on='Kommun', how='left')
 
-    return df
+    return df, df_transports
 
 
 def deduct_cement(df):
@@ -245,7 +281,7 @@ def calculate_budget_runs_out(df):
 
 
 def emission_calculations(df):
-    df_smhi = get_n_prep_data_from_smhi(df)
+    df_smhi, df_smhi_transports = get_n_prep_data_from_smhi(df)
     df_cem = deduct_cement(df_smhi)
     df_budgeted = calculate_municipality_budgets(df_cem)
     df_paris = calculate_paris_path(df_budgeted)
@@ -255,4 +291,4 @@ def emission_calculations(df):
     df_net_zero = calculate_hit_net_zero(df_change_percent)
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
 
-    return df_budget_runs_out
+    return df_budget_runs_out, df_smhi_transports

@@ -20,8 +20,10 @@ from export_data import export_to_xlsx
 df = get_municipalities()
 print('Municipalities loaded and prepped')
 
-df = emission_calculations(df)
+df, df_transports = emission_calculations(df)
 print('Climate data and calculations all done')
+
+print(df_transports)
 
 df = car_calculations(df)
 print('Hybrid car data and calculations finished')
@@ -35,10 +37,12 @@ print('Bicycle data added')
 df = get_consumption_emissions(df)
 print('Consumption emission data added')
 
+df_transports = df_transports.set_index('Kommun', verify_integrity=True)
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
 temp = []  # remane the columns
 for i in range(len(df)):
+    kommun = df.iloc[i]['Kommun']
     temp.append({
         'kommun': df.iloc[i]['Kommun'],
         'län': df.iloc[i]['Län'],
@@ -54,6 +58,21 @@ for i in range(len(df)):
             '2019': df.iloc[i][2019],
             '2020': df.iloc[i][2020],
             '2021': df.iloc[i][2021]
+        },
+        'sectorEmissions': {
+            'Transporter': {
+                '1990': df_transports[1990][kommun],
+                '2000': df_transports[2000][kommun],
+                '2005': df_transports[2005][kommun],
+                '2010': df_transports[2010][kommun],
+                '2015': df_transports[2015][kommun],
+                '2016': df_transports[2016][kommun],
+                '2017': df_transports[2017][kommun],
+                '2018': df_transports[2018][kommun],
+                '2019': df_transports[2019][kommun],
+                '2020': df_transports[2020][kommun],
+                '2021': df_transports[2021][kommun]
+            }
         },
         'budget': df.iloc[i]['Budget'],
         'emissionBudget': df.iloc[i]['parisPath'],

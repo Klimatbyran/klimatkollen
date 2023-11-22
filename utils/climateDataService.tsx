@@ -34,9 +34,23 @@ export class ClimateDataService {
           emissions.push(emissionByYear)
         })
 
+        const sectorEmissions = [{
+          Name: "TESThalf",
+          EmissionsPerYear: new Array<EmissionPerYear>()
+        }]
+
+        Object.entries(data.sectorEmissions.Transporter).forEach(([year, emission]) => {
+          const emissionByYear = {
+            Year: Number(year),
+            CO2Equivalent: emission,
+          } as unknown as EmissionPerYear
+          sectorEmissions[0].EmissionsPerYear.push(emissionByYear)
+        })
+
         const emission = {
           EmissionPerYear: emissions,
-          LargestEmissionSectors: new Array<EmissionSector>(),
+          SectorEmissionsPerYear: sectorEmissions,
+       //   LargestEmissionSectors: new Array<EmissionSector>(),
         } as Emission
 
         emission.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(
