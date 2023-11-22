@@ -18,7 +18,7 @@
     "axios": "^1.6.1",
     "babel-plugin-styled-components": "^2.1.4",
     "chart.js": "^4.4.0",
-    "deck.gl": "^8.9.32",
+    "deck.gl": "8.6.6",
     "jotai": "2.5.1",
     "jsdom": "^22.1.0",
     "md5": "^2.3.0",
