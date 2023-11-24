@@ -20,7 +20,7 @@ from export_data import export_to_xlsx
 df = get_municipalities()
 print('Municipalities loaded and prepped')
 
-df, df_transports = emission_calculations(df)
+df, df_transports, sector_dfs = emission_calculations(df)
 print('Climate data and calculations all done')
 
 print(df_transports)
@@ -36,6 +36,9 @@ print('Bicycle data added')
 
 df = get_consumption_emissions(df)
 print('Consumption emission data added')
+
+#for df_sector in sector_dfs:
+
 
 df_transports = df_transports.set_index('Kommun', verify_integrity=True)
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
