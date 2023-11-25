@@ -3,6 +3,21 @@ import { ClimateDataService } from '../../utils/climateDataService'
 const climateDataService = new ClimateDataService()
 
 describe('#getEmissionLevelChangeAverage()', () => {
+  test('HistoricalEmission sample tests', () => {
+    let samples = [
+      {municipalityName: "Karlskrona", year: "1990", correctValue: 218198.9457},
+      {municipalityName: "Ljusdal", year: "2010", correctValue: 102602.0798},
+      {municipalityName: "Älvdalen", year: "2018", correctValue: 34367.07636}
+    ]
+
+    for (let {municipalityName, year, correctValue} of samples) {
+      let municipality = climateDataService.getMunicipality(municipalityName);
+      expect(municipality).to.be.ok;
+      let emissions = municipality.HistoricalEmission.EmissionPerYear;
+      let value = emissions.filter(({Year}) => Year == year)[0].CO2Equivalent;
+      expect(value).toBeCloseTo(correctValue)
+    } 
+  })
   test('climate data service calculates average yearly change in emissions with normal data', () => {
     const data = [
       { Year: 2018, CO2Equivalent: 100 },
