@@ -76,7 +76,7 @@ def get_n_prep_data_from_smhi(df):
 
     df = df.merge(df_smhi, on='Kommun', how='left')
 
-    return df, sector_dfs["Transporter"], sector_dfs
+    return df, sector_dfs
 
 
 def deduct_cement(df):
@@ -275,7 +275,7 @@ def calculate_budget_runs_out(df):
 
 
 def emission_calculations(df):
-    df_smhi, df_transp, sector_dfs = get_n_prep_data_from_smhi(df)
+    df_smhi, sector_dfs = get_n_prep_data_from_smhi(df)
     df_cem = deduct_cement(df_smhi)
     df_budgeted = calculate_municipality_budgets(df_cem)
     df_paris = calculate_paris_path(df_budgeted)
@@ -285,4 +285,4 @@ def emission_calculations(df):
     df_net_zero = calculate_hit_net_zero(df_change_percent)
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
 
-    return df_budget_runs_out, df_transp, sector_dfs
+    return df_budget_runs_out, sector_dfs

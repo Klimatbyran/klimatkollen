@@ -5,17 +5,36 @@ const climateDataService = new ClimateDataService()
 describe('#getEmissionLevelChangeAverage()', () => {
   test('HistoricalEmission sample tests', () => {
     let samples = [
-      {municipalityName: "Karlskrona", year: "1990", correctValue: 218198.9457},
-      {municipalityName: "Ljusdal", year: "2010", correctValue: 102602.0798},
-      {municipalityName: "Älvdalen", year: "2018", correctValue: 34367.07636}
+      {mname: "Karlskrona", year: "1990", exp: 218198.9457},
+      {mname: "Ljusdal", year: "2010", exp: 102602.0798},
+      {mname: "Älvdalen", year: "2018", exp: 34367.07636}
     ]
 
-    for (let {municipalityName, year, correctValue} of samples) {
-      let municipality = climateDataService.getMunicipality(municipalityName);
+    for (let {mname, year, exp} of samples) {
+      let municipality = climateDataService.getMunicipality(mname);
       expect(municipality).to.be.ok;
       let emissions = municipality.HistoricalEmission.EmissionPerYear;
       let value = emissions.filter(({Year}) => Year == year)[0].CO2Equivalent;
-      expect(value).toBeCloseTo(correctValue)
+      expect(value).toBeCloseTo(exp)
+    } 
+  })
+  test('HistoricalEmission Sector sample tests', () => {
+    let samples = [
+      {mname: "Karlskrona", year: "1990", sector: "Transporter", exp: 100392.7339},
+      {mname: "Ljusdal", year: "2010", sector: "Jordbruk", exp: 396.5568024},
+      {mname: "Älvdalen", year: "2018", sector: "Produktanvändning (inkl. lösningsmedel)", exp: 365.2767839}
+    ]
+
+    for (let {mname, year, sector, exp} of samples) {
+      console.log(sector)
+      let municipality = climateDataService.getMunicipality(mname);
+      expect(municipality).to.be.ok;
+      console.log(municipality.HistoricalEmission)
+      let emissions = municipality.HistoricalEmission.SectorEmissionsPerYear
+        .filter(({Name}) => Name == sector)[0];
+      expect(emissions).to.be.ok;
+      let value = emissions.EmissionsPerYear.filter(({Year}) => Year == year)[0].CO2Equivalent;
+      expect(value).toBeCloseTo(exp)
     } 
   })
   test('climate data service calculates average yearly change in emissions with normal data', () => {

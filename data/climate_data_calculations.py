@@ -20,10 +20,8 @@ from export_data import export_to_xlsx
 df = get_municipalities()
 print('Municipalities loaded and prepped')
 
-df, df_transports, sector_dfs = emission_calculations(df)
+df, sector_dfs = emission_calculations(df)
 print('Climate data and calculations all done')
-
-print(df_transports)
 
 df = car_calculations(df)
 print('Hybrid car data and calculations finished')
@@ -37,15 +35,31 @@ print('Bicycle data added')
 df = get_consumption_emissions(df)
 print('Consumption emission data added')
 
-#for df_sector in sector_dfs:
 
-
-df_transports = df_transports.set_index('Kommun', verify_integrity=True)
-# MERGE ALL DATA IN LIST TO RULE THEM ALL
+for sector_name in sector_dfs:
+    sector_dfs[sector_name] = sector_dfs[sector_name].set_index('Kommun', verify_integrity=True)
+sectors = list(sector_dfs.keys())
 
 temp = []  # remane the columns
 for i in range(len(df)):
     kommun = df.iloc[i]['Kommun']
+
+    sectorEmissions = dict()
+    for sector in sectors:
+        sectorEmissions[sector] = {
+            '1990': sector_dfs[sector][1990][kommun],
+            '2000': sector_dfs[sector][2000][kommun],
+            '2005': sector_dfs[sector][2005][kommun],
+            '2010': sector_dfs[sector][2010][kommun],
+            '2015': sector_dfs[sector][2015][kommun],
+            '2016': sector_dfs[sector][2016][kommun],
+            '2017': sector_dfs[sector][2017][kommun],
+            '2018': sector_dfs[sector][2018][kommun],
+            '2019': sector_dfs[sector][2019][kommun],
+            '2020': sector_dfs[sector][2020][kommun],
+            '2021': sector_dfs[sector][2021][kommun]
+        }
+        
     temp.append({
         'kommun': df.iloc[i]['Kommun'],
         'län': df.iloc[i]['Län'],
@@ -62,21 +76,7 @@ for i in range(len(df)):
             '2020': df.iloc[i][2020],
             '2021': df.iloc[i][2021]
         },
-        'sectorEmissions': {
-            'Transporter': {
-                '1990': df_transports[1990][kommun],
-                '2000': df_transports[2000][kommun],
-                '2005': df_transports[2005][kommun],
-                '2010': df_transports[2010][kommun],
-                '2015': df_transports[2015][kommun],
-                '2016': df_transports[2016][kommun],
-                '2017': df_transports[2017][kommun],
-                '2018': df_transports[2018][kommun],
-                '2019': df_transports[2019][kommun],
-                '2020': df_transports[2020][kommun],
-                '2021': df_transports[2021][kommun]
-            }
-        },
+        'sectorEmissions': sectorEmissions,
         'budget': df.iloc[i]['Budget'],
         'emissionBudget': df.iloc[i]['parisPath'],
         'trend': df.iloc[i]['trend'],
