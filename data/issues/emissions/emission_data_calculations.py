@@ -33,8 +33,6 @@ def get_n_prep_data_from_smhi(df):
     df_smhi = df_smhi.drop([1]).reset_index(
         drop=True)  # remove row 1 and reset the index
 
-    print(df_smhi.iloc[0])
-
     # Change the column names to the first rows entries
     df_smhi = df_smhi.rename(columns=df_smhi.iloc[0])
     df_smhi = df_smhi.drop([0])  # remove row 0o
@@ -42,7 +40,6 @@ def get_n_prep_data_from_smhi(df):
     sectors = set(df_smhi['Huvudsektor'])
     sectors -= set([
         'Alla', 
-        'Industri (energi + processer)' # Skipping for now, think this one needs to be cement-adjusted
     ]) 
 
     sector_dfs = dict()
@@ -79,13 +76,13 @@ def get_n_prep_data_from_smhi(df):
     return df, sector_dfs
 
 
-def deduct_cement(df):
+def deduct_cement(df, sector_dfs):
     # Sources for cement deduction
     # Mörbylånga: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=1441
     # Skövde: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=5932
     # Gotland: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=834
 
-    df_cem = df.copy()  # copy dataframe
+    df_cem = df.copy()
 
     cement_deduction = {'Mörbylånga':
                         {2010: 248025000/1000, 2015: 255970000/1000, 2016: 239538000/1000,
@@ -104,7 +101,18 @@ def deduct_cement(df):
             df_cem.loc[df_cem['Kommun'] == i, j] = df_cem.loc[df_cem['Kommun']
                                                               == i, j].values - cement_deduction[i][j]
 
-    return df_cem
+    cement_sector = 'Industri (energi + processer)'
+    if cement_sector in sector_dfs:
+        df_sec = sector_dfs[cement_sector]
+        for i in cement_deduction.keys():
+            for j in cement_deduction[i].keys():
+                df_sec.loc[df_sec['Kommun'] == i, j] = df_sec.loc[df_sec['Kommun']
+                                                                  == i, j].values - cement_deduction[i][j]
+        sector_dfs[cement_sector] = df_sec
+    else:
+        print('Warning: could not deduct cement in sectors because %s was missing' % cement_sector)
+
+    return df_cem, sector_dfs
 
 
 def calculate_municipality_budgets(df):
@@ -276,7 +284,7 @@ def calculate_budget_runs_out(df):
 
 def emission_calculations(df):
     df_smhi, sector_dfs = get_n_prep_data_from_smhi(df)
-    df_cem = deduct_cement(df_smhi)
+    df_cem, sector_dfs = deduct_cement(df_smhi, sector_dfs)
     df_budgeted = calculate_municipality_budgets(df_cem)
     df_paris = calculate_paris_path(df_budgeted)
     df_trend = calculate_trend(df_paris)
