@@ -76,13 +76,27 @@ function Graph({
     [historical, trend, budget],
   )
 
+  let colorOfSector = name => ({
+    "Transporter": colorTheme.grey,
+    "Jordbruk": colorTheme.green,
+    "El och fjärrvärme": colorTheme.lightGreen,
+    "Arbetsmaskiner": colorTheme.lightBlue,
+    "Produktanvändning (inkl. lösningsmedel)": colorTheme.midGreen,
+    "Avfall (inkl.avlopp)": colorTheme.grey,
+    "Egen uppärmning av bostäder och lokaler": colorTheme.darkRed,
+    "Utrikes transporter": colorTheme.darkYellow,
+  }[name] || colorTheme.lightYellow)
+
   const historicalDataset: Dataset = useMemo(
     () => emissionPerYearToDataset(historical),
     [historical],
   )
-  const historicalDataset2: Dataset = useMemo(
-    () => emissionPerYearToDataset(sectorHistorical[0].EmissionsPerYear),
-    [sectorHistorical],
+  const sectorHistoricals: Dataset = useMemo(
+    () => sectorHistorical.map(
+      ({Name, EmissionsPerYear}) => 
+      ({Name, EmissionsPerYear: emissionPerYearToDataset(EmissionsPerYear)})
+    ),
+    [sectorHistorical]
   )
   const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
@@ -105,31 +119,32 @@ function Graph({
         data={{
           labels: setup.labels,
           datasets: [
+            ...sectorHistoricals.map(x => ({
+              // @ts-ignore
+              id: x.Name,
+              label: x.Name,
+              fill: true,
+              data: x.EmissionsPerYear,
+              borderWidth: 0,
+              backgroundColor: colorOfSector(x.Name),
+              pointRadius: 0,
+              tension: 0.15,
+              hidden: false,
+              stack: 'sectors'
+            })),
             {
               // @ts-ignore
               id: 'historical',
+              label: 'Alla',
               fill: true,
               data: historicalDataset,
               borderWidth: 2,
               borderColor: colorTheme.orange,
               backgroundColor: colorTheme.darkOrangeOpaque,
-              // backgroundColor: colorTheme.lightBlue,
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
-            },
-            {
-              // @ts-ignore
-              id: 'historical2',
-              fill: true,
-              data: historicalDataset2,
-              borderWidth: 2,
-              borderColor: colorTheme.orange,
-              // backgroundColor: colorTheme.darkOrangeOpaque,
-              backgroundColor: colorTheme.lightBlue,
-              pointRadius: 0,
-              tension: 0.15,
-              hidden: false,
+              stack: 'separate'
             },
             {
               // @ts-ignore
@@ -166,7 +181,7 @@ function Graph({
           plugins: {
             tooltip: {
               enabled: true,
-              displayColors: false,
+              displayColors: true,
               padding: {
                 top: 8,
                 left: 8,
@@ -176,12 +191,13 @@ function Graph({
               titleFont: {
                 weight: 'normal',
               },
+              //mode:'index',
               callbacks: {
                 title(tooltipItems) {
-                  return `${(tooltipItems[0].parsed.y / 1000).toFixed(1)}`
+                  return '';
                 },
-                label() {
-                  return ''
+                label(context) {
+                  return `${context.dataset.label}: ${(context.parsed.y / 1000).toFixed(1)}`;
                 },
               },
             },
@@ -226,6 +242,7 @@ function Graph({
                 color: 'white',
                 callback: (a) => ((a as number) / 1000).toString(),
               },
+              stacked: true
             },
           },
         }}
