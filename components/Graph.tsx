@@ -76,15 +76,15 @@ function Graph({
     [historical, trend, budget],
   )
 
-  let colorOfSector = name => ({
-    "Transporter": colorTheme.grey,
-    "Jordbruk": colorTheme.green,
-    "El och fjärrvärme": colorTheme.lightGreen,
-    "Arbetsmaskiner": colorTheme.lightBlue,
-    "Produktanvändning (inkl. lösningsmedel)": colorTheme.midGreen,
-    "Avfall (inkl.avlopp)": colorTheme.grey,
-    "Egen uppärmning av bostäder och lokaler": colorTheme.darkRed,
-    "Utrikes transporter": colorTheme.darkYellow,
+  const colorOfSector = (name) => ({
+    'Transporter': colorTheme.grey,
+    'Jordbruk': colorTheme.green,
+    'El och fjärrvärme': colorTheme.lightGreen,
+    'Arbetsmaskiner': colorTheme.lightBlue,
+    'Produktanvändning (inkl. lösningsmedel)': colorTheme.midGreen,
+    'Avfall (inkl.avlopp)': colorTheme.grey,
+    'Egen uppärmning av bostäder och lokaler': colorTheme.darkRed,
+    'Utrikes transporter': colorTheme.darkYellow,
   }[name] || colorTheme.lightYellow)
 
   const historicalDataset: Dataset = useMemo(
@@ -92,11 +92,11 @@ function Graph({
     [historical],
   )
   const sectorHistoricals: Dataset = useMemo(
-    () => sectorHistorical.map(
-      ({Name, EmissionsPerYear}) => 
-      ({Name, EmissionsPerYear: emissionPerYearToDataset(EmissionsPerYear)})
-    ),
-    [sectorHistorical]
+    () => sectorHistorical.map(({ Name, EmissionsPerYear }) => ({
+      Name,
+      EmissionsPerYear: emissionPerYearToDataset(EmissionsPerYear),
+    })),
+    [sectorHistorical],
   )
   const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
@@ -119,7 +119,7 @@ function Graph({
         data={{
           labels: setup.labels,
           datasets: [
-            ...sectorHistoricals.map(x => ({
+            ...sectorHistoricals.map((x) => ({
               // @ts-ignore
               id: x.Name,
               label: x.Name,
@@ -130,7 +130,7 @@ function Graph({
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
-              stack: 'sectors'
+              stack: 'sectors',
             })),
             {
               // @ts-ignore
@@ -144,7 +144,7 @@ function Graph({
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
-              stack: 'separate'
+              stack: 'separate',
             },
             {
               // @ts-ignore
@@ -191,13 +191,12 @@ function Graph({
               titleFont: {
                 weight: 'normal',
               },
-              //mode:'index',
               callbacks: {
-                title(tooltipItems) {
-                  return '';
+                title() {
+                  return ''
                 },
                 label(context) {
-                  return `${context.dataset.label}: ${(context.parsed.y / 1000).toFixed(1)}`;
+                  return `${context.dataset.label}: ${(context.parsed.y / 1000).toFixed(1)}`
                 },
               },
             },
@@ -242,7 +241,7 @@ function Graph({
                 color: 'white',
                 callback: (a) => ((a as number) / 1000).toString(),
               },
-              stacked: true
+              stacked: true,
             },
           },
         }}
