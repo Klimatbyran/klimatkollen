@@ -77,14 +77,15 @@ function Graph({
   )
 
   const colorOfSector = (name) => ({
-    'Transporter': colorTheme.grey,
-    'Jordbruk': colorTheme.green,
-    'El och fjärrvärme': colorTheme.lightGreen,
+    'Transporter': '#A3A3A3',
+    'Jordbruk': '#bfe5a0',
+    'El och fjärrvärme': '#D58733',
     'Arbetsmaskiner': colorTheme.lightBlue,
-    'Produktanvändning (inkl. lösningsmedel)': colorTheme.midGreen,
-    'Avfall (inkl.avlopp)': colorTheme.grey,
-    'Egen uppärmning av bostäder och lokaler': colorTheme.darkRed,
+    'Produktanvändning (inkl. lösningsmedel)': '#852C24',
+    'Avfall (inkl.avlopp)': '#0F5257',
+    'Egen uppärmning av bostäder och lokaler': '#C5533A',
     'Utrikes transporter': colorTheme.darkYellow,
+    'Industri (energi + processer)': '#FFE07A',
   }[name] || colorTheme.lightYellow)
 
   const historicalDataset: Dataset = useMemo(
@@ -143,7 +144,7 @@ function Graph({
               backgroundColor: colorTheme.darkOrangeOpaque,
               pointRadius: 0,
               tension: 0.15,
-              hidden: false,
+              hidden: true,
               stack: 'separate',
             },
             {
