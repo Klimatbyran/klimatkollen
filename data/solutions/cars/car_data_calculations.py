@@ -2,7 +2,8 @@
 
 import numpy as np
 import pandas as pd
-from scipy.stats import linregress
+from scipy.optimize import linprog
+
 
 # data on sold cars by trafa
 trafa_paths = {
@@ -147,29 +148,36 @@ def calculate_cpev(df_result, year_range):
 
     # Only keep 'Kommun' and 'CPEV' columns
     df_result = df_result[["Kommun", "CPEV"]]
-    print(df_result.head())
 
     return df_result
 
 
-def calculate_percent_diff_from_ref_cpev(df):
-    ref_CPEV = 0.1  # reference based on EU goal
-    df["CPEVDiff"] = pd.NA  # Initialize a new column for percent differences
+def least_absolute_deviation(x,y):
+    x = np.array(x)
+    y = np.array(y)
 
-    for index, row in df.iterrows():
-        cpev_dict = row["CPEV"]
-        percent_diff = {}
+    matF = np.vstack((np.ones_like(x), x))
+    m, n = matF.shape
 
-        for year, cpev in cpev_dict.items():
-            # Calculate percent difference for each year
-            percent_diff[year] = ((cpev - ref_CPEV) / ref_CPEV) * 100
+    matA = np.zeros((2* n, m + n))
+    matA[:n, :m] =+ matF.T
+    matA[n:, :m] =- matF.T
+    matA[:n, m:] =- np.eye(n)
+    matA[n:, m:] =- np.eye (n)
+    vecB = np.zeros(2*n)
+    vecB[:n] =+ y
+    vecB[n:] =- y
 
-        # Assign the dictionary of percent differences to the new column
-        df.at[index, "CPEVDiff"] = percent_diff
+    vecC = np.hstack((np.zeros(m), np.ones(n)))
 
-    return df
+    result = linprog(vecC, A_ub = matA, b_ub = vecB, bounds = (None, None))
+    vecWLAD = result.x[:m]
 
-
+    if result.success:
+        return vecWLAD[0], vecWLAD[1]
+    else:
+        print('NO SOLUTION FOUND')
+        print(result.message)
 def get_cpev_and_average_yearly_cpev_change():
     # Load and process charging point data
     df_charging_raw = pd.read_csv(PATH_CHARGING_POINT)
@@ -190,10 +198,52 @@ def get_cpev_and_average_yearly_cpev_change():
             df_year, on="Kommun", how="left"
         )
 
-    # Add charging points per electric vehicle (CPEV) and calculate average CPEV level
+    # Add charging points per electric vehicle (CPEV)
     df_cpev = calculate_cpev(df_charging_pivoted, year_range)
-    df_cpev_diff = calculate_percent_diff_from_ref_cpev(df_cpev)
-    print(df_cpev_diff.head())
+
+    # LAD regression for each municipality's CPEVDiff
+    df["LAD"] = None  # Create a new column for LAD results
+    for idx, row in df_cpev.iterrows():
+        # cpev_dict = row["CPEV"]
+        
+        # x = [2015,2016,2017,2018,2019,2020,2021,2022] #np.array(list(cpev_dict.keys()))  # Years as x values
+        # CPEV = [0,0.078947,0.05,0.059406,0.054217,0.026706,0.013025,0.007944] # np.array(list(cpev_dict.values()))
+        
+        # rescaling_lambda = lambda cpev, reference=0.1: ((reference - cpev) / reference) * 100
+        # rescaled_CPEV = list(map(rescaling_lambda, CPEV))
+
+        years = [2015,2016,2017,2018,2019,2020,2021,2022]
+        CPEV = [0,0.078947,0.05,0.059406,0.054217,0.026706,0.013025,0.007944]
+        #CPEV = [0,0.11,0.05,0.059406,0.12,0.026706,0.013025,0.13] #Added a values that is above the reference line
+
+        rescaling_lambda = lambda cpev, reference=0.1: ((reference - cpev) / reference) * 100
+        rescaled_CPEV = list(map(rescaling_lambda, CPEV))
+
+        m_lad, k_lad = least_absolute_deviation(years,CPEV)
+        k_ls, m_ls = np.polyfit(years,CPEV, deg = 1)
+
+        print("Slope of LAD:", k_lad)
+        print("Slope of LS:", k_ls)
+
+        print('x: ', x)
+        print('y: ', rescaled_CPEV)
+        print('CPEV: ', CPEV)
+
+        # m_lad, k_lad = least_absolute_deviation(x,CPEV)
+        # k_ls, m_ls = np.polyfit(x,CPEV, deg = 1)
+
+        # print("Slope of LAD:", k_lad)
+        # print("Slope of LS:", k_ls)
+
+        # print('cpev dict ', cpev_dict)
+        # print('x: ', x)
+        # print('y: ', rescaled_CPEV)
+
+        # Apply LAD regression
+        # m_lad, k_lad = least_absolute_deviation(x, y)
+        # df.at[idx, "LAD"] = [k_lad, m_lad]
+        break
+
     # df_result.to_excel('output/charging_float.xlsx')
 
     return

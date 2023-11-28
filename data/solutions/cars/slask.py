@@ -193,6 +193,27 @@ def charging_points_per_population_density(df_charging_points, year_range):
     return
 
 
+
+
+def calculate_percent_diff_from_ref_cpev(df):
+    ref_CPEV = 0.1  # reference based on EU goal
+    df["CPEVDiff"] = pd.NA  # Initialize a new column for percent differences
+
+    for index, row in df.iterrows():
+        cpev_dict = row["CPEV"]
+        percent_diff = {}
+
+        for year, cpev in cpev_dict.items():
+            # Calculate percent difference for each year
+            percent_diff[year] = ((cpev - ref_CPEV) / ref_CPEV) * 100
+
+        # Assign the dictionary of percent differences to the new column
+        df.at[index, "CPEVDiff"] = percent_diff
+
+    return df
+
+
+
 def charging_point_calculations():
     year_range = range(
         2015, 2023
