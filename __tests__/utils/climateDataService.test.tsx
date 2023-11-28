@@ -5,6 +5,20 @@ const climateDataService = new ClimateDataService()
 const sum = l => l.reduce((a,b) => a+b)
 
 describe('#getEmissionLevelChangeAverage()', () => {
+  describe('No historical emissions are negative', () => {
+    for (let {Name: MName, HistoricalEmission} of climateDataService.getMunicipalities()) {
+      let {EmissionPerYear, SectorEmissionsPerYear} = HistoricalEmission;
+      for(let {Name: sectorName, EmissionsPerYear: sectorEPY} of SectorEmissionsPerYear) {
+        for (let {Year, CO2Equivalent} of sectorEPY) {
+          if (CO2Equivalent < 0) {
+            test(MName + " " + sectorName + " " + Year, () => {
+              expect(CO2Equivalent).is.at.least(0);  
+            })
+          }
+        }
+      }
+    }
+  })
   test('HistoricalEmission sample tests', () => {
     let samples = [
       {name: "Karlskrona", year: "1990", exp: 218198.9457},
