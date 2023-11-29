@@ -178,6 +178,8 @@ def least_absolute_deviation(x,y):
     else:
         print('NO SOLUTION FOUND')
         print(result.message)
+
+        
 def get_cpev_and_average_yearly_cpev_change():
     # Load and process charging point data
     df_charging_raw = pd.read_csv(PATH_CHARGING_POINT)
@@ -200,34 +202,35 @@ def get_cpev_and_average_yearly_cpev_change():
 
     # Add charging points per electric vehicle (CPEV)
     df_cpev = calculate_cpev(df_charging_pivoted, year_range)
+    df_cpev.to_excel("output/cpev_for_colab.xlsx")
 
     # LAD regression for each municipality's CPEVDiff
-    df["LAD"] = None  # Create a new column for LAD results
-    for idx, row in df_cpev.iterrows():
-        # cpev_dict = row["CPEV"]
+    # df["LAD"] = None  # Create a new column for LAD results
+    # for idx, row in df_cpev.iterrows():
+    #     # cpev_dict = row["CPEV"]
         
-        # x = [2015,2016,2017,2018,2019,2020,2021,2022] #np.array(list(cpev_dict.keys()))  # Years as x values
-        # CPEV = [0,0.078947,0.05,0.059406,0.054217,0.026706,0.013025,0.007944] # np.array(list(cpev_dict.values()))
+    #     # x = [2015,2016,2017,2018,2019,2020,2021,2022] #np.array(list(cpev_dict.keys()))  # Years as x values
+    #     # CPEV = [0,0.078947,0.05,0.059406,0.054217,0.026706,0.013025,0.007944] # np.array(list(cpev_dict.values()))
         
-        # rescaling_lambda = lambda cpev, reference=0.1: ((reference - cpev) / reference) * 100
-        # rescaled_CPEV = list(map(rescaling_lambda, CPEV))
+    #     # rescaling_lambda = lambda cpev, reference=0.1: ((reference - cpev) / reference) * 100
+    #     # rescaled_CPEV = list(map(rescaling_lambda, CPEV))
 
-        years = [2015,2016,2017,2018,2019,2020,2021,2022]
-        CPEV = [0,0.078947,0.05,0.059406,0.054217,0.026706,0.013025,0.007944]
-        #CPEV = [0,0.11,0.05,0.059406,0.12,0.026706,0.013025,0.13] #Added a values that is above the reference line
+    #     years = [2015,2016,2017,2018,2019,2020,2021,2022]
+    #     CPEV = [0,0.078947,0.05,0.059406,0.054217,0.026706,0.013025,0.007944]
+    #     #CPEV = [0,0.11,0.05,0.059406,0.12,0.026706,0.013025,0.13] #Added a values that is above the reference line
 
-        rescaling_lambda = lambda cpev, reference=0.1: ((reference - cpev) / reference) * 100
-        rescaled_CPEV = list(map(rescaling_lambda, CPEV))
+    #     rescaling_lambda = lambda cpev, reference=0.1: ((reference - cpev) / reference) * 100
+    #     rescaled_CPEV = list(map(rescaling_lambda, CPEV))
 
-        m_lad, k_lad = least_absolute_deviation(years,CPEV)
-        k_ls, m_ls = np.polyfit(years,CPEV, deg = 1)
+    #     m_lad, k_lad = least_absolute_deviation(years,CPEV)
+    #     k_ls, m_ls = np.polyfit(years,CPEV, deg = 1)
 
-        print("Slope of LAD:", k_lad)
-        print("Slope of LS:", k_ls)
+    #     print("Slope of LAD:", k_lad)
+    #     print("Slope of LS:", k_ls)
 
-        print('x: ', x)
-        print('y: ', rescaled_CPEV)
-        print('CPEV: ', CPEV)
+    #     print('x: ', x)
+    #     print('y: ', rescaled_CPEV)
+    #     print('CPEV: ', CPEV)
 
         # m_lad, k_lad = least_absolute_deviation(x,CPEV)
         # k_ls, m_ls = np.polyfit(x,CPEV, deg = 1)
@@ -242,7 +245,7 @@ def get_cpev_and_average_yearly_cpev_change():
         # Apply LAD regression
         # m_lad, k_lad = least_absolute_deviation(x, y)
         # df.at[idx, "LAD"] = [k_lad, m_lad]
-        break
+        
 
     # df_result.to_excel('output/charging_float.xlsx')
 
