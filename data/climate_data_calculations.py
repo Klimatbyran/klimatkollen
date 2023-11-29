@@ -4,7 +4,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from solutions.cars.car_data_calculations import get_electric_car_change, charging_point_calculations
+from solutions.cars.car_data_calculations import get_electric_car_change, get_cpev_and_average_yearly_cpev_change
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
@@ -35,8 +35,9 @@ print('5. Bicycle data added')
 df = get_consumption_emissions(df)
 print('6. Consumption emission data added')
 
-df = charging_point_calculations(df)
-print('7. Charging points added')
+df_charging_points = get_cpev_and_average_yearly_cpev_change()
+df = df.merge(df_charging_points, on='Kommun', how='left')
+print('7. Add CPEV and average yearly CPEV level change')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 

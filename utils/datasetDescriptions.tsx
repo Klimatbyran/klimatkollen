@@ -148,7 +148,6 @@ export const datasetDescriptions: DatasetDescriptions = {
 
   Laddpunkterna: {
     title: 'Laddpunkterna',
-    heading: 'Laddpunkter per capita',
     body: 'Lorem ipsum.',
     source: (
       <>
@@ -178,8 +177,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Laddpunkter/person',
     dataType: 'Number',
-    tooltip:
-      'Lorem ipsum.',
     sortAscending: false,
   },
 }
