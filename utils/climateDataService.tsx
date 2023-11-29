@@ -37,7 +37,7 @@ export class ClimateDataService {
         const sectorEmissions = Object.entries(data.sectorEmissions)
           .map(([sectorName, emissionData]) => ({
               Name: sectorName,
-              EmissionsPerYear: Object.entries(emissionData)
+              EmissionsPerYear: Object.entries(emissionData as {})
                 .map(([year, emission]) => ({
                     Year: Number(year),
                     CO2Equivalent: emission,

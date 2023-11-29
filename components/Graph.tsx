@@ -11,7 +11,7 @@ import {
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
-import { EmissionPerYear } from '../utils/types'
+import { EmissionPerYear, EmissionSector } from '../utils/types'
 
 import { colorTheme } from '../Theme'
 
@@ -76,7 +76,7 @@ function Graph({
     [historical, trend, budget],
   )
 
-  const colorOfSector = (name) => ({
+  const colorOfSector = (name: string) => ({
     'Transporter': '#A3A3A3',
     'Jordbruk': '#bfe5a0',
     'El och fjärrvärme': '#D58733',
@@ -92,7 +92,7 @@ function Graph({
     () => emissionPerYearToDataset(historical),
     [historical],
   )
-  const sectorHistoricals: Dataset = useMemo(
+  const sectorHistoricals = useMemo(
     () => sectorHistorical.map(({ Name, EmissionsPerYear }) => ({
       Name,
       EmissionsPerYear: emissionPerYearToDataset(EmissionsPerYear),
