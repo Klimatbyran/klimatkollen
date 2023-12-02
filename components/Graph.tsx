@@ -76,16 +76,41 @@ function Graph({
     [historical, trend, budget],
   )
 
+  type Named = { Name : string}
+  const compareSector = ({ Name: NameA }: Named, { Name: NameB }: Named) => {
+    const order = [
+      'Transporter',
+      'Utrikes transporter',
+
+      'Industri (energi + processer)',
+
+      'Jordbruk',
+
+      'Egen uppärmning av bostäder och lokaler',
+      'El och fjärrvärme',
+
+      'Arbetsmaskiner',
+      'Produktanvändning (inkl. lösningsmedel)',
+      'Avfall (inkl.avlopp)',
+    ]
+    return Math.sign(order.indexOf(NameB)
+                   - order.indexOf(NameA))
+  }
+
   const colorOfSector = (name: string) => ({
-    'Transporter': '#A3A3A3',
-    'Jordbruk': '#bfe5a0',
-    'El och fjärrvärme': '#D58733',
-    'Arbetsmaskiner': colorTheme.lightBlue,
-    'Produktanvändning (inkl. lösningsmedel)': '#852C24',
-    'Avfall (inkl.avlopp)': '#0F5257',
-    'Egen uppärmning av bostäder och lokaler': '#C5533A',
-    'Utrikes transporter': colorTheme.darkYellow,
-    'Industri (energi + processer)': '#FFE07A',
+    'Transporter': '#60b748',
+    'Utrikes transporter': '#60b748',
+
+    'Industri (energi + processer)': '#3395cc',
+
+    'Jordbruk': '#e55819',
+
+    'Egen uppärmning av bostäder och lokaler': '#ffaa00',
+    'El och fjärrvärme': '#ffaa00',
+
+    'Arbetsmaskiner': '#cc3349',
+    'Produktanvändning (inkl. lösningsmedel)': '#cc3349',
+    'Avfall (inkl.avlopp)': '#cc3349',
   }[name] || colorTheme.lightYellow)
 
   const historicalDataset: Dataset = useMemo(
@@ -120,19 +145,21 @@ function Graph({
         data={{
           labels: setup.labels,
           datasets: [
-            ...sectorHistoricals.map((x) => ({
-              // @ts-ignore
-              id: x.Name,
-              label: x.Name,
-              fill: true,
-              data: x.EmissionsPerYear,
-              borderWidth: 0,
-              backgroundColor: colorOfSector(x.Name),
-              pointRadius: 0,
-              tension: 0.15,
-              hidden: false,
-              stack: 'sectors',
-            })),
+            ...sectorHistoricals
+              .sort(compareSector)
+              .map(({ Name, EmissionsPerYear }) => ({
+                // @ts-ignore
+                id: Name,
+                label: Name,
+                fill: true,
+                data: EmissionsPerYear,
+                borderWidth: 0,
+                backgroundColor: colorOfSector(Name),
+                pointRadius: 0,
+                tension: 0.15,
+                hidden: false,
+                stack: 'sectors',
+              })),
             {
               // @ts-ignore
               id: 'historical',
@@ -145,11 +172,12 @@ function Graph({
               pointRadius: 0,
               tension: 0.15,
               hidden: true,
-              stack: 'separate',
+              stack: 'separate1',
             },
             {
               // @ts-ignore
               id: 'budget',
+              label: 'Parisavtalet',
               fill: true,
               data: budgetDataset,
               borderWidth: 2,
@@ -158,10 +186,12 @@ function Graph({
               pointRadius: 0,
               tension: 0.15,
               hidden: step < 2,
+              stack: 'separate2',
             },
             {
               // @ts-ignore
               id: 'pledge',
+              label: 'Projektion',
               fill: true,
               data: pledgeDataset,
               borderWidth: 2,
@@ -170,6 +200,7 @@ function Graph({
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
+              stack: 'separate3',
             },
           ],
         }}
@@ -193,9 +224,6 @@ function Graph({
                 weight: 'normal',
               },
               callbacks: {
-                title() {
-                  return ''
-                },
                 label(context) {
                   return `${context.dataset.label}: ${(context.parsed.y / 1000).toFixed(1)}`
                 },
