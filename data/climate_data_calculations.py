@@ -35,9 +35,9 @@ print('5. Bicycle data added')
 df = get_consumption_emissions(df)
 print('6. Consumption emission data added')
 
-df_charging_points = get_cpev_and_average_yearly_cpev_change()
-df = df.merge(df_charging_points, on='Kommun', how='left')
-print('7. Add CPEV and average yearly CPEV level change')
+df_cpev = get_cpev_and_trend()
+df = df.merge(df_cpev, on='Kommun', how='left')
+print('7. Add CPEV and CPEV trend')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 

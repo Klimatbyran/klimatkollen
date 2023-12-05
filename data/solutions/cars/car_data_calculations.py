@@ -252,4 +252,6 @@ def get_cpev_and_average_yearly_cpev_change():
     return
 
 
-get_cpev_and_average_yearly_cpev_change()
+def get_cpev_and_trend():
+    df = pd.read_csv("sources/output_laddinfra.csv")
+    return df
