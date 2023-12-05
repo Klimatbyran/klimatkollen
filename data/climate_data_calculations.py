@@ -39,7 +39,7 @@ print('5. Add bicycle data')
 df = get_consumption_emissions(df)
 print('6. Add consumption emission data')
 
-df = calculate_wind_data(df)
+df = df.merge(calculate_wind_data(df), on='kommun', how='left')
 print('7. Add wind data')
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
