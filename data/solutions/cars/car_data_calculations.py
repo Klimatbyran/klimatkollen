@@ -39,10 +39,7 @@ def car_calculations(df):
 
     df_raw_cars = pd.read_excel(PATH_CARS_DATA)
 
-#################
-    #df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row
     df_raw_cars.columns = df_raw_cars.iloc[1].apply(lambda x: x if isinstance(x, str) else int(x))  # name columns after row
-    #######################
     df_raw_cars = df_raw_cars.drop([0, 1])  # drop usless rows
     df_raw_cars = df_raw_cars.reset_index(drop=True)
 

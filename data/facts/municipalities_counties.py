@@ -11,7 +11,7 @@ def get_municipalities():
     df = df.drop([0, 1, 2, 3, 4], axis=0).reset_index(drop=True)
 
     # Create an empty dataframe to store the result
-    result = pd.DataFrame(columns=['Kommun', 'Kod', 'Län'])   
+    result = pd.DataFrame(columns=['Kommun', 'Kod', 'Län'])
 
     # Iterate through the rows of the dataframe
     for i, row in df.iterrows():
