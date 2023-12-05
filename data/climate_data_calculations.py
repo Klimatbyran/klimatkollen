@@ -36,7 +36,6 @@ print('Bicycle data added')
 df = get_consumption_emissions(df)
 print('Consumption emission data added')
 
-
 for sector_name in sector_dfs:
     sector_dfs[sector_name] = sector_dfs[sector_name].set_index('Kommun', verify_integrity=True)
 sectors = list(sector_dfs.keys())

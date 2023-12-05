@@ -98,19 +98,19 @@ function Graph({
   }
 
   const colorOfSector = (name: string) => ({
-    'Transporter': '#60b748',
-    'Utrikes transporter': '#60b748',
+    'Transporter': colorTheme.midGreen, //'#60b748',
+    'Utrikes transporter': colorTheme.midGreen,// '#60b748',
 
-    'Industri (energi + processer)': '#3395cc',
+    'Industri (energi + processer)':  colorTheme.lightBlue,//'#3395cc',
 
-    'Jordbruk': '#e55819',
+    'Jordbruk':  colorTheme.yellow,//'#e55819',
 
-    'Egen uppärmning av bostäder och lokaler': '#ffaa00',
-    'El och fjärrvärme': '#ffaa00',
+    'Egen uppärmning av bostäder och lokaler':  colorTheme.darkYellow,//'#ffaa00',
+    'El och fjärrvärme':  colorTheme.darkYellow,//'#ffaa00',
 
-    'Arbetsmaskiner': '#cc3349',
-    'Produktanvändning (inkl. lösningsmedel)': '#cc3349',
-    'Avfall (inkl.avlopp)': '#cc3349',
+    'Arbetsmaskiner':  colorTheme.red,//'#cc3349',
+    'Produktanvändning (inkl. lösningsmedel)':  colorTheme.red,//'#cc3349',
+    'Avfall (inkl.avlopp)':  colorTheme.red,//'#cc3349',
   }[name] || colorTheme.lightYellow)
 
   const historicalDataset: Dataset = useMemo(

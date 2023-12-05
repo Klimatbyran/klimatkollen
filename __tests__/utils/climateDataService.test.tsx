@@ -2,8 +2,6 @@ import { ClimateDataService } from '../../utils/climateDataService'
 
 const climateDataService = new ClimateDataService()
 
-const sum = l => l.reduce((a,b) => a+b)
-
 describe('#getEmissionLevelChangeAverage()', () => {
   test('climate data service calculates average yearly change in emissions with normal data', () => {
     const data = [

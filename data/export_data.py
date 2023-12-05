@@ -48,9 +48,6 @@ def export_to_xlsx(df):
         group.to_excel(writer, sheet_name=län, index=False)
 
     # Save the Excel file
-    ####################
-    #writer.save()
     writer.close()
-    ###########
 
     print('Climate data xlsx file created and saved')

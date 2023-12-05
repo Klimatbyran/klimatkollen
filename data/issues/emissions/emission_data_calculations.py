@@ -11,14 +11,11 @@ from dateutil.relativedelta import relativedelta
 BUDGET = 170000000
 CURRENT_YEAR = 2021
 
-#PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
-PATH_SMHI = 'C:/Users/Ludvig/Downloads/Lansrapport_alla_CO2.xlsx'
+PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
 PATH_CRUNCHED_DATA = 'issues/emissions/output_extra.xlsx'
 
 YEAR_OFFSET = 1
 YEAR_SECONDS = 60 * 60 * 24 * 365  # a year in seconds
-lan = 'Län'
-
 
 def get_n_prep_data_from_smhi(df):
     # Download data from SMHI and load it in to a pandas dataframe
