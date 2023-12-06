@@ -65,11 +65,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           sizes="512x512"
           href="/favicons/favicon-512x512.png"
         />
-        <meta property="og:image" content="https://klimatkollen.se/images/social-picture.png" />
+        <meta property="og:image" content="https://klimatkollen.se/board/impact_challenge.png" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:image"
-          content="https://klimatkollen.se/images/social-picture.png"
+          content="https://klimatkollen.se/board/impact_challenge.png"
         />
       </Head>
       <Theme>
