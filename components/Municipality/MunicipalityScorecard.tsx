@@ -103,6 +103,10 @@ const CommentContainer = styled.div`
   margin-top: 8px;
 `
 
+const Comment = styled.span`
+  font-weight: bold;
+`
+
 type Props = {
   name: string
   rank: number | null
@@ -180,7 +184,7 @@ function Scorecard({
               {' '}
               för att redigera informationen.
               <CommentContainer>
-                <b>Kommentar:</b>
+                <Comment>Kommentar:</Comment>
                 {' '}
                 {climatePlan.Comment}
               </CommentContainer>
