@@ -4,7 +4,8 @@ import json
 import numpy as np
 import pandas as pd
 
-from solutions.cars.car_data_calculations import get_electric_car_change, get_cpev_and_average_yearly_cpev_change
+from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
+from solutions.cars.car_data_calculations import get_cpev_and_average_yearly_cpev_change
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
@@ -23,7 +24,7 @@ print('1. Municipalities loaded and prepped')
 df = emission_calculations(df)
 print('2. Climate data and calculations all done')
 
-df = get_electric_car_change(df)
+df = get_electric_car_change_rate(df)
 print('3. Hybrid car data and calculations finished')
 
 df = get_climate_plans(df)

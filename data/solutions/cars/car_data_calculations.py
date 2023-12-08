@@ -17,45 +17,10 @@ trafa_paths = {
     2022: "solutions/cars/sources/fordon_lan_och_kommuner_2022.xlsx",
 }
 
-# calculations based on trafa data
-PATH_CARS_DATA = "solutions/cars/sources/kpi1_calculations.xlsx"
 PATH_CHARGING_POINT = "solutions/cars/sources/charging_points_powercircle.csv"
 PATH_POPULATION = "solutions/cars/sources/population_scb.xlsx"
 PATH_POPULATION_DENSITY = "solutions/cars/sources/scb_population_density.xlsx"
 
-
-def get_electric_car_change(df):
-    # LOAD AND PREP DATA ON CHANGE RATE OF PERCENTAGE OF NEWLY REGISTERED RECHARGABLE CARS PER MUNICIPALITY AND YEAR
-    df_raw_cars = pd.read_excel(PATH_CARS_DATA)
-
-    df_raw_cars.columns = df_raw_cars.iloc[1]  # name columns after row
-    df_raw_cars = df_raw_cars.drop([0, 1])  # drop usless rows
-    df_raw_cars = df_raw_cars.reset_index(drop=True)
-
-    df_raw_cars["electricCarChangePercent"] = df_raw_cars[
-        "Procentenheter förändring av andel laddbara bilar 2015-2022"
-    ]
-    df_raw_cars["electricCarChangeYearly"] = df_raw_cars.apply(
-        lambda x: {
-            2015: x.loc[2015],
-            2016: x.loc[2016],
-            2017: x.loc[2017],
-            2018: x.loc[2018],
-            2019: x.loc[2019],
-            2020: x.loc[2020],
-            2021: x.loc[2021],
-            2022: x.loc[2022],
-        },
-        axis=1,
-    )
-
-    df_cars = df_raw_cars.filter(
-        ["Kommun", "electricCarChangePercent", "electricCarChangeYearly"], axis=1
-    )
-
-    df = df.merge(df_cars, on="Kommun", how="left")
-
-    return df
 
 
 def filter_charging_point_data(df_raw):
@@ -99,7 +64,7 @@ def clean_municipality_data(df):
     return df.dropna(subset=["Kommun"])
 
 
-def process_common_data(df, year):
+def process_common_data(df, year):  # fixme rename
     df["electricity"] = df["El"].replace([" –", "–"], 0).astype(float)
     df["plugIn"] = df["Laddhybrider"].replace([" –", "–"], 0).astype(float)
     df[year] = df["electricity"] + df["plugIn"]
@@ -147,40 +112,12 @@ def calculate_cpev(df_result, year_range):
         df_result.at[index, "CPEV"] = cpev_values
 
     # Only keep 'Kommun' and 'CPEV' columns
-    df_result = df_result[["Kommun", "CPEV"]]
+    df_result = df_result[["Kommun", "CPEV", "2022_x", "2022_y"]]
 
     return df_result
 
-
-def least_absolute_deviation(x,y):
-    x = np.array(x)
-    y = np.array(y)
-
-    matF = np.vstack((np.ones_like(x), x))
-    m, n = matF.shape
-
-    matA = np.zeros((2* n, m + n))
-    matA[:n, :m] =+ matF.T
-    matA[n:, :m] =- matF.T
-    matA[:n, m:] =- np.eye(n)
-    matA[n:, m:] =- np.eye (n)
-    vecB = np.zeros(2*n)
-    vecB[:n] =+ y
-    vecB[n:] =- y
-
-    vecC = np.hstack((np.zeros(m), np.ones(n)))
-
-    result = linprog(vecC, A_ub = matA, b_ub = vecB, bounds = (None, None))
-    vecWLAD = result.x[:m]
-
-    if result.success:
-        return vecWLAD[0], vecWLAD[1]
-    else:
-        print('NO SOLUTION FOUND')
-        print(result.message)
-
         
-def get_cpev_and_average_yearly_cpev_change():
+def get_cpev_and_trend():
     # Load and process charging point data
     df_charging_raw = pd.read_csv(PATH_CHARGING_POINT)
     df_charging_filtered = filter_charging_point_data(df_charging_raw)
@@ -204,54 +141,12 @@ def get_cpev_and_average_yearly_cpev_change():
     df_cpev = calculate_cpev(df_charging_pivoted, year_range)
     df_cpev.to_excel("output/cpev_for_colab.xlsx")
 
-    # LAD regression for each municipality's CPEVDiff
-    # df["LAD"] = None  # Create a new column for LAD results
-    # for idx, row in df_cpev.iterrows():
-    #     # cpev_dict = row["CPEV"]
-        
-    #     # x = [2015,2016,2017,2018,2019,2020,2021,2022] #np.array(list(cpev_dict.keys()))  # Years as x values
-    #     # CPEV = [0,0.078947,0.05,0.059406,0.054217,0.026706,0.013025,0.007944] # np.array(list(cpev_dict.values()))
-        
-    #     # rescaling_lambda = lambda cpev, reference=0.1: ((reference - cpev) / reference) * 100
-    #     # rescaled_CPEV = list(map(rescaling_lambda, CPEV))
-
-    #     years = [2015,2016,2017,2018,2019,2020,2021,2022]
-    #     CPEV = [0,0.078947,0.05,0.059406,0.054217,0.026706,0.013025,0.007944]
-    #     #CPEV = [0,0.11,0.05,0.059406,0.12,0.026706,0.013025,0.13] #Added a values that is above the reference line
-
-    #     rescaling_lambda = lambda cpev, reference=0.1: ((reference - cpev) / reference) * 100
-    #     rescaled_CPEV = list(map(rescaling_lambda, CPEV))
-
-    #     m_lad, k_lad = least_absolute_deviation(years,CPEV)
-    #     k_ls, m_ls = np.polyfit(years,CPEV, deg = 1)
-
-    #     print("Slope of LAD:", k_lad)
-    #     print("Slope of LS:", k_ls)
-
-    #     print('x: ', x)
-    #     print('y: ', rescaled_CPEV)
-    #     print('CPEV: ', CPEV)
-
-        # m_lad, k_lad = least_absolute_deviation(x,CPEV)
-        # k_ls, m_ls = np.polyfit(x,CPEV, deg = 1)
-
-        # print("Slope of LAD:", k_lad)
-        # print("Slope of LS:", k_ls)
-
-        # print('cpev dict ', cpev_dict)
-        # print('x: ', x)
-        # print('y: ', rescaled_CPEV)
-
-        # Apply LAD regression
-        # m_lad, k_lad = least_absolute_deviation(x, y)
-        # df.at[idx, "LAD"] = [k_lad, m_lad]
-        
-
-    # df_result.to_excel('output/charging_float.xlsx')
-
     return
 
 
-def get_cpev_and_trend():
-    df = pd.read_csv("sources/output_laddinfra.csv")
-    return df
+# def get_cpev_and_trend():
+#     df = pd.read_csv("sources/output_laddinfra.csv")
+#     return df
+
+
+get_cpev_and_trend()
