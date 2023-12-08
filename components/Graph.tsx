@@ -125,19 +125,19 @@ function Graph({
   }[name] || colorTheme.lightYellow)
   */
   const colorOfSector = (name: string) => ({
-    'Transporter': '#60b74844',
-    'Utrikes transporter': '#60b74844',
+    'Transporter': '#60b748',
+    'Utrikes transporter': '#60b748',
 
-    'Industri (energi + processer)': '#3395cc44',
+    'Industri (energi + processer)': '#3395cc',
 
-    'Jordbruk': '#e5581944',
+    'Jordbruk': '#e55819',
 
-    'Egen uppärmning av bostäder och lokaler': '#ffaa0044',
-    'El och fjärrvärme': '#ffaa0044',
+    'Egen uppärmning av bostäder och lokaler': '#ffaa00',
+    'El och fjärrvärme': '#ffaa00',
 
-    'Arbetsmaskiner': '#cc334944',
-    'Produktanvändning (inkl. lösningsmedel)': '#cc334944',
-    'Avfall (inkl.avlopp)': '#cc334944',
+    'Arbetsmaskiner': '#cc3349',
+    'Produktanvändning (inkl. lösningsmedel)': '#cc3349',
+    'Avfall (inkl.avlopp)': '#cc3349',
   }[name] || '#FFFFFFFF')
 
   const historicalDataset: Dataset = useMemo(
@@ -180,8 +180,9 @@ function Graph({
                 label: Name,
                 fill: sectorFill(Name),
                 data: EmissionsPerYear,
-                borderWidth: 0,
-                backgroundColor: colorOfSector(Name),
+                borderWidth: 2,
+                borderColor: colorOfSector(Name),
+                backgroundColor: `${colorOfSector(Name)}44`,
                 pointRadius: 0,
                 tension: 0.15,
                 hidden: false,
