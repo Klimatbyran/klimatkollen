@@ -79,36 +79,35 @@ function Graph({
   type Named = { Name : string}
   // Top to bottom order we expect on the screen
   const order = [
-      'Transporter',
-      'Utrikes transporter',
+    'Transporter',
+    'Utrikes transporter',
 
-      'Industri (energi + processer)',
+    'Industri (energi + processer)',
 
-      'Jordbruk',
+    'Jordbruk',
 
-      'Egen uppärmning av bostäder och lokaler',
-      'El och fjärrvärme',
+    'Egen uppärmning av bostäder och lokaler',
+    'El och fjärrvärme',
 
-      'Arbetsmaskiner',
-      'Produktanvändning (inkl. lösningsmedel)',
-      'Avfall (inkl.avlopp)',
-    ]
-  const compareSector = ({ Name: NameA }: Named, { Name: NameB }: Named) => {
-    return Math.sign(order.indexOf(NameB)
-                   - order.indexOf(NameA))
-  }
+    'Arbetsmaskiner',
+    'Produktanvändning (inkl. lösningsmedel)',
+    'Avfall (inkl.avlopp)',
+  ]
+  const compareSector = (
+    { Name: NameA }: Named,
+    { Name: NameB }: Named,
+  ) => Math.sign(order.indexOf(NameB)
+               - order.indexOf(NameA))
 
   // For chartjs fill property
   // https://www.youtube.com/watch?v=2g0gIAsQSp4
-  const sectorFill = (name) => {
-    let index = order
-    .slice().reverse() // zero is the bottom one
-    .indexOf(name)
-    return index == '0' ? 'origin' : index-1;
-    console.log(name +' ' +index + " "+ ret)
-    return ret
+  const sectorFill = (name: string) => {
+    const index = order
+      .slice().reverse() // zero is the bottom one
+      .indexOf(name)
+    return index === 0 ? 'origin' : index - 1
   }
-/*
+  /*
   const colorOfSector = (name: string) => ({
     'Transporter': colorTheme.midGreen, //'#60b748',
     'Utrikes transporter': colorTheme.midGreen,// '#60b748',
@@ -124,20 +123,20 @@ function Graph({
     'Produktanvändning (inkl. lösningsmedel)':  colorTheme.red,//'#cc3349',
     'Avfall (inkl.avlopp)':  colorTheme.red,//'#cc3349',
   }[name] || colorTheme.lightYellow)
-*/
-   const colorOfSector = (name: string) => ({
+  */
+  const colorOfSector = (name: string) => ({
     'Transporter': '#60b74844',
     'Utrikes transporter': '#60b74844',
 
-    'Industri (energi + processer)':  '#3395cc44',
+    'Industri (energi + processer)': '#3395cc44',
 
     'Jordbruk': '#e5581944',
 
     'Egen uppärmning av bostäder och lokaler': '#ffaa0044',
     'El och fjärrvärme': '#ffaa0044',
 
-    'Arbetsmaskiner':'#cc334944',
-    'Produktanvändning (inkl. lösningsmedel)':  '#cc334944',
+    'Arbetsmaskiner': '#cc334944',
+    'Produktanvändning (inkl. lösningsmedel)': '#cc334944',
     'Avfall (inkl.avlopp)': '#cc334944',
   }[name] || '#FFFFFFFF')
 
