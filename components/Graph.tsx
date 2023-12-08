@@ -77,8 +77,8 @@ function Graph({
   )
 
   type Named = { Name : string}
-  const compareSector = ({ Name: NameA }: Named, { Name: NameB }: Named) => {
-    const order = [
+  // Top to bottom order we expect on the screen
+  const order = [
       'Transporter',
       'Utrikes transporter',
 
@@ -93,10 +93,22 @@ function Graph({
       'Produktanvändning (inkl. lösningsmedel)',
       'Avfall (inkl.avlopp)',
     ]
+  const compareSector = ({ Name: NameA }: Named, { Name: NameB }: Named) => {
     return Math.sign(order.indexOf(NameB)
                    - order.indexOf(NameA))
   }
 
+  // For chartjs fill property
+  // https://www.youtube.com/watch?v=2g0gIAsQSp4
+  const sectorFill = (name) => {
+    let index = order
+    .slice().reverse() // zero is the bottom one
+    .indexOf(name)
+    return index == '0' ? 'origin' : index-1;
+    console.log(name +' ' +index + " "+ ret)
+    return ret
+  }
+/*
   const colorOfSector = (name: string) => ({
     'Transporter': colorTheme.midGreen, //'#60b748',
     'Utrikes transporter': colorTheme.midGreen,// '#60b748',
@@ -112,6 +124,22 @@ function Graph({
     'Produktanvändning (inkl. lösningsmedel)':  colorTheme.red,//'#cc3349',
     'Avfall (inkl.avlopp)':  colorTheme.red,//'#cc3349',
   }[name] || colorTheme.lightYellow)
+*/
+   const colorOfSector = (name: string) => ({
+    'Transporter': '#60b74844',
+    'Utrikes transporter': '#60b74844',
+
+    'Industri (energi + processer)':  '#3395cc44',
+
+    'Jordbruk': '#e5581944',
+
+    'Egen uppärmning av bostäder och lokaler': '#ffaa0044',
+    'El och fjärrvärme': '#ffaa0044',
+
+    'Arbetsmaskiner':'#cc334944',
+    'Produktanvändning (inkl. lösningsmedel)':  '#cc334944',
+    'Avfall (inkl.avlopp)': '#cc334944',
+  }[name] || '#FFFFFFFF')
 
   const historicalDataset: Dataset = useMemo(
     () => emissionPerYearToDataset(historical),
@@ -151,7 +179,7 @@ function Graph({
                 // @ts-ignore
                 id: Name,
                 label: Name,
-                fill: true,
+                fill: sectorFill(Name),
                 data: EmissionsPerYear,
                 borderWidth: 0,
                 backgroundColor: colorOfSector(Name),
