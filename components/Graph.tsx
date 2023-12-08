@@ -107,23 +107,24 @@ function Graph({
       .indexOf(name)
     return index === 0 ? 'origin' : index - 1
   }
-  /*
+
   const colorOfSector = (name: string) => ({
-    'Transporter': colorTheme.midGreen, //'#60b748',
-    'Utrikes transporter': colorTheme.midGreen,// '#60b748',
+    'Transporter': colorTheme.midGreen,
+    'Utrikes transporter': colorTheme.midGreen,
 
-    'Industri (energi + processer)':  colorTheme.lightBlue,//'#3395cc',
+    'Industri (energi + processer)': colorTheme.lightBlue,
 
-    'Jordbruk':  colorTheme.yellow,//'#e55819',
+    'Jordbruk': colorTheme.darkGreenOne,
 
-    'Egen uppärmning av bostäder och lokaler':  colorTheme.darkYellow,//'#ffaa00',
-    'El och fjärrvärme':  colorTheme.darkYellow,//'#ffaa00',
+    'Egen uppärmning av bostäder och lokaler': colorTheme.lightYellow,
+    'El och fjärrvärme': colorTheme.lightYellow,
 
-    'Arbetsmaskiner':  colorTheme.red,//'#cc3349',
-    'Produktanvändning (inkl. lösningsmedel)':  colorTheme.red,//'#cc3349',
-    'Avfall (inkl.avlopp)':  colorTheme.red,//'#cc3349',
-  }[name] || colorTheme.lightYellow)
-  */
+    'Arbetsmaskiner': colorTheme.darkYellow,
+    'Produktanvändning (inkl. lösningsmedel)': colorTheme.darkYellow,
+    'Avfall (inkl.avlopp)': colorTheme.darkYellow,
+  }[name] || '#FFFFFF')
+
+  /*
   const colorOfSector = (name: string) => ({
     'Transporter': '#60b748',
     'Utrikes transporter': '#60b748',
@@ -139,7 +140,7 @@ function Graph({
     'Produktanvändning (inkl. lösningsmedel)': '#cc3349',
     'Avfall (inkl.avlopp)': '#cc3349',
   }[name] || '#FFFFFFFF')
-
+*/
   const historicalDataset: Dataset = useMemo(
     () => emissionPerYearToDataset(historical),
     [historical],
