@@ -109,38 +109,21 @@ function Graph({
   }
 
   const colorOfSector = (name: string) => ({
-    'Transporter': colorTheme.midGreen,
-    'Utrikes transporter': colorTheme.midGreen,
+    'Transporter': colorTheme.sectors.transports,
+    'Utrikes transporter': colorTheme.sectors.transports,
 
-    'Industri (energi + processer)': colorTheme.lightBlue,
+    'Industri (energi + processer)': colorTheme.sectors.industry,
 
-    'Jordbruk': colorTheme.darkGreenOne,
+    'Jordbruk': colorTheme.sectors.jordbruk,
 
-    'Egen uppärmning av bostäder och lokaler': colorTheme.lightYellow,
-    'El och fjärrvärme': colorTheme.lightYellow,
+    'Egen uppärmning av bostäder och lokaler': colorTheme.sectors.heatingEnergy,
+    'El och fjärrvärme': colorTheme.sectors.heatingEnergy,
 
-    'Arbetsmaskiner': colorTheme.darkYellow,
-    'Produktanvändning (inkl. lösningsmedel)': colorTheme.darkYellow,
-    'Avfall (inkl.avlopp)': colorTheme.darkYellow,
-  }[name] || '#FFFFFF')
+    'Arbetsmaskiner': colorTheme.sectors.other,
+    'Produktanvändning (inkl. lösningsmedel)': colorTheme.sectors.other,
+    'Avfall (inkl.avlopp)': colorTheme.sectors.other,
+  }[name] || { border: '#FFFFFF', fill: '#FFFFFF' })
 
-  /*
-  const colorOfSector = (name: string) => ({
-    'Transporter': '#60b748',
-    'Utrikes transporter': '#60b748',
-
-    'Industri (energi + processer)': '#3395cc',
-
-    'Jordbruk': '#e55819',
-
-    'Egen uppärmning av bostäder och lokaler': '#ffaa00',
-    'El och fjärrvärme': '#ffaa00',
-
-    'Arbetsmaskiner': '#cc3349',
-    'Produktanvändning (inkl. lösningsmedel)': '#cc3349',
-    'Avfall (inkl.avlopp)': '#cc3349',
-  }[name] || '#FFFFFFFF')
-*/
   const historicalDataset: Dataset = useMemo(
     () => emissionPerYearToDataset(historical),
     [historical],
@@ -182,8 +165,8 @@ function Graph({
                 fill: sectorFill(Name),
                 data: EmissionsPerYear,
                 borderWidth: 2,
-                borderColor: colorOfSector(Name),
-                backgroundColor: `${colorOfSector(Name)}44`,
+                borderColor: colorOfSector(Name).border,
+                backgroundColor: colorOfSector(Name).fill,
                 pointRadius: 0,
                 tension: 0.15,
                 hidden: false,

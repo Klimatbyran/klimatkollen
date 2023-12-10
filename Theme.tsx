@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { ThemeProvider } from 'styled-components'
 
-export const colorTheme = {
+let colors = {
   black: '#181818',
   lightBlack: '#262626',
   grey: '#939393',
@@ -39,7 +39,55 @@ export const colorTheme = {
   gradientGreen: 'linear-gradient(#216675, #30ACB4)',
   gradientOrange: 'linear-gradient(#EF3030, #FF6813)',
   gradientRed: 'linear-gradient(#EF3030, #8B1A1A)',
+
+  sectors: {
+    transports: {
+       border: "",
+       fill: "",
+    },
+    industry: {
+       border: "",
+       fill: "",
+    },
+    jordbruk: {
+       border: "",
+       fill: "",
+    },
+    heatingEnergy: {
+       border: "",
+       fill: "",
+    },
+    other: {
+       border: "",
+       fill: "",
+    },
+  },
 }
+
+colors.sectors = {
+  transports: {
+     border: colors.midGreen,
+     fill: `${colors.midGreen}44`,
+  },
+  industry: {
+     border: colors.lightBlue,
+     fill: `${colors.lightBlue}44`,
+  },
+  jordbruk: {
+     border: colors.darkGreenOne,
+     fill: `${colors.darkGreenOne}44`,
+  },
+  heatingEnergy: {
+     border: colors.lightYellow,
+     fill: `${colors.lightYellow}44`,
+  },
+  other: {
+     border: colors.darkYellow,
+     fill: `${colors.darkYellow}44`,
+  },
+}
+
+export const colorTheme = colors
 
 export const spacingTheme = {
   smallSpacing: '8px',
