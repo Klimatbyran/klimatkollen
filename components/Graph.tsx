@@ -12,8 +12,9 @@ import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
 import { EmissionPerYear, EmissionSector } from '../utils/types'
+import { compareSector, historicalSectorOrder } from '../utils/climateDataPresentation'
 
-import { colorTheme } from '../Theme'
+import { colorTheme, colorOfSector } from '../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
@@ -76,53 +77,14 @@ function Graph({
     [historical, trend, budget],
   )
 
-  type Named = { Name : string}
-  // Top to bottom order we expect on the screen
-  const order = [
-    'Transporter',
-    'Utrikes transporter',
-
-    'Industri (energi + processer)',
-
-    'Jordbruk',
-
-    'Egen uppärmning av bostäder och lokaler',
-    'El och fjärrvärme',
-
-    'Arbetsmaskiner',
-    'Produktanvändning (inkl. lösningsmedel)',
-    'Avfall (inkl.avlopp)',
-  ]
-  const compareSector = (
-    { Name: NameA }: Named,
-    { Name: NameB }: Named,
-  ) => Math.sign(order.indexOf(NameB)
-               - order.indexOf(NameA))
-
   // For chartjs fill property
   // https://www.youtube.com/watch?v=2g0gIAsQSp4
   const sectorFill = (name: string) => {
-    const index = order
+    const index = historicalSectorOrder
       .slice().reverse() // zero is the bottom one
       .indexOf(name)
     return index === 0 ? 'origin' : index - 1
   }
-
-  const colorOfSector = (name: string) => ({
-    'Transporter': colorTheme.sectors.transports,
-    'Utrikes transporter': colorTheme.sectors.transports,
-
-    'Industri (energi + processer)': colorTheme.sectors.industry,
-
-    'Jordbruk': colorTheme.sectors.jordbruk,
-
-    'Egen uppärmning av bostäder och lokaler': colorTheme.sectors.heatingEnergy,
-    'El och fjärrvärme': colorTheme.sectors.heatingEnergy,
-
-    'Arbetsmaskiner': colorTheme.sectors.other,
-    'Produktanvändning (inkl. lösningsmedel)': colorTheme.sectors.other,
-    'Avfall (inkl.avlopp)': colorTheme.sectors.other,
-  }[name] || { border: '#FFFFFF', fill: '#FFFFFF' })
 
   const historicalDataset: Dataset = useMemo(
     () => emissionPerYearToDataset(historical),
