@@ -62,11 +62,52 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
       Color: colorOfSector(Name),
     }))
 
+  const sectors2021 = municipality.HistoricalEmission.SectorEmissionsPerYear
+    .map(({ Name, EmissionsPerYear }) => ({
+      Name,
+      Emissions: (
+        EmissionsPerYear
+          .find(({ Year }) => Year === 2021)
+          || { CO2Equivalent: -999 }
+      ).CO2Equivalent / 1000,
+      Color: colorOfSector(Name),
+    }))
+
+  const total2021 = (
+    municipality.HistoricalEmission.EmissionPerYear
+      .find(({ Year }) => Year === 2021)
+      || { CO2Equivalent: -999 }
+  ).CO2Equivalent / 1000
+
+  const thisYear = [
+    <p key="2021">2021</p>,
+    (
+      <TotalCo2 key="2021-total">
+        <StyledText $color={colorTheme.offWhite}>
+          Totalt: {total2021.toFixed(1)}
+        </StyledText>
+      </TotalCo2>
+    ),
+    ...sectors2021
+      .slice().sort(compareSector).reverse()
+      .map(({ Name, Emissions, Color }) => {
+        const name = Name.replace('uppärmning', 'uppvärmning') // Original SMHI data contains typo
+        const perc = 100 * (Emissions / total2021)
+        return (
+          <TotalCo2 key={`2021-${Name}`}>
+            <Square color={Color.border} />
+            <StyledText $color={Emissions > 0.1 ? colorTheme.offWhite : colorTheme.grey}>
+              { name }: { Emissions.toFixed(1) } ({(perc.toFixed(1)) }%)
+            </StyledText>
+          </TotalCo2>
+        )
+      }),
+  ]
+
   const history = [
     <p key="1990">1990-2021</p>,
     (
       <TotalCo2 key="total">
-        {/* <Square color={colorTheme.offWhite} /> */}
         <StyledText $color={colorTheme.offWhite}>
           Totalt: {totalHistorical.toFixed(1)}
         </StyledText>
@@ -95,27 +136,45 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
           Trend: {totalTrend.toFixed(1)}
         </StyledText>
       </TotalCo2>
-    ), (
+    ), ...(step === 2 ? ([
       <TotalCo2 key="paris">
         <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
         <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
           Koldioxidbudget för att klara Parisavtalet:{' '}
           {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)}
         </StyledText>
-      </TotalCo2>
-    ),
+      </TotalCo2>,
+    ]) : []),
   ]
+
+  let list1 : typeof history = []
+  let list2 : typeof history = []
+
+  switch (step) {
+    case 0:
+      list1 = history
+      list2 = []
+      break
+    case 1:
+      list1 = thisYear
+      list2 = presentFuture
+      break
+    case 2:
+      list1 = presentFuture
+      list2 = thisYear
+      break
+    default:
+  }
 
   return (
     <Container>
       <H4>Utsläppen i siffror</H4>
       Uttryckt i tusen ton CO₂ summerat över åren...
       <TotalCo2Container>
-
         {[
-          ...(step > 0 ? presentFuture : history),
+          ...list1,
           (<br key="br" />),
-          ...(step <= 0 ? presentFuture : history),
+          ...list2,
         ]}
       </TotalCo2Container>
     </Container>
