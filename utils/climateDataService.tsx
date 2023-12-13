@@ -9,8 +9,7 @@ import {
   Emission,
   Trend,
   ClimatePlan,
-  ChargingPointsPerYear,
-  ChargingPoints,
+  CPEV,
 } from './types'
 
 const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
@@ -70,22 +69,12 @@ export class ClimateDataService {
           Comment: data.climatePlanComment,
         } as unknown as ClimatePlan
 
-        const chargingPoints = new Array<ChargingPointsPerYear>()
-
-        Object.entries(data.chargingPointsPerYear).forEach(([year, chargingPoint]) => {
-          const chargingPointByYear = {
+        const cpev = {
+          CPEVPerYear: Object.entries(data.CPEV).map(([year, value]) => ({
             Year: Number(year),
-            NumberOf: chargingPoint,
-          } as unknown as ChargingPointsPerYear
-          chargingPoints.push(chargingPointByYear)
-        })
-
-        const chargingPoint = {
-          ChargingPointsPerYear: chargingPoints,
-          ChargingPointsChangeAverage: data.chargingPointsYearlyAverage,
-        } as ChargingPoints
-
-        // chargingPoint.ChargingPointsChangeAverage = this.getChargingPointChangeAverage(chargingPoint.ChargingPointsPerYear)
+            Value: value,
+          })),
+        } as unknown as CPEV
 
         const municipality = {
           Name: data.kommun,
@@ -100,7 +89,7 @@ export class ClimateDataService {
           ClimatePlan: climatePlan,
           BicycleMetrePerCapita: data.bicycleMetrePerCapita,
           TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
-          ChargingPoints: chargingPoint,
+          CPEV: cpev,
         } as Municipality
         return municipality
       })
@@ -137,18 +126,6 @@ export class ClimateDataService {
     )
 
     return years > 0 ? emissionsPercentages / years : 0
-  }
-
-  private getChargingPointChangeAverage(
-    chargingPoints: Array<ChargingPointsPerYear>,
-  ): number {
-    console.log('hejson')
-    console.log(chargingPoints)
-    console.log('slut hejson')
-    const chargingPointIncrease = chargingPoints[chargingPoints.length - 1].NumberOf - chargingPoints[0].NumberOf
-    console.log('chargingPointP ', chargingPointIncrease)
-    console.log('tot ', chargingPointIncrease / chargingPoints.length)
-    return (chargingPointIncrease / chargingPoints.length)
   }
 
   public getMunicipalities(): Array<Municipality> {

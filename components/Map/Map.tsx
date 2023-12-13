@@ -61,7 +61,7 @@ const getColor = (
     if (dataPoint >= boundaries[1]) {
       return darkYellow
     }
-    if (dataPoint >= boundaries[0]) {
+    if (dataPoint > boundaries[0]) {
       return orange
     }
     return red
@@ -78,7 +78,7 @@ const getColor = (
   if (dataPoint >= boundaries[3]) {
     return lightYellow
   }
-  if (dataPoint >= boundaries[4]) {
+  if (dataPoint > boundaries[4]) {
     return beige
   }
   return lightBlue
@@ -225,6 +225,8 @@ function Map({
       } else {
         municipalityDataPoint = 'N/A'
       }
+    } else if (dataType === 'Float') {
+      municipalityDataPoint = municipality.dataPoint !== 0 ? municipality?.dataPoint.toFixed(3) : '0'
     } else {
       municipalityDataPoint = municipality?.dataPoint.toFixed(1)
     }

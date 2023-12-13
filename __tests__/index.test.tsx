@@ -60,9 +60,8 @@ const setup = () => render(
         },
         BicycleMetrePerCapita: 0,
         TotalConsumptionEmission: 0,
-        ChargingPoints: {
-          ChargingPointsPerYear: [],
-          ChargingPointsChangeAverage: 0,
+        CPEV: {
+          CPEVPerYear: [],
         },
         Name: 'Sollentuna',
       },

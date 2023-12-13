@@ -118,7 +118,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
     labelRotateUp: [],
     columnHeader: 'Cykelväglängd',
-    dataType: 'Number',
+    dataType: 'Integer',
     sortAscending: false,
   },
 
@@ -142,12 +142,12 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['7 ton +', '6,7-7 ton', '6,4-6,7 ton', '6,1-6,4 ton', '5,8-6,1 ton', '5,8 ton -'],
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person/år',
-    dataType: 'Number',
+    dataType: 'Integer',
     sortAscending: true,
   },
 
   Laddpunkterna: {
-    title: 'Laddpunkterna',
+    title: 'Laddpunkter per laddbil',
     body: 'Lorem ipsum.',
     source: (
       <>
@@ -164,19 +164,19 @@ export const datasetDescriptions: DatasetDescriptions = {
         och
         {' '}
         <a
-          href="https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik" // fixme
+          href="https://www.trafa.se/vagtrafik/fordon/"
           target="_blank"
           rel="noreferrer"
         >
-          SCB
+          Trafa
         </a>
       </>
     ),
-    boundaries: [0, 1, 2, 3, 4],
-    labels: ['5 st -', '5-10', '10-20', '20-30', '30-40', '40 +'],
+    boundaries: [0, 0.01, 0.05, 0.1, 1],
+    labels: ['0', '0-0.01', '0.01-0.05', '0.05-0.1', '0.1-1', '1 +'],
     labelRotateUp: [],
-    columnHeader: 'Laddpunkter/person',
-    dataType: 'Number',
+    columnHeader: 'Laddpunkter per laddbil',
+    dataType: 'Float',
     sortAscending: false,
   },
 }
@@ -198,7 +198,7 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       dataPoint = item.TotalConsumptionEmission
       break
     case 'Laddpunkterna':
-      dataPoint = item.ChargingPoints.ChargingPointsChangeAverage
+      dataPoint = item.CPEV.CPEVPerYear.findLast((cpev) => cpev.Year > 0)?.Value || 0
       break
     default:
       dataPoint = item.BicycleMetrePerCapita

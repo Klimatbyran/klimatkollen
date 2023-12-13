@@ -41,14 +41,13 @@ export type ClimatePlan = {
   Comment: string
 }
 
-export type ChargingPointsPerYear = {
+type CPEVPerYear = {
   Year: number
-  NumberOf: number
+  Value: number
 }
 
-export type ChargingPoints = {
-  ChargingPointsPerYear: Array<ChargingPointsPerYear>
-  ChargingPointsChangeAverage: number
+export type CPEV = {
+  CPEVPerYear: Array<CPEVPerYear>
 }
 
 export type Municipality = {
@@ -70,12 +69,12 @@ export type Municipality = {
   ClimatePlan: ClimatePlan,
   BicycleMetrePerCapita: number,
   TotalConsumptionEmission: number,
-  ChargingPoints: ChargingPoints,
+  CPEV: CPEV,
 }
 
 export type SelectedData = keyof typeof datasetDescriptions
 
-export type DatasetType = 'Percent' | 'Link' | 'Number'
+export type DatasetType = 'Percent' | 'Link' | 'Integer' | 'Float'
 
 export type DatasetDescription = {
   title: string

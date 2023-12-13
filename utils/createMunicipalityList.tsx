@@ -56,7 +56,7 @@ export const rankData = (municipalities: Municipality[]) => {
     })),
     Laddpunkterna: municipalities.map((item) => ({
       name: item.Name,
-      dataPoint: item.ChargingPoints.ChargingPointsChangeAverage,
+      dataPoint: item.CPEV.CPEVPerYear.findLast((cpev) => cpev.Year > 0)?.Value || 0,
     })),
   }
 
@@ -124,7 +124,10 @@ const formatData = (rowData: string | number, selectedData: SelectedData) => {
         {percent}
       </span>
     ) : <span>{percent}</span>
-  } else if (dataType === 'Number') {
+  } else if (dataType === 'Float') {
+    const rowNumber = rowData as number
+    dataString = <span>{rowNumber.toFixed(3)}</span>
+  } else if (dataType === 'Integer') {
     const rowNumber = rowData as number
     dataString = <span>{rowNumber.toFixed(1)}</span>
   }

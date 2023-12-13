@@ -22,7 +22,6 @@ PATH_POPULATION = "solutions/cars/sources/population_scb.xlsx"
 PATH_POPULATION_DENSITY = "solutions/cars/sources/scb_population_density.xlsx"
 
 
-
 def filter_charging_point_data(df_raw):
     df_filtered = df_raw[df_raw["år-månad"].str.endswith("-12")].reset_index(drop=True)
     df_filtered.rename(columns={"år-månad": "year"}, inplace=True)
@@ -107,28 +106,29 @@ def calculate_cpev(df_result, year_range):
 
             # Calculate CPEV for each year
             cpev = row[c_column] / row[ev_column] if row[ev_column] != 0 else 0
+
             cpev_values[year] = cpev
 
         df_result.at[index, "CPEV"] = cpev_values
 
     # Only keep 'Kommun' and 'CPEV' columns
-    df_result = df_result[["Kommun", "CPEV", "2022_x", "2022_y"]]
+    df_result = df_result[["Kommun", "CPEV"]]
 
     return df_result
 
-        
-def get_cpev_and_trend():
+
+def get_cpev():
     # Load and process charging point data
     df_charging_raw = pd.read_csv(PATH_CHARGING_POINT)
     df_charging_filtered = filter_charging_point_data(df_charging_raw)
     df_charging_pivoted = pivot_charging_data(df_charging_filtered)
 
+    year_range = [col for col in df_charging_pivoted.columns if isinstance(col, int)]
+
     # Produce output dataframe
     df = pd.DataFrame()
     df["Kommun"] = df_charging_pivoted["Kommun"]
     df = df.drop(index=range(290, len(df)))
-
-    year_range = [col for col in df_charging_pivoted.columns if isinstance(col, int)]
 
     # Load and process Trafa data for each year
     for year, path in trafa_paths.items():
@@ -139,14 +139,5 @@ def get_cpev_and_trend():
 
     # Add charging points per electric vehicle (CPEV)
     df_cpev = calculate_cpev(df_charging_pivoted, year_range)
-    df_cpev.to_excel("output/cpev_for_colab.xlsx")
 
-    return
-
-
-# def get_cpev_and_trend():
-#     df = pd.read_csv("sources/output_laddinfra.csv")
-#     return df
-
-
-get_cpev_and_trend()
+    return df_cpev

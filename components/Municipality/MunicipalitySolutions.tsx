@@ -48,6 +48,8 @@ type SolutionsProps = {
 }
 
 function MunicipalitySolutions({ municipality }: SolutionsProps) {
+  const sortedCPEV = municipality.CPEV.CPEVPerYear.findLast((cpev) => cpev.Year > 0)
+
   return (
     <>
       <StyledH2>Omställning</StyledH2>
@@ -79,8 +81,8 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
       <SolutionSection
         icon={<Basket />}
         title="Laddbilarna"
-        heading="Lorem ipsum"
-        data={`${municipality.ChargingPoints.ChargingPointsChangeAverage.toFixed(1)} lorem`}
+        heading="Laddare per laddbar bil"
+        data={`${sortedCPEV?.Value.toFixed(3)}`}
         info="Lorem ipsum."
       />
     </>
