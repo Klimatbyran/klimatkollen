@@ -5,6 +5,7 @@ import { Municipality } from '../../utils/types'
 import EVCar from '../../public/icons/evcars_32.svg'
 import Bike from '../../public/icons/bikelanes_32.svg'
 import Basket from '../../public/icons/consumtion_32.svg'
+import Charger from '../../public/icons/charger.svg'
 
 const StyledH2 = styled(H2)`
   margin-top: 32px;
@@ -79,8 +80,8 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019."
       />
       <SolutionSection
-        icon={<Basket />}
-        title="Laddbilarna"
+        icon={<Charger />}
+        title="Laddpunkterna"
         heading="Laddare per laddbar bil"
         data={`${sortedCPEV?.Value.toFixed(3)}`}
         info="Lorem ipsum."
