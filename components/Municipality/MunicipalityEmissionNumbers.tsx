@@ -42,9 +42,10 @@ const StyledText = styled.p<{$color: string}>`
 type EmissionsProps = {
   municipality: TMunicipality
   step: number
+  showSectors: boolean
 }
 
-function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
+function MunicipalityEmissionNumbers({ municipality, step, showSectors }: EmissionsProps) {
   const totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
     (total, year) => total + year.CO2Equivalent,
     0,
@@ -104,6 +105,18 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
       }),
   ]
 
+  const justTotalHistory = [
+    <p key="1990">1990-2021</p>,
+    (
+      <TotalCo2 key="total">
+        <Square color={colorTheme.orange} />
+        <StyledText $color={colorTheme.offWhite}>
+          Totalt: {totalHistorical.toFixed(1)} tusen ton CO₂.
+        </StyledText>
+      </TotalCo2>
+    ),
+  ]
+
   const history = [
     <p key="1990">1990-2021</p>,
     (
@@ -133,7 +146,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
       <TotalCo2 key="trend">
         <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
         <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
-          Trend: {totalTrend.toFixed(1)}
+          Trend: {totalTrend.toFixed(1)} tusen ton CO₂.
         </StyledText>
       </TotalCo2>
     ), ...(step === 2 ? ([
@@ -141,7 +154,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
         <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
         <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
           Koldioxidbudget för att klara Parisavtalet:{' '}
-          {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)}
+          {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂.
         </StyledText>
       </TotalCo2>,
     ]) : []),
@@ -164,6 +177,11 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
       list2 = thisYear
       break
     default:
+  }
+
+  if (!showSectors) {
+    list1 = presentFuture
+    list2 = justTotalHistory
   }
 
   return (

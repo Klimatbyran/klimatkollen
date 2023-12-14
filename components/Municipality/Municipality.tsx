@@ -71,6 +71,11 @@ function Municipality(props: Props) {
     municipalitiesName,
   } = props
 
+  let showSectors = true
+  if (municipality.Name === 'Mörbylånga') showSectors = false
+  if (municipality.Name === 'Skövde') showSectors = false
+  if (municipality.Name === 'Gotland') showSectors = false
+
   return (
     <>
       <PageWrapper backgroundColor="lightBlack">
@@ -90,8 +95,9 @@ function Municipality(props: Props) {
             chart={step}
             onNextStep={onNextStep}
             onPreviousStep={onPreviousStep}
+            showSectors={showSectors}
           />
-          <MunicipalityEmissionNumbers municipality={municipality} step={step} />
+          <MunicipalityEmissionNumbers municipality={municipality} step={step} showSectors={showSectors} />
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>

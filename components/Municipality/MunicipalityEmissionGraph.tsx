@@ -86,6 +86,7 @@ type IssuesProps = {
   chart: number
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
+  showSectors: boolean
 }
 
 function MunicipalityEmissionGraph({
@@ -93,6 +94,7 @@ function MunicipalityEmissionGraph({
   chart: step,
   onNextStep,
   onPreviousStep,
+  showSectors,
 }: IssuesProps) {
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
@@ -212,6 +214,7 @@ function MunicipalityEmissionGraph({
           trend={municipality.EmissionTrend.TrendPerYear}
           budget={municipality.Budget.BudgetPerYear}
           maxVisibleYear={END_YEAR}
+          showSectors={showSectors}
         />
         <Grid>
           {onPreviousStep ? (

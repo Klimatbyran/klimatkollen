@@ -66,11 +66,12 @@ type Props = {
   sectorHistorical: EmissionSector[]
   trend: EmissionPerYear[]
   budget: EmissionPerYear[]
-  maxVisibleYear: number
+  maxVisibleYear: number,
+  showSectors: boolean,
 }
 
 function Graph({
-  step, historical, sectorHistorical, budget, trend, maxVisibleYear,
+  step, historical, sectorHistorical, budget, trend, maxVisibleYear, showSectors,
 }: Props) {
   const setup = useMemo(
     () => getSetup([historical, trend, budget]),
@@ -131,7 +132,7 @@ function Graph({
                 backgroundColor: colorOfSector(Name).fill,
                 pointRadius: 0,
                 tension: 0.15,
-                hidden: false,
+                hidden: !showSectors,
                 stack: 'sectors',
               })),
             {
@@ -145,7 +146,7 @@ function Graph({
               backgroundColor: colorTheme.darkOrangeOpaque,
               pointRadius: 0,
               tension: 0.15,
-              hidden: true,
+              hidden: showSectors,
               stack: 'separate1',
             },
             {
