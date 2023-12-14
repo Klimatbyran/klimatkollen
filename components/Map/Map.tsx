@@ -8,6 +8,7 @@ import NextNProgress from 'nextjs-progressbar'
 import { colorTheme } from '../../Theme'
 import { DatasetType } from '../../utils/types'
 import { mapColors } from '../shared'
+import { daysToDateString } from '../../utils/shared'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -225,6 +226,8 @@ function Map({
       } else {
         municipalityDataPoint = 'N/A'
       }
+    } else if (dataType === 'Date') {
+      municipalityDataPoint = daysToDateString(municipality?.dataPoint)
     } else {
       municipalityDataPoint = municipality?.dataPoint.toFixed(1)
     }

@@ -145,6 +145,30 @@ export const datasetDescriptions: DatasetDescriptions = {
     dataType: 'Number',
     sortAscending: true,
   },
+
+  Koldioxidbudgetarna: {
+    title: 'Koldioxidbudgetarna',
+    body: 'Lorem ipsum.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="lorem"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Lorem
+        </a>
+      </>
+    ),
+    boundaries: [730, 1461, 2191, 2922, 1e10],
+    labels: ['<2 år', '2-4 år', '4-6 år', '6-8 år', '8 år +', 'Håller budgeten'],
+    labelRotateUp: [],
+    columnHeader: 'Lorem',
+    dataType: 'Date',
+    sortAscending: false,
+  },
 }
 
 export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
@@ -162,6 +186,9 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       break
     case 'Konsumtionen':
       dataPoint = item.TotalConsumptionEmission
+      break
+    case 'Koldioxidbudgetarna':
+      dataPoint = item.BudgetDaysLeft
       break
     default:
       dataPoint = item.BicycleMetrePerCapita

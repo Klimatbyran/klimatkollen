@@ -21,3 +21,13 @@ export const isValidDataset = (dataset: string) => {
 }
 
 export const isValidDataView = (dataView: string) => [defaultDataView, secondaryDataView].includes(dataView)
+
+export const daysToDateString = (days: number) => {
+  if (days === 1e10) {
+    return 'Håller budget'
+  }
+
+  const date = new Date('2024-01-01')
+  date.setDate(date.getDate() + days)
+  return date.toLocaleDateString('sv-SE')
+}

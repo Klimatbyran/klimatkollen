@@ -54,6 +54,7 @@ export type Municipality = {
   EmissionChangePercent: number
   HitNetZero: number | string
   BudgetRunsOut: string
+  BudgetDaysLeft: number
   ElectricCars: number
   ElectricCarChangePercent: number,
   ElectricCarChangeYearly: Array<number>,
@@ -64,7 +65,7 @@ export type Municipality = {
 
 export type SelectedData = keyof typeof datasetDescriptions
 
-export type DatasetType = 'Percent' | 'Link' | 'Number'
+export type DatasetType = 'Percent' | 'Link' | 'Number' | 'Date'
 
 export type DatasetDescription = {
   title: string

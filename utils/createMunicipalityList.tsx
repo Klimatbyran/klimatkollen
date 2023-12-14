@@ -2,6 +2,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { DatasetDescription, Municipality, SelectedData } from './types'
 import { datasetDescriptions } from './datasetDescriptions'
+import { daysToDateString } from './shared'
 
 export const calculateStringRankings = (
   data: Array<{ name: string; dataPoint: string | number }>,
@@ -54,6 +55,10 @@ export const rankData = (municipalities: Municipality[]) => {
       name: item.Name,
       dataPoint: item.TotalConsumptionEmission,
     })),
+    Koldioxidbudgetarna: municipalities.map((item) => ({
+      name: item.Name,
+      dataPoint: item.BudgetDaysLeft,
+    })),
   }
 
   type RankedData = {
@@ -64,12 +69,7 @@ export const rankData = (municipalities: Municipality[]) => {
     }>
   }
 
-  const newRankedData: RankedData = {
-    Elbilarna: [],
-    Utsläppen: [],
-    Klimatplanerna: [],
-    Cyklarna: [],
-  }
+  const newRankedData: RankedData = {}
 
   Object.keys(datasets).forEach((datasetKey) => {
     const sortAscending = datasetDescriptions[datasetKey]?.sortAscending || false
@@ -100,7 +100,9 @@ export const rankData = (municipalities: Municipality[]) => {
 const formatData = (rowData: string | number, selectedData: SelectedData) => {
   const { boundaries } = datasetDescriptions[selectedData] as { boundaries: string[] }
   const { dataType } = datasetDescriptions[selectedData]
+
   let dataString: JSX.Element = <span>Data saknas</span>
+
   if (dataType === 'Link') {
     const stringData = rowData as string
     const inBoundaries = boundaries.includes(stringData)
@@ -128,6 +130,8 @@ const formatData = (rowData: string | number, selectedData: SelectedData) => {
   } else if (dataType === 'Number') {
     const rowNumber = rowData as number
     dataString = <span>{rowNumber.toFixed(1)}</span>
+  } else if (dataType === 'Date') {
+    dataString = <span>{daysToDateString(rowData as number)}</span>
   }
   return dataString
 }
