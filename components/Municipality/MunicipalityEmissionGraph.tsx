@@ -16,7 +16,6 @@ import { devices } from '../../utils/devices'
 import ArrowRight from '../../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../../public/icons/arrow-left-white.svg'
 import Info from '../../public/icons/info.svg'
-
 import { CURRENT_YEAR } from '../../utils/climateDataPresentation'
 
 const GraphWrapper = styled.div`

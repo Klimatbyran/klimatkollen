@@ -12,6 +12,7 @@ import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
 import Scorecard from './MunicipalityScorecard'
+import { isCementSector } from '../../utils/climateDataPresentation'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -71,11 +72,6 @@ function Municipality(props: Props) {
     municipalitiesName,
   } = props
 
-  let showSectors = true
-  if (municipality.Name === 'Mörbylånga') showSectors = false
-  if (municipality.Name === 'Skövde') showSectors = false
-  if (municipality.Name === 'Gotland') showSectors = false
-
   return (
     <>
       <PageWrapper backgroundColor="lightBlack">
@@ -95,9 +91,13 @@ function Municipality(props: Props) {
             chart={step}
             onNextStep={onNextStep}
             onPreviousStep={onPreviousStep}
-            showSectors={showSectors}
+            showSectors={!isCementSector(municipality.Name)}
           />
-          <MunicipalityEmissionNumbers municipality={municipality} step={step} showSectors={showSectors} />
+          <MunicipalityEmissionNumbers
+            municipality={municipality}
+            step={step}
+            showSectors={!isCementSector(municipality.Name)}
+          />
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>

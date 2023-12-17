@@ -85,22 +85,6 @@ colors.sectors = {
 
 export const colorTheme = colors
 
-export const colorOfSector = (name: string) => ({
-  'Transporter': colorTheme.sectors.transports,
-  'Utrikes transporter': colorTheme.sectors.transports,
-
-  'Industri (energi + processer)': colorTheme.sectors.industry,
-
-  'Jordbruk': colorTheme.sectors.jordbruk,
-
-  'Egen uppärmning av bostäder och lokaler': colorTheme.sectors.heatingEnergy,
-  'El och fjärrvärme': colorTheme.sectors.heatingEnergy,
-
-  'Arbetsmaskiner': colorTheme.sectors.other,
-  'Produktanvändning (inkl. lösningsmedel)': colorTheme.sectors.other,
-  'Avfall (inkl.avlopp)': colorTheme.sectors.other,
-}[name] || { border: '#FFFFFF', fill: '#FFFFFF' })
-
 export const spacingTheme = {
   smallSpacing: '8px',
 }

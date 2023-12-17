@@ -1,11 +1,18 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import styled from 'styled-components'
 import { H4 } from '../Typography'
-import { Municipality as TMunicipality } from '../../utils/types'
-import { colorTheme, colorOfSector } from '../../Theme'
+import { EmissionPerYear, Municipality as TMunicipality } from '../../utils/types'
+import { colorTheme } from '../../Theme'
 import { Square } from '../shared'
 import { devices } from '../../utils/devices'
-import { compareSector, CURRENT_YEAR } from '../../utils/climateDataPresentation'
+import {
+  colorOfSector,
+  compareSector,
+  CURRENT_YEAR,
+  emissionsCurrentYear,
+  fixSMHITypo,
+  kiloTonString,
+} from '../../utils/climateDataPresentation'
 
 const Container = styled.div`
   background: ${({ theme }) => theme.black};
@@ -45,47 +52,39 @@ type EmissionsProps = {
   showSectors: boolean
 }
 
-function MunicipalityEmissionNumbers({ municipality, step, showSectors }: EmissionsProps) {
-  const totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
-    (total, year) => total + year.CO2Equivalent,
+function sumEmissionsPerYear(emissions: Array<EmissionPerYear>) {
+  return emissions.reduce(
+    (total, { CO2Equivalent }) => total + CO2Equivalent,
     0,
-  ) / 1000
-  const totalTrend = municipality.EmissionTrend.FutureCO2Emission / 1000
+  )
+}
 
+function MunicipalityEmissionNumbers({ municipality, step, showSectors }: EmissionsProps) {
+  // Retrieving data and summing
+  const totalHistorical = sumEmissionsPerYear(municipality.HistoricalEmission.EmissionPerYear)
+  const totalTrend = municipality.EmissionTrend.FutureCO2Emission
   const totalSectors = municipality.HistoricalEmission.SectorEmissionsPerYear
     .map(({ Name, EmissionsPerYear }) => ({
       Name,
       EmissionsPerYear,
-      Total: EmissionsPerYear.reduce(
-        (total, year) => total + year.CO2Equivalent,
-        0,
-      ) / 1000,
+      Total: sumEmissionsPerYear(EmissionsPerYear),
       Color: colorOfSector(Name),
     }))
-
   const sectorsCurrentYear = municipality.HistoricalEmission.SectorEmissionsPerYear
     .map(({ Name, EmissionsPerYear }) => ({
       Name,
-      Emissions: (
-        EmissionsPerYear
-          .find(({ Year }) => Year === CURRENT_YEAR)
-          || { CO2Equivalent: -999 }
-      ).CO2Equivalent / 1000,
+      Emissions: emissionsCurrentYear(EmissionsPerYear),
       Color: colorOfSector(Name),
     }))
+  const totalCurrentYear = emissionsCurrentYear(municipality.HistoricalEmission.EmissionPerYear)
 
-  const totalCurrentYear = (
-    municipality.HistoricalEmission.EmissionPerYear
-      .find(({ Year }) => Year === CURRENT_YEAR)
-      || { CO2Equivalent: -999 }
-  ).CO2Equivalent / 1000
-
+  // Blocks of elements that will be ordered and/or hidden
   const thisYear = [
     <p key="currentYear">{CURRENT_YEAR}</p>,
     (
       <TotalCo2 key="currentYear-total">
         <StyledText $color={colorTheme.offWhite}>
-          Totalt: {totalCurrentYear.toFixed(1)}
+          Totalt: {kiloTonString(totalCurrentYear)}
         </StyledText>
       </TotalCo2>
     ),
@@ -93,12 +92,12 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
       .slice().sort(compareSector).reverse()
       .map(({ Name, Emissions, Color }) => {
         const name = Name.replace('uppärmning', 'uppvärmning') // Original SMHI data contains typo
-        const perc = 100 * (Emissions / totalCurrentYear)
+        const percent = 100 * (Emissions / totalCurrentYear)
         return (
           <TotalCo2 key={`currentYear-${Name}`}>
             <Square color={Color.border} />
-            <StyledText $color={Emissions > 0.1 ? colorTheme.offWhite : colorTheme.grey}>
-              { name }: { Emissions.toFixed(1) } ({(perc.toFixed(1)) }%)
+            <StyledText $color={Emissions > 100 ? colorTheme.offWhite : colorTheme.grey}>
+              { name }: { kiloTonString(Emissions)} ({(percent.toFixed(1)) }%)
             </StyledText>
           </TotalCo2>
         )
@@ -111,7 +110,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
       <TotalCo2 key="total">
         <Square color={colorTheme.orange} />
         <StyledText $color={colorTheme.offWhite}>
-          Totalt: {totalHistorical.toFixed(1)} tusen ton CO₂.
+          Totalt: {kiloTonString(totalHistorical)} tusen ton CO₂.
         </StyledText>
       </TotalCo2>
     ),
@@ -122,23 +121,24 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
     (
       <TotalCo2 key="total">
         <StyledText $color={colorTheme.offWhite}>
-          Totalt: {totalHistorical.toFixed(1)}
+          Totalt: {kiloTonString(totalHistorical)}
         </StyledText>
       </TotalCo2>
     ),
     ...totalSectors
       .slice().sort(compareSector).reverse()
-      .map(({ Name, Total, Color }) => {
-        const name = Name.replace('uppärmning', 'uppvärmning') // Original SMHI data contains typo
-        return (
-          <TotalCo2 key={Name}>
-            <Square color={Color.border} />
-            <StyledText $color={Total > 1 ? colorTheme.offWhite : colorTheme.grey}>
-              { name }: { Total.toFixed(1) }
-            </StyledText>
-          </TotalCo2>
-        )
-      }),
+      .map(({
+        Name,
+        Total,
+        Color,
+      }) => (
+        <TotalCo2 key={Name}>
+          <Square color={Color.border} />
+          <StyledText $color={Total > 1000 ? colorTheme.offWhite : colorTheme.grey}>
+            { fixSMHITypo(Name) }: {kiloTonString(Total)}
+          </StyledText>
+        </TotalCo2>
+      )),
   ]
 
   const presentFuture = [
@@ -146,7 +146,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
       <TotalCo2 key="trend">
         <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
         <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
-          Trend: {totalTrend.toFixed(1)} tusen ton CO₂.
+          Trend: {kiloTonString(totalTrend)} tusen ton CO₂.
         </StyledText>
       </TotalCo2>
     ), ...(step === 2 ? ([
@@ -163,23 +163,23 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   let list1 : typeof history = []
   let list2 : typeof history = []
 
-  switch (step) {
-    case 0:
-      list1 = history
-      list2 = []
-      break
-    case 1:
-      list1 = thisYear
-      list2 = presentFuture
-      break
-    case 2:
-      list1 = presentFuture
-      list2 = thisYear
-      break
-    default:
-  }
-
-  if (!showSectors) {
+  if (showSectors) {
+    switch (step) {
+      case 0:
+        list1 = history
+        list2 = []
+        break
+      case 1:
+        list1 = thisYear
+        list2 = presentFuture
+        break
+      case 2:
+        list1 = presentFuture
+        list2 = thisYear
+        break
+      default:
+    }
+  } else {
     list1 = presentFuture
     list2 = justTotalHistory
   }

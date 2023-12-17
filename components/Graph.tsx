@@ -12,8 +12,14 @@ import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
 import { EmissionPerYear, EmissionSector } from '../utils/types'
-import { compareSector, CURRENT_YEAR, historicalSectorOrder } from '../utils/climateDataPresentation'
-import { colorTheme, colorOfSector } from '../Theme'
+import {
+  colorOfSector,
+  compareSector,
+  CURRENT_YEAR, fixSMHITypo,
+  historicalSectorOrder,
+  kiloTonString,
+} from '../utils/climateDataPresentation'
+import { colorTheme } from '../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
@@ -57,7 +63,10 @@ function getSetup(emissions: EmissionPerYear[][]): {
 
 type Dataset = Array<{ x: number; y: number }>
 
-const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
+const emissionPerYearToDataset = (
+  perYear: EmissionPerYear[],
+): Dataset => perYear
+  .map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
 type Props = {
   step: number
@@ -199,16 +208,21 @@ function Graph({
               },
               callbacks: {
                 label(context) {
-                  return `${context.dataset.label}: ${(context.parsed.y / 1000).toFixed(1)}`
+                  const label = fixSMHITypo(context.dataset.label || '')
+                  return `${label}: ${kiloTonString(context.parsed.y)}`
                 },
                 // We still want to display the total together with the specific sector
                 title(context) {
+                  // For gotland and friends the default is fine
+                  if (!showSectors) return undefined
+                  const year = context[0].label
                   const historicalEntry = historical
-                    .find((x) => (`${x.Year}`) === context[0].label)
+                    .find((x) => (`${x.Year}`) === year)
                   if (historicalEntry) {
-                    return `Totalt ${
-                      (historicalEntry.CO2Equivalent / 1000).toFixed(1)
-                    }, varav...`
+                    return [
+                      year,
+                      `${kiloTonString(historicalEntry.CO2Equivalent)} totalt, varav...`,
+                    ]
                   }
                   return ''
                 },
