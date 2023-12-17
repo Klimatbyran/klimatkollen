@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import Graph from '../Graph'
-import { H2, H3, Paragraph } from '../Typography'
+import { H2, Paragraph } from '../Typography'
 import InfoModal from '../InfoModal'
 import MetaTags from '../MetaTags'
 import { IconButton } from '../shared'
@@ -16,7 +16,8 @@ import { devices } from '../../utils/devices'
 import ArrowRight from '../../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../../public/icons/arrow-left-white.svg'
 import Info from '../../public/icons/info.svg'
-import { colorTheme } from '../../Theme'
+
+import { CURRENT_YEAR } from '../../utils/climateDataPresentation'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -210,7 +211,7 @@ function MunicipalityEmissionGraph({
         <Graph
           step={step}
           historical={municipality.HistoricalEmission.EmissionPerYear}
-          sectorHistorical={municipality.HistoricalEmission.SectorEmissionsPerYear}
+          historicalBySector={municipality.HistoricalEmission.SectorEmissionsPerYear}
           trend={municipality.EmissionTrend.TrendPerYear}
           budget={municipality.Budget.BudgetPerYear}
           maxVisibleYear={END_YEAR}
@@ -237,7 +238,7 @@ function MunicipalityEmissionGraph({
       {step === 0 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text={`Koldioxidutsläpp i kommunen mellan 1990 och 2021, vilket är senast tillgängliga data. 
+          text={`Koldioxidutsläpp i kommunen mellan 1990 och ${CURRENT_YEAR}, vilket är senast tillgängliga data. 
           Basår för beräkningar av Sveriges klimatutsläpp är 1990.`}
           scrollY={scrollY}
         />
@@ -253,9 +254,14 @@ function MunicipalityEmissionGraph({
       {step === 2 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text="Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
-          motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande,
-          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är 2021, vilket är senast tillgängliga data."
+          text={
+            'Den utsläppsminskning som krävs för att vara i linje med Parisavtalet '
+            + 'och en koldioxidbudget som motsvarar 50% sannolikhet att hålla den '
+            + 'globala uppvärmningen under 1,5 grader. Funktionen visas som '
+            + 'exponentiellt avtagande, det vill säga utsläppen minskar med ett fast '
+            + `antal procent varje år. Startår är ${CURRENT_YEAR}, vilket är senast `
+            + 'tillgängliga data.'
+          }
           scrollY={scrollY}
         />
       )}

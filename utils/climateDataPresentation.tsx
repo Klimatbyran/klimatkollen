@@ -1,14 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  Municipality,
-  EmissionPerYear,
-  EmissionSector,
-  Budget,
-  Emission,
-  Trend,
-  ClimatePlan,
-  Named,
-} from './types'
+import { Named } from './types'
 
 
 // This file: How do we cluster/sort/color the historical sectors?
@@ -36,3 +27,4 @@ export const compareSector = (
 ) => Math.sign(historicalSectorOrder.indexOf(NameB)
              - historicalSectorOrder.indexOf(NameA))
 
+export const CURRENT_YEAR = 2021

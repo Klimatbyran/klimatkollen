@@ -5,7 +5,7 @@ import { Municipality as TMunicipality } from '../../utils/types'
 import { colorTheme, colorOfSector } from '../../Theme'
 import { Square } from '../shared'
 import { devices } from '../../utils/devices'
-import { compareSector } from '../../utils/climateDataPresentation'
+import { compareSector, CURRENT_YEAR } from '../../utils/climateDataPresentation'
 
 const Container = styled.div`
   background: ${({ theme }) => theme.black};
@@ -63,39 +63,39 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
       Color: colorOfSector(Name),
     }))
 
-  const sectors2021 = municipality.HistoricalEmission.SectorEmissionsPerYear
+  const sectorsCurrentYear = municipality.HistoricalEmission.SectorEmissionsPerYear
     .map(({ Name, EmissionsPerYear }) => ({
       Name,
       Emissions: (
         EmissionsPerYear
-          .find(({ Year }) => Year === 2021)
+          .find(({ Year }) => Year === CURRENT_YEAR)
           || { CO2Equivalent: -999 }
       ).CO2Equivalent / 1000,
       Color: colorOfSector(Name),
     }))
 
-  const total2021 = (
+  const totalCurrentYear = (
     municipality.HistoricalEmission.EmissionPerYear
-      .find(({ Year }) => Year === 2021)
+      .find(({ Year }) => Year === CURRENT_YEAR)
       || { CO2Equivalent: -999 }
   ).CO2Equivalent / 1000
 
   const thisYear = [
-    <p key="2021">2021</p>,
+    <p key="currentYear">{CURRENT_YEAR}</p>,
     (
-      <TotalCo2 key="2021-total">
+      <TotalCo2 key="currentYear-total">
         <StyledText $color={colorTheme.offWhite}>
-          Totalt: {total2021.toFixed(1)}
+          Totalt: {totalCurrentYear.toFixed(1)}
         </StyledText>
       </TotalCo2>
     ),
-    ...sectors2021
+    ...sectorsCurrentYear
       .slice().sort(compareSector).reverse()
       .map(({ Name, Emissions, Color }) => {
         const name = Name.replace('uppärmning', 'uppvärmning') // Original SMHI data contains typo
-        const perc = 100 * (Emissions / total2021)
+        const perc = 100 * (Emissions / totalCurrentYear)
         return (
-          <TotalCo2 key={`2021-${Name}`}>
+          <TotalCo2 key={`currentYear-${Name}`}>
             <Square color={Color.border} />
             <StyledText $color={Emissions > 0.1 ? colorTheme.offWhite : colorTheme.grey}>
               { name }: { Emissions.toFixed(1) } ({(perc.toFixed(1)) }%)
@@ -106,7 +106,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   ]
 
   const justTotalHistory = [
-    <p key="1990">1990-2021</p>,
+    <p key="1990">1990-{CURRENT_YEAR}</p>,
     (
       <TotalCo2 key="total">
         <Square color={colorTheme.orange} />
@@ -118,7 +118,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   ]
 
   const history = [
-    <p key="1990">1990-2021</p>,
+    <p key="1990">1990-{CURRENT_YEAR}</p>,
     (
       <TotalCo2 key="total">
         <StyledText $color={colorTheme.offWhite}>
@@ -142,7 +142,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   ]
 
   const presentFuture = [
-    <p key="2050">2021-2050</p>, (
+    <p key="2050">{CURRENT_YEAR}-2050</p>, (
       <TotalCo2 key="trend">
         <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
         <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>

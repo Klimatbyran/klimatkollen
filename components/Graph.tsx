@@ -12,8 +12,7 @@ import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
 import { EmissionPerYear, EmissionSector } from '../utils/types'
-import { compareSector, historicalSectorOrder } from '../utils/climateDataPresentation'
-
+import { compareSector, CURRENT_YEAR, historicalSectorOrder } from '../utils/climateDataPresentation'
 import { colorTheme, colorOfSector } from '../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
@@ -63,40 +62,40 @@ const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYea
 type Props = {
   step: number
   historical: EmissionPerYear[]
-  sectorHistorical: EmissionSector[]
+  historicalBySector: EmissionSector[]
   trend: EmissionPerYear[]
   budget: EmissionPerYear[]
   maxVisibleYear: number,
   showSectors: boolean,
 }
 
+// For chartjs fill property
+// https://www.youtube.com/watch?v=2g0gIAsQSp4
+const sectorFill = (name: string) => {
+  const index = historicalSectorOrder
+    .slice().reverse() // zero is the bottom one
+    .indexOf(name)
+  return index === 0 ? 'origin' : index - 1
+}
 function Graph({
-  step, historical, sectorHistorical, budget, trend, maxVisibleYear, showSectors,
+  step, historical, historicalBySector, budget, trend, maxVisibleYear, showSectors,
 }: Props) {
   const setup = useMemo(
     () => getSetup([historical, trend, budget]),
     [historical, trend, budget],
   )
 
-  // For chartjs fill property
-  // https://www.youtube.com/watch?v=2g0gIAsQSp4
-  const sectorFill = (name: string) => {
-    const index = historicalSectorOrder
-      .slice().reverse() // zero is the bottom one
-      .indexOf(name)
-    return index === 0 ? 'origin' : index - 1
-  }
-
   const historicalDataset: Dataset = useMemo(
     () => emissionPerYearToDataset(historical),
     [historical],
   )
-  const sectorHistoricals = useMemo(
-    () => sectorHistorical.map(({ Name, EmissionsPerYear }) => ({
+
+  const historicalDatasetsBySector = useMemo(
+    () => historicalBySector.map(({ Name, EmissionsPerYear }) => ({
       Name,
       EmissionsPerYear: emissionPerYearToDataset(EmissionsPerYear),
     })),
-    [sectorHistorical],
+    [historicalBySector],
   )
   const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
@@ -119,7 +118,7 @@ function Graph({
         data={{
           labels: setup.labels,
           datasets: [
-            ...sectorHistoricals
+            ...historicalDatasetsBySector
               .sort(compareSector)
               .map(({ Name, EmissionsPerYear }) => ({
                 // @ts-ignore
@@ -208,7 +207,7 @@ function Graph({
           scales: {
             x: {
               min: step === 0 ? setup.minYear : 2015,
-              max: step > 0 ? maxVisibleYear : 2021,
+              max: step > 0 ? maxVisibleYear : CURRENT_YEAR,
               grid: {
                 display: true,
                 color: 'rgba(255, 255, 255, 0.2)',

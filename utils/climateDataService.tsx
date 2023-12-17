@@ -1,15 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as fs from 'fs'
 import * as path from 'path'
-import {
-  Municipality,
-  EmissionPerYear,
-  EmissionSector,
-  Budget,
-  Emission,
-  Trend,
-  ClimatePlan,
-} from './types'
+import { Budget, ClimatePlan, Emission, EmissionPerYear, Municipality, Trend } from './types'
 
 const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
 
