@@ -201,6 +201,17 @@ function Graph({
                 label(context) {
                   return `${context.dataset.label}: ${(context.parsed.y / 1000).toFixed(1)}`
                 },
+                // We still want to display the total together with the specific sector
+                title(context) {
+                  const historicalEntry = historical
+                    .find((x) => (`${x.Year}`) === context[0].label)
+                  if (historicalEntry) {
+                    return `Totalt ${
+                      (historicalEntry.CO2Equivalent / 1000).toFixed(1)
+                    }, varav...`
+                  }
+                  return ''
+                },
               },
             },
           },
