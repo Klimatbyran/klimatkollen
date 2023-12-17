@@ -127,9 +127,8 @@ export class ClimateDataService {
   }
 
   public getMunicipality(name: string): Municipality {
-    name = name.toLowerCase()
     const mun = this.municipalities.filter(
-      (kommun) => kommun.Name.toLowerCase() === name,
+      ({Name}) => Name.toLowerCase() === name.toLowerCase(),
     )[0]
     return mun
   }
