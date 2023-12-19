@@ -32,6 +32,5 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off', // fixme revisit and refactor files when there's time to spare
     'react/react-in-jsx-scope': 'off',
     'react/jsx-one-expression-per-line': 'warn',
-    'quote-props': 'off'
   },
 }

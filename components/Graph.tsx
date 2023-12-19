@@ -174,7 +174,7 @@ function Graph({
             {
               // @ts-ignore
               id: 'pledge',
-              label: 'Projektion',
+              label: 'Trend',
               fill: true,
               data: pledgeDataset,
               borderWidth: 2,
