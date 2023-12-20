@@ -21,8 +21,11 @@ def get_municipalities():
             municipality = row['Namn']
             # Lookup the county (Län) based on the two-digit code
             county = df.loc[df['Kod'] == code[:2], 'Namn'].values[0]
-            result = result.append(
-                {'Kommun': municipality, 'Kod': code, 'Län': county}, ignore_index=True)
+            
+            # Create a temporary dataframe for the current row
+            temp_df = pd.DataFrame({'Kommun': [municipality], 'Kod': [code], 'Län': [county]})
+            # Concatenate temp_df with the result dataframe
+            result = pd.concat([result, temp_df], ignore_index=True)
 
     # Return the resulting dataframe
     return result

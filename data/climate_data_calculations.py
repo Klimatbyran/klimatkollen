@@ -8,7 +8,7 @@ from solutions.cars.car_data_calculations import car_calculations
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
-from issues.emissions.emission_data_calculations import emission_calculations
+from issues.emissions.emission_calculations import emission_calculations
 from issues.consumption.consumption_data_calculations import get_consumption_emissions
 from export_data import export_to_xlsx
 
@@ -77,5 +77,6 @@ with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # sav
 
 print('Climate data JSON file created and saved')
 
-temp_df = pd.DataFrame(temp)
-export_to_xlsx(temp_df)
+# Export dataframe to Excel grouped on Län
+# temp_df = pd.DataFrame(temp)
+# export_to_xlsx(temp_df)

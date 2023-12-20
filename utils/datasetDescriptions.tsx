@@ -6,10 +6,26 @@ export const secondaryDataView = 'lista'
 
 export const defaultDataset = 'Utsläppen'
 
+function isLeapYear(year: number): boolean {
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)
+}
+
+function daysInYears(years: number): number {
+  const daysInYear = 365
+  const daysInLeapYear = daysInYear + 1
+  let totalDays = 0
+
+  for (let year = 1; year <= years; year += 1) {
+    totalDays += isLeapYear(year) ? daysInLeapYear : daysInYear
+  }
+
+  return totalDays
+}
+
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
     title: 'Utsläppsförändring',
-    body: 'Genomsnittlig årlig förändring av koldioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
+    body: 'Genomsnittlig årlig förändring av koldioxidutsläppen i kommunerna sedan Parisavtalet 2015.',
     source: (
       <>
         Källa:
@@ -32,8 +48,8 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Elbilarna: {
-    title: 'Elbilsökning',
-    body: 'Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
+    title: 'Ökningstakt elbilar',
+    body: 'Ökningstakt för andelen nyregistrerade laddbara bilar 2015–2022, procentenheter per år per kommun.',
     source: (
       <>
         Källa:
@@ -55,7 +71,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     title: 'Klimatplan',
     body: (
       <>
-        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka
+        Kommuner som saknar respektive har aktuella klimatplaner, inklusive länkar till planer. Klicka
         {' '}
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
@@ -147,23 +163,23 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Koldioxidbudgetarna: {
-    title: 'Koldioxidbudgetarna',
-    body: 'Lorem ipsum.',
+    title: 'Koldioxidbudget räcker',
+    body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner klarar budgeten om trenden håller.',
     source: (
       <>
         Källa:
         {' '}
         <a
-          href="lorem"
+          href="http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
           target="_blank"
           rel="noreferrer"
         >
-          Lorem
+          Uppsala universitet
         </a>
       </>
     ),
-    boundaries: [730, 1461, 2191, 2922, 1e10],
-    labels: ['<2 år', '2-4 år', '4-6 år', '6-8 år', '8 år +', 'Håller budgeten'],
+    boundaries: [daysInYears(2), daysInYears(4), daysInYears(6), daysInYears(8), 1e10],
+    labels: ['2 år -', '2-4 år', '4-6 år', '6-8 år', '8 år +', 'Håller budgeten'],
     labelRotateUp: [],
     columnHeader: 'Lorem',
     dataType: 'Date',

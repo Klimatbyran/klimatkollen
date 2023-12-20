@@ -9,6 +9,7 @@ from dateutil.relativedelta import relativedelta
 
 # Budget in metric tonnes from 2020 +40948459*50.81/46.29+40948459*50.81/46.29*1.05
 BUDGET = 170000000
+BUDGET_2024 = 80000000
 CURRENT_YEAR = 2021
 
 PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
@@ -18,7 +19,7 @@ YEAR_OFFSET = 1
 YEAR_SECONDS = 60 * 60 * 24 * 365  # a year in seconds
 
 
-def get_n_prep_data_from_smhi(df):
+def get_n_prep_data_from_smhi():
     # Download data from SMHI and load it in to a pandas dataframe
     df_smhi = pd.read_excel(PATH_SMHI)
 
@@ -44,9 +45,7 @@ def get_n_prep_data_from_smhi(df):
     df_smhi = df_smhi.sort_values(by=['Kommun'])  # sort by Kommun
     df_smhi = df_smhi.reset_index(drop=True)
 
-    df = df.merge(df_smhi, on='Kommun', how='left')
-
-    return df
+    return df_smhi
 
 
 def deduct_cement(df):
@@ -85,13 +84,15 @@ def calculate_municipality_budgets(df):
 
     # Find all the years that has been reported after (and including) the year the budget starts "eating"
     years_past = [i for i in df.columns if type(
-        i) == int and i >= CURRENT_YEAR]
+        i) == int and i >= CURRENT_YEAR]  # fixme behöver detta redigeras?
+    print(years_past)
 
     # Each municipalities gets its share of the budget
+    df['Budget 2024'] = BUDGET_2024*df['budgetShare']
     df['Budget'] = BUDGET*df['budgetShare']
     for i in range(len(years_past)):
         # Subtracting years that have passed since the budget started "eating"
-        df['Budget'] = df['Budget'] - df[years_past[i]]
+        df['Budget'] = df['Budget'] - df[years_past[i]]  # fixme även här - behöver år ändras?
 
     return df
 
@@ -206,7 +207,7 @@ def calculate_hit_net_zero(df):
 
 
 def calculate_budget_runs_out(df):
-    last_year = CURRENT_YEAR  # Year of the last datapoint
+    last_year = CURRENT_YEAR  # Year of the last datapoint  # fixme kan jag lämna denna?
 
     temp = []  # Temporary list that we will append to
     for i in range(len(df)):
@@ -219,7 +220,7 @@ def calculate_budget_runs_out(df):
     temp = []  # Temporary list that we will append to
 
     for i in range(len(df)):
-        # Get the line coefficient for the trend betwwne last_year+1 and last_year+2
+        # Get the line coefficient for the trend between last_year+1 and last_year+2
         fit = np.polyfit([last_year+1, last_year+2], [df.iloc[i]['trend']
                          [last_year+1], df.iloc[i]['trend'][last_year+2]], 1)
 
@@ -228,10 +229,10 @@ def calculate_budget_runs_out(df):
 
         # Find the value where the straight line cross the x-axis
         x = (
-            np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])
+            np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])  # fixme ska last year plussas på även här?
 
         # Initiate the first day of our starting point date. Start at last_year+1 since the line can go up between last_year and last_year+1
-        my_date = datetime.datetime(last_year+1, 1, 1, 0, 0, 0)
+        my_date = datetime.datetime(last_year+3, 1, 1, 0, 0, 0)  # fixme nu har jag lagt till +2 extra år här, tänker jag rätt?
 
         # If the trends cumulative emission is larger than the budget than the municipality will run out of budget
         if df.iloc[i]['kumulativt'] > df.iloc[i]['Budget']:
@@ -244,8 +245,10 @@ def calculate_budget_runs_out(df):
     return df
 
 
-def emission_calculations(df):
-    df_smhi = get_n_prep_data_from_smhi(df)
+def emission_calculations(df=None):
+    df_smhi = get_n_prep_data_from_smhi()
+    # df = df.merge(df_smhi, on='Kommun', how='left')
+
     df_cem = deduct_cement(df_smhi)
     df_budgeted = calculate_municipality_budgets(df_cem)
     df_paris = calculate_paris_path(df_budgeted)
@@ -256,3 +259,7 @@ def emission_calculations(df):
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
 
     return df_budget_runs_out
+
+df = emission_calculations()
+print(df.head())
+print(df.columns)

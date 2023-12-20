@@ -45,7 +45,7 @@ def car_calculations(df):
 
     df_raw_cars['electricCarChangePercent'] = df_raw_cars['Procentenheter förändring av andel laddbara bilar 2015-2022']
     df_raw_cars['electricCarChangeYearly'] = df_raw_cars.apply(
-        lambda x: {2015: x[2015], 2016: x[2016], 2017: x[2017], 2018: x[2018], 2019: x[2019], 2020: x[2020], 2021: x[2021], 2022: x[2022]}, axis=1)
+        lambda x: {2015: x.loc[2015], 2016: x.loc[2016], 2017: x.loc[2017], 2018: x.loc[2018], 2019: x.loc[2019], 2020: x.loc[2020], 2021: x.loc[2021], 2022: x.loc[2022]}, axis=1)
 
     df_cars = df_raw_cars.filter(
         ['Kommun', 'electricCarChangePercent', 'electricCarChangeYearly'], axis=1)
