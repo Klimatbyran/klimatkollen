@@ -44,7 +44,9 @@ def get_n_prep_data_from_smhi():
     df_smhi = df_smhi.sort_values(by=['Kommun'])  # sort by Kommun
     df_smhi = df_smhi.reset_index(drop=True)
 
-    return df_smhi
+    df = df.merge(df_smhi, on='Kommun', how='left')
+
+    return df
 
 
 def deduct_cement(df):
