@@ -178,7 +178,7 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [daysInYears(2), daysInYears(4), daysInYears(6), daysInYears(8), 1e10],
+    boundaries: [daysInYears(2), daysInYears(3), daysInYears(4), daysInYears(5), 1e10],
     labels: ['2 år -', '2-4 år', '4-6 år', '6-8 år', '8 år +', 'Håller budgeten'],
     labelRotateUp: [],
     columnHeader: 'Lorem',
