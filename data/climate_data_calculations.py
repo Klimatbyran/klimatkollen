@@ -41,7 +41,7 @@ temp = []  # remane the columns
 for i in range(len(df)):
     temp.append({
         'kommun': df.iloc[i]['Kommun'],
-        'län': df.iloc[i]['Län'],
+        #'län': df.iloc[i]['Län'],
         'emissions': {
             '1990': df.iloc[i][1990],
             '2000': df.iloc[i][2000],

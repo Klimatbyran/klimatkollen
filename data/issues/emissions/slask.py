@@ -215,7 +215,7 @@ def calculate_budget_runs_out(df):
         temp.append(np.trapz(list(df.iloc[i]['trend'].values()), list(
             df.iloc[i]['trend'].keys())))
 
-    df['kumulativt'] = temp
+    df['trend kumulativt'] = temp
 
     temp = []  # Temporary list that we will append to
 
@@ -235,7 +235,7 @@ def calculate_budget_runs_out(df):
         my_date = datetime.datetime(last_year+3, 1, 1, 0, 0, 0)  # fixme nu har jag lagt till +2 extra år här, tänker jag rätt?
 
         # If the trends cumulative emission is larger than the budget than the municipality will run out of budget
-        if df.iloc[i]['kumulativt'] > df.iloc[i]['Budget']:
+        if df.iloc[i]['trend kumulativt'] > df.iloc[i]['Budget']:
             temp.append(
                 (my_date + relativedelta(seconds=int((x-last_year+2) * YEAR_SECONDS))).date())
         else:
