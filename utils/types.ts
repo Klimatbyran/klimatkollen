@@ -1,9 +1,5 @@
 import { datasetDescriptions } from './datasetDescriptions'
 
-export type Named = {
-  Name: string
-}
-
 export type Image = {
   ImageUrl: string
   Description: string

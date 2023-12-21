@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { EmissionPerYear, Named } from './types'
+import { EmissionPerYear } from './types'
 import { colorTheme } from '../Theme'
 
 
@@ -23,8 +23,8 @@ export const historicalSectorOrder = [
 ]
 
 export const compareSector = (
-  { Name: NameA }: Named,
-  { Name: NameB }: Named,
+  { Name: NameA }: {Name: string},
+  { Name: NameB }: {Name: string},
 ) => Math.sign(historicalSectorOrder.indexOf(NameB)
              - historicalSectorOrder.indexOf(NameA))
 
