@@ -15,8 +15,6 @@ from export_data import export_to_xlsx
 # Notebook from ClimateView that our calculations are based on:
 # https://colab.research.google.com/drive/1qqMbdBTu5ulAPUe-0CRBmFuh8aNOiHEb?usp=sharing
 
-
-# Get emission calculations
 df = get_municipalities()
 print('Municipalities loaded and prepped')
 

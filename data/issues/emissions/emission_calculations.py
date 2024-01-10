@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 
 # Budget in metric tonnes for January 2024
 BUDGET = 170000000
-BUDGET_YEAR = 2024
+BUDGET_YEAR = 2021
 LAST_YEAR_IN_SMHI_DATA = 2021
 DIFF_BUDGET_N_SMHI = BUDGET_YEAR-LAST_YEAR_IN_SMHI_DATA
 
@@ -18,7 +18,7 @@ PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?coun
 YEAR_SECONDS = 60 * 60 * 24 * 365  # a year in seconds
 
 
-def get_n_prep_data_from_smhi(df):
+def get_n_prep_data_from_smhi():
     # Download data from SMHI and load it in to a pandas dataframe
     df_smhi = pd.read_excel(PATH_SMHI)
 
@@ -44,9 +44,7 @@ def get_n_prep_data_from_smhi(df):
     df_smhi = df_smhi.sort_values(by=['Kommun'])  # sort by Kommun
     df_smhi = df_smhi.reset_index(drop=True)
 
-    df = df.merge(df_smhi, on='Kommun', how='left')
-
-    return df
+    return df_smhi
 
 
 def deduct_cement(df):
@@ -195,9 +193,12 @@ def calculate_hit_net_zero(df):
     return df
 
 
-def calculate_budget_runs_out(df):
-    last_year = BUDGET_YEAR  # Year of the last datapoint
+def calculate_budget_runs_out(df, budget_year): 
+    # inparametrar, per kommun: storlek för kommunens utsläpp ett visst år (2023)
+    #                           trendlinje (k-värde)
+    #                           total CO2-budget
 
+    # räkna ut totala utsläpp för trend för att se om kommunen håller budget
     temp_trend = []  # Temporary list that we will append to
     for i in range(len(df)):
         # Exclude the first DIFF_BUDGET_N_SMHI-1 elements from the trend dict
@@ -209,27 +210,30 @@ def calculate_budget_runs_out(df):
 
     df['kumulativ trend'] = temp_trend
 
+
     temp_dates = []  # Another temporary list that we will append to
     for i in range(len(df)):
-        # Get the line coefficient for the trend between last_year+1 and last_year+2
-        fit = np.polyfit([BUDGET_YEAR+1, BUDGET_YEAR+2], [df.iloc[i]['trend']
-                         [BUDGET_YEAR+1], df.iloc[i]['trend'][BUDGET_YEAR+2]], 1)
+        # beräkna k
+        # Get the line coefficient for the trend between budget_year+1 and budget_year+2
+        fit = np.polyfit([budget_year+1, budget_year+2], [df.iloc[i]['trend']
+                         [budget_year+1], df.iloc[i]['trend'][budget_year+2]], 1)
 
         B = df.iloc[i]['Budget']-np.trapz(list(df.iloc[i]['trend'].values())[:2], list(
             df.iloc[i]['trend'].keys())[:2])  # Remove the "anomaly" from the budget
 
         # Find the value where the straight line cross the x-axis
-        x = (np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])
+        x = (np.sqrt(2*B*fit[0]+(fit[0]*(budget_year+1)+fit[1])**2)-fit[1])/(fit[0])
 
-        # Initiate the first day of our starting point date. Start at last_year+1 since the line can go up between last_year and last_year+1
-        my_date = datetime.datetime(last_year+1, 1, 1, 0, 0, 0)
+        # fixme fixa att halland har nan men går in i f.iloc[i]['kumulativ trend'] > df.iloc[i]['Budget']
+
+        # Initiate the first day of our starting point date.
+        # Start at budget_year+1 since the line can go up between budget_year and budget_year+1
+        my_date = datetime.datetime(budget_year+1, 1, 1, 0, 0, 0)
 
         # If the trends cumulative emission is larger than the budget than the municipality will run out of budget
         if df.iloc[i]['kumulativ trend'] > df.iloc[i]['Budget']:
-            print('x ', x)
-            print('x ', x-last_year+2)
-            print('x ', (x-last_year+2) * YEAR_SECONDS)
-            s = int((x-last_year+2) * YEAR_SECONDS)
+            print(df.iloc[i]['Kommun'])
+            s = int((x-budget_year+2) * YEAR_SECONDS)
             temp_dates.append(
                 (my_date + relativedelta(seconds=s)).date())
         else:
@@ -240,17 +244,16 @@ def calculate_budget_runs_out(df):
 
 
 def emission_calculations(df):
-    df_smhi = get_n_prep_data_from_smhi(df)
+    df_smhi = get_n_prep_data_from_smhi()
+    df = df.merge(df_smhi, on='Kommun', how='left')
+
     df_cem = deduct_cement(df_smhi)
     df_budgeted = calculate_municipality_budgets(df_cem)
-    print(df_budgeted.head())
     df_paris = calculate_paris_path(df_budgeted)
     df_trend = calculate_trend(df_paris)
-    print(df_trend.head())
 
     df_change_percent = calculate_change_percent(df_trend)
     df_net_zero = calculate_hit_net_zero(df_change_percent)
-    df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
-    print(df_budget_runs_out.head())
+    df_budget_runs_out = calculate_budget_runs_out(df_net_zero, BUDGET_YEAR)
 
     return df_budget_runs_out
