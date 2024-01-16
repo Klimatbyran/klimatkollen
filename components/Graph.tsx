@@ -181,7 +181,7 @@ function Graph({
                 font: {
                   family: 'Borna',
                   size: 15,
-                  weight: 300,
+                  weight: '300',
                 },
                 color: 'white',
                 align: 'center',
@@ -203,7 +203,7 @@ function Graph({
                 font: {
                   family: 'Borna',
                   size: 15,
-                  weight: 300,
+                  weight: '300',
                 },
                 color: 'white',
                 callback: (a) => ((a as number) / 1000).toString(),
