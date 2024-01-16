@@ -41,15 +41,6 @@ export type ClimatePlan = {
   Comment: string
 }
 
-type CPEVPerYear = {
-  Year: number
-  Value: number
-}
-
-export type CPEV = {
-  CPEVPerYear: Array<CPEVPerYear>
-}
-
 export type Municipality = {
   County: string
   Name: string
@@ -69,7 +60,7 @@ export type Municipality = {
   ClimatePlan: ClimatePlan,
   BicycleMetrePerCapita: number,
   TotalConsumptionEmission: number,
-  CPEV: CPEV,
+  ChargePointsPerElectricVehicle: number,
 }
 
 export type SelectedData = keyof typeof datasetDescriptions

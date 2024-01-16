@@ -146,36 +146,27 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: true,
   },
 
-  Laddpunkterna: {
-    title: 'Laddpunkter per laddbil',
-    body: 'Lorem ipsum.',
+  Laddningen: {
+    title: 'Antal laddare/elbil',
+    body: 'Antal offentliga laddpunkter per antal laddbara bilar (CPEV-värde) i kommunerna år 2023.',
     source: (
       <>
         Källa:
         {' '}
         <a
-          href="https://powercircle.org/"
+          href="https://powercircle.org/elbilsstatistik/"
           target="_blank"
           rel="noreferrer"
         >
-          PowerCircle
+          Power Circle ELIS
         </a>
         {' '}
-        och
-        {' '}
-        <a
-          href="https://www.trafa.se/vagtrafik/fordon/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Trafa
-        </a>
       </>
     ),
-    boundaries: [0, 0.01, 0.05, 0.1, 1],
-    labels: ['0', '0-0.01', '0.01-0.05', '0.05-0.1', '0.1-1', '1 +'],
+    boundaries: [0, 0.02, 0.05, 0.07, 0.1],
+    labels: ['0', '0-0.02', '0.02-0.05', '0.05-0.07', '0.07-0.1', '0.1 +'],
     labelRotateUp: [],
-    columnHeader: 'Laddpunkter per laddbil',
+    columnHeader: 'Laddare/elbil',
     dataType: 'Float',
     sortAscending: false,
   },
@@ -197,8 +188,8 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
     case 'Konsumtionen':
       dataPoint = item.TotalConsumptionEmission
       break
-    case 'Laddpunkterna':
-      dataPoint = item.CPEV.CPEVPerYear.findLast((cpev) => cpev.Year > 0)?.Value || 0
+    case 'Laddningen':
+      dataPoint = item.ChargePointsPerElectricVehicle
       break
     default:
       dataPoint = item.BicycleMetrePerCapita

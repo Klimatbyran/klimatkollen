@@ -9,7 +9,6 @@ import {
   Emission,
   Trend,
   ClimatePlan,
-  CPEV,
 } from './types'
 
 const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
@@ -69,13 +68,6 @@ export class ClimateDataService {
           Comment: data.climatePlanComment,
         } as unknown as ClimatePlan
 
-        const cpev = {
-          CPEVPerYear: Object.entries(data.CPEV).map(([year, value]) => ({
-            Year: Number(year),
-            Value: value,
-          })),
-        } as unknown as CPEV
-
         const municipality = {
           Name: data.kommun,
           HistoricalEmission: emission,
@@ -89,7 +81,7 @@ export class ClimateDataService {
           ClimatePlan: climatePlan,
           BicycleMetrePerCapita: data.bicycleMetrePerCapita,
           TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
-          CPEV: cpev,
+          ChargePointsPerElectricVehicle: data.cpev,
         } as Municipality
         return municipality
       })

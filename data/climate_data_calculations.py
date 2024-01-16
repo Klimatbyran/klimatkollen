@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
-from solutions.cars.cpev_calculations import get_cpev
+from solutions.cars.cpev import get_cpev
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
@@ -37,7 +37,11 @@ print('6. Consumption emission data added')
 
 df_cpev = get_cpev()
 df = df.merge(df_cpev, on='Kommun', how='left')
-print('7. Add CPEV and CPEV trend')
+print('7. Add CPEV for December 2023')
+
+df = df.loc[:, ~df.columns.isna()]
+df_filter = df.filter(['Kommun', 'Län', 'CPEV'])
+df_filter.to_excel("output/powercircle_municipality_data_dec_2023.xlsx")
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -73,7 +77,7 @@ for i in range(len(df)):
         'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
         'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
         'totalConsumptionEmission': df.iloc[i]['Total emissions'],
-        'CPEV': df.iloc[i]['CPEV'],
+        'cpev': df.iloc[i]['CPEV'],
     })
 
 with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file

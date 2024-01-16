@@ -226,7 +226,7 @@ function Map({
         municipalityDataPoint = 'N/A'
       }
     } else if (dataType === 'Float') {
-      municipalityDataPoint = municipality.dataPoint !== 0 ? municipality?.dataPoint.toFixed(3) : '0'
+      municipalityDataPoint = municipality.dataPoint !== 0 ? municipality?.dataPoint.toString() : '0'
     } else {
       municipalityDataPoint = municipality?.dataPoint.toFixed(1)
     }
