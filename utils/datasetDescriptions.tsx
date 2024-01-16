@@ -163,12 +163,12 @@ export const datasetDescriptions: DatasetDescriptions = {
         {' '}
       </>
     ),
-    boundaries: [0, 0.02, 0.05, 0.07, 0.1],
-    labels: ['0', '0-0.02', '0.02-0.05', '0.05-0.07', '0.07-0.1', '0.1 +'],
+    boundaries: [1e6, 40, 30, 20, 10],
+    labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
     labelRotateUp: [],
     columnHeader: 'Laddare/elbil',
     dataType: 'Float',
-    sortAscending: false,
+    sortAscending: true,
   },
 }
 
@@ -189,7 +189,7 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       dataPoint = item.TotalConsumptionEmission
       break
     case 'Laddningen':
-      dataPoint = item.ChargePointsPerElectricVehicle
+      dataPoint = item.ElectricVehiclePerChargePoints
       break
     default:
       dataPoint = item.BicycleMetrePerCapita

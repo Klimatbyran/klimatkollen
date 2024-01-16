@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
-from solutions.cars.cpev import get_cpev
+from solutions.cars.electric_vehicle_per_charge_points import get_electric_vehicle_per_charge_points
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
@@ -34,14 +34,19 @@ print('5. Bicycle data added')
 
 df = get_consumption_emissions(df)
 print('6. Consumption emission data added')
-
-df_cpev = get_cpev()
-df = df.merge(df_cpev, on='Kommun', how='left')
+ 
+df_evpc = get_electric_vehicle_per_charge_points()
+df = df.merge(df_evpc, on='Kommun', how='left')
 print('7. Add CPEV for December 2023')
 
 df = df.loc[:, ~df.columns.isna()]
-df_filter = df.filter(['Kommun', 'Län', 'CPEV'])
+df_filter = df.filter(['Kommun', 'Län', 'EVPC'])
+df_filter_evpc = df_filter[df_filter['EVPC'] < 1e9]
 df_filter.to_excel("output/powercircle_municipality_data_dec_2023.xlsx")
+print('mean ', df_filter_evpc['EVPC'].mean())
+print('median ', df_filter_evpc['EVPC'].median())
+print('max ', df_filter_evpc['EVPC'].max())
+print('min ', df_filter_evpc['EVPC'].min())
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 
@@ -77,7 +82,7 @@ for i in range(len(df)):
         'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
         'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
         'totalConsumptionEmission': df.iloc[i]['Total emissions'],
-        'cpev': df.iloc[i]['CPEV'],
+        'electricVehiclePerChargePoints': df.iloc[i]['EVPC'],
     })
 
 with open('output/climate-data.json', 'w', encoding='utf8') as json_file:  # save dataframe as json file

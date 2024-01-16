@@ -81,7 +81,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         icon={<Charger />}
         title="Laddningen"
         heading="Laddare per laddbar bil"
-        data={`${municipality.ChargePointsPerElectricVehicle}`}
+        data={`${municipality.ElectricVehiclePerChargePoints}`}
         info="Lorem ipsum."
       />
     </>

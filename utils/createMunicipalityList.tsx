@@ -56,7 +56,7 @@ export const rankData = (municipalities: Municipality[]) => {
     })),
     Laddningen: municipalities.map((item) => ({
       name: item.Name,
-      dataPoint: item.ChargePointsPerElectricVehicle,
+      dataPoint: item.ElectricVehiclePerChargePoints,
     })),
   }
 
