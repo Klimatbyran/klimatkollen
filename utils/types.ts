@@ -74,6 +74,8 @@ export type DatasetDescription = {
   labelRotateUp: boolean[]
   columnHeader: string
   sortAscending?: boolean
+  calculateDataPoint?: (item: Municipality) => number | string
+  formatDataPoint?: (dataPoint: number | string) => string
 }
 
 export type DatasetDescriptions = {
@@ -83,8 +85,7 @@ export type DatasetDescriptions = {
 export type RankedData = {
   [key: string]: {
     name: string;
-    dataPoint: number | string;
+    dataPoint: number | string | JSX.Element;
     rank?: number | undefined;
-}[]
-
+  }[]
 }

@@ -28,6 +28,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
     sortAscending: true,
+    calculateDataPoint: (item) => item.HistoricalEmission.EmissionLevelChangeAverage * 100,
+    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Elbilarna: {
@@ -47,6 +49,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [true, true, true, true, true, true],
     columnHeader: 'Ökning elbilar',
     sortAscending: false,
+    calculateDataPoint: (item) => item.ElectricCarChangePercent * 100,
+    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Klimatplanerna: {
@@ -83,6 +87,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['Nej', 'Ja'],
     labelRotateUp: [],
     columnHeader: 'Klimatplan',
+    calculateDataPoint: (item) => item.ClimatePlan.Link,
+    formatDataPoint: (dataPoint) => dataPoint === 'Saknas' ? 'Nej' : 'Ja',
   },
 
   Cyklarna: {
@@ -116,6 +122,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Cykelväglängd',
     sortAscending: false,
+    calculateDataPoint: (item) => item.BicycleMetrePerCapita,
+    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Konsumtionen: {
@@ -139,6 +147,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person/år',
     sortAscending: true,
+    calculateDataPoint: (item) => item.TotalConsumptionEmission,
+    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Laddningen: {
@@ -163,42 +173,19 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Laddare/elbil',
     sortAscending: true,
+    calculateDataPoint: (item) => item.ElectricVehiclePerChargePoints,
+    formatDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
   },
 }
 
 export const currentData = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
-  let dataPoint
-  let formattedDataPoint
-
-  switch (selectedData) {
-    case 'Utsläppen':
-      dataPoint = item.HistoricalEmission.EmissionLevelChangeAverage * 100
-      formattedDataPoint = dataPoint.toFixed(1)
-      break
-    case 'Elbilarna':
-      dataPoint = item.ElectricCarChangePercent * 100
-      formattedDataPoint = dataPoint.toFixed(1)
-      break
-    case 'Klimatplanerna':
-      dataPoint = item.ClimatePlan.Link
-      formattedDataPoint = dataPoint === 'Saknas' ? <i style={{ color: 'grey' }}>{dataPoint}</i> : <a href={dataPoint}>Öppna</a>
-      break
-    case 'Konsumtionen':
-      dataPoint = item.TotalConsumptionEmission
-      formattedDataPoint = dataPoint.toFixed(1)
-      break
-    case 'Laddningen':
-      dataPoint = item.ElectricVehiclePerChargePoints
-      formattedDataPoint = dataPoint < 1e5 ? dataPoint.toFixed(1) : 'Laddare saknas'
-      break
-    default:
-      dataPoint = item.BicycleMetrePerCapita
-      formattedDataPoint = item.BicycleMetrePerCapita.toFixed(1)
-  }
+  const dataset = datasetDescriptions[selectedData]
+  const dataPoint = dataset.calculateDataPoint ? dataset.calculateDataPoint(item) : null
+  const formattedDataPoint = dataPoint != null && dataset.formatDataPoint ? dataset.formatDataPoint(dataPoint) : ''
 
   return {
     name: item.Name,
-    dataPoint,
+    dataPoint: dataPoint || '',
     formattedDataPoint,
   }
 })

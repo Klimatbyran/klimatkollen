@@ -1,10 +1,9 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { useMemo } from 'react'
 import { DatasetDescription, Municipality, SelectedData } from './types'
 import { datasetDescriptions, currentData } from './datasetDescriptions'
 
 export const calculateStringRankings = (
-  data: Array<{ name: string; dataPoint: string | number }>,
+  data: Array<{ name: string; dataPoint: string | number | JSX.Element }>,
 ) => {
   const rankedData = data.map((item) => ({
     ...item,
@@ -17,9 +16,7 @@ export const calculateNumberRankings = (
   data: Array<{ name: string; dataPoint: number }>,
   sortAscending: boolean,
 ) => {
-  const sortedData = data.sort(
-    (a, b) => (sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint),
-  )
+  const sortedData = data.sort((a, b) => (sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint))
   const rankedData = sortedData.map((item, index) => ({
     ...item,
     index: index + 1,
@@ -33,7 +30,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
   type RankedData = {
     [key in SelectedData]: Array<{
       name: string
-      dataPoint: number | string
+      dataPoint: number | string | JSX.Element
       index: number
     }>
   }
@@ -47,7 +44,18 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
     newRankedData[selectedData] = calculateStringRankings(
       datasets.map((item) => ({
         name: item.name,
-        dataPoint: item.formattedDataPoint,
+        dataPoint:
+          item.dataPoint === 'Saknas' ? (
+            <i style={{ color: 'grey' }}>{item.dataPoint}</i>
+          ) : (
+            <a
+              href={item.dataPoint as string}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Öppna
+            </a>
+          ),
       })),
     )
   } else {
@@ -64,48 +72,36 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
   return newRankedData
 }
 
-type MunicipalityItem = {
-  name: string
-  dataPoint: number | string
-}
-
 const columnHeader = (datasetDescription: DatasetDescription) => (
-  <div>
-    {datasetDescription.columnHeader}
-  </div>
+  <div>{datasetDescription.columnHeader}</div>
 )
 
 export const listColumns = (
   selectedData: SelectedData,
   datasetDescription: DatasetDescription,
-) => {
+): ColumnDef<{ name: string; dataPoint: string | number | JSX.Element; index: number; }>[] => {
   const isClimatePlan = selectedData === 'Klimatplanerna'
 
-  // fixme
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useMemo<ColumnDef<MunicipalityItem>[]>(
-    () => [
-      {
-        header: isClimatePlan ? 'Har plan?' : 'Ranking',
-        cell: (row) => {
-          if (isClimatePlan) {
-            return row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja'
-          }
-          return row.cell.row.index + 1
-        },
-        accessorKey: 'index',
+  return [
+    {
+      header: isClimatePlan ? 'Har plan?' : 'Ranking',
+      cell: (row) => {
+        if (isClimatePlan) {
+          return row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja'
+        }
+        return row.cell.row.index + 1
       },
-      {
-        header: 'Kommun',
-        cell: (row: { renderValue: () => unknown }) => row.renderValue(),
-        accessorKey: 'name',
-      },
-      {
-        header: () => columnHeader(datasetDescription),
-        cell: (row: { renderValue: () => unknown }) => row.renderValue(),
-        accessorKey: 'dataPoint',
-      },
-    ],
-    [datasetDescription, isClimatePlan],
-  )
+      accessorKey: 'index',
+    },
+    {
+      header: 'Kommun',
+      cell: (row: { renderValue: () => unknown }) => row.renderValue(),
+      accessorKey: 'name',
+    },
+    {
+      header: () => columnHeader(datasetDescription),
+      cell: (row: { renderValue: () => unknown }) => row.renderValue(),
+      accessorKey: 'dataPoint',
+    },
+  ]
 }

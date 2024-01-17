@@ -83,27 +83,20 @@ const getColor = (
   return lightBlue
 }
 
-const replaceLetters = (name: string) => {
-  let replacedWord = name
+const replaceLetters = (name: string): string => {
+  const replacements: Record<string, string> = {
+    'Ã¥': 'å',
+    'Ã¤': 'ä',
+    'Ã¶': 'ö',
+    'Ã…': 'Å',
+    'Ã„': 'Ä',
+    'Ã–': 'Ö',
+  }
 
-  if (replacedWord.includes('Ã¥')) {
-    replacedWord = replacedWord.replace(/Ã¥/g, 'å')
-  }
-  if (replacedWord.includes('Ã¤')) {
-    replacedWord = replacedWord.replace(/Ã¤/g, 'ä')
-  }
-  if (replacedWord.includes('Ã¶')) {
-    replacedWord = replacedWord.replace(/Ã¶/g, 'ö')
-  }
-  if (replacedWord.includes('Ã…')) {
-    replacedWord = replacedWord.replace(/Ã…/g, 'Å')
-  }
-  if (replacedWord.includes('Ã„')) {
-    replacedWord = replacedWord.replace(/Ã„/g, 'Ä')
-  }
-  if (replacedWord.includes('Ã–')) {
-    replacedWord = replacedWord.replace(/Ã–/g, 'Ö')
-  }
+  const regex = new RegExp(Object.keys(replacements).join('|'), 'g')
+
+  const replacedWord = name.replace(regex, (match) => replacements[match])
+
   return replacedWord
 }
 
