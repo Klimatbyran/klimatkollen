@@ -166,7 +166,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 }
 
-export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
+export const currentData = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
   let dataPoint
   let formattedDataPoint
 
@@ -181,7 +181,7 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       break
     case 'Klimatplanerna':
       dataPoint = item.ClimatePlan.Link
-      formattedDataPoint = item.ClimatePlan.Link
+      formattedDataPoint = dataPoint === 'Saknas' ? <i style={{ color: 'grey' }}>{dataPoint}</i> : <a href={dataPoint}>Öppna</a>
       break
     case 'Konsumtionen':
       dataPoint = item.TotalConsumptionEmission
@@ -193,7 +193,7 @@ export const data = (municipalities: Array<Municipality>, selectedData: Selected
       break
     default:
       dataPoint = item.BicycleMetrePerCapita
-      formattedDataPoint = item.BicycleMetrePerCapita
+      formattedDataPoint = item.BicycleMetrePerCapita.toFixed(1)
   }
 
   return {

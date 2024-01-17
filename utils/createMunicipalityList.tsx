@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { DatasetDescription, Municipality, SelectedData } from './types'
-import { datasetDescriptions } from './datasetDescriptions'
+import { datasetDescriptions, currentData } from './datasetDescriptions'
 
 export const calculateStringRankings = (
   data: Array<{ name: string; dataPoint: string | number }>,
@@ -27,38 +27,8 @@ export const calculateNumberRankings = (
   return rankedData
 }
 
-type DataSets = {
-  [key: string]: Array<{ name: string; dataPoint: number | string }>
-}
-
-export const rankData = (municipalities: Municipality[]) => {
-  // Fixme refactor
-  const datasets: DataSets = {
-    Utsläppen: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.HistoricalEmission.EmissionLevelChangeAverage,
-    })),
-    Elbilarna: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.ElectricCarChangePercent,
-    })),
-    Klimatplanerna: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.ClimatePlan?.Link,
-    })),
-    Cyklarna: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.BicycleMetrePerCapita,
-    })),
-    Konsumtionen: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.TotalConsumptionEmission,
-    })),
-    Laddningen: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.ElectricVehiclePerChargePoints,
-    })),
-  }
+export const rankData = (municipalities: Municipality[], selectedData: SelectedData) => {
+  const datasets = currentData(municipalities, selectedData)
 
   type RankedData = {
     [key in SelectedData]: Array<{
@@ -68,71 +38,30 @@ export const rankData = (municipalities: Municipality[]) => {
     }>
   }
 
-  const newRankedData: RankedData = {}
+  const newRankedData: RankedData = {} as RankedData
 
-  Object.keys(datasets).forEach((datasetKey) => {
-    const sortAscending = datasetDescriptions[datasetKey]?.sortAscending || false
+  const sortAscending = datasetDescriptions[selectedData]?.sortAscending || false
 
-    if (datasetKey === 'Klimatplanerna') {
-      // special case for climate plans
-      newRankedData[datasetKey as SelectedData] = calculateStringRankings(
-        datasets[datasetKey].map((item) => ({
-          name: item.name,
-          dataPoint: item.dataPoint,
-        })),
-      )
-    } else {
-      // all other datasets
-      newRankedData[datasetKey as SelectedData] = calculateNumberRankings(
-        datasets[datasetKey].map((item) => ({
-          name: item.name,
-          dataPoint: Number(item.dataPoint),
-        })),
-        sortAscending,
-      )
-    }
-  })
+  if (selectedData === 'Klimatplanerna') {
+    // special case for climate plans
+    newRankedData[selectedData] = calculateStringRankings(
+      datasets.map((item) => ({
+        name: item.name,
+        dataPoint: item.formattedDataPoint,
+      })),
+    )
+  } else {
+    // all other datasets
+    newRankedData[selectedData] = calculateNumberRankings(
+      datasets.map((item) => ({
+        name: item.name,
+        dataPoint: Number(item.formattedDataPoint),
+      })),
+      sortAscending,
+    )
+  }
 
   return newRankedData
-}
-
-const formatData = (rowData: string | number) => {
-  const dataString: JSX.Element = <span>{rowData}</span>
-  // const { boundaries } = datasetDescriptions[selectedData] as { boundaries: string[] }
-  // const { dataType } = datasetDescriptions[selectedData]
-  // let dataString: JSX.Element = <span>Data saknas</span>
-  // if (dataType === 'Link') {
-  //   const stringData = rowData as string
-  //   const inBoundaries = boundaries.includes(stringData)
-  //   dataString = inBoundaries ? (
-  //     <i style={{ color: 'grey' }}>{stringData}</i>
-  //   ) : (
-  //     <a
-  //       href={stringData}
-  //       target="_blank"
-  //       rel="noreferrer"
-  //       onClick={(e) => e.stopPropagation()}
-  //     >
-  //       Öppna
-  //     </a>
-  //   )
-  // } else if (dataType === 'Percent') {
-  //   const numberData = rowData as number
-  //   const percent = (numberData * 100).toFixed(1)
-  //   dataString = numberData > 0 ? (
-  //     <span>
-  //       +
-  //       {percent}
-  //     </span>
-  //   ) : <span>{percent}</span>
-  // } else if (dataType === 'Float') {
-  //   const rowNumber = rowData as number
-  //   dataString = <span>{rowNumber}</span>
-  // } else if (dataType === 'Integer') {
-  //   const rowNumber = rowData as number
-  //   dataString = <span>{rowNumber.toFixed(1)}</span>
-  // }
-  return dataString
 }
 
 type MunicipalityItem = {
@@ -173,7 +102,7 @@ export const listColumns = (
       },
       {
         header: () => columnHeader(datasetDescription),
-        cell: (row: { renderValue: () => unknown }) => formatData(row.renderValue() as string | number),
+        cell: (row: { renderValue: () => unknown }) => row.renderValue(),
         accessorKey: 'dataPoint',
       },
     ],
