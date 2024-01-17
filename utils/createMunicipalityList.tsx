@@ -44,18 +44,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
     newRankedData[selectedData] = calculateStringRankings(
       datasets.map((item) => ({
         name: item.name,
-        dataPoint:
-          item.dataPoint === 'Saknas' ? (
-            <i style={{ color: 'grey' }}>{item.dataPoint}</i>
-          ) : (
-            <a
-              href={item.dataPoint as string}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Öppna
-            </a>
-          ),
+        dataPoint: item.dataPoint,
       })),
     )
   } else {
@@ -79,7 +68,11 @@ const columnHeader = (datasetDescription: DatasetDescription) => (
 export const listColumns = (
   selectedData: SelectedData,
   datasetDescription: DatasetDescription,
-): ColumnDef<{ name: string; dataPoint: string | number | JSX.Element; index: number; }>[] => {
+): ColumnDef<{
+  name: string
+  dataPoint: string | number | JSX.Element
+  index: number
+}>[] => {
   const isClimatePlan = selectedData === 'Klimatplanerna'
 
   return [
@@ -87,7 +80,7 @@ export const listColumns = (
       header: isClimatePlan ? 'Har plan?' : 'Ranking',
       cell: (row) => {
         if (isClimatePlan) {
-          return row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja'
+          return row.row.original.index === 1 ? 'Ja' : 'Nej'
         }
         return row.cell.row.index + 1
       },
@@ -100,7 +93,18 @@ export const listColumns = (
     },
     {
       header: () => columnHeader(datasetDescription),
-      cell: (row: { renderValue: () => unknown }) => row.renderValue(),
+      cell: (row) => {
+        if (isClimatePlan) {
+          return row.row.original.dataPoint === 'Saknas' ? (
+            <i style={{ color: 'grey' }}>{row.row.original.dataPoint}</i>
+          ) : (
+            <a href={row.row.original.dataPoint as string} target="_blank" rel="noreferrer">
+              Öppna
+            </a>
+          )
+        }
+        return row.renderValue()
+      },
       accessorKey: 'dataPoint',
     },
   ]
