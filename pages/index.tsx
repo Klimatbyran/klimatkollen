@@ -156,7 +156,7 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const cols = listColumns(selectedDataset, datasetDescription)
-  const rankedData = rankData(municipalities)
+  const rankedData = rankData(municipalities) // fixme hur byter jag ut denna till municipalityData?
 
   const isDefaultDataView = selectedDataView === defaultDataView
 
@@ -191,7 +191,6 @@ function StartPage({ municipalities }: PropsType) {
                   />
                   <Map
                     data={municipalityData}
-                    dataType={datasetDescription.dataType}
                     boundaries={datasetDescription.boundaries}
                   />
                 </>

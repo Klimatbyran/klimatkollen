@@ -6,7 +6,6 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
 import { colorTheme } from '../../Theme'
-import { DatasetType } from '../../utils/types'
 import { mapColors } from '../shared'
 
 const INITIAL_VIEW_STATE = {
@@ -115,14 +114,13 @@ const replaceLetters = (name: string) => {
 } */
 
 type Props = {
-  data: Array<{ name: string; dataPoint: number | string }>
-  dataType: DatasetType
+  data: Array<{ name: string; dataPoint: number | string; formattedDataPoint: number | string }>
   boundaries: number[] | string[]
   children?: ReactNode
 }
 
 function Map({
-  data, dataType, boundaries, children,
+  data, boundaries, children,
 }: Props) {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
@@ -165,12 +163,14 @@ function Map({
     ({ geometry, properties }: { geometry: any; properties: any }) => {
       const name = replaceLetters(properties.name)
       const dataPoint = data.find((e) => e.name === name)?.dataPoint
+      const formattedDataPoint = data.find((e) => e.name === name)?.formattedDataPoint
 
       if (geometry.type === 'MultiPolygon') {
         return geometry.coordinates.map((coords: any) => ({
           geometry: coords[0],
           name,
           dataPoint,
+          formattedDataPoint,
         }))
       }
       return [
@@ -178,6 +178,7 @@ function Map({
           geometry: geometry.coordinates[0][0],
           name,
           dataPoint,
+          formattedDataPoint,
         },
       ]
     },
@@ -186,11 +187,11 @@ function Map({
   type MunicipalityData = {
     name: string
     dataPoint: number
-    dataType: DatasetType
+    formattedDataPoint: number
     geometry: [number, number][]
   }
 
-  const kommunLayer = new PolygonLayer({
+  const municipalityLayer = new PolygonLayer({
     id: 'polygon-layer',
     data: municipalityLines,
     stroked: true,
@@ -209,31 +210,6 @@ function Map({
     pickable: true,
   })
 
-  const formatData = (object: unknown) => {
-    // Fixme refactor
-    const municipality = object as unknown as MunicipalityData
-    let municipalityDataPoint = municipality?.dataPoint.toString()
-
-    if (dataType === 'Link') {
-      const linkData = municipality?.dataPoint
-      municipalityDataPoint = (boundaries as string[]).includes(linkData as unknown as string)
-        ? 'Nej'
-        : 'Ja'
-    } else if (dataType === 'Percent') {
-      if (municipality?.dataPoint !== undefined) {
-        municipalityDataPoint = (municipality.dataPoint * 100).toFixed(1)
-      } else {
-        municipalityDataPoint = 'N/A'
-      }
-    } else if (dataType === 'Float') {
-      municipalityDataPoint = municipality.dataPoint !== 0 ? municipality?.dataPoint.toString() : '0'
-    } else {
-      municipalityDataPoint = municipality?.dataPoint.toFixed(1)
-    }
-
-    return municipalityDataPoint
-  }
-
   return (
     <DeckGLWrapper>
       <NextNProgress
@@ -251,7 +227,7 @@ function Map({
         controller={{}}
         getTooltip={({ object }) => object && {
           html: `
-          <p>${(object as unknown as MunicipalityData)?.name}: ${formatData(object)}</p>`,
+          <p>${(object as unknown as MunicipalityData)?.name}: ${(object as unknown as MunicipalityData).formattedDataPoint}</p>`,
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
@@ -264,7 +240,7 @@ function Map({
           const name = (object as unknown as MunicipalityData)?.name
           if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
-        layers={[kommunLayer]}
+        layers={[municipalityLayer]}
         // FIXME needs to be adapted to mobile before reintroducing
         /* onViewStateChange={({ viewState }) => {
         viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))

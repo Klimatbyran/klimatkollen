@@ -40,13 +40,20 @@ df = df.merge(df_evpc, on='Kommun', how='left')
 print('7. Add CPEV for December 2023')
 
 df = df.loc[:, ~df.columns.isna()]
+
 df_filter = df.filter(['Kommun', 'Län', 'EVPC'])
 df_filter_evpc = df_filter[df_filter['EVPC'] < 1e9]
 df_filter.to_excel("output/powercircle_municipality_data_dec_2023.xlsx")
+
 print('mean ', df_filter_evpc['EVPC'].mean())
 print('median ', df_filter_evpc['EVPC'].median())
 print('max ', df_filter_evpc['EVPC'].max())
 print('min ', df_filter_evpc['EVPC'].min())
+print('0.1 or unde ', df_filter_evpc[df_filter_evpc['EVPC'] <= 10].count())
+print('>0.1 ', df_filter_evpc[df_filter_evpc['EVPC'] > 10].count())
+print('1 or below ', df_filter_evpc[df_filter_evpc['EVPC'] <= 1])
+print('>200 ', df_filter_evpc[df_filter_evpc['EVPC'] >= 200])
+print('no chargers ', df_filter_evpc[df_filter_evpc['EVPC'] == 1e10].count())
 
 # MERGE ALL DATA IN LIST TO RULE THEM ALL
 

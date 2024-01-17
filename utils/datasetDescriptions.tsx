@@ -23,11 +23,10 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [0, -0.01, -0.02, -0.03, -0.1],
+    boundaries: [0, -1, -2, -3, -10],
     labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
-    dataType: 'Percent',
     sortAscending: true,
   },
 
@@ -43,11 +42,10 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
+    boundaries: [4, 5, 6, 7, 8],
     labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
     labelRotateUp: [true, true, true, true, true, true],
     columnHeader: 'Ökning elbilar',
-    dataType: 'Percent',
     sortAscending: false,
   },
 
@@ -85,7 +83,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['Nej', 'Ja'],
     labelRotateUp: [],
     columnHeader: 'Klimatplan',
-    dataType: 'Link',
   },
 
   Cyklarna: {
@@ -118,7 +115,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
     labelRotateUp: [],
     columnHeader: 'Cykelväglängd',
-    dataType: 'Integer',
     sortAscending: false,
   },
 
@@ -142,7 +138,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['7 ton +', '6,7-7 ton', '6,4-6,7 ton', '6,1-6,4 ton', '5,8-6,1 ton', '5,8 ton -'],
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person/år',
-    dataType: 'Integer',
     sortAscending: true,
   },
 
@@ -167,36 +162,43 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
     labelRotateUp: [],
     columnHeader: 'Laddare/elbil',
-    dataType: 'Float',
     sortAscending: true,
   },
 }
 
 export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
   let dataPoint
+  let formattedDataPoint
 
   switch (selectedData) {
     case 'Utsläppen':
-      dataPoint = item.HistoricalEmission.EmissionLevelChangeAverage
+      dataPoint = item.HistoricalEmission.EmissionLevelChangeAverage * 100
+      formattedDataPoint = dataPoint.toFixed(1)
       break
     case 'Elbilarna':
-      dataPoint = item.ElectricCarChangePercent
+      dataPoint = item.ElectricCarChangePercent * 100
+      formattedDataPoint = dataPoint.toFixed(1)
       break
     case 'Klimatplanerna':
       dataPoint = item.ClimatePlan.Link
+      formattedDataPoint = item.ClimatePlan.Link
       break
     case 'Konsumtionen':
       dataPoint = item.TotalConsumptionEmission
+      formattedDataPoint = dataPoint.toFixed(1)
       break
     case 'Laddningen':
       dataPoint = item.ElectricVehiclePerChargePoints
+      formattedDataPoint = dataPoint < 1e5 ? dataPoint.toFixed(1) : 'Laddare saknas'
       break
     default:
       dataPoint = item.BicycleMetrePerCapita
+      formattedDataPoint = item.BicycleMetrePerCapita
   }
 
   return {
     name: item.Name,
     dataPoint,
+    formattedDataPoint,
   }
 })

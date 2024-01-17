@@ -65,8 +65,6 @@ export type Municipality = {
 
 export type SelectedData = keyof typeof datasetDescriptions
 
-export type DatasetType = 'Percent' | 'Link' | 'Integer' | 'Float'
-
 export type DatasetDescription = {
   title: string
   body: string | JSX.Element
@@ -75,7 +73,6 @@ export type DatasetDescription = {
   labels: string[]
   labelRotateUp: boolean[]
   columnHeader: string
-  dataType: DatasetType
   sortAscending?: boolean
 }
 

@@ -96,41 +96,42 @@ export const rankData = (municipalities: Municipality[]) => {
   return newRankedData
 }
 
-const formatData = (rowData: string | number, selectedData: SelectedData) => {
-  const { boundaries } = datasetDescriptions[selectedData] as { boundaries: string[] }
-  const { dataType } = datasetDescriptions[selectedData]
-  let dataString: JSX.Element = <span>Data saknas</span>
-  if (dataType === 'Link') {
-    const stringData = rowData as string
-    const inBoundaries = boundaries.includes(stringData)
-    dataString = inBoundaries ? (
-      <i style={{ color: 'grey' }}>{stringData}</i>
-    ) : (
-      <a
-        href={stringData}
-        target="_blank"
-        rel="noreferrer"
-        onClick={(e) => e.stopPropagation()}
-      >
-        Öppna
-      </a>
-    )
-  } else if (dataType === 'Percent') {
-    const numberData = rowData as number
-    const percent = (numberData * 100).toFixed(1)
-    dataString = numberData > 0 ? (
-      <span>
-        +
-        {percent}
-      </span>
-    ) : <span>{percent}</span>
-  } else if (dataType === 'Float') {
-    const rowNumber = rowData as number
-    dataString = <span>{rowNumber}</span>
-  } else if (dataType === 'Integer') {
-    const rowNumber = rowData as number
-    dataString = <span>{rowNumber.toFixed(1)}</span>
-  }
+const formatData = (rowData: string | number) => {
+  const dataString: JSX.Element = <span>{rowData}</span>
+  // const { boundaries } = datasetDescriptions[selectedData] as { boundaries: string[] }
+  // const { dataType } = datasetDescriptions[selectedData]
+  // let dataString: JSX.Element = <span>Data saknas</span>
+  // if (dataType === 'Link') {
+  //   const stringData = rowData as string
+  //   const inBoundaries = boundaries.includes(stringData)
+  //   dataString = inBoundaries ? (
+  //     <i style={{ color: 'grey' }}>{stringData}</i>
+  //   ) : (
+  //     <a
+  //       href={stringData}
+  //       target="_blank"
+  //       rel="noreferrer"
+  //       onClick={(e) => e.stopPropagation()}
+  //     >
+  //       Öppna
+  //     </a>
+  //   )
+  // } else if (dataType === 'Percent') {
+  //   const numberData = rowData as number
+  //   const percent = (numberData * 100).toFixed(1)
+  //   dataString = numberData > 0 ? (
+  //     <span>
+  //       +
+  //       {percent}
+  //     </span>
+  //   ) : <span>{percent}</span>
+  // } else if (dataType === 'Float') {
+  //   const rowNumber = rowData as number
+  //   dataString = <span>{rowNumber}</span>
+  // } else if (dataType === 'Integer') {
+  //   const rowNumber = rowData as number
+  //   dataString = <span>{rowNumber.toFixed(1)}</span>
+  // }
   return dataString
 }
 
@@ -172,10 +173,10 @@ export const listColumns = (
       },
       {
         header: () => columnHeader(datasetDescription),
-        cell: (row: { renderValue: () => unknown }) => formatData(row.renderValue() as string | number, selectedData),
+        cell: (row: { renderValue: () => unknown }) => formatData(row.renderValue() as string | number),
         accessorKey: 'dataPoint',
       },
     ],
-    [datasetDescription, isClimatePlan, selectedData],
+    [datasetDescription, isClimatePlan],
   )
 }

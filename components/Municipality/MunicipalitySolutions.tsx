@@ -80,9 +80,9 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
       <SolutionSection
         icon={<Charger />}
         title="Laddningen"
-        heading="Laddare per laddbar bil"
-        data={`${municipality.ElectricVehiclePerChargePoints}`}
-        info="Lorem ipsum."
+        heading="Laddare per laddbar bil" // fixme
+        data={`${municipality.ElectricVehiclePerChargePoints.toFixed(1)}`}
+        info="Lorem ipsum." // fixme
       />
     </>
   )
