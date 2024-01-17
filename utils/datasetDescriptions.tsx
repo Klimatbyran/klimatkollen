@@ -88,7 +88,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Klimatplan',
     calculateDataPoint: (item) => item.ClimatePlan.Link,
-    formatDataPoint: (dataPoint) => dataPoint === 'Saknas' ? 'Nej' : 'Ja',
+    formatDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
   },
 
   Cyklarna: {
