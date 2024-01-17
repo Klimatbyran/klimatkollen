@@ -7,22 +7,41 @@ export const calculateStringRankings = (
 ) => {
   const rankedData = data.map((item) => ({
     ...item,
-    index: item.dataPoint === 'Saknas' ? -1 : 1,
+    index: item.dataPoint === 'Saknas' ? 1 : -1,
   }))
   return rankedData
 }
 
 export const calculateNumberRankings = (
   data: Array<{ name: string; dataPoint: number }>,
-  sortAscending: boolean,
+  sortAscending: boolean
 ) => {
-  const sortedData = data.sort((a, b) => (sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint))
+  const customSort = (a: number, b: number) => {
+    // Handla NaN values
+    const aIsNaN = Number.isNaN(a)
+    const bIsNaN = Number.isNaN(b)
+    if (aIsNaN && bIsNaN) {
+      return 0
+    }
+    if (aIsNaN) {
+      return 1
+    }
+    if (bIsNaN) {
+      return -1
+    }
+
+    // Sort non-NaN values normally
+    return sortAscending ? a - b : b - a
+  }
+
+  const sortedData = data.sort((a, b) => customSort(a.dataPoint, b.dataPoint))
   const rankedData = sortedData.map((item, index) => ({
     ...item,
-    index: index + 1,
+    index: index + 1
   }))
   return rankedData
 }
+
 
 export const rankData = (municipalities: Municipality[], selectedData: SelectedData) => {
   const datasets = currentData(municipalities, selectedData)
@@ -74,13 +93,14 @@ export const listColumns = (
   index: number
 }>[] => {
   const isClimatePlan = selectedData === 'Klimatplanerna'
+  const isMixedNumbersAndStrings = selectedData === 'Laddningen'
 
   return [
     {
       header: isClimatePlan ? 'Har plan?' : 'Ranking',
       cell: (row) => {
         if (isClimatePlan) {
-          return row.row.original.index === 1 ? 'Ja' : 'Nej'
+          return row.row.original.index === -1 ? 'Ja' : 'Nej'
         }
         return row.cell.row.index + 1
       },
@@ -94,16 +114,20 @@ export const listColumns = (
     {
       header: () => columnHeader(datasetDescription),
       cell: (row) => {
+        const { dataPoint } = row.row.original
         if (isClimatePlan) {
-          return row.row.original.dataPoint === 'Saknas' ? (
-            <i style={{ color: 'grey' }}>{row.row.original.dataPoint}</i>
+          return dataPoint === 'Saknas' ? (
+            <i style={{ color: 'grey' }}>{dataPoint}</i>
           ) : (
-            <a href={row.row.original.dataPoint as string} target="_blank" rel="noreferrer">
+            <a href={dataPoint as string} target="_blank" rel="noreferrer">
               Öppna
             </a>
           )
         }
-        return row.renderValue()
+        if (isMixedNumbersAndStrings) {
+          return Number.isNaN(dataPoint) ? 'Laddare saknas' : dataPoint
+        }
+        return row.getValue()
       },
       accessorKey: 'dataPoint',
       sortingFn: (a, b) => a.original.index - b.original.index,
