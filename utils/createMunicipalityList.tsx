@@ -106,6 +106,7 @@ export const listColumns = (
         return row.renderValue()
       },
       accessorKey: 'dataPoint',
+      sortingFn: (a, b) => a.original.index - b.original.index,
     },
   ]
 }
