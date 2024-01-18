@@ -171,7 +171,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     boundaries: [1e6, 40, 30, 20, 10],
     labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
     labelRotateUp: [],
-    columnHeader: 'Laddare/elbil',
+    columnHeader: 'Elbil/laddare',
     sortAscending: true,
     calculateDataPoint: (item) => item.ElectricVehiclePerChargePoints,
     formatDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
