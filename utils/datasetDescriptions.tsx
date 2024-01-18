@@ -152,8 +152,8 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Laddningen: {
-    title: 'Antal laddare/elbil',
-    body: 'Antal offentliga laddpunkter per antal laddbara bilar (CPEV-värde) i kommunerna år 2023.',
+    title: 'Antal elbilar per laddare',
+    body: 'Antal registrerade laddbara bilar per offentliga laddpunkter i kommunerna år 2023. EU rekommenderar max 10 bilar per laddare.',
     source: (
       <>
         Källa:

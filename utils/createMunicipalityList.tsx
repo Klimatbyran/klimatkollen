@@ -14,7 +14,7 @@ export const calculateStringRankings = (
 
 export const calculateNumberRankings = (
   data: Array<{ name: string; dataPoint: number }>,
-  sortAscending: boolean
+  sortAscending: boolean,
 ) => {
   const customSort = (a: number, b: number) => {
     // Handla NaN values
@@ -37,11 +37,10 @@ export const calculateNumberRankings = (
   const sortedData = data.sort((a, b) => customSort(a.dataPoint, b.dataPoint))
   const rankedData = sortedData.map((item, index) => ({
     ...item,
-    index: index + 1
+    index: index + 1,
   }))
   return rankedData
 }
-
 
 export const rankData = (municipalities: Municipality[], selectedData: SelectedData) => {
   const datasets = currentData(municipalities, selectedData)

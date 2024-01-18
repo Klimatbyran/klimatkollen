@@ -79,10 +79,10 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
       />
       <SolutionSection
         icon={<Charger />}
-        title="Laddningen"
-        heading="Laddare per laddbar bil" // fixme
+        title="Laddarna"
+        heading="Antal elbilar per laddare"
         data={`${municipality.ElectricVehiclePerChargePoints.toFixed(1)}`}
-        info="Lorem ipsum." // fixme
+        info="Antal registrerade laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare."
       />
     </>
   )
