@@ -15,14 +15,14 @@ def get_municipalities():
     result = pd.DataFrame(columns=['Kommun', 'Kod', 'Län'])
 
     # Iterate through the rows of the dataframe
-    for i, row in df.iterrows():
+    for _, row in df.iterrows():
         if len(row['Kod']) == 4:  # Check if it is a four-digit code row
             code = row['Kod']
             municipality = row['Namn']
             # Lookup the county (Län) based on the two-digit code
             county = df.loc[df['Kod'] == code[:2], 'Namn'].values[0]
-            result = result.append(
-                {'Kommun': municipality, 'Kod': code, 'Län': county}, ignore_index=True)
+            # Append a new row to the 'result' DataFrame
+            result = pd.concat([result, pd.DataFrame({'Kommun': [municipality], 'Kod': [code], 'Län': [county]})], ignore_index=True)
 
     # Return the resulting dataframe
     return result

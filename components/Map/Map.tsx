@@ -6,7 +6,6 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
 import { colorTheme } from '../../Theme'
-import { DatasetType } from '../../utils/types'
 import { mapColors } from '../shared'
 
 const INITIAL_VIEW_STATE = {
@@ -61,7 +60,7 @@ const getColor = (
     if (dataPoint >= boundaries[1]) {
       return darkYellow
     }
-    if (dataPoint >= boundaries[0]) {
+    if (dataPoint > boundaries[0]) {
       return orange
     }
     return red
@@ -78,33 +77,26 @@ const getColor = (
   if (dataPoint >= boundaries[3]) {
     return lightYellow
   }
-  if (dataPoint >= boundaries[4]) {
+  if (dataPoint > boundaries[4]) {
     return beige
   }
   return lightBlue
 }
 
-const replaceLetters = (name: string) => {
-  let replacedWord = name
+const replaceLetters = (name: string): string => {
+  const replacements: Record<string, string> = {
+    'Ã¥': 'å',
+    'Ã¤': 'ä',
+    'Ã¶': 'ö',
+    'Ã…': 'Å',
+    'Ã„': 'Ä',
+    'Ã–': 'Ö',
+  }
 
-  if (replacedWord.includes('Ã¥')) {
-    replacedWord = replacedWord.replace(/Ã¥/g, 'å')
-  }
-  if (replacedWord.includes('Ã¤')) {
-    replacedWord = replacedWord.replace(/Ã¤/g, 'ä')
-  }
-  if (replacedWord.includes('Ã¶')) {
-    replacedWord = replacedWord.replace(/Ã¶/g, 'ö')
-  }
-  if (replacedWord.includes('Ã…')) {
-    replacedWord = replacedWord.replace(/Ã…/g, 'Å')
-  }
-  if (replacedWord.includes('Ã„')) {
-    replacedWord = replacedWord.replace(/Ã„/g, 'Ä')
-  }
-  if (replacedWord.includes('Ã–')) {
-    replacedWord = replacedWord.replace(/Ã–/g, 'Ö')
-  }
+  const regex = new RegExp(Object.keys(replacements).join('|'), 'g')
+
+  const replacedWord = name.replace(regex, (match) => replacements[match])
+
   return replacedWord
 }
 
@@ -115,14 +107,13 @@ const replaceLetters = (name: string) => {
 } */
 
 type Props = {
-  data: Array<{ name: string; dataPoint: number | string }>
-  dataType: DatasetType
+  data: Array<{ name: string; dataPoint: number | string; formattedDataPoint: number | string }>
   boundaries: number[] | string[]
   children?: ReactNode
 }
 
 function Map({
-  data, dataType, boundaries, children,
+  data, boundaries, children,
 }: Props) {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
@@ -165,12 +156,14 @@ function Map({
     ({ geometry, properties }: { geometry: any; properties: any }) => {
       const name = replaceLetters(properties.name)
       const dataPoint = data.find((e) => e.name === name)?.dataPoint
+      const formattedDataPoint = data.find((e) => e.name === name)?.formattedDataPoint
 
       if (geometry.type === 'MultiPolygon') {
         return geometry.coordinates.map((coords: any) => ({
           geometry: coords[0],
           name,
           dataPoint,
+          formattedDataPoint,
         }))
       }
       return [
@@ -178,6 +171,7 @@ function Map({
           geometry: geometry.coordinates[0][0],
           name,
           dataPoint,
+          formattedDataPoint,
         },
       ]
     },
@@ -186,11 +180,11 @@ function Map({
   type MunicipalityData = {
     name: string
     dataPoint: number
-    dataType: DatasetType
+    formattedDataPoint: number
     geometry: [number, number][]
   }
 
-  const kommunLayer = new PolygonLayer({
+  const municipalityLayer = new PolygonLayer({
     id: 'polygon-layer',
     data: municipalityLines,
     stroked: true,
@@ -209,29 +203,6 @@ function Map({
     pickable: true,
   })
 
-  const formatData = (object: unknown) => {
-    // Fixme refactor
-    const municipality = object as unknown as MunicipalityData
-    let municipalityDataPoint = municipality?.dataPoint.toString()
-
-    if (dataType === 'Link') {
-      const linkData = municipality?.dataPoint
-      municipalityDataPoint = (boundaries as string[]).includes(linkData as unknown as string)
-        ? 'Nej'
-        : 'Ja'
-    } else if (dataType === 'Percent') {
-      if (municipality?.dataPoint !== undefined) {
-        municipalityDataPoint = (municipality.dataPoint * 100).toFixed(1)
-      } else {
-        municipalityDataPoint = 'N/A'
-      }
-    } else {
-      municipalityDataPoint = municipality?.dataPoint.toFixed(1)
-    }
-
-    return municipalityDataPoint
-  }
-
   return (
     <DeckGLWrapper>
       <NextNProgress
@@ -249,7 +220,7 @@ function Map({
         controller={{}}
         getTooltip={({ object }) => object && {
           html: `
-          <p>${(object as unknown as MunicipalityData)?.name}: ${formatData(object)}</p>`,
+          <p>${(object as unknown as MunicipalityData)?.name}: ${(object as unknown as MunicipalityData).formattedDataPoint}</p>`,
           style: {
             backgroundColor: 'black',
             borderRadius: '5px',
@@ -262,7 +233,7 @@ function Map({
           const name = (object as unknown as MunicipalityData)?.name
           if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
         }}
-        layers={[kommunLayer]}
+        layers={[municipalityLayer]}
         // FIXME needs to be adapted to mobile before reintroducing
         /* onViewStateChange={({ viewState }) => {
         viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))
