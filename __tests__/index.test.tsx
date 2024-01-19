@@ -84,4 +84,9 @@ describe('Home Page', () => {
     fireEvent.click(radioButton)
     expect(screen.getByText(newDataset)).toBeInTheDocument()
   })
+
+  it('renders the dropdown component', () => {
+    const dropdownInput = screen.getByPlaceholderText(/hur går det i din kommun?/i)
+    expect(dropdownInput).toBeInTheDocument()
+  })
 })
