@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-from math import isnan
 import numpy as np
 import pandas as pd
 from dateutil.relativedelta import relativedelta
 
 
-# Budget in metric tonnes from 2020 +40948459*50.81/46.29+40948459*50.81/46.29*1.05
+# Budget in metric tonnes from 2020
 BUDGET = 170000000
 CURRENT_YEAR = 2021
 

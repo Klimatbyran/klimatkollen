@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def export_to_xlsx(df):
+def export_to_county_xlsx(df):
     df['KPI1: Förändringstakt andel laddbara bilar (%)'] = df['electricCarChangePercent'].apply(
         lambda x: round(x*100, 1))
 
@@ -39,9 +39,9 @@ def export_to_xlsx(df):
                       consumption_label,]]
 
     # Create an ExcelWriter object
-    writer = pd.ExcelWriter(
-        'output/county-climate-data.xlsx', engine='xlsxwriter')
-    print('Created Excel with municipality emission and KPI:s')
+    # writer = pd.ExcelWriter(
+    #     'output/county-climate-data.xlsx', engine='xlsxwriter')
+    # print('Created Excel with municipality emission and KPI:s')
 
     # Group the data by 'Län' and save each group on a separate tab
     for län, group in filtered_df.groupby('Län'):

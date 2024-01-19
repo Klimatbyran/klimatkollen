@@ -5,6 +5,7 @@ import { Municipality } from '../../utils/types'
 import EVCar from '../../public/icons/evcars_32.svg'
 import Bike from '../../public/icons/bikelanes_32.svg'
 import Basket from '../../public/icons/consumtion_32.svg'
+import Charger from '../../public/icons/charger.svg'
 
 const StyledH2 = styled(H2)`
   margin-top: 32px;
@@ -75,6 +76,13 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         heading="CO₂e per person och år"
         data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton`}
         info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019."
+      />
+      <SolutionSection
+        icon={<Charger />}
+        title="Laddarna"
+        heading="Antal elbilar per laddare"
+        data={`${municipality.ElectricVehiclePerChargePoints < 1e10 ? municipality.ElectricVehiclePerChargePoints.toFixed(1) : 'Laddare saknas'}`}
+        info="Antal registrerade laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare."
       />
     </>
   )

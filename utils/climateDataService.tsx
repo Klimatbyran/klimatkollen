@@ -76,19 +76,19 @@ export class ClimateDataService {
           EmissionChangePercent: data.emissionChangePercent,
           HitNetZero: data.hitNetZero,
           BudgetRunsOut: data.budgetRunsOut,
-          ElectricCars: data.electricCars,
           ElectricCarChangePercent: data.electricCarChangePercent,
           ElectricCarChangeYearly: data.electricCarChangeYearly,
           ClimatePlan: climatePlan,
           BicycleMetrePerCapita: data.bicycleMetrePerCapita,
           TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
+          ElectricVehiclePerChargePoints: data.electricVehiclePerChargePoints,
         } as Municipality
         return municipality
       })
-      .sort(
-        (a: Municipality, b: Municipality) => a.HistoricalEmission.EmissionLevelChangeAverage
-          - b.HistoricalEmission.EmissionLevelChangeAverage,
-      )
+      .sort((a: Municipality, b: Municipality) => (
+        a.HistoricalEmission.EmissionLevelChangeAverage
+          - b.HistoricalEmission.EmissionLevelChangeAverage
+      ))
     this.municipalities.forEach((municipality: Municipality, index: number) => {
       const updatedMunicipality = { ...municipality }
       updatedMunicipality.HistoricalEmission.AverageEmissionChangeRank = index + 1

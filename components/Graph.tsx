@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import { EmissionPerYear } from '../utils/types'
 
 import { colorTheme } from '../Theme'
+import { currentYear } from '../utils/shared'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
@@ -170,7 +171,7 @@ function Graph({
           scales: {
             x: {
               min: step === 0 ? setup.minYear : 2015,
-              max: step > 0 ? maxVisibleYear : 2021,
+              max: step > 0 ? maxVisibleYear : currentYear,
               grid: {
                 display: true,
                 color: 'rgba(255, 255, 255, 0.2)',
@@ -180,7 +181,7 @@ function Graph({
                 font: {
                   family: 'Borna',
                   size: 15,
-                  weight: '300',
+                  weight: 300,
                 },
                 color: 'white',
                 align: 'center',
@@ -202,7 +203,7 @@ function Graph({
                 font: {
                   family: 'Borna',
                   size: 15,
-                  weight: '300',
+                  weight: 300,
                 },
                 color: 'white',
                 callback: (a) => ((a as number) / 1000).toString(),

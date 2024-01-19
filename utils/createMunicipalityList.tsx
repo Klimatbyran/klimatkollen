@@ -1,14 +1,13 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { useMemo } from 'react'
 import { DatasetDescription, Municipality, SelectedData } from './types'
-import { datasetDescriptions } from './datasetDescriptions'
+import { datasetDescriptions, currentData } from './datasetDescriptions'
 
 export const calculateStringRankings = (
-  data: Array<{ name: string; dataPoint: string | number }>,
+  data: Array<{ name: string; dataPoint: string | number | JSX.Element }>,
 ) => {
   const rankedData = data.map((item) => ({
     ...item,
-    index: item.dataPoint === 'Saknas' ? -1 : 1,
+    index: item.dataPoint === 'Saknas' ? 1 : -1,
   }))
   return rankedData
 }
@@ -17,9 +16,25 @@ export const calculateNumberRankings = (
   data: Array<{ name: string; dataPoint: number }>,
   sortAscending: boolean,
 ) => {
-  const sortedData = data.sort(
-    (a, b) => (sortAscending ? a.dataPoint - b.dataPoint : b.dataPoint - a.dataPoint),
-  )
+  const customSort = (a: number, b: number) => {
+    // Handla NaN values
+    const aIsNaN = Number.isNaN(a)
+    const bIsNaN = Number.isNaN(b)
+    if (aIsNaN && bIsNaN) {
+      return 0
+    }
+    if (aIsNaN) {
+      return 1
+    }
+    if (bIsNaN) {
+      return -1
+    }
+
+    // Sort non-NaN values normally
+    return sortAscending ? a - b : b - a
+  }
+
+  const sortedData = data.sort((a, b) => customSort(a.dataPoint, b.dataPoint))
   const rankedData = sortedData.map((item, index) => ({
     ...item,
     index: index + 1,
@@ -27,153 +42,94 @@ export const calculateNumberRankings = (
   return rankedData
 }
 
-type DataSets = {
-  [key: string]: Array<{ name: string; dataPoint: number | string }>
-}
-
-export const rankData = (municipalities: Municipality[]) => {
-  // Fixme refactor
-  const datasets: DataSets = {
-    Utsläppen: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.HistoricalEmission.EmissionLevelChangeAverage,
-    })),
-    Elbilarna: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.ElectricCarChangePercent,
-    })),
-    Klimatplanerna: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.ClimatePlan?.Link,
-    })),
-    Cyklarna: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.BicycleMetrePerCapita,
-    })),
-    Konsumtionen: municipalities.map((item) => ({
-      name: item.Name,
-      dataPoint: item.TotalConsumptionEmission,
-    })),
-  }
+export const rankData = (municipalities: Municipality[], selectedData: SelectedData) => {
+  const datasets = currentData(municipalities, selectedData)
 
   type RankedData = {
     [key in SelectedData]: Array<{
       name: string
-      dataPoint: number | string
+      dataPoint: number | string | JSX.Element
       index: number
     }>
   }
 
-  const newRankedData: RankedData = {
-    Elbilarna: [],
-    Utsläppen: [],
-    Klimatplanerna: [],
-    Cyklarna: [],
+  const newRankedData: RankedData = {} as RankedData
+
+  const sortAscending = datasetDescriptions[selectedData]?.sortAscending || false
+
+  if (selectedData === 'Klimatplanerna') {
+    // special case for climate plans
+    newRankedData[selectedData] = calculateStringRankings(
+      datasets.map((item) => ({
+        name: item.name,
+        dataPoint: item.dataPoint,
+      })),
+    )
+  } else {
+    // all other datasets
+    newRankedData[selectedData] = calculateNumberRankings(
+      datasets.map((item) => ({
+        name: item.name,
+        dataPoint: Number(item.formattedDataPoint),
+      })),
+      sortAscending,
+    )
   }
-
-  Object.keys(datasets).forEach((datasetKey) => {
-    const sortAscending = datasetDescriptions[datasetKey]?.sortAscending || false
-
-    if (datasetKey === 'Klimatplanerna') {
-      // special case for climate plans
-      newRankedData[datasetKey as SelectedData] = calculateStringRankings(
-        datasets[datasetKey].map((item) => ({
-          name: item.name,
-          dataPoint: item.dataPoint,
-        })),
-      )
-    } else {
-      // all other datasets
-      newRankedData[datasetKey as SelectedData] = calculateNumberRankings(
-        datasets[datasetKey].map((item) => ({
-          name: item.name,
-          dataPoint: Number(item.dataPoint),
-        })),
-        sortAscending,
-      )
-    }
-  })
 
   return newRankedData
 }
 
-const formatData = (rowData: string | number, selectedData: SelectedData) => {
-  const { boundaries } = datasetDescriptions[selectedData] as { boundaries: string[] }
-  const { dataType } = datasetDescriptions[selectedData]
-  let dataString: JSX.Element = <span>Data saknas</span>
-  if (dataType === 'Link') {
-    const stringData = rowData as string
-    const inBoundaries = boundaries.includes(stringData)
-    dataString = inBoundaries ? (
-      <i style={{ color: 'grey' }}>{stringData}</i>
-    ) : (
-      <a
-        href={stringData}
-        target="_blank"
-        rel="noreferrer"
-        onClick={(e) => e.stopPropagation()}
-      >
-        Öppna
-      </a>
-    )
-  } else if (dataType === 'Percent') {
-    const numberData = rowData as number
-    const percent = (numberData * 100).toFixed(1)
-    dataString = numberData > 0 ? (
-      <span>
-        +
-        {percent}
-      </span>
-    ) : <span>{percent}</span>
-  } else if (dataType === 'Number') {
-    const rowNumber = rowData as number
-    dataString = <span>{rowNumber.toFixed(1)}</span>
-  }
-  return dataString
-}
-
-type MunicipalityItem = {
-  name: string
-  dataPoint: number | string
-}
-
 const columnHeader = (datasetDescription: DatasetDescription) => (
-  <div>
-    {datasetDescription.columnHeader}
-  </div>
+  <div>{datasetDescription.columnHeader}</div>
 )
 
 export const listColumns = (
   selectedData: SelectedData,
   datasetDescription: DatasetDescription,
-) => {
+): ColumnDef<{
+  name: string
+  dataPoint: string | number | JSX.Element
+  index: number
+}>[] => {
   const isClimatePlan = selectedData === 'Klimatplanerna'
+  const isChargingPoints = selectedData === 'Laddarna'
 
-  // fixme
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useMemo<ColumnDef<MunicipalityItem>[]>(
-    () => [
-      {
-        header: isClimatePlan ? 'Har plan?' : 'Ranking',
-        cell: (row) => {
-          if (isClimatePlan) {
-            return row.row.original.dataPoint === 'Saknas' ? 'Nej' : 'Ja'
-          }
-          return row.cell.row.index + 1
-        },
-        accessorKey: 'index',
+  return [
+    {
+      header: isClimatePlan ? 'Har plan?' : 'Ranking',
+      cell: (row) => {
+        if (isClimatePlan) {
+          return row.row.original.index === -1 ? 'Ja' : 'Nej'
+        }
+        return row.cell.row.index + 1
       },
-      {
-        header: 'Kommun',
-        cell: (row: { renderValue: () => unknown }) => row.renderValue(),
-        accessorKey: 'name',
+      accessorKey: 'index',
+    },
+    {
+      header: 'Kommun',
+      cell: (row: { renderValue: () => unknown }) => row.renderValue(),
+      accessorKey: 'name',
+    },
+    {
+      header: () => columnHeader(datasetDescription),
+      cell: (row) => {
+        const { dataPoint } = row.row.original
+        if (isClimatePlan) {
+          return dataPoint === 'Saknas' ? (
+            <i style={{ color: 'grey' }}>{dataPoint}</i>
+          ) : (
+            <a href={dataPoint as string} target="_blank" rel="noreferrer">
+              Öppna
+            </a>
+          )
+        }
+        if (isChargingPoints) {
+          return Number.isNaN(dataPoint) ? 'Laddare saknas' : dataPoint
+        }
+        return row.getValue()
       },
-      {
-        header: () => columnHeader(datasetDescription),
-        cell: (row: { renderValue: () => unknown }) => formatData(row.renderValue() as string | number, selectedData),
-        accessorKey: 'dataPoint',
-      },
-    ],
-    [datasetDescription, isClimatePlan, selectedData],
-  )
+      accessorKey: 'dataPoint',
+      sortingFn: (a, b) => a.original.index - b.original.index,
+    },
+  ]
 }

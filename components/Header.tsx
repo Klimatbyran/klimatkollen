@@ -117,11 +117,13 @@ const HamburgerLink = styled.a`
 type NavItem = {
   href: string
   label: string
+  target?: string;
 }
 
 const navigationItems: NavItem[] = [
   { href: '/kallor-och-metod', label: 'Källor och metod' },
   { href: '/om-oss', label: 'Om oss' },
+  { href: 'https://klimatkollen.teamtailor.com/', label: 'Jobb', target: '_blank' },
   { href: '/in-english', label: 'In English' },
 ]
 
@@ -145,7 +147,7 @@ function Header() {
       <NavigationList>
         {navigationItems.map((item) => (
           <NavigationItem key={item.label}>
-            <NavigationLink href={item.href}>{item.label}</NavigationLink>
+            <NavigationLink href={item.href} target={item.target || undefined}>{item.label}</NavigationLink>
           </NavigationItem>
         ))}
       </NavigationList>
@@ -163,7 +165,7 @@ function Header() {
             <Separator />
             {navigationItems.map((item) => (
               <HamburgerItem key={item.label}>
-                <HamburgerLink href={item.href}>
+                <HamburgerLink href={item.href} target={item.target || undefined}>
                   {item.label}
                 </HamburgerLink>
               </HamburgerItem>

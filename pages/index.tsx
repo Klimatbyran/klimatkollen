@@ -20,7 +20,7 @@ import ToggleButton from '../components/ToggleButton'
 import {
   defaultDataset,
   datasetDescriptions,
-  data,
+  currentData,
   defaultDataView,
   secondaryDataView,
 } from '../utils/datasetDescriptions'
@@ -139,7 +139,7 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
-  const municipalityData = data(municipalities, selectedDataset) // get all municipality names and data points for map and list
+  const municipalityData = currentData(municipalities, selectedDataset) // get all municipality names and data points for map and list
   const datasetDescription = datasetDescriptions[selectedDataset] // get description of selected dataset
 
   const handleToggle = () => {
@@ -156,7 +156,7 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const cols = listColumns(selectedDataset, datasetDescription)
-  const rankedData = rankData(municipalities)
+  const rankedData = rankData(municipalities, selectedDataset) // fixme hur byter jag ut denna till municipalityData?
 
   const isDefaultDataView = selectedDataView === defaultDataView
 
@@ -191,7 +191,6 @@ function StartPage({ municipalities }: PropsType) {
                   />
                   <Map
                     data={municipalityData}
-                    dataType={datasetDescription.dataType}
                     boundaries={datasetDescription.boundaries}
                   />
                 </>
