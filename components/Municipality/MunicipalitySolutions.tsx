@@ -81,7 +81,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         icon={<Charger />}
         title="Laddarna"
         heading="Antal elbilar per laddare"
-        data={`${municipality.ElectricVehiclePerChargePoints.toFixed(1)}`}
+        data={`${municipality.ElectricVehiclePerChargePoints < 1e10 ? municipality.ElectricVehiclePerChargePoints.toFixed(1) : 'Laddare saknas'}`}
         info="Antal registrerade laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare."
       />
     </>
