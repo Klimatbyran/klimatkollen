@@ -50,7 +50,7 @@ function KoM() {
                   2030 jämfört med 1990 och nå nära noll utsläpp senast 2050. I dag
                   {' '}
                   <a
-                    href="https://www.iea.org/news/global-co2-emissions-rebounded-to-their-highest-level-in-history-in-2021"
+                    href="https://www.iea.org/reports/co2-emissions-in-2022"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -67,14 +67,14 @@ function KoM() {
                   även hjälpa andra mer sårbara länder att ställa om.
                 </Paragraph>
                 <Paragraph>
-                  Läs mer om Parisavtalet hos
+                  Läs mer om Parisavtalet på
                   {' '}
                   <a
-                    href="https://www.wwf.se/rapport/ipcc/#parisavtalet"
+                    href="https://www.naturvardsverket.se/parisavtalet"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Världsnaturfonden WWF
+                    Naturvårdsverkets webbplats
                   </a>
                   .
                 </Paragraph>
@@ -173,9 +173,8 @@ function KoM() {
             text={(
               <>
                 <Paragraph>
-                  En koldioxidbudget anger hur mycket koldioxid som kan släppas ut innan
-                  koldioxidhalten i atmosfären blir så hög att uppvärmningen bryter mot
-                  Parisavtalets 1,5-gradersmål.
+                  En koldioxidbudget anger hur mycket koldioxid som kan släppas ut innan koldioxidhalten
+                  i atmosfären blir så hög att uppvärmningen överstiger Parisavtalets 1,5-gradersmål.
                 </Paragraph>
                 <Paragraph>
                   FN:s klimatpanel (IPCC) beräknade i början av 2020 att den återstående

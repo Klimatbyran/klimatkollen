@@ -92,7 +92,7 @@ export const listColumns = (
   index: number
 }>[] => {
   const isClimatePlan = selectedData === 'Klimatplanerna'
-  const isMixedNumbersAndStrings = selectedData === 'Laddningen'
+  const isChargingPoints = selectedData === 'Laddarna'
 
   return [
     {
@@ -123,7 +123,7 @@ export const listColumns = (
             </a>
           )
         }
-        if (isMixedNumbersAndStrings) {
+        if (isChargingPoints) {
           return Number.isNaN(dataPoint) ? 'Laddare saknas' : dataPoint
         }
         return row.getValue()
