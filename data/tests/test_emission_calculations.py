@@ -44,16 +44,14 @@ class TestEmissionCalculations(unittest.TestCase):
         df_result = calculate_paris_path(df_input)
         df_expected = pd.DataFrame(pd.read_excel(path_expected_df))
         
-        series_result = df_result['parisPath']
-        series_expected = df_expected['parisPath']
-        
-        series_result = [prep_dict_for_compare(serie) for serie in series_result]
-        series_expected = [prep_dict_for_compare(serie) for serie in series_expected]
-        
-        # Check lengths are the same
+        # Extract paris path data series and prepare for comparison
+        series_result = [prep_dict_for_compare(serie) for serie in df_result['parisPath']]
+        series_expected = [prep_dict_for_compare(serie) for serie in df_expected['parisPath']]
+    
+        # Check length of series
         self.assertEqual(len(series_result), len(series_expected))
         
-        # Check content is the same
+        # Check content of data series, per municipality
         for idx in range(len(series_expected)):
             with self.subTest(expected = series_expected[idx]):        
                 self.assertDictEqual(series_result[idx], series_expected[idx])
