@@ -133,9 +133,8 @@ def calculate_trend(df):
         dicts = {latest: df.iloc[i][latest]}
         # Adding all the years we will use for the curve fit. This starts in 2015 to the latest year. NOTE: this can be changed
         x = np.arange(2015, latest+1)
-        # Adding all the emissions from the respective years. Note is needs to be changed in parallel with the line above
-        # 7:14 to access correct columns
-        y = np.array(df.iloc[i][7:14], dtype=float)
+        # Adding all the emissions from the respective years specified in the line above. 
+        y = np.array(df.iloc[i][x], dtype=float)
         # Fit a straight line to the data defined above using least squares
         fit = np.polyfit(x, y, 1)
 
