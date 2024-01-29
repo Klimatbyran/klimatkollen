@@ -2,12 +2,17 @@ import ast
 import numpy as np
 import pytest as pt
 
-def prep_dict_for_compare(dict):
-    
-    # If type of dict is str, convert str representation of dict to dict
+def str_to_dict(dict):
+    # If dict is a string represetation, convert to dict
     if isinstance(dict, str):
         dict = ast.literal_eval(dict)
         
+    return dict
+
+def prep_dict_for_compare(dict):
+    # Convert str to dict, if needed
+    dict = str_to_dict(dict)
+    
     # If dict values are floats, add acceptible relative tolerance of 1e-8
     # See pytest.approx: https://docs.pytest.org/en/7.1.x/reference/reference.html#pytest-approx
     if any([isinstance(v, (float, np.floating)) for v in dict.values()]):
