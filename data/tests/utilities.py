@@ -1,6 +1,14 @@
 import ast
+from datetime import datetime
 import numpy as np
 import pytest as pt
+
+def prep_date_str_for_compare(date_str):
+    if date_str != 'Aldrig':
+        # Format date string to date on format YYYY-mm-dd
+        date_str = datetime.strftime(date_str, "%Y-%m-%d")
+    
+    return date_str
 
 def str_to_dict(dict):
     # If dict is a string represetation, convert to dict
