@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-import datetime
-from time import strptime
 import unittest
 import pandas as pd
 
-from issues.emissions.emission_data_calculations import get_n_prep_data_from_smhi, deduct_cement, calculate_municipality_budgets, calculate_paris_path, calculate_trend, calculate_change_percent, calculate_hit_net_zero
+from issues.emissions.emission_data_calculations import get_n_prep_data_from_smhi, deduct_cement, calculate_municipality_budgets, calculate_paris_path, calculate_trend, calculate_change_percent, calculate_hit_net_zero, calculate_budget_runs_out
 from tests.utilities import prep_dict_for_compare, str_to_dict, prep_date_str_for_compare
 
 class TestEmissionCalculations(unittest.TestCase):
@@ -102,7 +100,7 @@ class TestEmissionCalculations(unittest.TestCase):
         
         df_result = calculate_hit_net_zero(df_input)
         
-        # Get expected df and convert hitNetZero values from datetime str to date dict
+        # Get expected df
         df_expected = pd.DataFrame(pd.read_excel(path_expected_df))
     
         # Extract hit net zero dates and prepare for comparison
@@ -110,6 +108,26 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected['hitNetZero'] = [prep_date_str_for_compare(date) for date in df_expected['hitNetZero']]
         
         pd.testing.assert_series_equal(df_result['hitNetZero'], df_expected['hitNetZero'])
+
+    def test_calculate_budget_runs_out(self):
+        path_input_df = 'tests/reference_dataframes/df_net_zero.xlsx'
+        path_expected_df = 'tests/reference_dataframes/df_budget_runs_out.xlsx'
+        
+        # Get input df and convert trend data dicts from str to dict        
+        df_input = pd.DataFrame(pd.read_excel(path_input_df))  
+        df_input['trend'] = [str_to_dict(serie) for serie in df_input['trend']]
+        
+        df_result = calculate_budget_runs_out(df_input)
+    
+        # Get expected df
+        df_expected = pd.DataFrame(pd.read_excel(path_expected_df))
+        
+        # Extract budget runs out dates and prepare for comparison
+        df_result['budgetRunsOut'] = [prep_date_str_for_compare(date) for date in df_result['budgetRunsOut']]
+        df_expected['budgetRunsOut'] = [prep_date_str_for_compare(date) for date in df_expected['budgetRunsOut']]
+        
+        pd.testing.assert_series_equal(df_result['budgetRunsOut'], df_expected['budgetRunsOut'])
+        
 
 if __name__ == '__main__':
     unittest.main()
