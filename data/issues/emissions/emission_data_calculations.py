@@ -95,30 +95,6 @@ def calculate_municipality_budgets(df):
     return df
 
 
-def calculate_paris_path(df):
-    # Find all the years that has been reported after (and including) the year the budget starts "eating"
-    years_past = [i for i in df.columns if type(
-        i) == int and i >= CURRENT_YEAR]
-
-    # Create an exponential curve that satisfy each municipality's budget
-    temp = []
-    latest = int(sorted(years_past)[-1])  # The latest year in the dataframe
-    for i in range(len(df)):
-        dicts = {}  # We'll store the exponential path och each municipality in a dictionary where the keys are the years
-        # We take the time horizon from the latest year until 2050
-        keys = range(latest, 2050+1)
-        for value in keys:
-            # Calculated what the emission level has to be at future date if one where to follow the exponential decay curve
-            dicts[value] = df.iloc[i][latest] * \
-                np.exp(-(df.iloc[i][latest]) /
-                       (df.iloc[i]['Budget'])*(value-latest))
-        temp.append(dicts)
-
-    df['parisPath'] = temp  # add the exponential path to the dataframe
-
-    return df
-
-
 def calculate_trend(df):
     # Find all the years that has been reported after (and including) the year the budget starts "eating"
     years_past = [i for i in df.columns if type(
@@ -155,6 +131,30 @@ def calculate_trend(df):
 
     # Add the emission form the linear trend to the dataframe
     df['trendEmission'] = temp
+
+    return df
+
+
+def calculate_paris_path(df):
+    # Find all the years that has been reported after (and including) the year the budget starts "eating"
+    years_past = [i for i in df.columns if type(
+        i) == int and i >= CURRENT_YEAR]
+
+    # Create an exponential curve that satisfy each municipality's budget
+    temp = []
+    latest = int(sorted(years_past)[-1])  # The latest year in the dataframe
+    for i in range(len(df)):
+        dicts = {}  # We'll store the exponential path och each municipality in a dictionary where the keys are the years
+        # We take the time horizon from the latest year until 2050
+        keys = range(latest, 2050+1)
+        for value in keys:
+            # Calculated what the emission level has to be at future date if one where to follow the exponential decay curve
+            dicts[value] = df.iloc[i][latest] * \
+                np.exp(-(df.iloc[i][latest]) /
+                       (df.iloc[i]['Budget'])*(value-latest))
+        temp.append(dicts)
+
+    df['parisPath'] = temp  # add the exponential path to the dataframe
 
     return df
 
@@ -246,10 +246,10 @@ def emission_calculations(df):
     df_smhi = get_n_prep_data_from_smhi(df)
     df_cem = deduct_cement(df_smhi)
     df_budgeted = calculate_municipality_budgets(df_cem)
-    df_paris = calculate_paris_path(df_budgeted)
-    df_trend = calculate_trend(df_paris)
+    df_trend = calculate_trend(df_budgeted)
+    df_paris = calculate_paris_path(df_trend)
 
-    df_change_percent = calculate_change_percent(df_trend)
+    df_change_percent = calculate_change_percent(df_paris)
     df_net_zero = calculate_hit_net_zero(df_change_percent)
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
 
