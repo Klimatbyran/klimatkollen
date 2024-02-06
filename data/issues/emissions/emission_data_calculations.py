@@ -124,7 +124,7 @@ def calculate_trend(df):
         temp_trend.append(dicts)
 
     # Add the trend coefficients and values to the dataframe
-    # df['trendCoefficients'] = temp_fit
+    df['trendCoefficients'] = temp_fit
     df['trend'] = temp_trend
 
     # Calculate the emission from the linear trend using the trapezoidal rule
@@ -183,9 +183,7 @@ def calculate_hit_net_zero(df):
     for i in range(len(df)):
         last_year = LAST_YEAR_WITH_SMHI_DATA  # Year of the last datapoint
         # Get trend line coefficients for specified municipality from df
-        # fit = df.iloc[i]['trendCoefficients']
-        fit = np.polyfit([last_year+1, last_year+2], [df.iloc[i]['trend']
-                         [last_year+1], df.iloc[i]['trend'][last_year+2]], 1)
+        fit = df.iloc[i]['trendCoefficients']
 
         if fit[0] < 0:  # If the slope is negative we will reach the x-axis
             temp_f = -fit[1]/fit[0]  # Find where the line cross the x-axis
@@ -203,35 +201,34 @@ def calculate_hit_net_zero(df):
 
 
 def calculate_budget_runs_out(df):
-    last_year = max(LAST_YEAR_WITH_SMHI_DATA, BUDGET_YEAR)  # Year of the last datapoint
+    # Year from which the budget applies (after correction with respect to reported years since budget start)
+    last_year = max(LAST_YEAR_WITH_SMHI_DATA, BUDGET_YEAR)  
 
     temp = []  # Temporary list that we will append to
     for i in range(len(df)):
+        # Get index in trend series for last_year
         trend_years = list(df.iloc[i]['trend'].keys())
         last_year_idx = trend_years.index(last_year)
-        # Applying the trapezoidal method to calculate the emission of the linear trend
-        y = list(df.iloc[i]['trend'].values())[last_year_idx:]
-        x = list(df.iloc[i]['trend'].keys())[last_year_idx:]
+        # Get trend values for last_year and forward
+        y_trend = list(df.iloc[i]['trend'].values())[last_year_idx:]
+        x_trend = list(df.iloc[i]['trend'].keys())[last_year_idx:]
         
-        kumulativt = np.trapz(y, x)
-        
-        df.iloc[i]['kumulativt'] = kumulativt
-        
-        # Get the line coefficients for the trend line from last year+1 to last year+2
-        fit = np.polyfit([last_year+1, last_year+2], [df.iloc[i]['trend']
-                         [last_year+1], df.iloc[i]['trend'][last_year+2]], 1)
+        # Get the line coefficients for the trend line from df
+        fit = df.iloc[i]['trendCoefficients']
 
-        B = df.iloc[i]['Budget']-np.trapz(y[:2], x[:2])  # Remove the "anomaly" from the budget
+        # Remove the "anomaly" from the budget (if any)
+        # Subtract emission from trend between last_year and last_year+1 since the line can go up between last_year and last_year+1
+        B = df.iloc[i]['Budget']-np.trapz(y_trend[:2], x_trend[:2])  
 
-        # Find the value where the straight line cross the x-axis
-        x = (
-            np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])
+        # Find the value where the straight line cross the x-axis 
+        # by solving -1/2(x1-x2)(2m+k(x1+x2))=B for x2 where x1=last_year+1 
+        x = (np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])
 
         # Initiate the first day of our starting point date. Start at last_year+1 since the line can go up between last_year and last_year+1
         my_date = datetime.datetime(last_year+1, 1, 1, 0, 0, 0)
 
         # If the trends cumulative emission is larger than the budget than the municipality will run out of budget
-        if kumulativt > df.iloc[i]['Budget']:
+        if df.iloc[i]['trendEmission'] > df.iloc[i]['Budget']:
             temp.append(
                 (my_date + relativedelta(seconds=int((x-last_year+2) * YEAR_SECONDS))).date())
         else:

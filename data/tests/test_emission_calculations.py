@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import unittest
 import pandas as pd
+import numpy as np
 
 from issues.emissions.emission_data_calculations import get_n_prep_data_from_smhi, deduct_cement, calculate_municipality_budgets, calculate_paris_path, calculate_trend, calculate_change_percent, calculate_hit_net_zero, calculate_budget_runs_out
-from tests.utilities import prep_dict_for_compare, str_to_dict, prep_date_str_for_compare
+from tests.utilities import prep_dict_for_compare, str_to_dict, prep_date_str_for_compare, str_to_numpy_array
 
 class TestEmissionCalculations(unittest.TestCase):
     
@@ -98,6 +99,7 @@ class TestEmissionCalculations(unittest.TestCase):
         
         # Get input df and convert trend data dicts from str to dict
         df_input = pd.DataFrame(pd.read_excel(path_input_df))  
+        df_input['trendCoefficients'] = [str_to_numpy_array(array) for array in df_input['trendCoefficients']]
         df_input['trend'] = [str_to_dict(serie) for serie in df_input['trend']]
         
         df_result = calculate_hit_net_zero(df_input)
@@ -116,7 +118,8 @@ class TestEmissionCalculations(unittest.TestCase):
         path_expected_df = 'tests/reference_dataframes/df_budget_runs_out.xlsx'
         
         # Get input df and convert trend data dicts from str to dict        
-        df_input = pd.DataFrame(pd.read_excel(path_input_df))  
+        df_input = pd.DataFrame(pd.read_excel(path_input_df))
+        df_input['trendCoefficients'] = [str_to_numpy_array(array) for array in df_input['trendCoefficients']] 
         df_input['trend'] = [str_to_dict(serie) for serie in df_input['trend']]
         
         df_result = calculate_budget_runs_out(df_input)

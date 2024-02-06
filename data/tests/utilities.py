@@ -17,6 +17,12 @@ def str_to_dict(dict):
         
     return dict
 
+def str_to_numpy_array(array):
+    # Convert string representation of numpy array to to numpy array
+    array = np.fromstring(array[1:-1], dtype=np.float64, sep=' ')
+    
+    return array
+
 def prep_dict_for_compare(dict):
     # Convert str to dict, if needed
     dict = str_to_dict(dict)
