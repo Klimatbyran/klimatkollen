@@ -215,23 +215,25 @@ def calculate_budget_runs_out(df):
         
         # Get the cumulative emissions from the trend line, starting from the year the corrected budget applies (last_year and forward)
         cumulative_emissions = np.trapz(y_trend, x_trend)
-        
-        # Get the line coefficients for the trend line from df
-        fit = df.iloc[i]['trendCoefficients']
-
-        # Remove the "anomaly" from the budget (if any)
-        # Subtract emission from trend between last_year and last_year+1 since the line can go up between last_year and last_year+1
-        B = df.iloc[i]['Budget']-np.trapz(y_trend[:2], x_trend[:2])  
-
-        # Find the value where the straight line cross the x-axis 
-        # by solving -1/2(x1-x2)(2m+k(x1+x2))=B for x2 where x1=last_year+1 
-        x = (np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])
-
-        # Initiate the first day of our starting point date. Start at last_year+1 since the line can go up between last_year and last_year+1
-        my_date = datetime.datetime(last_year+1, 1, 1, 0, 0, 0)
 
         # If the trends cumulative emission is larger than the budget than the municipality will run out of budget
         if cumulative_emissions > df.iloc[i]['Budget']:
+            # Calculate date for when the budget runs out
+            
+            # Get the line coefficients for the trend line from df
+            fit = df.iloc[i]['trendCoefficients']
+
+            # Remove the "anomaly" from the budget (if any)
+            # Subtract emission from trend between last_year and last_year+1 since the line can go up between last_year and last_year+1
+            B = df.iloc[i]['Budget'] - np.trapz(y_trend[:2], x_trend[:2])  
+
+            # Find the value where the straight line cross the x-axis 
+            # by solving -1/2(x1-x2)(2m+k(x1+x2))=B for x2 where x1=last_year+1 
+            x = (np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])
+
+            # Initiate the first day of our starting point date. Start at last_year+1 since the line can go up between last_year and last_year+1
+            my_date = datetime.datetime(last_year+1, 1, 1, 0, 0, 0)
+            
             temp.append(
                 (my_date + relativedelta(seconds=int((x-last_year+2) * YEAR_SECONDS))).date())
         else:
