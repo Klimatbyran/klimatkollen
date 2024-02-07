@@ -213,6 +213,9 @@ def calculate_budget_runs_out(df):
         y_trend = list(df.iloc[i]['trend'].values())[last_year_idx:]
         x_trend = list(df.iloc[i]['trend'].keys())[last_year_idx:]
         
+        # Get the cumulative emissions from the trend line, starting from the year the corrected budget applies (last_year and forward)
+        cumulative_emissions = np.trapz(y_trend, x_trend)
+        
         # Get the line coefficients for the trend line from df
         fit = df.iloc[i]['trendCoefficients']
 
@@ -228,7 +231,7 @@ def calculate_budget_runs_out(df):
         my_date = datetime.datetime(last_year+1, 1, 1, 0, 0, 0)
 
         # If the trends cumulative emission is larger than the budget than the municipality will run out of budget
-        if df.iloc[i]['trendEmission'] > df.iloc[i]['Budget']:
+        if cumulative_emissions > df.iloc[i]['Budget']:
             temp.append(
                 (my_date + relativedelta(seconds=int((x-last_year+2) * YEAR_SECONDS))).date())
         else:
