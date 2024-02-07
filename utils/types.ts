@@ -32,7 +32,7 @@ export type Budget = {
 
 export type Trend = {
   TrendPerYear: Array<EmissionPerYear>
-  FutureCO2Emission: number
+  TrendCO2Emission: number
 }
 
 export type ClimatePlan = {

@@ -38,7 +38,7 @@ describe('Home Page', () => {
       PoliticalRule: [],
       EmissionTrend: {
         TrendPerYear: [],
-        FutureCO2Emission: 0,
+        TrendCO2Emission: 0,
       },
       HistoricalEmission: {
         AverageEmissionChangeRank: 0,

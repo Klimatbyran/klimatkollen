@@ -62,7 +62,7 @@ for i in range(len(df)):
         'budget': df.iloc[i]['Budget'],
         'emissionBudget': df.iloc[i]['parisPath'],
         'trend': df.iloc[i]['trend'],
-        'futureEmission': df.iloc[i]['trendEmission'],
+        'trendEmission': df.iloc[i]['trendEmission'],
         'emissionChangePercent': df.iloc[i]['emissionChangePercent'],
         'hitNetZero': df.iloc[i]['hitNetZero'],
         'budgetRunsOut': df.iloc[i]['budgetRunsOut'],

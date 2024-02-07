@@ -48,7 +48,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
     (total, year) => total + year.CO2Equivalent,
     0,
   ) / 1000
-  const totalTrend = municipality.EmissionTrend.FutureCO2Emission / 1000
+  const totalTrend = municipality.EmissionTrend.TrendCO2Emission / 1000
 
   return (
     <Container>
