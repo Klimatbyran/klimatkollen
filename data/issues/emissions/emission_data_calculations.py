@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 from dateutil.relativedelta import relativedelta
 
-BUDGET = 170000000              # C02 budget in metric tonnes 
-BUDGET_YEAR = 2021              # year from which the budget applies
+BUDGET = 80000000                # C02 budget in metric tonnes 
+BUDGET_YEAR = 2024               # year from which the budget applies
 
 LAST_YEAR_WITH_SMHI_DATA = 2021 # last year for which the National Emission database has data
 PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
@@ -225,19 +225,35 @@ def calculate_budget_runs_out(df):
 
             # Remove the "anomaly" from the budget (if any)
             # Subtract emission from trend between last_year and last_year+1 since the line can go up between last_year and last_year+1
-            B = df.iloc[i]['Budget'] - np.trapz(y_trend[:2], x_trend[:2])  
+            B = df.iloc[i]['Budget'] - np.trapz(y_trend[:2], x_trend[:2])
+            start_year_after_correction = last_year+1
 
             # Find the value where the straight line cross the x-axis 
             # by solving -1/2(x1-x2)(2m+k(x1+x2))=B for x2 where x1=last_year+1 
             x = (np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])
 
-            # Initiate the first day of our starting point date. Start at last_year+1 since the line can go up between last_year and last_year+1
-            my_date = datetime.datetime(last_year+1, 1, 1, 0, 0, 0)
+            # Initiate the first day of our starting point date
+            my_date = datetime.datetime(start_year_after_correction, 1, 1, 0, 0, 0)
+            # Calculate the time diff between starting date and point in time where budget runs out
+            time_diff_in_years = x - (start_year_after_correction)
+            time_diff_in_seconds = int(time_diff_in_years*YEAR_SECONDS)
+            # Add diff to starting date to get date for when budget runs out
+            budget_runs_out_date = (my_date + relativedelta(seconds=time_diff_in_seconds)).date()
             
-            temp.append(
-                (my_date + relativedelta(seconds=int((x-last_year+2) * YEAR_SECONDS))).date())
+            temp.append(budget_runs_out_date)
+            
+            old_way_of_calc_date = (my_date + relativedelta(seconds=int((x-last_year+2) * YEAR_SECONDS))).date()
         else:
             temp.append('Aldrig')
+            
+        if df.iloc[i]['Kommun'] in ['Ale','Norrköping','Pajala','Upplands-Bro']:
+            print(df.iloc[i]['Kommun'])
+            print('Start date: ' + str(my_date))
+            print('Budget runs out (in years): ' + str(x))
+            print('Time diff in years: ' + str(time_diff_in_years))
+            print('Time diff in seconds: ' + str(time_diff_in_seconds))
+            print('Budget runs out: ' + str(budget_runs_out_date))
+            print('Budget runs out (old calc): ' + str(old_way_of_calc_date))
 
     df['budgetRunsOut'] = temp
     return df
@@ -253,5 +269,7 @@ def emission_calculations(df):
     df_change_percent = calculate_change_percent(df_paris)
     df_net_zero = calculate_hit_net_zero(df_change_percent)
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
+    
+    df_budget_runs_out.to_excel('df_budget_runs_out.xlsx')
 
     return df_budget_runs_out
