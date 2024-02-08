@@ -269,7 +269,5 @@ def emission_calculations(df):
     df_change_percent = calculate_change_percent(df_paris)
     df_net_zero = calculate_hit_net_zero(df_change_percent)
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
-    
-    df_budget_runs_out.to_excel('df_budget_runs_out.xlsx')
 
     return df_budget_runs_out
