@@ -241,21 +241,11 @@ def calculate_budget_runs_out(df):
             budget_runs_out_date = (my_date + relativedelta(seconds=time_diff_in_seconds)).date()
             
             temp.append(budget_runs_out_date)
-            
-            old_way_of_calc_date = (my_date + relativedelta(seconds=int((x-last_year+2) * YEAR_SECONDS))).date()
         else:
             temp.append('Aldrig')
             
-        if df.iloc[i]['Kommun'] in ['Ale','Norrköping','Pajala','Upplands-Bro']:
-            print(df.iloc[i]['Kommun'])
-            print('Start date: ' + str(my_date))
-            print('Budget runs out (in years): ' + str(x))
-            print('Time diff in years: ' + str(time_diff_in_years))
-            print('Time diff in seconds: ' + str(time_diff_in_seconds))
-            print('Budget runs out: ' + str(budget_runs_out_date))
-            print('Budget runs out (old calc): ' + str(old_way_of_calc_date))
-
     df['budgetRunsOut'] = temp
+    
     return df
 
 
