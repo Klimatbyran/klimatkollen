@@ -69,7 +69,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
         <TotalCo2>
           <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
           <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
-            Koldioxidbudget för att klara Parisavtalet:{' '}
+            Koldioxidbudget för att klara Parisavtalet 2024-2050:{' '}
             {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)}
           </StyledText>
         </TotalCo2>
