@@ -1,5 +1,7 @@
 # Climate Data Pipeline Overview
 
+{:toc}
+
 ## General information
 
 ### Data Sources
@@ -43,8 +45,6 @@ Given that Klimatkollen focuses on data related to municipalities, it's often ne
 - Malmö: also called Malmö stad.
 
 In the list, the term appearing before the colon (:) is the standardized name that we use in the repository. Any alternative names listed after "also known as" should be converted to this standard version when incorporating new data sets.
-
----
 
 ## Detailed explanations
 
