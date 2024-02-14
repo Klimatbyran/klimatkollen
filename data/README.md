@@ -1,7 +1,5 @@
 # Climate Data Pipeline Overview
 
-{:toc}
-
 ## General information
 
 ### Data Sources
