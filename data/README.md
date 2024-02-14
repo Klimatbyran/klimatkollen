@@ -1,15 +1,12 @@
-# Climate Data Pipeline
-
-
-## Climate Data Calculations
+# Climate Data Calculations
 
 The script `climate_data_calculations.py` is a comprehensive data processing pipeline focused on the climate-related calculations and emissions analysis needed to obtain data presented at [klimatkollen.se](https://www.klimatkollen.se/). It imports functions from various modules to get data related to municipalities' climate plans, emissions, electric car change rates, and electric vehicle per charge points.
 
-### Emission Calculations 
+## Emission Calculations 
 
 The module `emission_data_calculations.py` contains functions to perform calculations related to CO2 emissions for municipalities, based on SMHI emission data and a given total CO2 budget for Sweden. Each function serves a specific purpose such as preprocessing data, calculating municipality specific budgets, future trends or when the budget for a municipality will run out.
 
-#### Constants 
+### Constants 
 
 The most important constants in the module are `BUDGET`, `BUDGET_YEAR`, and `LAST_YEAR_WITH_SMHI_DATA`, as they determine the baseline and scope of the calculations.
 
@@ -17,7 +14,7 @@ The most important constants in the module are `BUDGET`, `BUDGET_YEAR`, and `LAS
 * `BUDGET_YEAR`: Represents the year from which the CO2 budget applies.
 * `LAST_YEAR_WITH_SMHI_DATA`: Represents the last year for which the [National Emission database](https://nationellaemissionsdatabasen.smhi.se/) has data.
 
-#### Functions
+### Functions
 
 Here's a summary of what the functions do, in order of execution:
 
