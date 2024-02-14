@@ -1,6 +1,6 @@
 import { datasetDescriptions, defaultDataView, secondaryDataView } from './datasetDescriptions'
 
-export const currentYear = 2021
+export const lastYearWithData = 2021
 
 export const normalizeString = (input: string) => input.replace('ä', 'a').replace('ö', 'o').replace('å', 'a').toLowerCase()
 

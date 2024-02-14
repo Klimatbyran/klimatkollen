@@ -17,7 +17,7 @@ import ArrowRight from '../../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../../public/icons/arrow-left-white.svg'
 import Info from '../../public/icons/info.svg'
 import { colorTheme } from '../../Theme'
-import { currentYear } from '../../utils/shared'
+import { lastYearWithData } from '../../utils/shared'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -234,7 +234,7 @@ function MunicipalityEmissionGraph({
       {step === 0 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text={`Koldioxidutsläpp i kommunen mellan 1990 och ${currentYear}, vilket är senast tillgängliga data. 
+          text={`Koldioxidutsläpp i kommunen mellan 1990 och ${lastYearWithData}, vilket är senast tillgängliga data. 
           Basår för beräkningar av Sveriges klimatutsläpp är 1990.`}
           scrollY={scrollY}
         />

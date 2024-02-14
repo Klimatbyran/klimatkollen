@@ -10,7 +10,7 @@ import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
 import ToggleSection from '../../components/ToggleSection'
-import { currentYear } from '../../utils/shared'
+import { lastYearWithData } from '../../utils/shared'
 
 const Container = styled.section`
   display: flex;
@@ -109,7 +109,7 @@ function KoM() {
                   utsläppsstatistik, med Naturvårdsverket som ansvarig myndighet. Kommunal
                   utsläppsdata har 1,5–2 års fördröjning, 
                   {' '}
-                  {currentYear}
+                  {lastYearWithData}
                   {' '}
                   års siffror
                   släpptes i juli 2023.
