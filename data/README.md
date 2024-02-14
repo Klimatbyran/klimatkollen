@@ -26,9 +26,9 @@ Here's a summary of what the functions do, in order of execution:
 
 4. `calculate_trend`: Calculates linear trends for each municipality by using least square fit based on SMHI data from 2015 and forward.
 
-5. `calculate_paris_path`: Calculates an exponential curve satisfying each municipality's CO2 budget (Paris Agreement path), starting from the year when the budget kicks in.
+5. `calculate_paris_path`: Calculates an exponential curve satisfying each municipality's CO2 budget (Paris Agreement path), starting from the year the budget kicks in.
 
-6. `calculate_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal, starting from when the budget kicks in.
+6. `calculate_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
 
 7. `calculate_hit_net_zero`: Calculates the date and year for when each municipality hits net zero emissions (if so). This, by deriving where the trend line crosses the time axis.
 
