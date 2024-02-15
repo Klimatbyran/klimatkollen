@@ -72,13 +72,15 @@ Here's a summary of what the functions do, in order of execution:
 
 5. `calculate_paris_path`: Calculates an exponential curve satisfying each municipality's CO2 budget (Paris Agreement path), starting from the year the budget kicks in.
 
-6. `calculate_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
+6. `calculate_actual_change_percent`: Calculates the actual yearly emission decrease in percent based on SMHI data between years 2015 and the last year having data.
 
-7. `calculate_hit_net_zero`: Calculates the date and year for when each municipality hits net zero emissions (if so). This, by deriving where the trend line crosses the time axis.
+7. `calculate_needed_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
 
-8. `calculate_budget_runs_out`: Calculates the year and date for when the CO2 budget runs out for each municipality (if so). This, by integrating the trend line over the time it takes for the budget to be consumed and see where we are at the time axis by that point.
+8. `calculate_hit_net_zero`: Calculates the date and year for when each municipality hits net zero emissions (if so). This, by deriving where the trend line crosses the time axis.
 
-9. `emission_calculations`: Orchestrates the execution of the above methods in sequence to perform all emission calculations for municipalities.
+9. `calculate_budget_runs_out`: Calculates the year and date for when the CO2 budget runs out for each municipality (if so). This, by integrating the trend line over the time it takes for the budget to be consumed and see where we are at the time axis by that point.
+
+10. `emission_calculations`: Orchestrates the execution of the above methods in sequence to perform all emission calculations for municipalities.
 
 
 

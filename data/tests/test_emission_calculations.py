@@ -3,8 +3,8 @@ import datetime
 import unittest
 import pandas as pd
 
-from issues.emissions.emission_data_calculations import get_n_prep_data_from_smhi, deduct_cement, calculate_municipality_budgets, calculate_paris_path, calculate_trend, calculate_change_percent, calculate_hit_net_zero, calculate_budget_runs_out
-from tests.utilities import get_df_from_excel, prep_floats_for_compare, str_to_literal_structure, prep_date_str_for_compare, str_to_numpy_array
+from issues.emissions.emission_data_calculations import calculate_actual_change_percent, get_n_prep_data_from_smhi, deduct_cement, calculate_municipality_budgets, calculate_paris_path, calculate_trend, calculate_change_percent, calculate_hit_net_zero, calculate_budget_runs_out
+from tests.utilities import get_df_from_excel, prep_floats_for_compare, prep_date_str_for_compare
 
 class TestEmissionCalculations(unittest.TestCase):
     
@@ -78,10 +78,19 @@ class TestEmissionCalculations(unittest.TestCase):
         for idx in range(len(dicts_expected)):
             with self.subTest(municipality = df_expected.iloc[idx]['Kommun']):        
                 self.assertDictEqual(dicts_result[idx], dicts_expected[idx])
-                
+        
+    def test_calculate_actual_change_percent(self):
+        path_input_df = 'tests/reference_dataframes/df_paris.xlsx'
+        path_expected_df = 'tests/reference_dataframes/df_actual_change_percent.xlsx'
+        
+        df_input = get_df_from_excel(path_input_df) 
+        df_result = calculate_actual_change_percent(df_input)
+        df_expected = get_df_from_excel(path_expected_df)
+        
+        pd.testing.assert_series_equal(df_result['actualEmissionChangePercent'], df_expected['actualEmissionChangePercent'])
                 
     def test_calculate_change_percent(self):
-        path_input_df = 'tests/reference_dataframes/df_paris.xlsx'
+        path_input_df = 'tests/reference_dataframes/df_actual_change_percent.xlsx'
         path_expected_df = 'tests/reference_dataframes/df_change_percent.xlsx'
         
         df_input = get_df_from_excel(path_input_df) 
