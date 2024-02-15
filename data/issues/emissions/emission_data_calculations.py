@@ -178,7 +178,7 @@ def calculate_actual_change_percent(df):
         # Calculate diff (in percent) between each succesive year 
         diffs_in_percent = [(x - emissions[i - 1])/emissions[i - 1] for i, x in enumerate(emissions)][1:]
         # Calculate average diff
-        avg_diff_in_percent = sum(diffs_in_percent) / len(diffs_in_percent)
+        avg_diff_in_percent = 100 * sum(diffs_in_percent) / len(diffs_in_percent)
         
         temp.append(avg_diff_in_percent)
         
@@ -279,8 +279,12 @@ def emission_calculations(df):
     df_paris = calculate_paris_path(df_trend)
     
     df_actual_change_percent = calculate_actual_change_percent(df_paris)
+    df_actual_change_percent.to_excel('df_actual_change_percent.xlsx')
     df_change_percent = calculate_change_percent(df_actual_change_percent)
+    df_change_percent.to_excel('df_change_percent.xlsx')
     df_net_zero = calculate_hit_net_zero(df_change_percent)
+    df_net_zero.to_excel('df_net_zero.xlsx')
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
+    df_budget_runs_out.to_excel('df_budget_runs_out.xlsx')
 
     return df_budget_runs_out
