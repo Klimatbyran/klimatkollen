@@ -142,7 +142,8 @@ def calculate_trend(df):
 def calculate_paris_path(df):
     # Create an exponential curve that satisfy each municipality's budget
     temp = []
-    first_year = BUDGET_YEAR  # the year the budget applies from (and thus the paris path)
+    # Year from which the budget applies (after correction with respect to reported years since budget start)
+    first_year = max(LAST_YEAR_WITH_SMHI_DATA, BUDGET_YEAR)  
     for i in range(len(df)):
         # We'll store the exponential path for each municipality in a dictionary where the keys are the years
         dicts = {} 
@@ -150,7 +151,7 @@ def calculate_paris_path(df):
         years_range = range(first_year, 2050+1)
         for year in years_range:
             # Calculate what the emission level has to be at future date if one were to follow the exponential decay curve
-            if (first_year <= LAST_YEAR_WITH_SMHI_DATA): # If data has been recorded the budget year, use these values
+            if (first_year <= LAST_YEAR_WITH_SMHI_DATA): # If data has been recorded the year budget kicks in, use these values
                 dicts[year] = df.iloc[i][first_year] * \
                     np.exp(-(df.iloc[i][first_year]) /
                         (df.iloc[i]['Budget'])*(year-first_year))
@@ -190,10 +191,12 @@ def calculate_actual_change_percent(df):
 def calculate_change_percent(df):
     # Calculate what yearly decrease that is needed to reach Paris goal
     temp = []
+    # Year from which the paris path starts
+    first_year = max(LAST_YEAR_WITH_SMHI_DATA, BUDGET_YEAR)  
     for i in range(len(df)):
         # arbitrarily chosen years
-        start = df.iloc[i]['parisPath'][BUDGET_YEAR+1]
-        final = df.iloc[i]['parisPath'][BUDGET_YEAR+2]
+        start = df.iloc[i]['parisPath'][first_year+1]
+        final = df.iloc[i]['parisPath'][first_year+2]
         temp.append(((start-final)/start)*100)
 
     df['emissionChangePercent'] = temp
