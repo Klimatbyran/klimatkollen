@@ -44,7 +44,7 @@ export class ClimateDataService {
         )
 
         const trend = {
-          FutureCO2Emission: data.futureEmission,
+          TrendCO2Emission: data.trendEmission,
           TrendPerYear: Object.entries(data.trend).map(([year, emissionTrend]) => ({
             Year: Number(year),
             CO2Equivalent: emissionTrend,

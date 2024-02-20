@@ -94,21 +94,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
 
   municipality.PoliticalRule = politicalRuleService.getPoliticalRule(id)
 
-  // Fill the gap between budget/trend and historical emissions by putting
-  // historical data into budget and trend emissions
-  const maxHistorical = Math.max(
-    ...municipality.HistoricalEmission.EmissionPerYear.map((e) => e.Year),
-  )
-  const minBudget = Math.min(...municipality.Budget.BudgetPerYear.map((f) => f.Year))
-  const needed = minBudget - maxHistorical
-
-  if (needed > 0) {
-    municipality.HistoricalEmission.EmissionPerYear.slice(municipality.HistoricalEmission.EmissionPerYear.length - needed).forEach((emission) => {
-      municipality.Budget.BudgetPerYear.unshift(emission)
-      municipality.EmissionTrend.TrendPerYear.unshift(emission)
-    })
-  }
-
   const municipalitiesName = municipalities.map((m) => m.Name)
 
   const result = {
