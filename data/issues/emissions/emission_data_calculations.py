@@ -205,18 +205,18 @@ def calculate_hit_net_zero(df):
 
 def calculate_budget_runs_out(df):
     # Year from which the budget applies (after correction with respect to reported years since budget start)
-    last_year = max(LAST_YEAR_WITH_SMHI_DATA, BUDGET_YEAR)  
+    budget_start_year = max(LAST_YEAR_WITH_SMHI_DATA, BUDGET_YEAR)  
 
     temp = []  # Temporary list that we will append to
     for i in range(len(df)):
-        # Get index in trend series for last_year
+        # Get index in trend series for budget_start_year
         trend_years = list(df.iloc[i]['trend'].keys())
-        last_year_idx = trend_years.index(last_year)
-        # Get trend values for last_year and forward
-        y_trend = list(df.iloc[i]['trend'].values())[last_year_idx:]
-        x_trend = list(df.iloc[i]['trend'].keys())[last_year_idx:]
+        budget_start_year_idx = trend_years.index(budget_start_year)
+        # Get trend values for budget_start_year and forward
+        y_trend = list(df.iloc[i]['trend'].values())[budget_start_year_idx:]
+        x_trend = list(df.iloc[i]['trend'].keys())[budget_start_year_idx:]
         
-        # Get the cumulative emissions from the trend line, starting from the year the corrected budget applies (last_year and forward)
+        # Get the cumulative emissions from the trend line, starting from the year the corrected budget applies (budget_start_year and forward)
         cumulative_emissions = np.trapz(y_trend, x_trend)
 
         # If the trends cumulative emission is larger than the budget than the municipality will run out of budget
@@ -227,13 +227,13 @@ def calculate_budget_runs_out(df):
             fit = df.iloc[i]['trendCoefficients']
 
             # Remove the "anomaly" from the budget (if any)
-            # Subtract emission from trend between last_year and last_year+1 since the line can go up between last_year and last_year+1
+            # Subtract emission from trend between budget_start_year and budget_start_year+1 since the line can go up between budget_start_year and budget_start_year+1 if BUDGET_YEAR == LAST_YEAR_WITH_SMHI_DATA
             B = df.iloc[i]['Budget'] - np.trapz(y_trend[:2], x_trend[:2])
-            start_year_after_correction = last_year+1
+            start_year_after_correction = budget_start_year+1
 
             # Find the value where the straight line cross the x-axis 
-            # by solving -1/2(x1-x2)(2m+k(x1+x2))=B for x2 where x1=last_year+1 
-            x = (np.sqrt(2*B*fit[0]+(fit[0]*(last_year+1)+fit[1])**2)-fit[1])/(fit[0])
+            # by solving -1/2(x1-x2)(2m+k(x1+x2))=B for x2 where x1=budget_start_year+1 
+            x = (np.sqrt(2*B*fit[0]+(fit[0]*(budget_start_year+1)+fit[1])**2)-fit[1])/(fit[0])
 
             # Initiate the first day of our starting point date
             my_date = datetime.datetime(start_year_after_correction, 1, 1, 0, 0, 0)
