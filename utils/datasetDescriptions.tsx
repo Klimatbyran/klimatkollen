@@ -6,6 +6,22 @@ export const secondaryDataView = 'lista'
 
 export const defaultDataset = 'Utsläppen'
 
+function isLeapYear(year: number): boolean {
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)
+}
+
+function daysInYears(years: number): number {
+  const daysInYear = 365
+  const daysInLeapYear = daysInYear + 1
+  let totalDays = 0
+
+  for (let year = 1; year <= years; year += 1) {
+    totalDays += isLeapYear(year) ? daysInLeapYear : daysInYear
+  }
+
+  return totalDays
+}
+
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
     title: 'Utsläppsförändring',
@@ -30,6 +46,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: true,
     calculateDataPoint: (item) => item.HistoricalEmission.EmissionLevelChangeAverage * 100,
     formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    edgeCaseString: 'Data saknas',
   },
 
   Elbilarna: {
@@ -51,6 +68,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: false,
     calculateDataPoint: (item) => item.ElectricCarChangePercent * 100,
     formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    edgeCaseString: 'Data saknas',
   },
 
   Klimatplanerna: {
@@ -89,6 +107,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     columnHeader: 'Klimatplan',
     calculateDataPoint: (item) => item.ClimatePlan.Link,
     formatDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
+    edgeCaseString: 'Data saknas',
   },
 
   Cyklarna: {
@@ -124,6 +143,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: false,
     calculateDataPoint: (item) => item.BicycleMetrePerCapita,
     formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    edgeCaseString: 'Data saknas',
   },
 
   Konsumtionen: {
@@ -149,6 +169,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: true,
     calculateDataPoint: (item) => item.TotalConsumptionEmission,
     formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    edgeCaseString: 'Data saknas',
   },
 
   Laddarna: {
@@ -175,17 +196,44 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: true,
     calculateDataPoint: (item) => item.ElectricVehiclePerChargePoints,
     formatDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
+    edgeCaseString: 'Laddare saknas',
+  },
+
+  Koldioxidbudgetarna: {
+    title: 'Koldioxidbudgeten',
+    body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner klarar budgeten om trenden håller.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Uppsala universitet
+        </a>
+      </>
+    ),
+    boundaries: [daysInYears(2), daysInYears(3), daysInYears(4), daysInYears(5), 1e10],
+    labels: ['2 år -', '2-4 år', '4-6 år', '6-8 år', '8 år +', 'Håller budgeten'],
+    labelRotateUp: [],
+    columnHeader: 'Lorem',
+    sortAscending: false,
+    calculateDataPoint: (item) => item.BudgetDaysLeft,
+    formatDataPoint: (dataPoint, municipality) => ((dataPoint as number) < 1e10 ? municipality?.BudgetRunsOut : 'Håller budgeten'),
+    edgeCaseString: 'Håller budgeten',
   },
 }
 
 export const currentData = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
   const dataset = datasetDescriptions[selectedData]
   const dataPoint = dataset.calculateDataPoint ? dataset.calculateDataPoint(item) : null
-  const formattedDataPoint = dataPoint != null && dataset.formatDataPoint ? dataset.formatDataPoint(dataPoint) : ''
+  const formattedDataPoint = dataPoint != null && dataset.formatDataPoint ? dataset.formatDataPoint(dataPoint, item) : 'Data saknas'
 
   return {
     name: item.Name,
-    dataPoint: dataPoint || '',
+    dataPoint: dataPoint || 'Data saknas',
     formattedDataPoint,
   }
 })

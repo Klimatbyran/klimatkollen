@@ -2,22 +2,19 @@ import { ColumnDef } from '@tanstack/react-table'
 import { DatasetDescription, Municipality, SelectedData } from './types'
 import { datasetDescriptions, currentData } from './datasetDescriptions'
 
-export const calculateStringRankings = (
-  data: Array<{ name: string; dataPoint: string | number | JSX.Element }>,
-) => {
-  const rankedData = data.map((item) => ({
-    ...item,
-    index: item.dataPoint === 'Saknas' ? 1 : -1,
-  }))
-  return rankedData
-}
+export const calculateClimatePlanRankings = (
+  data: Array<{ name: string; dataPoint: string | number | JSX.Element; formattedDataPoint: string }>,
+) => data.map((item) => ({
+  ...item,
+  index: item.dataPoint === 'Saknas' ? 1 : -1,
+}))
 
 export const calculateNumberRankings = (
-  data: Array<{ name: string; dataPoint: number }>,
+  data: Array<{ name: string; dataPoint: number; formattedDataPoint: string }>,
   sortAscending: boolean,
 ) => {
   const customSort = (a: number, b: number) => {
-    // Handla NaN values
+    // Handle NaN values
     const aIsNaN = Number.isNaN(a)
     const bIsNaN = Number.isNaN(b)
     if (aIsNaN && bIsNaN) {
@@ -35,11 +32,10 @@ export const calculateNumberRankings = (
   }
 
   const sortedData = data.sort((a, b) => customSort(a.dataPoint, b.dataPoint))
-  const rankedData = sortedData.map((item, index) => ({
+  return sortedData.map((item, index) => ({
     ...item,
     index: index + 1,
   }))
-  return rankedData
 }
 
 export const rankData = (municipalities: Municipality[], selectedData: SelectedData) => {
@@ -49,6 +45,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
     [key in SelectedData]: Array<{
       name: string
       dataPoint: number | string | JSX.Element
+      formattedDataPoint: string
       index: number
     }>
   }
@@ -59,10 +56,11 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
 
   if (selectedData === 'Klimatplanerna') {
     // special case for climate plans
-    newRankedData[selectedData] = calculateStringRankings(
+    newRankedData[selectedData] = calculateClimatePlanRankings(
       datasets.map((item) => ({
         name: item.name,
         dataPoint: item.dataPoint,
+        formattedDataPoint: item.formattedDataPoint,
       })),
     )
   } else {
@@ -70,7 +68,8 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
     newRankedData[selectedData] = calculateNumberRankings(
       datasets.map((item) => ({
         name: item.name,
-        dataPoint: Number(item.formattedDataPoint),
+        dataPoint: Number(item.dataPoint),
+        formattedDataPoint: item.formattedDataPoint,
       })),
       sortAscending,
     )
@@ -89,10 +88,10 @@ export const listColumns = (
 ): ColumnDef<{
   name: string
   dataPoint: string | number | JSX.Element
+  formattedDataPoint: string
   index: number
 }>[] => {
   const isClimatePlan = selectedData === 'Klimatplanerna'
-  const isChargingPoints = selectedData === 'Laddarna'
 
   return [
     {
@@ -113,7 +112,7 @@ export const listColumns = (
     {
       header: () => columnHeader(datasetDescription),
       cell: (row) => {
-        const { dataPoint } = row.row.original
+        const { dataPoint, formattedDataPoint } = row.row.original
         if (isClimatePlan) {
           return dataPoint === 'Saknas' ? (
             <i style={{ color: 'grey' }}>{dataPoint}</i>
@@ -123,10 +122,7 @@ export const listColumns = (
             </a>
           )
         }
-        if (isChargingPoints) {
-          return Number.isNaN(dataPoint) ? 'Laddare saknas' : dataPoint
-        }
-        return row.getValue()
+        return !Number.isNaN(row.getValue()) ? formattedDataPoint : datasetDescriptions[selectedData].edgeCaseString
       },
       accessorKey: 'dataPoint',
       sortingFn: (a, b) => a.original.index - b.original.index,

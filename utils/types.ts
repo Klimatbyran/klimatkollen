@@ -54,6 +54,7 @@ export type Municipality = {
   EmissionChangePercent: number
   HitNetZero: number | string
   BudgetRunsOut: string
+  BudgetDaysLeft: number
   ElectricCars: number
   ElectricCarChangePercent: number,
   ElectricCarChangeYearly: Array<number>,
@@ -74,8 +75,9 @@ export type DatasetDescription = {
   labelRotateUp: boolean[]
   columnHeader: string
   sortAscending?: boolean
-  calculateDataPoint?: (item: Municipality) => number | string
-  formatDataPoint?: (dataPoint: number | string) => string
+  calculateDataPoint: (item: Municipality) => number | string
+  formatDataPoint: (dataPoint: number | string, municipality: Municipality) => string
+  edgeCaseString: string
 }
 
 export type DatasetDescriptions = {
