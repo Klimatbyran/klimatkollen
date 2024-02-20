@@ -10,7 +10,6 @@ import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
 import ToggleSection from '../../components/ToggleSection'
-import { lastYearWithData } from '../../utils/shared'
 
 const Container = styled.section`
   display: flex;
@@ -107,12 +106,7 @@ function KoM() {
                   </a>
                   , som hanteras av SMHI och utgår från Sveriges officiella
                   utsläppsstatistik, med Naturvårdsverket som ansvarig myndighet. Kommunal
-                  utsläppsdata har 1,5–2 års fördröjning, 
-                  {' '}
-                  {lastYearWithData}
-                  {' '}
-                  års siffror
-                  släpptes i juli 2023.
+                  utsläppsdata har 1,5–2 års fördröjning, 2021 års siffror släpptes i juli 2023.
                 </Paragraph>
                 <Paragraph>
                   Uppgifter om politiskt styre i kommunerna hämtas från

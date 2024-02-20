@@ -14,7 +14,6 @@ import styled from 'styled-components'
 import { EmissionPerYear } from '../utils/types'
 
 import { colorTheme } from '../Theme'
-import { lastYearWithData } from '../utils/shared'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
@@ -92,6 +91,8 @@ function Graph({
       throw new Error('Dataset length larger than label length')
     }
   }
+
+  const lastYearWithData = historical[historical.length - 1]?.Year
 
   return (
     <Container>
