@@ -48,13 +48,13 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
     (total, year) => total + year.CO2Equivalent,
     0,
   ) / 1000;
-  const historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length-1].Year;
+  const historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length-1]?.Year;
 
   const totalTrend = municipality.EmissionTrend.TrendCO2Emission / 1000;
-  const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0].Year;
+  const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0]?.Year;
 
   const totalBudget = municipality.Budget.CO2Equivalent / 1000;
-  const budgetStartsYear = municipality.Budget.BudgetPerYear[0].Year;
+  const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year;
 
   return (
     <Container>
