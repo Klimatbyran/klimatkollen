@@ -17,7 +17,6 @@ import ArrowRight from '../../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../../public/icons/arrow-left-white.svg'
 import Info from '../../public/icons/info.svg'
 import { colorTheme } from '../../Theme'
-import { lastYearWithData } from '../../utils/shared'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -191,6 +190,9 @@ function MunicipalityEmissionGraph({
     }
   }
 
+  const lastYearWithData = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+  const firstWithBudget = municipality.Budget.BudgetPerYear[0]?.Year
+
   return (
     <>
       <MetaTags
@@ -250,9 +252,10 @@ function MunicipalityEmissionGraph({
       {step === 2 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text="Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
+          text={`Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
           motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande,
-          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är 2021, vilket är senast tillgängliga data."
+          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är ${firstWithBudget}, vilket är från vilket år 
+          budgeten är satt.`}
           scrollY={scrollY}
         />
       )}
