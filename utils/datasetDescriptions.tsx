@@ -42,7 +42,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
     sortAscending: true,
-    rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent,
+    rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent / 100,
     formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
   },
 
