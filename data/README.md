@@ -72,7 +72,7 @@ Here's a summary of what the functions do, in order of execution:
 
 5. `calculate_paris_path`: Calculates an exponential curve satisfying each municipality's CO2 budget (Paris Agreement path), starting from the year the budget kicks in.
 
-6. `calculate_actual_change_percent`: Calculates the actual yearly emission decrease in percent based on SMHI data between years 2015 and the last year having data.
+6. `calculate_historical_change_percent`: Calculates the average historical yearly emission change in percent based on SMHI data between years 2015 and the last year having data.
 
 7. `calculate_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
 

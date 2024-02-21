@@ -165,7 +165,7 @@ def calculate_paris_path(df):
 
     return df
 
-def calculate_actual_change_percent(df):
+def calculate_historical_change_percent(df):
     # Calculate average emission level change based on SMHI data from 2015 to last year having data. 
     temp = []      
     last_year_with_data = LAST_YEAR_WITH_SMHI_DATA  # the last year with recorded data
@@ -184,7 +184,7 @@ def calculate_actual_change_percent(df):
         temp.append(avg_diff_in_percent)
         
     # Add the average emission level change to the dataframe
-    df['actualEmissionChangePercent'] = temp
+    df['historicalEmissionChangePercent'] = temp
     
     return df
 
@@ -281,8 +281,8 @@ def emission_calculations(df):
     df_trend = calculate_trend(df_budgeted)
     df_paris = calculate_paris_path(df_trend)
     
-    df_actual_change_percent = calculate_actual_change_percent(df_paris)
-    df_change_percent = calculate_change_percent(df_actual_change_percent)
+    df_historical_change_percent = calculate_historical_change_percent(df_paris)
+    df_change_percent = calculate_change_percent(df_historical_change_percent)
     df_net_zero = calculate_hit_net_zero(df_change_percent)
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
 
