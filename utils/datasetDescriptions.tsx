@@ -207,8 +207,8 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [yearsAhead(1), yearsAhead(2), yearsAhead(3), yearsAhead(4), new Date(2050, 1, 1)],
-    labels: ['1 år -', '1-2 år', '2-3 år', '3-4 år', '4 år +', 'Håller budgeten'],
+    boundaries: [yearsAhead(2), yearsAhead(3), yearsAhead(4), yearsAhead(5), new Date(2050, 1, 1)],
+    labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', 'Håller budgeten'],
     labelRotateUp: [],
     columnHeader: 'Lorem',
     sortAscending: false,
