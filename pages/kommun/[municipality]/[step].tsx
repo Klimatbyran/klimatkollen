@@ -88,9 +88,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   municipality.CoatOfArmsImage = wikiDataMunicipality.CoatOfArmsImage
   municipality.Image = wikiDataMunicipality.Image
 
-  municipality.HistoricalEmission.AverageEmissionChangeRank = municipalities.find(
+  municipality.HistoricalEmission.HistoricalEmissionChangeRank = municipalities.find(
     (m) => m.Name === municipality.Name,
-  )?.HistoricalEmission.AverageEmissionChangeRank || null
+  )?.HistoricalEmission.HistoricalEmissionChangeRank || null
 
   municipality.PoliticalRule = politicalRuleService.getPoliticalRule(id)
 

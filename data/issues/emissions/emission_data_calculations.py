@@ -109,7 +109,7 @@ def calculate_trend(df):
         # Get the years we will use for the curve fit. This starts in 2015 and goes to the latest year having data. 
         # NOTE: Years range can be changed
         x = np.arange(2015, last_year_with_data+1)
-        # Get the emissions from the respective years specified in the line above. 
+        # Get the emissions from the years specified in the line above. 
         y = np.array(df.iloc[i][x], dtype=float)
         # Fit a straight line to the data defined above using least squares
         fit = np.polyfit(x, y, 1)
@@ -165,8 +165,30 @@ def calculate_paris_path(df):
 
     return df
 
+def calculate_historical_change_percent(df):
+    # Calculate average emission level change based on SMHI data from 2015 to last year having data. 
+    temp = []      
+    last_year_with_data = LAST_YEAR_WITH_SMHI_DATA  # the last year with recorded data
 
-def calculate_change_percent(df):
+    df = df.sort_values('Kommun', ascending=True)
+    for i in range(len(df)):
+        # Get the years we will use for the average
+        years = np.arange(2015, last_year_with_data+1)
+        # Get the emissions from the years specified in the line above. 
+        emissions = np.array(df.iloc[i][years], dtype=float)
+        # Calculate diff (in percent) between each succesive year 
+        diffs_in_percent = [(x - emissions[i - 1])/emissions[i - 1] for i, x in enumerate(emissions)][1:]
+        # Calculate average diff
+        avg_diff_in_percent = 100 * sum(diffs_in_percent) / len(diffs_in_percent)
+        
+        temp.append(avg_diff_in_percent)
+        
+    # Add the average emission level change to the dataframe
+    df['historicalEmissionChangePercent'] = temp
+    
+    return df
+
+def calculate_needed_change_percent(df):
     # Calculate what yearly decrease that is needed to reach Paris goal
     temp = []
     # Year from which the paris path starts
@@ -177,7 +199,7 @@ def calculate_change_percent(df):
         final = df.iloc[i]['parisPath'][first_year+2]
         temp.append(((start-final)/start)*100)
 
-    df['emissionChangePercent'] = temp
+    df['neededEmissionChangePercent'] = temp
     return df
 
 
@@ -258,9 +280,10 @@ def emission_calculations(df):
     df_budgeted = calculate_municipality_budgets(df_cem)
     df_trend = calculate_trend(df_budgeted)
     df_paris = calculate_paris_path(df_trend)
-
-    df_change_percent = calculate_change_percent(df_paris)
-    df_net_zero = calculate_hit_net_zero(df_change_percent)
+    
+    df_historical_change_percent = calculate_historical_change_percent(df_paris)
+    df_needed_change_percent = calculate_needed_change_percent(df_historical_change_percent)
+    df_net_zero = calculate_hit_net_zero(df_needed_change_percent)
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
 
     return df_budget_runs_out
