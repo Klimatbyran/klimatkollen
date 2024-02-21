@@ -24,7 +24,7 @@ import {
   defaultDataView,
   secondaryDataView,
 } from '../utils/datasetDescriptions'
-import RadioButtonMenu from '../components/RadioButtonMenu'
+import DropDownMenu from '../components/DropDownMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import {
   isValidDataView,
@@ -49,6 +49,18 @@ const InfoText = styled.div`
 const ParagraphSource = styled(Paragraph)`
   font-size: 13px;
   color: ${({ theme }) => theme.grey};
+`
+
+const FlexRow = styled.div`
+  display: flex;
+  align-items: center; // Align items vertically in the center
+  justify-content: start; // Align items to the start of the container
+  gap: 16px; // Adjust the gap as needed
+
+  // Optional: Add responsiveness
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack them vertically on smaller screens
+  }
 `
 
 const InfoContainer = styled.div`
@@ -168,11 +180,13 @@ function StartPage({ municipalities }: PropsType) {
       />
       <PageWrapper backgroundColor="black">
         <Container>
-          <H2Regular>Hur går det med?</H2Regular>
-          <RadioButtonMenu
-            selectedData={selectedDataset}
-            handleDataChange={handleDataChange}
-          />
+          <FlexRow>
+            <H2Regular>Hur går det med</H2Regular>
+            <DropDownMenu
+              selectedData={selectedDataset}
+              handleDataChange={handleDataChange}
+            />
+          </FlexRow>
           <InfoContainer>
             <TitleContainer>
               <FloatingH5>{datasetDescription.title}</FloatingH5>
