@@ -75,8 +75,8 @@ export type DatasetDescription = {
   labelRotateUp: boolean[]
   columnHeader: string
   sortAscending?: boolean
-  calculateDataPoint: (item: Municipality) => number | string
-  formatDataPoint: (dataPoint: number | string, municipality: Municipality) => string
+  rawDataPoint: (item: Municipality) => number | string
+  formattedDataPoint: (dataPoint: number | string, municipality: Municipality) => string
   edgeCaseString: string
 }
 

@@ -44,8 +44,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
     sortAscending: true,
-    calculateDataPoint: (item) => item.HistoricalEmission.EmissionLevelChangeAverage * 100,
-    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    rawDataPoint: (item) => item.HistoricalEmission.EmissionLevelChangeAverage,
+    formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
     edgeCaseString: 'Data saknas',
   },
 
@@ -66,8 +66,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [true, true, true, true, true, true],
     columnHeader: 'Ökning elbilar',
     sortAscending: false,
-    calculateDataPoint: (item) => item.ElectricCarChangePercent * 100,
-    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    rawDataPoint: (item) => item.ElectricCarChangePercent,
+    formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
     edgeCaseString: 'Data saknas',
   },
 
@@ -105,8 +105,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['Nej', 'Ja'],
     labelRotateUp: [],
     columnHeader: 'Klimatplan',
-    calculateDataPoint: (item) => item.ClimatePlan.Link,
-    formatDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
+    rawDataPoint: (item) => item.ClimatePlan.Link,
+    formattedDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
     edgeCaseString: 'Data saknas',
   },
 
@@ -141,8 +141,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Cykelväglängd',
     sortAscending: false,
-    calculateDataPoint: (item) => item.BicycleMetrePerCapita,
-    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    rawDataPoint: (item) => item.BicycleMetrePerCapita,
+    formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
     edgeCaseString: 'Data saknas',
   },
 
@@ -167,8 +167,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person/år',
     sortAscending: true,
-    calculateDataPoint: (item) => item.TotalConsumptionEmission,
-    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    rawDataPoint: (item) => item.TotalConsumptionEmission,
+    formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
     edgeCaseString: 'Data saknas',
   },
 
@@ -194,8 +194,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Elbil per laddare',
     sortAscending: true,
-    calculateDataPoint: (item) => item.ElectricVehiclePerChargePoints,
-    formatDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
+    rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
+    formattedDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
     edgeCaseString: 'Laddare saknas',
   },
 
@@ -220,16 +220,16 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Lorem',
     sortAscending: false,
-    calculateDataPoint: (item) => item.BudgetDaysLeft,
-    formatDataPoint: (dataPoint, municipality) => ((dataPoint as number) < 1e10 ? municipality?.BudgetRunsOut : 'Håller budgeten'),
+    rawDataPoint: (item) => item.BudgetDaysLeft,
+    formattedDataPoint: (dataPoint, municipality) => ((dataPoint as number) < 1e10 ? municipality?.BudgetRunsOut : 'Håller budgeten'),
     edgeCaseString: 'Håller budgeten',
   },
 }
 
 export const currentData = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
   const dataset = datasetDescriptions[selectedData]
-  const dataPoint = dataset.calculateDataPoint ? dataset.calculateDataPoint(item) : null
-  const formattedDataPoint = dataPoint != null && dataset.formatDataPoint ? dataset.formatDataPoint(dataPoint, item) : 'Data saknas'
+  const dataPoint = dataset.rawDataPoint ? dataset.rawDataPoint(item) : null
+  const formattedDataPoint = dataPoint != null && dataset.formattedDataPoint ? dataset.formattedDataPoint(dataPoint, item) : 'Data saknas'
 
   return {
     name: item.Name,
