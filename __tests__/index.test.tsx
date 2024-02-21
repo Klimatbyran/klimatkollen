@@ -41,10 +41,10 @@ describe('Home Page', () => {
         TrendCO2Emission: 0,
       },
       HistoricalEmission: {
-        AverageEmissionChangeRank: 0,
+        HistoricalEmissionChangeRank: 0,
         LargestEmissionSectors: [],
         EmissionPerYear: [],
-        EmissionLevelChangeAverage: 0,
+        HistoricalEmissionChangePercent: 0,
       },
       EmissionChangePercent: 0,
       HitNetZero: 0,

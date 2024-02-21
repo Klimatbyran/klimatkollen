@@ -20,8 +20,8 @@ export type EmissionSector = {
 export type Emission = {
   EmissionPerYear: Array<EmissionPerYear>
   LargestEmissionSectors: Array<EmissionSector>
-  EmissionLevelChangeAverage: number
-  AverageEmissionChangeRank: number | null
+  HistoricalEmissionChangePercent: number
+  HistoricalEmissionChangeRank: number | null
 }
 
 export type Budget = {

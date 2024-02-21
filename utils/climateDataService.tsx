@@ -37,7 +37,7 @@ export class ClimateDataService {
         const emission = {
           EmissionPerYear: emissions,
           LargestEmissionSectors: new Array<EmissionSector>(),
-          EmissionLevelChangeAverage: data.historicalEmissionChangePercent
+          HistoricalEmissionChangePercent: data.historicalEmissionChangePercent
         } as Emission
 
         const trend = {
@@ -83,12 +83,12 @@ export class ClimateDataService {
         return municipality
       })
       .sort((a: Municipality, b: Municipality) => (
-        a.HistoricalEmission.EmissionLevelChangeAverage
-          - b.HistoricalEmission.EmissionLevelChangeAverage
+        a.HistoricalEmission.HistoricalEmissionChangePercent
+          - b.HistoricalEmission.HistoricalEmissionChangePercent
       ))
     this.municipalities.forEach((municipality: Municipality, index: number) => {
       const updatedMunicipality = { ...municipality }
-      updatedMunicipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
+      updatedMunicipality.HistoricalEmission.HistoricalEmissionChangeRank = index + 1
       return updatedMunicipality
     })
   }
