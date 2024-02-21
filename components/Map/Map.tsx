@@ -29,60 +29,29 @@ const hexToRGBA = (hex: string): RGBAColor => {
   return [red, green, blue]
 }
 
-// fixme refactor whole function
 const getColor = (
-  dataPoint: number | string,
-  boundaries: number[] | string[] | Date[],
+  dataPoint: number | string | Date,
+  boundaries: (number | string | Date)[],
 ): RGBAColor => {
-  const colors: RGBAColor[] = mapColors.map(hexToRGBA)
+  const lightBlue: RGBAColor = hexToRGBA(mapColors[5])
+  const red: RGBAColor = hexToRGBA(mapColors[0])
 
-  // Special case for binary KPIs
-  if (boundaries.length === 2) {
-    return dataPoint === boundaries[0] ? colors[0] : colors[colors.length - 1]
+  // Convert all data points and boundaries to comparable values (numbers for dates)
+  const dp = dataPoint instanceof Date ? dataPoint.getTime() : dataPoint
+  const bnds = boundaries.map(b => (b instanceof Date ? b.getTime() : b))
+
+  const colors: RGBAColor[] = [red, ...mapColors.slice(1, 6).map(hexToRGBA), lightBlue]
+  const ascending = bnds[0] < bnds[1]
+
+  for (let i = 0; i < bnds.length; i += 1) {
+    if (ascending ? dp >= bnds[i] : dp <= bnds[i]) {
+      // In ascending, match returns next color; in descending, match returns current
+      return colors[ascending ? i + 1 : i]
+    }
   }
 
-  // Special case for invalid dates
-  const invalidDate = (possibleDate: unknown) => possibleDate instanceof Date && Number.isNaN(possibleDate.getTime())
-  if (invalidDate(dataPoint)) {
-    return colors[colors.length - 1]
-  }
-
-  const ascending = boundaries[0] < boundaries[1]
-
-  if (ascending) {
-    if (dataPoint >= boundaries[4]) {
-      return colors[5]
-    }
-    if (dataPoint >= boundaries[3]) {
-      return colors[4]
-    }
-    if (dataPoint >= boundaries[2]) {
-      return colors[3]
-    }
-    if (dataPoint >= boundaries[1]) {
-      return colors[2]
-    }
-    if (dataPoint > boundaries[0]) {
-      return colors[1]
-    }
-    return colors[0]
-  }
-  if (dataPoint >= boundaries[0]) {
-    return colors[0]
-  }
-  if (dataPoint >= boundaries[1]) {
-    return colors[1]
-  }
-  if (dataPoint >= boundaries[2]) {
-    return colors[2]
-  }
-  if (dataPoint >= boundaries[3]) {
-    return colors[3]
-  }
-  if (dataPoint > boundaries[4]) {
-    return colors[4]
-  }
-  return colors[5]
+  // Default color if no conditions met
+  return ascending ? colors[0] : colors[colors.length - 1]
 }
 
 const replaceLetters = (name: string): string => {

@@ -20,8 +20,8 @@ export type EmissionSector = {
 export type Emission = {
   EmissionPerYear: Array<EmissionPerYear>
   LargestEmissionSectors: Array<EmissionSector>
-  EmissionLevelChangeAverage: number
-  AverageEmissionChangeRank: number | null
+  HistoricalEmissionChangePercent: number
+  HistoricalEmissionChangeRank: number | null
 }
 
 export type Budget = {
@@ -51,7 +51,7 @@ export type Municipality = {
   HistoricalEmission: Emission
   PoliticalRule: Array<string> | null
   EmissionTrend: Trend
-  EmissionChangePercent: number
+  NeededEmissionChangePercent: number
   HitNetZero: number | string
   BudgetRunsOut: string
   ElectricCars: number
