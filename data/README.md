@@ -74,7 +74,7 @@ Here's a summary of what the functions do, in order of execution:
 
 6. `calculate_actual_change_percent`: Calculates the actual yearly emission decrease in percent based on SMHI data between years 2015 and the last year having data.
 
-7. `calculate_needed_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
+7. `calculate_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
 
 8. `calculate_hit_net_zero`: Calculates the date and year for when each municipality hits net zero emissions (if so). This, by deriving where the trend line crosses the time axis.
 
