@@ -3,15 +3,16 @@ import { DatasetDescription, Municipality, SelectedData } from './types'
 import { datasetDescriptions, currentData } from './datasetDescriptions'
 
 export const calculateClimatePlanRankings = (
-  data: Array<{ name: string; dataPoint: string | number | JSX.Element; formattedDataPoint: string }>,
+  data: Array<{ name: string; dataPoint: string | number | Date | JSX.Element; formattedDataPoint: string }>,
 ) => data.map((item) => ({
   ...item,
   index: item.dataPoint === 'Saknas' ? 1 : -1,
 }))
 
-export const calculateNumberRankings = (
+export const calculateRankings = (
   data: Array<{ name: string; dataPoint: number; formattedDataPoint: string }>,
   sortAscending: boolean,
+  stringsOnTop: boolean,
 ) => {
   const customSort = (a: number, b: number) => {
     // Handle NaN values
@@ -20,11 +21,9 @@ export const calculateNumberRankings = (
     if (aIsNaN && bIsNaN) {
       return 0
     }
-    if (aIsNaN) {
-      return 1
-    }
-    if (bIsNaN) {
-      return -1
+    if (aIsNaN || bIsNaN) {
+      // eslint-disable-next-line no-nested-ternary
+      return stringsOnTop ? (aIsNaN ? -1 : 1) : (aIsNaN ? 1 : -1)
     }
 
     // Sort non-NaN values normally
@@ -44,7 +43,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
   type RankedData = {
     [key in SelectedData]: Array<{
       name: string
-      dataPoint: number | string | JSX.Element
+      dataPoint: number | string | Date | JSX.Element
       formattedDataPoint: string
       index: number
     }>
@@ -53,6 +52,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
   const newRankedData: RankedData = {} as RankedData
 
   const sortAscending = datasetDescriptions[selectedData]?.sortAscending || false
+  const edgeCaseOnTop = datasetDescriptions[selectedData]?.stringsOnTop || false
 
   if (selectedData === 'Klimatplanerna') {
     // special case for climate plans
@@ -65,13 +65,14 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
     )
   } else {
     // all other datasets
-    newRankedData[selectedData] = calculateNumberRankings(
+    newRankedData[selectedData] = calculateRankings(
       datasets.map((item) => ({
         name: item.name,
         dataPoint: Number(item.dataPoint),
         formattedDataPoint: item.formattedDataPoint,
       })),
       sortAscending,
+      edgeCaseOnTop,
     )
   }
 
@@ -87,7 +88,7 @@ export const listColumns = (
   datasetDescription: DatasetDescription,
 ): ColumnDef<{
   name: string
-  dataPoint: string | number | JSX.Element
+  dataPoint: string | number | Date | JSX.Element
   formattedDataPoint: string
   index: number
 }>[] => {

@@ -29,58 +29,60 @@ const hexToRGBA = (hex: string): RGBAColor => {
   return [red, green, blue]
 }
 
+// fixme refactor whole function
 const getColor = (
   dataPoint: number | string,
-  boundaries: number[] | string[],
+  boundaries: number[] | string[] | Date[],
 ): RGBAColor => {
-  const lightBlue: RGBAColor = hexToRGBA(mapColors[5])
-  const beige: RGBAColor = hexToRGBA(mapColors[4])
-  const lightYellow: RGBAColor = hexToRGBA(mapColors[3])
-  const darkYellow: RGBAColor = hexToRGBA(mapColors[2])
-  const orange: RGBAColor = hexToRGBA(mapColors[1])
-  const red: RGBAColor = hexToRGBA(mapColors[0])
+  const colors: RGBAColor[] = mapColors.map(hexToRGBA)
 
+  // Special case for binary KPIs
   if (boundaries.length === 2) {
-    return dataPoint === boundaries[0] ? red : lightBlue
+    return dataPoint === boundaries[0] ? colors[0] : colors[colors.length - 1]
+  }
+
+  // Special case for invalid dates
+  const invalidDate = (possibleDate: unknown) => possibleDate instanceof Date && Number.isNaN(possibleDate.getTime())
+  if (invalidDate(dataPoint)) {
+    return colors[colors.length - 1]
   }
 
   const ascending = boundaries[0] < boundaries[1]
 
-  // FIXME refactor plz fortsätt här!
   if (ascending) {
     if (dataPoint >= boundaries[4]) {
-      return lightBlue
+      return colors[5]
     }
     if (dataPoint >= boundaries[3]) {
-      return beige
+      return colors[4]
     }
     if (dataPoint >= boundaries[2]) {
-      return lightYellow
+      return colors[3]
     }
     if (dataPoint >= boundaries[1]) {
-      return darkYellow
+      return colors[2]
     }
     if (dataPoint > boundaries[0]) {
-      return orange
+      return colors[1]
     }
-    return red
+    return colors[0]
   }
   if (dataPoint >= boundaries[0]) {
-    return red
+    return colors[0]
   }
   if (dataPoint >= boundaries[1]) {
-    return orange
+    return colors[1]
   }
   if (dataPoint >= boundaries[2]) {
-    return darkYellow
+    return colors[2]
   }
   if (dataPoint >= boundaries[3]) {
-    return lightYellow
+    return colors[3]
   }
   if (dataPoint > boundaries[4]) {
-    return beige
+    return colors[4]
   }
-  return lightBlue
+  return colors[5]
 }
 
 const replaceLetters = (name: string): string => {
@@ -95,9 +97,7 @@ const replaceLetters = (name: string): string => {
 
   const regex = new RegExp(Object.keys(replacements).join('|'), 'g')
 
-  const replacedWord = name.replace(regex, (match) => replacements[match])
-
-  return replacedWord
+  return name.replace(regex, (match) => replacements[match])
 }
 
 // Use when viewState is reimplemented
@@ -107,8 +107,8 @@ const replaceLetters = (name: string): string => {
 } */
 
 type Props = {
-  data: Array<{ name: string; dataPoint: number | string; formattedDataPoint: number | string }>
-  boundaries: number[] | string[]
+  data: Array<{ name: string; dataPoint: number | string | Date; formattedDataPoint: number | string }>
+  boundaries: number[] | string[] | Date[]
   children?: ReactNode
 }
 

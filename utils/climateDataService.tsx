@@ -75,7 +75,7 @@ export class ClimateDataService {
           Budget: budget,
           EmissionChangePercent: data.emissionChangePercent,
           HitNetZero: data.hitNetZero,
-          BudgetRunsOut: new Date(data.budgetRunsOut),
+          BudgetRunsOut: data.budgetRunsOut,
           ElectricCarChangePercent: data.electricCarChangePercent,
           ElectricCarChangeYearly: data.electricCarChangeYearly,
           ClimatePlan: climatePlan,

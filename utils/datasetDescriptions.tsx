@@ -13,9 +13,12 @@ const yearsAhead = (years: number) => {
   return currentDate
 }
 
-const currentDate = new Date()
-const twoYearsAhead = currentDate.getFullYear() + 2
-currentDate.setFullYear(twoYearsAhead)
+const formatDateToString = (date: Date): string => {
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0') // months are 0-based
+  const day = date.getDate().toString().padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
 
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
@@ -41,7 +44,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: true,
     rawDataPoint: (item) => item.HistoricalEmission.EmissionLevelChangeAverage,
     formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
-    edgeCaseString: 'Data saknas',
   },
 
   Elbilarna: {
@@ -63,7 +65,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: false,
     rawDataPoint: (item) => item.ElectricCarChangePercent,
     formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
-    edgeCaseString: 'Data saknas',
   },
 
   Klimatplanerna: {
@@ -102,7 +103,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     columnHeader: 'Klimatplan',
     rawDataPoint: (item) => item.ClimatePlan.Link,
     formattedDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
-    edgeCaseString: 'Data saknas',
   },
 
   Cyklarna: {
@@ -138,7 +138,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: false,
     rawDataPoint: (item) => item.BicycleMetrePerCapita,
     formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
-    edgeCaseString: 'Data saknas',
   },
 
   Konsumtionen: {
@@ -164,7 +163,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: true,
     rawDataPoint: (item) => item.TotalConsumptionEmission,
     formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
-    edgeCaseString: 'Data saknas',
   },
 
   Laddarna: {
@@ -191,7 +189,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: true,
     rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
     formattedDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
-    edgeCaseString: 'Laddare saknas',
   },
 
   Koldioxidbudgetarna: {
@@ -210,14 +207,14 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [yearsAhead(2), yearsAhead(3), yearsAhead(4), yearsAhead(5), new Date(2050, 1, 1)],
-    labels: ['2 år -', '2-4 år', '4-6 år', '6-8 år', '8 år +', 'Håller budgeten'],
+    boundaries: [yearsAhead(1), yearsAhead(2), yearsAhead(3), yearsAhead(4), new Date(2050, 1, 1)],
+    labels: ['1 år -', '1-2 år', '2-3 år', '3-4 år', '4 år +', 'Håller budgeten'],
     labelRotateUp: [],
     columnHeader: 'Lorem',
     sortAscending: false,
-    rawDataPoint: (item) => item.BudgetRunsOut,
-    formattedDataPoint: (dataPoint) => dataPoint.toString(), // (dataPoint < new Date(2050, 1, 1) ? dataPoint.toString() : 'Håller budgeten'),
-    edgeCaseString: 'Håller budgeten',
+    rawDataPoint: (item) => new Date(item.BudgetRunsOut),
+    formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1) ? formatDateToString(dataPoint as Date) : 'Håller budgeten'),
+    stringsOnTop: true,
   },
 }
 
