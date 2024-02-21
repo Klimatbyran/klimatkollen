@@ -29,7 +29,6 @@ const hexToRGBA = (hex: string): RGBAColor => {
   return [red, green, blue]
 }
 
-// fixme refactor whole function
 const getColor = (
   dataPoint: number | string,
   boundaries: number[] | string[] | Date[],
@@ -50,37 +49,18 @@ const getColor = (
   const ascending = boundaries[0] < boundaries[1]
 
   if (ascending) {
-    if (dataPoint >= boundaries[4]) {
-      return colors[5]
-    }
-    if (dataPoint >= boundaries[3]) {
-      return colors[4]
-    }
-    if (dataPoint >= boundaries[2]) {
-      return colors[3]
-    }
-    if (dataPoint >= boundaries[1]) {
-      return colors[2]
-    }
-    if (dataPoint > boundaries[0]) {
-      return colors[1]
+    for (let i = boundaries.length - 1; i >= 0; i -= 1) {
+      if (dataPoint >= boundaries[i]) {
+        return colors[i + 1]
+      }
     }
     return colors[0]
   }
-  if (dataPoint >= boundaries[0]) {
-    return colors[0]
-  }
-  if (dataPoint >= boundaries[1]) {
-    return colors[1]
-  }
-  if (dataPoint >= boundaries[2]) {
-    return colors[2]
-  }
-  if (dataPoint >= boundaries[3]) {
-    return colors[3]
-  }
-  if (dataPoint > boundaries[4]) {
-    return colors[4]
+
+  for (let i = 0; i < boundaries.length; i += 1) {
+    if (dataPoint >= boundaries[i]) {
+      return colors[i]
+    }
   }
   return colors[5]
 }
