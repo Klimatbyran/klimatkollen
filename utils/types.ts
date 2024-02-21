@@ -53,8 +53,7 @@ export type Municipality = {
   EmissionTrend: Trend
   EmissionChangePercent: number
   HitNetZero: number | string
-  BudgetRunsOut: string
-  BudgetDaysLeft: number
+  BudgetRunsOut: Date
   ElectricCars: number
   ElectricCarChangePercent: number,
   ElectricCarChangeYearly: Array<number>,
@@ -70,13 +69,13 @@ export type DatasetDescription = {
   title: string
   body: string | JSX.Element
   source: React.ReactNode
-  boundaries: number[] | string[]
+  boundaries: number[] | string[] | Date[]
   labels: string[]
   labelRotateUp: boolean[]
   columnHeader: string
   sortAscending?: boolean
-  rawDataPoint: (item: Municipality) => number | string
-  formattedDataPoint: (dataPoint: number | string, municipality: Municipality) => string
+  rawDataPoint: (item: Municipality) => number | string | Date
+  formattedDataPoint: (dataPoint: number | string | Date) => string
   edgeCaseString: string
 }
 

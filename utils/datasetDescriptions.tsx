@@ -6,21 +6,16 @@ export const secondaryDataView = 'lista'
 
 export const defaultDataset = 'Utsläppen'
 
-function isLeapYear(year: number): boolean {
-  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)
+const yearsAhead = (years: number) => {
+  const currentDate = new Date()
+  const yearsInFuture = currentDate.getFullYear() + years
+  currentDate.setFullYear(yearsInFuture)
+  return currentDate
 }
 
-function daysInYears(years: number): number {
-  const daysInYear = 365
-  const daysInLeapYear = daysInYear + 1
-  let totalDays = 0
-
-  for (let year = 1; year <= years; year += 1) {
-    totalDays += isLeapYear(year) ? daysInLeapYear : daysInYear
-  }
-
-  return totalDays
-}
+const currentDate = new Date()
+const twoYearsAhead = currentDate.getFullYear() + 2
+currentDate.setFullYear(twoYearsAhead)
 
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
@@ -39,7 +34,7 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [0, -1, -2, -3, -10],
+    boundaries: [0.00, -0.01, -0.02, -0.03, -0.1],
     labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
@@ -61,7 +56,7 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [4, 5, 6, 7, 8],
+    boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
     labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
     labelRotateUp: [true, true, true, true, true, true],
     columnHeader: 'Ökning elbilar',
@@ -215,13 +210,13 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [daysInYears(2), daysInYears(3), daysInYears(4), daysInYears(5), 1e10],
+    boundaries: [yearsAhead(2), yearsAhead(3), yearsAhead(4), yearsAhead(5), new Date(2050, 1, 1)],
     labels: ['2 år -', '2-4 år', '4-6 år', '6-8 år', '8 år +', 'Håller budgeten'],
     labelRotateUp: [],
     columnHeader: 'Lorem',
     sortAscending: false,
-    rawDataPoint: (item) => item.BudgetDaysLeft,
-    formattedDataPoint: (dataPoint, municipality) => ((dataPoint as number) < 1e10 ? municipality?.BudgetRunsOut : 'Håller budgeten'),
+    rawDataPoint: (item) => item.BudgetRunsOut,
+    formattedDataPoint: (dataPoint) => dataPoint.toString(), // (dataPoint < new Date(2050, 1, 1) ? dataPoint.toString() : 'Håller budgeten'),
     edgeCaseString: 'Håller budgeten',
   },
 }
@@ -229,7 +224,7 @@ export const datasetDescriptions: DatasetDescriptions = {
 export const currentData = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
   const dataset = datasetDescriptions[selectedData]
   const dataPoint = dataset.rawDataPoint ? dataset.rawDataPoint(item) : null
-  const formattedDataPoint = dataPoint != null && dataset.formattedDataPoint ? dataset.formattedDataPoint(dataPoint, item) : 'Data saknas'
+  const formattedDataPoint = dataPoint != null && dataset.formattedDataPoint ? dataset.formattedDataPoint(dataPoint) : 'Data saknas'
 
   return {
     name: item.Name,

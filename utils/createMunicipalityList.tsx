@@ -122,7 +122,7 @@ export const listColumns = (
             </a>
           )
         }
-        return !Number.isNaN(row.getValue()) ? formattedDataPoint : datasetDescriptions[selectedData].edgeCaseString
+        return formattedDataPoint
       },
       accessorKey: 'dataPoint',
       sortingFn: (a, b) => a.original.index - b.original.index,

@@ -75,8 +75,7 @@ export class ClimateDataService {
           Budget: budget,
           EmissionChangePercent: data.emissionChangePercent,
           HitNetZero: data.hitNetZero,
-          BudgetRunsOut: data.budgetRunsOut,
-          BudgetDaysLeft: this.getBudgetDaysLeft(data.budgetRunsOut),
+          BudgetRunsOut: new Date(data.budgetRunsOut),
           ElectricCarChangePercent: data.electricCarChangePercent,
           ElectricCarChangeYearly: data.electricCarChangeYearly,
           ClimatePlan: climatePlan,
@@ -119,29 +118,6 @@ export class ClimateDataService {
     )
 
     return years > 0 ? emissionsPercentages / years : 0
-  }
-
-  public getBudgetDaysLeft(budgetRunsOut: string): number {
-    // Check if the budget never runs out
-    if (budgetRunsOut === 'Håller budgeten') {
-      return 1e10
-    }
-
-    // Parse the input string as a date
-    const budgetDate = new Date(budgetRunsOut)
-
-    // Check if the parsed date is valid
-    if (Number.isNaN(budgetDate.getTime())) {
-      throw new Error('Invalid date format')
-    }
-
-    // Calculate the number of milliseconds between the budget date and January 1, 2024
-    const millisecondsInADay = 24 * 60 * 60 * 1000 // 1 day in milliseconds
-    const january1st2024 = new Date('2024-01-01')
-    const differenceInMilliseconds = budgetDate.getTime() - january1st2024.getTime()
-
-    // Calculate the number of days
-    return Math.ceil(differenceInMilliseconds / millisecondsInADay)
   }
 
   public getMunicipalities(): Array<Municipality> {
