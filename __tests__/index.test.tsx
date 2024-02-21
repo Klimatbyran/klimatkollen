@@ -46,7 +46,7 @@ describe('Home Page', () => {
         EmissionPerYear: [],
         HistoricalEmissionChangePercent: 0,
       },
-      EmissionChangePercent: 0,
+      NeededEmissionChangePercent: 0,
       HitNetZero: 0,
       BudgetRunsOut: '',
       ElectricCars: 0,

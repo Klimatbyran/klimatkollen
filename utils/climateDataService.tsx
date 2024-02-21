@@ -70,7 +70,7 @@ export class ClimateDataService {
           HistoricalEmission: emission,
           EmissionTrend: trend,
           Budget: budget,
-          EmissionChangePercent: data.emissionChangePercent,
+          NeededEmissionChangePercent: data.neededEmissionChangePercent,
           HitNetZero: data.hitNetZero,
           BudgetRunsOut: data.budgetRunsOut,
           ElectricCarChangePercent: data.electricCarChangePercent,

@@ -51,7 +51,7 @@ export type Municipality = {
   HistoricalEmission: Emission
   PoliticalRule: Array<string> | null
   EmissionTrend: Trend
-  EmissionChangePercent: number
+  NeededEmissionChangePercent: number
   HitNetZero: number | string
   BudgetRunsOut: string
   ElectricCars: number

@@ -188,7 +188,7 @@ def calculate_historical_change_percent(df):
     
     return df
 
-def calculate_change_percent(df):
+def calculate_needed_change_percent(df):
     # Calculate what yearly decrease that is needed to reach Paris goal
     temp = []
     # Year from which the paris path starts
@@ -199,7 +199,7 @@ def calculate_change_percent(df):
         final = df.iloc[i]['parisPath'][first_year+2]
         temp.append(((start-final)/start)*100)
 
-    df['emissionChangePercent'] = temp
+    df['neededEmissionChangePercent'] = temp
     return df
 
 
@@ -282,8 +282,8 @@ def emission_calculations(df):
     df_paris = calculate_paris_path(df_trend)
     
     df_historical_change_percent = calculate_historical_change_percent(df_paris)
-    df_change_percent = calculate_change_percent(df_historical_change_percent)
-    df_net_zero = calculate_hit_net_zero(df_change_percent)
+    df_needed_change_percent = calculate_needed_change_percent(df_historical_change_percent)
+    df_net_zero = calculate_hit_net_zero(df_needed_change_percent)
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
 
     return df_budget_runs_out
