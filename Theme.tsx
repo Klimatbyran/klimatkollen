@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components'
 
 export const colorTheme = {
   black: '#181818',
+  inBetweenBlack: '#202020',
   lightBlack: '#262626',
   grey: '#939393',
   offWhite: '#FFFDFA',

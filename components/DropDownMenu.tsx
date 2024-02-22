@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { datasetDescriptions } from '../utils/datasetDescriptions'
 import { SelectedData } from '../utils/types'
-import ArrowDown from '../public/icons/arrow-down.svg'
+import { datasetDescriptions } from '../utils/datasetDescriptions'
+import ArrowDown from '../public/icons/arrow-down-white.svg'
 
 const DropdownContainer = styled.div`
   display: flex;
@@ -13,44 +13,58 @@ const DropdownContainer = styled.div`
 const DropdownSelectWrapper = styled.div`
   position: relative;
   display: inline-block;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 16px;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid white;
-    pointer-events: none;
-  }
+  cursor: pointer;
 `
 
-const DropdownSelect = styled.select`
+const DropdownSelectText = styled.div`
   font-family: Borna;
   font-weight: 600;
   font-size: 32px;
-  padding: 16px;
-  padding-right: 36px;
-  margin-bottom: 7px;
+  margin-bottom: 3px;
   color: ${({ theme }) => theme.offWhite};
-  background-color: black;
-  background-image: ${ArrowDown}
-  background-repeat: no-repeat;
+  background-color: transparent;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   text-decoration: underline;
+  &:hover {
+    color: ${({ theme }) => theme.lightGreen};
+  }
+`
 
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+const Btn = styled.button`
+  margin-left: 8px;
+  background-color: transparent;
+  border: none;
+  color: ${({ theme }) => theme.offWhite};
+`
+
+const ArrowIcon = styled(ArrowDown)`
+  margin-bottom: 4px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.darkGreenTwo};
+    filter: ${({ theme }) => theme.lightGreen};
+  }
+`
+
+const DatasetWrapper = styled.ul`
+  background-color: ${({ theme }) => theme.inBetweenBlack};
+  border-radius: 8px;
+  max-height: 500px;
+  position: absolute;
+  z-index: 200;
+  width: 200px;
+`
+
+const Dataset = styled.li`
+  color: ${({ theme }) => theme.offWhite};
+  padding: 16px;
+  cursor: pointer;
+  font-size: 24px;
+  list-style-type: none;
+
+  &:hover {
+    color: ${({ theme }) => theme.lightGreen};
+    border-radius: 8px;
   }
 `
 
@@ -60,19 +74,46 @@ type MenuProps = {
 }
 
 function DropdownMenu({ selectedData, handleDataChange }: MenuProps) {
+  const [showDropDown, setShowDropDown] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const checkIfClickedOutside = (e: MouseEvent) => {
+      if (showDropDown && ref.current && !ref.current.contains(e.target as Node)) {
+        setShowDropDown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', checkIfClickedOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', checkIfClickedOutside)
+    }
+  }, [showDropDown])
+
+  const onDatasetClick = (option: string) => {
+    handleDataChange(option)
+    setShowDropDown(false)
+  }
+
   return (
-    <DropdownContainer>
-      <DropdownSelectWrapper>
-        <DropdownSelect
-          value={selectedData}
-          onChange={(e) => handleDataChange(e.target.value as SelectedData)}
-        >
-          {Object.keys(datasetDescriptions).map((option) => (
-            <option key={option} value={option}>
-              {option.toLowerCase()}
-            </option>
-          ))}
-        </DropdownSelect>
+    <DropdownContainer ref={ref}>
+      <DropdownSelectWrapper onClick={() => setShowDropDown(!showDropDown)}>
+        <DropdownSelectText>
+          {(selectedData.toString().toLowerCase() || 'välj data')}
+          <Btn>
+            <ArrowIcon />
+          </Btn>
+        </DropdownSelectText>
+        {showDropDown && (
+          <DatasetWrapper>
+            {Object.keys(datasetDescriptions).map((option) => (
+              <Dataset key={option} onClick={() => onDatasetClick(option)}>
+                {option.toLowerCase()}
+              </Dataset>
+            ))}
+          </DatasetWrapper>
+        )}
       </DropdownSelectWrapper>
     </DropdownContainer>
   )
