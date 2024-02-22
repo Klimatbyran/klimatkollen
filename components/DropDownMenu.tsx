@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { SelectedData } from '../utils/types'
 import { datasetDescriptions } from '../utils/datasetDescriptions'
-import ArrowDown from '../public/icons/arrow-down-white.svg'
+import ArrowDown from '../public/icons/arrow-down-current-color.svg'
 
 const DropdownContainer = styled.div`
   display: flex;
@@ -26,6 +26,7 @@ const DropdownSelectText = styled.div`
   border: none;
   border-radius: 8px;
   text-decoration: underline;
+
   &:hover {
     color: ${({ theme }) => theme.lightGreen};
   }
@@ -35,14 +36,15 @@ const Btn = styled.button`
   margin-left: 8px;
   background-color: transparent;
   border: none;
-  color: ${({ theme }) => theme.offWhite};
+  cursor: pointer;
 `
 
 const ArrowIcon = styled(ArrowDown)`
   margin-bottom: 4px;
+  color: ${({ theme }) => theme.offWhite};
 
   &:hover {
-    filter: ${({ theme }) => theme.lightGreen};
+    color: ${({ theme }) => theme.lightGreen};
   }
 `
 
@@ -52,7 +54,7 @@ const DatasetWrapper = styled.ul`
   max-height: 500px;
   position: absolute;
   z-index: 200;
-  width: 200px;
+  width: 256px;
 `
 
 const Dataset = styled.li`
@@ -100,7 +102,7 @@ function DropdownMenu({ selectedData, handleDataChange }: MenuProps) {
     <DropdownContainer ref={ref}>
       <DropdownSelectWrapper onClick={() => setShowDropDown(!showDropDown)}>
         <DropdownSelectText>
-          {(selectedData.toString().toLowerCase() || 'välj data')}
+          {selectedData.toString().toLowerCase() || 'välj data'}
           <Btn>
             <ArrowIcon />
           </Btn>
