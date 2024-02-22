@@ -34,11 +34,11 @@ const DropdownSelect = styled.select`
   font-weight: 600;
   font-size: 32px;
   padding: 16px;
-  padding-right: 36px; /* Increase right padding to make room for the chevron */
+  padding-right: 36px;
   margin-bottom: 7px;
   color: ${({ theme }) => theme.offWhite};
   background-color: black;
-  background-image: ${ArrowDown} /* Path to your chevron icon */
+  background-image: ${ArrowDown}
   background-repeat: no-repeat;
   border: none;
   border-radius: 8px;
