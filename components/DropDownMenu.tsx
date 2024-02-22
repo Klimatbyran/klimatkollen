@@ -6,18 +6,21 @@ import { SelectedData } from '../utils/types'
 const DropdownContainer = styled.div`
   display: flex;
   justify-content: left;
+  align-items: center;
 `
 
 const DropdownSelect = styled.select`
-  padding: 8px 16px;
-  margin-bottom: 8px;
   font-family: Borna;
+  font-weight: 600;
   font-size: 32px;
+  padding: 16px;
+  margin-bottom: 7px;
   color: ${({ theme }) => theme.offWhite};
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  text-decoration: underline;
 
   &:hover {
     color: ${({ theme }) => theme.lightGreen};

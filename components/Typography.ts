@@ -10,7 +10,6 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
   font-weight: bold;
   font-size: 32px;
-  line-height: 1.25;
   margin: 0 0 8px 0;
 `
 

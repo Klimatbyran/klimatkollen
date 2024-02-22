@@ -53,13 +53,13 @@ const ParagraphSource = styled(Paragraph)`
 
 const FlexRow = styled.div`
   display: flex;
-  align-items: center; // Align items vertically in the center
-  justify-content: start; // Align items to the start of the container
-  gap: 16px; // Adjust the gap as needed
+  align-items: center;
+  justify-content: start;
+  gap: 12px;
+  margin-bottom: 16px;
 
-  // Optional: Add responsiveness
-  @media (max-width: 768px) {
-    flex-direction: column; // Stack them vertically on smaller screens
+  @media only screen and (${devices.mobile}) {
+    flex-direction: column;
   }
 `
 
