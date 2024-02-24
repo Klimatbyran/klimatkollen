@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { SelectedData } from '../utils/types'
 import { datasetDescriptions } from '../utils/datasetDescriptions'
 import ArrowDown from '../public/icons/arrow-down-current-color.svg'
+import { colorTheme } from '../Theme'
 
 const DropdownContainer = styled.div`
   display: flex;
@@ -38,6 +39,7 @@ const ArrowIcon = styled(ArrowDown)`
 `
 
 const DatasetWrapper = styled.ul`
+  margin-top: 8px;
   background-color: ${({ theme }) => theme.inBetweenBlack};
   border-radius: 8px;
   max-height: 500px;
@@ -51,6 +53,7 @@ const Dataset = styled.li`
   padding: 16px;
   cursor: pointer;
   font-size: 24px;
+  border-radius: 8px;
   list-style-type: none;
 
   &:hover {
@@ -97,7 +100,11 @@ function DropdownMenu({ selectedData, handleDataChange }: MenuProps) {
         {showDropDown && (
           <DatasetWrapper>
             {Object.keys(datasetDescriptions).map((option) => (
-              <Dataset key={option} onClick={() => onDatasetClick(option)}>
+              <Dataset
+                key={option}
+                onClick={() => onDatasetClick(option)}
+                style={{ backgroundColor: option === selectedData ? colorTheme.darkGreenTwo : 'inherit' }}
+              >
                 {option.toLowerCase()}
               </Dataset>
             ))}
