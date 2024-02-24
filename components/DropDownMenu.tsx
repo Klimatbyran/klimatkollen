@@ -32,20 +32,9 @@ const DropdownSelectText = styled.div`
   }
 `
 
-const Btn = styled.button`
-  margin-left: 8px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-`
-
 const ArrowIcon = styled(ArrowDown)`
+  margin-left: 8px;
   margin-bottom: 4px;
-  color: ${({ theme }) => theme.offWhite};
-
-  &:hover {
-    color: ${({ theme }) => theme.lightGreen};
-  }
 `
 
 const DatasetWrapper = styled.ul`
@@ -103,9 +92,7 @@ function DropdownMenu({ selectedData, handleDataChange }: MenuProps) {
       <DropdownSelectWrapper onClick={() => setShowDropDown(!showDropDown)}>
         <DropdownSelectText>
           {selectedData.toString().toLowerCase() || 'välj data'}
-          <Btn>
-            <ArrowIcon />
-          </Btn>
+          <ArrowIcon />
         </DropdownSelectText>
         {showDropDown && (
           <DatasetWrapper>
