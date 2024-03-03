@@ -2,8 +2,7 @@ import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import NewsletterForm from './FooterNewsletterForm'
 
 function NewsletterSubscribe() {
-  const MAILCHIMP_URL = process.env.NEXT_PUBLIC_MAILCHIMP_URL
-  if (MAILCHIMP_URL === undefined) throw new Error('Must have a mailchimp URL')
+  const MAILCHIMP_URL = process.env.NEXT_PUBLIC_MAILCHIMP_URL || "https://"
 
   return (
     <MailchimpSubscribe
