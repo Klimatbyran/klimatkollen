@@ -75,7 +75,7 @@ def deduct_cement(df):
 
 def calculate_municipality_budgets(df):
     # Applying GF (grand fathering) to get the share of the budget for each municipality, based on SMHI data from 2015 onwards
-    years_range_gf = range(2015, LAST_YEAR_WITH_SMHI_DATA)
+    years_range_gf = range(2015, LAST_YEAR_WITH_SMHI_DATA+1)
     df['budgetShare'] = [df[years_range_gf].sum(axis=1)[i]/df[years_range_gf].sum(
         axis=0).sum() for i in range(len(df))]
     
