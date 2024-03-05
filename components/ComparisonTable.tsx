@@ -13,7 +13,6 @@ import {
 } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
 import { devices } from '../utils/devices'
-// fixme fortsätt här, importera data from datasetDescriptions och se om jag kan använda den här istället
 
 const StyledTable = styled.table`
   width: 98%;

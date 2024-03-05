@@ -37,7 +37,7 @@ export class ClimateDataService {
         const emission = {
           EmissionPerYear: emissions,
           LargestEmissionSectors: new Array<EmissionSector>(),
-          HistoricalEmissionChangePercent: data.historicalEmissionChangePercent
+          HistoricalEmissionChangePercent: data.historicalEmissionChangePercent,
         } as Emission
 
         const trend = {
@@ -98,9 +98,8 @@ export class ClimateDataService {
   }
 
   public getMunicipality(name: string): Municipality {
-    const mun = this.municipalities.filter(
+    return this.municipalities.filter(
       (kommun) => kommun.Name.toLowerCase() === name,
     )[0]
-    return mun
   }
 }

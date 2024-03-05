@@ -69,13 +69,14 @@ export type DatasetDescription = {
   title: string
   body: string | JSX.Element
   source: React.ReactNode
-  boundaries: number[] | string[]
+  boundaries: number[] | string[] | Date[]
   labels: string[]
   labelRotateUp: boolean[]
   columnHeader: string
   sortAscending?: boolean
-  calculateDataPoint?: (item: Municipality) => number | string
-  formatDataPoint?: (dataPoint: number | string) => string
+  rawDataPoint: (item: Municipality) => number | string | Date
+  formattedDataPoint: (dataPoint: number | string | Date) => string
+  stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
 export type DatasetDescriptions = {
