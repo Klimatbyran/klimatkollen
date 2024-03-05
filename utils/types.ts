@@ -76,7 +76,7 @@ export type DatasetDescription = {
   sortAscending?: boolean
   rawDataPoint: (item: Municipality) => number | string | Date
   formattedDataPoint: (dataPoint: number | string | Date) => string
-  stringsOnTop?: boolean
+  stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
 export type DatasetDescriptions = {

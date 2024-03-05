@@ -37,7 +37,7 @@ export class ClimateDataService {
         const emission = {
           EmissionPerYear: emissions,
           LargestEmissionSectors: new Array<EmissionSector>(),
-          HistoricalEmissionChangePercent: data.historicalEmissionChangePercent
+          HistoricalEmissionChangePercent: data.historicalEmissionChangePercent,
         } as Emission
 
         const trend = {

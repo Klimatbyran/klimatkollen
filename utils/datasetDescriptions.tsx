@@ -37,7 +37,7 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [0.00, -0.01, -0.02, -0.03, -0.1],
+    boundaries: [0.0, -0.01, -0.02, -0.03, -0.1],
     labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
@@ -71,7 +71,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     title: 'Klimatplan',
     body: (
       <>
-        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka
+        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga
+        planer. Klicka
         {' '}
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
@@ -157,7 +158,14 @@ export const datasetDescriptions: DatasetDescriptions = {
       </>
     ),
     boundaries: [7, 6.7, 6.4, 6.1, 5.8],
-    labels: ['7 ton +', '6,7-7 ton', '6,4-6,7 ton', '6,1-6,4 ton', '5,8-6,1 ton', '5,8 ton -'],
+    labels: [
+      '7 ton +',
+      '6,7-7 ton',
+      '6,4-6,7 ton',
+      '6,1-6,4 ton',
+      '5,8-6,1 ton',
+      '5,8 ton -',
+    ],
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person/år',
     sortAscending: true,
@@ -192,11 +200,21 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Koldioxidbudgetarna: {
-    title: 'Koldioxidbudgeten',
-    body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner klarar budgeten om trenden håller.',
+    title: 'Koldioxidbudget räcker',
+    body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.',
     source: (
       <>
         Källa:
+        {' '}
+        <a
+          href="https://nationellaemissionsdatabasen.smhi.se/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Nationella emissionsdatabasen
+        </a>
+        {' '}
+        och
         {' '}
         <a
           href="http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
@@ -207,21 +225,34 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [yearsAhead(2), yearsAhead(3), yearsAhead(4), yearsAhead(5), new Date(2050, 1, 1)],
+    boundaries: [
+      yearsAhead(2),
+      yearsAhead(3),
+      yearsAhead(4),
+      yearsAhead(5),
+      new Date(2050, 1, 1),
+    ],
     labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', 'Håller budgeten'],
     labelRotateUp: [],
-    columnHeader: 'Lorem',
+    columnHeader: 'Budget tar slut',
     sortAscending: false,
     rawDataPoint: (item) => new Date(item.BudgetRunsOut),
-    formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1) ? formatDateToString(dataPoint as Date) : 'Håller budgeten'),
+    formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1)
+      ? formatDateToString(dataPoint as Date)
+      : 'Håller budgeten'),
     stringsOnTop: true,
   },
 }
 
-export const currentData = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
+export const currentData = (
+  municipalities: Array<Municipality>,
+  selectedData: SelectedData,
+) => municipalities.map((item) => {
   const dataset = datasetDescriptions[selectedData]
   const dataPoint = dataset.rawDataPoint ? dataset.rawDataPoint(item) : null
-  const formattedDataPoint = dataPoint != null && dataset.formattedDataPoint ? dataset.formattedDataPoint(dataPoint) : 'Data saknas'
+  const formattedDataPoint = dataPoint != null && dataset.formattedDataPoint
+    ? dataset.formattedDataPoint(dataPoint)
+    : 'Data saknas'
 
   return {
     name: item.Name,
