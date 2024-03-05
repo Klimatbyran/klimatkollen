@@ -21,7 +21,7 @@ const DropdownSelectText = styled.div`
   font-family: Borna;
   font-weight: 600;
   font-size: 32px;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   color: ${({ theme }) => theme.offWhite};
   background-color: transparent;
   border: none;
