@@ -112,7 +112,7 @@ function KoM() {
                   Uppgifter om politiskt styre i kommunerna hämtas från
                   {' '}
                   <a
-                    href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
+                    href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html"
                     target="_blank"
                     rel="noreferrer"
                   >
