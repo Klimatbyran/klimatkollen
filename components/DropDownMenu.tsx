@@ -57,7 +57,7 @@ const Dataset = styled.li`
   list-style-type: none;
 
   &:hover {
-    color: ${({ theme }) => theme.lightGreen};
+    background: ${({ theme }) => theme.darkGreenTwo};
     border-radius: 8px;
   }
 `
@@ -103,7 +103,7 @@ function DropdownMenu({ selectedData, handleDataChange }: MenuProps) {
               <Dataset
                 key={option}
                 onClick={() => onDatasetClick(option)}
-                style={{ backgroundColor: option === selectedData ? colorTheme.darkGreenTwo : 'inherit' }}
+                style={{ color: option === selectedData ? colorTheme.lightGreen : 'inherit' }}
               >
                 {option.toLowerCase()}
               </Dataset>
