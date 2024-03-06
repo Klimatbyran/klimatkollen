@@ -2,15 +2,12 @@ import { ColumnDef } from '@tanstack/react-table'
 import { DatasetDescription, Municipality, SelectedData } from './types'
 import { datasetDescriptions, currentData } from './datasetDescriptions'
 
-export const calculateStringRankings = (
+export const calculateBinaryRankings = (
   data: Array<{ name: string; dataPoint: string | number | JSX.Element }>,
-) => {
-  const rankedData = data.map((item) => ({
-    ...item,
-    index: item.dataPoint === 'Saknas' ? 1 : -1,
-  }))
-  return rankedData
-}
+) => data.map((item) => ({
+  ...item,
+  index: item.dataPoint === 'Saknas' ? 1 : -1,
+}))
 
 export const calculateNumberRankings = (
   data: Array<{ name: string; dataPoint: number }>,
@@ -59,7 +56,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
 
   if (selectedData === 'Klimatplanerna') {
     // special case for climate plans
-    newRankedData[selectedData] = calculateStringRankings(
+    newRankedData[selectedData] = calculateBinaryRankings(
       datasets.map((item) => ({
         name: item.name,
         dataPoint: item.dataPoint,
@@ -83,7 +80,7 @@ const columnHeader = (datasetDescription: DatasetDescription) => (
   <div>{datasetDescription.columnHeader}</div>
 )
 
-export const listColumns = (
+export const municipalityColumns = (
   selectedData: SelectedData,
   datasetDescription: DatasetDescription,
 ): ColumnDef<{

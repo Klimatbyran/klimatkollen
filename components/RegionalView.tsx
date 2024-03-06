@@ -8,7 +8,7 @@ import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
 import RadioButtonMenu from './RadioButtonMenu'
 import DropDown from '../components/DropDown'
-import { H5Regular, Paragraph } from './Typography'
+import { H2Regular, H5Regular, Paragraph } from './Typography'
 import { devices } from '../utils/devices'
 import {
   datasetDescriptions,
@@ -18,7 +18,7 @@ import {
 } from '../utils/datasetDescriptions'
 import { Municipality, SelectedData } from '../utils/types'
 import { normalizeString } from '../utils/shared'
-import { listColumns, rankData } from '../utils/createMunicipalityList'
+import { municipalityColumns, rankData } from '../utils/createMunicipalityList'
 
 const Map = dynamic(() => import('../components/Map/Map'))
 
@@ -125,13 +125,14 @@ function RegionalView({
     )
   }
 
-  const cols = listColumns(selectedDataset, datasetDescription)
+  const cols = municipalityColumns(selectedDataset, datasetDescription)
   const rankedData = rankData(municipalities, selectedDataset)
 
   const isDefaultDataView = selectedDataView === defaultDataView
 
   return (
     <>
+      <H2Regular>Hur går det med?</H2Regular>
       <RadioButtonMenu
         selectedData={selectedDataset}
         handleDataChange={handleDataChange}

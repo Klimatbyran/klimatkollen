@@ -3,8 +3,7 @@ import { ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import MetaTags from '../components/MetaTags'
-import { H2Regular } from '../components/Typography'
-import { Municipality, SelectedData } from '../utils/types'
+import { Company, Municipality, SelectedData } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer/Footer'
@@ -20,6 +19,7 @@ import {
 } from '../utils/shared'
 import PillSwitch from '../components/PillSwitch'
 import RegionalView from '../components/RegionalView'
+import CompanyView from '../components/CompanyView'
 
 const Container = styled.div`
   display: flex;
@@ -29,10 +29,11 @@ const Container = styled.div`
 `
 
 type PropsType = {
+  companies: Array<Company>
   municipalities: Array<Municipality>
 }
 
-function StartPage({ municipalities }: PropsType) {
+function StartPage({ companies, municipalities }: PropsType) {
   const router = useRouter()
   const routeDataset = router.query.dataset
   const { dataView } = router.query
@@ -66,7 +67,6 @@ function StartPage({ municipalities }: PropsType) {
       <PageWrapper backgroundColor="black">
         <Container>
           <PillSwitch onToggle={setShowRegionalEmissionData} />
-          <H2Regular>Hur går det med?</H2Regular>
           {showRegionalEmissionData
             ? (
               <RegionalView
@@ -78,7 +78,13 @@ function StartPage({ municipalities }: PropsType) {
                 router={router}
               />
             )
-            : <></>}
+            : (
+              <CompanyView
+                companies={companies}
+                selectedDataView={selectedDataView}
+                setSelectedDataView={setSelectedDataView}
+              />
+            )}
         </Container>
       </PageWrapper>
     </>

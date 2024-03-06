@@ -52,7 +52,6 @@ export class ClimateDataService {
         } as unknown as Trend
 
         const budget = {
-          PercentageOfNationalBudget: 1,
           CO2Equivalent: data.budget,
           BudgetPerYear: Object.entries(data.emissionBudget).map(
             ([year, emissionBudget]) => ({
@@ -68,7 +67,7 @@ export class ClimateDataService {
           Comment: data.climatePlanComment,
         } as unknown as ClimatePlan
 
-        const municipality = {
+        return {
           Name: data.kommun,
           HistoricalEmission: emission,
           EmissionTrend: trend,
@@ -83,7 +82,6 @@ export class ClimateDataService {
           TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
           ElectricVehiclePerChargePoints: data.electricVehiclePerChargePoints,
         } as Municipality
-        return municipality
       })
       .sort((a: Municipality, b: Municipality) => (
         a.HistoricalEmission.EmissionLevelChangeAverage
@@ -125,9 +123,8 @@ export class ClimateDataService {
   }
 
   public getMunicipality(name: string): Municipality {
-    const mun = this.municipalities.filter(
+    return this.municipalities.filter(
       (kommun) => kommun.Name.toLowerCase() === name,
     )[0]
-    return mun
   }
 }

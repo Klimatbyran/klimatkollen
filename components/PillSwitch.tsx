@@ -17,8 +17,7 @@ const SwitchLabel = styled.label`
 const Slider = styled.div<{ isActive: boolean }>`
   position: absolute;
   top: 4px;
-
-  left: ${({ isActive }) => (isActive ? 'calc(100% - 120px)' : '4px')}; /* Width of the switch - width of slider */
+  left: ${({ isActive }) => (isActive ? 'calc(100% - 122px)' : '4px')}; /* Width of the switch - width of slider */
   width: 120px; /* Width of the slider */
   height: 48px; /* Height of the slider */
   background: #fff;

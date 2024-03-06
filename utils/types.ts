@@ -5,6 +5,34 @@ export type Image = {
   Description: string
 }
 
+// Companies
+
+export type CompanyScope = {
+  Emissions: string
+  Unit: string
+  BaseYear: string
+  [key: string]: unknown
+}
+
+export type CompanyEmissionsPerYear = {
+  Scope1: CompanyScope
+  Scope2: CompanyScope
+  Scope3: CompanyScope
+  TotalEmissions: number
+  TotalUnit: string
+  TotalEmissionRank: number
+}
+
+export type Company = {
+  Name: string
+  Industry: string
+  BaseYear: string
+  Url: string
+  Emissions: CompanyEmissionsPerYear
+}
+
+// Municipalities
+
 export type EmissionPerYear = {
   Year: number
   CO2Equivalent: number
@@ -26,7 +54,6 @@ export type Emission = {
 
 export type Budget = {
   CO2Equivalent: number
-  PercentageOfNationalBudget: number
   BudgetPerYear: Array<EmissionPerYear>
 }
 
