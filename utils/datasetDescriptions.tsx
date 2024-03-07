@@ -6,6 +6,20 @@ export const secondaryDataView = 'lista'
 
 export const defaultDataset = 'Utsläppen'
 
+const yearsAhead = (years: number) => {
+  const currentDate = new Date()
+  const yearsInFuture = currentDate.getFullYear() + years
+  currentDate.setFullYear(yearsInFuture)
+  return currentDate
+}
+
+const formatDateToString = (date: Date): string => {
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0') // months are 0-based
+  const day = date.getDate().toString().padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
     title: 'Utsläppsförändring',
@@ -23,13 +37,13 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [0, -1, -2, -3, -10],
+    boundaries: [0.0, -0.01, -0.02, -0.03, -0.1],
     labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
     sortAscending: true,
-    calculateDataPoint: (item) => item.HistoricalEmission.EmissionLevelChangeAverage * 100,
-    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent / 100,
+    formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
   },
 
   Elbilarna: {
@@ -44,20 +58,21 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [4, 5, 6, 7, 8],
+    boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
     labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
     labelRotateUp: [true, true, true, true, true, true],
     columnHeader: 'Ökning elbilar',
     sortAscending: false,
-    calculateDataPoint: (item) => item.ElectricCarChangePercent * 100,
-    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    rawDataPoint: (item) => item.ElectricCarChangePercent,
+    formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
   },
 
   Klimatplanerna: {
     title: 'Klimatplan',
     body: (
       <>
-        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka
+        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga
+        planer. Klicka
         {' '}
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
@@ -87,8 +102,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['Nej', 'Ja'],
     labelRotateUp: [],
     columnHeader: 'Klimatplan',
-    calculateDataPoint: (item) => item.ClimatePlan.Link,
-    formatDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
+    rawDataPoint: (item) => item.ClimatePlan.Link,
+    formattedDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
   },
 
   Cyklarna: {
@@ -122,8 +137,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Cykelväglängd',
     sortAscending: false,
-    calculateDataPoint: (item) => item.BicycleMetrePerCapita,
-    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    rawDataPoint: (item) => item.BicycleMetrePerCapita,
+    formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Konsumtionen: {
@@ -143,12 +158,19 @@ export const datasetDescriptions: DatasetDescriptions = {
       </>
     ),
     boundaries: [7, 6.7, 6.4, 6.1, 5.8],
-    labels: ['7 ton +', '6,7-7 ton', '6,4-6,7 ton', '6,1-6,4 ton', '5,8-6,1 ton', '5,8 ton -'],
+    labels: [
+      '7 ton +',
+      '6,7-7 ton',
+      '6,4-6,7 ton',
+      '6,1-6,4 ton',
+      '5,8-6,1 ton',
+      '5,8 ton -',
+    ],
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person/år',
     sortAscending: true,
-    calculateDataPoint: (item) => item.TotalConsumptionEmission,
-    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    rawDataPoint: (item) => item.TotalConsumptionEmission,
+    formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Laddarna: {
@@ -173,19 +195,68 @@ export const datasetDescriptions: DatasetDescriptions = {
     labelRotateUp: [],
     columnHeader: 'Elbil per laddare',
     sortAscending: true,
-    calculateDataPoint: (item) => item.ElectricVehiclePerChargePoints,
-    formatDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
+    rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
+    formattedDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
+  },
+
+  Koldioxidbudgetarna: {
+    title: 'Budget slut om',
+    body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="https://nationellaemissionsdatabasen.smhi.se/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Nationella emissionsdatabasen
+        </a>
+        {' '}
+        och
+        {' '}
+        <a
+          href="http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Uppsala universitet
+        </a>
+      </>
+    ),
+    boundaries: [
+      yearsAhead(2),
+      yearsAhead(3),
+      yearsAhead(4),
+      yearsAhead(5),
+      new Date(2050, 1, 1),
+    ],
+    labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', 'Håller budget'],
+    labelRotateUp: [],
+    columnHeader: 'Budget tar slut',
+    sortAscending: false,
+    rawDataPoint: (item) => new Date(item.BudgetRunsOut),
+    formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1)
+      ? formatDateToString(dataPoint as Date)
+      : 'Håller budget'),
+    stringsOnTop: true,
   },
 }
 
-export const currentData = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
+export const currentData = (
+  municipalities: Array<Municipality>,
+  selectedData: SelectedData,
+) => municipalities.map((item) => {
   const dataset = datasetDescriptions[selectedData]
-  const dataPoint = dataset.calculateDataPoint ? dataset.calculateDataPoint(item) : null
-  const formattedDataPoint = dataPoint != null && dataset.formatDataPoint ? dataset.formatDataPoint(dataPoint) : ''
+  const dataPoint = dataset.rawDataPoint ? dataset.rawDataPoint(item) : null
+  const formattedDataPoint = dataPoint != null && dataset.formattedDataPoint
+    ? dataset.formattedDataPoint(dataPoint)
+    : 'Data saknas'
 
   return {
     name: item.Name,
-    dataPoint: dataPoint || '',
+    dataPoint: dataPoint || 'Data saknas',
     formattedDataPoint,
   }
 })

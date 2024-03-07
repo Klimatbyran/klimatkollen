@@ -37,14 +37,11 @@ export class ClimateDataService {
         const emission = {
           EmissionPerYear: emissions,
           LargestEmissionSectors: new Array<EmissionSector>(),
+          HistoricalEmissionChangePercent: data.historicalEmissionChangePercent,
         } as Emission
 
-        emission.EmissionLevelChangeAverage = this.getEmissionLevelChangeAverage(
-          emission.EmissionPerYear,
-        )
-
         const trend = {
-          FutureCO2Emission: data.futureEmission,
+          TrendCO2Emission: data.trendEmission,
           TrendPerYear: Object.entries(data.trend).map(([year, emissionTrend]) => ({
             Year: Number(year),
             CO2Equivalent: emissionTrend,
@@ -73,7 +70,7 @@ export class ClimateDataService {
           HistoricalEmission: emission,
           EmissionTrend: trend,
           Budget: budget,
-          EmissionChangePercent: data.emissionChangePercent,
+          NeededEmissionChangePercent: data.neededEmissionChangePercent,
           HitNetZero: data.hitNetZero,
           BudgetRunsOut: data.budgetRunsOut,
           ElectricCarChangePercent: data.electricCarChangePercent,
@@ -86,38 +83,14 @@ export class ClimateDataService {
         return municipality
       })
       .sort((a: Municipality, b: Municipality) => (
-        a.HistoricalEmission.EmissionLevelChangeAverage
-          - b.HistoricalEmission.EmissionLevelChangeAverage
+        a.HistoricalEmission.HistoricalEmissionChangePercent
+          - b.HistoricalEmission.HistoricalEmissionChangePercent
       ))
     this.municipalities.forEach((municipality: Municipality, index: number) => {
       const updatedMunicipality = { ...municipality }
-      updatedMunicipality.HistoricalEmission.AverageEmissionChangeRank = index + 1
+      updatedMunicipality.HistoricalEmission.HistoricalEmissionChangeRank = index + 1
       return updatedMunicipality
     })
-  }
-
-  public getEmissionLevelChangeAverage(emissions: Array<EmissionPerYear>): number {
-    let emissionsPercentages = 0
-    let years = 0
-
-    const filteredEmissions = emissions.filter((emission) => emission.Year >= 2015)
-
-    filteredEmissions.forEach(
-      (
-        emission: EmissionPerYear,
-        index: number,
-        historicEmissions: Array<EmissionPerYear>,
-      ) => {
-        const previous = historicEmissions[index - 1] as EmissionPerYear
-        if (previous) {
-          const changeSinceLastYear = (emission.CO2Equivalent - previous.CO2Equivalent) / previous.CO2Equivalent
-          emissionsPercentages += changeSinceLastYear
-          years += 1
-        }
-      },
-    )
-
-    return years > 0 ? emissionsPercentages / years : 0
   }
 
   public getMunicipalities(): Array<Municipality> {
@@ -125,9 +98,8 @@ export class ClimateDataService {
   }
 
   public getMunicipality(name: string): Municipality {
-    const mun = this.municipalities.filter(
+    return this.municipalities.filter(
       (kommun) => kommun.Name.toLowerCase() === name,
     )[0]
-    return mun
   }
 }

@@ -80,6 +80,12 @@ function SocialList() {
           GitHub
         </ContactLink>
       </ContactListItem>
+      <SocialListItem
+        icon="/icons/some/discord.svg" // Assuming you have a Discord logo
+        alt="Discord logo"
+        link="https://discord.gg/FPX9yqYAmk"
+        text="Discord"
+      />
     </ContactList>
   )
 }

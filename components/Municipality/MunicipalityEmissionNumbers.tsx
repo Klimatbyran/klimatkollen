@@ -48,7 +48,13 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
     (total, year) => total + year.CO2Equivalent,
     0,
   ) / 1000
-  const totalTrend = municipality.EmissionTrend.FutureCO2Emission / 1000
+  const historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+
+  const totalTrend = municipality.EmissionTrend.TrendCO2Emission / 1000
+  const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0]?.Year
+
+  const totalBudget = municipality.Budget.CO2Equivalent / 1000
+  const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year
 
   return (
     <Container>
@@ -57,20 +63,19 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
         <TotalCo2>
           <Square color={colorTheme.orange} />
           <StyledText $color={colorTheme.offWhite}>
-            Historiskt 1990-2021: {totalHistorical.toFixed(1)}
+            Historiskt 1990-{historicalEndsYear}: {totalHistorical.toFixed(1)}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
           <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
-            Trend 2021-2050: {totalTrend.toFixed(1)}
+            Trend {trendStartsYear}-2050: {totalTrend.toFixed(1)}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
           <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
-            Koldioxidbudget för att klara Parisavtalet:{' '}
-            {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)}
+            Koldioxidbudget för att klara Parisavtalet {budgetStartsYear}-2050: {totalBudget.toFixed(1)}
           </StyledText>
         </TotalCo2>
       </TotalCo2Container>

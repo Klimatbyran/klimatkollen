@@ -10,7 +10,6 @@ import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
 import ToggleSection from '../../components/ToggleSection'
-import { currentYear } from '../../utils/shared'
 
 const Container = styled.section`
   display: flex;
@@ -107,18 +106,13 @@ function KoM() {
                   </a>
                   , som hanteras av SMHI och utgår från Sveriges officiella
                   utsläppsstatistik, med Naturvårdsverket som ansvarig myndighet. Kommunal
-                  utsläppsdata har 1,5–2 års fördröjning, 
-                  {' '}
-                  {currentYear}
-                  {' '}
-                  års siffror
-                  släpptes i juli 2023.
+                  utsläppsdata har 1,5–2 års fördröjning, 2021 års siffror släpptes i juli 2023.
                 </Paragraph>
                 <Paragraph>
                   Uppgifter om politiskt styre i kommunerna hämtas från
                   {' '}
                   <a
-                    href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styreikommunereftervalet2018.26791.html"
+                    href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html"
                     target="_blank"
                     rel="noreferrer"
                   >

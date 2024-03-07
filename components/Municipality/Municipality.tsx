@@ -99,10 +99,10 @@ function Municipality(props: Props) {
         <Bottom>
           <Scorecard
             name={municipality.Name}
-            rank={municipality.HistoricalEmission.AverageEmissionChangeRank}
+            rank={municipality.HistoricalEmission.HistoricalEmissionChangeRank}
             budget={municipality.Budget.CO2Equivalent}
             budgetRunsOut={municipality.BudgetRunsOut}
-            emissionChangePercent={municipality.EmissionChangePercent}
+            neededEmissionChangePercent={municipality.NeededEmissionChangePercent}
             politicalRule={municipality.PoliticalRule}
             climatePlan={municipality.ClimatePlan}
           />

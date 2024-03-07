@@ -14,7 +14,6 @@ import styled from 'styled-components'
 import { EmissionPerYear } from '../utils/types'
 
 import { colorTheme } from '../Theme'
-import { currentYear } from '../utils/shared'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
@@ -92,6 +91,8 @@ function Graph({
       throw new Error('Dataset length larger than label length')
     }
   }
+
+  const lastYearWithData = historical[historical.length - 1]?.Year
 
   return (
     <Container>
@@ -171,7 +172,7 @@ function Graph({
           scales: {
             x: {
               min: step === 0 ? setup.minYear : 2015,
-              max: step > 0 ? maxVisibleYear : currentYear,
+              max: step > 0 ? maxVisibleYear : lastYearWithData,
               grid: {
                 display: true,
                 color: 'rgba(255, 255, 255, 0.2)',
