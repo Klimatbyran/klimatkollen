@@ -53,7 +53,8 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
   // if historical approximated data exist, include into total historical emission and advance the year to which historical data extends
   if (municipality.ApproximatedHistoricalEmission.TotalCO2Emission) {
     totalHistorical += municipality.ApproximatedHistoricalEmission.TotalCO2Emission / 1000
-    historicalEndsYear = municipality.ApproximatedHistoricalEmission.EmissionPerYear[municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
+    historicalEndsYear = municipality.ApproximatedHistoricalEmission.EmissionPerYear[
+      municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
   }
 
   const totalTrend = municipality.EmissionTrend.TrendCO2Emission / 1000

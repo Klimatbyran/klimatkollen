@@ -92,7 +92,7 @@ function Graph({
   }
 
   // get last year with historical data (approximated included)
-  let lastYearWithData = approximated.length > 0 ? approximated[approximated.length - 1]?.Year : historical[historical.length - 1]?.Year 
+  const lastYearWithData = approximated.length > 0 ? approximated[approximated.length - 1]?.Year : historical[historical.length - 1]?.Year
 
   return (
     <Container>

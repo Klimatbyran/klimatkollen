@@ -43,9 +43,9 @@ export class ClimateDataService {
 
         const approximatedEmission = {
           TotalCO2Emission: data.totalApproximatedHistoricalEmission,
-          EmissionPerYear: Object.entries(data.approximatedHistoricalEmission).map(([year, emission]) => ({
+          EmissionPerYear: Object.entries(data.approximatedHistoricalEmission).map(([year, co2equivalent]) => ({
             Year: Number(year),
-            CO2Equivalent: emission,
+            CO2Equivalent: co2equivalent,
           })),
         } as unknown as ApproximatedEmission
 

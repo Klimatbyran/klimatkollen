@@ -240,9 +240,9 @@ function MunicipalityEmissionGraph({
         <InfoModal
           close={toggleModal}
           text={
-            hasApproximatedData ?
-              `Koldioxidutsläpp i kommunen mellan 1990 och ${lastYearWithApproximatedData}, där ${lastYearWithData} är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990. Den streckade linjen mellan åren ${lastYearWithData}-${lastYearWithApproximatedData} är approximerad data baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.` :
-              `Koldioxidutsläpp i kommunen mellan 1990 och ${lastYearWithData}, vilket är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990.`
+            hasApproximatedData
+              ? `Koldioxidutsläpp i kommunen mellan 1990 och ${lastYearWithApproximatedData}, där ${lastYearWithData} är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990. Den streckade linjen mellan åren ${lastYearWithData}-${lastYearWithApproximatedData} är approximerad data baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.`
+              : `Koldioxidutsläpp i kommunen mellan 1990 och ${lastYearWithData}, vilket är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990.`
           }
           scrollY={scrollY}
         />
@@ -250,9 +250,8 @@ function MunicipalityEmissionGraph({
       {step === 1 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text={'Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.' +
-            (hasApproximatedData ? '' : ' Hacket i kurvan för vissa kommuner beror på att genomsnittet skiljer sig från det senaste årets nivå.')
-          }
+          text={`Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.${
+            hasApproximatedData ? '' : ' Hacket i kurvan för vissa kommuner beror på att genomsnittet skiljer sig från det senaste årets nivå.'}`}
           scrollY={scrollY}
         />
       )}
