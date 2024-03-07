@@ -5,7 +5,7 @@ import { SelectedData } from '../utils/types'
 import { devices } from '../utils/devices'
 
 const RadioContainer = styled.div`
-  margin: 8px 0 16px 0;
+  margin: 8px 0 32px 0;
   gap: 8px;
   display: flex;
   font-weight: bolder;
