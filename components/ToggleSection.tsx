@@ -2,8 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 
 import { H5 } from './Typography'
-import ArrowUp from '../public/icons/arrow-up-green.svg'
-import ArrowDown from '../public/icons/arrow-down-round.svg'
+import ArrowSvg from '../public/icons/arrow-down-round.svg'
 
 const TextSection = styled.details`
   display: flex;
@@ -11,6 +10,14 @@ const TextSection = styled.details`
 
   gap: 15px;
   margin-bottom: 40px;
+`
+
+const Arrow = styled(ArrowSvg)<{ open: boolean }>`
+  transform: rotate(${props => props.open ? '180deg' : '0'});
+
+  & path {
+    fill: ${props => props.open ? '#91DFC8' : '#F2F2F2'};
+  }
 `
 
 const HeaderSection = styled.summary`
@@ -51,11 +58,7 @@ function ToggleSection({ header, text }: Props) {
     <TextSection onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)}>
       <HeaderSection>
         <H5>{header}</H5>
-        {open ? (
-          <ArrowUp className="arrow" />
-        ) : (
-          <ArrowDown className="arrow" />
-        )}
+        <Arrow open={open} className="arrow" />
       </HeaderSection>
       <InfoSection>
         {text}
