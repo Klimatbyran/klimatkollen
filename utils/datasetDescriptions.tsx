@@ -108,7 +108,7 @@ export const datasetDescriptions: DatasetDescriptions = {
 
   Cyklarna: {
     title: 'Cykelvägslängd',
-    body: 'Antal meter cykelväg per invånare per kommun år 2022.',
+    body: 'Antal meter cykelväg per invånare per kommun år 2022. Högre är generellt bättre.',
     source: (
       <>
         Källa:

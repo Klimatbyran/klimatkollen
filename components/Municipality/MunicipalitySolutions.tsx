@@ -61,21 +61,21 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         heading="Förändringstakt andel laddbara bilar"
         data={`${(municipality.ElectricCarChangePercent * 100).toFixed(1)} procentenheter`}
         info="Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet
-            2015 i procentenheter per år."
+            2015 i procentenheter per år. Högre är bättre."
       />
       <SolutionSection
         icon={<Bike />}
         title="Cyklarna"
         heading="Antal meter cykelväg per invånare"
         data={`${municipality.BicycleMetrePerCapita.toFixed(1)} meter`}
-        info="Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild)."
+        info="Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild). Högre är generellt bättre."
       />
       <SolutionSection
         icon={<Basket />}
         title="Hushållens konsumtionsutsläpp"
         heading="CO₂e per person och år"
         data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton`}
-        info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019."
+        info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet."
       />
       <SolutionSection
         icon={<Charger />}
