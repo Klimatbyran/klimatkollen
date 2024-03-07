@@ -2,7 +2,9 @@ import { test } from 'vitest'
 import { getSortedMunicipalities, search } from './DropDown'
 
 test('Municipalities should be sorted by Swedish alphabetical order', () => {
-  expect(getSortedMunicipalities(['Örebro', 'Säffle', 'Älmhult', 'Åre', 'Karlshamn'])).toEqual(['Karlshamn', 'Säffle', 'Åre', 'Älmhult', 'Örebro'])
+  expect(
+    getSortedMunicipalities(['Örebro', 'Säffle', 'Älmhult', 'Åre', 'Karlshamn']),
+  ).toEqual(['Karlshamn', 'Säffle', 'Åre', 'Älmhult', 'Örebro'])
 })
 
 describe('When searching a list of sorted municipalities', () => {
@@ -19,6 +21,10 @@ describe('When searching a list of sorted municipalities', () => {
   })
 
   test('Results that start with the query should be prioritized', () => {
-    expect(search('st', ['Avesta', 'Mariestad', 'Stockholm'])).toEqual(['Stockholm', 'Avesta', 'Mariestad'])
+    expect(search('st', ['Avesta', 'Mariestad', 'Stockholm'])).toEqual([
+      'Stockholm',
+      'Avesta',
+      'Mariestad',
+    ])
   })
 })
