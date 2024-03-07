@@ -13,10 +13,10 @@ const TextSection = styled.details`
 `
 
 const Arrow = styled(ArrowSvg)<{ open: boolean }>`
-  transform: rotate(${props => props.open ? '180deg' : '0'});
+  transform: rotate(${(props) => (props.open ? '180deg' : '0')});
 
   & path {
-    fill: ${props => props.open ? '#91DFC8' : '#F2F2F2'};
+    fill: ${(props) => (props.open ? '#91DFC8' : '#F2F2F2')};
   }
 `
 
