@@ -5,79 +5,79 @@ import ArrowDown from '../public/icons/arrow-down.svg'
 import { devices } from '../utils/devices'
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
 
-  @media only screen and (${devices.tablet}) {
-    width: 325px;
-  }
+    @media only screen and (${devices.tablet}) {
+        width: 325px;
+    }
 `
 
 const SearchDropDown = styled.div`
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 `
 
 const Flex = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 `
 
 const StyledInput = styled.input`
-  width: 100%;
-  height: 56px;
-  background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.midGreen};
-  border-radius: 4px;
-  color: ${({ theme }) => theme.offWhite};
-  font-size: 16px;
-  font-weight: 300;
-  font-family: Borna;
-  padding-left: 0.8rem;
-  outline: none;
-  width: 325px;
-
-  ::placeholder {
+    width: 100%;
+    height: 56px;
+    background-color: transparent;
+    border: 1px solid ${({ theme }) => theme.midGreen};
+    border-radius: 4px;
     color: ${({ theme }) => theme.offWhite};
-  }
+    font-size: 16px;
+    font-weight: 300;
+    font-family: Borna;
+    padding-left: 0.8rem;
+    outline: none;
+    width: 325px;
+
+    ::placeholder {
+        color: ${({ theme }) => theme.offWhite};
+    }
 `
 
 const Btn = styled.button`
-  background-color: transparent;
-  width: 20px;
-  height: 20px;
-  right: 16px;
-  position: absolute;
-  border: none;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    right: 16px;
+    position: absolute;
+    border: none;
 `
 
 const MunicipalitiesWrapper = styled.ul`
-  background-color: ${({ theme }) => theme.lightBlack};
-  border-radius: 4px;
-  max-height: 195px;
-  overflow-y: scroll;
-  position: absolute;
-  z-index: 20;
+    background-color: ${({ theme }) => theme.lightBlack};
+    border-radius: 4px;
+    max-height: 195px;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 20;
 `
 
 const Municipality = styled.li`
-  color: ${({ theme }) => theme.offWhite};
-  text-decoration: none;
-  width: 310px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  padding-left: 1rem;
-  position: relative;
+    color: ${({ theme }) => theme.offWhite};
+    text-decoration: none;
+    width: 310px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    position: relative;
 `
 
 const ErrorText = styled.div`
-  margin-top: 8px;
+    margin-top: 8px;
 `
 
 type Props = {
@@ -86,8 +86,34 @@ type Props = {
   className: string
 }
 
+export function getSortedMunicipalities(municipalitiesName: Array<string>) {
+  return municipalitiesName.sort((a, b) => a.localeCompare(b, 'sv'))
+}
+
+export function search(query: string, municipalitiesName: Array<string>) {
+  const queryLowerCase = query.toLowerCase()
+
+  return municipalitiesName
+    .filter((municipality) => municipality.toLowerCase().includes(queryLowerCase))
+    .sort((a, b) => {
+      const lowerA = a.toLowerCase()
+      const lowerB = b.toLowerCase()
+
+      const startsWithQueryA = lowerA.startsWith(queryLowerCase)
+      const startsWithQueryB = lowerB.startsWith(queryLowerCase)
+
+      if (startsWithQueryA && !startsWithQueryB) {
+        return -1
+      } if (!startsWithQueryA && startsWithQueryB) {
+        return 1
+      }
+
+      return 0
+    })
+}
+
 function DropDown({ municipalitiesName, placeholder, className }: Props) {
-  const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
+  const sortedMunicipalities = getSortedMunicipalities(municipalitiesName)
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMunicipality, setSelectedMunicipality] = useState<string>('')
   const [municipalities, setMunicipalities] = useState(sortedMunicipalities)
@@ -128,7 +154,7 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
     } else {
       setShowDropDown(true)
     }
-    const filteredMunicipalities = sortedMunicipalities.filter((test) => test.toLowerCase().includes(value.toLowerCase()))
+    const filteredMunicipalities = search(value, sortedMunicipalities)
     setMunicipalities(filteredMunicipalities)
   }
 
