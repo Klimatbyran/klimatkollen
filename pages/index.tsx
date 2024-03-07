@@ -40,11 +40,6 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
-  margin: 8px 0;
-
-  @media only screen and (${devices.tablet}) {
-    margin: 16px 0;
-  }
 `
 
 const InfoText = styled.div`
