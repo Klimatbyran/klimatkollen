@@ -5,7 +5,7 @@ import { H5 } from './Typography'
 import ArrowUp from '../public/icons/arrow-up-green.svg'
 import ArrowDown from '../public/icons/arrow-down-round.svg'
 
-const TextSection = styled.div`
+const TextSection = styled.details`
   display: flex;
   flex-direction: column;
 
@@ -13,7 +13,7 @@ const TextSection = styled.div`
   margin-bottom: 40px;
 `
 
-const HeaderSection = styled.div`
+const HeaderSection = styled.summary`
   display: flex;
   justify-content: space-between;
 
@@ -21,7 +21,7 @@ const HeaderSection = styled.div`
     display: block;
   }
 
-  :hover {
+  &:hover {
     cursor: pointer;
   }
 `
@@ -45,26 +45,21 @@ type Props = {
 }
 
 function ToggleSection({ header, text }: Props) {
-  const [toggle, setToggle] = useState(false)
+  const [open, setOpen] = useState<boolean>(false)
 
   return (
-    <TextSection>
-      <HeaderSection onClick={() => setToggle(!toggle)}>
+    <TextSection onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)}>
+      <HeaderSection>
         <H5>{header}</H5>
-        {toggle ? (
-          <ArrowUp className="arrow" onClick={() => setToggle(!toggle)} />
+        {open ? (
+          <ArrowUp className="arrow" />
         ) : (
-          <ArrowDown
-            className="arrow"
-            onClick={() => setToggle(!toggle)}
-          />
+          <ArrowDown className="arrow" />
         )}
       </HeaderSection>
-      {toggle && (
       <InfoSection>
         {text}
       </InfoSection>
-      )}
     </TextSection>
   )
 }
