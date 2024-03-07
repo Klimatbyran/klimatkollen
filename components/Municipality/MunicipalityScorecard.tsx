@@ -233,7 +233,7 @@ function Scorecard({
         <ScorecardSection
           heading="Koldioxidbudgeten tar slut"
           data={
-            budgetRunsOut === 'Håller budgeten'
+            budgetRunsOut === 'Håller budget'
               ? 'Med nuvarande trend håller kommunen sin budget'
               : budgetRunsOut
           }
