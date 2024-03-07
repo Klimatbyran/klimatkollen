@@ -5,7 +5,7 @@ import { SelectedData } from '../utils/types'
 import { devices } from '../utils/devices'
 
 const RadioContainer = styled.div`
-  margin: 16px 0 32px 0;
+  margin: 8px 0 32px 0;
   gap: 8px;
   display: flex;
   font-weight: bolder;
@@ -13,19 +13,19 @@ const RadioContainer = styled.div`
   justify-content: center;
 
   @media only screen and (${devices.tablet}) {
+    margin: 16px 0;
     gap: 16px;
   }
-  
 `
 
 const RadioLabel = styled.label`
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   font-family: 'Anonymous Pro';
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 16px;
   text-decoration: none;
   color: ${({ theme }) => theme.offWhite};
-  border: 1px solid ${({ theme }) => theme.midGreen};
+  background: ${({ theme }) => theme.lightBlack};
+  border: none;
   border-radius: 8px;
   white-space: nowrap;
   cursor: pointer;
