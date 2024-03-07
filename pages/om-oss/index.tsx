@@ -48,7 +48,7 @@ function OmOss() {
           </AiryParagraph>
           <ToggleSection
             header="Vad är Klimatkollen?"
-            text={(
+            text={
               <>
                 <Paragraph>
                   Klimatkollen är en medborgarplattform som tillgängliggör klimatdata och
@@ -69,38 +69,33 @@ function OmOss() {
                   kunskap och klimatengagemang.
                 </Paragraph>
                 <Paragraph>
-                  Läs mer om varför Klimatkollen behövs i
-                  {' '}
+                  Läs mer om varför Klimatkollen behövs i{' '}
                   <a
                     href="https://www.aktuellhallbarhet.se/alla-nyheter/debatt/darfor-behovs-klimatkollen/"
                     target="_blank"
-                    rel="noreferrer"
-                  >
+                    rel="noreferrer">
                     vår debattartikel här
                   </a>
                   .
                 </Paragraph>
               </>
-            )}
+            }
           />
           <ToggleSection
             header="Vad finns på Klimatkollen?"
-            text={(
+            text={
               <Paragraph>
                 I dag kan du på Klimatkollen se:
                 <UnorderedList>
                   <ListItem>
                     Koldioxidbudgetar för landets alla 290 kommuner. Klimatkollen utgår
-                    ifrån en
-                    {' '}
+                    ifrån en{' '}
                     <a
                       href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
                       target="_blank"
-                      rel="noreferrer"
-                    >
+                      rel="noreferrer">
                       nationell koldioxidbudget
-                    </a>
-                    {' '}
+                    </a>{' '}
                     som beräknats av forskare vid Uppsala universitet enligt
                     Tyndall-modellen och som sedan fördelats ut på kommunerna av
                     ClimateView.
@@ -123,22 +118,20 @@ function OmOss() {
                   </ListItem>
                 </UnorderedList>
                 Klimatkollen är utvecklad med öppen källkod. Det betyder att alla kan vara
-                med och utveckla och förbättra sajten via vårt
-                {' '}
+                med och utveckla och förbättra sajten via vårt{' '}
                 <a
                   href="https://github.com/Klimatbyran/klimatkollen"
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   Github-repo
                 </a>
                 .
               </Paragraph>
-            )}
+            }
           />
           <ToggleSection
             header="Vilka står bakom?"
-            text={(
+            text={
               <>
                 <Paragraph>
                   Initiativtagare är Ola Spännar och Frida Berry Eklund, båda med lång
@@ -148,20 +141,21 @@ function OmOss() {
                   1,5-gradersmålet. Därför startade vi Klimatkollen.
                 </Paragraph>
                 <Paragraph>
-                  I Klimatkollens kärnteam idag finns förutom Ola och Frida även Elvira Boman,
-                  Tech Lead. Många fler bidrar med stöd och råd på olika sätt.
+                  I Klimatkollens kärnteam idag finns förutom Ola och Frida även Elvira
+                  Boman, Tech Lead. Många fler bidrar med stöd och råd på olika sätt.
                 </Paragraph>
                 <Paragraph>
-                  Våra samarbetspartners under de första två åren har varit Världsnaturfonden WWF,
-                  Postkodstiftelsen, PwC, ClimateView,, Klimatklubben, Våra barns klimat,
-                  Researchers’ Desk, Argand Partners och We Don’t Have Time.
+                  Våra samarbetspartners under de första två åren har varit
+                  Världsnaturfonden WWF, Postkodstiftelsen, PwC, ClimateView,
+                  Klimatklubben, Våra barns klimat, Researchers’ Desk, Argand Partners och
+                  We Don’t Have Time.
                 </Paragraph>
               </>
-            )}
+            }
           />
           <ToggleSection
             header="Problemet vi löser"
-            text={(
+            text={
               <>
                 <Paragraph>
                   Det finns mycket data därute som kan hjälpa oss att ta tempen på
@@ -175,47 +169,39 @@ function OmOss() {
                   möjliggör ansvarsutkrävande och ger bränsle till nya digitala
                   innovationer som snabbar på klimatomställningen. . Vi behöver veta mer
                   om utsläppen, varifrån de kommer, vilka lösningar som genomförs i vilka
-                  kommuner och vilken effekt dessa åtgärder kan få. Läs mer om det i
-                  {' '}
+                  kommuner och vilken effekt dessa åtgärder kan få. Läs mer om det i{' '}
                   <a
                     href="https://www.aktuellhallbarhet.se/alla-nyheter/debatt/med-battre-klimatdata-kan-vi-accelerera-klimatomstallningen/"
                     target="_blank"
-                    rel="noreferrer"
-                  >
+                    rel="noreferrer">
                     vår debattartikel
                   </a>
                   .
                 </Paragraph>
               </>
-            )}
+            }
           />
           <ToggleSection
             header="Stöd oss"
-            text={(
+            text={
               <>
                 <Paragraph>
                   Klimatkollen finns till för – och drivs av – klimatintresserade
-                  medborgare. Hos oss kan alla bidra. Du kan exempelvis hjälpa oss att
-                  {' '}
+                  medborgare. Hos oss kan alla bidra. Du kan exempelvis hjälpa oss att{' '}
                   <a
                     // eslint-disable-next-line max-len
                     href="https://www.linkedin.com/posts/ospannar_klimatkollens-kommundata-activity-7027238300889272320-wvS3?utm_source=share&utm_medium=member_desktop"
                     target="_blank"
-                    rel="noreferrer"
-                  >
+                    rel="noreferrer">
                     hitta data
-                  </a>
-                  {' '}
-                  som saknas, förbättra sajten via vårt
-                  {' '}
+                  </a>{' '}
+                  som saknas, förbättra sajten via vårt{' '}
                   <a
                     href="https://github.com/Klimatbyran/klimatkollen"
                     target="_blank"
-                    rel="noreferrer"
-                  >
+                    rel="noreferrer">
                     Github-repo
-                  </a>
-                  {' '}
+                  </a>{' '}
                   och sprida Klimatkollen i dina nätverk.
                 </Paragraph>
                 <Paragraph>
@@ -229,30 +215,22 @@ function OmOss() {
                       Vårt bankgiro: 5793-3178
                     </ListItem>
                     <ListItem>
-                      Ge av din kompetens? Skicka ett mejl till
-                      {' '}
+                      Ge av din kompetens? Skicka ett mejl till{' '}
                       <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
                     </ListItem>
                   </UnorderedList>
                 </Paragraph>
               </>
-            )}
+            }
           />
           <ToggleSection
             header="Vårt team"
-            text={(
+            text={
               <Paragraph>
                 <Grid>
                   <GridItem>
-                    <GridImage
-                      src={Ola}
-                      alt="Ola Spännar"
-                      width="200"
-                      height="200"
-                    />
-                    <b>Ola Spännar</b>
-                    {' '}
-                    Opinionsbildare, medgrundare av Klimatkollen,
+                    <GridImage src={Ola} alt="Ola Spännar" width="200" height="200" />
+                    <b>Ola Spännar</b> Opinionsbildare, medgrundare av Klimatkollen,
                     tidigare kommunikationschef på Centerpartiet och kundansvarig på
                     Forsman & Bodenfors.
                   </GridItem>
@@ -263,32 +241,25 @@ function OmOss() {
                       width="200"
                       height="200"
                     />
-                    <b>Frida Berry Eklund</b>
-                    {' '}
-                    Klimatspecialist och medgrundare till
+                    <b>Frida Berry Eklund</b> Klimatspecialist och medgrundare till
                     Klimatkollen. Initiativtagare till Our Kids’ Climate och författare
                     till boken “Prata med barn om klimatet” (Natur & Kultur). EU Climate
                     Pact Ambassador och Climate Reality Leader.
                   </GridItem>
                   <GridItem>
-                    <GridImage
-                      src={Elvira}
-                      alt="Elvira Boman"
-                      width="200"
-                      height="200"
-                    />
+                    <GridImage src={Elvira} alt="Elvira Boman" width="200" height="200" />
                     <b>Elvira Boman</b>
-                    Tech lead och teknisk fysiker på Klimatkollen
-                    och Precisit. Lång erfarenhet av grön och cirkulär tech vid flera prisbelönta
-                    startups och del av ledarteamet på IT-konsultbyrån Precisit.
+                    Tech lead och teknisk fysiker på Klimatkollen och Precisit. Lång
+                    erfarenhet av grön och cirkulär tech vid flera prisbelönta startups
+                    och del av ledarteamet på IT-konsultbyrån Precisit.
                   </GridItem>
                 </Grid>
               </Paragraph>
-            )}
+            }
           />
           <ToggleSection
             header="Vår styrelse"
-            text={(
+            text={
               <>
                 <Paragraph>
                   Klimatkollen drivs av den ideella föreningen, Klimatbyrån. I styrelsen
@@ -301,34 +272,18 @@ function OmOss() {
                         width="200"
                         height="200"
                       />
-                      <b>Christian Landgren</b>
-                      {' '}
-                      Digital entreprenör och en av Sveriges
+                      <b>Christian Landgren</b> Digital entreprenör och en av Sveriges
                       mest inflytelserika personer inom tech. VD och grundare av Iteam och
                       Öppna skolplattformen.
                     </GridItem>
                     <GridItem>
-                      <GridImage
-                        src={Anna}
-                        alt="Anna Loverus"
-                        width="200"
-                        height="200"
-                      />
-                      <b>Anna Loverus</b>
-                      {' '}
-                      Digital strateg och tidigare chef för sociala
+                      <GridImage src={Anna} alt="Anna Loverus" width="200" height="200" />
+                      <b>Anna Loverus</b> Digital strateg och tidigare chef för sociala
                       medier på Spotify och H&M. VD och grundare av Better Odds.
                     </GridItem>
                     <GridItem>
-                      <GridImage
-                        src={Maria}
-                        alt="Maria Soxbo"
-                        width="200"
-                        height="200"
-                      />
-                      <b>Maria Soxbo</b>
-                      {' '}
-                      Journalist, författare, föreläsare och grundare
+                      <GridImage src={Maria} alt="Maria Soxbo" width="200" height="200" />
+                      <b>Maria Soxbo</b> Journalist, författare, föreläsare och grundare
                       av Klimatklubben. Utsedd till en av Sveriges 101
                       hållbarhetsmäktigaste 2021.
                     </GridItem>
@@ -339,22 +294,13 @@ function OmOss() {
                         width="200"
                         height="200"
                       />
-                      <b>Carl-Johan Schultz</b>
-                      {' '}
-                      Hållbarhetsstrateg på Doings, tidigare
+                      <b>Carl-Johan Schultz</b> Hållbarhetsstrateg på Doings, tidigare
                       planner på Forsman & Bodenfors, författare till boken
                       ”Hållbariseringen”, Årets marknadsföringsbok 2022.
                     </GridItem>
                     <GridItem>
-                      <GridImage
-                        src={Ola}
-                        alt="Ola Spännar"
-                        width="200"
-                        height="200"
-                      />
-                      <b>Ola Spännar</b>
-                      {' '}
-                      Opinionsbildare, medgrundare av Klimatkollen,
+                      <GridImage src={Ola} alt="Ola Spännar" width="200" height="200" />
+                      <b>Ola Spännar</b> Opinionsbildare, medgrundare av Klimatkollen,
                       tidigare kommunikationschef på Centerpartiet och kundansvarig på
                       Forsman & Bodenfors.
                     </GridItem>
@@ -365,9 +311,7 @@ function OmOss() {
                         width="200"
                         height="200"
                       />
-                      <b>Frida Berry Eklund</b>
-                      {' '}
-                      Klimatspecialist och medgrundare till
+                      <b>Frida Berry Eklund</b> Klimatspecialist och medgrundare till
                       Klimatkollen. Initiativtagare till Our Kids’ Climate och författare
                       till boken “Prata med barn om klimatet” (Natur & Kultur). EU Climate
                       Pact Ambassador och Climate Reality Leader.
@@ -375,76 +319,66 @@ function OmOss() {
                   </Grid>
                 </Paragraph>
                 <Paragraph>
-                  Här hittar du våra
-                  {' '}
+                  Här hittar du våra{' '}
                   <a href="/stadgar.pdf" target="_blank" rel="noreferrer">
                     stadgar
-                  </a>
-                  {' '}
-                  ,
-                  {' '}
+                  </a>{' '}
+                  ,{' '}
                   <a href="/uppforandekod.pdf" target="_blank" rel="noreferrer">
                     uppförandekod
-                  </a>
-                  {' '}
-                  och
-                  {' '}
+                  </a>{' '}
+                  och{' '}
                   <a href="antikorruptionspolicy.pdf" target="_blank" rel="noreferrer">
                     antikorruptionspolicy
                   </a>
                   .
                 </Paragraph>
               </>
-            )}
+            }
           />
           <ToggleSection
             header="Så finansieras vi"
-            text={(
+            text={
               <>
                 <Paragraph>
-                  Under 2023 har Klimatkollen drivits med
-                  {' '}
+                  Under 2023 har Klimatkollen drivits med{' '}
                   <a
                     // eslint-disable-next-line max-len
                     href="https://www.mynewsdesk.com/se/klimatbyraan/pressreleases/klimatkollen-faar-stoed-av-postkodstiftelsen-och-rekryterar-toppnamn-3223979"
                     target="_blank"
-                    rel="noreferrer"
-                  >
+                    rel="noreferrer">
                     stöd från Postkodstiftelsen
                   </a>
-                  . Under 2024 och 2025 får Klimatkollen finansiell uppbackning av Google.org som en av två svenska mottagare av
-                  {' '}
+                  . Under 2024 och 2025 får Klimatkollen finansiell uppbackning av
+                  Google.org som en av två svenska mottagare av{' '}
                   <a
                     // eslint-disable-next-line max-len
                     href="https://www.google.org/climate/impact-challenge/"
                     target="_blank"
-                    rel="noreferrer"
-                  >
+                    rel="noreferrer">
                     Google.org Impact Challenge: Tech for Social Good
                   </a>
                   .
                 </Paragraph>
                 <Paragraph>
-                  Mycket av arbetet är ideellt, därför välkomnar vi fler
-                  samarbetspartners och ekonomiskt stöd för att kunna skala upp!
+                  Mycket av arbetet är ideellt, därför välkomnar vi fler samarbetspartners
+                  och ekonomiskt stöd för att kunna skala upp!
                 </Paragraph>
                 <Paragraph>
                   Uppstarten finansierades av Världsnaturfonden WWF, ClimateView, We Don’t
                   Have Time och Argand Partners.
                 </Paragraph>
               </>
-            )}
+            }
           />
           <ToggleSection
             header="Postkodprojektet"
-            text={(
+            text={
               <Paragraph>
-                Under 2023 har Klimatkollen uppburit stöd av
-                {' '}
+                Under 2023 har Klimatkollen uppburit stöd av{' '}
                 <a href="https://postkodstiftelsen.se/" target="_blank" rel="noreferrer">
                   Postkodstiftelsen
-                </a>
-                {' '}
+                </a>{' '}
                 för att ta tempen på hur det går med klimatomställningen i kommunerna. I
                 dag kan du se hur det går med koldioxidutsläppen. Nu visar vi även vad
                 kommunerna gör för att minska dem. Vi utgår ifrån de största
@@ -452,11 +386,11 @@ function OmOss() {
                 inom dessa sektorer, genom att presentera statistik om utvalda nyckeltal,
                 ett nyckeltal per omställning.
               </Paragraph>
-            )}
+            }
           />
           <ToggleSection
             header="Tidigare projekt"
-            text={(
+            text={
               <Paragraph>
                 Inför riksdagsvalet 2022 ansvarade Klimatkollen för två unika projekt för
                 att ge medborgare bättre koll på utsläppseffekterna av partiernas
@@ -465,11 +399,7 @@ function OmOss() {
                   <ListItem>
                     <b>Klimatmål</b>
                     <br />
-                    En
-                    {' '}
-                    <a href="/partierna">analys</a>
-                    {' '}
-                    av riksdagspartiernas klimatmål,
+                    En <a href="/partierna">analys</a> av riksdagspartiernas klimatmål,
                     tillsammans med forskarnätverket Researchers’ Desk, Världsnaturfonden
                     WWF, Våra barns klimat och ClimateView, i samarbete med PwC och
                     Naturskyddsföreningen. Analysen visade att sex av åtta partier missar
@@ -480,8 +410,7 @@ function OmOss() {
                     <br />
                     <a href="/utslappsberakningar" rel="noreferrer">
                       Utsläppsberäkning
-                    </a>
-                    {' '}
+                    </a>{' '}
                     av riksdagspartiernas politik gällande tolv centrala klimatåtgärder.
                     Bakom uträkningarna står Klimatkollen, Världsnaturfonden WWF,
                     ClimateView, Naturskyddsföreningen och Våra barns klimat.
@@ -490,7 +419,7 @@ function OmOss() {
                   </ListItem>
                 </OrderedList>
               </Paragraph>
-            )}
+            }
           />
         </Container>
       </PageWrapper>
