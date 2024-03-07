@@ -153,7 +153,7 @@ function OmOss() {
                 </Paragraph>
                 <Paragraph>
                   Våra samarbetspartners under de första två åren har varit Världsnaturfonden WWF,
-                  Postkodstiftelsen, PwC, ClimateView,, Klimatklubben, Våra barns klimat,
+                  Postkodstiftelsen, PwC, ClimateView, Klimatklubben, Våra barns klimat,
                   Researchers’ Desk, Argand Partners och We Don’t Have Time.
                 </Paragraph>
               </>
