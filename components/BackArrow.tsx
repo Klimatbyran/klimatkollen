@@ -6,7 +6,8 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   background-color: transparent;
-  align-self: flex-start;
+  width: 60px;
+  text-align: left;
 `
 
 type BackArrowProps = {
