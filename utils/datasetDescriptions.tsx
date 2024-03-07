@@ -200,7 +200,7 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Koldioxidbudgetarna: {
-    title: 'Koldioxidbudget slut om',
+    title: 'Budget slut om',
     body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.',
     source: (
       <>
