@@ -232,14 +232,14 @@ export const datasetDescriptions: DatasetDescriptions = {
       yearsAhead(5),
       new Date(2050, 1, 1),
     ],
-    labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', 'Håller budgeten'],
+    labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', 'Håller budget'],
     labelRotateUp: [],
     columnHeader: 'Budget tar slut',
     sortAscending: false,
     rawDataPoint: (item) => new Date(item.BudgetRunsOut),
     formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1)
       ? formatDateToString(dataPoint as Date)
-      : 'Håller budgeten'),
+      : 'Håller budget'),
     stringsOnTop: true,
   },
 }

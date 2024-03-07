@@ -350,7 +350,7 @@ def calculate_budget_runs_out(df):
             
             temp.append(budget_runs_out_date)
         else:
-            temp.append('Håller budgeten')
+            temp.append('Håller budget')
             
     df['budgetRunsOut'] = temp
     
