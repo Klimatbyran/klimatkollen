@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: 
+Sitemap: hhttp://klimatkollen.se/sitemap.xml
