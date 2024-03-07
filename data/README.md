@@ -57,7 +57,7 @@ The most important constants in the module are `BUDGET`, `BUDGET_YEAR`, `LAST_YE
 * `BUDGET`: Represents the total CO2 budget in metric tonnes.
 * `BUDGET_YEAR`: Represents the year from which the CO2 budget applies.
 * `LAST_YEAR_WITH_SMHI_DATA`: Represents the last year for which the [National Emission database](https://nationellaemissionsdatabasen.smhi.se/) has data.
-* `CURRENT_YEAR`: Represents the year which is to be handled as current year
+* `CURRENT_YEAR`: Represents the year which is to be handled as current year.
 
 #### Functions
 
