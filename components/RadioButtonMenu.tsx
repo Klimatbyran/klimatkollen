@@ -16,7 +16,6 @@ const RadioContainer = styled.div`
     margin: 32px 0;
     gap: 16px;
   }
-  
 `
 
 const RadioLabel = styled.label`
