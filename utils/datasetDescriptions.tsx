@@ -46,27 +46,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
   },
 
-  Elbilarna: {
-    title: 'Elbilsökning',
-    body: 'Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a href="https://www.trafa.se/vagtrafik/fordon/" target="_blank" rel="noreferrer">
-          Trafikanalys
-        </a>
-      </>
-    ),
-    boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
-    labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
-    labelRotateUp: [true, true, true, true, true, true],
-    columnHeader: 'Ökning elbilar',
-    sortAscending: false,
-    rawDataPoint: (item) => item.ElectricCarChangePercent,
-    formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
-  },
-
   Klimatplanerna: {
     title: 'Klimatplan',
     body: (
@@ -104,6 +83,53 @@ export const datasetDescriptions: DatasetDescriptions = {
     columnHeader: 'Klimatplan',
     rawDataPoint: (item) => item.ClimatePlan.Link,
     formattedDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
+  },
+
+  Elbilarna: {
+    title: 'Elbilsökning',
+    body: 'Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a href="https://www.trafa.se/vagtrafik/fordon/" target="_blank" rel="noreferrer">
+          Trafikanalys
+        </a>
+      </>
+    ),
+    boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
+    labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
+    labelRotateUp: [true, true, true, true, true, true],
+    columnHeader: 'Ökning elbilar',
+    sortAscending: false,
+    rawDataPoint: (item) => item.ElectricCarChangePercent,
+    formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
+  },
+
+  Laddarna: {
+    title: 'Elbilar per laddare',
+    body: 'Antal laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="https://powercircle.org/elbilsstatistik/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Power Circle ELIS
+        </a>
+        {' '}
+      </>
+    ),
+    boundaries: [1e6, 40, 30, 20, 10],
+    labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
+    labelRotateUp: [],
+    columnHeader: 'Elbil per laddare',
+    sortAscending: true,
+    rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
+    formattedDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
   },
 
   Cyklarna: {
@@ -171,32 +197,6 @@ export const datasetDescriptions: DatasetDescriptions = {
     sortAscending: true,
     rawDataPoint: (item) => item.TotalConsumptionEmission,
     formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
-  },
-
-  Laddarna: {
-    title: 'Elbilar per laddare',
-    body: 'Antal laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://powercircle.org/elbilsstatistik/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Power Circle ELIS
-        </a>
-        {' '}
-      </>
-    ),
-    boundaries: [1e6, 40, 30, 20, 10],
-    labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
-    labelRotateUp: [],
-    columnHeader: 'Elbil per laddare',
-    sortAscending: true,
-    rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
-    formattedDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
   },
 
   Koldioxidbudgetarna: {
