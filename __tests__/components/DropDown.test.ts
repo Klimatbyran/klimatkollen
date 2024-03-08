@@ -1,5 +1,5 @@
 import { test } from 'vitest'
-import { getSortedMunicipalities, search } from './DropDown'
+import { getSortedMunicipalities, search } from '../../components/DropDown'
 
 test('Municipalities should be sorted by Swedish alphabetical order', () => {
   expect(
