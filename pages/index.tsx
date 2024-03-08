@@ -103,6 +103,7 @@ const ComparisonContainer = styled.div<{ $dataView: string }>`
 
 const DropDownTitle = styled(H2Regular)`
   margin-bottom: 20px;
+  text-align: center;
 `
 
 type PropsType = {
