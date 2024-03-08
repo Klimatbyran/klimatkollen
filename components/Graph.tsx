@@ -118,13 +118,13 @@ function Graph({
               // @ts-ignore
               id: 'budget',
               fill: true,
-              data: budgetDataset,
-              borderWidth: 2,
+              data: step >= 2 ? budgetDataset : budgetDataset.map(({ x }) => ({ x, y: 0 })),
+              borderWidth: step >= 2 ? 2 : 0,
               borderColor: colorTheme.lightGreen,
               backgroundColor: colorTheme.lightGreenOpaqe,
               pointRadius: 0,
               tension: 0.15,
-              hidden: step < 2,
+              hidden: false,
             },
             {
               // @ts-ignore
