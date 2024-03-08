@@ -17,7 +17,7 @@ export const H1NoPad = styled.h1`
   line-height: 1.25;
 
   @media (max-width: 768px) {
-    font-size: 42px;
+    font-size: 35px;
   }
 `
 
@@ -28,7 +28,7 @@ export const H2 = styled.h2`
   margin: 0 0 8px 0;
 
   @media (max-width: 768px) {
-    font-size: 28px;
+    font-size: 24px;
   }
 `
 
