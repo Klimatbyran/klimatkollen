@@ -23,6 +23,14 @@ We use next.js and Typescript and it's pretty straightforward to get started. Ju
 
 This opens up a webserver on http://localhost:3000. Just edit the code and see the live refresh.
 
+The project can also be run with docker (although with much slower refresh time):
+
+    # builds the image
+    docker build -t klimatkollen .
+
+    # starts the container
+    docker run -t -i --rm -p 3000:3000 --name klimatkollen klimatkollen
+
 ## Contribute
 
 The idea behind Klimatkollen is to give citizens access to the climate data we need to meet the goals of the Paris Agreement – and save our own future.

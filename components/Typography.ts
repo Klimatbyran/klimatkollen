@@ -5,6 +5,20 @@ export const H1 = styled.h1`
   font-size: 48px;
   line-height: 1.25;
   margin: 0 0 16px 0;
+
+  @media (max-width: 768px) {
+    font-size: 42px;
+  }
+`
+
+export const H1NoPad = styled.h1`
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 1.25;
+
+  @media (max-width: 768px) {
+    font-size: 35px;
+  }
 `
 
 export const H2 = styled.h2`
@@ -12,6 +26,10 @@ export const H2 = styled.h2`
   font-size: 32px;
   line-height: 1.25;
   margin: 0 0 8px 0;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `
 
 export const H2Regular = styled.h2`
