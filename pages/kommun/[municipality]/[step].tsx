@@ -11,8 +11,7 @@ const Municipality = dynamic(() => import('../../../components/Municipality/Muni
 
 export const CHARTS = [
   'historiska-utslapp',
-  'framtida-prognos',
-  'parisavtalet',
+  'framtida-prognoser',
 ]
 
 type Props = {
@@ -34,7 +33,9 @@ export default function Step({
 
   const onNext = () => {
     const next = CHARTS[stepIndex + 1]
-    if (!next) throw new Error(`Assertion failed: No step with index ${stepIndex + 1}`)
+    if (!next) {
+      throw new Error(`Assertion failed: No step with index ${stepIndex + 1}`)
+    }
     router.replace(`/kommun/${id}/${next}`, undefined, {
       shallow: true,
       scroll: false,
@@ -43,7 +44,9 @@ export default function Step({
 
   const onPrevious = () => {
     const prev = CHARTS[stepIndex - 1]
-    if (!prev) throw new Error(`Assertion failed: No step with index ${stepIndex - 1}`)
+    if (!prev) {
+      throw new Error(`Assertion failed: No step with index ${stepIndex - 1}`)
+    }
     router.replace(`/kommun/${id}/${prev}`, undefined, {
       shallow: true,
       scroll: false,

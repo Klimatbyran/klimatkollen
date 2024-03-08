@@ -6,7 +6,7 @@
 import styled from 'styled-components'
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
-import Graph from '../Graph'
+import MunicipalityGraph from './MunicipalityGraph'
 import { H2, H3, Paragraph } from '../Typography'
 import InfoModal from '../InfoModal'
 import MetaTags from '../MetaTags'
@@ -88,7 +88,7 @@ type IssuesProps = {
   onPreviousStep: (() => void) | undefined
 }
 
-function MunicipalityEmissionGraph({
+function MunicipalityGraphWrapper({
   municipality,
   chart: step,
   onNextStep,
@@ -110,7 +110,9 @@ function MunicipalityEmissionGraph({
 
   // Load mandate change values from ?g[] parameter in URL
   const [mandateChanges] = useState<typeof defaultPeriods>(() => {
-    if (typeof q === 'undefined') return defaultPeriods
+    if (typeof q === 'undefined') {
+      return defaultPeriods
+    }
 
     const g = (Array.isArray(q) ? q : [q])
       .map((v) => parseFloat(v))
@@ -150,16 +152,9 @@ function MunicipalityEmissionGraph({
         'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
     1: {
-      text: 'Om vi fortsätter som idag',
-      buttonText: 'Trend',
-      body: 'Utsläppen de kommande åren baserat på nuvarande trend.',
-      shareText: (_name) =>
-        'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
-    },
-    2: {
-      text: 'För att nå Parisavtalet',
-      buttonText: 'Parisavtalet',
-      body: 'Så mycket skulle utsläppen behöva minska för att vara i linje med 1,5-gradersmålet.',
+      text: 'Framtida utsläpp',
+      buttonText: 'Framtid',
+      body: 'Utsläppen de kommande åren baserat på nuvarande trend och hur mycket utsläppen skulle behöva minska för att vara i linje med 1,5-gradersmålet.',
       shareText: (_name) =>
         'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
@@ -208,7 +203,7 @@ function MunicipalityEmissionGraph({
             <Info />
           </InfoButton>
         </InfoButtonWrapper>
-        <Graph
+        <MunicipalityGraph
           step={step}
           historical={municipality.HistoricalEmission.EmissionPerYear}
           trend={municipality.EmissionTrend.TrendPerYear}
@@ -244,17 +239,11 @@ function MunicipalityEmissionGraph({
       {step === 1 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text="Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.
-          Hacket i kurvan för vissa kommuner beror på att genomsnittet är högre än det senaste årets nivå."
-          scrollY={scrollY}
-        />
-      )}
-      {step === 2 && isOpen && (
-        <InfoModal
-          close={toggleModal}
-          text={`Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
+          text={`Trendlinjen i rött är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.
+          Hacket i kurvan för vissa kommuner beror på att genomsnittet är högre än det senaste årets nivå.
+          I grönt ses den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
           motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande,
-          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är ${firstWithBudget}, vilket är från vilket år 
+          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är ${firstWithBudget}, vilket är från vilket år
           budgeten är satt.`}
           scrollY={scrollY}
         />
@@ -263,4 +252,4 @@ function MunicipalityEmissionGraph({
   )
 }
 
-export default MunicipalityEmissionGraph
+export default MunicipalityGraphWrapper

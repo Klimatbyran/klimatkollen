@@ -11,9 +11,9 @@ import {
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
-import { EmissionPerYear } from '../utils/types'
+import { EmissionPerYear } from '../../utils/types'
 
-import { colorTheme } from '../Theme'
+import { colorTheme } from '../../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
 
@@ -67,7 +67,7 @@ type Props = {
   maxVisibleYear: number
 }
 
-function Graph({
+function MunicipalityGraph({
   step, historical, budget, trend, maxVisibleYear,
 }: Props) {
   const setup = useMemo(
@@ -79,17 +79,13 @@ function Graph({
     () => emissionPerYearToDataset(historical),
     [historical],
   )
-  const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
+  const trendDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
 
   // some assertions
-  if (process.env.NODE_ENV !== 'production') {
-    if (
-      Math.max(budgetDataset.length, pledgeDataset.length, historicalDataset.length)
-      > setup.labels.length
-    ) {
-      throw new Error('Dataset length larger than label length')
-    }
+  if (process.env.NODE_ENV !== 'production' && Math.max(budgetDataset.length, trendDataset.length, historicalDataset.length)
+        > setup.labels.length) {
+    throw new Error('Dataset length larger than label length')
   }
 
   const lastYearWithData = historical[historical.length - 1]?.Year
@@ -118,8 +114,8 @@ function Graph({
               // @ts-ignore
               id: 'budget',
               fill: true,
-              data: step >= 2 ? budgetDataset : budgetDataset.map(({ x }) => ({ x, y: 0 })),
-              borderWidth: step >= 2 ? 2 : 0,
+              data: step > 0 ? budgetDataset : budgetDataset.map(({ x }) => ({ x, y: 0 })),
+              borderWidth: step > 0 ? 2 : 0,
               borderColor: colorTheme.lightGreen,
               backgroundColor: colorTheme.lightGreenOpaqe,
               pointRadius: 0,
@@ -128,9 +124,9 @@ function Graph({
             },
             {
               // @ts-ignore
-              id: 'pledge',
+              id: 'trend',
               fill: true,
-              data: pledgeDataset,
+              data: trendDataset,
               borderWidth: 2,
               borderColor: colorTheme.red,
               backgroundColor: colorTheme.darkRedOpaque,
@@ -217,4 +213,4 @@ function Graph({
   )
 }
 
-export default Graph
+export default MunicipalityGraph

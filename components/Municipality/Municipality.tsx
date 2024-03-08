@@ -9,7 +9,7 @@ import DropDown from '../DropDown'
 import { devices } from '../../utils/devices'
 import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
-import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
+import MunicipalityGraphWrapper from './MunicipalityGraphWrapper'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
 import Scorecard from './MunicipalityScorecard'
 
@@ -86,7 +86,7 @@ function Municipality(props: Props) {
               />
             )}
           </HeaderSection>
-          <MunicipalityEmissionGraph
+          <MunicipalityGraphWrapper
             municipality={municipality}
             chart={step}
             onNextStep={onNextStep}
