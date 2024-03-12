@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { Provider } from 'jotai'
 import Script from 'next/script'
 import CookieConsent from 'react-cookie-consent'
 import { NextPage } from 'next'
@@ -21,7 +20,7 @@ type AppPropsWithLayout = AppProps & {
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
   return (
-    <Provider>
+    <>
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
@@ -65,7 +64,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           sizes="512x512"
           href="/favicons/favicon-512x512.png"
         />
-        <meta property="og:image" content="https://klimatkollen.se/images/social-picture.png" />
+        <meta
+          property="og:image"
+          content="https://klimatkollen.se/images/social-picture.png"
+        />
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:image"
@@ -81,13 +83,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             backgroundColor: colorTheme.midGreen,
             fontSize: '13px',
           }}
-          expires={150}
-        >
+          expires={150}>
           Denna sida använder cookies för att förbättra användarupplevelsen.
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}
       </Theme>
-    </Provider>
+    </>
   )
 }
 
