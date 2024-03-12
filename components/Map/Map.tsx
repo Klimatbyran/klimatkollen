@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
 import { colorTheme } from '../../Theme'
 import { mapColors } from '../shared'
+import { replaceLetters } from '../../utils/shared'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -65,20 +66,6 @@ const getColor = (
   return colors[5]
 }
 
-const replaceLetters = (name: string): string => {
-  const replacements: Record<string, string> = {
-    'Ã¥': 'å',
-    'Ã¤': 'ä',
-    'Ã¶': 'ö',
-    'Ã…': 'Å',
-    'Ã„': 'Ä',
-    'Ã–': 'Ö',
-  }
-
-  const regex = new RegExp(Object.keys(replacements).join('|'), 'g')
-
-  return name.replace(regex, (match) => replacements[match])
-}
 
 // Use when viewState is reimplemented
 /* const MAP_RANGE = {

@@ -1,3 +1,4 @@
+import { replaceLetters } from './shared'
 import { Municipality } from './types'
 
 type SiteMap = {
@@ -14,7 +15,7 @@ export const generateMunipacitySitemapData = ({
   municipalities: Municipality[]
 }): SiteMap[] =>
   municipalities.map((m) => ({
-    url: `${BASE_URL}/kommun/${m.Name}`,
+    url: `${BASE_URL}/kommun/${replaceLetters(m.Name).toLowerCase()}`,
     name: m.Name,
     lastModified: new Date(),
     changeFrequency: 'yearly',
