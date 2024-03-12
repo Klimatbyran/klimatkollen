@@ -61,6 +61,7 @@ export type Municipality = {
   BicycleMetrePerCapita: number,
   TotalConsumptionEmission: number,
   ElectricVehiclePerChargePoints: number,
+  ProcurementScore: number,
 }
 
 export type SelectedData = keyof typeof datasetDescriptions

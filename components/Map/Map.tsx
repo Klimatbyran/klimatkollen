@@ -40,6 +40,13 @@ const getColor = (
     return dataPoint === boundaries[0] ? colors[0] : colors[colors.length - 1]
   }
 
+  // Special case for KPIs with three cases
+  if (boundaries.length === 3) {
+    if (dataPoint > boundaries[1]) return colors[colors.length - 1]
+    if (dataPoint > boundaries[0]) return colors[4]
+    return colors[0]
+  }
+
   // Special case for invalid dates
   const invalidDate = (possibleDate: unknown) => possibleDate instanceof Date && Number.isNaN(possibleDate.getTime())
   if (invalidDate(dataPoint)) {

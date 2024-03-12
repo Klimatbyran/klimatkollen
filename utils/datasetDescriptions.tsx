@@ -20,6 +20,12 @@ const formatDateToString = (date: Date): string => {
   return `${year}-${month}-${day}`
 }
 
+const requirementsInProcurement = (score: number): string => {
+  if (score > 1) return 'Bevisade krav'
+  if (score > 0) return 'Uppger krav'
+  return 'Inga krav'
+}
+
 export const datasetDescriptions: DatasetDescriptions = {
   Utsläppen: {
     title: 'Utsläppsförändring',
@@ -241,6 +247,41 @@ export const datasetDescriptions: DatasetDescriptions = {
       ? formatDateToString(dataPoint as Date)
       : 'Håller budget'),
     stringsOnTop: true,
+  },
+
+  Klimatkraven: {
+    title: 'Klimatkrav i upphandlingar',
+    body: 'Lorem ipsum',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="https://hej.se/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Upphandlingsmyndigheten
+        </a>
+        {' '}
+        och
+        {' '}
+        <a
+          href="https://hej.se/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Greenpeace
+        </a>
+      </>
+    ),
+    boundaries: [0, 1, 2],
+    labels: ['Inga krav', 'Uppger krav', 'Bevisade krav'],
+    labelRotateUp: [],
+    columnHeader: 'Klimatkrav',
+    sortAscending: false,
+    rawDataPoint: (item) => item.ProcurementScore,
+    formattedDataPoint: (dataPoint) => requirementsInProcurement(dataPoint as number),
   },
 }
 
