@@ -86,8 +86,35 @@ type Props = {
   className: string
 }
 
+export function getSortedMunicipalities(municipalitiesName: Array<string>) {
+  return municipalitiesName.sort((a, b) => a.localeCompare(b, 'sv'))
+}
+
+export function search(query: string, municipalitiesName: Array<string>) {
+  const queryLowerCase = query.toLowerCase()
+
+  return municipalitiesName
+    .filter((municipality) => municipality.toLowerCase().includes(queryLowerCase))
+    .sort((a, b) => {
+      const lowerA = a.toLowerCase()
+      const lowerB = b.toLowerCase()
+
+      const startsWithQueryA = lowerA.startsWith(queryLowerCase)
+      const startsWithQueryB = lowerB.startsWith(queryLowerCase)
+
+      if (startsWithQueryA && !startsWithQueryB) {
+        return -1
+      }
+      if (!startsWithQueryA && startsWithQueryB) {
+        return 1
+      }
+
+      return 0
+    })
+}
+
 function DropDown({ municipalitiesName, placeholder, className }: Props) {
-  const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
+  const sortedMunicipalities = getSortedMunicipalities(municipalitiesName)
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMunicipality, setSelectedMunicipality] = useState<string>('')
   const [municipalities, setMunicipalities] = useState(sortedMunicipalities)
@@ -128,7 +155,7 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
     } else {
       setShowDropDown(true)
     }
-    const filteredMunicipalities = sortedMunicipalities.filter((test) => test.toLowerCase().includes(value.toLowerCase()))
+    const filteredMunicipalities = search(value, sortedMunicipalities)
     setMunicipalities(filteredMunicipalities)
   }
 
