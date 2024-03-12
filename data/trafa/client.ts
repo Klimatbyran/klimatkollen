@@ -1,8 +1,15 @@
+import { TRAFA_BASE_URL } from "."
 
-import assert from 'node:assert'
-export const TRAFA_BASE_URL = 'https://api.trafa.se/api/data?query='
+// bun run data/trafa/client.ts
 
-type TrafaMeasure = 'itrfslut' | 'avstslut' | 'nyregunder' | 'avregunder'
+type TrafaMeasure =
+  | 'itrfslut'
+  | 'avstslut'
+  | 'nyregunder'
+  | 'avregunder'
+  | 'biltathet'
+  | 'akumunyreg'
+
 type TrafaFuel =
   | 'el'
   | 'elhybrid'
@@ -13,142 +20,36 @@ type TrafaFuel =
   | 'diesel'
   | 'ovriga'
   | 'totalt'
-type TrafaDataTarget = 'Personbilar(LÄN)' | 'Personbilar(i Trafik)'
 
-/**
- * Represents the options for a Trafa query.
- */
-interface TrafaQueryOpts {
-  /**
-   * The year to filter by, empty means all years
-   */
-  year: number[]
-  /**
-   * The measure to filter by (itrfslut :Antal i trafik, avstslut:Antal avställda, nyregunder:Antal nyregistreringar, avregunder:Antal avregistreringar)
-   * @default 'itrfslut'
-   *
-   */
-  measure: TrafaMeasure
-  /**
-   * The fuel types to filter by, empty means all fuel types
-   * @description fuel types cannot be used with TrafaDataTarget[Personbilar - Nyreg+drivmedel]
-   */
-  fuel: TrafaFuel[]
-
-  /**
-   * The target data to filter by
-   * @default 'Personbilar - trafik (t10016)'
-   */
-  target: string
-}
-
-/**
- * Represents a Trafa client with various methods for configuring and building a query.
- * @example https://api.trafa.se/api/data?query=t10016|ar:2020|itrfslut|drivm:bensin
- * @url https://www.trafa.se/vagtrafik/fordon/?cw=1
- */
-export interface TrafaClient extends TrafaQueryOpts {
-  /**
-   * Sets the year for the query.
-   * @param y - The year to set.
-   * @returns The updated TrafaClient instance.
-   */
-  setYear: (y: string) => TrafaClient
-
-  /**
-   * Sets the measure for the query.
-   * @param m - The measure to set.
-   * @returns The updated TrafaClient instance.
-   */
-  setMeasure: (m: TrafaMeasure) => TrafaClient
-
-  /**
-   * Sets the fuel types for the query.
-   * @param f - The fuel types to set.
-   * @returns The updated TrafaClient instance.
-   */
-  setFuel: (f: TrafaFuel[]) => TrafaClient
-
-  /**
-   * Sets the target data for the query.
-   * @param p - The target data to set.
-   * @returns The updated TrafaClient instance.
-   */
-  setTarget: (p: TrafaDataTarget) => TrafaClient
-
-  /**
-   * Builds the query and returns it as a string.
-   * @returns The built query as a string.
-   */
-  build: () => string
-}
-
-const targets : {
-    label: TrafaDataTarget,
-    value: number
-}[] =   [
-  {
-    label: 'Personbilar(LÄN)',
-    value: 26,
+const TrafaDataTargetCategory = {
+  onTheRoad: 'Fordon på väg',
+  communal: 'Fordon i län och kommuner',
+  monthly: 'Fordon månadsstatistik',
+} as const
+const TrafaDataTarget = {
+  onTheRoad: {
+    buses: 't10011',
+    bikes: 't10014',
+    mopeds: 't10015',
+    trailers: 't10017',
+    tractors: 't10018',
+    atvs: 't10019',
+    drivingLicenses: 't10012',
+    cars: 't10016',
+    trucks: 't10013',
   },
-  {
-    label: 'Personbilar(i Trafik)',
-    value: 16,
+  communal: {
+    buses: 't10021',
+    trucks: 't10023',
+    cars: 't10026',
+    other: 't10029',
   },
-]
-export class TrafaClientImpl implements TrafaClient {
-  fuel: TrafaFuel[] = []
-  year: number[] = []
-  measure: TrafaMeasure = 'itrfslut'
-  target: string = 't10016'
-    constructor() {
-    this.setYear("")
-    this.setMeasure('itrfslut')
-    this.setFuel([])
-    this.setTarget('Personbilar(i Trafik)')
-    }
-  setYear(y: string) {
-    const years = validYears(y)
-    this.year = years
-    return this
-  }
-
-  setMeasure(m: TrafaMeasure) {
-    this.measure = m
-    return this
-  }
-
-  setFuel(f: TrafaFuel[]) {
-    this.fuel = f
-    return this
-  }
-
-  setTarget(p: TrafaDataTarget) {
-    const target = targets.find((o) => o.label === p)?.value
-    this.target = `t100${target}`
-    return this
-  }
-
-  build() {
-    assert(
-      this.target !== 't10026' || this.fuel.length === 0,
-      'fuel types cannot be used with chosen target',
-    )
-    let query = ''
-    query += `${this.target}|`
-    if (this.year.length > 0) {
-      query += `ar:${this.year[0]}|`
-    } else {
-      query += `ar|`
-    }
-    query += `${this.measure}`
-    if (this.fuel.length > 0) {
-      query += `|drivm:${this.fuel.join(',')}`
-    }
-    return TRAFA_BASE_URL + query
-  }
-}
-
+  monthly: {
+    trucks: 't10033',
+    cars: 't10036',
+    other: 't10039',
+  },
+} as const
 
 /**
  * Validates a comma-separated string of years.
@@ -160,8 +61,107 @@ export class TrafaClientImpl implements TrafaClient {
  */
 export const validYears = (commaSeperatedYearString: string) => {
   const years = commaSeperatedYearString.split(',').map((y) => parseInt(y))
-  const isValidYear = years.filter(
-    (y) =>y >= 2000 && y <= new Date().getFullYear(),
-  )
+  const isValidYear = years.filter((y) => y >= 2000 && y <= new Date().getFullYear())
   return isValidYear ? isValidYear : []
+}
+
+
+
+/**
+ * Represents a Trafa client with various methods for configuring and building a query.
+ * @example https://api.trafa.se/api/data?query=t10016|ar:2020|itrfslut|drivm:bensin
+ * @url https://www.trafa.se/vagtrafik/fordon/?cw=1
+ */
+export class TrafaClient {
+  /**
+   * The category of the target data
+   * @default 'onTheRoad'
+   */
+  private category: keyof typeof TrafaDataTarget
+  /**
+   * The target data to filter by
+   */
+  private target: string
+  /**
+   * The year to filter by, empty means all years
+   */
+  private year: number[] = []
+  /**
+   * The measure to filter by
+   *
+   * itrfslut : Antal i trafik
+   *
+   * avstslut : Antal avställda
+   *
+   * nyregunder : Antal nyregistreringar
+   *
+   * avregunder : Antal avregistreringar
+   *
+   * biltathet : Antal i trafik per 1000 invånare
+   *
+   * akumunyreg : Ackumulerat  nyregistreringar
+   *
+   * @default 'itrfslut'
+   */
+  private measure: TrafaMeasure[] = []
+
+  /**
+   * The fuel types to filter by, empty means all fuel types
+   */
+
+  private fuel: TrafaFuel[] = []
+
+  public constructor() {
+    this.year = []
+    this.measure = ['itrfslut']
+    this.fuel = []
+    this.target = 't10016'
+    this.category = 'onTheRoad'
+  }
+
+  setYear(y: string) {
+    const years = validYears(y)
+    this.year = years
+    return this
+  }
+
+  setMeasure(m: TrafaMeasure[]) {
+    this.measure = m
+    return this
+  }
+
+  setFuel(f: TrafaFuel[]) {
+    this.fuel = f
+    return this
+  }
+  setTarget<T extends keyof typeof TrafaDataTarget>(params: {
+    category: T
+    target: keyof (typeof TrafaDataTarget)[T]
+  }) {
+    this.category = params.category
+    this.target = TrafaDataTarget[params.category][params.target] as string
+    return this
+  }
+  build(withBaseUrl = true) {
+    const queryParts: string[] = [this.target, 'ar']
+
+    if (this.year.length > 0) {
+      queryParts[1] += `:${this.year.join(',')}`
+    }
+
+    if (this.measure.length > 0) {
+      queryParts.push(this.measure.join('|'))
+    }
+
+    if (this.measure.length <= 1 && this.fuel.length > 0) {
+      queryParts.push(
+        `${this.category === 'communal' ? 'drivmedel' : 'drivm'}:${this.fuel.join(',')}`,
+      )
+    }
+
+    if (this.category === 'communal') {
+      queryParts.push('reglan', 'regkom')
+    }
+    return  withBaseUrl ? `${TRAFA_BASE_URL}?query=${queryParts.join('|')}` : queryParts.join('|')
+  }
 }
