@@ -125,7 +125,7 @@ function Footer() {
             <LogoContainer>
               <img
                 src="/logos/klimatkollen_logo_black.svg"
-                height="64px"
+                height="56px"
                 alt="Klimatkollen logo"
               />
             </LogoContainer>

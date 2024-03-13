@@ -9,6 +9,7 @@ import {
   Emission,
   Trend,
   ClimatePlan,
+  ApproximatedEmission,
 } from './types'
 
 const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
@@ -40,6 +41,14 @@ export class ClimateDataService {
           HistoricalEmissionChangePercent: data.historicalEmissionChangePercent,
         } as Emission
 
+        const approximatedEmission = {
+          TotalCO2Emission: data.totalApproximatedHistoricalEmission,
+          EmissionPerYear: Object.entries(data.approximatedHistoricalEmission).map(([year, co2equivalent]) => ({
+            Year: Number(year),
+            CO2Equivalent: co2equivalent,
+          })),
+        } as unknown as ApproximatedEmission
+
         const trend = {
           TrendCO2Emission: data.trendEmission,
           TrendPerYear: Object.entries(data.trend).map(([year, emissionTrend]) => ({
@@ -68,6 +77,7 @@ export class ClimateDataService {
         const municipality = {
           Name: data.kommun,
           HistoricalEmission: emission,
+          ApproximatedHistoricalEmission: approximatedEmission,
           EmissionTrend: trend,
           Budget: budget,
           NeededEmissionChangePercent: data.neededEmissionChangePercent,

@@ -52,11 +52,12 @@ The module `emission_data_calculations.py` contains functions to perform calcula
 
 #### Constants 
 
-The most important constants in the module are `BUDGET`, `BUDGET_YEAR`, and `LAST_YEAR_WITH_SMHI_DATA`, as they determine the baseline and scope of the calculations.
+The most important constants in the module are `BUDGET`, `BUDGET_YEAR`, `LAST_YEAR_WITH_SMHI_DATA`, and `CURRENT_YEAR` as they determine the baseline and scope of the calculations.
 
 * `BUDGET`: Represents the total CO2 budget in metric tonnes.
 * `BUDGET_YEAR`: Represents the year from which the CO2 budget applies.
 * `LAST_YEAR_WITH_SMHI_DATA`: Represents the last year for which the [National Emission database](https://nationellaemissionsdatabasen.smhi.se/) has data.
+* `CURRENT_YEAR`: Represents the year which is to be handled as current year.
 
 #### Functions
 
@@ -66,21 +67,25 @@ Here's a summary of what the functions do, in order of execution:
 
 2. `deduct_cement`: Deducts cement emissions from specified municipalities.
 
-3. `calculate_municipality_budgets`: Calculates municipality specific CO2 budgets by deriving budget shares from the SMHI data for each municipality (using grand fathering) and multiplying them with the given total CO2 budget.
+3. `calculate_trend_coefficients`: Calculates linear trend coefficients for each municipailty based on SMHI data from 2015 onwards. This is done by fitting a straight line to the data using least square fit.
 
-4. `calculate_trend`: Calculates linear trends for each municipality by using least square fit based on SMHI data from 2015 and forward.
+4. `calculate_approximated_historical`: Calculates approximated historical data values for years passed since the last year with SMHI data. This is done by interpolation using previously calculated linear trend coefficients.
 
-5. `calculate_paris_path`: Calculates an exponential curve satisfying each municipality's CO2 budget (Paris Agreement path), starting from the year the budget kicks in.
+5. `calculate_trend`: Calculates trend line for future years up to 2050. This is done by interpolation using previously calculated linear trend coefficients
 
-6. `calculate_historical_change_percent`: Calculates the average historical yearly emission change in percent based on SMHI data between years 2015 and the last year having data.
+6. `calculate_municipality_budgets`: Calculates municipality specific CO2 budgets by deriving budget shares from the SMHI data for each municipality (using grand fathering) and multiplying them with the given total CO2 budget.
 
-7. `calculate_needed_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
+7. `calculate_paris_path`: Calculates an exponential curve satisfying each municipality's CO2 budget (Paris Agreement path), starting from the year the budget kicks in.
 
-8. `calculate_hit_net_zero`: Calculates the date and year for when each municipality hits net zero emissions (if so). This, by deriving where the trend line crosses the time axis.
+8. `calculate_historical_change_percent`: Calculates the average historical yearly emission change in percent based on SMHI data from 2015 onwards.
 
-9. `calculate_budget_runs_out`: Calculates the year and date for when the CO2 budget runs out for each municipality (if so). This, by integrating the trend line over the time it takes for the budget to be consumed and see where we are at the time axis by that point.
+9. `calculate_needed_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
 
-10. `emission_calculations`: Orchestrates the execution of the above methods in sequence to perform all emission calculations for municipalities.
+10. `calculate_hit_net_zero`: Calculates the date and year for when each municipality hits net zero emissions (if so). This, by deriving where the trend line crosses the time axis.
+
+11. `calculate_budget_runs_out`: Calculates the year and date for when the CO2 budget runs out for each municipality (if so). This, by integrating the trend line over the time it takes for the budget to be consumed and see where we are at the time axis by that point.
+
+12. `emission_calculations`: Orchestrates the execution of the above methods in sequence to perform all emission calculations for municipalities.
 
 
 
