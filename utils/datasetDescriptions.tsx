@@ -249,7 +249,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     stringsOnTop: true,
   },
 
-  Klimatkraven: {
+  Upphandlingarna: {
     title: 'Klimatkrav i upphandlingar',
     body: 'Lorem ipsum',
     source: (
@@ -276,7 +276,7 @@ export const datasetDescriptions: DatasetDescriptions = {
       </>
     ),
     boundaries: [0, 1, 2],
-    labels: ['Inga krav', 'Uppger krav', 'Bevisade krav'],
+    labels: ['Inga krav', 'Ja, enligt enkät', 'Ja, tillstyrkt'],
     labelRotateUp: [],
     columnHeader: 'Klimatkrav',
     sortAscending: false,
