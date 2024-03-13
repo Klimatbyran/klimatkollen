@@ -250,6 +250,9 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Upphandlingarna: {
+    // TODO
+    // [ ] tests
+    // [ ] add to municipality screen
     title: 'Ställer klimatkrav i upphandling',
     body: 'Information om vilka kommuner som ställer någon form av klimatkrav i upphandling, antingen enligt Upphandlingsmyndighetens enkät eller genom tillstyrkt dokument.',
     source: (
