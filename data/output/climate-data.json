@@ -99,7 +99,7 @@
     "bicycleMetrePerCapita": 2.881007594,
     "totalConsumptionEmission": 5889.8,
     "electricVehiclePerChargePoints": 151.88888888888889,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Alingsås",
@@ -201,7 +201,7 @@
     "bicycleMetrePerCapita": 2.865584307,
     "totalConsumptionEmission": 6066.6,
     "electricVehiclePerChargePoints": 77.65384615384616,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Alvesta",
@@ -303,7 +303,7 @@
     "bicycleMetrePerCapita": 3.202529861,
     "totalConsumptionEmission": 6030.8,
     "electricVehiclePerChargePoints": 38.95,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Aneby",
@@ -405,7 +405,7 @@
     "bicycleMetrePerCapita": 2.482518504,
     "totalConsumptionEmission": 6113.7,
     "electricVehiclePerChargePoints": 2.619047619047619,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Arboga",
@@ -507,7 +507,7 @@
     "bicycleMetrePerCapita": 3.288451193,
     "totalConsumptionEmission": 6176.1,
     "electricVehiclePerChargePoints": 11.027777777777779,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Arjeplog",
@@ -609,7 +609,7 @@
     "bicycleMetrePerCapita": 2.358501088,
     "totalConsumptionEmission": 6239.6,
     "electricVehiclePerChargePoints": 4.375,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Arvidsjaur",
@@ -711,7 +711,7 @@
     "bicycleMetrePerCapita": 3.522716618,
     "totalConsumptionEmission": 6424.3,
     "electricVehiclePerChargePoints": 4.631578947368421,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Arvika",
@@ -813,7 +813,7 @@
     "bicycleMetrePerCapita": 2.049167865,
     "totalConsumptionEmission": 6148.4,
     "electricVehiclePerChargePoints": 21.121951219512194,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Askersund",
@@ -915,7 +915,7 @@
     "bicycleMetrePerCapita": 2.926919348,
     "totalConsumptionEmission": 6451.7,
     "electricVehiclePerChargePoints": 6.2,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Avesta",
@@ -1017,7 +1017,7 @@
     "bicycleMetrePerCapita": 2.915797667,
     "totalConsumptionEmission": 6232.0,
     "electricVehiclePerChargePoints": 27.17142857142857,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Bengtsfors",
@@ -1119,7 +1119,7 @@
     "bicycleMetrePerCapita": 2.461809581,
     "totalConsumptionEmission": 6014.7,
     "electricVehiclePerChargePoints": 9.35,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Berg",
@@ -1221,7 +1221,7 @@
     "bicycleMetrePerCapita": 2.184422467,
     "totalConsumptionEmission": 6488.9,
     "electricVehiclePerChargePoints": 2.3780487804878048,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Bjurholm",
@@ -1323,7 +1323,7 @@
     "bicycleMetrePerCapita": 1.762300157,
     "totalConsumptionEmission": 6118.0,
     "electricVehiclePerChargePoints": 8.5,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Bjuv",
@@ -1425,7 +1425,7 @@
     "bicycleMetrePerCapita": 3.303408188,
     "totalConsumptionEmission": 5852.6,
     "electricVehiclePerChargePoints": 48.375,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Boden",
@@ -1527,7 +1527,7 @@
     "bicycleMetrePerCapita": 4.240521656,
     "totalConsumptionEmission": 6657.4,
     "electricVehiclePerChargePoints": 11.0625,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Bollebygd",
@@ -1629,7 +1629,7 @@
     "bicycleMetrePerCapita": 2.022400756,
     "totalConsumptionEmission": 6010.1,
     "electricVehiclePerChargePoints": 225.0,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Bollnäs",
@@ -1731,7 +1731,7 @@
     "bicycleMetrePerCapita": 2.564056644,
     "totalConsumptionEmission": 6108.5,
     "electricVehiclePerChargePoints": 14.157894736842104,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Borgholm",
@@ -1833,7 +1833,7 @@
     "bicycleMetrePerCapita": 2.378697008,
     "totalConsumptionEmission": 6336.3,
     "electricVehiclePerChargePoints": 3.740740740740741,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Borlänge",
@@ -1935,7 +1935,7 @@
     "bicycleMetrePerCapita": 3.548200249,
     "totalConsumptionEmission": 6102.9,
     "electricVehiclePerChargePoints": 17.82442748091603,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Borås",
@@ -2037,7 +2037,7 @@
     "bicycleMetrePerCapita": 1.84645402,
     "totalConsumptionEmission": 6052.0,
     "electricVehiclePerChargePoints": 17.791411042944784,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Botkyrka",
@@ -2139,7 +2139,7 @@
     "bicycleMetrePerCapita": 2.586763621,
     "totalConsumptionEmission": 5526.3,
     "electricVehiclePerChargePoints": 141.61111111111111,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Boxholm",
@@ -2241,7 +2241,7 @@
     "bicycleMetrePerCapita": 1.23972865,
     "totalConsumptionEmission": 6151.9,
     "electricVehiclePerChargePoints": 11.5,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Bromölla",
@@ -2343,7 +2343,7 @@
     "bicycleMetrePerCapita": 6.400184489,
     "totalConsumptionEmission": 5789.3,
     "electricVehiclePerChargePoints": 30.818181818181817,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Bräcke",
@@ -2445,7 +2445,7 @@
     "bicycleMetrePerCapita": 0.9315229039,
     "totalConsumptionEmission": 6315.8,
     "electricVehiclePerChargePoints": 4.7272727272727275,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Burlöv",
@@ -2547,7 +2547,7 @@
     "bicycleMetrePerCapita": 3.346646362,
     "totalConsumptionEmission": 5458.4,
     "electricVehiclePerChargePoints": 10.923076923076923,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Båstad",
@@ -2649,7 +2649,7 @@
     "bicycleMetrePerCapita": 4.70562181,
     "totalConsumptionEmission": 6894.6,
     "electricVehiclePerChargePoints": 7.447368421052632,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Dals-Ed",
@@ -2751,7 +2751,7 @@
     "bicycleMetrePerCapita": 3.066064022,
     "totalConsumptionEmission": 6512.5,
     "electricVehiclePerChargePoints": 12.666666666666666,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Danderyd",
@@ -2853,7 +2853,7 @@
     "bicycleMetrePerCapita": 1.840451379,
     "totalConsumptionEmission": 8185.7,
     "electricVehiclePerChargePoints": 47.44615384615385,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Degerfors",
@@ -2955,7 +2955,7 @@
     "bicycleMetrePerCapita": 4.576541722,
     "totalConsumptionEmission": 6230.0,
     "electricVehiclePerChargePoints": 21.666666666666668,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Dorotea",
@@ -3057,7 +3057,7 @@
     "bicycleMetrePerCapita": 2.000001742,
     "totalConsumptionEmission": 6529.4,
     "electricVehiclePerChargePoints": 1.1111111111111112,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Eda",
@@ -3159,7 +3159,7 @@
     "bicycleMetrePerCapita": 2.101732193,
     "totalConsumptionEmission": 6451.3,
     "electricVehiclePerChargePoints": 2.183333333333333,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Ekerö",
@@ -3261,7 +3261,7 @@
     "bicycleMetrePerCapita": 2.383422446,
     "totalConsumptionEmission": 6275.4,
     "electricVehiclePerChargePoints": 119.21428571428571,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Eksjö",
@@ -3363,7 +3363,7 @@
     "bicycleMetrePerCapita": 3.939870961,
     "totalConsumptionEmission": 6054.3,
     "electricVehiclePerChargePoints": 45.333333333333336,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Emmaboda",
@@ -3465,7 +3465,7 @@
     "bicycleMetrePerCapita": 1.326560451,
     "totalConsumptionEmission": 5993.2,
     "electricVehiclePerChargePoints": 5.5625,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Enköping",
@@ -3567,7 +3567,7 @@
     "bicycleMetrePerCapita": 2.661227955,
     "totalConsumptionEmission": 6128.2,
     "electricVehiclePerChargePoints": 27.04225352112676,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Eskilstuna",
@@ -3669,7 +3669,7 @@
     "bicycleMetrePerCapita": 2.152677677,
     "totalConsumptionEmission": 5961.4,
     "electricVehiclePerChargePoints": 26.157232704402517,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Eslöv",
@@ -3771,7 +3771,7 @@
     "bicycleMetrePerCapita": 2.499086285,
     "totalConsumptionEmission": 5919.6,
     "electricVehiclePerChargePoints": 53.17391304347826,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Essunga",
@@ -3873,7 +3873,7 @@
     "bicycleMetrePerCapita": 3.015159633,
     "totalConsumptionEmission": 5891.2,
     "electricVehiclePerChargePoints": 15.5,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Fagersta",
@@ -3975,7 +3975,7 @@
     "bicycleMetrePerCapita": 3.199243979,
     "totalConsumptionEmission": 6185.6,
     "electricVehiclePerChargePoints": 28.466666666666665,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Falkenberg",
@@ -4077,7 +4077,7 @@
     "bicycleMetrePerCapita": 2.948644735,
     "totalConsumptionEmission": 5960.6,
     "electricVehiclePerChargePoints": 5.341040462427745,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Falköping",
@@ -4179,7 +4179,7 @@
     "bicycleMetrePerCapita": 3.429514807,
     "totalConsumptionEmission": 5721.4,
     "electricVehiclePerChargePoints": 40.84615384615385,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Falun",
@@ -4281,7 +4281,7 @@
     "bicycleMetrePerCapita": 3.120604367,
     "totalConsumptionEmission": 6238.4,
     "electricVehiclePerChargePoints": 23.121739130434783,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Filipstad",
@@ -4383,7 +4383,7 @@
     "bicycleMetrePerCapita": 1.736768242,
     "totalConsumptionEmission": 5901.1,
     "electricVehiclePerChargePoints": 9.75,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Finspång",
@@ -4485,7 +4485,7 @@
     "bicycleMetrePerCapita": 3.168529867,
     "totalConsumptionEmission": 6127.4,
     "electricVehiclePerChargePoints": 24.869565217391305,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Flen",
@@ -4587,7 +4587,7 @@
     "bicycleMetrePerCapita": 2.556806018,
     "totalConsumptionEmission": 6102.8,
     "electricVehiclePerChargePoints": 47.22222222222222,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Forshaga",
@@ -4689,7 +4689,7 @@
     "bicycleMetrePerCapita": 6.449194915,
     "totalConsumptionEmission": 5927.7,
     "electricVehiclePerChargePoints": 142.5,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Färgelanda",
@@ -4791,7 +4791,7 @@
     "bicycleMetrePerCapita": 2.231146482,
     "totalConsumptionEmission": 5767.2,
     "electricVehiclePerChargePoints": 7.4375,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Gagnef",
@@ -4893,7 +4893,7 @@
     "bicycleMetrePerCapita": 0.9615165799,
     "totalConsumptionEmission": 5892.4,
     "electricVehiclePerChargePoints": 36.55555555555556,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Gislaved",
@@ -4995,7 +4995,7 @@
     "bicycleMetrePerCapita": 4.057533422,
     "totalConsumptionEmission": 5973.2,
     "electricVehiclePerChargePoints": 11.956140350877194,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Gnesta",
@@ -5097,7 +5097,7 @@
     "bicycleMetrePerCapita": 1.698479193,
     "totalConsumptionEmission": 6087.3,
     "electricVehiclePerChargePoints": 14.923076923076923,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Gnosjö",
@@ -5199,7 +5199,7 @@
     "bicycleMetrePerCapita": 4.272521996,
     "totalConsumptionEmission": 5800.6,
     "electricVehiclePerChargePoints": 34.05882352941177,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Gotland",
@@ -5301,7 +5301,7 @@
     "bicycleMetrePerCapita": 2.965998404,
     "totalConsumptionEmission": 6204.3,
     "electricVehiclePerChargePoints": 4.86848635235732,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Grums",
@@ -5403,7 +5403,7 @@
     "bicycleMetrePerCapita": 2.282694987,
     "totalConsumptionEmission": 6226.9,
     "electricVehiclePerChargePoints": 8.178571428571429,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Grästorp",
@@ -5505,7 +5505,7 @@
     "bicycleMetrePerCapita": 2.834894831,
     "totalConsumptionEmission": 6103.6,
     "electricVehiclePerChargePoints": 52.25,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Gullspång",
@@ -5607,7 +5607,7 @@
     "bicycleMetrePerCapita": 4.147110951,
     "totalConsumptionEmission": 6029.8,
     "electricVehiclePerChargePoints": 14.25,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Gällivare",
@@ -5709,7 +5709,7 @@
     "bicycleMetrePerCapita": 3.568772462,
     "totalConsumptionEmission": 6701.6,
     "electricVehiclePerChargePoints": 6.612903225806452,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Gävle",
@@ -5811,7 +5811,7 @@
     "bicycleMetrePerCapita": 2.8248516,
     "totalConsumptionEmission": 6330.1,
     "electricVehiclePerChargePoints": 12.942307692307692,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Göteborg",
@@ -5913,7 +5913,7 @@
     "bicycleMetrePerCapita": 1.303877809,
     "totalConsumptionEmission": 6268.6,
     "electricVehiclePerChargePoints": 6.87375,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Götene",
@@ -6015,7 +6015,7 @@
     "bicycleMetrePerCapita": 3.76946887,
     "totalConsumptionEmission": 5959.1,
     "electricVehiclePerChargePoints": 10000000000.0,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Habo",
@@ -6117,7 +6117,7 @@
     "bicycleMetrePerCapita": 1.781741558,
     "totalConsumptionEmission": 6088.9,
     "electricVehiclePerChargePoints": 35.888888888888886,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Hagfors",
@@ -6219,7 +6219,7 @@
     "bicycleMetrePerCapita": 5.447849972,
     "totalConsumptionEmission": 6389.1,
     "electricVehiclePerChargePoints": 11.5,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Hallsberg",
@@ -6321,7 +6321,7 @@
     "bicycleMetrePerCapita": 3.284930497,
     "totalConsumptionEmission": 6134.7,
     "electricVehiclePerChargePoints": 24.8125,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Hallstahammar",
@@ -6423,7 +6423,7 @@
     "bicycleMetrePerCapita": 1.03456596,
     "totalConsumptionEmission": 6200.3,
     "electricVehiclePerChargePoints": 79.16666666666667,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Halmstad",
@@ -6525,7 +6525,7 @@
     "bicycleMetrePerCapita": 2.855029528,
     "totalConsumptionEmission": 6215.6,
     "electricVehiclePerChargePoints": 11.330143540669857,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Hammarö",
@@ -6627,7 +6627,7 @@
     "bicycleMetrePerCapita": 3.259755972,
     "totalConsumptionEmission": 6432.4,
     "electricVehiclePerChargePoints": 59.1875,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Haninge",
@@ -6729,7 +6729,7 @@
     "bicycleMetrePerCapita": 2.076686121,
     "totalConsumptionEmission": 5779.9,
     "electricVehiclePerChargePoints": 47.013513513513516,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Haparanda",
@@ -6831,7 +6831,7 @@
     "bicycleMetrePerCapita": 2.869357799,
     "totalConsumptionEmission": 6173.1,
     "electricVehiclePerChargePoints": 3.3333333333333335,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Heby",
@@ -6933,7 +6933,7 @@
     "bicycleMetrePerCapita": 2.222548283,
     "totalConsumptionEmission": 6058.8,
     "electricVehiclePerChargePoints": 20.8,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Hedemora",
@@ -7035,7 +7035,7 @@
     "bicycleMetrePerCapita": 1.72905197,
     "totalConsumptionEmission": 6114.4,
     "electricVehiclePerChargePoints": 16.576923076923077,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Helsingborg",
@@ -7137,7 +7137,7 @@
     "bicycleMetrePerCapita": 3.099622293,
     "totalConsumptionEmission": 6386.7,
     "electricVehiclePerChargePoints": 9.923913043478262,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Herrljunga",
@@ -7239,7 +7239,7 @@
     "bicycleMetrePerCapita": 3.29488126,
     "totalConsumptionEmission": 5999.6,
     "electricVehiclePerChargePoints": 28.90909090909091,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Hjo",
@@ -7341,7 +7341,7 @@
     "bicycleMetrePerCapita": 2.510562925,
     "totalConsumptionEmission": 6153.7,
     "electricVehiclePerChargePoints": 32.583333333333336,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Hofors",
@@ -7443,7 +7443,7 @@
     "bicycleMetrePerCapita": 3.464511233,
     "totalConsumptionEmission": 6425.2,
     "electricVehiclePerChargePoints": 25.857142857142858,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Huddinge",
@@ -7545,7 +7545,7 @@
     "bicycleMetrePerCapita": 2.050996867,
     "totalConsumptionEmission": 6031.7,
     "electricVehiclePerChargePoints": 26.955555555555556,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Hudiksvall",
@@ -7647,7 +7647,7 @@
     "bicycleMetrePerCapita": 2.080051418,
     "totalConsumptionEmission": 6218.1,
     "electricVehiclePerChargePoints": 28.245283018867923,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Hultsfred",
@@ -7749,7 +7749,7 @@
     "bicycleMetrePerCapita": 2.781709192,
     "totalConsumptionEmission": 5728.2,
     "electricVehiclePerChargePoints": 5.3584905660377355,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Hylte",
@@ -7851,7 +7851,7 @@
     "bicycleMetrePerCapita": 2.649667798,
     "totalConsumptionEmission": 5849.4,
     "electricVehiclePerChargePoints": 17.0,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Hällefors",
@@ -7953,7 +7953,7 @@
     "bicycleMetrePerCapita": 1.564050556,
     "totalConsumptionEmission": 6045.2,
     "electricVehiclePerChargePoints": 18.0,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Härjedalen",
@@ -8055,7 +8055,7 @@
     "bicycleMetrePerCapita": 2.525898392,
     "totalConsumptionEmission": 6683.0,
     "electricVehiclePerChargePoints": 1.8918918918918919,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Härnösand",
@@ -8157,7 +8157,7 @@
     "bicycleMetrePerCapita": 2.233581042,
     "totalConsumptionEmission": 6107.7,
     "electricVehiclePerChargePoints": 12.0,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Härryda",
@@ -8259,7 +8259,7 @@
     "bicycleMetrePerCapita": 3.211264818,
     "totalConsumptionEmission": 6205.1,
     "electricVehiclePerChargePoints": 8.007142857142858,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Hässleholm",
@@ -8361,7 +8361,7 @@
     "bicycleMetrePerCapita": 3.359049704,
     "totalConsumptionEmission": 6088.8,
     "electricVehiclePerChargePoints": 19.058139534883722,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Håbo",
@@ -8463,7 +8463,7 @@
     "bicycleMetrePerCapita": 3.741361443,
     "totalConsumptionEmission": 6181.4,
     "electricVehiclePerChargePoints": 129.66666666666666,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Höganäs",
@@ -8565,7 +8565,7 @@
     "bicycleMetrePerCapita": 3.869861408,
     "totalConsumptionEmission": 6602.1,
     "electricVehiclePerChargePoints": 18.057142857142857,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Högsby",
@@ -8667,7 +8667,7 @@
     "bicycleMetrePerCapita": 2.926082874,
     "totalConsumptionEmission": 5669.7,
     "electricVehiclePerChargePoints": 9.875,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Hörby",
@@ -8769,7 +8769,7 @@
     "bicycleMetrePerCapita": 2.95921921,
     "totalConsumptionEmission": 6171.6,
     "electricVehiclePerChargePoints": 73.57142857142857,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Höör",
@@ -8871,7 +8871,7 @@
     "bicycleMetrePerCapita": 3.594365932,
     "totalConsumptionEmission": 6011.7,
     "electricVehiclePerChargePoints": 73.5,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Jokkmokk",
@@ -8973,7 +8973,7 @@
     "bicycleMetrePerCapita": 1.773408665,
     "totalConsumptionEmission": 6223.4,
     "electricVehiclePerChargePoints": 2.5555555555555554,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Järfälla",
@@ -9075,7 +9075,7 @@
     "bicycleMetrePerCapita": 2.422133029,
     "totalConsumptionEmission": 5996.9,
     "electricVehiclePerChargePoints": 53.768115942028984,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Jönköping",
@@ -9177,7 +9177,7 @@
     "bicycleMetrePerCapita": 2.698136433,
     "totalConsumptionEmission": 6166.6,
     "electricVehiclePerChargePoints": 34.00888888888889,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Kalix",
@@ -9279,7 +9279,7 @@
     "bicycleMetrePerCapita": 2.483080714,
     "totalConsumptionEmission": 6289.7,
     "electricVehiclePerChargePoints": 18.291666666666668,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Kalmar",
@@ -9381,7 +9381,7 @@
     "bicycleMetrePerCapita": 2.898366807,
     "totalConsumptionEmission": 6169.9,
     "electricVehiclePerChargePoints": 16.114427860696516,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Karlsborg",
@@ -9483,7 +9483,7 @@
     "bicycleMetrePerCapita": 3.403046603,
     "totalConsumptionEmission": 6340.2,
     "electricVehiclePerChargePoints": 18.25,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Karlshamn",
@@ -9585,7 +9585,7 @@
     "bicycleMetrePerCapita": 3.701085608,
     "totalConsumptionEmission": 6011.4,
     "electricVehiclePerChargePoints": 4.831932773109243,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Karlskoga",
@@ -9687,7 +9687,7 @@
     "bicycleMetrePerCapita": 3.623405516,
     "totalConsumptionEmission": 6230.6,
     "electricVehiclePerChargePoints": 48.04545454545455,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Karlskrona",
@@ -9789,7 +9789,7 @@
     "bicycleMetrePerCapita": 1.512487322,
     "totalConsumptionEmission": 6165.4,
     "electricVehiclePerChargePoints": 22.198275862068964,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Karlstad",
@@ -9891,7 +9891,7 @@
     "bicycleMetrePerCapita": 2.913788973,
     "totalConsumptionEmission": 6351.9,
     "electricVehiclePerChargePoints": 18.075396825396826,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Katrineholm",
@@ -9993,7 +9993,7 @@
     "bicycleMetrePerCapita": 2.805132199,
     "totalConsumptionEmission": 5768.7,
     "electricVehiclePerChargePoints": 27.195652173913043,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Kil",
@@ -10095,7 +10095,7 @@
     "bicycleMetrePerCapita": 3.45585916,
     "totalConsumptionEmission": 6153.6,
     "electricVehiclePerChargePoints": 39.0,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Kinda",
@@ -10197,7 +10197,7 @@
     "bicycleMetrePerCapita": 1.666942945,
     "totalConsumptionEmission": 6124.1,
     "electricVehiclePerChargePoints": 38.1,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Kiruna",
@@ -10299,7 +10299,7 @@
     "bicycleMetrePerCapita": 1.255295331,
     "totalConsumptionEmission": 6496.0,
     "electricVehiclePerChargePoints": 14.030303030303031,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Klippan",
@@ -10401,7 +10401,7 @@
     "bicycleMetrePerCapita": 2.953589832,
     "totalConsumptionEmission": 6164.1,
     "electricVehiclePerChargePoints": 29.1875,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Knivsta",
@@ -10503,7 +10503,7 @@
     "bicycleMetrePerCapita": 1.840850954,
     "totalConsumptionEmission": 6273.3,
     "electricVehiclePerChargePoints": 47.48,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Kramfors",
@@ -10605,7 +10605,7 @@
     "bicycleMetrePerCapita": 2.479463175,
     "totalConsumptionEmission": 6163.1,
     "electricVehiclePerChargePoints": 10.290322580645162,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Kristianstad",
@@ -10707,7 +10707,7 @@
     "bicycleMetrePerCapita": 4.197073098,
     "totalConsumptionEmission": 6072.5,
     "electricVehiclePerChargePoints": 14.435294117647059,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Kristinehamn",
@@ -10809,7 +10809,7 @@
     "bicycleMetrePerCapita": 2.445690665,
     "totalConsumptionEmission": 5767.0,
     "electricVehiclePerChargePoints": 17.0,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Krokom",
@@ -10911,7 +10911,7 @@
     "bicycleMetrePerCapita": 1.078378995,
     "totalConsumptionEmission": 6107.5,
     "electricVehiclePerChargePoints": 6.552238805970149,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Kumla",
@@ -11013,7 +11013,7 @@
     "bicycleMetrePerCapita": 3.84927185,
     "totalConsumptionEmission": 6108.8,
     "electricVehiclePerChargePoints": 45.705882352941174,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Kungsbacka",
@@ -11115,7 +11115,7 @@
     "bicycleMetrePerCapita": 2.391165078,
     "totalConsumptionEmission": 6550.5,
     "electricVehiclePerChargePoints": 22.670103092783506,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Kungsör",
@@ -11217,7 +11217,7 @@
     "bicycleMetrePerCapita": 0.7854633489,
     "totalConsumptionEmission": 5957.7,
     "electricVehiclePerChargePoints": 21.25,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Kungälv",
@@ -11319,7 +11319,7 @@
     "bicycleMetrePerCapita": 2.359773817,
     "totalConsumptionEmission": 6141.1,
     "electricVehiclePerChargePoints": 15.886363636363637,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Kävlinge",
@@ -11421,7 +11421,7 @@
     "bicycleMetrePerCapita": 4.384705605,
     "totalConsumptionEmission": 6198.9,
     "electricVehiclePerChargePoints": 32.59649122807018,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Köping",
@@ -11523,7 +11523,7 @@
     "bicycleMetrePerCapita": 2.951098729,
     "totalConsumptionEmission": 6160.5,
     "electricVehiclePerChargePoints": 11.304347826086957,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Laholm",
@@ -11625,7 +11625,7 @@
     "bicycleMetrePerCapita": 3.734875322,
     "totalConsumptionEmission": 6146.9,
     "electricVehiclePerChargePoints": 15.426470588235293,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Landskrona",
@@ -11727,7 +11727,7 @@
     "bicycleMetrePerCapita": 3.130120968,
     "totalConsumptionEmission": 6015.8,
     "electricVehiclePerChargePoints": 20.285714285714285,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Laxå",
@@ -11829,7 +11829,7 @@
     "bicycleMetrePerCapita": 3.420762914,
     "totalConsumptionEmission": 6576.6,
     "electricVehiclePerChargePoints": 14.333333333333334,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Lekeberg",
@@ -11931,7 +11931,7 @@
     "bicycleMetrePerCapita": 1.332483676,
     "totalConsumptionEmission": 6034.4,
     "electricVehiclePerChargePoints": 21.266666666666666,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Leksand",
@@ -12033,7 +12033,7 @@
     "bicycleMetrePerCapita": 2.762561296,
     "totalConsumptionEmission": 6495.5,
     "electricVehiclePerChargePoints": 7.28169014084507,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Lerum",
@@ -12135,7 +12135,7 @@
     "bicycleMetrePerCapita": 2.62316211,
     "totalConsumptionEmission": 6157.9,
     "electricVehiclePerChargePoints": 28.735632183908045,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Lessebo",
@@ -12237,7 +12237,7 @@
     "bicycleMetrePerCapita": 2.771482457,
     "totalConsumptionEmission": 5777.4,
     "electricVehiclePerChargePoints": 18.384615384615383,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Lidingö",
@@ -12339,7 +12339,7 @@
     "bicycleMetrePerCapita": 2.616293985,
     "totalConsumptionEmission": 7483.1,
     "electricVehiclePerChargePoints": 163.44444444444446,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Lidköping",
@@ -12441,7 +12441,7 @@
     "bicycleMetrePerCapita": 2.994218922,
     "totalConsumptionEmission": 6172.0,
     "electricVehiclePerChargePoints": 30.670731707317074,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Lilla Edet",
@@ -12543,7 +12543,7 @@
     "bicycleMetrePerCapita": 2.530883986,
     "totalConsumptionEmission": 6077.2,
     "electricVehiclePerChargePoints": 43.266666666666666,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Lindesberg",
@@ -12645,7 +12645,7 @@
     "bicycleMetrePerCapita": 2.033057359,
     "totalConsumptionEmission": 6139.5,
     "electricVehiclePerChargePoints": 29.347826086956523,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Linköping",
@@ -12747,7 +12747,7 @@
     "bicycleMetrePerCapita": 3.315704358,
     "totalConsumptionEmission": 6282.7,
     "electricVehiclePerChargePoints": 13.277693474962064,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Ljungby",
@@ -12849,7 +12849,7 @@
     "bicycleMetrePerCapita": 4.84998266,
     "totalConsumptionEmission": 6147.5,
     "electricVehiclePerChargePoints": 10.362745098039216,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Ljusdal",
@@ -12951,7 +12951,7 @@
     "bicycleMetrePerCapita": 2.610765974,
     "totalConsumptionEmission": 6353.1,
     "electricVehiclePerChargePoints": 7.903225806451613,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Ljusnarsberg",
@@ -13053,7 +13053,7 @@
     "bicycleMetrePerCapita": 1.489763659,
     "totalConsumptionEmission": 6088.1,
     "electricVehiclePerChargePoints": 8.666666666666666,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Lomma",
@@ -13155,7 +13155,7 @@
     "bicycleMetrePerCapita": 4.057055311,
     "totalConsumptionEmission": 6598.4,
     "electricVehiclePerChargePoints": 48.58064516129032,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Ludvika",
@@ -13257,7 +13257,7 @@
     "bicycleMetrePerCapita": 3.737941809,
     "totalConsumptionEmission": 6222.7,
     "electricVehiclePerChargePoints": 12.666666666666666,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Luleå",
@@ -13359,7 +13359,7 @@
     "bicycleMetrePerCapita": 2.867407965,
     "totalConsumptionEmission": 6627.2,
     "electricVehiclePerChargePoints": 35.49484536082474,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Lund",
@@ -13461,7 +13461,7 @@
     "bicycleMetrePerCapita": 3.243323968,
     "totalConsumptionEmission": 6171.1,
     "electricVehiclePerChargePoints": 24.35077793493635,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Lycksele",
@@ -13563,7 +13563,7 @@
     "bicycleMetrePerCapita": 3.367278473,
     "totalConsumptionEmission": 6113.7,
     "electricVehiclePerChargePoints": 4.780487804878049,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Lysekil",
@@ -13665,7 +13665,7 @@
     "bicycleMetrePerCapita": 2.570420853,
     "totalConsumptionEmission": 6492.7,
     "electricVehiclePerChargePoints": 16.854166666666668,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Malmö",
@@ -13767,7 +13767,7 @@
     "bicycleMetrePerCapita": 1.555072408,
     "totalConsumptionEmission": 6184.8,
     "electricVehiclePerChargePoints": 19.315893385982232,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Malung-Sälen",
@@ -13869,7 +13869,7 @@
     "bicycleMetrePerCapita": 2.157542207,
     "totalConsumptionEmission": 6838.9,
     "electricVehiclePerChargePoints": 2.2941176470588234,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Malå",
@@ -13971,7 +13971,7 @@
     "bicycleMetrePerCapita": 4.123764229,
     "totalConsumptionEmission": 6081.2,
     "electricVehiclePerChargePoints": 6.75,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Mariestad",
@@ -14073,7 +14073,7 @@
     "bicycleMetrePerCapita": 4.177182145,
     "totalConsumptionEmission": 6077.1,
     "electricVehiclePerChargePoints": 21.6734693877551,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Mark",
@@ -14175,7 +14175,7 @@
     "bicycleMetrePerCapita": 2.164699341,
     "totalConsumptionEmission": 6018.4,
     "electricVehiclePerChargePoints": 93.6875,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Markaryd",
@@ -14277,7 +14277,7 @@
     "bicycleMetrePerCapita": 2.936381161,
     "totalConsumptionEmission": 6465.5,
     "electricVehiclePerChargePoints": 8.255813953488373,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Mellerud",
@@ -14379,7 +14379,7 @@
     "bicycleMetrePerCapita": 2.458987795,
     "totalConsumptionEmission": 5737.5,
     "electricVehiclePerChargePoints": 4.9411764705882355,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Mjölby",
@@ -14481,7 +14481,7 @@
     "bicycleMetrePerCapita": 3.49516978,
     "totalConsumptionEmission": 6184.6,
     "electricVehiclePerChargePoints": 14.916666666666666,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Mora",
@@ -14583,7 +14583,7 @@
     "bicycleMetrePerCapita": 2.867186548,
     "totalConsumptionEmission": 6031.3,
     "electricVehiclePerChargePoints": 15.872340425531915,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Motala",
@@ -14685,7 +14685,7 @@
     "bicycleMetrePerCapita": 3.46608596,
     "totalConsumptionEmission": 6026.2,
     "electricVehiclePerChargePoints": 49.411764705882355,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Mullsjö",
@@ -14787,7 +14787,7 @@
     "bicycleMetrePerCapita": 4.702254358,
     "totalConsumptionEmission": 6191.3,
     "electricVehiclePerChargePoints": 8.8,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Munkedal",
@@ -14889,7 +14889,7 @@
     "bicycleMetrePerCapita": 4.059255886,
     "totalConsumptionEmission": 6009.4,
     "electricVehiclePerChargePoints": 9.404761904761905,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Munkfors",
@@ -14991,7 +14991,7 @@
     "bicycleMetrePerCapita": 5.564399594,
     "totalConsumptionEmission": 6768.9,
     "electricVehiclePerChargePoints": 10000000000.0,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Mölndal",
@@ -15093,7 +15093,7 @@
     "bicycleMetrePerCapita": 2.435578685,
     "totalConsumptionEmission": 6112.1,
     "electricVehiclePerChargePoints": 15.574585635359115,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Mönsterås",
@@ -15195,7 +15195,7 @@
     "bicycleMetrePerCapita": 3.988480191,
     "totalConsumptionEmission": 6080.6,
     "electricVehiclePerChargePoints": 17.166666666666668,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Mörbylånga",
@@ -15297,7 +15297,7 @@
     "bicycleMetrePerCapita": 1.776288274,
     "totalConsumptionEmission": 6056.4,
     "electricVehiclePerChargePoints": 21.59259259259259,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Nacka",
@@ -15399,7 +15399,7 @@
     "bicycleMetrePerCapita": 1.620929483,
     "totalConsumptionEmission": 6684.8,
     "electricVehiclePerChargePoints": 45.32390745501285,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Nora",
@@ -15501,7 +15501,7 @@
     "bicycleMetrePerCapita": 3.316199818,
     "totalConsumptionEmission": 6066.4,
     "electricVehiclePerChargePoints": 10.272727272727273,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Norberg",
@@ -15603,7 +15603,7 @@
     "bicycleMetrePerCapita": 3.706902197,
     "totalConsumptionEmission": 6173.4,
     "electricVehiclePerChargePoints": 82.5,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Nordanstig",
@@ -15705,7 +15705,7 @@
     "bicycleMetrePerCapita": 1.186808953,
     "totalConsumptionEmission": 6042.8,
     "electricVehiclePerChargePoints": 20.90909090909091,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Nordmaling",
@@ -15807,7 +15807,7 @@
     "bicycleMetrePerCapita": 2.052393812,
     "totalConsumptionEmission": 6118.7,
     "electricVehiclePerChargePoints": 38.8,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Norrköping",
@@ -15909,7 +15909,7 @@
     "bicycleMetrePerCapita": 2.278943414,
     "totalConsumptionEmission": 5986.6,
     "electricVehiclePerChargePoints": 26.195454545454545,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Norrtälje",
@@ -16011,7 +16011,7 @@
     "bicycleMetrePerCapita": 1.818370128,
     "totalConsumptionEmission": 6411.6,
     "electricVehiclePerChargePoints": 25.217821782178216,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Norsjö",
@@ -16113,7 +16113,7 @@
     "bicycleMetrePerCapita": 1.847955759,
     "totalConsumptionEmission": 6011.2,
     "electricVehiclePerChargePoints": 12.75,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Nybro",
@@ -16215,7 +16215,7 @@
     "bicycleMetrePerCapita": 4.169016844,
     "totalConsumptionEmission": 5901.6,
     "electricVehiclePerChargePoints": 47.1,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Nykvarn",
@@ -16317,7 +16317,7 @@
     "bicycleMetrePerCapita": 3.383318392,
     "totalConsumptionEmission": 6183.7,
     "electricVehiclePerChargePoints": 14.933333333333334,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Nyköping",
@@ -16419,7 +16419,7 @@
     "bicycleMetrePerCapita": 2.56992368,
     "totalConsumptionEmission": 5862.4,
     "electricVehiclePerChargePoints": 24.54736842105263,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Nynäshamn",
@@ -16521,7 +16521,7 @@
     "bicycleMetrePerCapita": 3.320688035,
     "totalConsumptionEmission": 6008.5,
     "electricVehiclePerChargePoints": 65.46666666666667,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Nässjö",
@@ -16623,7 +16623,7 @@
     "bicycleMetrePerCapita": 2.650691253,
     "totalConsumptionEmission": 5824.9,
     "electricVehiclePerChargePoints": 19.131147540983605,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Ockelbo",
@@ -16725,7 +16725,7 @@
     "bicycleMetrePerCapita": 2.931178356,
     "totalConsumptionEmission": 5936.7,
     "electricVehiclePerChargePoints": 4.36,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Olofström",
@@ -16827,7 +16827,7 @@
     "bicycleMetrePerCapita": 3.389695099,
     "totalConsumptionEmission": 5971.9,
     "electricVehiclePerChargePoints": 2.2611940298507465,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Orsa",
@@ -16929,7 +16929,7 @@
     "bicycleMetrePerCapita": 1.911915595,
     "totalConsumptionEmission": 5669.7,
     "electricVehiclePerChargePoints": 7.368421052631579,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Orust",
@@ -17031,7 +17031,7 @@
     "bicycleMetrePerCapita": 1.250142775,
     "totalConsumptionEmission": 6443.1,
     "electricVehiclePerChargePoints": 22.2,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Osby",
@@ -17133,7 +17133,7 @@
     "bicycleMetrePerCapita": 2.069387541,
     "totalConsumptionEmission": 5941.6,
     "electricVehiclePerChargePoints": 21.944444444444443,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Oskarshamn",
@@ -17235,7 +17235,7 @@
     "bicycleMetrePerCapita": 3.578830864,
     "totalConsumptionEmission": 5958.5,
     "electricVehiclePerChargePoints": 12.261538461538462,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Ovanåker",
@@ -17337,7 +17337,7 @@
     "bicycleMetrePerCapita": 3.630530428,
     "totalConsumptionEmission": 6103.6,
     "electricVehiclePerChargePoints": 79.66666666666667,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Oxelösund",
@@ -17439,7 +17439,7 @@
     "bicycleMetrePerCapita": 4.679544476,
     "totalConsumptionEmission": 6190.4,
     "electricVehiclePerChargePoints": 28.09090909090909,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Pajala",
@@ -17541,7 +17541,7 @@
     "bicycleMetrePerCapita": 3.945928683,
     "totalConsumptionEmission": 6688.8,
     "electricVehiclePerChargePoints": 6.3,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Partille",
@@ -17643,7 +17643,7 @@
     "bicycleMetrePerCapita": 2.384192387,
     "totalConsumptionEmission": 6384.1,
     "electricVehiclePerChargePoints": 69.78571428571429,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Perstorp",
@@ -17745,7 +17745,7 @@
     "bicycleMetrePerCapita": 3.362789196,
     "totalConsumptionEmission": 5974.1,
     "electricVehiclePerChargePoints": 4.774193548387097,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Piteå",
@@ -17847,7 +17847,7 @@
     "bicycleMetrePerCapita": 3.046185101,
     "totalConsumptionEmission": 6605.3,
     "electricVehiclePerChargePoints": 32.15686274509804,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Ragunda",
@@ -17949,7 +17949,7 @@
     "bicycleMetrePerCapita": 1.487975575,
     "totalConsumptionEmission": 6312.0,
     "electricVehiclePerChargePoints": 5.6923076923076925,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Robertsfors",
@@ -18051,7 +18051,7 @@
     "bicycleMetrePerCapita": 1.337627834,
     "totalConsumptionEmission": 5986.9,
     "electricVehiclePerChargePoints": 13.0625,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Ronneby",
@@ -18153,7 +18153,7 @@
     "bicycleMetrePerCapita": 3.962831222,
     "totalConsumptionEmission": 6076.0,
     "electricVehiclePerChargePoints": 9.53191489361702,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Rättvik",
@@ -18255,7 +18255,7 @@
     "bicycleMetrePerCapita": 1.793276136,
     "totalConsumptionEmission": 6586.6,
     "electricVehiclePerChargePoints": 10.225806451612904,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Sala",
@@ -18357,7 +18357,7 @@
     "bicycleMetrePerCapita": 1.058042274,
     "totalConsumptionEmission": 6148.8,
     "electricVehiclePerChargePoints": 20.09090909090909,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Salem",
@@ -18459,7 +18459,7 @@
     "bicycleMetrePerCapita": 2.830194816,
     "totalConsumptionEmission": 6075.5,
     "electricVehiclePerChargePoints": 48.69230769230769,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Sandviken",
@@ -18561,7 +18561,7 @@
     "bicycleMetrePerCapita": 3.210885786,
     "totalConsumptionEmission": 6202.0,
     "electricVehiclePerChargePoints": 5.431578947368421,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Sigtuna",
@@ -18663,7 +18663,7 @@
     "bicycleMetrePerCapita": 2.417291994,
     "totalConsumptionEmission": 6010.3,
     "electricVehiclePerChargePoints": 5.0,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Simrishamn",
@@ -18765,7 +18765,7 @@
     "bicycleMetrePerCapita": 3.729507637,
     "totalConsumptionEmission": 6254.4,
     "electricVehiclePerChargePoints": 16.78048780487805,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Sjöbo",
@@ -18867,7 +18867,7 @@
     "bicycleMetrePerCapita": 2.627200704,
     "totalConsumptionEmission": 6132.8,
     "electricVehiclePerChargePoints": 17.11111111111111,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Skara",
@@ -18969,7 +18969,7 @@
     "bicycleMetrePerCapita": 3.680481651,
     "totalConsumptionEmission": 6113.9,
     "electricVehiclePerChargePoints": 17.45,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Skellefteå",
@@ -19071,7 +19071,7 @@
     "bicycleMetrePerCapita": 3.352954207,
     "totalConsumptionEmission": 6176.7,
     "electricVehiclePerChargePoints": 26.899159663865547,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Skinnskatteberg",
@@ -19173,7 +19173,7 @@
     "bicycleMetrePerCapita": 2.952591988,
     "totalConsumptionEmission": 6703.6,
     "electricVehiclePerChargePoints": 10000000000.0,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Skurup",
@@ -19275,7 +19275,7 @@
     "bicycleMetrePerCapita": 4.412308506,
     "totalConsumptionEmission": 5808.7,
     "electricVehiclePerChargePoints": 20.28,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Skövde",
@@ -19377,7 +19377,7 @@
     "bicycleMetrePerCapita": 3.108804107,
     "totalConsumptionEmission": 6036.7,
     "electricVehiclePerChargePoints": 9.99388379204893,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Smedjebacken",
@@ -19479,7 +19479,7 @@
     "bicycleMetrePerCapita": 2.874182105,
     "totalConsumptionEmission": 6344.6,
     "electricVehiclePerChargePoints": 3.734042553191489,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Sollefteå",
@@ -19581,7 +19581,7 @@
     "bicycleMetrePerCapita": 1.558660435,
     "totalConsumptionEmission": 6071.1,
     "electricVehiclePerChargePoints": 11.416666666666666,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Sollentuna",
@@ -19683,7 +19683,7 @@
     "bicycleMetrePerCapita": 1.370438966,
     "totalConsumptionEmission": 6657.6,
     "electricVehiclePerChargePoints": 79.54761904761905,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Solna",
@@ -19785,7 +19785,7 @@
     "bicycleMetrePerCapita": 1.307139177,
     "totalConsumptionEmission": 6978.6,
     "electricVehiclePerChargePoints": 58.33116883116883,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Sorsele",
@@ -19887,7 +19887,7 @@
     "bicycleMetrePerCapita": 1.773361199,
     "totalConsumptionEmission": 6375.6,
     "electricVehiclePerChargePoints": 0.7142857142857143,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Sotenäs",
@@ -19989,7 +19989,7 @@
     "bicycleMetrePerCapita": 1.432852918,
     "totalConsumptionEmission": 6663.6,
     "electricVehiclePerChargePoints": 7.557142857142857,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Staffanstorp",
@@ -20091,7 +20091,7 @@
     "bicycleMetrePerCapita": 4.478156915,
     "totalConsumptionEmission": 5848.9,
     "electricVehiclePerChargePoints": 39.0,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Stenungsund",
@@ -20193,7 +20193,7 @@
     "bicycleMetrePerCapita": 3.347065342,
     "totalConsumptionEmission": 6323.3,
     "electricVehiclePerChargePoints": 41.19444444444444,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Stockholm",
@@ -20295,7 +20295,7 @@
     "bicycleMetrePerCapita": 1.218575773,
     "totalConsumptionEmission": 6981.8,
     "electricVehiclePerChargePoints": 17.190896840844438,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Storfors",
@@ -20397,7 +20397,7 @@
     "bicycleMetrePerCapita": 1.950304305,
     "totalConsumptionEmission": 6219.8,
     "electricVehiclePerChargePoints": 6.933333333333334,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Storuman",
@@ -20499,7 +20499,7 @@
     "bicycleMetrePerCapita": 3.261116272,
     "totalConsumptionEmission": 6942.8,
     "electricVehiclePerChargePoints": 1.9428571428571428,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Strängnäs",
@@ -20601,7 +20601,7 @@
     "bicycleMetrePerCapita": 2.468682063,
     "totalConsumptionEmission": 6398.4,
     "electricVehiclePerChargePoints": 21.7,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Strömstad",
@@ -20703,7 +20703,7 @@
     "bicycleMetrePerCapita": 4.20120415,
     "totalConsumptionEmission": 6236.3,
     "electricVehiclePerChargePoints": 2.1517857142857144,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Strömsund",
@@ -20805,7 +20805,7 @@
     "bicycleMetrePerCapita": 1.501032709,
     "totalConsumptionEmission": 6304.1,
     "electricVehiclePerChargePoints": 3.4482758620689653,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Sundbyberg",
@@ -20907,7 +20907,7 @@
     "bicycleMetrePerCapita": 0.7312642807,
     "totalConsumptionEmission": 6735.9,
     "electricVehiclePerChargePoints": 111.1923076923077,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Sundsvall",
@@ -21009,7 +21009,7 @@
     "bicycleMetrePerCapita": 2.684605556,
     "totalConsumptionEmission": 6210.2,
     "electricVehiclePerChargePoints": 16.15891472868217,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Sunne",
@@ -21111,7 +21111,7 @@
     "bicycleMetrePerCapita": 2.987040734,
     "totalConsumptionEmission": 6363.6,
     "electricVehiclePerChargePoints": 17.181818181818183,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Surahammar",
@@ -21213,7 +21213,7 @@
     "bicycleMetrePerCapita": 0.6599069754,
     "totalConsumptionEmission": 6040.2,
     "electricVehiclePerChargePoints": 49.833333333333336,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Svalöv",
@@ -21315,7 +21315,7 @@
     "bicycleMetrePerCapita": 2.955402172,
     "totalConsumptionEmission": 6000.6,
     "electricVehiclePerChargePoints": 21.35,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Svedala",
@@ -21417,7 +21417,7 @@
     "bicycleMetrePerCapita": 3.437934295,
     "totalConsumptionEmission": 5950.1,
     "electricVehiclePerChargePoints": 73.84615384615384,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Svenljunga",
@@ -21519,7 +21519,7 @@
     "bicycleMetrePerCapita": 4.050901246,
     "totalConsumptionEmission": 6070.4,
     "electricVehiclePerChargePoints": 10000000000.0,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Säffle",
@@ -21621,7 +21621,7 @@
     "bicycleMetrePerCapita": 3.257070608,
     "totalConsumptionEmission": 5995.4,
     "electricVehiclePerChargePoints": 24.0,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Säter",
@@ -21723,7 +21723,7 @@
     "bicycleMetrePerCapita": 2.146936866,
     "totalConsumptionEmission": 6320.1,
     "electricVehiclePerChargePoints": 42.875,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Sävsjö",
@@ -21825,7 +21825,7 @@
     "bicycleMetrePerCapita": 4.341989408,
     "totalConsumptionEmission": 5823.0,
     "electricVehiclePerChargePoints": 25.666666666666668,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Söderhamn",
@@ -21927,7 +21927,7 @@
     "bicycleMetrePerCapita": 2.8062868,
     "totalConsumptionEmission": 6077.3,
     "electricVehiclePerChargePoints": 17.511627906976745,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Söderköping",
@@ -22029,7 +22029,7 @@
     "bicycleMetrePerCapita": 2.754640529,
     "totalConsumptionEmission": 6070.9,
     "electricVehiclePerChargePoints": 12.326530612244898,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Södertälje",
@@ -22131,7 +22131,7 @@
     "bicycleMetrePerCapita": 2.64348271,
     "totalConsumptionEmission": 5805.2,
     "electricVehiclePerChargePoints": 144.68539325842696,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Sölvesborg",
@@ -22233,7 +22233,7 @@
     "bicycleMetrePerCapita": 4.856791173,
     "totalConsumptionEmission": 6169.9,
     "electricVehiclePerChargePoints": 18.366666666666667,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Tanum",
@@ -22335,7 +22335,7 @@
     "bicycleMetrePerCapita": 0.9730676817,
     "totalConsumptionEmission": 6397.7,
     "electricVehiclePerChargePoints": 4.440677966101695,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Tibro",
@@ -22437,7 +22437,7 @@
     "bicycleMetrePerCapita": 4.240325727,
     "totalConsumptionEmission": 5766.0,
     "electricVehiclePerChargePoints": 8.195121951219512,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Tidaholm",
@@ -22539,7 +22539,7 @@
     "bicycleMetrePerCapita": 1.823552052,
     "totalConsumptionEmission": 5926.7,
     "electricVehiclePerChargePoints": 69.8,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Tierp",
@@ -22641,7 +22641,7 @@
     "bicycleMetrePerCapita": 2.626499349,
     "totalConsumptionEmission": 6128.0,
     "electricVehiclePerChargePoints": 40.30769230769231,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Timrå",
@@ -22743,7 +22743,7 @@
     "bicycleMetrePerCapita": 2.304277754,
     "totalConsumptionEmission": 5798.3,
     "electricVehiclePerChargePoints": 30.61111111111111,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Tingsryd",
@@ -22845,7 +22845,7 @@
     "bicycleMetrePerCapita": 7.862331476,
     "totalConsumptionEmission": 6139.2,
     "electricVehiclePerChargePoints": 9.022222222222222,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Tjörn",
@@ -22947,7 +22947,7 @@
     "bicycleMetrePerCapita": 1.30836914,
     "totalConsumptionEmission": 6612.2,
     "electricVehiclePerChargePoints": 38.05,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Tomelilla",
@@ -23049,7 +23049,7 @@
     "bicycleMetrePerCapita": 2.16884948,
     "totalConsumptionEmission": 5948.3,
     "electricVehiclePerChargePoints": 31.375,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Torsby",
@@ -23151,7 +23151,7 @@
     "bicycleMetrePerCapita": 1.423811628,
     "totalConsumptionEmission": 6675.2,
     "electricVehiclePerChargePoints": 4.2,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Torsås",
@@ -23253,7 +23253,7 @@
     "bicycleMetrePerCapita": 4.048930845,
     "totalConsumptionEmission": 6200.0,
     "electricVehiclePerChargePoints": 27.833333333333332,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Tranemo",
@@ -23355,7 +23355,7 @@
     "bicycleMetrePerCapita": 5.111060036,
     "totalConsumptionEmission": 5934.1,
     "electricVehiclePerChargePoints": 18.869565217391305,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Tranås",
@@ -23457,7 +23457,7 @@
     "bicycleMetrePerCapita": 3.802454138,
     "totalConsumptionEmission": 5902.1,
     "electricVehiclePerChargePoints": 33.333333333333336,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Trelleborg",
@@ -23559,7 +23559,7 @@
     "bicycleMetrePerCapita": 3.093715921,
     "totalConsumptionEmission": 6045.5,
     "electricVehiclePerChargePoints": 20.20253164556962,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Trollhättan",
@@ -23661,7 +23661,7 @@
     "bicycleMetrePerCapita": 2.937878473,
     "totalConsumptionEmission": 6070.9,
     "electricVehiclePerChargePoints": 12.09486166007905,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Trosa",
@@ -23763,7 +23763,7 @@
     "bicycleMetrePerCapita": 3.260746269,
     "totalConsumptionEmission": 6537.8,
     "electricVehiclePerChargePoints": 12.196428571428571,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Tyresö",
@@ -23865,7 +23865,7 @@
     "bicycleMetrePerCapita": 2.17324803,
     "totalConsumptionEmission": 6055.7,
     "electricVehiclePerChargePoints": 101.04761904761905,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Täby",
@@ -23967,7 +23967,7 @@
     "bicycleMetrePerCapita": 2.354569043,
     "totalConsumptionEmission": 6863.7,
     "electricVehiclePerChargePoints": 51.686868686868685,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Töreboda",
@@ -24069,7 +24069,7 @@
     "bicycleMetrePerCapita": 5.452574406,
     "totalConsumptionEmission": 5912.2,
     "electricVehiclePerChargePoints": 52.2,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Uddevalla",
@@ -24171,7 +24171,7 @@
     "bicycleMetrePerCapita": 2.291437576,
     "totalConsumptionEmission": 6099.2,
     "electricVehiclePerChargePoints": 15.776119402985074,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Ulricehamn",
@@ -24273,7 +24273,7 @@
     "bicycleMetrePerCapita": 6.208408392,
     "totalConsumptionEmission": 5938.7,
     "electricVehiclePerChargePoints": 11.71111111111111,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Umeå",
@@ -24375,7 +24375,7 @@
     "bicycleMetrePerCapita": 2.639826356,
     "totalConsumptionEmission": 6242.3,
     "electricVehiclePerChargePoints": 22.933070866141733,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Upplands Väsby",
@@ -24477,7 +24477,7 @@
     "bicycleMetrePerCapita": 3.734221098,
     "totalConsumptionEmission": 6207.6,
     "electricVehiclePerChargePoints": 26.8125,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Upplands-Bro",
@@ -24579,7 +24579,7 @@
     "bicycleMetrePerCapita": 2.711961788,
     "totalConsumptionEmission": 5788.8,
     "electricVehiclePerChargePoints": 18.70689655172414,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Uppsala",
@@ -24681,7 +24681,7 @@
     "bicycleMetrePerCapita": 2.036415643,
     "totalConsumptionEmission": 6360.6,
     "electricVehiclePerChargePoints": 20.836032388663966,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Uppvidinge",
@@ -24783,7 +24783,7 @@
     "bicycleMetrePerCapita": 0.2710671217,
     "totalConsumptionEmission": 5849.5,
     "electricVehiclePerChargePoints": 38.375,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Vadstena",
@@ -24885,7 +24885,7 @@
     "bicycleMetrePerCapita": 3.322477247,
     "totalConsumptionEmission": 6092.0,
     "electricVehiclePerChargePoints": 36.5,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Vaggeryd",
@@ -24987,7 +24987,7 @@
     "bicycleMetrePerCapita": 4.665683814,
     "totalConsumptionEmission": 6103.4,
     "electricVehiclePerChargePoints": 18.71875,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Valdemarsvik",
@@ -25089,7 +25089,7 @@
     "bicycleMetrePerCapita": 1.338655645,
     "totalConsumptionEmission": 5970.0,
     "electricVehiclePerChargePoints": 7.2,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Vallentuna",
@@ -25191,7 +25191,7 @@
     "bicycleMetrePerCapita": 2.091930929,
     "totalConsumptionEmission": 6034.4,
     "electricVehiclePerChargePoints": 67.0,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Vansbro",
@@ -25293,7 +25293,7 @@
     "bicycleMetrePerCapita": 1.225521451,
     "totalConsumptionEmission": 6068.2,
     "electricVehiclePerChargePoints": 6.9411764705882355,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Vara",
@@ -25395,7 +25395,7 @@
     "bicycleMetrePerCapita": 3.471290972,
     "totalConsumptionEmission": 5938.1,
     "electricVehiclePerChargePoints": 16.152173913043477,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Varberg",
@@ -25497,7 +25497,7 @@
     "bicycleMetrePerCapita": 2.756270158,
     "totalConsumptionEmission": 6109.0,
     "electricVehiclePerChargePoints": 13.933609958506224,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Vaxholm",
@@ -25599,7 +25599,7 @@
     "bicycleMetrePerCapita": 1.176474976,
     "totalConsumptionEmission": 6794.8,
     "electricVehiclePerChargePoints": 197.75,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Vellinge",
@@ -25701,7 +25701,7 @@
     "bicycleMetrePerCapita": 3.894732092,
     "totalConsumptionEmission": 6916.6,
     "electricVehiclePerChargePoints": 18.963768115942027,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Vetlanda",
@@ -25803,7 +25803,7 @@
     "bicycleMetrePerCapita": 3.620286389,
     "totalConsumptionEmission": 5926.8,
     "electricVehiclePerChargePoints": 26.644444444444446,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Vilhelmina",
@@ -25905,7 +25905,7 @@
     "bicycleMetrePerCapita": 0.7632882299,
     "totalConsumptionEmission": 6379.0,
     "electricVehiclePerChargePoints": 4.555555555555555,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Vimmerby",
@@ -26007,7 +26007,7 @@
     "bicycleMetrePerCapita": 3.100303789,
     "totalConsumptionEmission": 6024.9,
     "electricVehiclePerChargePoints": 14.853658536585366,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Vindeln",
@@ -26109,7 +26109,7 @@
     "bicycleMetrePerCapita": 3.284967346,
     "totalConsumptionEmission": 6110.8,
     "electricVehiclePerChargePoints": 10.916666666666666,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Vingåker",
@@ -26211,7 +26211,7 @@
     "bicycleMetrePerCapita": 1.591330664,
     "totalConsumptionEmission": 5846.1,
     "electricVehiclePerChargePoints": 142.0,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Vänersborg",
@@ -26313,7 +26313,7 @@
     "bicycleMetrePerCapita": 3.86479684,
     "totalConsumptionEmission": 6074.0,
     "electricVehiclePerChargePoints": 19.23913043478261,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Vännäs",
@@ -26415,7 +26415,7 @@
     "bicycleMetrePerCapita": 2.657717693,
     "totalConsumptionEmission": 6079.2,
     "electricVehiclePerChargePoints": 9.3,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Värmdö",
@@ -26517,7 +26517,7 @@
     "bicycleMetrePerCapita": 1.391918951,
     "totalConsumptionEmission": 6374.5,
     "electricVehiclePerChargePoints": 23.69747899159664,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Värnamo",
@@ -26619,7 +26619,7 @@
     "bicycleMetrePerCapita": 4.133826968,
     "totalConsumptionEmission": 6017.5,
     "electricVehiclePerChargePoints": 17.95614035087719,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Västervik",
@@ -26721,7 +26721,7 @@
     "bicycleMetrePerCapita": 3.089136601,
     "totalConsumptionEmission": 6020.3,
     "electricVehiclePerChargePoints": 10.905263157894737,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Västerås",
@@ -26823,7 +26823,7 @@
     "bicycleMetrePerCapita": 2.882234152,
     "totalConsumptionEmission": 6397.4,
     "electricVehiclePerChargePoints": 18.045023696682463,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Växjö",
@@ -26925,7 +26925,7 @@
     "bicycleMetrePerCapita": 2.872379738,
     "totalConsumptionEmission": 6123.9,
     "electricVehiclePerChargePoints": 22.16826923076923,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Vårgårda",
@@ -27027,7 +27027,7 @@
     "bicycleMetrePerCapita": 2.061869332,
     "totalConsumptionEmission": 5657.8,
     "electricVehiclePerChargePoints": 22.57894736842105,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Ydre",
@@ -27129,7 +27129,7 @@
     "bicycleMetrePerCapita": 1.709752197,
     "totalConsumptionEmission": 6152.7,
     "electricVehiclePerChargePoints": 18.714285714285715,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Ystad",
@@ -27231,7 +27231,7 @@
     "bicycleMetrePerCapita": 4.385902002,
     "totalConsumptionEmission": 6411.7,
     "electricVehiclePerChargePoints": 12.394495412844037,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Älmhult",
@@ -27333,7 +27333,7 @@
     "bicycleMetrePerCapita": 3.376752163,
     "totalConsumptionEmission": 5705.8,
     "electricVehiclePerChargePoints": 9.392857142857142,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Älvdalen",
@@ -27435,7 +27435,7 @@
     "bicycleMetrePerCapita": 0.7569722078,
     "totalConsumptionEmission": 5794.9,
     "electricVehiclePerChargePoints": 0.9108910891089109,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Älvkarleby",
@@ -27537,7 +27537,7 @@
     "bicycleMetrePerCapita": 0.9894422704,
     "totalConsumptionEmission": 6136.6,
     "electricVehiclePerChargePoints": 37.333333333333336,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Älvsbyn",
@@ -27639,7 +27639,7 @@
     "bicycleMetrePerCapita": 2.224133783,
     "totalConsumptionEmission": 6267.0,
     "electricVehiclePerChargePoints": 11.25,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Ängelholm",
@@ -27741,7 +27741,7 @@
     "bicycleMetrePerCapita": 3.702963484,
     "totalConsumptionEmission": 6461.6,
     "electricVehiclePerChargePoints": 20.925233644859812,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Åmål",
@@ -27843,7 +27843,7 @@
     "bicycleMetrePerCapita": 2.91731537,
     "totalConsumptionEmission": 5851.1,
     "electricVehiclePerChargePoints": 4.7368421052631575,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Ånge",
@@ -27945,7 +27945,7 @@
     "bicycleMetrePerCapita": 1.864452459,
     "totalConsumptionEmission": 6333.8,
     "electricVehiclePerChargePoints": 5.228571428571429,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Åre",
@@ -28047,7 +28047,7 @@
     "bicycleMetrePerCapita": 0.3319469352,
     "totalConsumptionEmission": 6697.7,
     "electricVehiclePerChargePoints": 3.4057971014492754,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Årjäng",
@@ -28149,7 +28149,7 @@
     "bicycleMetrePerCapita": 2.410277256,
     "totalConsumptionEmission": 6339.9,
     "electricVehiclePerChargePoints": 3.888888888888889,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Åsele",
@@ -28251,7 +28251,7 @@
     "bicycleMetrePerCapita": 0.7939140036,
     "totalConsumptionEmission": 6179.7,
     "electricVehiclePerChargePoints": 12.5,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Åstorp",
@@ -28353,7 +28353,7 @@
     "bicycleMetrePerCapita": 2.783975275,
     "totalConsumptionEmission": 5651.9,
     "electricVehiclePerChargePoints": 14.1875,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Åtvidaberg",
@@ -28455,7 +28455,7 @@
     "bicycleMetrePerCapita": 2.773036069,
     "totalConsumptionEmission": 5883.9,
     "electricVehiclePerChargePoints": 10000000000.0,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Öckerö",
@@ -28557,7 +28557,7 @@
     "bicycleMetrePerCapita": 1.588384851,
     "totalConsumptionEmission": 5835.0,
     "electricVehiclePerChargePoints": 41.46153846153846,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Ödeshög",
@@ -28659,7 +28659,7 @@
     "bicycleMetrePerCapita": 2.229829471,
     "totalConsumptionEmission": 6225.3,
     "electricVehiclePerChargePoints": 2.672727272727273,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Örebro",
@@ -28761,7 +28761,7 @@
     "bicycleMetrePerCapita": 3.428744851,
     "totalConsumptionEmission": 6087.2,
     "electricVehiclePerChargePoints": 15.496402877697841,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Örkelljunga",
@@ -28863,7 +28863,7 @@
     "bicycleMetrePerCapita": 4.810645387,
     "totalConsumptionEmission": 6067.0,
     "electricVehiclePerChargePoints": 8.08,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Örnsköldsvik",
@@ -28965,7 +28965,7 @@
     "bicycleMetrePerCapita": 1.88221786,
     "totalConsumptionEmission": 6131.3,
     "electricVehiclePerChargePoints": 18.076190476190476,
-    "procurementScore": 1.0
+    "procurementScore": "1"
   },
   {
     "kommun": "Östersund",
@@ -29067,7 +29067,7 @@
     "bicycleMetrePerCapita": 2.810475703,
     "totalConsumptionEmission": 6318.8,
     "electricVehiclePerChargePoints": 9.973684210526315,
-    "procurementScore": 2.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Österåker",
@@ -29169,7 +29169,7 @@
     "bicycleMetrePerCapita": 2.148302014,
     "totalConsumptionEmission": 6228.0,
     "electricVehiclePerChargePoints": 37.98765432098765,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Östhammar",
@@ -29271,7 +29271,7 @@
     "bicycleMetrePerCapita": 0.5546263587,
     "totalConsumptionEmission": 6300.2,
     "electricVehiclePerChargePoints": 31.904761904761905,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Östra Göinge",
@@ -29373,7 +29373,7 @@
     "bicycleMetrePerCapita": 3.503834265,
     "totalConsumptionEmission": 5512.2,
     "electricVehiclePerChargePoints": 205.0,
-    "procurementScore": 1.0
+    "procurementScore": "2"
   },
   {
     "kommun": "Överkalix",
@@ -29475,7 +29475,7 @@
     "bicycleMetrePerCapita": 1.802995124,
     "totalConsumptionEmission": 6722.3,
     "electricVehiclePerChargePoints": 2.5294117647058822,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   },
   {
     "kommun": "Övertorneå",
@@ -29577,6 +29577,6 @@
     "bicycleMetrePerCapita": 2.960456236,
     "totalConsumptionEmission": 7105.0,
     "electricVehiclePerChargePoints": 26.333333333333332,
-    "procurementScore": 0.0
+    "procurementScore": "0"
   }
 ]

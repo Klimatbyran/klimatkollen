@@ -21,8 +21,8 @@ const formatDateToString = (date: Date): string => {
 }
 
 const requirementsInProcurement = (score: number): string => {
-  if (score > 1) return 'Bevisade krav'
-  if (score > 0) return 'Uppger krav'
+  if (score > 1) return 'Ja, tillstyrkt'
+  if (score > 0) return 'Ja, enligt enkät'
   return 'Inga krav'
 }
 
@@ -250,8 +250,8 @@ export const datasetDescriptions: DatasetDescriptions = {
   },
 
   Upphandlingarna: {
-    title: 'Klimatkrav i upphandlingar',
-    body: 'Lorem ipsum',
+    title: 'Ställer klimatkrav i upphandling',
+    body: 'Information om vilka kommuner som ställer någon form av klimatkrav i upphandling, antingen enligt Upphandlingsmyndighetens enkät eller genom tillstyrkt dokument.',
     source: (
       <>
         Källa:
