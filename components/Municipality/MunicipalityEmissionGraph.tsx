@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import Graph from '../Graph'
-import { H2, H3, Paragraph } from '../Typography'
+import { H2, Paragraph } from '../Typography'
 import InfoModal from '../InfoModal'
 import MetaTags from '../MetaTags'
 import { IconButton } from '../shared'
@@ -46,33 +46,6 @@ const Grid = styled.div`
   > * {
     user-select: none;
   }
-`
-
-const Legends = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: center;
-`
-
-const Legend = styled.label`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3125rem;
-  align-items: center;
-
-  @media all and (${devices.tablet}) {
-    flex-direction: column;
-    justify-content: center;
-  }
-`
-
-const Circle = styled.span`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  display: inline-block;
 `
 
 const END_YEAR = 2050
@@ -144,7 +117,7 @@ function MunicipalityEmissionGraph({
     0: {
       text: 'Historiska utsläpp',
       buttonText: 'Historiskt',
-      body: 'Koldioxidutsläpp i kommunen sedan 1990.',
+      body: 'Koldioxidutsläpp i kommunen sedan 1990. 2022–2024 är baserat på prognos.',
       shareText: (_name) =>
         'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
