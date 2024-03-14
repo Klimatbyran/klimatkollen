@@ -66,22 +66,17 @@ const getColor = (
   return colors[5]
 }
 
-
-// Use when viewState is reimplemented
-/* const MAP_RANGE = {
-  lon: [8.107180004121693, 26.099158344940808],
-  lat: [61.9, 63.9],
-} */
-
 type Props = {
-  data: Array<{ name: string; dataPoint: number | string | Date; formattedDataPoint: number | string }>
+  data: Array<{
+    name: string
+    dataPoint: number | string | Date
+    formattedDataPoint: number | string
+  }>
   boundaries: number[] | string[] | Date[]
   children?: ReactNode
 }
 
-function Map({
-  data, boundaries, children,
-}: Props) {
+function Map({ data, boundaries, children }: Props) {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 

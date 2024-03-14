@@ -13,14 +13,13 @@ export const generateMunipacitySitemapData = ({
   municipalities,
 }: {
   municipalities: Municipality[]
-}): SiteMap[] =>
-  municipalities.map((m) => ({
-    url: `${BASE_URL}/kommun/${replaceLetters(m.Name).toLowerCase()}`,
-    name: m.Name,
-    lastModified: new Date(),
-    changeFrequency: 'yearly',
-    priority: 1,
-  }))
+}): SiteMap[] => municipalities.map((m) => ({
+  url: `${BASE_URL}/kommun/${replaceLetters(m.Name).toLowerCase()}`,
+  name: m.Name,
+  lastModified: new Date(),
+  changeFrequency: 'yearly',
+  priority: 1,
+}))
 export const generateSitemap = (
   siteMap: SiteMap[],
 ) => `<?xml version="1.0" encoding="UTF-8"?>
@@ -44,8 +43,8 @@ export const generateSitemap = (
         <changefreq>monthly</changefreq>
       </url>
         ${siteMap
-          .map(
-            (s) => `
+    .map(
+      (s) => `
             <url>
             <loc>${s.url}</loc>
             <name>${s.name}</name>
@@ -54,7 +53,7 @@ export const generateSitemap = (
             <priority>${s.priority}</priority>
             </url>
         `,
-          )
-          .join('')}
+    )
+    .join('')}
     </urlset>
   `
