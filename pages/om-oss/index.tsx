@@ -103,7 +103,7 @@ function OmOss() {
                     {' '}
                     som beräknats av forskare vid Uppsala universitet enligt
                     Tyndall-modellen och som sedan fördelats ut på kommunerna av
-                    ClimateView.
+                    Klimatkollen.
                   </ListItem>
                   <ListItem>
                     En översikt i både kartvy och listvy över koldioxidutsläppen i landets
@@ -154,7 +154,7 @@ function OmOss() {
                 <Paragraph>
                   Våra samarbetspartners under de första två åren har varit Världsnaturfonden WWF,
                   Postkodstiftelsen, PwC, ClimateView, Klimatklubben, Våra barns klimat,
-                  Researchers’ Desk, Argand Partners och We Don’t Have Time.
+                  Researchers’ Desk, Argand Partners, Power Circle, 2030-sekretariatet och We Don’t Have Time.
                 </Paragraph>
               </>
             )}
