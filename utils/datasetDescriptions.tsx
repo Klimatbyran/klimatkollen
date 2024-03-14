@@ -20,10 +20,10 @@ const formatDateToString = (date: Date): string => {
   return `${year}-${month}-${day}`
 }
 
-const requirementsInProcurement = (score: number): string => {
-  if (score > 1) return 'Ja, tillstyrkt'
-  if (score > 0) return 'Ja, enligt enkät'
-  return 'Inga krav'
+export const requirementsInProcurement = (score: number): string => {
+  if (score > 1) return 'Ja'
+  if (score > 0) return 'Kanske'
+  return 'Nej'
 }
 
 export const datasetDescriptions: DatasetDescriptions = {
@@ -252,7 +252,9 @@ export const datasetDescriptions: DatasetDescriptions = {
   Upphandlingarna: {
     // TODO
     // [ ] tests
-    // [ ] add to municipality screen
+    // [ x ] add to municipality screen
+    // [ ] add correct icon muni screen
+    // [ ] add correct copy to muni screen
     title: 'Klimatkrav i upphandling',
     body: 'Kommuner som ställer klimatkrav vid offentliga upphandlingar. Ja innebär principbeslut och underlag som tillstyrker. Kanske innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker.',
     source: (
