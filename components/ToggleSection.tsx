@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { H5 } from './Typography'
 import ArrowSvg from '../public/icons/arrow-down-round.svg'
+import { colorTheme } from '../Theme'
 
 const TextSection = styled.details`
   display: flex;
@@ -16,7 +17,7 @@ const Arrow = styled(ArrowSvg)<{ open: boolean }>`
   transform: rotate(${(props) => (props.open ? '180deg' : '0')});
 
   & path {
-    fill: ${(props) => (props.open ? '#91DFC8' : '#F2F2F2')};
+    fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
   }
 `
 
