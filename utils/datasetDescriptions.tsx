@@ -253,14 +253,14 @@ export const datasetDescriptions: DatasetDescriptions = {
     // TODO
     // [ ] tests
     // [ ] add to municipality screen
-    title: 'Ställer klimatkrav i upphandling',
-    body: 'Information om vilka kommuner som ställer någon form av klimatkrav i upphandling, antingen enligt Upphandlingsmyndighetens enkät eller genom tillstyrkt dokument.',
+    title: 'Klimatkrav i upphandling',
+    body: 'Kommuner som ställer klimatkrav vid offentliga upphandlingar. Ja innebär principbeslut och underlag som tillstyrker. Kanske innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker.',
     source: (
       <>
         Källa:
         {' '}
         <a
-          href="https://hej.se/"
+          href="/data/facts/procurements/NUE2022_DATA_2023-12-20.xlsx" // fixme
           target="_blank"
           rel="noreferrer"
         >
@@ -270,7 +270,7 @@ export const datasetDescriptions: DatasetDescriptions = {
         och
         {' '}
         <a
-          href="https://hej.se/"
+          href="https://docs.google.com/spreadsheets/d/1EdHUa49HJZn0rXqM-6tChdim4TJzXnwA/edit#gid=1040317160"
           target="_blank"
           rel="noreferrer"
         >
@@ -279,7 +279,7 @@ export const datasetDescriptions: DatasetDescriptions = {
       </>
     ),
     boundaries: [0, 1, 2],
-    labels: ['Inga krav', 'Ja, enligt enkät', 'Ja, tillstyrkt'],
+    labels: ['Nej', 'Kanske', 'Ja'],
     labelRotateUp: [],
     columnHeader: 'Klimatkrav',
     sortAscending: false,

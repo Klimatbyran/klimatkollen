@@ -4,7 +4,7 @@ import pandas as pd
 from helpers import clean_kommun
 
 
-PATH_NUR_DATA = 'facts/procurements/NUE2022_DATA_DANIELZ_2023-12-20.xlsx'
+PATH_NUR_DATA = 'facts/procurements/NUE2022_DATA_2023-12-20.xlsx'
 PATH_GREENPEACE_DATA = 'facts/procurements/Klimatkrav offentlig upphandling kartläggning.xlsx'
 
 def get_procurement_data():
