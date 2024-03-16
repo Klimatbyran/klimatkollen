@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { datasetDescriptions } from './datasetDescriptions'
 
 export type Image = {
@@ -89,4 +90,39 @@ export type RankedData = {
     dataPoint: number | string | JSX.Element;
     rank?: number | undefined;
   }[]
+}
+
+export type MapProps = {
+  data: Array<{
+    name: string
+    dataPoint: number | string | Date
+    formattedDataPoint: number | string
+  }>
+  boundaries: number[] | string[] | Date[]
+  children?: ReactNode
+}
+
+export type MunicipalityData = {
+  name: string
+  dataPoint: number
+  formattedDataPoint: number
+  geometry: [number, number][]
+}
+
+export function isMunicipalityData(
+  thing: MunicipalityData | unknown,
+): thing is MunicipalityData {
+  if (!thing) {
+    return false
+  }
+  const mData = thing as MunicipalityData
+  return Boolean(
+    mData.name && mData.dataPoint && mData.formattedDataPoint && mData.geometry,
+  )
+}
+
+export type MunicipalityTapInfo = {
+  x: number
+  y: number
+  mData: MunicipalityData
 }
