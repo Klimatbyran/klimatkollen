@@ -61,6 +61,8 @@ temp = [
         },
         'budget': df.iloc[i]['Budget'],
         'emissionBudget': df.iloc[i]['parisPath'],
+        'approximatedHistoricalEmission': df.iloc[i]['approximatedHistorical'],
+        'totalApproximatedHistoricalEmission': df.iloc[i]['totalApproximatedHistorical'],
         'trend': df.iloc[i]['trend'],
         'trendEmission': df.iloc[i]['trendEmission'],
         'historicalEmissionChangePercent': df.iloc[i][

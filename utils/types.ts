@@ -24,6 +24,11 @@ export type Emission = {
   HistoricalEmissionChangeRank: number | null
 }
 
+export type ApproximatedEmission = {
+  EmissionPerYear: Array<EmissionPerYear>
+  TotalCO2Emission: number | null
+}
+
 export type Budget = {
   CO2Equivalent: number
   PercentageOfNationalBudget: number
@@ -50,6 +55,7 @@ export type Municipality = {
   Budget: Budget
   HistoricalEmission: Emission
   PoliticalRule: Array<string> | null
+  ApproximatedHistoricalEmission: ApproximatedEmission
   EmissionTrend: Trend
   NeededEmissionChangePercent: number
   HitNetZero: number | string

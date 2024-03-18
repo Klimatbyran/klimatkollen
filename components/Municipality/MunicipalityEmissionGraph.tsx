@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import { useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import Graph from '../Graph'
-import { H2, H3, Paragraph } from '../Typography'
+import { H2, Paragraph } from '../Typography'
 import InfoModal from '../InfoModal'
 import MetaTags from '../MetaTags'
 import { IconButton } from '../shared'
@@ -16,7 +16,6 @@ import { devices } from '../../utils/devices'
 import ArrowRight from '../../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../../public/icons/arrow-left-white.svg'
 import Info from '../../public/icons/info.svg'
-import { colorTheme } from '../../Theme'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -47,33 +46,6 @@ const Grid = styled.div`
   > * {
     user-select: none;
   }
-`
-
-const Legends = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: center;
-`
-
-const Legend = styled.label`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3125rem;
-  align-items: center;
-
-  @media all and (${devices.tablet}) {
-    flex-direction: column;
-    justify-content: center;
-  }
-`
-
-const Circle = styled.span`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  display: inline-block;
 `
 
 const END_YEAR = 2050
@@ -145,7 +117,7 @@ function MunicipalityEmissionGraph({
     0: {
       text: 'Historiska utsläpp',
       buttonText: 'Historiskt',
-      body: 'Koldioxidutsläpp i kommunen sedan 1990.',
+      body: 'Koldioxidutsläpp i kommunen sedan 1990. 2022–2024 är baserat på prognos.',
       shareText: (_name) =>
         'Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.',
     },
@@ -191,7 +163,10 @@ function MunicipalityEmissionGraph({
   }
 
   const lastYearWithData = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
-  const firstWithBudget = municipality.Budget.BudgetPerYear[0]?.Year
+  const lastYearWithApproximatedData = municipality.ApproximatedHistoricalEmission.EmissionPerYear[municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
+  const firstYearWithBudget = municipality.Budget.BudgetPerYear[0]?.Year
+
+  const hasApproximatedData = lastYearWithApproximatedData != null
 
   return (
     <>
@@ -211,6 +186,7 @@ function MunicipalityEmissionGraph({
         <Graph
           step={step}
           historical={municipality.HistoricalEmission.EmissionPerYear}
+          approximated={municipality.ApproximatedHistoricalEmission.EmissionPerYear}
           trend={municipality.EmissionTrend.TrendPerYear}
           budget={municipality.Budget.BudgetPerYear}
           maxVisibleYear={END_YEAR}
@@ -236,16 +212,19 @@ function MunicipalityEmissionGraph({
       {step === 0 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text={`Koldioxidutsläpp i kommunen mellan 1990 och ${lastYearWithData}, vilket är senast tillgängliga data. 
-          Basår för beräkningar av Sveriges klimatutsläpp är 1990.`}
+          text={
+            hasApproximatedData
+              ? `Koldioxidutsläpp i kommunen mellan 1990 och ${lastYearWithApproximatedData}, där ${lastYearWithData} är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990. Den streckade linjen mellan åren ${lastYearWithData}-${lastYearWithApproximatedData} är approximerad data baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.`
+              : `Koldioxidutsläpp i kommunen mellan 1990 och ${lastYearWithData}, vilket är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990.`
+          }
           scrollY={scrollY}
         />
       )}
       {step === 1 && isOpen && (
         <InfoModal
           close={toggleModal}
-          text="Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.
-          Hacket i kurvan för vissa kommuner beror på att genomsnittet är högre än det senaste årets nivå."
+          text={`Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.${
+            hasApproximatedData ? '' : ' Hacket i kurvan för vissa kommuner beror på att genomsnittet skiljer sig från det senaste årets nivå.'}`}
           scrollY={scrollY}
         />
       )}
@@ -254,7 +233,7 @@ function MunicipalityEmissionGraph({
           close={toggleModal}
           text={`Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som
           motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande,
-          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är ${firstWithBudget}, vilket är från vilket år 
+          det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är ${firstYearWithBudget}, vilket är från vilket år 
           budgeten är satt.`}
           scrollY={scrollY}
         />

@@ -62,37 +62,37 @@ const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYea
 type Props = {
   step: number
   historical: EmissionPerYear[]
+  approximated: EmissionPerYear[]
   trend: EmissionPerYear[]
   budget: EmissionPerYear[]
   maxVisibleYear: number
 }
 
 function Graph({
-  step, historical, budget, trend, maxVisibleYear,
+  step, historical, approximated, budget, trend, maxVisibleYear,
 }: Props) {
   const setup = useMemo(
-    () => getSetup([historical, trend, budget]),
-    [historical, trend, budget],
+    () => getSetup([historical, approximated, trend, budget]),
+    [historical, approximated, trend, budget],
   )
 
-  const historicalDataset: Dataset = useMemo(
-    () => emissionPerYearToDataset(historical),
-    [historical],
-  )
-  const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
+  const historicalDataset: Dataset = useMemo(() => emissionPerYearToDataset(historical), [historical])
+  const approximatedDataset: Dataset = useMemo(() => emissionPerYearToDataset(approximated), [approximated])
+  const trendDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
-      Math.max(budgetDataset.length, pledgeDataset.length, historicalDataset.length)
+      Math.max(budgetDataset.length, trendDataset.length, approximatedDataset.length, historicalDataset.length)
       > setup.labels.length
     ) {
       throw new Error('Dataset length larger than label length')
     }
   }
 
-  const lastYearWithData = historical[historical.length - 1]?.Year
+  // get last year with historical data (approximated included)
+  const lastYearWithData = approximated.length > 0 ? approximated[approximated.length - 1]?.Year : historical[historical.length - 1]?.Year
 
   return (
     <Container>
@@ -116,6 +116,19 @@ function Graph({
             },
             {
               // @ts-ignore
+              id: 'approximated',
+              fill: true,
+              data: approximatedDataset,
+              borderDash: [2, 2],
+              borderWidth: 2,
+              borderColor: colorTheme.orange,
+              backgroundColor: colorTheme.darkOrangeOpaque,
+              pointRadius: 0,
+              tension: 0.15,
+              hidden: false,
+            },
+            {
+              // @ts-ignore
               id: 'budget',
               fill: true,
               data: step >= 2 ? budgetDataset : budgetDataset.map(({ x }) => ({ x, y: 0 })),
@@ -130,7 +143,7 @@ function Graph({
               // @ts-ignore
               id: 'pledge',
               fill: true,
-              data: pledgeDataset,
+              data: trendDataset,
               borderWidth: 2,
               borderColor: colorTheme.red,
               backgroundColor: colorTheme.darkRedOpaque,
