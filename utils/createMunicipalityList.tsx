@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { DatasetDescription, Municipality, SelectedData } from './types'
+import { Municipality, SelectedData } from './types'
 import { datasetDescriptions, currentData } from './datasetDescriptions'
 
 export const calculateClimatePlanRankings = (
@@ -63,7 +63,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
         name: item.name,
         dataPoint: item.dataPoint,
         formattedDataPoint: item.formattedDataPoint,
-        yearAdapted: item.yearAdapted
+        yearAdapted: item.yearAdapted,
 
       })),
     )
@@ -74,7 +74,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
         name: item.name,
         dataPoint: Number(item.dataPoint),
         formattedDataPoint: item.formattedDataPoint,
-        yearAdapted: item.yearAdapted
+        yearAdapted: item.yearAdapted,
       })),
       sortAscending,
       edgeCaseOnTop,
@@ -84,13 +84,8 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
   return newRankedData
 }
 
-const columnHeader = (datasetDescription: DatasetDescription) => (
-  <div>{datasetDescription.columnHeader}</div>
-)
-
 export const listColumns = (
   selectedData: SelectedData,
-  datasetDescription: DatasetDescription,
 ): ColumnDef<{
   name: string
   dataPoint: string | number | Date | JSX.Element
@@ -106,7 +101,17 @@ export const listColumns = (
       cell: (row) => {
         if (isClimatePlan) {
           return row.row.original.index === -1
-            ? <a href={row.row.original.dataPoint} onClick={(e) => e.stopPropagation()} style={{ color: 'orange' }}>Ja</a>
+            ? (
+              <a
+                href={row.row.original.dataPoint.toString()}
+                onClick={(e) => e.stopPropagation()}
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: 'orange' }}
+              >
+                Ja
+              </a>
+            )
             : 'Nej'
         }
         return row.cell.row.index + 1
