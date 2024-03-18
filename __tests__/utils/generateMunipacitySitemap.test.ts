@@ -10,14 +10,14 @@ describe('generateSitemap', () => {
     const siteMap = generateMunipacitySitemapData({ municipalities })
     expect(siteMap).toEqual([
       {
-        url: 'https://klimatkollen.se/kommun/Stockholm',
+        url: 'https://klimatkollen.se/kommun/stockholm',
         name: 'Stockholm',
         lastModified: expect.any(Date),
         changeFrequency: 'yearly',
         priority: 1,
       },
       {
-        url: 'https://klimatkollen.se/kommun/Göteborg',
+        url: 'https://klimatkollen.se/kommun/göteborg',
         name: 'Göteborg',
         lastModified: expect.any(Date),
         changeFrequency: 'yearly',
@@ -25,6 +25,7 @@ describe('generateSitemap', () => {
       },
     ])
   })
+
   it('should generate a valid sitemap XML string', () => {
     const siteMap = generateMunipacitySitemapData({ municipalities })
     const sitemapXml = generateSitemap(siteMap)
