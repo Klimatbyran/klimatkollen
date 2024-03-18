@@ -245,6 +245,7 @@ function Map({
             setLastTapInfo({ x, y, mData }) // trigger mobile tooltip display
           }
         }}
+        onViewStateChange={() => setLastTapInfo(null)}
         layers={[municipalityLayer]}
       // FIXME needs to be adapted to mobile before reintroducing
       /* onViewStateChange={({ viewState }) => {
