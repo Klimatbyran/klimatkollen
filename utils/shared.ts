@@ -21,3 +21,18 @@ export const isValidDataset = (dataset: string) => {
 }
 
 export const isValidDataView = (dataView: string) => [defaultDataView, secondaryDataView].includes(dataView)
+
+export const replaceLetters = (name: string): string => {
+  const replacements: Record<string, string> = {
+    'Ã¥': 'å',
+    'Ã¤': 'ä',
+    'Ã¶': 'ö',
+    'Ã…': 'Å',
+    'Ã„': 'Ä',
+    'Ã–': 'Ö',
+  }
+
+  const regex = new RegExp(Object.keys(replacements).join('|'), 'g')
+
+  return name.replace(regex, (match) => replacements[match])
+}
