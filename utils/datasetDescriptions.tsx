@@ -305,5 +305,6 @@ export const currentData = (
     name: item.Name,
     dataPoint: dataPoint || 'Data saknas',
     formattedDataPoint,
+    yearAdapted: item.ClimatePlan.YearAdapted,
   }
 })
