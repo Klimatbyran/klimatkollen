@@ -3,14 +3,14 @@ import { DatasetDescription, Municipality, SelectedData } from './types'
 import { datasetDescriptions, currentData } from './datasetDescriptions'
 
 export const calculateClimatePlanRankings = (
-  data: Array<{ name: string; dataPoint: string | number | Date | JSX.Element; formattedDataPoint: string }>,
+  data: Array<{ name: string; dataPoint: string | number | Date | JSX.Element; formattedDataPoint: string, yearAdapted: string }>,
 ) => data.map((item) => ({
   ...item,
   index: item.dataPoint === 'Saknas' ? 1 : -1,
 }))
 
 export const calculateRankings = (
-  data: Array<{ name: string; dataPoint: number; formattedDataPoint: string }>,
+  data: Array<{ name: string; dataPoint: number; formattedDataPoint: string, yearAdapted: string }>,
   sortAscending: boolean,
   stringsOnTop: boolean,
 ) => {
@@ -45,7 +45,9 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
       name: string
       dataPoint: number | string | Date | JSX.Element
       formattedDataPoint: string
+      yearAdapted: string
       index: number
+
     }>
   }
 
@@ -61,6 +63,8 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
         name: item.name,
         dataPoint: item.dataPoint,
         formattedDataPoint: item.formattedDataPoint,
+        yearAdapted: item.yearAdapted
+
       })),
     )
   } else {
@@ -70,6 +74,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
         name: item.name,
         dataPoint: Number(item.dataPoint),
         formattedDataPoint: item.formattedDataPoint,
+        yearAdapted: item.yearAdapted
       })),
       sortAscending,
       edgeCaseOnTop,
@@ -91,15 +96,18 @@ export const listColumns = (
   dataPoint: string | number | Date | JSX.Element
   formattedDataPoint: string
   index: number
+  yearAdapted: string
 }>[] => {
   const isClimatePlan = selectedData === 'Klimatplanerna'
 
   return [
     {
-      header: isClimatePlan ? 'Har plan?' : 'Ranking',
+      header: 'Har plan?',
       cell: (row) => {
         if (isClimatePlan) {
-          return row.row.original.index === -1 ? 'Ja' : 'Nej'
+          return row.row.original.index === -1
+            ? <a href={row.row.original.dataPoint} onClick={(e) => e.stopPropagation()} style={{ color: 'orange' }}>Ja</a>
+            : 'Nej'
         }
         return row.cell.row.index + 1
       },
@@ -111,22 +119,16 @@ export const listColumns = (
       accessorKey: 'name',
     },
     {
-      header: () => columnHeader(datasetDescription),
+      header: 'Antagen år',
       cell: (row) => {
-        const { dataPoint, formattedDataPoint } = row.row.original
         if (isClimatePlan) {
-          return dataPoint === 'Saknas' ? (
-            <i style={{ color: 'grey' }}>{dataPoint}</i>
-          ) : (
-            <a href={dataPoint as string} target="_blank" rel="noreferrer">
-              Öppna
-            </a>
-          )
+          return row.row.original.dataPoint !== 'Saknas'
+            ? <span style={{ color: 'grey' }}>{row.row.original.yearAdapted}</span>
+            : <span style={{ color: 'grey' }}>Saknar plan</span>
         }
-        return formattedDataPoint
+        return row.cell.row.index + 1
       },
       accessorKey: 'dataPoint',
-      sortingFn: (a, b) => a.original.index - b.original.index,
     },
   ]
 }
