@@ -119,7 +119,7 @@ function Graph({
               id: 'approximated',
               fill: true,
               data: approximatedDataset,
-              borderDash: [10, 10],
+              borderDash: [2, 2],
               borderWidth: 2,
               borderColor: colorTheme.orange,
               backgroundColor: colorTheme.darkOrangeOpaque,
