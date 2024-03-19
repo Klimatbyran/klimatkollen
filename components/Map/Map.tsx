@@ -73,7 +73,7 @@ const getColor = (
   return colors[5]
 }
 
-type Props = {
+type MapProps = {
   data: Array<{
     name: string
     dataPoint: number | string | Date
@@ -83,7 +83,7 @@ type Props = {
   children?: ReactNode
 }
 
-function Map({ data, boundaries, children }: Props) {
+function Map({ data, boundaries, children }: MapProps) {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 

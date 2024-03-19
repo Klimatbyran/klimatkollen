@@ -155,7 +155,7 @@ function StartPage({ municipalities }: PropsType) {
     )
   }
 
-  const cols = listColumns(selectedDataset)
+  const cols = listColumns(selectedDataset, datasetDescriptions[selectedDataset])
   const rankedData = rankData(municipalities, selectedDataset) // fixme hur byter jag ut denna till municipalityData?
 
   const isDefaultDataView = selectedDataView === defaultDataView

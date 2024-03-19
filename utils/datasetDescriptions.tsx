@@ -6,6 +6,8 @@ export const secondaryDataView = 'lista'
 
 export const defaultDataset = 'Utsläppen'
 
+const dataMissing = 'Data saknas'
+
 const yearsAhead = (years: number) => {
   const currentDate = new Date()
   const yearsInFuture = currentDate.getFullYear() + years
@@ -86,7 +88,7 @@ export const datasetDescriptions: DatasetDescriptions = {
     boundaries: ['Saknas', ''],
     labels: ['Nej', 'Ja'],
     labelRotateUp: [],
-    columnHeader: 'Klimatplan',
+    columnHeader: 'Antagen år',
     rawDataPoint: (item) => item.ClimatePlan.Link,
     formattedDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
   },
@@ -303,7 +305,7 @@ export const currentData = (
 
   return {
     name: item.Name,
-    dataPoint: dataPoint || 'Data saknas',
+    dataPoint: dataPoint || dataMissing,
     formattedDataPoint,
     yearAdapted: item.ClimatePlan.YearAdapted,
   }
