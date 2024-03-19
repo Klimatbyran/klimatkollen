@@ -259,7 +259,19 @@ export const datasetDescriptions: DatasetDescriptions = {
     // [ x ] add correct copy to muni screen
     // [  ] corrct list
     title: 'Klimatkrav i upphandling',
-    body: 'Kommuner som ställer klimatkrav vid offentliga upphandlingar. Ja innebär principbeslut och underlag som tillstyrker. Kanske innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker.',
+    body: (
+      <>
+        Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär
+        principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i
+        enkätundersökning eller via mejl, men utan underlag som tillstyrker.
+        {' '}
+        <a href="mailto:hej@klimatkollen.se">
+          Mejla oss
+        </a>
+        {' '}
+        för att redigera informationen.
+      </>
+    ),
     source: (
       <>
         Källa:

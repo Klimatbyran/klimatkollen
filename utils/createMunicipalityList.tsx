@@ -86,6 +86,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
 
 export const listColumns = (
   selectedData: SelectedData,
+  columnHeader: string,
 ): ColumnDef<{
   name: string
   dataPoint: string | number | Date | JSX.Element
@@ -97,7 +98,7 @@ export const listColumns = (
 
   return [
     {
-      header: 'Har plan?',
+      header: isClimatePlan ? 'Har plan?' : 'Ranking',
       cell: (row) => {
         if (isClimatePlan) {
           return row.row.original.index === -1
@@ -124,14 +125,16 @@ export const listColumns = (
       accessorKey: 'name',
     },
     {
-      header: 'Antagen år',
+      header: () => columnHeader,
       cell: (row) => {
+        const { formattedDataPoint } = row.row.original
+
         if (isClimatePlan) {
           return row.row.original.dataPoint !== 'Saknas'
-            ? <span style={{ color: 'grey' }}>{row.row.original.yearAdapted}</span>
-            : <span style={{ color: 'grey' }}>Saknar plan</span>
+            ? row.row.original.yearAdapted
+            : 'Saknar plan'
         }
-        return row.cell.row.index + 1
+        return formattedDataPoint
       },
       accessorKey: 'dataPoint',
     },
