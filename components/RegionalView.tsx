@@ -130,6 +130,8 @@ function RegionalView({
 
   const isDefaultDataView = selectedDataView === defaultDataView
 
+  const routeString = 'kommun'
+
   return (
     <>
       <H2Regular>Hur går det med?</H2Regular>
@@ -160,7 +162,7 @@ function RegionalView({
           </>
           )}
           {selectedDataView === secondaryDataView && (
-          <ComparisonTable data={rankedData[selectedDataset]} columns={cols} />
+          <ComparisonTable data={rankedData[selectedDataset]} columns={cols} routeString={routeString} />
           )}
         </ComparisonContainer>
         <InfoText>

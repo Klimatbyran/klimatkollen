@@ -17,11 +17,11 @@ const SwitchLabel = styled.label`
 const Slider = styled.div<{ isActive: boolean }>`
   position: absolute;
   top: 4px;
-  left: ${({ isActive }) => (isActive ? 'calc(100% - 122px)' : '4px')}; /* Width of the switch - width of slider */
-  width: 120px; /* Width of the slider */
-  height: 48px; /* Height of the slider */
+  left: ${({ isActive }) => (isActive ? 'calc(100% - 122px)' : '4px')}; /* width of the switch - width of slider */
+  width: 120px; /* width of the slider */
+  height: 48px; /* height of the slider */
   background: #fff;
-  border-radius: 48px; /* Half of the height to make it pill-shaped */
+  border-radius: 48px; /* half of height to make it pill-shaped */
   transition: 0.2s;
   display: flex;
   align-items: center;

@@ -23,7 +23,7 @@ const InfoContainer = styled.div`
   position: relative;
   background: ${({ theme }) => theme.lightBlack};
   border-radius: 8px;
-  margin-bottom: 32px;
+  margin: 32px 0;
   z-index: 15;
   ::-webkit-scrollbar {
     display: none;
@@ -66,6 +66,7 @@ function CompanyView({
   }
 
   const isDefaultDataView = selectedDataView === defaultDataView
+  const routeString = 'företag'
 
   return (
     <>
@@ -79,7 +80,7 @@ function CompanyView({
           text={isDefaultDataView ? 'Listvy' : 'Grafvy'}
           icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
         />
-        <ComparisonTable data={companies} columns={cols} />
+        <ComparisonTable data={companies} columns={cols} routeString={routeString} />
         <InfoText>
           <Paragraph>Lorem</Paragraph>
           <ParagraphSource>Lorem ipsum</ParagraphSource>
