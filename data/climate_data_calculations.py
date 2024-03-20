@@ -82,6 +82,7 @@ temp = [
         'totalConsumptionEmission': df.iloc[i]['Total emissions'],
         'electricVehiclePerChargePoints': df.iloc[i]['EVPC'],
         'procurementScore': df.iloc[i]['procurementScore'],
+        'procurementLink': df.iloc[i]['procurementLink'],
     }
     for i in range(len(df))
 ]
