@@ -8,7 +8,7 @@ import NextNProgress from 'nextjs-progressbar'
 import Link from 'next/link'
 import { colorTheme } from '../../Theme'
 import { mapColors } from '../shared'
-import { deviceSizesPx } from '../../utils/devices'
+import { deviceSizesPx, onTouchDevice } from '../../utils/devices'
 import {
   MapProps, MunicipalityTapInfo, MunicipalityData, isMunicipalityData,
 } from '../../utils/types'
@@ -108,7 +108,6 @@ const generateMobileTooltip = (tInfo: MunicipalityTapInfo) => (
   <div>
     <Link href={`/kommun/${replaceLetters(tInfo.mData.name).toLowerCase()}`}>
       <p
-        className="selected-feature-info"
         style={{ left: tInfo.x, top: tInfo.y, ...TOOLTIP_MOBILE_STYLE }}
       >
         {`${tInfo.mData.name}: ${tInfo.mData.formattedDataPoint}`}
@@ -121,10 +120,9 @@ function Map({
   data, boundaries, children,
 }: MapProps) {
   const [municipalityFeatureCollection, setMunicipalityFeatureCollection] = useState<any>({})
-  // "tapped" municipality tooltips are only to be used on mobile/tablet.
-  // we do a best-effort attempt at checking for desktop use by hover and screen size.
-  const [hasHovered, setHasHovered] = useState<boolean>(false)
+  // "tapped" municipality tooltips are only to be used on touch devices.
   const [lastTapInfo, setLastTapInfo] = useState<MunicipalityTapInfo | null>(null)
+
   const router = useRouter()
 
   const [initialViewState, setInitialViewState] = useState(INITIAL_VIEW_STATE)
@@ -221,10 +219,8 @@ function Map({
         initialViewState={initialViewState}
         controller={{}}
         getTooltip={({ object: mData }) => {
-          setHasHovered(true) // if getTooltip is triggered, user must have hovered.
-          setLastTapInfo(null)
-          if (!isMunicipalityData(mData)) {
-            return null
+          if (!isMunicipalityData(mData) || onTouchDevice()) {
+            return null // tooltips on touch devices are handled separately
           }
           return {
             html: `
@@ -237,13 +233,11 @@ function Map({
             setLastTapInfo(null)
             return
           }
-          if (hasHovered) { // assume that desktop user only wants to change view if they've hovered
-            router.push(`/kommun/${replaceLetters(mData.name).toLowerCase()}`)
+          if (onTouchDevice()) {
+            setLastTapInfo({ x, y, mData }) // trigger mobile tooltip display
             return
           }
-          if (window.innerWidth <= deviceSizesPx.tablet) { // the user might be on desktop, but has not hovered yet, so use extra safeguard.
-            setLastTapInfo({ x, y, mData }) // trigger mobile tooltip display
-          }
+          router.push(`/kommun/${replaceLetters(mData.name).toLowerCase()}`)
         }}
         onViewStateChange={() => setLastTapInfo(null)}
         layers={[municipalityLayer]}
