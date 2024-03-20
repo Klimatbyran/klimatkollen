@@ -31,7 +31,6 @@ export type ApproximatedEmission = {
 
 export type Budget = {
   CO2Equivalent: number
-  PercentageOfNationalBudget: number
   BudgetPerYear: Array<EmissionPerYear>
 }
 
