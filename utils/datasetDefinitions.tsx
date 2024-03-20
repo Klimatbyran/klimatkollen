@@ -1,12 +1,14 @@
 /* eslint-disable max-len */
-import { DatasetDescriptions, Municipality, SelectedData } from './types'
+import {
+  DataDescriptions, Municipality, SelectedData,
+} from './types'
 
 export const defaultDataView = 'karta'
 export const secondaryDataView = 'lista'
 
 export const defaultDataset = 'Utsläppen'
 
-const dataMissing = 'Data saknas'
+export const climatePlanMissing = 'Saknar plan'
 
 const yearsAhead = (years: number) => {
   const currentDate = new Date()
@@ -23,12 +25,17 @@ const formatDateToString = (date: Date): string => {
 }
 
 export const requirementsInProcurement = (score: number): string => {
-  if (score > 1) return 'Ja'
-  if (score > 0) return 'Kanske'
-  return 'Nej'
+  let scoreString = 'Nej'
+  if (score > 0) {
+    scoreString = 'Kanske'
+  }
+  if (score > 1) {
+    scoreString = 'Ja'
+  }
+  return scoreString
 }
 
-export const datasetDescriptions: DatasetDescriptions = {
+export const dataDescriptions: DataDescriptions = {
   Utsläppen: {
     title: 'Utsläppsförändring',
     body: 'Genomsnittlig årlig förändring av koldioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
@@ -49,9 +56,11 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
+    dataPoints: {
+      rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent / 100,
+      formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
+    },
     sortAscending: true,
-    rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent / 100,
-    formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
   },
 
   Klimatplanerna: {
@@ -85,12 +94,15 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: ['Saknas', ''],
+    boundaries: [climatePlanMissing, ''],
     labels: ['Nej', 'Ja'],
     labelRotateUp: [],
     columnHeader: 'Antagen år',
-    rawDataPoint: (item) => item.ClimatePlan.Link,
-    formattedDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
+    dataPoints: {
+      rawDataPoint: (item) => item.ClimatePlan.Link,
+      formattedDataPoint: (dataPoint) => (dataPoint === climatePlanMissing ? 'Nej' : 'Ja'),
+      additionalDataPoint: (item) => item.ClimatePlan.YearAdapted,
+    },
   },
 
   Elbilarna: {
@@ -109,9 +121,11 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
     labelRotateUp: [true, true, true, true, true, true],
     columnHeader: 'Ökning elbilar',
+    dataPoints: {
+      rawDataPoint: (item) => item.ElectricCarChangePercent,
+      formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
+    },
     sortAscending: false,
-    rawDataPoint: (item) => item.ElectricCarChangePercent,
-    formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
   },
 
   Laddarna: {
@@ -135,9 +149,11 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
     labelRotateUp: [],
     columnHeader: 'Elbil per laddare',
+    dataPoints: {
+      rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
+      formattedDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
+    },
     sortAscending: true,
-    rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
-    formattedDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
   },
 
   Cyklarna: {
@@ -170,9 +186,11 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
     labelRotateUp: [],
     columnHeader: 'Cykelväglängd',
+    dataPoints: {
+      rawDataPoint: (item) => item.BicycleMetrePerCapita,
+      formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    },
     sortAscending: false,
-    rawDataPoint: (item) => item.BicycleMetrePerCapita,
-    formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Konsumtionen: {
@@ -202,9 +220,11 @@ export const datasetDescriptions: DatasetDescriptions = {
     ],
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person/år',
+    dataPoints: {
+      rawDataPoint: (item) => item.TotalConsumptionEmission,
+      formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    },
     sortAscending: true,
-    rawDataPoint: (item) => item.TotalConsumptionEmission,
-    formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Koldioxidbudgetarna: {
@@ -243,21 +263,17 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', 'Håller budget'],
     labelRotateUp: [],
     columnHeader: 'Budget tar slut',
+    dataPoints: {
+      rawDataPoint: (item) => new Date(item.BudgetRunsOut),
+      formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1)
+        ? formatDateToString(dataPoint as Date)
+        : 'Håller budget'),
+    },
     sortAscending: false,
-    rawDataPoint: (item) => new Date(item.BudgetRunsOut),
-    formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1)
-      ? formatDateToString(dataPoint as Date)
-      : 'Håller budget'),
     stringsOnTop: true,
   },
 
   Upphandlingarna: {
-    // TODO
-    // [ x ] tests
-    // [ x ] add to municipality screen
-    // [ ] add correct icon muni screen
-    // [ x ] add correct copy to muni screen
-    // [  ] corrct list
     title: 'Klimatkrav i upphandling',
     body: (
       <>
@@ -298,27 +314,33 @@ export const datasetDescriptions: DatasetDescriptions = {
     boundaries: [0, 1, 2],
     labels: ['Nej', 'Kanske', 'Ja'],
     labelRotateUp: [],
-    columnHeader: 'Klimatkrav',
+    columnHeader: 'Länk till krav',
+    dataPoints: {
+      rawDataPoint: (item) => item.ProcurementScore,
+      formattedDataPoint: (dataPoint) => requirementsInProcurement(dataPoint as number),
+    },
     sortAscending: false,
-    rawDataPoint: (item) => item.ProcurementScore,
-    formattedDataPoint: (dataPoint) => requirementsInProcurement(dataPoint as number),
   },
 }
 
-export const currentData = (
+export const dataOnDisplay = (
   municipalities: Array<Municipality>,
   selectedData: SelectedData,
 ) => municipalities.map((item) => {
-  const dataset = datasetDescriptions[selectedData]
-  const dataPoint = dataset.rawDataPoint ? dataset.rawDataPoint(item) : null
-  const formattedDataPoint = dataPoint != null && dataset.formattedDataPoint
-    ? dataset.formattedDataPoint(dataPoint)
+  const { dataPoints } = dataDescriptions[selectedData]
+
+  const dataPoint = dataPoints.rawDataPoint ? dataPoints.rawDataPoint(item) : 'Data saknas'
+  const formattedDataPoint = dataPoint != null && dataPoints.formattedDataPoint
+    ? dataPoints.formattedDataPoint(dataPoint)
     : 'Data saknas'
+  const secondaryDataPoint = dataPoints.additionalDataPoint ? dataPoints.additionalDataPoint(item) : undefined
 
   return {
     name: item.Name,
-    dataPoint: dataPoint || dataMissing,
-    formattedDataPoint,
-    yearAdapted: item.ClimatePlan.YearAdapted,
+    primaryDataPoint: dataPoint,
+    formattedPrimaryDataPoint: formattedDataPoint,
+    secondaryDataPoint,
+    climatePlanYearAdapted: item.ClimatePlan.YearAdapted,
+    procurementLink: item.ProcurementLink,
   }
 })

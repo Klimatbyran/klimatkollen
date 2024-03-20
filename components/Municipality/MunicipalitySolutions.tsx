@@ -6,7 +6,7 @@ import EVCar from '../../public/icons/evcars_32.svg'
 import Bike from '../../public/icons/bikelanes_32.svg'
 import Basket from '../../public/icons/consumtion_32.svg'
 import Charger from '../../public/icons/charger.svg'
-import { requirementsInProcurement } from '../../utils/datasetDescriptions'
+import { requirementsInProcurement } from '../../utils/datasetDefinitions'
 
 const StyledH2 = styled(H2)`
   margin-top: 32px;

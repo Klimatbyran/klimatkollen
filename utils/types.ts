@@ -1,4 +1,4 @@
-import { datasetDescriptions } from './datasetDescriptions'
+import { dataDescriptions } from './datasetDefinitions'
 
 export type Image = {
   ImageUrl: string
@@ -68,11 +68,18 @@ export type Municipality = {
   TotalConsumptionEmission: number,
   ElectricVehiclePerChargePoints: number,
   ProcurementScore: number,
+  ProcurementLink: string,
 }
 
-export type SelectedData = keyof typeof datasetDescriptions
+export type SelectedData = keyof typeof dataDescriptions
 
-export type DatasetDescription = {
+export type DataDescriptionDataPoints = {
+  rawDataPoint: (item: Municipality) => number | string | Date
+  formattedDataPoint: (dataPoint: number | string | Date) => string
+  additionalDataPoint?: (item: Municipality) => string
+}
+
+export type DataDescription = {
   title: string
   body: string | JSX.Element
   source: React.ReactNode
@@ -80,20 +87,18 @@ export type DatasetDescription = {
   labels: string[]
   labelRotateUp: boolean[]
   columnHeader: string
+  dataPoints: DataDescriptionDataPoints
   sortAscending?: boolean
-  rawDataPoint: (item: Municipality) => number | string | Date
-  formattedDataPoint: (dataPoint: number | string | Date) => string
   stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
-export type DatasetDescriptions = {
-  [key: string]: DatasetDescription
+export type DataDescriptions = {
+  [key: string]: DataDescription
 }
 
-export type RankedData = {
-  [key: string]: {
-    name: string;
-    dataPoint: number | string | JSX.Element;
-    rank?: number | undefined;
-  }[]
+export type CurrentDataPoints = {
+  name: string
+  primaryDataPoint: number | string | Date
+  formattedPrimaryDataPoint: string
+  secondaryDataPoint?: string | null
 }
