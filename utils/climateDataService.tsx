@@ -43,10 +43,12 @@ export class ClimateDataService {
 
         const approximatedEmission = {
           TotalCO2Emission: data.totalApproximatedHistoricalEmission,
-          EmissionPerYear: Object.entries(data.approximatedHistoricalEmission).map(([year, co2equivalent]) => ({
-            Year: Number(year),
-            CO2Equivalent: co2equivalent,
-          })),
+          EmissionPerYear: Object.entries(data.approximatedHistoricalEmission).map(
+            ([year, co2equivalent]) => ({
+              Year: Number(year),
+              CO2Equivalent: co2equivalent,
+            }),
+          ),
         } as unknown as ApproximatedEmission
 
         const trend = {
@@ -58,7 +60,6 @@ export class ClimateDataService {
         } as unknown as Trend
 
         const budget = {
-          PercentageOfNationalBudget: 1,
           CO2Equivalent: data.budget,
           BudgetPerYear: Object.entries(data.emissionBudget).map(
             ([year, emissionBudget]) => ({
@@ -74,7 +75,7 @@ export class ClimateDataService {
           Comment: data.climatePlanComment,
         } as unknown as ClimatePlan
 
-        const municipality = {
+        return {
           Name: data.kommun,
           HistoricalEmission: emission,
           ApproximatedHistoricalEmission: approximatedEmission,
@@ -90,12 +91,11 @@ export class ClimateDataService {
           TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
           ElectricVehiclePerChargePoints: data.electricVehiclePerChargePoints,
         } as Municipality
-        return municipality
       })
-      .sort((a: Municipality, b: Municipality) => (
-        a.HistoricalEmission.HistoricalEmissionChangePercent
-          - b.HistoricalEmission.HistoricalEmissionChangePercent
-      ))
+      .sort(
+        (a: Municipality, b: Municipality) => a.HistoricalEmission.HistoricalEmissionChangePercent
+          - b.HistoricalEmission.HistoricalEmissionChangePercent,
+      )
     this.municipalities.forEach((municipality: Municipality, index: number) => {
       const updatedMunicipality = { ...municipality }
       updatedMunicipality.HistoricalEmission.HistoricalEmissionChangeRank = index + 1
@@ -108,8 +108,6 @@ export class ClimateDataService {
   }
 
   public getMunicipality(name: string): Municipality {
-    return this.municipalities.filter(
-      (kommun) => kommun.Name.toLowerCase() === name,
-    )[0]
+    return this.municipalities.filter((kommun) => kommun.Name.toLowerCase() === name)[0]
   }
 }

@@ -84,7 +84,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
   return newRankedData
 }
 
-export const listColumns = (
+export const municipalityColumns = (
   selectedData: SelectedData,
   columnHeader: string,
 ): ColumnDef<{

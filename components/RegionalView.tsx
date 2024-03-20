@@ -125,7 +125,7 @@ function RegionalView({
     )
   }
 
-  const cols = municipalityColumns(selectedDataset, datasetDescription)
+  const cols = municipalityColumns(selectedDataset, datasetDescription.columnHeader)
   const rankedData = rankData(municipalities, selectedDataset)
 
   const isDefaultDataView = selectedDataView === defaultDataView

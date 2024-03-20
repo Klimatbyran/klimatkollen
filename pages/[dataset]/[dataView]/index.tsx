@@ -1,11 +1,12 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { Municipality as TMunicipality } from '../../../utils/types'
+import { Company as TCompany, Municipality as TMunicipality } from '../../../utils/types'
 import StartPage from '../..'
 import { ClimateDataService } from '../../../utils/climateDataService'
 import { isValidDataset, isValidDataView, normalizeString } from '../../../utils/shared'
 import Layout from '../../../components/Layout'
 import Footer from '../../../components/Footer/Footer'
+import { CompanyDataService } from '../../../utils/companyDataService'
 
 interface Params extends ParsedUrlQuery {
   dataset: string
@@ -35,17 +36,27 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   }
 
   const municipalities = new ClimateDataService().getMunicipalities()
-  if (municipalities.length < 1) throw new Error('No municipalities found')
+  if (municipalities.length < 1) {
+    throw new Error('No municipalities found')
+  }
+
+  const companies = new CompanyDataService().getCompanies()
+  if (companies.length < 1) {
+    throw new Error('No companies found')
+  }
 
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
-  if (cache.get(normalizedDataset)) return cache.get(normalizedDataset)
+  if (cache.get(normalizedDataset)) {
+    return cache.get(normalizedDataset)
+  }
 
   const result = {
     props: {
+      companies,
       municipalities,
       normalizedDataset,
     },
@@ -56,14 +67,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
 }
 
 type Props = {
+  companies: Array<TCompany>
   municipalities: Array<TMunicipality>
 }
 
-export default function DataView({ municipalities }: Props) {
+export default function DataView({ companies, municipalities }: Props) {
   return (
     <>
       <Layout>
-        <StartPage municipalities={municipalities} />
+        <StartPage companies={companies} municipalities={municipalities} />
       </Layout>
       <Footer />
     </>
