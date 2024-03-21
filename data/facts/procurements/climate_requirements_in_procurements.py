@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 
+import os
 import pandas as pd
 from helpers import clean_kommun
 
 
-PATH_NUR_DATA = 'facts/procurements/NUE2022_DATA_2023-12-20.xlsx'
 PATH_GREENPEACE_DATA = 'facts/procurements/Klimatkrav offentlig upphandling kartläggning.xlsx'
+
+RELATIVE_PATH_NUR_DATA = os.path.join(
+    os.path.dirname(__file__),
+    "../../../public/data/procurements/NUE2022_DATA_2023-12-20.xlsx"
+)
+NORMALIZED_PATH_NUR_DATA = os.path.normpath(RELATIVE_PATH_NUR_DATA)
 
 def get_greenpeace_data():
     df_greenpeace = pd.read_excel(PATH_GREENPEACE_DATA)
@@ -14,7 +20,7 @@ def get_greenpeace_data():
     return df_greenpeace[['Kommun', 'procurementLink']]
 
 def get_nur_data():
-    df_nur = pd.read_excel(PATH_NUR_DATA)
+    df_nur = pd.read_excel(NORMALIZED_PATH_NUR_DATA)
     df_nur['Kommun'] = df_nur['ORG_NAMN'].apply(clean_kommun)
     return df_nur[['Kommun', 'BINÄRT_UTFALL']]
 

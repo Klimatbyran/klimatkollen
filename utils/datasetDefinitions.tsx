@@ -293,7 +293,7 @@ export const dataDescriptions: DataDescriptions = {
         Källa:
         {' '}
         <a
-          href="/data/facts/procurements/NUE2022_DATA_2023-12-20.xlsx" // fixme
+          href="/data/procurements/NUE2022_DATA_2023-12-20.xlsx" // fixme
           target="_blank"
           rel="noreferrer"
         >
