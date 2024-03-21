@@ -8,7 +8,7 @@ const SwitchLabel = styled.label`
   justify-content: space-between;
   width: 240px; 
   height: 56px;
-  background: ${({ theme }) => theme.lightGreen};
+  background: ${({ theme }) => theme.lightBlack};
   border-radius: 28px;
   margin-bottom: 40px;
   cursor: pointer;
@@ -20,7 +20,7 @@ const Slider = styled.div<{ isActive: boolean }>`
   left: ${({ isActive }) => (isActive ? 'calc(100% - 122px)' : '4px')}; /* width of the switch - width of slider */
   width: 120px; /* width of the slider */
   height: 48px; /* height of the slider */
-  background: #fff;
+  background: ${({ theme }) => theme.lightGreen};
   border-radius: 48px; /* half of height to make it pill-shaped */
   transition: 0.2s;
   display: flex;
