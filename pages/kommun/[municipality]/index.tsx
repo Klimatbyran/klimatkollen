@@ -9,7 +9,9 @@ export default function Index() {
   const municipality = router.query.municipality as string
 
   useEffect(() => {
-    if (municipality) router.replace(`/kommun/${municipality}/${CHARTS[0]}`)
+    if (municipality) {
+      router.replace(`/kommun/${municipality}/${CHARTS[0]}`)
+    }
   }, [municipality, router])
 
   return ''

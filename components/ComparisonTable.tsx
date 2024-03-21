@@ -77,9 +77,10 @@ const TableRow = styled.tr`
 type TableProps<T extends object> = {
   data: T[]
   columns: ColumnDef<T>[]
+  routeString: string
 }
 
-function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
+function ComparisonTable<T extends object>({ data, columns, routeString }: TableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const router = useRouter()
 
@@ -109,7 +110,7 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
   const handleRowClick = (row: Row<T>) => {
     const cells = row.getAllCells()
     const value = cells.at(1)?.renderValue()
-    const route = typeof value === 'string' ? `/kommun/${value.toLowerCase()}` : '/404'
+    const route = typeof value === 'string' ? `/${routeString}/${value.toLowerCase()}` : '/404'
     router.push(route)
   }
 

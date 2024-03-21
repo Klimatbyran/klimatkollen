@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Example Company",
+    "industry": "Manufacturing",
+    "baseYear": "2019",
+    "url": "https://example.com",
+    "scope1": "1236",
+    "scope2": "1235",
+    "scope3": "5322000",
+    "totalEmissions": "1555",
+    "totalUnit": "Million ton CO2e"
+  },
+  {
+    "name": "Example Company 2",
+    "industry": "Manufacturing",
+    "baseYear": "2019",
+    "url": "https://example2.com",
+    "scope1": "1234",
+    "scope2": "1235",
+    "scope3": "5322000",
+    "totalEmissions": "1553",
+    "totalUnit": "Million ton CO2e"
+  },
+  {
+    "name": "Example Company 3",
+    "industry": "Technology",
+    "baseYear": "2018",
+    "url": "https://example3.com",
+    "scope1": "1365",
+    "scope2": "1563",
+    "scope3": "5200000",
+    "totalEmissions": "1500",
+    "totalUnit": "Million ton CO2e"
+  },
+  {
+    "name": "Example Company 4",
+    "industry": "Energy",
+    "baseYear": "2017",
+    "url": "https://example4.com",
+    "scope1": "1400",
+    "scope2": "1300",
+    "scope3": "5000000",
+    "totalEmissions": "1450",
+    "totalUnit": "Million ton CO2e"
+  },
+  {
+    "name": "Example Company 5",
+    "industry": "Automotive",
+    "baseYear": "2019",
+    "url": "https://example5.com",
+    "scope1": "1500",
+    "scope2": "1350",
+    "scope3": "5500000",
+    "totalEmissions": "1600",
+    "totalUnit": "Million ton CO2e"
+  },
+  {
+    "name": "Example Company 6",
+    "industry": "Agriculture",
+    "baseYear": "2016",
+    "url": "https://example6.com",
+    "scope1": "1150",
+    "scope2": "1250",
+    "scope3": "5100000",
+    "totalEmissions": "1400",
+    "totalUnit": "Million ton CO2e"
+  },
+  {
+    "name": "Example Company 7",
+    "industry": "Retail",
+    "baseYear": "2019",
+    "url": "https://example7.com",
+    "scope1": "1100",
+    "scope2": "1300",
+    "scope3": "5150000",
+    "totalEmissions": "1425",
+    "totalUnit": "Million ton CO2e"
+  },
+  {
+    "name": "Example Company 8",
+    "industry": "Finance",
+    "baseYear": "2019",
+    "url": "https://example8.com",
+    "scope1": "1200",
+    "scope2": "1400",
+    "scope3": "5300000",
+    "totalEmissions": "1550",
+    "totalUnit": "Million ton CO2e"
+  },
+  {
+    "name": "Example Company 9",
+    "industry": "Construction",
+    "baseYear": "2018",
+    "url": "https://example9.com",
+    "scope1": "1300",
+    "scope2": "1250",
+    "scope3": "5400000",
+    "totalEmissions": "1505",
+    "totalUnit": "Million ton CO2e"
+  },
+  {
+    "name": "Example Company 10",
+    "industry": "Real Estate",
+    "baseYear": "2017",
+    "url": "https://example10.com",
+    "scope1": "1340",
+    "scope2": "1390",
+    "scope3": "5501000",
+    "totalEmissions": "1600",
+    "totalUnit": "Million ton CO2e"
+  }
+]

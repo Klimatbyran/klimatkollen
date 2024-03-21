@@ -33,7 +33,6 @@ describe('Home Page', () => {
       Budget: {
         BudgetPerYear: [],
         CO2Equivalent: 0,
-        PercentageOfNationalBudget: 0,
       },
       PoliticalRule: [],
       EmissionTrend: {
