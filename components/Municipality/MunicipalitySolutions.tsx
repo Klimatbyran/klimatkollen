@@ -6,6 +6,7 @@ import EVCar from '../../public/icons/evcars_32.svg'
 import Bike from '../../public/icons/bikelanes_32.svg'
 import Basket from '../../public/icons/consumtion_32.svg'
 import Charger from '../../public/icons/charger.svg'
+import Procurements from '../../public/icons/kpis/procurements_32.svg'
 import { requirementsInProcurement } from '../../utils/datasetDefinitions'
 
 const StyledH2 = styled(H2)`
@@ -64,7 +65,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019."
       />
       <SolutionSection
-        icon={<Basket />}
+        icon={<Procurements />}
         title="Klimatkrav i upphandlingar"
         heading="Ställer kommunen klimatkrav i sina upphandlingar?"
         data={requirementsInProcurement(municipality.ProcurementScore)}
