@@ -28,7 +28,7 @@ type SolutionSectionProps = {
   title: string
   heading: string
   data: string
-  info: string
+  info: string | JSX.Element
 }
 
 function SolutionSection({
@@ -68,8 +68,19 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         title="Klimatkrav i upphandlingar"
         heading="Ställer kommunen klimatkrav i sina upphandlingar?"
         data={requirementsInProcurement(municipality.ProcurementScore)}
-        info="Ja innebär principbeslut och underlag som tillstyrker.
-        Kanske innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker."
+        info={(
+          <>
+            Kommuner som ställer klimatkrav vid offentliga upphandlingar.' +
+            “Ja” innebär principbeslut och underlag som tillstyrker.
+            “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker.
+            {' '}
+            <a href="mailto:hej@klimatkollen.se">
+              Mejla oss
+            </a>
+            {' '}
+            för att redigera informationen.
+          </>
+        )}
       />
       <SolutionSection
         icon={<EVCar />}
