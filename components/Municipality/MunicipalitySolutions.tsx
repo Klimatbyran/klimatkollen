@@ -70,7 +70,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         data={requirementsInProcurement(municipality.ProcurementScore)}
         info={(
           <>
-            Kommuner som ställer klimatkrav vid offentliga upphandlingar.' +
+            Kommuner som ställer klimatkrav vid offentliga upphandlingar.
             “Ja” innebär principbeslut och underlag som tillstyrker.
             “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker.
             {' '}
