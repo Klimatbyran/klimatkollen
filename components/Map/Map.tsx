@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
@@ -122,6 +122,7 @@ function Map({
   const [municipalityFeatureCollection, setMunicipalityFeatureCollection] = useState<any>({})
   // "tapped" municipality tooltips are only to be used on touch devices.
   const [lastTapInfo, setLastTapInfo] = useState<MunicipalityTapInfo | null>(null)
+  const wrapperRef = useRef<HTMLDivElement|null>(null)
 
   const router = useRouter()
 
@@ -158,6 +159,16 @@ function Map({
     // Cleanup
     return () => window.removeEventListener('resize', updateZoom)
   }, [])
+
+  useEffect(() => {
+    function clearToolTipOnOutsideTap(ev: TouchEvent) {
+      if (wrapperRef.current && ev.target && !wrapperRef.current.contains(ev.target as HTMLElement)) {
+        setLastTapInfo(null)
+      }
+    }
+    document.addEventListener('touchstart', clearToolTipOnOutsideTap)
+    return () => document.removeEventListener('touchstart', clearToolTipOnOutsideTap)
+  }, [wrapperRef])
 
   const municipalityLines = municipalityFeatureCollection?.features?.flatMap(
     ({ geometry, properties }: { geometry: any; properties: any }) => {
@@ -204,7 +215,7 @@ function Map({
   })
 
   return (
-    <DeckGLWrapper>
+    <DeckGLWrapper ref={wrapperRef}>
       <NextNProgress
         color={colorTheme.darkGreenOne}
         startPosition={0.3}
