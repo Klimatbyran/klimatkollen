@@ -6,7 +6,7 @@ const SwitchLabel = styled.label`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 240px; 
+  width: 264px; 
   height: 56px;
   background: ${({ theme }) => theme.lightBlack};
   border-radius: 28px;
@@ -17,11 +17,11 @@ const SwitchLabel = styled.label`
 const Slider = styled.div<{ isActive: boolean }>`
   position: absolute;
   top: 4px;
-  left: ${({ isActive }) => (isActive ? 'calc(100% - 122px)' : '4px')}; /* width of the switch - width of slider */
-  width: 120px; /* width of the slider */
+  left: ${({ isActive }) => (isActive ? 'calc(50%)' : '4px')}; /* width of the switch - width of slider */
+  width: calc(50% - 4px);
   height: 48px; /* height of the slider */
-  background: ${({ theme }) => theme.lightGreen};
-  border-radius: 48px; /* half of height to make it pill-shaped */
+  background: ${({ theme }) => theme.darkGreenOne};
+  border-radius: 48px;
   transition: 0.2s;
   display: flex;
   align-items: center;
@@ -39,16 +39,20 @@ const SwitchInput = styled.input`
 
 const TextLeft = styled.span`
   position: absolute;
-  left: 16px;
-  color: black;
+  width: 50%;
+  left: 0px;
+  text-align: center;
+  color: ${({ theme }) => theme.offWhite};
   pointer-events: none; /* ignore pointer events so label still triggers input */
   z-index: 10;
 `
 
 const TextRight = styled.span`
   position: absolute;
-  right: 16px;
-  color: black;
+  width: 50%;
+  right: 0px;
+  text-align: center;
+  color: ${({ theme }) => theme.offWhite};
   pointer-events: none;
   z-index: 10;
 `
