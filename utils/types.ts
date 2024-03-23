@@ -18,8 +18,8 @@ export type EmissionSector = {
 export type Emission = {
   EmissionPerYear: Array<EmissionPerYear>
   SectorEmissionsPerYear: Array<EmissionSector>
-  EmissionLevelChangeAverage: number
-  AverageEmissionChangeRank: number | null
+  HistoricalEmissionChangePercent: number
+  HistoricalEmissionChangeRank: number | null
 }
 
 export type Budget = {
@@ -30,7 +30,7 @@ export type Budget = {
 
 export type Trend = {
   TrendPerYear: Array<EmissionPerYear>
-  FutureCO2Emission: number
+  TrendCO2Emission: number
 }
 
 export type ClimatePlan = {
@@ -49,7 +49,7 @@ export type Municipality = {
   HistoricalEmission: Emission
   PoliticalRule: Array<string> | null
   EmissionTrend: Trend
-  EmissionChangePercent: number
+  NeededEmissionChangePercent: number
   HitNetZero: number | string
   BudgetRunsOut: string
   ElectricCars: number
@@ -58,11 +58,10 @@ export type Municipality = {
   ClimatePlan: ClimatePlan,
   BicycleMetrePerCapita: number,
   TotalConsumptionEmission: number,
+  ElectricVehiclePerChargePoints: number,
 }
 
 export type SelectedData = keyof typeof datasetDescriptions
-
-export type DatasetType = 'Percent' | 'Link' | 'Number'
 
 export type DatasetDescription = {
   title: string
@@ -72,8 +71,9 @@ export type DatasetDescription = {
   labels: string[]
   labelRotateUp: boolean[]
   columnHeader: string
-  dataType: DatasetType
   sortAscending?: boolean
+  calculateDataPoint?: (item: Municipality) => number | string
+  formatDataPoint?: (dataPoint: number | string) => string
 }
 
 export type DatasetDescriptions = {
@@ -83,8 +83,7 @@ export type DatasetDescriptions = {
 export type RankedData = {
   [key: string]: {
     name: string;
-    dataPoint: number | string;
+    dataPoint: number | string | JSX.Element;
     rank?: number | undefined;
-}[]
-
+  }[]
 }

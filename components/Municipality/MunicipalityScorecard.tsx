@@ -103,12 +103,16 @@ const CommentContainer = styled.div`
   margin-top: 8px;
 `
 
+const Comment = styled.span`
+  font-weight: bold;
+`
+
 type Props = {
   name: string
   rank: number | null
   budget: number | null
   budgetRunsOut: string
-  emissionChangePercent: number
+  neededEmissionChangePercent: number
   politicalRule: Array<string> | null
   climatePlan: ClimatePlan
 }
@@ -120,7 +124,7 @@ function Scorecard({
   rank,
   budget,
   budgetRunsOut,
-  emissionChangePercent,
+  neededEmissionChangePercent,
   politicalRule,
   climatePlan,
 }: Props) {
@@ -180,7 +184,7 @@ function Scorecard({
               {' '}
               för att redigera informationen.
               <CommentContainer>
-                <b>Kommentar:</b>
+                <Comment>Kommentar:</Comment>
                 {' '}
                 {climatePlan.Comment}
               </CommentContainer>
@@ -243,7 +247,7 @@ function Scorecard({
       )}
       <ScorecardSection
         heading="Utsläppsminskning för att klara Parisavtalet"
-        data={`-${emissionChangePercent.toFixed(1)}% per år`}
+        data={`-${neededEmissionChangePercent.toFixed(1)}% per år`}
         info={(
           <>
             Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska

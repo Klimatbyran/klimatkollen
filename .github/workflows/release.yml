@@ -37,6 +37,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Node.js setup
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -45,5 +46,19 @@ jobs:
       - name: Download dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: Run tests
+      - name: Run TypeScript tests
         run: npm test
+
+      # Python setup
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.11
+
+      - name: Install Python dependencies
+        run: pip3 install -r data/requirements.txt
+
+      # Run Python tests
+      # Fixme: Uncomment when tests are added!
+      # - name: Run Python tests
+      #   run: python3 -m unittest discover -s data/tests

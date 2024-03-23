@@ -119,6 +119,8 @@ function Graph({
     }
   }
 
+  const lastYearWithData = historical[historical.length - 1]?.Year
+
   return (
     <Container>
       <YAxisTitle>Tusen ton CO₂</YAxisTitle>
@@ -232,7 +234,7 @@ function Graph({
           scales: {
             x: {
               min: step === 0 ? setup.minYear : 2015,
-              max: step > 0 ? maxVisibleYear : CURRENT_YEAR,
+              max: step > 0 ? maxVisibleYear : lastYearWithData,
               grid: {
                 display: true,
                 color: 'rgba(255, 255, 255, 0.2)',
@@ -242,7 +244,7 @@ function Graph({
                 font: {
                   family: 'Borna',
                   size: 15,
-                  weight: '300',
+                  weight: 300,
                 },
                 color: 'white',
                 align: 'center',
@@ -264,7 +266,7 @@ function Graph({
                 font: {
                   family: 'Borna',
                   size: 15,
-                  weight: '300',
+                  weight: 300,
                 },
                 color: 'white',
                 callback: (a) => ((a as number) / 1000).toString(),

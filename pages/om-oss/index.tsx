@@ -148,16 +148,13 @@ function OmOss() {
                   1,5-gradersmålet. Därför startade vi Klimatkollen.
                 </Paragraph>
                 <Paragraph>
-                  Flera andra personer finns på olika sätt i Klimatkollens nätverk. Några
-                  av dem sitter i Klimatbyråns styrelse, se nedan. Andra jobbar med att
-                  vidareutveckla webbplatsen, tidigare Iteam, nu Elvira Boman från
-                  Precisit och Johan Pödra från It’s a Thing. Många fler bidrar med stöd
-                  och råd på olika sätt.
+                  I Klimatkollens kärnteam idag finns förutom Ola och Frida även Elvira Boman,
+                  Tech Lead. Många fler bidrar med stöd och råd på olika sätt.
                 </Paragraph>
                 <Paragraph>
-                  Våra samarbetspartners under första året var Världsnaturfonden WWF, PwC,
-                  ClimateView, Klimatklubben, Våra barns klimat, Argand Partners och We
-                  Don’t Have Time.
+                  Våra samarbetspartners under de första två åren har varit Världsnaturfonden WWF,
+                  Postkodstiftelsen, PwC, ClimateView,, Klimatklubben, Våra barns klimat,
+                  Researchers’ Desk, Argand Partners och We Don’t Have Time.
                 </Paragraph>
               </>
             )}
@@ -405,7 +402,7 @@ function OmOss() {
             text={(
               <>
                 <Paragraph>
-                  I dag drivs Klimatkollen med hjälp av
+                  Under 2023 har Klimatkollen drivits med
                   {' '}
                   <a
                     // eslint-disable-next-line max-len
@@ -415,11 +412,21 @@ function OmOss() {
                   >
                     stöd från Postkodstiftelsen
                   </a>
+                  . Under 2024 och 2025 får Klimatkollen finansiell uppbackning av Google.org som en av två svenska mottagare av
+                  {' '}
+                  <a
+                    // eslint-disable-next-line max-len
+                    href="https://www.google.org/climate/impact-challenge/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Google.org Impact Challenge: Tech for Social Good
+                  </a>
                   .
                 </Paragraph>
                 <Paragraph>
-                  Mycket av arbetet är ideellt, därför välkomnar vi fler samarbetspartners
-                  och ekonomiskt stöd!
+                  Mycket av arbetet är ideellt, därför välkomnar vi fler
+                  samarbetspartners och ekonomiskt stöd för att kunna skala upp!
                 </Paragraph>
                 <Paragraph>
                   Uppstarten finansierades av Världsnaturfonden WWF, ClimateView, We Don’t
@@ -432,18 +439,18 @@ function OmOss() {
             header="Postkodprojektet"
             text={(
               <Paragraph>
-                Under 2023 får Klimatkollen stöd av
+                Under 2023 har Klimatkollen uppburit stöd av
                 {' '}
                 <a href="https://postkodstiftelsen.se/" target="_blank" rel="noreferrer">
                   Postkodstiftelsen
                 </a>
                 {' '}
                 för att ta tempen på hur det går med klimatomställningen i kommunerna. I
-                dag kan du se hur det går med koldioxidutsläppen. Nu ska vi även visa vad
+                dag kan du se hur det går med koldioxidutsläppen. Nu visar vi även vad
                 kommunerna gör för att minska dem. Vi utgår ifrån de största
                 utsläppssektorerna och visar sedan hur det går med viktiga omställningar
-                inom dessa sektorer, genom att presentera statistik om utvalda nyckeltal
-                t, ett nyckeltal per omställning.
+                inom dessa sektorer, genom att presentera statistik om utvalda nyckeltal,
+                ett nyckeltal per omställning.
               </Paragraph>
             )}
           />

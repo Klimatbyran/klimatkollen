@@ -60,6 +60,14 @@ function sumEmissionsPerYear(emissions: Array<EmissionPerYear>) {
 }
 
 function MunicipalityEmissionNumbers({ municipality, step, showSectors }: EmissionsProps) {
+  const historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+
+  //const totalTrend = municipality.EmissionTrend.TrendCO2Emission / 1000
+  const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0]?.Year
+
+  const totalBudget = municipality.Budget.CO2Equivalent / 1000
+  const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year
+
   // Retrieving data and summing
   const totalHistorical = sumEmissionsPerYear(municipality.HistoricalEmission.EmissionPerYear)
   const totalTrend = municipality.EmissionTrend.FutureCO2Emission

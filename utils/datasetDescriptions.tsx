@@ -23,12 +23,13 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [0, -0.01, -0.02, -0.03, -0.1],
+    boundaries: [0, -1, -2, -3, -10],
     labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     labelRotateUp: [true, false, false, false, false, false],
     columnHeader: 'Utsläppsförändring',
-    dataType: 'Percent',
     sortAscending: true,
+    calculateDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent,
+    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Elbilarna: {
@@ -43,12 +44,13 @@ export const datasetDescriptions: DatasetDescriptions = {
         </a>
       </>
     ),
-    boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
+    boundaries: [4, 5, 6, 7, 8],
     labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
     labelRotateUp: [true, true, true, true, true, true],
     columnHeader: 'Ökning elbilar',
-    dataType: 'Percent',
     sortAscending: false,
+    calculateDataPoint: (item) => item.ElectricCarChangePercent * 100,
+    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Klimatplanerna: {
@@ -85,7 +87,8 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['Nej', 'Ja'],
     labelRotateUp: [],
     columnHeader: 'Klimatplan',
-    dataType: 'Link',
+    calculateDataPoint: (item) => item.ClimatePlan.Link,
+    formatDataPoint: (dataPoint) => (dataPoint === 'Saknas' ? 'Nej' : 'Ja'),
   },
 
   Cyklarna: {
@@ -118,8 +121,9 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
     labelRotateUp: [],
     columnHeader: 'Cykelväglängd',
-    dataType: 'Number',
     sortAscending: false,
+    calculateDataPoint: (item) => item.BicycleMetrePerCapita,
+    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
   },
 
   Konsumtionen: {
@@ -142,33 +146,46 @@ export const datasetDescriptions: DatasetDescriptions = {
     labels: ['7 ton +', '6,7-7 ton', '6,4-6,7 ton', '6,1-6,4 ton', '5,8-6,1 ton', '5,8 ton -'],
     labelRotateUp: [],
     columnHeader: 'Ton CO₂e/person/år',
-    dataType: 'Number',
     sortAscending: true,
+    calculateDataPoint: (item) => item.TotalConsumptionEmission,
+    formatDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+  },
+
+  Laddarna: {
+    title: 'Elbilar per laddare',
+    body: 'Antal laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="https://powercircle.org/elbilsstatistik/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Power Circle ELIS
+        </a>
+        {' '}
+      </>
+    ),
+    boundaries: [1e6, 40, 30, 20, 10],
+    labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
+    labelRotateUp: [],
+    columnHeader: 'Elbil per laddare',
+    sortAscending: true,
+    calculateDataPoint: (item) => item.ElectricVehiclePerChargePoints,
+    formatDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
   },
 }
 
-export const data = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
-  let dataPoint
-
-  switch (selectedData) {
-    case 'Utsläppen':
-      dataPoint = item.HistoricalEmission.EmissionLevelChangeAverage
-      break
-    case 'Elbilarna':
-      dataPoint = item.ElectricCarChangePercent
-      break
-    case 'Klimatplanerna':
-      dataPoint = item.ClimatePlan.Link
-      break
-    case 'Konsumtionen':
-      dataPoint = item.TotalConsumptionEmission
-      break
-    default:
-      dataPoint = item.BicycleMetrePerCapita
-  }
+export const currentData = (municipalities: Array<Municipality>, selectedData: SelectedData) => municipalities.map((item) => {
+  const dataset = datasetDescriptions[selectedData]
+  const dataPoint = dataset.calculateDataPoint ? dataset.calculateDataPoint(item) : null
+  const formattedDataPoint = dataPoint != null && dataset.formatDataPoint ? dataset.formatDataPoint(dataPoint) : ''
 
   return {
     name: item.Name,
-    dataPoint,
+    dataPoint: dataPoint || '',
+    formattedDataPoint,
   }
 })
