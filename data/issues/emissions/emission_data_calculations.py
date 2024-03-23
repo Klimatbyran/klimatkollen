@@ -4,6 +4,7 @@ import datetime
 import numpy as np
 import pandas as pd
 from dateutil.relativedelta import relativedelta
+from pprint import pprint
 
 BUDGET = 80000000                # C02 budget in metric tonnes 
 BUDGET_YEAR = 2024               # year from which the budget applies
@@ -68,6 +69,24 @@ def get_n_prep_data_from_smhi(df):
 
     return df, sector_dfs
 
+def get_cement_deduction():
+    return  {'Mörbylånga':
+            {2010: 248025000/1000, 2015: 255970000/1000, 2016: 239538000/1000,
+                2017: 255783000/1000, 2018: 241897000/1000, 2019: 65176000/1000, 2020: 0, 2021: 0},
+            'Skövde':
+            {2010: 356965000/1000, 2015: 358634000/1000, 2016: 384926000/1000, 2017: 407633130 /
+                1000, 2018: 445630340/1000, 2019: 440504330/1000, 2020: 459092473/1000, 2021: 439174727/1000},
+            'Gotland':
+            {2010: 1579811000/1000, 2015: 1926036000/1000, 2016: 1903887000/1000, 2017: 1757110000 /
+                1000, 2018: 1740412000/1000, 2019: 1536480000/1000, 2020: 1624463000/1000, 2021: 1621211000/1000}
+            }
+
+def remove_cement_munips(sector_dfs):
+    for kommun in list(get_cement_deduction().keys()):
+        for sector_name in sector_dfs:
+            sdf = sector_dfs[sector_name]
+            i = sdf.index[sdf['Kommun'] == kommun]
+            sdf.drop(i, inplace = True)
 
 def deduct_cement(df, sector_dfs):
     # Sources for cement deduction
@@ -76,17 +95,7 @@ def deduct_cement(df, sector_dfs):
     # Gotland: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=834
 
     df_cem = df.copy()
-
-    cement_deduction = {'Mörbylånga':
-                        {2010: 248025000/1000, 2015: 255970000/1000, 2016: 239538000/1000,
-                         2017: 255783000/1000, 2018: 241897000/1000, 2019: 65176000/1000, 2020: 0, 2021: 0},
-                        'Skövde':
-                        {2010: 356965000/1000, 2015: 358634000/1000, 2016: 384926000/1000, 2017: 407633130 /
-                         1000, 2018: 445630340/1000, 2019: 440504330/1000, 2020: 459092473/1000, 2021: 439174727/1000},
-                        'Gotland':
-                        {2010: 1579811000/1000, 2015: 1926036000/1000, 2016: 1903887000/1000, 2017: 1757110000 /
-                         1000, 2018: 1740412000/1000, 2019: 1536480000/1000, 2020: 1624463000/1000, 2021: 1621211000/1000}
-                        }
+    cement_deduction = get_cement_deduction()
 
     # Deduct cement from given municipalities
     for i in cement_deduction.keys():
@@ -311,7 +320,14 @@ def calculate_budget_runs_out(df):
 
 def emission_calculations(df):
     df_smhi, sector_dfs = get_n_prep_data_from_smhi(df)
-    df_cem, sector_dfs = deduct_cement(df_smhi, sector_dfs)
+
+    # This should be the calculation:
+    #   df_cem, sector_dfs = deduct_cement(df_smhi, sector_dfs)
+    # But the cement numbers for sectors don't add up. So it's best not to construct them at all.
+    df_cem, _ = deduct_cement(df_smhi, sector_dfs)
+    remove_cement_munips(sector_dfs)
+    # end.
+
     df_budgeted = calculate_municipality_budgets(df_cem)
     df_trend = calculate_trend(df_budgeted)
     df_paris = calculate_paris_path(df_trend)

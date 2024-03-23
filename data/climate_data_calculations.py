@@ -11,7 +11,6 @@ from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
 from issues.emissions.emission_data_calculations import emission_calculations
 from issues.consumption.consumption_data_calculations import get_consumption_emissions
-from export_data import export_to_xlsx
 from test import validate_output
 
 # Notebook from ClimateView that our calculations are based on:
@@ -52,20 +51,22 @@ for i in range(len(df)):
     kommun = df.iloc[i]['Kommun']
 
     sectorEmissions = dict()
-    for sector in sectors:
-        sectorEmissions[sector] = {
-            '1990': sector_dfs[sector][1990][kommun],
-            '2000': sector_dfs[sector][2000][kommun],
-            '2005': sector_dfs[sector][2005][kommun],
-            '2010': sector_dfs[sector][2010][kommun],
-            '2015': sector_dfs[sector][2015][kommun],
-            '2016': sector_dfs[sector][2016][kommun],
-            '2017': sector_dfs[sector][2017][kommun],
-            '2018': sector_dfs[sector][2018][kommun],
-            '2019': sector_dfs[sector][2019][kommun],
-            '2020': sector_dfs[sector][2020][kommun],
-            '2021': sector_dfs[sector][2021][kommun]
-        }
+    if kommun in sector_dfs[sectors[0]][1990]:
+        # The cement kommuner don't have this computed.
+        for sector in sectors:
+            sectorEmissions[sector] = {
+                '1990': sector_dfs[sector][1990][kommun],
+                '2000': sector_dfs[sector][2000][kommun],
+                '2005': sector_dfs[sector][2005][kommun],
+                '2010': sector_dfs[sector][2010][kommun],
+                '2015': sector_dfs[sector][2015][kommun],
+                '2016': sector_dfs[sector][2016][kommun],
+                '2017': sector_dfs[sector][2017][kommun],
+                '2018': sector_dfs[sector][2018][kommun],
+                '2019': sector_dfs[sector][2019][kommun],
+                '2020': sector_dfs[sector][2020][kommun],
+                '2021': sector_dfs[sector][2021][kommun]
+            }
         
     temp.append({
         'kommun': df.iloc[i]['Kommun'],
@@ -111,6 +112,3 @@ if validate_output():
     print('Tests on output file passed.')
 else:
     print("WARNING: Tests on output file failed, see output above.")
-
-temp_df = pd.DataFrame(temp)
-export_to_xlsx(temp_df)

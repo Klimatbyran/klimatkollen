@@ -5,7 +5,6 @@ def validate_output():
 	data = None
 	with open('output/climate-data.json', 'r', encoding='utf8') as json_file:  
 	    data = json.load(json_file)
-
 	try:
 		run_tests(data)
 		return True
@@ -22,19 +21,19 @@ def run_tests(data):
 		for year in totals:
 			assert totals[year] >= 0, [munip['kommun'], year, totals[year]]
 
-		computedTotals = dict()
 		sectors = munip['sectorEmissions']
-		for name in sectors:
-			sector = sectors[name]
-			for year in sectors[name]:
-				assert sector[year] >= 0, ["Nonnegative total sectors", munip['kommun'], year, sector[year]]
-
-				if year not in computedTotals:
-					computedTotals[year] = 0
-				computedTotals[year] = computedTotals[year] + sector[year]
+		if (sectors): # Cement munips don't have this.
+			computedTotals = dict()
+			for name in sectors:
+				sector = sectors[name]
+				for year in sectors[name]:
+					assert sector[year] >= 0, ["Nonnegative total sectors", munip['kommun'], year, sector[year], name]
+					if year not in computedTotals:
+						computedTotals[year] = 0
+					computedTotals[year] = computedTotals[year] + sector[year]
 				
-		for year in totals:
-			assert abs(totals[year]-computedTotals[year]) < 0.005, ["Sectors sum up", year, munip['kommun']]
+			for year in totals:
+				assert abs(totals[year]-computedTotals[year]) < 0.005, ["Sectors sum up", year, munip['kommun']]
 
 if __name__ == "__main__":
 	print("PASSED" if validate_output() else "FAILED")
