@@ -1,4 +1,4 @@
-import { TRAFA_BASE_URL } from "."
+import { TRAFA_BASE_URL } from '.'
 
 // bun run data/trafa/client.ts
 
@@ -21,7 +21,7 @@ type TrafaFuel =
   | 'ovriga'
   | 'totalt'
 
-const TrafaDataTargetCategory = {
+export const TrafaDataTargetCategory = {
   onTheRoad: 'Fordon på väg',
   communal: 'Fordon i län och kommuner',
   monthly: 'Fordon månadsstatistik',
@@ -60,12 +60,10 @@ const TrafaDataTarget = {
  * @returns An array of valid years.
  */
 export const validYears = (commaSeperatedYearString: string) => {
-  const years = commaSeperatedYearString.split(',').map((y) => parseInt(y))
+  const years = commaSeperatedYearString.split(',').map((y) => parseInt(y, 10))
   const isValidYear = years.filter((y) => y >= 2000 && y <= new Date().getFullYear())
-  return isValidYear ? isValidYear : []
+  return isValidYear || []
 }
-
-
 
 /**
  * Represents a Trafa client with various methods for configuring and building a query.
@@ -78,14 +76,17 @@ export class TrafaClient {
    * @default 'onTheRoad'
    */
   private category: keyof typeof TrafaDataTarget
+
   /**
    * The target data to filter by
    */
   private target: string
+
   /**
    * The year to filter by, empty means all years
    */
   private year: number[] = []
+
   /**
    * The measure to filter by
    *
@@ -134,6 +135,7 @@ export class TrafaClient {
     this.fuel = f
     return this
   }
+
   setTarget<T extends keyof typeof TrafaDataTarget>(params: {
     category: T
     target: keyof (typeof TrafaDataTarget)[T]
@@ -142,7 +144,14 @@ export class TrafaClient {
     this.target = TrafaDataTarget[params.category][params.target] as string
     return this
   }
-  build(withBaseUrl = true) {
+
+  /**
+   * Builds the query string for the TRAFA API based on the current state of the client.
+   * @param withBaseUrl - Indicates whether to include the base URL in the returned query string.
+   * @returns The constructed query string.
+   * @default true
+   */
+  build() {
     const queryParts: string[] = [this.target, 'ar']
 
     if (this.year.length > 0) {
@@ -153,7 +162,7 @@ export class TrafaClient {
       queryParts.push(this.measure.join('|'))
     }
 
-    if (this.measure.length <= 1 && this.fuel.length > 0) {
+    if (this.fuel.length > 0) {
       queryParts.push(
         `${this.category === 'communal' ? 'drivmedel' : 'drivm'}:${this.fuel.join(',')}`,
       )
@@ -162,6 +171,9 @@ export class TrafaClient {
     if (this.category === 'communal') {
       queryParts.push('reglan', 'regkom')
     }
-    return  withBaseUrl ? `${TRAFA_BASE_URL}?query=${queryParts.join('|')}` : queryParts.join('|')
+    return {
+      query: queryParts.join('|'),
+      url: `${TRAFA_BASE_URL}?query=${queryParts.join('|')}`,
+    }
   }
 }
