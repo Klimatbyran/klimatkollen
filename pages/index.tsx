@@ -19,11 +19,11 @@ import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
 import {
   defaultDataset,
-  datasetDescriptions,
-  currentData,
+  dataDescriptions,
+  dataOnDisplay,
   defaultDataView,
   secondaryDataView,
-} from '../utils/datasetDescriptions'
+} from '../utils/datasetDefinitions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import {
@@ -139,8 +139,8 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
-  const municipalityData = currentData(municipalities, selectedDataset) // get all municipality names and data points for map and list
-  const datasetDescription = datasetDescriptions[selectedDataset] // get description of selected dataset
+  const municipalityDataOnDisplay = dataOnDisplay(municipalities, selectedDataset) // get all municipality names and data points for map and list
+  const datasetDescription = dataDescriptions[selectedDataset] // get description of selected dataset
 
   const handleToggle = () => {
     const newDataView = selectedDataView === defaultDataView ? secondaryDataView : defaultDataView
@@ -155,7 +155,7 @@ function StartPage({ municipalities }: PropsType) {
     )
   }
 
-  const cols = listColumns(selectedDataset, datasetDescriptions[selectedDataset].columnHeader)
+  const cols = listColumns(selectedDataset, dataDescriptions[selectedDataset].columnHeader)
   const rankedData = rankData(municipalities, selectedDataset) // fixme hur byter jag ut denna till municipalityData?
 
   const isDefaultDataView = selectedDataView === defaultDataView
@@ -190,7 +190,7 @@ function StartPage({ municipalities }: PropsType) {
                     rotations={datasetDescription.labelRotateUp}
                   />
                   <Map
-                    data={municipalityData}
+                    data={municipalityDataOnDisplay}
                     boundaries={datasetDescription.boundaries}
                   />
                 </>

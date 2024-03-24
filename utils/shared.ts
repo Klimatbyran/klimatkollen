@@ -1,4 +1,4 @@
-import { datasetDescriptions, defaultDataView, secondaryDataView } from './datasetDescriptions'
+import { dataDescriptions, defaultDataView, secondaryDataView } from './datasetDefinitions'
 
 export const normalizeString = (input: string) => input.replace('ä', 'a').replace('ö', 'o').replace('å', 'a').toLowerCase()
 
@@ -7,7 +7,7 @@ export const toTitleCase = (str: string) => str.replace(
   (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
 )
 
-export const validDatasetsMap = Object.keys(datasetDescriptions).reduce<
+export const validDatasetsMap = Object.keys(dataDescriptions).reduce<
   Record<string, string>
 >((acc, key) => {
   const normalizedKey = normalizeString(key)
