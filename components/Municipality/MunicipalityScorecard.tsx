@@ -6,6 +6,7 @@ import { H4, H5, ParagraphItalic } from '../Typography'
 import Icon from '../../public/icons/boxedArrow.svg'
 import PlanIcon from '../../public/icons/climatePlan.svg'
 import FactSection from '../FactSection'
+import { climatePlanMissing } from '../../utils/datasetDefinitions'
 
 const StyledDiv = styled.div`
   display: flex;
@@ -128,14 +129,14 @@ function Scorecard({
   politicalRule,
   climatePlan,
 }: Props) {
-  const climatePlanYearFormatted = climatePlan.YearAdapted !== 'Saknas'
+  const climatePlanYearFormatted = climatePlan.YearAdapted !== climatePlanMissing
     ? `Antagen ${climatePlan.YearAdapted}`
     : climatePlan.YearAdapted
   const rankFormatted = `${rank} av 290`
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
 
   const handleButtonClick = () => {
-    if (climatePlan.Link !== 'Saknas') {
+    if (climatePlan.Link !== climatePlanMissing) {
       window.open(climatePlan.Link, '_blank')
     }
   }
@@ -156,7 +157,7 @@ function Scorecard({
           <SectionRight>
             <LinkButton
               onClick={handleButtonClick}
-              disabled={climatePlan.Link === 'Saknas'}
+              disabled={climatePlan.Link === climatePlanMissing}
             >
               Öppna
               <Square>

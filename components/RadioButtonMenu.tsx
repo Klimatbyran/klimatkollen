@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import styled from 'styled-components'
-import { datasetDescriptions } from '../utils/datasetDescriptions'
+import { dataDescriptions } from '../utils/datasetDefinitions'
 import { SelectedData } from '../utils/types'
 import { devices } from '../utils/devices'
 
@@ -47,7 +47,7 @@ const RadioInput = styled.input`
   }
 `
 
-const datasetKeys = Object.keys(datasetDescriptions)
+const datasetKeys = Object.keys(dataDescriptions)
 
 type MenuProps = {
   selectedData: SelectedData
