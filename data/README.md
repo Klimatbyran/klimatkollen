@@ -2,6 +2,11 @@
 
 ## General information
 
+
+### Example calculation
+
+A Google Doc with example calculations for the emissions in Skövde municipality can be found [here](https://docs.google.com/document/d/1MihysUkfunbV0LjwSUCiGSqWQSo5U03K0RMbRsVBL7U/edit#heading=h.oqnz3ereclbn). The calculations for each step are described in words and, where possible, an explicit and simple calculation is presented. NOTE: The calculations are done for 2024 year's budget and the document is intended as method desciption for non-coders and people that are new to the source code. The document is open and editable and may therefore be updated over time.
+
 ### Data Sources
 
 We obtain our information from multiple providers including SMHI, SCB, Trafa, and PowerCircle. Some of this information is stored directly in our repository, while other datasets are dynamically pulled from their original locations.
