@@ -6,6 +6,7 @@ import { H4, H5, ParagraphItalic } from '../Typography'
 import Icon from '../../public/icons/boxedArrow.svg'
 import PlanIcon from '../../public/icons/climatePlan.svg'
 import FactSection from '../FactSection'
+import { climatePlanMissing } from '../../utils/datasetDefinitions'
 
 const StyledDiv = styled.div`
   display: flex;
@@ -103,12 +104,16 @@ const CommentContainer = styled.div`
   margin-top: 8px;
 `
 
+const Comment = styled.span`
+  font-weight: bold;
+`
+
 type Props = {
   name: string
   rank: number | null
   budget: number | null
   budgetRunsOut: string
-  emissionChangePercent: number
+  neededEmissionChangePercent: number
   politicalRule: Array<string> | null
   climatePlan: ClimatePlan
 }
@@ -120,18 +125,18 @@ function Scorecard({
   rank,
   budget,
   budgetRunsOut,
-  emissionChangePercent,
+  neededEmissionChangePercent,
   politicalRule,
   climatePlan,
 }: Props) {
-  const climatePlanYearFormatted = climatePlan.YearAdapted !== 'Saknas'
+  const climatePlanYearFormatted = climatePlan.YearAdapted !== climatePlanMissing
     ? `Antagen ${climatePlan.YearAdapted}`
     : climatePlan.YearAdapted
   const rankFormatted = `${rank} av 290`
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
 
   const handleButtonClick = () => {
-    if (climatePlan.Link !== 'Saknas') {
+    if (climatePlan.Link !== climatePlanMissing) {
       window.open(climatePlan.Link, '_blank')
     }
   }
@@ -152,7 +157,7 @@ function Scorecard({
           <SectionRight>
             <LinkButton
               onClick={handleButtonClick}
-              disabled={climatePlan.Link === 'Saknas'}
+              disabled={climatePlan.Link === climatePlanMissing}
             >
               Öppna
               <Square>
@@ -180,7 +185,7 @@ function Scorecard({
               {' '}
               för att redigera informationen.
               <CommentContainer>
-                <b>Kommentar:</b>
+                <Comment>Kommentar:</Comment>
                 {' '}
                 {climatePlan.Comment}
               </CommentContainer>
@@ -229,7 +234,7 @@ function Scorecard({
         <ScorecardSection
           heading="Koldioxidbudgeten tar slut"
           data={
-            budgetRunsOut === 'Aldrig'
+            budgetRunsOut === 'Håller budget'
               ? 'Med nuvarande trend håller kommunen sin budget'
               : budgetRunsOut
           }
@@ -243,7 +248,7 @@ function Scorecard({
       )}
       <ScorecardSection
         heading="Utsläppsminskning för att klara Parisavtalet"
-        data={`-${emissionChangePercent.toFixed(1)}% per år`}
+        data={`-${neededEmissionChangePercent.toFixed(1)}% per år`}
         info={(
           <>
             Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska

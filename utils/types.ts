@@ -1,4 +1,4 @@
-import { datasetDescriptions } from './datasetDescriptions'
+import { dataDescriptions } from './datasetDefinitions'
 
 export type Image = {
   ImageUrl: string
@@ -20,8 +20,13 @@ export type EmissionSector = {
 export type Emission = {
   EmissionPerYear: Array<EmissionPerYear>
   LargestEmissionSectors: Array<EmissionSector>
-  EmissionLevelChangeAverage: number
-  AverageEmissionChangeRank: number | null
+  HistoricalEmissionChangePercent: number
+  HistoricalEmissionChangeRank: number | null
+}
+
+export type ApproximatedEmission = {
+  EmissionPerYear: Array<EmissionPerYear>
+  TotalCO2Emission: number | null
 }
 
 export type Budget = {
@@ -32,7 +37,7 @@ export type Budget = {
 
 export type Trend = {
   TrendPerYear: Array<EmissionPerYear>
-  FutureCO2Emission: number
+  TrendCO2Emission: number
 }
 
 export type ClimatePlan = {
@@ -50,8 +55,9 @@ export type Municipality = {
   Budget: Budget
   HistoricalEmission: Emission
   PoliticalRule: Array<string> | null
+  ApproximatedHistoricalEmission: ApproximatedEmission
   EmissionTrend: Trend
-  EmissionChangePercent: number
+  NeededEmissionChangePercent: number
   HitNetZero: number | string
   BudgetRunsOut: string
   ElectricCars: number
@@ -60,33 +66,39 @@ export type Municipality = {
   ClimatePlan: ClimatePlan,
   BicycleMetrePerCapita: number,
   TotalConsumptionEmission: number,
+  ElectricVehiclePerChargePoints: number,
+  ProcurementScore: number,
+  ProcurementLink: string,
 }
 
-export type SelectedData = keyof typeof datasetDescriptions
+export type SelectedData = keyof typeof dataDescriptions
 
-export type DatasetType = 'Percent' | 'Link' | 'Number'
+export type DataDescriptionDataPoints = {
+  rawDataPoint: (item: Municipality) => number | string | Date
+  formattedDataPoint: (dataPoint: number | string | Date) => string
+  additionalDataPoint?: (item: Municipality) => string
+}
 
-export type DatasetDescription = {
+export type DataDescription = {
   title: string
   body: string | JSX.Element
   source: React.ReactNode
-  boundaries: number[] | string[]
+  boundaries: number[] | string[] | Date[]
   labels: string[]
   labelRotateUp: boolean[]
   columnHeader: string
-  dataType: DatasetType
+  dataPoints: DataDescriptionDataPoints
   sortAscending?: boolean
+  stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
-export type DatasetDescriptions = {
-  [key: string]: DatasetDescription
+export type DataDescriptions = {
+  [key: string]: DataDescription
 }
 
-export type RankedData = {
-  [key: string]: {
-    name: string;
-    dataPoint: number | string;
-    rank?: number | undefined;
-}[]
-
+export type CurrentDataPoints = {
+  name: string
+  primaryDataPoint: number | string | Date
+  formattedPrimaryDataPoint: string
+  secondaryDataPoint?: string | null
 }

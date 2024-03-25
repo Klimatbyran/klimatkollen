@@ -44,33 +44,45 @@ type EmissionsProps = {
 }
 
 function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
-  const totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
+  let totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
     (total, year) => total + year.CO2Equivalent,
     0,
   ) / 1000
-  const totalTrend = municipality.EmissionTrend.FutureCO2Emission / 1000
+  let historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+
+  // if historical approximated data exist, include into total historical emission and advance the year to which historical data extends
+  if (municipality.ApproximatedHistoricalEmission.TotalCO2Emission) {
+    totalHistorical += municipality.ApproximatedHistoricalEmission.TotalCO2Emission / 1000
+    historicalEndsYear = municipality.ApproximatedHistoricalEmission.EmissionPerYear[
+      municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
+  }
+
+  const totalTrend = municipality.EmissionTrend.TrendCO2Emission / 1000
+  const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0]?.Year
+
+  const totalBudget = municipality.Budget.CO2Equivalent / 1000
+  const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year
 
   return (
     <Container>
-      <H4>Utsläppen i siffror</H4>
+      <H4>Utsläppen i siffror (tusen ton CO₂)</H4>
       <TotalCo2Container>
         <TotalCo2>
           <Square color={colorTheme.orange} />
           <StyledText $color={colorTheme.offWhite}>
-            Historiskt: {totalHistorical.toFixed(1)} tusen ton CO₂
+            Historiskt 1990-{historicalEndsYear}: {totalHistorical.toFixed(1)}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
           <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
-            Trend: {totalTrend.toFixed(1)} tusen ton CO₂
+            Trend {trendStartsYear}-2050: {totalTrend.toFixed(1)}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
           <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
-            Koldioxidbudget för att klara Parisavtalet:{' '}
-            {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂
+            Koldioxidbudget {budgetStartsYear}-2050: {totalBudget.toFixed(1)}
           </StyledText>
         </TotalCo2>
       </TotalCo2Container>

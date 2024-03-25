@@ -42,3 +42,6 @@ yarn-error.log*
 
 # python
 __pycache__/
+
+# Intellij
+.idea
