@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import DropDown from '../components/DropDown'
 import MetaTags from '../components/MetaTags'
-import { H2Regular, H5Regular, Paragraph } from '../components/Typography'
+import { H2Regular, Paragraph } from '../components/Typography'
 import { Municipality, SelectedData } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
@@ -69,13 +69,17 @@ const TitleContainer = styled.div`
   align-items: center;
 `
 
-const FloatingH5 = styled(H5Regular)`
+const FloatingH5 = styled.h5`
   position: absolute;
-  margin: 60px 0 0 16px;
+  font-weight: regular;
+  line-height: 1.25;
+  margin: 55px 0 0 16px;
   z-index: 200;
 
-  @media only screen and (${devices.mobile}) {
-    margin: 55px 0 0 16px;
+  @media only screen and (${devices.tablet}) {
+    font-size: 18px;
+    margin: 60px 0 0 16px;
+    font-size
   }
 `
 
