@@ -51,7 +51,7 @@ const StyledIcon = styled.div`
 type Props = {
   heading: string
   data: string
-  info?: JSX.Element | string
+  info?: string | JSX.Element | string
 }
 
 function ScorecardSection({ heading, data, info }: Props) {

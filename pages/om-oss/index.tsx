@@ -86,8 +86,8 @@ function OmOss() {
           <ToggleSection
             header="Vad finns på Klimatkollen?"
             text={(
-              <Paragraph>
-                I dag kan du på Klimatkollen se:
+              <>
+                <Paragraph>I dag kan du på Klimatkollen se:</Paragraph>
                 <UnorderedList>
                   <ListItem>
                     Koldioxidbudgetar för landets alla 290 kommuner. Klimatkollen utgår
@@ -103,7 +103,7 @@ function OmOss() {
                     {' '}
                     som beräknats av forskare vid Uppsala universitet enligt
                     Tyndall-modellen och som sedan fördelats ut på kommunerna av
-                    ClimateView.
+                    Klimatkollen.
                   </ListItem>
                   <ListItem>
                     En översikt i både kartvy och listvy över koldioxidutsläppen i landets
@@ -133,7 +133,7 @@ function OmOss() {
                   Github-repo
                 </a>
                 .
-              </Paragraph>
+              </>
             )}
           />
           <ToggleSection
@@ -153,8 +153,8 @@ function OmOss() {
                 </Paragraph>
                 <Paragraph>
                   Våra samarbetspartners under de första två åren har varit Världsnaturfonden WWF,
-                  Postkodstiftelsen, PwC, ClimateView,, Klimatklubben, Våra barns klimat,
-                  Researchers’ Desk, Argand Partners och We Don’t Have Time.
+                  Postkodstiftelsen, PwC, ClimateView, Klimatklubben, Våra barns klimat,
+                  Researchers’ Desk, Argand Partners, Power Circle, 2030-sekretariatet och We Don’t Have Time.
                 </Paragraph>
               </>
             )}
@@ -218,31 +218,130 @@ function OmOss() {
                   {' '}
                   och sprida Klimatkollen i dina nätverk.
                 </Paragraph>
-                <Paragraph>
-                  <UnorderedList>
-                    <ListItem>
-                      Skriv upp dig på vårt nyhetsbrev (i formuläret längre ner på sidan)
-                      så berättar vi när vi släpper något nytt.
-                    </ListItem>
-                    <ListItem>
-                      Skänk en slant! Varje krona ger oss muskler att visa upp mer data.
-                      Vårt bankgiro: 5793-3178
-                    </ListItem>
-                    <ListItem>
-                      Ge av din kompetens? Skicka ett mejl till
-                      {' '}
-                      <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
-                    </ListItem>
-                  </UnorderedList>
-                </Paragraph>
+                <UnorderedList>
+                  <ListItem>
+                    Skriv upp dig på vårt nyhetsbrev (i formuläret längre ner på sidan)
+                    så berättar vi när vi släpper något nytt.
+                  </ListItem>
+                  <ListItem>
+                    Skänk en slant! Varje krona ger oss muskler att visa upp mer data.
+                    Vårt bankgiro: 5793-3178
+                  </ListItem>
+                  <ListItem>
+                    Ge av din kompetens? Skicka ett mejl till
+                    {' '}
+                    <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+                  </ListItem>
+                </UnorderedList>
               </>
             )}
           />
           <ToggleSection
             header="Vårt team"
             text={(
-              <Paragraph>
+              <Grid>
+                <GridItem>
+                  <GridImage
+                    src={Ola}
+                    alt="Ola Spännar"
+                    width="200"
+                    height="200"
+                  />
+                  <b>Ola Spännar</b>
+                  {' '}
+                  Opinionsbildare, medgrundare av Klimatkollen,
+                  tidigare kommunikationschef på Centerpartiet och kundansvarig på
+                  Forsman & Bodenfors.
+                </GridItem>
+                <GridItem>
+                  <GridImage
+                    src={Frida}
+                    alt="Frida Berry Eklund"
+                    width="200"
+                    height="200"
+                  />
+                  <b>Frida Berry Eklund</b>
+                  {' '}
+                  Klimatspecialist och medgrundare till
+                  Klimatkollen. Initiativtagare till Our Kids’ Climate och författare
+                  till boken “Prata med barn om klimatet” (Natur & Kultur). EU Climate
+                  Pact Ambassador och Climate Reality Leader.
+                </GridItem>
+                <GridItem>
+                  <GridImage
+                    src={Elvira}
+                    alt="Elvira Boman"
+                    width="200"
+                    height="200"
+                  />
+                  <b>Elvira Boman</b>
+                  Tech lead och teknisk fysiker på Klimatkollen
+                  och Precisit. Lång erfarenhet av grön och cirkulär tech vid flera prisbelönta
+                  startups och del av ledarteamet på IT-konsultbyrån Precisit.
+                </GridItem>
+              </Grid>
+            )}
+          />
+          <ToggleSection
+            header="Vår styrelse"
+            text={(
+              <>
+                <Paragraph>
+                  Klimatkollen drivs av den ideella föreningen, Klimatbyrån. I styrelsen
+                  sitter:
+                </Paragraph>
                 <Grid>
+                  <GridItem>
+                    <GridImage
+                      src={Christian}
+                      alt="Christian Landgren"
+                      width="200"
+                      height="200"
+                    />
+                    <b>Christian Landgren</b>
+                    {' '}
+                    Digital entreprenör och en av Sveriges
+                    mest inflytelserika personer inom tech. VD och grundare av Iteam och
+                    Öppna skolplattformen.
+                  </GridItem>
+                  <GridItem>
+                    <GridImage
+                      src={Anna}
+                      alt="Anna Loverus"
+                      width="200"
+                      height="200"
+                    />
+                    <b>Anna Loverus</b>
+                    {' '}
+                    Digital strateg och tidigare chef för sociala
+                    medier på Spotify och H&M. VD och grundare av Better Odds.
+                  </GridItem>
+                  <GridItem>
+                    <GridImage
+                      src={Maria}
+                      alt="Maria Soxbo"
+                      width="200"
+                      height="200"
+                    />
+                    <b>Maria Soxbo</b>
+                    {' '}
+                    Journalist, författare, föreläsare och grundare
+                    av Klimatklubben. Utsedd till en av Sveriges 101
+                    hållbarhetsmäktigaste 2021.
+                  </GridItem>
+                  <GridItem>
+                    <GridImage
+                      src={CJ}
+                      alt="Carl-Johan Schultz"
+                      width="200"
+                      height="200"
+                    />
+                    <b>Carl-Johan Schultz</b>
+                    {' '}
+                    Hållbarhetsstrateg på Doings, tidigare
+                    planner på Forsman & Bodenfors, författare till boken
+                    ”Hållbariseringen”, Årets marknadsföringsbok 2022.
+                  </GridItem>
                   <GridItem>
                     <GridImage
                       src={Ola}
@@ -270,110 +369,7 @@ function OmOss() {
                     till boken “Prata med barn om klimatet” (Natur & Kultur). EU Climate
                     Pact Ambassador och Climate Reality Leader.
                   </GridItem>
-                  <GridItem>
-                    <GridImage
-                      src={Elvira}
-                      alt="Elvira Boman"
-                      width="200"
-                      height="200"
-                    />
-                    <b>Elvira Boman</b>
-                    Tech lead och teknisk fysiker på Klimatkollen
-                    och Precisit. Lång erfarenhet av grön och cirkulär tech vid flera prisbelönta
-                    startups och del av ledarteamet på IT-konsultbyrån Precisit.
-                  </GridItem>
                 </Grid>
-              </Paragraph>
-            )}
-          />
-          <ToggleSection
-            header="Vår styrelse"
-            text={(
-              <>
-                <Paragraph>
-                  Klimatkollen drivs av den ideella föreningen, Klimatbyrån. I styrelsen
-                  sitter:
-                  <Grid>
-                    <GridItem>
-                      <GridImage
-                        src={Christian}
-                        alt="Christian Landgren"
-                        width="200"
-                        height="200"
-                      />
-                      <b>Christian Landgren</b>
-                      {' '}
-                      Digital entreprenör och en av Sveriges
-                      mest inflytelserika personer inom tech. VD och grundare av Iteam och
-                      Öppna skolplattformen.
-                    </GridItem>
-                    <GridItem>
-                      <GridImage
-                        src={Anna}
-                        alt="Anna Loverus"
-                        width="200"
-                        height="200"
-                      />
-                      <b>Anna Loverus</b>
-                      {' '}
-                      Digital strateg och tidigare chef för sociala
-                      medier på Spotify och H&M. VD och grundare av Better Odds.
-                    </GridItem>
-                    <GridItem>
-                      <GridImage
-                        src={Maria}
-                        alt="Maria Soxbo"
-                        width="200"
-                        height="200"
-                      />
-                      <b>Maria Soxbo</b>
-                      {' '}
-                      Journalist, författare, föreläsare och grundare
-                      av Klimatklubben. Utsedd till en av Sveriges 101
-                      hållbarhetsmäktigaste 2021.
-                    </GridItem>
-                    <GridItem>
-                      <GridImage
-                        src={CJ}
-                        alt="Carl-Johan Schultz"
-                        width="200"
-                        height="200"
-                      />
-                      <b>Carl-Johan Schultz</b>
-                      {' '}
-                      Hållbarhetsstrateg på Doings, tidigare
-                      planner på Forsman & Bodenfors, författare till boken
-                      ”Hållbariseringen”, Årets marknadsföringsbok 2022.
-                    </GridItem>
-                    <GridItem>
-                      <GridImage
-                        src={Ola}
-                        alt="Ola Spännar"
-                        width="200"
-                        height="200"
-                      />
-                      <b>Ola Spännar</b>
-                      {' '}
-                      Opinionsbildare, medgrundare av Klimatkollen,
-                      tidigare kommunikationschef på Centerpartiet och kundansvarig på
-                      Forsman & Bodenfors.
-                    </GridItem>
-                    <GridItem>
-                      <GridImage
-                        src={Frida}
-                        alt="Frida Berry Eklund"
-                        width="200"
-                        height="200"
-                      />
-                      <b>Frida Berry Eklund</b>
-                      {' '}
-                      Klimatspecialist och medgrundare till
-                      Klimatkollen. Initiativtagare till Our Kids’ Climate och författare
-                      till boken “Prata med barn om klimatet” (Natur & Kultur). EU Climate
-                      Pact Ambassador och Climate Reality Leader.
-                    </GridItem>
-                  </Grid>
-                </Paragraph>
                 <Paragraph>
                   Här hittar du våra
                   {' '}
@@ -457,10 +453,12 @@ function OmOss() {
           <ToggleSection
             header="Tidigare projekt"
             text={(
-              <Paragraph>
-                Inför riksdagsvalet 2022 ansvarade Klimatkollen för två unika projekt för
-                att ge medborgare bättre koll på utsläppseffekterna av partiernas
-                klimatpolitik:
+              <>
+                <Paragraph>
+                  Inför riksdagsvalet 2022 ansvarade Klimatkollen för två unika projekt för
+                  att ge medborgare bättre koll på utsläppseffekterna av partiernas
+                  klimatpolitik:
+                </Paragraph>
                 <OrderedList>
                   <ListItem>
                     <b>Klimatmål</b>
@@ -489,7 +487,7 @@ function OmOss() {
                     med 25 miljoner ton redan under mandatperioden 2022–2026.
                   </ListItem>
                 </OrderedList>
-              </Paragraph>
+              </>
             )}
           />
         </Container>

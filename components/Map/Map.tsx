@@ -7,6 +7,8 @@ import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
 import { colorTheme } from '../../Theme'
 import { mapColors } from '../shared'
+import { replaceLetters } from '../../utils/shared'
+import { CurrentDataPoints } from '../../utils/types'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -31,90 +33,58 @@ const hexToRGBA = (hex: string): RGBAColor => {
 
 const getColor = (
   dataPoint: number | string,
-  boundaries: number[] | string[],
+  boundaries: number[] | string[] | Date[],
 ): RGBAColor => {
-  const lightBlue: RGBAColor = hexToRGBA(mapColors[5])
-  const beige: RGBAColor = hexToRGBA(mapColors[4])
-  const lightYellow: RGBAColor = hexToRGBA(mapColors[3])
-  const darkYellow: RGBAColor = hexToRGBA(mapColors[2])
-  const orange: RGBAColor = hexToRGBA(mapColors[1])
-  const red: RGBAColor = hexToRGBA(mapColors[0])
+  const colors: RGBAColor[] = mapColors.map(hexToRGBA)
 
+  // Special case for binary KPIs
   if (boundaries.length === 2) {
-    return dataPoint === boundaries[0] ? red : lightBlue
+    return dataPoint === boundaries[0] ? colors[0] : colors[colors.length - 1]
+  }
+
+  // Special case for KPIs with three cases
+  if (boundaries.length === 3) {
+    if (dataPoint > boundaries[1]) {
+      return colors[colors.length - 1]
+    }
+    if (dataPoint > boundaries[0]) {
+      return colors[4]
+    }
+    return colors[0]
+  }
+
+  // Special case for invalid dates
+  const invalidDate = (possibleDate: unknown) => possibleDate instanceof Date && Number.isNaN(possibleDate.getTime())
+  if (invalidDate(dataPoint)) {
+    return colors[colors.length - 1]
   }
 
   const ascending = boundaries[0] < boundaries[1]
 
-  // FIXME refactor plz fortsätt här!
   if (ascending) {
-    if (dataPoint >= boundaries[4]) {
-      return lightBlue
+    for (let i = boundaries.length - 1; i >= 0; i -= 1) {
+      if (dataPoint >= boundaries[i]) {
+        return colors[i + 1]
+      }
     }
-    if (dataPoint >= boundaries[3]) {
-      return beige
+    return colors[0]
+  }
+
+  for (let i = 0; i < boundaries.length; i += 1) {
+    if (dataPoint >= boundaries[i]) {
+      return colors[i]
     }
-    if (dataPoint >= boundaries[2]) {
-      return lightYellow
-    }
-    if (dataPoint >= boundaries[1]) {
-      return darkYellow
-    }
-    if (dataPoint > boundaries[0]) {
-      return orange
-    }
-    return red
   }
-  if (dataPoint >= boundaries[0]) {
-    return red
-  }
-  if (dataPoint >= boundaries[1]) {
-    return orange
-  }
-  if (dataPoint >= boundaries[2]) {
-    return darkYellow
-  }
-  if (dataPoint >= boundaries[3]) {
-    return lightYellow
-  }
-  if (dataPoint > boundaries[4]) {
-    return beige
-  }
-  return lightBlue
+  return colors[5]
 }
 
-const replaceLetters = (name: string): string => {
-  const replacements: Record<string, string> = {
-    'Ã¥': 'å',
-    'Ã¤': 'ä',
-    'Ã¶': 'ö',
-    'Ã…': 'Å',
-    'Ã„': 'Ä',
-    'Ã–': 'Ö',
-  }
-
-  const regex = new RegExp(Object.keys(replacements).join('|'), 'g')
-
-  const replacedWord = name.replace(regex, (match) => replacements[match])
-
-  return replacedWord
-}
-
-// Use when viewState is reimplemented
-/* const MAP_RANGE = {
-  lon: [8.107180004121693, 26.099158344940808],
-  lat: [61.9, 63.9],
-} */
-
-type Props = {
-  data: Array<{ name: string; dataPoint: number | string; formattedDataPoint: number | string }>
-  boundaries: number[] | string[]
+type MapProps = {
+  data: Array<CurrentDataPoints>
+  boundaries: number[] | string[] | Date[]
   children?: ReactNode
 }
 
-function Map({
-  data, boundaries, children,
-}: Props) {
+function Map({ data, boundaries, children }: MapProps) {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
@@ -155,8 +125,9 @@ function Map({
   const municipalityLines = municipalityData?.features?.flatMap(
     ({ geometry, properties }: { geometry: any; properties: any }) => {
       const name = replaceLetters(properties.name)
-      const dataPoint = data.find((e) => e.name === name)?.dataPoint
-      const formattedDataPoint = data.find((e) => e.name === name)?.formattedDataPoint
+      const currentMunicipality = data.find((e) => e.name === name)
+      const dataPoint = currentMunicipality?.primaryDataPoint
+      const formattedDataPoint = currentMunicipality?.formattedPrimaryDataPoint
 
       if (geometry.type === 'MultiPolygon') {
         return geometry.coordinates.map((coords: any) => ({

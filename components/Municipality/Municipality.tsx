@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
 
-import { H1, ParagraphBold } from '../Typography'
+import { H1NoPad, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 import DropDown from '../DropDown'
@@ -17,7 +17,8 @@ import { isCementSector } from '../../utils/climateDataPresentation'
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items center;
+  gap: 1.5rem;
   margin-bottom: 48px;
 `
 
@@ -30,7 +31,7 @@ const HeaderSection = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
 `
 
 const Bottom = styled.div`
@@ -75,10 +76,10 @@ function Municipality(props: Props) {
   return (
     <>
       <PageWrapper backgroundColor="lightBlack">
-        <BackArrow route="/" />
         <StyledContainer>
           <HeaderSection>
-            <H1>{municipality.Name}</H1>
+            <BackArrow route="/" />
+            <H1NoPad>{municipality.Name}</H1NoPad>
             {coatOfArmsImage && (
               <CoatOfArmsImage
                 src={coatOfArmsImage}

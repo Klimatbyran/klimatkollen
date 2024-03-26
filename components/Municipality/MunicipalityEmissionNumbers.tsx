@@ -8,7 +8,6 @@ import { devices } from '../../utils/devices'
 import {
   colorOfSector,
   compareSector,
-  CURRENT_YEAR,
   emissionsCurrentYear,
   fixSMHITypo,
   kiloTonString,
@@ -60,7 +59,18 @@ function sumEmissionsPerYear(emissions: Array<EmissionPerYear>) {
 }
 
 function MunicipalityEmissionNumbers({ municipality, step, showSectors }: EmissionsProps) {
-  const historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+  let totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
+    (total, year) => total + year.CO2Equivalent,
+    0,
+  ) / 1000
+  let historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+
+  // if historical approximated data exist, include into total historical emission and advance the year to which historical data extends
+  if (municipality.ApproximatedHistoricalEmission.TotalCO2Emission) {
+    totalHistorical += municipality.ApproximatedHistoricalEmission.TotalCO2Emission / 1000
+    historicalEndsYear = municipality.ApproximatedHistoricalEmission.EmissionPerYear[
+      municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
+  }
 
   const totalTrend = municipality.EmissionTrend.TrendCO2Emission 
   const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0]?.Year
@@ -68,9 +78,6 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   const totalBudget = municipality.Budget.CO2Equivalent / 1000
   const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year
 
-  // Retrieving data and summing
-  const totalHistorical = sumEmissionsPerYear(municipality.HistoricalEmission.EmissionPerYear)
-  //const totalTrend = municipality.EmissionTrend.FutureCO2Emission
   const totalSectors = municipality.HistoricalEmission.SectorEmissionsPerYear
     .map(({ Name, EmissionsPerYear }) => ({
       Name,
@@ -88,7 +95,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
 
   // Blocks of elements that will be ordered and/or hidden
   const thisYear = [
-    <p key="currentYear">{CURRENT_YEAR}</p>,
+    <p key="currentYear">{historicalEndsYear}</p>,
     (
       <TotalCo2 key="currentYear-total">
         <StyledText $color={colorTheme.offWhite}>
@@ -113,7 +120,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   ]
 
   const justTotalHistory = [
-    <p key="1990">1990-{CURRENT_YEAR}</p>,
+    <p key="1990">1990-{historicalEndsYear}</p>,
     (
       <TotalCo2 key="total">
         <Square color={colorTheme.orange} />
@@ -125,7 +132,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   ]
 
   const history = [
-    <p key="1990">1990-{CURRENT_YEAR}</p>,
+    <p key="1990">1990-{historicalEndsYear}</p>,
     (
       <TotalCo2 key="total">
         <StyledText $color={colorTheme.offWhite}>
@@ -150,7 +157,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   ]
 
   const presentFuture = [
-    <p key="2050">{CURRENT_YEAR}-2050</p>, (
+    <p key="2050">{historicalEndsYear}-2050</p>, (
       <TotalCo2 key="trend">
         <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
         <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>

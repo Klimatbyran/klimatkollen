@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { defaultDataView } from '../../utils/datasetDescriptions'
+import { defaultDataView } from '../../utils/datasetDefinitions'
 import { isValidDataset, normalizeString } from '../../utils/shared'
 
 interface Params extends ParsedUrlQuery {

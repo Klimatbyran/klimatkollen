@@ -1,33 +1,40 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { DatasetDescription, Municipality, SelectedData } from './types'
-import { datasetDescriptions, currentData } from './datasetDescriptions'
+import { Municipality, SelectedData } from './types'
+import {
+  dataDescriptions, dataOnDisplay, climatePlanMissing, requirementsInProcurement,
+} from './datasetDefinitions'
 
-export const calculateStringRankings = (
-  data: Array<{ name: string; dataPoint: string | number | JSX.Element }>,
-) => {
-  const rankedData = data.map((item) => ({
-    ...item,
-    index: item.dataPoint === 'Saknas' ? 1 : -1,
-  }))
-  return rankedData
+type RowData = {
+  name: string
+  dataPoint: string | number | Date | JSX.Element
+  formattedDataPoint: string
+  index: number
+  climatePlanYearAdapted?: string
+  procurementLink?: string
 }
 
-export const calculateNumberRankings = (
-  data: Array<{ name: string; dataPoint: number }>,
+export const calculateClimatePlanRankings = (
+  data: Array<{ name: string; dataPoint: string | number | Date | JSX.Element; formattedDataPoint: string }>,
+) => data.map((item) => ({
+  ...item,
+  index: item.dataPoint === climatePlanMissing ? 1 : -1,
+}))
+
+export const calculateRankings = (
+  data: Array<{ name: string; dataPoint: number; formattedDataPoint: string }>,
   sortAscending: boolean,
+  stringsOnTop: boolean,
 ) => {
   const customSort = (a: number, b: number) => {
-    // Handla NaN values
+    // Handle NaN values
     const aIsNaN = Number.isNaN(a)
     const bIsNaN = Number.isNaN(b)
     if (aIsNaN && bIsNaN) {
       return 0
     }
-    if (aIsNaN) {
-      return 1
-    }
-    if (bIsNaN) {
-      return -1
+    if (aIsNaN || bIsNaN) {
+      // eslint-disable-next-line no-nested-ternary
+      return stringsOnTop ? (aIsNaN ? -1 : 1) : (aIsNaN ? 1 : -1)
     }
 
     // Sort non-NaN values normally
@@ -35,72 +42,94 @@ export const calculateNumberRankings = (
   }
 
   const sortedData = data.sort((a, b) => customSort(a.dataPoint, b.dataPoint))
-  const rankedData = sortedData.map((item, index) => ({
+  return sortedData.map((item, index) => ({
     ...item,
     index: index + 1,
   }))
-  return rankedData
 }
 
 export const rankData = (municipalities: Municipality[], selectedData: SelectedData) => {
-  const datasets = currentData(municipalities, selectedData)
+  const datasets = dataOnDisplay(municipalities, selectedData)
 
   type RankedData = {
-    [key in SelectedData]: Array<{
-      name: string
-      dataPoint: number | string | JSX.Element
-      index: number
-    }>
+    [key in SelectedData]: Array<RowData>
   }
 
   const newRankedData: RankedData = {} as RankedData
 
-  const sortAscending = datasetDescriptions[selectedData]?.sortAscending || false
+  const sortAscending = dataDescriptions[selectedData]?.sortAscending || false
+  const edgeCaseOnTop = dataDescriptions[selectedData]?.stringsOnTop || false
 
   if (selectedData === 'Klimatplanerna') {
     // special case for climate plans
-    newRankedData[selectedData] = calculateStringRankings(
+    newRankedData[selectedData] = calculateClimatePlanRankings(
       datasets.map((item) => ({
         name: item.name,
-        dataPoint: item.dataPoint,
+        dataPoint: item.primaryDataPoint as string,
+        formattedDataPoint: item.formattedPrimaryDataPoint,
+        climatePlanYearAdapted: item.climatePlanYearAdapted,
       })),
     )
   } else {
     // all other datasets
-    newRankedData[selectedData] = calculateNumberRankings(
+    newRankedData[selectedData] = calculateRankings(
       datasets.map((item) => ({
         name: item.name,
-        dataPoint: Number(item.formattedDataPoint),
+        dataPoint: Number(item.primaryDataPoint),
+        formattedDataPoint: item.formattedPrimaryDataPoint,
+        procurementLink: item.procurementLink,
       })),
       sortAscending,
+      edgeCaseOnTop,
     )
   }
 
   return newRankedData
 }
 
-const columnHeader = (datasetDescription: DatasetDescription) => (
-  <div>{datasetDescription.columnHeader}</div>
-)
-
 export const listColumns = (
   selectedData: SelectedData,
-  datasetDescription: DatasetDescription,
-): ColumnDef<{
-  name: string
-  dataPoint: string | number | JSX.Element
-  index: number
-}>[] => {
+  columnHeader: string,
+): ColumnDef<RowData>[] => {
   const isClimatePlan = selectedData === 'Klimatplanerna'
-  const isChargingPoints = selectedData === 'Laddarna'
+  const isProcurement = selectedData === 'Upphandlingarna'
+
+  const getFirstColumnHeader = () => {
+    let firstColumnHeader = 'Ranking'
+    firstColumnHeader = isClimatePlan ? 'Har plan?' : firstColumnHeader
+    firstColumnHeader = isProcurement ? 'Ställer krav?' : firstColumnHeader
+    return firstColumnHeader
+  }
+
+  const getFirstColumnClimatePlans = (index: number, dataPoint: string) => (index === -1
+    ? (
+      <a
+        href={dataPoint.toString()}
+        onClick={(e) => e.stopPropagation()}
+        target="_blank"
+        rel="noreferrer"
+        style={{ color: 'orange' }}
+      >
+        Ja
+      </a>
+    )
+    : 'Nej'
+  )
 
   return [
     {
-      header: isClimatePlan ? 'Har plan?' : 'Ranking',
+      header: getFirstColumnHeader(),
       cell: (row) => {
+        const { index, dataPoint } = row.row.original
+
         if (isClimatePlan) {
-          return row.row.original.index === -1 ? 'Ja' : 'Nej'
+          return getFirstColumnClimatePlans(index, dataPoint as string)
         }
+
+        if (isProcurement) {
+          return requirementsInProcurement(dataPoint as number)
+        }
+
         return row.cell.row.index + 1
       },
       accessorKey: 'index',
@@ -111,25 +140,36 @@ export const listColumns = (
       accessorKey: 'name',
     },
     {
-      header: () => columnHeader(datasetDescription),
+      header: () => columnHeader,
       cell: (row) => {
-        const { dataPoint } = row.row.original
+        const {
+          dataPoint, formattedDataPoint, climatePlanYearAdapted, procurementLink,
+        } = row.row.original
+
         if (isClimatePlan) {
-          return dataPoint === 'Saknas' ? (
-            <i style={{ color: 'grey' }}>{dataPoint}</i>
-          ) : (
-            <a href={dataPoint as string} target="_blank" rel="noreferrer">
-              Öppna
-            </a>
-          )
+          return dataPoint !== climatePlanMissing
+            ? climatePlanYearAdapted
+            : climatePlanMissing
         }
-        if (isChargingPoints) {
-          return Number.isNaN(dataPoint) ? 'Laddare saknas' : dataPoint
+
+        if (isProcurement) {
+          return procurementLink !== ''
+            ? (
+              <a
+                href={procurementLink}
+                onClick={(e) => e.stopPropagation()}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Länk
+              </a>
+            )
+            : 'Saknas'
         }
-        return row.getValue()
+
+        return formattedDataPoint
       },
       accessorKey: 'dataPoint',
-      sortingFn: (a, b) => a.original.index - b.original.index,
     },
   ]
 }
