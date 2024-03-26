@@ -63,6 +63,52 @@ export const dataDescriptions: DataDescriptions = {
     sortAscending: true,
   },
 
+  Koldioxidbudgetarna: {
+    title: 'Budget slut om',
+    body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="https://nationellaemissionsdatabasen.smhi.se/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Nationella emissionsdatabasen
+        </a>
+        {' '}
+        och
+        {' '}
+        <a
+          href="http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Uppsala universitet
+        </a>
+      </>
+    ),
+    boundaries: [
+      yearsAhead(2),
+      yearsAhead(3),
+      yearsAhead(4),
+      yearsAhead(5),
+      new Date(2050, 1, 1),
+    ],
+    labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', 'Håller budget'],
+    labelRotateUp: [],
+    columnHeader: 'Budget tar slut',
+    dataPoints: {
+      rawDataPoint: (item) => new Date(item.BudgetRunsOut),
+      formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1)
+        ? formatDateToString(dataPoint as Date)
+        : 'Håller budget'),
+    },
+    sortAscending: false,
+    stringsOnTop: true,
+  },
+
   Klimatplanerna: {
     title: 'Klimatplan',
     body: (
@@ -103,6 +149,40 @@ export const dataDescriptions: DataDescriptions = {
       formattedDataPoint: (dataPoint) => (dataPoint === climatePlanMissing ? 'Nej' : 'Ja'),
       additionalDataPoint: (item) => item.ClimatePlan.YearAdapted,
     },
+  },
+
+  Konsumtionen: {
+    title: 'Konsumtionsutsläpp',
+    body: 'Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
+    source: (
+      <>
+        Källa:
+        {' '}
+        <a
+          href="https://www.sei.org/tools/konsumtionskompassen/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Stockholm Environment Institute
+        </a>
+      </>
+    ),
+    boundaries: [7, 6.7, 6.4, 6.1, 5.8],
+    labels: [
+      '7 ton +',
+      '6,7-7 ton',
+      '6,4-6,7 ton',
+      '6,1-6,4 ton',
+      '5,8-6,1 ton',
+      '5,8 ton -',
+    ],
+    labelRotateUp: [],
+    columnHeader: 'Ton CO₂e/person/år',
+    dataPoints: {
+      rawDataPoint: (item) => item.TotalConsumptionEmission,
+      formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+    },
+    sortAscending: true,
   },
 
   Elbilarna: {
@@ -191,86 +271,6 @@ export const dataDescriptions: DataDescriptions = {
       formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
     },
     sortAscending: false,
-  },
-
-  Konsumtionen: {
-    title: 'Konsumtionsutsläpp',
-    body: 'Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://www.sei.org/tools/konsumtionskompassen/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Stockholm Environment Institute
-        </a>
-      </>
-    ),
-    boundaries: [7, 6.7, 6.4, 6.1, 5.8],
-    labels: [
-      '7 ton +',
-      '6,7-7 ton',
-      '6,4-6,7 ton',
-      '6,1-6,4 ton',
-      '5,8-6,1 ton',
-      '5,8 ton -',
-    ],
-    labelRotateUp: [],
-    columnHeader: 'Ton CO₂e/person/år',
-    dataPoints: {
-      rawDataPoint: (item) => item.TotalConsumptionEmission,
-      formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
-    },
-    sortAscending: true,
-  },
-
-  Koldioxidbudgetarna: {
-    title: 'Budget slut om',
-    body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://nationellaemissionsdatabasen.smhi.se/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Nationella emissionsdatabasen
-        </a>
-        {' '}
-        och
-        {' '}
-        <a
-          href="http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Uppsala universitet
-        </a>
-      </>
-    ),
-    boundaries: [
-      yearsAhead(2),
-      yearsAhead(3),
-      yearsAhead(4),
-      yearsAhead(5),
-      new Date(2050, 1, 1),
-    ],
-    labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', 'Håller budget'],
-    labelRotateUp: [],
-    columnHeader: 'Budget tar slut',
-    dataPoints: {
-      rawDataPoint: (item) => new Date(item.BudgetRunsOut),
-      formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1)
-        ? formatDateToString(dataPoint as Date)
-        : 'Håller budget'),
-    },
-    sortAscending: false,
-    stringsOnTop: true,
   },
 
   Upphandlingarna: {
