@@ -101,6 +101,11 @@ const ComparisonContainer = styled.div<{ $dataView: string }>`
   }
 `
 
+const DropDownTitle = styled(H2Regular)`
+  margin-bottom: 20px;
+  text-align: center;
+`
+
 type PropsType = {
   municipalities: Array<Municipality>
 }
@@ -204,10 +209,11 @@ function StartPage({ municipalities }: PropsType) {
               <ParagraphSource>{datasetDescription.source}</ParagraphSource>
             </InfoText>
           </InfoContainer>
+          <DropDownTitle>Hur går det i din kommun?</DropDownTitle>
           <DropDown
             className="startpage"
             municipalitiesName={municipalityNames}
-            placeholder="Hur går det i din kommun?"
+            placeholder="Sök efter din kommun"
           />
         </Container>
       </PageWrapper>
