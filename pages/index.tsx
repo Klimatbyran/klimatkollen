@@ -71,6 +71,7 @@ const TitleContainer = styled.div`
 
 const FloatingH5 = styled.h5`
   position: absolute;
+  font-size: 16px;
   font-weight: regular;
   line-height: 1.25;
   margin: 55px 0 0 16px;
