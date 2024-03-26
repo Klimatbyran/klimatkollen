@@ -28,7 +28,6 @@ export const compareSector = (
 ) => Math.sign(historicalSectorOrder.indexOf(NameB)
              - historicalSectorOrder.indexOf(NameA))
 
-export const CURRENT_YEAR = 2021
 export const isCementSector = (name: string) => {
   return [
     'Mörbylånga',
@@ -63,11 +62,6 @@ export const fixSMHITypo = (sectorName: string) => {
 
 export const emissionsOfYear = (emissions: Array<EmissionPerYear>, year: number) => {
   const ret = emissions.find(({Year}) => Year === year)
-  if (ret) return ret.CO2Equivalent
-  return -999
-}
-export const emissionsCurrentYear = (emissions: Array<EmissionPerYear>) => {
-  const ret = emissions.find(({Year}) => Year === CURRENT_YEAR)
   if (ret) return ret.CO2Equivalent
   return -999
 }
