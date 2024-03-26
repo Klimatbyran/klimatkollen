@@ -314,7 +314,7 @@ export const dataDescriptions: DataDescriptions = {
     boundaries: [0, 1, 2],
     labels: ['Nej', 'Kanske', 'Ja'],
     labelRotateUp: [],
-    columnHeader: 'Länk till krav',
+    columnHeader: 'Underlag',
     dataPoints: {
       rawDataPoint: (item) => item.ProcurementScore,
       formattedDataPoint: (dataPoint) => requirementsInProcurement(dataPoint as number),
