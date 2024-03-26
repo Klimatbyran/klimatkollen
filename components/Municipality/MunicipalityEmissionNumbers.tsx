@@ -8,7 +8,7 @@ import { devices } from '../../utils/devices'
 import {
   colorOfSector,
   compareSector,
-  emissionsCurrentYear,
+  emissionsOfYear,
   fixSMHITypo,
   kiloTonString,
 } from '../../utils/climateDataPresentation'
@@ -88,10 +88,10 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   const sectorsCurrentYear = municipality.HistoricalEmission.SectorEmissionsPerYear
     .map(({ Name, EmissionsPerYear }) => ({
       Name,
-      Emissions: emissionsCurrentYear(EmissionsPerYear),
+      Emissions: emissionsOfYear(EmissionsPerYear, historicalEndsYear),
       Color: colorOfSector(Name),
     }))
-  const totalCurrentYear = emissionsCurrentYear(municipality.HistoricalEmission.EmissionPerYear)
+  const totalCurrentYear = emissionsOfYear(municipality.HistoricalEmission.EmissionPerYear, historicalEndsYear)
 
   // Blocks of elements that will be ordered and/or hidden
   const thisYear = [
