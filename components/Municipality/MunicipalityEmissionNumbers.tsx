@@ -11,6 +11,7 @@ import {
   emissionsOfYear,
   fixSMHITypo,
   kiloTonString,
+  sumEmissionsPerYear,
 } from '../../utils/climateDataPresentation'
 
 const Container = styled.div`
@@ -51,23 +52,13 @@ type EmissionsProps = {
   showSectors: boolean
 }
 
-function sumEmissionsPerYear(emissions: Array<EmissionPerYear>) {
-  return emissions.reduce(
-    (total, { CO2Equivalent }) => total + CO2Equivalent,
-    0,
-  )
-}
-
 function MunicipalityEmissionNumbers({ municipality, step, showSectors }: EmissionsProps) {
-  let totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
-    (total, year) => total + year.CO2Equivalent,
-    0,
-  ) / 1000
+  let totalHistorical = sumEmissionsPerYear(municipality.HistoricalEmission.EmissionPerYear)
   let historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
 
   // if historical approximated data exist, include into total historical emission and advance the year to which historical data extends
   if (municipality.ApproximatedHistoricalEmission.TotalCO2Emission) {
-    totalHistorical += municipality.ApproximatedHistoricalEmission.TotalCO2Emission / 1000
+    totalHistorical += municipality.ApproximatedHistoricalEmission.TotalCO2Emission
     historicalEndsYear = municipality.ApproximatedHistoricalEmission.EmissionPerYear[
       municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
   }
@@ -75,7 +66,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   const totalTrend = municipality.EmissionTrend.TrendCO2Emission 
   const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0]?.Year
 
-  const totalBudget = municipality.Budget.CO2Equivalent / 1000
+  const totalBudget = municipality.Budget.CO2Equivalent
   const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year
 
   const totalSectors = municipality.HistoricalEmission.SectorEmissionsPerYear
@@ -85,6 +76,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
       Total: sumEmissionsPerYear(EmissionsPerYear),
       Color: colorOfSector(Name),
     }))
+    
   const sectorsCurrentYear = municipality.HistoricalEmission.SectorEmissionsPerYear
     .map(({ Name, EmissionsPerYear }) => ({
       Name,
@@ -169,7 +161,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
         <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
         <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
           Koldioxidbudget för att klara Parisavtalet:{' '}
-          {(municipality.Budget.CO2Equivalent / 1000).toFixed(1)} tusen ton CO₂.
+          {kiloTonString(totalBudget)} tusen ton CO₂.
         </StyledText>
       </TotalCo2>,
     ]) : []),

@@ -52,7 +52,7 @@ export const colorOfSector = (name: string) => ({
 }[name] || { border: '#FFFFFF', fill: '#FFFFFF' })
 
 export const kiloTonString = (tonsCO2Equivalent: number) => {
- return Math.round((tonsCO2Equivalent / 1000)).toFixed(1)
+ return (tonsCO2Equivalent / 1000).toFixed(1)
 }
 
 // Original SMHI data contains typo
@@ -64,4 +64,11 @@ export const emissionsOfYear = (emissions: Array<EmissionPerYear>, year: number)
   const ret = emissions.find(({Year}) => Year === year)
   if (ret) return ret.CO2Equivalent
   return -999
+}
+
+export const sumEmissionsPerYear = (emissions: Array<EmissionPerYear>) => {
+  return emissions.reduce(
+    (total, { CO2Equivalent }) => total + CO2Equivalent,
+    0,
+  )
 }
