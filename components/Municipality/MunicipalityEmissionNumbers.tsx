@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import styled from 'styled-components'
 import { H4 } from '../Typography'
-import { EmissionPerYear, Municipality as TMunicipality } from '../../utils/types'
+import { Municipality as TMunicipality } from '../../utils/types'
 import { colorTheme } from '../../Theme'
 import { Square } from '../shared'
 import { devices } from '../../utils/devices'
 import {
   colorOfSector,
   compareSector,
-  emissionsOfYear,
+  getEmissionsOfYear,
   fixSMHITypo,
   kiloTonString,
   sumEmissionsPerYear,
@@ -42,7 +42,7 @@ const TotalCo2 = styled.div`
   }
 `
 
-const StyledText = styled.p<{$color: string}>`
+const StyledText = styled.p<{ $color: string }>`
   color: ${({ $color }) => $color};
 `
 
@@ -56,14 +56,17 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
   let totalHistorical = sumEmissionsPerYear(municipality.HistoricalEmission.EmissionPerYear)
   let historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
 
+  // TODO: Add approximated total values to total historical
+  // Sector totals ends 2021 and historical + approximated historical end 2024
+  //
   // if historical approximated data exist, include into total historical emission and advance the year to which historical data extends
-  if (municipality.ApproximatedHistoricalEmission.TotalCO2Emission) {
-    totalHistorical += municipality.ApproximatedHistoricalEmission.TotalCO2Emission
-    historicalEndsYear = municipality.ApproximatedHistoricalEmission.EmissionPerYear[
-      municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
-  }
+  // if (municipality.ApproximatedHistoricalEmission.TotalCO2Emission) {
+  //   totalHistorical += municipality.ApproximatedHistoricalEmission.TotalCO2Emission
+  //   historicalEndsYear = municipality.ApproximatedHistoricalEmission.EmissionPerYear[
+  //     municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
+  // }
 
-  const totalTrend = municipality.EmissionTrend.TrendCO2Emission 
+  const totalTrend = municipality.EmissionTrend.TrendCO2Emission
   const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0]?.Year
 
   const totalBudget = municipality.Budget.CO2Equivalent
@@ -76,42 +79,42 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
       Total: sumEmissionsPerYear(EmissionsPerYear),
       Color: colorOfSector(Name),
     }))
-    
-  const sectorsCurrentYear = municipality.HistoricalEmission.SectorEmissionsPerYear
+
+  const sectorsLastYearWithData = municipality.HistoricalEmission.SectorEmissionsPerYear
     .map(({ Name, EmissionsPerYear }) => ({
       Name,
-      Emissions: emissionsOfYear(EmissionsPerYear, historicalEndsYear),
+      Emissions: getEmissionsOfYear(EmissionsPerYear, historicalEndsYear),
       Color: colorOfSector(Name),
     }))
-  const totalCurrentYear = emissionsOfYear(municipality.HistoricalEmission.EmissionPerYear, historicalEndsYear)
+  const historicalLastYearWithData = getEmissionsOfYear(municipality.HistoricalEmission.EmissionPerYear, historicalEndsYear)
 
   // Blocks of elements that will be ordered and/or hidden
-  const thisYear = [
-    <p key="currentYear">{historicalEndsYear}</p>,
+  const lastYearWithDataElementList = [
+    <p key="lastYearWithData">{historicalEndsYear}</p>,
     (
-      <TotalCo2 key="currentYear-total">
+      <TotalCo2 key="lastYearWithData-total">
         <StyledText $color={colorTheme.offWhite}>
-          Totalt: {kiloTonString(totalCurrentYear)}
+          Totalt: {kiloTonString(historicalLastYearWithData)}
         </StyledText>
       </TotalCo2>
     ),
-    ...sectorsCurrentYear
+    ...sectorsLastYearWithData
       .slice().sort(compareSector).reverse()
       .map(({ Name, Emissions, Color }) => {
         const name = Name.replace('uppärmning', 'uppvärmning') // Original SMHI data contains typo
-        const percent = 100 * (Emissions / totalCurrentYear)
+        const percent = 100 * (Emissions / historicalLastYearWithData)
         return (
-          <TotalCo2 key={`currentYear-${Name}`}>
+          <TotalCo2 key={`lastYearWithData-${Name}`}>
             <Square color={Color.border} />
             <StyledText $color={Emissions > 100 ? colorTheme.offWhite : colorTheme.grey}>
-              { name }: { kiloTonString(Emissions)} ({(percent.toFixed(1)) }%)
+              {name}: {kiloTonString(Emissions)} ({(percent.toFixed(1))}%)
             </StyledText>
           </TotalCo2>
         )
       }),
   ]
 
-  const justTotalHistory = [
+  const historicalElementList = [
     <p key="1990">1990-{historicalEndsYear}</p>,
     (
       <TotalCo2 key="total">
@@ -123,7 +126,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
     ),
   ]
 
-  const history = [
+  const historicalWithSectorsElementList = [
     <p key="1990">1990-{historicalEndsYear}</p>,
     (
       <TotalCo2 key="total">
@@ -142,53 +145,62 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
         <TotalCo2 key={Name}>
           <Square color={Color.border} />
           <StyledText $color={Total > 1000 ? colorTheme.offWhite : colorTheme.grey}>
-            { fixSMHITypo(Name) }: {kiloTonString(Total)}
+            {fixSMHITypo(Name)}: {kiloTonString(Total)}
           </StyledText>
         </TotalCo2>
       )),
   ]
 
-  const presentFuture = [
-    <p key="2050">{historicalEndsYear}-2050</p>, (
+  const futureElementList = [
+    <p key="2050">{trendStartsYear}-2050</p>, (
       <TotalCo2 key="trend">
         <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
         <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
-          Trend: {kiloTonString(totalTrend)} tusen ton CO₂.
+          Trend: {kiloTonString(totalTrend)}
         </StyledText>
       </TotalCo2>
     ), ...(step === 2 ? ([
+      <>
+        {budgetStartsYear !== trendStartsYear ?
+          ([
+            <br key="br" />,
+            <p key="2050">{budgetStartsYear}-2050</p>
+          ])
+          :
+          null
+        }
+      </>,
       <TotalCo2 key="paris">
         <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
         <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
-          Koldioxidbudget för att klara Parisavtalet:{' '}
-          {kiloTonString(totalBudget)} tusen ton CO₂.
+          Koldioxidbudget: {kiloTonString(totalBudget)}
         </StyledText>
       </TotalCo2>,
     ]) : []),
   ]
 
-  let list1 : typeof history = []
-  let list2 : typeof history = []
+  let firstElementList: typeof historicalWithSectorsElementList = []
+  let secondElementList: typeof historicalWithSectorsElementList = []
 
   if (showSectors) {
     switch (step) {
       case 0:
-        list1 = history
-        list2 = []
+        firstElementList = historicalWithSectorsElementList
+        secondElementList = []
         break
       case 1:
-        list1 = thisYear
-        list2 = presentFuture
+        firstElementList = lastYearWithDataElementList
+        secondElementList = futureElementList
         break
       case 2:
-        list1 = presentFuture
-        list2 = thisYear
+        firstElementList = futureElementList
+        secondElementList = lastYearWithDataElementList
         break
       default:
     }
   } else {
-    list1 = presentFuture
-    list2 = justTotalHistory
+    firstElementList = futureElementList
+    secondElementList = historicalElementList
   }
 
   return (
@@ -197,9 +209,9 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
       Uttryckt i tusen ton CO₂ summerat över åren...
       <TotalCo2Container>
         {[
-          ...list1,
+          ...firstElementList,
           (<br key="br" />),
-          ...list2,
+          ...secondElementList,
         ]}
       </TotalCo2Container>
     </Container>

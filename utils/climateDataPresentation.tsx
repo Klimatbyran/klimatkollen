@@ -60,7 +60,7 @@ export const fixSMHITypo = (sectorName: string) => {
   return sectorName.replace('uppärmning', 'uppvärmning')
 }
 
-export const emissionsOfYear = (emissions: Array<EmissionPerYear>, year: number) => {
+export const getEmissionsOfYear = (emissions: Array<EmissionPerYear>, year: number) => {
   const ret = emissions.find(({Year}) => Year === year)
   if (ret) return ret.CO2Equivalent
   return -999
