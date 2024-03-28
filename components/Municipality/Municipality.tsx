@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
-
+import { useState } from 'react'
 import { H1NoPad, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
@@ -13,7 +13,6 @@ import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
 import Scorecard from './MunicipalityScorecard'
 import { isCementSector } from '../../utils/climateDataPresentation'
-import { useState } from 'react'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -56,8 +55,11 @@ const DropDownSection = styled.div`
 `
 
 const CheckBoxContaner = styled.div`
-  cursor: pointer;
   padding-left: 16px;
+
+  * { 
+    cursor: pointer; 
+  }
 `
 
 type Props = {
@@ -102,13 +104,16 @@ function Municipality(props: Props) {
             onPreviousStep={onPreviousStep}
             showSectors={!isCementSector(municipality.Name) && showSectors}
           />
-           <CheckBoxContaner>
-              {!isCementSector(municipality.Name) &&
-                <label>
-                  <input type="checkbox" onChange={() => setShowSectors(!showSectors)} checked={showSectors} />
-                  {" "}Visa per sektor historiskt
-                </label>}
-            </CheckBoxContaner>
+          {!isCementSector(municipality.Name)
+            && (
+              <CheckBoxContaner>
+                <label htmlFor="checkbox-sectors">
+                  <input id="checkbox-sectors" type="checkbox" onChange={() => setShowSectors(!showSectors)} checked={showSectors} />
+                  {' '}
+                  Visa per sektor historiskt
+                </label>
+              </CheckBoxContaner>
+            )}
           <MunicipalityEmissionNumbers
             municipality={municipality}
             step={step}

@@ -85,7 +85,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
       <StyledText $color={colorTheme.offWhite}>
         Historiskt: {kiloTonString(totalHistorical)}
       </StyledText>
-    </TotalCo2>
+    </TotalCo2>,
   ]
 
   const historicalWithSectorsElementList = [
@@ -108,7 +108,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
             {fixSMHITypo(Name)}: {kiloTonString(Total)}
           </StyledText>
         </TotalCo2>
-      ))
+      )),
   ]
 
   const futureElementList = [
