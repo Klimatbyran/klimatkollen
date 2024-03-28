@@ -151,7 +151,7 @@ function Graph({
             {
               // @ts-ignore
               id: 'historical',
-              label: 'Alla',
+              label: 'Historiskt',
               fill: true,
               data: historicalDataset,
               borderWidth: 2,
@@ -165,6 +165,7 @@ function Graph({
             {
               // @ts-ignore
               id: 'approximated',
+              label: 'Historiskt (prognos)',
               fill: true,
               data: approximatedDataset,
               borderDash: [2, 2],
@@ -232,17 +233,16 @@ function Graph({
                 // We still want to display the total together with the specific sector
                 title(context) {
                   // For gotland and friends the default is fine
-                  if (!showSectors) return undefined
                   const year = context[0].label
                   const historicalEntry = historical
                     .find((x) => (`${x.Year}`) === year)
-                  if (historicalEntry) {
+                  if (historicalEntry && showSectors) {
                     return [
                       year,
                       `${kiloTonString(historicalEntry.CO2Equivalent)} totalt, varav...`,
                     ]
                   }
-                  return ''
+                  return year
                 },
               },
             },

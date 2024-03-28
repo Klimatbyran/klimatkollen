@@ -35,6 +35,7 @@ export const isCementSector = (name: string) => {
     'Gotland',
   ].includes(name)
 }
+
 export const colorOfSector = (name: string) => ({
   'Transporter': colorTheme.sectors.transports,
   'Utrikes transporter': colorTheme.sectors.transports,
@@ -58,12 +59,6 @@ export const kiloTonString = (tonsCO2Equivalent: number) => {
 // Original SMHI data contains typo
 export const fixSMHITypo = (sectorName: string) => {
   return sectorName.replace('uppärmning', 'uppvärmning')
-}
-
-export const getEmissionsOfYear = (emissions: Array<EmissionPerYear>, year: number) => {
-  const ret = emissions.find(({Year}) => Year === year)
-  if (ret) return ret.CO2Equivalent
-  return -999
 }
 
 export const sumEmissionsPerYear = (emissions: Array<EmissionPerYear>) => {

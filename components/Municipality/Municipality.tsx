@@ -13,6 +13,7 @@ import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
 import Scorecard from './MunicipalityScorecard'
 import { isCementSector } from '../../utils/climateDataPresentation'
+import { useState } from 'react'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -54,6 +55,11 @@ const DropDownSection = styled.div`
   align-items: center;
 `
 
+const CheckBoxContaner = styled.div`
+  cursor: pointer;
+  padding-left: 16px;
+`
+
 type Props = {
   municipality: TMunicipality
   step: number
@@ -72,6 +78,8 @@ function Municipality(props: Props) {
     coatOfArmsImage,
     municipalitiesName,
   } = props
+
+  const [showSectors, setShowSectors] = useState(true)
 
   return (
     <>
@@ -92,12 +100,19 @@ function Municipality(props: Props) {
             chart={step}
             onNextStep={onNextStep}
             onPreviousStep={onPreviousStep}
-            showSectors={!isCementSector(municipality.Name)}
+            showSectors={!isCementSector(municipality.Name) && showSectors}
           />
+           <CheckBoxContaner>
+              {!isCementSector(municipality.Name) &&
+                <label>
+                  <input type="checkbox" onChange={() => setShowSectors(!showSectors)} checked={showSectors} />
+                  {" "}Visa per sektor historiskt
+                </label>}
+            </CheckBoxContaner>
           <MunicipalityEmissionNumbers
             municipality={municipality}
             step={step}
-            showSectors={!isCementSector(municipality.Name)}
+            showSectors={!isCementSector(municipality.Name) && showSectors}
           />
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
