@@ -266,13 +266,11 @@ function Graph({
                 align: 'center',
                 callback: (tickValue) => {
                   const idx = tickValue as number
-                  // return idx % 2 === 0 ? setup.labels[idx] : ''
                   return setup.labels[idx]
                 },
               },
             },
             y: {
-              // suggestedMax: step > 3 ? totalRemainingCO2 : 1350_000,
               grid: {
                 display: false,
               },
