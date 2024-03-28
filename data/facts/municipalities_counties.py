@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def get_municipalities():
     # Load the data
     df = pd.read_excel('facts/kommunlankod_2023.xls')
