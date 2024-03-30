@@ -80,7 +80,7 @@ type TableProps<T extends object> = {
 }
 
 function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
-  const [sorting, setSorting] = useState<SortingState>([])
+  const [sorting, setSorting] = useState<SortingState>([{id: 'index', desc: false}, {id: 'name', desc: false}])
   const router = useRouter()
 
   const [resizeCount, setResizeCount] = useState(0)
@@ -101,6 +101,7 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
     data,
     columns,
     state: { sorting },
+    enableSortingRemoval: false,
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
