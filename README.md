@@ -16,6 +16,8 @@ Please climb onboard to help us set our climate data free! #Klimatkollen /#FreeC
 
 ## Get started
 
+Detailed setup instructions are available in [doc/getting-started.md](doc/getting-started.md), including how to install the dependencies.
+
 We use next.js and Typescript and it's pretty straightforward to get started. Just clone the repo and run:
 
     npm ci
@@ -30,6 +32,7 @@ The project can also be run with docker (although with much slower refresh time)
 
     # starts the container
     docker run -t -i --rm -p 3000:3000 --name klimatkollen klimatkollen
+
 
 ## Contribute
 
