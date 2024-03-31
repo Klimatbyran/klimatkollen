@@ -102,6 +102,7 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
     columns,
     state: { sorting },
     enableSortingRemoval: false,
+    isMultiSortEvent: (e) => true,
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
