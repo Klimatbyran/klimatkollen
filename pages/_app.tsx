@@ -6,6 +6,7 @@ import CookieConsent from 'react-cookie-consent'
 import { NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
 
+import '../utils/i18n'
 import '../styles/globals.css'
 import Theme, { colorTheme } from '../Theme'
 
