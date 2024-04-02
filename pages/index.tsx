@@ -10,8 +10,13 @@ import Layout from '../components/Layout'
 import Footer from '../components/Footer/Footer'
 import {
   defaultDataset,
+  dataDescriptions,
+  dataOnDisplay,
   defaultDataView,
-} from '../utils/datasetDescriptions'
+  secondaryDataView,
+} from '../utils/datasetDefinitions'
+import RadioButtonMenu from '../components/RadioButtonMenu'
+import { listColumns, rankData } from '../utils/createMunicipalityList'
 import {
   isValidDataView,
   isValidDataset,

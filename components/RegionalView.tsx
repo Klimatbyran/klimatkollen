@@ -11,11 +11,11 @@ import DropDown from '../components/DropDown'
 import { H2Regular, H5Regular, Paragraph } from './Typography'
 import { devices } from '../utils/devices'
 import {
-  datasetDescriptions,
-  currentData,
+  dataDescriptions,
+  dataOnDisplay,
   defaultDataView,
   secondaryDataView,
-} from '../utils/datasetDescriptions'
+} from '../utils/datasetDefinitions'
 import { Municipality, SelectedData } from '../utils/types'
 import { normalizeString } from '../utils/shared'
 import { municipalityColumns, rankData } from '../utils/createMunicipalityList'
@@ -109,8 +109,8 @@ function RegionalView({
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
-  const municipalityData = currentData(municipalities, selectedDataset) // get all municipality names and data points for map and list
-  const datasetDescription = datasetDescriptions[selectedDataset] // get description of selected dataset
+  const municipalityData = dataOnDisplay(municipalities, selectedDataset) // get all municipality names and data points for map and list
+  const datasetDescription = dataDescriptions[selectedDataset] // get description of selected dataset
 
   const handleToggleView = () => {
     const newDataView = selectedDataView === defaultDataView ? secondaryDataView : defaultDataView

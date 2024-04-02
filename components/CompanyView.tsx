@@ -5,7 +5,7 @@ import { Company } from '../utils/types'
 import ComparisonTable from './ComparisonTable'
 import { companyColumns } from '../utils/createCompanyList'
 import ToggleButton from './ToggleButton'
-import { defaultDataView, secondaryDataView } from '../utils/datasetDescriptions'
+import { defaultDataView, secondaryDataView } from '../utils/datasetDefinitions'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 
