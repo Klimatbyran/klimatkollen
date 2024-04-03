@@ -7,7 +7,7 @@ The steps will be as follows:
  * Getting the source code
  * Installing Node.js
  * Installing other dependencies
- * Running klimatkollen
+ * Running Klimatkollen
 
 If you get stuck at any point, don't hesitate to ask on the Discord which is linked in the main README. Really - we want to help!
 
@@ -33,7 +33,7 @@ No matter if you use the Desktop app, ZIP, or some other method, you need to hav
 
 ## Installing other dependencies
 
-To build and run klimatkollen, some dependencies are required apart from Node.js itself. The main ones are as follows: 
+To build and run Klimatkollen, some dependencies are required apart from Node.js itself. The main ones are as follows: 
 
  * [React](https://react.dev/)
  * [Next.js](https://nextjs.org/)
@@ -41,6 +41,6 @@ To build and run klimatkollen, some dependencies are required apart from Node.js
 
 The full list is in "package.json" which is a file that npm can understand. To have it install all of the dependencies at the right versions, run `npm run ci`.
 
-## Running the klimatkollen webapp. 
+## Running the Klimatkollen webapp. 
 
-If all the dependencies were installed without issues, you should be able to run `npm run dev`. This will de a little slow the first time, but ifeverything goes well it will tell you it is serving the app from "localhost:3000". Type that address in your browser and you should see your local copy of klimatkollen in its full glory!
+If all the dependencies were installed without issues, you should be able to run `npm run dev`. This will de a little slow the first time, but ifeverything goes well it will tell you it is serving the app from "localhost:3000". Type that address in your browser and you should see your local copy of Klimatkollen in its full glory!
