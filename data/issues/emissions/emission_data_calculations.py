@@ -37,7 +37,7 @@ def get_n_prep_data_from_smhi(df):
     sectors = set(df_smhi['Huvudsektor'])
     sectors -= {'Alla'} 
 
-    sector_dfs = dict()
+    sector_dicts = dict()
     for sector in sectors:
         df_smhi_sector = df_smhi[(df_smhi['Huvudsektor'] == sector) 
                 & (df_smhi['Undersektor'] == 'Alla')
@@ -52,7 +52,7 @@ def get_n_prep_data_from_smhi(df):
 
         df_sector = df.copy()
         df_sector = df_sector.merge(df_smhi_sector, on='Kommun', how='left')
-        sector_dfs[sector] = df_sector
+        sector_dicts[sector] = df_sector
 
     # Same for total emissions
     df_smhi = df_smhi[(df_smhi['Huvudsektor'] == 'Alla') 
@@ -68,7 +68,7 @@ def get_n_prep_data_from_smhi(df):
 
     df = df.merge(df_smhi, on='Kommun', how='left')
 
-    return df, sector_dfs
+    return df, sector_dicts
 
 def get_cement_deduction():
     return  {'Mörbylånga':
@@ -82,14 +82,14 @@ def get_cement_deduction():
                 1000, 2018: 1740412000/1000, 2019: 1536480000/1000, 2020: 1624463000/1000, 2021: 1621211000/1000}
             }
 
-def remove_cement_munips(sector_dfs):
+def remove_cement_munips(sector_dicts):
     for kommun in list(get_cement_deduction().keys()):
-        for sector_name in sector_dfs:
-            sdf = sector_dfs[sector_name]
+        for sector_name in sector_dicts:
+            sdf = sector_dicts[sector_name]
             i = sdf.index[sdf['Kommun'] == kommun]
             sdf.drop(i, inplace = True)
 
-def deduct_cement(df, sector_dfs):
+def deduct_cement(df, sector_dicts):
     # Sources for cement deduction
     # Mörbylånga: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=1441
     # Skövde: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=5932
@@ -105,17 +105,17 @@ def deduct_cement(df, sector_dfs):
                                                               == i, j].values - cement_deduction[i][j]
 
     cement_sector = 'Industri (energi + processer)'
-    if cement_sector in sector_dfs:
-        df_sec = sector_dfs[cement_sector]
+    if cement_sector in sector_dicts:
+        df_sec = sector_dicts[cement_sector]
         for i in cement_deduction.keys():
             for j in cement_deduction[i].keys():
                 df_sec.loc[df_sec['Kommun'] == i, j] = df_sec.loc[df_sec['Kommun']
                                                                   == i, j].values - cement_deduction[i][j]
-        sector_dfs[cement_sector] = df_sec
+        sector_dicts[cement_sector] = df_sec
     else:
         print('Warning: could not deduct cement in sectors because %s was missing' % cement_sector)
 
-    return df_cem, sector_dfs
+    return df_cem, sector_dicts
 
 
 def calculate_trend_coefficients(df):
@@ -150,19 +150,19 @@ def calculate_approximated_historical(df):
     df = df.sort_values('Kommun', ascending=True)
     for i in range(len(df)):
         # We'll store the approximated values for each municipality in a dictionary where the keys are the years
-        dict = {}
+        approximated_data_dict = {}
         
         if (len(list(approximated_years)) > 0):   # only fill dict if approximation is needed
             # Add the latest recorded datapoint to the dict. The rest of the years will be added below
-            dict = {LAST_YEAR_WITH_SMHI_DATA: df.iloc[i][LAST_YEAR_WITH_SMHI_DATA]}
+            approximated_data_dict = {LAST_YEAR_WITH_SMHI_DATA: df.iloc[i][LAST_YEAR_WITH_SMHI_DATA]}
             # Get trend coefficients
             fit = df.iloc[i]['trendCoefficients']
             
             for idx, year in enumerate(approximated_years):
                 # Add the approximated value for each year using the trend line coefficients. Max function so we don't get negative values
-                dict[year] = max(0, fit[0]*year+fit[1])
+                approximated_data_dict[year] = max(0, fit[0]*year+fit[1])
         
-        temp.append(dict)
+        temp.append(approximated_data_dict)
         
     df['approximatedHistorical'] = temp
     
@@ -177,6 +177,38 @@ def calculate_approximated_historical(df):
     return df
 
 
+def calculate_approximated_sector_emissions(sector_dicts):
+    approximated_sector_emissions = {}
+
+    # Get a list of the municipalities from the first sector dictionary
+    first_sector_name = next(iter(sector_dicts))  # Get the first sector name
+    municipalities = sector_dicts[first_sector_name]['Kommun']
+
+    for sector_name, sector_dict in sector_dicts.items():
+        temp = []
+
+        for municipality in municipalities:
+            # If the municipality is present in the sector dict, get its emission value
+            if municipality in sector_dict['Kommun'].values:
+                # Check if 'CO2Equivalent' column exists
+                if 'CO2Equivalent' in sector_dict.columns:
+                    emission = sector_dict.loc[sector_dict['Kommun'] == municipality]['CO2Equivalent'].values[0]
+                else:
+                    emission = 0  # Fill with 0 if the column is missing
+            else:
+                emission = 0  # Fill with 0 if the municipality is missing in the sector dict
+            temp.append(emission)
+
+        # Pad the values with zeros to match the length of the index
+        while len(temp) < len(sector_dict):
+            temp.append(0)
+
+        approximated_sector_emissions[sector_name + '_Approximated'] = temp
+
+    return approximated_sector_emissions
+
+
+
 def calculate_trend(df):
     # Calculate trend line for future years up to 2050
     # This is done by interpolation using previously calculated linear trend coefficients
@@ -189,19 +221,19 @@ def calculate_trend(df):
     for i in range(len(df)):
         # We'll store the future trend line for each municipality in a dictionary where the keys are the years
         # Add the latest recorded datapoint to the dict. The rest of the years will be added below.
-        dict = {LAST_YEAR_WITH_SMHI_DATA: df.iloc[i][LAST_YEAR_WITH_SMHI_DATA]}
+        last_year_with_data_dict = {LAST_YEAR_WITH_SMHI_DATA: df.iloc[i][LAST_YEAR_WITH_SMHI_DATA]}
         
         # If approximated historical values exist, overwrite trend dict to start from current year
         if (CURRENT_YEAR > LAST_YEAR_WITH_SMHI_DATA):
-            dict = {CURRENT_YEAR: df.iloc[i]['approximatedHistorical'][CURRENT_YEAR]}
+            last_year_with_data_dict = {CURRENT_YEAR: df.iloc[i]['approximatedHistorical'][CURRENT_YEAR]}
         
         # Get the trend coefficients
         fit = df.iloc[i]['trendCoefficients']
 
         for idx, year in enumerate(future_years):
             # Add the trend value for each year using the trend line coefficients. Max function so we don't get negative values
-            dict[year] = max(0, fit[0]*year+fit[1])
-        temp.append(dict)
+            last_year_with_data_dict[year] = max(0, fit[0]*year+fit[1])
+        temp.append(last_year_with_data_dict)
 
     df['trend'] = temp
 
@@ -231,7 +263,7 @@ def calculate_municipality_budgets(df):
     # Separate years with recorded data from years with approximated data
     recorded_years_since_budget = [x for x in all_years_since_budget if x <= LAST_YEAR_WITH_SMHI_DATA]
     approximated_years_since_budget = [x for x in all_years_since_budget if x > LAST_YEAR_WITH_SMHI_DATA]
-   
+
     # Subtract emissions from budget for years that have passed since the budget started "eating"
     # For recorded values, subtract values as is
     for i in range(len(recorded_years_since_budget)): 
@@ -309,7 +341,7 @@ def calculate_historical_change_percent(df):
 
 def calculate_needed_change_percent(df):
     # Calculate needed yearly emission level decrease to reach Paris goal
-   
+
     # Year from which the paris path starts
     first_year = max(BUDGET_YEAR, CURRENT_YEAR)
     
@@ -401,15 +433,14 @@ def calculate_budget_runs_out(df):
 
 
 def emission_calculations(df):
-    df_smhi, sector_dfs = get_n_prep_data_from_smhi(df)
+    df_smhi, sector_dicts = get_n_prep_data_from_smhi(df)
 
     # This should be the calculation:
-    #   df_cem, sector_dfs = deduct_cement(df_smhi, sector_dfs)
+    #   df_cem, sector_dicts = deduct_cement(df_smhi, sector_dicts)
     # But the cement numbers for sectors don't add up. So it's best not to construct them at all.
-    df_cem, _ = deduct_cement(df_smhi, sector_dfs)
-    remove_cement_munips(sector_dfs)
+    df_cem, _ = deduct_cement(df_smhi, sector_dicts)
+    remove_cement_munips(sector_dicts)
     # end.
-
     
     df_trend_coefficients = calculate_trend_coefficients(df_cem)
     df_approxmimated_historical = calculate_approximated_historical(df_trend_coefficients)
@@ -423,5 +454,15 @@ def emission_calculations(df):
     
     df_net_zero = calculate_hit_net_zero(df_needed_change_percent)
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
+    
+    # Calculate approximated sector emissions
+    approximated_sector_emissions = calculate_approximated_sector_emissions(sector_dicts)
+    
+    # Merge approximated sector emissions into df_budget_runs_out DataFrame
+    for sector_name, sector_emissions in approximated_sector_emissions.items():
+        print(sector_emissions)
+        df_budget_runs_out[sector_name] = sector_emissions
 
-    return df_budget_runs_out, sector_dfs
+    return df_budget_runs_out, sector_dicts
+
+
