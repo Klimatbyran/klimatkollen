@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 
-import { H3, Paragraph, ParagraphBold } from './Typography'
+import { H3, ParagraphBold } from './Typography'
 import Icon from '../public/icons/add_light_white.svg'
 import IconGreen from '../public/icons/remove_light_white.svg'
 
-const Row = styled.div`
+const Row = styled.summary`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 0.8rem 0;
+  cursor: pointer;
 `
 
 const SectionLeft = styled.section`
@@ -41,10 +42,6 @@ const InfoSection = styled.div`
   }
 `
 
-const InfoParagraph = styled(Paragraph)`
-  margin: 0;
-`
-
 const StyledIcon = styled.div`
   margin-left: 12px;
 
@@ -60,10 +57,10 @@ type Props = {
 }
 
 function FactSection({ heading, data, info }: Props) {
-  const [toggle, setToggle] = useState(false)
+  const [open, setOpen] = useState(false)
 
   return (
-    <>
+    <details onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)}>
       <Row>
         <SectionLeft>
           <InfoHeading>{heading}</InfoHeading>
@@ -71,22 +68,16 @@ function FactSection({ heading, data, info }: Props) {
         </SectionLeft>
         {info && (
         <SectionRight>
-          <StyledIcon onClick={() => setToggle(!toggle)}>
-            {toggle ? <IconGreen /> : <Icon />}
+          <StyledIcon>
+            {open ? <IconGreen /> : <Icon />}
           </StyledIcon>
         </SectionRight>
         )}
       </Row>
-      <section>
-        {toggle ? (
-          <InfoSection>
-            <InfoParagraph>
-              {info}
-            </InfoParagraph>
-          </InfoSection>
-        ) : null}
-      </section>
-    </>
+      <InfoSection>
+        {info}
+      </InfoSection>
+    </details>
   )
 }
 

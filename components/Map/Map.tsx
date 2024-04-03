@@ -12,6 +12,7 @@ import { deviceSizesPx, onTouchDevice } from '../../utils/devices'
 import {
   MapProps, MunicipalityTapInfo, MunicipalityData, isMunicipalityData,
 } from '../../utils/types'
+import { replaceLetters } from '../../utils/shared'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -58,6 +59,17 @@ const getColor = (
     return dataPoint === boundaries[0] ? colors[0] : colors[colors.length - 1]
   }
 
+  // Special case for KPIs with three cases
+  if (boundaries.length === 3) {
+    if (dataPoint > boundaries[1]) {
+      return colors[colors.length - 1]
+    }
+    if (dataPoint > boundaries[0]) {
+      return colors[4]
+    }
+    return colors[0]
+  }
+
   // Special case for invalid dates
   const invalidDate = (possibleDate: unknown) => possibleDate instanceof Date && Number.isNaN(possibleDate.getTime())
   if (invalidDate(dataPoint)) {
@@ -81,21 +93,6 @@ const getColor = (
     }
   }
   return colors[5]
-}
-
-const replaceLetters = (name: string): string => {
-  const replacements: Record<string, string> = {
-    'Ã¥': 'å',
-    'Ã¤': 'ä',
-    'Ã¶': 'ö',
-    'Ã…': 'Å',
-    'Ã„': 'Ä',
-    'Ã–': 'Ö',
-  }
-
-  const regex = new RegExp(Object.keys(replacements).join('|'), 'g')
-
-  return name.replace(regex, (match) => replacements[match])
 }
 
 // Use when viewState is reimplemented
@@ -173,8 +170,9 @@ function Map({
   const municipalityLines = municipalityFeatureCollection?.features?.flatMap(
     ({ geometry, properties }: { geometry: any; properties: any }) => {
       const name = replaceLetters(properties.name)
-      const dataPoint = data.find((e) => e.name === name)?.dataPoint
-      const formattedDataPoint = data.find((e) => e.name === name)?.formattedDataPoint
+      const currentMunicipality = data.find((e) => e.name === name)
+      const dataPoint = currentMunicipality?.primaryDataPoint
+      const formattedDataPoint = currentMunicipality?.formattedPrimaryDataPoint
 
       if (geometry.type === 'MultiPolygon') {
         return geometry.coordinates.map((coords: any) => ({
