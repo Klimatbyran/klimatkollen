@@ -35,9 +35,7 @@ def get_n_prep_data_from_smhi(df):
     df_smhi = df_smhi.drop([0])  # remove row 0o
 
     sectors = set(df_smhi['Huvudsektor'])
-    sectors -= set([
-        'Alla', 
-    ]) 
+    sectors -= {'Alla'} 
 
     sector_dfs = dict()
     for sector in sectors:

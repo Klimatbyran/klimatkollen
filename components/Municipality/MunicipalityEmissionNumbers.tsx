@@ -12,6 +12,7 @@ import {
   kiloTonString,
   sumEmissionsPerYear,
 } from '../../utils/climateDataPresentation'
+import { groupEmissionSectors } from '../../utils/shared'
 
 const Container = styled.div`
   background: ${({ theme }) => theme.black};
@@ -69,7 +70,7 @@ function MunicipalityEmissionNumbers({ municipality, step, showSectors }: Emissi
 
   const totalBudget = municipality.Budget.CO2Equivalent
 
-  const totalSectors = municipality.HistoricalEmission.SectorEmissionsPerYear
+  const totalSectors = groupEmissionSectors(municipality.HistoricalEmission.SectorEmissionsPerYear)
     .map(({ Name, EmissionsPerYear }) => ({
       Name,
       EmissionsPerYear,

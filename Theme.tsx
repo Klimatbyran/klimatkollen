@@ -8,6 +8,7 @@ const colors = {
   offWhite: '#FFFDFA',
 
   red: '#EF3030',
+  redOpaque: 'rgba(239, 48, 48, 0.6)',
   darkRed: '#8B1A1A',
   darkRedOpaque: 'rgba(139, 26, 26, 0.6)',
   darkDarkRed: '#450d0d',
@@ -45,11 +46,11 @@ const colors = {
       border: '',
       fill: '',
     },
-    jordbruk: {
+    agriculture: {
       border: '',
       fill: '',
     },
-    heatingEnergy: {
+    energy: {
       border: '',
       fill: '',
     },
@@ -63,23 +64,23 @@ const colors = {
 colors.sectors = {
   transports: {
     border: colors.midGreen,
-    fill: `${colors.midGreen}44`,
+    fill: `${colors.midGreen}56`,
   },
   industry: {
     border: colors.lightBlue,
-    fill: `${colors.lightBlue}44`,
+    fill: `${colors.lightBlue}56`,
   },
-  jordbruk: {
-    border: colors.darkGreenOne,
-    fill: `${colors.darkGreenOne}44`,
+  agriculture: {
+    border: colors.orange,
+    fill: `${colors.orange}56`,
   },
-  heatingEnergy: {
-    border: colors.lightYellow,
-    fill: `${colors.lightYellow}44`,
+  energy: {
+    border: colors.darkYellow,
+    fill: `${colors.darkYellow}56`,
   },
   other: {
-    border: colors.darkYellow,
-    fill: `${colors.darkYellow}44`,
+    border: colors.red,
+    fill: `${colors.red}56`,
   },
 }
 
