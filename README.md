@@ -16,7 +16,7 @@ Please climb onboard to help us set our climate data free! #Klimatkollen /#FreeC
 
 ## Get started
 
-Detailed setup instructions are available in [doc/getting-started.md](doc/getting-started.md), including how to install the dependencies.
+Detailed step-by-step setup instructions, including getting the code and installing dependencies, can be found in [doc/getting-started.md](doc/getting-started.md). 
 
 We use next.js and Typescript and it's pretty straightforward to get started. Just clone the repo and run:
 
