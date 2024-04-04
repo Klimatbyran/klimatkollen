@@ -75,7 +75,8 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         title="Hushållens konsumtionsutsläpp"
         heading="CO₂e per person och år"
         data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton`}
-        info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet."
+        info={'Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019. '
+          + 'År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.'}
       />
       <SolutionSection
         icon={<Charger />}
