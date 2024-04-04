@@ -7,6 +7,8 @@ import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
 import { colorTheme } from '../../Theme'
 import { mapColors } from '../shared'
+import { replaceLetters } from '../../utils/shared'
+import { CurrentDataPoints } from '../../utils/types'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -40,6 +42,17 @@ const getColor = (
     return dataPoint === boundaries[0] ? colors[0] : colors[colors.length - 1]
   }
 
+  // Special case for KPIs with three cases
+  if (boundaries.length === 3) {
+    if (dataPoint > boundaries[1]) {
+      return colors[colors.length - 1]
+    }
+    if (dataPoint > boundaries[0]) {
+      return colors[4]
+    }
+    return colors[0]
+  }
+
   // Special case for invalid dates
   const invalidDate = (possibleDate: unknown) => possibleDate instanceof Date && Number.isNaN(possibleDate.getTime())
   if (invalidDate(dataPoint)) {
@@ -65,36 +78,13 @@ const getColor = (
   return colors[5]
 }
 
-const replaceLetters = (name: string): string => {
-  const replacements: Record<string, string> = {
-    'Ã¥': 'å',
-    'Ã¤': 'ä',
-    'Ã¶': 'ö',
-    'Ã…': 'Å',
-    'Ã„': 'Ä',
-    'Ã–': 'Ö',
-  }
-
-  const regex = new RegExp(Object.keys(replacements).join('|'), 'g')
-
-  return name.replace(regex, (match) => replacements[match])
-}
-
-// Use when viewState is reimplemented
-/* const MAP_RANGE = {
-  lon: [8.107180004121693, 26.099158344940808],
-  lat: [61.9, 63.9],
-} */
-
-type Props = {
-  data: Array<{ name: string; dataPoint: number | string | Date; formattedDataPoint: number | string }>
+type MapProps = {
+  data: Array<CurrentDataPoints>
   boundaries: number[] | string[] | Date[]
   children?: ReactNode
 }
 
-function Map({
-  data, boundaries, children,
-}: Props) {
+function Map({ data, boundaries, children }: MapProps) {
   const [municipalityData, setMunicipalityData] = useState<any>({})
   const router = useRouter()
 
@@ -135,8 +125,9 @@ function Map({
   const municipalityLines = municipalityData?.features?.flatMap(
     ({ geometry, properties }: { geometry: any; properties: any }) => {
       const name = replaceLetters(properties.name)
-      const dataPoint = data.find((e) => e.name === name)?.dataPoint
-      const formattedDataPoint = data.find((e) => e.name === name)?.formattedDataPoint
+      const currentMunicipality = data.find((e) => e.name === name)
+      const dataPoint = currentMunicipality?.primaryDataPoint
+      const formattedDataPoint = currentMunicipality?.formattedPrimaryDataPoint
 
       if (geometry.type === 'MultiPolygon') {
         return geometry.coordinates.map((coords: any) => ({

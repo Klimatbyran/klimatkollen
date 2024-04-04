@@ -44,11 +44,18 @@ type EmissionsProps = {
 }
 
 function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
-  const totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
+  let totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
     (total, year) => total + year.CO2Equivalent,
     0,
   ) / 1000
-  const historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+  let historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+
+  // if historical approximated data exist, include into total historical emission and advance the year to which historical data extends
+  if (municipality.ApproximatedHistoricalEmission.TotalCO2Emission) {
+    totalHistorical += municipality.ApproximatedHistoricalEmission.TotalCO2Emission / 1000
+    historicalEndsYear = municipality.ApproximatedHistoricalEmission.EmissionPerYear[
+      municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
+  }
 
   const totalTrend = municipality.EmissionTrend.TrendCO2Emission / 1000
   const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0]?.Year
@@ -75,7 +82,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
         <TotalCo2>
           <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
           <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
-            Koldioxidbudget för att klara Parisavtalet {budgetStartsYear}-2050: {totalBudget.toFixed(1)}
+            Koldioxidbudget {budgetStartsYear}-2050: {totalBudget.toFixed(1)}
           </StyledText>
         </TotalCo2>
       </TotalCo2Container>

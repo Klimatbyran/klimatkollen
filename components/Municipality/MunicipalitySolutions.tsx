@@ -6,6 +6,8 @@ import EVCar from '../../public/icons/evcars_32.svg'
 import Bike from '../../public/icons/bikelanes_32.svg'
 import Basket from '../../public/icons/consumtion_32.svg'
 import Charger from '../../public/icons/charger.svg'
+import Procurements from '../../public/icons/kpis/procurements_32.svg'
+import { requirementsInProcurement } from '../../utils/datasetDefinitions'
 
 const StyledH2 = styled(H2)`
   margin-top: 32px;
@@ -27,7 +29,7 @@ type SolutionSectionProps = {
   title: string
   heading: string
   data: string
-  info: string
+  info: string | JSX.Element
 }
 
 function SolutionSection({
@@ -56,21 +58,6 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         Här visas nyckeltal för hur det går med klimatomställningen i kommunerna.
       </Paragraph>
       <SolutionSection
-        icon={<EVCar />}
-        title="Elbilarna"
-        heading="Förändringstakt andel laddbara bilar"
-        data={`${(municipality.ElectricCarChangePercent * 100).toFixed(1)} procentenheter`}
-        info="Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet
-            2015 i procentenheter per år. Högre är bättre."
-      />
-      <SolutionSection
-        icon={<Bike />}
-        title="Cyklarna"
-        heading="Antal meter cykelväg per invånare"
-        data={`${municipality.BicycleMetrePerCapita.toFixed(1)} meter`}
-        info="Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild). Högre är generellt bättre."
-      />
-      <SolutionSection
         icon={<Basket />}
         title="Hushållens konsumtionsutsläpp"
         heading="CO₂e per person och år"
@@ -79,11 +66,45 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
           + 'År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.'}
       />
       <SolutionSection
+        icon={<Procurements />}
+        title="Klimatkrav i upphandlingar"
+        heading="Ställer kommunen klimatkrav i sina upphandlingar?"
+        data={requirementsInProcurement(municipality.ProcurementScore)}
+        info={(
+          <>
+            Kommuner som ställer klimatkrav vid offentliga upphandlingar.
+            “Ja” innebär principbeslut och underlag som tillstyrker.
+            “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker.
+            {' '}
+            <a href="mailto:hej@klimatkollen.se">
+              Mejla oss
+            </a>
+            {' '}
+            för att redigera informationen.
+          </>
+        )}
+      />
+      <SolutionSection
+        icon={<EVCar />}
+        title="Elbilarna"
+        heading="Förändringstakt andel laddbara bilar"
+        data={`${(municipality.ElectricCarChangePercent * 100).toFixed(1)} procentenheter`}
+        info="Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet
+            2015 i procentenheter per år. Högre är bättre."
+      />
+      <SolutionSection
         icon={<Charger />}
         title="Laddarna"
         heading="Antal elbilar per laddare"
         data={`${municipality.ElectricVehiclePerChargePoints < 1e10 ? municipality.ElectricVehiclePerChargePoints.toFixed(1) : 'Laddare saknas'}`}
         info="Antal registrerade laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare."
+      />
+      <SolutionSection
+        icon={<Bike />}
+        title="Cyklarna"
+        heading="Antal meter cykelväg per invånare"
+        data={`${municipality.BicycleMetrePerCapita.toFixed(1)} meter`}
+        info="Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild). Högre är generellt bättre."
       />
     </>
   )
