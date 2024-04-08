@@ -1,5 +1,7 @@
 const path = require('path')
 
+const DEV = process.env.NODE_ENV === 'development'
+
 /** @type {import('next-i18next').UserConfig} */
 module.exports = {
   i18n: {
@@ -8,5 +10,5 @@ module.exports = {
   },
   localePath: path.resolve('./public/locales'),
   // Allow reloading translations without restarting the dev server.
-  reloadOnPrerender: true,
+  reloadOnPrerender: DEV,
 }

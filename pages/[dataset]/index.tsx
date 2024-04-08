@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, locale })
       shallow: true,
     },
     props: {
-      ...await serverSideTranslations(locale as string, 'common'),
+      ...await serverSideTranslations(locale as string, ['common', 'footer']),
     },
   }
 }

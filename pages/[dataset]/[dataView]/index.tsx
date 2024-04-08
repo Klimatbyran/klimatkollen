@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     props: {
       municipalities,
       normalizedDataset,
-      ...await serverSideTranslations(locale as string, 'common'),
+      ...await serverSideTranslations(locale as string, ['common', 'footer']),
     },
   }
 

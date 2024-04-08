@@ -237,7 +237,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
       permanent: true,
     },
     props: {
-      ...await serverSideTranslations(locale as string, ['common']),
+      ...await serverSideTranslations(locale as string, ['common', 'footer']),
     },
   }
 }

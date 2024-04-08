@@ -1,5 +1,6 @@
 import { useState, FC, useEffect } from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
 import { EmailFormFields } from 'react-mailchimp-subscribe'
 import { H5, Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
@@ -102,6 +103,7 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
   const [showThanks, setThanks] = useState(false)
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (status === 'success' || status === 'error') {
@@ -129,24 +131,23 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
 
   return (
     <Container>
-      <H5>Vill du få nyheter om Klimatkollen?</H5>
+      <H5>{t('footer:signup-form.title')}</H5>
       <HorizontalContainer>
         <div>
           <StyledParagraph>
-            Med vårt nyhetsbrev får du uppdateringar om hur det går med utsläppen och
-            omställningen direkt i din mejl.
+            {t('footer:signup-form.info')}
           </StyledParagraph>
         </div>
         <div>
           <StyledForm onSubmit={handleFormSubmit}>
             {showThanks ? (
-              <EmailValidation>Tack för ditt intresse!</EmailValidation>
+              <EmailValidation>{t('footer:signup-form.thanks')}</EmailValidation>
             ) : (
               <>
                 <StyledInput
                   onChange={(event) => setEmail(event.target.value)}
                   type="email"
-                  placeholder="Ange mailadress"
+                  placeholder={t('footer:signup-form.placeholder')}
                   value={email}
                   required
                   disabled={showThanks}
