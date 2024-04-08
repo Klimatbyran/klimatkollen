@@ -88,7 +88,7 @@ const CloseButtonContainer = styled.div`
   top: 1rem;
   right: 1rem;
 
-  @media only screen and ($(devices.tablet)) {
+  @media only screen and (${devices.tablet}) {
     top: 1.2rem;
   }
 `
