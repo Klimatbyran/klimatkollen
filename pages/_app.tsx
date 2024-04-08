@@ -6,10 +6,11 @@ import CookieConsent from 'react-cookie-consent'
 import { GetStaticProps, NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
 import { appWithTranslation, useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import '../styles/globals.css'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Theme, { colorTheme } from '../Theme'
+import nextI18nextConfig from '../next-i18next.config'
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -81,7 +82,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Theme>
         <CookieConsent
           location="bottom"
-          buttonText={t('actions.ok')}
+          buttonText={t('common:actions.ok')}
           style={{ background: colorTheme.lightBlack }}
           buttonStyle={{
             backgroundColor: colorTheme.midGreen,
@@ -89,7 +90,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           }}
           expires={150}
         >
-          {t('cookieBanner.message')}
+          {t('common:cookieBanner.message')}
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}
       </Theme>
@@ -103,4 +104,4 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   },
 })
 
-export default appWithTranslation(MyApp)
+export default appWithTranslation(MyApp, nextI18nextConfig)
