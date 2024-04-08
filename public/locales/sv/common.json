@@ -1,8 +1,12 @@
 {
   "actions": {
+    "goHome": "Gå till startsidan",
     "ok": "OK"
   },
   "cookieBanner": {
     "message": "Denna sida använder cookies för att förbättra användarupplevelsen."
+  },
+  "errors": {
+    "notFound": "404 - Sidan hittades inte"
   }
 }

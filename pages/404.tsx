@@ -1,5 +1,6 @@
 import router from 'next/router'
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps } from 'next'
 import { H1 } from '../components/Typography'
@@ -31,17 +32,19 @@ function FourOhFour() {
     router.push('/')
   }
 
+  const { t } = useTranslation()
+
   return (
     <Wrapper>
-      <H1>404 - Sidan hittades inte</H1>
-      <Button onClick={handleClick}>Gå till startsidan</Button>
+      <H1>{t('common:errors.notFound')}</H1>
+      <Button onClick={handleClick}>{t('common:actions.goHome')}</Button>
     </Wrapper>
   )
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common']),
+    ...await serverSideTranslations(locale as string, ['common']),
   },
 })
 
