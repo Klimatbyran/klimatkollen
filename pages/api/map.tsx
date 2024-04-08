@@ -13,6 +13,4 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
       res.setHeader('Allow', ['GET'])
       res.status(405).end(`Method ${method} Not Allowed`)
   }
-
-  return res
 }
