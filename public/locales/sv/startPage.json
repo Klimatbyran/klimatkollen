@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "description": "Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?",
+    "title": "Klimatkollen — Få koll på Sveriges klimatomställning"
+  },
+  "questionTitle": "Hur går det med?",
+  "toggleView": {
+    "list": "Listvy",
+    "map": "Kartvy"
+  },
+  "yourMunicipality": "Hur går det i din kommun?"
+}

@@ -170,12 +170,12 @@ function StartPage({ municipalities }: PropsType) {
   return (
     <>
       <MetaTags
-        title="Klimatkollen — Få koll på Sveriges klimatomställning"
-        description="Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
+        title={t('startPage:meta.title')}
+        description={t('startPage:meta.description')}
       />
       <PageWrapper backgroundColor="black">
         <Container>
-          <H2Regular>Hur går det med?</H2Regular>
+          <H2Regular>{t('startPage:questionTitle')}</H2Regular>
           <RadioButtonMenu
             selectedData={selectedDataset}
             handleDataChange={handleDataChange}
@@ -185,7 +185,7 @@ function StartPage({ municipalities }: PropsType) {
               <FloatingH5>{datasetDescription.title}</FloatingH5>
               <ToggleButton
                 handleClick={handleToggle}
-                text={isDefaultDataView ? 'Listvy' : 'Kartvy'}
+                text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
                 icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
               />
             </TitleContainer>
@@ -214,7 +214,7 @@ function StartPage({ municipalities }: PropsType) {
           <DropDown
             className="startpage"
             municipalitiesName={municipalityNames}
-            placeholder="Hur går det i din kommun?"
+            placeholder={t('startPage:yourMunicipality')}
           />
         </Container>
       </PageWrapper>
@@ -236,7 +236,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
       permanent: true,
     },
     props: {
-      ...await serverSideTranslations(locale as string, ['common', 'footer']),
+      ...await serverSideTranslations(locale as string, ['common', 'footer', 'startPage']),
     },
   }
 }
