@@ -3,12 +3,12 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
 import CookieConsent from 'react-cookie-consent'
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
-import { appWithTranslation } from 'next-i18next'
+import { appWithTranslation, useTranslation } from 'next-i18next'
 
-// import '../utils/i18n'
 import '../styles/globals.css'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Theme, { colorTheme } from '../Theme'
 
 type NextPageWithLayout = NextPage & {
@@ -21,6 +21,8 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
+  const { t } = useTranslation()
+
   return (
     <>
       <Script
@@ -79,7 +81,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Theme>
         <CookieConsent
           location="bottom"
-          buttonText="OK"
+          buttonText={t('actions.ok')}
           style={{ background: colorTheme.lightBlack }}
           buttonStyle={{
             backgroundColor: colorTheme.midGreen,
@@ -87,12 +89,18 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           }}
           expires={150}
         >
-          Denna sida använder cookies för att förbättra användarupplevelsen.
+          {t('cookieBanner.message')}
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}
       </Theme>
     </>
   )
 }
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale as string, ['common']),
+  },
+})
 
 export default appWithTranslation(MyApp)

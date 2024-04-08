@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import StartPage from '../..'
 import { ClimateDataService } from '../../../utils/climateDataService'
@@ -14,7 +15,9 @@ interface Params extends ParsedUrlQuery {
 
 const cache = new Map()
 
-export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  params, res, locale,
+}) => {
   const dataset = (params as Params).dataset as string
   const dataView = (params as Params).dataView as string
 
@@ -48,6 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
     props: {
       municipalities,
       normalizedDataset,
+      ...await serverSideTranslations(locale as string, 'common'),
     },
   }
 

@@ -2,6 +2,8 @@ import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 import { ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 
 import { useRouter } from 'next/router'
 import DropDown from '../components/DropDown'
@@ -120,6 +122,7 @@ function StartPage({ municipalities }: PropsType) {
 
   const [selectedDataset, setSelectedDataset] = useState<SelectedData>(defaultDataset)
   const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (normalizedRouteDataset && isValidDataset(normalizedRouteDataset)) {
@@ -220,7 +223,7 @@ function StartPage({ municipalities }: PropsType) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
@@ -232,6 +235,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     redirect: {
       destination: `/${normalizedDataset}/${defaultDataView}`,
       permanent: true,
+    },
+    props: {
+      ...await serverSideTranslations(locale as string, ['common']),
     },
   }
 }

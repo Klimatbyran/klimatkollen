@@ -33,7 +33,7 @@ function FourOhFour() {
 
   return (
     <Wrapper>
-      <H1>404 - Sidan hittades inte</H1>
+      <H1>500 - Något gick fel!</H1>
       <Button onClick={handleClick}>Gå till startsidan</Button>
     </Wrapper>
   )
@@ -41,7 +41,7 @@ function FourOhFour() {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common']),
+    ...await serverSideTranslations(locale as string, ['common']),
   },
 })
 
