@@ -5,8 +5,9 @@ import Script from 'next/script'
 import CookieConsent from 'react-cookie-consent'
 import { NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
+import { appWithTranslation } from 'next-i18next'
 
-import '../utils/i18n'
+// import '../utils/i18n'
 import '../styles/globals.css'
 import Theme, { colorTheme } from '../Theme'
 
@@ -94,4 +95,4 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp)
