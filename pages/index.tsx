@@ -212,7 +212,6 @@ function StartPage({ municipalities }: PropsType) {
             </InfoText>
           </InfoContainer>
           <DropDown
-            className="startpage"
             municipalitiesName={municipalityNames}
             placeholder={t('startPage:yourMunicipality')}
           />

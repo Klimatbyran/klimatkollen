@@ -16,7 +16,7 @@ import Scorecard from './MunicipalityScorecard'
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items center;
+  align-items: center;
   gap: 1.5rem;
   margin-bottom: 48px;
 `
@@ -111,7 +111,6 @@ function Municipality(props: Props) {
         <DropDownSection>
           <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
           <DropDown
-            className="municipality-page"
             municipalitiesName={municipalitiesName}
             placeholder="Välj kommun"
           />

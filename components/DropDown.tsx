@@ -83,7 +83,6 @@ const ErrorText = styled.div`
 type Props = {
   municipalitiesName: Array<string>
   placeholder: string
-  className: string
 }
 
 export function getSortedMunicipalities(municipalitiesName: Array<string>) {
@@ -113,7 +112,7 @@ export function search(query: string, municipalitiesName: Array<string>) {
     })
 }
 
-function DropDown({ municipalitiesName, placeholder, className }: Props) {
+function DropDown({ municipalitiesName, placeholder }: Props) {
   const sortedMunicipalities = getSortedMunicipalities(municipalitiesName)
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMunicipality, setSelectedMunicipality] = useState<string>('')
@@ -196,7 +195,7 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
             </Btn>
           </Flex>
           {showDropDown && (
-            <MunicipalitiesWrapper className={className}>
+            <MunicipalitiesWrapper>
               {municipalities.map((name) => (
                 <Municipality onClick={() => onMunicipalityClick(name)}>
                   {name}
