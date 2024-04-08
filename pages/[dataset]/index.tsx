@@ -1,6 +1,5 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { defaultDataView } from '../../utils/datasetDefinitions'
 import { isValidDataset, normalizeString } from '../../utils/shared'
 
@@ -8,7 +7,7 @@ interface Params extends ParsedUrlQuery {
   id: string
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const dataset = (params as Params).dataset as string
   const normalizedDataset = normalizeString(dataset)
 
@@ -23,9 +22,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params, locale })
       destination: `/${normalizedDataset}/${defaultDataView}`,
       permanent: true,
       shallow: true,
-    },
-    props: {
-      ...await serverSideTranslations(locale as string, ['common', 'footer', 'startPage']),
     },
   }
 }
