@@ -82,7 +82,6 @@ const FloatingH5 = styled.h5`
   @media only screen and (${devices.tablet}) {
     font-size: 18px;
     margin: 60px 0 0 16px;
-    font-size
   }
 `
 
