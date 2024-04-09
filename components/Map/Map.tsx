@@ -35,7 +35,6 @@ const TOOLTIP_MOBILE_STYLE = {
   padding: '0.5em 1em',
   display: 'flex',
   alignItems: 'center',
-  gap: 4,
   ...TOOLTIP_COMMON_STYLE,
 } as React.CSSProperties // https://stackoverflow.com/questions/46710747
 
@@ -115,9 +114,15 @@ function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
         textDecoration: 'none',
       }}
     >
-      <img src="/icons/info.svg" alt="info icon" style={{ color: '#fff', height: 14, width: 14 }} />
-      <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}: `}</span>
-      {tInfo.mData.formattedDataPoint}
+      <img
+        src="/icons/info.svg"
+        alt="info icon"
+        style={{
+          color: '#fff', height: 14, width: 14, marginRight: 4,
+        }}
+      />
+      <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}`}</span>
+      {`: ${tInfo.mData.formattedDataPoint}`}
     </Link>
   )
 }
