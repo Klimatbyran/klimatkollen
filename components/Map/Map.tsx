@@ -33,6 +33,9 @@ const TOOLTIP_COMMON_STYLE = {
 const TOOLTIP_MOBILE_STYLE = {
   position: 'absolute',
   padding: '0.5em 1em',
+  display: 'flex',
+  alignItems: 'center',
+  gap: 4,
   ...TOOLTIP_COMMON_STYLE,
 } as React.CSSProperties // https://stackoverflow.com/questions/46710747
 
@@ -101,17 +104,23 @@ const getColor = (
   lat: [61.9, 63.9],
 } */
 
-const generateMobileTooltip = (tInfo: MunicipalityTapInfo) => (
-  <div>
-    <Link href={`/kommun/${replaceLetters(tInfo.mData.name).toLowerCase()}`}>
-      <p
-        style={{ left: tInfo.x, top: tInfo.y, ...TOOLTIP_MOBILE_STYLE }}
-      >
-        {`${tInfo.mData.name}: ${tInfo.mData.formattedDataPoint}`}
-      </p>
+function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
+  return (
+    <Link
+      href={`/kommun/${replaceLetters(tInfo.mData.name).toLowerCase()}`}
+      style={{
+        ...TOOLTIP_MOBILE_STYLE,
+        left: tInfo.x,
+        top: tInfo.y,
+        textDecoration: 'none',
+      }}
+    >
+      <img src="/icons/info.svg" alt="info icon" style={{ color: '#fff', height: 14, width: 14 }} />
+      <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}: `}</span>
+      {tInfo.mData.formattedDataPoint}
     </Link>
-  </div>
-)
+  )
+}
 
 function Map({
   data, boundaries, children,
@@ -257,9 +266,7 @@ function Map({
       return viewState
     }} */
       />
-      {
-        lastTapInfo && generateMobileTooltip(lastTapInfo)
-      }
+      {lastTapInfo && <MobileTooltip tInfo={lastTapInfo} />}
       {children}
     </DeckGLWrapper>
   )
