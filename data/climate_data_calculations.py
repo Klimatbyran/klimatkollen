@@ -41,36 +41,45 @@ df_evpc = get_electric_vehicle_per_charge_points()
 df = df.merge(df_evpc, on='Kommun', how='left')
 print('7. CPEV for December 2023 added')
 
-for sector_name in sector_dfs:
-    sector_dfs[sector_name] = sector_dfs[sector_name].set_index(
-        'Kommun', verify_integrity=True
-    )
-sectors = list(sector_dfs.keys())
-
 df_procurements = get_procurement_data()
 df = df.merge(df_procurements, on='Kommun', how='left')
 print('8. Climate requirements in procurements added')
+
+# Valid emission sectors in the SMHI sector data
+# Are extracted directly from Nationella emissionsdatabasen
+# FIXME: a better solution in the future would be to extract them
+# from the SMHI data directly, in for example emission/historical_data_calculations.py
+sectors = [
+    'Produktanvändning (inkl. lösningsmedel)',
+    'Jordbruk',
+    'Utrikes transporter',
+    'Industri (energi + processer)',
+    'Egen uppärmning av bostäder och lokaler',
+    'Arbetsmaskiner',
+    'Transporter',
+    'El och fjärrvärme', 'Avfall (inkl.avlopp)'
+    ]
 
 temp = []  # remane the columns
 for i in range(len(df)):
     kommun = df.iloc[i]['Kommun']
 
-    sectorEmissions = dict()
-    if kommun in sector_dfs[sectors[0]][1990]:
+    sectorEmissions = {}
+    if kommun in df[f'1990_{sectors[0]}']:
         # The cement kommuner don't have this computed.
         for sector in sectors:
             sectorEmissions[sector] = {
-                '1990': sector_dfs[sector][1990][kommun],
-                '2000': sector_dfs[sector][2000][kommun],
-                '2005': sector_dfs[sector][2005][kommun],
-                '2010': sector_dfs[sector][2010][kommun],
-                '2015': sector_dfs[sector][2015][kommun],
-                '2016': sector_dfs[sector][2016][kommun],
-                '2017': sector_dfs[sector][2017][kommun],
-                '2018': sector_dfs[sector][2018][kommun],
-                '2019': sector_dfs[sector][2019][kommun],
-                '2020': sector_dfs[sector][2020][kommun],
-                '2021': sector_dfs[sector][2021][kommun],
+                '1990': df[f'1990_{sector}'],
+                '2000': df[f'2000_{sector}'],
+                '2005': df[f'2005_{sector}'],
+                '2010': df[f'2010_{sector}'],
+                '2015': df[f'2015_{sector}'],
+                '2016': df[f'2016_{sector}'],
+                '2017': df[f'2017_{sector}'],
+                '2018': df[f'2018_{sector}'],
+                '2019': df[f'2019_{sector}'],
+                '2020': df[f'2020_{sector}'],
+                '2021': df[f'2021_{sector}'],
             }
 
     temp.append({

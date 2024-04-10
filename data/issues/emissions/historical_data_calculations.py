@@ -77,7 +77,7 @@ def get_n_prep_data_from_smhi(df):
     df_total = df_total.sort_values(by=['Kommun'])  # sort by Kommun
     df_total = df_total.reset_index(drop=True)
     
-    df_total.merge(df_sectors, on='Kommun', how='left')
-    df = df.merge(df_total, on='Kommun', how='left')
+    df_merge = df_total.merge(df_sectors, on='Kommun', how='left')
+    df = df.merge(df_merge, on='Kommun', how='left')
 
     return df
