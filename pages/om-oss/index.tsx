@@ -123,17 +123,19 @@ function OmOss() {
                     styre och koldioxidutsläpp per invånare.
                   </ListItem>
                 </UnorderedList>
-                Klimatkollen är utvecklad med öppen källkod. Det betyder att alla kan vara
-                med och utveckla och förbättra sajten via vårt
-                {' '}
-                <a
-                  href="https://github.com/Klimatbyran/klimatkollen"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Github-repo
-                </a>
-                .
+                <p>
+                  Klimatkollen är utvecklad med öppen källkod. Det betyder att alla kan vara
+                  med och utveckla och förbättra sajten via vårt
+                  {' '}
+                  <a
+                    href="https://github.com/Klimatbyran/klimatkollen"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Github-repo
+                  </a>
+                  .
+                </p>
               </>
             )}
           />
