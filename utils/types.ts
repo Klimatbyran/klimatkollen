@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { dataDescriptions } from './datasetDefinitions'
 
 export type Image = {
@@ -101,4 +102,35 @@ export type CurrentDataPoints = {
   primaryDataPoint: number | string | Date
   formattedPrimaryDataPoint: string
   secondaryDataPoint?: string | null
+}
+
+export type MapProps = {
+  data: Array<CurrentDataPoints>
+  boundaries: number[] | string[] | Date[]
+  children?: ReactNode
+}
+
+export type MunicipalityData = {
+  name: string
+  dataPoint: number
+  formattedDataPoint: number
+  geometry: [number, number][]
+}
+
+export function isMunicipalityData(
+  thing: MunicipalityData | unknown,
+): thing is MunicipalityData {
+  if (!thing) {
+    return false
+  }
+  const mData = thing as MunicipalityData
+  return Boolean(
+    mData.name && mData.dataPoint && mData.formattedDataPoint && mData.geometry,
+  )
+}
+
+export type MunicipalityTapInfo = {
+  x: number
+  y: number
+  mData: MunicipalityData
 }
