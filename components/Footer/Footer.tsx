@@ -79,16 +79,16 @@ const SocialLinksContainer = styled.div`
 `
 
 function Footer() {
-  const { t } = useTranslation(['common', 'footer'])
+  const { t } = useTranslation(['common'])
 
   return (
     <>
       <PageWrapper backgroundColor="black">
         <Foot>
           <NewsletterSubscribe />
-          <StyledH5>{t('footer:supportedBy')}</StyledH5>
+          <StyledH5>{t('footer.supportedBy')}</StyledH5>
           <Supporters />
-          <StyledH5>{t('footer:partners')}</StyledH5>
+          <StyledH5>{t('footer.partners')}</StyledH5>
           <Partners />
         </Foot>
       </PageWrapper>
@@ -96,28 +96,28 @@ function Footer() {
         <BottomParent>
           <TextContainer>
             <Paragraph>
-              {t('footer:tagline')}
+              {t('footer.tagline')}
             </Paragraph>
             <Copyright>
-              {t('footer:creative-commons.abbreviation')}
+              {t('footer.creative-commons.abbreviation')}
               {' - '}
               <a
                 href="http://creativecommons.org/licenses/by-sa/4.0/"
                 target="_blank"
                 rel="noreferrer license"
               >
-                {t('footer:creative-commons.license')}
+                {t('footer.creative-commons.license')}
               </a>
             </Copyright>
             <GHLink>
-              {t('footer:developedWith')}
+              {t('footer.developedWith')}
               {' '}
               <a
                 href="https://github.com/Klimatbyran/klimatkollen"
                 target="_blank"
                 rel="noreferrer"
               >
-                {t('footer:open-source')}
+                {t('footer.open-source')}
               </a>
             </GHLink>
           </TextContainer>

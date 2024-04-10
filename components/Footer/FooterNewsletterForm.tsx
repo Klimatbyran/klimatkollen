@@ -131,23 +131,23 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
 
   return (
     <Container>
-      <H5>{t('footer:signup-form.title')}</H5>
+      <H5>{t('footer.signup-form.title')}</H5>
       <HorizontalContainer>
         <div>
           <StyledParagraph>
-            {t('footer:signup-form.info')}
+            {t('footer.signup-form.info')}
           </StyledParagraph>
         </div>
         <div>
           <StyledForm onSubmit={handleFormSubmit}>
             {showThanks ? (
-              <EmailValidation>{t('footer:signup-form.thanks')}</EmailValidation>
+              <EmailValidation>{t('footer.signup-form.thanks')}</EmailValidation>
             ) : (
               <>
                 <StyledInput
                   onChange={(event) => setEmail(event.target.value)}
                   type="email"
-                  placeholder={t('footer:signup-form.placeholder')}
+                  placeholder={t('footer.signup-form.placeholder')}
                   value={email}
                   required
                   disabled={showThanks}

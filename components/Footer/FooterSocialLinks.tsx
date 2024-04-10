@@ -58,7 +58,7 @@ function SocialList() {
         icon="/icons/icon_mail_circle.svg"
         alt="Email icon"
         link="mailto:hej@klimatkollen.se"
-        text={t('footer:email-us')}
+        text={t('footer.email-us')}
       />
       <SocialListItem
         icon="/icons/some/x_circle.svg"
