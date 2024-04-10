@@ -22,7 +22,7 @@ from test import validate_output
 df = get_municipalities()
 print('1. Municipalities loaded and prepped')
 
-df, sector_dfs = emission_calculations(df)
+df = emission_calculations(df)
 print('2. Climate data and calculations added')
 
 df = get_electric_car_change_rate(df)

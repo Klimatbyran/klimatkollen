@@ -4,18 +4,21 @@ import unittest
 import pandas as pd
 
 from issues.emissions.emission_data_calculations import (
-    calculate_approximated_historical,
     calculate_historical_change_percent,
-    calculate_trend_coefficients,
-    get_n_prep_data_from_smhi,
     deduct_cement,
     calculate_municipality_budgets,
     calculate_paris_path,
-    calculate_trend,
     calculate_needed_change_percent,
     calculate_hit_net_zero,
     calculate_budget_runs_out,
 )
+from issues.emissions.historical_data_calculations import get_n_prep_data_from_smhi
+from issues.emissions.trend_calculations import calculate_trend_coefficients, calculate_trend
+from issues.emissions.approximated_data_calculations import calculate_approximated_historical
+
+
+LAST_YEAR_WITH_SMHI_DATA = 2021
+CURRENT_YEAR = 2024
 
 
 class TestEmissionCalculations(unittest.TestCase):
@@ -81,7 +84,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected = df_input.copy()
         df_expected["trendCoefficients"] = [[-8.89777111e03, 1.85140662e07]]
 
-        df_result = calculate_trend_coefficients(df_input)
+        df_result = calculate_trend_coefficients(df_input, LAST_YEAR_WITH_SMHI_DATA)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -112,7 +115,7 @@ class TestEmissionCalculations(unittest.TestCase):
         ]
         df_expected["totalApproximatedHistorical"] = [1560788.47673442]
 
-        df_result = calculate_approximated_historical(df_input)
+        df_result = calculate_approximated_historical(df_input, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -174,7 +177,7 @@ class TestEmissionCalculations(unittest.TestCase):
         ]
         df_expected["trendEmission"] = [10121967.672179997]
 
-        df_result = calculate_trend(df_input)
+        df_result = calculate_trend(df_input, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
