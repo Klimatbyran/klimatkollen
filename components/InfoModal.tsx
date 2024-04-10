@@ -114,6 +114,7 @@ function InfoModal({ text, close, scrollY }: Props) {
     <Modal ref={ref} scrollY={scrollY}>
       <div>
         <div>
+          {/* NOTE: Consider replacing with a translation "Stäng" accessed via common.actions.close */}
           <IconButton type="button" aria-label="Stäng information" onClick={close}>
             <Close />
           </IconButton>

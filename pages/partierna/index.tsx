@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MetaTags from '../../components/MetaTags'
 import { H2, Paragraph } from '../../components/Typography'
@@ -154,14 +155,16 @@ function Partier() {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
   return {
-    props: { },
+    props: {
+      ...await serverSideTranslations(locale as string, ['common']),
+    },
   }
 }
 

@@ -2,6 +2,7 @@
 import { GetServerSideProps } from 'next'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MetaTags from '../../components/MetaTags'
 import { H2, Paragraph } from '../../components/Typography'
@@ -270,7 +271,7 @@ function KoM() {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
   const municipalities = new ClimateDataService().getMunicipalities()
   if (municipalities.length < 1) throw new Error('No municipalities found')
 
@@ -280,7 +281,10 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   )
 
   return {
-    props: { municipalities },
+    props: {
+      municipalities, 
+      ...await serverSideTranslations(locale as string, ['common']),
+    },
   }
 }
 
