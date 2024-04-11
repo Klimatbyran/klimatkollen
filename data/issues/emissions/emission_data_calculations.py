@@ -256,7 +256,9 @@ def emission_calculations(df):
 
     df_cem = deduct_cement(df_smhi)
 
+    # FIXME also calculate trend coefficients for the sectors
     df_trend_coefficients = calculate_trend_coefficients(df_cem, LAST_YEAR_WITH_SMHI_DATA)
+    # FIXME also calculate approximated values for the sectors
     df_approxmimated_historical_total = calculate_approximated_historical(df_trend_coefficients, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
     df_trend = calculate_trend(df_approxmimated_historical_total, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
 
