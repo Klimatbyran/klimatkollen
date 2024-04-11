@@ -27,13 +27,15 @@ We utilize Python libraries such as Pandas and NumPy to perform various calculat
     python3 -m unittest discover -s tests
     ```
 
-To run a specific test file, stand in `/data/` and run
+    To run a specific test file, stand in `/data/` and run
 
     ```
     python3 -m unittest tests/{filename}.py
     ```
 
     where you replace *filename* with the name of the actual test file.
+    
+    If you notice any test failing, please submit a ticket about it.
 
 ### How to Update Data on Site
 
