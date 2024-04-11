@@ -92,13 +92,11 @@ function CompanyView({
   )
 }
 
-/**
- * TODO
- * [] add tooltip on hover
- * [] routing
- * [] data from API not excel
- * [] styling
- * [] texts
- * /
+// TODO
+// [] add tooltip on hover
+// [] routing
+// [] data from API not excel
+// [] styling
+// [] texts
 
 export default CompanyView
