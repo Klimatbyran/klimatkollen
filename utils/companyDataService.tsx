@@ -6,7 +6,7 @@ export class CompanyDataService {
   companies: Array<Company>
 
   constructor() {
-    const companiesDataFilePath = path.resolve('./dummy_companies.json')
+    const companiesDataFilePath = path.resolve('./data/companies/company-data.json')
     const companiesDataFileContent = fs.readFileSync(companiesDataFilePath, {
       encoding: 'utf-8',
     })
@@ -16,28 +16,17 @@ export class CompanyDataService {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .map((data: any) => {
         const emissionsPerYear = {
-          Scope1: data.scope1,
-          Scope2: data.scope2,
-          Scope3: data.scope3,
-          TotalEmissions: data.totalEmissions,
-          TotalUnit: data.totalUnit,
+          Scope1n2: data.Scope1n2,
+          Scope3: data.Scope3,
         } as unknown as CompanyEmissionsPerYear
 
         return {
-          Name: data.name,
-          Industry: data.industry,
-          Url: data.url,
+          Name: data.Company,
+          Url: data.URL,
+          Comment: data.Comment,
           Emissions: emissionsPerYear,
         } as unknown as Company
       })
-      .sort((a: Company, b: Company) => (
-        a.Emissions.TotalEmissions - b.Emissions.TotalEmissions
-      ))
-    this.companies.forEach((company: Company, index: number) => {
-      const updatedCompany = { ...company }
-      updatedCompany.Emissions.TotalEmissionRank = index + 1
-      return updatedCompany
-    })
   }
 
   public getCompanies(): Array<Company> {

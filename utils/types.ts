@@ -15,19 +15,14 @@ export type CompanyScope = {
 }
 
 export type CompanyEmissionsPerYear = {
-  Scope1: CompanyScope
-  Scope2: CompanyScope
+  Scope1n2: CompanyScope
   Scope3: CompanyScope
-  TotalEmissions: number
-  TotalUnit: string
-  TotalEmissionRank: number
 }
 
 export type Company = {
   Name: string
-  Industry: string
-  BaseYear: string
   Url: string
+  Comment: string
   Emissions: CompanyEmissionsPerYear
 }
 

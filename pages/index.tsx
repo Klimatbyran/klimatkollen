@@ -10,13 +10,8 @@ import Layout from '../components/Layout'
 import Footer from '../components/Footer/Footer'
 import {
   defaultDataset,
-  dataDescriptions,
-  dataOnDisplay,
   defaultDataView,
-  secondaryDataView,
 } from '../utils/datasetDefinitions'
-import RadioButtonMenu from '../components/RadioButtonMenu'
-import { listColumns, rankData } from '../utils/createMunicipalityList'
 import {
   isValidDataView,
   isValidDataset,
@@ -87,8 +82,6 @@ function StartPage({ companies, municipalities }: PropsType) {
             : (
               <CompanyView
                 companies={companies}
-                selectedDataView={selectedDataView}
-                setSelectedDataView={setSelectedDataView}
               />
             )}
         </Container>

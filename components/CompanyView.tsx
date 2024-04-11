@@ -4,10 +4,6 @@ import { devices } from '../utils/devices'
 import { Company } from '../utils/types'
 import ComparisonTable from './ComparisonTable'
 import { companyColumns } from '../utils/createCompanyList'
-import ToggleButton from './ToggleButton'
-import { defaultDataView, secondaryDataView } from '../utils/datasetDefinitions'
-import ListIcon from '../public/icons/list.svg'
-import MapIcon from '../public/icons/map.svg'
 
 const InfoText = styled.div`
   padding: 0 16px;
@@ -49,24 +45,12 @@ const FloatingH5 = styled(H5Regular)`
 
 type CompanyViewProps = {
   companies: Array<Company>
-  selectedDataView: string
-  setSelectedDataView: (newData: string) => void
 }
 
 function CompanyView({
   companies,
-  selectedDataView,
-  setSelectedDataView,
 }: CompanyViewProps) {
   const cols = companyColumns()
-
-  const handleToggleView = () => {
-    const newDataView = selectedDataView === defaultDataView ? secondaryDataView : defaultDataView
-    setSelectedDataView(newDataView)
-  }
-
-  const isDefaultDataView = selectedDataView === defaultDataView
-  const routeString = 'företag'
 
   return (
     <>
@@ -75,12 +59,7 @@ function CompanyView({
         <TitleContainer>
           <FloatingH5>Företagens utsläpp</FloatingH5>
         </TitleContainer>
-        <ToggleButton
-          handleClick={handleToggleView}
-          text={isDefaultDataView ? 'Listvy' : 'Grafvy'}
-          icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
-        />
-        <ComparisonTable data={companies} columns={cols} routeString={routeString} />
+        <ComparisonTable data={companies} columns={cols} />
         <InfoText>
           <Paragraph>Lorem</Paragraph>
           <ParagraphSource>Lorem ipsum</ParagraphSource>

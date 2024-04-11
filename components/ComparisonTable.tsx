@@ -67,20 +67,24 @@ const TableHeader = styled.th`
   text-align: left;
 `
 
-const TableRow = styled.tr`
+const TableRow = styled.tr<{ redirect: boolean }>`
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
   :hover {
-    cursor: pointer;
+    cursor: ${({ redirect }) => (redirect ? 'pointer' : 'default')};
   }
 `
 
 type TableProps<T extends object> = {
   data: T[]
   columns: ColumnDef<T>[]
-  routeString: string
+  routeString?: string
 }
 
-function ComparisonTable<T extends object>({ data, columns, routeString }: TableProps<T>) {
+function ComparisonTable<T extends object>({
+  data,
+  columns,
+  routeString,
+}: TableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const router = useRouter()
 
@@ -108,10 +112,12 @@ function ComparisonTable<T extends object>({ data, columns, routeString }: Table
   })
 
   const handleRowClick = (row: Row<T>) => {
-    const cells = row.getAllCells()
-    const value = cells.at(1)?.renderValue()
-    const route = typeof value === 'string' ? `/${routeString}/${value.toLowerCase()}` : '/404'
-    router.push(route)
+    if (routeString) {
+      const cells = row.getAllCells()
+      const value = cells.at(1)?.renderValue()
+      const route = `/${routeString}/${(value as unknown as string).toLowerCase()}`
+      router.push(route)
+    }
   }
 
   const renderHeader = (header: Header<T, unknown>, index: number) => (
@@ -152,7 +158,11 @@ function ComparisonTable<T extends object>({ data, columns, routeString }: Table
       ))}
       <tbody>
         {table.getRowModel().rows.map((row) => (
-          <TableRow key={row.id} onClick={() => handleRowClick(row)}>
+          <TableRow
+            key={row.id}
+            onClick={() => handleRowClick(row)}
+            redirect={routeString !== undefined}
+          >
             {row.getVisibleCells().map((cell, columnIndex) => (
               <TableData key={cell.id} className={columnIndex > 1 ? 'data-column' : ''}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
