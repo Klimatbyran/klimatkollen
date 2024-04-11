@@ -31,7 +31,7 @@ export const companyColumns = (): ColumnDef<Company>[] => [
     header: 'Egna utsläpp (tCO₂e)',
     cell: (row) => {
       const scope1n2Emissions = row.cell.row.original.Emissions.Scope1n2
-      const scope1n2String = scope1n2Emissions ? scope1n2Emissions.toString() : 'Saknas'
+      const scope1n2String = scope1n2Emissions ? scope1n2Emissions.toString() : 'Ej rapporterat'
       return (
         <ScopeColumn isMissing={!scope1n2Emissions}>
           {scope1n2String}
@@ -44,7 +44,7 @@ export const companyColumns = (): ColumnDef<Company>[] => [
     header: () => 'Utsläpp i värdekedjan (tCO₂e)',
     cell: (row) => {
       const scope3Emissions = row.cell.row.original.Emissions.Scope3
-      const scope3String = scope3Emissions ? scope3Emissions.toString() : 'Saknas'
+      const scope3String = scope3Emissions ? scope3Emissions.toString() : 'Ej rapporterat'
       return (
         <ScopeColumn isMissing={!scope3Emissions}>
           {scope3String}

@@ -33,6 +33,28 @@ const TitleContainer = styled.div`
   margin-bottom: 64px;
 `
 
+const ComparisonContainer = styled.div`
+  position: relative;
+  overflow-y: scroll;
+  z-index: 100;
+  // TODO: Hardcoding this is not good.
+  height: 684px;
+  border-radius: 8px;
+  display: flex;
+  margin-top: 0;
+
+  @media only screen and (${devices.tablet}) {
+    height: 520px;
+  }
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  ::-webkit-scrollbar {
+    /* Chrome, Safari and Opera */
+    display: none;
+  }
+`
+
 const FloatingH5 = styled(H5Regular)`
   position: absolute;
   margin: 60px 0 0 16px;
@@ -54,12 +76,14 @@ function CompanyView({
 
   return (
     <>
-      <H2Regular>Hur går det med företagen?</H2Regular>
+      <H2Regular>Hur går det med utsläppen?</H2Regular>
       <InfoContainer>
         <TitleContainer>
-          <FloatingH5>Företagens utsläpp</FloatingH5>
+          <FloatingH5>Företagens utsläpp för 2023</FloatingH5>
         </TitleContainer>
-        <ComparisonTable data={companies} columns={cols} />
+        <ComparisonContainer>
+          <ComparisonTable data={companies} columns={cols} />
+        </ComparisonContainer>
         <InfoText>
           <Paragraph>Lorem</Paragraph>
           <ParagraphSource>Lorem ipsum</ParagraphSource>
