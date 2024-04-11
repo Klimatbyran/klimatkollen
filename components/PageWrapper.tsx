@@ -13,10 +13,10 @@ const Wrap = styled.div<{ $background: BackgroundColors }>`
 const WrapInner = styled.div`
   width: 100%;
   max-width: 840px;
-  padding: 20px 20px;
+  padding: 0px 16px;
 
   @media only screen and (${devices.tablet}) {
-    padding: 30px 20px;
+    padding: 32px 24px;
   }
 `
 

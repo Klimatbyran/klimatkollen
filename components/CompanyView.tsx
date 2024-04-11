@@ -28,7 +28,6 @@ const InfoContainer = styled.div`
 
 const TitleContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 64px;
 `
@@ -57,11 +56,11 @@ const ComparisonContainer = styled.div`
 
 const FloatingH5 = styled(H5Regular)`
   position: absolute;
-  margin: 60px 0 0 16px;
+  margin: 56px 0 0 16px;
   z-index: 200;
 
-  @media only screen and (${devices.mobile}) {
-    margin: 55px 0 0 16px;
+  @media only screen and (${devices.tablet}) {
+    margin: 60px 0 0 16px;
   }
 `
 

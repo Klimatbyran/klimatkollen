@@ -1,17 +1,24 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { devices } from '../utils/devices'
 
 const SwitchLabel = styled.label`
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 264px; 
-  height: 56px;
+  width: 240px; 
+  height: 40px;
   background: ${({ theme }) => theme.lightBlack};
-  border-radius: 28px;
-  margin-bottom: 40px;
+  border-radius: 12px;
+  margin-bottom: 16px;
   cursor: pointer;
+
+  @media only screen and (${devices.tablet}) {
+    width: 264px; 
+    height: 56px;
+    margin-bottom: 40px;
+  }
 `
 
 const Slider = styled.div<{ isActive: boolean }>`
@@ -19,9 +26,9 @@ const Slider = styled.div<{ isActive: boolean }>`
   top: 4px;
   left: ${({ isActive }) => (isActive ? 'calc(50%)' : '4px')}; /* width of the switch - width of slider */
   width: calc(50% - 4px);
-  height: 48px; /* height of the slider */
+  height: 32px; /* height of the slider */
   background: ${({ theme }) => theme.darkGreenOne};
-  border-radius: 48px;
+  border-radius: 8px;
   transition: 0.2s;
   display: flex;
   align-items: center;
@@ -29,6 +36,10 @@ const Slider = styled.div<{ isActive: boolean }>`
   font-size: 14px;
   font-weight: bold;
   z-index: 1;
+
+  @media only screen and (${devices.tablet}) {
+    height: 48px; /* height of the slider */
+  }
 `
 
 const SwitchInput = styled.input`
@@ -73,7 +84,7 @@ function PillSwitch({ onToggle }: PillSwitchProps) {
   return (
     <SwitchLabel>
       <TextLeft>Företag</TextLeft>
-      <TextRight>Geografiskt</TextRight>
+      <TextRight>Kommuner</TextRight>
       <Slider isActive={isActive} />
       <SwitchInput
         type="checkbox"

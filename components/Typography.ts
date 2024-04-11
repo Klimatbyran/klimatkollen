@@ -36,6 +36,7 @@ export const H2Regular = styled.h2`
   font-weight: regular;
   font-size: 32px;
   line-height: 1.25;
+  text-align: center;
   margin: 0 0 8px 0;
 `
 

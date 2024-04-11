@@ -32,7 +32,7 @@ const ToggleText = styled.p`
 `
 
 const IconContainer = styled.div`
-  border-radius: 12px;
+  border-radius: 8px;
   border: none;
   background: ${({ theme }) => theme.midGreen};
   padding: 8px 8px 5px 8px;
