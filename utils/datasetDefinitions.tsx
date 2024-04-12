@@ -17,12 +17,7 @@ const yearsAhead = (years: number) => {
   return currentDate
 }
 
-const formatDateToString = (date: Date): string => {
-  const year = date.getFullYear()
-  const month = (date.getMonth() + 1).toString().padStart(2, '0') // months are 0-based
-  const day = date.getDate().toString().padStart(2, '0')
-  return `${year}-${month}-${day}`
-}
+const formatDateToString = (date: Date) => date.toISOString().slice(0, 10)
 
 export const requirementsInProcurement = (score: number): string => {
   let scoreString = 'Nej'
