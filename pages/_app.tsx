@@ -7,6 +7,8 @@ import { GetStaticProps, NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
 import { appWithTranslation, useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { StyleSheetManager } from 'styled-components'
+import isPropValid from '@emotion/is-prop-valid'
 
 import '../styles/globals.css'
 import Theme, { colorTheme } from '../Theme'
@@ -25,7 +27,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const { t } = useTranslation()
 
   return (
-    <>
+    <StyleSheetManager shouldForwardProp={isPropValid}>
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
@@ -94,7 +96,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}
       </Theme>
-    </>
+    </StyleSheetManager>
   )
 }
 
