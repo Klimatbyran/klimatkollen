@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
 import ArrowDown from '../public/icons/arrow-down.svg'
 import { devices } from '../utils/devices'
 
@@ -121,6 +123,7 @@ function DropDown({ municipalitiesName, placeholder }: Props) {
 
   const ref = useRef<HTMLDivElement>(null)
   const router = useRouter()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
@@ -191,7 +194,7 @@ function DropDown({ municipalitiesName, placeholder }: Props) {
               value={selectedMunicipality}
             />
             <Btn onClick={() => setShowDropDown((current) => !current)}>
-              <ArrowDown aria-label="Visa kommun" />
+              <ArrowDown aria-label={t('common:components.DropDown.label')} />
             </Btn>
           </Flex>
           {showDropDown && (

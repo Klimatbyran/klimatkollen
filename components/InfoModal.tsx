@@ -5,6 +5,7 @@ import {
   useMemo,
 } from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
 
 import Close from '../public/icons/close.svg'
 import { Paragraph } from './Typography'
@@ -64,6 +65,7 @@ function InfoModal({ text, close, scrollY }: Props) {
 
   const focusableElementsRef = useRef<HTMLElement[] | undefined>(undefined)
 
+  const { t } = useTranslation()
   const handleTab = useCallback((evt: KeyboardEvent) => {
     const total = focusableElementsRef.current?.length || 0
     const focusedElementIndex = focusableElementsRef.current?.indexOf(evt.target as HTMLElement) || -1
@@ -114,8 +116,7 @@ function InfoModal({ text, close, scrollY }: Props) {
     <Modal ref={ref} scrollY={scrollY}>
       <div>
         <div>
-          {/* NOTE: Consider replacing with a translation "Stäng" accessed via common.actions.close */}
-          <IconButton type="button" aria-label="Stäng information" onClick={close}>
+          <IconButton type="button" aria-label={t('common:close')} onClick={close}>
             <Close />
           </IconButton>
           <Paragraph>{text}</Paragraph>

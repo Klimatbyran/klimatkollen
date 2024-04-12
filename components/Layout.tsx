@@ -10,7 +10,7 @@ const Main = styled.main`
   flex-direction: column;
   margin: 80px auto 32px auto;
 
-  @media only screen and ${devices.tablet} {
+  @media only screen and (${devices.tablet}) {
     margin: 96px auto 32px auto;
   }
 `

@@ -3,6 +3,19 @@
     "goHome": "Gå till startsidan",
     "ok": "OK"
   },
+  "close": "Stäng",
+  "components": {
+    "DropDown": {
+      "label": "Visa kommun"
+    },
+    "Header": {
+      "about": "Om oss",
+      "english": "In English",
+      "jobs": "Jobb",
+      "menu": "Meny",
+      "method": "Källor och metod"
+    }
+  },
   "cookieBanner": {
     "message": "Denna sida använder cookies för att förbättra användarupplevelsen."
   },
@@ -26,5 +39,8 @@
     },
     "supportedBy": "Med stöd från",
     "tagline": "Klimatkollen är en medborgarplattform som tillgängliggör klimatdata"
-  }
+  },
+  "maybe": "Kanske",
+  "no": "Nej",
+  "yes": "Ja"
 }
