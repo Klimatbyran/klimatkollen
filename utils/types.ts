@@ -81,7 +81,7 @@ export type DataDescriptionDataPoints = {
 
 export type DataDescription = {
   title: string
-  body: string | JSX.Element
+  body: string
   source: string
   boundaries: number[] | string[] | Date[]
   labels: string[]

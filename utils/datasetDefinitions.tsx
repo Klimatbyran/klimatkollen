@@ -159,19 +159,7 @@ export const dataDescriptions: DataDescriptions = {
 
   Upphandlingarna: {
     title: 'Klimatkrav i upphandling',
-    body: (
-      <>
-        Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär
-        principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i
-        enkätundersökning eller via mejl, men utan underlag som tillstyrker.
-        {' '}
-        <a href="mailto:hej@klimatkollen.se">
-          Mejla oss
-        </a>
-        {' '}
-        för att redigera informationen.
-      </>
-    ),
+    body: 'Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker. [Mejla oss](mailto:hej@klimatkollen.se) för att redigera informationen.',
     source: 'Källor: [Upphandlingsmyndigheten](/data/procurements/NUE2022_DATA_2023-12-20.xlsx) och [Greenpeace](https://docs.google.com/spreadsheets/d/1EdHUa49HJZn0rXqM-6tChdim4TJzXnwA/edit#gid=1040317160)',
     boundaries: [0, 1, 2],
     labels: ['Nej', 'Kanske', 'Ja'],

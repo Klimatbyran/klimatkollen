@@ -208,7 +208,7 @@ function StartPage({ municipalities }: PropsType) {
               )}
             </ComparisonContainer>
             <InfoText>
-              <Paragraph>{datasetDescription.body}</Paragraph>
+              <Markdown>{datasetDescription.body}</Markdown>
               <Markdown components={{ p: ParagraphSource }}>
                 {datasetDescription.source}
               </Markdown>
