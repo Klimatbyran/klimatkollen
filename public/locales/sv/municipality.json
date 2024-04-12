@@ -1,6 +1,12 @@
 {
   "aboutGraph": "Om grafen",
   "coatOfArms": "Kommunvapen för {{name}}",
+  "emissionNumbers": {
+    "title": "Utsläppen i siffror (tusen ton CO₂)",
+    "historical": "Historiskt 1990-{{historicalEndsYear}}: {{totalHistorical}}",
+    "trend": "Trend {{trendStartsYear}}-2050: {{totalTrend}}",
+    "co2budget": "Trend {{budgetStartsYear}}-2050: {{totalBudget}}"
+  },
   "graphs": {
     "historical": {
       "body": "Koldioxidutsläpp i kommunen sedan 1990. 2022–2024 är baserat på prognos.",
