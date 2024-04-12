@@ -49,12 +49,8 @@ const InfoText = styled.div`
   padding: 0 16px;
 `
 
-const ParagraphSource = styled(Markdown)`
+const ParagraphSource = styled(Paragraph)`
   font-size: 13px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 1.5;
-  margin: 11.2px 0;
   color: ${({ theme }) => theme.grey};
 `
 
@@ -213,9 +209,9 @@ function StartPage({ municipalities }: PropsType) {
             </ComparisonContainer>
             <InfoText>
               <Paragraph>{datasetDescription.body}</Paragraph>
-              <ParagraphSource>
+              <Markdown components={{ p: ParagraphSource }}>
                 {datasetDescription.source}
-              </ParagraphSource>
+              </Markdown>
             </InfoText>
           </InfoContainer>
           <DropDown
