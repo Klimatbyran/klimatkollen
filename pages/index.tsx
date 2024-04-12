@@ -4,8 +4,9 @@ import { ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
-
 import { useRouter } from 'next/router'
+
+import Markdown from '../components/Markdown'
 import DropDown from '../components/DropDown'
 import MetaTags from '../components/MetaTags'
 import { H2Regular, Paragraph } from '../components/Typography'
@@ -48,8 +49,12 @@ const InfoText = styled.div`
   padding: 0 16px;
 `
 
-const ParagraphSource = styled(Paragraph)`
+const ParagraphSource = styled(Markdown)`
   font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 11.2px 0;
   color: ${({ theme }) => theme.grey};
 `
 
@@ -208,7 +213,9 @@ function StartPage({ municipalities }: PropsType) {
             </ComparisonContainer>
             <InfoText>
               <Paragraph>{datasetDescription.body}</Paragraph>
-              <ParagraphSource>{datasetDescription.source}</ParagraphSource>
+              <ParagraphSource>
+                {datasetDescription.source}
+              </ParagraphSource>
             </InfoText>
           </InfoContainer>
           <DropDown

@@ -39,19 +39,7 @@ export const dataDescriptions: DataDescriptions = {
   Utsläppen: {
     title: 'Utsläppsförändring',
     body: 'Genomsnittlig årlig förändring av koldioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://nationellaemissionsdatabasen.smhi.se/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Nationella emissionsdatabasen
-        </a>
-      </>
-    ),
+    source: 'Källa: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/)',
     boundaries: [0.0, -0.01, -0.02, -0.03, -0.1],
     labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
     labelRotateUp: [true, false, false, false, false, false],
@@ -66,29 +54,7 @@ export const dataDescriptions: DataDescriptions = {
   Koldioxidbudgetarna: {
     title: 'Budget slut om',
     body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://nationellaemissionsdatabasen.smhi.se/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Nationella emissionsdatabasen
-        </a>
-        {' '}
-        och
-        {' '}
-        <a
-          href="http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Uppsala universitet
-        </a>
-      </>
-    ),
+    source: 'Källor: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/) och [Uppsala universitet](http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf)',
     boundaries: [
       yearsAhead(2),
       yearsAhead(3),
@@ -111,35 +77,8 @@ export const dataDescriptions: DataDescriptions = {
 
   Klimatplanerna: {
     title: 'Klimatplan',
-    body: (
-      <>
-        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga
-        planer. Klicka
-        {' '}
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
-          target="_blank"
-          rel="noreferrer"
-        >
-          här
-        </a>
-        {' '}
-        för att redigera informationen.
-      </>
-    ),
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://docs.google.com/spreadsheets/d/13CMqmfdd6QUD6agKFyVhwZUol4PKzvy253_EwtsFyvw/edit?fbclid=IwAR0v0cq0_xhFVlhhVn5fP-TNkOPVRXbOTKzTVWI_PMr_yU2rXOLjcN6jSps#gid=0"
-          target="_blank"
-          rel="noreferrer"
-        >
-          allmänhetens öppna sammanställning
-        </a>
-      </>
-    ),
+    body: 'Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka [här](https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform) för att redigera informationen.',
+    source: 'Källa: [allmänhetens öppna sammanställning](https://docs.google.com/spreadsheets/d/13CMqmfdd6QUD6agKFyVhwZUol4PKzvy253_EwtsFyvw/edit?fbclid=IwAR0v0cq0_xhFVlhhVn5fP-TNkOPVRXbOTKzTVWI_PMr_yU2rXOLjcN6jSps#gid=0)',
     boundaries: [climatePlanMissing, ''],
     labels: ['Nej', 'Ja'],
     labelRotateUp: [],
@@ -154,19 +93,7 @@ export const dataDescriptions: DataDescriptions = {
   Konsumtionen: {
     title: 'Konsumtionsutsläpp',
     body: 'Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://www.sei.org/tools/konsumtionskompassen/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Stockholm Environment Institute
-        </a>
-      </>
-    ),
+    source: 'Källa: [Stockholm Environment Institute](https://www.sei.org/tools/konsumtionskompassen/)',
     boundaries: [7, 6.7, 6.4, 6.1, 5.8],
     labels: [
       '7 ton +',
@@ -188,15 +115,7 @@ export const dataDescriptions: DataDescriptions = {
   Elbilarna: {
     title: 'Elbilsökning',
     body: 'Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a href="https://www.trafa.se/vagtrafik/fordon/" target="_blank" rel="noreferrer">
-          Trafikanalys
-        </a>
-      </>
-    ),
+    source: 'Källa: [Trafikanalys](https://www.trafa.se/vagtrafik/fordon/)',
     boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
     labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
     labelRotateUp: [true, true, true, true, true, true],
@@ -211,20 +130,7 @@ export const dataDescriptions: DataDescriptions = {
   Laddarna: {
     title: 'Elbilar per laddare',
     body: 'Antal laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://powercircle.org/elbilsstatistik/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Power Circle ELIS
-        </a>
-        {' '}
-      </>
-    ),
+    source: 'Källa: [Power Circle ELIS](https://powercircle.org/elbilsstatistik/)',
     boundaries: [1e6, 40, 30, 20, 10],
     labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
     labelRotateUp: [],
@@ -239,29 +145,7 @@ export const dataDescriptions: DataDescriptions = {
   Cyklarna: {
     title: 'Cykelvägslängd',
     body: 'Antal meter cykelväg per invånare per kommun år 2022.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://nvdb2012.trafikverket.se/SeTransportnatverket"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Nationella Vägdatabasen/Trafikverket
-        </a>
-        {' '}
-        och
-        {' '}
-        <a
-          href="https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik" // fixme
-          target="_blank"
-          rel="noreferrer"
-        >
-          SCB
-        </a>
-      </>
-    ),
+    source: 'Källor: [Nationella Vägdatabasen/Trafikverket](https://nvdb2012.trafikverket.se/SeTransportnatverket) och [SCB](https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik)',
     boundaries: [1, 2, 3, 4, 5],
     labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
     labelRotateUp: [],
@@ -288,29 +172,7 @@ export const dataDescriptions: DataDescriptions = {
         för att redigera informationen.
       </>
     ),
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="/data/procurements/NUE2022_DATA_2023-12-20.xlsx" // fixme
-          target="_blank"
-          rel="noreferrer"
-        >
-          Upphandlingsmyndigheten
-        </a>
-        {' '}
-        och
-        {' '}
-        <a
-          href="https://docs.google.com/spreadsheets/d/1EdHUa49HJZn0rXqM-6tChdim4TJzXnwA/edit#gid=1040317160"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Greenpeace
-        </a>
-      </>
-    ),
+    source: 'Källor: [Upphandlingsmyndigheten](/data/procurements/NUE2022_DATA_2023-12-20.xlsx) och [Greenpeace](https://docs.google.com/spreadsheets/d/1EdHUa49HJZn0rXqM-6tChdim4TJzXnwA/edit#gid=1040317160)',
     boundaries: [0, 1, 2],
     labels: ['Nej', 'Kanske', 'Ja'],
     labelRotateUp: [],

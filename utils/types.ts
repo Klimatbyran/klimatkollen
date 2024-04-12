@@ -82,7 +82,7 @@ export type DataDescriptionDataPoints = {
 export type DataDescription = {
   title: string
   body: string | JSX.Element
-  source: React.ReactNode
+  source: string
   boundaries: number[] | string[] | Date[]
   labels: string[]
   labelRotateUp: boolean[]
