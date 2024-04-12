@@ -103,7 +103,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res, loca
       municipality,
       id,
       municipalitiesName,
-      ...await serverSideTranslations(locale as string, ['common']),
+      ...await serverSideTranslations(locale as string, ['common', 'municipality']),
     },
   }
   cache.set(id, result)

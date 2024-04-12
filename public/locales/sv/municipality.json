@@ -1,0 +1,30 @@
+{
+  "aboutGraph": "Om grafen",
+  "coatOfArms": "Kommunvapen för {{name}}",
+  "graphs": {
+    "historical": {
+      "body": "Koldioxidutsläpp i kommunen sedan 1990. 2022–2024 är baserat på prognos.",
+      "buttonText": "Historiskt",
+      "info": "Koldioxidutsläpp i kommunen mellan 1990 och {{lastYearWithData}}, vilket är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990.",
+      "infoApproximated": "Koldioxidutsläpp i kommunen mellan 1990 och {{lastYearWithApproximatedData}}, där {{lastYearWithData}} är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990. Den streckade linjen mellan åren {{lastYearWithData}}-{{lastYearWithApproximatedData}} är approximerad data baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.",
+      "text": "Historiska utsläpp"
+    },
+    "paris": {
+      "body": "Så mycket skulle utsläppen behöva minska för att vara i linje med 1,5-gradersmålet.",
+      "buttonText": "Parisavtalet",
+      "info": "Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande, det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är {{firstYearWithBudget}}, vilket är från vilket år budgeten är satt.",
+      "text": "För att nå Parisavtalet"
+    },
+    "trend": {
+      "body": "Utsläppen de kommande åren baserat på nuvarande trend.",
+      "buttonText": "Trend",
+      "info": "Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.",
+      "infoDifference": "Hacket i kurvan för vissa kommuner beror på att genomsnittet skiljer sig från det senaste årets nivå.",
+      "text": "Om vi fortsätter som idag"
+    }
+  },
+  "otherMunicipalities": "Hur ser det ut i andra kommuner?",
+  "select": "Välj kommun",
+  "shareText": "Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.",
+  "shareTitle": "Klimatkollen — Hur går det i {{name}}?"
+}
