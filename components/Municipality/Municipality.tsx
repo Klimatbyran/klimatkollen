@@ -16,7 +16,6 @@ import Scorecard from './MunicipalityScorecard'
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1.5rem;
   margin-bottom: 48px;
 `
