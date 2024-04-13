@@ -15,13 +15,13 @@
     },
     "cementExcluded": "Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget, läs mer [här](/kallor-och-metod).",
     "climatePlan": {
-      "title": "Klimatplan",
       "adaptedYear": "Antagen {{year}}",
-      "info": "Avser nu gällande klimathandlingsplan eller motsvarande. Inte klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande. Klicka [här](https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link) för att redigera informationen."
+      "info": "Avser nu gällande klimathandlingsplan eller motsvarande. Inte klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande. Klicka [här](https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link) för att redigera informationen.",
+      "title": "Klimatplan"
     },
     "co2budget": {
-      "title": "Koldioxidbudget",
-      "info": "Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om koldioxidbudgetar [här](https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf)."
+      "info": "Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om koldioxidbudgetar [här](https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf).",
+      "title": "Koldioxidbudget"
     },
     "emissionReduction": {
       "info": "Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska överskrida sin koldioxidbudget.",
@@ -33,8 +33,8 @@
       "title": "Här styr"
     },
     "rank": {
-      "rank": "{{rank}} av 290",
       "info": "Rankning av Sveriges 290 kommuner baserat på genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015.",
+      "rank": "{{rank}} av 290",
       "title": "Kommunens plats i utsläppsrankning"
     },
     "title": "Fakta om {{name}}"
@@ -63,8 +63,40 @@
     }
   },
   "otherMunicipalities": "Hur ser det ut i andra kommuner?",
+  "percentagePoints": "{{num}} procentenheter",
   "select": "Välj kommun",
   "shareText": "Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.",
   "shareTitle": "Klimatkollen — Hur går det i {{name}}?",
+  "solutions": {
+    "bikes": {
+      "heading": "Antal meter cykelväg per invånare",
+      "info": "Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild).",
+      "meters": "{{meters}} meter",
+      "title": "Cyklarna"
+    },
+    "chargers": {
+      "heading": "Antal elbilar per laddare",
+      "info": "Antal registrerade laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.",
+      "missing": "Laddare saknas",
+      "title": "Laddarna"
+    },
+    "description": "Här visas nyckeltal för hur det går med klimatomställningen i kommunerna.",
+    "ev": {
+      "heading": "Förändringstakt andel laddbara bilar",
+      "info": "Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år.",
+      "title": "Elbilarna"
+    },
+    "household": {
+      "heading": "CO₂e per person och år",
+      "info": "Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019.",
+      "title": "Hushållens konsumtionsutsläpp"
+    },
+    "procurement": {
+      "heading": "Ställer kommunen klimatkrav i sina upphandlingar?",
+      "info": "Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker. [Mejla oss](mailto:hej@klimatkollen.se) för att redigera informationen.",
+      "title": "Klimatkrav i upphandlingar"
+    },
+    "title": "Omställning"
+  },
   "tonnes": "{{amount}} ton"
 }

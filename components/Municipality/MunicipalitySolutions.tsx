@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
+
 import { H2, H5, Paragraph } from '../Typography'
 import FactSection from '../FactSection'
 import { Municipality } from '../../utils/types'
@@ -51,59 +53,49 @@ type SolutionsProps = {
 }
 
 function MunicipalitySolutions({ municipality }: SolutionsProps) {
+  const { t } = useTranslation()
   return (
     <>
-      <StyledH2>Omställning</StyledH2>
+      <StyledH2>{t('municipality:solutions.title')}</StyledH2>
       <Paragraph>
-        Här visas nyckeltal för hur det går med klimatomställningen i kommunerna.
+        {t('municipality:solutions.description')}
       </Paragraph>
       <SolutionSection
         icon={<Basket />}
-        title="Hushållens konsumtionsutsläpp"
-        heading="CO₂e per person och år"
-        data={`${municipality.TotalConsumptionEmission.toFixed(1)} ton`}
-        info="Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019."
+        title={t('municipality:solutions.household.title')}
+        heading={t('municipality:solutions.household.heading')}
+        data={t('municipality:tonnes', { amount: municipality.TotalConsumptionEmission.toFixed(1) })}
+        info={t('municipality:solutions.household.info')}
       />
       <SolutionSection
         icon={<Procurements />}
-        title="Klimatkrav i upphandlingar"
-        heading="Ställer kommunen klimatkrav i sina upphandlingar?"
+        title={t('municipality:solutions.procurement.title')}
+        heading={t('municipality:solutions.procurement.heading')}
         data={requirementsInProcurement(municipality.ProcurementScore)}
-        info={(
-          <>
-            Kommuner som ställer klimatkrav vid offentliga upphandlingar.
-            “Ja” innebär principbeslut och underlag som tillstyrker.
-            “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker.
-            {' '}
-            <a href="mailto:hej@klimatkollen.se">
-              Mejla oss
-            </a>
-            {' '}
-            för att redigera informationen.
-          </>
-        )}
+        info={t('municipality:solutions.procurement.info')}
       />
       <SolutionSection
         icon={<EVCar />}
-        title="Elbilarna"
-        heading="Förändringstakt andel laddbara bilar"
-        data={`${(municipality.ElectricCarChangePercent * 100).toFixed(1)} procentenheter`}
-        info="Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet
-            2015 i procentenheter per år."
+        title={t('municipality:solutions.ev.title')}
+        heading={t('municipality:solutions.ev.heading')}
+        data={t('municipality:percentagePoints', { num: (municipality.ElectricCarChangePercent * 100).toFixed(1) })}
+        info={t('municipality:solutions.ev.info')}
       />
       <SolutionSection
         icon={<Charger />}
-        title="Laddarna"
-        heading="Antal elbilar per laddare"
-        data={`${municipality.ElectricVehiclePerChargePoints < 1e10 ? municipality.ElectricVehiclePerChargePoints.toFixed(1) : 'Laddare saknas'}`}
-        info="Antal registrerade laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare."
+        title={t('municipality:solutions.chargers.title')}
+        heading={t('municipality:solutions.chargers.heading')}
+        data={`${municipality.ElectricVehiclePerChargePoints < 1e10
+          ? municipality.ElectricVehiclePerChargePoints.toFixed(1)
+          : t('municipality:solutions.chargers.missing')}`}
+        info={t('municipality:solutions.chargers.info')}
       />
       <SolutionSection
         icon={<Bike />}
-        title="Cyklarna"
-        heading="Antal meter cykelväg per invånare"
-        data={`${municipality.BicycleMetrePerCapita.toFixed(1)} meter`}
-        info="Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild)."
+        title={t('municipality:solutions.bikes.title')}
+        heading={t('municipality:solutions.bikes.heading')}
+        data={t('municipality:solutions.bikes.meters', { meters: municipality.BicycleMetrePerCapita.toFixed(1) })}
+        info={t('municipality:solutions.bikes.info')}
       />
     </>
   )
