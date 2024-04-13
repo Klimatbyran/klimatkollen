@@ -18,6 +18,7 @@ const Row = styled.summary`
   justify-content: space-between;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
 `
 
 const InfoParagraph = styled(Paragraph)`

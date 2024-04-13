@@ -110,6 +110,15 @@ const Comment = styled.span`
   font-weight: bold;
 `
 
+const CementClarification = styled.div`
+  margin-top: 8px;
+  margin-bottom: 0;
+
+  & p {
+    margin: 0;
+  }
+`
+
 type Props = {
   name: string
   rank: number | null
@@ -192,9 +201,11 @@ function Scorecard({
         />
       )}
       {['Gotland', 'Skövde', 'Mörbylånga'].includes(name) && (
+      <CementClarification>
         <Markdown components={{ p: ParagraphItalic }}>
           {t('municipality:facts.cementExcluded')}
         </Markdown>
+      </CementClarification>
       )}
       {budget && (
         <ScorecardSection
