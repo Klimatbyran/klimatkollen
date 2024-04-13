@@ -144,11 +144,13 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
 
   return (
     <StyledTable key={resizeCount}>
-      {table.getHeaderGroups().map((headerGroup) => (
-        <tr key={headerGroup.id}>
-          {headerGroup.headers.map((header, index) => renderHeader(header, index))}
-        </tr>
-      ))}
+      <thead>
+        {table.getHeaderGroups().map((headerGroup) => (
+          <tr key={headerGroup.id}>
+            {headerGroup.headers.map((header, index) => renderHeader(header, index))}
+          </tr>
+        ))}
+      </thead>
       <tbody>
         {table.getRowModel().rows.map((row) => (
           <TableRow key={row.id} onClick={() => handleRowClick(row)}>
