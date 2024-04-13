@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { H3, ParagraphBold } from './Typography'
 import Icon from '../public/icons/add_light_white.svg'
 import IconGreen from '../public/icons/remove_light_white.svg'
+import Markdown from './Markdown'
 
 const Row = styled.summary`
   display: flex;
@@ -53,7 +54,7 @@ const StyledIcon = styled.div`
 type Props = {
   heading: string
   data: string
-  info?: JSX.Element | string
+  info?: string
 }
 
 function FactSection({ heading, data, info }: Props) {
@@ -75,7 +76,7 @@ function FactSection({ heading, data, info }: Props) {
         )}
       </Row>
       <InfoSection>
-        {info}
+        <Markdown>{info}</Markdown>
       </InfoSection>
     </details>
   )

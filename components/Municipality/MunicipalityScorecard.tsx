@@ -102,14 +102,6 @@ const Square = styled.div`
   border-radius: 4px;
 `
 
-const CommentContainer = styled.div`
-  margin-top: 8px;
-`
-
-const Comment = styled.span`
-  font-weight: bold;
-`
-
 const CementClarification = styled.div`
   margin-top: 8px;
   margin-bottom: 0;
@@ -178,19 +170,7 @@ function Scorecard({
         <FactSection
           heading={climatePlanYearFormatted}
           data=""
-          info={(
-            <>
-              <Markdown>{t('municipality:facts.climatePlan.info')}</Markdown>
-              <CommentContainer>
-                <Comment>
-                  {t('common:comment')}
-                  :
-                </Comment>
-                {' '}
-                {climatePlan.Comment}
-              </CommentContainer>
-            </>
-          )}
+          info={t('municipality:facts.climatePlan.info', { comment: climatePlan.Comment })}
         />
       </GreyContainer>
       {rank && (

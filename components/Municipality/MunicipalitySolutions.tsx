@@ -31,7 +31,7 @@ type SolutionSectionProps = {
   title: string
   heading: string
   data: string
-  info: string | JSX.Element
+  info: string
 }
 
 function SolutionSection({
