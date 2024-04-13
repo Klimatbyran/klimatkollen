@@ -13,7 +13,7 @@
       "onTrack": "Med nuvarande trend håller kommunen sin budget",
       "title": "Koldioxidbudgeten tar slut"
     },
-    "cementExcluded": "Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget, läs mer [här](/kallor-och-metod).",
+    "cementExcluded": "*Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget, läs mer [här](/kallor-och-metod).*",
     "climatePlan": {
       "adaptedYear": "Antagen {{year}}",
       "info": "Avser nu gällande klimathandlingsplan eller motsvarande. Inte klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande. Klicka [här](https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link) för att redigera informationen.\n\n**Kommentar**: {{comment}}",

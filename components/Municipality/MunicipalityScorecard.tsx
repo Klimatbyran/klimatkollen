@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next'
 
 import ScorecardSection from './ScorecardSection'
 import { ClimatePlan } from '../../utils/types'
-import { H4, H5, ParagraphItalic } from '../Typography'
+import { H4, H5 } from '../Typography'
 import Icon from '../../public/icons/boxedArrow.svg'
 import PlanIcon from '../../public/icons/climatePlan.svg'
 import FactSection from '../FactSection'
@@ -106,7 +106,7 @@ const CementClarification = styled.div`
   margin-top: 8px;
   margin-bottom: 0;
 
-  & p {
+  & * {
     margin: 0;
   }
 `
@@ -182,7 +182,7 @@ function Scorecard({
       )}
       {['Gotland', 'Skövde', 'Mörbylånga'].includes(name) && (
       <CementClarification>
-        <Markdown components={{ p: ParagraphItalic }}>
+        <Markdown>
           {t('municipality:facts.cementExcluded')}
         </Markdown>
       </CementClarification>
