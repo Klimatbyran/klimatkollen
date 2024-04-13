@@ -200,7 +200,7 @@ function DropDown({ municipalitiesName, placeholder }: Props) {
           {showDropDown && (
             <MunicipalitiesWrapper>
               {municipalities.map((name) => (
-                <Municipality onClick={() => onMunicipalityClick(name)}>
+                <Municipality onClick={() => onMunicipalityClick(name)} key={name}>
                   {name}
                 </Municipality>
               ))}
