@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
-import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
+
 import ScorecardSection from './ScorecardSection'
 import { ClimatePlan } from '../../utils/types'
 import { H4, H5, ParagraphItalic } from '../Typography'
@@ -7,6 +8,7 @@ import Icon from '../../public/icons/boxedArrow.svg'
 import PlanIcon from '../../public/icons/climatePlan.svg'
 import FactSection from '../FactSection'
 import { climatePlanMissing } from '../../utils/datasetDefinitions'
+import Markdown from '../Markdown'
 
 const StyledDiv = styled.div`
   display: flex;
@@ -129,11 +131,11 @@ function Scorecard({
   politicalRule,
   climatePlan,
 }: Props) {
+  const { t } = useTranslation()
   const climatePlanYearFormatted = climatePlan.YearAdapted !== climatePlanMissing
-    ? `Antagen ${climatePlan.YearAdapted}`
+    ? t('municipality:facts.climatePlan.adaptedYear', { year: climatePlan.YearAdapted })
     : climatePlan.YearAdapted
-  const rankFormatted = `${rank} av 290`
-  const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : 'Data saknas'
+  const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : t('common:dataMissing')
 
   const handleButtonClick = () => {
     if (climatePlan.Link !== climatePlanMissing) {
@@ -144,22 +146,20 @@ function Scorecard({
   return (
     <StyledDiv>
       <StyledH4>
-        Fakta om
-        {' '}
-        {name}
+        {t('municipality:facts.title', { name })}
       </StyledH4>
       <GreyContainer>
         <Row>
           <SectionLeft>
             <PlanIcon />
-            <H5>Klimatplan</H5>
+            <H5>{t('municipality:facts.climatePlan.title')}</H5>
           </SectionLeft>
           <SectionRight>
             <LinkButton
               onClick={handleButtonClick}
               disabled={climatePlan.Link === climatePlanMissing}
             >
-              Öppna
+              {t('common:actions.open')}
               <Square>
                 <ArrowIcon />
               </Square>
@@ -171,21 +171,12 @@ function Scorecard({
           data=""
           info={(
             <>
-              Avser nu gällande klimathandlingsplan eller motsvarande. Inte
-              klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller
-              liknande. Klicka
-              {' '}
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                här
-              </a>
-              {' '}
-              för att redigera informationen.
+              <Markdown>{t('municipality:facts.climatePlan.info')}</Markdown>
               <CommentContainer>
-                <Comment>Kommentar:</Comment>
+                <Comment>
+                  {t('common:comment')}
+                  :
+                </Comment>
                 {' '}
                 {climatePlan.Comment}
               </CommentContainer>
@@ -195,85 +186,44 @@ function Scorecard({
       </GreyContainer>
       {rank && (
         <ScorecardSection
-          heading="Kommunens plats i utsläppsrankning"
-          data={rankFormatted}
-          info={(
-            <>
-              Rankning av Sveriges 290 kommuner baserat på genomsnittlig årlig procentuell
-              förändring av koldioxidutsläppen sedan Parisavtalet 2015.
-            </>
-          )}
+          heading={t('municipality:facts.rank.title')}
+          data={t('municipality:facts.rank.rank', { rank })}
+          info={t('municipality:facts.rank.info')}
         />
       )}
       {['Gotland', 'Skövde', 'Mörbylånga'].includes(name) && (
-        <ParagraphItalic>
-          Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget,
-          läs mer
-          {' '}
-          <a href="/kallor-och-metod">här</a>
-        </ParagraphItalic>
+        <Markdown components={{ p: ParagraphItalic }}>
+          {t('municipality:facts.cementExcluded')}
+        </Markdown>
       )}
       {budget && (
         <ScorecardSection
-          heading="Koldioxidbudget"
-          data={`${formatter.format(Math.round(budget))} ton`}
-          info={(
-            <>
-              Mängden koldioxid kvar att släppa ut för att klara Parisavtalets
-              1,5-gradersmål, läs mer om koldioxidbudgetar
-              {' '}
-              <Link href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">
-                här
-              </Link>
-              .
-            </>
-          )}
+          heading={t('municipality:facts.co2budget.title')}
+          data={t('municipality:tonnes', { amount: formatter.format(Math.round(budget)) })}
+          info={t('municipality:facts.co2budget.info')}
         />
       )}
       {budgetRunsOut && (
         <ScorecardSection
-          heading="Koldioxidbudgeten tar slut"
+          heading={t('municipality:facts.budgetRunsOut.title')}
           data={
             budgetRunsOut === 'Håller budget'
-              ? 'Med nuvarande trend håller kommunen sin budget'
+              ? t('municipality:facts.budgetRunsOut.onTrack')
               : budgetRunsOut
           }
-          info={(
-            <>
-              Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt
-              nuvarande trend.
-            </>
-          )}
+          info={t('municipality:facts.budgetRunsOut.info')}
         />
       )}
       <ScorecardSection
-        heading="Utsläppsminskning för att klara Parisavtalet"
-        data={`-${neededEmissionChangePercent.toFixed(1)}% per år`}
-        info={(
-          <>
-            Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska
-            överskrida sin koldioxidbudget.
-          </>
-        )}
+        heading={t('municipality:facts.emissionReduction.title')}
+        data={t('municipality:facts.emissionReduction.percent', { percent: neededEmissionChangePercent.toFixed(1) })}
+        info={t('municipality:facts.emissionReduction.info')}
       />
       {politicalRule && (
         <ScorecardSection
-          heading="Här styr"
+          heading={t('municipality:facts.politicalRule.title')}
           data={politicalRuleFormatted}
-          info={(
-            <>
-              Uppgift om politiskt styre är hämtad från
-              {' '}
-              <a
-                href="https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Sveriges Kommuner och Regioner (SKR)
-              </a>
-              . Data uppdaterad mars 2023.
-            </>
-          )}
+          info={t('municipality:facts.politicalRule.info')}
         />
       )}
     </StyledDiv>

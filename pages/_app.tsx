@@ -92,7 +92,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           }}
           expires={150}
         >
-          {t('common:cookieBanner.message')}
+          {t('common:cookieBanner')}
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}
       </Theme>

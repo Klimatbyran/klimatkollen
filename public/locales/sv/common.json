@@ -1,9 +1,11 @@
 {
   "actions": {
+    "close": "Stäng",
     "goHome": "Gå till startsidan",
-    "ok": "OK"
+    "ok": "OK",
+    "open": "Öppna"
   },
-  "close": "Stäng",
+  "comment": "Kommentar",
   "components": {
     "DropDown": {
       "label": "Visa kommun"
@@ -16,9 +18,8 @@
       "method": "Källor och metod"
     }
   },
-  "cookieBanner": {
-    "message": "Denna sida använder cookies för att förbättra användarupplevelsen."
-  },
+  "cookieBanner": "Denna sida använder cookies för att förbättra användarupplevelsen.",
+  "dataMissing": "Data saknas",
   "errors": {
     "notFound": "404 - Sidan hittades inte"
   },

@@ -161,7 +161,7 @@ function Header() {
           <FullScreenMenu>
             <CloseButtonContainer>
               <HamburgerButton type="button" onClick={() => setMenuOpen(false)}>
-                <Image src="/icons/close_round.svg" width="20" height="20" alt={t('common:close')} />
+                <Image src="/icons/close_round.svg" width="20" height="20" alt={t('common:actions.close')} />
               </HamburgerButton>
             </CloseButtonContainer>
             <Separator />

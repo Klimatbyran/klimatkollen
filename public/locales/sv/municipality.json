@@ -2,11 +2,44 @@
   "aboutGraph": "Om grafen",
   "coatOfArms": "Kommunvapen för {{name}}",
   "emissionNumbers": {
-    "title": "Utsläppen i siffror (tusen ton CO₂)",
+    "co2budget": "Trend {{budgetStartsYear}}-2050: {{totalBudget}}",
     "historical": "Historiskt 1990-{{historicalEndsYear}}: {{totalHistorical}}",
-    "trend": "Trend {{trendStartsYear}}-2050: {{totalTrend}}",
-    "co2budget": "Trend {{budgetStartsYear}}-2050: {{totalBudget}}"
+    "title": "Utsläppen i siffror (tusen ton CO₂)",
+    "trend": "Trend {{trendStartsYear}}-2050: {{totalTrend}}"
   },
+  "facts": {
+    "budgetRunsOut": {
+      "info": "Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend.",
+      "onTrack": "Med nuvarande trend håller kommunen sin budget",
+      "title": "Koldioxidbudgeten tar slut"
+    },
+    "cementExcluded": "Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget, läs mer [här](/kallor-och-metod).",
+    "climatePlan": {
+      "title": "Klimatplan",
+      "adaptedYear": "Antagen {{year}}",
+      "info": "Avser nu gällande klimathandlingsplan eller motsvarande. Inte klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande. Klicka [här](https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link) för att redigera informationen."
+    },
+    "co2budget": {
+      "title": "Koldioxidbudget",
+      "info": "Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om koldioxidbudgetar [här](https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf)."
+    },
+    "emissionReduction": {
+      "info": "Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska överskrida sin koldioxidbudget.",
+      "percent": "-{{percent}}% per år",
+      "title": "Utsläppsminskning för att klara Parisavtalet"
+    },
+    "politicalRule": {
+      "info": "Uppgift om politiskt styre är hämtad från [Sveriges Kommuner och Regioner (SKR)](https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html). Data uppdaterad mars 2023.",
+      "title": "Här styr"
+    },
+    "rank": {
+      "rank": "{{rank}} av 290",
+      "info": "Rankning av Sveriges 290 kommuner baserat på genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015.",
+      "title": "Kommunens plats i utsläppsrankning"
+    },
+    "title": "Fakta om {{name}}"
+  },
+  "graphYAxisTitle": "Tusen ton CO₂",
   "graphs": {
     "historical": {
       "body": "Koldioxidutsläpp i kommunen sedan 1990. 2022–2024 är baserat på prognos.",
@@ -32,5 +65,6 @@
   "otherMunicipalities": "Hur ser det ut i andra kommuner?",
   "select": "Välj kommun",
   "shareText": "Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.",
-  "shareTitle": "Klimatkollen — Hur går det i {{name}}?"
+  "shareTitle": "Klimatkollen — Hur går det i {{name}}?",
+  "tonnes": "{{amount}} ton"
 }

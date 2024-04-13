@@ -116,7 +116,7 @@ function InfoModal({ text, close, scrollY }: Props) {
     <Modal ref={ref} scrollY={scrollY}>
       <div>
         <div>
-          <IconButton type="button" aria-label={t('common:close')} onClick={close}>
+          <IconButton type="button" aria-label={t('common:actions.close')} onClick={close}>
             <Close />
           </IconButton>
           <Paragraph>{text}</Paragraph>
