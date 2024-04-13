@@ -7,16 +7,17 @@ import IconGreen from '../../public/icons/remove_light_green.svg'
 import { Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
 
-const BorderContainer = styled.div`
+const BorderContainer = styled.details`
   padding: 8px 0;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
 `
 
-const Row = styled.div`
+const Row = styled.summary`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 4px;
 `
 
 const InfoParagraph = styled(Paragraph)`
@@ -58,26 +59,26 @@ type Props = {
 function ScorecardSection({ heading, data, info }: Props) {
   const [toggle, setToggle] = useState(false)
 
+  const onToggle = () => setToggle(!toggle)
+
   return (
-    <BorderContainer>
+    <BorderContainer onToggle={onToggle}>
       <Row>
         <StyledParagraph>{heading}</StyledParagraph>
         <StyledParagraph>{data}</StyledParagraph>
         {info && (
         <SectionRight>
-          <StyledIcon onClick={() => setToggle(!toggle)}>
+          <StyledIcon>
             {toggle ? <IconGreen /> : <Icon />}
           </StyledIcon>
         </SectionRight>
         )}
       </Row>
-      <section>
-        {toggle ? (
-          <Markdown components={{ p: InfoParagraph }}>
-            {info}
-          </Markdown>
-        ) : null}
-      </section>
+      {toggle ? (
+        <Markdown components={{ p: InfoParagraph }}>
+          {info}
+        </Markdown>
+      ) : null}
     </BorderContainer>
   )
 }
