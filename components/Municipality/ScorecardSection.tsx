@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 
+import Markdown from '../Markdown'
 import Icon from '../../public/icons/add_light_green.svg'
 import IconGreen from '../../public/icons/remove_light_green.svg'
 import { Paragraph } from '../Typography'
@@ -51,7 +52,7 @@ const StyledIcon = styled.div`
 type Props = {
   heading: string
   data: string
-  info?: string | JSX.Element | string
+  info?: string
 }
 
 function ScorecardSection({ heading, data, info }: Props) {
@@ -72,9 +73,9 @@ function ScorecardSection({ heading, data, info }: Props) {
       </Row>
       <section>
         {toggle ? (
-          <InfoParagraph>
+          <Markdown components={{ p: InfoParagraph }}>
             {info}
-          </InfoParagraph>
+          </Markdown>
         ) : null}
       </section>
     </BorderContainer>
