@@ -1,6 +1,7 @@
 import ReactMarkdown, { Components, Options } from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 import {
   H1, H2, H3, Paragraph, ParagraphBold, ParagraphItalic,
@@ -20,6 +21,7 @@ const defaultComponents: Partial<Components> = {
   // Workaround to inherit styles and just change the HTML element
   strong: styled(ParagraphBold).attrs({ as: 'strong' })``,
   em: styled(ParagraphItalic).attrs({ as: 'em' })``,
+  a: Link as Components['a'],
   h1: H1,
   h2: H2,
   h3: H3,
