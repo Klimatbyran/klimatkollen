@@ -69,7 +69,8 @@ export const GridItem = styled.div`
 
   & > b {
     clear: both;
-    margin-bottom: 8px;
+    margin: 8px 0;
+    font-weight: 700;
   }
 `
 

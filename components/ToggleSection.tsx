@@ -48,7 +48,6 @@ const InfoSection = styled.div`
   }
 `
 
-// TODO: pass in strings that are formatted as markdown if possible
 type Props = {
   header: string
   text: JSX.Element | string
