@@ -12,9 +12,6 @@ const optionsForRehypeExternalLinks = { rel: ['noreferrer'], target: '_blank' }
 
 const defaultComponents: Partial<Components> = {
   p: styled(Paragraph)`
-    &:first-child {
-      margin-top: 0;
-    }
     &:last-child {
       margin-bottom: 0;
     }
