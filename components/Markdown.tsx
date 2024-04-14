@@ -6,6 +6,7 @@ import Link from 'next/link'
 import {
   H1, H2, H3, Paragraph, ParagraphBold, ParagraphItalic,
 } from './Typography'
+import { ListItem, OrderedList, UnorderedList } from './shared'
 
 const optionsForRehypeExternalLinks = { rel: ['noreferrer'], target: '_blank' }
 
@@ -25,6 +26,9 @@ const defaultComponents: Partial<Components> = {
   h1: H1,
   h2: H2,
   h3: H3,
+  ol: OrderedList,
+  ul: UnorderedList,
+  li: ListItem,
 }
 
 function Markdown({ children, className, components }: Readonly<Options>) {
