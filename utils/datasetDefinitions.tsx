@@ -140,6 +140,7 @@ export const dataDescriptions: DataDescriptions = {
   Cyklarna: {
     title: 'Cykelvägslängd',
     body: 'Antal meter cykelväg per invånare per kommun år 2022.',
+    // IDEA: Link directly to the SCB dataset for population statistics that we use.
     source: 'Källor: [Nationella Vägdatabasen/Trafikverket](https://nvdb2012.trafikverket.se/SeTransportnatverket) och [SCB](https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik)',
     boundaries: [1, 2, 3, 4, 5],
     labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
@@ -155,6 +156,7 @@ export const dataDescriptions: DataDescriptions = {
   Upphandlingarna: {
     title: 'Klimatkrav i upphandling',
     body: 'Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker. [Mejla oss](mailto:hej@klimatkollen.se) för att redigera informationen.',
+    // IDEA: Get the data directly from the file NUE2022_DATA_2023-12-20.xlsx
     source: 'Källor: [Upphandlingsmyndigheten](/data/procurements/NUE2022_DATA_2023-12-20.xlsx) och [Greenpeace](https://docs.google.com/spreadsheets/d/1EdHUa49HJZn0rXqM-6tChdim4TJzXnwA/edit#gid=1040317160)',
     boundaries: [0, 1, 2],
     labels: ['Nej', 'Kanske', 'Ja'],

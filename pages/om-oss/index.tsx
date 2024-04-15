@@ -37,9 +37,6 @@ const AiryParagraph = styled(Paragraph)`
 
 function OmOss() {
   const { t } = useTranslation()
-  // TODO: use namespace :
-  // TODO: replace \\n with \n for markdown
-  // TODO: check links
   return (
     <>
       <MetaTags title={t('about:title')} description={t('about:meta.description')} />
