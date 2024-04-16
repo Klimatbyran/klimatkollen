@@ -1,3 +1,5 @@
+import { type TFunction } from 'next-i18next'
+
 import { replaceLetters } from './shared'
 import { Municipality } from './types'
 
@@ -9,6 +11,7 @@ type SiteMap = {
   name?: string
 }
 const BASE_URL = 'https://klimatkollen.se'
+
 export const generateMunipacitySitemapData = ({
   municipalities,
 }: {
@@ -20,19 +23,21 @@ export const generateMunipacitySitemapData = ({
   changeFrequency: 'yearly',
   priority: 1,
 }))
+
 export const generateSitemap = (
   siteMap: SiteMap[],
+  t: TFunction,
 ) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
         <loc>${BASE_URL}/utslappen/karta</loc>
-        <name>Utsläppskarta</name>
+        <name>${t('sitemap:emissionMap')}</name>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>yearly</changefreq>
       </url>
       <url>
         <loc>${BASE_URL}/om-oss</loc>
-        <name>Om oss</name>
+        <name>${t('sitemap:about')}</name>
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>monthly</changefreq>
       </url>
