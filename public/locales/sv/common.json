@@ -41,7 +41,10 @@
     "supportedBy": "Med stöd från",
     "tagline": "Klimatkollen är en medborgarplattform som tillgängliggör klimatdata"
   },
+  "link": "Länk",
   "maybe": "Kanske",
+  "missing": "Saknas",
+  "municipality": "Kommun",
   "no": "Nej",
   "yes": "Ja"
 }

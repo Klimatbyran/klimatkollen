@@ -1,4 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table'
+import { TFunction } from 'next-i18next'
+
 import { Municipality, SelectedData } from './types'
 import {
   dataDescriptions, dataOnDisplay, climatePlanMissing, requirementsInProcurement,
@@ -90,15 +92,15 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
 export const listColumns = (
   selectedData: SelectedData,
   columnHeader: string,
+  t: TFunction,
 ): ColumnDef<RowData>[] => {
   const isClimatePlan = selectedData === 'Klimatplanerna'
   const isProcurement = selectedData === 'Upphandlingarna'
 
   const getFirstColumnHeader = () => {
-    let firstColumnHeader = 'Ranking'
-    firstColumnHeader = isClimatePlan ? 'Har plan?' : firstColumnHeader
-    firstColumnHeader = isProcurement ? 'Ställer krav?' : firstColumnHeader
-    return firstColumnHeader
+    if (isClimatePlan) return t('startPage:hasPlan')
+    if (isProcurement) return t('startPage:procurementDemands')
+    return t('startPage:ranking')
   }
 
   const getFirstColumnClimatePlans = (index: number, dataPoint: string) => (index === -1
@@ -110,10 +112,10 @@ export const listColumns = (
         rel="noreferrer"
         style={{ color: 'orange' }}
       >
-        Ja
+        {t('common:yes')}
       </a>
     )
-    : 'Nej'
+    : t('common:no')
   )
 
   return [
@@ -135,7 +137,7 @@ export const listColumns = (
       accessorKey: 'index',
     },
     {
-      header: 'Kommun',
+      header: t('common:municipality'),
       cell: (row: { renderValue: () => unknown }) => row.renderValue(),
       accessorKey: 'name',
     },
@@ -161,10 +163,10 @@ export const listColumns = (
                 target="_blank"
                 rel="noreferrer"
               >
-                Länk
+                {t('common:link')}
               </a>
             )
-            : 'Saknas'
+            : t('common:missing')
         }
 
         return formattedDataPoint
