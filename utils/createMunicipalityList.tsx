@@ -50,8 +50,8 @@ export const calculateRankings = (
   }))
 }
 
-export const rankData = (municipalities: Municipality[], selectedData: SelectedData) => {
-  const datasets = dataOnDisplay(municipalities, selectedData)
+export const rankData = (municipalities: Municipality[], selectedData: SelectedData, t: TFunction) => {
+  const datasets = dataOnDisplay(municipalities, selectedData, t)
 
   type RankedData = {
     [key in SelectedData]: Array<RowData>
@@ -129,7 +129,7 @@ export const listColumns = (
         }
 
         if (isProcurement) {
-          return requirementsInProcurement(dataPoint as number)
+          return requirementsInProcurement(dataPoint as number, t)
         }
 
         return row.cell.row.index + 1

@@ -20,6 +20,10 @@
   },
   "cookieBanner": "Denna sida använder cookies för att förbättra användarupplevelsen.",
   "dataMissing": "Data saknas",
+  "datasets": {
+    "missingChargers": "Laddare saknas",
+    "followingBudget": "Håller budget"
+  },
   "errors": {
     "notFound": "404 - Sidan hittades inte"
   },

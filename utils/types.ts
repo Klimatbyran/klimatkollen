@@ -1,3 +1,4 @@
+import { TFunction } from 'next-i18next'
 import { dataDescriptions } from './datasetDefinitions'
 
 export type Image = {
@@ -75,7 +76,7 @@ export type SelectedData = keyof typeof dataDescriptions
 
 export type DataDescriptionDataPoints = {
   rawDataPoint: (item: Municipality) => number | string | Date
-  formattedDataPoint: (dataPoint: number | string | Date) => string
+  formattedDataPoint: (dataPoint: number | string | Date, t: TFunction) => string
   additionalDataPoint?: (item: Municipality) => string
 }
 

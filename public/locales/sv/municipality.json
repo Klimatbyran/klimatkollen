@@ -77,7 +77,6 @@
     "chargers": {
       "heading": "Antal elbilar per laddare",
       "info": "Antal registrerade laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.",
-      "missing": "Laddare saknas",
       "title": "Laddarna"
     },
     "description": "Här visas nyckeltal för hur det går med klimatomställningen i kommunerna.",

@@ -71,7 +71,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         icon={<Procurements />}
         title={t('municipality:solutions.procurement.title')}
         heading={t('municipality:solutions.procurement.heading')}
-        data={requirementsInProcurement(municipality.ProcurementScore)}
+        data={requirementsInProcurement(municipality.ProcurementScore, t)}
         info={t('municipality:solutions.procurement.info')}
       />
       <SolutionSection
@@ -87,7 +87,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         heading={t('municipality:solutions.chargers.heading')}
         data={`${municipality.ElectricVehiclePerChargePoints < 1e10
           ? municipality.ElectricVehiclePerChargePoints.toFixed(1)
-          : t('municipality:solutions.chargers.missing')}`}
+          : t('common:datasets.missingChargers')}`}
         info={t('municipality:solutions.chargers.info')}
       />
       <SolutionSection

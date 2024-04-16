@@ -147,7 +147,7 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
-  const municipalityDataOnDisplay = dataOnDisplay(municipalities, selectedDataset) // get all municipality names and data points for map and list
+  const municipalityDataOnDisplay = dataOnDisplay(municipalities, selectedDataset, t) // get all municipality names and data points for map and list
   const datasetDescription = dataDescriptions[selectedDataset] // get description of selected dataset
 
   const handleToggle = () => {
@@ -164,7 +164,7 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const cols = listColumns(selectedDataset, dataDescriptions[selectedDataset].columnHeader, t)
-  const rankedData = rankData(municipalities, selectedDataset) // fixme hur byter jag ut denna till municipalityData?
+  const rankedData = rankData(municipalities, selectedDataset, t) // fixme hur byter jag ut denna till municipalityData?
 
   const isDefaultDataView = selectedDataView === defaultDataView
 

@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import { TFunction } from 'next-i18next'
 import {
   DataDescriptions, Municipality, SelectedData,
 } from './types'
@@ -19,15 +20,10 @@ const yearsAhead = (years: number) => {
 
 const formatDateToString = (date: Date) => date.toISOString().slice(0, 10)
 
-export const requirementsInProcurement = (score: number): string => {
-  let scoreString = 'Nej'
-  if (score > 0) {
-    scoreString = 'Kanske'
-  }
-  if (score > 1) {
-    scoreString = 'Ja'
-  }
-  return scoreString
+export const requirementsInProcurement = (score: number, t: TFunction): string => {
+  if (score > 1) return t('common:yes')
+  if (score > 0) return t('common:maybe')
+  return t('common:no')
 }
 
 export const dataDescriptions: DataDescriptions = {
@@ -62,9 +58,9 @@ export const dataDescriptions: DataDescriptions = {
     columnHeader: 'Budget tar slut',
     dataPoints: {
       rawDataPoint: (item) => new Date(item.BudgetRunsOut),
-      formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1)
+      formattedDataPoint: (dataPoint, t) => (dataPoint < new Date(2050, 1, 1)
         ? formatDateToString(dataPoint as Date)
-        : 'Håller budget'),
+        : t('common:datasets.followingBudget')),
     },
     sortAscending: false,
     stringsOnTop: true,
@@ -80,7 +76,7 @@ export const dataDescriptions: DataDescriptions = {
     columnHeader: 'Antagen år',
     dataPoints: {
       rawDataPoint: (item) => item.ClimatePlan.Link,
-      formattedDataPoint: (dataPoint) => (dataPoint === climatePlanMissing ? 'Nej' : 'Ja'),
+      formattedDataPoint: (dataPoint, t) => (dataPoint === climatePlanMissing ? t('common:no') : t('common:yes')),
       additionalDataPoint: (item) => item.ClimatePlan.YearAdapted,
     },
   },
@@ -132,7 +128,7 @@ export const dataDescriptions: DataDescriptions = {
     columnHeader: 'Elbil per laddare',
     dataPoints: {
       rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
-      formattedDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
+      formattedDataPoint: (dataPoint, t) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : t('common:datasets.missingChargers')),
     },
     sortAscending: true,
   },
@@ -148,6 +144,15 @@ export const dataDescriptions: DataDescriptions = {
     columnHeader: 'Cykelväglängd',
     dataPoints: {
       rawDataPoint: (item) => item.BicycleMetrePerCapita,
+      // IDEA: FormattedDatapoint could expect the t-function
+      // However, we need the t-function for all data.
+      // What if this was in a function that would be initiated when you needed the dataset?
+      // instead of a import, you would call a function to get the dataset Definitions.
+      // We could inialize the dataDescriptions on first import, and then reuse them later on.
+      // This seems like the best approach, and would probably only require minimal changes to the structure
+
+      // Alternatively, we could keep the translation keys in here, and then render everything during runtime.
+      // But that would break usage of this dataset in all other places in the app
       formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
     },
     sortAscending: false,
@@ -164,7 +169,7 @@ export const dataDescriptions: DataDescriptions = {
     columnHeader: 'Underlag',
     dataPoints: {
       rawDataPoint: (item) => item.ProcurementScore,
-      formattedDataPoint: (dataPoint) => requirementsInProcurement(dataPoint as number),
+      formattedDataPoint: (dataPoint, t) => requirementsInProcurement(dataPoint as number, t),
     },
     sortAscending: false,
   },
@@ -173,13 +178,14 @@ export const dataDescriptions: DataDescriptions = {
 export const dataOnDisplay = (
   municipalities: Array<Municipality>,
   selectedData: SelectedData,
+  t: TFunction,
 ) => municipalities.map((item) => {
   const { dataPoints } = dataDescriptions[selectedData]
 
-  const dataPoint = dataPoints.rawDataPoint ? dataPoints.rawDataPoint(item) : 'Data saknas'
+  const dataPoint = dataPoints.rawDataPoint ? dataPoints.rawDataPoint(item) : t('common:dataMissing')
   const formattedDataPoint = dataPoint != null && dataPoints.formattedDataPoint
-    ? dataPoints.formattedDataPoint(dataPoint)
-    : 'Data saknas'
+    ? dataPoints.formattedDataPoint(dataPoint, t)
+    : t('common:dataMissing')
   const secondaryDataPoint = dataPoints.additionalDataPoint ? dataPoints.additionalDataPoint(item) : undefined
 
   return {
