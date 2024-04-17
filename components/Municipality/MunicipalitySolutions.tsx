@@ -76,10 +76,10 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
       />
       <SolutionSection
         icon={<EVCar />}
-        title={t('municipality:solutions.ev.title')}
-        heading={t('municipality:solutions.ev.heading')}
+        title={t('municipality:solutions.electricCars.title')}
+        heading={t('municipality:solutions.electricCars.heading')}
         data={t('municipality:percentagePoints', { num: (municipality.ElectricCarChangePercent * 100).toFixed(1) })}
-        info={t('municipality:solutions.ev.info')}
+        info={t('municipality:solutions.electricCars.info')}
       />
       <SolutionSection
         icon={<Charger />}
