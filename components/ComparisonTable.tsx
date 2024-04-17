@@ -29,9 +29,6 @@ const StyledTable = styled.table`
     border-bottom-left-radius: 8px;
   }
 
-  #second-header {
-  }
-
   #third-header {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
