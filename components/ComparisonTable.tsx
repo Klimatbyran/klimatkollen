@@ -45,23 +45,27 @@ const StyledTable = styled.table`
 `
 
 const TableData = styled.td`
-  padding: 0.75rem;
+  padding: 8px 6px;
   max-width: 80px;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
 
   @media only screen and (${devices.tablet}) {
-    padding: 1rem;
+    padding: 16px;
   }
 `
 
 const TableHeader = styled.th`
-  padding: 16px 8px 16px 12px;
+  padding: 12px 6px;
   background: ${({ theme }) => theme.black};
   position: sticky;
   top: 0;
   font-weight: bold;
   text-align: left;
   cursor: pointer;
+
+  @media only screen and (${devices.tablet}) {
+    padding: 16px 8px 16px 12px;
+  }
 `
 
 const TableRow = styled.tr`
