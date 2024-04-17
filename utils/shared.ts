@@ -4,7 +4,7 @@ export const normalizeString = (input: string) => input.replace('ä', 'a').repla
 
 export const toTitleCase = (str: string) => str.replace(
   /\w\S*/g,
-  (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
+  (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase(),
 )
 
 export const validDatasetsMap = Object.keys(dataDescriptions).reduce<
