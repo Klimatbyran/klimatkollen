@@ -11,8 +11,9 @@ import { normalizeString } from './shared'
 export const defaultDataView = 'karta'
 export const secondaryDataView = 'lista'
 
-export const defaultDataset = 'Utsläppen'
+export const defaultDataset = 'utslappen'
 
+// NOTE: Hardcoded constant expected in the data
 export const climatePlanMissing = 'Saknar plan'
 
 const yearsAhead = (years: number) => {
@@ -30,14 +31,11 @@ export const requirementsInProcurement = (score: number, t: TFunction): string =
   return t('common:no')
 }
 
-// IDEA: Replace the dataset keys like `Utsläppen` (which is also used as a translation label) and
-// instead use the same dataset keys as in the solutions section for municipality pages
-
 function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescriptions {
   /** Get translations for a specific locale. This is used to avoid passing the locale option for all calls below */
   const t = (key: string | string[], options: TOptions = {}) => _t(key, { ...options, lng: locale })
   return {
-    Utsläppen: {
+    [defaultDataset]: {
       title: t('common:datasets.municipalityEmissions.title'),
       body: t('common:datasets.municipalityEmissions.body'),
       source: t('common:datasets.municipalityEmissions.source'),
@@ -50,9 +48,10 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
         formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
       },
       sortAscending: true,
+      name: t('common:datasets.municipalityEmissions.name'),
     },
 
-    Koldioxidbudgetarna: {
+    koldioxidbudgetarna: {
       title: t('common:datasets.budgets.title'),
       body: t('common:datasets.budgets.body'),
       source: t('common:datasets.budgets.source'),
@@ -74,9 +73,10 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       },
       sortAscending: false,
       stringsOnTop: true,
+      name: t('common:datasets.budgets.name'),
     },
 
-    Klimatplanerna: {
+    klimatplanerna: {
       title: t('common:datasets.plans.title'),
       body: t('common:datasets.plans.body'),
       source: t('common:datasets.plans.source'),
@@ -89,9 +89,10 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
         formattedDataPoint: (dataPoint, t) => (dataPoint === climatePlanMissing ? t('common:no') : t('common:yes')),
         additionalDataPoint: (item) => item.ClimatePlan.YearAdapted,
       },
+      name: t('common:datasets.plans.name'),
     },
 
-    Konsumtionen: {
+    konsumtionen: {
       title: t('common:datasets.consumption.title'),
       body: t('common:datasets.consumption.body'),
       source: t('common:datasets.consumption.source'),
@@ -105,9 +106,10 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
         formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
       },
       sortAscending: true,
+      name: t('common:datasets.consumption.name'),
     },
 
-    Elbilarna: {
+    elbilarna: {
       title: t('common:datasets.electricCars.title'),
       body: t('common:datasets.electricCars.body'),
       source: t('common:datasets.electricCars.source'),
@@ -120,9 +122,10 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
         formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
       },
       sortAscending: false,
+      name: t('common:datasets.electricCars.name'),
     },
 
-    Laddarna: {
+    laddarna: {
       title: t('common:datasets.chargers.title'),
       body: t('common:datasets.chargers.body'),
       source: t('common:datasets.chargers.source'),
@@ -135,9 +138,10 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
         formattedDataPoint: (dataPoint, t) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : t('common:datasets.chargers.missing')),
       },
       sortAscending: true,
+      name: t('common:datasets.chargers.name'),
     },
 
-    Cyklarna: {
+    cyklarna: {
       title: t('common:datasets.bikes.title'),
       body: t('common:datasets.bikes.body'),
       // IDEA: Link directly to the SCB dataset for population statistics that we use.
@@ -151,9 +155,10 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
         formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
       },
       sortAscending: false,
+      name: t('common:datasets.bikes.name'),
     },
 
-    Upphandlingarna: {
+    upphandlingarna: {
       title: t('common:datasets.procurements.title'),
       body: t('common:datasets.procurements.body'),
       // IDEA: Get the data directly from the file NUE2022_DATA_2023-12-20.xlsx
@@ -167,6 +172,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
         formattedDataPoint: (dataPoint, t) => requirementsInProcurement(dataPoint as number, t),
       },
       sortAscending: false,
+      name: t('common:datasets.procurements.name'),
     },
   }
 }
@@ -179,12 +185,7 @@ export function getDataDescriptions(locale: string, t: TFunction) {
   }
 
   const dataDescriptions = cachedDataDescriptions.get(locale)!
-
-  // Maybe validDatasets and isValidDataset would not be needed if we removed åäö from the dataset keys and only used the normalized values?
-  const validDatasets = Object.keys(dataDescriptions).reduce<Map<string, string>>((acc, key) => {
-    acc.set(normalizeString(key), key)
-    return acc
-  }, new Map())
+  const validDatasets = new Set(Object.keys(dataDescriptions))
 
   const isValidDataset = (dataset: string) => validDatasets.has(normalizeString(dataset))
 

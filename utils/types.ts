@@ -85,6 +85,10 @@ export type DataDescriptionDataPoints = {
 }
 
 export type DataDescription = {
+  /** Short name for the dataset */
+  name: string
+
+  /** Longer title */
   title: string
   body: string
   source: string

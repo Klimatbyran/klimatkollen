@@ -115,7 +115,7 @@ function StartPage({ municipalities }: PropsType) {
   const routeDataset = router.query.dataset
   const { dataView } = router.query
   const { t } = useTranslation()
-  const { dataDescriptions, isValidDataset, validDatasets } = getDataDescriptions(router.locale as string, t)
+  const { dataDescriptions, isValidDataset } = getDataDescriptions(router.locale as string, t)
 
   const normalizedRouteDataset = normalizeString(routeDataset as string)
   const normalizedDataView = normalizeString(dataView as string)
@@ -125,7 +125,7 @@ function StartPage({ municipalities }: PropsType) {
 
   useEffect(() => {
     if (normalizedRouteDataset && isValidDataset(normalizedRouteDataset)) {
-      setSelectedDataset(validDatasets.get(normalizedRouteDataset)!)
+      setSelectedDataset(normalizedRouteDataset)
     }
 
     if (normalizedDataView && isValidDataView(normalizedDataView)) {

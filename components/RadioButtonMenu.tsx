@@ -53,19 +53,19 @@ type MenuProps = {
 }
 
 function RadioButtonMenu({ selectedData, handleDataChange, dataDescriptions }: MenuProps) {
-  const datasetKeys = Object.keys(dataDescriptions)
+  const datasetKeys = Object.entries(dataDescriptions)
   return (
     <RadioContainer>
-      {datasetKeys.map((option) => (
-        <Fragment key={option}>
+      {datasetKeys.map(([key, { name }]) => (
+        <Fragment key={key}>
           <RadioInput
             type="radio"
-            id={option}
-            value={option}
-            checked={selectedData === option}
-            onChange={() => handleDataChange(option)}
+            id={key}
+            value={key}
+            checked={selectedData === key}
+            onChange={() => handleDataChange(key)}
           />
-          <RadioLabel htmlFor={option}>{option}</RadioLabel>
+          <RadioLabel htmlFor={key}>{name}</RadioLabel>
         </Fragment>
       ))}
     </RadioContainer>

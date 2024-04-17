@@ -26,7 +26,8 @@
       "columnHeader": "Cykelväglängd",
       "source": "Källor: [Nationella Vägdatabasen/Trafikverket](https://nvdb2012.trafikverket.se/SeTransportnatverket) och [SCB](https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik)",
       "title": "Cykelvägslängd",
-      "labels": ["1 m -", "1-2 m", "2-3 m", "3-4 m", "4-5 m", "5 m +"]
+      "labels": ["1 m -", "1-2 m", "2-3 m", "3-4 m", "4-5 m", "5 m +"],
+      "name": "Cyklarna"
     },
     "budgets": {
       "body": "Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.",
@@ -34,7 +35,8 @@
       "source": "Källor: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/) och [Uppsala universitet](http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf)",
       "title": "Budget slut om",
       "followingBudget": "Håller budget",
-      "labels": ["2 år -", "2-3 år", "3-4 år", "4-5 år", "5 år +", "Håller budget"]
+      "labels": ["2 år -", "2-3 år", "3-4 år", "4-5 år", "5 år +", "Håller budget"],
+      "name": "Koldioxidbudgetarna"
     },
     "chargers": {
       "body": "Antal laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.",
@@ -42,7 +44,8 @@
       "source": "Källa: [Power Circle ELIS](https://powercircle.org/elbilsstatistik/)",
       "title": "Elbilar per laddare",
       "missing": "Laddare saknas",
-      "labels": ["Inga laddare", "40 +", "30-40", "20-30", "10-20", "10 -"]
+      "labels": ["Inga laddare", "40 +", "30-40", "20-30", "10-20", "10 -"],
+      "name": "Laddarna"
     },
     "consumption": {
       "body": "Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.",
@@ -56,33 +59,38 @@
         "6,1-6,4 ton",
         "5,8-6,1 ton",
         "5,8 ton -"
-      ]
+      ],
+      "name": "Konsumtionen"
     },
     "electricCars": {
       "body": "Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.",
       "columnHeader": "Ökning elbilar",
       "source": "Källa: [Trafikanalys](https://www.trafa.se/vagtrafik/fordon/)",
       "title": "Elbilsökning",
-      "labels": ["4 -", "4–5", "5–6", "6–7", "7–8", "8 +"]
+      "labels": ["4 -", "4–5", "5–6", "6–7", "7–8", "8 +"],
+      "name": "Elbilarna"
     },
     "municipalityEmissions": {
       "body": "Genomsnittlig årlig förändring av koldioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.",
       "columnHeader": "Utsläppsförändring",
       "labels": ["0% +", "0–1%", "1–2%", "2–3%", "3–10%", "10–15%"],
       "source": "Källa: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/)",
-      "title": "Utsläppsförändring"
+      "title": "Utsläppsförändring",
+      "name": "Utsläppen"
     },
     "plans": {
       "body": "Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka [här](https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform) för att redigera informationen.",
       "columnHeader": "Antagen år",
       "source": "Källa: [allmänhetens öppna sammanställning](https://docs.google.com/spreadsheets/d/13CMqmfdd6QUD6agKFyVhwZUol4PKzvy253_EwtsFyvw/edit?fbclid=IwAR0v0cq0_xhFVlhhVn5fP-TNkOPVRXbOTKzTVWI_PMr_yU2rXOLjcN6jSps#gid=0)",
-      "title": "Klimatplan"
+      "title": "Klimatplan",
+      "name": "Klimatplanerna"
     },
     "procurements": {
       "body": "Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker. [Mejla oss](mailto:hej@klimatkollen.se) för att redigera informationen.",
       "columnHeader": "Underlag",
       "source": "Källor: [Upphandlingsmyndigheten](/data/procurements/NUE2022_DATA_2023-12-20.xlsx) och [Greenpeace](https://docs.google.com/spreadsheets/d/1EdHUa49HJZn0rXqM-6tChdim4TJzXnwA/edit#gid=1040317160)",
-      "title": "Klimatkrav i upphandling"
+      "title": "Klimatkrav i upphandling",
+      "name": "Upphandlingarna"
     }
   },
   "errors": {
