@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import { H1 } from './Typography'
-import VisuallyHidden from './VisuallyHidden'
 import Header from './Header'
 import { devices } from '../utils/devices'
 
@@ -20,9 +19,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
     <>
       <Header />
       <Main>
-        <VisuallyHidden>
-          <H1>Klimatkollen</H1>
-        </VisuallyHidden>
+        <H1 className="sr-only">Klimatkollen</H1>
         {children}
       </Main>
     </>

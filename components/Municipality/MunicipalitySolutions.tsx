@@ -80,6 +80,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         heading={t('municipality:solutions.electricCars.heading')}
         data={t('municipality:percentagePoints', { num: (municipality.ElectricCarChangePercent * 100).toFixed(1) })}
         info={t('municipality:solutions.electricCars.info')}
+
       />
       <SolutionSection
         icon={<Charger />}

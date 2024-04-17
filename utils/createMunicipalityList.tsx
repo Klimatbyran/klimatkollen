@@ -105,7 +105,7 @@ export const listColumns = (
     return t('startPage:ranking')
   }
 
-  const getFirstColumnClimatePlans = (index: number, dataPoint: string) => (index === -1
+  const firstColumnClimatePlans = (index: number, dataPoint: string) => (index === -1
     ? (
       <a
         href={dataPoint.toString()}
@@ -120,22 +120,53 @@ export const listColumns = (
     : t('common:no')
   )
 
+  const getFirstColumnCell = (row: { row: { original: RowData } }) => {
+    const { index, dataPoint } = row.row.original
+
+    if (isClimatePlan) {
+      return firstColumnClimatePlans(index, dataPoint as string)
+    }
+
+    if (isProcurement) {
+      return requirementsInProcurement(dataPoint as number, t)
+    }
+
+    return index
+  }
+
+  const getThirdColumnCell = (row: { row: { original: RowData } }) => {
+    const {
+      dataPoint, formattedDataPoint, climatePlanYearAdapted, procurementLink,
+    } = row.row.original
+
+    if (isClimatePlan) {
+      return dataPoint !== climatePlanMissing
+        ? climatePlanYearAdapted
+        : climatePlanMissing
+    }
+
+    if (isProcurement) {
+      return procurementLink !== ''
+        ? (
+          <a
+            href={procurementLink}
+            onClick={(e) => e.stopPropagation()}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t('common:link')}
+          </a>
+        )
+        : t('common:missing')
+    }
+
+    return formattedDataPoint
+  }
+
   return [
     {
       header: getFirstColumnHeader(),
-      cell: (row) => {
-        const { index, dataPoint } = row.row.original
-
-        if (isClimatePlan) {
-          return getFirstColumnClimatePlans(index, dataPoint as string)
-        }
-
-        if (isProcurement) {
-          return requirementsInProcurement(dataPoint as number, t)
-        }
-
-        return row.cell.row.index + 1
-      },
+      cell: (row) => getFirstColumnCell(row),
       accessorKey: 'index',
     },
     {
@@ -145,34 +176,7 @@ export const listColumns = (
     },
     {
       header: () => columnHeader,
-      cell: (row) => {
-        const {
-          dataPoint, formattedDataPoint, climatePlanYearAdapted, procurementLink,
-        } = row.row.original
-
-        if (isClimatePlan) {
-          return dataPoint !== climatePlanMissing
-            ? climatePlanYearAdapted
-            : climatePlanMissing
-        }
-
-        if (isProcurement) {
-          return procurementLink !== ''
-            ? (
-              <a
-                href={procurementLink}
-                onClick={(e) => e.stopPropagation()}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t('common:link')}
-              </a>
-            )
-            : t('common:missing')
-        }
-
-        return formattedDataPoint
-      },
+      cell: (row) => getThirdColumnCell(row),
       accessorKey: 'dataPoint',
     },
   ]

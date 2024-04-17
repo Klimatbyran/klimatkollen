@@ -67,6 +67,10 @@ const LogoContainer = styled.div`
     align-self: end;
     order: 1;
   }
+
+  & img {
+    max-height: 56px;
+  }
 `
 
 const SocialLinksContainer = styled.div`
@@ -128,7 +132,8 @@ function Footer() {
             <LogoContainer>
               <img
                 src="/logos/klimatkollen_logo_black.svg"
-                height="56px"
+                width="100%"
+                loading="lazy"
                 alt="Klimatkollen logo"
               />
             </LogoContainer>

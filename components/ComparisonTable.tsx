@@ -24,18 +24,18 @@ const StyledTable = styled.table`
     font-size: 0.8em;
   }
 
-  .data-header {
-    text-align: right;
-  }
-
   #first-header {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
 
-  #last-header {
+  #third-header {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+  }
+
+  .data-header {
+    text-align: right;
   }
 
   .data-column {
@@ -45,26 +45,27 @@ const StyledTable = styled.table`
 `
 
 const TableData = styled.td`
-  padding: 1rem;
-  overflow: hidden;
+  padding: 8px 6px;
+  max-width: 80px;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
-  max-width: 150px;
 
-  @media only screen and (${devices.mobile}) {
-    padding: 0.75rem;
-    max-width: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  @media only screen and (${devices.tablet}) {
+    padding: 16px;
   }
 `
 
 const TableHeader = styled.th`
-  padding: 1rem;
+  padding: 12px 6px;
   background: ${({ theme }) => theme.black};
   position: sticky;
   top: 0;
   font-weight: bold;
   text-align: left;
+  cursor: pointer;
+
+  @media only screen and (${devices.tablet}) {
+    padding: 16px 8px 16px 12px;
+  }
 `
 
 const TableRow = styled.tr`
@@ -86,16 +87,10 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
   const [resizeCount, setResizeCount] = useState(0)
 
   useEffect(() => {
-    const handleResize = () => {
-      setResizeCount((prevCount) => prevCount + 1)
-    }
-
+    const handleResize = () => setResizeCount((count) => count + 1)
     window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, []) // Empty dependency array ensures this effect runs once when the component mounts
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const table = useReactTable({
     data,
@@ -113,34 +108,22 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
     router.push(route)
   }
 
-  const renderHeader = (header: Header<T, unknown>, index: number) => (
-    <TableHeader
-      key={header.id}
-      colSpan={header.colSpan}
-      className={header.index > 1 ? 'data-header' : ''}
-      id={
-        // eslint-disable-next-line no-nested-ternary
-        index === 0
-          ? 'first-header'
-          : index === header.headerGroup.headers.length - 1
-            ? 'last-header'
-            : ''
-      }
-    >
-      {header.isPlaceholder ? null : (
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-        <div
-          {...{
-            className: header.column.getCanSort() ? 'cursor-pointer select-none' : '',
-            onClick: header.column.getToggleSortingHandler(),
-            onKeyDown: header.column.getToggleSortingHandler(),
-          }}
-        >
-          {flexRender(header.column.columnDef.header, header.getContext())}
-        </div>
-      )}
-    </TableHeader>
-  )
+  const renderHeader = (header: Header<T, unknown>, index: number) => {
+    const lastOrMiddleHeader = index === header.headerGroup.headers.length - 1 ? 'third-header' : 'second-header'
+
+    return (
+      <TableHeader
+        key={header.id}
+        colSpan={header.colSpan}
+        className={header.index > 1 ? 'data-header' : ''}
+        id={index === 0 ? 'first-header' : lastOrMiddleHeader}
+        onClick={header.column.getToggleSortingHandler()}
+        onKeyDown={header.column.getToggleSortingHandler()}
+      >
+        {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+      </TableHeader>
+    )
+  }
 
   return (
     <StyledTable key={resizeCount}>
