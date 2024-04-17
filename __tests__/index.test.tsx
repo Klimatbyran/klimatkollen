@@ -90,7 +90,7 @@ describe('Home Page', () => {
   })
 
   it('handles dataset change', () => {
-    const newDataset = 'Klimatplanerna'
+    const newDataset = 'common:datasets.plans.name'
     const radioButton = screen.getByLabelText(newDataset)
     fireEvent.click(radioButton)
     expect(screen.getByText(newDataset)).toBeInTheDocument()
