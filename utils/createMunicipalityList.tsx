@@ -3,7 +3,8 @@ import { TFunction } from 'next-i18next'
 
 import { Municipality, SelectedData } from './types'
 import {
-  dataDescriptions, dataOnDisplay, climatePlanMissing, requirementsInProcurement,
+  dataOnDisplay, climatePlanMissing, requirementsInProcurement,
+  getDataDescriptions,
 } from './datasetDefinitions'
 
 type RowData = {
@@ -50,8 +51,9 @@ export const calculateRankings = (
   }))
 }
 
-export const rankData = (municipalities: Municipality[], selectedData: SelectedData, t: TFunction) => {
-  const datasets = dataOnDisplay(municipalities, selectedData, t)
+export const rankData = (municipalities: Municipality[], selectedData: SelectedData, locale: string, t: TFunction) => {
+  const { dataDescriptions } = getDataDescriptions(locale as string, t)
+  const datasets = dataOnDisplay(municipalities, selectedData, locale, t)
 
   type RankedData = {
     [key in SelectedData]: Array<RowData>

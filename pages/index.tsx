@@ -22,7 +22,7 @@ import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
 import {
   defaultDataset,
-  dataDescriptions,
+  getDataDescriptions,
   dataOnDisplay,
   defaultDataView,
   secondaryDataView,
@@ -31,9 +31,7 @@ import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import {
   isValidDataView,
-  isValidDataset,
   normalizeString,
-  validDatasetsMap,
 } from '../utils/shared'
 
 const Map = dynamic(() => import('../components/Map/Map'))
@@ -116,17 +114,18 @@ function StartPage({ municipalities }: PropsType) {
   const router = useRouter()
   const routeDataset = router.query.dataset
   const { dataView } = router.query
+  const { t } = useTranslation()
+  const { dataDescriptions, isValidDataset, validDatasets } = getDataDescriptions(router.locale as string, t)
 
   const normalizedRouteDataset = normalizeString(routeDataset as string)
   const normalizedDataView = normalizeString(dataView as string)
 
   const [selectedDataset, setSelectedDataset] = useState<SelectedData>(defaultDataset)
   const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
-  const { t } = useTranslation()
 
   useEffect(() => {
     if (normalizedRouteDataset && isValidDataset(normalizedRouteDataset)) {
-      setSelectedDataset(validDatasetsMap[normalizedRouteDataset])
+      setSelectedDataset(validDatasets.get(normalizedRouteDataset)!)
     }
 
     if (normalizedDataView && isValidDataView(normalizedDataView)) {
@@ -147,7 +146,8 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
-  const municipalityDataOnDisplay = dataOnDisplay(municipalities, selectedDataset, t) // get all municipality names and data points for map and list
+  // get all municipality names and data points for map and list
+  const municipalityDataOnDisplay = dataOnDisplay(municipalities, selectedDataset, router.locale as string, t)
   const datasetDescription = dataDescriptions[selectedDataset] // get description of selected dataset
 
   const handleToggle = () => {
@@ -164,7 +164,7 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const cols = listColumns(selectedDataset, dataDescriptions[selectedDataset].columnHeader, t)
-  const rankedData = rankData(municipalities, selectedDataset, t) // fixme hur byter jag ut denna till municipalityData?
+  const rankedData = rankData(municipalities, selectedDataset, router.locale as string, t) // fixme hur byter jag ut denna till municipalityData?
 
   const isDefaultDataView = selectedDataView === defaultDataView
 
@@ -180,6 +180,7 @@ function StartPage({ municipalities }: PropsType) {
           <RadioButtonMenu
             selectedData={selectedDataset}
             handleDataChange={handleDataChange}
+            dataDescriptions={dataDescriptions}
           />
           <InfoContainer>
             <TitleContainer>

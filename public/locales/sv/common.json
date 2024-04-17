@@ -21,8 +21,14 @@
   "cookieBanner": "Denna sida använder cookies för att förbättra användarupplevelsen.",
   "dataMissing": "Data saknas",
   "datasets": {
-    "missingChargers": "Laddare saknas",
-    "followingBudget": "Håller budget"
+    "budget": {
+      "title": "Budget slut om"
+    },
+    "emissions": {
+      "title": "Utsläppsförändring"
+    },
+    "followingBudget": "Håller budget",
+    "missingChargers": "Laddare saknas"
   },
   "errors": {
     "notFound": "404 - Sidan hittades inte"

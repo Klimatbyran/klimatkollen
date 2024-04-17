@@ -1,5 +1,5 @@
 import { TFunction } from 'next-i18next'
-import { dataDescriptions } from './datasetDefinitions'
+import { getDataDescriptions } from './datasetDefinitions'
 
 export type Image = {
   ImageUrl: string
@@ -72,7 +72,11 @@ export type Municipality = {
   ProcurementLink: string,
 }
 
-export type SelectedData = keyof typeof dataDescriptions
+// IDEA: Maybe infer keys from the returntype of getDataDescriptions()
+// TODO: inferring the returntype gives a vague type, but it would be nice to have exact keys.
+// This could be achieved by switching from the swedish keys to system keys in english instead.
+// These could be defined in the type rather than in the returned dataset definition.
+export type SelectedData = keyof ReturnType<typeof getDataDescriptions>['dataDescriptions']
 
 export type DataDescriptionDataPoints = {
   rawDataPoint: (item: Municipality) => number | string | Date

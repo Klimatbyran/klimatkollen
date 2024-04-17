@@ -1,17 +1,14 @@
 import { GetServerSideProps } from 'next'
-import { i18n } from 'next-i18next'
-import { i18n as I18NextClient } from 'i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { ClimateDataService } from '../utils/climateDataService'
 import {
   generateMunipacitySitemapData,
   generateSitemap,
 } from '../utils/generateMunipacitySitemap'
+import { getServerSideI18n } from '../utils/getServerSideI18n'
 
 export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
-  await serverSideTranslations(locale as string, ['common', 'sitemap'])
-  const { t } = (i18n as I18NextClient)
+  const { t } = await getServerSideI18n(locale as string, ['common', 'sitemap'])
 
   const municipalities = new ClimateDataService().getMunicipalities()
   const municipalitiesSitemap = generateMunipacitySitemapData({ municipalities })

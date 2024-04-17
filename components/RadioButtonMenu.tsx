@@ -1,7 +1,6 @@
 import { Fragment } from 'react'
 import styled from 'styled-components'
-import { dataDescriptions } from '../utils/datasetDefinitions'
-import { SelectedData } from '../utils/types'
+import { DataDescriptions, SelectedData } from '../utils/types'
 import { devices } from '../utils/devices'
 
 const RadioContainer = styled.div`
@@ -47,14 +46,14 @@ const RadioInput = styled.input`
   }
 `
 
-const datasetKeys = Object.keys(dataDescriptions)
-
 type MenuProps = {
   selectedData: SelectedData
   handleDataChange: (newData: SelectedData) => void
+  dataDescriptions: DataDescriptions
 }
 
-function RadioButtonMenu({ selectedData, handleDataChange }: MenuProps) {
+function RadioButtonMenu({ selectedData, handleDataChange, dataDescriptions }: MenuProps) {
+  const datasetKeys = Object.keys(dataDescriptions)
   return (
     <RadioContainer>
       {datasetKeys.map((option) => (

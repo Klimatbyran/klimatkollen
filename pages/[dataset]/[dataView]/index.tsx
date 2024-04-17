@@ -1,12 +1,13 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import StartPage from '../..'
 import { ClimateDataService } from '../../../utils/climateDataService'
-import { isValidDataset, isValidDataView, normalizeString } from '../../../utils/shared'
+import { isValidDataView, normalizeString } from '../../../utils/shared'
 import Layout from '../../../components/Layout'
 import Footer from '../../../components/Footer/Footer'
+import { getDataDescriptions } from '../../../utils/datasetDefinitions'
+import { getServerSideI18n } from '../../../utils/getServerSideI18n'
 
 interface Params extends ParsedUrlQuery {
   dataset: string
@@ -20,6 +21,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const dataset = (params as Params).dataset as string
   const dataView = (params as Params).dataView as string
+  const { t, _nextI18Next } = await getServerSideI18n(locale as string, ['common', 'startPage'])
+  const { isValidDataset } = getDataDescriptions(locale as string, t)
 
   const normalizedDataset = normalizeString(dataset)
   const normalizedDataView = normalizeString(dataView)
@@ -51,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     props: {
       municipalities,
       normalizedDataset,
-      ...await serverSideTranslations(locale as string, ['common', 'startPage']),
+      _nextI18Next,
     },
   }
 
