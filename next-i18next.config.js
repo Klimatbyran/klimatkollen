@@ -11,4 +11,5 @@ module.exports = {
   localePath: path.resolve('./public/locales'),
   // Allow reloading translations without restarting the dev server.
   reloadOnPrerender: DEV,
+  serializeConfig: false,
 }
