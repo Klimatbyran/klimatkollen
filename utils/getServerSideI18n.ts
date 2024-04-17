@@ -1,4 +1,4 @@
-import { i18n } from 'next-i18next'
+import { TFunction, i18n } from 'next-i18next'
 import { i18n as I18NextClient } from 'i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18nextConfig from '../next-i18next.config'
@@ -10,8 +10,10 @@ import nextI18nextConfig from '../next-i18next.config'
  */
 export async function getServerSideI18n(locale: string, namespacesRequired: string | string[]) {
   const config = await serverSideTranslations(locale, namespacesRequired, { ...nextI18nextConfig, initImmediate: true })
-  // We could expose more from i18n if we need more API:s than the standard `t()`
-  const { t } = (i18n as I18NextClient)
+  // HACK: return placeholder TFunction since `initImmediate` doesn't seem to work for `serverSideTranslations()`
+  // when Next.js is starting the dev server.
+  // TODO: Fix this during first render of the dev server
+  const t = (i18n as I18NextClient)?.t ?? ((key: string) => key) as TFunction
 
   return { ...config, t }
 }

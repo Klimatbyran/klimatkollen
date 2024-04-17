@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-shadow */
 import { TFunction } from 'next-i18next'
+import { TOptions } from 'i18next'
 
 import {
   DataDescriptions, Municipality, SelectedData,
@@ -29,22 +30,21 @@ export const requirementsInProcurement = (score: number, t: TFunction): string =
   return t('common:no')
 }
 
-// TODO: use namespace : for keys
 // IDEA: Replace the dataset keys like `Utsläppen` (which is also used as a translation label) and
 // instead use the same dataset keys as in the solutions section for municipality pages
 
 function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescriptions {
   /** Get translations for a specific locale. This is used to avoid passing the locale option for all calls below */
-  const t = (key: string | string[]) => _t(key, { lng: locale })
+  const t = (key: string | string[], options: TOptions = {}) => _t(key, { ...options, lng: locale })
   return {
     Utsläppen: {
-      title: t('common:datasets.emissions.title'),
-      body: 'Genomsnittlig årlig förändring av koldioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
-      source: 'Källa: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/)',
+      title: t('common:datasets.municipalityEmissions.title'),
+      body: t('common:datasets.municipalityEmissions.body'),
+      source: t('common:datasets.municipalityEmissions.source'),
       boundaries: [0.0, -0.01, -0.02, -0.03, -0.1],
-      labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
+      labels: t('common:datasets.municipalityEmissions.labels', { returnObjects: true }) as unknown as string[],
       labelRotateUp: [true, false, false, false, false, false],
-      columnHeader: 'Utsläppsförändring',
+      columnHeader: t('common:datasets.municipalityEmissions.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent / 100,
         formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
@@ -53,9 +53,9 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
     },
 
     Koldioxidbudgetarna: {
-      title: t('common:datasets.budget.title'),
-      body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.',
-      source: 'Källor: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/) och [Uppsala universitet](http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf)',
+      title: t('common:datasets.budgets.title'),
+      body: t('common:datasets.budgets.body'),
+      source: t('common:datasets.budgets.source'),
       boundaries: [
         yearsAhead(2),
         yearsAhead(3),
@@ -63,28 +63,27 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
         yearsAhead(5),
         new Date(2050, 1, 1),
       ],
-      // TODO: see if i18next can help with conditional formatting based on value
-      labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', t('common:datasets.followingBudget')],
+      labels: t('common:datasets.budgets.labels', { returnObjects: true }) as unknown as string[],
       labelRotateUp: [],
-      columnHeader: 'Budget tar slut',
+      columnHeader: t('common:datasets.budgets.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => new Date(item.BudgetRunsOut),
         formattedDataPoint: (dataPoint, t) => (dataPoint < new Date(2050, 1, 1)
           ? formatDateToString(dataPoint as Date)
-          : t('common:datasets.followingBudget')),
+          : t('common:datasets.budgets.followingBudget')),
       },
       sortAscending: false,
       stringsOnTop: true,
     },
 
     Klimatplanerna: {
-      title: 'Klimatplan',
-      body: 'Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka [här](https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform) för att redigera informationen.',
-      source: 'Källa: [allmänhetens öppna sammanställning](https://docs.google.com/spreadsheets/d/13CMqmfdd6QUD6agKFyVhwZUol4PKzvy253_EwtsFyvw/edit?fbclid=IwAR0v0cq0_xhFVlhhVn5fP-TNkOPVRXbOTKzTVWI_PMr_yU2rXOLjcN6jSps#gid=0)',
+      title: t('common:datasets.plans.title'),
+      body: t('common:datasets.plans.body'),
+      source: t('common:datasets.plans.source'),
       boundaries: [climatePlanMissing, ''],
       labels: [t('common:no'), t('common:yes')],
       labelRotateUp: [],
-      columnHeader: 'Antagen år',
+      columnHeader: t('common:datasets.plans.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.ClimatePlan.Link,
         formattedDataPoint: (dataPoint, t) => (dataPoint === climatePlanMissing ? t('common:no') : t('common:yes')),
@@ -93,21 +92,14 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
     },
 
     Konsumtionen: {
-      title: 'Konsumtionsutsläpp',
-      body: 'Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
-      source: 'Källa: [Stockholm Environment Institute](https://www.sei.org/tools/konsumtionskompassen/)',
+      title: t('common:datasets.consumption.title'),
+      body: t('common:datasets.consumption.body'),
+      source: t('common:datasets.consumption.source'),
       boundaries: [7, 6.7, 6.4, 6.1, 5.8],
-      // TODO: see if i18next can help with conditional formatting based on value
-      labels: [
-        '7 ton +',
-        '6,7-7 ton',
-        '6,4-6,7 ton',
-        '6,1-6,4 ton',
-        '5,8-6,1 ton',
-        '5,8 ton -',
-      ],
+      labels:
+      t('common:datasets.consumption.labels', { returnObjects: true }) as unknown as string[],
       labelRotateUp: [],
-      columnHeader: 'Ton CO₂e/person/år',
+      columnHeader: t('common:datasets.consumption.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.TotalConsumptionEmission,
         formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
@@ -116,14 +108,13 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
     },
 
     Elbilarna: {
-      title: 'Elbilsökning',
-      body: 'Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
-      source: 'Källa: [Trafikanalys](https://www.trafa.se/vagtrafik/fordon/)',
+      title: t('common:datasets.electricCars.title'),
+      body: t('common:datasets.electricCars.body'),
+      source: t('common:datasets.electricCars.source'),
       boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
-      // TODO: see if i18next can help with conditional formatting based on value
-      labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
+      labels: t('common:datasets.electricCars.labels', { returnObjects: true }) as unknown as string[],
       labelRotateUp: [true, true, true, true, true, true],
-      columnHeader: 'Ökning elbilar',
+      columnHeader: t('common:datasets.electricCars.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.ElectricCarChangePercent,
         formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
@@ -132,56 +123,45 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
     },
 
     Laddarna: {
-      title: 'Elbilar per laddare',
-      body: 'Antal laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.',
-      source: 'Källa: [Power Circle ELIS](https://powercircle.org/elbilsstatistik/)',
+      title: t('common:datasets.chargers.title'),
+      body: t('common:datasets.chargers.body'),
+      source: t('common:datasets.chargers.source'),
       boundaries: [1e6, 40, 30, 20, 10],
-      // TODO: see if i18next can help with conditional formatting based on value
-      labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
+      labels: t('common:datasets.chargers.labels', { returnObjects: true }) as unknown as string[],
       labelRotateUp: [],
-      columnHeader: 'Elbil per laddare',
+      columnHeader: t('common:datasets.chargers.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
-        formattedDataPoint: (dataPoint, t) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : t('common:datasets.missingChargers')),
+        formattedDataPoint: (dataPoint, t) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : t('common:datasets.chargers.missing')),
       },
       sortAscending: true,
     },
 
     Cyklarna: {
-      title: 'Cykelvägslängd',
-      body: 'Antal meter cykelväg per invånare per kommun år 2022.',
+      title: t('common:datasets.bikes.title'),
+      body: t('common:datasets.bikes.body'),
       // IDEA: Link directly to the SCB dataset for population statistics that we use.
-      source: 'Källor: [Nationella Vägdatabasen/Trafikverket](https://nvdb2012.trafikverket.se/SeTransportnatverket) och [SCB](https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik)',
+      source: t('common:datasets.bikes.source'),
       boundaries: [1, 2, 3, 4, 5],
-      // TODO: see if i18next can help with conditional formatting based on value
-      labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
+      labels: t('common:datasets.bikes.labels', { returnObjects: true }) as unknown as string[],
       labelRotateUp: [],
-      columnHeader: 'Cykelväglängd',
+      columnHeader: t('common:datasets.bikes.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.BicycleMetrePerCapita,
-        // IDEA: FormattedDatapoint could expect the t-function
-        // However, we need the t-function for all data.
-        // What if this was in a function that would be initiated when you needed the dataset?
-        // instead of a import, you would call a function to get the dataset Definitions.
-        // We could inialize the dataDescriptions on first import, and then reuse them later on.
-        // This seems like the best approach, and would probably only require minimal changes to the structure
-
-        // Alternatively, we could keep the translation keys in here, and then render everything during runtime.
-        // But that would break usage of this dataset in all other places in the app
         formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
       },
       sortAscending: false,
     },
 
     Upphandlingarna: {
-      title: 'Klimatkrav i upphandling',
-      body: 'Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker. [Mejla oss](mailto:hej@klimatkollen.se) för att redigera informationen.',
+      title: t('common:datasets.procurements.title'),
+      body: t('common:datasets.procurements.body'),
       // IDEA: Get the data directly from the file NUE2022_DATA_2023-12-20.xlsx
-      source: 'Källor: [Upphandlingsmyndigheten](/data/procurements/NUE2022_DATA_2023-12-20.xlsx) och [Greenpeace](https://docs.google.com/spreadsheets/d/1EdHUa49HJZn0rXqM-6tChdim4TJzXnwA/edit#gid=1040317160)',
+      source: t('common:datasets.procurements.source'),
       boundaries: [0, 1, 2],
       labels: [t('common:no'), t('common:maybe'), t('common:yes')],
       labelRotateUp: [],
-      columnHeader: 'Underlag',
+      columnHeader: t('common:datasets.procurements.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.ProcurementScore,
         formattedDataPoint: (dataPoint, t) => requirementsInProcurement(dataPoint as number, t),
