@@ -2,7 +2,7 @@
   "aboutGraph": "Om grafen",
   "coatOfArms": "Kommunvapen för {{name}}",
   "emissionNumbers": {
-    "co2budget": "Trend {{budgetStartsYear}}-2050: {{totalBudget}}",
+    "co2budget": "Koldioxidbudget {{budgetStartsYear}}-2050: {{totalBudget}}",
     "historical": "Historiskt 1990-{{historicalEndsYear}}: {{totalHistorical}}",
     "title": "Utsläppen i siffror (tusen ton CO₂)",
     "trend": "Trend {{trendStartsYear}}-2050: {{totalTrend}}"
