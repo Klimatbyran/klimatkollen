@@ -41,6 +41,10 @@ const InfoSection = styled.div`
     text-decoration: underline;
     cursor: pointer;
   }
+
+  & p:first-of-type {
+    margin-top: 0;
+  }
 `
 
 const StyledIcon = styled.div`
