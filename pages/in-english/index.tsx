@@ -36,6 +36,8 @@ const SocialMediaContainer = styled.div`
 const RoundedImage = styled(Image)`
   border-radius: 16px;
   margin: 8px 0;
+  max-width: 100%;
+  height: auto;
 `
 
 function InEnglish() {
@@ -189,7 +191,6 @@ function InEnglish() {
             src="/board/impact_challenge.png"
             width={2000}
             height={1125}
-            layout="responsive"
             alt="Klimatkollen receives support from Google.org Impact Challenge"
           />
           <Paragraph>
@@ -250,9 +251,8 @@ function InEnglish() {
           <RoundedImage
             src="/board/whole_board.jpg"
             alt="Klimatkollen board"
-            layout="responsive"
-            width="9192"
-            height="6128"
+            width="3000"
+            height="2000"
           />
           <Paragraph>
             Klimatkollen gives citizens knowledge about how Sweden’s 290 municipalities
