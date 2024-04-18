@@ -16,11 +16,12 @@ const Modal = styled.div<{ scrollY: number }>`
   background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
   height: 100vh;
-  z-index: 0;
-  top: ${({ scrollY }) => `calc(50% + ${scrollY}px)`};
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
 
   & div:nth-of-type(1) {
     position: fixed;
@@ -36,7 +37,7 @@ const Modal = styled.div<{ scrollY: number }>`
       flex-direction: column;
       background: ${({ theme }) => theme.black};
       color: ${({ theme }) => theme.offWhite};
-      z-index: 10;
+      z-index: 20;
       border-radius: 16px;
       box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
 
@@ -113,7 +114,7 @@ function InfoModal({ text, close, scrollY }: Props) {
   }, [activeElement, handleKeydown])
 
   return (
-    <Modal ref={ref} scrollY={scrollY}>
+    <Modal ref={ref} scrollY={scrollY} onClick={close}>
       <div>
         <div>
           <IconButton type="button" aria-label={t('common:actions.close')} onClick={close}>
