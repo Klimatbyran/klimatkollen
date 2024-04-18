@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { TFunction } from 'next-i18next'
 
-import { Municipality, SelectedData } from './types'
+import { Municipality, DatasetKey } from './types'
 import {
   dataOnDisplay, climatePlanMissing, requirementsInProcurement,
   getDataDescriptions,
@@ -51,12 +51,12 @@ export const calculateRankings = (
   }))
 }
 
-export const rankData = (municipalities: Municipality[], selectedData: SelectedData, locale: string, t: TFunction) => {
+export const rankData = (municipalities: Municipality[], selectedData: DatasetKey, locale: string, t: TFunction) => {
   const { dataDescriptions } = getDataDescriptions(locale as string, t)
   const datasets = dataOnDisplay(municipalities, selectedData, locale, t)
 
   type RankedData = {
-    [key in SelectedData]: Array<RowData>
+    [key in DatasetKey]: Array<RowData>
   }
 
   const newRankedData: RankedData = {} as RankedData
@@ -64,7 +64,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
   const sortAscending = dataDescriptions[selectedData]?.sortAscending || false
   const edgeCaseOnTop = dataDescriptions[selectedData]?.stringsOnTop || false
 
-  if (selectedData === 'Klimatplanerna') {
+  if (selectedData === 'klimatplanerna') {
     // special case for climate plans
     newRankedData[selectedData] = calculateClimatePlanRankings(
       datasets.map((item) => ({
@@ -92,12 +92,12 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
 }
 
 export const listColumns = (
-  selectedData: SelectedData,
+  selectedData: DatasetKey,
   columnHeader: string,
   t: TFunction,
 ): ColumnDef<RowData>[] => {
-  const isClimatePlan = selectedData === 'Klimatplanerna'
-  const isProcurement = selectedData === 'Upphandlingarna'
+  const isClimatePlan = selectedData === 'klimatplanerna'
+  const isProcurement = selectedData === 'upphandlingarna'
 
   const getFirstColumnHeader = () => {
     if (isClimatePlan) return t('startPage:hasPlan')
@@ -146,7 +146,7 @@ export const listColumns = (
     }
 
     if (isProcurement) {
-      return procurementLink !== ''
+      return procurementLink?.length
         ? (
           <a
             href={procurementLink}

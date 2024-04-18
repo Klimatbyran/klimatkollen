@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { TFunction } from 'next-i18next'
 
-import { getDataDescriptions } from './datasetDefinitions'
+import { validDatasets } from './datasetDefinitions'
 
 export type Image = {
   ImageUrl: string
@@ -74,12 +74,6 @@ export type Municipality = {
   ProcurementLink: string,
 }
 
-// IDEA: Maybe infer keys from the returntype of getDataDescriptions()
-// TODO: inferring the returntype gives a vague type, but it would be nice to have exact keys.
-// This could be achieved by switching from the swedish keys to system keys in english instead.
-// These could be defined in the type rather than in the returned dataset definition.
-export type SelectedData = keyof ReturnType<typeof getDataDescriptions>['dataDescriptions']
-
 export type DataDescriptionDataPoints = {
   rawDataPoint: (item: Municipality) => number | string | Date
   formattedDataPoint: (dataPoint: number | string | Date, t: TFunction) => string
@@ -103,9 +97,8 @@ export type DataDescription = {
   stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
-export type DataDescriptions = {
-  [key: string]: DataDescription
-}
+export type DatasetKey = typeof validDatasets[number]
+export type DataDescriptions = Record<DatasetKey, DataDescription>
 
 export type CurrentDataPoints = {
   name: string

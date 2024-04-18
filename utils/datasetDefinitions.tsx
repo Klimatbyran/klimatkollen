@@ -3,15 +3,14 @@
 import { TFunction } from 'next-i18next'
 import { TOptions } from 'i18next'
 
-import {
-  DataDescriptions, Municipality, SelectedData,
-} from './types'
+import { DataDescriptions, DatasetKey, Municipality } from './types'
 import { normalizeString } from './shared'
 
 export const defaultDataView = 'karta'
 export const secondaryDataView = 'lista'
 
-export const defaultDataset = 'utslappen'
+export const validDatasets = ['utslappen', 'koldioxidbudgetarna', 'klimatplanerna', 'konsumtionen', 'elbilarna', 'laddarna', 'cyklarna', 'upphandlingarna'] as const
+export const defaultDataset: DatasetKey = 'utslappen'
 
 // NOTE: Hardcoded constant expected in the data
 export const climatePlanMissing = 'Saknar plan'
@@ -35,7 +34,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
   /** Get translations for a specific locale. This is used to avoid passing the locale option for all calls below */
   const t = (key: string | string[], options: TOptions = {}) => _t(key, { ...options, lng: locale })
   return {
-    [defaultDataset]: {
+    utslappen: {
       title: t('common:datasets.municipalityEmissions.title'),
       body: t('common:datasets.municipalityEmissions.body'),
       source: t('common:datasets.municipalityEmissions.source'),
@@ -187,14 +186,16 @@ export function getDataDescriptions(locale: string, t: TFunction) {
   const dataDescriptions = cachedDataDescriptions.get(locale)!
   const validDatasets = new Set(Object.keys(dataDescriptions))
 
-  const isValidDataset = (dataset: string) => validDatasets.has(normalizeString(dataset))
+  function isValidDataset(dataset: string): dataset is DatasetKey {
+    return validDatasets.has(normalizeString(dataset))
+  }
 
   return { dataDescriptions, isValidDataset, validDatasets }
 }
 
 export const dataOnDisplay = (
   municipalities: Array<Municipality>,
-  selectedData: SelectedData,
+  selectedData: DatasetKey,
   locale: string,
   t: TFunction,
 ) => municipalities.map((item) => {

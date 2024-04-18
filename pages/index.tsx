@@ -10,7 +10,7 @@ import Markdown from '../components/Markdown'
 import DropDown from '../components/DropDown'
 import MetaTags from '../components/MetaTags'
 import { H2Regular, Paragraph } from '../components/Typography'
-import { Municipality, SelectedData } from '../utils/types'
+import { Municipality, DatasetKey } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
 import Layout from '../components/Layout'
@@ -120,7 +120,7 @@ function StartPage({ municipalities }: PropsType) {
   const normalizedRouteDataset = normalizeString(routeDataset as string)
   const normalizedDataView = normalizeString(dataView as string)
 
-  const [selectedDataset, setSelectedDataset] = useState<SelectedData>(defaultDataset)
+  const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(defaultDataset)
   const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
 
   useEffect(() => {
@@ -135,10 +135,9 @@ function StartPage({ municipalities }: PropsType) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleDataChange = (newData: SelectedData) => {
-    const newDataString = newData as string
-    setSelectedDataset(newDataString)
-    const normalizedDataset = normalizeString(newDataString)
+  const handleDataChange = (newData: DatasetKey) => {
+    setSelectedDataset(newData)
+    const normalizedDataset = normalizeString(newData as string)
     router.push(`/${normalizedDataset}/${selectedDataView}`, undefined, {
       shallow: true,
       scroll: false,
@@ -164,7 +163,7 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const cols = listColumns(selectedDataset, dataDescriptions[selectedDataset].columnHeader, t)
-  const rankedData = rankData(municipalities, selectedDataset, router.locale as string, t) // fixme hur byter jag ut denna till municipalityData?
+  const rankedData = rankData(municipalities, selectedDataset, router.locale as string, t)
 
   const isDefaultDataView = selectedDataView === defaultDataView
 
