@@ -94,7 +94,7 @@ function OmOss() {
                     ifrån en
                     {' '}
                     <a
-                      href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
+                      href="https://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -103,7 +103,15 @@ function OmOss() {
                     {' '}
                     som beräknats av forskare vid Uppsala universitet enligt
                     Tyndall-modellen och som sedan fördelats ut på kommunerna av
-                    Klimatkollen.
+                    Klimatkollen. (
+                    <a
+                      href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      2022 nationell koldioxidbudget
+                    </a>
+                    )
                   </ListItem>
                   <ListItem>
                     En översikt i både kartvy och listvy över koldioxidutsläppen i landets
