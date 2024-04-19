@@ -86,8 +86,18 @@ function Partier() {
             <a
               href="/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf"
               target="_blank"
+              rel="noreferrer"
             >
               här
+            </a>
+            .
+            {' '}
+            <a
+              href="https://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              (2023 dokument här)
             </a>
           </Paragraph>
           <Paragraph>
