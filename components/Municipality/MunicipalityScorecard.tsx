@@ -222,8 +222,13 @@ function Scorecard({
               Mängden koldioxid kvar att släppa ut för att klara Parisavtalets
               1,5-gradersmål, läs mer om koldioxidbudgetar
               {' '}
-              <Link href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">
+              <Link href="https://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf">
                 här
+              </Link>
+              .
+              {' '}
+              <Link href="https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf">
+                2022 Koldioxidbudget här
               </Link>
               .
             </>
