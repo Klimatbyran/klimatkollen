@@ -1,4 +1,4 @@
-import { ColumnDef } from '@tanstack/react-table'
+import { CellContext, ColumnDef } from '@tanstack/react-table'
 import { TFunction } from 'next-i18next'
 
 import { Municipality, DatasetKey } from './types'
@@ -120,8 +120,8 @@ export const listColumns = (
     : t('common:no')
   )
 
-  const getFirstColumnCell = (row: { row: { original: RowData } }) => {
-    const { index, dataPoint } = row.row.original
+  const getFirstColumnCell = (props: CellContext<RowData, unknown>) => {
+    const { index, dataPoint } = props.row.original
 
     if (isClimatePlan) {
       return firstColumnClimatePlans(index, dataPoint as string)
@@ -134,10 +134,10 @@ export const listColumns = (
     return index
   }
 
-  const getThirdColumnCell = (row: { row: { original: RowData } }) => {
+  const getThirdColumnCell = (props: CellContext<RowData, unknown>) => {
     const {
       dataPoint, formattedDataPoint, climatePlanYearAdapted, procurementLink,
-    } = row.row.original
+    } = props.row.original
 
     if (isClimatePlan) {
       return dataPoint !== climatePlanMissing
@@ -166,7 +166,7 @@ export const listColumns = (
   return [
     {
       header: getFirstColumnHeader(),
-      cell: (row) => getFirstColumnCell(row),
+      cell: getFirstColumnCell,
       accessorKey: 'index',
     },
     {
@@ -176,7 +176,7 @@ export const listColumns = (
     },
     {
       header: () => columnHeader,
-      cell: (row) => getThirdColumnCell(row),
+      cell: getThirdColumnCell,
       accessorKey: 'dataPoint',
     },
   ]
