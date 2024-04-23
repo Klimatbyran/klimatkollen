@@ -120,18 +120,6 @@ export type MunicipalityData = {
   geometry: [number, number][]
 }
 
-export function isMunicipalityData(
-  thing: MunicipalityData | unknown,
-): thing is MunicipalityData {
-  if (!thing) {
-    return false
-  }
-  const mData = thing as MunicipalityData
-  return Boolean(
-    mData.name && mData.dataPoint && mData.formattedDataPoint && mData.geometry,
-  )
-}
-
 export type MunicipalityTapInfo = {
   x: number
   y: number
