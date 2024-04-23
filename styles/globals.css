@@ -78,6 +78,7 @@ body {
   font-size: 16px;
   line-height: 19px;
   font-weight: 300;
+  position: relative;
 }
 
 html {
@@ -87,4 +88,22 @@ html {
 a {
   color: inherit;
   text-decoration: underline;
+}
+
+
+/**
+ * Apply this class to elements that are needed for a11y
+ * but do not fit visually in the UI
+ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px !important;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+  font-size: 16px !important;
 }

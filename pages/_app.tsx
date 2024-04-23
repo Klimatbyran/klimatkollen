@@ -3,11 +3,16 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Script from 'next/script'
 import CookieConsent from 'react-cookie-consent'
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { ReactElement, ReactNode } from 'react'
+import { appWithTranslation, useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { StyleSheetManager } from 'styled-components'
+import isPropValid from '@emotion/is-prop-valid'
 
 import '../styles/globals.css'
 import Theme, { colorTheme } from '../Theme'
+import nextI18nextConfig from '../next-i18next.config'
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -19,8 +24,10 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page)
+  const { t } = useTranslation()
+
   return (
-    <>
+    <StyleSheetManager shouldForwardProp={isPropValid}>
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
@@ -77,7 +84,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Theme>
         <CookieConsent
           location="bottom"
-          buttonText="OK"
+          buttonText={t('common:actions.ok')}
           style={{ background: colorTheme.lightBlack }}
           buttonStyle={{
             backgroundColor: colorTheme.midGreen,
@@ -85,12 +92,18 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           }}
           expires={150}
         >
-          Denna sida använder cookies för att förbättra användarupplevelsen.
+          {t('common:cookieBanner')}
         </CookieConsent>
         {getLayout(<Component {...pageProps} />)}
       </Theme>
-    </>
+    </StyleSheetManager>
   )
 }
 
-export default MyApp
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale as string, ['common']),
+  },
+})
+
+export default appWithTranslation(MyApp, nextI18nextConfig)

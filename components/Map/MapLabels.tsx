@@ -86,9 +86,9 @@ function MapLabels({ labels, rotations }: MapLabelsProps) {
 
   return (
     <Container>
-      {labels.map((label, i) => (
+      {Array.isArray(labels) ? labels.map((label, i) => (
         <Label key={label} color={labelColors[i]} text={label} rotateUp={rotations[i]} />
-      ))}
+      )) : labels}
     </Container>
   )
 }

@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MetaTags from '../../components/MetaTags'
 import {
   H2, H4, Paragraph,
@@ -35,6 +36,8 @@ const SocialMediaContainer = styled.div`
 const RoundedImage = styled(Image)`
   border-radius: 16px;
   margin: 8px 0;
+  max-width: 100%;
+  height: auto;
 `
 
 function InEnglish() {
@@ -188,7 +191,6 @@ function InEnglish() {
             src="/board/impact_challenge.png"
             width={2000}
             height={1125}
-            layout="responsive"
             alt="Klimatkollen receives support from Google.org Impact Challenge"
           />
           <Paragraph>
@@ -249,9 +251,8 @@ function InEnglish() {
           <RoundedImage
             src="/board/whole_board.jpg"
             alt="Klimatkollen board"
-            layout="responsive"
-            width="9192"
-            height="6128"
+            width="3000"
+            height="2000"
           />
           <Paragraph>
             Klimatkollen gives citizens knowledge about how Sweden’s 290 municipalities
@@ -354,14 +355,16 @@ function InEnglish() {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
   return {
-    props: {},
+    props: {
+      ...await serverSideTranslations(locale as string, ['common']),
+    },
   }
 }
 

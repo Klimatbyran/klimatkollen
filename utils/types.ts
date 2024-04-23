@@ -1,4 +1,7 @@
-import { dataDescriptions } from './datasetDefinitions'
+import { ReactNode } from 'react'
+import { TFunction } from 'next-i18next'
+
+import { validDatasets } from './datasetDefinitions'
 
 export type Image = {
   ImageUrl: string
@@ -71,18 +74,20 @@ export type Municipality = {
   ProcurementLink: string,
 }
 
-export type SelectedData = keyof typeof dataDescriptions
-
 export type DataDescriptionDataPoints = {
   rawDataPoint: (item: Municipality) => number | string | Date
-  formattedDataPoint: (dataPoint: number | string | Date) => string
+  formattedDataPoint: (dataPoint: number | string | Date, t: TFunction) => string
   additionalDataPoint?: (item: Municipality) => string
 }
 
 export type DataDescription = {
+  /** Short name for the dataset */
+  name: string
+
+  /** Longer title */
   title: string
-  body: string | JSX.Element
-  source: React.ReactNode
+  body: string
+  source: string
   boundaries: number[] | string[] | Date[]
   labels: string[]
   labelRotateUp: boolean[]
@@ -92,13 +97,31 @@ export type DataDescription = {
   stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
-export type DataDescriptions = {
-  [key: string]: DataDescription
-}
+export type DatasetKey = typeof validDatasets[number]
+export type DataDescriptions = Record<DatasetKey, DataDescription>
 
 export type CurrentDataPoints = {
   name: string
   primaryDataPoint: number | string | Date
   formattedPrimaryDataPoint: string
   secondaryDataPoint?: string | null
+}
+
+export type MapProps = {
+  data: Array<CurrentDataPoints>
+  boundaries: number[] | string[] | Date[]
+  children?: ReactNode
+}
+
+export type MunicipalityData = {
+  name: string
+  dataPoint: number
+  formattedDataPoint: number
+  geometry: [number, number][]
+}
+
+export type MunicipalityTapInfo = {
+  x: number
+  y: number
+  mData: MunicipalityData
 }

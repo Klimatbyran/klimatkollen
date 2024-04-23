@@ -1,13 +1,17 @@
-const sizes = {
-  mobile: '767px',
-  tablet: '768px',
-  laptop: '1440px',
+const deviceSizesPx = {
+  mobile: 767,
+  tablet: 768,
+  laptop: 1440,
 }
 
 const devices = {
-  mobile: `max-width: ${sizes.mobile}`,
-  tablet: `min-width: ${sizes.tablet}`,
-  laptop: `min-width: ${sizes.laptop}`,
+  mobile: `max-width: ${deviceSizesPx.mobile}px`,
+  tablet: `min-width: ${deviceSizesPx.tablet}px`,
+  laptop: `min-width: ${deviceSizesPx.laptop}px`,
 }
 
-export { devices }
+// do a best-effort attempt at checking if touch is primary input method. more info:
+// https://www.w3.org/TR/mediaqueries-4/#mf-interaction
+const onTouchDevice = () => !!(window.matchMedia('(pointer: coarse)').matches)
+
+export { deviceSizesPx, devices, onTouchDevice }
