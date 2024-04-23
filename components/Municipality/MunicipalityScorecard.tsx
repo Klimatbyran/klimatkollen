@@ -103,11 +103,10 @@ const Square = styled.div`
 `
 
 const CementClarification = styled.div`
-  margin-top: 8px;
-  margin-bottom: 0;
+  margin: 0;
 
   & * {
-    margin: 0;
+    margin: 0
   }
 `
 
