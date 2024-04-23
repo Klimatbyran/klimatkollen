@@ -24,9 +24,9 @@ export const calculateClimatePlanRankings = (
 }))
 
 const getCustomSortFn = ({
-  stringsOnTop, sortAscending,
+  stringsOnTop = false, sortAscending = false,
 }: {
-  stringsOnTop: boolean, sortAscending: boolean}) => (a: RowData['dataPoint'], b: RowData['dataPoint']) => {
+  stringsOnTop?: boolean, sortAscending?: boolean} = {}) => (a: RowData['dataPoint'], b: RowData['dataPoint']) => {
   // Handle NaN values
   const aIsNaN = Number.isNaN(a)
   const bIsNaN = Number.isNaN(b)
@@ -170,12 +170,24 @@ export const listColumns = (
   }
 
   const getSortingFn = (datasetKey: DatasetKey) => {
+    let customSort: ReturnType<typeof getCustomSortFn> | undefined
+    // TODO: Get the params passed to getCustomSortFn() from config, rather than duplicating and hard coding sortAscending and stringsOnTop
+
     if (datasetKey === 'koldioxidbudgetarna') {
-      const customSort = getCustomSortFn({ sortAscending: false, stringsOnTop: true })
+      customSort = getCustomSortFn({ stringsOnTop: true })
+    } else if (datasetKey === 'klimatplanerna') {
+      // TODO: sorting for klimatplanerna is still broken for some reason. However, koldioxidbudgetarna and laddarna now works.
+      customSort = getCustomSortFn({ sortAscending: false })
+      return (rowA: Row<RowData>, rowB: Row<RowData>) => customSort!(rowA.original.climatePlanYearAdapted!, rowB.original.climatePlanYearAdapted!)
+    } else if (datasetKey === 'laddarna') {
+      customSort = getCustomSortFn({ sortAscending: true })
+    }
+
+    if (customSort) {
       return (rowA: Row<RowData>, rowB: Row<RowData>) => customSort(rowA.original.dataPoint, rowB.original.dataPoint)
     }
-    // IDEA: Add more custom sortingFns here
 
+    // By default, use the standard @tanstack/table sorting functions.
     return undefined
   }
 
@@ -193,6 +205,8 @@ export const listColumns = (
     {
       header: () => columnHeader,
       cell: getThirdColumnCell,
+      // TODO: Why can't we sort the final column for climate plans? Maybe because we try to sort on the wrong property?
+      // accessorKey: selectedData === 'klimatplanerna' ? 'climatePlanYearAdapted' : 'dataPoint',
       accessorKey: 'dataPoint',
       // NOTE: if we need to sort other columns than the third, this would be better to keep in the dataset definitions.
       // But for now, this is a quick and dirty hack

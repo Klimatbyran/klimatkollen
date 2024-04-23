@@ -81,6 +81,8 @@ type TableProps<T extends object> = {
 }
 
 function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
+  // IDEA: Maybe we could set a default sorting state for columns, and then disable the possibility to remove sorting,
+  // thus keeping it only toggling between "desc" and "asc"
   const [sorting, setSorting] = useState<SortingState>([])
   const router = useRouter()
 
@@ -97,6 +99,16 @@ function ComparisonTable<T extends object>({ data, columns }: TableProps<T>) {
     columns,
     state: { sorting },
     onSortingChange: setSorting,
+    // onSortingChange: (updater) => {
+    //   // IDEA: We might be able to do something with this.
+    //   // For example, to communicate acrosss modules, we could move the state out to a hook, and then use a global variable (singleton)
+    //   // combined with a getter function to get the current sorting state. This way, we could show determine the sort order.
+    //   const newSortingValue = updater instanceof Function ? updater(sorting) : updater
+
+    //   console.log(sorting[0], newSortingValue[0])
+
+    //   setSorting(updater)
+    // },
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
   })
