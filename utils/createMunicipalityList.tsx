@@ -1,4 +1,4 @@
-import { CellContext, ColumnDef } from '@tanstack/react-table'
+import { CellContext, ColumnDef, Row } from '@tanstack/react-table'
 import { TFunction } from 'next-i18next'
 
 import { Municipality, DatasetKey } from './types'
@@ -9,7 +9,7 @@ import {
 
 type RowData = {
   name: string
-  dataPoint: string | number | Date | JSX.Element
+  dataPoint: string | number | Date
   formattedDataPoint: string
   index: number
   climatePlanYearAdapted?: string
@@ -17,32 +17,38 @@ type RowData = {
 }
 
 export const calculateClimatePlanRankings = (
-  data: Array<{ name: string; dataPoint: string | number | Date | JSX.Element; formattedDataPoint: string }>,
+  data: Array<{ name: string; dataPoint: string | number | Date; formattedDataPoint: string }>,
 ) => data.map((item) => ({
   ...item,
   index: item.dataPoint === climatePlanMissing ? 1 : -1,
 }))
+
+const getCustomSortFn = ({
+  stringsOnTop, sortAscending,
+}: {
+  stringsOnTop: boolean, sortAscending: boolean}) => (a: RowData['dataPoint'], b: RowData['dataPoint']) => {
+  // Handle NaN values
+  const aIsNaN = Number.isNaN(a)
+  const bIsNaN = Number.isNaN(b)
+  if (aIsNaN && bIsNaN) {
+    return 0
+  }
+  if (aIsNaN || bIsNaN) {
+    // eslint-disable-next-line no-nested-ternary
+    return stringsOnTop ? (aIsNaN ? -1 : 1) : (aIsNaN ? 1 : -1)
+  }
+
+  // Sort non-NaN values normally
+  // @ts-expect-error treat Date objects as numbers since they can be compared like numbers.
+  return sortAscending ? a - b : b - a
+}
 
 export const calculateRankings = (
   data: Array<{ name: string; dataPoint: number; formattedDataPoint: string }>,
   sortAscending: boolean,
   stringsOnTop: boolean,
 ) => {
-  const customSort = (a: number, b: number) => {
-    // Handle NaN values
-    const aIsNaN = Number.isNaN(a)
-    const bIsNaN = Number.isNaN(b)
-    if (aIsNaN && bIsNaN) {
-      return 0
-    }
-    if (aIsNaN || bIsNaN) {
-      // eslint-disable-next-line no-nested-ternary
-      return stringsOnTop ? (aIsNaN ? -1 : 1) : (aIsNaN ? 1 : -1)
-    }
-
-    // Sort non-NaN values normally
-    return sortAscending ? a - b : b - a
-  }
+  const customSort = getCustomSortFn({ sortAscending, stringsOnTop })
 
   const sortedData = data.sort((a, b) => customSort(a.dataPoint, b.dataPoint))
   return sortedData.map((item, index) => ({
@@ -163,6 +169,16 @@ export const listColumns = (
     return formattedDataPoint
   }
 
+  const getSortingFn = (datasetKey: DatasetKey) => {
+    if (datasetKey === 'koldioxidbudgetarna') {
+      const customSort = getCustomSortFn({ sortAscending: false, stringsOnTop: true })
+      return (rowA: Row<RowData>, rowB: Row<RowData>) => customSort(rowA.original.dataPoint, rowB.original.dataPoint)
+    }
+    // IDEA: Add more custom sortingFns here
+
+    return undefined
+  }
+
   return [
     {
       header: getFirstColumnHeader(),
@@ -178,6 +194,9 @@ export const listColumns = (
       header: () => columnHeader,
       cell: getThirdColumnCell,
       accessorKey: 'dataPoint',
+      // NOTE: if we need to sort other columns than the third, this would be better to keep in the dataset definitions.
+      // But for now, this is a quick and dirty hack
+      sortingFn: getSortingFn(selectedData),
     },
   ]
 }
