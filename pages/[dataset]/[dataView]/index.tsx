@@ -40,6 +40,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
     throw new Error('No municipalities found')
   }
 
+  // TODO: Figure out a way to load company data only when needed, to speed up municipality data views
+  // This can likely be solved together with the routing.
   const companies = new CompanyDataService().getCompanies()
   if (companies.length < 1) {
     throw new Error('No companies found')
