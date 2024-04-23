@@ -2,14 +2,16 @@ import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 import { ReactElement } from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 
 import MetaTags from '../../components/MetaTags'
-import { H2, Paragraph } from '../../components/Typography'
+import { H2 } from '../../components/Typography'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
 import { devices } from '../../utils/devices'
+import Markdown from '../../components/Markdown'
 
 const Container = styled.section`
   display: flex;
@@ -22,46 +24,32 @@ const Figure = styled.figure`
   @media only screen and (${devices.tablet}) {
     width: 95%;
   }
+
+  & img {
+    width: 100%;
+    height: auto;
+  }
 `
 
 function Partier() {
+  const { t } = useTranslation()
   return (
     <>
       <MetaTags
-        title="Klimatkollen – Analys av partiernas klimatmål"
-        description="Granskning av partiernas klimatmål och Parisavtalet, gjord av Klimatkollen,
-       Researchers’ Desk, WWF, Våra barns klimat, ClimateView, PwC, Naturskyddsföreningen"
+        title={t('partierna:meta.title')}
+        description={t('partierna:meta.description')}
       />
       <PageWrapper backgroundColor="black">
         <Container>
-          <H2>
-            Analys av riksdagspartiernas klimatmål – sex av åtta partier missar helt
-            Parisavtalets 1,5-gradersmål
-          </H2>
-          <Paragraph>
-            Inför valet genomför Klimatkollen en granskning av riksdagspartiernas
-            klimatpolitik. Nu är första delen klar, en analys av partiernas klimatmål
-            jämfört med Parisavtalets 1,5-gradersmål, där hänsyn tagits till avtalets
-            rättviseaspekt.
-          </Paragraph>
-          <Paragraph>
-            Bakom projektet står forskarnätverket Researchers’ Desk, Världsnaturfonden
-            WWF, Våra barns klimat och ClimateView, i samarbete med PwC och
-            Naturskyddsföreningen.
-          </Paragraph>
-          <Paragraph>
-            Analysen visar att två partiers klimatmål, Miljöpartiets och Vänsterpartiets,
-            är nära Parisavtalets 1,5-gradersmål. Ytterligare två partier, Centerpartiet
-            och Liberalerna, går längre än Sveriges klimatmål, men når inte lika långt.
-            Kristdemokraterna, Moderaterna, Socialdemokraterna och Sverigedemokraterna har
-            mål i linje med det svenska klimatmålet, men är längre ifrån Parisavtalets
-            1,5-gradersmål.
-          </Paragraph>
+
+          <H2>{t('partierna:title')}</H2>
+
+          <Markdown>{t('partierna:part1')}</Markdown>
+
           <Figure>
             <Image
               src="/images/image1-31.png"
               alt="Diagram gällande partiernas utsläppsmål jämfört med Sveriges koldioxidbudget."
-              layout="responsive"
               width={936}
               height={452}
             />
@@ -158,20 +146,24 @@ function Partier() {
             </a>
             .
           </Paragraph>
+
+          <Markdown>{t('partierna:part2')}</Markdown>
         </Container>
       </PageWrapper>
     </>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
   return {
-    props: { },
+    props: {
+      ...await serverSideTranslations(locale as string, ['common', 'partierna']),
+    },
   }
 }
 

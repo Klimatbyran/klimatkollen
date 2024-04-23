@@ -1,0 +1,101 @@
+{
+  "aboutGraph": "Om grafen",
+  "coatOfArms": "Kommunvapen för {{name}}",
+  "emissionNumbers": {
+    "co2budget": "Koldioxidbudget {{budgetStartsYear}}-2050: {{totalBudget}}",
+    "historical": "Historiskt 1990-{{historicalEndsYear}}: {{totalHistorical}}",
+    "title": "Utsläppen i siffror (tusen ton CO₂)",
+    "trend": "Trend {{trendStartsYear}}-2050: {{totalTrend}}"
+  },
+  "facts": {
+    "budgetRunsOut": {
+      "info": "Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend.",
+      "onTrack": "Med nuvarande trend håller kommunen sin budget",
+      "title": "Koldioxidbudgeten tar slut"
+    },
+    "cementExcluded": "*Utsläpp från cementproduktion exkluderad, i enlighet med IPCC:s koldioxidbudget, läs mer [här](/kallor-och-metod).*",
+    "climatePlan": {
+      "adaptedYear": "Antagen {{year}}",
+      "info": "Avser nu gällande klimathandlingsplan eller motsvarande. Inte klimatanpassningsplaner, utsläppsbudgetar, klimatlöften, miljöpolicies eller liknande. Klicka [här](https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link) för att redigera informationen.\n\n**Kommentar**: {{comment}}",
+      "title": "Klimatplan"
+    },
+    "co2budget": {
+      "info": "Mängden koldioxid kvar att släppa ut för att klara Parisavtalets 1,5-gradersmål, läs mer om koldioxidbudgetar [här](https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf).",
+      "title": "Koldioxidbudget"
+    },
+    "emissionReduction": {
+      "info": "Årlig procentuell utsläppsminskning som krävs för att kommunen inte ska överskrida sin koldioxidbudget.",
+      "percent": "-{{percent}}% per år",
+      "title": "Utsläppsminskning för att klara Parisavtalet"
+    },
+    "politicalRule": {
+      "info": "Uppgift om politiskt styre är hämtad från [Sveriges Kommuner och Regioner (SKR)](https://skr.se/skr/demokratiledningstyrning/valmaktfordelning/valresultatstyren/styrekommunereftervalet2022.69547.html). Data uppdaterad mars 2023.",
+      "title": "Här styr"
+    },
+    "rank": {
+      "info": "Rankning av Sveriges 290 kommuner baserat på genomsnittlig årlig procentuell förändring av koldioxidutsläppen sedan Parisavtalet 2015.",
+      "rank": "{{rank}} av 290",
+      "title": "Kommunens plats i utsläppsrankning"
+    },
+    "title": "Fakta om {{name}}"
+  },
+  "graphYAxisTitle": "Tusen ton CO₂",
+  "graphs": {
+    "historical": {
+      "body": "Koldioxidutsläpp i kommunen sedan 1990. 2022–2024 är baserat på prognos.",
+      "buttonText": "Historiskt",
+      "info": "Koldioxidutsläpp i kommunen mellan 1990 och {{lastYearWithData}}, vilket är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990.",
+      "infoApproximated": "Koldioxidutsläpp i kommunen mellan 1990 och {{lastYearWithApproximatedData}}, där {{lastYearWithData}} är senast tillgängliga data. Basår för beräkningar av Sveriges klimatutsläpp är 1990. Den streckade linjen mellan åren {{lastYearWithData}}-{{lastYearWithApproximatedData}} är approximerad data baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.",
+      "text": "Historiska utsläpp"
+    },
+    "paris": {
+      "body": "Så mycket skulle utsläppen behöva minska för att vara i linje med 1,5-gradersmålet.",
+      "buttonText": "Parisavtalet",
+      "info": "Den utsläppsminskning som krävs för att vara i linje med Parisavtalet och en koldioxidbudget som motsvarar 50% sannolikhet att hålla den globala uppvärmningen under 1,5 grader. Funktionen visas som exponentiellt avtagande, det vill säga utsläppen minskar med ett fast antal procent varje år. Startår är {{firstYearWithBudget}}, vilket är från vilket år budgeten är satt.",
+      "text": "För att nå Parisavtalet"
+    },
+    "trend": {
+      "body": "Utsläppen de kommande åren baserat på nuvarande trend.",
+      "buttonText": "Trend",
+      "info": "Trendlinjen är baserad på den genomsnittliga årliga utsläppsförändringen i kommunen sedan Parisavtalet 2015.",
+      "infoDifference": "Hacket i kurvan för vissa kommuner beror på att genomsnittet skiljer sig från det senaste årets nivå.",
+      "text": "Om vi fortsätter som idag"
+    }
+  },
+  "otherMunicipalities": "Hur ser det ut i andra kommuner?",
+  "percentagePoints": "{{num}} procentenheter",
+  "select": "Välj kommun",
+  "shareText": "Se historiska utsläpp tills idag, vilken minskning som krävs för att klara Parisavtalet och utsläppen framåt med nuvarande trend.",
+  "shareTitle": "Klimatkollen — Hur går det i {{name}}?",
+  "solutions": {
+    "bikes": {
+      "heading": "Antal meter cykelväg per invånare",
+      "info": "Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild). Högre är generellt bättre.",
+      "meters": "{{meters}} meter",
+      "title": "Cyklarna"
+    },
+    "chargers": {
+      "heading": "Antal elbilar per laddare",
+      "info": "Antal registrerade laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.",
+      "title": "Laddarna"
+    },
+    "description": "Här visas nyckeltal för hur det går med klimatomställningen i kommunerna.",
+    "electricCars": {
+      "heading": "Förändringstakt andel laddbara bilar",
+      "info": "Ökningstakten för andelen nyregistrerade laddbara bilar sedan Parisavtalet 2015 i procentenheter per år. Högre är bättre.",
+      "title": "Elbilarna"
+    },
+    "household": {
+      "heading": "CO₂e per person och år",
+      "info": "Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.",
+      "title": "Hushållens konsumtionsutsläpp"
+    },
+    "procurement": {
+      "heading": "Ställer kommunen klimatkrav i sina upphandlingar?",
+      "info": "Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker. [Mejla oss](mailto:hej@klimatkollen.se) för att redigera informationen.",
+      "title": "Klimatkrav i upphandlingar"
+    },
+    "title": "Omställning"
+  },
+  "tonnes": "{{amount}} ton"
+}

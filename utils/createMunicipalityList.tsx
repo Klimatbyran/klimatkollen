@@ -1,7 +1,10 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { Municipality, SelectedData } from './types'
+import { TFunction } from 'next-i18next'
+
+import { Municipality, DatasetKey } from './types'
 import {
-  dataDescriptions, dataOnDisplay, climatePlanMissing, requirementsInProcurement,
+  dataOnDisplay, climatePlanMissing, requirementsInProcurement,
+  getDataDescriptions,
 } from './datasetDefinitions'
 
 type RowData = {
@@ -48,11 +51,12 @@ export const calculateRankings = (
   }))
 }
 
-export const rankData = (municipalities: Municipality[], selectedData: SelectedData) => {
-  const datasets = dataOnDisplay(municipalities, selectedData)
+export const rankData = (municipalities: Municipality[], selectedData: DatasetKey, locale: string, t: TFunction) => {
+  const { dataDescriptions } = getDataDescriptions(locale as string, t)
+  const datasets = dataOnDisplay(municipalities, selectedData, locale, t)
 
   type RankedData = {
-    [key in SelectedData]: Array<RowData>
+    [key in DatasetKey]: Array<RowData>
   }
 
   const newRankedData: RankedData = {} as RankedData
@@ -60,7 +64,7 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
   const sortAscending = dataDescriptions[selectedData]?.sortAscending || false
   const edgeCaseOnTop = dataDescriptions[selectedData]?.stringsOnTop || false
 
-  if (selectedData === 'Klimatplanerna') {
+  if (selectedData === 'klimatplanerna') {
     // special case for climate plans
     newRankedData[selectedData] = calculateClimatePlanRankings(
       datasets.map((item) => ({
@@ -88,17 +92,17 @@ export const rankData = (municipalities: Municipality[], selectedData: SelectedD
 }
 
 export const listColumns = (
-  selectedData: SelectedData,
+  selectedData: DatasetKey,
   columnHeader: string,
+  t: TFunction,
 ): ColumnDef<RowData>[] => {
-  const isClimatePlan = selectedData === 'Klimatplanerna'
-  const isProcurement = selectedData === 'Upphandlingarna'
+  const isClimatePlan = selectedData === 'klimatplanerna'
+  const isProcurement = selectedData === 'upphandlingarna'
 
   const getFirstColumnHeader = () => {
-    let firstColumnHeader = 'Ranking'
-    firstColumnHeader = isClimatePlan ? 'Har plan?' : firstColumnHeader
-    firstColumnHeader = isProcurement ? 'Ställer krav?' : firstColumnHeader
-    return firstColumnHeader
+    if (isClimatePlan) return t('startPage:hasPlan')
+    if (isProcurement) return t('startPage:procurementDemands')
+    return t('startPage:ranking')
   }
 
   const firstColumnClimatePlans = (index: number, dataPoint: string) => (index === -1
@@ -110,10 +114,10 @@ export const listColumns = (
         rel="noreferrer"
         style={{ color: 'orange' }}
       >
-        Ja
+        {t('common:yes')}
       </a>
     )
-    : 'Nej'
+    : t('common:no')
   )
 
   const getFirstColumnCell = (row: { row: { original: RowData } }) => {
@@ -124,7 +128,7 @@ export const listColumns = (
     }
 
     if (isProcurement) {
-      return requirementsInProcurement(dataPoint as number)
+      return requirementsInProcurement(dataPoint as number, t)
     }
 
     return index
@@ -142,7 +146,7 @@ export const listColumns = (
     }
 
     if (isProcurement) {
-      return procurementLink !== ''
+      return procurementLink?.length
         ? (
           <a
             href={procurementLink}
@@ -150,10 +154,10 @@ export const listColumns = (
             target="_blank"
             rel="noreferrer"
           >
-            Länk
+            {t('common:link')}
           </a>
         )
-        : 'Saknas'
+        : t('common:missing')
     }
 
     return formattedDataPoint
@@ -166,7 +170,7 @@ export const listColumns = (
       accessorKey: 'index',
     },
     {
-      header: 'Kommun',
+      header: t('common:municipality'),
       cell: (row: { renderValue: () => unknown }) => row.renderValue(),
       accessorKey: 'name',
     },
