@@ -14,6 +14,7 @@ type RowData = {
   index: number
   climatePlanYearAdapted?: string
   procurementLink?: string
+  secondaryDataPoint?: string
 }
 
 export const calculateClimatePlanRankings = (
@@ -78,6 +79,7 @@ export const rankData = (municipalities: Municipality[], selectedData: DatasetKe
         dataPoint: item.primaryDataPoint as string,
         formattedDataPoint: item.formattedPrimaryDataPoint,
         climatePlanYearAdapted: item.climatePlanYearAdapted,
+        secondaryDataPoint: item.secondaryDataPoint,
       })),
     )
   } else {
@@ -177,8 +179,28 @@ export const listColumns = (
       customSort = getCustomSortFn({ stringsOnTop: true })
     } else if (datasetKey === 'klimatplanerna') {
       // TODO: sorting for klimatplanerna is still broken for some reason. However, koldioxidbudgetarna and laddarna now works.
-      customSort = getCustomSortFn({ sortAscending: false })
-      return (rowA: Row<RowData>, rowB: Row<RowData>) => customSort!(rowA.original.climatePlanYearAdapted!, rowB.original.climatePlanYearAdapted!)
+      // customSort = getCustomSortFn({ sortAscending: false })
+      return (rowA: Row<RowData>, rowB: Row<RowData>) => {
+        // const a = rowA.original.dataPoint === climatePlanMissing ? 1 : -1
+        // const b = rowB.original.dataPoint === climatePlanMissing ? 1 : -1
+
+        // IDEA: maybe compare against another datapoint
+        const a = rowA.original.dataPoint === climatePlanMissing ? -1 : Number(rowA.original.secondaryDataPoint)
+        const b = rowB.original.dataPoint === climatePlanMissing ? -1 : Number(rowB.original.secondaryDataPoint)
+
+        // maybe assign 0 to missing plans
+        // and then just subtract to get the diff and sort order
+
+        // if (a === climatePlanMissing && b === climatePlanMissing) {
+        //   return 0
+        // }
+
+        // if (a === climatePlanMissing || b === climatePlanMissing) {
+        //   return -1
+        // }
+
+        return a - b
+      }
     } else if (datasetKey === 'laddarna') {
       customSort = getCustomSortFn({ sortAscending: true })
     }
