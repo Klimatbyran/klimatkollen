@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-console */
 import axios, { AxiosError } from 'axios'
 import fs from 'fs'
 import readline from 'readline'
