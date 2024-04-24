@@ -37,7 +37,10 @@ const getCustomSortFn = ({
   return sortAscending ? a - b : b - a
 }
 
-const sortClimatePlans = (a: number | typeof climatePlanMissing, b: number | typeof climatePlanMissing) => {
+const sortClimatePlans = (aVal: string, bVal: string) => {
+  const a = aVal === climatePlanMissing ? aVal : Number(aVal)
+  const b = bVal === climatePlanMissing ? bVal : Number(bVal)
+
   // If both A and B are missing climate plans, then return 0
   if (a === climatePlanMissing && b === climatePlanMissing) {
     return 0
@@ -57,29 +60,15 @@ const sortClimatePlans = (a: number | typeof climatePlanMissing, b: number | typ
   return (b as number) - (a as number)
 }
 
-const climatePlansSortingFn = (rowA: Row<RowData>, rowB: Row<RowData>) => {
-  const aVal = rowA.original.secondaryDataPoint!
-  const bVal = rowB.original.secondaryDataPoint!
+const climatePlansSortingFn = (rowA: Row<RowData>, rowB: Row<RowData>) => (
+  sortClimatePlans(rowA.original.secondaryDataPoint!, rowB.original.secondaryDataPoint!)
+)
 
-  const a = aVal === climatePlanMissing ? aVal : Number(aVal)
-  const b = bVal === climatePlanMissing ? bVal : Number(bVal)
-
-  return sortClimatePlans(a, b)
-}
-
-export const calculateClimatePlanRankings = (
-  data: Omit<RowData, 'index'>[],
-) => data.map((item, i) => ({ ...item, index: i + 1 })).sort((rowA, rowB) => {
-  const aVal = rowA.secondaryDataPoint!
-  const bVal = rowB.secondaryDataPoint!
-
-  const a = aVal === climatePlanMissing ? aVal : Number(aVal)
-  const b = bVal === climatePlanMissing ? bVal : Number(bVal)
-
-  // NOTE: Sorting seems to work, just need cleanup refactor now
-
-  return sortClimatePlans(a, b)
-})
+export const calculateClimatePlanRankings = (data: Omit<RowData, 'index'>[]) => (
+  data
+    .map((item, i) => ({ ...item, index: i + 1 }))
+    .sort((rowA, rowB) => sortClimatePlans(rowA.secondaryDataPoint!, rowB.secondaryDataPoint!))
+)
 
 export const calculateRankings = (
   data: Array<{ name: string; dataPoint: number; formattedDataPoint: string }>,
@@ -94,10 +83,6 @@ export const calculateRankings = (
     index: index + 1,
   }))
 }
-
-// TODO: for dataset koldioxidbudgetarna Maybe update title: "Budget slut om" since it is unclear for the table header
-// TODO: for all datasets that customize the first column to use string data, we need to add a custom sorting function.
-// TODO: for dataset upphandlingarna, when "underlag" column has value "saknas", maybe show it gray color instead of orange since it is missing.
 
 export const rankData = (municipalities: Municipality[], selectedData: DatasetKey, locale: string, t: TFunction) => {
   const { dataDescriptions } = getDataDescriptions(locale as string, t)
@@ -189,7 +174,7 @@ export const listColumns = (
     } = props.row.original
 
     if (isClimatePlan) {
-      // NOTE: We might want to show missing climate plans with a gray text here, and save the orange text only to highight climatePlanYearAdapted
+      // NOTE: We might want to show missing climate plans with a gray text here, and use the orange text to only highight climatePlanYearAdapted
       return dataPoint !== climatePlanMissing
         ? climatePlanYearAdapted
         : climatePlanMissing
@@ -236,7 +221,7 @@ export const listColumns = (
     return undefined
   }
 
-  // TODO: Move this config on to the dataset definitions instead
+  // TODO: Move these custom sorting functions to the dataset definitions instead and keep all config together
   const getThirdColumnSortingFn = (datasetKey: DatasetKey) => {
     if (datasetKey === 'klimatplanerna') {
       return climatePlansSortingFn
@@ -275,7 +260,7 @@ export const listColumns = (
     },
     {
       header: t('common:municipality'),
-      cell: (row: { renderValue: () => unknown }) => row.renderValue(),
+      cell: (row) => row.renderValue(),
       accessorKey: 'name',
     },
     {
