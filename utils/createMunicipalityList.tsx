@@ -235,7 +235,7 @@ export const listColumns = (
     }
 
     if (customSort) {
-      return (rowA: Row<RowData>, rowB: Row<RowData>) => customSort(rowA.original.dataPoint, rowB.original.dataPoint)
+      return (rowA: Row<RowData>, rowB: Row<RowData>) => customSort!(rowA.original.dataPoint, rowB.original.dataPoint)
     }
 
     // By default, use the standard @tanstack/table sorting functions.
