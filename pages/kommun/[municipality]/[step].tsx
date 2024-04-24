@@ -2,6 +2,8 @@ import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
 import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
@@ -72,7 +74,7 @@ interface Params extends ParsedUrlQuery {
 
 const cache = new Map()
 
-export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, res, locale }) => {
   res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${((60 * 60) * 24) * 7}`)
 
   const id = (params as Params).municipality as string
@@ -107,6 +109,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
       municipality,
       id,
       municipalitiesNames,
+      ...await serverSideTranslations(locale as string, ['common', 'municipality']),
     },
   }
   cache.set(id, result)

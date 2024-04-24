@@ -1,13 +1,18 @@
 /* eslint-disable max-len */
-import {
-  DataDescriptions, Municipality, SelectedData,
-} from './types'
+/* eslint-disable no-shadow */
+import { TFunction } from 'next-i18next'
+import { TOptions } from 'i18next'
+
+import { DataDescriptions, DatasetKey, Municipality } from './types'
+import { normalizeString } from './shared'
 
 export const defaultDataView = 'karta'
 export const secondaryDataView = 'lista'
 
-export const defaultDataset = 'Utsläppen'
+export const validDatasets = ['utslappen', 'koldioxidbudgetarna', 'klimatplanerna', 'konsumtionen', 'elbilarna', 'laddarna', 'cyklarna', 'upphandlingarna'] as const
+export const defaultDataset: DatasetKey = 'utslappen'
 
+// NOTE: Hardcoded constant expected in the data
 export const climatePlanMissing = 'Saknar plan'
 
 const yearsAhead = (years: number) => {
@@ -17,322 +22,190 @@ const yearsAhead = (years: number) => {
   return currentDate
 }
 
-const formatDateToString = (date: Date): string => {
-  const year = date.getFullYear()
-  const month = (date.getMonth() + 1).toString().padStart(2, '0') // months are 0-based
-  const day = date.getDate().toString().padStart(2, '0')
-  return `${year}-${month}-${day}`
+const formatDateToString = (date: Date) => date.toISOString().slice(0, 10)
+
+export const requirementsInProcurement = (score: number, t: TFunction): string => {
+  if (score > 1) return t('common:yes')
+  if (score > 0) return t('common:maybe')
+  return t('common:no')
 }
 
-export const requirementsInProcurement = (score: number): string => {
-  let scoreString = 'Nej'
-  if (score > 0) {
-    scoreString = 'Kanske'
+function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescriptions {
+  /** Get translations for a specific locale. This is used to avoid passing the locale option for all calls below */
+  const t = (key: string | string[], options: TOptions = {}) => _t(key, { ...options, lng: locale })
+  return {
+    utslappen: {
+      title: t('common:datasets.municipalityEmissions.title'),
+      body: t('common:datasets.municipalityEmissions.body'),
+      source: t('common:datasets.municipalityEmissions.source'),
+      boundaries: [0.0, -0.01, -0.02, -0.03, -0.1],
+      labels: t('common:datasets.municipalityEmissions.labels', { returnObjects: true }) as unknown as string[],
+      labelRotateUp: [true, false, false, false, false, false],
+      columnHeader: t('common:datasets.municipalityEmissions.columnHeader'),
+      dataPoints: {
+        rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent / 100,
+        formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
+      },
+      sortAscending: true,
+      name: t('common:datasets.municipalityEmissions.name'),
+    },
+
+    koldioxidbudgetarna: {
+      title: t('common:datasets.budgets.title'),
+      body: t('common:datasets.budgets.body'),
+      source: t('common:datasets.budgets.source'),
+      boundaries: [
+        yearsAhead(2),
+        yearsAhead(3),
+        yearsAhead(4),
+        yearsAhead(5),
+        new Date(2050, 1, 1),
+      ],
+      labels: t('common:datasets.budgets.labels', { returnObjects: true }) as unknown as string[],
+      labelRotateUp: [],
+      columnHeader: t('common:datasets.budgets.columnHeader'),
+      dataPoints: {
+        rawDataPoint: (item) => new Date(item.BudgetRunsOut),
+        formattedDataPoint: (dataPoint, t) => (dataPoint < new Date(2050, 1, 1)
+          ? formatDateToString(dataPoint as Date)
+          : t('common:datasets.budgets.followingBudget')),
+      },
+      sortAscending: false,
+      stringsOnTop: true,
+      name: t('common:datasets.budgets.name'),
+    },
+
+    klimatplanerna: {
+      title: t('common:datasets.plans.title'),
+      body: t('common:datasets.plans.body'),
+      source: t('common:datasets.plans.source'),
+      boundaries: [climatePlanMissing, ''],
+      labels: [t('common:no'), t('common:yes')],
+      labelRotateUp: [],
+      columnHeader: t('common:datasets.plans.columnHeader'),
+      dataPoints: {
+        rawDataPoint: (item) => item.ClimatePlan.Link,
+        formattedDataPoint: (dataPoint, t) => (dataPoint === climatePlanMissing ? t('common:no') : t('common:yes')),
+        additionalDataPoint: (item) => item.ClimatePlan.YearAdapted,
+      },
+      name: t('common:datasets.plans.name'),
+    },
+
+    konsumtionen: {
+      title: t('common:datasets.consumption.title'),
+      body: t('common:datasets.consumption.body'),
+      source: t('common:datasets.consumption.source'),
+      boundaries: [7, 6.7, 6.4, 6.1, 5.8],
+      labels:
+      t('common:datasets.consumption.labels', { returnObjects: true }) as unknown as string[],
+      labelRotateUp: [],
+      columnHeader: t('common:datasets.consumption.columnHeader'),
+      dataPoints: {
+        rawDataPoint: (item) => item.TotalConsumptionEmission,
+        formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+      },
+      sortAscending: true,
+      name: t('common:datasets.consumption.name'),
+    },
+
+    elbilarna: {
+      title: t('common:datasets.electricCars.title'),
+      body: t('common:datasets.electricCars.body'),
+      source: t('common:datasets.electricCars.source'),
+      boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
+      labels: t('common:datasets.electricCars.labels', { returnObjects: true }) as unknown as string[],
+      labelRotateUp: [true, true, true, true, true, true],
+      columnHeader: t('common:datasets.electricCars.columnHeader'),
+      dataPoints: {
+        rawDataPoint: (item) => item.ElectricCarChangePercent,
+        formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
+      },
+      sortAscending: false,
+      name: t('common:datasets.electricCars.name'),
+    },
+
+    laddarna: {
+      title: t('common:datasets.chargers.title'),
+      body: t('common:datasets.chargers.body'),
+      source: t('common:datasets.chargers.source'),
+      boundaries: [1e6, 40, 30, 20, 10],
+      labels: t('common:datasets.chargers.labels', { returnObjects: true }) as unknown as string[],
+      labelRotateUp: [],
+      columnHeader: t('common:datasets.chargers.columnHeader'),
+      dataPoints: {
+        rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
+        formattedDataPoint: (dataPoint, t) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : t('common:datasets.chargers.missing')),
+      },
+      sortAscending: true,
+      name: t('common:datasets.chargers.name'),
+    },
+
+    cyklarna: {
+      title: t('common:datasets.bikes.title'),
+      body: t('common:datasets.bikes.body'),
+      // IDEA: Link directly to the SCB dataset for population statistics that we use.
+      source: t('common:datasets.bikes.source'),
+      boundaries: [1, 2, 3, 4, 5],
+      labels: t('common:datasets.bikes.labels', { returnObjects: true }) as unknown as string[],
+      labelRotateUp: [],
+      columnHeader: t('common:datasets.bikes.columnHeader'),
+      dataPoints: {
+        rawDataPoint: (item) => item.BicycleMetrePerCapita,
+        formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+      },
+      sortAscending: false,
+      name: t('common:datasets.bikes.name'),
+    },
+
+    upphandlingarna: {
+      title: t('common:datasets.procurements.title'),
+      body: t('common:datasets.procurements.body'),
+      // IDEA: Get the data directly from the file NUE2022_DATA_2023-12-20.xlsx
+      source: t('common:datasets.procurements.source'),
+      boundaries: [0, 1, 2],
+      labels: [t('common:no'), t('common:maybe'), t('common:yes')],
+      labelRotateUp: [],
+      columnHeader: t('common:datasets.procurements.columnHeader'),
+      dataPoints: {
+        rawDataPoint: (item) => item.ProcurementScore,
+        formattedDataPoint: (dataPoint, t) => requirementsInProcurement(dataPoint as number, t),
+      },
+      sortAscending: false,
+      name: t('common:datasets.procurements.name'),
+    },
   }
-  if (score > 1) {
-    scoreString = 'Ja'
-  }
-  return scoreString
 }
 
-export const dataDescriptions: DataDescriptions = {
-  Utsläppen: {
-    title: 'Utsläppsförändring',
-    body: 'Genomsnittlig årlig förändring av koldioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://nationellaemissionsdatabasen.smhi.se/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Nationella emissionsdatabasen
-        </a>
-      </>
-    ),
-    boundaries: [0.0, -0.01, -0.02, -0.03, -0.1],
-    labels: ['0% +', '0–1%', '1–2%', '2–3%', '3–10%', '10–15%'],
-    labelRotateUp: [true, false, false, false, false, false],
-    columnHeader: 'Utsläppsförändring',
-    dataPoints: {
-      rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent / 100,
-      formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
-    },
-    sortAscending: true,
-  },
+const cachedDataDescriptions = new Map<string, DataDescriptions>()
 
-  Koldioxidbudgetarna: {
-    title: 'Budget slut om',
-    body: 'Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://nationellaemissionsdatabasen.smhi.se/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Nationella emissionsdatabasen
-        </a>
-        {' '}
-        och
-        {' '}
-        <a
-          href="http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Uppsala universitet
-        </a>
-      </>
-    ),
-    boundaries: [
-      yearsAhead(2),
-      yearsAhead(3),
-      yearsAhead(4),
-      yearsAhead(5),
-      new Date(2050, 1, 1),
-    ],
-    labels: ['2 år -', '2-3 år', '3-4 år', '4-5 år', '5 år +', 'Håller budget'],
-    labelRotateUp: [],
-    columnHeader: 'Budget tar slut',
-    dataPoints: {
-      rawDataPoint: (item) => new Date(item.BudgetRunsOut),
-      formattedDataPoint: (dataPoint) => (dataPoint < new Date(2050, 1, 1)
-        ? formatDateToString(dataPoint as Date)
-        : 'Håller budget'),
-    },
-    sortAscending: false,
-    stringsOnTop: true,
-  },
+export function getDataDescriptions(locale: string, t: TFunction) {
+  if (!cachedDataDescriptions.has(locale)) {
+    cachedDataDescriptions.set(locale, getTranslatedDataDescriptions(locale, t))
+  }
 
-  Klimatplanerna: {
-    title: 'Klimatplan',
-    body: (
-      <>
-        Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga
-        planer. Klicka
-        {' '}
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform?usp=sf_link"
-          target="_blank"
-          rel="noreferrer"
-        >
-          här
-        </a>
-        {' '}
-        för att redigera informationen.
-      </>
-    ),
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://docs.google.com/spreadsheets/d/13CMqmfdd6QUD6agKFyVhwZUol4PKzvy253_EwtsFyvw/edit?fbclid=IwAR0v0cq0_xhFVlhhVn5fP-TNkOPVRXbOTKzTVWI_PMr_yU2rXOLjcN6jSps#gid=0"
-          target="_blank"
-          rel="noreferrer"
-        >
-          allmänhetens öppna sammanställning
-        </a>
-      </>
-    ),
-    boundaries: [climatePlanMissing, ''],
-    labels: ['Nej', 'Ja'],
-    labelRotateUp: [],
-    columnHeader: 'Antagen år',
-    dataPoints: {
-      rawDataPoint: (item) => item.ClimatePlan.Link,
-      formattedDataPoint: (dataPoint) => (dataPoint === climatePlanMissing ? 'Nej' : 'Ja'),
-      additionalDataPoint: (item) => item.ClimatePlan.YearAdapted,
-    },
-  },
+  const dataDescriptions = cachedDataDescriptions.get(locale)!
+  const validDatasets = new Set(Object.keys(dataDescriptions))
 
-  Konsumtionen: {
-    title: 'Konsumtionsutsläpp',
-    body: 'Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://www.sei.org/tools/konsumtionskompassen/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Stockholm Environment Institute
-        </a>
-      </>
-    ),
-    boundaries: [7, 6.7, 6.4, 6.1, 5.8],
-    labels: [
-      '7 ton +',
-      '6,7-7 ton',
-      '6,4-6,7 ton',
-      '6,1-6,4 ton',
-      '5,8-6,1 ton',
-      '5,8 ton -',
-    ],
-    labelRotateUp: [],
-    columnHeader: 'Ton CO₂e/person/år',
-    dataPoints: {
-      rawDataPoint: (item) => item.TotalConsumptionEmission,
-      formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
-    },
-    sortAscending: true,
-  },
+  function isValidDataset(dataset: string): dataset is DatasetKey {
+    return validDatasets.has(normalizeString(dataset))
+  }
 
-  Elbilarna: {
-    title: 'Elbilsökning',
-    body: 'Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a href="https://www.trafa.se/vagtrafik/fordon/" target="_blank" rel="noreferrer">
-          Trafikanalys
-        </a>
-      </>
-    ),
-    boundaries: [0.04, 0.05, 0.06, 0.07, 0.08],
-    labels: ['4 -', '4–5', '5–6', '6–7', '7–8', '8 +'],
-    labelRotateUp: [true, true, true, true, true, true],
-    columnHeader: 'Ökning elbilar',
-    dataPoints: {
-      rawDataPoint: (item) => item.ElectricCarChangePercent,
-      formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
-    },
-    sortAscending: false,
-  },
-
-  Laddarna: {
-    title: 'Elbilar per laddare',
-    body: 'Antal laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://powercircle.org/elbilsstatistik/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Power Circle ELIS
-        </a>
-        {' '}
-      </>
-    ),
-    boundaries: [1e6, 40, 30, 20, 10],
-    labels: ['Inga laddare', '40 +', '30-40', '20-30', '10-20', '10 -'],
-    labelRotateUp: [],
-    columnHeader: 'Elbil per laddare',
-    dataPoints: {
-      rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
-      formattedDataPoint: (dataPoint) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : 'Laddare saknas'),
-    },
-    sortAscending: true,
-  },
-
-  Cyklarna: {
-    title: 'Cykelvägslängd',
-    body: 'Antal meter cykelväg per invånare per kommun år 2022.',
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="https://nvdb2012.trafikverket.se/SeTransportnatverket"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Nationella Vägdatabasen/Trafikverket
-        </a>
-        {' '}
-        och
-        {' '}
-        <a
-          href="https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik" // fixme
-          target="_blank"
-          rel="noreferrer"
-        >
-          SCB
-        </a>
-      </>
-    ),
-    boundaries: [1, 2, 3, 4, 5],
-    labels: ['1 m -', '1-2 m', '2-3 m', '3-4 m', '4-5 m', '5 m +'],
-    labelRotateUp: [],
-    columnHeader: 'Cykelväglängd',
-    dataPoints: {
-      rawDataPoint: (item) => item.BicycleMetrePerCapita,
-      formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
-    },
-    sortAscending: false,
-  },
-
-  Upphandlingarna: {
-    title: 'Klimatkrav i upphandling',
-    body: (
-      <>
-        Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär
-        principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i
-        enkätundersökning eller via mejl, men utan underlag som tillstyrker.
-        {' '}
-        <a href="mailto:hej@klimatkollen.se">
-          Mejla oss
-        </a>
-        {' '}
-        för att redigera informationen.
-      </>
-    ),
-    source: (
-      <>
-        Källa:
-        {' '}
-        <a
-          href="/data/procurements/NUE2022_DATA_2023-12-20.xlsx" // fixme
-          target="_blank"
-          rel="noreferrer"
-        >
-          Upphandlingsmyndigheten
-        </a>
-        {' '}
-        och
-        {' '}
-        <a
-          href="https://docs.google.com/spreadsheets/d/1EdHUa49HJZn0rXqM-6tChdim4TJzXnwA/edit#gid=1040317160"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Greenpeace
-        </a>
-      </>
-    ),
-    boundaries: [0, 1, 2],
-    labels: ['Nej', 'Kanske', 'Ja'],
-    labelRotateUp: [],
-    columnHeader: 'Underlag',
-    dataPoints: {
-      rawDataPoint: (item) => item.ProcurementScore,
-      formattedDataPoint: (dataPoint) => requirementsInProcurement(dataPoint as number),
-    },
-    sortAscending: false,
-  },
+  return { dataDescriptions, isValidDataset, validDatasets }
 }
 
 export const dataOnDisplay = (
   municipalities: Array<Municipality>,
-  selectedData: SelectedData,
+  selectedData: DatasetKey,
+  locale: string,
+  t: TFunction,
 ) => municipalities.map((item) => {
+  const { dataDescriptions } = getDataDescriptions(locale, t)
   const { dataPoints } = dataDescriptions[selectedData]
 
-  const dataPoint = dataPoints.rawDataPoint ? dataPoints.rawDataPoint(item) : 'Data saknas'
+  const dataPoint = dataPoints.rawDataPoint ? dataPoints.rawDataPoint(item) : t('common:dataMissing')
   const formattedDataPoint = dataPoint != null && dataPoints.formattedDataPoint
-    ? dataPoints.formattedDataPoint(dataPoint)
-    : 'Data saknas'
+    ? dataPoints.formattedDataPoint(dataPoint, t)
+    : t('common:dataMissing')
   const secondaryDataPoint = dataPoints.additionalDataPoint ? dataPoints.additionalDataPoint(item) : undefined
 
   return {

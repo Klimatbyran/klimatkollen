@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
-import { dataDescriptions } from './datasetDefinitions'
+import { TFunction } from 'next-i18next'
+
+import { validDatasets } from './datasetDefinitions'
 
 export type Image = {
   ImageUrl: string
@@ -94,18 +96,20 @@ export type Municipality = {
   ProcurementLink: string,
 }
 
-export type SelectedData = keyof typeof dataDescriptions
-
 export type DataDescriptionDataPoints = {
   rawDataPoint: (item: Municipality) => number | string | Date
-  formattedDataPoint: (dataPoint: number | string | Date) => string
+  formattedDataPoint: (dataPoint: number | string | Date, t: TFunction) => string
   additionalDataPoint?: (item: Municipality) => string
 }
 
 export type DataDescription = {
+  /** Short name for the dataset */
+  name: string
+
+  /** Longer title */
   title: string
-  body: string | JSX.Element
-  source: React.ReactNode
+  body: string
+  source: string
   boundaries: number[] | string[] | Date[]
   labels: string[]
   labelRotateUp: boolean[]
@@ -115,9 +119,8 @@ export type DataDescription = {
   stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
-export type DataDescriptions = {
-  [key: string]: DataDescription
-}
+export type DatasetKey = typeof validDatasets[number]
+export type DataDescriptions = Record<DatasetKey, DataDescription>
 
 export type CurrentDataPoints = {
   name: string
@@ -137,18 +140,6 @@ export type MunicipalityData = {
   dataPoint: number
   formattedDataPoint: number
   geometry: [number, number][]
-}
-
-export function isMunicipalityData(
-  thing: MunicipalityData | unknown,
-): thing is MunicipalityData {
-  if (!thing) {
-    return false
-  }
-  const mData = thing as MunicipalityData
-  return Boolean(
-    mData.name && mData.dataPoint && mData.formattedDataPoint && mData.geometry,
-  )
 }
 
 export type MunicipalityTapInfo = {

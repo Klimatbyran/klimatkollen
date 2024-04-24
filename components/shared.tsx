@@ -50,15 +50,6 @@ export const ListItem = styled.li`
   margin: 8px;
 `
 
-export const LoadingContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: grey;
-  font-size: 10px;
-`
-
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -78,7 +69,8 @@ export const GridItem = styled.div`
 
   & > b {
     clear: both;
-    margin-bottom: 8px;
+    margin: 8px 0;
+    font-weight: 700;
   }
 `
 

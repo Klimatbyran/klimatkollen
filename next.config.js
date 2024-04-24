@@ -1,4 +1,4 @@
-/** @type {require('next').NextConfig} */
+const { i18n } = require('./next-i18next.config')
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -17,12 +17,7 @@ module.exports = withBundleAnalyzer({
   },
 
   reactStrictMode: true,
-
-  // i18n configuration
-  i18n: {
-    locales: ['sv'],
-    defaultLocale: 'sv',
-  },
+  i18n,
 
   // Redirects configuration
   async redirects() {

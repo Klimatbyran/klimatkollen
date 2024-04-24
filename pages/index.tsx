@@ -1,22 +1,23 @@
 import { GetServerSideProps } from 'next'
 import { ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+
 import MetaTags from '../components/MetaTags'
-import { Company, Municipality, SelectedData } from '../utils/types'
+import { Company, Municipality, DatasetKey } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer/Footer'
 import {
   defaultDataset,
+  getDataDescriptions,
   defaultDataView,
 } from '../utils/datasetDefinitions'
 import {
   isValidDataView,
-  isValidDataset,
   normalizeString,
-  validDatasetsMap,
 } from '../utils/shared'
 import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
@@ -38,18 +39,20 @@ function StartPage({ companies, municipalities }: PropsType) {
   const router = useRouter()
   const routeDataset = router.query.dataset
   const { dataView } = router.query
+  const { t } = useTranslation()
+  const { dataDescriptions, isValidDataset } = getDataDescriptions(router.locale as string, t)
 
   const normalizedRouteDataset = normalizeString(routeDataset as string)
   const normalizedDataView = normalizeString(dataView as string)
 
-  const [selectedDataset, setSelectedDataset] = useState<SelectedData>(defaultDataset)
+  const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(defaultDataset)
   const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
 
   const [showRegionalEmissionData, setShowRegionalEmissionData] = useState(true)
 
   useEffect(() => {
     if (normalizedRouteDataset && isValidDataset(normalizedRouteDataset)) {
-      setSelectedDataset(validDatasetsMap[normalizedRouteDataset])
+      setSelectedDataset(normalizedRouteDataset)
     }
 
     if (normalizedDataView && isValidDataView(normalizedDataView)) {
@@ -62,8 +65,8 @@ function StartPage({ companies, municipalities }: PropsType) {
   return (
     <>
       <MetaTags
-        title="Klimatkollen — Få koll på Sveriges klimatomställning"
-        description="Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
+        title={t('startPage:meta.title')}
+        description={t('startPage:meta.description')}
       />
       <PageWrapper backgroundColor="black">
         <Container>
@@ -76,7 +79,7 @@ function StartPage({ companies, municipalities }: PropsType) {
                 setSelectedDataset={setSelectedDataset}
                 selectedDataView={selectedDataView}
                 setSelectedDataView={setSelectedDataView}
-                router={router}
+                dataDescriptions={dataDescriptions}
               />
             )
             : (
@@ -90,7 +93,7 @@ function StartPage({ companies, municipalities }: PropsType) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
@@ -102,6 +105,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     redirect: {
       destination: `/${normalizedDataset}/${defaultDataView}`,
       permanent: true,
+    },
+    props: {
+      ...await serverSideTranslations(locale as string, ['common', 'startPage']),
     },
   }
 }

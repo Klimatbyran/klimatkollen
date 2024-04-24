@@ -10,7 +10,7 @@ import { colorTheme } from '../../Theme'
 import { mapColors } from '../shared'
 import { deviceSizesPx, onTouchDevice } from '../../utils/devices'
 import {
-  MapProps, MunicipalityTapInfo, MunicipalityData, isMunicipalityData,
+  MapProps, MunicipalityTapInfo, MunicipalityData,
 } from '../../utils/types'
 import { replaceLetters } from '../../utils/shared'
 
@@ -102,6 +102,18 @@ const getColor = (
   lon: [8.107180004121693, 26.099158344940808],
   lat: [61.9, 63.9],
 } */
+
+export function isMunicipalityData(
+  thing: MunicipalityData | unknown,
+): thing is MunicipalityData {
+  if (!thing) {
+    return false
+  }
+  const mData = thing as MunicipalityData
+  return Boolean(
+    mData.name && mData.dataPoint && mData.formattedDataPoint && mData.geometry,
+  )
+}
 
 function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
   return (

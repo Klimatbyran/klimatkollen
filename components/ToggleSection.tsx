@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { H5 } from './Typography'
 import ArrowSvg from '../public/icons/arrow-down-round.svg'
 import { colorTheme } from '../Theme'
+import Markdown from './Markdown'
 
 const TextSection = styled.details`
   display: flex;
@@ -49,7 +50,7 @@ const InfoSection = styled.div`
 
 type Props = {
   header: string
-  text: JSX.Element
+  text: JSX.Element | string
 }
 
 function ToggleSection({ header, text }: Props) {
@@ -62,7 +63,7 @@ function ToggleSection({ header, text }: Props) {
         <Arrow open={open} className="arrow" />
       </HeaderSection>
       <InfoSection>
-        {text}
+        {typeof text === 'string' ? <Markdown>{text}</Markdown> : text}
       </InfoSection>
     </TextSection>
   )

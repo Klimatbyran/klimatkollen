@@ -11,8 +11,9 @@ import {
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
-import { EmissionPerYear } from '../utils/types'
+import { useTranslation } from 'next-i18next'
 
+import { EmissionPerYear } from '../utils/types'
 import { colorTheme } from '../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
@@ -71,6 +72,7 @@ type Props = {
 function Graph({
   step, historical, approximated, budget, trend, maxVisibleYear,
 }: Props) {
+  const { t } = useTranslation()
   const setup = useMemo(
     () => getSetup([historical, approximated, trend, budget]),
     [historical, approximated, trend, budget],
@@ -96,7 +98,7 @@ function Graph({
 
   return (
     <Container>
-      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
+      <YAxisTitle>{t('municipality:graphYAxisTitle')}</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{

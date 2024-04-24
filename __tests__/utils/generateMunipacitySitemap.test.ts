@@ -1,3 +1,4 @@
+import { TFunction } from 'next-i18next'
 import {
   generateMunipacitySitemapData,
   generateSitemap,
@@ -5,6 +6,9 @@ import {
 import { Municipality } from '../../utils/types'
 
 const municipalities = [{ Name: 'Stockholm' }, { Name: 'Göteborg' }] as Municipality[]
+
+const t = vi.fn((str) => str) as unknown as TFunction
+
 describe('generateSitemap', () => {
   it('should generate valid municipality sitemap data', () => {
     const siteMap = generateMunipacitySitemapData({ municipalities })
@@ -28,7 +32,7 @@ describe('generateSitemap', () => {
 
   it('should generate a valid sitemap XML string', () => {
     const siteMap = generateMunipacitySitemapData({ municipalities })
-    const sitemapXml = generateSitemap(siteMap)
+    const sitemapXml = generateSitemap(siteMap, t)
     expect(() => new DOMParser().parseFromString(sitemapXml, 'text/xml')).not.toThrow()
   })
 })
