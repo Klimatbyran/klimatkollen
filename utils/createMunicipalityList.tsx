@@ -56,7 +56,7 @@ const sortClimatePlans = (aVal: string, bVal: string) => {
     return -1
   }
 
-  // If both A and B have climate plans, then we should return A-B and compare the years when they were adopted
+  // If both A and B have climate plans, then we should compare the years when they were adopted
   return (b as number) - (a as number)
 }
 
