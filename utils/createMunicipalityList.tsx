@@ -96,7 +96,6 @@ export const calculateRankings = (
 }
 
 // TODO: for dataset koldioxidbudgetarna Maybe update title: "Budget slut om" since it is unclear for the table header
-// TODO: for dataset klimatplanerna, the first column "har plan" does not give correct sorting results. We need a custom sort there.
 // TODO: for all datasets that customize the first column to use string data, we need to add a custom sorting function.
 // TODO: for dataset upphandlingarna, when "underlag" column has value "saknas", maybe show it gray color instead of orange since it is missing.
 
@@ -214,8 +213,31 @@ export const listColumns = (
     return formattedDataPoint
   }
 
+  const getFirstColumnSortingFn = (datasetKey: DatasetKey) => {
+    if (datasetKey === 'klimatplanerna') {
+      return (rowA: Row<RowData>, rowB: Row<RowData>) => {
+        const aHasPlan = rowA.original.dataPoint !== climatePlanMissing
+        const bHasPlan = rowB.original.dataPoint !== climatePlanMissing
+
+        if (aHasPlan && !bHasPlan) {
+          return -1
+        }
+
+        if (!aHasPlan && bHasPlan) {
+          return 1
+        }
+
+        // If both either have plans or don't have plans, we don't need to re-order them.
+        return 0
+      }
+    }
+
+    // By default, use the standard @tanstack/table sorting functions.
+    return undefined
+  }
+
   // TODO: Move this config on to the dataset definitions instead
-  const getSortingFn = (datasetKey: DatasetKey) => {
+  const getThirdColumnSortingFn = (datasetKey: DatasetKey) => {
     if (datasetKey === 'klimatplanerna') {
       return climatePlansSortingFn
     }
@@ -237,13 +259,19 @@ export const listColumns = (
     return undefined
   }
 
-  const thirdColumnSortingFn = getSortingFn(selectedData)
+  const firstColumnSortingFn = getFirstColumnSortingFn(selectedData)
+  const thirdColumnSortingFn = getThirdColumnSortingFn(selectedData)
 
   return [
     {
       header: getFirstColumnHeader(),
       cell: getFirstColumnCell,
       accessorKey: 'index',
+
+      // NOTE: we can't pass an explicit prop sortingFn with the value undefined, since this crashes @tanstack/table when sorting the column
+      // This is due to a bug either in their implementation or in their TS definitions.
+      // The workaround is to only add the property when we actually need it.
+      ...(firstColumnSortingFn ? { sortingFn: firstColumnSortingFn } : {}),
     },
     {
       header: t('common:municipality'),
@@ -253,9 +281,6 @@ export const listColumns = (
     {
       header: () => columnHeader,
       cell: getThirdColumnCell,
-      // TODO: Why can't we sort the final column for climate plans? Maybe because we try to sort on the wrong property?
-      // accessorKey: selectedData === 'klimatplanerna' ? 'climatePlanYearAdapted' : 'dataPoint',
-      // accessorKey: selectedData === 'klimatplanerna' ? 'secondaryDataPoint' : 'dataPoint',
       accessorKey: 'dataPoint',
       // NOTE: if we need to sort other columns than the third, this would be better to keep in the dataset definitions.
       // But for now, this is a quick and dirty hack
