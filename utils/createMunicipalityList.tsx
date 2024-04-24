@@ -237,6 +237,8 @@ export const listColumns = (
     return undefined
   }
 
+  const thirdColumnSortingFn = getSortingFn(selectedData)
+
   return [
     {
       header: getFirstColumnHeader(),
@@ -257,7 +259,11 @@ export const listColumns = (
       accessorKey: 'dataPoint',
       // NOTE: if we need to sort other columns than the third, this would be better to keep in the dataset definitions.
       // But for now, this is a quick and dirty hack
-      sortingFn: getSortingFn(selectedData),
+
+      // NOTE: we can't pass an explicit prop sortingFn with the value undefined, since this crashes @tanstack/table when sorting the column
+      // This is due to a bug either in their implementation or in their TS definitions.
+      // The workaround is to only add the property when we actually need it.
+      ...(thirdColumnSortingFn ? { sortingFn: thirdColumnSortingFn } : {}),
     },
   ]
 }
