@@ -14,7 +14,6 @@ type RowData = {
   index: number
   climatePlanYearAdapted?: string
   procurementLink?: string
-  secondaryDataPoint?: string
 }
 
 const getCustomSortFn = ({
@@ -61,13 +60,13 @@ const sortClimatePlans = (aVal: string, bVal: string) => {
 }
 
 const climatePlansSortingFn = (rowA: Row<RowData>, rowB: Row<RowData>) => (
-  sortClimatePlans(rowA.original.secondaryDataPoint!, rowB.original.secondaryDataPoint!)
+  sortClimatePlans(rowA.original.climatePlanYearAdapted!, rowB.original.climatePlanYearAdapted!)
 )
 
 export const calculateClimatePlanRankings = (data: Omit<RowData, 'index'>[]) => (
   data
     .map((item, i) => ({ ...item, index: i + 1 }))
-    .sort((rowA, rowB) => sortClimatePlans(rowA.secondaryDataPoint!, rowB.secondaryDataPoint!))
+    .sort((rowA, rowB) => sortClimatePlans(rowA.climatePlanYearAdapted!, rowB.climatePlanYearAdapted!))
 )
 
 export const calculateRankings = (
@@ -105,7 +104,6 @@ export const rankData = (municipalities: Municipality[], selectedData: DatasetKe
         dataPoint: item.primaryDataPoint as string,
         formattedDataPoint: item.formattedPrimaryDataPoint,
         climatePlanYearAdapted: item.climatePlanYearAdapted,
-        secondaryDataPoint: item.secondaryDataPoint,
       })),
     )
   } else {
