@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { ColumnDef } from '@tanstack/react-table'
 import { Company } from './types'
 
+// IDEA: do something similar for the regional view to distinguish between actual important data (orange), and when something is missing (gray)
 const ScopeColumn = styled.span<{ isMissing: boolean }>`
   color: ${({ isMissing, theme }) => (isMissing ? 'gray' : theme.darkYellow)};
   font-style: ${({ isMissing }) => (isMissing ? 'italic' : 'normal')};
