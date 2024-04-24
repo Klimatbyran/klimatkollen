@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic'
 import styled from 'styled-components'
-import { NextRouter } from 'next/router'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
 import ComparisonTable from '../components/ComparisonTable'
 import MapLabels from '../components/Map/MapLabels'
 import ListIcon from '../public/icons/list.svg'
@@ -11,14 +13,14 @@ import DropDown from '../components/DropDown'
 import { H2Regular, H5Regular, Paragraph } from './Typography'
 import { devices } from '../utils/devices'
 import {
-  dataDescriptions,
   dataOnDisplay,
   defaultDataView,
   secondaryDataView,
 } from '../utils/datasetDefinitions'
-import { Municipality, SelectedData } from '../utils/types'
+import { Municipality, DatasetKey, DataDescriptions } from '../utils/types'
 import { normalizeString } from '../utils/shared'
 import { municipalityColumns, rankData } from '../utils/createMunicipalityList'
+import Markdown from './Markdown'
 
 const Map = dynamic(() => import('../components/Map/Map'))
 
@@ -83,11 +85,11 @@ const ComparisonContainer = styled.div<{ $dataView: string }>`
 
 type RegionalViewProps = {
   municipalities: Array<Municipality>
-  selectedDataset: SelectedData
-  setSelectedDataset: (newData: SelectedData) => void
+  selectedDataset: DatasetKey
+  setSelectedDataset: (newData: DatasetKey) => void
   selectedDataView: string
   setSelectedDataView: (newData: string) => void
-  router: NextRouter
+  dataDescriptions: DataDescriptions
 }
 
 function RegionalView({
@@ -96,20 +98,22 @@ function RegionalView({
   setSelectedDataset,
   selectedDataView,
   setSelectedDataView,
-  router,
+  dataDescriptions,
 }: RegionalViewProps) {
-  const handleDataChange = (newData: SelectedData) => {
-    const newDataString = newData as string
-    setSelectedDataset(newDataString)
-    const normalizedDataset = normalizeString(newDataString)
+  const router = useRouter()
+  const handleDataChange = (newData: DatasetKey) => {
+    setSelectedDataset(newData)
+    const normalizedDataset = normalizeString(newData)
     router.push(`/${normalizedDataset}/${selectedDataView}`, undefined, {
       shallow: true,
       scroll: false,
     })
   }
+  const { t } = useTranslation()
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
-  const municipalityData = dataOnDisplay(municipalities, selectedDataset) // get all municipality names and data points for map and list
+  // get all municipality names and data points for map and list
+  const municipalityData = dataOnDisplay(municipalities, selectedDataset, router.locale as string, t)
   const datasetDescription = dataDescriptions[selectedDataset] // get description of selected dataset
 
   const handleToggleView = () => {
@@ -125,8 +129,8 @@ function RegionalView({
     )
   }
 
-  const cols = municipalityColumns(selectedDataset, datasetDescription.columnHeader)
-  const rankedData = rankData(municipalities, selectedDataset)
+  const cols = municipalityColumns(selectedDataset, datasetDescription.columnHeader, t)
+  const rankedData = rankData(municipalities, selectedDataset, router.locale as string, t)
 
   const isDefaultDataView = selectedDataView === defaultDataView
 
@@ -134,46 +138,48 @@ function RegionalView({
 
   return (
     <>
-      <H2Regular>Hur går det med?</H2Regular>
+      <H2Regular>{t('startPage:questionTitle')}</H2Regular>
       <RadioButtonMenu
         selectedData={selectedDataset}
         handleDataChange={handleDataChange}
+        dataDescriptions={dataDescriptions}
       />
       <InfoContainer>
         <TitleContainer>
           <FloatingH5>{datasetDescription.title}</FloatingH5>
           <ToggleButton
             handleClick={handleToggleView}
-            text={isDefaultDataView ? 'Listvy' : 'Kartvy'}
+            text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
             icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
           />
         </TitleContainer>
         <ComparisonContainer $dataView={selectedDataView.toString()}>
           {isDefaultDataView && (
-          <>
-            <MapLabels
-              labels={datasetDescription.labels}
-              rotations={datasetDescription.labelRotateUp}
-            />
-            <Map
-              data={municipalityData}
-              boundaries={datasetDescription.boundaries}
-            />
-          </>
+            <>
+              <MapLabels
+                labels={datasetDescription.labels}
+                rotations={datasetDescription.labelRotateUp}
+              />
+              <Map
+                data={municipalityData}
+                boundaries={datasetDescription.boundaries}
+              />
+            </>
           )}
           {selectedDataView === secondaryDataView && (
-          <ComparisonTable data={rankedData[selectedDataset]} columns={cols} routeString={routeString} />
+            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} routeString={routeString} />
           )}
         </ComparisonContainer>
         <InfoText>
-          <Paragraph>{datasetDescription.body}</Paragraph>
-          <ParagraphSource>{datasetDescription.source}</ParagraphSource>
+          <Markdown>{datasetDescription.body}</Markdown>
+          <Markdown components={{ p: ParagraphSource }}>
+            {datasetDescription.source}
+          </Markdown>
         </InfoText>
       </InfoContainer>
       <DropDown
-        className="startpage"
         municipalitiesName={municipalityNames}
-        placeholder="Hur går det i din kommun?"
+        placeholder={t('startPage:yourMunicipality')}
       />
     </>
   )
