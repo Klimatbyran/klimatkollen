@@ -148,6 +148,7 @@ export const listColumns = (
     } = props.row.original
 
     if (isClimatePlan) {
+      // NOTE: We might want to show missing climate plans with a gray text here, and save the orange text only to highight climatePlanYearAdapted
       return dataPoint !== climatePlanMissing
         ? climatePlanYearAdapted
         : climatePlanMissing
@@ -180,13 +181,50 @@ export const listColumns = (
     } else if (datasetKey === 'klimatplanerna') {
       // TODO: sorting for klimatplanerna is still broken for some reason. However, koldioxidbudgetarna and laddarna now works.
       // customSort = getCustomSortFn({ sortAscending: false })
+      // customSort = getCustomSortFn({ stringsOnTop: true, sortAscending: false })
       return (rowA: Row<RowData>, rowB: Row<RowData>) => {
+        // const a = rowA.original.dataPoint === climatePlanMissing ? rowA.original.dataPoint : rowA.original.secondaryDataPoint!
+        // const b = rowB.original.dataPoint === climatePlanMissing ? rowB.original.dataPoint : rowB.original.secondaryDataPoint!
+        // const a = rowA.original.dataPoint === climatePlanMissing ? rowA.original.dataPoint : rowA.original.secondaryDataPoint!
+        // const b = rowB.original.dataPoint === climatePlanMissing ? rowB.original.dataPoint : rowB.original.secondaryDataPoint!
+
+        const aVal = rowA.original.secondaryDataPoint!
+        const bVal = rowB.original.secondaryDataPoint!
+
+        const a = aVal === climatePlanMissing ? aVal : Number(aVal)
+        const b = bVal === climatePlanMissing ? bVal : Number(bVal)
+
+        // RETURN VALUES
+        // A negative value indicates that a should come before b.
+        // A positive value indicates that a should come after b.
+        // Zero or NaN indicates that a and b are considered equal.
+
+        // If both A and B are missing climate plans, then return 0
+        if (a === climatePlanMissing && b === climatePlanMissing) {
+          return 0
+        }
+
+        // If A is missing a climate plan, but B has one, then A should be after B, and we should return 1
+        if (a === climatePlanMissing && !Number.isNaN(b)) {
+          return 1
+        }
+
+        // If A has a climate plan, but B is missing one, then A should be before B, and we should return -1
+        if (!Number.isNaN(a) && b === climatePlanMissing) {
+          return -1
+        }
+
+        // If both A and B have climate plans, then we should return A-B and compare the years when they were adopted
+        return (a as number) - (b as number)
+
+        // return customSort!(a, b)
+
         // const a = rowA.original.dataPoint === climatePlanMissing ? 1 : -1
         // const b = rowB.original.dataPoint === climatePlanMissing ? 1 : -1
 
         // IDEA: maybe compare against another datapoint
-        const a = rowA.original.dataPoint === climatePlanMissing ? -1 : Number(rowA.original.secondaryDataPoint)
-        const b = rowB.original.dataPoint === climatePlanMissing ? -1 : Number(rowB.original.secondaryDataPoint)
+        // const a = rowA.original.dataPoint === climatePlanMissing ? -1 : Number(rowA.original.secondaryDataPoint)
+        // const b = rowB.original.dataPoint === climatePlanMissing ? -1 : Number(rowB.original.secondaryDataPoint)
 
         // maybe assign 0 to missing plans
         // and then just subtract to get the diff and sort order
@@ -199,7 +237,7 @@ export const listColumns = (
         //   return -1
         // }
 
-        return a - b
+      // return a - b
       }
     } else if (datasetKey === 'laddarna') {
       customSort = getCustomSortFn({ sortAscending: true })
@@ -229,6 +267,7 @@ export const listColumns = (
       cell: getThirdColumnCell,
       // TODO: Why can't we sort the final column for climate plans? Maybe because we try to sort on the wrong property?
       // accessorKey: selectedData === 'klimatplanerna' ? 'climatePlanYearAdapted' : 'dataPoint',
+      // accessorKey: selectedData === 'klimatplanerna' ? 'secondaryDataPoint' : 'dataPoint',
       accessorKey: 'dataPoint',
       // NOTE: if we need to sort other columns than the third, this would be better to keep in the dataset definitions.
       // But for now, this is a quick and dirty hack
