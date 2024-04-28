@@ -8,7 +8,9 @@ Klimatkollen is an open source and citizen-driven climate data platform aimed at
 
 <b>The problem:</b> Sweden’s 290 cities and municipalities are not slashing carbon emissions fast enough to be in line with the Paris Agreement. Climate data that can help us is often locked behind paywalls, or sits in complex government databases. If we can’t clearly see how much CO<sup>2</sup> is being emitted, from which sources and how quickly we need to decarbonise – we can’t create a public opinion strong enough to change the course of our future. This needs to change.
 
-That’s why we’re building a data-driven movement of climate-savvy developers to help us find and visualise climate data for the public. Climb aboard! <b>Join our [Discord](https://discord.gg/N5P64QPQ6v)</b> and set our climate data free! 
+That’s why we’re building a data-driven movement of climate-savvy developers to help us find and visualise climate data for the public. Climb aboard! 
+
+<b>Join our [Discord](https://discord.gg/N5P64QPQ6v)</b> and set our climate data free! 
 
 #Klimatkollen #FreeClimateData
 
