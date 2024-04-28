@@ -14,6 +14,12 @@ That’s why we’re building a data-driven movement of climate-savvy developers
 
 #Klimatkollen #FreeClimateData
 
+## Climate Data Pipeline Overview
+
+Please see full [description here](data/README.md).
+
+Feel free to explore the repository to understand more about how we collect, process, and display climate data.
+
 ## Building and running locally
 
 If your're starting from scratch, and working with GitHub, NodeJS and so on is new to you, read [doc/getting-started.md](doc/getting-started.md). 
@@ -32,12 +38,6 @@ The project can also be run with docker (although with much slower refresh time)
 
     # starts the container
     docker run -t -i --rm -p 3000:3000 --name klimatkollen klimatkollen
-
-## Climate Data Pipeline Overview
-
-Please see full [description here](data/README.md).
-
-Feel free to explore the repository to understand more about how we collect, process, and display climate data.
 
 ## Contributing
 
