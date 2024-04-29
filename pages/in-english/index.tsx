@@ -174,7 +174,7 @@ function InEnglish() {
               <GridImage src={Alex} alt="Alexandra Palmquist" width="200" height="200" />
               <b>Alexandra Palmquist, Climate Data</b>
               Environmental scientist with a focus on climate and corporate data.
-              Previous experience with the UN in Latin America, now well-established in Stockholm's
+              Previous experience with the UN in Latin America, now well-established in Stockholm&apos;s
               tech startup scene to drive climate transition.
               <SocialMediaContainer>
                 <a
