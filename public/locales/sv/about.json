@@ -1,0 +1,81 @@
+{
+  "bios": {
+    "anna": {
+      "name": "Anna Loverus",
+      "text": "Digital strateg och tidigare chef för sociala medier på Spotify och H&M. VD och grundare av Better Odds."
+    },
+    "carlJohan": {
+      "name": "Carl-Johan Schultz",
+      "text": "Hållbarhetsstrateg på Doings, tidigare planner på Forsman & Bodenfors, författare till boken ”Hållbariseringen”, Årets marknadsföringsbok 2022."
+    },
+    "christian": {
+      "name": "Christian Landgren",
+      "text": "Digital entreprenör och en av Sveriges mest inflytelserika personer inom tech. VD och grundare av Iteam och Öppna skolplattformen."
+    },
+    "elvira": {
+      "name": "Elvira Boman",
+      "text": "Tech lead och teknisk fysiker på Klimatkollen och Precisit. Lång erfarenhet av grön och cirkulär tech vid flera prisbelönta startups och del av ledarteamet på IT-konsultbyrån Precisit."
+    },
+    "alex": {
+      "name": "Alexandra Palmquist",
+      "text": "Miljövetare med fokus på klimat och företagsdata. Tidigare erfarenhet från FN i Latinamerika, numera hemmastadd i Stockholms tech startup-scen för att driva klimatomställningen."
+    },
+    "frida": {
+      "name": "Frida Berry Eklund",
+      "text": "Klimatspecialist och medgrundare till Klimatkollen. Initiativtagare till Our Kids’ Climate och författare till boken “Prata med barn om klimatet” (Natur & Kultur). EU Climate Pact Ambassador och Climate Reality Leader."
+    },
+    "maria": {
+      "name": "Maria Soxbo",
+      "text": "Journalist, författare, föreläsare och grundare av Klimatklubben. Utsedd till en av Sveriges 101 hållbarhetsmäktigaste 2021."
+    },
+    "ola": {
+      "name": "Ola Spännar",
+      "text": "Opinionsbildare, medgrundare av Klimatkollen, tidigare kommunikationschef på Centerpartiet och kundansvarig på Forsman & Bodenfors."
+    }
+  },
+  "board": {
+    "intro": "Klimatkollen drivs av den ideella föreningen, Klimatbyrån. I styrelsen sitter:",
+    "title": "Vår styrelse"
+  },
+  "content": {
+    "text": "I dag kan du på Klimatkollen se:\n\n- Koldioxidbudgetar för landets alla 290 kommuner. Klimatkollen utgår ifrån en [nationell koldioxidbudget](https://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf) som beräknats av forskare vid Uppsala universitet enligt Tyndall-modellen och som sedan fördelats ut på kommunerna av Klimatkollen. (2022 koldioxidbudget [här](https://klimatkollen.se/Paris_compliant_Swedish_CO2_budgets-March_2022-Stoddard&Anderson.pdf))\n- En översikt i både kartvy och listvy över koldioxidutsläppen i landets kommuner. Kommunerna rankas baserat på genomsnittlig årlig utsläppsminskningstakt sedan Parisavtalet undertecknades 2015.\n- En visualisering av hur det gått med koldioxidutsläppen för varje kommun från 1990 tills idag, hur det borde gå för att klara Parisavtalets 1,5-gradersmål och en prognos för hur det går om utsläppen i kommunen fortsätter att utvecklas som de senaste fem åren.\n- För varje kommun finns även annan nyckelfakta, som koldioxidbudget, datum när budgeten tar slut med nuvarande utsläppstakt, politiskt styre och koldioxidutsläpp per invånare.\n\nKlimatkollen är utvecklad med öppen källkod. Det betyder att alla kan vara med och utveckla och förbättra sajten via vårt [Github-repo](https://github.com/Klimatbyran/klimatkollen).",
+    "title": "Vad finns på Klimatkollen?"
+  },
+  "earlierProjects": {
+    "text": "Inför riksdagsvalet 2022 ansvarade Klimatkollen för två unika projekt för att ge medborgare bättre koll på utsläppseffekterna av partiernas klimatpolitik:\n\n1. Klimatmål\nEn [analys](/partierna) av riksdagspartiernas klimatmål, tillsammans med forskarnätverket Researchers’ Desk, Världsnaturfonden WWF, Våra barns klimat och ClimateView, i samarbete med PwC och Naturskyddsföreningen. Analysen visade att sex av åtta partier missar Parisavtalets 1,5-gradersmål.\n2. Utsläppsberäkning\n[Utsläppsberäkning](/utslappsberakningar) av riksdagspartiernas politik gällande tolv centrala klimatåtgärder. Bakom uträkningarna står Klimatkollen, Världsnaturfonden WWF, ClimateView, Naturskyddsföreningen och Våra barns klimat. Beräkningarna visade att den nya regeringens politik kan öka utsläppen med 25 miljoner ton redan under mandatperioden 2022–2026.",
+    "title": "Tidigare projekt"
+  },
+  "funding": {
+    "text": "Under 2023 har Klimatkollen drivits med [stöd från Postkodstiftelsen](https://www.mynewsdesk.com/se/klimatbyraan/pressreleases/klimatkollen-faar-stoed-av-postkodstiftelsen-och-rekryterar-toppnamn-3223979). Under 2024 och 2025 får Klimatkollen finansiell uppbackning av Google.org som en av två svenska mottagare av [Google.org Impact Challenge: Tech for Social Good](https://impactchallenge.withgoogle.com/techforsocialgood/funding/klimatkollen).\n\nMycket av arbetet är ideellt, därför välkomnar vi fler samarbetspartners och ekonomiskt stöd för att kunna skala upp!\n\nUppstarten finansierades av Världsnaturfonden WWF, ClimateView, We Don’t Have Time och Argand Partners.",
+    "title": "Så finansieras vi"
+  },
+  "intro": "Klimatkollen är en medborgarplattform som tillgängliggör klimatdata. Klicka på rubrikerna för att läsa mer.",
+  "meta": {
+    "description": "Om Klimatkollen"
+  },
+  "policies": "Här hittar du våra [stadgar](/stadgar.pdf), [uppförandekod](/uppforandekod.pdf) och [antikorruptionspolicy](/antikorruptionspolicy.pdf).",
+  "postcode": {
+    "text": "Under 2023 har Klimatkollen uppburit stöd av [Postkodstiftelsen](https://postkodstiftelsen.se/) för att ta tempen på hur det går med klimatomställningen i kommunerna. I dag kan du se hur det går med koldioxidutsläppen. Nu visar vi även vad kommunerna gör för att minska dem. Vi utgår ifrån de största utsläppssektorerna och visar sedan hur det går med viktiga omställningar inom dessa sektorer, genom att presentera statistik om utvalda nyckeltal, ett nyckeltal per omställning.",
+    "title": "Postkodprojektet"
+  },
+  "problem": {
+    "text": "Det finns mycket data därute som kan hjälpa oss att ta tempen på klimatomställningen, men den är ofta komplex, svårförståelig eller inlåst bakom betalvägg. Myndigheternas statistik om klimatutsläppen i kommunerna släpar efter med nästan två års fördröjning. Så kan vi inte ha det!\n\nVi jobbar för att göra klimatdata lättillgänglig för medborgare. Det möjliggör ansvarsutkrävande och ger bränsle till nya digitala innovationer som snabbar på klimatomställningen. Vi behöver veta mer om utsläppen, varifrån de kommer, vilka lösningar som genomförs i vilka kommuner och vilken effekt dessa åtgärder kan få. Läs mer om det i [vår debattartikel](https://www.aktuellhallbarhet.se/alla-nyheter/debatt/med-battre-klimatdata-kan-vi-accelerera-klimatomstallningen/).",
+    "title": "Problemet vi löser"
+  },
+  "support": {
+    "text": "Klimatkollen finns till för – och drivs av – klimatintresserade medborgare. Hos oss kan alla bidra. Du kan exempelvis hjälpa oss att [hitta data](https://www.linkedin.com/posts/ospannar_klimatkollens-kommundata-activity-7027238300889272320-wvS3) som saknas, förbättra sajten via vårt [Github-repo](https://github.com/Klimatbyran/klimatkollen) och sprida Klimatkollen i dina nätverk.\n\n- Skriv upp dig på vårt nyhetsbrev (i formuläret längre ner på sidan) så berättar vi när vi släpper något nytt.\n- Skänk en slant! Varje krona ger oss muskler att visa upp mer data. Vårt bankgiro: 5793-3178\n- Ge av din kompetens? Skicka ett mejl till [hej@klimatkollen.se](mailto:hej@klimatkollen.se)",
+    "title": "Stöd oss"
+  },
+  "team": {
+    "title": "Vårt team"
+  },
+  "title": "Om oss",
+  "what": {
+    "text": "Klimatkollen är en medborgarplattform som tillgängliggör klimatdata och bygger stöd för minskade utsläpp i linje med Parisavtalet.\n\nKlimatkollen lanserades i mars 2022 och drivs av den ideella föreningen Klimatbyrån.\n\nI centrum står vår visualisering av hur det går med koldioxidutsläppen. För det som spelar roll på sista raden är om utsläppen sjunker i den takt som krävs för Parisavtalets 1,5-gradersmål, eller inte.\n\nVi tror på kraften i att presentera data på ett enkelt och tilltalande sätt. Så bidrar vi till en mer faktabaserad klimatdebatt och till ökad kunskap och klimatengagemang.\n\nLäs mer om varför Klimatkollen behövs i [vår debattartikel här](https://www.aktuellhallbarhet.se/alla-nyheter/debatt/darfor-behovs-klimatkollen/).",
+    "title": "Vad är Klimatkollen?"
+  },
+  "who": {
+    "text": "Initiativtagare är Ola Spännar och Frida Berry Eklund, båda med lång erfarenhet inom kommunikation och opinionsbildning. Vi tyckte att det var alldeles för svårt att veta vad Parisavtalet innebär konkret för den lokala klimatomställningen – och om det som görs räcker för att nå 1,5-gradersmålet. Därför startade vi Klimatkollen.\n\nI Klimatkollens kärnteam idag finns förutom Ola och Frida även Elvira Boman, Tech Lead. Många fler bidrar med stöd och råd på olika sätt.\n\nVåra samarbetspartners under de första två åren har varit Världsnaturfonden WWF, Postkodstiftelsen, PwC, ClimateView, Klimatklubben, Våra barns klimat, Researchers’ Desk, Argand Partners, Power Circle, 2030-sekretariatet och We Don’t Have Time.",
+    "title": "Vilka står bakom?"
+  }
+}

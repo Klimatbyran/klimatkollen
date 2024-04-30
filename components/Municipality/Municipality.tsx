@@ -1,8 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
 
-import { H1, ParagraphBold } from '../Typography'
+import { H1NoPad, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 import DropDown from '../DropDown'
@@ -16,7 +15,7 @@ import Scorecard from './MunicipalityScorecard'
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-bottom: 48px;
 `
 
@@ -29,7 +28,7 @@ const HeaderSection = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
 `
 
 const Bottom = styled.div`
@@ -71,17 +70,19 @@ function Municipality(props: Props) {
     municipalitiesName,
   } = props
 
+  const { t } = useTranslation()
+
   return (
     <>
       <PageWrapper backgroundColor="lightBlack">
-        <BackArrow route="/" />
         <StyledContainer>
           <HeaderSection>
-            <H1>{municipality.Name}</H1>
+            <BackArrow route="/" />
+            <H1NoPad>{municipality.Name}</H1NoPad>
             {coatOfArmsImage && (
               <CoatOfArmsImage
                 src={coatOfArmsImage}
-                alt={`Kommunvapen för ${municipality.Name}`}
+                alt={t('municipality:coatOfArms', { name: municipality.Name })}
               />
             )}
           </HeaderSection>
@@ -108,11 +109,10 @@ function Municipality(props: Props) {
           />
         </Bottom>
         <DropDownSection>
-          <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
+          <ParagraphBold>{t('municipality:otherMunicipalities')}</ParagraphBold>
           <DropDown
-            className="municipality-page"
             municipalitiesName={municipalitiesName}
-            placeholder="Välj kommun"
+            placeholder={t('municipality:select')}
           />
         </DropDownSection>
       </PageWrapper>

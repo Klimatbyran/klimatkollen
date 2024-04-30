@@ -1,5 +1,6 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
+
 import { H4 } from '../Typography'
 import { Municipality as TMunicipality } from '../../utils/types'
 import { colorTheme } from '../../Theme'
@@ -44,11 +45,19 @@ type EmissionsProps = {
 }
 
 function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
-  const totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
+  const { t } = useTranslation()
+  let totalHistorical = municipality.HistoricalEmission.EmissionPerYear.reduce(
     (total, year) => total + year.CO2Equivalent,
     0,
   ) / 1000
-  const historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+  let historicalEndsYear = municipality.HistoricalEmission.EmissionPerYear[municipality.HistoricalEmission.EmissionPerYear.length - 1]?.Year
+
+  // if historical approximated data exist, include into total historical emission and advance the year to which historical data extends
+  if (municipality.ApproximatedHistoricalEmission.TotalCO2Emission) {
+    totalHistorical += municipality.ApproximatedHistoricalEmission.TotalCO2Emission / 1000
+    historicalEndsYear = municipality.ApproximatedHistoricalEmission.EmissionPerYear[
+      municipality.ApproximatedHistoricalEmission.EmissionPerYear.length - 1]?.Year
+  }
 
   const totalTrend = municipality.EmissionTrend.TrendCO2Emission / 1000
   const trendStartsYear = municipality.EmissionTrend.TrendPerYear[0]?.Year
@@ -58,24 +67,24 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
 
   return (
     <Container>
-      <H4>Utsläppen i siffror (tusen ton CO₂)</H4>
+      <H4>{t('municipality:emissionNumbers.title')}</H4>
       <TotalCo2Container>
         <TotalCo2>
           <Square color={colorTheme.orange} />
           <StyledText $color={colorTheme.offWhite}>
-            Historiskt 1990-{historicalEndsYear}: {totalHistorical.toFixed(1)}
+            {t('municipality:emissionNumbers.historical', { historicalEndsYear, totalHistorical: totalHistorical.toFixed(1) })}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
           <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
-            Trend {trendStartsYear}-2050: {totalTrend.toFixed(1)}
+            {t('municipality:emissionNumbers.trend', { trendStartsYear, totalTrend: totalTrend.toFixed(1) })}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
           <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
-            Koldioxidbudget för att klara Parisavtalet {budgetStartsYear}-2050: {totalBudget.toFixed(1)}
+            {t('municipality:emissionNumbers.co2budget', { budgetStartsYear, totalBudget: totalBudget.toFixed(1) })}
           </StyledText>
         </TotalCo2>
       </TotalCo2Container>

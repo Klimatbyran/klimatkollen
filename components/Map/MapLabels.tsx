@@ -74,13 +74,21 @@ type MapLabelsProps = {
 }
 
 function MapLabels({ labels, rotations }: MapLabelsProps) {
-  const labelColors = labels.length === 2 ? [mapColors[0], mapColors[mapColors.length - 1]] : mapColors
+  let labelColors = mapColors
+
+  // Special cases for binary KPIs and KPIs with three cases
+  if (labels.length === 2) {
+    labelColors = [mapColors[0], mapColors[mapColors.length - 1]]
+  }
+  if (labels.length === 3) {
+    labelColors = [mapColors[0], mapColors[4], mapColors[mapColors.length - 1]]
+  }
 
   return (
     <Container>
-      {labels.map((label, i) => (
+      {Array.isArray(labels) ? labels.map((label, i) => (
         <Label key={label} color={labelColors[i]} text={label} rotateUp={rotations[i]} />
-      ))}
+      )) : labels}
     </Container>
   )
 }

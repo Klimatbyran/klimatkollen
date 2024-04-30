@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
 import Home from '../pages/index'
 
 vi.mock('../public/icons/info.svg', () => ({ default: () => 'svg' }))
@@ -20,6 +19,12 @@ vi.mock('next/router', () => ({
     asPath: '',
     route: '/',
   }),
+}))
+
+vi.mock('next-i18next', () => ({
+  useTranslation: vi.fn(() => ({
+    t: (str: string) => str,
+  })),
 }))
 
 describe('Home Page', () => {
@@ -46,6 +51,10 @@ describe('Home Page', () => {
         EmissionPerYear: [],
         HistoricalEmissionChangePercent: 0,
       },
+      ApproximatedHistoricalEmission: {
+        EmissionPerYear: [],
+        TotalCO2Emission: 0,
+      },
       NeededEmissionChangePercent: 0,
       HitNetZero: 0,
       BudgetRunsOut: '',
@@ -61,6 +70,8 @@ describe('Home Page', () => {
       TotalConsumptionEmission: 0,
       ElectricVehiclePerChargePoints: 0,
       Name: 'Sollentuna',
+      ProcurementScore: 0,
+      ProcurementLink: '',
     },
   ]
 
@@ -69,24 +80,24 @@ describe('Home Page', () => {
   })
 
   it('renders without crashing', () => {
-    expect(screen.getByText(/Hur går det med?/)).toBeInTheDocument()
+    expect(screen.getByText(/startPage:questionTitle/)).toBeInTheDocument()
   })
 
   it('changes view mode when toggle button is clicked', () => {
-    const toggleButton = screen.getByText('Listvy')
+    const toggleButton = screen.getByText('startPage:toggleView.list')
     fireEvent.click(toggleButton)
-    expect(screen.getByText('Kartvy')).toBeInTheDocument()
+    expect(screen.getByText('startPage:toggleView.map')).toBeInTheDocument()
   })
 
   it('handles dataset change', () => {
-    const newDataset = 'Klimatplanerna'
+    const newDataset = 'common:datasets.plans.name'
     const radioButton = screen.getByLabelText(newDataset)
     fireEvent.click(radioButton)
     expect(screen.getByText(newDataset)).toBeInTheDocument()
   })
 
   it('renders the dropdown component', () => {
-    const dropdownInput = screen.getByPlaceholderText(/hur går det i din kommun?/i)
+    const dropdownInput = screen.getByPlaceholderText(/startPage:yourMunicipality/i)
     expect(dropdownInput).toBeInTheDocument()
   })
 })

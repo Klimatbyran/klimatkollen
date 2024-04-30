@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
 import ArrowDown from '../public/icons/arrow-down.svg'
 import { devices } from '../utils/devices'
 
@@ -83,11 +85,37 @@ const ErrorText = styled.div`
 type Props = {
   municipalitiesName: Array<string>
   placeholder: string
-  className: string
 }
 
-function DropDown({ municipalitiesName, placeholder, className }: Props) {
-  const sortedMunicipalities = municipalitiesName.sort((a, b) => a.localeCompare(b))
+export function getSortedMunicipalities(municipalitiesName: Array<string>) {
+  return municipalitiesName.sort((a, b) => a.localeCompare(b, 'sv'))
+}
+
+export function search(query: string, municipalitiesName: Array<string>) {
+  const queryLowerCase = query.toLowerCase()
+
+  return municipalitiesName
+    .filter((municipality) => municipality.toLowerCase().includes(queryLowerCase))
+    .sort((a, b) => {
+      const lowerA = a.toLowerCase()
+      const lowerB = b.toLowerCase()
+
+      const startsWithQueryA = lowerA.startsWith(queryLowerCase)
+      const startsWithQueryB = lowerB.startsWith(queryLowerCase)
+
+      if (startsWithQueryA && !startsWithQueryB) {
+        return -1
+      }
+      if (!startsWithQueryA && startsWithQueryB) {
+        return 1
+      }
+
+      return 0
+    })
+}
+
+function DropDown({ municipalitiesName, placeholder }: Props) {
+  const sortedMunicipalities = getSortedMunicipalities(municipalitiesName)
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMunicipality, setSelectedMunicipality] = useState<string>('')
   const [municipalities, setMunicipalities] = useState(sortedMunicipalities)
@@ -95,6 +123,7 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
 
   const ref = useRef<HTMLDivElement>(null)
   const router = useRouter()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
@@ -128,7 +157,7 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
     } else {
       setShowDropDown(true)
     }
-    const filteredMunicipalities = sortedMunicipalities.filter((test) => test.toLowerCase().includes(value.toLowerCase()))
+    const filteredMunicipalities = search(value, sortedMunicipalities)
     setMunicipalities(filteredMunicipalities)
   }
 
@@ -165,13 +194,13 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
               value={selectedMunicipality}
             />
             <Btn onClick={() => setShowDropDown((current) => !current)}>
-              <ArrowDown aria-label="Visa kommun" />
+              <ArrowDown aria-label={t('common:components.DropDown.label')} />
             </Btn>
           </Flex>
           {showDropDown && (
-            <MunicipalitiesWrapper className={className}>
+            <MunicipalitiesWrapper>
               {municipalities.map((name) => (
-                <Municipality onClick={() => onMunicipalityClick(name)}>
+                <Municipality onClick={() => onMunicipalityClick(name)} key={name}>
                   {name}
                 </Municipality>
               ))}

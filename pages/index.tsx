@@ -2,12 +2,15 @@ import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 import { ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components'
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+
+import Markdown from '../components/Markdown'
 import DropDown from '../components/DropDown'
 import MetaTags from '../components/MetaTags'
-import { H2Regular, H5Regular, Paragraph } from '../components/Typography'
-import { Municipality, SelectedData } from '../utils/types'
+import { H2Regular, Paragraph } from '../components/Typography'
+import { Municipality, DatasetKey } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import { devices } from '../utils/devices'
 import Layout from '../components/Layout'
@@ -19,18 +22,16 @@ import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
 import {
   defaultDataset,
-  datasetDescriptions,
-  currentData,
+  getDataDescriptions,
+  dataOnDisplay,
   defaultDataView,
   secondaryDataView,
-} from '../utils/datasetDescriptions'
+} from '../utils/datasetDefinitions'
 import RadioButtonMenu from '../components/RadioButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import {
   isValidDataView,
-  isValidDataset,
   normalizeString,
-  validDatasetsMap,
 } from '../utils/shared'
 
 const Map = dynamic(() => import('../components/Map/Map'))
@@ -69,13 +70,17 @@ const TitleContainer = styled.div`
   align-items: center;
 `
 
-const FloatingH5 = styled(H5Regular)`
+const FloatingH5 = styled.h5`
   position: absolute;
-  margin: 60px 0 0 16px;
+  font-size: 16px;
+  font-weight: regular;
+  line-height: 1.25;
+  margin: 55px 0 0 16px;
   z-index: 200;
 
-  @media only screen and (${devices.mobile}) {
-    margin: 55px 0 0 16px;
+  @media only screen and (${devices.tablet}) {
+    font-size: 18px;
+    margin: 60px 0 0 16px;
   }
 `
 
@@ -109,16 +114,18 @@ function StartPage({ municipalities }: PropsType) {
   const router = useRouter()
   const routeDataset = router.query.dataset
   const { dataView } = router.query
+  const { t } = useTranslation()
+  const { dataDescriptions, isValidDataset } = getDataDescriptions(router.locale as string, t)
 
   const normalizedRouteDataset = normalizeString(routeDataset as string)
   const normalizedDataView = normalizeString(dataView as string)
 
-  const [selectedDataset, setSelectedDataset] = useState<SelectedData>(defaultDataset)
+  const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(defaultDataset)
   const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
 
   useEffect(() => {
     if (normalizedRouteDataset && isValidDataset(normalizedRouteDataset)) {
-      setSelectedDataset(validDatasetsMap[normalizedRouteDataset])
+      setSelectedDataset(normalizedRouteDataset)
     }
 
     if (normalizedDataView && isValidDataView(normalizedDataView)) {
@@ -128,10 +135,9 @@ function StartPage({ municipalities }: PropsType) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleDataChange = (newData: SelectedData) => {
-    const newDataString = newData as string
-    setSelectedDataset(newDataString)
-    const normalizedDataset = normalizeString(newDataString)
+  const handleDataChange = (newData: DatasetKey) => {
+    setSelectedDataset(newData)
+    const normalizedDataset = normalizeString(newData as string)
     router.push(`/${normalizedDataset}/${selectedDataView}`, undefined, {
       shallow: true,
       scroll: false,
@@ -139,8 +145,9 @@ function StartPage({ municipalities }: PropsType) {
   }
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
-  const municipalityData = currentData(municipalities, selectedDataset) // get all municipality names and data points for map and list
-  const datasetDescription = datasetDescriptions[selectedDataset] // get description of selected dataset
+  // get all municipality names and data points for map and list
+  const municipalityDataOnDisplay = dataOnDisplay(municipalities, selectedDataset, router.locale as string, t)
+  const datasetDescription = dataDescriptions[selectedDataset] // get description of selected dataset
 
   const handleToggle = () => {
     const newDataView = selectedDataView === defaultDataView ? secondaryDataView : defaultDataView
@@ -155,30 +162,31 @@ function StartPage({ municipalities }: PropsType) {
     )
   }
 
-  const cols = listColumns(selectedDataset, datasetDescription)
-  const rankedData = rankData(municipalities, selectedDataset) // fixme hur byter jag ut denna till municipalityData?
+  const cols = listColumns(selectedDataset, dataDescriptions[selectedDataset].columnHeader, t)
+  const rankedData = rankData(municipalities, selectedDataset, router.locale as string, t)
 
   const isDefaultDataView = selectedDataView === defaultDataView
 
   return (
     <>
       <MetaTags
-        title="Klimatkollen — Få koll på Sveriges klimatomställning"
-        description="Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?"
+        title={t('startPage:meta.title')}
+        description={t('startPage:meta.description')}
       />
       <PageWrapper backgroundColor="black">
         <Container>
-          <H2Regular>Hur går det med?</H2Regular>
+          <H2Regular>{t('startPage:questionTitle')}</H2Regular>
           <RadioButtonMenu
             selectedData={selectedDataset}
             handleDataChange={handleDataChange}
+            dataDescriptions={dataDescriptions}
           />
           <InfoContainer>
             <TitleContainer>
               <FloatingH5>{datasetDescription.title}</FloatingH5>
               <ToggleButton
                 handleClick={handleToggle}
-                text={isDefaultDataView ? 'Listvy' : 'Kartvy'}
+                text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
                 icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
               />
             </TitleContainer>
@@ -190,7 +198,7 @@ function StartPage({ municipalities }: PropsType) {
                     rotations={datasetDescription.labelRotateUp}
                   />
                   <Map
-                    data={municipalityData}
+                    data={municipalityDataOnDisplay}
                     boundaries={datasetDescription.boundaries}
                   />
                 </>
@@ -200,14 +208,15 @@ function StartPage({ municipalities }: PropsType) {
               )}
             </ComparisonContainer>
             <InfoText>
-              <Paragraph>{datasetDescription.body}</Paragraph>
-              <ParagraphSource>{datasetDescription.source}</ParagraphSource>
+              <Markdown>{datasetDescription.body}</Markdown>
+              <Markdown components={{ p: ParagraphSource }}>
+                {datasetDescription.source}
+              </Markdown>
             </InfoText>
           </InfoContainer>
           <DropDown
-            className="startpage"
             municipalitiesName={municipalityNames}
-            placeholder="Hur går det i din kommun?"
+            placeholder={t('startPage:yourMunicipality')}
           />
         </Container>
       </PageWrapper>
@@ -215,7 +224,7 @@ function StartPage({ municipalities }: PropsType) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
@@ -227,6 +236,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     redirect: {
       destination: `/${normalizedDataset}/${defaultDataView}`,
       permanent: true,
+    },
+    props: {
+      ...await serverSideTranslations(locale as string, ['common', 'startPage']),
     },
   }
 }

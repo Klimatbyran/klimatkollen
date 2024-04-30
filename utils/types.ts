@@ -1,4 +1,7 @@
-import { datasetDescriptions } from './datasetDescriptions'
+import { ReactNode } from 'react'
+import { TFunction } from 'next-i18next'
+
+import { validDatasets } from './datasetDefinitions'
 
 export type Image = {
   ImageUrl: string
@@ -22,6 +25,11 @@ export type Emission = {
   LargestEmissionSectors: Array<EmissionSector>
   HistoricalEmissionChangePercent: number
   HistoricalEmissionChangeRank: number | null
+}
+
+export type ApproximatedEmission = {
+  EmissionPerYear: Array<EmissionPerYear>
+  TotalCO2Emission: number | null
 }
 
 export type Budget = {
@@ -50,6 +58,7 @@ export type Municipality = {
   Budget: Budget
   HistoricalEmission: Emission
   PoliticalRule: Array<string> | null
+  ApproximatedHistoricalEmission: ApproximatedEmission
   EmissionTrend: Trend
   NeededEmissionChangePercent: number
   HitNetZero: number | string
@@ -61,32 +70,58 @@ export type Municipality = {
   BicycleMetrePerCapita: number,
   TotalConsumptionEmission: number,
   ElectricVehiclePerChargePoints: number,
+  ProcurementScore: number,
+  ProcurementLink: string,
 }
 
-export type SelectedData = keyof typeof datasetDescriptions
+export type DataDescriptionDataPoints = {
+  rawDataPoint: (item: Municipality) => number | string | Date
+  formattedDataPoint: (dataPoint: number | string | Date, t: TFunction) => string
+  additionalDataPoint?: (item: Municipality) => string
+}
 
-export type DatasetDescription = {
+export type DataDescription = {
+  /** Short name for the dataset */
+  name: string
+
+  /** Longer title */
   title: string
-  body: string | JSX.Element
-  source: React.ReactNode
+  body: string
+  source: string
   boundaries: number[] | string[] | Date[]
   labels: string[]
   labelRotateUp: boolean[]
   columnHeader: string
+  dataPoints: DataDescriptionDataPoints
   sortAscending?: boolean
-  rawDataPoint: (item: Municipality) => number | string | Date
-  formattedDataPoint: (dataPoint: number | string | Date) => string
   stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
-export type DatasetDescriptions = {
-  [key: string]: DatasetDescription
+export type DatasetKey = typeof validDatasets[number]
+export type DataDescriptions = Record<DatasetKey, DataDescription>
+
+export type CurrentDataPoints = {
+  name: string
+  primaryDataPoint: number | string | Date
+  formattedPrimaryDataPoint: string
+  secondaryDataPoint?: string | null
 }
 
-export type RankedData = {
-  [key: string]: {
-    name: string;
-    dataPoint: number | string | JSX.Element;
-    rank?: number | undefined;
-  }[]
+export type MapProps = {
+  data: Array<CurrentDataPoints>
+  boundaries: number[] | string[] | Date[]
+  children?: ReactNode
+}
+
+export type MunicipalityData = {
+  name: string
+  dataPoint: number
+  formattedDataPoint: number
+  geometry: [number, number][]
+}
+
+export type MunicipalityTapInfo = {
+  x: number
+  y: number
+  mData: MunicipalityData
 }

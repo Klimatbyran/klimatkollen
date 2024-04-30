@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 import { devices } from '../utils/devices'
 
 const HeaderContainer = styled.header`
@@ -88,7 +89,7 @@ const CloseButtonContainer = styled.div`
   top: 1rem;
   right: 1rem;
 
-  @media only screen and ($(devices.tablet)) {
+  @media only screen and (${devices.tablet}) {
     top: 1.2rem;
   }
 `
@@ -120,15 +121,16 @@ type NavItem = {
   target?: string;
 }
 
-const navigationItems: NavItem[] = [
-  { href: '/kallor-och-metod', label: 'Källor och metod' },
-  { href: '/om-oss', label: 'Om oss' },
-  { href: 'https://klimatkollen.teamtailor.com/', label: 'Jobb', target: '_blank' },
-  { href: '/in-english', label: 'In English' },
-]
-
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t } = useTranslation()
+
+  const navigationItems: NavItem[] = [
+    { href: '/kallor-och-metod', label: t('common:components.Header.method') },
+    { href: '/om-oss', label: t('common:components.Header.about') },
+    { href: 'https://klimatkollen.teamtailor.com/', label: t('common:components.Header.jobs'), target: '_blank' },
+    { href: '/in-english', label: t('common:components.Header.english') },
+  ]
 
   return (
     <HeaderContainer>
@@ -153,13 +155,13 @@ function Header() {
       </NavigationList>
       <HamburgerMenu>
         <HamburgerButton type="button" onClick={() => setMenuOpen(!menuOpen)}>
-          <Image src="/icons/menu.svg" width="30" height="30" alt="Menu" />
+          <Image src="/icons/menu.svg" width="30" height="30" alt={t('common:components.Header.menu')} />
         </HamburgerButton>
         {menuOpen && (
           <FullScreenMenu>
             <CloseButtonContainer>
               <HamburgerButton type="button" onClick={() => setMenuOpen(false)}>
-                <Image src="/icons/close_round.svg" width="20" height="20" alt="Stäng" />
+                <Image src="/icons/close_round.svg" width="20" height="20" alt={t('common:actions.close')} />
               </HamburgerButton>
             </CloseButtonContainer>
             <Separator />
