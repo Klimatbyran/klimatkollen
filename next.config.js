@@ -1,10 +1,9 @@
-/** @type {require('next').NextConfig} */
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+/** @type {require('next').NextConfig} */
 module.exports = withBundleAnalyzer({
   webpack(config) {
     config.module.rules.push({
@@ -17,7 +16,12 @@ module.exports = withBundleAnalyzer({
   },
 
   reactStrictMode: true,
-
+  compiler: {
+    styledComponents: {
+      ssr: true,
+      displayName: true,
+    },
+  },
   // i18n configuration
   i18n: {
     locales: ['sv'],
