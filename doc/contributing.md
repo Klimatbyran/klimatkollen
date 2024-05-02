@@ -58,7 +58,7 @@ In the PR desscription, write "Fixes #XXX" where XXX is the id of the issue you 
 
 If the PR is not ready for review yet, prefix the title wiht "Draft: ". Remove this once you're ready.
 
-In the body, describe the changes you have made, what you have done to test your work, if there's anything you're unsure about, or if some parts of the code are unfinished. Focus on the changes and how they address the issues - but try to keep discussion of the issue itsel, in the issue.
+In the body, describe the changes you have made, what you have done to test your work, if there's anything you're unsure about, or if some parts of the code are unfinished. Focus on the changes and how they address the issues - but try to keep discussion of the issue itself, in the issue.
 
 ### Step 5. Get your work reviewed.
 
