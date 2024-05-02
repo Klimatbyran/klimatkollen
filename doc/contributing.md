@@ -54,7 +54,7 @@ Push your commits to your fork of Klimatkollen. If you haven't created a fork al
 
 Create a pull request. Either follow the link git showed after pushing to your fork, or create it from the GitHub web interface. Double check the branches in the PR! Make sure your are merging from your own branch, on your own repo, into "staging" on "klimatkollen". A common mistake is to accidentally start merging into "staging" on your own repo.
 
-Put "Fixes #XXX" with the id of the issue your are fixing as the title of your PR.
+In the PR desscription, write "Fixes #XXX" where XXX is the id of the issue you are fixing. E.g. `Fixes #413`
 
 If the PR is not ready for review yet, prefix the title wiht "Draft: ". Remove this once you're ready.
 
