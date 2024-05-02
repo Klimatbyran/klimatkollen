@@ -7,7 +7,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
-import { PolitycalRuleService as PoliticalRuleService } from '../../../utils/politicalRuleService'
+import { PoliticalRuleService } from '../../../utils/politicalRuleService'
 
 const Municipality = dynamic(() => import('../../../components/Municipality/Municipality'))
 
@@ -36,7 +36,9 @@ export default function Step({
 
   const onNext = () => {
     const next = CHARTS[stepIndex + 1]
-    if (!next) throw new Error(`Assertion failed: No step with index ${stepIndex + 1}`)
+    if (!next) {
+      throw new Error(`Assertion failed: No step with index ${stepIndex + 1}`)
+    }
     router.replace(`/kommun/${id}/${next}`, undefined, {
       shallow: true,
       scroll: false,
@@ -45,7 +47,9 @@ export default function Step({
 
   const onPrevious = () => {
     const prev = CHARTS[stepIndex - 1]
-    if (!prev) throw new Error(`Assertion failed: No step with index ${stepIndex - 1}`)
+    if (!prev) {
+      throw new Error(`Assertion failed: No step with index ${stepIndex - 1}`)
+    }
     router.replace(`/kommun/${id}/${prev}`, undefined, {
       shallow: true,
       scroll: false,
@@ -74,7 +78,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res, loca
   res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${((60 * 60) * 24) * 7}`)
 
   const id = (params as Params).municipality as string
-  if (cache.get(id)) return cache.get(id)
+  if (cache.get(id)) {
+    return cache.get(id)
+  }
 
   const climateDataService = new ClimateDataService()
   const wikiDataService = new WikiDataService()
