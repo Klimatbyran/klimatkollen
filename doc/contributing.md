@@ -22,7 +22,7 @@ Issues labelled "good first issue" are the best to start with if you are new to 
 
 ### Step 2. Let others know you're working on it.
 
-Once you decide to pick an issue up, leave a coment saying so, to avoid others starting on the same one at the same time.
+Once you decide to pick an issue up, leave a comment saying so, to avoid others starting on the same one at the same time.
 
 ### Step 3. Make your changes
 
