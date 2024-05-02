@@ -44,7 +44,7 @@ Checklist before finishing your PR:
 
 [ ] Run `npm run build` to compile all pages. Make sure there are no new warnings or errors.
 [ ] Run `npm run lint` - same story.
-[ ] Actually run the site locally and click through a few pages. Particularly focus on the places where you made your changes. 
+[ ] Run `npm run start` to test the site locally and click through a few pages. Particularly focus on the places where you made your changes. 
 
 Also consider what it will be like for someone else to read your code. Will they be able to read it and understand what's going on? 
 
