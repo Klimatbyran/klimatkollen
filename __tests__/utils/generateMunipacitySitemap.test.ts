@@ -11,7 +11,7 @@ const t = vi.fn((str) => str) as unknown as TFunction
 
 describe('generateSitemap', () => {
   it('should generate valid municipality sitemap data', () => {
-    const siteMap = generateMunicipacitySitemapData({ municipalities })
+    const siteMap = generateMunicipalitySitemapData({ municipalities })
     expect(siteMap).toEqual([
       {
         url: 'https://klimatkollen.se/kommun/stockholm',
