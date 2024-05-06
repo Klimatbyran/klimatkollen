@@ -52,6 +52,8 @@ function StartPage({ companies, municipalities }: PropsType) {
 
   const handleToggle = () => {
     setShowCompanyData(!showCompanyData)
+    setSelectedDataset(defaultDataset)
+    setSelectedDataView(defaultDataView)
     const path = showCompanyData
       ? `/geografiskt/${normalizeString(defaultDataset)}/${normalizedDataView}`
       : '/foretag/utslappen/lista'

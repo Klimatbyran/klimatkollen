@@ -99,6 +99,7 @@ function RegionalView({
   dataDescriptions,
 }: RegionalViewProps) {
   const router = useRouter()
+
   const handleDataChange = (newData: DatasetKey) => {
     setSelectedDataset(newData)
     const normalizedDataset = normalizeString(newData)
