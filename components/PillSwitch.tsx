@@ -80,6 +80,9 @@ function PillSwitch({ onToggle }: PillSwitchProps) {
     setIsActive(newIsActive)
     onToggle(newIsActive)
   }
+  // TODO: Make this component accessible for keyboard interactions
+  // TODO: Make this component accessible for screen readers
+  // IDEA: Maybe use a pre-built tabs component, for example from headless-ui or Radix primitives
 
   return (
     <SwitchLabel>
@@ -89,7 +92,7 @@ function PillSwitch({ onToggle }: PillSwitchProps) {
       <SwitchInput
         type="checkbox"
         checked={isActive}
-        onClick={handleToggle}
+        onChange={handleToggle}
       />
     </SwitchLabel>
   )
