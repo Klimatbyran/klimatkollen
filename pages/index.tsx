@@ -55,7 +55,7 @@ function StartPage({ companies, municipalities }: PropsType) {
     setSelectedDataset(defaultDataset)
     setSelectedDataView(defaultDataView)
     const path = showCompanyData
-      ? `/geografiskt/${normalizeString(defaultDataset)}/${normalizedDataView}`
+      ? `/geografiskt/${normalizeString(defaultDataset)}/lista`
       : '/foretag/utslappen/lista'
     router.push(path, undefined, { shallow: true })
   }
