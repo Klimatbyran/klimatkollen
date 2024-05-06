@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
   const { t } = await getServerSideI18n(locale as string, ['common', 'sitemap'])
 
   const municipalities = new ClimateDataService().getMunicipalities()
-  const municipalitiesSitemap = generateMunicipacitySitemapData({ municipalities })
+  const municipalitiesSitemap = generateMunicipalitySitemapData({ municipalities })
   // Generate the XML sitemap with the blog data
   const sitemap = generateSitemap(municipalitiesSitemap, t)
 
