@@ -31,7 +31,7 @@ describe('generateSitemap', () => {
   })
 
   it('should generate a valid sitemap XML string', () => {
-    const siteMap = generateMunicipacitySitemapData({ municipalities })
+    const siteMap = generateMunicipalitySitemapData({ municipalities })
     const sitemapXml = generateSitemap(siteMap, t)
     expect(() => new DOMParser().parseFromString(sitemapXml, 'text/xml')).not.toThrow()
   })
