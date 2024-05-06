@@ -12,7 +12,7 @@ type SiteMap = {
 }
 const BASE_URL = 'https://klimatkollen.se'
 
-export const generateMunicipacitySitemapData = ({
+export const generateMunicipalitySitemapData = ({
   municipalities,
 }: {
   municipalities: Municipality[]
