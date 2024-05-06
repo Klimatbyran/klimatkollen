@@ -104,9 +104,8 @@ function RegionalView({
   const handleDataChange = (newData: DatasetKey) => {
     setSelectedDataset(newData)
     const normalizedDataset = normalizeString(newData)
-    router.push(`/${normalizedDataset}/${selectedDataView}`, undefined, {
+    router.push(`/geografiskt/${normalizedDataset}/${selectedDataView}`, undefined, {
       shallow: true,
-      scroll: false,
     })
   }
   const { t } = useTranslation()
@@ -120,11 +119,10 @@ function RegionalView({
     const newDataView = selectedDataView === defaultDataView ? secondaryDataView : defaultDataView
     setSelectedDataView(newDataView)
     router.replace(
-      `/${normalizeString(selectedDataset as string)}/${newDataView}`,
+      `/geografiskt/${normalizeString(selectedDataset as string)}/${newDataView}`,
       undefined,
       {
         shallow: true,
-        scroll: false,
       },
     )
   }

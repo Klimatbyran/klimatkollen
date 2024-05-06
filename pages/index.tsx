@@ -49,7 +49,14 @@ function StartPage({ companies, municipalities }: PropsType) {
   const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
 
   const [showRegionalEmissionData, setShowRegionalEmissionData] = useState(true)
-  const dataGroup = showRegionalEmissionData ? 'geografisk' : 'företag'
+
+  const handleToggle = () => {
+    setShowRegionalEmissionData(!showRegionalEmissionData)
+    const path = showRegionalEmissionData
+      ? '/foretag/utslappen/lista'
+      : `/geografiskt/${normalizeString(defaultDataset)}/${normalizedDataView}`
+    router.push(path, undefined, { shallow: true })
+  }
 
   useEffect(() => {
     if (normalizedRouteDataset && isValidDataset(normalizedRouteDataset)) {
@@ -71,7 +78,7 @@ function StartPage({ companies, municipalities }: PropsType) {
       />
       <PageWrapper backgroundColor="black">
         <Container>
-          <PillSwitch onToggle={setShowRegionalEmissionData} />
+          <PillSwitch onToggle={handleToggle} />
           {showRegionalEmissionData
             ? (
               <RegionalView
