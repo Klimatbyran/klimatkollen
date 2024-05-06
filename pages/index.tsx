@@ -49,6 +49,7 @@ function StartPage({ companies, municipalities }: PropsType) {
   const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
 
   const [showRegionalEmissionData, setShowRegionalEmissionData] = useState(true)
+  const dataGroup = showRegionalEmissionData ? 'geografisk' : 'företag'
 
   useEffect(() => {
     if (normalizedRouteDataset && isValidDataset(normalizedRouteDataset)) {
@@ -103,7 +104,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
 
   return {
     redirect: {
-      destination: `/${normalizedDataset}/${defaultDataView}`,
+      destination: `/geografiskt/${normalizedDataset}/${defaultDataView}`,
       permanent: true,
     },
     props: {
