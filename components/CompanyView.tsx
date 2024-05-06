@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { H2Regular, H5Regular, Paragraph } from './Typography'
 import { devices } from '../utils/devices'
 import { Company } from '../utils/types'
@@ -81,7 +82,18 @@ function CompanyView({
           <FloatingH5>Företagens utsläpp för 2023</FloatingH5>
         </TitleContainer>
         <ComparisonContainer>
-          <ComparisonTable data={companies} columns={cols} />
+          <ComparisonTable
+            data={companies}
+            columns={cols}
+            dataType="companies"
+            renderSubComponent={({ row }) => (
+              <pre style={{ fontSize: '10px' }}>
+                <code style={{ whiteSpace: 'break-spaces' }}>{JSON.stringify(row.original, null, 2)}</code>
+              </pre>
+            )}
+            // TODO: since we want every row to expand, maybe we don't need this function?
+            getRowCanExpand={() => true}
+          />
         </ComparisonContainer>
         <InfoText>
           <Paragraph>Lorem</Paragraph>

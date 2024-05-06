@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-
 import styled from 'styled-components'
 import {
   getCoreRowModel,
@@ -10,8 +9,10 @@ import {
   getSortedRowModel,
   Row,
   Header,
+  getExpandedRowModel,
 } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
+
 import { devices } from '../utils/devices'
 
 const StyledTable = styled.table`
@@ -79,17 +80,25 @@ type TableProps<T extends object> = {
   data: T[]
   columns: ColumnDef<T>[]
   routeString?: string
+  // IDEA: It might be better to turn ComparisionTable into two specific components, one for every use case
+  dataType?: 'municipalities' | 'companies'
+  renderSubComponent?: ({ row }: { row: Row<T> }) => JSX.Element
+  getRowCanExpand?: (row: Row<T>) => boolean
 }
 
 function ComparisonTable<T extends object>({
   data,
   columns,
   routeString,
+  dataType = 'municipalities',
+  renderSubComponent,
+  getRowCanExpand,
 }: TableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const router = useRouter()
 
   const [resizeCount, setResizeCount] = useState(0)
+  // const [expanded, setExpanded] = useState<ExpandedState>({})
 
   useEffect(() => {
     const handleResize = () => setResizeCount((count) => count + 1)
@@ -97,21 +106,45 @@ function ComparisonTable<T extends object>({
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const enableExpanding = typeof renderSubComponent === 'function'
+
   const table = useReactTable({
     data,
     columns,
     state: { sorting },
     onSortingChange: setSorting,
+    enableExpanding,
+    getRowCanExpand,
+    // onExpandedChange: (updater) => {
+    //   console.log('onExpandedChange companies expand toggle')
+    //   const newExpanded = typeof updater === 'function' ? updater(expanded) : updater
+    //   setExpanded(newExpanded)
+    // },
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    getExpandedRowModel: getExpandedRowModel(),
   })
 
   const handleRowClick = (row: Row<T>) => {
-    if (routeString) {
-      const cells = row.getAllCells()
-      const value = cells.at(1)?.renderValue()
-      const route = `/${routeString}/${(value as unknown as string).toLowerCase()}`
-      router.push(route)
+    if (dataType === 'municipalities') {
+      if (routeString) {
+        const cells = row.getAllCells()
+        const value = cells.at(1)?.renderValue()
+        const route = `/${routeString}/${(value as unknown as string).toLowerCase()}`
+        router.push(route)
+      }
+    } else if (dataType === 'companies') {
+      row.toggleExpanded()
+
+      // TODO: Maybe we can reuse this in many places?
+      // const handleToggle = row.getToggleExpandedHandler()
+      // handleToggle()
+
+      // console.log('onClick companies expand toggle')
+      // toggle expanded state for the selected row
+      // const newExpanded = !expanded
+      // row.toggleExpanded(newExpanded)
+      // setExpanded(newExpanded)
     }
   }
 
@@ -143,17 +176,26 @@ function ComparisonTable<T extends object>({
       </thead>
       <tbody>
         {table.getRowModel().rows.map((row) => (
-          <TableRow
-            key={row.id}
-            onClick={() => handleRowClick(row)}
-            redirect={routeString !== undefined}
-          >
-            {row.getVisibleCells().map((cell, columnIndex) => (
-              <TableData key={cell.id} className={columnIndex > 1 ? 'data-column' : ''}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </TableData>
-            ))}
-          </TableRow>
+          // TODO: Make it obvious that rows can be expanded. We need to have a toggle button for each row. Or use WAI-ARIA attributes
+          <Fragment key={row.id}>
+            <TableRow
+              onClick={() => handleRowClick(row)}
+              redirect={routeString !== undefined}
+            >
+              {row.getVisibleCells().map((cell, columnIndex) => (
+                <TableData key={cell.id} className={columnIndex > 1 ? 'data-column' : ''}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </TableData>
+              ))}
+            </TableRow>
+            {enableExpanding && row.getIsExpanded() && (
+            <tr>
+              <td colSpan={row.getVisibleCells().length}>
+                {renderSubComponent({ row })}
+              </td>
+            </tr>
+            )}
+          </Fragment>
         ))}
       </tbody>
     </StyledTable>
