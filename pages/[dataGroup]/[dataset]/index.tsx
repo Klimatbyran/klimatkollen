@@ -1,9 +1,10 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
-import { defaultDataView, getDataDescriptions } from '../../../utils/datasetDefinitions'
+import { getDataDescriptions } from '../../../utils/datasetDefinitions'
 import { normalizeString } from '../../../utils/shared'
 import { getServerSideI18n } from '../../../utils/getServerSideI18n'
+import { defaultDataView } from './[dataView]'
 
 interface Params extends ParsedUrlQuery {
   id: string

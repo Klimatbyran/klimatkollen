@@ -10,6 +10,9 @@ import { CompanyDataService } from '../../../../utils/companyDataService'
 import { getDataDescriptions } from '../../../../utils/datasetDefinitions'
 import { getServerSideI18n } from '../../../../utils/getServerSideI18n'
 
+export const defaultDataView = 'lista'
+export const secondaryDataView = 'karta'
+
 interface Params extends ParsedUrlQuery {
   dataset: string
   dataView: string

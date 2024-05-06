@@ -13,7 +13,6 @@ import Footer from '../components/Footer/Footer'
 import {
   defaultDataset,
   getDataDescriptions,
-  defaultDataView,
 } from '../utils/datasetDefinitions'
 import {
   isValidDataView,
@@ -22,6 +21,7 @@ import {
 import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
+import { defaultDataView } from './[dataGroup]/[dataset]/[dataView]'
 
 const Container = styled.div`
   display: flex;
@@ -48,13 +48,13 @@ function StartPage({ companies, municipalities }: PropsType) {
   const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(defaultDataset)
   const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
 
-  const [showRegionalEmissionData, setShowRegionalEmissionData] = useState(true)
+  const [showCompanyData, setShowCompanyData] = useState(true)
 
   const handleToggle = () => {
-    setShowRegionalEmissionData(!showRegionalEmissionData)
-    const path = showRegionalEmissionData
-      ? '/foretag/utslappen/lista'
-      : `/geografiskt/${normalizeString(defaultDataset)}/${normalizedDataView}`
+    setShowCompanyData(!showCompanyData)
+    const path = showCompanyData
+      ? `/geografiskt/${normalizeString(defaultDataset)}/${normalizedDataView}`
+      : '/foretag/utslappen/lista'
     router.push(path, undefined, { shallow: true })
   }
 
@@ -79,8 +79,13 @@ function StartPage({ companies, municipalities }: PropsType) {
       <PageWrapper backgroundColor="black">
         <Container>
           <PillSwitch onToggle={handleToggle} />
-          {showRegionalEmissionData
+          {showCompanyData
             ? (
+              <CompanyView
+                companies={companies}
+              />
+            )
+            : (
               <RegionalView
                 municipalities={municipalities}
                 selectedDataset={selectedDataset}
@@ -88,11 +93,6 @@ function StartPage({ companies, municipalities }: PropsType) {
                 selectedDataView={selectedDataView}
                 setSelectedDataView={setSelectedDataView}
                 dataDescriptions={dataDescriptions}
-              />
-            )
-            : (
-              <CompanyView
-                companies={companies}
               />
             )}
         </Container>
@@ -111,7 +111,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
 
   return {
     redirect: {
-      destination: `/geografiskt/${normalizedDataset}/${defaultDataView}`,
+      destination: `/foretag/${normalizedDataset}/${defaultDataView}`,
       permanent: true,
     },
     props: {

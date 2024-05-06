@@ -12,15 +12,12 @@ import RadioButtonMenu from './RadioButtonMenu'
 import DropDown from '../components/DropDown'
 import { H2Regular, H5Regular, Paragraph } from './Typography'
 import { devices } from '../utils/devices'
-import {
-  dataOnDisplay,
-  defaultDataView,
-  secondaryDataView,
-} from '../utils/datasetDefinitions'
+import { dataOnDisplay } from '../utils/datasetDefinitions'
 import { Municipality, DatasetKey, DataDescriptions } from '../utils/types'
 import { normalizeString } from '../utils/shared'
 import { municipalityColumns, rankData } from '../utils/createMunicipalityList'
 import Markdown from './Markdown'
+import { defaultDataView, secondaryDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
 
 const Map = dynamic(() => import('../components/Map/Map'))
 
@@ -61,6 +58,7 @@ const FloatingH5 = styled(H5Regular)`
   }
 `
 
+// FIXME Refactor so default data view is not assumed to be 'lista'
 const ComparisonContainer = styled.div<{ $dataView: string }>`
   position: relative;
   overflow-y: scroll;
@@ -69,7 +67,7 @@ const ComparisonContainer = styled.div<{ $dataView: string }>`
   height: 400px;
   border-radius: 8px;
   display: flex;
-  margin-top: ${({ $dataView }) => ($dataView === secondaryDataView ? '64px' : '0')};
+  margin-top: ${({ $dataView }) => ($dataView === defaultDataView ? '64px' : '0')};
 
   @media only screen and (${devices.tablet}) {
     height: 500px;
@@ -147,12 +145,16 @@ function RegionalView({
           <FloatingH5>{datasetDescription.title}</FloatingH5>
           <ToggleButton
             handleClick={handleToggleView}
-            text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
-            icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
+            // FIXME Refactor so default data view is not assumed to be 'lista'.
+            // Below code should not need to be edited when changing default data view
+            text={isDefaultDataView ? t('startPage:toggleView.map') : t('startPage:toggleView.list')}
+            icon={isDefaultDataView ? <MapIcon /> : <ListIcon />}
           />
         </TitleContainer>
         <ComparisonContainer $dataView={selectedDataView.toString()}>
-          {isDefaultDataView && (
+          {isDefaultDataView ? (
+            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} routeString={routeString} />
+          ) : (
             <>
               <MapLabels
                 labels={datasetDescription.labels}
@@ -163,9 +165,6 @@ function RegionalView({
                 boundaries={datasetDescription.boundaries}
               />
             </>
-          )}
-          {selectedDataView === secondaryDataView && (
-            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} routeString={routeString} />
           )}
         </ComparisonContainer>
         <InfoText>

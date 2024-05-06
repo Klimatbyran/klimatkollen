@@ -73,7 +73,7 @@ type PillSwitchProps = {
 }
 
 function PillSwitch({ onToggle }: PillSwitchProps) {
-  const [isActive, setIsActive] = useState(true)
+  const [isActive, setIsActive] = useState(false)
 
   const handleToggle = () => {
     const newIsActive = !isActive
