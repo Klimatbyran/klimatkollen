@@ -24,11 +24,6 @@ module.exports = withBundleAnalyzer({
       displayName: true,
     },
   },
-  // i18n configuration
-  i18n: {
-    locales: ['sv'],
-    defaultLocale: 'sv',
-  },
   i18n,
 
   // Redirects configuration
