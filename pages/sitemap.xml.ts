@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next'
 
 import { ClimateDataService } from '../utils/climateDataService'
 import {
-  generateMunicipacitySitemapData,
+  generateMunicipalitySitemapData,
   generateSitemap,
 } from '../utils/generateMunipacitySitemap'
 import { getServerSideI18n } from '../utils/getServerSideI18n'
