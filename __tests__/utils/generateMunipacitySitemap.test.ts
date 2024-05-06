@@ -1,6 +1,6 @@
 import { TFunction } from 'next-i18next'
 import {
-  generateMunicipacitySitemapData,
+  generateMunicipalitySitemapData,
   generateSitemap,
 } from '../../utils/generateMunipacitySitemap'
 import { Municipality } from '../../utils/types'
