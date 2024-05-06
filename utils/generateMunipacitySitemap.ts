@@ -12,7 +12,7 @@ type SiteMap = {
 }
 const BASE_URL = 'https://klimatkollen.se'
 
-export const generateMunipacitySitemapData = ({
+export const generateMunicipalitySitemapData = ({
   municipalities,
 }: {
   municipalities: Municipality[]
@@ -41,7 +41,7 @@ export const generateSitemap = (
         <lastmod>${new Date().toISOString()}</lastmod>
         <changefreq>monthly</changefreq>
       </url>
-       <url>
+      <url>
         <loc>${BASE_URL}/in-english</loc>
         <name>In English</name>
         <lastmod>${new Date().toISOString()}</lastmod>

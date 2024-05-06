@@ -14,12 +14,6 @@ That’s why we’re building a data-driven movement of climate-savvy developers
 
 #Klimatkollen #FreeClimateData
 
-## Climate Data Pipeline Overview
-
-Please see full [description here](data/README.md).
-
-Feel free to explore the repository to understand more about how we collect, process, and display climate data.
-
 ## Building and running locally
 
 If your're starting from scratch, and working with GitHub, NodeJS and so on is new to you, read [doc/getting-started.md](doc/getting-started.md). 
@@ -39,6 +33,37 @@ The project can also be run with docker (although with much slower refresh time)
     # starts the container
     docker run -t -i --rm -p 3000:3000 --name klimatkollen klimatkollen
 
+# Data overview
+
+In very general terms, Klimatkollen presents:
+- Detailed information about Swedish municipalities' emissions...
+- ...and their remaining emission budget based on the Paris Agreement.
+- Other key point indicators for sustainability transition, such electric car charger density.
+- Contextual information to help understand the significance of the above.
+
+# File overview
+
+The toplevel directory contains a lot of files and folders. You can just ignore most of them. Take note of:
+- `README.md` - this document.
+- `data`: Our data processing pipeline, written in Python. This can more or less be used/edited independently of the rest of the repository. See `data/README.md`.
+  - `data/facts`: Copies of source datasets.
+- `doc`: Documentation and guides, they might answer many questions.
+  - `doc/getting-started.md`: Detailed setup instructions for the web project.
+  - `doc/contributing.md`: Good to know before making your first contribution.
+- `pages` and `components`: Source code for almost everything visible on the website's pages.
+- `public`: Files that will be served directly on the website.
+  - `public/locales`: Language files defininig translations of the website.
+
+# Code architecture overview
+
+How does everything fit together, code-wise?
+- Copies of source datasets are under `data/facts`.
+- We run the Python scripts under `data` to produce `data/output/climate-data.json` from those datasets.
+- The latest copy of `data/output/climate-data.json` is always checked into version control.
+- The rest of the website source code loads `data/output/climate-data.json`.
+- The framework `next.js` is used to compile actual HTML pages at runtime.
+- `next.js` caches each page for serving, to serve it faster for each new visitor.
+
 ## Contributing
 
 The idea behind Klimatkollen is to give citizens access to the climate data we need to meet the goals of the Paris Agreement – and save our own future.
@@ -48,6 +73,8 @@ Do you have an idea for a feature you think should be added to the project? Befo
 Looking for ideas on what needs to be done? We appreciate help on existing [issues](https://github.com/Klimatbyran/klimatkollen/issues) very much. If you pick one up, remember to leave a comment saying you're working on it, and roughly when you expect to report progress. This helps others avoid double work and know what to expect.
 
 Testing, bug fixes, typos or fact checking of our data is highly appreciated.
+
+See [doc/contributing.md] before making your first contribution.
 
 ## Contact
 
