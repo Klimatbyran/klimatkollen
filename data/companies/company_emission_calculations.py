@@ -7,6 +7,9 @@ df = pd.read_excel("companyData.xlsx", sheet_name="SiteData")
 selected_columns = ['Company', 'URL 2023', 'Scope 1+2', 'Scope 3 (total)', 'Alex kommentar']
 selected_df = df[selected_columns]
 
+# Strip leading and trailing whitespaces from all string columns
+selected_df = selected_df.map(lambda x: x.strip() if isinstance(x, str) else x)
+
 # Rename the columns for clarity
 selected_df.columns = ['Company', 'URL', 'Scope1n2', 'Scope3', 'Comment']
 
