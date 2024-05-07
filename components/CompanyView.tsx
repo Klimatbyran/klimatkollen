@@ -118,7 +118,10 @@ function CompanyView({
               return (
                 <Details>
                   <DetailsHeader>
-                    <p>Kommentar:</p>
+                    <p>
+                      {t('common:comment')}
+                      :
+                    </p>
                     <a href={company.Url} target="_blank" rel="noopener noreferrer">Läs rapporten</a>
                   </DetailsHeader>
                   <p>{company.Comment}</p>
