@@ -59,7 +59,7 @@ export const H4Regular = styled.h4`
   font-size: 20px;
   line-height: 1.25;
   margin: 0;
-  color: ${({ theme }) => theme.midGreen}
+  color: ${({ theme }) => theme.midGreen};
 `
 
 export const H5 = styled.h5`
