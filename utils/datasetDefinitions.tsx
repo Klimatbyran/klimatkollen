@@ -95,7 +95,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       title: t('common:datasets.consumption.title'),
       body: t('common:datasets.consumption.body'),
       source: t('common:datasets.consumption.source'),
-      boundaries: [7, 6.7, 6.4, 6.1, 5.8],
+      boundaries: [6.4, 6.2, 6, 5.8, 5.6],
       labels:
       t('common:datasets.consumption.labels', { returnObjects: true }) as unknown as string[],
       labelRotateUp: [],
