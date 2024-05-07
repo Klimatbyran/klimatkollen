@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { t } from 'i18next'
 import { devices } from '../utils/devices'
 
 const SwitchLabel = styled.label`
@@ -73,26 +74,32 @@ type PillSwitchProps = {
 }
 
 function PillSwitch({ onToggle }: PillSwitchProps) {
-  const [isActive, setIsActive] = useState(true)
+  const [isActive, setIsActive] = useState(false)
 
   const handleToggle = () => {
     const newIsActive = !isActive
     setIsActive(newIsActive)
     onToggle(newIsActive)
   }
-  // TODO: Make this component accessible for keyboard interactions
-  // TODO: Make this component accessible for screen readers
-  // IDEA: Maybe use a pre-built tabs component, for example from headless-ui or Radix primitives
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      handleToggle()
+    }
+  }
 
   return (
-    <SwitchLabel>
+    <SwitchLabel onKeyDown={handleKeyDown} tabIndex={0} aria-label={t('common:components.PillSwitch.label')}>
       <TextLeft>Företag</TextLeft>
       <TextRight>Kommuner</TextRight>
       <Slider isActive={isActive} />
       <SwitchInput
         type="checkbox"
+        role="switch"
+        aria-checked={isActive}
         checked={isActive}
-        onChange={handleToggle}
+        onClick={handleToggle}
+        readOnly
       />
     </SwitchLabel>
   )

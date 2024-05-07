@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
 
 import { H2Regular, H5Regular, Paragraph } from './Typography'
 import { devices } from '../utils/devices'
@@ -97,7 +98,8 @@ type CompanyViewProps = {
 function CompanyView({
   companies,
 }: CompanyViewProps) {
-  const cols = companyColumns()
+  const { t } = useTranslation()
+  const cols = companyColumns(t)
 
   return (
     <>
