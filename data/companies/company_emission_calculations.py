@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Read the Excel file into a DataFrame
-df = pd.read_excel("mvp1.xlsx")
+df = pd.read_excel("companyData.xlsx", sheet_name="SiteData")
 
 # Select the desired columns
 selected_columns = ['Company', 'URL 2023', 'Scope 1+2', 'Scope 3 (total)', 'Alex kommentar']
