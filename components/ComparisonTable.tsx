@@ -141,11 +141,13 @@ function ComparisonTable<T extends object>({
   return (
     <StyledTable key={resizeCount}>
       {/* HACK: prevent table headers from changing size when toggling table rows. Not sure what causes the problem, but this fixes it. */}
-      <colgroup>
-        <col width="33%" />
-        <col width="33%" />
-        <col width="33%" />
-      </colgroup>
+      {dataType === 'companies' ? (
+        <colgroup>
+          <col width="33%" />
+          <col width="33%" />
+          <col width="33%" />
+        </colgroup>
+      ) : null}
 
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
