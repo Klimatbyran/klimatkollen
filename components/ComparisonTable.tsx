@@ -67,7 +67,7 @@ const TableHeader = styled.th`
     border-bottom-right-radius: 8px;
   }
 
-  @media only screen and (min-width: 375px) {
+  @media only screen and (${devices.smallMobile}) {
     padding: 12px 6px;
   }
 
