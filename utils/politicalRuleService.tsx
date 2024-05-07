@@ -2,7 +2,7 @@
 // Fixme revisit when there's time
 import RawPoliticalRule from '../data/facts/political/RawPoliticalRule'
 
-export class PolitycalRuleService {
+export class PoliticalRuleService {
   public getPoliticalRule(municipalityName: string) : Array<string> {
     const rawMunicipality = RawPoliticalRule
       .find((rawPM: any) => rawPM.kommun.toLowerCase() === `${municipalityName.toLowerCase()} kommun`
