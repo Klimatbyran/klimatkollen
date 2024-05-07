@@ -81,15 +81,24 @@ function PillSwitch({ onToggle }: PillSwitchProps) {
     onToggle(newIsActive)
   }
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      handleToggle()
+    }
+  }
+
   return (
-    <SwitchLabel>
+    <SwitchLabel onKeyDown={handleKeyDown} tabIndex={0} aria-label="Toggle between Företag and Kommuner">
       <TextLeft>Företag</TextLeft>
       <TextRight>Kommuner</TextRight>
       <Slider isActive={isActive} />
       <SwitchInput
         type="checkbox"
+        role="switch"
+        aria-checked={isActive}
         checked={isActive}
         onClick={handleToggle}
+        readOnly
       />
     </SwitchLabel>
   )
