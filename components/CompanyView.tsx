@@ -66,6 +66,31 @@ const FloatingH5 = styled(H5Regular)`
   }
 `
 
+const Details = styled.div`
+  display: grid;
+  padding: 0px 6px 8px;
+
+  @media only screen and (${devices.tablet}) {
+    padding: 0 12px 16px;
+  }
+`
+
+const DetailsHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  @media only screen and (${devices.tablet}) {
+    padding-bottom: 1rem;
+  }
+
+  p {
+    font-style: italic;
+    color: gray;
+  }
+`
+
 type CompanyViewProps = {
   companies: Array<Company>
 }
@@ -84,7 +109,26 @@ function CompanyView({
           <FloatingH5>Företagens utsläpp för 2023</FloatingH5>
         </TitleContainer>
         <ComparisonContainer>
-          <ComparisonTable data={companies} columns={cols} />
+          <ComparisonTable
+            data={companies}
+            columns={cols}
+            dataType="companies"
+            renderSubComponent={({ row }) => {
+              const company = row.original
+              return (
+                <Details>
+                  <DetailsHeader>
+                    <p>
+                      {t('common:comment')}
+                      :
+                    </p>
+                    <a href={company.Url} target="_blank" rel="noopener noreferrer">Läs rapporten</a>
+                  </DetailsHeader>
+                  <p>{company.Comment}</p>
+                </Details>
+              )
+            }}
+          />
         </ComparisonContainer>
         <InfoText>
           <Paragraph>Lorem</Paragraph>
