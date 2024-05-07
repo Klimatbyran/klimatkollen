@@ -4,17 +4,20 @@ import { useEffect } from 'react'
 import { ParsedUrlQuery } from 'querystring'
 import { CHARTS } from './[step]'
 
+const municipalityRoute = (name: string) => `/kommun/${encodeURIComponent(name)}/${CHARTS[1]}`
+
 export default function Index() {
   const router = useRouter()
   const municipality = router.query.municipality as string
 
   useEffect(() => {
     if (municipality) {
-      router.replace(`/kommun/${municipality}/${CHARTS[0]}`)
+      const decodedName = decodeURIComponent(municipality)
+      router.replace(municipalityRoute(decodedName))
     }
   }, [municipality, router])
 
-  return ''
+  return null
 }
 
 interface Params extends ParsedUrlQuery {
@@ -24,9 +27,11 @@ interface Params extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const id = (params as Params).municipality as string
 
+  const decodedId = decodeURIComponent(id)
+
   return {
     redirect: {
-      destination: `/kommun/${id}/framtida-prognos`,
+      destination: municipalityRoute(decodedId),
       permanent: true,
     },
   }

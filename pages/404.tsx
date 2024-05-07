@@ -3,15 +3,10 @@ import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps } from 'next'
-import { H1 } from '../components/Typography'
 
-const Wrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-`
+import { H1 } from '../components/Typography'
+import Layout from '../components/Layout'
+import PageWrapper from '../components/PageWrapper'
 
 const Button = styled.button`
   height: 56px;
@@ -35,10 +30,12 @@ function FourOhFour() {
   const { t } = useTranslation()
 
   return (
-    <Wrapper>
-      <H1>{t('common:errors.notFound')}</H1>
-      <Button onClick={handleClick}>{t('common:actions.goHome')}</Button>
-    </Wrapper>
+    <Layout>
+      <PageWrapper backgroundColor="black">
+        <H1>{t('common:errors.notFound')}</H1>
+        <Button onClick={handleClick}>{t('common:actions.goHome')}</Button>
+      </PageWrapper>
+    </Layout>
   )
 }
 
