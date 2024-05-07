@@ -141,7 +141,7 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
   }
 
   return (
-    <Container>
+    <Container id="newsletter">
       <H5>{t('footer.signup-form.title')}</H5>
       <HorizontalContainer>
         <div>
