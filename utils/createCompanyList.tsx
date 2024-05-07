@@ -18,7 +18,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
   return [
     {
       header: 'Företag',
-      cell: (row) => row.cell.row.original,
+      cell: (row) => row.cell.row.original.Name,
       accessorKey: 'Name',
     },
     {
