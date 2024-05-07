@@ -13,21 +13,7 @@ const formatter = new Intl.NumberFormat('sv-SV', { maximumFractionDigits: 0 })
 export const companyColumns = (): ColumnDef<Company>[] => [
   {
     header: 'Företag',
-    cell: (row) => {
-      const company = row.cell.row.original
-      return company.Url ? (
-        <a
-          href={company.Url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ cursor: 'pointer' }}
-        >
-          {company.Name}
-        </a>
-      ) : (
-        <span>{company.Name}</span>
-      )
-    },
+    cell: (row) => row.cell.row.original.Name,
     accessorKey: 'Name',
   },
   {
