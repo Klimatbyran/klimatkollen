@@ -50,11 +50,12 @@ const TableData = styled.td`
 `
 
 const TableHeader = styled.th`
-  padding: 12px 6px;
+  padding: 8px 6px;
   font-weight: bold;
   text-align: left;
   cursor: pointer;
   background: ${({ theme }) => theme.black};
+  font-size: 0.75rem;
 
   &:first-child {
     border-top-left-radius: 8px;
@@ -66,7 +67,12 @@ const TableHeader = styled.th`
     border-bottom-right-radius: 8px;
   }
 
+  @media only screen and (min-width: 375px) {
+    padding: 12px 6px;
+  }
+
   @media only screen and (${devices.tablet}) {
+    font-size: 0.875rem;
     padding: 16px 8px 16px 12px;
   }
 `
