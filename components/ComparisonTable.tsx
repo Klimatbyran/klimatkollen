@@ -47,6 +47,10 @@ const TableData = styled.td`
   @media only screen and (${devices.tablet}) {
     padding: 16px;
   }
+
+  &:not(.data-column) {
+    overflow-wrap: break-word;
+  }
 `
 
 const TableHeader = styled.th`
