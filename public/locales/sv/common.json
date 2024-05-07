@@ -16,6 +16,9 @@
       "jobs": "Jobb",
       "menu": "Meny",
       "method": "Källor och metod"
+    },
+    "PillSwitch": {
+      "label": "Välj mellan företags- och geografisk data"
     }
   },
   "cookieBanner": "Denna sida använder cookies för att förbättra användarupplevelsen.",
