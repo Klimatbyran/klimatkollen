@@ -91,8 +91,6 @@ function CompanyView({
                 <code style={{ whiteSpace: 'break-spaces' }}>{JSON.stringify(row.original, null, 2)}</code>
               </pre>
             )}
-            // TODO: since we want every row to expand, maybe we don't need this function?
-            getRowCanExpand={() => true}
           />
         </ComparisonContainer>
         <InfoText>

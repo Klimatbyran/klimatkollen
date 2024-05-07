@@ -83,7 +83,6 @@ type TableProps<T extends object> = {
   // IDEA: It might be better to turn ComparisionTable into two specific components, one for every use case
   dataType?: 'municipalities' | 'companies'
   renderSubComponent?: ({ row }: { row: Row<T> }) => JSX.Element
-  getRowCanExpand?: (row: Row<T>) => boolean
 }
 
 function ComparisonTable<T extends object>({
@@ -92,7 +91,6 @@ function ComparisonTable<T extends object>({
   routeString,
   dataType = 'municipalities',
   renderSubComponent,
-  getRowCanExpand,
 }: TableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const router = useRouter()
@@ -114,7 +112,6 @@ function ComparisonTable<T extends object>({
     state: { sorting },
     onSortingChange: setSorting,
     enableExpanding,
-    getRowCanExpand,
     // onExpandedChange: (updater) => {
     //   console.log('onExpandedChange companies expand toggle')
     //   const newExpanded = typeof updater === 'function' ? updater(expanded) : updater
