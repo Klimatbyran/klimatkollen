@@ -121,7 +121,7 @@ function CompanyView({
                     <p>Kommentar:</p>
                     <a href={company.Url} target="_blank" rel="noopener noreferrer">Läs rapporten</a>
                   </DetailsHeader>
-                  <p>{company.Comment.trim()}</p>
+                  <p>{company.Comment}</p>
                 </Details>
               )
             }}
