@@ -102,6 +102,14 @@ function ComparisonTable<T extends object>({
 
   const enableExpanding = typeof renderSubComponent === 'function'
 
+  const isDataColumn = (index: number) => {
+    if (dataType === 'companies') {
+      return index > 0
+    }
+
+    return index > 1
+  }
+
   const table = useReactTable({
     data,
     columns,
@@ -133,7 +141,7 @@ function ComparisonTable<T extends object>({
       <TableHeader
         key={header.id}
         colSpan={header.colSpan}
-        className={header.index > 1 ? 'data-header' : ''}
+        className={isDataColumn(header.index) ? 'data-header' : ''}
         id={index === 0 ? 'first-header' : lastOrMiddleHeader}
         onClick={header.column.getToggleSortingHandler()}
         onKeyDown={header.column.getToggleSortingHandler()}
@@ -145,7 +153,13 @@ function ComparisonTable<T extends object>({
 
   return (
     <StyledTable key={resizeCount}>
-      {/* TODO: prevent table headers from changing size when toggling table rows */}
+      {/* HACK: prevent table headers from changing size when toggling table rows. Not sure what causes the problem, but this fixes it. */}
+      <colgroup>
+        <col width="33%" />
+        <col width="33%" />
+        <col width="33%" />
+      </colgroup>
+
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
@@ -164,14 +178,14 @@ function ComparisonTable<T extends object>({
                 interactive={enableExpanding || routeString !== undefined}
                 showBorder={enableExpanding ? !isRowExpanded : true}
               >
-                {row.getVisibleCells().map((cell, columnIndex) => (
-                  <TableData key={cell.id} className={columnIndex > 1 ? 'data-column' : ''}>
+                {row.getVisibleCells().map((cell, index) => (
+                  <TableData key={cell.id} className={isDataColumn(index) ? 'data-column' : ''}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableData>
                 ))}
               </TableRow>
               {isRowExpanded && (
-                <TableRow showBorder={isRowExpanded}>
+                <TableRow showBorder>
                   <td colSpan={row.getVisibleCells().length}>
                     {renderSubComponent({ row })}
                   </td>
