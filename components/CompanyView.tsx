@@ -65,6 +65,23 @@ const FloatingH5 = styled(H5Regular)`
   }
 `
 
+const Details = styled.div`
+  display: grid;
+  padding: 0px 6px 8px;
+`
+
+const DetailsHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  p {
+    font-style: italic;
+    color: gray;
+  }
+`
+
 type CompanyViewProps = {
   companies: Array<Company>
 }
@@ -86,11 +103,18 @@ function CompanyView({
             data={companies}
             columns={cols}
             dataType="companies"
-            renderSubComponent={({ row }) => (
-              <pre style={{ fontSize: '10px' }}>
-                <code style={{ whiteSpace: 'break-spaces' }}>{JSON.stringify(row.original, null, 2)}</code>
-              </pre>
-            )}
+            renderSubComponent={({ row }) => {
+              const company = row.original
+              return (
+                <Details>
+                  <DetailsHeader>
+                    <p>Kommentar:</p>
+                    <a href={company.Url} target="_blank" rel="noopener noreferrer">Läs rapporten</a>
+                  </DetailsHeader>
+                  <p>{company.Comment.trim()}</p>
+                </Details>
+              )
+            }}
           />
         </ComparisonContainer>
         <InfoText>
