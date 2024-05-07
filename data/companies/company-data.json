@@ -30,8 +30,8 @@
   {
     "Company": "Addnode",
     "URL": "https://www.addnodegroup.com/wp-content/uploads/Addnode-Group_2023_ENG.pdf",
-    "Scope1n2": "n.a",
-    "Scope3": "n.a",
+    "Scope1n2": null,
+    "Scope3": null,
     "Comment": "Addnode rapporterar inte utsl\u00e4pp av v\u00e4xthusgaser."
   },
   {
@@ -66,7 +66,7 @@
     "Company": "Alleima",
     "URL": "https://www.alleima.com/siteassets/documents/ir/ar-2023/alleima-annual-report-2023.pdf",
     "Scope1n2": 96000,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Alleima redovisar inga utsl\u00e4pp i Scope 3."
   },
   {
@@ -191,15 +191,15 @@
   {
     "Company": "Biotage",
     "URL": "https://storage.mfn.se/371b0d79-86e0-4acd-b624-5723d9261980/cs3-5-eng-biotage-annual-report-2023.pdf",
-    "Scope1n2": "n.a",
-    "Scope3": "n.a",
+    "Scope1n2": null,
+    "Scope3": null,
     "Comment": "Biotage rapporterar inte utsl\u00e4pp av v\u00e4xthusgaser."
   },
   {
     "Company": "Boliden",
     "URL": "https://investors.boliden.com/sites/boliden-ir/files/pr/202403050636-1.pdf",
     "Scope1n2": 842000,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Det \u00e4r oklart om Boliden anv\u00e4nder marknadsbaserad eller platsbaserad ber\u00e4kningsmetod f\u00f6r Scope 2. Siffror f\u00f6r utsl\u00e4pp inom scope 3 kommer att redovisas fr\u00e5n och med 2024."
   },
   {
@@ -254,8 +254,8 @@
   {
     "Company": "Creades",
     "URL": "https://www.creades.se/media/qlmf5oux/creades_ar_2023_12mars_locked.pdf",
-    "Scope1n2": "n.a",
-    "Scope3": "n.a",
+    "Scope1n2": null,
+    "Scope3": null,
     "Comment": "Creades rapporterar inte utsl\u00e4pp av v\u00e4xthusgaser."
   },
   {
@@ -276,14 +276,14 @@
     "Company": "Electrolux Group",
     "URL": "https://www.electroluxgroup.com/wp-content/uploads/sites/2/2024/03/sustainability-report-2023.pdf",
     "Scope1n2": 69000,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Electrolux Professional anger inte om det \u00e4r marknadsbaserad eller platsbaserad ber\u00e4kningsmetod som anv\u00e4nds i Scope 2. G\u00e4llande Scope 3 g\u00f6rs en referens till utsl\u00e4pp i kategorin Anv\u00e4ndning av s\u00e5lda produkter (11), men inga v\u00e4rden publiceras i h\u00e5llbarhetsrapporten."
   },
   {
     "Company": "Electrolux Professional",
     "URL": "https://www.electroluxprofessional.com/corporate/wp-content/uploads/2019/11/wkr0006-307.pdf",
     "Scope1n2": 4250,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Electrolux Professional anger inte om det \u00e4r marknadsbaserad eller platsbaserad ber\u00e4kningsmetod som anv\u00e4nds i Scope 2. Utsl\u00e4pp fr\u00e5n Scope 3 har inte publicerats \u00e4nnu f\u00f6r \u00e5r 2023."
   },
   {
@@ -318,7 +318,7 @@
     "Company": "Essity",
     "URL": "https://masdpstatic.azureedge.net/essity/Essity_AR_ENG_2023.pdf",
     "Scope1n2": 2245000,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Essity redovisar inte utsl\u00e4pp i Scope 3 f\u00f6r \u00e5r 2023. Utsl\u00e4ppen i Scope 2 redovisas med platsbaserad ber\u00e4kningsmetod."
   },
   {
@@ -367,7 +367,7 @@
     "Company": "Getinge",
     "URL": "https://www.getinge.com/dam/corporate/documents/investors/annual-reports/english/getinge-annual-report-2023-en-global.pdf",
     "Scope1n2": 4509,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Getinge redovisar inte utsl\u00e4pp i Scope 3 i sin h\u00e5llbarhetsrapport. Dessa har ber\u00e4knats och kommer publiceras p\u00e5 hemsidan under 2024, enligt k\u00e4llan."
   },
   {
@@ -458,21 +458,21 @@
     "Company": "Indutrade",
     "URL": "https://www.indutrade.com/contentassets/01748e414d174273911c3ba75aeed4c5/indutrades-annual-report-and-sustainability-report-2023.pdf",
     "Scope1n2": 17737,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Indutrade redovisar inte utsl\u00e4pp i Scope 3 i sin h\u00e5llbarhetsrapport."
   },
   {
     "Company": "Infranord",
     "URL": "https://www.infranord.se/media/5zpoa0yg/infranord_a-r23.pdf",
     "Scope1n2": 7890,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Infranord redovisar inga utsl\u00e4pp i Scope 3."
   },
   {
     "Company": "Instalco",
     "URL": "https://instalco.se/media/2labqz2y/eng-hallbarhetsrapport_2023.pdf",
-    "Scope1n2": "n.a",
-    "Scope3": "n.a",
+    "Scope1n2": null,
+    "Scope3": null,
     "Comment": "Instalco rapporterar inte utsl\u00e4pp av v\u00e4xthusgaser."
   },
   {
@@ -556,14 +556,14 @@
     "Company": "LKAB",
     "URL": "https://lkab.com/wp-content/uploads/2024/03/LKAB_2023_ars-och-hallbarhetsredovisning.pdf",
     "Scope1n2": 645300,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "LKAB redovisar inte utsl\u00e4pp i Scope 3."
   },
   {
     "Company": "Loomis",
     "URL": "https://www.loomis.com/sites/loomis-corp/files/documents/Loomis_%C3%85rs_och_h%C3%A5llbarhetsredovisning_2023.pdf",
     "Scope1n2": 155225,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Loomis redovisar inte utsl\u00e4pp i Scope 3."
   },
   {
@@ -584,7 +584,7 @@
     "Company": "Lundin Mining Corporation",
     "URL": null,
     "Scope1n2": 858117,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Lundin mining redovisar inte utsl\u00e4pp i Scope 3."
   },
   {
@@ -731,7 +731,7 @@
     "Company": "Ratos",
     "URL": "https://www.ratos.com/493418/globalassets/reports-and-presentation/2023/swedish/2023_ar.pdf",
     "Scope1n2": 1396235,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Ratos redovisar inte utsl\u00e4pp i Scope 3."
   },
   {
@@ -773,14 +773,14 @@
     "Company": "Sandvik",
     "URL": "https://mb.cision.com/Main/208/3943609/2664675.pdf",
     "Scope1n2": 141000,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Sandvik redovisar utsl\u00e4pp i Scope 3 med ett \u00e5rs lagg, endast 2022 \u00e5rs data \u00e4r tillg\u00e4nglig."
   },
   {
     "Company": "SAS",
     "URL": "https://mb.cision.com/Main/290/3923241/2586471.pdf",
     "Scope1n2": 3098100,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "SAS redovisar inte utsl\u00e4pp i Scope 3."
   },
   {
@@ -828,8 +828,8 @@
   {
     "Company": "SJ",
     "URL": "https://www.sj.se/content/dam/externt/dokument/finansiell-info/sjab-ars-och-hallbarhetsredovisning-2023.pdf",
-    "Scope1n2": "n.a",
-    "Scope3": "n.a",
+    "Scope1n2": null,
+    "Scope3": null,
     "Comment": "SJ rapporterar inte utsl\u00e4pp av v\u00e4xthusgaser."
   },
   {
@@ -857,7 +857,7 @@
     "Company": "SSAB",
     "URL": "https://mb.cision.com/Public/980/3947344/99d2b4a9f24f12eb.pdf",
     "Scope1n2": 11072000,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "SSAB redovisar inte utsl\u00e4pp i Scope 3 f\u00f6r \u00e5r 2023."
   },
   {
@@ -871,7 +871,7 @@
     "Company": "Storskogen Group",
     "URL": "https://www.storskogen.com/files/Main/20705/3956347/storskogen-annual-and-sustainability-report-2023.pdf",
     "Scope1n2": 43838,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Storskogen redovisar inte utsl\u00e4pp i Scope 3 i h\u00e5llbarhetsrapporten."
   },
   {
@@ -912,8 +912,8 @@
   {
     "Company": "Swedavia",
     "URL": "https://www.swedavia.se/globalassets/ahr/2024/swedavia-ars--och-hallbarhetsrapport-2023.pdf",
-    "Scope1n2": "n.a",
-    "Scope3": "n.a",
+    "Scope1n2": null,
+    "Scope3": null,
     "Comment": "Swedavia redovisar inte utsl\u00e4pp av v\u00e4xthusgaser i linje med GHG-protokollet. I st\u00e4llet rapporteras CO2 per flygplats."
   },
   {
@@ -962,7 +962,7 @@
     "Company": "Telia Company",
     "URL": "https://www.teliacompany.com/assets/u5c1v3pt22v8/sdSKIw4u0YrvJ6N6vxNQ7/be433e3cafff2977019af4ee67908e72/telia-company-ars-och-hallbarhetsredovisning-2023.pdf",
     "Scope1n2": 8627,
-    "Scope3": "n.a",
+    "Scope3": null,
     "Comment": "Telia Company redovisar inte utsl\u00e4pp i Scope 3 f\u00f6r 2023."
   },
   {
@@ -982,8 +982,8 @@
   {
     "Company": "Traton",
     "URL": "https://annualreport.traton.com/2023/assets/downloads/traton-annual-report-2023.pdf",
-    "Scope1n2": "n.a",
-    "Scope3": "n.a",
+    "Scope1n2": null,
+    "Scope3": null,
     "Comment": "Traton rapporterar inte utsl\u00e4pp av v\u00e4xthusgaser."
   },
   {
