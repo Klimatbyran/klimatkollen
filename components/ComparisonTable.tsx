@@ -68,9 +68,10 @@ const TableHeader = styled.th`
   }
 `
 
-const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean }>`
+const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpanded?: boolean }>`
   border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.midGreen}` : '')};
   cursor: ${({ interactive }) => (interactive ? 'pointer' : '')};
+  background: ${({ isExpanded, theme }) => (isExpanded ? `${theme.black}88` : '')};
 `
 
 type TableProps<T extends object> = {
@@ -177,6 +178,7 @@ function ComparisonTable<T extends object>({
                 onClick={() => handleRowClick(row)}
                 interactive={enableExpanding || routeString !== undefined}
                 showBorder={enableExpanding ? !isRowExpanded : true}
+                isExpanded={isRowExpanded}
               >
                 {row.getVisibleCells().map((cell, index) => (
                   <TableData key={cell.id} className={isDataColumn(index) ? 'data-column' : ''}>

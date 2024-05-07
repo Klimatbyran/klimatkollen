@@ -68,10 +68,10 @@ const FloatingH5 = styled(H5Regular)`
 
 const Details = styled.div`
   display: grid;
-  padding: 0px 6px 8px;
+  padding: 0 6px 8px;
 
   @media only screen and (${devices.tablet}) {
-    padding: 0 12px 16px;
+    padding: 8px 12px 16px;
   }
 `
 
@@ -79,15 +79,19 @@ const DetailsHeader = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
-  padding-bottom: 0.5rem;
-
-  @media only screen and (${devices.tablet}) {
-    padding-bottom: 1rem;
-  }
 
   p {
     font-style: italic;
     color: gray;
+    padding-top: 0.5rem;
+  }
+
+  a {
+    padding: 0.5rem 0;
+  }
+
+  @media only screen and (${devices.tablet}) {
+    padding-bottom: 0.5rem;
   }
 `
 
