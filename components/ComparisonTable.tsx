@@ -93,7 +93,6 @@ function ComparisonTable<T extends object>({
   const router = useRouter()
 
   const [resizeCount, setResizeCount] = useState(0)
-  // const [expanded, setExpanded] = useState<ExpandedState>({})
 
   useEffect(() => {
     const handleResize = () => setResizeCount((count) => count + 1)
@@ -109,11 +108,6 @@ function ComparisonTable<T extends object>({
     state: { sorting },
     onSortingChange: setSorting,
     enableExpanding,
-    // onExpandedChange: (updater) => {
-    //   console.log('onExpandedChange companies expand toggle')
-    //   const newExpanded = typeof updater === 'function' ? updater(expanded) : updater
-    //   setExpanded(newExpanded)
-    // },
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
@@ -129,16 +123,6 @@ function ComparisonTable<T extends object>({
       }
     } else if (dataType === 'companies') {
       row.toggleExpanded()
-
-      // TODO: Maybe we can reuse this in many places?
-      // const handleToggle = row.getToggleExpandedHandler()
-      // handleToggle()
-
-      // console.log('onClick companies expand toggle')
-      // toggle expanded state for the selected row
-      // const newExpanded = !expanded
-      // row.toggleExpanded(newExpanded)
-      // setExpanded(newExpanded)
     }
   }
 
