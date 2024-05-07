@@ -53,6 +53,17 @@ const StyledForm = styled.form`
   flex-grow: 1;
 `
 
+const VisuallyHiddenLabel = styled.label`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+`
+
 const StyledInput = styled.input`
   background: ${({ theme }) => theme.darkGreenOne};
   border: none;
@@ -144,6 +155,7 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
               <EmailValidation>{t('footer.signup-form.thanks')}</EmailValidation>
             ) : (
               <>
+                <VisuallyHiddenLabel htmlFor="signup">{t('footer.signup-form.label')}</VisuallyHiddenLabel>
                 <StyledInput
                   onChange={(event) => setEmail(event.target.value)}
                   type="email"
