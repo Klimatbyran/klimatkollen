@@ -106,6 +106,7 @@
     "open-source": "öppen källkod",
     "partners": "Partners",
     "signup-form": {
+      "label": "Prenumerera på vårt nyhetsbrev",
       "info": "Med vårt nyhetsbrev får du uppdateringar om hur det går med utsläppen och omställningen direkt i din mejl.",
       "placeholder": "Ange mailadress",
       "thanks": "Tack för ditt intresse!",
