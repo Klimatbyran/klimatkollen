@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { ColumnDef } from '@tanstack/react-table'
+import { ColumnDef, Row } from '@tanstack/react-table'
 import { TFunction } from 'i18next'
 
 import { Company } from './types'
@@ -11,6 +11,34 @@ const ScopeColumn = styled.span<{ isMissing: boolean }>`
 `
 
 const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 0 })
+
+const getCustomSortFn = ({
+  stringsOnTop = false,
+  sortAscending = false,
+  scope = 'Scope1n2',
+}: {
+  stringsOnTop?: boolean,
+  sortAscending?: boolean,
+  scope?: keyof Company['Emissions'],
+} = {}) => (rowA: Row<Company>, rowB: Row<Company>) => {
+  const a = rowA.original.Emissions[scope]
+  const b = rowB.original.Emissions[scope]
+
+  // Handle NaN values
+  const aIsNaN = Number.isNaN(a)
+  const bIsNaN = Number.isNaN(b)
+  if (aIsNaN && bIsNaN) {
+    return 0
+  }
+  if (aIsNaN || bIsNaN) {
+    // eslint-disable-next-line no-nested-ternary
+    return stringsOnTop ? (aIsNaN ? -1 : 1) : (aIsNaN ? 1 : -1)
+  }
+
+  // Sort non-NaN values normally
+  // @ts-expect-error treat Date objects as numbers since they can be compared like numbers.
+  return sortAscending ? a - b : b - a
+}
 
 export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
   const notReported = t('common:notReported')
@@ -37,6 +65,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
           </ScopeColumn>
         )
       },
+      sortingFn: getCustomSortFn({ scope: 'Scope1n2' }),
       accessorKey: 'Emissions.Scope1n2',
     },
     {
@@ -55,6 +84,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
           </ScopeColumn>
         )
       },
+      sortingFn: getCustomSortFn({ scope: 'Scope3' }),
       accessorKey: 'Emissions.Scope3',
     },
   ]
