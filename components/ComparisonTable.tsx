@@ -8,7 +8,6 @@ import {
   SortingState,
   getSortedRowModel,
   Row,
-  Header,
   getExpandedRowModel,
 } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
@@ -25,16 +24,6 @@ const StyledTable = styled.table`
     font-size: 0.8em;
   }
 
-  #first-header {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-
-  #third-header {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-
   .data-header {
     text-align: right;
   }
@@ -42,6 +31,12 @@ const StyledTable = styled.table`
   .data-column {
     color: ${({ theme }) => theme.darkYellow};
     text-align: right;
+  }
+
+  thead {
+    background: ${({ theme }) => theme.lightBlack};
+    position: sticky;
+    top: 0;
   }
 `
 
@@ -56,12 +51,20 @@ const TableData = styled.td`
 
 const TableHeader = styled.th`
   padding: 12px 6px;
-  background: ${({ theme }) => theme.black};
-  position: sticky;
-  top: 0;
   font-weight: bold;
   text-align: left;
   cursor: pointer;
+  background: ${({ theme }) => theme.black};
+
+  &:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
 
   @media only screen and (${devices.tablet}) {
     padding: 16px 8px 16px 12px;
@@ -135,23 +138,6 @@ function ComparisonTable<T extends object>({
     }
   }
 
-  const renderHeader = (header: Header<T, unknown>, index: number) => {
-    const lastOrMiddleHeader = index === header.headerGroup.headers.length - 1 ? 'third-header' : 'second-header'
-
-    return (
-      <TableHeader
-        key={header.id}
-        colSpan={header.colSpan}
-        className={isDataColumn(header.index) ? 'data-header' : ''}
-        id={index === 0 ? 'first-header' : lastOrMiddleHeader}
-        onClick={header.column.getToggleSortingHandler()}
-        onKeyDown={header.column.getToggleSortingHandler()}
-      >
-        {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-      </TableHeader>
-    )
-  }
-
   return (
     <StyledTable key={resizeCount}>
       {/* HACK: prevent table headers from changing size when toggling table rows. Not sure what causes the problem, but this fixes it. */}
@@ -164,7 +150,17 @@ function ComparisonTable<T extends object>({
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header, index) => renderHeader(header, index))}
+            {headerGroup.headers.map((header) => (
+              <TableHeader
+                key={header.id}
+                colSpan={header.colSpan}
+                className={isDataColumn(header.index) ? 'data-header' : ''}
+                onClick={header.column.getToggleSortingHandler()}
+                onKeyDown={header.column.getToggleSortingHandler()}
+              >
+                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+              </TableHeader>
+            ))}
           </tr>
         ))}
       </thead>
