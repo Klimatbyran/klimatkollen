@@ -10,7 +10,7 @@ const ScopeColumn = styled.span<{ isMissing: boolean }>`
   font-style: ${({ isMissing }) => (isMissing ? 'italic' : 'normal')};
 `
 
-const formatter = new Intl.NumberFormat('sv-SV', { maximumFractionDigits: 0 })
+const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 0 })
 
 export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
   const notReported = t('common:notReported')
