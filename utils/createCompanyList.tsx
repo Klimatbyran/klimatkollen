@@ -18,21 +18,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
   return [
     {
       header: 'Företag',
-      cell: (row) => {
-        const company = row.cell.row.original
-        return company.Url ? (
-          <a
-            href={company.Url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ cursor: 'pointer' }}
-          >
-            {company.Name}
-          </a>
-        ) : (
-          <span>{company.Name}</span>
-        )
-      },
+      cell: (row) => row.cell.row.original,
       accessorKey: 'Name',
     },
     {
