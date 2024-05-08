@@ -45,6 +45,7 @@ const StyledParagraph = styled(Paragraph)`
 
 const StyledForm = styled.form`
   display: flex;
+  gap: 0.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
   justify-content: space-between;
@@ -71,6 +72,7 @@ const StyledInput = styled.input`
   font-size: 16px;
   font-family: 'Borna';
   width: 100%;
+  padding: 0.5rem;
 
   ::placeholder,
   ::-webkit-input-placeholder {
@@ -90,6 +92,7 @@ const ArrowButton = styled.button`
   border: none;
   right: 0;
   cursor: pointer;
+  padding: 0.25rem;
 `
 
 const EmailValidation = styled.div`
@@ -141,25 +144,25 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
   }
 
   return (
-    <Container>
-      <H5>{t('footer.signup-form.title')}</H5>
+    <Container id="newsletter">
+      <H5>{t('common:footer.signup-form.title')}</H5>
       <HorizontalContainer>
         <div>
           <StyledParagraph>
-            {t('footer.signup-form.info')}
+            {t('common:footer.signup-form.info')}
           </StyledParagraph>
         </div>
         <div>
           <StyledForm onSubmit={handleFormSubmit}>
             {showThanks ? (
-              <EmailValidation>{t('footer.signup-form.thanks')}</EmailValidation>
+              <EmailValidation>{t('common:footer.signup-form.thanks')}</EmailValidation>
             ) : (
               <>
-                <VisuallyHiddenLabel htmlFor="signup">{t('footer.signup-form.label')}</VisuallyHiddenLabel>
+                <VisuallyHiddenLabel htmlFor="signup">{t('common:footer.signup-form.label')}</VisuallyHiddenLabel>
                 <StyledInput
                   onChange={(event) => setEmail(event.target.value)}
                   type="email"
-                  placeholder={t('footer.signup-form.placeholder')}
+                  placeholder={t('common:footer.signup-form.placeholder')}
                   value={email}
                   required
                   disabled={showThanks}
