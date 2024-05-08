@@ -229,8 +229,11 @@ function Map({
     filled: true,
     extruded: false,
     wireframe: false,
+    lineWidthUnits: "common",
     lineJointRounded: true,
     getElevation: 0,
+    lineWidthMaxPixels: 4,
+    lineWidthMinPixels: 0.05,
     getPolygon: (k: any) => k.geometry,
     getLineColor: (item) => {
       if (hoveredItem && item?.name === hoveredItem?.name) {
@@ -241,9 +244,9 @@ function Map({
     },
     getLineWidth: (item) => {
       if (item?.name === hoveredItem?.name) {
-        return 5000
+        return 0.1
       } else {
-        return 500
+        return 0.01
       }
     },
     getFillColor: (d) => getColor((d as MunicipalityData).dataPoint, boundaries),
