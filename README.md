@@ -38,7 +38,7 @@ The project can also be run with docker (although with much slower refresh time)
 In very general terms, Klimatkollen presents:
 - Detailed information about Swedish municipalities' emissions...
 - ...and their remaining emission budget based on the Paris Agreement.
-- Other key point indicators for sustainability transition, such electric car charger density.
+- Other key point indicators for sustainability transition, such as electric car charger density.
 - Contextual information to help understand the significance of the above.
 
 # File overview
