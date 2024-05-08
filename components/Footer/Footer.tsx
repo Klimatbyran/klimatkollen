@@ -7,6 +7,7 @@ import PageWrapper from '../PageWrapper'
 import Partners from './FooterPartners'
 import SocialList from './FooterSocialLinks'
 import Supporters from './FooterSupporters'
+import Markdown from 'react-markdown'
 
 const Foot = styled.div`
   width: 100%;
@@ -99,9 +100,7 @@ function Footer() {
       <PageWrapper backgroundColor="midGreen">
         <BottomParent>
           <TextContainer>
-            <Paragraph>
-              {t('footer.tagline')}
-            </Paragraph>
+            <Paragraph>{t('footer.tagline')}</Paragraph>
             <Copyright>
               {t('footer.creative-commons.abbreviation')}
               {' - '}
@@ -113,17 +112,7 @@ function Footer() {
                 {t('footer.creative-commons.license')}
               </a>
             </Copyright>
-            <GHLink>
-              {t('footer.developedWith')}
-              {' '}
-              <a
-                href="https://github.com/Klimatbyran/klimatkollen"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t('footer.open-source')}
-              </a>
-            </GHLink>
+            <Markdown components={{ p: GHLink }}>{t('footer.developedWith')}</Markdown>
           </TextContainer>
           <HorizontalContainer>
             <SocialLinksContainer>

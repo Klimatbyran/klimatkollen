@@ -101,9 +101,8 @@
       "abbreviation": "CC BY-SA",
       "license": "Attribution-ShareAlike 4.0 International license"
     },
-    "developedWith": "Klimatkollen är utvecklad med",
+    "developedWith": "Klimatkollen är utvecklad med [öppen källkod](https://github.com/Klimatbyran/klimatkollen) och drivs av den ideella föreningen Klimatbyrån.",
     "email-us": "Maila oss",
-    "open-source": "öppen källkod",
     "partners": "Partners",
     "signup-form": {
       "label": "Prenumerera på vårt nyhetsbrev",
