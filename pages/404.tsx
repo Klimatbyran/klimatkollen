@@ -37,7 +37,6 @@ function FourOhFour() {
   }, [])
 
   useEffect(() => {
-    console.log("timeLeft", timeLeft)
     if (timeLeft <= 0) {
       router.push('/')
     }
@@ -48,7 +47,7 @@ function FourOhFour() {
     <Layout>
       <PageWrapper backgroundColor="black">
         <H1>{t('common:errors.notFound')}</H1>
-        <p>Går tillbaka till startskärmen om {timeLeft >= 0 ? timeLeft / 1000 : 0}...</p>
+        <p>{t('common:errors.notFoundSubtitle')} {timeLeft >= 0 ? timeLeft / 1000 : 0}...</p>
         <Button onClick={handleClick}>{t('common:actions.goHome')}</Button>
       </PageWrapper>
     </Layout>
