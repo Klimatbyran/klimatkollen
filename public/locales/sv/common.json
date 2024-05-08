@@ -97,10 +97,7 @@
     "notFound": "404 - Sidan hittades inte"
   },
   "footer": {
-    "creative-commons": {
-      "abbreviation": "CC BY-SA",
-      "license": "Attribution-ShareAlike 4.0 International license"
-    },
+    "license": "CC BY-SA [Attribution-ShareAlike 4.0 International license](http://creativecommons.org/licenses/by-sa/4.0/)",
     "developedWith": "Klimatkollen är utvecklad med [öppen källkod](https://github.com/Klimatbyran/klimatkollen) och drivs av den ideella föreningen Klimatbyrån.",
     "email-us": "Maila oss",
     "partners": "Partners",

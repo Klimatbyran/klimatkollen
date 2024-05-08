@@ -101,17 +101,7 @@ function Footer() {
         <BottomParent>
           <TextContainer>
             <Paragraph>{t('footer.tagline')}</Paragraph>
-            <Copyright>
-              {t('footer.creative-commons.abbreviation')}
-              {' - '}
-              <a
-                href="http://creativecommons.org/licenses/by-sa/4.0/"
-                target="_blank"
-                rel="noreferrer license"
-              >
-                {t('footer.creative-commons.license')}
-              </a>
-            </Copyright>
+            <Markdown components={{ p: Copyright }}>{t('footer.license')}</Markdown>
             <Markdown components={{ p: GHLink }}>{t('footer.developedWith')}</Markdown>
           </TextContainer>
           <HorizontalContainer>
