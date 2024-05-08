@@ -13,5 +13,8 @@ selected_df = selected_df.map(lambda x: x.strip() if isinstance(x, str) else x)
 # Rename the columns for clarity
 selected_df.columns = ['Company', 'URL', 'Scope1n2', 'Scope3', 'Comment']
 
+# Prefer null values to make it clear when data is missing
+selected_df.replace('n.a', None, inplace=True)
+
 # Write the DataFrame to a JSON file
 selected_df.to_json("company-data.json", orient="records")
