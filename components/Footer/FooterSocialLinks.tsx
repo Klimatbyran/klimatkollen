@@ -25,6 +25,9 @@ const ContactIcon = styled.img`
   height: 24px;
   width: 24px;
 `
+const DiscordIcon = styled.img`
+  margin-right: 16px;
+`
 
 const ContactLink = styled.a`
   text-decoration: none;
@@ -44,7 +47,7 @@ export function SocialListItem({
 }: SocialListItemProps): JSX.Element {
   return (
     <ContactListItem>
-      <ContactIcon src={icon} alt={alt} />
+      {text == "Discord" ? <DiscordIcon src={icon} alt={alt}/> : <ContactIcon src={icon} alt={alt} /> }
       <ContactLink href={link} target="_blank" rel="noreferrer">
         {text}
       </ContactLink>
