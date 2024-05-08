@@ -22,6 +22,8 @@ const ContactListItem = styled.li`
 
 const ContactIcon = styled.img`
   margin-right: 16px;
+  height: 24px;
+  width: 24px;
 `
 
 const ContactLink = styled.a`
@@ -87,6 +89,20 @@ function SocialList() {
         alt="Discord logo"
         link="https://discord.gg/FPX9yqYAmk"
         text="Discord"
+      />
+
+      <SocialListItem
+        icon="/icons/some/Facebook_Logo_Secondary.png"
+        alt="Facebook icon"
+        link="https://www.facebook.com/klimatkollen"
+        text="Facebook"
+      />
+
+      <SocialListItem
+        icon="/icons/some/Instagram_Glyph_Black.svg"
+        alt="Instagram icon"
+        link="https://instagram.com/klimatkollen.se"
+        text="Instagram"
       />
     </ContactList>
   )
