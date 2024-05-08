@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import router from 'next/router'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
@@ -28,11 +29,26 @@ function FourOhFour() {
   }
 
   const { t } = useTranslation()
+  const [timeLeft, setTimeLeft] = useState(9000)
+  useEffect(() => {
+    setInterval(() => {
+      setTimeLeft((prev) => prev - 1000)
+    }, 1000)
+  }, [])
+
+  useEffect(() => {
+    console.log("timeLeft", timeLeft)
+    if (timeLeft <= 0) {
+      router.push('/')
+    }
+
+  }, [timeLeft])
 
   return (
     <Layout>
       <PageWrapper backgroundColor="black">
         <H1>{t('common:errors.notFound')}</H1>
+        <p>Går tillbaka till startskärmen om {timeLeft >= 0 ? timeLeft / 1000 : 0}...</p>
         <Button onClick={handleClick}>{t('common:actions.goHome')}</Button>
       </PageWrapper>
     </Layout>
