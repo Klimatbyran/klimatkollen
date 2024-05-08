@@ -167,6 +167,13 @@ function Map({
     }))
   }
 
+  // stop map view from moving away from Sweden
+  const enforceMapBounds = ((viewState: any) => ({
+    ...viewState,
+    longitude: Math.min(24, Math.max(10, viewState.longitude)),
+    latitude: Math.min(70, Math.max(55, viewState.latitude)),
+  }))
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/api/map')
@@ -274,7 +281,10 @@ function Map({
           }
           router.push(`/kommun/${replaceLetters(mData.name).toLowerCase()}`)
         }}
-        onViewStateChange={() => setLastTapInfo(null)}
+        onViewStateChange={({ viewState }) => {
+          setLastTapInfo(null)
+          return enforceMapBounds(viewState)
+        }}
         layers={[municipalityLayer]}
       // FIXME needs to be adapted to mobile before reintroducing
       /* onViewStateChange={({ viewState }) => {
