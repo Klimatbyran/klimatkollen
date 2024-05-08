@@ -52,7 +52,7 @@ The toplevel directory contains a lot of files and folders. You can just ignore 
   - `doc/contributing.md`: Good to know before making your first contribution.
 - `pages` and `components`: Source code for almost everything visible on the website's pages.
 - `public`: Files that will be served directly on the website.
-  - `public/locales`: Language files defininig translations of the website.
+  - `public/locales`: Language files defining translations of the website.
 
 # Code architecture overview
 
