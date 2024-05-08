@@ -1,4 +1,4 @@
-import { CellContext, ColumnDef, Row } from '@tanstack/react-table'
+import { ColumnDef } from '@tanstack/react-table'
 import { TFunction } from 'next-i18next'
 
 import { Municipality, DatasetKey } from './types'
@@ -9,72 +9,40 @@ import {
 
 type RowData = {
   name: string
-  dataPoint: string | number | Date
+  dataPoint: string | number | Date | JSX.Element
   formattedDataPoint: string
   index: number
   climatePlanYearAdapted?: string
   procurementLink?: string
 }
 
-const getCustomSortFn = ({
-  stringsOnTop = false, sortAscending = false,
-}: {
-  stringsOnTop?: boolean, sortAscending?: boolean} = {}) => (a: RowData['dataPoint'], b: RowData['dataPoint']) => {
-  // Handle NaN values
-  const aIsNaN = Number.isNaN(a)
-  const bIsNaN = Number.isNaN(b)
-  if (aIsNaN && bIsNaN) {
-    return 0
-  }
-  if (aIsNaN || bIsNaN) {
-    // eslint-disable-next-line no-nested-ternary
-    return stringsOnTop ? (aIsNaN ? -1 : 1) : (aIsNaN ? 1 : -1)
-  }
-
-  // Sort non-NaN values normally
-  // @ts-expect-error treat Date objects as numbers since they can be compared like numbers.
-  return sortAscending ? a - b : b - a
-}
-
-const sortClimatePlans = (aVal: string, bVal: string) => {
-  const a = aVal === climatePlanMissing ? aVal : Number(aVal)
-  const b = bVal === climatePlanMissing ? bVal : Number(bVal)
-
-  // If both A and B are missing climate plans, then return 0
-  if (a === climatePlanMissing && b === climatePlanMissing) {
-    return 0
-  }
-
-  // If A is missing a climate plan, but B has one, then A should be after B, and we should return 1
-  if (a === climatePlanMissing && !Number.isNaN(b)) {
-    return 1
-  }
-
-  // If A has a climate plan, but B is missing one, then A should be before B, and we should return -1
-  if (!Number.isNaN(a) && b === climatePlanMissing) {
-    return -1
-  }
-
-  // If both A and B have climate plans, then we should compare the years when they were adopted
-  return (b as number) - (a as number)
-}
-
-const climatePlansSortingFn = (rowA: Row<RowData>, rowB: Row<RowData>) => (
-  sortClimatePlans(rowA.original.climatePlanYearAdapted!, rowB.original.climatePlanYearAdapted!)
-)
-
-export const calculateClimatePlanRankings = (data: Omit<RowData, 'index'>[]) => (
-  data
-    .map((item, i) => ({ ...item, index: i + 1 }))
-    .sort((rowA, rowB) => sortClimatePlans(rowA.climatePlanYearAdapted!, rowB.climatePlanYearAdapted!))
-)
+export const calculateClimatePlanRankings = (
+  data: Array<{ name: string; dataPoint: string | number | Date | JSX.Element; formattedDataPoint: string }>,
+) => data.map((item) => ({
+  ...item,
+  index: item.dataPoint === climatePlanMissing ? 1 : -1,
+}))
 
 export const calculateRankings = (
   data: Array<{ name: string; dataPoint: number; formattedDataPoint: string }>,
   sortAscending: boolean,
   stringsOnTop: boolean,
 ) => {
-  const customSort = getCustomSortFn({ sortAscending, stringsOnTop })
+  const customSort = (a: number, b: number) => {
+    // Handle NaN values
+    const aIsNaN = Number.isNaN(a)
+    const bIsNaN = Number.isNaN(b)
+    if (aIsNaN && bIsNaN) {
+      return 0
+    }
+    if (aIsNaN || bIsNaN) {
+      // eslint-disable-next-line no-nested-ternary
+      return stringsOnTop ? (aIsNaN ? -1 : 1) : (aIsNaN ? 1 : -1)
+    }
+
+    // Sort non-NaN values normally
+    return sortAscending ? a - b : b - a
+  }
 
   const sortedData = data.sort((a, b) => customSort(a.dataPoint, b.dataPoint))
   return sortedData.map((item, index) => ({
@@ -137,9 +105,8 @@ export const municipalityColumns = (
     return t('startPage:ranking')
   }
 
-  const firstColumnClimatePlans = (dataPoint: string) => (dataPoint === climatePlanMissing
-    ? t('common:no')
-    : (
+  const firstColumnClimatePlans = (index: number, dataPoint: string) => (index === -1
+    ? (
       <a
         href={dataPoint.toString()}
         onClick={(e) => e.stopPropagation()}
@@ -150,13 +117,14 @@ export const municipalityColumns = (
         {t('common:yes')}
       </a>
     )
+    : t('common:no')
   )
 
-  const getFirstColumnCell = (props: CellContext<RowData, unknown>) => {
-    const { index, dataPoint } = props.row.original
+  const getFirstColumnCell = (row: { row: { original: RowData } }) => {
+    const { index, dataPoint } = row.row.original
 
     if (isClimatePlan) {
-      return firstColumnClimatePlans(dataPoint as string)
+      return firstColumnClimatePlans(index, dataPoint as string)
     }
 
     if (isProcurement) {
@@ -166,13 +134,12 @@ export const municipalityColumns = (
     return index
   }
 
-  const getThirdColumnCell = (props: CellContext<RowData, unknown>) => {
+  const getThirdColumnCell = (row: { row: { original: RowData } }) => {
     const {
       dataPoint, formattedDataPoint, climatePlanYearAdapted, procurementLink,
-    } = props.row.original
+    } = row.row.original
 
     if (isClimatePlan) {
-      // NOTE: We might want to show missing climate plans with a gray text here, and use the orange text to only highight climatePlanYearAdapted
       return dataPoint !== climatePlanMissing
         ? climatePlanYearAdapted
         : climatePlanMissing
@@ -196,82 +163,21 @@ export const municipalityColumns = (
     return formattedDataPoint
   }
 
-  const getFirstColumnSortingFn = (datasetKey: DatasetKey) => {
-    if (datasetKey === 'klimatplanerna') {
-      return (rowA: Row<RowData>, rowB: Row<RowData>) => {
-        const aHasPlan = rowA.original.dataPoint !== climatePlanMissing
-        const bHasPlan = rowB.original.dataPoint !== climatePlanMissing
-
-        if (aHasPlan && !bHasPlan) {
-          return -1
-        }
-
-        if (!aHasPlan && bHasPlan) {
-          return 1
-        }
-
-        // If both either have plans or don't have plans, we don't need to re-order them.
-        return 0
-      }
-    }
-
-    // By default, use the standard @tanstack/table sorting functions.
-    return undefined
-  }
-
-  // TODO: Move these custom sorting functions to the dataset definitions instead and keep all config together
-  const getThirdColumnSortingFn = (datasetKey: DatasetKey) => {
-    if (datasetKey === 'klimatplanerna') {
-      return climatePlansSortingFn
-    }
-
-    let customSort: ReturnType<typeof getCustomSortFn> | undefined
-    // TODO: Get the params passed to getCustomSortFn() from config, rather than duplicating and hard coding sortAscending and stringsOnTop
-
-    if (datasetKey === 'koldioxidbudgetarna') {
-      customSort = getCustomSortFn({ stringsOnTop: true })
-    } else if (datasetKey === 'laddarna') {
-      customSort = getCustomSortFn({ sortAscending: true })
-    }
-
-    if (customSort) {
-      return (rowA: Row<RowData>, rowB: Row<RowData>) => customSort!(rowA.original.dataPoint, rowB.original.dataPoint)
-    }
-
-    // By default, use the standard @tanstack/table sorting functions.
-    return undefined
-  }
-
-  const firstColumnSortingFn = getFirstColumnSortingFn(selectedData)
-  const thirdColumnSortingFn = getThirdColumnSortingFn(selectedData)
-
   return [
     {
       header: getFirstColumnHeader(),
-      cell: getFirstColumnCell,
+      cell: (row) => getFirstColumnCell(row),
       accessorKey: 'index',
-
-      // NOTE: we can't pass an explicit prop sortingFn with the value undefined, since this crashes @tanstack/table when sorting the column
-      // This is due to a bug either in their implementation or in their TS definitions.
-      // The workaround is to only add the property when we actually need it.
-      ...(firstColumnSortingFn ? { sortingFn: firstColumnSortingFn } : {}),
     },
     {
       header: t('common:municipality'),
-      cell: (row) => row.renderValue(),
+      cell: (row: { renderValue: () => unknown }) => row.renderValue(),
       accessorKey: 'name',
     },
     {
       header: () => columnHeader,
-      cell: getThirdColumnCell,
+      cell: (row) => getThirdColumnCell(row),
       accessorKey: 'dataPoint',
-      // NOTE: if we need to sort other columns than the third, this would be better to keep in the dataset definitions.
-      // But for now, this is a quick and dirty hack
-
-      // NOTE: we can't pass an explicit prop sortingFn with the value undefined, since this crashes @tanstack/table when sorting the column
-      // This is due to a bug either in their implementation or in their TS definitions.
-      // The workaround is to only add the property when we actually need it.
-      ...(thirdColumnSortingFn ? { sortingFn: thirdColumnSortingFn } : {}),
     },
   ]
 }

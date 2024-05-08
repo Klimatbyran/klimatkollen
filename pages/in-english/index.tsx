@@ -15,7 +15,6 @@ import { Grid, GridImage, GridItem } from '../../components/shared'
 const Ola = '/team/ola.jpg'
 const Frida = '/team/frida.jpg'
 const Elvira = '/team/elvira.jpg'
-const Alex = '/team/alex.jpg'
 
 const Container = styled.section`
   display: flex;
@@ -158,27 +157,6 @@ function InEnglish() {
               <SocialMediaContainer>
                 <a
                   href=" https://www.linkedin.com/in/elviraboman/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Image
-                    src="/icons/some/linkedin_white.svg"
-                    alt="LinkedIn logo"
-                    width="24"
-                    height="24"
-                  />
-                </a>
-              </SocialMediaContainer>
-            </GridItem>
-            <GridItem>
-              <GridImage src={Alex} alt="Alexandra Palmquist" width="200" height="200" />
-              <b>Alexandra Palmquist, Climate Data</b>
-              Environmental scientist with a focus on climate and corporate data.
-              Previous experience with the UN in Latin America, now well-established in Stockholm&apos;s
-              tech startup scene to drive climate transition.
-              <SocialMediaContainer>
-                <a
-                  href="https://www.linkedin.com/in/alexandra-palmquist-46969946/"
                   target="_blank"
                   rel="noreferrer"
                 >

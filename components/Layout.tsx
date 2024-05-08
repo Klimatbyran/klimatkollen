@@ -14,7 +14,7 @@ const Main = styled.main`
   }
 `
 
-export default function Layout({ children }: { children: JSX.Element | JSX.Element[] }) {
+export default function Layout({ children }: { children: JSX.Element }) {
   return (
     <>
       <Header />

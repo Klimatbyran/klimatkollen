@@ -7,7 +7,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
-import { PoliticalRuleService } from '../../../utils/politicalRuleService'
+import { PolitycalRuleService as PoliticalRuleService } from '../../../utils/politicalRuleService'
 
 const Municipality = dynamic(() => import('../../../components/Municipality/Municipality'))
 

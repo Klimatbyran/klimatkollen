@@ -25,21 +25,27 @@ const Arrow = styled(ArrowSvg)<{ open: boolean }>`
 const HeaderSection = styled.summary`
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  list-style: none; /* remove default arrow in Firefox */
 
-  &::-webkit-details-marker {
-    display: none; /* remove default arrow in Chrome */
+  & .arrow {
+    display: block;
+  }
 
   &:hover {
     cursor: pointer;
-  }
   }
 `
 
 const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
+
+  .mobile {
+    background: black;
+  }
+
+  .desktop {
+    background: yellow;
+  }
 `
 
 type Props = {
@@ -54,7 +60,7 @@ function ToggleSection({ header, text }: Props) {
     <TextSection onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)}>
       <HeaderSection>
         <H5>{header}</H5>
-        <Arrow open={open} />
+        <Arrow open={open} className="arrow" />
       </HeaderSection>
       <InfoSection>
         {typeof text === 'string' ? <Markdown>{text}</Markdown> : text}

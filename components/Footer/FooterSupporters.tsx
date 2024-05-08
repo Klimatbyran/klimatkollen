@@ -35,6 +35,14 @@ function Supporters() {
           alt="Google.org logo"
         />
       </a>
+      <a href="https://postkodstiftelsen.se/" target="_blank" rel="noreferrer">
+        <img
+          src="/logos/supporters/postkodstiftelsen.svg"
+          width={90}
+          height="auto"
+          alt="Postkodstiftelsen logo"
+        />
+      </a>
     </SupporterContainer>
   )
 }

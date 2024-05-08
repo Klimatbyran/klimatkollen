@@ -33,7 +33,7 @@
       "body": "Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.",
       "columnHeader": "Budget tar slut",
       "source": "Källor: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/) och [Uppsala universitet](http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf)",
-      "title": "Koldioxidbudget",
+      "title": "Budget slut om",
       "followingBudget": "Håller budget",
       "labels": ["2 år -", "2-3 år", "3-4 år", "4-5 år", "5 år +", "Håller budget"],
       "name": "Koldioxidbudgetarna"
