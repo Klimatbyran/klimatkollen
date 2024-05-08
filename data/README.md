@@ -2,6 +2,9 @@
 
 ## General information
 
+### Getting started
+
+Run `pip install -r requirements.txt` to install the required dependencies. If you're using Python 3, you can replace `pip` with `pip3`.
 
 ### Example calculation
 
