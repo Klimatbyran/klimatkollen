@@ -13,13 +13,13 @@ def get_electric_car_change_rate(df):
     df_raw_cars = df_raw_cars.drop([0, 1])  # drop usless rows
     df_raw_cars = df_raw_cars.reset_index(drop=True)
 
-    df_raw_cars["electricCarChangePercent"] = 100 * df_raw_cars[
+    df_raw_cars["electricCarChangePercent"] = 100.0 * df_raw_cars[
         "Procentenheter förändring av andel laddbara bilar 2015-2022"
     ]
     
     years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
     df_raw_cars["electricCarChangeYearly"] = df_raw_cars.apply(
-        lambda x: {year: 100 *x.loc[year] for year in years},
+        lambda x: {year: (100.0 * x.loc[year]) for year in years},
         axis=1
     )
 
