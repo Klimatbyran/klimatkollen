@@ -2,6 +2,7 @@
 
 import json
 from typing import Dict, List, Any
+import argparse
 
 import pandas as pd
 
@@ -17,35 +18,46 @@ from issues.consumption.consumption_data_calculations import get_consumption_emi
 # Notebook from ClimateView that our calculations are based on:
 # https://colab.research.google.com/drive/1qqMbdBTu5ulAPUe-0CRBmFuh8aNOiHEb?usp=sharing
 
+def build_dataframe() -> pd.DataFrame:
+    # Get emission calculations
+    df = get_municipalities()
+    print('1. Municipalities loaded and prepped')
 
-# Get emission calculations
-df = get_municipalities()
-print('1. Municipalities loaded and prepped')
+    df = emission_calculations(df)
+    print('2. Climate data and calculations added')
 
-df = emission_calculations(df)
-print('2. Climate data and calculations added')
+    df = get_electric_car_change_rate(df)
+    print('3. Hybrid car data and calculations added')
 
-df = get_electric_car_change_rate(df)
-print('3. Hybrid car data and calculations added')
+    df = get_climate_plans(df)
+    print('4. Climate plans added')
 
-df = get_climate_plans(df)
-print('4. Climate plans added')
+    df = bicycle_calculations(df)
+    print('5. Bicycle data added')
 
-df = bicycle_calculations(df)
-print('5. Bicycle data added')
+    df = get_consumption_emissions(df)
+    print('6. Consumption emission data added')
 
-df = get_consumption_emissions(df)
-print('6. Consumption emission data added')
+    df_evpc = get_electric_vehicle_per_charge_points()
+    df = df.merge(df_evpc, on='Kommun', how='left')
+    print('7. CPEV for December 2023 added')
 
-df_evpc = get_electric_vehicle_per_charge_points()
-df = df.merge(df_evpc, on='Kommun', how='left')
-print('7. CPEV for December 2023 added')
+    df_procurements = get_procurement_data()
+    df = df.merge(df_procurements, on='Kommun', how='left')
+    print('8. Climate requirements in procurements added')
 
-df_procurements = get_procurement_data()
-df = df.merge(df_procurements, on='Kommun', how='left')
-print('8. Climate requirements in procurements added')
+    return df
 
 def round_processing(v, num_decimals):
+    '''
+    Round float values to a certain number of decimals. If the argument v is a 
+    dictionary, round all values in the dictionary recursively.
+
+    Arguments: v - the value to round.
+               num_decimals - the number of decimals to round to.
+
+    Returns the rounded value.
+    '''
     new_v = v
     if (isinstance(v, dict)):
         new_v = {k: round_processing(a, num_decimals) for k, a in v.items()}
@@ -54,6 +66,15 @@ def round_processing(v, num_decimals):
     return new_v
     
 def create_dataentry(row: pd.Series, num_decimals: int) -> Dict[str, Any]:    
+    '''
+    Create a datastructure based on a pandas Series and optionally round the 
+    values to a certain number of decimals.
+
+    Arguments: row - the pandas Series of values for the data entry.
+               num_decimals - the number of decimals to round to, if > 0
+
+    Returns the data entry as a dictionary.
+    '''
     entry = {
             'kommun': row['Kommun'],
             'län': row['Län'],
@@ -96,33 +117,52 @@ def create_dataentry(row: pd.Series, num_decimals: int) -> Dict[str, Any]:
             'procurementLink': row['procurementLink'],
         }
     
-    # https://stackoverflow.com/a/62752901
-
     if (num_decimals > 0):
         entry = {k: round_processing(v, num_decimals) for k, v in entry.items()}
 
     return entry
     
-def create_datastructure_from_df(df: pd.DataFrame, num_decimals: int = -1) -> List[Dict[str, Any]]:
+def create_datastructure_from_df(df: pd.DataFrame, num_decimals: int) -> List[Dict[str, Any]]:
     '''
     Create a datastructure from a dataframe.
-    Optionally round the values to a certain number of decimals.
+    Optionally round the values to a certain number of decimals. By default, do
+    not round values.
+
+    Arguments: df - the dataframe of all records
+               num_decimals - the number of decimals to round to, if > 0
+
+    Returns the datastructure as a list of dictionaries.
     '''
 
-    temp = [
+    data_struct = [
         create_dataentry(df.iloc[i], num_decimals)
         for i in range(len(df))
     ]
-    return temp
+    return data_struct
 
-with open('output/climate-data.json', 'w', encoding='utf8') as json_file:
-    # save dataframe as json file
-    json.dump(create_datastructure_from_df(df), json_file, ensure_ascii=False, default=str)
+def store_dataframe(df: pd.DataFrame, num_decimals: int):
+    output_file = 'output/climate-data.json'
 
-print('Climate data JSON file created and saved')
+    if (num_decimals > 0):
+        # Create a file with rounded values
+        output_file = 'output/climate-data-rounded.json'
 
-with open('output/climate-data-rounded.json', 'w', encoding='utf8') as json_rounded_file:
-    # save dataframe as json file
-    json.dump(create_datastructure_from_df(df, num_decimals=3), json_rounded_file, ensure_ascii=False, default=str)
 
-print('Climate data JSON file with rounded values created and saved')
+    with open(output_file, 'w', encoding='utf8') as json_file:
+        # save dataframe as json file
+        json.dump(create_datastructure_from_df(df, num_decimals=num_decimals), json_file, ensure_ascii=False, default=str)
+        
+    print(f"Climate data JSON file {output_file} created and saved")
+
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Climate data calculations")
+    parser.add_argument("-n", "--num_decimals", default=-1, type=int, help="Number of decimals to round to")
+    args = parser.parse_args()
+
+    df = build_dataframe()
+
+    store_dataframe(df, args.num_decimals)
+
+
