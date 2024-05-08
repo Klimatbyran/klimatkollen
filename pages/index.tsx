@@ -52,6 +52,13 @@ const ParagraphSource = styled(Paragraph)`
   color: ${({ theme }) => theme.grey};
 `
 
+const TitleRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+`
+
+
 const InfoContainer = styled.div`
   width: 100%;
   position: relative;
@@ -65,22 +72,25 @@ const InfoContainer = styled.div`
 `
 
 const TitleContainer = styled.div`
+  border-radius: 4px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: start;
+  margin: 16px 0 0 16px;
+  padding: 8px 8px;
+  z-index: 100;
+  background: ${({ theme }) => theme.midGreen};
+  align-items: flex-start;
 `
 
 const FloatingH5 = styled.h5`
-  position: absolute;
   font-size: 16px;
   font-weight: regular;
   line-height: 1.25;
-  margin: 55px 0 0 16px;
   z-index: 200;
 
   @media only screen and (${devices.tablet}) {
     font-size: 18px;
-    margin: 60px 0 0 16px;
   }
 `
 
@@ -182,21 +192,24 @@ function StartPage({ municipalities }: PropsType) {
             dataDescriptions={dataDescriptions}
           />
           <InfoContainer>
-            <TitleContainer>
-              <FloatingH5>{datasetDescription.title}</FloatingH5>
-              <ToggleButton
-                handleClick={handleToggle}
-                text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
-                icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
-              />
-            </TitleContainer>
+            <TitleRow>
+              <TitleContainer>
+                <FloatingH5>{datasetDescription.title}</FloatingH5>
+                <MapLabels
+                  labels={datasetDescription.labels}
+                  rotations={datasetDescription.labelRotateUp}
+                />
+              </TitleContainer>
+            </TitleRow>
+            <ToggleButton
+              handleClick={handleToggle}
+              text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
+              icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
+            />
+
             <ComparisonContainer $dataView={selectedDataView.toString()}>
               {isDefaultDataView && (
                 <>
-                  <MapLabels
-                    labels={datasetDescription.labels}
-                    rotations={datasetDescription.labelRotateUp}
-                  />
                   <Map
                     data={municipalityDataOnDisplay}
                     boundaries={datasetDescription.boundaries}

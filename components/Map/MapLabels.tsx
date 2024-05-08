@@ -6,16 +6,11 @@ import { Paragraph } from '../Typography'
 import { Square, mapColors } from '../shared'
 
 const Container = styled.div`
-  padding-left: 0.87rem;
-  padding-top: 1.2rem;
   padding-bottom: 0.5rem;
-  margin-top: 30px;
-
+  margin-top: 4px;
   @media only screen and (${devices.tablet}) {
-    position: absolute;
     left: 0;
     top: 0;
-    margin-top: 36px;
   
   }
 `
@@ -27,9 +22,8 @@ const LabelBox = styled.div`
   gap: 0.5rem;
 `
 
-const ArrowIcon = styled(Icon)<{ $rotateUp?: boolean }>`
+const ArrowIcon = styled(Icon) <{ $rotateUp?: boolean }>`
   color: black;
-  position: absolute;
   z-index: 1;
   margin: auto;
   left: 0;
