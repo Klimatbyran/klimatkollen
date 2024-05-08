@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
+import Markdown from 'react-markdown'
 import { H5, Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
 import NewsletterSubscribe from './FooterNewsletterSubscribe'
@@ -7,7 +8,6 @@ import PageWrapper from '../PageWrapper'
 import Partners from './FooterPartners'
 import SocialList from './FooterSocialLinks'
 import Supporters from './FooterSupporters'
-import Markdown from 'react-markdown'
 
 const Foot = styled.div`
   width: 100%;
