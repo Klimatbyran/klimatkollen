@@ -201,15 +201,17 @@ function StartPage({ municipalities }: PropsType) {
             dataDescriptions={dataDescriptions}
           />
           <InfoContainer>
-            <TitleRow>
-              <TitleContainer>
-                <FloatingH5>{datasetDescription.title}</FloatingH5>
-                <MapLabels
-                  labels={datasetDescription.labels}
-                  rotations={datasetDescription.labelRotateUp}
-                />
-              </TitleContainer>
-            </TitleRow>
+            {isDefaultDataView ?
+              <TitleRow>
+                <TitleContainer>
+                  <FloatingH5>{datasetDescription.title}</FloatingH5>
+                  <MapLabels
+                    labels={datasetDescription.labels}
+                    rotations={datasetDescription.labelRotateUp}
+                  />
+                </TitleContainer>
+              </TitleRow>
+              : null}
             <ToggleButton
               handleClick={handleToggle}
               text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
