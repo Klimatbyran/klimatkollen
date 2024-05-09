@@ -39,7 +39,8 @@ const Map = dynamic(() => import('../components/Map/Map'))
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100vh;
+  height: 100vh;
   align-items: center;
 `
 
@@ -53,15 +54,19 @@ const ParagraphSource = styled(Paragraph)`
 `
 
 const TitleRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: start;
+background-color: rgba(0, 0, 0, 0);
+z-index: 110;
 `
 
 
 const InfoContainer = styled.div`
-  width: 100%;
-  position: relative;
   background: ${({ theme }) => theme.lightBlack};
   border-radius: 8px;
   margin-bottom: 32px;
@@ -69,25 +74,28 @@ const InfoContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 `
 
 const TitleContainer = styled.div`
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  margin: 16px 0 0 16px;
-  padding: 8px 8px;
-  z-index: 100;
-  background: ${({ theme }) => theme.midGreen};
-  align-items: flex-start;
+z-index: 0; 
+box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+// width: auto; 
+margin: 16px 0 0 16px;
+padding: 8px 16px;
+border-radius: 12px;
+background: ${({ theme }) => theme.midGreen};
+background-color: ${({ theme }) => theme.midGreen};
+align-items: flex-start;
 `
 
 const FloatingH5 = styled.h5`
   font-size: 16px;
   font-weight: regular;
   line-height: 1.25;
-  z-index: 200;
 
   @media only screen and (${devices.tablet}) {
     font-size: 18px;
@@ -95,6 +103,7 @@ const FloatingH5 = styled.h5`
 `
 
 const ComparisonContainer = styled.div<{ $dataView: string }>`
+
   position: relative;
   overflow-y: scroll;
   z-index: 100;
