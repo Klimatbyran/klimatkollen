@@ -91,7 +91,7 @@ describe('Home Page', () => {
 
   it('handles dataset change', () => {
     const newDataset = 'common:datasets.plans.name'
-    const radioButton = screen.getByLabelText(newDataset)
+    const radioButton = screen.getByText(newDataset)
     fireEvent.click(radioButton)
     expect(screen.getByText(newDataset)).toBeInTheDocument()
   })
