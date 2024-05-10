@@ -4,19 +4,19 @@ import ToggleButton from '../../components/ToggleButton'
 describe('ToggleButton', () => {
   it('should render the ToggleButton component', () => {
     const { container } = render(<ToggleButton text="Test" icon={<span>Icon</span>} />)
-    expect(container).toBeInTheDocument()
+    expect(container).toBeTruthy()
   })
 
   it('should render the text provided', () => {
     render(<ToggleButton text="Test" icon={<span>Icon</span>} />)
     const textElement = screen.getByText('Test')
-    expect(textElement).toBeInTheDocument()
+    expect(textElement).toBeTruthy()
   })
 
   it('should render the icon provided', () => {
     render(<ToggleButton text="Test" icon={<span>Icon</span>} />)
     const iconElement = screen.getByText('Icon')
-    expect(iconElement).toBeInTheDocument()
+    expect(iconElement).toBeTruthy()
   })
 
   it('should call handleClick when clicked', () => {
