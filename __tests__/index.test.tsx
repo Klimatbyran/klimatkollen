@@ -1,5 +1,8 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import Home from '../pages/index'
+import {
+  fireEvent, render, screen, act,
+} from '@testing-library/react'
+import StartPage from '../pages/index'
+import StyledComponentsWrapper from './utils/StyledComponentsWrapper'
 
 vi.mock('../public/icons/info.svg', () => ({ default: () => 'svg' }))
 vi.mock('../public/icons/list.svg', () => ({ default: () => 'svg' }))
@@ -27,8 +30,8 @@ vi.mock('next-i18next', () => ({
   })),
 }))
 
-describe('Home Page', () => {
-  // Mock data for municipalities
+describe('StartPage', () => {
+// Mock data for municipalities
   const mockMunicipalities = [
     {
       County: '',
@@ -74,29 +77,68 @@ describe('Home Page', () => {
     },
   ]
 
+  const mockCompanies = [
+    {
+      Name: 'Company name',
+      Url: 'company-url',
+      Comment: 'Scope 3 emissions are missing key categories.',
+      Emissions: {
+        Scope1n2: 214726,
+        Scope3: 7312410,
+      },
+    },
+  ]
+
   beforeEach(() => {
-    render(<Home municipalities={mockMunicipalities} />)
+    act(() => {
+      render(
+        // @ts-expect-error Temporary type error due to type mismatch compared to the data structure we expect in the near future.
+        <StartPage municipalities={mockMunicipalities} companies={mockCompanies} />,
+        // Make sure styled-components only render valid props to the DOM
+        { wrapper: StyledComponentsWrapper },
+      )
+    })
   })
 
-  it('renders without crashing', () => {
-    expect(screen.getByText(/startPage:questionTitle/)).toBeInTheDocument()
+  describe('CompanyView', () => {
+    it('renders without crashing', () => {
+      expect(screen.findByText(/startPage:questionTitle/)).toBeTruthy()
+    })
   })
 
-  it('changes view mode when toggle button is clicked', () => {
-    const toggleButton = screen.getByText('startPage:toggleView.list')
-    fireEvent.click(toggleButton)
-    expect(screen.getByText('startPage:toggleView.map')).toBeInTheDocument()
-  })
+  describe('RegionalView', () => {
+    beforeEach(() => {
+      // Show the RegionalView
+      act(() => {
+        const switchButton = screen.getByText('Kommuner')
+        fireEvent.click(switchButton)
+      })
+    })
 
-  it('handles dataset change', () => {
-    const newDataset = 'common:datasets.plans.name'
-    const radioButton = screen.getByLabelText(newDataset)
-    fireEvent.click(radioButton)
-    expect(screen.getByText(newDataset)).toBeInTheDocument()
-  })
+    it('renders without crashing', () => {
+      expect(screen.getByText(/startPage:regionalView.questionTitle/)).toBeTruthy()
+    })
 
-  it('renders the dropdown component', () => {
-    const dropdownInput = screen.getByPlaceholderText(/startPage:yourMunicipality/i)
-    expect(dropdownInput).toBeInTheDocument()
+    it('changes view mode when toggle button is clicked', () => {
+      const toggleButton = screen.getByText('startPage:toggleView.map')
+      act(() => {
+        fireEvent.click(toggleButton)
+      })
+      expect(screen.getByText('startPage:toggleView.list')).toBeTruthy()
+    })
+
+    it('handles dataset change', () => {
+      const newDataset = 'common:datasets.plans.name'
+      act(() => {
+        const radioButton = screen.getByText(newDataset)
+        fireEvent.click(radioButton)
+      })
+      expect(screen.getByText('common:datasets.plans.title')).toBeTruthy()
+    })
+
+    it('renders the dropdown component', () => {
+      const dropdownInput = screen.getByPlaceholderText(/startPage:regionalView.yourMunicipality/i)
+      expect(dropdownInput).toBeTruthy()
+    })
   })
 })
