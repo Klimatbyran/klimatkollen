@@ -132,9 +132,9 @@ export const municipalityColumns = (
   const isProcurement = selectedData === 'upphandlingarna'
 
   const getFirstColumnHeader = () => {
-    if (isClimatePlan) return t('startPage:hasPlan')
-    if (isProcurement) return t('startPage:procurementDemands')
-    return t('startPage:ranking')
+    if (isClimatePlan) return t('startPage:regionalView.hasPlan')
+    if (isProcurement) return t('startPage:regionalView.procurementDemands')
+    return t('startPage:regionalView.ranking')
   }
 
   const firstColumnClimatePlans = (dataPoint: string) => (dataPoint === climatePlanMissing

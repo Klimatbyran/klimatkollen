@@ -135,7 +135,7 @@ function RegionalView({
 
   return (
     <>
-      <H2Regular>{t('startPage:questionTitle')}</H2Regular>
+      <H2Regular>{t('startPage:regionalView.questionTitle')}</H2Regular>
       <RadioButtonMenu
         selectedData={selectedDataset}
         handleDataChange={handleDataChange}
@@ -177,7 +177,7 @@ function RegionalView({
       </InfoContainer>
       <DropDown
         municipalitiesName={municipalityNames}
-        placeholder={t('startPage:yourMunicipality')}
+        placeholder={t('startPage:regionalView.yourMunicipality')}
       />
     </>
   )

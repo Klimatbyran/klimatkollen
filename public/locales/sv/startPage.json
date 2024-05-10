@@ -1,15 +1,20 @@
 {
-  "hasPlan": "Har plan?",
   "meta": {
     "description": "Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?",
     "title": "Klimatkollen — Få koll på Sveriges klimatomställning"
   },
-  "procurementDemands": "Ställer krav?",
-  "questionTitle": "Hur går det med?",
-  "ranking": "Ranking",
   "toggleView": {
     "list": "Listvy",
     "map": "Kartvy"
   },
-  "yourMunicipality": "Hur går det i din kommun?"
+  "companyView": {
+    "questionTitle": "Hur går det med utsläppen?"
+  },
+  "regionalView": {
+    "questionTitle": "Hur går det med?",
+    "yourMunicipality": "Hur går det i din kommun?",
+    "procurementDemands": "Ställer krav?",
+    "ranking": "Ranking",
+    "hasPlan": "Har plan?"
+  }
 }
