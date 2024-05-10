@@ -27,7 +27,7 @@ import {
   defaultDataView,
   secondaryDataView,
 } from '../utils/datasetDefinitions'
-import RadioButtonMenu from '../components/RadioButtonMenu'
+import DatasetButtonMenu from '../components/DatasetButtonMenu'
 import { listColumns, rankData } from '../utils/createMunicipalityList'
 import {
   isValidDataView,
@@ -176,7 +176,7 @@ function StartPage({ municipalities }: PropsType) {
       <PageWrapper backgroundColor="black">
         <Container>
           <H2Regular>{t('startPage:questionTitle')}</H2Regular>
-          <RadioButtonMenu
+          <DatasetButtonMenu
             selectedData={selectedDataset}
             handleDataChange={handleDataChange}
             dataDescriptions={dataDescriptions}

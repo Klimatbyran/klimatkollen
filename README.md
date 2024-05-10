@@ -25,13 +25,10 @@ We use next.js and Typescript and it's pretty straightforward to get started. Af
 
 This opens up a webserver on http://localhost:3000. Just edit the code and see the live refresh.
 
-The project can also be run with docker (although with much slower refresh time):
+The project can also be run with `docker compose` with `--watch` (v2.22.0+) for live refresh:
 
-    # builds the image
-    docker build -t klimatkollen .
+    docker compose up --build --watch
 
-    # starts the container
-    docker run -t -i --rm -p 3000:3000 --name klimatkollen klimatkollen
 
 # Data overview
 
