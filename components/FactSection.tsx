@@ -19,6 +19,10 @@ const SectionLeft = styled.section`
   flex-direction: column;
   gap: 0.5rem;
   width: 90%;
+  list-style: none; /* remove default arrow in Firefox */
+  &::-webkit-details-marker {
+    display: none; /* remove default arrow in Chrome */
+  }
 `
 
 const SectionRight = styled.section`
