@@ -1,14 +1,17 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { Company as TCompany, Municipality as TMunicipality } from '../../../utils/types'
-import StartPage from '../..'
-import { ClimateDataService } from '../../../utils/climateDataService'
-import { isValidDataView, normalizeString } from '../../../utils/shared'
-import Layout from '../../../components/Layout'
-import Footer from '../../../components/Footer/Footer'
-import { CompanyDataService } from '../../../utils/companyDataService'
-import { getDataDescriptions } from '../../../utils/datasetDefinitions'
-import { getServerSideI18n } from '../../../utils/getServerSideI18n'
+import { Company as TCompany, Municipality as TMunicipality } from '../../../../utils/types'
+import StartPage from '../../..'
+import { ClimateDataService } from '../../../../utils/climateDataService'
+import { isValidDataView, normalizeString } from '../../../../utils/shared'
+import Layout from '../../../../components/Layout'
+import Footer from '../../../../components/Footer/Footer'
+import { CompanyDataService } from '../../../../utils/companyDataService'
+import { getDataDescriptions } from '../../../../utils/datasetDefinitions'
+import { getServerSideI18n } from '../../../../utils/getServerSideI18n'
+
+export const defaultDataView = 'lista'
+export const secondaryDataView = 'karta'
 
 interface Params extends ParsedUrlQuery {
   dataset: string

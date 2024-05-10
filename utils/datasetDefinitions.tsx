@@ -6,9 +6,6 @@ import { TOptions } from 'i18next'
 import { DataDescriptions, DatasetKey, Municipality } from './types'
 import { normalizeString } from './shared'
 
-export const defaultDataView = 'karta'
-export const secondaryDataView = 'lista'
-
 export const validDatasets = ['utslappen', 'koldioxidbudgetarna', 'klimatplanerna', 'konsumtionen', 'elbilarna', 'laddarna', 'cyklarna', 'upphandlingarna'] as const
 export const defaultDataset: DatasetKey = 'utslappen'
 

@@ -1,4 +1,4 @@
-import { defaultDataView, secondaryDataView } from './datasetDefinitions'
+import { defaultDataView, secondaryDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
 
 export const normalizeString = (input: string) => input.replace('ä', 'a').replace('ö', 'o').replace('å', 'a').toLowerCase()
 
