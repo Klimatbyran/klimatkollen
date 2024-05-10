@@ -116,7 +116,7 @@ describe('StartPage', () => {
     })
 
     it('renders without crashing', () => {
-      expect(screen.getByText(/startPage:regionalView.questionTitle/)).toBeTruthy()
+      expect(screen.getByText(/startPage:regionalView.questionTitle/)).toBeInTheDocument()
     })
 
     it('changes view mode when toggle button is clicked', () => {
@@ -124,7 +124,7 @@ describe('StartPage', () => {
       act(() => {
         fireEvent.click(toggleButton)
       })
-      expect(screen.getByText('startPage:toggleView.list')).toBeTruthy()
+      expect(screen.getByText('startPage:toggleView.list')).toBeInTheDocument()
     })
 
     it('handles dataset change', () => {
@@ -133,12 +133,12 @@ describe('StartPage', () => {
         const radioButton = screen.getByText(newDataset)
         fireEvent.click(radioButton)
       })
-      expect(screen.getByText('common:datasets.plans.title')).toBeTruthy()
+      expect(screen.getByText('common:datasets.plans.title')).toBeInTheDocument()
     })
 
     it('renders the dropdown component', () => {
       const dropdownInput = screen.getByPlaceholderText(/startPage:regionalView.yourMunicipality/i)
-      expect(dropdownInput).toBeTruthy()
+      expect(dropdownInput).toBeInTheDocument()
     })
   })
 })

@@ -11,7 +11,7 @@ describe('BackArrow', () => {
 
     const linkElement: HTMLAnchorElement = screen.getByRole('link')
 
-    expect(linkElement).toBeTruthy()
-    expect(linkElement.href).toContain(route)
+    expect(linkElement).toBeInTheDocument()
+    expect(linkElement).toHaveAttribute('href', route)
   })
 })
