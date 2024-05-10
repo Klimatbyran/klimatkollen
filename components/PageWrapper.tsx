@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { devices } from '../utils/devices'
 
 type BackgroundColors = 'midGreen' | 'lightBlack' | 'black' | 'gradient'
@@ -10,10 +10,19 @@ const Wrap = styled.div<{ $background: BackgroundColors }>`
   justify-content: center;
 `
 
-const WrapInner = styled.div`
+const WrapInner = styled.div<{ compact?: boolean }>`
   width: 100%;
   max-width: 840px;
-  padding: 0px 16px;
+  
+  ${({ compact }) => (compact ? css`
+    padding: 0;
+
+    @media only screen and (${devices.smallMobile}) {
+      padding: 0px 16px;
+    }
+  ` : css`
+    padding: 0px 16px;
+  `)}
 
   @media only screen and (${devices.tablet}) {
     padding: 32px 24px;
@@ -23,12 +32,13 @@ const WrapInner = styled.div`
 type Props = {
   children: React.ReactNode
   backgroundColor: BackgroundColors
+  compact?: boolean
 }
 
-export default function PageWrapper({ children, backgroundColor }: Props) {
+export default function PageWrapper({ children, backgroundColor, compact }: Props) {
   return (
     <Wrap $background={backgroundColor}>
-      <WrapInner>{children}</WrapInner>
+      <WrapInner compact={compact}>{children}</WrapInner>
     </Wrap>
   )
 }

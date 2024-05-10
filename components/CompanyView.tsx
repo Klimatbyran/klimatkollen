@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
+
 import { H2Regular, H5Regular, Paragraph } from './Typography'
 import { devices } from '../utils/devices'
 import { Company } from '../utils/types'
@@ -64,6 +66,35 @@ const FloatingH5 = styled(H5Regular)`
   }
 `
 
+const Details = styled.div`
+  display: grid;
+  padding: 0 6px 8px;
+
+  @media only screen and (${devices.tablet}) {
+    padding: 8px 12px 16px;
+  }
+`
+
+const DetailsHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  p {
+    font-style: italic;
+    color: gray;
+    padding-top: 0.5rem;
+  }
+
+  a {
+    padding: 0.5rem 0;
+  }
+
+  @media only screen and (${devices.tablet}) {
+    padding-bottom: 0.5rem;
+  }
+`
+
 type CompanyViewProps = {
   companies: Array<Company>
 }
@@ -71,7 +102,8 @@ type CompanyViewProps = {
 function CompanyView({
   companies,
 }: CompanyViewProps) {
-  const cols = companyColumns()
+  const { t } = useTranslation()
+  const cols = companyColumns(t)
 
   return (
     <>
@@ -81,7 +113,26 @@ function CompanyView({
           <FloatingH5>Företagens utsläpp för 2023</FloatingH5>
         </TitleContainer>
         <ComparisonContainer>
-          <ComparisonTable data={companies} columns={cols} />
+          <ComparisonTable
+            data={companies}
+            columns={cols}
+            dataType="companies"
+            renderSubComponent={({ row }) => {
+              const company = row.original
+              return (
+                <Details>
+                  <DetailsHeader>
+                    <p>
+                      {t('common:comment')}
+                      :
+                    </p>
+                    <a href={company.Url} target="_blank" rel="noopener noreferrer">Läs rapporten</a>
+                  </DetailsHeader>
+                  <p>{company.Comment}</p>
+                </Details>
+              )
+            }}
+          />
         </ComparisonContainer>
         <InfoText>
           <Paragraph>Lorem</Paragraph>

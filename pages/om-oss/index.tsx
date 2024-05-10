@@ -20,6 +20,7 @@ import Markdown from '../../components/Markdown'
 const Ola = '/team/ola.jpg'
 const Frida = '/team/frida.jpg'
 const Elvira = '/team/elvira.jpg'
+const Alex = '/team/alex.jpg'
 const Anna = '/board/anna.jpg'
 const CJ = '/board/carl-johan.jpg'
 const Christian = '/board/christian.jpg'
@@ -99,6 +100,16 @@ function OmOss() {
                   />
                   <b>{t('about:bios.elvira.name')}</b>
                   {t('about:bios.elvira.text')}
+                </GridItem>
+                <GridItem>
+                  <GridImage
+                    src={Alex}
+                    alt={t('about:bios.alex.name')}
+                    width="200"
+                    height="200"
+                  />
+                  <b>{t('about:bios.alex.name')}</b>
+                  {t('about:bios.alex.text')}
                 </GridItem>
               </Grid>
             )}

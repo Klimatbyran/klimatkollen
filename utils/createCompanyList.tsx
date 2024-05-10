@@ -1,5 +1,7 @@
 import styled from 'styled-components'
-import { ColumnDef } from '@tanstack/react-table'
+import { ColumnDef, Row } from '@tanstack/react-table'
+import { TFunction } from 'i18next'
+
 import { Company } from './types'
 
 // IDEA: do something similar for the regional view to distinguish between actual important data (orange), and when something is missing (gray)
@@ -8,62 +10,82 @@ const ScopeColumn = styled.span<{ isMissing: boolean }>`
   font-style: ${({ isMissing }) => (isMissing ? 'italic' : 'normal')};
 `
 
-const formatter = new Intl.NumberFormat('sv-SV', { maximumFractionDigits: 0 })
+const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 0 })
 
-export const companyColumns = (): ColumnDef<Company>[] => [
-  {
-    header: 'Företag',
-    cell: (row) => {
-      const company = row.cell.row.original
-      return company.Url ? (
-        <a
-          href={company.Url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ cursor: 'pointer' }}
-        >
-          {company.Name}
-        </a>
-      ) : (
-        <span>{company.Name}</span>
-      )
-    },
-    accessorKey: 'Name',
-  },
-  {
-    header: 'Egna utsläpp (tCO₂e)',
-    cell: (row) => {
-      const scope1n2Emissions = row.cell.row.original.Emissions.Scope1n2
+const getCustomSortFn = ({
+  stringsOnTop = false,
+  sortAscending = false,
+  scope = 'Scope1n2',
+}: {
+  stringsOnTop?: boolean,
+  sortAscending?: boolean,
+  scope?: keyof Company['Emissions'],
+} = {}) => (rowA: Row<Company>, rowB: Row<Company>) => {
+  const a = rowA.original.Emissions[scope]
+  const b = rowB.original.Emissions[scope]
 
-      // console.log({ row, Emissions: row.cell.row.original.Emissions })
-      // NOTE: The type does not match the actual values here.
-      // TS thinks scope1n2Emissions has the type `CompanyScope`, but according to the logging above,
-      // it is in fact just a number or null.
-      const scope1n2String = Number.isFinite(scope1n2Emissions) ? formatter.format(scope1n2Emissions as unknown as number) : 'Ej rapporterat'
-      return (
-        <ScopeColumn isMissing={!scope1n2Emissions}>
-          {scope1n2String}
-        </ScopeColumn>
-      )
-    },
-    accessorKey: 'Emissions.Scope1n2',
-  },
-  {
-    header: () => 'Utsläpp i värdekedjan (tCO₂e)',
-    cell: (row) => {
-      const scope3Emissions = row.cell.row.original.Emissions.Scope3
+  // Handle NaN values
+  const aIsNaN = Number.isNaN(a)
+  const bIsNaN = Number.isNaN(b)
+  if (aIsNaN && bIsNaN) {
+    return 0
+  }
+  if (aIsNaN || bIsNaN) {
+    // eslint-disable-next-line no-nested-ternary
+    return stringsOnTop ? (aIsNaN ? -1 : 1) : (aIsNaN ? 1 : -1)
+  }
 
-      // console.log({ row, Emissions: row.cell.row.original.Emissions })
-      // NOTE: The type does not match the actual values here.
-      // TS thinks scope3Emissions has the type `CompanyScope`, but according to the logging above,
-      // it is in fact just a number or null.
-      const scope3String = Number.isFinite(scope3Emissions) ? formatter.format(scope3Emissions as unknown as number) : 'Ej rapporterat'
-      return (
-        <ScopeColumn isMissing={!scope3Emissions}>
-          {scope3String}
-        </ScopeColumn>
-      )
+  // Sort non-NaN values normally
+  // @ts-expect-error treat Date objects as numbers since they can be compared like numbers.
+  return sortAscending ? a - b : b - a
+}
+
+export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
+  const notReported = t('common:notReported')
+
+  return [
+    {
+      header: 'Företag',
+      cell: (row) => row.cell.row.original.Name,
+      accessorKey: 'Name',
     },
-    accessorKey: 'Emissions.Scope3',
-  },
-]
+    {
+      header: 'Egna utsläpp (tCO₂e)',
+      cell: (row) => {
+        const scope1n2Emissions = row.cell.row.original.Emissions.Scope1n2
+
+        // console.log({ row, Emissions: row.cell.row.original.Emissions })
+        // NOTE: The type does not match the actual values here.
+        // TS thinks scope1n2Emissions has the type `CompanyScope`, but according to the logging above,
+        // it is in fact just a number or null.
+        const scope1n2String = Number.isFinite(scope1n2Emissions) ? formatter.format(scope1n2Emissions as unknown as number) : notReported
+        return (
+          <ScopeColumn isMissing={scope1n2String === notReported}>
+            {scope1n2String}
+          </ScopeColumn>
+        )
+      },
+      sortingFn: getCustomSortFn({ scope: 'Scope1n2' }),
+      accessorKey: 'Emissions.Scope1n2',
+    },
+    {
+      header: () => 'Utsläpp i värdekedjan (tCO₂e)',
+      cell: (row) => {
+        const scope3Emissions = row.cell.row.original.Emissions.Scope3
+
+        // console.log({ row, Emissions: row.cell.row.original.Emissions })
+        // NOTE: The type does not match the actual values here.
+        // TS thinks scope3Emissions has the type `CompanyScope`, but according to the logging above,
+        // it is in fact just a number or null.
+        const scope3String = Number.isFinite(scope3Emissions) ? formatter.format(scope3Emissions as unknown as number) : notReported
+        return (
+          <ScopeColumn isMissing={scope3String === notReported}>
+            {scope3String}
+          </ScopeColumn>
+        )
+      },
+      sortingFn: getCustomSortFn({ scope: 'Scope3' }),
+      accessorKey: 'Emissions.Scope3',
+    },
+  ]
+}

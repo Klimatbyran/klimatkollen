@@ -2,23 +2,23 @@
 
 This is the official source code for [klimatkollen.se](https://klimatkollen.se).
 
-## About
+## Free our climate data!
 
-Free our climate data! Klimatkollen is an open source and citizen-driven climate data platform aimed at visualising local climate data.
+Klimatkollen is an open source and citizen-driven climate data platform aimed at visualising local climate data in Sweden.
 
-<b>The</b> problem: Most of Sweden’s 290 cities and municipalities are not slashing carbon emissions fast enough to be in line with the Paris Agreement. Furthermore, climate data that can help us is often locked behind paywalls or sits in complex government databases. If we can’t clearly see how much CO2 is being emitted, from which sources and how quickly we need to decarbonise – we can’t create a public opinion strong enough to change the course of our future.
+<b>The problem:</b> Sweden’s 290 cities and municipalities are not slashing carbon emissions fast enough to be in line with the Paris Agreement. Climate data that can help us is often locked behind paywalls, or sits in complex government databases. If we can’t clearly see how much CO<sup>2</sup> is being emitted, from which sources and how quickly we need to decarbonise – we can’t create a public opinion strong enough to change the course of our future. This needs to change.
 
-This needs to change.
+That’s why we’re building a data-driven movement of climate-savvy developers to help us find and visualise climate data for the public. Climb aboard! 
 
-That’s why we’re building a data-driven movement of climate-savvy developers to help us find and visualise climate data for the public.
+<b>Join our [Discord](https://discord.gg/N5P64QPQ6v)</b> and set our climate data free! 
 
-Please climb onboard to help us set our climate data free! #Klimatkollen /#FreeClimateData
+#Klimatkollen #FreeClimateData
 
-## Get started
+## Building and running locally
 
-Detailed step-by-step setup instructions, including getting the code and installing dependencies, can be found in [doc/getting-started.md](doc/getting-started.md). 
+If your're starting from scratch, and working with GitHub, NodeJS and so on is new to you, read [doc/getting-started.md](doc/getting-started.md). 
 
-We use next.js and Typescript and it's pretty straightforward to get started. Just clone the repo and run:
+We use next.js and Typescript and it's pretty straightforward to get started. After cloning the repo run:
 
     npm ci
     npm run dev
@@ -33,24 +33,52 @@ The project can also be run with docker (although with much slower refresh time)
     # starts the container
     docker run -t -i --rm -p 3000:3000 --name klimatkollen klimatkollen
 
+# Data overview
 
-## Contribute
+In very general terms, Klimatkollen presents:
+- Detailed information about Swedish municipalities' emissions...
+- ...and their remaining emission budget based on the Paris Agreement.
+- Other key point indicators for sustainability transition, such electric car charger density.
+- Contextual information to help understand the significance of the above.
+
+# File overview
+
+The toplevel directory contains a lot of files and folders. You can just ignore most of them. Take note of:
+- `README.md` - this document.
+- `data`: Our data processing pipeline, written in Python. This can more or less be used/edited independently of the rest of the repository. See `data/README.md`.
+  - `data/facts`: Copies of source datasets.
+- `doc`: Documentation and guides, they might answer many questions.
+  - `doc/getting-started.md`: Detailed setup instructions for the web project.
+  - `doc/contributing.md`: Good to know before making your first contribution.
+- `pages` and `components`: Source code for almost everything visible on the website's pages.
+- `public`: Files that will be served directly on the website.
+  - `public/locales`: Language files defininig translations of the website.
+
+# Code architecture overview
+
+How does everything fit together, code-wise?
+- Copies of source datasets are under `data/facts`.
+- We run the Python scripts under `data` to produce `data/output/climate-data.json` from those datasets.
+- The latest copy of `data/output/climate-data.json` is always checked into version control.
+- The rest of the website source code loads `data/output/climate-data.json`.
+- The framework `next.js` is used to compile actual HTML pages at runtime.
+- `next.js` caches each page for serving, to serve it faster for each new visitor.
+
+## Contributing
 
 The idea behind Klimatkollen is to give citizens access to the climate data we need to meet the goals of the Paris Agreement – and save our own future.
 
-Do you have an idea for a feature you think should be added to the project? Please develop it and create a pull request where you explain what you've done. If you can't develop the feature yourself, please submit an [issue](https://github.com/Klimatbyran/klimatkollen/issues) where you explain your suggestion.
+Do you have an idea for a feature you think should be added to the project? Before jumping into the code, it's a good idea to discuss your idea in the Discord server. That way you can find out if someone is already planning work in that area, or if your suggestion aligns with other people's thoughts. You can always submit an [issue](https://github.com/Klimatbyran/klimatkollen/issues) explaining your suggestion. We try to review the issues as soon as possible, but be aware that the team is at times very busy. Again, feel free to ask for a review on Discord!
 
-Looking for ideas on what needs to be done? Take a look at our [issues](https://github.com/Klimatbyran/klimatkollen/issues) and/or [pull requests](https://github.com/Klimatbyran/klimatkollen/pulls). Testing, bug fixes, typos or fact checking our data is highly appreciated.
+Looking for ideas on what needs to be done? We appreciate help on existing [issues](https://github.com/Klimatbyran/klimatkollen/issues) very much. If you pick one up, remember to leave a comment saying you're working on it, and roughly when you expect to report progress. This helps others avoid double work and know what to expect.
 
-Feedback? Either submit an [issue](https://github.com/Klimatbyran/klimatkollen/issues) or send an email to [hej@klimatkollen.se](mailto:hej@klimatkollen.se).
+Testing, bug fixes, typos or fact checking of our data is highly appreciated.
 
-Please star this repo if you want to follow the progress and feel free to join our [Discord](https://discord.gg/N5P64QPQ6v).
+See [doc/contributing.md] before making your first contribution.
 
-## Climate Data Pipeline Overview
+## Contact
 
-Please see full [description here](data/README.md).
-
-Feel free to explore the repository to understand more about how we collect, process, and display climate data.
+Join the Discord server in the introduction or send an email to [hej@klimatkollen.se](mailto:hej@klimatkollen.se).
 
 ## Supporters and Partners
 
