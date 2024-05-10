@@ -14,7 +14,7 @@ class TestProcurementCalculations(unittest.TestCase):
         df_cleaned_greenpeace_input = pd.DataFrame(
             {
                 "Kommun": ["Ale", "Alingsås", "Bräcke"],
-                "hasLink": [1, 0, 0],
+                "procurementLink": ["https://drive.google.com/file/d/1x27RSR7W9aNADMMXb5BQyeVPViE00CpT/view?usp=drive_link", "", ""],
             }
         )
         
@@ -30,12 +30,12 @@ class TestProcurementCalculations(unittest.TestCase):
         df_expected = pd.DataFrame(
             {
                 "Kommun": ["Ale", "Alingsås", "Bräcke"],
+                "procurementLink": ["https://drive.google.com/file/d/1x27RSR7W9aNADMMXb5BQyeVPViE00CpT/view?usp=drive_link", "", ""],
                 "procurementScore": [2, 0, 1],
             }
         )
 
         df_result = calculate_procurement_score(df_cleaned_greenpeace_input, df_cleaned_nur_input)
-        print(df_result)
         pd.testing.assert_frame_equal(df_result, df_expected)
 
 if __name__ == "__main__":
