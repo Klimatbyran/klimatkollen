@@ -65,7 +65,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
           </ScopeColumn>
         )
       },
-      sortingFn: getCustomSortFn({ scope: 'Scope1n2' }),
+      sortingFn: getCustomSortFn({ scope: 'Scope1n2', sortAscending: true }),
       accessorKey: 'Emissions.Scope1n2',
     },
     {
@@ -84,7 +84,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
           </ScopeColumn>
         )
       },
-      sortingFn: getCustomSortFn({ scope: 'Scope3' }),
+      sortingFn: getCustomSortFn({ scope: 'Scope3', sortAscending: true }),
       accessorKey: 'Emissions.Scope3',
     },
   ]
