@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next'
-import { ReactElement, useEffect, useState } from 'react'
+import { ReactElement, useState } from 'react'
 import styled from 'styled-components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
@@ -14,10 +14,6 @@ import {
   defaultDataset,
   getDataDescriptions,
 } from '../utils/datasetDefinitions'
-import {
-  isValidDataView,
-  normalizeString,
-} from '../utils/shared'
 import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
@@ -40,16 +36,14 @@ const secondaryDataGroup = 'geografiskt'
 
 function StartPage({ companies, municipalities }: PropsType) {
   const router = useRouter()
-  const routeDataset = router.query.dataset
-  const { dataGroup, dataView } = router.query
+  const { dataGroup, dataset: routeDataset, dataView } = router.query
   const { t } = useTranslation()
-  const { dataDescriptions, isValidDataset } = getDataDescriptions(router.locale as string, t)
+  const {
+    dataDescriptions, getDataset, getDataView,
+  } = getDataDescriptions(router.locale as string, t)
 
-  const normalizedRouteDataset = normalizeString(routeDataset as string)
-  const normalizedDataView = normalizeString(dataView as string)
-
-  const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(defaultDataset)
-  const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
+  const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(getDataset(routeDataset as string))
+  const [selectedDataView, setSelectedDataView] = useState(getDataView(dataView as string))
 
   const [showCompanyData, setShowCompanyData] = useState(dataGroup === primaryDataGroup)
 
@@ -63,18 +57,6 @@ function StartPage({ companies, municipalities }: PropsType) {
 
     router.push(path, undefined, { shallow: true })
   }
-
-  useEffect(() => {
-    if (normalizedRouteDataset && isValidDataset(normalizedRouteDataset)) {
-      setSelectedDataset(normalizedRouteDataset)
-    }
-
-    if (normalizedDataView && isValidDataView(normalizedDataView)) {
-      setSelectedDataView(selectedDataView)
-    }
-    // Disable exhaustive-deps so that it only runs on first mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <>
@@ -111,11 +93,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
 
-  const normalizedDataset = normalizeString(defaultDataset)
-
   return {
     redirect: {
-      destination: `/foretag/${normalizedDataset}/${defaultDataView}`,
+      destination: `/foretag/${defaultDataset}/${defaultDataView}`,
       permanent: true,
     },
     props: {
