@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
+import Markdown from 'react-markdown'
 import { H5, Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
 import NewsletterSubscribe from './FooterNewsletterSubscribe'
@@ -99,31 +100,9 @@ function Footer() {
       <PageWrapper backgroundColor="midGreen">
         <BottomParent>
           <TextContainer>
-            <Paragraph>
-              {t('footer.tagline')}
-            </Paragraph>
-            <Copyright>
-              {t('footer.creative-commons.abbreviation')}
-              {' - '}
-              <a
-                href="http://creativecommons.org/licenses/by-sa/4.0/"
-                target="_blank"
-                rel="noreferrer license"
-              >
-                {t('footer.creative-commons.license')}
-              </a>
-            </Copyright>
-            <GHLink>
-              {t('footer.developedWith')}
-              {' '}
-              <a
-                href="https://github.com/Klimatbyran/klimatkollen"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t('footer.open-source')}
-              </a>
-            </GHLink>
+            <Paragraph>{t('footer.tagline')}</Paragraph>
+            <Markdown components={{ p: Copyright }}>{t('footer.license')}</Markdown>
+            <Markdown components={{ p: GHLink }}>{t('footer.developedWith')}</Markdown>
           </TextContainer>
           <HorizontalContainer>
             <SocialLinksContainer>

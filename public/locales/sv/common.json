@@ -22,7 +22,7 @@
   "dataMissing": "Data saknas",
   "datasets": {
     "bikes": {
-      "body": "Antal meter cykelväg per invånare per kommun år 2022.",
+      "body": "Antal meter cykelväg per invånare per kommun år 2022. Ju längre desto bättre, god infrastruktur gynnar ökad cykling.",
       "columnHeader": "Cykelväglängd",
       "source": "Källor: [Nationella Vägdatabasen/Trafikverket](https://nvdb2012.trafikverket.se/SeTransportnatverket) och [SCB](https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik)",
       "title": "Cykelvägslängd",
@@ -97,17 +97,13 @@
     "notFound": "404 - Sidan hittades inte"
   },
   "footer": {
-    "creative-commons": {
-      "abbreviation": "CC BY-SA",
-      "license": "Attribution-ShareAlike 4.0 International license"
-    },
-    "developedWith": "Klimatkollen är utvecklad med",
+    "license": "CC BY-SA [Attribution-ShareAlike 4.0 International license](http://creativecommons.org/licenses/by-sa/4.0/)",
+    "developedWith": "Klimatkollen är utvecklad med [öppen källkod](https://github.com/Klimatbyran/klimatkollen) och drivs av den ideella föreningen Klimatbyrån.",
     "email-us": "Maila oss",
-    "open-source": "öppen källkod",
     "partners": "Partners",
     "signup-form": {
       "label": "Prenumerera på vårt nyhetsbrev",
-      "info": "Med vårt nyhetsbrev får du uppdateringar om hur det går med utsläppen och omställningen direkt i din mejl.",
+      "info": "Med vårt nyhetsbrev får du uppdateringar om hur det går med utsläppen och omställningen direkt i din inbox.",
       "placeholder": "Ange mailadress",
       "thanks": "Tack för ditt intresse!",
       "title": "Vill du få nyheter om Klimatkollen?"
