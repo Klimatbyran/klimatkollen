@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { t } from 'i18next'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 
 import { devices } from '../utils/devices'
 
@@ -71,15 +71,13 @@ type PillSwitchProps = {
 }
 
 function PillSwitch({ isActive }: PillSwitchProps) {
+  const { t } = useTranslation()
   return (
-    <>
-      <p className="sr-only">{t('common:components.PillSwitch.label')}</p>
-      <Switch>
-        <DataGroupLink href="/foretag/utslappen/lista">Företag</DataGroupLink>
-        <DataGroupLink href="/geografiskt/utslappen/lista">Kommuner</DataGroupLink>
-        <Slider isActive={isActive} />
-      </Switch>
-    </>
+    <Switch aria-label={t('common:components.PillSwitch.label')}>
+      <DataGroupLink href="/foretag/utslappen/lista">Företag</DataGroupLink>
+      <DataGroupLink href="/geografiskt/utslappen/lista">Kommuner</DataGroupLink>
+      <Slider isActive={isActive} />
+    </Switch>
   )
 }
 
