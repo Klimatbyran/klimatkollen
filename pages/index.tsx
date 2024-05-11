@@ -35,10 +35,13 @@ type PropsType = {
   municipalities: Array<Municipality>
 }
 
+const primaryDataGroup = 'foretag'
+const secondaryDataGroup = 'geografiskt'
+
 function StartPage({ companies, municipalities }: PropsType) {
   const router = useRouter()
   const routeDataset = router.query.dataset
-  const { dataView } = router.query
+  const { dataGroup, dataView } = router.query
   const { t } = useTranslation()
   const { dataDescriptions, isValidDataset } = getDataDescriptions(router.locale as string, t)
 
@@ -48,15 +51,15 @@ function StartPage({ companies, municipalities }: PropsType) {
   const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(defaultDataset)
   const [selectedDataView, setSelectedDataView] = useState(normalizedDataView)
 
-  const [showCompanyData, setShowCompanyData] = useState(true)
+  const [showCompanyData, setShowCompanyData] = useState(dataGroup === primaryDataGroup)
 
   const handleToggle = () => {
     setShowCompanyData(!showCompanyData)
     setSelectedDataset(defaultDataset)
     setSelectedDataView(defaultDataView)
 
-    const dataGroup = showCompanyData ? 'geografiskt' : 'foretag'
-    const path = `/${dataGroup}/${defaultDataset}/${defaultDataView}`
+    const newDataGroup = dataGroup === primaryDataGroup ? secondaryDataGroup : primaryDataGroup
+    const path = `/${newDataGroup}/${defaultDataset}/${defaultDataView}`
 
     router.push(path, undefined, { shallow: true })
   }
@@ -81,12 +84,10 @@ function StartPage({ companies, municipalities }: PropsType) {
       />
       <PageWrapper backgroundColor="black" compact={showCompanyData}>
         <Container>
-          <PillSwitch onToggle={handleToggle} />
+          <PillSwitch onToggle={handleToggle} isActive={!showCompanyData} />
           {showCompanyData
             ? (
-              <CompanyView
-                companies={companies}
-              />
+              <CompanyView companies={companies} />
             )
             : (
               <RegionalView
