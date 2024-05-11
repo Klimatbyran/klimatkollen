@@ -129,8 +129,6 @@ function ComparisonTable<T extends object>({
 
   const [resizeCount, setResizeCount] = useState(0)
 
-  console.log(sorting[0])
-
   useEffect(() => {
     const handleResize = () => setResizeCount((count) => count + 1)
     window.addEventListener('resize', handleResize)
@@ -172,15 +170,6 @@ function ComparisonTable<T extends object>({
     }
   }
 
-  // console.log(columns[0], table.getHeaderGroups()[0].headers[0])
-
-  // useEffect(() => {
-  //   // Add default sorting to the first column
-  //   if (!sorting.length) {
-  //     setSorting([{ id: table.getHeaderGroups()[0]?.headers?.[0]?.id, desc: false }])
-  //   }
-  // }, [table, sorting.length])
-
   return (
     <StyledTable key={resizeCount}>
       {/* HACK: prevent table headers from changing size when toggling table rows. Not sure what causes the problem, but this fixes it. */}
@@ -215,10 +204,6 @@ function ComparisonTable<T extends object>({
                       // display: header.column.getIsSorted() === false ? 'none' : '',
                     }}
                   />
-                  {/* {{
-                    asc: <IconArrow style={{ transform: 'rotate(90deg) scale(0.6)' }} />,
-                    desc: <IconArrow style={{ transform: 'rotate(-90deg) scale(0.6)' }} />,
-                  }[header.column.getIsSorted() as string] ?? null} */}
                 </TableHeaderInner>
               </TableHeader>
             ))}
