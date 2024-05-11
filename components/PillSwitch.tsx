@@ -1,14 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { t } from 'i18next'
+import Link from 'next/link'
+
 import { devices } from '../utils/devices'
 
-const SwitchLabel = styled.label`
+const SwitchLabel = styled.div`
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 240px; 
+  width: 240px;
   height: 40px;
   background: ${({ theme }) => theme.lightBlack};
   border-radius: 12px;
@@ -16,7 +18,7 @@ const SwitchLabel = styled.label`
   cursor: pointer;
 
   @media only screen and (${devices.tablet}) {
-    width: 264px; 
+    width: 264px;
     height: 56px;
     margin-bottom: 40px;
   }
@@ -37,66 +39,43 @@ const Slider = styled.div<{ isActive: boolean }>`
   font-size: 14px;
   font-weight: bold;
   z-index: 1;
+  pointer-events: none;
 
   @media only screen and (${devices.tablet}) {
     height: 48px; /* height of the slider */
   }
 `
 
-const SwitchInput = styled.input`
-  opacity: 0;
-  width: 0;
-  height: 0;
-`
-
-const TextLeft = styled.span`
+const DataGroupLink = styled(Link)`
   position: absolute;
   width: 50%;
-  left: 0px;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: ${({ theme }) => theme.offWhite};
-  pointer-events: none; /* ignore pointer events so label still triggers input */
-  z-index: 10;
-`
+  z-index: 20;
+  text-decoration: none;
 
-const TextRight = styled.span`
-  position: absolute;
-  width: 50%;
-  right: 0px;
-  text-align: center;
-  color: ${({ theme }) => theme.offWhite};
-  pointer-events: none;
-  z-index: 10;
+  &:first-of-type {
+    left: 0px;
+  }
+
+  &:last-of-type {
+    right: 0px;
+  }
 `
 
 type PillSwitchProps = {
-  onToggle: (isActive: boolean) => void
   isActive: boolean
 }
 
-function PillSwitch({ onToggle, isActive }: PillSwitchProps) {
-  const handleToggle = () => {
-    const newIsActive = !isActive
-    onToggle(newIsActive)
-  }
-
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter') {
-      handleToggle()
-    }
-  }
-
+function PillSwitch({ isActive }: PillSwitchProps) {
   return (
-    <SwitchLabel onKeyDown={handleKeyDown} tabIndex={0} aria-label={t('common:components.PillSwitch.label')}>
-      <TextLeft>Företag</TextLeft>
-      <TextRight>Kommuner</TextRight>
+    <SwitchLabel aria-label={t('common:components.PillSwitch.label')}>
+      <DataGroupLink href="/foretag/utslappen/lista">Företag</DataGroupLink>
+      <DataGroupLink href="/geografiskt/utslappen/lista">Kommuner</DataGroupLink>
       <Slider isActive={isActive} />
-      <SwitchInput
-        type="checkbox"
-        role="switch"
-        checked={isActive}
-        onChange={handleToggle}
-      />
     </SwitchLabel>
   )
 }
