@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { t } from 'i18next'
 import { devices } from '../utils/devices'
@@ -71,14 +71,12 @@ const TextRight = styled.span`
 
 type PillSwitchProps = {
   onToggle: (isActive: boolean) => void
+  isActive: boolean
 }
 
-function PillSwitch({ onToggle }: PillSwitchProps) {
-  const [isActive, setIsActive] = useState(false)
-
+function PillSwitch({ onToggle, isActive }: PillSwitchProps) {
   const handleToggle = () => {
     const newIsActive = !isActive
-    setIsActive(newIsActive)
     onToggle(newIsActive)
   }
 
@@ -96,10 +94,8 @@ function PillSwitch({ onToggle }: PillSwitchProps) {
       <SwitchInput
         type="checkbox"
         role="switch"
-        aria-checked={isActive}
         checked={isActive}
-        onClick={handleToggle}
-        readOnly
+        onChange={handleToggle}
       />
     </SwitchLabel>
   )
