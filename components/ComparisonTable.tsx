@@ -10,7 +10,7 @@ import {
   Row,
   getExpandedRowModel,
 } from '@tanstack/react-table'
-import type { ColumnDef } from '@tanstack/react-table'
+import type { ColumnDef, SortDirection } from '@tanstack/react-table'
 
 import IconArrow from '../public/icons/arrow-right-bold-green.svg'
 import { devices } from '../utils/devices'
@@ -82,9 +82,13 @@ const TableHeader = styled.th`
   }
 `
 
-const TableHeaderInner = styled.span`
-  display: inline-flex;
+// NOTE: Maybe no need for reading the data-sorting prop, since we could just hide the second item and thus only render the first column
+const TableHeaderInner = styled.span<{ 'data-sorting': false | SortDirection }>`
+  display: inline-grid;
+  align-content: center;
   align-items: center;
+  grid-template-columns: 1fr max-content;
+  /* grid-template-columns: ${(props) => (props['data-sorting'] ? '1fr max-content' : '')}; */
 `
 
 const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpanded?: boolean }>`
@@ -184,29 +188,34 @@ function ComparisonTable<T extends object>({
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <TableHeader
-                key={header.id}
-                colSpan={header.colSpan}
-                className={isDataColumn(header.index) ? 'data-header' : ''}
-                onClick={header.column.getToggleSortingHandler()}
-                onKeyDown={header.column.getToggleSortingHandler()}
-              >
-                <TableHeaderInner data-order={header.column.getIsSorted()}>
-                  <span>{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}</span>
-                  <IconArrow
-                    style={{
-                      transform: `scale(0.6) rotate(${header.column.getIsSorted() === 'desc' ? '' : '-'}90deg)`,
-                      // TODO: figure out a way to make icons take proper space.
-                      // modifying visibility works for desktop but doesn't show the full sorting icon on mobile and tablets
-                      visibility: header.column.getIsSorted() === false ? 'hidden' : '',
-                      // TODO: modifying the display property is better for desktop, but broken for mobile and tablet
-                      // display: header.column.getIsSorted() === false ? 'none' : '',
-                    }}
-                  />
-                </TableHeaderInner>
-              </TableHeader>
-            ))}
+            {headerGroup.headers.map((header) => {
+              const currentSort = header.column.getIsSorted()
+              return (
+                <TableHeader
+                  key={header.id}
+                  colSpan={header.colSpan}
+                  className={isDataColumn(header.index) ? 'data-header' : ''}
+                  onClick={header.column.getToggleSortingHandler()}
+                  onKeyDown={header.column.getToggleSortingHandler()}
+                >
+                  <TableHeaderInner data-sorting={header.column.getIsSorted()}>
+                    <span>{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}</span>
+                    {currentSort ? (
+                      <IconArrow
+                        style={{
+                          transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)`,
+                          // TODO: figure out a way to make icons take proper space.
+                          // modifying visibility works for desktop but doesn't show the full sorting icon on mobile and tablets
+                          // visibility: currentSort === false ? 'hidden' : '',
+                        // TODO: modifying the display property is better for desktop, but broken for mobile and tablet
+                        // display: header.column.getIsSorted() === false ? 'none' : '',
+                        }}
+                      />
+                    ) : null}
+                  </TableHeaderInner>
+                </TableHeader>
+              )
+            })}
           </tr>
         ))}
       </thead>
