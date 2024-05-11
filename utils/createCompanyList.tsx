@@ -3,26 +3,23 @@ import { ColumnDef, Row } from '@tanstack/react-table'
 import { TFunction } from 'i18next'
 
 import { Company } from './types'
-
-import IconAdd from '../public/icons/add_light_white.svg'
-import IconRemove from '../public/icons/remove_light_white.svg'
 import { devices } from './devices'
+import ArrowSvg from '../public/icons/arrow-down-round.svg'
+import { colorTheme } from '../Theme'
 
-// import ArrowSvg from '../public/icons/arrow-down-round.svg'
-// import { colorTheme } from '../Theme'
+const Arrow = styled(ArrowSvg)<{ open: boolean }>`
+  --scale: 0.6;
+  transform: scale(var(--scale)) rotate(${(props) => (props.open ? '180deg' : '0')});
 
-// const Arrow = styled(ArrowSvg)<{ open: boolean }>`
-//   --scale: 0.6;
-//   transform: scale(var(--scale)) rotate(${(props) => (props.open ? '180deg' : '0')});
+  & path {
+    fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
+  }
 
-//   & path {
-//     fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
-//   }
+  @media only screen and (${devices.tablet}) {
+    --scale: 0.8;
+  }
+`
 
-//   @media only screen and (${devices.tablet}) {
-//     --scale: 0.8;
-//   }
-// `
 // IDEA: do something similar for the regional view to distinguish between actual important data (orange), and when something is missing (gray)
 const ScopeColumn = styled.span<{ isMissing: boolean }>`
   display: inline-flex;
@@ -109,8 +106,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         return (
           <ScopeColumn isMissing={scope3String === notReported}>
             {scope3String}
-            {/* <Arrow open={row.cell.row.getIsExpanded()} /> */}
-            {row.cell.row.getIsExpanded() ? <IconRemove /> : <IconAdd />}
+            <Arrow open={row.cell.row.getIsExpanded()} />
           </ScopeColumn>
         )
       },
