@@ -30,6 +30,9 @@ export class CompanyDataService {
   }
 
   public getCompanies(): Array<Company> {
+    if (this.companies.length < 1) {
+      throw new Error('No companies found')
+    }
     return this.companies
   }
 

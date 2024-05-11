@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { Company as TCompany, Municipality as TMunicipality } from '../../../../utils/types'
-import StartPage from '../../..'
+import StartPage, { getDataGroup } from '../../..'
 import { ClimateDataService } from '../../../../utils/climateDataService'
 import Layout from '../../../../components/Layout'
 import Footer from '../../../../components/Footer/Footer'
@@ -14,6 +14,7 @@ export const secondaryDataView = 'karta'
 export const isValidDataView = (dataView: string) => [defaultDataView, secondaryDataView].includes(dataView)
 
 interface Params extends ParsedUrlQuery {
+  dataGroup: string
   dataset: string
   dataView: string
 }
@@ -23,42 +24,36 @@ const cache = new Map()
 export const getServerSideProps: GetServerSideProps = async ({
   params, res, locale,
 }) => {
-  const { dataset, dataView } = params as Params
+  const { dataGroup, dataset, dataView } = params as Params
   const { t, _nextI18Next } = await getServerSideI18n(locale as string, ['common', 'startPage'])
   const { getDataset, getDataView } = getDataDescriptions(locale as string, t)
 
+  const normalizedDataGroup = getDataGroup(dataGroup)
   const normalizedDataset = getDataset(dataset)
   const normalizedDataView = getDataView(dataView)
 
   if (dataset !== normalizedDataset || dataView !== normalizedDataView) {
     return {
       redirect: {
-        destination: `/${normalizedDataset}/${normalizedDataView}`,
+        destination: `/${normalizedDataGroup}/${normalizedDataset}/${normalizedDataView}`,
         permanent: true,
       }, // Redirect to the lower case non-åäö url
     }
   }
 
-  const municipalities = new ClimateDataService().getMunicipalities()
-  if (municipalities.length < 1) {
-    throw new Error('No municipalities found')
+  const cacheKey = `${normalizedDataGroup}/${normalizedDataset}`
+
+  if (cache.get(cacheKey)) {
+    return cache.get(cacheKey)
   }
 
-  // TODO: Figure out a way to load company data only when needed, to speed up municipality data views
-  // This can likely be solved together with the routing.
+  const municipalities = new ClimateDataService().getMunicipalities()
   const companies = new CompanyDataService().getCompanies()
-  if (companies.length < 1) {
-    throw new Error('No companies found')
-  }
 
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
   )
-
-  if (cache.get(normalizedDataset)) {
-    return cache.get(normalizedDataset)
-  }
 
   const result = {
     props: {
@@ -69,7 +64,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     },
   }
 
-  cache.set(normalizedDataset, result)
+  cache.set(cacheKey, result)
   return result
 }
 

@@ -106,6 +106,9 @@ export class ClimateDataService {
   }
 
   public getMunicipalities(): Array<Municipality> {
+    if (this.municipalities.length < 1) {
+      throw new Error('No municipalities found')
+    }
     return this.municipalities
   }
 

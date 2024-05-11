@@ -18,6 +18,7 @@ import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
 import { defaultDataView } from './[dataGroup]/[dataset]/[dataView]'
+import { normalizeString } from '../utils/shared'
 
 const Container = styled.div`
   display: flex;
@@ -31,8 +32,19 @@ type PropsType = {
   municipalities: Array<Municipality>
 }
 
-const primaryDataGroup = 'foretag'
-const secondaryDataGroup = 'geografiskt'
+export const defaultDataGroup = 'foretag'
+export const secondaryDataGroup = 'geografiskt'
+const dataGroups = new Set([defaultDataGroup, secondaryDataGroup])
+export type DataGroup = typeof defaultDataGroup | typeof secondaryDataGroup
+
+export function getDataGroup(rawDataGroup: string): DataGroup {
+  const normalized = normalizeString(rawDataGroup)
+  if (dataGroups.has(normalized)) {
+    return normalized as DataGroup
+  }
+
+  return defaultDataGroup
+}
 
 function StartPage({ companies, municipalities }: PropsType) {
   const router = useRouter()
@@ -42,21 +54,12 @@ function StartPage({ companies, municipalities }: PropsType) {
     dataDescriptions, getDataset, getDataView,
   } = getDataDescriptions(router.locale as string, t)
 
+  const normalizedDataGroup = getDataGroup(dataGroup as string)
+
   const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(getDataset(routeDataset as string))
   const [selectedDataView, setSelectedDataView] = useState(getDataView(dataView as string))
 
-  const [showCompanyData, setShowCompanyData] = useState(dataGroup === primaryDataGroup)
-
-  const handleToggle = () => {
-    setShowCompanyData(!showCompanyData)
-    setSelectedDataset(defaultDataset)
-    setSelectedDataView(defaultDataView)
-
-    const newDataGroup = dataGroup === primaryDataGroup ? secondaryDataGroup : primaryDataGroup
-    const path = `/${newDataGroup}/${defaultDataset}/${defaultDataView}`
-
-    router.push(path, undefined, { shallow: true })
-  }
+  const showCompanyData = normalizedDataGroup === defaultDataGroup
 
   return (
     <>
@@ -66,7 +69,7 @@ function StartPage({ companies, municipalities }: PropsType) {
       />
       <PageWrapper backgroundColor="black" compact={showCompanyData}>
         <Container>
-          <PillSwitch onToggle={handleToggle} isActive={!showCompanyData} />
+          <PillSwitch isActive={!showCompanyData} />
           {showCompanyData
             ? (
               <CompanyView companies={companies} />
