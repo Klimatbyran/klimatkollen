@@ -3,7 +3,6 @@ import { ParsedUrlQuery } from 'querystring'
 import { Company as TCompany, Municipality as TMunicipality } from '../../../../utils/types'
 import StartPage from '../../..'
 import { ClimateDataService } from '../../../../utils/climateDataService'
-import { normalizeString } from '../../../../utils/shared'
 import Layout from '../../../../components/Layout'
 import Footer from '../../../../components/Footer/Footer'
 import { CompanyDataService } from '../../../../utils/companyDataService'
@@ -24,19 +23,14 @@ const cache = new Map()
 export const getServerSideProps: GetServerSideProps = async ({
   params, res, locale,
 }) => {
-  const dataset = (params as Params).dataset as string
-  const dataView = (params as Params).dataView as string
+  const { dataset, dataView } = params as Params
   const { t, _nextI18Next } = await getServerSideI18n(locale as string, ['common', 'startPage'])
-  const { isValidDataset } = getDataDescriptions(locale as string, t)
+  const { getDataset, getDataView } = getDataDescriptions(locale as string, t)
 
-  const normalizedDataset = normalizeString(dataset)
-  const normalizedDataView = normalizeString(dataView)
+  const normalizedDataset = getDataset(dataset)
+  const normalizedDataView = getDataView(dataView)
 
-  if (!isValidDataset(normalizedDataset) || !isValidDataView(normalizedDataView)) {
-    return {
-      notFound: true, // Return a 404 page
-    }
-  } if (dataset !== normalizedDataset || dataView !== normalizedDataView) {
+  if (dataset !== normalizedDataset || dataView !== normalizedDataView) {
     return {
       redirect: {
         destination: `/${normalizedDataset}/${normalizedDataView}`,
