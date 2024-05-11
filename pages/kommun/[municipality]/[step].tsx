@@ -8,6 +8,7 @@ import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import { PoliticalRuleService } from '../../../utils/politicalRuleService'
+import { ONE_WEEK_MS } from '../../../utils/shared'
 
 const Municipality = dynamic(() => import('../../../components/Municipality/Municipality'))
 
@@ -75,7 +76,7 @@ interface Params extends ParsedUrlQuery {
 const cache = new Map()
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res, locale }) => {
-  res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${((60 * 60) * 24) * 7}`)
+  res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${ONE_WEEK_MS}`)
 
   const id = (params as Params).municipality as string
   if (cache.get(id)) {

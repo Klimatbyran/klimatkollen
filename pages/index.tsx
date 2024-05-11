@@ -18,7 +18,7 @@ import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
 import { defaultDataView } from './[dataGroup]/[dataset]/[dataView]'
-import { normalizeString } from '../utils/shared'
+import { ONE_WEEK_MS, normalizeString } from '../utils/shared'
 
 const Container = styled.div`
   display: flex;
@@ -93,7 +93,7 @@ function StartPage({ companies, municipalities }: PropsType) {
 export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
   res.setHeader(
     'Cache-Control',
-    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
+    `public, stale-while-revalidate=60, max-age=${ONE_WEEK_MS}`,
   )
 
   return {

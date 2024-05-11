@@ -8,6 +8,7 @@ import Footer from '../../../../components/Footer/Footer'
 import { CompanyDataService } from '../../../../utils/companyDataService'
 import { getDataDescriptions } from '../../../../utils/datasetDefinitions'
 import { getServerSideI18n } from '../../../../utils/getServerSideI18n'
+import { ONE_WEEK_MS } from '../../../../utils/shared'
 
 export const defaultDataView = 'lista'
 export const secondaryDataView = 'karta'
@@ -52,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   res.setHeader(
     'Cache-Control',
-    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
+    `public, stale-while-revalidate=60, max-age=${ONE_WEEK_MS}`,
   )
 
   const result = {
