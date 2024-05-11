@@ -19,3 +19,5 @@ export const replaceLetters = (name: string): string => {
 
   return name.replace(regex, (match) => replacements[match])
 }
+
+export const ONE_WEEK_MS = 60 * 60 * 24 * 7
