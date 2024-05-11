@@ -10,7 +10,7 @@ import {
   Row,
   getExpandedRowModel,
 } from '@tanstack/react-table'
-import type { ColumnDef, SortDirection } from '@tanstack/react-table'
+import type { ColumnDef } from '@tanstack/react-table'
 
 import IconArrow from '../public/icons/arrow-right-bold-green.svg'
 import { devices } from '../utils/devices'
@@ -82,13 +82,11 @@ const TableHeader = styled.th`
   }
 `
 
-// NOTE: Maybe no need for reading the data-sorting prop, since we could just hide the second item and thus only render the first column
-const TableHeaderInner = styled.span<{ 'data-sorting': false | SortDirection }>`
+const TableHeaderInner = styled.span`
   display: inline-grid;
   align-content: center;
   align-items: center;
   grid-template-columns: 1fr max-content;
-  /* grid-template-columns: ${(props) => (props['data-sorting'] ? '1fr max-content' : '')}; */
 `
 
 const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpanded?: boolean }>`
@@ -199,18 +197,9 @@ function ComparisonTable<T extends object>({
                   onKeyDown={header.column.getToggleSortingHandler()}
                 >
                   <TableHeaderInner data-sorting={header.column.getIsSorted()}>
-                    <span>{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}</span>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     {currentSort ? (
-                      <IconArrow
-                        style={{
-                          transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)`,
-                          // TODO: figure out a way to make icons take proper space.
-                          // modifying visibility works for desktop but doesn't show the full sorting icon on mobile and tablets
-                          // visibility: currentSort === false ? 'hidden' : '',
-                        // TODO: modifying the display property is better for desktop, but broken for mobile and tablet
-                        // display: header.column.getIsSorted() === false ? 'none' : '',
-                        }}
-                      />
+                      <IconArrow style={{ transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)` }} />
                     ) : null}
                   </TableHeaderInner>
                 </TableHeader>
