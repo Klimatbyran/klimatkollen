@@ -20,8 +20,14 @@ const StyledTable = styled.table`
   overflow-y: auto;
   border-collapse: collapse;
 
-  @media only screen and (${devices.mobile}) {
+  font-size: 0.7em;
+
+  @media only screen and (${devices.smallMobile}) {
     font-size: 0.8em;
+  }
+
+  @media only screen and (${devices.tablet}) {
+    font-size: 1em;
   }
 
   .data-header {
@@ -37,6 +43,7 @@ const StyledTable = styled.table`
     background: ${({ theme }) => theme.lightBlack};
     position: sticky;
     top: 0;
+    z-index: 30;
   }
 `
 
@@ -153,9 +160,9 @@ function ComparisonTable<T extends object>({
       {/* HACK: prevent table headers from changing size when toggling table rows. Not sure what causes the problem, but this fixes it. */}
       {dataType === 'companies' ? (
         <colgroup>
-          <col width="33%" />
-          <col width="33%" />
-          <col width="33%" />
+          <col width="35%" />
+          <col width="28%" />
+          <col width="37%" />
         </colgroup>
       ) : null}
 
