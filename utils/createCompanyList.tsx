@@ -3,30 +3,39 @@ import { ColumnDef, Row } from '@tanstack/react-table'
 import { TFunction } from 'i18next'
 
 import { Company } from './types'
-import ArrowSvg from '../public/icons/arrow-down-round.svg'
-import { colorTheme } from '../Theme'
 
-const Arrow = styled(ArrowSvg)<{ open: boolean }>`
-  transform: rotate(${(props) => (props.open ? '180deg' : '0')});
+import IconAdd from '../public/icons/add_light_white.svg'
+import IconRemove from '../public/icons/remove_light_white.svg'
+import { devices } from './devices'
 
-  & path {
-    fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
-  }
-`
+// import ArrowSvg from '../public/icons/arrow-down-round.svg'
+// import { colorTheme } from '../Theme'
 
+// const Arrow = styled(ArrowSvg)<{ open: boolean }>`
+//   --scale: 0.6;
+//   transform: scale(var(--scale)) rotate(${(props) => (props.open ? '180deg' : '0')});
+
+//   & path {
+//     fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
+//   }
+
+//   @media only screen and (${devices.tablet}) {
+//     --scale: 0.8;
+//   }
+// `
 // IDEA: do something similar for the regional view to distinguish between actual important data (orange), and when something is missing (gray)
-const ScopeColumn = styled.div<{ isMissing: boolean }>`
+const ScopeColumn = styled.span<{ isMissing: boolean }>`
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: ${({ isMissing, theme }) => (isMissing ? 'gray' : theme.darkYellow)};
-  font-style: ${({ isMissing }) => (isMissing ? 'italic' : 'normal')};
+  gap: 0.25rem;
 
-  .expandable {
-    display: flex;
-    align-items: center;
+  @media only screen and (${devices.smallMobile}) {
     gap: 0.5rem;
   }
+
+  color: ${({ isMissing, theme }) => (isMissing ? 'gray' : theme.darkYellow)};
+  font-style: ${({ isMissing }) => (isMissing ? 'italic' : 'normal')};
+  font-size: ${({ isMissing }) => (isMissing ? '0.9em' : '')};
 `
 
 const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 0 })
@@ -98,9 +107,10 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         // it is in fact just a number or null.
         const scope3String = Number.isFinite(scope3Emissions) ? formatter.format(scope3Emissions as unknown as number) : notReported
         return (
-          <ScopeColumn isMissing={scope3String === notReported} className="expandable">
+          <ScopeColumn isMissing={scope3String === notReported}>
             {scope3String}
-            <Arrow open={row.cell.row.getIsExpanded()} />
+            {/* <Arrow open={row.cell.row.getIsExpanded()} /> */}
+            {row.cell.row.getIsExpanded() ? <IconRemove /> : <IconAdd />}
           </ScopeColumn>
         )
       },
