@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { devices } from '../utils/devices'
 
-const SwitchLabel = styled.div`
+const Switch = styled.div`
   position: relative;
   display: flex;
   align-items: center;
@@ -72,11 +72,14 @@ type PillSwitchProps = {
 
 function PillSwitch({ isActive }: PillSwitchProps) {
   return (
-    <SwitchLabel aria-label={t('common:components.PillSwitch.label')}>
-      <DataGroupLink href="/foretag/utslappen/lista">Företag</DataGroupLink>
-      <DataGroupLink href="/geografiskt/utslappen/lista">Kommuner</DataGroupLink>
-      <Slider isActive={isActive} />
-    </SwitchLabel>
+    <>
+      <p className="sr-only">{t('common:components.PillSwitch.label')}</p>
+      <Switch>
+        <DataGroupLink href="/foretag/utslappen/lista">Företag</DataGroupLink>
+        <DataGroupLink href="/geografiskt/utslappen/lista">Kommuner</DataGroupLink>
+        <Slider isActive={isActive} />
+      </Switch>
+    </>
   )
 }
 
