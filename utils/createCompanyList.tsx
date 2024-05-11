@@ -3,11 +3,30 @@ import { ColumnDef, Row } from '@tanstack/react-table'
 import { TFunction } from 'i18next'
 
 import { Company } from './types'
+import ArrowSvg from '../public/icons/arrow-down-round.svg'
+import { colorTheme } from '../Theme'
+
+const Arrow = styled(ArrowSvg)<{ open: boolean }>`
+  transform: rotate(${(props) => (props.open ? '180deg' : '0')});
+
+  & path {
+    fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
+  }
+`
 
 // IDEA: do something similar for the regional view to distinguish between actual important data (orange), and when something is missing (gray)
-const ScopeColumn = styled.span<{ isMissing: boolean }>`
+const ScopeColumn = styled.div<{ isMissing: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: ${({ isMissing, theme }) => (isMissing ? 'gray' : theme.darkYellow)};
   font-style: ${({ isMissing }) => (isMissing ? 'italic' : 'normal')};
+
+  .expandable {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 `
 
 const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 0 })
@@ -79,8 +98,9 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         // it is in fact just a number or null.
         const scope3String = Number.isFinite(scope3Emissions) ? formatter.format(scope3Emissions as unknown as number) : notReported
         return (
-          <ScopeColumn isMissing={scope3String === notReported}>
+          <ScopeColumn isMissing={scope3String === notReported} className="expandable">
             {scope3String}
+            <Arrow open={row.cell.row.getIsExpanded()} />
           </ScopeColumn>
         )
       },
