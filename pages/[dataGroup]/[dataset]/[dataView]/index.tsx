@@ -22,6 +22,24 @@ interface Params extends ParsedUrlQuery {
 
 const cache = new Map()
 
+function getCompanies() {
+  const cached = cache.get('companies')
+  if (cached) return cached
+
+  const companies = new CompanyDataService().getCompanies()
+  cache.set('companies', companies)
+  return companies
+}
+
+function getMunicipalities() {
+  const cached = cache.get('municipalities')
+  if (cached) return cached
+
+  const municipalities = new ClimateDataService().getMunicipalities()
+  cache.set('municipalities', municipalities)
+  return municipalities
+}
+
 export const getServerSideProps: GetServerSideProps = async ({
   params, res, locale,
 }) => {
@@ -42,15 +60,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     }
   }
 
-  const cacheKey = `${normalizedDataGroup}/${normalizedDataset}`
-
-  if (cache.get(cacheKey)) {
-    return cache.get(cacheKey)
-  }
-
-  const municipalities = new ClimateDataService().getMunicipalities()
-  const companies = new CompanyDataService().getCompanies()
-
   res.setHeader(
     'Cache-Control',
     `public, stale-while-revalidate=60, max-age=${ONE_WEEK_MS}`,
@@ -58,14 +67,13 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const result = {
     props: {
-      companies,
-      municipalities,
+      companies: getCompanies(),
+      municipalities: getMunicipalities(),
       normalizedDataset,
       _nextI18Next,
     },
   }
 
-  cache.set(cacheKey, result)
   return result
 }
 
