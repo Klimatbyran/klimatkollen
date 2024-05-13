@@ -5,13 +5,6 @@ import { render, screen, act } from '@testing-library/react'
 import StartPage from '../../pages/index'
 import StyledComponentsWrapper from '../utils/StyledComponentsWrapper'
 
-vi.mock('../../public/icons/info.svg', () => ({ default: () => 'svg' }))
-vi.mock('../../public/icons/list.svg', () => ({ default: () => 'svg' }))
-vi.mock('../../public/icons/map.svg', () => ({ default: () => 'svg' }))
-vi.mock('../../public/icons/arrow.svg', () => ({ default: () => 'svg' }))
-vi.mock('../../public/icons/arrow-down.svg', () => ({ default: () => 'svg' }))
-vi.mock('../../public/icons/arrow-right-bold-green.svg', () => ({ default: () => 'svg' }))
-
 vi.mock('next-i18next', () => ({
   useTranslation: vi.fn(() => ({
     t: (str: string) => str,

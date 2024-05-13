@@ -12,7 +12,6 @@ import {
 } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
 
-import IconArrow from '../public/icons/arrow-right-bold-green.svg'
 import { devices } from '../utils/devices'
 
 const StyledTable = styled.table`
@@ -221,7 +220,11 @@ function ComparisonTable<T extends object>({
                   <TableHeaderInner data-sorting={header.column.getIsSorted()}>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     {currentSort ? (
-                      <IconArrow style={{ transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)` }} />
+                      <img
+                        src="/icons/arrow-right-bold-green.svg"
+                        style={{ transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)` }}
+                        alt=""
+                      />
                     ) : null}
                   </TableHeaderInner>
                 </TableHeader>
