@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -124,6 +124,18 @@ type NavItem = {
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { t } = useTranslation()
+
+  useEffect(() => {
+    const closeMenuListener = (event: KeyboardEvent) => {
+      if (menuOpen && event.key === 'Escape') {
+        setMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', closeMenuListener)
+
+    return () => window.removeEventListener('keydown', closeMenuListener)
+  }, [menuOpen, setMenuOpen])
 
   const navigationItems: NavItem[] = [
     { href: '/kallor-och-metod', label: t('common:components.Header.method') },
