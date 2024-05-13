@@ -12,6 +12,10 @@ const Row = styled.summary`
   justify-content: space-between;
   margin: 0.8rem 0;
   cursor: pointer;
+  list-style: none; /* remove default arrow in Firefox */
+  &::-webkit-details-marker {
+    display: none; /* remove default arrow in Chrome */
+  }
 `
 
 const SectionLeft = styled.section`

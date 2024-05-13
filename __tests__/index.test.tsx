@@ -9,6 +9,8 @@ vi.mock('../public/icons/list.svg', () => ({ default: () => 'svg' }))
 vi.mock('../public/icons/map.svg', () => ({ default: () => 'svg' }))
 vi.mock('../public/icons/arrow.svg', () => ({ default: () => 'svg' }))
 vi.mock('../public/icons/arrow-down.svg', () => ({ default: () => 'svg' }))
+vi.mock('../public/icons/arrow-right-bold-green.svg', () => ({ default: () => 'svg' }))
+vi.mock('../public/icons/arrow-down-round.svg', () => ({ default: () => 'svg' }))
 
 // Mock useRouter
 vi.mock('next/router', () => ({

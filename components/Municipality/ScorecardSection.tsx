@@ -19,6 +19,10 @@ const Row = styled.summary`
   align-items: center;
   gap: 4px;
   cursor: pointer;
+  list-style: none; /* remove default arrow in Firefox */
+  &::-webkit-details-marker {
+    display: none; /* remove default arrow in Chrome */
+  }
 `
 
 const InfoParagraph = styled(Paragraph)`

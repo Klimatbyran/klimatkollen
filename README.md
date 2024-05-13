@@ -8,15 +8,15 @@ Klimatkollen is an open source and citizen-driven climate data platform aimed at
 
 <b>The problem:</b> Sweden’s 290 cities and municipalities are not slashing carbon emissions fast enough to be in line with the Paris Agreement. Climate data that can help us is often locked behind paywalls, or sits in complex government databases. If we can’t clearly see how much CO<sup>2</sup> is being emitted, from which sources and how quickly we need to decarbonise – we can’t create a public opinion strong enough to change the course of our future. This needs to change.
 
-That’s why we’re building a data-driven movement of climate-savvy developers to help us find and visualise climate data for the public. Climb aboard! 
+That’s why we’re building a data-driven movement of climate-savvy developers to help us find and visualise climate data for the public. Climb aboard!
 
-<b>Join our [Discord](https://discord.gg/N5P64QPQ6v)</b> and set our climate data free! 
+<b>Join our [Discord](https://discord.gg/N5P64QPQ6v)</b> and set our climate data free!
 
 #Klimatkollen #FreeClimateData
 
 ## Building and running locally
 
-If your're starting from scratch, and working with GitHub, NodeJS and so on is new to you, read [doc/getting-started.md](doc/getting-started.md). 
+If you're starting from scratch, and working with GitHub, NodeJS and so on is new to you, read [doc/getting-started.md](doc/getting-started.md).
 
 We use next.js and Typescript and it's pretty straightforward to get started. After cloning the repo run:
 
@@ -25,25 +25,24 @@ We use next.js and Typescript and it's pretty straightforward to get started. Af
 
 This opens up a webserver on http://localhost:3000. Just edit the code and see the live refresh.
 
-The project can also be run with docker (although with much slower refresh time):
+The project can also be run with `docker compose` with `--watch` (v2.22.0+) for live refresh:
 
-    # builds the image
-    docker build -t klimatkollen .
+    docker compose up --build --watch
 
-    # starts the container
-    docker run -t -i --rm -p 3000:3000 --name klimatkollen klimatkollen
 
 # Data overview
 
 In very general terms, Klimatkollen presents:
+
 - Detailed information about Swedish municipalities' emissions...
 - ...and their remaining emission budget based on the Paris Agreement.
-- Other key point indicators for sustainability transition, such electric car charger density.
+- Other key point indicators for sustainability transition, such as electric car charger density.
 - Contextual information to help understand the significance of the above.
 
 # File overview
 
 The toplevel directory contains a lot of files and folders. You can just ignore most of them. Take note of:
+
 - `README.md` - this document.
 - `data`: Our data processing pipeline, written in Python. This can more or less be used/edited independently of the rest of the repository. See `data/README.md`.
   - `data/facts`: Copies of source datasets.
@@ -52,11 +51,12 @@ The toplevel directory contains a lot of files and folders. You can just ignore 
   - `doc/contributing.md`: Good to know before making your first contribution.
 - `pages` and `components`: Source code for almost everything visible on the website's pages.
 - `public`: Files that will be served directly on the website.
-  - `public/locales`: Language files defininig translations of the website.
+  - `public/locales`: Language files defining translations of the website.
 
 # Code architecture overview
 
 How does everything fit together, code-wise?
+
 - Copies of source datasets are under `data/facts`.
 - We run the Python scripts under `data` to produce `data/output/climate-data.json` from those datasets.
 - The latest copy of `data/output/climate-data.json` is always checked into version control.

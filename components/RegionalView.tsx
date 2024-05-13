@@ -8,7 +8,7 @@ import MapLabels from '../components/Map/MapLabels'
 import ListIcon from '../public/icons/list.svg'
 import MapIcon from '../public/icons/map.svg'
 import ToggleButton from '../components/ToggleButton'
-import RadioButtonMenu from './RadioButtonMenu'
+import DatasetButtonMenu from './DatasetButtonMenu'
 import DropDown from '../components/DropDown'
 import { H2Regular, H5Regular, Paragraph } from './Typography'
 import { devices } from '../utils/devices'
@@ -136,7 +136,7 @@ function RegionalView({
   return (
     <>
       <H2Regular>{t('startPage:regionalView.questionTitle')}</H2Regular>
-      <RadioButtonMenu
+      <DatasetButtonMenu
         selectedData={selectedDataset}
         handleDataChange={handleDataChange}
         dataDescriptions={dataDescriptions}
