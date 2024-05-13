@@ -2,8 +2,10 @@ import { useState, FC, useEffect } from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
 import { EmailFormFields } from 'react-mailchimp-subscribe'
+
 import { H5, Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
+import Markdown from '../Markdown'
 
 const Container = styled.div`
   width: 100%;
@@ -47,6 +49,7 @@ const StyledForm = styled.form`
   display: flex;
   gap: 0.5rem;
   padding-bottom: 0.5rem;
+  margin: 1rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
   justify-content: space-between;
   align-items: center;
@@ -175,6 +178,8 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
             )}
           </StyledForm>
         </div>
+
+        <Markdown components={{ p: StyledParagraph }}>{t('common:footer.privacyInfo')}</Markdown>
       </HorizontalContainer>
     </Container>
   )
