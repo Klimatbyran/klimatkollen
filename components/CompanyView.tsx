@@ -6,6 +6,7 @@ import { devices } from '../utils/devices'
 import { Company } from '../utils/types'
 import ComparisonTable from './ComparisonTable'
 import { companyColumns } from '../utils/createCompanyList'
+import Markdown from './Markdown'
 
 const InfoText = styled.div`
   padding: 0 16px;
@@ -135,19 +136,15 @@ function CompanyView({
           />
         </ComparisonContainer>
         <InfoText>
-          <Paragraph>Lorem</Paragraph>
-          <ParagraphSource>Lorem ipsum</ParagraphSource>
+          <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
+          {/* TODO: Link directly to specific section about company data */}
+          <Markdown components={{ p: ParagraphSource }}>
+            {t('startPage:companyView.source')}
+          </Markdown>
         </InfoText>
       </InfoContainer>
     </>
   )
 }
-
-// TODO
-// [] add tooltip on hover
-// [] routing
-// [] data from API not excel
-// [] styling
-// [] texts
 
 export default CompanyView
