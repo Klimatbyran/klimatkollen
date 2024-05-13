@@ -117,7 +117,6 @@ function CompanyView({
         </ComparisonContainer>
         <InfoText>
           <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
-          {/* TODO: Link directly to specific section about company data */}
           <Markdown components={{ p: ParagraphSource }}>
             {t('startPage:companyView.source')}
           </Markdown>
