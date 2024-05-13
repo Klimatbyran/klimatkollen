@@ -96,7 +96,6 @@ const TableHeader = styled.th`
 
   @media only screen and (${devices.smallMobile}) {
     font-size: 0.65rem;
-    padding: 12px 6px;
   }
 
   @media only screen and (${devices.tablet}) {
