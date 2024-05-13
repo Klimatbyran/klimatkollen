@@ -12,6 +12,7 @@ import {
 } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
 
+import IconArrow from '../public/icons/arrow-right-bold-green.svg'
 import { devices } from '../utils/devices'
 
 const StyledTable = styled.table`
@@ -88,6 +89,13 @@ const TableHeader = styled.th`
   }
 `
 
+const TableHeaderInner = styled.span`
+  display: inline-grid;
+  align-content: center;
+  align-items: center;
+  grid-template-columns: 1fr max-content;
+`
+
 const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpanded?: boolean }>`
   border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.midGreen}` : '')};
   cursor: ${({ interactive }) => (interactive ? 'pointer' : '')};
@@ -103,6 +111,20 @@ type TableProps<T extends object> = {
   renderSubComponent?: ({ row }: { row: Row<T> }) => JSX.Element
 }
 
+/**
+ * Make sure the first column has an id, and prepare default sorting.
+ */
+function prepareColumnsForDefaultSorting<T extends object>(columns: TableProps<T>['columns']) {
+  const preparedColumns = columns[0].id
+    ? columns
+    // @ts-expect-error accessorKey does exist, but there's a type error somewhere.
+    : [{ ...columns[0], id: (columns[0].accessorKey).replace('.', '_') }, ...columns.slice(1)]
+
+  const defaultSorting = [{ id: preparedColumns[0].id!, desc: false }]
+
+  return { preparedColumns, defaultSorting }
+}
+
 function ComparisonTable<T extends object>({
   data,
   columns,
@@ -110,7 +132,8 @@ function ComparisonTable<T extends object>({
   dataType = 'municipalities',
   renderSubComponent,
 }: TableProps<T>) {
-  const [sorting, setSorting] = useState<SortingState>([])
+  const { preparedColumns, defaultSorting } = prepareColumnsForDefaultSorting(columns)
+  const [sorting, setSorting] = useState<SortingState>(defaultSorting)
   const router = useRouter()
 
   const [resizeCount, setResizeCount] = useState(0)
@@ -133,13 +156,14 @@ function ComparisonTable<T extends object>({
 
   const table = useReactTable({
     data,
-    columns,
+    columns: preparedColumns,
     state: { sorting },
     onSortingChange: setSorting,
     enableExpanding,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
+    enableSortingRemoval: false,
   })
 
   const handleRowClick = (row: Row<T>) => {
@@ -169,17 +193,25 @@ function ComparisonTable<T extends object>({
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <TableHeader
-                key={header.id}
-                colSpan={header.colSpan}
-                className={isDataColumn(header.index) ? 'data-header' : ''}
-                onClick={header.column.getToggleSortingHandler()}
-                onKeyDown={header.column.getToggleSortingHandler()}
-              >
-                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-              </TableHeader>
-            ))}
+            {headerGroup.headers.map((header) => {
+              const currentSort = header.column.getIsSorted()
+              return (
+                <TableHeader
+                  key={header.id}
+                  colSpan={header.colSpan}
+                  className={isDataColumn(header.index) ? 'data-header' : ''}
+                  onClick={header.column.getToggleSortingHandler()}
+                  onKeyDown={header.column.getToggleSortingHandler()}
+                >
+                  <TableHeaderInner data-sorting={header.column.getIsSorted()}>
+                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    {currentSort ? (
+                      <IconArrow style={{ transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)` }} />
+                    ) : null}
+                  </TableHeaderInner>
+                </TableHeader>
+              )
+            })}
           </tr>
         ))}
       </thead>
@@ -187,13 +219,13 @@ function ComparisonTable<T extends object>({
         {table.getRowModel().rows.map((row) => {
           const isRowExpanded = enableExpanding && row.getIsExpanded()
           return (
-          // TODO: Make it obvious that rows can be expanded. We need to have a toggle button for each row. Or use WAI-ARIA attributes
             <Fragment key={row.id}>
               <TableRow
                 onClick={() => handleRowClick(row)}
                 interactive={enableExpanding || routeString !== undefined}
                 showBorder={enableExpanding ? !isRowExpanded : true}
                 isExpanded={isRowExpanded}
+                aria-expanded={isRowExpanded}
               >
                 {row.getVisibleCells().map((cell, index) => (
                   <TableData key={cell.id} className={isDataColumn(index) ? 'data-column' : ''}>
