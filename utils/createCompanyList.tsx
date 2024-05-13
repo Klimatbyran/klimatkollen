@@ -4,16 +4,10 @@ import { TFunction } from 'i18next'
 
 import { Company } from './types'
 import { devices } from './devices'
-import ArrowSvg from '../public/icons/arrow-down-round.svg'
-import { colorTheme } from '../Theme'
 
-const Arrow = styled(ArrowSvg)<{ open: boolean }>`
+const Arrow = styled.img<{ open: boolean }>`
   --scale: 0.6;
   transform: scale(var(--scale)) rotate(${(props) => (props.open ? '180deg' : '0')});
-
-  & path {
-    fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
-  }
 
   @media only screen and (${devices.tablet}) {
     --scale: 0.8;
@@ -108,7 +102,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         return (
           <ScopeColumn isMissing={scope3String === notReported}>
             {scope3String}
-            <Arrow open={row.cell.row.getIsExpanded()} />
+            <Arrow open={row.cell.row.getIsExpanded()} src="/icons/arrow-down-round.svg" />
           </ScopeColumn>
         )
       },
