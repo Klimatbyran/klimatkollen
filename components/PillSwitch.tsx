@@ -68,14 +68,16 @@ const DataGroupLink = styled(Link)`
 
 type PillSwitchProps = {
   isActive: boolean
+  links: {text: string, href: string}[]
 }
 
-function PillSwitch({ isActive }: PillSwitchProps) {
+function PillSwitch({ isActive, links }: PillSwitchProps) {
   const { t } = useTranslation()
   return (
     <Switch aria-label={t('common:components.PillSwitch.label')}>
-      <DataGroupLink href="/foretag/utslappen/lista">Företag</DataGroupLink>
-      <DataGroupLink href="/geografiskt/utslappen/lista">Kommuner</DataGroupLink>
+      {links.map(({ text, href }) => (
+        <DataGroupLink href={href}>{text}</DataGroupLink>
+      ))}
       <Slider isActive={isActive} />
     </Switch>
   )

@@ -69,7 +69,13 @@ function StartPage({ companies, municipalities }: PropsType) {
       />
       <PageWrapper backgroundColor="black" compact={showCompanyData}>
         <Container>
-          <PillSwitch isActive={!showCompanyData} />
+          <PillSwitch
+            isActive={!showCompanyData}
+            links={[
+              { text: 'Företag', href: '/foretag/utslappen/lista' },
+              { text: 'Kommuner', href: `/geografiskt/${selectedDataset}/${selectedDataView}` },
+            ]}
+          />
           {showCompanyData
             ? (
               <CompanyView companies={companies} />
