@@ -72,7 +72,7 @@ function StartPage({ companies, municipalities }: PropsType) {
           <PillSwitch
             isActive={!showCompanyData}
             links={[
-              { text: t('common:company'), href: '/foretag/utslappen/lista' },
+              { text: t('common:companies'), href: '/foretag/utslappen/lista' },
               { text: t('common:municipalities'), href: `/geografiskt/${selectedDataset}/${selectedDataView}` },
             ]}
           />
