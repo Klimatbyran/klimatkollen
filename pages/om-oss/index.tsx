@@ -195,10 +195,6 @@ function OmOss() {
             text={t('about:funding.text')}
           />
           <ToggleSection
-            header={t('about:postcode.title')}
-            text={t('about:postcode.text')}
-          />
-          <ToggleSection
             header={t('about:earlierProjects.title')}
             text={t('about:earlierProjects.text')}
           />

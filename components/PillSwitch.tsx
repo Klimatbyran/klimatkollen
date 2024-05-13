@@ -76,7 +76,7 @@ function PillSwitch({ isActive, links }: PillSwitchProps) {
   return (
     <Switch aria-label={t('common:components.PillSwitch.label')}>
       {links.map(({ text, href }) => (
-        <DataGroupLink href={href}>{text}</DataGroupLink>
+        <DataGroupLink href={href} key={href}>{text}</DataGroupLink>
       ))}
       <Slider isActive={isActive} />
     </Switch>

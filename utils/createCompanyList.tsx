@@ -4,16 +4,10 @@ import { TFunction } from 'i18next'
 
 import { Company } from './types'
 import { devices } from './devices'
-import ArrowSvg from '../public/icons/arrow-down-round.svg'
-import { colorTheme } from '../Theme'
 
-const Arrow = styled(ArrowSvg)<{ open: boolean }>`
+const Arrow = styled.img<{ open: boolean }>`
   --scale: 0.6;
   transform: scale(var(--scale)) rotate(${(props) => (props.open ? '180deg' : '0')});
-
-  & path {
-    fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
-  }
 
   @media only screen and (${devices.tablet}) {
     --scale: 0.8;
@@ -70,12 +64,12 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
 
   return [
     {
-      header: 'Företag',
+      header: t('common:company'),
       cell: (row) => row.cell.row.original.Name,
       accessorKey: 'Name',
     },
     {
-      header: 'Egna utsläpp (tCO₂e)',
+      header: t('startPage:companyView.scope1n2'),
       cell: (row) => {
         const scope1n2Emissions = row.cell.row.original.Emissions.Scope1n2
 
@@ -83,6 +77,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         // NOTE: The type does not match the actual values here.
         // TS thinks scope1n2Emissions has the type `CompanyScope`, but according to the logging above,
         // it is in fact just a number or null.
+        // TODO: Fix this when we get data from the API
         const scope1n2String = Number.isFinite(scope1n2Emissions) ? formatter.format(scope1n2Emissions as unknown as number) : notReported
         return (
           <ScopeColumn isMissing={scope1n2String === notReported}>
@@ -94,7 +89,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
       accessorKey: 'Emissions.Scope1n2',
     },
     {
-      header: () => 'Utsläpp i värdekedjan (tCO₂e)',
+      header: () => t('startPage:companyView.scope3'),
       cell: (row) => {
         const scope3Emissions = row.cell.row.original.Emissions.Scope3
 
@@ -102,11 +97,12 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         // NOTE: The type does not match the actual values here.
         // TS thinks scope3Emissions has the type `CompanyScope`, but according to the logging above,
         // it is in fact just a number or null.
+        // TODO: Fix this when we get data from the API
         const scope3String = Number.isFinite(scope3Emissions) ? formatter.format(scope3Emissions as unknown as number) : notReported
         return (
           <ScopeColumn isMissing={scope3String === notReported}>
             {scope3String}
-            <Arrow open={row.cell.row.getIsExpanded()} />
+            <Arrow open={row.cell.row.getIsExpanded()} src="/icons/arrow-down-round.svg" />
           </ScopeColumn>
         )
       },

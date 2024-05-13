@@ -67,13 +67,13 @@ function StartPage({ companies, municipalities }: PropsType) {
         title={t('startPage:meta.title')}
         description={t('startPage:meta.description')}
       />
-      <PageWrapper backgroundColor="black" compact={showCompanyData}>
+      <PageWrapper backgroundColor="black" compact>
         <Container>
           <PillSwitch
             isActive={!showCompanyData}
             links={[
-              { text: 'Företag', href: '/foretag/utslappen/lista' },
-              { text: 'Kommuner', href: `/geografiskt/${selectedDataset}/${selectedDataView}` },
+              { text: t('common:companies'), href: '/foretag/utslappen/lista' },
+              { text: t('common:municipalities'), href: `/geografiskt/${selectedDataset}/${selectedDataView}` },
             ]}
           />
           {showCompanyData

@@ -12,22 +12,24 @@ import {
 } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
 
-import IconArrow from '../public/icons/arrow-right-bold-green.svg'
 import { devices } from '../utils/devices'
 
 const StyledTable = styled.table`
-  width: 98%;
-  margin-left: 1%;
+  --margin: 4px;
+
+  width: 100%;
   overflow-y: auto;
   border-collapse: collapse;
-
   font-size: 0.7em;
+  margin: var(--margin);
+  margin-bottom: 0;
 
   @media only screen and (${devices.smallMobile}) {
     font-size: 0.8em;
   }
-
+  
   @media only screen and (${devices.tablet}) {
+    --margin: 8px;
     font-size: 1em;
   }
 
@@ -40,10 +42,22 @@ const StyledTable = styled.table`
     text-align: right;
   }
 
+  thead::before {
+    content: ' ';
+    position: absolute;
+    background: ${({ theme }) => theme.lightBlack};
+    width: 100%;
+    height: var(--margin);
+    top: calc(-1 * var(--margin));
+    left: 0;
+    right: 0;
+    z-index: -40;
+  }
+
   thead {
     background: ${({ theme }) => theme.lightBlack};
     position: sticky;
-    top: 0;
+    top: var(--margin);
     z-index: 30;
   }
 `
@@ -67,7 +81,7 @@ const TableHeader = styled.th`
   text-align: left;
   cursor: pointer;
   background: ${({ theme }) => theme.black};
-  font-size: 0.75rem;
+  font-size: 0.6rem;
 
   &:first-child {
     border-top-left-radius: 8px;
@@ -80,7 +94,7 @@ const TableHeader = styled.th`
   }
 
   @media only screen and (${devices.smallMobile}) {
-    padding: 12px 6px;
+    font-size: 0.65rem;
   }
 
   @media only screen and (${devices.tablet}) {
@@ -185,8 +199,8 @@ function ComparisonTable<T extends object>({
       {dataType === 'companies' ? (
         <colgroup>
           <col width="35%" />
-          <col width="28%" />
-          <col width="37%" />
+          <col width="30%" />
+          <col width="35%" />
         </colgroup>
       ) : null}
 
@@ -206,7 +220,11 @@ function ComparisonTable<T extends object>({
                   <TableHeaderInner data-sorting={header.column.getIsSorted()}>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     {currentSort ? (
-                      <IconArrow style={{ transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)` }} />
+                      <img
+                        src="/icons/arrow-right-bold-green.svg"
+                        style={{ transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)` }}
+                        alt=""
+                      />
                     ) : null}
                   </TableHeaderInner>
                 </TableHeader>
