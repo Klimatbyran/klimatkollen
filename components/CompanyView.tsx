@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
 
-import { H2Regular, H5Regular, Paragraph } from './Typography'
+import { H2Regular, Paragraph } from './Typography'
 import { devices } from '../utils/devices'
 import { Company } from '../utils/types'
 import ComparisonTable from './ComparisonTable'
@@ -29,12 +29,6 @@ const InfoContainer = styled.div`
   }
 `
 
-const TitleContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 64px;
-`
-
 const ComparisonContainer = styled.div`
   position: relative;
   overflow-y: scroll;
@@ -43,7 +37,7 @@ const ComparisonContainer = styled.div`
   height: 684px;
   border-radius: 8px;
   display: flex;
-  margin-top: 0;
+  margin-top: 8px;
 
   @media only screen and (${devices.tablet}) {
     height: 520px;
@@ -54,16 +48,6 @@ const ComparisonContainer = styled.div`
   ::-webkit-scrollbar {
     /* Chrome, Safari and Opera */
     display: none;
-  }
-`
-
-const FloatingH5 = styled(H5Regular)`
-  position: absolute;
-  margin: 56px 0 0 16px;
-  z-index: 200;
-
-  @media only screen and (${devices.tablet}) {
-    margin: 60px 0 0 16px;
   }
 `
 
@@ -110,9 +94,6 @@ function CompanyView({
     <>
       <H2Regular>{t('startPage:companyView.questionTitle')}</H2Regular>
       <InfoContainer>
-        <TitleContainer>
-          <FloatingH5>Företagens utsläpp för 2023</FloatingH5>
-        </TitleContainer>
         <ComparisonContainer>
           <ComparisonTable
             data={companies}
