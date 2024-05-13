@@ -9,8 +9,8 @@
   },
   "companyView": {
     "questionTitle": "Hur går det med utsläppen?",
-    "source": "[Läs mer om källor och metod](/kallor-och-metod).",
-    "tableFooterInfo": "[Kontakta oss](mailto:hej@klimatkollen.se) för att redigera informationen."
+    "source": "Källa: företagens egna årsredovisningar och hållbarhetsrapporter",
+    "tableFooterInfo": "Företags utsläppsdata för 2023 i antal ton CO2e, samt länkar till befintliga rapporter. [Klicka här](mailto:hej@klimatkollen.se) för att redigera informationen. [Läs mer om vår metod](#TODO-method-link)."
   },
   "regionalView": {
     "questionTitle": "Hur går det med?",
