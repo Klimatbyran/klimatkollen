@@ -17,10 +17,6 @@ const HeaderContainer = styled.header`
   padding: var(--header-padding);
   background-color: ${({ theme }) => theme.midGreen};
   z-index: 1000;
-
-  @media only screen and (${devices.tablet}) {
-    --header-padding: 1rem;
-  }
 `
 
 const LogoContainer = styled.div`
@@ -29,6 +25,8 @@ const LogoContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  height: var(--btn-size);
+  padding-top: 4px;
 `
 
 const NavigationList = styled.ul`
@@ -37,8 +35,10 @@ const NavigationList = styled.ul`
   @media only screen and (${devices.laptop}) {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-left: auto;
+    height: var(--btn-size);
+    align-items: center;
   }
 `
 
@@ -79,21 +79,16 @@ const FullScreenMenu = styled.div`
   right: 0;
   width: 100%;
   height: 100%;
-  /* TODO: fix color */
-  background-color: ${({ theme }) => theme.midGreen}10;
+  background-color: ${({ theme }) => theme.midGreen};
   display: flex;
   flex-direction: column;
   z-index: 1000;
   padding: 3rem 1rem 1rem 1rem;
 
   @media only screen and (${devices.tablet}) {
-    padding-top: 4rem;
+    padding-top: 3rem;
   }
 `
-
-// TODO: ensure consistent button sizes
-// TODO: fix header height to make it consistent across all screen sizes
-// TODO: ensure consistent hamburger button placement
 
 const CloseButtonContainer = styled.div`
   position: absolute;
@@ -167,7 +162,7 @@ function Header() {
           <Image
             src="/logos/klimatkollen_logo_black.svg"
             width="150"
-            height="30"
+            height="32"
             alt="Klimatkollen logotyp"
           />
         </LogoContainer>
