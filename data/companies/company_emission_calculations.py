@@ -17,6 +17,6 @@ selected_df.columns = ['Company', 'URL', 'Scope1n2', 'Scope3', 'Comment']
 selected_df.replace('n.a', None, inplace=True)
 
 # Write the DataFrame to a JSON file
-selected_df.to_json("company-data.json", orient="records")
+selected_df.to_json("company-data.json", orient="records", force_ascii=False)
 
 print('--- Company emissions data updated ---')
