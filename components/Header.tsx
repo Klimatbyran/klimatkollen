@@ -11,12 +11,12 @@ const HeaderContainer = styled.header`
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: 8px;
   background-color: ${({ theme }) => theme.midGreen};
   z-index: 1000;
 
-  @media only screen and (${devices.mobile}) {
-    padding: 8px;
+  @media only screen and (${devices.tablet}) {
+    padding: 16px;
   }
 `
 

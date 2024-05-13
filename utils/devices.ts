@@ -1,13 +1,11 @@
 const deviceSizesPx = {
   smallMobile: 375,
-  mobile: 767,
   tablet: 768,
   laptop: 1440,
 }
 
 const devices = {
   smallMobile: `min-width: ${deviceSizesPx.smallMobile}px`,
-  mobile: `max-width: ${deviceSizesPx.mobile}px`,
   tablet: `min-width: ${deviceSizesPx.tablet}px`,
   laptop: `min-width: ${deviceSizesPx.laptop}px`,
 }
