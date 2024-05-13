@@ -67,7 +67,7 @@ const TableHeader = styled.th`
   text-align: left;
   cursor: pointer;
   background: ${({ theme }) => theme.black};
-  font-size: 0.75rem;
+  font-size: 0.6rem;
 
   &:first-child {
     border-top-left-radius: 8px;
@@ -80,6 +80,7 @@ const TableHeader = styled.th`
   }
 
   @media only screen and (${devices.smallMobile}) {
+    font-size: 0.65rem;
     padding: 12px 6px;
   }
 
@@ -185,8 +186,8 @@ function ComparisonTable<T extends object>({
       {dataType === 'companies' ? (
         <colgroup>
           <col width="35%" />
-          <col width="28%" />
-          <col width="37%" />
+          <col width="30%" />
+          <col width="35%" />
         </colgroup>
       ) : null}
 
