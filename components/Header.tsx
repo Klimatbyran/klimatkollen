@@ -6,17 +6,20 @@ import { useTranslation } from 'next-i18next'
 import { devices } from '../utils/devices'
 
 const HeaderContainer = styled.header`
+  --header-padding: 0.5rem;
+  --btn-size: 2rem;
+
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 8px;
+  padding: var(--header-padding);
   background-color: ${({ theme }) => theme.midGreen};
   z-index: 1000;
 
   @media only screen and (${devices.tablet}) {
-    padding: 16px;
+    --header-padding: 1rem;
   }
 `
 
@@ -56,6 +59,7 @@ const NavigationLink = styled.a`
 const HamburgerMenu = styled.div`
   display: block;
   margin-left: auto;
+  height: var(--btn-size);
 
   @media only screen and (${devices.laptop}) {
     display: none;
@@ -65,6 +69,8 @@ const HamburgerMenu = styled.div`
 const HamburgerButton = styled.button`
   border: none;
   background: transparent;
+  height: var(--btn-size);
+  width: var(--btn-size);
 `
 
 const FullScreenMenu = styled.div`
@@ -73,7 +79,8 @@ const FullScreenMenu = styled.div`
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.midGreen};
+  /* TODO: fix color */
+  background-color: ${({ theme }) => theme.midGreen}10;
   display: flex;
   flex-direction: column;
   z-index: 1000;
@@ -84,13 +91,21 @@ const FullScreenMenu = styled.div`
   }
 `
 
+// TODO: ensure consistent button sizes
+// TODO: fix header height to make it consistent across all screen sizes
+// TODO: ensure consistent hamburger button placement
+
 const CloseButtonContainer = styled.div`
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: var(--header-padding);
+  right: var(--header-padding);
+  height: var(--btn-size);
+  width: var(--btn-size);
 
-  @media only screen and (${devices.tablet}) {
-    top: 1.2rem;
+  & ${HamburgerButton} {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 `
 
@@ -167,13 +182,13 @@ function Header() {
       </NavigationList>
       <HamburgerMenu>
         <HamburgerButton type="button" onClick={() => setMenuOpen(!menuOpen)}>
-          <Image src="/icons/menu.svg" width="30" height="30" alt={t('common:components.Header.menu')} />
+          <Image src="/icons/menu.svg" width="32" height="32" alt={t('common:components.Header.menu')} />
         </HamburgerButton>
         {menuOpen && (
           <FullScreenMenu>
             <CloseButtonContainer>
               <HamburgerButton type="button" onClick={() => setMenuOpen(false)}>
-                <Image src="/icons/close_round.svg" width="20" height="20" alt={t('common:actions.close')} />
+                <Image src="/icons/close_round.svg" width="32" height="32" alt={t('common:actions.close')} />
               </HamburgerButton>
             </CloseButtonContainer>
             <Separator />
