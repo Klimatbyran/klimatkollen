@@ -1,18 +1,30 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import Home from '../pages/index'
+// NOTE: This is a bit special since we need the StartPage even though we only want to test a part of that page.
 
-vi.mock('../public/icons/info.svg', () => ({ default: () => 'svg' }))
-vi.mock('../public/icons/list.svg', () => ({ default: () => 'svg' }))
-vi.mock('../public/icons/map.svg', () => ({ default: () => 'svg' }))
-vi.mock('../public/icons/arrow.svg', () => ({ default: () => 'svg' }))
-vi.mock('../public/icons/arrow-down.svg', () => ({ default: () => 'svg' }))
+import {
+  fireEvent, render, screen, act,
+} from '@testing-library/react'
 
-// Mock useRouter
+import StartPage from '../../pages/index'
+import StyledComponentsWrapper from '../utils/StyledComponentsWrapper'
+
+vi.mock('../../public/icons/info.svg', () => ({ default: () => 'svg' }))
+vi.mock('../../public/icons/list.svg', () => ({ default: () => 'svg' }))
+vi.mock('../../public/icons/map.svg', () => ({ default: () => 'svg' }))
+vi.mock('../../public/icons/arrow.svg', () => ({ default: () => 'svg' }))
+vi.mock('../../public/icons/arrow-down.svg', () => ({ default: () => 'svg' }))
+
+vi.mock('next-i18next', () => ({
+  useTranslation: vi.fn(() => ({
+    t: (str: string) => str,
+  })),
+}))
+
 vi.mock('next/router', () => ({
   useRouter: () => ({
     push: vi.fn(),
     replace: vi.fn(),
     query: {
+      dataGroup: 'geografiskt',
       dataset: 'Utslappen',
       dataView: 'karta',
     },
@@ -21,14 +33,7 @@ vi.mock('next/router', () => ({
   }),
 }))
 
-vi.mock('next-i18next', () => ({
-  useTranslation: vi.fn(() => ({
-    t: (str: string) => str,
-  })),
-}))
-
-describe('Home Page', () => {
-  // Mock data for municipalities
+describe('RegionalView', () => {
   const mockMunicipalities = [
     {
       County: '',
@@ -38,7 +43,6 @@ describe('Home Page', () => {
       Budget: {
         BudgetPerYear: [],
         CO2Equivalent: 0,
-        PercentageOfNationalBudget: 0,
       },
       PoliticalRule: [],
       EmissionTrend: {
@@ -76,28 +80,37 @@ describe('Home Page', () => {
   ]
 
   beforeEach(() => {
-    render(<Home municipalities={mockMunicipalities} />)
+    act(() => {
+      render(
+        <StartPage municipalities={mockMunicipalities} companies={[]} />,
+        { wrapper: StyledComponentsWrapper },
+      )
+    })
   })
 
   it('renders without crashing', () => {
-    expect(screen.getByText(/startPage:questionTitle/)).toBeInTheDocument()
+    expect(screen.getByText(/startPage:regionalView.questionTitle/)).toBeInTheDocument()
   })
 
   it('changes view mode when toggle button is clicked', () => {
     const toggleButton = screen.getByText('startPage:toggleView.list')
-    fireEvent.click(toggleButton)
+    act(() => {
+      fireEvent.click(toggleButton)
+    })
     expect(screen.getByText('startPage:toggleView.map')).toBeInTheDocument()
   })
 
   it('handles dataset change', () => {
     const newDataset = 'common:datasets.plans.name'
-    const radioButton = screen.getByText(newDataset)
-    fireEvent.click(radioButton)
-    expect(screen.getByText(newDataset)).toBeInTheDocument()
+    act(() => {
+      const radioButton = screen.getByText(newDataset)
+      fireEvent.click(radioButton)
+    })
+    expect(screen.getByText('common:datasets.plans.title')).toBeInTheDocument()
   })
 
   it('renders the dropdown component', () => {
-    const dropdownInput = screen.getByPlaceholderText(/startPage:yourMunicipality/i)
+    const dropdownInput = screen.getByPlaceholderText(/startPage:regionalView.yourMunicipality/i)
     expect(dropdownInput).toBeInTheDocument()
   })
 })

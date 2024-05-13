@@ -2,8 +2,9 @@ import styled from 'styled-components'
 import { devices } from '../utils/devices'
 
 const ToggleBtn = styled.button`
-  height: 32px;
+  height: 36px;
   margin: 16px;
+  margin-right: 4px;
   position: absolute;
   top: 0;
   right: 0;
@@ -17,8 +18,8 @@ const ToggleBtn = styled.button`
   justify-content: right;
   z-index: 150;
 
-  @media only screen and (${devices.mobile}) {
-    margin: 12px;
+  @media only screen and (${devices.smallMobile}) {
+    margin-right: 12px;
   }
 `
 
@@ -32,7 +33,7 @@ const ToggleText = styled.p`
 `
 
 const IconContainer = styled.div`
-  border-radius: 12px;
+  border-radius: 8px;
   border: none;
   background: ${({ theme }) => theme.midGreen};
   padding: 8px 8px 5px 8px;

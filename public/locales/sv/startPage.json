@@ -1,15 +1,24 @@
 {
-  "hasPlan": "Har plan?",
+  "companyView": {
+    "questionTitle": "Hur går det med utsläppen?",
+    "scope1n2": "Egna utsläpp",
+    "scope3": "I värdekedjan",
+    "source": "Källa: företagens egna årsredovisningar och hållbarhetsrapporter",
+    "tableFooterInfo": "Företags utsläpp 2023 i antal ton CO₂e samt länkar till rapporter. [Kontakta oss](mailto:hej@klimatkollen.se) för att redigera informationen. Här finns information om [vår metod](/metodbeskrivning-foretagsdata.pdf). "
+  },
   "meta": {
     "description": "Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?",
     "title": "Klimatkollen — Få koll på Sveriges klimatomställning"
   },
-  "procurementDemands": "Ställer krav?",
-  "questionTitle": "Hur går det med?",
-  "ranking": "Ranking",
+  "regionalView": {
+    "hasPlan": "Har plan?",
+    "procurementDemands": "Ställer krav?",
+    "questionTitle": "Hur går det med?",
+    "ranking": "Ranking",
+    "yourMunicipality": "Hur går det i din kommun?"
+  },
   "toggleView": {
     "list": "Listvy",
     "map": "Kartvy"
-  },
-  "yourMunicipality": "Hur går det i din kommun?"
+  }
 }
