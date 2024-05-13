@@ -16,18 +16,21 @@ import IconArrow from '../public/icons/arrow-right-bold-green.svg'
 import { devices } from '../utils/devices'
 
 const StyledTable = styled.table`
+  --margin: 4px;
+
   width: 100%;
   overflow-y: auto;
   border-collapse: collapse;
   font-size: 0.7em;
-  margin: 4px 4px 0 4px;
+  margin: var(--margin);
+  margin-bottom: 0;
 
   @media only screen and (${devices.smallMobile}) {
     font-size: 0.8em;
-    margin: 8px 8px 0 8px;
   }
-
+  
   @media only screen and (${devices.tablet}) {
+    --margin: 8px;
     font-size: 1em;
   }
 
@@ -45,8 +48,8 @@ const StyledTable = styled.table`
     position: absolute;
     background: ${({ theme }) => theme.lightBlack};
     width: 100%;
-    height: 4px;
-    top: -4px;
+    height: var(--margin);
+    top: calc(-1 * var(--margin));
     left: 0;
     right: 0;
     z-index: -40;
@@ -55,7 +58,7 @@ const StyledTable = styled.table`
   thead {
     background: ${({ theme }) => theme.lightBlack};
     position: sticky;
-    top: 4px;
+    top: var(--margin);
     z-index: 30;
   }
 `

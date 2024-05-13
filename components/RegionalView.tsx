@@ -50,8 +50,14 @@ const TitleContainer = styled.div`
 
 const FloatingH5 = styled(H5Regular)`
   position: absolute;
-  margin: 56px 0 0 16px;
+  margin: 52px 0 0 12px;
   z-index: 200;
+  font-size: 1rem;
+
+  @media only screen and (${devices.smallMobile}) {
+    font-size: 1.125rem;
+    margin-top: 64px;
+  }
 
   @media only screen and (${devices.tablet}) {
     margin: 60px 0 0 16px;
@@ -142,6 +148,7 @@ function RegionalView({
         dataDescriptions={dataDescriptions}
       />
       <InfoContainer>
+        {/* TODO: Remove this margin hack and replace with flex/grid layout instead */}
         <TitleContainer>
           <FloatingH5>{datasetDescription.title}</FloatingH5>
           <ToggleButton
