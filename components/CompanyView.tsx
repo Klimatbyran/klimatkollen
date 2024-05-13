@@ -108,7 +108,7 @@ function CompanyView({
 
   return (
     <>
-      <H2Regular>Hur går det med utsläppen?</H2Regular>
+      <H2Regular>{t('startPage:companyView.questionTitle')}</H2Regular>
       <InfoContainer>
         <TitleContainer>
           <FloatingH5>Företagens utsläpp för 2023</FloatingH5>

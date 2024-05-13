@@ -3,11 +3,36 @@ import { ColumnDef, Row } from '@tanstack/react-table'
 import { TFunction } from 'i18next'
 
 import { Company } from './types'
+import { devices } from './devices'
+import ArrowSvg from '../public/icons/arrow-down-round.svg'
+import { colorTheme } from '../Theme'
+
+const Arrow = styled(ArrowSvg)<{ open: boolean }>`
+  --scale: 0.6;
+  transform: scale(var(--scale)) rotate(${(props) => (props.open ? '180deg' : '0')});
+
+  & path {
+    fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
+  }
+
+  @media only screen and (${devices.tablet}) {
+    --scale: 0.8;
+  }
+`
 
 // IDEA: do something similar for the regional view to distinguish between actual important data (orange), and when something is missing (gray)
 const ScopeColumn = styled.span<{ isMissing: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  @media only screen and (${devices.smallMobile}) {
+    gap: 0.5rem;
+  }
+
   color: ${({ isMissing, theme }) => (isMissing ? 'gray' : theme.darkYellow)};
   font-style: ${({ isMissing }) => (isMissing ? 'italic' : 'normal')};
+  font-size: ${({ isMissing }) => (isMissing ? '0.9em' : '')};
 `
 
 const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 0 })
@@ -65,7 +90,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
           </ScopeColumn>
         )
       },
-      sortingFn: getCustomSortFn({ scope: 'Scope1n2' }),
+      sortingFn: getCustomSortFn({ scope: 'Scope1n2', sortAscending: true }),
       accessorKey: 'Emissions.Scope1n2',
     },
     {
@@ -81,10 +106,11 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         return (
           <ScopeColumn isMissing={scope3String === notReported}>
             {scope3String}
+            <Arrow open={row.cell.row.getIsExpanded()} />
           </ScopeColumn>
         )
       },
-      sortingFn: getCustomSortFn({ scope: 'Scope3' }),
+      sortingFn: getCustomSortFn({ scope: 'Scope3', sortAscending: true }),
       accessorKey: 'Emissions.Scope3',
     },
   ]
