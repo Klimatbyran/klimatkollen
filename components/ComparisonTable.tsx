@@ -40,10 +40,22 @@ const StyledTable = styled.table`
     text-align: right;
   }
 
+  thead::before {
+    content: ' ';
+    position: absolute;
+    background: ${({ theme }) => theme.lightBlack};
+    width: 100%;
+    height: 4px;
+    top: -4px;
+    left: 0;
+    right: 0;
+    z-index: -40;
+  }
+
   thead {
     background: ${({ theme }) => theme.lightBlack};
     position: sticky;
-    top: 0;
+    top: 4px;
     z-index: 30;
   }
 `
