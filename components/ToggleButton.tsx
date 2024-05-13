@@ -19,7 +19,7 @@ const ToggleBtn = styled.button`
   z-index: 150;
 
   @media only screen and (${devices.smallMobile}) {
-    margin-right: 16px;
+    margin-right: 12px;
   }
 `
 
