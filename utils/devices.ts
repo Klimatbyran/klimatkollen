@@ -1,7 +1,7 @@
 const deviceSizesPx = {
   smallMobile: 375,
   tablet: 768,
-  laptop: 1440,
+  laptop: 1024,
 }
 
 const devices = {
