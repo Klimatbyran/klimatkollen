@@ -136,10 +136,10 @@ function CompanyView({
           />
         </ComparisonContainer>
         <InfoText>
-          <Markdown>{t('common:companyView.tableFooterInfo')}</Markdown>
+          <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
           {/* TODO: Link directly to specific section about company data */}
           <Markdown components={{ p: ParagraphSource }}>
-            {t('common:companyView.source')}
+            {t('startPage:companyView.source')}
           </Markdown>
         </InfoText>
       </InfoContainer>

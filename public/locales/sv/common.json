@@ -6,10 +6,6 @@
     "open": "Öppna"
   },
   "comment": "Kommentar",
-  "companyView": {
-    "source": "[Läs mer om källor och metod](/kallor-och-metod).",
-    "tableFooterInfo": "Redigera informationen: [hej@klimatkollen.se](mailto:hej@klimatkollen.se)"
-  },
   "components": {
     "DropDown": {
       "label": "Visa kommun"

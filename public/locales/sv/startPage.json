@@ -8,7 +8,9 @@
     "map": "Kartvy"
   },
   "companyView": {
-    "questionTitle": "Hur går det med utsläppen?"
+    "questionTitle": "Hur går det med utsläppen?",
+    "source": "[Läs mer om källor och metod](/kallor-och-metod).",
+    "tableFooterInfo": "[Kontakta oss](mailto:hej@klimatkollen.se) för att redigera informationen."
   },
   "regionalView": {
     "questionTitle": "Hur går det med?",
