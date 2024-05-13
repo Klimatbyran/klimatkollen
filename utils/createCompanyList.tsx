@@ -70,12 +70,12 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
 
   return [
     {
-      header: 'Företag',
+      header: t('common:company'),
       cell: (row) => row.cell.row.original.Name,
       accessorKey: 'Name',
     },
     {
-      header: 'Egna utsläpp (tCO₂e)',
+      header: t('startPage:companyView.scope1n2'),
       cell: (row) => {
         const scope1n2Emissions = row.cell.row.original.Emissions.Scope1n2
 
@@ -83,6 +83,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         // NOTE: The type does not match the actual values here.
         // TS thinks scope1n2Emissions has the type `CompanyScope`, but according to the logging above,
         // it is in fact just a number or null.
+        // TODO: Fix this when we get data from the API
         const scope1n2String = Number.isFinite(scope1n2Emissions) ? formatter.format(scope1n2Emissions as unknown as number) : notReported
         return (
           <ScopeColumn isMissing={scope1n2String === notReported}>
@@ -94,7 +95,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
       accessorKey: 'Emissions.Scope1n2',
     },
     {
-      header: () => 'Utsläpp i värdekedjan (tCO₂e)',
+      header: () => t('startPage:companyView.scope3'),
       cell: (row) => {
         const scope3Emissions = row.cell.row.original.Emissions.Scope3
 
@@ -102,6 +103,7 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         // NOTE: The type does not match the actual values here.
         // TS thinks scope3Emissions has the type `CompanyScope`, but according to the logging above,
         // it is in fact just a number or null.
+        // TODO: Fix this when we get data from the API
         const scope3String = Number.isFinite(scope3Emissions) ? formatter.format(scope3Emissions as unknown as number) : notReported
         return (
           <ScopeColumn isMissing={scope3String === notReported}>

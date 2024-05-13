@@ -6,6 +6,7 @@
     "open": "Öppna"
   },
   "comment": "Kommentar",
+  "company": "Företag",
   "components": {
     "DropDown": {
       "label": "Visa kommun"
@@ -27,34 +28,32 @@
     "bikes": {
       "body": "Antal meter cykelväg per invånare per kommun år 2022. Ju längre desto bättre, god infrastruktur gynnar ökad cykling.",
       "columnHeader": "Cykelväglängd",
-      "source": "Källor: [Nationella Vägdatabasen/Trafikverket](https://nvdb2012.trafikverket.se/SeTransportnatverket) och [SCB](https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik)",
-      "title": "Cykelvägslängd",
       "labels": ["1 m -", "1-2 m", "2-3 m", "3-4 m", "4-5 m", "5 m +"],
-      "name": "Cyklarna"
+      "name": "Cyklarna",
+      "source": "Källor: [Nationella Vägdatabasen/Trafikverket](https://nvdb2012.trafikverket.se/SeTransportnatverket) och [SCB](https://www.scb.se/hitta-statistik/statistik-efter-amne/befolkning/befolkningens-sammansattning/befolkningsstatistik)",
+      "title": "Cykelvägslängd"
     },
     "budgets": {
       "body": "Datum då kommunens koldioxidbudget tar slut om utsläppen fortsätter enligt nuvarande trend. Några kommuner kommer att hålla budgeten om trenden står sig.",
       "columnHeader": "Budget tar slut",
-      "source": "Källor: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/) och [Uppsala universitet](http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf)",
-      "title": "Koldioxidbudget",
       "followingBudget": "Håller budget",
       "labels": ["2 år -", "2-3 år", "3-4 år", "4-5 år", "5 år +", "Håller budget"],
-      "name": "Koldioxidbudgetarna"
+      "name": "Koldioxidbudgetarna",
+      "source": "Källor: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/) och [Uppsala universitet](http://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf)",
+      "title": "Koldioxidbudget"
     },
     "chargers": {
       "body": "Antal laddbara bilar per offentliga laddpunkter år 2023. EU rekommenderar max 10 bilar per laddare.",
       "columnHeader": "Elbil per laddare",
-      "source": "Källa: [Power Circle ELIS](https://powercircle.org/elbilsstatistik/)",
-      "title": "Elbilar per laddare",
-      "missing": "Laddare saknas",
       "labels": ["Inga laddare", "40 +", "30-40", "20-30", "10-20", "10 -"],
-      "name": "Laddarna"
+      "missing": "Laddare saknas",
+      "name": "Laddarna",
+      "source": "Källa: [Power Circle ELIS](https://powercircle.org/elbilsstatistik/)",
+      "title": "Elbilar per laddare"
     },
     "consumption": {
       "body": "Hushållens konsumtionsutsläpp (CO₂e) i ton per invånare och kommun år 2019. År 2050 ska utsläppen vara högst 1 ton per person och år för att ligga i linje med Parisavtalet.",
       "columnHeader": "Ton CO₂e/person/år",
-      "source": "Källa: [Stockholm Environment Institute](https://www.sei.org/tools/konsumtionskompassen/)",
-      "title": "Konsumtionsutsläpp",
       "labels": [
         "6,4 ton +",
         "6,2-6,4 ton",
@@ -63,51 +62,53 @@
         "5,6-5,8 ton",
         "5,6 ton -"
       ],
-      "name": "Konsumtionen"
+      "name": "Konsumtionen",
+      "source": "Källa: [Stockholm Environment Institute](https://www.sei.org/tools/konsumtionskompassen/)",
+      "title": "Konsumtionsutsläpp"
     },
     "electricCars": {
       "body": "Ökningstakten i kommunerna för andel nyregistrerade laddbara bilar 2015–2022, angivet i procentenheter per år.",
       "columnHeader": "Ökning elbilar",
-      "source": "Källa: [Trafikanalys](https://www.trafa.se/vagtrafik/fordon/)",
-      "title": "Elbilsökning",
       "labels": ["4 -", "4–5", "5–6", "6–7", "7–8", "8 +"],
-      "name": "Elbilarna"
+      "name": "Elbilarna",
+      "source": "Källa: [Trafikanalys](https://www.trafa.se/vagtrafik/fordon/)",
+      "title": "Elbilsökning"
     },
     "municipalityEmissions": {
       "body": "Genomsnittlig årlig förändring av koldioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.",
       "columnHeader": "Utsläppsförändring",
       "labels": ["0% +", "0–1%", "1–2%", "2–3%", "3–10%", "10–15%"],
+      "name": "Utsläppen",
       "source": "Källa: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/)",
-      "title": "Utsläppsförändring",
-      "name": "Utsläppen"
+      "title": "Utsläppsförändring"
     },
     "plans": {
       "body": "Kommuner som har eller saknar aktuella klimatplaner, samt länkar till befintliga planer. Klicka [här](https://docs.google.com/forms/d/e/1FAIpQLSfCYZno3qnvY2En0OgRmGPxsrovXyAq7li52BuLalavMBbghA/viewform) för att redigera informationen.",
       "columnHeader": "Antagen år",
+      "name": "Klimatplanerna",
       "source": "Källa: [allmänhetens öppna sammanställning](https://docs.google.com/spreadsheets/d/13CMqmfdd6QUD6agKFyVhwZUol4PKzvy253_EwtsFyvw/edit?fbclid=IwAR0v0cq0_xhFVlhhVn5fP-TNkOPVRXbOTKzTVWI_PMr_yU2rXOLjcN6jSps#gid=0)",
-      "title": "Klimatplan",
-      "name": "Klimatplanerna"
+      "title": "Klimatplan"
     },
     "procurements": {
       "body": "Kommuner som ställer klimatkrav vid offentliga upphandlingar. “Ja” innebär principbeslut och underlag som tillstyrker. “Kanske” innebär ja-svar i enkätundersökning eller via mejl, men utan underlag som tillstyrker. [Mejla oss](mailto:hej@klimatkollen.se) för att redigera informationen.",
       "columnHeader": "Underlag",
+      "name": "Upphandlingarna",
       "source": "Källor: [Upphandlingsmyndigheten](/data/procurements/NUE2022_DATA_2023-12-20.xlsx) och [Greenpeace](https://docs.google.com/spreadsheets/d/1EdHUa49HJZn0rXqM-6tChdim4TJzXnwA/edit#gid=1040317160)",
-      "title": "Klimatkrav i upphandling",
-      "name": "Upphandlingarna"
+      "title": "Klimatkrav i upphandling"
     }
   },
   "errors": {
     "notFound": "404 - Sidan hittades inte"
   },
   "footer": {
-    "license": "CC BY-SA [Attribution-ShareAlike 4.0 International license](http://creativecommons.org/licenses/by-sa/4.0/)",
     "developedWith": "Klimatkollen är utvecklad med [öppen källkod](https://github.com/Klimatbyran/klimatkollen) och drivs av den ideella föreningen Klimatbyrån.",
     "email-us": "Maila oss",
+    "license": "CC BY-SA [Attribution-ShareAlike 4.0 International license](http://creativecommons.org/licenses/by-sa/4.0/)",
     "partners": "Partners",
     "privacyInfo": "När du lämnat dina uppgifter kommer de att behandlas av Klimatbyrån ideell förening som står bakom Klimatkollen. Du har rätt till information om [hur dina personuppgifter behandlas](https://drive.google.com/file/d/1z_L2uGxb-_oMBVqxgasD03QoZp7SW2fw/view).",
     "signup-form": {
-      "label": "Prenumerera på vårt nyhetsbrev",
       "info": "Med vårt nyhetsbrev får du uppdateringar om hur det går med utsläppen och omställningen direkt i din inbox.",
+      "label": "Prenumerera på vårt nyhetsbrev",
       "placeholder": "Ange mailadress",
       "thanks": "Tack för ditt intresse!",
       "title": "Vill du få nyheter om Klimatkollen?"
@@ -118,6 +119,7 @@
   "link": "Länk",
   "maybe": "Kanske",
   "missing": "Saknas",
+  "municipalities": "Kommuner",
   "municipality": "Kommun",
   "no": "Nej",
   "notReported": "Ej rapporterat",
