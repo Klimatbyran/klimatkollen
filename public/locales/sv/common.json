@@ -105,9 +105,9 @@
     "email-us": "Maila oss",
     "license": "CC BY-SA [Attribution-ShareAlike 4.0 International license](http://creativecommons.org/licenses/by-sa/4.0/)",
     "partners": "Partners",
-    "privacyInfo": "När du lämnat dina uppgifter kommer de att behandlas av Klimatbyrån ideell förening som står bakom Klimatkollen. Du har rätt till information om [hur dina personuppgifter behandlas](https://drive.google.com/file/d/1z_L2uGxb-_oMBVqxgasD03QoZp7SW2fw/view).",
+    "privacyInfo": "När du lämnat dina uppgifter kommer de att behandlas av Klimatbyrån ideell förening som står bakom Klimatkollen. Du har rätt till information om hur [dina personuppgifter behandlas](https://drive.google.com/file/d/1z_L2uGxb-_oMBVqxgasD03QoZp7SW2fw/view).",
     "signup-form": {
-      "info": "Med vårt nyhetsbrev får du uppdateringar om hur det går med utsläppen och omställningen direkt i din inbox.",
+      "info": "Med vårt nyhetsbrev får du uppdateringar om hur det går med utsläppen och omställningen direkt i din mejl.",
       "label": "Prenumerera på vårt nyhetsbrev",
       "placeholder": "Ange mailadress",
       "thanks": "Tack för ditt intresse!",
