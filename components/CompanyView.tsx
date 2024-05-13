@@ -37,7 +37,6 @@ const ComparisonContainer = styled.div`
   height: 684px;
   border-radius: 8px;
   display: flex;
-  margin-top: 8px;
 
   @media only screen and (${devices.tablet}) {
     height: 520px;

@@ -16,15 +16,15 @@ import IconArrow from '../public/icons/arrow-right-bold-green.svg'
 import { devices } from '../utils/devices'
 
 const StyledTable = styled.table`
-  width: 98%;
-  margin-left: 1%;
+  width: 100%;
   overflow-y: auto;
   border-collapse: collapse;
-
   font-size: 0.7em;
+  margin: 4px 4px 0 4px;
 
   @media only screen and (${devices.smallMobile}) {
     font-size: 0.8em;
+    margin: 8px 8px 0 8px;
   }
 
   @media only screen and (${devices.tablet}) {
