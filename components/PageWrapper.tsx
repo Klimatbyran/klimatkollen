@@ -17,11 +17,15 @@ const WrapInner = styled.div<{ compact?: boolean }>`
   ${({ compact }) => (compact ? css`
     padding: 0;
 
+    @media only screen and (${devices.smallMobile}) {
+      padding: 0 4px;
+    }
+
     @media only screen and (${devices.tablet}) {
-      padding: 0px 16px;
+      padding: 0 16px;
     }
   ` : css`
-    padding: 0px 16px;
+    padding: 0 16px;
   `)}
 
   @media only screen and (${devices.tablet}) {
