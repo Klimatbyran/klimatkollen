@@ -56,6 +56,8 @@ function StartPage({ companies, municipalities }: PropsType) {
 
   const normalizedDataGroup = getDataGroup(dataGroup as string)
 
+  console.log(dataGroup, normalizedDataGroup)
+
   const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(getDataset(routeDataset as string))
   const [selectedDataView, setSelectedDataView] = useState(getDataView(dataView as string))
 
