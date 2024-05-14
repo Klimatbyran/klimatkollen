@@ -25,10 +25,10 @@ const ToggleBtn = styled.button`
 
 const ToggleText = styled.p`
   margin-right: 8px;
-  font-size: 14px;
+  font-size: 12px;
   font-family: 'Borna';
-  @media only screen and (${devices.mobile}) {
-    font-size: 12px;
+  @media only screen and (${devices.tablet}) {
+    font-size: 14px;
   }
 `
 

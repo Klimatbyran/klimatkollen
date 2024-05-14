@@ -5,6 +5,8 @@ import { render, screen, act } from '@testing-library/react'
 import StartPage from '../../pages/index'
 import StyledComponentsWrapper from '../utils/StyledComponentsWrapper'
 
+vi.mock('../../public/icons/arrow-right-bold-green.svg', () => ({ default: () => 'svg' }))
+
 vi.mock('next-i18next', () => ({
   useTranslation: vi.fn(() => ({
     t: (str: string) => str,
