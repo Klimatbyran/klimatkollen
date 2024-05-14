@@ -57,7 +57,8 @@ const StyledTable = styled.table`
   thead {
     background: ${({ theme }) => theme.lightBlack};
     position: sticky;
-    top: var(--margin);
+    /* TODO: Update this offset once the header fixes have been merged */
+    top: calc(var(--header-offset) - calc(4 * var(--margin)));
     z-index: 30;
   }
 `

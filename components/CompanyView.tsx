@@ -31,23 +31,8 @@ const InfoContainer = styled.div`
 
 const ComparisonContainer = styled.div`
   position: relative;
-  overflow-y: scroll;
-  z-index: 100;
-  // TODO: Hardcoding this is not good.
-  height: 684px;
   border-radius: 8px;
   display: flex;
-
-  @media only screen and (${devices.tablet}) {
-    height: 520px;
-  }
-
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  ::-webkit-scrollbar {
-    /* Chrome, Safari and Opera */
-    display: none;
-  }
 `
 
 const Details = styled.div`

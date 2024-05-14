@@ -66,6 +66,10 @@
   margin: 0;
 }
 
+:root {
+  --header-offset: 64px;
+}
+
 body,
 html {
   width: 100%;
@@ -84,7 +88,7 @@ body {
 html {
   scroll-behavior: smooth;
   /* The scroll padding should match the height of the fixed width header plus some offset to make it nicely aligned */
-  scroll-padding-top: 64px;
+  scroll-padding-top: var(--header-offset);
 }
 
 a {

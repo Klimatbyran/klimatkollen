@@ -15,7 +15,11 @@ const WrapInner = styled.div<{ compact?: boolean }>`
   max-width: 840px;
   
   ${({ compact }) => (compact ? css`
-    padding: 0 12px;
+    padding: 0;
+
+    @media only screen and (${devices.smallMobile}) {
+      padding: 0 8px;
+    }
 
     @media only screen and (${devices.tablet}) {
       padding: 0 16px;
