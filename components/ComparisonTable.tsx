@@ -48,20 +48,30 @@ const StyledTable = styled.table`
     background: ${({ theme }) => theme.lightBlack};
     width: 100%;
     height: var(--margin);
-    top: calc(-1 * var(--margin));
+    /* top: calc(-1 * var(--margin)); */
+    top: -4px;
     left: 0;
     right: 0;
     z-index: -40;
+
+    @media only screen and (${devices.tablet}) {
+      top: -8px;
+    }
   }
 
   thead {
     background: ${({ theme }) => theme.lightBlack};
+    position: -webkit-sticky;
     position: sticky;
-    top: calc(var(--header-offset) - calc(3 * var(--margin)));
+    /* top: calc(var(--header-offset) - (var(--margin) * 3)); */
+    /* top: calc(64px - 12px); */
+    top: 52px;
     z-index: 30;
 
     @media only screen and (${devices.tablet}) {
-      top: calc(var(--header-offset) - calc(1  * var(--margin)));
+      /* top: calc(var(--header-offset) - var(--margin)); */
+      /* top: calc(64px - 8px); */
+      top: 56px;
     }
   }
 `

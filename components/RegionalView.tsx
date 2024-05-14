@@ -23,6 +23,7 @@ const Map = dynamic(() => import('../components/Map/Map'))
 
 const InfoText = styled.div`
   padding: 8px 16px;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   background: ${({ theme }) => theme.lightBlack};

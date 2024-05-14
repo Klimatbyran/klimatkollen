@@ -10,6 +10,7 @@ import Markdown from './Markdown'
 
 const InfoText = styled.div`
   padding: 8px 16px;
+  position: -webkit-sticky;
   position: sticky;
   bottom: 0;
   background: ${({ theme }) => theme.lightBlack};
@@ -33,10 +34,11 @@ const InfoText = styled.div`
   }
 `
 
-// TODO: remove if we decide to show source together with the footer info text.
 const ParagraphSource = styled(Paragraph)`
   color: ${({ theme }) => theme.grey};
   margin: 0;
+  font-size: 12px;
+  padding: 0 16px 8px;
 `
 
 const InfoContainer = styled.div`
@@ -98,6 +100,7 @@ function CompanyView({
       <H2Regular>{t('startPage:companyView.questionTitle')}</H2Regular>
       <InfoContainer>
         <ComparisonContainer>
+          {/* NOTE: Maybe open fullscreen mode - no let's keep it simple for now */}
           <ComparisonTable
             data={companies}
             columns={cols}
@@ -125,11 +128,13 @@ function CompanyView({
           {/* <Markdown>{t('startPage:companyView.tableFooterInfo') + t('startPage:companyView.source')}</Markdown> */}
           {/* IDEA: Maybe use gray color span to render part of the markdown string, to show that source info is less important */}
 
+          {/* IDEA: Show the source at the bottom, and only keep the first paragraph as sticky position. This would save some space. */}
+          {/* IDEA: Only show the table footer once the user has scrolled a bit down into the table. */}
           <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
-          <Markdown components={{ p: ParagraphSource }}>
-            {t('startPage:companyView.source')}
-          </Markdown>
         </InfoText>
+        <Markdown components={{ p: ParagraphSource }}>
+          {t('startPage:companyView.source')}
+        </Markdown>
       </InfoContainer>
     </>
   )
