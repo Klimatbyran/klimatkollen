@@ -26,7 +26,7 @@ const InfoText = styled.div`
 `
 
 const ParagraphSource = styled(Paragraph)`
-  font-size: 13px;
+  font-size: 12px;
   color: ${({ theme }) => theme.grey};
 `
 

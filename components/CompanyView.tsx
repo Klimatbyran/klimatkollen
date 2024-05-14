@@ -9,12 +9,34 @@ import { companyColumns } from '../utils/createCompanyList'
 import Markdown from './Markdown'
 
 const InfoText = styled.div`
-  padding: 0 16px;
+  padding: 8px 16px;
+  position: sticky;
+  bottom: 0;
+  background: ${({ theme }) => theme.lightBlack};
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  p {
+    margin-top: 0;
+    font-size: 12px;
+  }
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 2rem;
+    background: linear-gradient(transparent, #0002);
+    top: -2rem;
+    left: 0;
+    right: 0;
+  }
 `
 
+// TODO: remove if we decide to show source together with the footer info text.
 const ParagraphSource = styled(Paragraph)`
-  font-size: 13px;
   color: ${({ theme }) => theme.grey};
+  margin: 0;
 `
 
 const InfoContainer = styled.div`
@@ -100,11 +122,16 @@ function CompanyView({
             }}
           />
         </ComparisonContainer>
+        {/* IDEA: Maybe make it possible to expand/collapse the table footer to show more info */}
         <InfoText>
-          <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
+          {/* IDEA: Maybe combine texts into one paragraph to save space? */}
+          <Markdown>{t('startPage:companyView.tableFooterInfo') + t('startPage:companyView.source')}</Markdown>
+          {/* IDEA: Maybe use gray color span to render part of the markdown string, to show that source info is less important */}
+
+          {/* <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
           <Markdown components={{ p: ParagraphSource }}>
             {t('startPage:companyView.source')}
-          </Markdown>
+          </Markdown> */}
         </InfoText>
       </InfoContainer>
     </>
