@@ -22,12 +22,33 @@ import { defaultDataView, secondaryDataView } from '../pages/[dataGroup]/[datase
 const Map = dynamic(() => import('../components/Map/Map'))
 
 const InfoText = styled.div`
-  padding: 0 16px;
+  padding: 8px 16px;
+  position: sticky;
+  bottom: 0;
+  background: ${({ theme }) => theme.lightBlack};
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  p {
+    font-size: 12px;
+    margin-top: 0;
+  }
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 2rem;
+    background: linear-gradient(transparent, #0002);
+    top: -2rem;
+    left: 0;
+    right: 0;
+  }
 `
 
 const ParagraphSource = styled(Paragraph)`
-  font-size: 12px;
   color: ${({ theme }) => theme.grey};
+  margin: 0;
 `
 
 const InfoContainer = styled.div`
@@ -37,9 +58,6 @@ const InfoContainer = styled.div`
   border-radius: 8px;
   margin-bottom: 32px;
   z-index: 15;
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 const TitleContainer = styled.div`
@@ -95,9 +113,7 @@ function RegionalView({
   const handleDataChange = (newData: DatasetKey) => {
     setSelectedDataset(newData)
     const normalizedDataset = normalizeString(newData)
-    router.push(`/geografiskt/${normalizedDataset}/${selectedDataView}`, undefined, {
-      shallow: true,
-    })
+    router.push(`/geografiskt/${normalizedDataset}/${selectedDataView}`, undefined, { shallow: true })
   }
   const { t } = useTranslation()
 
@@ -112,9 +128,7 @@ function RegionalView({
     router.replace(
       `/geografiskt/${normalizeString(selectedDataset as string)}/${newDataView}`,
       undefined,
-      {
-        shallow: true,
-      },
+      { shallow: true },
     )
   }
 

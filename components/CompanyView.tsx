@@ -46,9 +46,6 @@ const InfoContainer = styled.div`
   border-radius: 8px;
   margin: 32px 0;
   z-index: 15;
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 const ComparisonContainer = styled.div`
