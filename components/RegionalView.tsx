@@ -68,24 +68,9 @@ const FloatingH5 = styled(H5Regular)`
 // FIXME Refactor so default data view is not assumed to be 'lista'
 const ComparisonContainer = styled.div<{ $dataView: string }>`
   position: relative;
-  overflow-y: scroll;
-  z-index: 100;
-  // TODO: Hardcoding this is not good.
-  height: 400px;
   border-radius: 8px;
   display: flex;
   margin-top: ${({ $dataView }) => ($dataView === defaultDataView ? '64px' : '0')};
-
-  @media only screen and (${devices.tablet}) {
-    height: 500px;
-  }
-
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  ::-webkit-scrollbar {
-    /* Chrome, Safari and Opera */
-    display: none;
-  }
 `
 
 type RegionalViewProps = {
