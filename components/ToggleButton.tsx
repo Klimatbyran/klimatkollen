@@ -3,7 +3,7 @@ import { devices } from '../utils/devices'
 
 const ToggleBtn = styled.button`
   height: 36px;
-  margin: 16px;
+  margin: 12px 4px 12px 12px;
   margin-right: 4px;
   position: absolute;
   top: 0;
