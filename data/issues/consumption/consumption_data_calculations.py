@@ -36,8 +36,5 @@ def get_consumption_emissions(df):
     # Convert to pandas DataFrame
     df_consumption = pd.DataFrame(features_list)
 
-    df_total_emissions = pd.DataFrame(total_emissions_list)
-    df_total_emissions.to_excel(OUTPUT_EXCEL_PATH, index=False)
-
     df = df.merge(df_consumption, on='Kommun', how='left')
     return df
