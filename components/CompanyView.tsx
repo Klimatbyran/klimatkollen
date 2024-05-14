@@ -125,13 +125,13 @@ function CompanyView({
         {/* IDEA: Maybe make it possible to expand/collapse the table footer to show more info */}
         <InfoText>
           {/* IDEA: Maybe combine texts into one paragraph to save space? */}
-          <Markdown>{t('startPage:companyView.tableFooterInfo') + t('startPage:companyView.source')}</Markdown>
+          {/* <Markdown>{t('startPage:companyView.tableFooterInfo') + t('startPage:companyView.source')}</Markdown> */}
           {/* IDEA: Maybe use gray color span to render part of the markdown string, to show that source info is less important */}
 
-          {/* <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
+          <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
           <Markdown components={{ p: ParagraphSource }}>
             {t('startPage:companyView.source')}
-          </Markdown> */}
+          </Markdown>
         </InfoText>
       </InfoContainer>
     </>
