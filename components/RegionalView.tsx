@@ -89,6 +89,11 @@ const ComparisonContainer = styled.div<{ $dataView: string }>`
   border-radius: 8px;
   display: flex;
   margin-top: ${({ $dataView }) => ($dataView === defaultDataView ? '64px' : '0')};
+  min-height: 400px;
+
+  @media only screen and (${devices.tablet}) {
+    min-height: 520px;
+  }
 `
 
 type RegionalViewProps = {
