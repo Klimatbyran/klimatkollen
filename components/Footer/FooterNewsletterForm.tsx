@@ -39,6 +39,10 @@ const HorizontalContainer = styled.div`
 
 const StyledParagraph = styled(Paragraph)`
   font-family: 'Anonymous Pro';
+  font-size: 16px;
+`
+
+const PrivacyInfo = styled(StyledParagraph)`
   font-size: 14px;
 `
 
@@ -173,7 +177,7 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
         </StyledForm>
       </HorizontalContainer>
 
-      <Markdown components={{ p: StyledParagraph }}>{t('common:footer.privacyInfo')}</Markdown>
+      <Markdown components={{ p: PrivacyInfo }}>{t('common:footer.privacyInfo')}</Markdown>
     </Container>
   )
 }
