@@ -17,7 +17,6 @@ export const IconButton = styled.button`
   cursor: pointer;
   background-color: inherit;
   color: ${({ theme }) => theme.offWhite};
-  font-family: 'Borna';
   font-weight: 300;
   font-size: 16px;
   display: flex;

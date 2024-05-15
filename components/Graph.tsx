@@ -194,11 +194,6 @@ function Graph({
                 drawTicks: false,
               },
               ticks: {
-                font: {
-                  family: 'Borna',
-                  size: 15,
-                  weight: 300,
-                },
                 color: 'white',
                 align: 'center',
                 callback: (tickValue) => {
@@ -216,11 +211,6 @@ function Graph({
               beginAtZero: true,
               ticks: {
                 stepSize: 50_000,
-                font: {
-                  family: 'Borna',
-                  size: 15,
-                  weight: 300,
-                },
                 color: 'white',
                 callback: (a) => ((a as number) / 1000).toString(),
               },
