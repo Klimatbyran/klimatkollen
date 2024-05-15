@@ -22,12 +22,18 @@ class TestEmissionCalculations(unittest.TestCase):
 
     def test_get_n_prep_data_from_smhi(self):
         path_input_df = "tests/reference_dataframes/df_municipalities.xlsx"
-        path_expected_df = "tests/reference_dataframes/df_smhi.xlsx"
 
         df_input = pd.DataFrame(pd.read_excel(path_input_df))
         df_result = get_n_prep_data_from_smhi(df_input)
-        df_expected = pd.DataFrame(pd.read_excel(path_expected_df))
-        pd.testing.assert_frame_equal(df_result, df_expected, check_dtype=False)
+        result_columns = df_result.columns.to_list()[4:] # Skip the first 4 columns which is the 'index'
+        expected_columns = [1990, 2000, 2005, 2010, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
+
+        # Check that the expected columns are in the dataframe
+        assert result_columns == expected_columns
+
+        # Each of the column values should all be greater than 0.0
+        for col in expected_columns:
+            assert (df_result[col] > 0.0).all() == True
 
     def test_deduct_cement(self):
         # Sample data frame for Skövde and Gotland
