@@ -5,9 +5,7 @@ import { TOptions } from 'i18next'
 
 import { DataDescriptions, DatasetKey, Municipality } from './types'
 import { normalizeString } from './shared'
-
-export const defaultDataView = 'karta'
-export const secondaryDataView = 'lista'
+import { defaultDataView, isValidDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
 
 export const validDatasets = ['utslappen', 'koldioxidbudgetarna', 'klimatplanerna', 'konsumtionen', 'elbilarna', 'laddarna', 'cyklarna', 'upphandlingarna'] as const
 export const defaultDataset: DatasetKey = 'utslappen'
@@ -186,11 +184,33 @@ export function getDataDescriptions(locale: string, t: TFunction) {
   const dataDescriptions = cachedDataDescriptions.get(locale)!
   const validDatasets = new Set(Object.keys(dataDescriptions))
 
-  function isValidDataset(dataset: string): dataset is DatasetKey {
-    return validDatasets.has(normalizeString(dataset))
+  /**
+   * Normalize a dataset key and return it. Fallback to default if input was invalid.
+   */
+  function getDataset(rawDataset: string): DatasetKey {
+    const normalized = normalizeString(rawDataset)
+    if (validDatasets.has(normalized)) {
+      return normalized as DatasetKey
+    }
+
+    return defaultDataset
   }
 
-  return { dataDescriptions, isValidDataset, validDatasets }
+  /**
+   * Normalize a dataView key and return it. Fallback to default if input was invalid.
+   */
+  function getDataView(rawDataView: string) {
+    const normalized = normalizeString(rawDataView)
+    if (isValidDataView(normalized)) {
+      return normalized
+    }
+
+    return defaultDataView
+  }
+
+  return {
+    dataDescriptions, validDatasets, getDataset, getDataView,
+  }
 }
 
 export const dataOnDisplay = (
