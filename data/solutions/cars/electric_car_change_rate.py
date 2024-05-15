@@ -12,12 +12,12 @@ def clean_up_dataframe(df) -> pd.DataFrame:
     return df
 
 def get_change_percent(df: pd.DataFrame) -> pd.Series:
-    return df["Procentenheter förändring av andel laddbara bilar 2015-2022"]
+    return df["Procentenheter förändring av andel laddbara bilar 2015-2022"] * 100.0
 
 def get_change_yearly(df: pd.DataFrame) -> pd.Series:
     years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
     return df.apply(
-        lambda x: {year: x.loc[year] for year in years},
+        lambda x: {year: x.loc[year] * 100.0 for year in years},
         axis=1)
 
 def get_filtered_result(df: pd.DataFrame) -> pd.DataFrame:
