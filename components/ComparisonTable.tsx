@@ -1,4 +1,6 @@
-import { Fragment, useEffect, useState } from 'react'
+import {
+  Fragment, useEffect, useRef, useState,
+} from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import {
@@ -13,6 +15,7 @@ import {
 import type { ColumnDef } from '@tanstack/react-table'
 
 import { devices } from '../utils/devices'
+import { useIntersectionObserver } from '../utils/useIntersectionObserver'
 
 const StyledTable = styled.table`
   --margin: 4px;
@@ -61,17 +64,20 @@ const StyledTable = styled.table`
 
   thead {
     background: ${({ theme }) => theme.lightBlack};
-    position: -webkit-sticky;
-    position: sticky;
+    /* position: -webkit-sticky;
+    position: sticky; */
     /* top: calc(var(--header-offset) - (var(--margin) * 3)); */
     /* top: calc(64px - 12px); */
-    top: 52px;
+    /* top: 52px; */
+
+    --top: 52px;
     z-index: 30;
 
     @media only screen and (${devices.tablet}) {
       /* top: calc(var(--header-offset) - var(--margin)); */
       /* top: calc(64px - 8px); */
-      top: 56px;
+      /* top: 56px; */
+      --top: 56px;
     }
   }
 `
@@ -153,6 +159,11 @@ function prepareColumnsForDefaultSorting<T extends object>(columns: TableProps<T
   return { preparedColumns, defaultSorting }
 }
 
+function getTableWidth(element: HTMLTableElement) {
+  const style = window.getComputedStyle(element)
+  return element.offsetWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+}
+
 function ComparisonTable<T extends object>({
   data,
   columns,
@@ -163,6 +174,15 @@ function ComparisonTable<T extends object>({
   const { preparedColumns, defaultSorting } = prepareColumnsForDefaultSorting(columns)
   const [sorting, setSorting] = useState<SortingState>(defaultSorting)
   const router = useRouter()
+
+  const tableRef = useRef<HTMLTableElement | null>(null)
+  // const [headerElement, setHeaderElement] = useState<HTMLElement | null>(null)
+  // const [targetRef, isIntersecting] = useIntersectionObserver({ threshold: [0.1], rootMargin: '52px' })
+  const [targetRef, isIntersecting] = useIntersectionObserver({ threshold: [0.1], rootMargin: '52px' })
+
+  // useEffect(() => {
+  //   header
+  // }, [])
 
   const [resizeCount, setResizeCount] = useState(0)
 
@@ -208,7 +228,8 @@ function ComparisonTable<T extends object>({
   }
 
   return (
-    <StyledTable key={resizeCount}>
+    // <StyledTable key={resizeCount} ref={(el) => { tableRef.current = el; targetRef(el) }}>
+    <StyledTable key={resizeCount} ref={tableRef}>
       {/* HACK: prevent table headers from changing size when toggling table rows. Not sure what causes the problem, but this fixes it. */}
       {dataType === 'companies' ? (
         <colgroup>
@@ -218,7 +239,18 @@ function ComparisonTable<T extends object>({
         </colgroup>
       ) : null}
 
-      <thead>
+      {/* IDEA: Maybe use a styled component to keep styling in the same place */}
+      {/* TODO: double check if sticky th elements would work in Safari */}
+      <thead
+        ref={targetRef}
+        style={isIntersecting ? {
+          position: 'fixed',
+          top: 'var(--top)',
+          width: tableRef.current ? getTableWidth(tableRef.current) : '100%',
+          display: 'table',
+        } : {}}
+        // TODO: Update intersection observer to go away once there is an intersection with the table footer
+      >
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => {
