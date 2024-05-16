@@ -233,7 +233,7 @@ def calculate_paris_path(df):
 
     # Year from which the budget applies (after correction with respect to years passed since budget start)
     first_year = max(BUDGET_YEAR, CURRENT_YEAR)
-    
+
     temp = []
     for i in range(len(df)):
         # We'll store the exponential path for each municipality in a dictionary where the keys are the years
@@ -379,7 +379,7 @@ def emission_calculations(df):
     df_trend_coefficients = calculate_trend_coefficients(df_cem, LAST_YEAR_WITH_SMHI_DATA)
     df_approxmimated_historical = calculate_approximated_historical(
         df_trend_coefficients, LAST_YEAR_WITH_SMHI_DATA)
-    df_trend = calculate_trend(df_approxmimated_historical)
+    df_trend = calculate_trend(df_approxmimated_historical, LAST_YEAR_WITH_SMHI_DATA)
 
     df_budgeted = calculate_municipality_budgets(df_trend, LAST_YEAR_WITH_SMHI_DATA)
     df_paris = calculate_paris_path(df_budgeted)

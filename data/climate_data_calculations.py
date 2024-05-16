@@ -58,6 +58,7 @@ temp = [
             '2019': df.iloc[i][2019],
             '2020': df.iloc[i][2020],
             '2021': df.iloc[i][2021],
+            '2022': df.iloc[i][2022],
         },
         'budget': df.iloc[i]['Budget'],
         'emissionBudget': df.iloc[i]['parisPath'],
