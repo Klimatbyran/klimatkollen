@@ -1,6 +1,5 @@
 import { type TFunction } from 'next-i18next'
 
-import { replaceLetters } from './shared'
 import { Municipality } from './types'
 
 type SiteMap = {
@@ -17,7 +16,7 @@ export const generateMunicipalitySitemapData = ({
 }: {
   municipalities: Municipality[]
 }): SiteMap[] => municipalities.map((m) => ({
-  url: `${BASE_URL}/kommun/${replaceLetters(m.Name).toLowerCase()}`,
+  url: `${BASE_URL}/kommun/${m.Name.toLowerCase()}`,
   name: m.Name,
   lastModified: new Date(),
   changeFrequency: 'yearly',
