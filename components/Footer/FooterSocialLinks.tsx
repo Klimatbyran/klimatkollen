@@ -47,7 +47,7 @@ export function SocialListItem({
 }: SocialListItemProps): JSX.Element {
   return (
     <ContactListItem>
-      {text == "Discord" ? <DiscordIcon src={icon} alt={alt}/> : <ContactIcon src={icon} alt={alt} /> }
+      {text === 'Discord' ? <DiscordIcon src={icon} alt={alt} /> : <ContactIcon src={icon} alt={alt} /> }
       <ContactLink href={link} target="_blank" rel="noreferrer">
         {text}
       </ContactLink>
