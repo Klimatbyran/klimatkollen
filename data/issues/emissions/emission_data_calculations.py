@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 from dateutil.relativedelta import relativedelta
 
-BUDGET = 80000000                # C02 budget in metric tonnes
+BUDGET = 80000000-15375518                # C02 budget in metric tonnes
 BUDGET_YEAR = 2024               # year from which the budget applies
 
 LAST_YEAR_WITH_SMHI_DATA = 2022  # last year for which the National Emission database has data
