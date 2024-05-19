@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { useState } from 'react'
 
 import Markdown from '../Markdown'
-import Icon from '../../public/icons/add_light_green.svg'
-import IconGreen from '../../public/icons/remove_light_green.svg'
+import IconAdd from '../../public/icons/add_light_green.svg'
+import IconRemove from '../../public/icons/remove_light_green.svg'
 import { Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
 
@@ -19,6 +19,10 @@ const Row = styled.summary`
   align-items: center;
   gap: 4px;
   cursor: pointer;
+  list-style: none; /* remove default arrow in Firefox */
+  &::-webkit-details-marker {
+    display: none; /* remove default arrow in Chrome */
+  }
 `
 
 const InfoParagraph = styled(Paragraph)`
@@ -70,7 +74,7 @@ function ScorecardSection({ heading, data, info }: Props) {
         {info && (
         <SectionRight>
           <StyledIcon>
-            {toggle ? <IconGreen /> : <Icon />}
+            {toggle ? <IconRemove /> : <IconAdd />}
           </StyledIcon>
         </SectionRight>
         )}

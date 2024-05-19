@@ -9,7 +9,7 @@ describe('BackArrow', () => {
     const route = '/some-route'
     render(<BackArrow route={route} />)
 
-    const linkElement = screen.getByRole('link')
+    const linkElement: HTMLAnchorElement = screen.getByRole('link')
 
     expect(linkElement).toBeInTheDocument()
     expect(linkElement).toHaveAttribute('href', route)

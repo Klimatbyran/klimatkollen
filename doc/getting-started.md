@@ -39,7 +39,7 @@ To build and run Klimatkollen, some dependencies are required apart from Node.js
  * [Next.js](https://nextjs.org/)
  * [Chart.js](https://www.chartjs.org/)
 
-The full list is in "package.json" which is a file that npm can understand. To have it install all of the dependencies at the right versions, run `npm run ci`.
+The full list is in "package.json" which is a file that npm can understand. To have it install all of the dependencies at the right versions, run `npm ci`.
 
 ## Running the Klimatkollen webapp. 
 

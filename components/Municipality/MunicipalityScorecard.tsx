@@ -120,7 +120,7 @@ type Props = {
   climatePlan: ClimatePlan
 }
 
-const formatter = new Intl.NumberFormat('sv-SV', { maximumSignificantDigits: 8 })
+const formatter = new Intl.NumberFormat('sv-SE', { maximumSignificantDigits: 8 })
 
 function Scorecard({
   name,

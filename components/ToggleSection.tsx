@@ -11,7 +11,7 @@ const TextSection = styled.details`
   flex-direction: column;
 
   gap: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
 `
 
 const Arrow = styled(ArrowSvg)<{ open: boolean }>`
@@ -27,13 +27,14 @@ const HeaderSection = styled.summary`
   justify-content: space-between;
   width: 100%;
   list-style: none; /* remove default arrow in Firefox */
+  padding: 0.5rem 0;
 
   &::-webkit-details-marker {
     display: none; /* remove default arrow in Chrome */
+  }
 
   &:hover {
     cursor: pointer;
-  }
   }
 `
 
