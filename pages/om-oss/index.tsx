@@ -16,6 +16,7 @@ import {
 } from '../../components/shared'
 import ToggleSection from '../../components/ToggleSection'
 import Markdown from '../../components/Markdown'
+import { ONE_WEEK_MS } from '../../utils/shared'
 
 const Ola = '/team/ola.jpg'
 const Frida = '/team/frida.jpg'
@@ -194,10 +195,6 @@ function OmOss() {
             text={t('about:funding.text')}
           />
           <ToggleSection
-            header={t('about:postcode.title')}
-            text={t('about:postcode.text')}
-          />
-          <ToggleSection
             header={t('about:earlierProjects.title')}
             text={t('about:earlierProjects.text')}
           />
@@ -210,7 +207,7 @@ function OmOss() {
 export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
   res.setHeader(
     'Cache-Control',
-    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
+    `public, stale-while-revalidate=60, max-age=${ONE_WEEK_MS}`,
   )
 
   return {

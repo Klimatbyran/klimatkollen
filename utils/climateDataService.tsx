@@ -60,7 +60,6 @@ export class ClimateDataService {
         } as unknown as Trend
 
         const budget = {
-          PercentageOfNationalBudget: 1,
           CO2Equivalent: data.budget,
           BudgetPerYear: Object.entries(data.emissionBudget).map(
             ([year, emissionBudget]) => ({
@@ -107,6 +106,9 @@ export class ClimateDataService {
   }
 
   public getMunicipalities(): Array<Municipality> {
+    if (this.municipalities.length < 1) {
+      throw new Error('No municipalities found')
+    }
     return this.municipalities
   }
 

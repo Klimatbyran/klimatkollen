@@ -8,6 +8,7 @@ import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import { PoliticalRuleService } from '../../../utils/politicalRuleService'
+import { ONE_WEEK_MS } from '../../../utils/shared'
 
 const Municipality = dynamic(() => import('../../../components/Municipality/Municipality'))
 
@@ -20,13 +21,13 @@ export const CHARTS = [
 type Props = {
   municipality: TMunicipality
   id: string
-  municipalitiesName: Array<string>
+  municipalitiesNames: Array<string>
 }
 
 export default function Step({
   id,
   municipality,
-  municipalitiesName,
+  municipalitiesNames: municipalitiesName,
 }: Props) {
   const router = useRouter()
   const { step } = router.query
@@ -75,7 +76,7 @@ interface Params extends ParsedUrlQuery {
 const cache = new Map()
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res, locale }) => {
-  res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${((60 * 60) * 24) * 7}`)
+  res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${ONE_WEEK_MS}`)
 
   const id = (params as Params).municipality as string
   if (cache.get(id)) {
@@ -102,13 +103,13 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res, loca
 
   municipality.PoliticalRule = politicalRuleService.getPoliticalRule(id)
 
-  const municipalitiesName = municipalities.map((m) => m.Name)
+  const municipalitiesNames = municipalities.map((m) => m.Name)
 
   const result = {
     props: {
       municipality,
       id,
-      municipalitiesName,
+      municipalitiesNames,
       ...await serverSideTranslations(locale as string, ['common', 'municipality']),
     },
   }

@@ -1,0 +1,22 @@
+services:
+  frontend:
+    build: .
+    ports:
+      - "3000:3000"
+    develop:
+      watch:
+        - action: sync
+          path: pages
+          target: pages
+        - action: sync
+          path: public
+          target: public
+        - action: sync
+          path: styles
+          target: styles
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: package-lock.json
+        - action: rebuild
+          path: tsconfig.json
