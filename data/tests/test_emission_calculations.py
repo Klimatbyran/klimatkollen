@@ -25,7 +25,7 @@ class TestEmissionCalculations(unittest.TestCase):
 
         df_input = pd.DataFrame(pd.read_excel(path_input_df))
         df_result = get_n_prep_data_from_smhi(df_input)
-        result_columns = df_result.columns.to_list()[4:] # Skip the first 4 columns which is the 'index'
+        result_columns = df_result.columns.to_list()[4:] # Skip the first 4 columns
         expected_columns = [1990, 2000, 2005, 2010, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
 
         # Check that the expected columns are in the dataframe
@@ -65,7 +65,20 @@ class TestEmissionCalculations(unittest.TestCase):
             }
         )
 
-        df_result = deduct_cement(df_input)
+        cement_deduction = {
+            'Skövde': {
+                2010: 356965000/1000, 2015: 358634000/1000, 2016: 384926000/1000,
+                2017: 407633130/1000, 2018: 445630340/1000, 2019: 440504330/1000,
+                2020: 459092473/1000, 2021: 439174727/1000
+            },
+            'Gotland': {
+                2010: 1579811000/1000, 2015: 1926036000/1000, 2016: 1903887000/1000,
+                2017: 1757110000/1000, 2018: 1740412000/1000, 2019: 1536480000/1000,
+                2020: 1624463000/1000, 2021: 1621211000/1000
+            }
+        }
+
+        df_result = deduct_cement(df_input, cement_deduction)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_dtype=False)
 
@@ -87,7 +100,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected = df_input.copy()
         df_expected["trendCoefficients"] = [[-8.89777111e03, 1.85140662e07]]
 
-        df_result = calculate_trend_coefficients(df_input)
+        df_result = calculate_trend_coefficients(df_input, 2021)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -118,7 +131,7 @@ class TestEmissionCalculations(unittest.TestCase):
         ]
         df_expected["totalApproximatedHistorical"] = [1560788.47673442]
 
-        df_result = calculate_approximated_historical(df_input)
+        df_result = calculate_approximated_historical(df_input, 2021)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -180,7 +193,7 @@ class TestEmissionCalculations(unittest.TestCase):
         ]
         df_expected["trendEmission"] = [10121967.672179997]
 
-        df_result = calculate_trend(df_input)
+        df_result = calculate_trend(df_input, 2021)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -203,7 +216,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected["budgetShare"] = [0.12539888902021, 0.87460111097979]
         df_expected["Budget"] = [10031911.1216168, 69968088.8783832]
 
-        df_result = calculate_municipality_budgets(df_input)
+        df_result = calculate_municipality_budgets(df_input, 2021)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -302,7 +315,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected = df_input.copy()
         df_expected["historicalEmissionChangePercent"] = [-6.46746990789292]
 
-        df_result = calculate_historical_change_percent(df_input)
+        df_result = calculate_historical_change_percent(df_input, 2021)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
