@@ -41,6 +41,15 @@ const mockCompanies = [
 
 describe('CompanyView', () => {
   beforeEach(() => {
+    // IntersectionObserver isn't available in jsdom test environment
+    const mockIntersectionObserver = vi.fn()
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    })
+    window.IntersectionObserver = mockIntersectionObserver
+
     act(() => {
       render(
         // @ts-expect-error Temporary type error due to type mismatch compared to the data structure we expect in the near future.
