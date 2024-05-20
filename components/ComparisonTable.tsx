@@ -15,7 +15,7 @@ import {
 import type { ColumnDef } from '@tanstack/react-table'
 
 import { devices } from '../utils/devices'
-import { useIntersectionObserver } from '../utils/useIntersectionObserver'
+// import { useIntersectionObserver } from '../utils/useIntersectionObserver'
 import ArrowIcon from '../public/icons/arrow-right-bold-green.svg'
 
 const StyledTable = styled.table`
@@ -65,11 +65,11 @@ const StyledTable = styled.table`
 
   thead {
     background: ${({ theme }) => theme.lightBlack};
-    /* position: -webkit-sticky;
-    position: sticky; */
+    position: sticky;
     /* top: calc(var(--header-offset) - (var(--margin) * 3)); */
     /* top: calc(64px - 12px); */
     /* top: 52px; */
+    inset-block-start: 52px;
 
     --top: 52px;
     z-index: 30;
@@ -79,6 +79,7 @@ const StyledTable = styled.table`
       /* top: calc(64px - 8px); */
       /* top: 56px; */
       --top: 56px;
+      inset-block-start: 56px;
     }
   }
 `
@@ -166,10 +167,10 @@ function prepareColumnsForDefaultSorting<T extends object>(columns: TableProps<T
   return { preparedColumns, defaultSorting }
 }
 
-function getTableWidth(element: HTMLTableElement) {
-  const style = window.getComputedStyle(element)
-  return element.offsetWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
-}
+// function getTableWidth(element: HTMLTableElement) {
+//   const style = window.getComputedStyle(element)
+//   return element.offsetWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
+// }
 
 function ComparisonTable<T extends object>({
   data,
@@ -185,7 +186,7 @@ function ComparisonTable<T extends object>({
   const tableRef = useRef<HTMLTableElement | null>(null)
   // const [headerElement, setHeaderElement] = useState<HTMLElement | null>(null)
   // const [targetRef, isIntersecting] = useIntersectionObserver({ threshold: [0.1], rootMargin: '52px' })
-  const [targetRef, isIntersecting] = useIntersectionObserver({ threshold: [0.1], rootMargin: '52px' })
+  // const [targetRef, isIntersecting] = useIntersectionObserver({ threshold: [0.1], rootMargin: '52px' })
 
   // useEffect(() => {
   //   header
@@ -248,7 +249,7 @@ function ComparisonTable<T extends object>({
 
       {/* IDEA: Maybe use a styled component to keep styling in the same place */}
       {/* TODO: double check if sticky th elements would work in Safari */}
-      <thead
+      {/* <thead
         ref={targetRef}
         style={isIntersecting ? {
           position: 'fixed',
@@ -257,7 +258,8 @@ function ComparisonTable<T extends object>({
           display: 'table',
         } : {}}
         // TODO: Update intersection observer to go away once there is an intersection with the table footer
-      >
+      > */}
+      <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => {
