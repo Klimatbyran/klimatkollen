@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 BUDGET = 80000000                # C02 budget in metric tonnes
 BUDGET_YEAR = 2024               # year from which the budget applies
 
-LAST_YEAR_WITH_SMHI_DATA = 2022  # last year for which the National Emission database has data
+LAST_YEAR_WITH_SMHI_DATA = 2021  # last year for which the National Emission database has data
 PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
 
 CURRENT_YEAR = 2024              # current year
@@ -20,17 +20,17 @@ CEMENT_DEDUCTION = {
     'Mörbylånga': {
         2010: 248025000/1000, 2015: 255970000/1000, 2016: 239538000/1000,
         2017: 255783000/1000, 2018: 241897000/1000, 2019: 65176000/1000,
-        2020: 0, 2021: 0, 2022: 0
+        2020: 0, 2021: 0
     },
     'Skövde': {
         2010: 356965000/1000, 2015: 358634000/1000, 2016: 384926000/1000,
         2017: 407633130/1000, 2018: 445630340/1000, 2019: 440504330/1000,
-        2020: 459092473/1000, 2021: 439174727/1000, 2022: 406856000/1000
+        2020: 459092473/1000, 2021: 439174727/1000
     },
     'Gotland': {
         2010: 1579811000/1000, 2015: 1926036000/1000, 2016: 1903887000/1000,
         2017: 1757110000/1000, 2018: 1740412000/1000, 2019: 1536480000/1000,
-        2020: 1624463000/1000, 2021: 1621211000/1000, 2022: 1514132000/1000
+        2020: 1624463000/1000, 2021: 1621211000/1000
     }
 }
 
@@ -379,7 +379,7 @@ def emission_calculations(df):
     df_trend_coefficients = calculate_trend_coefficients(df_cem, LAST_YEAR_WITH_SMHI_DATA)
     df_approxmimated_historical = calculate_approximated_historical(
         df_trend_coefficients, LAST_YEAR_WITH_SMHI_DATA)
-    df_trend = calculate_trend(df_approxmimated_historical)
+    df_trend = calculate_trend(df_approxmimated_historical, LAST_YEAR_WITH_SMHI_DATA)
 
     df_budgeted = calculate_municipality_budgets(df_trend, LAST_YEAR_WITH_SMHI_DATA)
     df_paris = calculate_paris_path(df_budgeted)
