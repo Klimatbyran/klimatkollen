@@ -16,6 +16,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 
 import { devices } from '../utils/devices'
 import { useIntersectionObserver } from '../utils/useIntersectionObserver'
+import ArrowIcon from '../public/icons/arrow-right-bold-green.svg'
 
 const StyledTable = styled.table`
   --margin: 4px;
@@ -134,6 +135,12 @@ const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpa
   border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.midGreen}` : '')};
   cursor: ${({ interactive }) => (interactive ? 'pointer' : '')};
   background: ${({ isExpanded, theme }) => (isExpanded ? `${theme.black}88` : '')};
+`
+
+// TODO: verify that this works as expected.
+// TODO: We probably want to use the SVG icons imported instead.
+const SortingIcon = styled(ArrowIcon)`
+  color: ${({ theme }) => theme.midGreen};
 `
 
 type TableProps<T extends object> = {
@@ -270,10 +277,8 @@ function ComparisonTable<T extends object>({
                   <TableHeaderInner data-sorting={header.column.getIsSorted()}>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     {currentSort ? (
-                      <img
-                        src="/icons/arrow-right-bold-green.svg"
+                      <SortingIcon
                         style={{ transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)` }}
-                        alt=""
                       />
                     ) : null}
                   </TableHeaderInner>
