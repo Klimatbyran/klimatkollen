@@ -25,8 +25,8 @@ class TestEmissionCalculations(unittest.TestCase):
 
         df_input = pd.DataFrame(pd.read_excel(path_input_df))
         df_result = get_n_prep_data_from_smhi(df_input)
-        result_columns = df_result.columns.to_list()[4:] # Skip the first 4 columns which is the 'index'
-        expected_columns = [1990, 2000, 2005, 2010, 2015, 2016, 2017, 2018, 2019, 2020, 2021]
+        result_columns = df_result.columns.to_list()[4:] # Skip the first 4 columns
+        expected_columns = [1990, 2000, 2005, 2010, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
 
         # Check that the expected columns are in the dataframe
         assert result_columns == expected_columns
