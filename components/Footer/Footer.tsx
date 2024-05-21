@@ -35,6 +35,10 @@ const TextContainer = styled.div`
   @media only screen and (${devices.tablet}) {
     width: 45%;
   }
+
+  a {
+    font-weight: 500;
+  }
 `
 
 const Copyright = styled.p`
