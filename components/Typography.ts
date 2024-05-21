@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const H1 = styled.h1`
-  font-weight: bold;
+  font-weight: 400;
   font-size: 48px;
   line-height: 1.25;
   margin: 0 0 16px 0;
@@ -12,7 +12,7 @@ export const H1 = styled.h1`
 `
 
 export const H1NoPad = styled.h1`
-  font-weight: bold;
+  font-weight: 400;
   font-size: 48px;
   line-height: 1.25;
 
@@ -22,7 +22,7 @@ export const H1NoPad = styled.h1`
 `
 
 export const H2 = styled.h2`
-  font-weight: bold;
+  font-weight: 400;
   font-size: 32px;
   line-height: 1.25;
   margin: 0 0 8px 0;
@@ -33,7 +33,7 @@ export const H2 = styled.h2`
 `
 
 export const H2Regular = styled.h2`
-  font-weight: regular;
+  font-weight: 400;
   font-size: 32px;
   line-height: 1.25;
   text-align: center;
@@ -41,21 +41,21 @@ export const H2Regular = styled.h2`
 `
 
 export const H3 = styled.h3`
-  font-weight: bold;
+  font-weight: 400;
   font-size: 24px;
   line-height: 1.25;
   margin: 0;
 `
 
 export const H4 = styled.h4`
-  font-weight: bold;
+  font-weight: 400;
   font-size: 20px;
   line-height: 1.25;
   margin: 0;
 `
 
 export const H4Regular = styled.h4`
-  font-weight: regular;
+  font-weight: 400;
   font-size: 20px;
   line-height: 1.25;
   margin: 0;
@@ -63,14 +63,14 @@ export const H4Regular = styled.h4`
 `
 
 export const H5 = styled.h5`
-  font-weight: bold;
+  font-weight: 400;
   font-size: 18px;
   line-height: 1.25;
   margin: 0;
 `
 
 export const H5Regular = styled.h5`
-  font-weight: regular;
+  font-weight: 400;
   font-size: 18px;
   line-height: 1.25;
   margin: 0;

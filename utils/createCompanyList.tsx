@@ -25,7 +25,7 @@ const ScopeColumn = styled.span<{ isMissing: boolean }>`
 
   color: ${({ isMissing, theme }) => (isMissing ? 'gray' : theme.darkYellow)};
   font-style: ${({ isMissing }) => (isMissing ? 'italic' : 'normal')};
-  font-size: ${({ isMissing }) => (isMissing ? '0.9em' : '')};
+  font-size: ${({ isMissing }) => (isMissing ? '0.875em' : '0.9375em')};
 `
 
 const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 0 })
