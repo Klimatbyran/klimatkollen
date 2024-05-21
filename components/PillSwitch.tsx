@@ -27,7 +27,7 @@ const Switch = styled.div`
 const Slider = styled.div<{ isActive: boolean }>`
   position: absolute;
   top: 4px;
-  left: ${({ isActive }) => (isActive ? 'calc(50%)' : '4px')}; /* width of the switch - width of slider */
+  left: ${({ isActive }) => (isActive ? '50%' : '4px')}; /* width of the switch - width of slider */
   width: calc(50% - 4px);
   height: 32px; /* height of the slider */
   background: ${({ theme }) => theme.darkGreenOne};

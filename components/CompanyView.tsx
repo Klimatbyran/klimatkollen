@@ -9,12 +9,36 @@ import { companyColumns } from '../utils/createCompanyList'
 import Markdown from './Markdown'
 
 const InfoText = styled.div`
-  padding: 0 16px;
+  padding: 8px 16px;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  background: ${({ theme }) => theme.lightBlack};
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+
+  p {
+    margin-top: 0;
+    font-size: 12px;
+  }
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 2rem;
+    background: linear-gradient(transparent, #0002);
+    top: -2rem;
+    left: 0;
+    right: 0;
+  }
 `
 
 const ParagraphSource = styled(Paragraph)`
-  font-size: 13px;
   color: ${({ theme }) => theme.grey};
+  margin: 0;
+  font-size: 12px;
+  padding: 0 16px 8px;
 `
 
 const InfoContainer = styled.div`
@@ -24,30 +48,12 @@ const InfoContainer = styled.div`
   border-radius: 8px;
   margin: 32px 0;
   z-index: 15;
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 const ComparisonContainer = styled.div`
   position: relative;
-  overflow-y: scroll;
-  z-index: 100;
-  // TODO: Hardcoding this is not good.
-  height: 684px;
   border-radius: 8px;
   display: flex;
-
-  @media only screen and (${devices.tablet}) {
-    height: 520px;
-  }
-
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  ::-webkit-scrollbar {
-    /* Chrome, Safari and Opera */
-    display: none;
-  }
 `
 
 const Details = styled.div`
@@ -117,10 +123,10 @@ function CompanyView({
         </ComparisonContainer>
         <InfoText>
           <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
-          <Markdown components={{ p: ParagraphSource }}>
-            {t('startPage:companyView.source')}
-          </Markdown>
         </InfoText>
+        <Markdown components={{ p: ParagraphSource }}>
+          {t('startPage:companyView.source')}
+        </Markdown>
       </InfoContainer>
     </>
   )
