@@ -1,5 +1,5 @@
 import {
-  Fragment, useEffect, useRef, useState,
+  Fragment, useEffect, useState,
 } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
@@ -51,34 +51,20 @@ const StyledTable = styled.table`
     background: ${({ theme }) => theme.lightBlack};
     width: 100%;
     height: var(--margin);
-    /* top: calc(-1 * var(--margin)); */
-    top: -4px;
+    top: calc(-1 * var(--margin));
     left: 0;
     right: 0;
-    z-index: -40;
-
-    @media only screen and (${devices.tablet}) {
-      top: -8px;
-    }
+    z-index: 40;
   }
 
   thead {
     background: ${({ theme }) => theme.lightBlack};
     position: sticky;
-    /* top: calc(var(--header-offset) - (var(--margin) * 3)); */
-    /* top: calc(64px - 12px); */
-    /* top: 52px; */
-    inset-block-start: 52px;
-
-    /* --top: 52px; */
-    z-index: 30;
+    top: calc(var(--header-offset) - (3 * var(--margin)));
+    z-index: 40;
 
     @media only screen and (${devices.tablet}) {
-      /* top: calc(var(--header-offset) - var(--margin)); */
-      /* top: calc(64px - 8px); */
-      /* top: 56px; */
-      /* --top: 56px; */
-      inset-block-start: 56px;
+      top: calc(var(--header-offset) - var(--margin));
     }
   }
 `
@@ -103,6 +89,7 @@ const TableHeader = styled.th`
   cursor: pointer;
   background: ${({ theme }) => theme.black};
   font-size: 0.6rem;
+  z-index: 40;
 
   &:first-child {
     border-top-left-radius: 8px;
@@ -135,10 +122,9 @@ const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpa
   border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.midGreen}` : '')};
   cursor: ${({ interactive }) => (interactive ? 'pointer' : '')};
   background: ${({ isExpanded, theme }) => (isExpanded ? `${theme.black}88` : '')};
+  z-index: 10;
 `
 
-// TODO: verify that this works as expected.
-// TODO: We probably want to use the SVG icons imported instead.
 const SortingIcon = styled(ArrowIcon)`
   color: ${({ theme }) => theme.midGreen};
 `
@@ -166,11 +152,6 @@ function prepareColumnsForDefaultSorting<T extends object>(columns: TableProps<T
   return { preparedColumns, defaultSorting }
 }
 
-// function getTableWidth(element: HTMLTableElement) {
-//   const style = window.getComputedStyle(element)
-//   return element.offsetWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
-// }
-
 function ComparisonTable<T extends object>({
   data,
   columns,
@@ -181,16 +162,6 @@ function ComparisonTable<T extends object>({
   const { preparedColumns, defaultSorting } = prepareColumnsForDefaultSorting(columns)
   const [sorting, setSorting] = useState<SortingState>(defaultSorting)
   const router = useRouter()
-
-  const tableRef = useRef<HTMLTableElement | null>(null)
-  // const [headerElement, setHeaderElement] = useState<HTMLElement | null>(null)
-  // const [targetRef, isIntersecting] = useIntersectionObserver({ threshold: [0.1], rootMargin: '52px' })
-  // const [targetRef, isIntersecting] = useIntersectionObserver({ threshold: [0.1], rootMargin: '52px' })
-
-  // useEffect(() => {
-  //   header
-  // }, [])
-
   const [resizeCount, setResizeCount] = useState(0)
 
   useEffect(() => {
@@ -235,8 +206,7 @@ function ComparisonTable<T extends object>({
   }
 
   return (
-    // <StyledTable key={resizeCount} ref={(el) => { tableRef.current = el; targetRef(el) }}>
-    <StyledTable key={resizeCount} ref={tableRef}>
+    <StyledTable key={resizeCount}>
       {/* HACK: prevent table headers from changing size when toggling table rows. Not sure what causes the problem, but this fixes it. */}
       {dataType === 'companies' ? (
         <colgroup>
@@ -246,18 +216,6 @@ function ComparisonTable<T extends object>({
         </colgroup>
       ) : null}
 
-      {/* IDEA: Maybe use a styled component to keep styling in the same place */}
-      {/* TODO: double check if sticky th elements would work in Safari */}
-      {/* <thead
-        ref={targetRef}
-        style={isIntersecting ? {
-          position: 'fixed',
-          top: 'var(--top)',
-          width: tableRef.current ? getTableWidth(tableRef.current) : '100%',
-          display: 'table',
-        } : {}}
-        // TODO: Update intersection observer to go away once there is an intersection with the table footer
-      > */}
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
@@ -275,10 +233,6 @@ function ComparisonTable<T extends object>({
                   onClick={header.column.getToggleSortingHandler()}
                   onKeyDown={header.column.getToggleSortingHandler()}
                 >
-                  {/* TODO: Seems like Safari is not happy when we use an inline grid container inside of the th element */}
-                  {/* IDEA: Maybe we could make it work with the table header itself instead? */}
-                  {/* Alternatively, could we use something else than `inline-grid` which might have bad support? */}
-                  {/* CHeck https://codepen.io/chriscoyier/pen/WNpJewq and see if there are further differences that we need to respect */}
                   <TableHeaderInner data-sorting={header.column.getIsSorted()}>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     {currentSort ? (

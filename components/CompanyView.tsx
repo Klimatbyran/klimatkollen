@@ -100,7 +100,6 @@ function CompanyView({
       <H2Regular>{t('startPage:companyView.questionTitle')}</H2Regular>
       <InfoContainer>
         <ComparisonContainer>
-          {/* NOTE: Maybe open fullscreen mode - no let's keep it simple for now */}
           <ComparisonTable
             data={companies}
             columns={cols}
@@ -122,14 +121,7 @@ function CompanyView({
             }}
           />
         </ComparisonContainer>
-        {/* IDEA: Maybe make it possible to expand/collapse the table footer to show more info */}
         <InfoText>
-          {/* IDEA: Maybe combine texts into one paragraph to save space? */}
-          {/* <Markdown>{t('startPage:companyView.tableFooterInfo') + t('startPage:companyView.source')}</Markdown> */}
-          {/* IDEA: Maybe use gray color span to render part of the markdown string, to show that source info is less important */}
-
-          {/* IDEA: Show the source at the bottom, and only keep the first paragraph as sticky position. This would save some space. */}
-          {/* IDEA: Only show the table footer once the user has scrolled a bit down into the table. */}
           <Markdown>{t('startPage:companyView.tableFooterInfo')}</Markdown>
         </InfoText>
         <Markdown components={{ p: ParagraphSource }}>
