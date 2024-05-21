@@ -81,15 +81,6 @@ describe('RegionalView', () => {
   ]
 
   beforeEach(() => {
-    // IntersectionObserver isn't available in jsdom test environment
-    const mockIntersectionObserver = vi.fn()
-    mockIntersectionObserver.mockReturnValue({
-      observe: () => null,
-      unobserve: () => null,
-      disconnect: () => null,
-    })
-    window.IntersectionObserver = mockIntersectionObserver
-
     act(() => {
       render(
         <StartPage municipalities={mockMunicipalities} companies={[]} />,

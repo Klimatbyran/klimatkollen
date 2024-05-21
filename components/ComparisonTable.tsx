@@ -15,7 +15,6 @@ import {
 import type { ColumnDef } from '@tanstack/react-table'
 
 import { devices } from '../utils/devices'
-// import { useIntersectionObserver } from '../utils/useIntersectionObserver'
 import ArrowIcon from '../public/icons/arrow-right-bold-green.svg'
 
 const StyledTable = styled.table`
