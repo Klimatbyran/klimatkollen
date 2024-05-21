@@ -22,7 +22,6 @@ const StyledTable = styled.table`
   --margin: 4px;
 
   width: 100%;
-  overflow-y: auto;
   border-collapse: collapse;
   font-size: 0.7em;
   margin: var(--margin);
@@ -71,14 +70,14 @@ const StyledTable = styled.table`
     /* top: 52px; */
     inset-block-start: 52px;
 
-    --top: 52px;
+    /* --top: 52px; */
     z-index: 30;
 
     @media only screen and (${devices.tablet}) {
       /* top: calc(var(--header-offset) - var(--margin)); */
       /* top: calc(64px - 8px); */
       /* top: 56px; */
-      --top: 56px;
+      /* --top: 56px; */
       inset-block-start: 56px;
     }
   }
@@ -276,6 +275,10 @@ function ComparisonTable<T extends object>({
                   onClick={header.column.getToggleSortingHandler()}
                   onKeyDown={header.column.getToggleSortingHandler()}
                 >
+                  {/* TODO: Seems like Safari is not happy when we use an inline grid container inside of the th element */}
+                  {/* IDEA: Maybe we could make it work with the table header itself instead? */}
+                  {/* Alternatively, could we use something else than `inline-grid` which might have bad support? */}
+                  {/* CHeck https://codepen.io/chriscoyier/pen/WNpJewq and see if there are further differences that we need to respect */}
                   <TableHeaderInner data-sorting={header.column.getIsSorted()}>
                     {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     {currentSort ? (
