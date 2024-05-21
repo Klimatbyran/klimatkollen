@@ -58,6 +58,7 @@ const StyledTable = styled.table`
 
   thead {
     background: ${({ theme }) => theme.lightBlack};
+    position: -webkit-sticky;
     position: sticky;
     top: calc(var(--header-offset) - (3 * var(--margin)));
     z-index: 40;
