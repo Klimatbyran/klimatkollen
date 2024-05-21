@@ -30,20 +30,6 @@ export default class MyDocument extends Document {
             type="font/tff"
             crossOrigin="anonymous"
           />
-          <link
-            href="/fonts/Source_Serif_4/SourceSerif4-VariableFont_opsz,wght.tff"
-            rel="preload"
-            as="font"
-            type="font/tff"
-            crossOrigin="anonymous"
-          />
-          <link
-            href="/fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.tff"
-            rel="preload"
-            as="font"
-            type="font/tff"
-            crossOrigin="anonymous"
-          />
         </Head>
         <body>
           <Main />

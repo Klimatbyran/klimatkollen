@@ -28,26 +28,6 @@
        url('/fonts/Anonymous_Pro/AnonymousPro-Bold.ttf') format('truetype');
 }
 
-/* Source Serif 4-Regular - latin */
-@font-face {
-  font-family: 'Source Serif 4';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Source Serif 4 Regular'), 
-       url('/fonts/Source_Serif_4/SourceSerif4-VariableFont_opsz,wght.ttf') format('truetype');
-}
-
-/* Source Serif 4-Italic - latin */
-@font-face {
-  font-family: 'Source Serif 4';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Source Serif 4 Italic'), 
-       url('/fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.ttf') format('truetype');
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
