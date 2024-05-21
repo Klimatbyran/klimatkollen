@@ -77,6 +77,7 @@ const VisuallyHiddenLabel = styled.label`
 const StyledInput = styled.input`
   border: none;
   font-size: 16px;
+  font-family: Borna;
   width: 100%;
   padding: 0.5rem;
   background: transparent;
