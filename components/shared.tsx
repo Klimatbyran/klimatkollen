@@ -18,7 +18,6 @@ export const IconButton = styled.button`
   background-color: inherit;
   color: ${({ theme }) => theme.offWhite};
   font-size: 16px;
-  font-family: 'DM Sans Variable', sans-serif;
   line-height: 20px;
   display: flex;
   align-items: center;
