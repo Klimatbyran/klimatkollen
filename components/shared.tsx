@@ -45,7 +45,6 @@ export const OrderedList = styled.ol`
 `
 
 export const ListItem = styled.li`
-  font-family: 'Anonymous Pro';
   font-size: 15px;
   margin: 8px;
 `

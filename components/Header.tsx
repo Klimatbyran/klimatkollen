@@ -49,7 +49,6 @@ const NavigationItem = styled.li`
 const NavigationLink = styled.a`
   text-decoration: none;
   color: ${({ theme }) => theme.black};
-  font-family: 'Anonymous Pro';
 
   &:hover {
     text-decoration: underline;
@@ -118,7 +117,6 @@ const HamburgerItem = styled.li`
 const HamburgerLink = styled.a`
   text-decoration: none;
   color: ${({ theme }) => theme.black};
-  font-family: 'Anonymous Pro';
 
   &:hover {
     text-decoration: underline;

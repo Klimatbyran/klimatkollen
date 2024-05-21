@@ -8,29 +8,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <link
-            href="/fonts/Anonymous_Pro/AnonymousPro-Regular.tff"
-            rel="preload"
-            as="font"
-            type="font/tff"
-            crossOrigin="anonymous"
-          />
-          <link
-            href="/fonts/Anonymous_Pro/AnonymousPro-Italic.tff"
-            rel="preload"
-            as="font"
-            type="font/tff"
-            crossOrigin="anonymous"
-          />
-          <link
-            href="/fonts/Anonymous_Pro/AnonymousPro-Bold.tff"
-            rel="preload"
-            as="font"
-            type="font/tff"
-            crossOrigin="anonymous"
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

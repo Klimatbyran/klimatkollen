@@ -18,10 +18,9 @@ const ButtonContainer = styled.div`
 
 const Button = styled.button<{active: boolean}>`
   padding: 8px 16px;
-  font-family: 'Anonymous Pro';
   font-size: 16px;
+  font-weight: 400;
   text-decoration: none;
-  line-height: 19px;
   color: ${({ theme }) => theme.offWhite};
   background: ${({ theme }) => theme.lightBlack};
   border: none;
