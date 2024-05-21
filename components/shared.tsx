@@ -20,7 +20,6 @@ export const IconButton = styled.button`
   font-size: 16px;
   font-family: 'DM Sans Variable', sans-serif;
   line-height: 20px;
-  font-weight: 300;
   display: flex;
   align-items: center;
   gap: 1rem;

@@ -38,7 +38,6 @@ const StyledInput = styled.input`
   border-radius: 4px;
   color: ${({ theme }) => theme.offWhite};
   font-size: 16px;
-  font-weight: 300;
   font-family: 'DM Sans Variable', sans-serif;
   padding-left: 0.8rem;
   outline: none;

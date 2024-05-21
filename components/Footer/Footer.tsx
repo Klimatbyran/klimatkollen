@@ -38,14 +38,12 @@ const TextContainer = styled.div`
 `
 
 const Copyright = styled.p`
-  font-family: 'Anonymous Pro';
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 1rem;
 `
 
 const GHLink = styled.p`
-  font-family: 'Anonymous Pro';
-  font-size: 13px;
+  font-size: 14px;
 `
 
 const HorizontalContainer = styled.div`

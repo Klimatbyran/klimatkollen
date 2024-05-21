@@ -82,6 +82,7 @@ const TableData = styled.td`
   }
 `
 
+// TODO: Update font sizes so it looks a bit larger
 const TableHeader = styled.th`
   padding: 8px 6px;
   font-weight: bold;

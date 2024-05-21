@@ -78,7 +78,6 @@ export const H5Regular = styled.h5`
 
 export const Paragraph = styled.p`
   font-style: normal;
-  font-weight: 300;
   font-size: 16px;
   line-height: 1.5;
   margin: 11.2px 0;
@@ -86,7 +85,6 @@ export const Paragraph = styled.p`
 
 export const ParagraphItalic = styled.p`
   font-style: italic;
-  font-weight: 300;
   font-size: 12px;
   margin-bottom: 11.2px;
 `
