@@ -28,7 +28,6 @@ const TotalCo2 = styled.div`
   gap: 8px;
   padding: 2px 0;
   font-size: 13px;
-  font-family: 'Anonymous Pro', monospace;
 
   @media all and (${devices.tablet}) {
     font-size: 15px;
@@ -43,6 +42,8 @@ type EmissionsProps = {
   municipality: TMunicipality
   step: number
 }
+
+const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 })
 
 function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
   const { t } = useTranslation()
@@ -65,6 +66,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
   const totalBudget = municipality.Budget.CO2Equivalent / 1000
   const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year
 
+  // TODO: Use proper number formatting
   return (
     <Container>
       <H4>{t('municipality:emissionNumbers.title')}</H4>
@@ -72,19 +74,19 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
         <TotalCo2>
           <Square color={colorTheme.orange} />
           <StyledText $color={colorTheme.offWhite}>
-            {t('municipality:emissionNumbers.historical', { historicalEndsYear, totalHistorical: totalHistorical.toFixed(1) })}
+            {t('municipality:emissionNumbers.historical', { historicalEndsYear, totalHistorical: formatter.format(totalHistorical) })}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
           <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
-            {t('municipality:emissionNumbers.trend', { trendStartsYear, totalTrend: totalTrend.toFixed(1) })}
+            {t('municipality:emissionNumbers.trend', { trendStartsYear, totalTrend: formatter.format(totalTrend) })}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
           <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
           <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
-            {t('municipality:emissionNumbers.co2budget', { budgetStartsYear, totalBudget: totalBudget.toFixed(1) })}
+            {t('municipality:emissionNumbers.co2budget', { budgetStartsYear, totalBudget: formatter.format(totalBudget) })}
           </StyledText>
         </TotalCo2>
       </TotalCo2Container>
