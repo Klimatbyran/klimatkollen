@@ -39,7 +39,7 @@ const StyledInput = styled.input`
   color: ${({ theme }) => theme.offWhite};
   font-size: 16px;
   font-weight: 300;
-  font-family: Borna;
+  font-family: 'DM Sans Variable', sans-serif;
   padding-left: 0.8rem;
   outline: none;
   width: 325px;

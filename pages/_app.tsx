@@ -10,6 +10,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { StyleSheetManager } from 'styled-components'
 import isPropValid from '@emotion/is-prop-valid'
 
+import '@fontsource-variable/dm-sans'
 import '../styles/globals.css'
 import Theme, { colorTheme } from '../Theme'
 import nextI18nextConfig from '../next-i18next.config'

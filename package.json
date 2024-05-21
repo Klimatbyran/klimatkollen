@@ -12,6 +12,7 @@
   "dependencies": {
     "@danmarshall/deckgl-typings": "^4.9.13",
     "@emotion/is-prop-valid": "^1.2.2",
+    "@fontsource-variable/dm-sans": "^5.0.6",
     "@tanstack/react-table": "^8.11.8",
     "@types/styled-components": "^5.1.34",
     "@types/wikidata-sdk": "^6.1.0",

@@ -195,9 +195,9 @@ function Graph({
               },
               ticks: {
                 font: {
-                  family: 'Borna',
-                  size: 15,
-                  weight: 300,
+                  family: '"DM Sans Variable", sans-serif',
+                  size: 14,
+                  weight: 400,
                 },
                 color: 'white',
                 align: 'center',
@@ -217,9 +217,9 @@ function Graph({
               ticks: {
                 stepSize: 50_000,
                 font: {
-                  family: 'Borna',
-                  size: 15,
-                  weight: 300,
+                  family: '"DM Sans Variable", sans-serif',
+                  size: 14,
+                  weight: 400,
                 },
                 color: 'white',
                 callback: (a) => ((a as number) / 1000).toString(),
