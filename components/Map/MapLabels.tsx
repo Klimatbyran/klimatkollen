@@ -41,7 +41,6 @@ const ArrowIcon = styled(Icon)<{ $rotateUp?: boolean }>`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
-  font-family: 'Anonymous Pro';
   font-size: 0.7em;
   margin: 0;
   line-height: 0;

@@ -37,12 +37,7 @@ const HorizontalContainer = styled.div`
   }
 `
 
-const StyledParagraph = styled(Paragraph)`
-  font-family: 'Anonymous Pro';
-  font-size: 16px;
-`
-
-const PrivacyInfo = styled(StyledParagraph)`
+const PrivacyInfo = styled(Paragraph)`
   font-size: 14px;
 `
 
@@ -151,9 +146,9 @@ const NewsletterForm: FC<Props> = ({ status, onValidated }) => {
     <Container id="newsletter">
       <H5>{t('common:footer.signup-form.title')}</H5>
       <HorizontalContainer>
-        <StyledParagraph>
+        <Paragraph>
           {t('common:footer.signup-form.info')}
-        </StyledParagraph>
+        </Paragraph>
         <StyledForm onSubmit={handleFormSubmit}>
           {showThanks ? (
             <EmailValidation>{t('common:footer.signup-form.thanks')}</EmailValidation>
