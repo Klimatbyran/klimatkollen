@@ -55,8 +55,8 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local('Borna Regular'), url('/fonts/Borna/webfontkit/borna-regular-webfont.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/Borna/webfontkit/borna-regular-webfont.woff')
+  src: local('Borna Regular'), url('/fonts/Borna/borna-regular-webfont.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/Borna/borna-regular-webfont.woff')
       format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
