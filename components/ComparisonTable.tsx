@@ -22,12 +22,12 @@ const StyledTable = styled.table`
 
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.7em;
+  font-size: 0.8em;
   margin: var(--margin);
   margin-bottom: 0;
 
   @media only screen and (${devices.smallMobile}) {
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
   
   @media only screen and (${devices.tablet}) {
@@ -82,14 +82,13 @@ const TableData = styled.td`
   }
 `
 
-// TODO: Update font sizes so it looks a bit larger
 const TableHeader = styled.th`
   padding: 8px 6px;
-  font-weight: bold;
+  font-weight: 400;
   text-align: left;
   cursor: pointer;
   background: ${({ theme }) => theme.black};
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   z-index: 40;
 
   &:first-child {
@@ -103,11 +102,11 @@ const TableHeader = styled.th`
   }
 
   @media only screen and (${devices.smallMobile}) {
-    font-size: 0.65rem;
+    font-size: 0.875rem;
   }
 
   @media only screen and (${devices.tablet}) {
-    font-size: 0.875rem;
+    font-size: 1rem;
     padding: 16px 8px 16px 12px;
   }
 `
