@@ -88,7 +88,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         heading={t('municipality:solutions.chargers.heading')}
         data={`${municipality.ElectricVehiclePerChargePoints < 1e10
           ? municipality.ElectricVehiclePerChargePoints.toFixed(1)
-          : t('common:datasets.missingChargers')}`}
+          : t('common:datasets.chargers.missing')}`}
         info={t('municipality:solutions.chargers.info')}
       />
       <SolutionSection
