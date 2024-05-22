@@ -38,14 +38,12 @@ export type EmissionPerYear = {
 
 export type EmissionSector = {
   Name: string
-  Year: string
-  CO2Equivalent: number
-  SubSectors: Array<EmissionSector>
+  EmissionsPerYear: Array<EmissionPerYear>
 }
 
 export type Emission = {
   EmissionPerYear: Array<EmissionPerYear>
-  LargestEmissionSectors: Array<EmissionSector>
+  SectorEmissionsPerYear: Array<EmissionSector>
   HistoricalEmissionChangePercent: number
   HistoricalEmissionChangeRank: number | null
 }

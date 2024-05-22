@@ -57,6 +57,7 @@ type IssuesProps = {
   chart: number
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
+  showSectors: boolean
 }
 
 function range(start: number, end: number) {
@@ -70,6 +71,7 @@ function MunicipalityEmissionGraph({
   chart: step,
   onNextStep,
   onPreviousStep,
+  showSectors,
 }: IssuesProps) {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
@@ -183,10 +185,12 @@ function MunicipalityEmissionGraph({
         <Graph
           step={step}
           historical={municipality.HistoricalEmission.EmissionPerYear}
+          historicalBySector={municipality.HistoricalEmission.SectorEmissionsPerYear}
           approximated={municipality.ApproximatedHistoricalEmission.EmissionPerYear}
           trend={municipality.EmissionTrend.TrendPerYear}
           budget={municipality.Budget.BudgetPerYear}
           maxVisibleYear={END_YEAR}
+          showSectors={showSectors}
         />
         <Grid>
           {onPreviousStep ? (

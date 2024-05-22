@@ -12,8 +12,14 @@ import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
-
-import { EmissionPerYear } from '../utils/types'
+import { EmissionPerYear, EmissionSector } from '../utils/types'
+import {
+  colorOfSector,
+  compareSector,
+  fixSMHITypo,
+  historicalSectorOrder,
+  kiloTonString,
+} from '../utils/climateDataPresentation'
 import { colorTheme } from '../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
@@ -58,19 +64,32 @@ function getSetup(emissions: EmissionPerYear[][]): {
 
 type Dataset = Array<{ x: number; y: number }>
 
-const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
+const emissionPerYearToDataset = (
+  perYear: EmissionPerYear[],
+): Dataset => perYear
+  .map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
 
 type Props = {
   step: number
   historical: EmissionPerYear[]
+  historicalBySector: EmissionSector[]
   approximated: EmissionPerYear[]
   trend: EmissionPerYear[]
   budget: EmissionPerYear[]
-  maxVisibleYear: number
+  maxVisibleYear: number,
+  showSectors: boolean,
 }
 
+// For chartjs fill property
+// https://www.youtube.com/watch?v=2g0gIAsQSp4
+const sectorFill = (name: string) => {
+  const index = historicalSectorOrder
+    .slice().reverse() // zero is the bottom one
+    .indexOf(name)
+  return index === 0 ? 'origin' : index - 1
+}
 function Graph({
-  step, historical, approximated, budget, trend, maxVisibleYear,
+  step, historical, historicalBySector, approximated, budget, trend, maxVisibleYear, showSectors,
 }: Props) {
   const { t } = useTranslation()
   const setup = useMemo(
@@ -78,7 +97,18 @@ function Graph({
     [historical, approximated, trend, budget],
   )
 
-  const historicalDataset: Dataset = useMemo(() => emissionPerYearToDataset(historical), [historical])
+  const historicalDataset: Dataset = useMemo(
+    () => emissionPerYearToDataset(historical),
+    [historical],
+  )
+  const historicalDatasetsBySector = useMemo(
+    () => historicalBySector.map(({ Name, EmissionsPerYear }) => ({
+      Name,
+      EmissionsPerYear: emissionPerYearToDataset(EmissionsPerYear),
+    })),
+    [historicalBySector],
+  )
+
   const approximatedDataset: Dataset = useMemo(() => emissionPerYearToDataset(approximated), [approximated])
   const trendDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
@@ -104,9 +134,26 @@ function Graph({
         data={{
           labels: setup.labels,
           datasets: [
+            ...historicalDatasetsBySector
+              .sort(compareSector)
+              .map(({ Name, EmissionsPerYear }) => ({
+                // @ts-ignore
+                id: Name,
+                label: Name,
+                fill: sectorFill(Name),
+                data: EmissionsPerYear,
+                borderWidth: 2,
+                borderColor: colorOfSector(Name).border,
+                backgroundColor: colorOfSector(Name).fill,
+                pointRadius: 0,
+                tension: 0.15,
+                hidden: !showSectors,
+                stack: 'sectors',
+              })),
             {
               // @ts-ignore
               id: 'historical',
+              label: 'Historiskt',
               fill: true,
               data: historicalDataset,
               borderWidth: 2,
@@ -114,11 +161,13 @@ function Graph({
               backgroundColor: colorTheme.darkOrangeOpaque,
               pointRadius: 0,
               tension: 0.15,
-              hidden: false,
+              hidden: showSectors,
+              stack: 'separate1',
             },
             {
               // @ts-ignore
               id: 'approximated',
+              label: 'Historiskt (prognos)',
               fill: true,
               data: approximatedDataset,
               borderDash: [2, 2],
@@ -132,6 +181,7 @@ function Graph({
             {
               // @ts-ignore
               id: 'budget',
+              label: 'Parisavtalet',
               fill: true,
               data: step >= 2 ? budgetDataset : budgetDataset.map(({ x }) => ({ x, y: 0 })),
               borderWidth: step >= 2 ? 2 : 0,
@@ -139,11 +189,13 @@ function Graph({
               backgroundColor: colorTheme.lightGreenOpaqe,
               pointRadius: 0,
               tension: 0.15,
-              hidden: false,
+              hidden: step < 2,
+              stack: 'separate2',
             },
             {
               // @ts-ignore
-              id: 'pledge',
+              id: 'trend',
+              label: 'Trend',
               fill: true,
               data: trendDataset,
               borderWidth: 2,
@@ -152,6 +204,7 @@ function Graph({
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
+              stack: 'separate3',
             },
           ],
         }}
@@ -164,7 +217,7 @@ function Graph({
           plugins: {
             tooltip: {
               enabled: true,
-              displayColors: false,
+              displayColors: true,
               padding: {
                 top: 8,
                 left: 8,
@@ -175,11 +228,23 @@ function Graph({
                 weight: 'normal',
               },
               callbacks: {
-                title(tooltipItems) {
-                  return `${(tooltipItems[0].parsed.y / 1000).toFixed(1)}`
+                label(context) {
+                  const label = fixSMHITypo(context.dataset.label || '')
+                  return `${label}: ${kiloTonString(context.parsed.y)}`
                 },
-                label() {
-                  return ''
+                // We still want to display the total together with the specific sector
+                title(context) {
+                  // For gotland and friends the default is fine
+                  const year = context[0].label
+                  const historicalEntry = historical
+                    .find((x) => (`${x.Year}`) === year)
+                  if (historicalEntry && showSectors) {
+                    return [
+                      year,
+                      `${kiloTonString(historicalEntry.CO2Equivalent)} totalt, varav...`,
+                    ]
+                  }
+                  return year
                 },
               },
             },
@@ -203,13 +268,11 @@ function Graph({
                 align: 'center',
                 callback: (tickValue) => {
                   const idx = tickValue as number
-                  // return idx % 2 === 0 ? setup.labels[idx] : ''
                   return setup.labels[idx]
                 },
               },
             },
             y: {
-              // suggestedMax: step > 3 ? totalRemainingCO2 : 1350_000,
               grid: {
                 display: false,
               },
@@ -224,6 +287,7 @@ function Graph({
                 color: 'white',
                 callback: (a) => ((a as number) / 1000).toString(),
               },
+              stacked: true,
             },
           },
         }}
