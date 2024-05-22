@@ -199,7 +199,7 @@ function Graph({
               fill: true,
               data: trendDataset,
               borderWidth: 2,
-              borderColor: colorTheme.red,
+              borderColor: colorTheme.darkRed,
               backgroundColor: colorTheme.darkRedOpaque,
               pointRadius: 0,
               tension: 0.15,
@@ -234,7 +234,7 @@ function Graph({
                 },
                 // We still want to display the total together with the specific sector
                 title(context) {
-                  // For gotland and friends the default is fine
+                  // For cement municipalities we fall back on default
                   const year = context[0].label
                   const historicalEntry = historical
                     .find((x) => (`${x.Year}`) === year)

@@ -15,6 +15,7 @@ import { devices } from '../../utils/devices'
 import ArrowRight from '../../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../../public/icons/arrow-left-white.svg'
 import Info from '../../public/icons/info.svg'
+import { groupEmissionSectors } from '../../utils/shared'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -112,6 +113,7 @@ function MunicipalityEmissionGraph({
   const firstYearWithBudget = municipality.Budget.BudgetPerYear[0]?.Year
 
   const hasApproximatedData = lastYearWithApproximatedData != null
+  const groupedSectorEmissions = groupEmissionSectors(municipality.HistoricalEmission.SectorEmissionsPerYear)
 
   const CHARTS: {
     [index: number]: {
@@ -158,11 +160,12 @@ function MunicipalityEmissionGraph({
   }
 
   const toggleModal = () => {
+    const { body: documentBody } = document
     if (!isOpen) {
-      document.body.style.overflow = 'hidden'
+      documentBody.style.overflow = 'hidden'
       setIsOpen(true)
     } else {
-      document.body.style.overflow = ''
+      documentBody.style.overflow = ''
       setIsOpen(false)
     }
   }
@@ -185,7 +188,7 @@ function MunicipalityEmissionGraph({
         <Graph
           step={step}
           historical={municipality.HistoricalEmission.EmissionPerYear}
-          historicalBySector={municipality.HistoricalEmission.SectorEmissionsPerYear}
+          historicalBySector={groupedSectorEmissions}
           approximated={municipality.ApproximatedHistoricalEmission.EmissionPerYear}
           trend={municipality.EmissionTrend.TrendPerYear}
           budget={municipality.Budget.BudgetPerYear}
