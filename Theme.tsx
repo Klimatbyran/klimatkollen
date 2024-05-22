@@ -37,20 +37,6 @@ export const colorTheme = {
   gradientRed: 'linear-gradient(#EF3030, #8B1A1A)',
 }
 
-export const spacingTheme = {
-  smallSpacing: '8px',
-}
-
-type Props = {
-  children: ReactNode
-}
-
-function Theme({ children }: Props) {
-  return <ThemeProvider theme={colorTheme}>{children}</ThemeProvider>
-}
-
-export default Theme
-
 export const colors2024 = {
   gray: {
     50: '#F7F7F7',
@@ -180,3 +166,13 @@ export const namedColors2024 = {
   pink4: colors2024.pink[750],
   pink5: colors2024.pink[950],
 }
+
+type Props = {
+  children: ReactNode
+}
+
+function Theme({ children }: Props) {
+  return <ThemeProvider theme={colorTheme}>{children}</ThemeProvider>
+}
+
+export default Theme
