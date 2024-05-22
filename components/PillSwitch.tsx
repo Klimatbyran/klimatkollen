@@ -12,7 +12,7 @@ const Switch = styled.div`
   justify-content: space-between;
   width: 240px;
   height: 40px;
-  background: ${({ theme }) => theme.lightBlack};
+  background: ${({ theme }) => theme.newColors.black2};
   border-radius: 12px;
   margin-bottom: 16px;
   cursor: pointer;

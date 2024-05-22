@@ -21,7 +21,7 @@ const Button = styled.button<{active: boolean}>`
   font-weight: 400;
   text-decoration: none;
   color: ${({ theme }) => theme.offWhite};
-  background: ${({ theme }) => theme.lightBlack};
+  background: ${({ theme }) => theme.newColors.black2};
   border: none;
   border-radius: 8px;
   white-space: nowrap;

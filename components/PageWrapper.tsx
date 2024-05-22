@@ -2,9 +2,11 @@ import styled, { css } from 'styled-components'
 import { devices } from '../utils/devices'
 
 type BackgroundColors = 'midGreen' | 'lightBlack' | 'black' | 'gradient'
+// New colors
+| 'black2' | 'black3'
 
 const Wrap = styled.div<{ $background: BackgroundColors }>`
-  background: ${({ $background, theme }) => theme[$background]};
+  background: ${({ $background, theme }) => theme[$background] ?? theme.newColors[$background]};
   width: 100%;
   display: flex;
   justify-content: center;

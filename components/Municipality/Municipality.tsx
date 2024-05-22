@@ -74,7 +74,7 @@ function Municipality(props: Props) {
 
   return (
     <>
-      <PageWrapper backgroundColor="lightBlack">
+      <PageWrapper backgroundColor="black2">
         <StyledContainer>
           <HeaderSection>
             <BackArrow route="/" />
@@ -96,7 +96,7 @@ function Municipality(props: Props) {
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>
-      <PageWrapper backgroundColor="black">
+      <PageWrapper backgroundColor="black3">
         <Bottom>
           <Scorecard
             name={municipality.Name}

@@ -47,7 +47,7 @@ const StyledTable = styled.table`
   thead::before {
     content: ' ';
     position: absolute;
-    background: ${({ theme }) => theme.lightBlack};
+    background: ${({ theme }) => theme.newColors.black2};
     width: 100%;
     height: var(--margin);
     top: calc(-1 * var(--margin));
@@ -57,7 +57,7 @@ const StyledTable = styled.table`
   }
 
   thead {
-    background: ${({ theme }) => theme.lightBlack};
+    background: ${({ theme }) => theme.newColors.black2};
     position: -webkit-sticky;
     position: sticky;
     top: calc(var(--header-offset) - (3 * var(--margin)));
@@ -90,6 +90,7 @@ const TableHeader = styled.th`
   background: ${({ theme }) => theme.black};
   font-size: 0.75rem;
   z-index: 40;
+  /* color: ${({ theme }) => theme.newColors.gray}; */
 
   &:first-child {
     border-top-left-radius: 8px;

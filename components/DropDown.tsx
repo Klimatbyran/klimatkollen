@@ -58,7 +58,7 @@ const Btn = styled.button`
 `
 
 const MunicipalitiesWrapper = styled.ul`
-  background-color: ${({ theme }) => theme.lightBlack};
+  background-color: ${({ theme }) => theme.newColors.black2};
   border-radius: 4px;
   max-height: 195px;
   overflow-y: scroll;

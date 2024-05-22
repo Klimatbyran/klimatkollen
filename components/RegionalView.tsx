@@ -26,7 +26,7 @@ const InfoText = styled.div`
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
-  background: ${({ theme }) => theme.lightBlack};
+  background: ${({ theme }) => theme.newColors.black2};
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 
@@ -55,7 +55,7 @@ const ParagraphSource = styled(Paragraph)`
 const InfoContainer = styled.div`
   width: 100%;
   position: relative;
-  background: ${({ theme }) => theme.lightBlack};
+  background: ${({ theme }) => theme.newColors.black2};
   border-radius: 8px;
   margin-bottom: 32px;
   z-index: 15;

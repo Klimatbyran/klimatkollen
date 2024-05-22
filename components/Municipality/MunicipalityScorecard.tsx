@@ -24,7 +24,7 @@ const StyledH4 = styled(H4)`
 `
 
 const GreyContainer = styled.div`
-  background: ${({ theme }) => theme.lightBlack};
+  background: ${({ theme }) => theme.newColors.black2};
   border-radius: 8px;
   padding: 16px 16px 0 16px;
   margin-bottom: 8px;
@@ -79,7 +79,7 @@ const LinkButton = styled.button`
   }
   ${({ disabled }) => disabled
     && css`
-      color: ${({ theme }) => theme.lightBlack};
+      color: ${({ theme }) => theme.newColors.black2};
       background: ${({ theme }) => theme.darkGreenOne};
       cursor: not-allowed;
 
@@ -88,9 +88,9 @@ const LinkButton = styled.button`
         background: ${({ theme }) => theme.darkGreenOne};
       }
 
-      /* Set color of ArrowIcon to lightBlack */
+      /* Set color of ArrowIcon to newColors.black2 */
       & ${ArrowIcon} {
-        fill: ${({ theme }) => theme.lightBlack};
+        fill: ${({ theme }) => theme.newColors.black2};
       }
     `}
 `
