@@ -90,7 +90,6 @@ const TableHeader = styled.th`
   background: ${({ theme }) => theme.black};
   font-size: 0.75rem;
   z-index: 40;
-  /* color: ${({ theme }) => theme.newColors.gray}; */
 
   &:first-child {
     border-top-left-radius: 8px;
@@ -108,7 +107,7 @@ const TableHeader = styled.th`
 
   @media only screen and (${devices.tablet}) {
     font-size: 1rem;
-    padding: 16px 8px 16px 12px;
+    padding: 12px 8px 12px 12px;
   }
 `
 
