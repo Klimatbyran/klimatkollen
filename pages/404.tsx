@@ -31,7 +31,7 @@ function FourOhFour() {
 
   return (
     <Layout>
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <H1>{t('common:errors.notFound')}</H1>
         <Button onClick={handleClick}>{t('common:actions.goHome')}</Button>
       </PageWrapper>

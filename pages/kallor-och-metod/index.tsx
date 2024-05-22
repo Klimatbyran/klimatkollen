@@ -31,7 +31,7 @@ function KoM() {
         title={t('kallorMetod:title')}
         description={t('kallorMetod:meta.description')}
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <Container>
           <H2>{t('kallorMetod:title')}</H2>
           <AiryParagraph>

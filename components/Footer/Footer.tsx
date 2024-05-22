@@ -90,7 +90,7 @@ function Footer() {
 
   return (
     <>
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <Foot>
           <NewsletterSubscribe />
           <StyledH5>{t('footer.supportedBy')}</StyledH5>

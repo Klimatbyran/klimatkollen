@@ -67,7 +67,7 @@ function StartPage({ companies, municipalities }: PropsType) {
         title={t('startPage:meta.title')}
         description={t('startPage:meta.description')}
       />
-      <PageWrapper backgroundColor="black" compact>
+      <PageWrapper compact>
         <Container>
           <PillSwitch
             isActive={!showCompanyData}

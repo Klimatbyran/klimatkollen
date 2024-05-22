@@ -96,7 +96,7 @@ function Municipality(props: Props) {
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>
-      <PageWrapper backgroundColor="black3">
+      <PageWrapper>
         <Bottom>
           <Scorecard
             name={municipality.Name}

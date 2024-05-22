@@ -1,12 +1,18 @@
 import styled, { css } from 'styled-components'
 import { devices } from '../utils/devices'
 
-type BackgroundColors = 'midGreen' | 'lightBlack' | 'black' | 'gradient'
+type BackgroundColors = 'midGreen' | 'gradient'
+// Replaced
+| 'black' | 'lightBlack'
 // New colors
-| 'black2' | 'black3'
+| 'black2' | 'black3' | 'transparent'
 
 const Wrap = styled.div<{ $background: BackgroundColors }>`
-  background: ${({ $background, theme }) => theme[$background] ?? theme.newColors[$background]};
+  background: ${({ $background, theme }) => (
+    $background === 'transparent'
+      ? $background
+      : (theme[$background] ?? theme.newColors[$background])
+  )};
   width: 100%;
   display: flex;
   justify-content: center;
@@ -33,11 +39,11 @@ const WrapInner = styled.div<{ compact?: boolean }>`
 
 type Props = {
   children: React.ReactNode
-  backgroundColor: BackgroundColors
+  backgroundColor?: BackgroundColors
   compact?: boolean
 }
 
-export default function PageWrapper({ children, backgroundColor, compact }: Props) {
+export default function PageWrapper({ children, compact, backgroundColor = 'transparent' }: Props) {
   return (
     <Wrap $background={backgroundColor}>
       <WrapInner compact={compact}>{children}</WrapInner>
