@@ -121,6 +121,7 @@ type Props = {
 }
 
 const formatter = new Intl.NumberFormat('sv-SE', { maximumSignificantDigits: 8 })
+const fractionFormatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 })
 
 function Scorecard({
   name,
@@ -206,7 +207,7 @@ function Scorecard({
       )}
       <ScorecardSection
         heading={t('municipality:facts.emissionReduction.title')}
-        data={t('municipality:facts.emissionReduction.percent', { percent: neededEmissionChangePercent.toFixed(1) })}
+        data={t('municipality:facts.emissionReduction.percent', { percent: fractionFormatter.format(neededEmissionChangePercent) })}
         info={t('municipality:facts.emissionReduction.info')}
       />
       {politicalRule && (

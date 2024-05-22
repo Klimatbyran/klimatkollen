@@ -59,6 +59,7 @@ function getSetup(emissions: EmissionPerYear[][]): {
 type Dataset = Array<{ x: number; y: number }>
 
 const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
+const formatter = new Intl.NumberFormat('sv', { maximumFractionDigits: 1 })
 
 type Props = {
   step: number
@@ -176,7 +177,7 @@ function Graph({
               },
               callbacks: {
                 title(tooltipItems) {
-                  return `${(tooltipItems[0].parsed.y / 1000).toFixed(1)}`
+                  return formatter.format((tooltipItems[0].parsed.y / 1000))
                 },
                 label() {
                   return ''

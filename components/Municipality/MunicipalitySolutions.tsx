@@ -52,6 +52,8 @@ type SolutionsProps = {
   municipality: Municipality
 }
 
+const formatter = new Intl.NumberFormat('sv', { maximumFractionDigits: 1 })
+
 function MunicipalitySolutions({ municipality }: SolutionsProps) {
   const { t } = useTranslation()
   return (
@@ -64,7 +66,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         icon={<Basket />}
         title={t('municipality:solutions.household.title')}
         heading={t('municipality:solutions.household.heading')}
-        data={t('municipality:tonnes', { amount: municipality.TotalConsumptionEmission.toFixed(1) })}
+        data={t('municipality:tonnes', { amount: formatter.format(municipality.TotalConsumptionEmission) })}
         info={t('municipality:solutions.household.info')}
       />
       <SolutionSection
@@ -78,7 +80,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         icon={<EVCar />}
         title={t('municipality:solutions.electricCars.title')}
         heading={t('municipality:solutions.electricCars.heading')}
-        data={t('municipality:percentagePoints', { num: (municipality.ElectricCarChangePercent * 100).toFixed(1) })}
+        data={t('municipality:percentagePoints', { num: formatter.format(municipality.ElectricCarChangePercent * 100) })}
         info={t('municipality:solutions.electricCars.info')}
 
       />
@@ -87,7 +89,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         title={t('municipality:solutions.chargers.title')}
         heading={t('municipality:solutions.chargers.heading')}
         data={`${municipality.ElectricVehiclePerChargePoints < 1e10
-          ? municipality.ElectricVehiclePerChargePoints.toFixed(1)
+          ? formatter.format(municipality.ElectricVehiclePerChargePoints)
           : t('common:datasets.chargers.missing')}`}
         info={t('municipality:solutions.chargers.info')}
       />
@@ -95,7 +97,7 @@ function MunicipalitySolutions({ municipality }: SolutionsProps) {
         icon={<Bike />}
         title={t('municipality:solutions.bikes.title')}
         heading={t('municipality:solutions.bikes.heading')}
-        data={t('municipality:solutions.bikes.meters', { meters: municipality.BicycleMetrePerCapita.toFixed(1) })}
+        data={t('municipality:solutions.bikes.meters', { meters: formatter.format(municipality.BicycleMetrePerCapita) })}
         info={t('municipality:solutions.bikes.info')}
       />
     </>
