@@ -11,6 +11,7 @@ import {
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
 import { EmissionPerYear, EmissionSector } from '../utils/types'
 import {
   colorOfSector,
@@ -90,6 +91,7 @@ const sectorFill = (name: string) => {
 function Graph({
   step, historical, historicalBySector, approximated, budget, trend, maxVisibleYear, showSectors,
 }: Props) {
+  const { t } = useTranslation()
   const setup = useMemo(
     () => getSetup([historical, approximated, trend, budget]),
     [historical, approximated, trend, budget],
@@ -126,7 +128,7 @@ function Graph({
 
   return (
     <Container>
-      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
+      <YAxisTitle>{t('municipality:graphYAxisTitle')}</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{

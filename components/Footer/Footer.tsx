@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
+import Markdown from 'react-markdown'
 import { H5, Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
 import NewsletterSubscribe from './FooterNewsletterSubscribe'
@@ -66,6 +68,10 @@ const LogoContainer = styled.div`
     align-self: end;
     order: 1;
   }
+
+  & img {
+    max-height: 56px;
+  }
 `
 
 const SocialLinksContainer = styled.div`
@@ -78,45 +84,25 @@ const SocialLinksContainer = styled.div`
 `
 
 function Footer() {
+  const { t } = useTranslation(['common'])
+
   return (
     <>
       <PageWrapper backgroundColor="black">
         <Foot>
           <NewsletterSubscribe />
-          <StyledH5>Med stöd från</StyledH5>
+          <StyledH5>{t('footer.supportedBy')}</StyledH5>
           <Supporters />
-          <StyledH5>Partners</StyledH5>
+          <StyledH5>{t('footer.partners')}</StyledH5>
           <Partners />
         </Foot>
       </PageWrapper>
       <PageWrapper backgroundColor="midGreen">
         <BottomParent>
           <TextContainer>
-            <Paragraph>
-              Klimatkollen är en medborgarplattform som tillgängliggör klimatdata
-            </Paragraph>
-            <Copyright>
-              CC BY-SA -
-              {' '}
-              <a
-                href="http://creativecommons.org/licenses/by-sa/4.0/"
-                target="_blank"
-                rel="noreferrer license"
-              >
-                Attribution-ShareAlike 4.0 International license
-              </a>
-            </Copyright>
-            <GHLink>
-              Klimatkollen är utvecklad med
-              {' '}
-              <a
-                href="https://github.com/Klimatbyran/klimatkollen"
-                target="_blank"
-                rel="noreferrer"
-              >
-                öppen källkod
-              </a>
-            </GHLink>
+            <Paragraph>{t('footer.tagline')}</Paragraph>
+            <Markdown components={{ p: Copyright }}>{t('footer.license')}</Markdown>
+            <Markdown components={{ p: GHLink }}>{t('footer.developedWith')}</Markdown>
           </TextContainer>
           <HorizontalContainer>
             <SocialLinksContainer>
@@ -125,7 +111,8 @@ function Footer() {
             <LogoContainer>
               <img
                 src="/logos/klimatkollen_logo_black.svg"
-                height="56px"
+                width="100%"
+                loading="lazy"
                 alt="Klimatkollen logo"
               />
             </LogoContainer>

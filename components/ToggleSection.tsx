@@ -4,13 +4,14 @@ import styled from 'styled-components'
 import { H5 } from './Typography'
 import ArrowSvg from '../public/icons/arrow-down-round.svg'
 import { colorTheme } from '../Theme'
+import Markdown from './Markdown'
 
 const TextSection = styled.details`
   display: flex;
   flex-direction: column;
 
   gap: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
 `
 
 const Arrow = styled(ArrowSvg)<{ open: boolean }>`
@@ -24,9 +25,12 @@ const Arrow = styled(ArrowSvg)<{ open: boolean }>`
 const HeaderSection = styled.summary`
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  list-style: none; /* remove default arrow in Firefox */
+  padding: 0.5rem 0;
 
-  & .arrow {
-    display: block;
+  &::-webkit-details-marker {
+    display: none; /* remove default arrow in Chrome */
   }
 
   &:hover {
@@ -37,19 +41,11 @@ const HeaderSection = styled.summary`
 const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
-
-  .mobile {
-    background: black;
-  }
-
-  .desktop {
-    background: yellow;
-  }
 `
 
 type Props = {
   header: string
-  text: JSX.Element
+  text: JSX.Element | string
 }
 
 function ToggleSection({ header, text }: Props) {
@@ -59,10 +55,10 @@ function ToggleSection({ header, text }: Props) {
     <TextSection onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)}>
       <HeaderSection>
         <H5>{header}</H5>
-        <Arrow open={open} className="arrow" />
+        <Arrow open={open} />
       </HeaderSection>
       <InfoSection>
-        {text}
+        {typeof text === 'string' ? <Markdown>{text}</Markdown> : text}
       </InfoSection>
     </TextSection>
   )

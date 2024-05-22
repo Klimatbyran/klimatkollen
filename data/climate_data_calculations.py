@@ -51,6 +51,8 @@ df_procurements = get_procurement_data()
 df = df.merge(df_procurements, on='Kommun', how='left')
 print('8. Climate requirements in procurements added')
 
+numeric_columns = [col for col in df.columns if str(col).isdigit()]
+
 temp = []  # remane the columns
 for i in range(len(df)):
     kommun = df.iloc[i]['Kommun']

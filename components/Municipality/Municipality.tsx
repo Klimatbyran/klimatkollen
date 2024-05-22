@@ -1,6 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import { H1NoPad, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
@@ -17,7 +16,6 @@ import { isCementSector } from '../../utils/climateDataPresentation'
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items center;
   gap: 1.5rem;
   margin-bottom: 48px;
 `
@@ -81,6 +79,7 @@ function Municipality(props: Props) {
     municipalitiesName,
   } = props
 
+  const { t } = useTranslation()
   const [showSectors, setShowSectors] = useState(true)
 
   return (
@@ -93,7 +92,7 @@ function Municipality(props: Props) {
             {coatOfArmsImage && (
               <CoatOfArmsImage
                 src={coatOfArmsImage}
-                alt={`Kommunvapen för ${municipality.Name}`}
+                alt={t('municipality:coatOfArms', { name: municipality.Name })}
               />
             )}
           </HeaderSection>
@@ -135,11 +134,10 @@ function Municipality(props: Props) {
           />
         </Bottom>
         <DropDownSection>
-          <ParagraphBold>Hur ser det ut i andra kommuner?</ParagraphBold>
+          <ParagraphBold>{t('municipality:otherMunicipalities')}</ParagraphBold>
           <DropDown
-            className="municipality-page"
             municipalitiesName={municipalitiesName}
-            placeholder="Välj kommun"
+            placeholder={t('municipality:select')}
           />
         </DropDownSection>
       </PageWrapper>

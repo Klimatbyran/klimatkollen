@@ -1,19 +1,19 @@
-// pages/sitemap.xml.js
+import { GetServerSideProps } from 'next'
 
-import { NextApiResponse } from 'next'
 import { ClimateDataService } from '../utils/climateDataService'
 import {
-  generateMunipacitySitemapData,
+  generateMunicipalitySitemapData,
   generateSitemap,
 } from '../utils/generateMunipacitySitemap'
+import { getServerSideI18n } from '../utils/getServerSideI18n'
 
-export async function getServerSideProps({ res }: { res: NextApiResponse }) {
+export const getServerSideProps: GetServerSideProps = async ({ res, locale }) => {
+  const { t } = await getServerSideI18n(locale as string, ['common', 'sitemap'])
+
   const municipalities = new ClimateDataService().getMunicipalities()
-  const municipalitiesSitemap = generateMunipacitySitemapData({
-    municipalities,
-  })
+  const municipalitiesSitemap = generateMunicipalitySitemapData({ municipalities })
   // Generate the XML sitemap with the blog data
-  const sitemap = generateSitemap(municipalitiesSitemap)
+  const sitemap = generateSitemap(municipalitiesSitemap, t)
 
   res.setHeader('Content-Type', 'text/xml')
   // Send the XML to the browser
