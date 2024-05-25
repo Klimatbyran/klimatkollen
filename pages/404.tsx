@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 import router from 'next/router'
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
@@ -40,14 +40,18 @@ function FourOhFour() {
     if (timeLeft <= 0) {
       router.push('/')
     }
-
   }, [timeLeft])
 
   return (
     <Layout>
       <PageWrapper backgroundColor="black">
         <H1>{t('common:errors.notFound')}</H1>
-        <p>{t('common:errors.notFoundSubtitle')} {timeLeft >= 0 ? timeLeft / 1000 : 0}...</p>
+        <p>
+          {t('common:errors.notFoundSubtitle')}
+          {' '}
+          {timeLeft >= 0 ? timeLeft / 1000 : 0}
+          ...
+        </p>
         <Button onClick={handleClick}>{t('common:actions.goHome')}</Button>
       </PageWrapper>
     </Layout>
