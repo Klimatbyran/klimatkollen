@@ -13,6 +13,7 @@ import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
 import { devices } from '../../utils/devices'
 import Markdown from '../../components/Markdown'
+import { ONE_WEEK_MS } from '../../utils/shared'
 
 const Container = styled.section`
   display: flex;
@@ -78,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
 
   res.setHeader(
     'Cache-Control',
-    `public, stale-while-revalidate=60, max-age=${60 * 60 * 24 * 7}`,
+    `public, stale-while-revalidate=60, max-age=${ONE_WEEK_MS}`,
   )
 
   return {

@@ -12,7 +12,6 @@ import { deviceSizesPx, onTouchDevice } from '../../utils/devices'
 import {
   MapProps, MunicipalityTapInfo, MunicipalityData,
 } from '../../utils/types'
-import { replaceLetters } from '../../utils/shared'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -118,7 +117,7 @@ export function isMunicipalityData(
 function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
   return (
     <Link
-      href={`/kommun/${replaceLetters(tInfo.mData.name).toLowerCase()}`}
+      href={`/kommun/${tInfo.mData.name.toLowerCase()}`}
       style={{
         ...TOOLTIP_MOBILE_STYLE,
         left: tInfo.x,
@@ -167,6 +166,13 @@ function Map({
     }))
   }
 
+  // stop map view from moving away from Sweden
+  const enforceMapBounds = ((viewState: any) => ({
+    ...viewState,
+    longitude: Math.min(24, Math.max(10, viewState.longitude)),
+    latitude: Math.min(70, Math.max(55, viewState.latitude)),
+  }))
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/api/map')
@@ -194,8 +200,7 @@ function Map({
   }, [wrapperRef])
 
   const municipalityLines = municipalityFeatureCollection?.features?.flatMap(
-    ({ geometry, properties }: { geometry: any; properties: any }) => {
-      const name = replaceLetters(properties.name)
+    ({ geometry, properties: { name } }: { geometry: any; properties: { name: string } }) => {
       const currentMunicipality = data.find((e) => e.name === name)
       const dataPoint = currentMunicipality?.primaryDataPoint
       const formattedDataPoint = currentMunicipality?.formattedPrimaryDataPoint
@@ -272,9 +277,12 @@ function Map({
             setLastTapInfo({ x, y, mData }) // trigger mobile tooltip display
             return
           }
-          router.push(`/kommun/${replaceLetters(mData.name).toLowerCase()}`)
+          router.push(`/kommun/${mData.name.toLowerCase()}`)
         }}
-        onViewStateChange={() => setLastTapInfo(null)}
+        onViewStateChange={({ viewState }) => {
+          setLastTapInfo(null)
+          return enforceMapBounds(viewState)
+        }}
         layers={[municipalityLayer]}
       // FIXME needs to be adapted to mobile before reintroducing
       /* onViewStateChange={({ viewState }) => {
