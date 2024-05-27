@@ -54,7 +54,7 @@ sectors = [
     'Jordbruk',
     'Utrikes transporter',
     'Industri (energi + processer)',
-    'Egen uppärmning av bostäder och lokaler',
+    'Egen uppvärmning av bostäder och lokaler',
     'Arbetsmaskiner',
     'Transporter',
     'El och fjärrvärme', 'Avfall (inkl.avlopp)'
