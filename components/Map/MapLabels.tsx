@@ -6,18 +6,13 @@ import { Paragraph } from '../Typography'
 import { Square, mapColors } from '../shared'
 
 const Container = styled.div`
-  padding-left: 0.87rem;
-  padding-top: 1.2rem;
-  padding-bottom: 0.5rem;
-  margin-top: 30px;
-
-  @media only screen and (${devices.tablet}) {
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin-top: 36px;
-  
-  }
+  margin-left: 5px;
+  margin-top: 48px;
+  background: ${({ theme }) => theme.newColors.black2};
+  z-index: 40;
+  border-radius: 8px;
+  padding: 0.5rem;
+  height: min-content;
 `
 
 const LabelBox = styled.div`

@@ -24,14 +24,14 @@ export const IconButton = styled.button`
   gap: 1rem;
 `
 
-// TODO: check where this is used
 export const Square = styled.div<{ color: string }>`
   background-color: ${(props) => props.color};
   border-radius: 4px;
   width: 20px;
   height: 20px;
   position: relative;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
+  z-index: 40;
 `
 
 export const UnorderedList = styled.ul`
