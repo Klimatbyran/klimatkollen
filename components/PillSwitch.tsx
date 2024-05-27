@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
+import Link, { type LinkProps } from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { devices } from '../utils/devices'
+import { DataGroup, defaultDataGroup } from '../pages'
 
 const Switch = styled.div`
   position: relative;
@@ -30,7 +31,7 @@ const Slider = styled.div<{ isActive: boolean }>`
   left: ${({ isActive }) => (isActive ? '50%' : '4px')}; /* width of the switch - width of slider */
   width: calc(50% - 4px);
   height: 32px; /* height of the slider */
-  background: ${({ theme }) => theme.darkGreenOne};
+  background: ${({ theme }) => theme.newColors.blue2};
   border-radius: 8px;
   transition: 0.2s;
   display: flex;
@@ -46,14 +47,14 @@ const Slider = styled.div<{ isActive: boolean }>`
   }
 `
 
-const DataGroupLink = styled(Link)`
+const DataGroupLink = styled(Link)<LinkProps & { isActive: boolean }>`
   position: absolute;
   width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.offWhite};
+  color: ${({ theme, isActive }) => theme.newColors[isActive ? 'black3' : 'white']};
   z-index: 20;
   text-decoration: none;
 
@@ -67,18 +68,18 @@ const DataGroupLink = styled(Link)`
 `
 
 type PillSwitchProps = {
-  isActive: boolean
-  links: {text: string, href: string}[]
+  selectedDataGroup: DataGroup
+  links: { text: string, href: string }[]
 }
 
-function PillSwitch({ isActive, links }: PillSwitchProps) {
+function PillSwitch({ selectedDataGroup, links }: PillSwitchProps) {
   const { t } = useTranslation()
   return (
     <Switch aria-label={t('common:components.PillSwitch.label')}>
       {links.map(({ text, href }) => (
-        <DataGroupLink href={href} key={href}>{text}</DataGroupLink>
+        <DataGroupLink href={href} key={href} isActive={href.includes(selectedDataGroup)}>{text}</DataGroupLink>
       ))}
-      <Slider isActive={isActive} />
+      <Slider isActive={selectedDataGroup !== defaultDataGroup} />
     </Switch>
   )
 }

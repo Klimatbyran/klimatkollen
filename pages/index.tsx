@@ -70,7 +70,7 @@ function StartPage({ companies, municipalities }: PropsType) {
       <PageWrapper compact>
         <Container>
           <PillSwitch
-            isActive={!showCompanyData}
+            selectedDataGroup={normalizedDataGroup}
             links={[
               { text: t('common:companies'), href: '/foretag/utslappen/lista' },
               { text: t('common:municipalities'), href: `/geografiskt/${selectedDataset}/${selectedDataView}` },
