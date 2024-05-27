@@ -25,7 +25,6 @@ const ContactListItem = styled.li`
   display: flex;
   align-items: center;
   gap: 16px;
-  color: ${({ theme }) => theme.white};
 `
 
 const ContactLink = styled.a`

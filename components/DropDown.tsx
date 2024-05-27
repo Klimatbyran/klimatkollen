@@ -33,10 +33,10 @@ const Flex = styled.div`
 const StyledInput = styled.input`
   width: 100%;
   height: 56px;
-  background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.midGreen};
+  background: ${({ theme }) => theme.newColors.white};
+  border: 0;
   border-radius: 4px;
-  color: ${({ theme }) => theme.offWhite};
+  color: ${({ theme }) => theme.newColors.black3};
   font-size: 16px;
   font-family: 'DM Sans Variable', sans-serif;
   padding-left: 0.8rem;
@@ -44,12 +44,12 @@ const StyledInput = styled.input`
   width: 325px;
 
   ::placeholder {
-    color: ${({ theme }) => theme.offWhite};
+    color: ${({ theme }) => theme.newColors.black2};
   }
 `
 
 const Btn = styled.button`
-  background-color: transparent;
+  background: transparent;
   width: 20px;
   height: 20px;
   right: 16px;
@@ -67,7 +67,7 @@ const MunicipalitiesWrapper = styled.ul`
 `
 
 const Municipality = styled.li`
-  color: ${({ theme }) => theme.offWhite};
+  color: ${({ theme }) => theme.newColors.white};
   text-decoration: none;
   width: 310px;
   height: 56px;

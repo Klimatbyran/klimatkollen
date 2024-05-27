@@ -9,11 +9,11 @@ import Markdown from '../Markdown'
 
 const Container = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.darkGreenOne};
+  background: ${({ theme }) => theme.newColors.blue5};
   display: flex;
   padding: 16px 16px 8px 16px;
   border-radius: 8px;
-  color: ${({ theme }) => theme.offWhite};
+  color: ${({ theme }) => theme.newColors.white};
   flex-direction: column;
   margin: 0 auto 40px;
   max-width: 500px;
@@ -45,17 +45,16 @@ const StyledForm = styled.form`
   --form-height: 40px;
 
   display: flex;
-  gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   align-self: center;
   justify-self: center;
   max-width: 400px;
-  background: white;
+  background: ${({ theme }) => theme.newColors.white};
   border-radius: 4px;
   height: var(--form-height);
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.newColors.black3};
 `
 
 const VisuallyHiddenLabel = styled.label`
@@ -80,10 +79,10 @@ const StyledInput = styled.input`
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.black};
+    color: ${({ theme }) => theme.newColors.black3};
   }
   :-ms-input-placeholder {
-    color: ${({ theme }) => theme.black};
+    color: ${({ theme }) => theme.newColors.black3};
   }
 `
 
@@ -95,13 +94,11 @@ const ArrowButton = styled.button`
   height: var(--form-height);
   border: none;
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.25rem 0.5rem;
 `
 
 const EmailValidation = styled.div`
-  align-items: left;
   padding-left: 0.5rem;
-  font-weight: bold;
 `
 
 type Props = {

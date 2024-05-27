@@ -18,7 +18,7 @@ const Foot = styled.div`
 `
 
 const StyledH5 = styled(H5)`
-  color: ${({ theme }) => theme.midGreen};
+  color: ${({ theme }) => theme.newColors.blue3};
   margin: 16px;
   text-align: center;
 
