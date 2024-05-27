@@ -5,7 +5,13 @@ PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/' + \
 
 
 def get_smhi_data():
-    # Download data from SMHI and load it in to a pandas dataframe
+    """
+    Downloads data from SMHI and loads it into a pandas dataframe.
+
+    Returns:
+        pandas.DataFrame: The dataframe containing the SMHI data.
+    """
+
     df_raw = pd.read_excel(PATH_SMHI)
 
     # Remove the first 4 rows and reset the index
@@ -14,8 +20,7 @@ def get_smhi_data():
     # Put the first 4 elements in row 1 in to row 0
     df_raw.iloc[0, [0, 1, 2, 3]] = df_raw.iloc[1, [0, 1, 2, 3]]
 
-    df_raw = df_raw.drop([1]).reset_index(
-          drop=True)  # remove row 1 and reset the index
+    df_raw = df_raw.drop([1]).reset_index(drop=True)  # remove row 1 and reset the index
 
     # Change the column names to the first rows entries
     df_raw = df_raw.rename(columns=df_raw.iloc[0])
@@ -24,6 +29,16 @@ def get_smhi_data():
 
 
 def extract_sector_data(df):
+    """
+    Extracts sector emissions.
+
+    Args:
+        df (pandas.DataFrame): The input DataFrame containing sector data.
+
+    Returns:
+        pandas.DataFrame: A DataFrame containing the extracted sector data.
+    """
+
     df_sectors = pd.DataFrame()
     sectors = set(df['Huvudsektor'])
     sectors -= {'Alla'}
@@ -31,10 +46,10 @@ def extract_sector_data(df):
 
     for sector in sectors:
         df_sector = df[
-          (df['Huvudsektor'] == sector)
-          & (df['Undersektor'] == 'Alla')
-          & (df['Län'] != 'Alla')
-          & (df['Kommun'] != 'Alla')]
+            (df['Huvudsektor'] == sector)
+            & (df['Undersektor'] == 'Alla')
+            & (df['Län'] != 'Alla')
+            & (df['Kommun'] != 'Alla')]
         df_sector.reset_index(drop=True)
 
         first_row = df_sector.iloc[0]
@@ -59,11 +74,21 @@ def extract_sector_data(df):
 
 
 def get_n_prep_data_from_smhi(df):
-    # Get the raw data from SMHI and minor cleaning
+    """
+    Retrieves and prepares municipality CO2 emission data from SMHI.
+
+    Args:
+        df (pandas.DataFrame): The input dataframe.
+
+    Returns:
+        pandas.DataFrame: The cleaned dataframe.
+    """
+
     df_raw = get_smhi_data()
-    
+
+    # Uncomment below when sector emissions are to be introduced
     # Extract sector data from the SMHI data
-    df_sectors = extract_sector_data(df_raw)
+    # df_sectors = extract_sector_data(df_raw)
 
     # Extract total emissions from the SMHI data
     df_total = df_raw[(df_raw['Huvudsektor'] == 'Alla')
@@ -77,7 +102,9 @@ def get_n_prep_data_from_smhi(df):
     df_total = df_total.sort_values(by=['Kommun'])  # sort by Kommun
     df_total = df_total.reset_index(drop=True)
 
-    df_merge = df_total.merge(df_sectors, on='Kommun', how='left')
-    df = df.merge(df_merge, on='Kommun', how='left')
+    df = df.merge(df_total, on='Kommun', how='left')
+
+    # Uncomment below when sector emissions are to be introduced
+    # df_merge = df_total.merge(df_sectors, on='Kommun', how='left')
 
     return df

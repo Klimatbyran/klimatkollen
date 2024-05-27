@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import json
-import pandas as pd
 
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
 from solutions.cars.electric_vehicle_per_charge_points import (
@@ -46,69 +45,42 @@ df_procurements = get_procurement_data()
 df = df.merge(df_procurements, on='Kommun', how='left')
 print('8. Climate requirements in procurements added')
 
-# Valid emission sectors in the SMHI sector data
-# are extracted directly from Nationella emissionsdatabasen
-# FIXME: a better solution in the future would be to extract them
-# from the SMHI data directly, in for example emission/historical_data_calculations.py
-sectors = [
-    'Produktanvändning (inkl. lösningsmedel)',
-    'Jordbruk',
-    'Utrikes transporter',
-    'Industri (energi + processer)',
-    'Egen uppärmning av bostäder och lokaler',
-    'Arbetsmaskiner',
-    'Transporter',
-    'El och fjärrvärme',
-    'Avfall (inkl.avlopp)'
-]
-
 numeric_columns = [col for col in df.columns if str(col).isdigit()]
 
-temp = []  # remane the columns
-for i in range(len(df)):
-    kommun = df.iloc[i]['Kommun']
-
-    sectorEmissions = {}
-    # The cement kommuner don't have this computed so we need to check if the sector exists
-    if not pd.isnull(df.iloc[i][f'{numeric_columns[0]}_{sectors[0]}']):        
-        for sector in sectors:
-            sectorEmissions[sector] = {}
-            for year_col in numeric_columns:
-                year = str(year_col)
-                sectorEmissions[sector][year] = df[f'{year}_{sector}']
-
-    temp.append({
-            'kommun': df.iloc[i]['Kommun'],
-            'län': df.iloc[i]['Län'],
-            'emissions': { str(year): df.iloc[i][year] for year in numeric_columns },
-            'sectorEmissions': sectorEmissions,
-            'budget': df.iloc[i]['Budget'],
-            'emissionBudget': df.iloc[i]['parisPath'],
-            'approximatedHistoricalEmission': df.iloc[i]['approximatedHistorical'],
-            'totalApproximatedHistoricalEmission': df.iloc[i][
-                'totalApproximatedHistorical'
-            ],
-            'trend': df.iloc[i]['trend'],
-            'trendEmission': df.iloc[i]['trendEmission'],
-            'historicalEmissionChangePercent': df.iloc[i][
-                'historicalEmissionChangePercent'
-            ],
-            'neededEmissionChangePercent': df.iloc[i]['neededEmissionChangePercent'],
-            'hitNetZero': df.iloc[i]['hitNetZero'],
-            'budgetRunsOut': df.iloc[i]['budgetRunsOut'],
-            'electricCarChangePercent': df.iloc[i]['electricCarChangePercent'],
-            'electricCarChangeYearly': df.iloc[i]['electricCarChangeYearly'],
-            'climatePlanLink': df.iloc[i]['Länk till aktuell klimatplan'],
-            'climatePlanYear': df.iloc[i]['Antagen år'],
-            'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
-            'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
-            'totalConsumptionEmission': df.iloc[i]['Total emissions'],
-            'electricVehiclePerChargePoints': df.iloc[i]['EVPC'],
-            'procurementScore': df.iloc[i]['procurementScore'],
-            'procurementLink': df.iloc[i]['procurementLink'],
-        }
-    )
-
+temp = [
+    {
+        'kommun': df.iloc[i]['Kommun'],
+        'län': df.iloc[i]['Län'],
+        'emissions': {str(year): df.iloc[i][year] for year in numeric_columns},
+        'budget': df.iloc[i]['Budget'],
+        'emissionBudget': df.iloc[i]['parisPath'],
+        'approximatedHistoricalEmission': df.iloc[i]['approximatedHistorical'],
+        'totalApproximatedHistoricalEmission': df.iloc[i][
+            'totalApproximatedHistorical'
+        ],
+        'trend': df.iloc[i]['trend'],
+        'trendEmission': df.iloc[i]['trendEmission'],
+        'historicalEmissionChangePercent': df.iloc[i][
+            'historicalEmissionChangePercent'
+        ],
+        'neededEmissionChangePercent': df.iloc[i][
+            'neededEmissionChangePercent'
+        ],
+        'hitNetZero': df.iloc[i]['hitNetZero'],
+        'budgetRunsOut': df.iloc[i]['budgetRunsOut'],
+        'electricCarChangePercent': df.iloc[i]['electricCarChangePercent'],
+        'electricCarChangeYearly': df.iloc[i]['electricCarChangeYearly'],
+        'climatePlanLink': df.iloc[i]['Länk till aktuell klimatplan'],
+        'climatePlanYear': df.iloc[i]['Antagen år'],
+        'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
+        'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
+        'totalConsumptionEmission': df.iloc[i]['Total emissions'],
+        'electricVehiclePerChargePoints': df.iloc[i]['EVPC'],
+        'procurementScore': df.iloc[i]['procurementScore'],
+        'procurementLink': df.iloc[i]['procurementLink'],
+    }
+    for i in range(len(df))
+]
 
 with open('output/climate-data.json', 'w', encoding='utf8') as json_file:
     # save dataframe as json file
