@@ -10,6 +10,9 @@ assignees: ''
 **Description**
 What would you like to be done?
 
+**Motivation**
+What goals for klimatkollen would this help achieve?
+
 **Definition of Done**
 Clarify how one can tell that the issue is completed. What behavior is in place / how does the code or data look like?
 
