@@ -29,6 +29,7 @@ const InfoText = styled.div`
   background: ${({ theme }) => theme.newColors.black2};
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  z-index: 50;
 
   p {
     font-size: 12px;
@@ -69,18 +70,24 @@ const TitleContainer = styled.div`
 
 const FloatingH5 = styled(H5Regular)`
   position: absolute;
-  margin: 56px 0 0 12px;
+  top: 8px;
+  left: 8px;
+  /* margin: 60px 0 0 8px; */
   z-index: 200;
   font-size: 1rem;
+  padding: 4px 8px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background: ${({ theme }) => `${theme.newColors.black2}99`};
 
   @media only screen and (${devices.smallMobile}) {
     font-size: 1.125rem;
-    margin-top: 60px;
   }
 
   @media only screen and (${devices.tablet}) {
-    margin-top: 76px;
-    margin-bottom: 16px;
+    /* margin-bottom: 16px; */
   }
 `
 

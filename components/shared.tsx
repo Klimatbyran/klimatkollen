@@ -2,14 +2,13 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { colorTheme } from '../Theme'
 
-// TODO: replace with blue scale
 export const mapColors = [
-  colorTheme.red,
-  colorTheme.orange,
-  colorTheme.darkYellow,
-  colorTheme.lightYellow,
-  colorTheme.beige,
-  colorTheme.lightBlue,
+  colorTheme.newColors.blue5,
+  colorTheme.newColors.blue4,
+  colorTheme.newColors.blue3,
+  colorTheme.newColors.blue2,
+  colorTheme.newColors.blue1,
+  colorTheme.newColors.white,
 ]
 
 export const IconButton = styled.button`

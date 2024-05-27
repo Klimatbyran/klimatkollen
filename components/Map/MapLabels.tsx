@@ -6,13 +6,14 @@ import { Paragraph } from '../Typography'
 import { Square, mapColors } from '../shared'
 
 const Container = styled.div`
-  margin-left: 5px;
-  margin-top: 48px;
-  background: ${({ theme }) => theme.newColors.black2};
+  background: ${({ theme }) => `${theme.newColors.black2}99`};
   z-index: 40;
   border-radius: 8px;
-  padding: 0.5rem;
+  padding: 8px;
   height: min-content;
+  position: absolute;
+  top: 56px;
+  left: 8px;
 `
 
 const LabelBox = styled.div`
