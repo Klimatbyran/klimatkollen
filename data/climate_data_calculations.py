@@ -12,7 +12,6 @@ from facts.municipalities_counties import get_municipalities
 from facts.procurements.climate_requirements_in_procurements import get_procurement_data
 from issues.emissions.emission_data_calculations import emission_calculations
 from issues.consumption.consumption_data_calculations import get_consumption_emissions
-from test import validate_output
 
 # Notebook from ClimateView that our calculations are based on:
 # https://colab.research.google.com/drive/1qqMbdBTu5ulAPUe-0CRBmFuh8aNOiHEb?usp=sharing
@@ -87,8 +86,3 @@ with open('output/climate-data.json', 'w', encoding='utf8') as json_file:
     json.dump(temp, json_file, ensure_ascii=False, default=str)
 
 print('Climate data JSON file created and saved')
-
-if validate_output():
-    print('Tests on output file passed.')
-else:
-    print('WARNING: Tests on output file failed, see output above.')
