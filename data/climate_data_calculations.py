@@ -46,7 +46,7 @@ df = df.merge(df_procurements, on='Kommun', how='left')
 print('8. Climate requirements in procurements added')
 
 # Valid emission sectors in the SMHI sector data
-# Are extracted directly from Nationella emissionsdatabasen
+# are extracted directly from Nationella emissionsdatabasen
 # FIXME: a better solution in the future would be to extract them
 # from the SMHI data directly, in for example emission/historical_data_calculations.py
 sectors = [
@@ -58,7 +58,9 @@ sectors = [
     'Arbetsmaskiner',
     'Transporter',
     'El och fjärrvärme', 'Avfall (inkl.avlopp)'
-    ]
+]
+
+numeric_columns = [col for col in df.columns if str(col).isdigit()]
 
 temp = []  # remane the columns
 for i in range(len(df)):

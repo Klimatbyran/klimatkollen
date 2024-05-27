@@ -1,14 +1,12 @@
 import router from 'next/router'
 import styled from 'styled-components'
-import { H1 } from '../components/Typography'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { GetStaticProps } from 'next'
 
-const Wrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-`
+import { H1 } from '../components/Typography'
+import Layout from '../components/Layout'
+import PageWrapper from '../components/PageWrapper'
 
 const Button = styled.button`
   height: 56px;
@@ -29,12 +27,22 @@ function FourOhFour() {
     router.push('/')
   }
 
+  const { t } = useTranslation()
+
   return (
-    <Wrapper>
-      <H1>404 - Sidan hittades inte</H1>
-      <Button onClick={handleClick}>Gå till startsidan</Button>
-    </Wrapper>
+    <Layout>
+      <PageWrapper backgroundColor="black">
+        <H1>{t('common:errors.notFound')}</H1>
+        <Button onClick={handleClick}>{t('common:actions.goHome')}</Button>
+      </PageWrapper>
+    </Layout>
   )
 }
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale as string, ['common']),
+  },
+})
 
 export default FourOhFour

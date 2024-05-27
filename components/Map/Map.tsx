@@ -1,14 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
-import { ReactNode, useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
+import Link from 'next/link'
 import { colorTheme } from '../../Theme'
 import { mapColors } from '../shared'
-import { replaceLetters } from '../../utils/shared'
-import { CurrentDataPoints } from '../../utils/types'
+import { deviceSizesPx, onTouchDevice } from '../../utils/devices'
+import {
+  MapProps, MunicipalityTapInfo, MunicipalityData,
+} from '../../utils/types'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -18,6 +21,21 @@ const INITIAL_VIEW_STATE = {
   pitch: 0,
   bearing: 0,
 }
+
+const TOOLTIP_COMMON_STYLE = {
+  backgroundColor: 'black',
+  borderRadius: '5px',
+  fontSize: '0.7em',
+  color: colorTheme.offWhite,
+}
+
+const TOOLTIP_MOBILE_STYLE = {
+  position: 'absolute',
+  padding: '0.5em 1em',
+  display: 'flex',
+  alignItems: 'center',
+  ...TOOLTIP_COMMON_STYLE,
+} as React.CSSProperties // https://stackoverflow.com/questions/46710747
 
 const DeckGLWrapper = styled.div`
   height: 100%;
@@ -78,14 +96,56 @@ const getColor = (
   return colors[5]
 }
 
-type MapProps = {
-  data: Array<CurrentDataPoints>
-  boundaries: number[] | string[] | Date[]
-  children?: ReactNode
+// Use when viewState is reimplemented
+/* const MAP_RANGE = {
+  lon: [8.107180004121693, 26.099158344940808],
+  lat: [61.9, 63.9],
+} */
+
+export function isMunicipalityData(
+  thing: MunicipalityData | unknown,
+): thing is MunicipalityData {
+  if (!thing) {
+    return false
+  }
+  const mData = thing as MunicipalityData
+  return Boolean(
+    mData.name && mData.dataPoint && mData.formattedDataPoint && mData.geometry,
+  )
 }
 
-function Map({ data, boundaries, children }: MapProps) {
-  const [municipalityData, setMunicipalityData] = useState<any>({})
+function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
+  return (
+    <Link
+      href={`/kommun/${tInfo.mData.name.toLowerCase()}`}
+      style={{
+        ...TOOLTIP_MOBILE_STYLE,
+        left: tInfo.x,
+        top: tInfo.y,
+        textDecoration: 'none',
+      }}
+    >
+      <img
+        src="/icons/info.svg"
+        alt="info icon"
+        style={{
+          color: '#fff', height: 14, width: 14, marginRight: 4,
+        }}
+      />
+      <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}`}</span>
+      {`: ${tInfo.mData.formattedDataPoint}`}
+    </Link>
+  )
+}
+
+function Map({
+  data, boundaries, children,
+}: MapProps) {
+  const [municipalityFeatureCollection, setMunicipalityFeatureCollection] = useState<any>({})
+  // "tapped" municipality tooltips are only to be used on touch devices.
+  const [lastTapInfo, setLastTapInfo] = useState<MunicipalityTapInfo | null>(null)
+  const wrapperRef = useRef<HTMLDivElement|null>(null)
+
   const router = useRouter()
 
   const [initialViewState, setInitialViewState] = useState(INITIAL_VIEW_STATE)
@@ -95,7 +155,7 @@ function Map({ data, boundaries, children }: MapProps) {
     let newZoom = 3.5
     const width = window.innerWidth
 
-    if (width <= 768) {
+    if (width <= deviceSizesPx.tablet) {
       // Tablet or mobile
       newZoom = 3
     }
@@ -106,10 +166,17 @@ function Map({ data, boundaries, children }: MapProps) {
     }))
   }
 
+  // stop map view from moving away from Sweden
+  const enforceMapBounds = ((viewState: any) => ({
+    ...viewState,
+    longitude: Math.min(24, Math.max(10, viewState.longitude)),
+    latitude: Math.min(70, Math.max(55, viewState.latitude)),
+  }))
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/api/map')
-      setMunicipalityData(response.data)
+      setMunicipalityFeatureCollection(response.data)
     }
     fetchData()
   }, [])
@@ -122,9 +189,18 @@ function Map({ data, boundaries, children }: MapProps) {
     return () => window.removeEventListener('resize', updateZoom)
   }, [])
 
-  const municipalityLines = municipalityData?.features?.flatMap(
-    ({ geometry, properties }: { geometry: any; properties: any }) => {
-      const name = replaceLetters(properties.name)
+  useEffect(() => {
+    function clearToolTipOnOutsideTap(ev: TouchEvent) {
+      if (wrapperRef.current && ev.target && !wrapperRef.current.contains(ev.target as HTMLElement)) {
+        setLastTapInfo(null)
+      }
+    }
+    document.addEventListener('touchstart', clearToolTipOnOutsideTap)
+    return () => document.removeEventListener('touchstart', clearToolTipOnOutsideTap)
+  }, [wrapperRef])
+
+  const municipalityLines = municipalityFeatureCollection?.features?.flatMap(
+    ({ geometry, properties: { name } }: { geometry: any; properties: { name: string } }) => {
       const currentMunicipality = data.find((e) => e.name === name)
       const dataPoint = currentMunicipality?.primaryDataPoint
       const formattedDataPoint = currentMunicipality?.formattedPrimaryDataPoint
@@ -148,13 +224,6 @@ function Map({ data, boundaries, children }: MapProps) {
     },
   )
 
-  type MunicipalityData = {
-    name: string
-    dataPoint: number
-    formattedDataPoint: number
-    geometry: [number, number][]
-  }
-
   const municipalityLayer = new PolygonLayer({
     id: 'polygon-layer',
     data: municipalityLines,
@@ -175,7 +244,7 @@ function Map({ data, boundaries, children }: MapProps) {
   })
 
   return (
-    <DeckGLWrapper>
+    <DeckGLWrapper ref={wrapperRef}>
       <NextNProgress
         color={colorTheme.darkGreenOne}
         startPosition={0.3}
@@ -189,29 +258,40 @@ function Map({ data, boundaries, children }: MapProps) {
       <DeckGL
         initialViewState={initialViewState}
         controller={{}}
-        getTooltip={({ object }) => object && {
-          html: `
-          <p>${(object as unknown as MunicipalityData)?.name}: ${(object as unknown as MunicipalityData).formattedDataPoint}</p>`,
-          style: {
-            backgroundColor: 'black',
-            borderRadius: '5px',
-            fontSize: '0.7em',
-            color: colorTheme.offWhite,
-          },
+        getTooltip={({ object: mData }) => {
+          if (!isMunicipalityData(mData) || onTouchDevice()) {
+            return null // tooltips on touch devices are handled separately
+          }
+          return {
+            html: `
+            <p>${mData.name}: ${(mData).formattedDataPoint}</p>`,
+            style: TOOLTIP_COMMON_STYLE,
+          }
         }}
-        onClick={({ object }) => {
-          // IDK what the correct type is
-          const name = (object as unknown as MunicipalityData)?.name
-          if (name) router.push(`/kommun/${replaceLetters(name).toLowerCase()}`)
+        onClick={({ object: mData, x, y }) => {
+          if (!isMunicipalityData(mData)) {
+            setLastTapInfo(null)
+            return
+          }
+          if (onTouchDevice()) {
+            setLastTapInfo({ x, y, mData }) // trigger mobile tooltip display
+            return
+          }
+          router.push(`/kommun/${mData.name.toLowerCase()}`)
+        }}
+        onViewStateChange={({ viewState }) => {
+          setLastTapInfo(null)
+          return enforceMapBounds(viewState)
         }}
         layers={[municipalityLayer]}
-        // FIXME needs to be adapted to mobile before reintroducing
-        /* onViewStateChange={({ viewState }) => {
-        viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))
-        viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
-        return viewState
-      }} */
+      // FIXME needs to be adapted to mobile before reintroducing
+      /* onViewStateChange={({ viewState }) => {
+      viewState.longitude = Math.min(MAP_RANGE.lon[1], Math.max(MAP_RANGE.lon[0], viewState.longitude))
+      viewState.latitude = Math.min(MAP_RANGE.lat[1], Math.max(MAP_RANGE.lat[0], viewState.latitude))
+      return viewState
+    }} */
       />
+      {lastTapInfo && <MobileTooltip tInfo={lastTapInfo} />}
       {children}
     </DeckGLWrapper>
   )

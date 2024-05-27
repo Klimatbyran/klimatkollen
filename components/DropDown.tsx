@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+
 import ArrowDown from '../public/icons/arrow-down.svg'
 import { devices } from '../utils/devices'
 
@@ -83,7 +85,6 @@ const ErrorText = styled.div`
 type Props = {
   municipalitiesName: Array<string>
   placeholder: string
-  className: string
 }
 
 export function getSortedMunicipalities(municipalitiesName: Array<string>) {
@@ -113,7 +114,7 @@ export function search(query: string, municipalitiesName: Array<string>) {
     })
 }
 
-function DropDown({ municipalitiesName, placeholder, className }: Props) {
+function DropDown({ municipalitiesName, placeholder }: Props) {
   const sortedMunicipalities = getSortedMunicipalities(municipalitiesName)
   const [showDropDown, setShowDropDown] = useState(false)
   const [selectedMunicipality, setSelectedMunicipality] = useState<string>('')
@@ -122,6 +123,7 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
 
   const ref = useRef<HTMLDivElement>(null)
   const router = useRouter()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
@@ -192,13 +194,13 @@ function DropDown({ municipalitiesName, placeholder, className }: Props) {
               value={selectedMunicipality}
             />
             <Btn onClick={() => setShowDropDown((current) => !current)}>
-              <ArrowDown aria-label="Visa kommun" />
+              <ArrowDown aria-label={t('common:components.DropDown.label')} />
             </Btn>
           </Flex>
           {showDropDown && (
-            <MunicipalitiesWrapper className={className}>
+            <MunicipalitiesWrapper>
               {municipalities.map((name) => (
-                <Municipality onClick={() => onMunicipalityClick(name)}>
+                <Municipality onClick={() => onMunicipalityClick(name)} key={name}>
                   {name}
                 </Municipality>
               ))}

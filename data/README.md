@@ -2,6 +2,9 @@
 
 ## General information
 
+### Getting started
+
+Run `pip install -r requirements.txt` to install the required dependencies. If you're using Python 3, you can replace `pip` with `pip3`.
 
 ### Example calculation
 
@@ -21,13 +24,21 @@ We utilize Python libraries such as Pandas and NumPy to perform various calculat
     - `climate_data_calculations.py`: Execute this Python script to run all the calculations and generate updated data.
 - `/data/output:` This is where the processed data gets saved.
     - `climate-data.json`: This JSON file serves as the core output, containing all the calculated climate data.
-- `/data/tests:` Unit tests for data calculations. To run a specific test file, stand in `/data/` and run
+- `/data/tests:` Unit tests for data calculations. To run all tests, stand in `/data/` and run
+
+    ```
+    python3 -m unittest discover -s tests
+    ```
+
+    To run a specific test file, stand in `/data/` and run
 
     ```
     python3 -m unittest tests/{filename}.py
     ```
 
     where you replace *filename* with the name of the actual test file.
+    
+    If you notice any test failing, please submit a ticket about it.
 
 ### How to Update Data on Site
 

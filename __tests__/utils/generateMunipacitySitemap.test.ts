@@ -1,13 +1,17 @@
+import { TFunction } from 'next-i18next'
 import {
-  generateMunipacitySitemapData,
+  generateMunicipalitySitemapData,
   generateSitemap,
 } from '../../utils/generateMunipacitySitemap'
 import { Municipality } from '../../utils/types'
 
 const municipalities = [{ Name: 'Stockholm' }, { Name: 'Göteborg' }] as Municipality[]
+
+const t = vi.fn((str) => str) as unknown as TFunction
+
 describe('generateSitemap', () => {
   it('should generate valid municipality sitemap data', () => {
-    const siteMap = generateMunipacitySitemapData({ municipalities })
+    const siteMap = generateMunicipalitySitemapData({ municipalities })
     expect(siteMap).toEqual([
       {
         url: 'https://klimatkollen.se/kommun/stockholm',
@@ -27,8 +31,8 @@ describe('generateSitemap', () => {
   })
 
   it('should generate a valid sitemap XML string', () => {
-    const siteMap = generateMunipacitySitemapData({ municipalities })
-    const sitemapXml = generateSitemap(siteMap)
+    const siteMap = generateMunicipalitySitemapData({ municipalities })
+    const sitemapXml = generateSitemap(siteMap, t)
     expect(() => new DOMParser().parseFromString(sitemapXml, 'text/xml')).not.toThrow()
   })
 })

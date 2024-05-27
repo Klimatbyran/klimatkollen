@@ -2,8 +2,9 @@ import styled from 'styled-components'
 import { useState } from 'react'
 
 import { H3, ParagraphBold } from './Typography'
-import Icon from '../public/icons/add_light_white.svg'
-import IconGreen from '../public/icons/remove_light_white.svg'
+import IconAdd from '../public/icons/add_light_white.svg'
+import IconRemove from '../public/icons/remove_light_white.svg'
+import Markdown from './Markdown'
 
 const Row = styled.summary`
   display: flex;
@@ -11,6 +12,10 @@ const Row = styled.summary`
   justify-content: space-between;
   margin: 0.8rem 0;
   cursor: pointer;
+  list-style: none; /* remove default arrow in Firefox */
+  &::-webkit-details-marker {
+    display: none; /* remove default arrow in Chrome */
+  }
 `
 
 const SectionLeft = styled.section`
@@ -40,6 +45,10 @@ const InfoSection = styled.div`
     text-decoration: underline;
     cursor: pointer;
   }
+
+  & p:first-of-type {
+    margin-top: 0;
+  }
 `
 
 const StyledIcon = styled.div`
@@ -53,7 +62,7 @@ const StyledIcon = styled.div`
 type Props = {
   heading: string
   data: string
-  info?: JSX.Element | string
+  info?: string
 }
 
 function FactSection({ heading, data, info }: Props) {
@@ -69,13 +78,13 @@ function FactSection({ heading, data, info }: Props) {
         {info && (
         <SectionRight>
           <StyledIcon>
-            {open ? <IconGreen /> : <Icon />}
+            {open ? <IconRemove /> : <IconAdd />}
           </StyledIcon>
         </SectionRight>
         )}
       </Row>
       <InfoSection>
-        {info}
+        <Markdown>{info}</Markdown>
       </InfoSection>
     </details>
   )
