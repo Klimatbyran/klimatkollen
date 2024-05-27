@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import pandas as pd
 
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
 from solutions.cars.electric_vehicle_per_charge_points import (
@@ -22,7 +23,7 @@ from test import validate_output
 df = get_municipalities()
 print('1. Municipalities loaded and prepped')
 
-df, sector_dfs = emission_calculations(df)
+df = emission_calculations(df)
 print('2. Climate data and calculations added')
 
 df = get_electric_car_change_rate(df)
@@ -41,15 +42,25 @@ df_evpc = get_electric_vehicle_per_charge_points()
 df = df.merge(df_evpc, on='Kommun', how='left')
 print('7. CPEV for December 2023 added')
 
-for sector_name in sector_dfs:
-    sector_dfs[sector_name] = sector_dfs[sector_name].set_index(
-        'Kommun', verify_integrity=True
-    )
-sectors = list(sector_dfs.keys())
-
 df_procurements = get_procurement_data()
 df = df.merge(df_procurements, on='Kommun', how='left')
 print('8. Climate requirements in procurements added')
+
+# Valid emission sectors in the SMHI sector data
+# are extracted directly from Nationella emissionsdatabasen
+# FIXME: a better solution in the future would be to extract them
+# from the SMHI data directly, in for example emission/historical_data_calculations.py
+sectors = [
+    'Produktanvändning (inkl. lösningsmedel)',
+    'Jordbruk',
+    'Utrikes transporter',
+    'Industri (energi + processer)',
+    'Egen uppärmning av bostäder och lokaler',
+    'Arbetsmaskiner',
+    'Transporter',
+    'El och fjärrvärme',
+    'Avfall (inkl.avlopp)'
+]
 
 numeric_columns = [col for col in df.columns if str(col).isdigit()]
 
@@ -57,40 +68,19 @@ temp = []  # remane the columns
 for i in range(len(df)):
     kommun = df.iloc[i]['Kommun']
 
-    sectorEmissions = dict()
-    if kommun in sector_dfs[sectors[0]][1990]:
-        # The cement kommuner don't have this computed.
+    sectorEmissions = {}
+    # The cement kommuner don't have this computed so we need to check if the sector exists
+    if not pd.isnull(df.iloc[i][f'{numeric_columns[0]}_{sectors[0]}']):        
         for sector in sectors:
-            sectorEmissions[sector] = {
-                '1990': sector_dfs[sector][1990][kommun],
-                '2000': sector_dfs[sector][2000][kommun],
-                '2005': sector_dfs[sector][2005][kommun],
-                '2010': sector_dfs[sector][2010][kommun],
-                '2015': sector_dfs[sector][2015][kommun],
-                '2016': sector_dfs[sector][2016][kommun],
-                '2017': sector_dfs[sector][2017][kommun],
-                '2018': sector_dfs[sector][2018][kommun],
-                '2019': sector_dfs[sector][2019][kommun],
-                '2020': sector_dfs[sector][2020][kommun],
-                '2021': sector_dfs[sector][2021][kommun],
-            }
+            sectorEmissions[sector] = {}
+            for year_col in numeric_columns:
+                year = str(year_col)
+                sectorEmissions[sector][year] = df[f'{year}_{sector}']
 
     temp.append({
             'kommun': df.iloc[i]['Kommun'],
             'län': df.iloc[i]['Län'],
-            'emissions': {
-                '1990': df.iloc[i][1990],
-                '2000': df.iloc[i][2000],
-                '2005': df.iloc[i][2005],
-                '2010': df.iloc[i][2010],
-                '2015': df.iloc[i][2015],
-                '2016': df.iloc[i][2016],
-                '2017': df.iloc[i][2017],
-                '2018': df.iloc[i][2018],
-                '2019': df.iloc[i][2019],
-                '2020': df.iloc[i][2020],
-                '2021': df.iloc[i][2021],
-            },
+            'emissions': { str(year): df.iloc[i][year] for year in numeric_columns },
             'sectorEmissions': sectorEmissions,
             'budget': df.iloc[i]['Budget'],
             'emissionBudget': df.iloc[i]['parisPath'],

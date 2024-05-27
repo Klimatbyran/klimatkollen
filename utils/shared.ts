@@ -59,4 +59,5 @@ export const groupEmissionSectors = (emissions: EmissionSector[]): EmissionSecto
 
   return Object.values(aggregatedSectors)
 }
+
 export const ONE_WEEK_MS = 60 * 60 * 24 * 7
