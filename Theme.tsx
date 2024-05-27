@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { ThemeProvider } from 'styled-components'
 
-export const colors2024 = {
+const colors2024 = {
   gray: {
     50: '#F7F7F7',
     100: '#E1E1E1',
@@ -99,7 +99,7 @@ export const colors2024 = {
   },
 }
 
-export const namedColors2024 = {
+const namedColors2024 = {
   white: colors2024.gray[50],
   gray: colors2024.gray[250],
   black1: colors2024.gray[500],
@@ -173,6 +173,8 @@ export const colorTheme = {
 type Props = {
   children: ReactNode
 }
+
+export type ColorTheme = typeof colorTheme
 
 function Theme({ children }: Props) {
   return <ThemeProvider theme={colorTheme}>{children}</ThemeProvider>
