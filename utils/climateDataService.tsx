@@ -2,14 +2,14 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import {
-  Budget,
-  ClimatePlan,
-  Emission,
-  EmissionPerYear,
   Municipality,
-  Trend,
-  ApproximatedEmission,
+  EmissionPerYear,
   EmissionSector,
+  Budget,
+  Emission,
+  Trend,
+  ClimatePlan,
+  ApproximatedEmission,
 } from './types'
 
 const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
@@ -35,19 +35,9 @@ export class ClimateDataService {
           emissions.push(emissionByYear)
         })
 
-        const sectorEmissions = Object.entries(data.sectorEmissions)
-          .map(([sectorName, emissionData]) => ({
-            Name: sectorName,
-            EmissionsPerYear: Object.entries(emissionData as unknown as EmissionSector)
-              .map(([year, emission]) => ({
-                Year: Number(year),
-                CO2Equivalent: emission,
-              } as unknown as EmissionPerYear)),
-          }))
-
         const emission = {
           EmissionPerYear: emissions,
-          SectorEmissionsPerYear: sectorEmissions,
+          LargestEmissionSectors: new Array<EmissionSector>(),
           HistoricalEmissionChangePercent: data.historicalEmissionChangePercent,
         } as Emission
 

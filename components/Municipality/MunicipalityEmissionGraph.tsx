@@ -15,7 +15,6 @@ import { devices } from '../../utils/devices'
 import ArrowRight from '../../public/icons/arrow-right-white.svg'
 import ArrowLeft from '../../public/icons/arrow-left-white.svg'
 import Info from '../../public/icons/info.svg'
-import { groupEmissionSectors } from '../../utils/shared'
 
 const GraphWrapper = styled.div`
   display: flex;
@@ -58,7 +57,6 @@ type IssuesProps = {
   chart: number
   onNextStep: (() => void) | undefined
   onPreviousStep: (() => void) | undefined
-  showSectors: boolean
 }
 
 function range(start: number, end: number) {
@@ -72,7 +70,6 @@ function MunicipalityEmissionGraph({
   chart: step,
   onNextStep,
   onPreviousStep,
-  showSectors,
 }: IssuesProps) {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
@@ -113,7 +110,6 @@ function MunicipalityEmissionGraph({
   const firstYearWithBudget = municipality.Budget.BudgetPerYear[0]?.Year
 
   const hasApproximatedData = lastYearWithApproximatedData != null
-  const groupedSectorEmissions = groupEmissionSectors(municipality.HistoricalEmission.SectorEmissionsPerYear)
 
   const CHARTS: {
     [index: number]: {
@@ -160,12 +156,11 @@ function MunicipalityEmissionGraph({
   }
 
   const toggleModal = () => {
-    const { body: documentBody } = document
     if (!isOpen) {
-      documentBody.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden'
       setIsOpen(true)
     } else {
-      documentBody.style.overflow = ''
+      document.body.style.overflow = ''
       setIsOpen(false)
     }
   }
@@ -188,12 +183,10 @@ function MunicipalityEmissionGraph({
         <Graph
           step={step}
           historical={municipality.HistoricalEmission.EmissionPerYear}
-          historicalBySector={groupedSectorEmissions}
           approximated={municipality.ApproximatedHistoricalEmission.EmissionPerYear}
           trend={municipality.EmissionTrend.TrendPerYear}
           budget={municipality.Budget.BudgetPerYear}
           maxVisibleYear={END_YEAR}
-          showSectors={showSectors}
         />
         <Grid>
           {onPreviousStep ? (

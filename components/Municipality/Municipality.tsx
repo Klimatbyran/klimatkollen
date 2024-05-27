@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
-import { useState } from 'react'
+
 import { H1NoPad, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
@@ -11,7 +11,6 @@ import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
 import MunicipalityEmissionNumbers from './MunicipalityEmissionNumbers'
 import Scorecard from './MunicipalityScorecard'
-import { isCementSector } from '../../utils/climateDataPresentation'
 
 const StyledContainer = styled.div`
   display: flex;
@@ -52,14 +51,6 @@ const DropDownSection = styled.div`
   align-items: center;
 `
 
-const CheckBoxContaner = styled.div`
-  padding-left: 16px;
-
-  * { 
-    cursor: pointer; 
-  }
-`
-
 type Props = {
   municipality: TMunicipality
   step: number
@@ -80,7 +71,6 @@ function Municipality(props: Props) {
   } = props
 
   const { t } = useTranslation()
-  const [showSectors, setShowSectors] = useState(true)
 
   return (
     <>
@@ -101,23 +91,8 @@ function Municipality(props: Props) {
             chart={step}
             onNextStep={onNextStep}
             onPreviousStep={onPreviousStep}
-            showSectors={!isCementSector(municipality.Name) && showSectors}
           />
-          {!isCementSector(municipality.Name)
-            && (
-              <CheckBoxContaner>
-                <label htmlFor="checkbox-sectors">
-                  <input id="checkbox-sectors" type="checkbox" onChange={() => setShowSectors(!showSectors)} checked={showSectors} />
-                  {' '}
-                  Visa per sektor historiskt
-                </label>
-              </CheckBoxContaner>
-            )}
-          <MunicipalityEmissionNumbers
-            municipality={municipality}
-            step={step}
-            showSectors={!isCementSector(municipality.Name) && showSectors}
-          />
+          <MunicipalityEmissionNumbers municipality={municipality} step={step} />
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>
