@@ -50,21 +50,15 @@ temp = [
     {
         'kommun': df.iloc[i]['Kommun'],
         'län': df.iloc[i]['Län'],
-        'emissions': {str(year): df.iloc[i][year] for year in numeric_columns},
+        'emissions': { str(year): df.iloc[i][year] for year in numeric_columns },
         'budget': df.iloc[i]['Budget'],
         'emissionBudget': df.iloc[i]['parisPath'],
         'approximatedHistoricalEmission': df.iloc[i]['approximatedHistorical'],
-        'totalApproximatedHistoricalEmission': df.iloc[i][
-            'totalApproximatedHistorical'
-        ],
+        'totalApproximatedHistoricalEmission': df.iloc[i]['totalApproximatedHistorical'],
         'trend': df.iloc[i]['trend'],
         'trendEmission': df.iloc[i]['trendEmission'],
-        'historicalEmissionChangePercent': df.iloc[i][
-            'historicalEmissionChangePercent'
-        ],
-        'neededEmissionChangePercent': df.iloc[i][
-            'neededEmissionChangePercent'
-        ],
+        'historicalEmissionChangePercent': df.iloc[i]['historicalEmissionChangePercent'],
+        'neededEmissionChangePercent': df.iloc[i]['neededEmissionChangePercent'],
         'hitNetZero': df.iloc[i]['hitNetZero'],
         'budgetRunsOut': df.iloc[i]['budgetRunsOut'],
         'electricCarChangePercent': df.iloc[i]['electricCarChangePercent'],
