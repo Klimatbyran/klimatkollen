@@ -1,13 +1,13 @@
 ---
-name: Task
+name: Enhancement
 about: An improvement to be made to Klimatkollen
-title: Short summary of the task
+title: Short summary
 labels: ''
 assignees: ''
 
 ---
 
-**Describe the task**
+**Description**
 What would you like to be done?
 
 **Definition of Done**
