@@ -54,14 +54,6 @@ export const H4 = styled.h4`
   margin: 0;
 `
 
-export const H4Regular = styled.h4`
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.25;
-  margin: 0;
-  color: ${({ theme }) => theme.midGreen};
-`
-
 export const H5 = styled.h5`
   font-weight: 400;
   font-size: 18px;
