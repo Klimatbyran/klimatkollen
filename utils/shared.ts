@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { dataDescriptions, defaultDataView, secondaryDataView } from './datasetDefinitions'
-=======
 import { defaultDataView, secondaryDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
->>>>>>> feat/emission-sectors
 import { EmissionSector } from './types'
 
 export const normalizeString = (input: string) => input.replace('ä', 'a').replace('ö', 'o').replace('å', 'a').toLowerCase()
@@ -63,7 +59,5 @@ export const groupEmissionSectors = (emissions: EmissionSector[]): EmissionSecto
 
   return Object.values(aggregatedSectors)
 }
-<<<<<<< HEAD
-=======
+
 export const ONE_WEEK_MS = 60 * 60 * 24 * 7
->>>>>>> feat/emission-sectors
