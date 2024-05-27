@@ -119,7 +119,7 @@ const TableHeaderInner = styled.span`
 `
 
 const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpanded?: boolean }>`
-  border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.newColors.blue5}` : '')};
+  border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.newColors.blue3}` : '')};
   cursor: ${({ interactive }) => (interactive ? 'pointer' : '')};
   background: ${({ isExpanded, theme }) => (isExpanded ? theme.newColors.black1 : '')};
   z-index: 10;

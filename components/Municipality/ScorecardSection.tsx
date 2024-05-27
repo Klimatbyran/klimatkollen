@@ -9,7 +9,7 @@ import { devices } from '../../utils/devices'
 
 const BorderContainer = styled.details`
   padding: 8px 0;
-  border-bottom: 1px solid ${({ theme }) => theme.newColors.blue4};
+  border-bottom: 1px solid ${({ theme }) => theme.newColors.blue3};
 `
 
 const Row = styled.summary`
