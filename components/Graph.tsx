@@ -97,6 +97,7 @@ function Graph({
   // get last year with historical data (approximated included)
   const lastYearWithData = approximated.length > 0 ? approximated[approximated.length - 1]?.Year : historical[historical.length - 1]?.Year
 
+  // TODO: Use new colors, and match with the legend colors
   return (
     <Container>
       <YAxisTitle>{t('municipality:graphYAxisTitle')}</YAxisTitle>

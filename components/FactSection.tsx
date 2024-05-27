@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { useState } from 'react'
 
 import { H3, ParagraphBold } from './Typography'
-import IconAdd from '../public/icons/add_light_white.svg'
-import IconRemove from '../public/icons/remove_light_white.svg'
+import IconAdd from '../public/icons/add_light.svg'
+import IconRemove from '../public/icons/remove_light.svg'
 import Markdown from './Markdown'
 
 const Row = styled.summary`
@@ -30,13 +30,13 @@ const SectionRight = styled.section`
 `
 
 const InfoHeading = styled(H3)`
-  font-weight: 200;
+  font-weight: 300;
   font-size: inherit;
 `
 
 const InfoSection = styled.div`
-  background: ${({ theme }) => theme.midGreen};
-  color: ${({ theme }) => theme.black};
+  background: ${({ theme }) => theme.newColors.blue3};
+  color: ${({ theme }) => theme.newColors.black3};
   padding: 15px 10px;
   border-radius: 4px;
   margin-bottom: 10px;
@@ -44,6 +44,7 @@ const InfoSection = styled.div`
   & a {
     text-decoration: underline;
     cursor: pointer;
+    font-weight: 600;
   }
 
   & p:first-of-type {

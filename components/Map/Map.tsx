@@ -26,7 +26,7 @@ const TOOLTIP_COMMON_STYLE = {
   backgroundColor: 'black',
   borderRadius: '5px',
   fontSize: '0.7em',
-  color: colorTheme.offWhite,
+  color: colorTheme.newColors.white,
 }
 
 const TOOLTIP_MOBILE_STYLE = {
@@ -246,7 +246,7 @@ function Map({
   return (
     <DeckGLWrapper ref={wrapperRef}>
       <NextNProgress
-        color={colorTheme.darkGreenOne}
+        color={colorTheme.newColors.blue1}
         startPosition={0.3}
         stopDelayMs={20}
         height={5}

@@ -2,14 +2,14 @@ import styled from 'styled-components'
 import { useState } from 'react'
 
 import Markdown from '../Markdown'
-import IconAdd from '../../public/icons/add_light_green.svg'
-import IconRemove from '../../public/icons/remove_light_green.svg'
+import IconAdd from '../../public/icons/add_light.svg'
+import IconRemove from '../../public/icons/remove_light.svg'
 import { Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
 
 const BorderContainer = styled.details`
   padding: 8px 0;
-  border-bottom: 1px solid ${({ theme }) => theme.midGreen};
+  border-bottom: 1px solid ${({ theme }) => theme.newColors.blue4};
 `
 
 const Row = styled.summary`
@@ -49,6 +49,7 @@ const SectionRight = styled.div`
 
 const StyledIcon = styled.div`
   margin-left: 16px;
+  color: ${({ theme }) => theme.newColors.blue3};
 
   &:hover {
     cursor: pointer;

@@ -5,7 +5,6 @@ import { H1NoPad, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 import DropDown from '../DropDown'
-import { devices } from '../../utils/devices'
 import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
@@ -35,10 +34,6 @@ const Bottom = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-
-  @media only screen and (${devices.tablet}) {
-    // flex-direction: row-reverse;
-  }
 `
 
 const DropDownSection = styled.div`
@@ -74,7 +69,7 @@ function Municipality(props: Props) {
 
   return (
     <>
-      <PageWrapper backgroundColor="black2">
+      <PageWrapper>
         <StyledContainer>
           <HeaderSection>
             <BackArrow route="/" />

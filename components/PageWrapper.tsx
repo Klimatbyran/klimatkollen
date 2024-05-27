@@ -1,17 +1,13 @@
 import styled, { css } from 'styled-components'
 import { devices } from '../utils/devices'
 
-type BackgroundColors = 'midGreen' | 'gradient'
-// Replaced
-| 'black' | 'lightBlack'
-// New colors
-| 'black2' | 'black3' | 'transparent'
+type BackgroundColors = 'black2' | 'transparent'
 
 const Wrap = styled.div<{ $background: BackgroundColors }>`
   background: ${({ $background, theme }) => (
     $background === 'transparent'
       ? $background
-      : (theme[$background] ?? theme.newColors[$background])
+      : theme.newColors[$background]
   )};
   width: 100%;
   display: flex;

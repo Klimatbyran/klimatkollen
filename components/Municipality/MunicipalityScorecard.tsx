@@ -62,8 +62,8 @@ const ArrowIcon = styled(Icon)`
 
 const LinkButton = styled.button`
   height: 36px;
-  color: black;
-  background: ${({ theme }) => theme.lightGreen};
+  color: ${({ theme }) => theme.newColors.black3};
+  background: ${({ theme }) => theme.newColors.blue2};
   border-radius: 4px;
   border: 1px solid transparent;
   padding: 0.8rem 1rem 0.8rem 0.8rem;
@@ -72,7 +72,7 @@ const LinkButton = styled.button`
   align-items: center;
   justify-content: center;
   &:hover {
-    background: ${({ theme }) => theme.lightGreen};
+    background: ${({ theme }) => theme.newColors.blue1};
   }
   & a {
     text-decoration: none;
@@ -80,15 +80,14 @@ const LinkButton = styled.button`
   ${({ disabled }) => disabled
     && css`
       color: ${({ theme }) => theme.newColors.black2};
-      background: ${({ theme }) => theme.darkGreenOne};
+      background: ${({ theme }) => theme.newColors.blue3};
       cursor: not-allowed;
 
       /* Remove hover effect */
       &:hover {
-        background: ${({ theme }) => theme.darkGreenOne};
+        background: ${({ theme }) => theme.newColors.blue3};
       }
 
-      /* Set color of ArrowIcon to newColors.black2 */
       & ${ArrowIcon} {
         fill: ${({ theme }) => theme.newColors.black2};
       }

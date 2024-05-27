@@ -8,7 +8,7 @@ import { Square } from '../shared'
 import { devices } from '../../utils/devices'
 
 const Container = styled.div`
-  background: ${({ theme }) => theme.black};
+  background: ${({ theme }) => theme.newColors.black2};
   padding: 1rem;
   border-radius: 16px;
 
@@ -66,7 +66,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
   const totalBudget = municipality.Budget.CO2Equivalent / 1000
   const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year
 
-  // TODO: Use proper number formatting
+  // TODO: use updated colors
   return (
     <Container>
       <H4>{t('municipality:emissionNumbers.title')}</H4>
