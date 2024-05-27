@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import pandas as pd
 
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
 from solutions.cars.electric_vehicle_per_charge_points import (
@@ -54,10 +55,11 @@ sectors = [
     'Jordbruk',
     'Utrikes transporter',
     'Industri (energi + processer)',
-    'Egen uppvärmning av bostäder och lokaler',
+    'Egen uppärmning av bostäder och lokaler',
     'Arbetsmaskiner',
     'Transporter',
-    'El och fjärrvärme', 'Avfall (inkl.avlopp)'
+    'El och fjärrvärme',
+    'Avfall (inkl.avlopp)'
 ]
 
 numeric_columns = [col for col in df.columns if str(col).isdigit()]
@@ -67,39 +69,18 @@ for i in range(len(df)):
     kommun = df.iloc[i]['Kommun']
 
     sectorEmissions = {}
-    if kommun in df[f'1990_{sectors[0]}']:
-        # The cement kommuner don't have this computed.
+    # The cement kommuner don't have this computed so we need to check if the sector exists
+    if not pd.isnull(df.iloc[i][f'{numeric_columns[0]}_{sectors[0]}']):        
         for sector in sectors:
-            sectorEmissions[sector] = {
-                '1990': df[f'1990_{sector}'],
-                '2000': df[f'2000_{sector}'],
-                '2005': df[f'2005_{sector}'],
-                '2010': df[f'2010_{sector}'],
-                '2015': df[f'2015_{sector}'],
-                '2016': df[f'2016_{sector}'],
-                '2017': df[f'2017_{sector}'],
-                '2018': df[f'2018_{sector}'],
-                '2019': df[f'2019_{sector}'],
-                '2020': df[f'2020_{sector}'],
-                '2021': df[f'2021_{sector}'],
-            }
+            sectorEmissions[sector] = {}
+            for year_col in numeric_columns:
+                year = str(year_col)
+                sectorEmissions[sector][year] = df[f'{year}_{sector}']
 
     temp.append({
             'kommun': df.iloc[i]['Kommun'],
             'län': df.iloc[i]['Län'],
-            'emissions': {
-                '1990': df.iloc[i][1990],
-                '2000': df.iloc[i][2000],
-                '2005': df.iloc[i][2005],
-                '2010': df.iloc[i][2010],
-                '2015': df.iloc[i][2015],
-                '2016': df.iloc[i][2016],
-                '2017': df.iloc[i][2017],
-                '2018': df.iloc[i][2018],
-                '2019': df.iloc[i][2019],
-                '2020': df.iloc[i][2020],
-                '2021': df.iloc[i][2021],
-            },
+            'emissions': { str(year): df.iloc[i][year] for year in numeric_columns },
             'sectorEmissions': sectorEmissions,
             'budget': df.iloc[i]['Budget'],
             'emissionBudget': df.iloc[i]['parisPath'],
