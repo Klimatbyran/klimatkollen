@@ -18,31 +18,32 @@ CURRENT_YEAR = 2024              # current year
 
 YEAR_SECONDS = 60 * 60 * 24 * 365   # a year in seconds
 
+CEMENT_DEDUCTION = {
+    'Mörbylånga': {
+        2010: 248025000/1000, 2015: 255970000/1000, 2016: 239538000/1000,
+        2017: 255783000/1000, 2018: 241897000/1000, 2019: 65176000/1000,
+        2020: 0, 2021: 0
+    },
+    'Skövde': {
+        2010: 356965000/1000, 2015: 358634000/1000, 2016: 384926000/1000,
+        2017: 407633130/1000, 2018: 445630340/1000, 2019: 440504330/1000,
+        2020: 459092473/1000, 2021: 439174727/1000
+    },
+    'Gotland': {
+        2010: 1579811000/1000, 2015: 1926036000/1000, 2016: 1903887000/1000,
+        2017: 1757110000/1000, 2018: 1740412000/1000, 2019: 1536480000/1000,
+        2020: 1624463000/1000, 2021: 1621211000/1000
+    }
+}
 
-def get_cement_deduction():
-    return  {'Mörbylånga':
-            {2010: 248025000/1000, 2015: 255970000/1000, 2016: 239538000/1000,
-                2017: 255783000/1000, 2018: 241897000/1000, 2019: 65176000/1000,
-                2020: 0, 2021: 0},
-            'Skövde':
-            {2010: 356965000/1000, 2015: 358634000/1000, 2016: 384926000/1000,
-                2017: 407633130/1000, 2018: 445630340/1000, 2019: 440504330/1000,
-                2020: 459092473/1000, 2021: 439174727/1000},
-            'Gotland':
-            {2010: 1579811000/1000, 2015: 1926036000/1000, 2016: 1903887000/1000,
-                2017: 1757110000/1000, 2018: 1740412000/1000, 2019: 1536480000/1000,
-                2020: 1624463000/1000, 2021: 1621211000/1000}
-            }
 
-
-def deduct_cement(df):
+def deduct_cement(df, cement_deduction):
     # Sources for cement deduction
     # Mörbylånga: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=1441
     # Skövde: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=5932
     # Gotland: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=834
 
     df_cem = df.copy()
-    cement_deduction = get_cement_deduction()
 
     # Deduct cement from given municipalities
     for i in cement_deduction.keys():
@@ -254,7 +255,7 @@ def calculate_budget_runs_out(df):
 def emission_calculations(df):
     df_smhi = get_n_prep_data_from_smhi(df)
 
-    df_cem = deduct_cement(df_smhi)
+    df_cem = deduct_cement(df_smhi, CEMENT_DEDUCTION)
 
     # FIXME also calculate trend coefficients for the sectors
     df_trend_coefficients = calculate_trend_coefficients(df_cem, LAST_YEAR_WITH_SMHI_DATA)
