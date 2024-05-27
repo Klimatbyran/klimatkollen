@@ -27,10 +27,6 @@ const StyledH5 = styled(H5)`
   }
 `
 
-const BottomParent = styled.div`
-  color: ${({ theme }) => theme.black};
-`
-
 const TextContainer = styled.div`
   @media only screen and (${devices.tablet}) {
     width: 45%;
@@ -99,27 +95,25 @@ function Footer() {
           <Partners />
         </Foot>
       </PageWrapper>
-      <PageWrapper backgroundColor="midGreen">
-        <BottomParent>
-          <TextContainer>
-            <Paragraph>{t('footer.tagline')}</Paragraph>
-            <Markdown components={{ p: Copyright }}>{t('footer.license')}</Markdown>
-            <Markdown components={{ p: GHLink }}>{t('footer.developedWith')}</Markdown>
-          </TextContainer>
-          <HorizontalContainer>
-            <SocialLinksContainer>
-              <SocialList />
-            </SocialLinksContainer>
-            <LogoContainer>
-              <img
-                src="/logos/klimatkollen_logo_black.svg"
-                width="100%"
-                loading="lazy"
-                alt="Klimatkollen logo"
-              />
-            </LogoContainer>
-          </HorizontalContainer>
-        </BottomParent>
+      <PageWrapper backgroundColor="black2">
+        <TextContainer>
+          <Paragraph>{t('footer.tagline')}</Paragraph>
+          <Markdown components={{ p: Copyright }}>{t('footer.license')}</Markdown>
+          <Markdown components={{ p: GHLink }}>{t('footer.developedWith')}</Markdown>
+        </TextContainer>
+        <HorizontalContainer>
+          <SocialLinksContainer>
+            <SocialList />
+          </SocialLinksContainer>
+          <LogoContainer>
+            <img
+              src="/logos/klimatkollen_logo.svg"
+              width="100%"
+              loading="lazy"
+              alt="Klimatkollen logo"
+            />
+          </LogoContainer>
+        </HorizontalContainer>
       </PageWrapper>
     </>
   )
