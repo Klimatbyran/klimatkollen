@@ -2,8 +2,17 @@ import numpy as np
 
 
 def calculate_trend_coefficients(df, last_year_with_smhi_data):
-    # Calculate linear trend coefficients for each municipailty based on SMHI data from 2015 onwards
-    # This is done by fitting a straight line to the data using least square fit
+    """
+    Calculate linear trend coefficients for each municipality based on SMHI data from 2015 onwards.
+
+    Parameters:
+    - df: DataFrame containing the data for each municipality.
+    - last_year_with_smhi_data: The last year for which SMHI data is available.
+
+    Returns:
+    - df: DataFrame with an additional column 'trendCoefficients' containing
+          the calculated trend coefficients for each municipality.
+    """
 
     temp = [] # temporary list that we will append to
     df = df.sort_values('Kommun', ascending=True)
@@ -22,12 +31,26 @@ def calculate_trend_coefficients(df, last_year_with_smhi_data):
     return df
 
 
-def calculate_trend(df, last_year_with_smhi_data, currect_year):
+def calculate_trend(df, last_year_with_smhi_data, correct_year):
+    """
+    Calculate the trend line for future years up to 2050 using interpolation
+    and previously calculated linear trend coefficients.
+
+    Args:
+        df (pandas.DataFrame): The input DataFrame containing the data.
+        last_year_with_smhi_data (int): The last year with SMHI data available.
+        correct_year (int): The correct year to start the trend line from.
+
+    Returns:
+        pandas.DataFrame: The input DataFrame with additional columns
+                          for the trend line and trend emission values.
+    """
+
     # Calculate trend line for future years up to 2050
     # This is done by interpolation using previously calculated linear trend coefficients
 
     # Get years between next year and 2050
-    future_years = range(currect_year+1, 2050+1)
+    future_years = range(correct_year+1, 2050+1)
 
     temp = []     # temporary list that we will append to
     df = df.sort_values('Kommun', ascending=True)
@@ -37,26 +60,27 @@ def calculate_trend(df, last_year_with_smhi_data, currect_year):
         last_year_with_data_dict = {last_year_with_smhi_data: df.iloc[i][last_year_with_smhi_data]}
 
         # If approximated historical values exist, overwrite trend dict to start from current year
-        if currect_year > last_year_with_smhi_data:
-            last_year_with_data_dict = {currect_year:
-                df.iloc[i]['approximatedHistorical'][currect_year]}
+        if correct_year > last_year_with_smhi_data:
+            last_year_with_data_dict = {correct_year:
+                df.iloc[i]['approximatedHistorical'][correct_year]}
 
         # Get the trend coefficients
         fit = df.iloc[i]['trendCoefficients']
 
-        for _, year in enumerate(future_years):
+        for year in future_years:
             # Add the trend value for each year using the trend line coefficients. Max function so we don't get negative values
             last_year_with_data_dict[year] = max(0, fit[0]*year+fit[1])
         temp.append(last_year_with_data_dict)
 
     df['trend'] = temp
 
-    # Calculate the total emission from the linear trend using the trapezoidal rule
-    temp = []
-    for i in range(len(df)):
-        temp.append(np.trapz(list(df.iloc[i]['trend'].values()), list(
-            df.iloc[i]['trend'].keys())))
-
+    temp = [
+        np.trapz(
+            list(df.iloc[i]['trend'].values()),
+            list(df.iloc[i]['trend'].keys()),
+        )
+        for i in range(len(df))
+    ]
     df['trendEmission'] = temp
 
     return df

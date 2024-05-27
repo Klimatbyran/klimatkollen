@@ -2,9 +2,19 @@ import numpy as np
 
 
 def calculate_approximated_historical(df, last_year_with_smhi_data, current_year):
-    # Calculate approximated historical data values
-    # for years passed since the last year with SMHI data
-    # This is done by interpolation using previously calculated linear trend coefficients
+    """
+    Calculate approximated historical data values for years passed since the last year with SMHI data.
+    This is done by interpolation using previously calculated linear trend coefficients.
+
+    Args:
+        df (pandas.DataFrame): The input DataFrame containing the data.
+        last_year_with_smhi_data (int): The last year with SMHI data.
+        current_year (int): The current year.
+
+    Returns:
+        pandas.DataFrame: The DataFrame with the approximated historical data values added.
+
+    """
 
     # Get the years passed since last year with SMHI data (including current year)
     approximated_years = range(last_year_with_smhi_data+1, current_year+1)

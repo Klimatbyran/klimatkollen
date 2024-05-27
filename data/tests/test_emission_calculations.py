@@ -134,7 +134,8 @@ class TestEmissionCalculations(unittest.TestCase):
         ]
         df_expected["totalApproximatedHistorical"] = [1560788.47673442]
 
-        df_result = calculate_approximated_historical(df_input, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
+        df_result = calculate_approximated_historical(
+            df_input, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -219,7 +220,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected["budgetShare"] = [0.12539888902021, 0.87460111097979]
         df_expected["Budget"] = [10031911.1216168, 69968088.8783832]
 
-        df_result = calculate_municipality_budgets(df_input, 2021)
+        df_result = calculate_municipality_budgets(df_input, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -296,7 +297,7 @@ class TestEmissionCalculations(unittest.TestCase):
             }
         ]
 
-        df_result = calculate_paris_path(df_input)
+        df_result = calculate_paris_path(df_input, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -318,7 +319,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected = df_input.copy()
         df_expected["historicalEmissionChangePercent"] = [-6.46746990789292]
 
-        df_result = calculate_historical_change_percent(df_input, 2021)
+        df_result = calculate_historical_change_percent(df_input, LAST_YEAR_WITH_SMHI_DATA)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -364,7 +365,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected = df_input.copy()
         df_expected["neededEmissionChangePercent"] = [25.970331351402]
 
-        df_result = calculate_needed_change_percent(df_input)
+        df_result = calculate_needed_change_percent(df_input, CURRENT_YEAR)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -383,7 +384,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected = df_input.copy()
         df_expected["hitNetZero"] = ["Aldrig", datetime.date(2054, 6, 13)]
 
-        df_result = calculate_hit_net_zero(df_input)
+        df_result = calculate_hit_net_zero(df_input, LAST_YEAR_WITH_SMHI_DATA)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 
@@ -431,7 +432,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected = df_input.copy()
         df_expected["budgetRunsOut"] = [datetime.date(2025, 12, 22)]
 
-        df_result = calculate_budget_runs_out(df_input)
+        df_result = calculate_budget_runs_out(df_input, CURRENT_YEAR)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 

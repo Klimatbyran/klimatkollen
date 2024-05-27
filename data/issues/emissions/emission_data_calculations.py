@@ -61,7 +61,7 @@ def deduct_cement(df, cement_deduction):
     return df_cem
 
 
-def calculate_municipality_budgets(df, last_year_in_range):
+def calculate_municipality_budgets(df, last_year_in_range, current_year):
     """
     Calculates the budget for each municipality based on emission data.
 
@@ -81,7 +81,7 @@ def calculate_municipality_budgets(df, last_year_in_range):
     df['Budget'] = BUDGET*df['budgetShare']
 
     # Get years passed since the year the budget starts "eating"
-    all_years_since_budget = list(range(BUDGET_YEAR, CURRENT_YEAR))
+    all_years_since_budget = list(range(BUDGET_YEAR, current_year))
 
     # Separate years with recorded data from years with approximated data
     recorded_years_since_budget = [x for x in all_years_since_budget if x <= last_year_in_range]
@@ -112,7 +112,7 @@ def calculate_municipality_budgets(df, last_year_in_range):
     return df
 
 
-def calculate_paris_path(df):
+def calculate_paris_path(df, last_year_in_range, current_year):
     """
     Calculate the exponential curve that satisfies each municipality's budget.
 
@@ -127,7 +127,7 @@ def calculate_paris_path(df):
 
     # Year from which the budget applies
     # (after correction with respect to years passed since budget start)
-    first_year = max(BUDGET_YEAR, CURRENT_YEAR)
+    first_year = max(BUDGET_YEAR, current_year)
 
     temp = []
     for i in range(len(df)):
@@ -141,7 +141,7 @@ def calculate_paris_path(df):
             # Calculate what the emission level has to be at future year
             # if one were to follow the exponential decay curve
             # If data has been recorded for the year the budget kicks in, use recorded values
-            if first_year <= LAST_YEAR_WITH_SMHI_DATA:
+            if first_year <= last_year_in_range:
                 dicts[year] = df.iloc[i][first_year] * \
                     np.exp(-(df.iloc[i][first_year]) /
                         (df.iloc[i]['Budget'])*(year-first_year))
@@ -156,7 +156,7 @@ def calculate_paris_path(df):
     return df
 
 
-def calculate_historical_change_percent(df):
+def calculate_historical_change_percent(df, last_year_in_range):
     """
     Calculate the historical average emission level change based on SMHI data from 2015 onwards.
 
@@ -173,7 +173,7 @@ def calculate_historical_change_percent(df):
     df = df.sort_values('Kommun', ascending=True)
     for i in range(len(df)):
         # Get the years we will use for the average
-        years = np.arange(2015, LAST_YEAR_WITH_SMHI_DATA+1)
+        years = np.arange(2015, last_year_in_range+1)
         # Get the emissions from the years specified in the line above
         emissions = np.array(df.iloc[i][years], dtype=float)
         # Calculate diff (in percent) between each successive year
@@ -189,7 +189,7 @@ def calculate_historical_change_percent(df):
 
     return df
 
-def calculate_needed_change_percent(df):
+def calculate_needed_change_percent(df, current_year):
     """
     Calculate the needed yearly emission level decrease to reach the Paris goal.
 
@@ -203,7 +203,7 @@ def calculate_needed_change_percent(df):
     """
 
     # Year from which the paris path starts
-    first_year = max(BUDGET_YEAR, CURRENT_YEAR)
+    first_year = max(BUDGET_YEAR, current_year)
 
     temp = []
     for i in range(len(df)):
@@ -216,7 +216,7 @@ def calculate_needed_change_percent(df):
     return df
 
 
-def calculate_hit_net_zero(df):
+def calculate_hit_net_zero(df, last_year_in_range):
     """
     Calculates the date and year for when each municipality hits net zero emissions (if so).
     This is done by deriving where the linear trend line crosses the time axis.
@@ -231,7 +231,7 @@ def calculate_hit_net_zero(df):
 
     temp = []  # temporary list that we will append to
     for i in range(len(df)):
-        last_year = LAST_YEAR_WITH_SMHI_DATA  # last year with recorded data
+        last_year = last_year_in_range  # last year with recorded data
         # Get trend line coefficients
         fit = df.iloc[i]['trendCoefficients']
 
@@ -253,7 +253,7 @@ def calculate_hit_net_zero(df):
     return df
 
 
-def calculate_budget_runs_out(df):
+def calculate_budget_runs_out(df, current_year):
     """
     Calculate the year and date for when the CO2 budget runs out for each municipality (if so).
     This is done by integrating the trend line over the time it takes for the budget to be
@@ -269,7 +269,7 @@ def calculate_budget_runs_out(df):
 
     # Year from which the budget applies
     # (after correction with respect to years passed since budget start)
-    budget_start_year = max(BUDGET_YEAR, CURRENT_YEAR)
+    budget_start_year = max(BUDGET_YEAR, current_year)
 
     temp = []  # temporary list that we will append to
     for i in range(len(df)):
@@ -346,13 +346,13 @@ def emission_calculations(df):
         LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR
     )
 
-    df_budgeted = calculate_municipality_budgets(df_trend, LAST_YEAR_WITH_SMHI_DATA)
-    df_paris = calculate_paris_path(df_budgeted)
+    df_budgeted = calculate_municipality_budgets(df_trend, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
+    df_paris = calculate_paris_path(df_budgeted, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
 
-    df_historical_change_percent = calculate_historical_change_percent(df_paris)
-    df_needed_change_percent = calculate_needed_change_percent(df_historical_change_percent)
+    df_historical_change_percent = calculate_historical_change_percent(df_paris, LAST_YEAR_WITH_SMHI_DATA)
+    df_needed_change_percent = calculate_needed_change_percent(df_historical_change_percent, CURRENT_YEAR)
 
-    df_net_zero = calculate_hit_net_zero(df_needed_change_percent)
-    df_budget_runs_out = calculate_budget_runs_out(df_net_zero)
+    df_net_zero = calculate_hit_net_zero(df_needed_change_percent, LAST_YEAR_WITH_SMHI_DATA)
+    df_budget_runs_out = calculate_budget_runs_out(df_net_zero, CURRENT_YEAR)
 
     return df_budget_runs_out
