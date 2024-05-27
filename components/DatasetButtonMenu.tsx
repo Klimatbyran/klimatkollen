@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { DataDescriptions, DatasetKey } from '../utils/types'
 import { devices } from '../utils/devices'
 
@@ -20,7 +20,7 @@ const Button = styled.button<{active: boolean}>`
   font-size: 16px;
   font-weight: 400;
   text-decoration: none;
-  color: ${({ theme }) => theme.offWhite};
+  color: ${({ theme }) => theme.newColors.white};
   background: ${({ theme }) => theme.newColors.black2};
   border: none;
   border-radius: 8px;
@@ -29,18 +29,14 @@ const Button = styled.button<{active: boolean}>`
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.darkGreenTwo};
+    color: ${({ theme }) => theme.newColors.black3};
+    background: ${({ theme }) => theme.newColors.blue1};
   }
 
-  ${({ theme, active }) => active && `
-    color: ${theme.black};
-    background: ${theme.midGreen};
-
-    &:hover {
-      background-color: ${theme.lightGreen};
-  }
+  ${({ theme, active }) => active && css`
+    color: ${theme.newColors.black3};
+    background: ${theme.newColors.blue2} !important;
   `}
-
 `
 
 type MenuProps = {

@@ -48,7 +48,7 @@ const InfoText = styled.div`
 `
 
 const ParagraphSource = styled(Paragraph)`
-  color: ${({ theme }) => theme.grey};
+  color: ${({ theme }) => theme.newColors.gray};
   margin: 0;
 `
 

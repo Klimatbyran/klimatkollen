@@ -40,7 +40,7 @@ const StyledTable = styled.table`
   }
 
   .data-column {
-    color: ${({ theme }) => theme.darkYellow};
+    color: ${({ theme }) => theme.newColors.orange3};
     text-align: right;
   }
 
@@ -87,7 +87,7 @@ const TableHeader = styled.th`
   font-weight: 400;
   text-align: left;
   cursor: pointer;
-  background: ${({ theme }) => theme.black};
+  background: ${({ theme }) => theme.newColors.black3};
   font-size: 0.75rem;
   z-index: 40;
 
@@ -119,14 +119,14 @@ const TableHeaderInner = styled.span`
 `
 
 const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpanded?: boolean }>`
-  border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.midGreen}` : '')};
+  border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.newColors.blue5}` : '')};
   cursor: ${({ interactive }) => (interactive ? 'pointer' : '')};
-  background: ${({ isExpanded, theme }) => (isExpanded ? `${theme.black}88` : '')};
+  background: ${({ isExpanded, theme }) => (isExpanded ? theme.newColors.black1 : '')};
   z-index: 10;
 `
 
 const SortingIcon = styled(ArrowIcon)`
-  color: ${({ theme }) => theme.midGreen};
+  color: ${({ theme }) => theme.newColors.blue3};
 `
 
 type TableProps<T extends object> = {

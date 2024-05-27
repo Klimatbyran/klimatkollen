@@ -8,7 +8,7 @@ const ToggleBtn = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-  color: ${({ theme }) => theme.offWhite};
+  color: ${({ theme }) => theme.newColors.white};
   background: transparent;
   border-radius: 4px;
   border: none;
@@ -34,7 +34,7 @@ const ToggleText = styled.p`
 const IconContainer = styled.div`
   border-radius: 8px;
   border: none;
-  background: ${({ theme }) => theme.midGreen};
+  background: ${({ theme }) => theme.newColors.blue2};
   padding: 8px 8px 5px 8px;
 `
 
