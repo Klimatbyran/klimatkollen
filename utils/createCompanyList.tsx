@@ -23,7 +23,7 @@ const ScopeColumn = styled.span<{ isMissing: boolean }>`
     gap: 0.5rem;
   }
 
-  color: ${({ isMissing, theme }) => (isMissing ? 'gray' : theme.darkYellow)};
+  color: ${({ isMissing, theme }) => (isMissing ? theme.newColors.gray : theme.newColors.orange3)};
   font-style: ${({ isMissing }) => (isMissing ? 'italic' : 'normal')};
   font-size: ${({ isMissing }) => (isMissing ? '0.875em' : '0.9375em')};
 `

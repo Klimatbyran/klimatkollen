@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { colorTheme } from '../Theme'
 
+// TODO: replace with blue scale
 export const mapColors = [
   colorTheme.red,
   colorTheme.orange,
@@ -13,7 +14,6 @@ export const mapColors = [
 
 export const IconButton = styled.button`
   border: none;
-  background-color: none;
   cursor: pointer;
   background-color: inherit;
   color: ${({ theme }) => theme.offWhite};
@@ -24,6 +24,7 @@ export const IconButton = styled.button`
   gap: 1rem;
 `
 
+// TODO: check where this is used
 export const Square = styled.div<{ color: string }>`
   background-color: ${(props) => props.color};
   border-radius: 4px;

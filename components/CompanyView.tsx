@@ -72,7 +72,7 @@ const DetailsHeader = styled.div`
 
   p {
     font-style: italic;
-    color: gray;
+    color: ${({ theme }) => theme.newColors.gray};
     padding-top: 0.5rem;
   }
 

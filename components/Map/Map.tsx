@@ -23,7 +23,7 @@ const INITIAL_VIEW_STATE = {
 }
 
 const TOOLTIP_COMMON_STYLE = {
-  backgroundColor: 'black',
+  backgroundColor: colorTheme.newColors.black3,
   borderRadius: '5px',
   fontSize: '0.7em',
   color: colorTheme.newColors.white,
@@ -129,7 +129,7 @@ function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
         src="/icons/info.svg"
         alt="info icon"
         style={{
-          color: '#fff', height: 14, width: 14, marginRight: 4,
+          color: colorTheme.newColors.white, height: 14, width: 14, marginRight: 4,
         }}
       />
       <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}`}</span>

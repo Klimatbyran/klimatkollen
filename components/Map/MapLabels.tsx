@@ -28,7 +28,7 @@ const LabelBox = styled.div`
 `
 
 const ArrowIcon = styled(Icon)<{ $rotateUp?: boolean }>`
-  color: black;
+  color: ${({ theme }) => theme.newColors.black3};
   position: absolute;
   z-index: 1;
   margin: auto;
