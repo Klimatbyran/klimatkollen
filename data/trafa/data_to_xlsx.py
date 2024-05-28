@@ -11,9 +11,9 @@ def process_json_files(folder_path = 'data/trafa/downloads', output_file= 'data/
     column_names = { 
         'ar': 'År',
         'regkom': 'Kommun', # type: ignore
-        'nyregunder_El': 'Elbilar ',
-        'nyregunder_Laddhybrid': 'Laddhybrider ',
-        'totalt': 'Totalt laddbara bilar ',
+        'nyregunder_El': 'Elbilar',
+        'nyregunder_Laddhybrid': 'Laddhybrider',
+        'totalt': 'Totalt',
     }
     # Get a list of all JSON files in the folder
     json_files = [file for file in os.listdir(folder_path) if file.endswith('.json')]
@@ -64,22 +64,11 @@ def process_json_files(folder_path = 'data/trafa/downloads', output_file= 'data/
         
         # add column 'totalt' to the DataFrame by summing the values of 'Elbilar' and 'Laddhybrider'
         pivot_data['totalt'] = pivot_data.apply(lambda row: int(row['nyregunder_El'] or 0) + int(row['nyregunder_Laddhybrid'] or 0), axis=1)
-    
-        pivot_data = pivot_data.rename(columns=lambda x: f"{column_names[x]}{year}" if x in column_names and x != 'regkom' else column_names["regkom"] if x == 'regkom' else x)
         
-    
-        
-        
-        # Add a row to the DataFrame with the total values
-        
-
-        
-        
-        
-        print(pivot_data)
+        # Rename the columns
+        pivot_data = pivot_data.rename(columns=lambda x: f"{column_names[x]}" if x in column_names and x != 'regkom' else column_names["regkom"] if x == 'regkom' else x)        
         # Write the DataFrame to a new sheet in the Excel file
         pivot_data.to_excel(writer, sheet_name=os.path.splitext(file)[0], index=False)
-        
 
     # Save the Excel file
     writer.close()
