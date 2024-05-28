@@ -43,7 +43,7 @@ const StyledInput = styled.input`
   outline: none;
   width: 325px;
 
-  ::placeholder {
+  &::placeholder {
     color: ${({ theme }) => theme.newColors.black2};
   }
 `

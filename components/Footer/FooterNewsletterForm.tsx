@@ -77,11 +77,7 @@ const StyledInput = styled.input`
   background: transparent;
   height: var(--form-height);
 
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.newColors.black3};
-  }
-  :-ms-input-placeholder {
+  &::placeholder {
     color: ${({ theme }) => theme.newColors.black3};
   }
 `
