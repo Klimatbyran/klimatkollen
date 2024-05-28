@@ -72,7 +72,6 @@ const FloatingH5 = styled(H5Regular)`
   position: absolute;
   top: 8px;
   left: 8px;
-  /* margin: 60px 0 0 8px; */
   z-index: 200;
   font-size: 1rem;
   padding: 4px 8px;
@@ -84,10 +83,6 @@ const FloatingH5 = styled(H5Regular)`
 
   @media only screen and (${devices.smallMobile}) {
     font-size: 1.125rem;
-  }
-
-  @media only screen and (${devices.tablet}) {
-    /* margin-bottom: 16px; */
   }
 `
 
