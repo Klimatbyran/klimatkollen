@@ -4,7 +4,7 @@ import json
 
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
 from solutions.cars.electric_vehicle_per_charge_points import get_electric_vehicle_per_charge_points
-from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
+from solutions.bicycles.bicycle_data_calculations import calculate_bike_lane_per_capita
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
 from facts.procurements.climate_requirements_in_procurements import get_procurement_data
@@ -28,7 +28,8 @@ print('3. Hybrid car data and calculations added')
 df = get_climate_plans(df)
 print('4. Climate plans added')
 
-df = bicycle_calculations(df)
+df_bikes = calculate_bike_lane_per_capita()
+df = df.merge(df_bikes, on='Kommun', how='left')
 print('5. Bicycle data added')
 
 df = get_consumption_emissions(df)
