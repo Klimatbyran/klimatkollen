@@ -102,7 +102,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale as string, ['common']),
+    ...(await serverSideTranslations(locale as string, ['common'])),
   },
 })
 

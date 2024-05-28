@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios, { AxiosError } from 'axios'
 import fs from 'fs'
 import readline from 'readline'
@@ -196,7 +197,7 @@ const isEmptyWorktree = () => new Promise<boolean>((resolve, reject) => {
       reject(error)
     } else {
       if (stdout.trim() !== '') {
-        console.error('%s: (ERROR)There are uncommitted changes in the repository. Please commit or stash them before running this script.', TIMESTAMP)
+        console.error('%s: (ERROR) Uncommitted changes in the repository. Please commit or stash them before running this script.', TIMESTAMP)
         resolve(false)
       }
       resolve(true)
