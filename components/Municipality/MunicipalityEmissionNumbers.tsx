@@ -66,7 +66,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
   const totalBudget = municipality.Budget.CO2Equivalent / 1000
   const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year
 
-  // TODO: use updated colors
+  // TODO: use updated colors, and these should be connected with the graph
   return (
     <Container>
       <H4>{t('municipality:emissionNumbers.title')}</H4>

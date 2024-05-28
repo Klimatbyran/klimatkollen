@@ -15,7 +15,7 @@ export const IconButton = styled.button`
   border: none;
   cursor: pointer;
   background-color: inherit;
-  color: ${({ theme }) => theme.offWhite};
+  color: ${({ theme }) => theme.newColors.white};
   font-size: 16px;
   line-height: 20px;
   display: flex;

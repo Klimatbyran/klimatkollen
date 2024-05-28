@@ -131,7 +131,6 @@ const namedColors2024 = {
   pink5: colors2024.pink[950],
 }
 
-// TODO: update colors in SVGs, or even better make them use currentColor
 export const colorTheme = {
   newColors: namedColors2024,
   huePalette: colors2024,
