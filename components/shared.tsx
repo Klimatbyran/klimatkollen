@@ -4,11 +4,11 @@ import { colorTheme } from '../Theme'
 
 export const mapColors = [
   colorTheme.newColors.blue5,
+  colorTheme.huePalette.blue[850],
   colorTheme.newColors.blue4,
   colorTheme.newColors.blue3,
   colorTheme.newColors.blue2,
   colorTheme.newColors.blue1,
-  colorTheme.newColors.white,
 ]
 
 export const IconButton = styled.button`

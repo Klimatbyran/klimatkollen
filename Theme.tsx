@@ -134,6 +134,7 @@ const namedColors2024 = {
 // TODO: update colors in SVGs, or even better make them use currentColor
 export const colorTheme = {
   newColors: namedColors2024,
+  huePalette: colors2024,
 
   black: '#181818', // replace with black3
   lightBlack: '#262626', // replace with black2
