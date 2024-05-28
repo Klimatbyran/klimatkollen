@@ -57,7 +57,7 @@ const ArrowIcon = styled(Icon)`
   right: 0;
   top: 0;
   bottom: 0;
-  fill: black;
+  fill: ${({ theme }) => theme.newColors.black3};
 `
 
 const LinkButton = styled.button`
