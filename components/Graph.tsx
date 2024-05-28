@@ -11,8 +11,9 @@ import {
 import { useMemo } from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
-import { EmissionPerYear } from '../utils/types'
+import { useTranslation } from 'next-i18next'
 
+import { EmissionPerYear } from '../utils/types'
 import { colorTheme } from '../Theme'
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip)
@@ -62,41 +63,42 @@ const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYea
 type Props = {
   step: number
   historical: EmissionPerYear[]
+  approximated: EmissionPerYear[]
   trend: EmissionPerYear[]
   budget: EmissionPerYear[]
   maxVisibleYear: number
 }
 
 function Graph({
-  step, historical, budget, trend, maxVisibleYear,
+  step, historical, approximated, budget, trend, maxVisibleYear,
 }: Props) {
+  const { t } = useTranslation()
   const setup = useMemo(
-    () => getSetup([historical, trend, budget]),
-    [historical, trend, budget],
+    () => getSetup([historical, approximated, trend, budget]),
+    [historical, approximated, trend, budget],
   )
 
-  const historicalDataset: Dataset = useMemo(
-    () => emissionPerYearToDataset(historical),
-    [historical],
-  )
-  const pledgeDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
+  const historicalDataset: Dataset = useMemo(() => emissionPerYearToDataset(historical), [historical])
+  const approximatedDataset: Dataset = useMemo(() => emissionPerYearToDataset(approximated), [approximated])
+  const trendDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
-      Math.max(budgetDataset.length, pledgeDataset.length, historicalDataset.length)
+      Math.max(budgetDataset.length, trendDataset.length, approximatedDataset.length, historicalDataset.length)
       > setup.labels.length
     ) {
       throw new Error('Dataset length larger than label length')
     }
   }
 
-  const lastYearWithData = historical[historical.length - 1]?.Year
+  // get last year with historical data (approximated included)
+  const lastYearWithData = approximated.length > 0 ? approximated[approximated.length - 1]?.Year : historical[historical.length - 1]?.Year
 
   return (
     <Container>
-      <YAxisTitle>Tusen ton CO₂</YAxisTitle>
+      <YAxisTitle>{t('municipality:graphYAxisTitle')}</YAxisTitle>
       <Line
         datasetIdKey="id"
         data={{
@@ -107,6 +109,19 @@ function Graph({
               id: 'historical',
               fill: true,
               data: historicalDataset,
+              borderWidth: 2,
+              borderColor: colorTheme.orange,
+              backgroundColor: colorTheme.darkOrangeOpaque,
+              pointRadius: 0,
+              tension: 0.15,
+              hidden: false,
+            },
+            {
+              // @ts-ignore
+              id: 'approximated',
+              fill: true,
+              data: approximatedDataset,
+              borderDash: [2, 2],
               borderWidth: 2,
               borderColor: colorTheme.orange,
               backgroundColor: colorTheme.darkOrangeOpaque,
@@ -130,7 +145,7 @@ function Graph({
               // @ts-ignore
               id: 'pledge',
               fill: true,
-              data: pledgeDataset,
+              data: trendDataset,
               borderWidth: 2,
               borderColor: colorTheme.red,
               backgroundColor: colorTheme.darkRedOpaque,

@@ -9,6 +9,7 @@ import {
   Emission,
   Trend,
   ClimatePlan,
+  ApproximatedEmission,
 } from './types'
 
 const CLIMATE_DATA_FILE_PATH = path.resolve('./data/output/climate-data.json')
@@ -40,6 +41,16 @@ export class ClimateDataService {
           HistoricalEmissionChangePercent: data.historicalEmissionChangePercent,
         } as Emission
 
+        const approximatedEmission = {
+          TotalCO2Emission: data.totalApproximatedHistoricalEmission,
+          EmissionPerYear: Object.entries(data.approximatedHistoricalEmission).map(
+            ([year, co2equivalent]) => ({
+              Year: Number(year),
+              CO2Equivalent: co2equivalent,
+            }),
+          ),
+        } as unknown as ApproximatedEmission
+
         const trend = {
           TrendCO2Emission: data.trendEmission,
           TrendPerYear: Object.entries(data.trend).map(([year, emissionTrend]) => ({
@@ -49,7 +60,6 @@ export class ClimateDataService {
         } as unknown as Trend
 
         const budget = {
-          PercentageOfNationalBudget: 1,
           CO2Equivalent: data.budget,
           BudgetPerYear: Object.entries(data.emissionBudget).map(
             ([year, emissionBudget]) => ({
@@ -65,9 +75,10 @@ export class ClimateDataService {
           Comment: data.climatePlanComment,
         } as unknown as ClimatePlan
 
-        const municipality = {
+        return {
           Name: data.kommun,
           HistoricalEmission: emission,
+          ApproximatedHistoricalEmission: approximatedEmission,
           EmissionTrend: trend,
           Budget: budget,
           NeededEmissionChangePercent: data.neededEmissionChangePercent,
@@ -79,13 +90,14 @@ export class ClimateDataService {
           BicycleMetrePerCapita: data.bicycleMetrePerCapita,
           TotalConsumptionEmission: data.totalConsumptionEmission / 1000,
           ElectricVehiclePerChargePoints: data.electricVehiclePerChargePoints,
+          ProcurementScore: data.procurementScore,
+          ProcurementLink: data.procurementLink,
         } as Municipality
-        return municipality
       })
-      .sort((a: Municipality, b: Municipality) => (
-        a.HistoricalEmission.HistoricalEmissionChangePercent
-          - b.HistoricalEmission.HistoricalEmissionChangePercent
-      ))
+      .sort(
+        (a: Municipality, b: Municipality) => a.HistoricalEmission.HistoricalEmissionChangePercent
+          - b.HistoricalEmission.HistoricalEmissionChangePercent,
+      )
     this.municipalities.forEach((municipality: Municipality, index: number) => {
       const updatedMunicipality = { ...municipality }
       updatedMunicipality.HistoricalEmission.HistoricalEmissionChangeRank = index + 1
@@ -94,12 +106,13 @@ export class ClimateDataService {
   }
 
   public getMunicipalities(): Array<Municipality> {
+    if (this.municipalities.length < 1) {
+      throw new Error('No municipalities found')
+    }
     return this.municipalities
   }
 
   public getMunicipality(name: string): Municipality {
-    return this.municipalities.filter(
-      (kommun) => kommun.Name.toLowerCase() === name,
-    )[0]
+    return this.municipalities.filter((kommun) => kommun.Name.toLowerCase() === name)[0]
   }
 }

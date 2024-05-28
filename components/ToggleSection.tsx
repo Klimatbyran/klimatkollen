@@ -2,26 +2,38 @@ import { useState } from 'react'
 import styled from 'styled-components'
 
 import { H5 } from './Typography'
-import ArrowUp from '../public/icons/arrow-up-green.svg'
-import ArrowDown from '../public/icons/arrow-down-round.svg'
+import ArrowSvg from '../public/icons/arrow-down-round.svg'
+import { colorTheme } from '../Theme'
+import Markdown from './Markdown'
 
-const TextSection = styled.div`
+const TextSection = styled.details`
   display: flex;
   flex-direction: column;
 
   gap: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
 `
 
-const HeaderSection = styled.div`
+const Arrow = styled(ArrowSvg)<{ open: boolean }>`
+  transform: rotate(${(props) => (props.open ? '180deg' : '0')});
+
+  & path {
+    fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
+  }
+`
+
+const HeaderSection = styled.summary`
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  list-style: none; /* remove default arrow in Firefox */
+  padding: 0.5rem 0;
 
-  & .arrow {
-    display: block;
+  &::-webkit-details-marker {
+    display: none; /* remove default arrow in Chrome */
   }
 
-  :hover {
+  &:hover {
     cursor: pointer;
   }
 `
@@ -29,42 +41,25 @@ const HeaderSection = styled.div`
 const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
-
-  .mobile {
-    background: black;
-  }
-
-  .desktop {
-    background: yellow;
-  }
 `
 
 type Props = {
   header: string
-  text: JSX.Element
+  text: JSX.Element | string
 }
 
 function ToggleSection({ header, text }: Props) {
-  const [toggle, setToggle] = useState(false)
+  const [open, setOpen] = useState<boolean>(false)
 
   return (
-    <TextSection>
-      <HeaderSection onClick={() => setToggle(!toggle)}>
+    <TextSection onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)}>
+      <HeaderSection>
         <H5>{header}</H5>
-        {toggle ? (
-          <ArrowUp className="arrow" onClick={() => setToggle(!toggle)} />
-        ) : (
-          <ArrowDown
-            className="arrow"
-            onClick={() => setToggle(!toggle)}
-          />
-        )}
+        <Arrow open={open} />
       </HeaderSection>
-      {toggle && (
       <InfoSection>
-        {text}
+        {typeof text === 'string' ? <Markdown>{text}</Markdown> : text}
       </InfoSection>
-      )}
     </TextSection>
   )
 }

@@ -1,21 +1,28 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 
-import Icon from '../../public/icons/add_light_green.svg'
-import IconGreen from '../../public/icons/remove_light_green.svg'
+import Markdown from '../Markdown'
+import IconAdd from '../../public/icons/add_light_green.svg'
+import IconRemove from '../../public/icons/remove_light_green.svg'
 import { Paragraph } from '../Typography'
 import { devices } from '../../utils/devices'
 
-const BorderContainer = styled.div`
+const BorderContainer = styled.details`
   padding: 8px 0;
   border-bottom: 1px solid ${({ theme }) => theme.midGreen};
 `
 
-const Row = styled.div`
+const Row = styled.summary`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  list-style: none; /* remove default arrow in Firefox */
+  &::-webkit-details-marker {
+    display: none; /* remove default arrow in Chrome */
+  }
 `
 
 const InfoParagraph = styled(Paragraph)`
@@ -51,32 +58,32 @@ const StyledIcon = styled.div`
 type Props = {
   heading: string
   data: string
-  info?: string | JSX.Element | string
+  info?: string
 }
 
 function ScorecardSection({ heading, data, info }: Props) {
   const [toggle, setToggle] = useState(false)
 
+  const onToggle = () => setToggle(!toggle)
+
   return (
-    <BorderContainer>
+    <BorderContainer onToggle={onToggle}>
       <Row>
         <StyledParagraph>{heading}</StyledParagraph>
         <StyledParagraph>{data}</StyledParagraph>
         {info && (
         <SectionRight>
-          <StyledIcon onClick={() => setToggle(!toggle)}>
-            {toggle ? <IconGreen /> : <Icon />}
+          <StyledIcon>
+            {toggle ? <IconRemove /> : <IconAdd />}
           </StyledIcon>
         </SectionRight>
         )}
       </Row>
-      <section>
-        {toggle ? (
-          <InfoParagraph>
-            {info}
-          </InfoParagraph>
-        ) : null}
-      </section>
+      {toggle ? (
+        <Markdown components={{ p: InfoParagraph }}>
+          {info}
+        </Markdown>
+      ) : null}
     </BorderContainer>
   )
 }

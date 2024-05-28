@@ -1,2 +1,7 @@
-pandas
 numpy
+pandas
+xlrd
+openpyxl
+pyarrow
+scipy
+pytest

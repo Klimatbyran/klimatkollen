@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 import { devices } from '../utils/devices'
 
 const HeaderContainer = styled.header`
+  --header-padding: 0.5rem;
+  --btn-size: 2rem;
+
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: var(--header-padding);
   background-color: ${({ theme }) => theme.midGreen};
   z-index: 1000;
-
-  @media only screen and (${devices.mobile}) {
-    padding: 8px;
-  }
 `
 
 const LogoContainer = styled.div`
@@ -25,6 +25,8 @@ const LogoContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  height: var(--btn-size);
+  padding-top: 4px;
 `
 
 const NavigationList = styled.ul`
@@ -33,8 +35,10 @@ const NavigationList = styled.ul`
   @media only screen and (${devices.laptop}) {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-left: auto;
+    height: var(--btn-size);
+    align-items: center;
   }
 `
 
@@ -55,6 +59,7 @@ const NavigationLink = styled.a`
 const HamburgerMenu = styled.div`
   display: block;
   margin-left: auto;
+  height: var(--btn-size);
 
   @media only screen and (${devices.laptop}) {
     display: none;
@@ -64,6 +69,8 @@ const HamburgerMenu = styled.div`
 const HamburgerButton = styled.button`
   border: none;
   background: transparent;
+  height: var(--btn-size);
+  width: var(--btn-size);
 `
 
 const FullScreenMenu = styled.div`
@@ -79,17 +86,21 @@ const FullScreenMenu = styled.div`
   padding: 3rem 1rem 1rem 1rem;
 
   @media only screen and (${devices.tablet}) {
-    padding-top: 4rem;
+    padding-top: 3rem;
   }
 `
 
 const CloseButtonContainer = styled.div`
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: var(--header-padding);
+  right: var(--header-padding);
+  height: var(--btn-size);
+  width: var(--btn-size);
 
-  @media only screen and ($(devices.tablet)) {
-    top: 1.2rem;
+  & ${HamburgerButton} {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 `
 
@@ -120,15 +131,28 @@ type NavItem = {
   target?: string;
 }
 
-const navigationItems: NavItem[] = [
-  { href: '/kallor-och-metod', label: 'Källor och metod' },
-  { href: '/om-oss', label: 'Om oss' },
-  { href: 'https://klimatkollen.teamtailor.com/', label: 'Jobb', target: '_blank' },
-  { href: '/in-english', label: 'In English' },
-]
-
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    const closeMenuListener = (event: KeyboardEvent) => {
+      if (menuOpen && event.key === 'Escape') {
+        setMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', closeMenuListener)
+
+    return () => window.removeEventListener('keydown', closeMenuListener)
+  }, [menuOpen, setMenuOpen])
+
+  const navigationItems: NavItem[] = [
+    { href: '/kallor-och-metod', label: t('common:components.Header.method') },
+    { href: '/om-oss', label: t('common:components.Header.about') },
+    { href: 'https://klimatkollen.teamtailor.com/', label: t('common:components.Header.jobs'), target: '_blank' },
+    { href: '/in-english', label: t('common:components.Header.english') },
+  ]
 
   return (
     <HeaderContainer>
@@ -138,7 +162,7 @@ function Header() {
           <Image
             src="/logos/klimatkollen_logo_black.svg"
             width="150"
-            height="30"
+            height="32"
             alt="Klimatkollen logotyp"
           />
         </LogoContainer>
@@ -153,13 +177,13 @@ function Header() {
       </NavigationList>
       <HamburgerMenu>
         <HamburgerButton type="button" onClick={() => setMenuOpen(!menuOpen)}>
-          <Image src="/icons/menu.svg" width="30" height="30" alt="Menu" />
+          <Image src="/icons/menu.svg" width="32" height="32" alt={t('common:components.Header.menu')} />
         </HamburgerButton>
         {menuOpen && (
           <FullScreenMenu>
             <CloseButtonContainer>
               <HamburgerButton type="button" onClick={() => setMenuOpen(false)}>
-                <Image src="/icons/close_round.svg" width="20" height="20" alt="Stäng" />
+                <Image src="/icons/close_round.svg" width="32" height="32" alt={t('common:actions.close')} />
               </HamburgerButton>
             </CloseButtonContainer>
             <Separator />

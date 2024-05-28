@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useTranslation } from 'next-i18next'
 import { devices } from '../../utils/devices'
 
 const ContactList = styled.ul`
@@ -50,13 +51,14 @@ export function SocialListItem({
 }
 
 function SocialList() {
+  const { t } = useTranslation()
   return (
     <ContactList>
       <SocialListItem
         icon="/icons/icon_mail_circle.svg"
         alt="Email icon"
         link="mailto:hej@klimatkollen.se"
-        text="Maila oss"
+        text={t('footer.email-us')}
       />
       <SocialListItem
         icon="/icons/some/x_circle.svg"
@@ -81,10 +83,17 @@ function SocialList() {
         </ContactLink>
       </ContactListItem>
       <SocialListItem
-        icon="/icons/some/discord.svg" // Assuming you have a Discord logo
+        icon="/icons/some/discord.svg"
         alt="Discord logo"
         link="https://discord.gg/FPX9yqYAmk"
         text="Discord"
+      />
+
+      <SocialListItem
+        icon="/icons/some/Instagram_Glyph_Black.svg"
+        alt="Instagram icon"
+        link="https://instagram.com/klimatkollen.se"
+        text="Instagram"
       />
     </ContactList>
   )
