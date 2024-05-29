@@ -44,6 +44,7 @@ const DropDownSection = styled.div`
   margin-top: 30px;
   text-align: center;
   align-items: center;
+  padding-bottom: 6rem;
 `
 
 type Props = {
