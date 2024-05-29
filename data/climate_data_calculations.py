@@ -42,23 +42,13 @@ df_procurements = get_procurement_data()
 df = df.merge(df_procurements, on='Kommun', how='left')
 print('8. Climate requirements in procurements added')
 
+numeric_columns = [col for col in df.columns if str(col).isdigit()]
+
 temp = [
     {
         'kommun': df.iloc[i]['Kommun'],
         'län': df.iloc[i]['Län'],
-        'emissions': {
-            '1990': df.iloc[i][1990],
-            '2000': df.iloc[i][2000],
-            '2005': df.iloc[i][2005],
-            '2010': df.iloc[i][2010],
-            '2015': df.iloc[i][2015],
-            '2016': df.iloc[i][2016],
-            '2017': df.iloc[i][2017],
-            '2018': df.iloc[i][2018],
-            '2019': df.iloc[i][2019],
-            '2020': df.iloc[i][2020],
-            '2021': df.iloc[i][2021],
-        },
+        'emissions': { str(year): df.iloc[i][year] for year in numeric_columns },
         'budget': df.iloc[i]['Budget'],
         'emissionBudget': df.iloc[i]['parisPath'],
         'approximatedHistoricalEmission': df.iloc[i]['approximatedHistorical'],

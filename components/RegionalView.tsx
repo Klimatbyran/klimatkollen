@@ -22,12 +22,41 @@ import { defaultDataView, secondaryDataView } from '../pages/[dataGroup]/[datase
 const Map = dynamic(() => import('../components/Map/Map'))
 
 const InfoText = styled.div`
-  padding: 0 16px;
+  padding: 8px 16px;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  background: ${({ theme }) => theme.lightBlack};
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  z-index: 50;
+
+  p {
+    font-size: 12px;
+    margin-top: 0;
+  }
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 2rem;
+    background: linear-gradient(transparent, #0002);
+    top: -2rem;
+    left: 0;
+    right: 0;
+  }
+
+  @media screen and (${devices.tablet}) {
+    p {
+      font-size: 14px;
+    }
+  }
 `
 
 const ParagraphSource = styled(Paragraph)`
-  font-size: 13px;
-  color: ${({ theme }) => theme.grey};
+  color: ${({ theme }) => theme.newColors.gray};
+  margin: 0;
 `
 
 const InfoContainer = styled.div`
@@ -37,9 +66,6 @@ const InfoContainer = styled.div`
   border-radius: 8px;
   margin-bottom: 32px;
   z-index: 15;
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 const TitleContainer = styled.div`
@@ -50,40 +76,32 @@ const TitleContainer = styled.div`
 
 const FloatingH5 = styled(H5Regular)`
   position: absolute;
-  margin: 52px 0 0 12px;
+  top: 8px;
+  left: 8px;
   z-index: 200;
   font-size: 1rem;
+  padding: 4px 8px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background: ${({ theme }) => `${theme.lightBlack}99`};
 
   @media only screen and (${devices.smallMobile}) {
     font-size: 1.125rem;
-    margin-top: 64px;
-  }
-
-  @media only screen and (${devices.tablet}) {
-    margin: 60px 0 0 16px;
   }
 `
 
 // FIXME Refactor so default data view is not assumed to be 'lista'
 const ComparisonContainer = styled.div<{ $dataView: string }>`
   position: relative;
-  overflow-y: scroll;
-  z-index: 100;
-  // TODO: Hardcoding this is not good.
-  height: 400px;
   border-radius: 8px;
   display: flex;
   margin-top: ${({ $dataView }) => ($dataView === defaultDataView ? '64px' : '0')};
+  min-height: 400px;
 
   @media only screen and (${devices.tablet}) {
-    height: 500px;
-  }
-
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  ::-webkit-scrollbar {
-    /* Chrome, Safari and Opera */
-    display: none;
+    min-height: 520px;
   }
 `
 
@@ -109,9 +127,7 @@ function RegionalView({
   const handleDataChange = (newData: DatasetKey) => {
     setSelectedDataset(newData)
     const normalizedDataset = normalizeString(newData)
-    router.push(`/geografiskt/${normalizedDataset}/${selectedDataView}`, undefined, {
-      shallow: true,
-    })
+    router.push(`/geografiskt/${normalizedDataset}/${selectedDataView}`, undefined, { shallow: true })
   }
   const { t } = useTranslation()
 
@@ -126,9 +142,7 @@ function RegionalView({
     router.replace(
       `/geografiskt/${normalizeString(selectedDataset as string)}/${newDataView}`,
       undefined,
-      {
-        shallow: true,
-      },
+      { shallow: true },
     )
   }
 

@@ -88,6 +88,13 @@ function SocialList() {
         link="https://discord.gg/FPX9yqYAmk"
         text="Discord"
       />
+
+      <SocialListItem
+        icon="/icons/some/Instagram_Glyph_Black.svg"
+        alt="Instagram icon"
+        link="https://instagram.com/klimatkollen.se"
+        text="Instagram"
+      />
     </ContactList>
   )
 }
