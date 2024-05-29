@@ -32,6 +32,12 @@ const InfoText = styled.div`
     left: 0;
     right: 0;
   }
+
+  @media screen and (${devices.tablet}) {
+    p {
+      font-size: 14px;
+    }
+  }
 `
 
 const ParagraphSource = styled(Paragraph)`
