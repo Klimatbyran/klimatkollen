@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable react/no-this-in-sfc */
 import {
   Filler,
   Chart,
@@ -142,6 +143,9 @@ function Graph({
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
+              // Don't show the point for the budget line during step 1 to avoid confusing users.
+              pointHitRadius: step === 1 ? 0 : undefined,
+              pointHoverRadius: step === 1 ? 0 : undefined,
             },
             {
               // @ts-ignore
@@ -166,6 +170,9 @@ function Graph({
           plugins: {
             tooltip: {
               enabled: true,
+              // Filter out the budget tooltips during step 1 to avoid confusing users.
+              // @ts-expect-error We've added a custom id and can safely ignore the error here
+              filter: step === 1 ? (tooltipItem) => tooltipItem?.dataset?.id !== 'budget' : undefined,
               displayColors: false,
               padding: {
                 top: 8,
@@ -178,7 +185,8 @@ function Graph({
               },
               callbacks: {
                 title(tooltipItems) {
-                  return formatter.format((tooltipItems[0].parsed.y / 1000))
+                  // Skip rendering tooltips if they have no data (because they were filtered out)
+                  return tooltipItems.length ? formatter.format((tooltipItems[0].parsed.y / 1000)) : undefined
                 },
                 label() {
                   return ''
