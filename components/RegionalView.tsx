@@ -169,14 +169,12 @@ function RegionalView({
             handleClick={handleToggleView}
             // FIXME Refactor so default data view is not assumed to be 'lista'.
             // Below code should not need to be edited when changing default data view
-            text={isDefaultDataView ? t('startPage:toggleView.map') : t('startPage:toggleView.list')}
-            icon={isDefaultDataView ? <MapIcon /> : <ListIcon />}
+            text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
+            icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
           />
         </TitleContainer>
         <ComparisonContainer $dataView={selectedDataView.toString()}>
           {isDefaultDataView ? (
-            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} routeString={routeString} />
-          ) : (
             <>
               <MapLabels
                 labels={datasetDescription.labels}
@@ -187,6 +185,8 @@ function RegionalView({
                 boundaries={datasetDescription.boundaries}
               />
             </>
+          ) : (
+            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} routeString={routeString} />
           )}
         </ComparisonContainer>
         <InfoText>
