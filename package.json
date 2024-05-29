@@ -73,5 +73,10 @@
     "typescript": "^5.3.3",
     "vitest": "^1.6.0",
     "webpack-bundle-analyzer": "^4.10.1"
+  },
+  "overrides": {
+    "jsdom": {
+      "tough-cookie": "5.0.0-rc.2"
+    }
   }
 }
