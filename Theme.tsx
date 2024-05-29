@@ -134,23 +134,6 @@ const namedColors2024 = {
 export const colorTheme = {
   newColors: namedColors2024,
   huePalette: colors2024,
-
-  black: '#181818', // replace with black3
-  lightBlack: '#262626', // replace with black2
-  grey: '#939393', // replace with gray
-  offWhite: '#FFFDFA', // replace with white
-
-  red: '#EF3030',
-  darkRed: '#8B1A1A',
-  darkRedOpaque: 'rgba(139, 26, 26, 0.6)',
-
-  orange: '#FF6813',
-  darkOrangeOpaque: 'rgb(181, 80, 24, 0.6)',
-
-  lightGreen: '#15D8D8',
-  lightGreenOpaqe: 'rgba(103, 255, 238, 0.6)',
-
-  midGreen: '#30ACB4',
 }
 
 type Props = {

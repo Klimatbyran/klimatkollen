@@ -10,7 +10,7 @@ import PageWrapper from '../components/PageWrapper'
 
 const Button = styled.button`
   height: 56px;
-  background: ${({ theme }) => theme.midGreen};
+  background: ${({ theme }) => theme.newColors.blue2};
   border: 0;
   border-radius: 4px;
   font-weight: bold;
@@ -18,7 +18,7 @@ const Button = styled.button`
   cursor: pointer;
   width: 100%;
   &:hover {
-    background: ${({ theme }) => theme.lightGreen};
+    background: ${({ theme }) => theme.newColors.blue1};
   }
 `
 
