@@ -47,7 +47,7 @@ CEMENT_DEDUCTION = {
     }
 }
 
-def subtract_national_overheads(national_budget_15, national_budget_17, national_overhead_17):
+def calculate_n_subtract_national_overheads(national_budget_15, national_budget_17, national_overhead_17):
     """
     This function calculates national overheads for a 1.5 degree scenario carbon budget
     and then subtracts it from corresponding national carbon budget.
