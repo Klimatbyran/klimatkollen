@@ -97,7 +97,7 @@ const ComparisonContainer = styled.div<{ $dataView: string }>`
   position: relative;
   border-radius: 8px;
   display: flex;
-  margin-top: ${({ $dataView }) => ($dataView === defaultDataView ? '64px' : '0')};
+  margin-top: ${({ $dataView }) => ($dataView === defaultDataView ? '0' : '56px')};
   min-height: 400px;
 
   @media only screen and (${devices.tablet}) {
