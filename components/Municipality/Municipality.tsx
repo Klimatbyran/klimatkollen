@@ -73,7 +73,7 @@ function Municipality(props: Props) {
       <PageWrapper>
         <StyledContainer>
           <HeaderSection>
-            <BackArrow route="/" />
+            <BackArrow route="/geografiskt/utslappen/karta" />
             <H1NoPad>{municipality.Name}</H1NoPad>
             {coatOfArmsImage && (
               <CoatOfArmsImage
