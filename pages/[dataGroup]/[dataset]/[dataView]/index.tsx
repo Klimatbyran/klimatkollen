@@ -10,8 +10,8 @@ import { getDataDescriptions } from '../../../../utils/datasetDefinitions'
 import { getServerSideI18n } from '../../../../utils/getServerSideI18n'
 import { ONE_WEEK_MS } from '../../../../utils/shared'
 
-export const defaultDataView = 'lista'
-export const secondaryDataView = 'karta'
+export const defaultDataView = 'karta'
+export const secondaryDataView = 'lista'
 export const isValidDataView = (dataView: string) => [defaultDataView, secondaryDataView].includes(dataView)
 
 interface Params extends ParsedUrlQuery {

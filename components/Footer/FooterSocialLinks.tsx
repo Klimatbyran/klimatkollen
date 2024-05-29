@@ -7,6 +7,7 @@ import XLogo from '../../public/icons/some/x_white.svg'
 import LinkedInLogo from '../../public/icons/some/linkedin_white.svg'
 import GitHubLogo from '../../public/icons/some/github.svg'
 import DiscordLogo from '../../public/icons/some/discord.svg'
+import InstagramLogo from '../../public/icons/some/Instagram_Glyph_Black.svg'
 
 const ContactList = styled.ul`
   list-style: none;
@@ -80,6 +81,12 @@ function SocialList() {
         Icon={DiscordLogo}
         link="https://discord.gg/FPX9yqYAmk"
         text="Discord"
+      />
+
+      <SocialListItem
+        Icon={InstagramLogo}
+        link="https://instagram.com/klimatkollen.se"
+        text="Instagram"
       />
     </ContactList>
   )
