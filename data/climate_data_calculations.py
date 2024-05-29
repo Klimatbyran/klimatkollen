@@ -3,7 +3,9 @@
 import json
 
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
-from solutions.cars.electric_vehicle_per_charge_points import get_electric_vehicle_per_charge_points
+from solutions.cars.electric_vehicle_per_charge_points import (
+    get_electric_vehicle_per_charge_points,
+)
 from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
@@ -55,12 +57,8 @@ temp = [
         'totalApproximatedHistoricalEmission': df.iloc[i]['totalApproximatedHistorical'],
         'trend': df.iloc[i]['trend'],
         'trendEmission': df.iloc[i]['trendEmission'],
-        'historicalEmissionChangePercent': df.iloc[i][
-            'historicalEmissionChangePercent'
-        ],
-        'neededEmissionChangePercent': df.iloc[i][
-            'neededEmissionChangePercent'
-        ],
+        'historicalEmissionChangePercent': df.iloc[i]['historicalEmissionChangePercent'],
+        'neededEmissionChangePercent': df.iloc[i]['neededEmissionChangePercent'],
         'hitNetZero': df.iloc[i]['hitNetZero'],
         'budgetRunsOut': df.iloc[i]['budgetRunsOut'],
         'electricCarChangePercent': df.iloc[i]['electricCarChangePercent'],
