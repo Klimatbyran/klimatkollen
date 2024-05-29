@@ -29,6 +29,10 @@ const GreyContainer = styled.div`
   border-radius: 8px;
   padding: 16px 16px 0 16px;
   margin-bottom: 8px;
+
+  .no-climate-plan h3 {
+    color: ${({ theme }) => theme.newColors.orange3};
+  }
 `
 
 const Row = styled.div`
@@ -151,6 +155,7 @@ function Scorecard({
           heading={climatePlanYearFormatted}
           data=""
           info={t('municipality:facts.climatePlan.info', { comment: climatePlan.Comment })}
+          className={!hasClimatePlan ? 'no-climate-plan' : undefined}
         />
       </GreyContainer>
       {rank && (
