@@ -16,6 +16,11 @@ CURRENT_YEAR = 2024              # current year
 
 YEAR_SECONDS = 60 * 60 * 24 * 365   # a year in seconds
 
+# Sources for cement deduction
+# Mörbylånga: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=1441
+# Skövde: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=5932
+# Gotland: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=834
+
 CEMENT_DEDUCTION = {
     'Mörbylånga': {
         2010: 248025000/1000, 2015: 255970000/1000, 2016: 239538000/1000,
@@ -66,11 +71,6 @@ def get_n_prep_data_from_smhi(df):
 
 
 def deduct_cement(df, cement_deduction):
-    # Sources for cement deduction
-    # Mörbylånga: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=1441
-    # Skövde: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=5932
-    # Gotland: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=834
-
     df_cem = df.copy()  # copy dataframe
 
     # Deduct cement from given municipalities
