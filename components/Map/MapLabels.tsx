@@ -7,6 +7,7 @@ import { Square, mapColors } from '../shared'
 
 const Container = styled.div`
   background: ${({ theme }) => `${theme.lightBlack}99`};
+  pointer-events: none;
   z-index: 40;
   border-radius: 8px;
   padding: 8px;
