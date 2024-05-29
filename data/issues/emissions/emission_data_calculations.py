@@ -16,12 +16,9 @@ NATIONAL_BUDGET_15 = 80000000
 NATIONAL_BUDGET_17 = 285113000
 # National overhead for 1.7 degree scenario in metric tonnes
 NATIONAL_OVERHEAD_17 = 53433+1364
-# Calculate national overhead for 1.5 degree scenario in metric tonnes
-NATIONAL_OVERHEAD_15 = (NATIONAL_OVERHEAD_17/NATIONAL_BUDGET_17)*NATIONAL_BUDGET_15
-# Subtract national overhead from national budget for 1.5 degree scenario
-BUDGET = 80000000-NATIONAL_OVERHEAD_15
 # Year from which the carbon budgets applies
 BUDGET_YEAR = 2024
+
 # Year of today
 CURRENT_YEAR = 2024
 
@@ -49,6 +46,22 @@ CEMENT_DEDUCTION = {
         2020: 1624463000/1000, 2021: 1621211000/1000, 2022: 1514132000/1000
     }
 }
+
+def subtract_national_overheads(national_budget_15, national_budget_17, national_overhead_17):
+    """
+    This function calculates national overheads for a 1.5 degree scenario carbon budget
+    and then subtracts it from corresponding national carbon budget.
+    It uses the known values for national CO2 budgets for 1.5 and 1.7 degree scenarios,
+    as well as the national overhead for the 1.7 degree scenario.
+
+    Returns:
+        float: The calculated national CO2 budget for a 1.5 degree scenario.
+    """
+
+    # Calculate national overhead for 1.5 degree scenario in metric tonnes
+    national_overhead_15 = (national_overhead_17/national_budget_17)*national_budget_15
+    # Subtract national overhead from national budget for 1.5 degree scenario
+    return national_budget_15-national_overhead_15
 
 def get_n_prep_data_from_smhi(df):
     # Download data from SMHI and load it in to a pandas dataframe
