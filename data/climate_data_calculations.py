@@ -69,7 +69,7 @@ temp = [
         'climatePlanLink': df.iloc[i]['Länk till aktuell klimatplan'],
         'climatePlanYear': df.iloc[i]['Antagen år'],
         'climatePlanComment': df.iloc[i]['Namn, giltighetsår, kommentar'],
-        'bicycleMetrePerCapita': df.iloc[i]['metrePerCapita'],
+        'bicycleMetrePerCapita': df.iloc[i]['bikeMetrePerCapita'],
         'totalConsumptionEmission': df.iloc[i]['Total emissions'],
         'electricVehiclePerChargePoints': df.iloc[i]['EVPC'],
         'procurementScore': df.iloc[i]['procurementScore'],

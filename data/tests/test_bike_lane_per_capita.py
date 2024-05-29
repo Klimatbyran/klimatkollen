@@ -11,7 +11,7 @@ class TestBicycleCalculations(unittest.TestCase):
         df_expected = pd.DataFrame(
             {
                 "Kommun": ["Ale", "Alingsås", "Alvesta"],
-                "bikeLanePerCapita": [91548/32446, 122012/42382, 66699/20040],
+                "bikeMetrePerCapita": [91548/32446, 122012/42382, 66699/20040],
             }
         )
 
