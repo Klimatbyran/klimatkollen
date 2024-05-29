@@ -6,13 +6,14 @@ import { Paragraph } from '../Typography'
 import { Square, mapColors } from '../shared'
 
 const Container = styled.div`
-  padding-bottom: 0.5rem;
-  margin-top: 4px;
-  @media only screen and (${devices.tablet}) {
-    left: 0;
-    top: 0;
-  
-  }
+  background: ${({ theme }) => `${theme.lightBlack}99`};
+  z-index: 40;
+  border-radius: 8px;
+  padding: 8px;
+  height: min-content;
+  position: absolute;
+  top: 56px;
+  left: 8px;
 `
 
 const LabelBox = styled.div`
@@ -22,8 +23,9 @@ const LabelBox = styled.div`
   gap: 0.5rem;
 `
 
-const ArrowIcon = styled(Icon) <{ $rotateUp?: boolean }>`
-  color: black;
+const ArrowIcon = styled(Icon)<{ $rotateUp?: boolean }>`
+  color: ${({ theme }) => theme.newColors.black3};
+  position: absolute;
   z-index: 1;
   margin: auto;
   left: 0;
@@ -35,7 +37,6 @@ const ArrowIcon = styled(Icon) <{ $rotateUp?: boolean }>`
 
 const StyledParagraph = styled(Paragraph)`
   z-index: 1;
-  font-family: 'Anonymous Pro';
   font-size: 0.7em;
   margin: 0;
   line-height: 0;

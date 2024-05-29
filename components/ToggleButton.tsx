@@ -2,31 +2,25 @@ import styled from 'styled-components'
 import { devices } from '../utils/devices'
 
 const ToggleBtn = styled.button`
-  height: 36px;
-  margin: 16px;
-  margin-right: 4px;
   position: absolute;
-  top: 0;
-  right: 0;
-  color: ${({ theme }) => theme.offWhite};
-  background: transparent;
-  border-radius: 4px;
+  top: 8px;
+  right: 8px;
+  color: ${({ theme }) => theme.newColors.white};
+  background: ${({ theme }) => `${theme.lightBlack}99`};
+  padding: 4px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: right;
   z-index: 150;
-
-  @media only screen and (${devices.smallMobile}) {
-    margin-right: 12px;
-  }
 `
 
 const ToggleText = styled.p`
-  margin-right: 8px;
+  padding-left: 4px;
+  padding-right: 8px;
   font-size: 12px;
-  font-family: 'Borna';
   @media only screen and (${devices.tablet}) {
     font-size: 14px;
   }
