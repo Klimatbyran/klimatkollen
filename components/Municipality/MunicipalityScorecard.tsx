@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 
 import ScorecardSection from './ScorecardSection'
 import { ClimatePlan } from '../../utils/types'
@@ -61,7 +62,7 @@ const ArrowIcon = styled(Icon)`
   fill: ${({ theme }) => theme.newColors.black3};
 `
 
-const LinkButton = styled.button`
+const LinkButton = styled(Link)`
   height: 36px;
   color: ${({ theme }) => theme.newColors.black3};
   background: ${({ theme }) => theme.newColors.blue2};
@@ -118,16 +119,11 @@ function Scorecard({
   climatePlan,
 }: Props) {
   const { t } = useTranslation()
-  const climatePlanYearFormatted = climatePlan.YearAdapted !== climatePlanMissing
+  const hasClimatePlan = climatePlan.Link !== climatePlanMissing
+  const climatePlanYearFormatted = hasClimatePlan
     ? t('municipality:facts.climatePlan.adaptedYear', { year: climatePlan.YearAdapted })
     : climatePlan.YearAdapted
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : t('common:dataMissing')
-
-  const handleButtonClick = () => {
-    if (climatePlan.Link !== climatePlanMissing) {
-      window.open(climatePlan.Link, '_blank')
-    }
-  }
 
   return (
     <StyledDiv>
@@ -140,9 +136,9 @@ function Scorecard({
             <PlanIcon />
             <H5>{t('municipality:facts.climatePlan.title')}</H5>
           </SectionLeft>
-          {climatePlan.Link !== climatePlanMissing ? (
+          {hasClimatePlan ? (
             <SectionRight>
-              <LinkButton onClick={handleButtonClick}>
+              <LinkButton href={climatePlan.Link} target="_blank">
                 {t('common:actions.open')}
                 <Square>
                   <ArrowIcon />
