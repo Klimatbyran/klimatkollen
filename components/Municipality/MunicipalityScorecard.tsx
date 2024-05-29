@@ -79,7 +79,7 @@ const LinkButton = styled.button`
   }
   ${({ disabled }) => disabled
     && css`
-      color: ${({ theme }) => theme.newColors.black2};
+      color: ${({ theme }) => theme.newColors.black3};
       background: ${({ theme }) => theme.newColors.blue3};
       cursor: not-allowed;
 
@@ -89,7 +89,7 @@ const LinkButton = styled.button`
       }
 
       & ${ArrowIcon} {
-        fill: ${({ theme }) => theme.newColors.black2};
+        fill: ${({ theme }) => theme.newColors.black3};
       }
     `}
 `
