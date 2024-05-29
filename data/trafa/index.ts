@@ -49,6 +49,11 @@ export const fetchTrafaData = async (query: string): Promise<TrafaResponseObject
     throw new Error('Failed to fetch data from Trafa')
   }
 }
+const groupBy = <T>(array: T[], key: string) => array.reduce((result: Record<string, T[]>, currentValue: T) => {
+  (result[currentValue[key]] = result[currentValue[key]] || []).push(currentValue)
+
+  return result
+}, {})
 
 /**
  * Retrieves the current Git user name.
@@ -125,23 +130,114 @@ export const fetchAllYearDataFrom2015ToNow = async (outputFolder?: string) => {
     .setYear(year.toString())
     .setMeasure(['nyregunder', 'itrfslut'])
     .setTarget({ category: 'communal', target: 'cars' })
-    .setFuel(['el', 'laddhybrid'])
+    .setFuel(['el', 'laddhybrid', 'totalt'])
     .build())
 
   try {
     const data = await Promise.allSettled(
       queries.map((list) => fetchTrafaData(list.query)),
     )
+    type pdata = {
+      ar : string
+      drivmedel: string
+      reglan: string
+      regkom: string
+      nyregunder: number
+      itrfslut: number
+
+    }
+    type result = {
+      year : string
+      municipality : string
+      totalElectricCars : number
+      totalCarsInTraffic : number
+      totalCars : number
+    }
+    let processedData = { }
     data.forEach((d) => {
       if (d.status === 'fulfilled') {
-        dataToFile({
-          data: d.value,
-          outputFolder,
-        })
-      } else {
-        console.error(` %s: (error) ${d.reason}`, TIMESTAMP)
+        const cellData = [] as pdata[]
+        // eslint-disable-next-line no-plusplus
+        for (let index = 0; index < d.value.Rows.length; index++) {
+          const row = d.value.Rows[index]
+          const here = {} as pdata
+
+          row.Cell.forEach((cell) => {
+            const isNumber = !Number.isNaN(parseInt(cell.Value, 10))
+            if (!isNumber) {
+              Object.assign(here, {
+                [cell.Column]: cell.Value,
+
+              })
+            } else {
+              Object.assign(here, {
+                [cell.Column]: parseInt(cell.Value, 10),
+
+              })
+            }
+          })
+          cellData.push(here)
+        }
+
+        const aggregatedArray = groupBy(cellData, 'regkom')
+
+        const dat = [] as result[]
+        const first = Object.keys(aggregatedArray)[0]
+        const rest = Object.keys(aggregatedArray).slice(1)
+        const firstArray = aggregatedArray[first]
+        const restArray = rest.map((key) => aggregatedArray[key])
+        const handleArray = (array: pdata[]) => {
+          array.forEach((e) => {
+            // check if the municipality exists in the dat array
+            const exists = dat.find((f) => f.municipality === e.regkom && f.year === e.ar)
+            // check if the row is a total row
+            const isTotalRow = e.drivmedel === 'Totalt'
+            const totalRowValue = isTotalRow ? e.nyregunder : 0
+            // if the municipality exists, add the values of the keys "nyregunder" and "itrfslut" to the existing object
+            if (exists && !isTotalRow) {
+              dat[dat.indexOf(exists)].totalElectricCars += e.nyregunder
+              dat[dat.indexOf(exists)].totalCarsInTraffic += e.itrfslut
+              return
+            } if (isTotalRow) {
+              // if the row is a total row, add the value of the key "nyregunder" as the total number of cars
+              if (exists) {
+                dat[dat.indexOf(exists)].totalCars += e.nyregunder
+              }
+              return
+            }
+            // if the municipality does not exist in the dat array, add it as a new object
+            dat.push({
+              year: e.ar,
+              municipality: e.regkom,
+              totalCarsInTraffic: e.itrfslut,
+              totalElectricCars: e.nyregunder,
+              totalCars: totalRowValue,
+            })
+          })
+        }
+        // handle the first array
+        handleArray(firstArray)
+        // handle the rest of the arrays recursively
+        restArray.forEach((array) => handleArray(array))
+        const year = d.value.Rows.map((r) => r.Cell.find((e) => e.Column === 'ar')?.Value ?? 'unknown')
+        processedData = {
+          ...processedData,
+          [year[0]]: dat.sort((a, b) => a.municipality.localeCompare(b.municipality)),
+        }
       }
     })
+    fs.writeFileSync('data/output/file.json', JSON.stringify(processedData, null, 2))
+
+    // we want to transform the data to the wanted interface
+    // name of the kommun , percentage of electric cars, and the change of electric cars per year
+
+    // sort the data by year
+    // the year is in the row cell
+    // const sortedData = allData.sort((a, b) => {
+    //   const yearA = parseInt(a.Rows[0].Cell.find((cell) => cell.Column === 'ar')?.Value ?? '0', 10)
+    //   const yearB = parseInt(b.Rows[0].Cell.find((cell) => cell.Column === 'ar')?.Value ?? '0', 10)
+    //   return yearA! - yearB!
+    // })
   } catch (error) {
     console.error(`%s: (error) ${error}`, TIMESTAMP)
   }
@@ -306,4 +402,11 @@ const main = async () => {
     }
   })
 }
-main()
+fetchAllYearDataFrom2015ToNow()
+
+// wanted interface
+export interface Trafadata {
+  kommun: string
+  electricCarChangePercentage: number
+  electricCarChangePerYear : Record<string, number> //
+}
