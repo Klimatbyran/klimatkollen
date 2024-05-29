@@ -14,7 +14,6 @@ const Arrow = styled.img<{ open: boolean }>`
   }
 `
 
-// IDEA: do something similar for the regional view to distinguish between actual important data (orange), and when something is missing (gray)
 const ScopeColumn = styled.span<{ isMissing: boolean }>`
   display: inline-flex;
   align-items: center;

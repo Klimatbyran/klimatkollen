@@ -94,11 +94,11 @@ describe('RegionalView', () => {
   })
 
   it('changes view mode when toggle button is clicked', () => {
-    const toggleButton = screen.getByText('startPage:toggleView.list')
+    const toggleButton = screen.getByText('startPage:toggleView.map')
     act(() => {
       fireEvent.click(toggleButton)
     })
-    expect(screen.getByText('startPage:toggleView.map')).toBeInTheDocument()
+    expect(screen.getByText('startPage:toggleView.list')).toBeInTheDocument()
   })
 
   it('handles dataset change', () => {
