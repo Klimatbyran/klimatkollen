@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
 
 import ScorecardSection from './ScorecardSection'
@@ -34,6 +34,7 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 36px;
 `
 
 const SectionLeft = styled.section`
@@ -77,21 +78,6 @@ const LinkButton = styled.button`
   & a {
     text-decoration: none;
   }
-  ${({ disabled }) => disabled
-    && css`
-      color: ${({ theme }) => theme.newColors.black3};
-      background: ${({ theme }) => theme.newColors.blue3};
-      cursor: not-allowed;
-
-      /* Remove hover effect */
-      &:hover {
-        background: ${({ theme }) => theme.newColors.blue3};
-      }
-
-      & ${ArrowIcon} {
-        fill: ${({ theme }) => theme.newColors.black3};
-      }
-    `}
 `
 
 const Square = styled.div`
@@ -154,17 +140,16 @@ function Scorecard({
             <PlanIcon />
             <H5>{t('municipality:facts.climatePlan.title')}</H5>
           </SectionLeft>
-          <SectionRight>
-            <LinkButton
-              onClick={handleButtonClick}
-              disabled={climatePlan.Link === climatePlanMissing}
-            >
-              {t('common:actions.open')}
-              <Square>
-                <ArrowIcon />
-              </Square>
-            </LinkButton>
-          </SectionRight>
+          {climatePlan.Link !== climatePlanMissing ? (
+            <SectionRight>
+              <LinkButton onClick={handleButtonClick}>
+                {t('common:actions.open')}
+                <Square>
+                  <ArrowIcon />
+                </Square>
+              </LinkButton>
+            </SectionRight>
+          ) : null}
         </Row>
         <FactSection
           heading={climatePlanYearFormatted}
