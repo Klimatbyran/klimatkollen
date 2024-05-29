@@ -82,7 +82,6 @@ function SocialList() {
         link="https://discord.gg/FPX9yqYAmk"
         text="Discord"
       />
-
       <SocialListItem
         Icon={InstagramLogo}
         link="https://instagram.com/klimatkollen.se"

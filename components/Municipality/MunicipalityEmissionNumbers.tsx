@@ -66,26 +66,25 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
   const totalBudget = municipality.Budget.CO2Equivalent / 1000
   const budgetStartsYear = municipality.Budget.BudgetPerYear[0]?.Year
 
-  // TODO: use updated colors, and these should be connected with the graph
   return (
     <Container>
       <H4>{t('municipality:emissionNumbers.title')}</H4>
       <TotalCo2Container>
         <TotalCo2>
-          <Square color={colorTheme.orange} />
-          <StyledText $color={colorTheme.offWhite}>
+          <Square color={colorTheme.newColors.orange4} />
+          <StyledText $color={colorTheme.newColors.white}>
             {t('municipality:emissionNumbers.historical', { historicalEndsYear, totalHistorical: formatter.format(totalHistorical) })}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={step > 0 ? colorTheme.red : colorTheme.darkRed} />
-          <StyledText $color={step > 0 ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={step > 0 ? colorTheme.newColors.pink4 : colorTheme.newColors.pink5} />
+          <StyledText $color={step > 0 ? colorTheme.newColors.white : colorTheme.newColors.gray}>
             {t('municipality:emissionNumbers.trend', { trendStartsYear, totalTrend: formatter.format(totalTrend) })}
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={step > 1 ? colorTheme.lightGreen : colorTheme.midGreen} />
-          <StyledText $color={step > 1 ? colorTheme.offWhite : colorTheme.grey}>
+          <Square color={step > 1 ? colorTheme.newColors.blue4 : colorTheme.newColors.blue5} />
+          <StyledText $color={step > 1 ? colorTheme.newColors.white : colorTheme.newColors.gray}>
             {t('municipality:emissionNumbers.co2budget', { budgetStartsYear, totalBudget: formatter.format(totalBudget) })}
           </StyledText>
         </TotalCo2>
