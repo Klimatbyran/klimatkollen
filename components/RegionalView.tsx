@@ -151,8 +151,6 @@ function RegionalView({
 
   const isDefaultDataView = selectedDataView === defaultDataView
 
-  const routeString = 'kommun'
-
   return (
     <>
       <H2Regular>{t('startPage:regionalView.questionTitle')}</H2Regular>
@@ -175,7 +173,7 @@ function RegionalView({
         </TitleContainer>
         <ComparisonContainer $dataView={selectedDataView.toString()}>
           {isDefaultDataView ? (
-            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} routeString={routeString} />
+            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} />
           ) : (
             <>
               <MapLabels
