@@ -31,12 +31,12 @@ interface Cell {
   Versions: Version[]
 }
 
-interface Row {
+export interface Row {
   Cell: Cell[]
   IsTotal: boolean
 }
 
-interface Cell {
+export interface Cell {
   Name: string
   IsMeasure: boolean
   Description: string
