@@ -77,6 +77,7 @@ const LinkButton = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   &:hover {
     background: ${({ theme }) => theme.newColors.blue1};
   }
