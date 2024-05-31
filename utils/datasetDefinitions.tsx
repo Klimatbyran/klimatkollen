@@ -38,7 +38,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       title: t('common:datasets.municipalityEmissions.title'),
       body: t('common:datasets.municipalityEmissions.body'),
       source: t('common:datasets.municipalityEmissions.source'),
-      boundaries: [0.0, -0.01, -0.02, -0.05, -0.1],
+      boundaries: [0.0, -0.03, -0.05, -0.07, -0.1],
       labels: t('common:datasets.municipalityEmissions.labels', { returnObjects: true }) as unknown as string[],
       labelRotateUp: [true, false, false, false, false, false],
       columnHeader: t('common:datasets.municipalityEmissions.columnHeader'),
