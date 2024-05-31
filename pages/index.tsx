@@ -77,8 +77,8 @@ function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
               { text: t('common:companies'), href: '/foretag/utslappen/lista' },
               {
                 text: t('common:municipalities'),
-                // NOTE: Very important to set initial state based on initialDataGroup rather than normalizedDataGroup to avoid nasty bugs
-                href: `/geografiskt/${selectedDataset}/${initialDataGroup === 'foretag' ? 'karta' : selectedDataView}`,
+                href: `/geografiskt/${selectedDataset}/karta`,
+                onClick: () => setSelectedDataView('karta'),
               },
             ]}
           />
