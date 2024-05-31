@@ -33,7 +33,6 @@ const Slider = styled.div<{ isActive: boolean }>`
   height: 32px; /* height of the slider */
   background: ${({ theme }) => theme.newColors.blue2};
   border-radius: 8px;
-  transition: 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
