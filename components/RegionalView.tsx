@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -19,8 +18,7 @@ import { normalizeString } from '../utils/shared'
 import { municipalityColumns, rankData } from '../utils/createMunicipalityList'
 import Markdown from './Markdown'
 import { DataView, defaultDataView, secondaryDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
-
-const Map = dynamic(() => import('../components/Map/Map'))
+import Map from '../components/Map/Map'
 
 const InfoText = styled.div`
   padding: 8px 16px;
