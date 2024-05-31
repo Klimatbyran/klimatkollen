@@ -68,7 +68,7 @@ The folder `/emissions` contains files with functions to perform calculations re
 
 #### Constants 
 
-The most important constants in the module are `BUDGET`, `BUDGET_YEAR`, `LAST_YEAR_WITH_SMHI_DATA`, `CEMENT_DEDUCTION` and `CURRENT_YEAR` as they determine the baseline and scope of the calculations.
+The most important constants in the module are `NATIONAL_BUDGET_15`, `NATIONAL_BUDGET_17`, `NATIONAL_OVERHEAD_17`, `BUDGET_YEAR`, `CEMENT_DEDUCTION`, `LAST_YEAR_WITH_SMHI_DATA` and `CURRENT_YEAR` as they determine the baseline and scope of the calculations.
 
 * `NATIONAL_BUDGET_15`: Represents the total CO2 budget for a 50% chance of staying below 1.5 degrees, in metric tonnes.
 * `NATIONAL_BUDGET_17`: Represents the total CO2 budget for a 50% chance of staying below 1.7 degrees, in metric tonnes.
