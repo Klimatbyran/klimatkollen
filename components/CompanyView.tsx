@@ -38,6 +38,12 @@ const InfoText = styled.div`
       font-size: 14px;
     }
   }
+
+  @media screen and (${devices.laptop}) {
+    p {
+      font-size: 16px;
+    }
+  }
 `
 
 const ParagraphSource = styled(Paragraph)`
