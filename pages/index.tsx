@@ -58,7 +58,7 @@ function StartPage({ companies, municipalities }: PropsType) {
     getDataset(routeDataset as string),
   )
   const [selectedDataView, setSelectedDataView] = useState<DataView>(
-    getDataView(dataView as string),
+    normalizedDataGroup === 'foretag' ? 'lista' : getDataView(dataView as string),
   )
 
   const showCompanyData = normalizedDataGroup === defaultDataGroup
