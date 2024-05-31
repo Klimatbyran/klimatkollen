@@ -160,7 +160,6 @@ function RegionalView({
         dataDescriptions={dataDescriptions}
       />
       <InfoContainer>
-        {/* TODO: Remove this margin hack and replace with flex/grid layout instead */}
         <TitleContainer>
           <FloatingH5>{datasetDescription.title}</FloatingH5>
           <ToggleButton
