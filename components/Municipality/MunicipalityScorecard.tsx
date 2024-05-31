@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
+import Link from 'next/link'
 
 import ScorecardSection from './ScorecardSection'
 import { ClimatePlan } from '../../utils/types'
@@ -28,12 +29,17 @@ const GreyContainer = styled.div`
   border-radius: 8px;
   padding: 16px 16px 0 16px;
   margin-bottom: 8px;
+
+  .no-climate-plan h3 {
+    color: ${({ theme }) => theme.newColors.orange3};
+  }
 `
 
 const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 36px;
 `
 
 const SectionLeft = styled.section`
@@ -60,7 +66,7 @@ const ArrowIcon = styled(Icon)`
   fill: ${({ theme }) => theme.newColors.black3};
 `
 
-const LinkButton = styled.button`
+const LinkButton = styled(Link)`
   height: 36px;
   color: ${({ theme }) => theme.newColors.black3};
   background: ${({ theme }) => theme.newColors.blue2};
@@ -71,27 +77,13 @@ const LinkButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   &:hover {
     background: ${({ theme }) => theme.newColors.blue1};
   }
   & a {
     text-decoration: none;
   }
-  ${({ disabled }) => disabled
-    && css`
-      color: ${({ theme }) => theme.newColors.black3};
-      background: ${({ theme }) => theme.newColors.blue3};
-      cursor: not-allowed;
-
-      /* Remove hover effect */
-      &:hover {
-        background: ${({ theme }) => theme.newColors.blue3};
-      }
-
-      & ${ArrowIcon} {
-        fill: ${({ theme }) => theme.newColors.black3};
-      }
-    `}
 `
 
 const Square = styled.div`
@@ -132,16 +124,11 @@ function Scorecard({
   climatePlan,
 }: Props) {
   const { t } = useTranslation()
-  const climatePlanYearFormatted = climatePlan.YearAdapted !== climatePlanMissing
+  const hasClimatePlan = climatePlan.Link !== climatePlanMissing
+  const climatePlanYearFormatted = hasClimatePlan
     ? t('municipality:facts.climatePlan.adaptedYear', { year: climatePlan.YearAdapted })
     : climatePlan.YearAdapted
   const politicalRuleFormatted = politicalRule ? politicalRule.join(', ') : t('common:dataMissing')
-
-  const handleButtonClick = () => {
-    if (climatePlan.Link !== climatePlanMissing) {
-      window.open(climatePlan.Link, '_blank')
-    }
-  }
 
   return (
     <StyledDiv>
@@ -154,22 +141,22 @@ function Scorecard({
             <PlanIcon />
             <H5>{t('municipality:facts.climatePlan.title')}</H5>
           </SectionLeft>
-          <SectionRight>
-            <LinkButton
-              onClick={handleButtonClick}
-              disabled={climatePlan.Link === climatePlanMissing}
-            >
-              {t('common:actions.open')}
-              <Square>
-                <ArrowIcon />
-              </Square>
-            </LinkButton>
-          </SectionRight>
+          {hasClimatePlan ? (
+            <SectionRight>
+              <LinkButton href={climatePlan.Link} target="_blank">
+                {t('common:actions.open')}
+                <Square>
+                  <ArrowIcon />
+                </Square>
+              </LinkButton>
+            </SectionRight>
+          ) : null}
         </Row>
         <FactSection
           heading={climatePlanYearFormatted}
           data=""
           info={t('municipality:facts.climatePlan.info', { comment: climatePlan.Comment })}
+          className={!hasClimatePlan ? 'no-climate-plan' : undefined}
         />
       </GreyContainer>
       {rank && (

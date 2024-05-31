@@ -64,13 +64,16 @@ type Props = {
   heading: string
   data: string
   info?: string
+  className?: string
 }
 
-function FactSection({ heading, data, info }: Props) {
+function FactSection({
+  heading, data, info, className,
+}: Props) {
   const [open, setOpen] = useState(false)
 
   return (
-    <details onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)}>
+    <details onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)} className={className}>
       <Row>
         <SectionLeft>
           <InfoHeading>{heading}</InfoHeading>
