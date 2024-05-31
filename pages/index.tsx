@@ -24,15 +24,16 @@ const Container = styled.div`
   align-items: center;
 `
 
-type PropsType = {
-  companies: Array<Company>
-  municipalities: Array<Municipality>
-}
-
 export const defaultDataGroup = 'foretag'
 export const secondaryDataGroup = 'geografiskt'
 const dataGroups = new Set([defaultDataGroup, secondaryDataGroup])
 export type DataGroup = typeof defaultDataGroup | typeof secondaryDataGroup
+
+type PropsType = {
+  companies: Array<Company>
+  municipalities: Array<Municipality>
+  initialDataGroup: DataGroup
+}
 
 export function getDataGroup(rawDataGroup: string): DataGroup {
   const normalized = normalizeString(rawDataGroup)
@@ -43,7 +44,7 @@ export function getDataGroup(rawDataGroup: string): DataGroup {
   return defaultDataGroup
 }
 
-function StartPage({ companies, municipalities }: PropsType) {
+function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
   const router = useRouter()
   const { dataGroup, dataset: routeDataset, dataView } = router.query
   const { t } = useTranslation()
@@ -58,10 +59,9 @@ function StartPage({ companies, municipalities }: PropsType) {
     getDataset(routeDataset as string),
   )
   const [selectedDataView, setSelectedDataView] = useState<DataView>(
-    normalizedDataGroup === 'foretag' ? 'lista' : getDataView(dataView as string),
+    // NOTE: Very important to set initial state based on initialDataGroup rather than normalizedDataGroup to avoid nasty bugs
+    initialDataGroup === 'foretag' ? 'karta' : getDataView(dataView as string),
   )
-
-  const showCompanyData = normalizedDataGroup === defaultDataGroup
 
   return (
     <>
@@ -77,11 +77,12 @@ function StartPage({ companies, municipalities }: PropsType) {
               { text: t('common:companies'), href: '/foretag/utslappen/lista' },
               {
                 text: t('common:municipalities'),
-                href: `/geografiskt/${selectedDataset}/${selectedDataView}`,
+                // NOTE: Very important to set initial state based on initialDataGroup rather than normalizedDataGroup to avoid nasty bugs
+                href: `/geografiskt/${selectedDataset}/${initialDataGroup === 'foretag' ? 'karta' : selectedDataView}`,
               },
             ]}
           />
-          {showCompanyData ? (
+          {normalizedDataGroup === 'foretag' ? (
             <CompanyView companies={companies} />
           ) : (
             <RegionalView

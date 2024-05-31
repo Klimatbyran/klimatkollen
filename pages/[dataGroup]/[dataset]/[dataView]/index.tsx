@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { Company as TCompany, Municipality as TMunicipality } from '../../../../utils/types'
-import StartPage, { getDataGroup } from '../../..'
+import StartPage, { DataGroup, getDataGroup } from '../../..'
 import { ClimateDataService } from '../../../../utils/climateDataService'
 import Layout from '../../../../components/Layout'
 import Footer from '../../../../components/Footer/Footer'
@@ -72,6 +72,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       municipalities: getMunicipalities(),
       normalizedDataset,
       _nextI18Next,
+      initialDataGroup: normalizedDataGroup,
     },
   }
 
@@ -81,13 +82,14 @@ export const getServerSideProps: GetServerSideProps = async ({
 type Props = {
   companies: Array<TCompany>
   municipalities: Array<TMunicipality>
+  initialDataGroup: DataGroup
 }
 
-export default function DataView({ companies, municipalities }: Props) {
+export default function DataView({ companies, municipalities, initialDataGroup }: Props) {
   return (
     <>
       <Layout>
-        <StartPage companies={companies} municipalities={municipalities} />
+        <StartPage companies={companies} municipalities={municipalities} initialDataGroup={initialDataGroup} />
       </Layout>
       <Footer />
     </>
