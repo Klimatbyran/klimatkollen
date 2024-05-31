@@ -14,7 +14,7 @@ import { defaultDataset, getDataDescriptions } from '../utils/datasetDefinitions
 import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
-import { defaultDataView } from './[dataGroup]/[dataset]/[dataView]'
+import { DataView, defaultDataView } from './[dataGroup]/[dataset]/[dataView]'
 import { ONE_WEEK_MS, normalizeString } from '../utils/shared'
 
 const Container = styled.div`
@@ -57,7 +57,7 @@ function StartPage({ companies, municipalities }: PropsType) {
   const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(
     getDataset(routeDataset as string),
   )
-  const [selectedDataView, setSelectedDataView] = useState(
+  const [selectedDataView, setSelectedDataView] = useState<DataView>(
     getDataView(dataView as string),
   )
 

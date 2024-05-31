@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 
+import { useCallback } from 'react'
 import ComparisonTable from '../components/ComparisonTable'
 import MapLabels from '../components/Map/MapLabels'
 import ListIcon from '../public/icons/list.svg'
@@ -17,7 +18,7 @@ import { Municipality, DatasetKey, DataDescriptions } from '../utils/types'
 import { normalizeString } from '../utils/shared'
 import { municipalityColumns, rankData } from '../utils/createMunicipalityList'
 import Markdown from './Markdown'
-import { defaultDataView, secondaryDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
+import { DataView, defaultDataView, secondaryDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
 
 const Map = dynamic(() => import('../components/Map/Map'))
 
@@ -98,12 +99,11 @@ const FloatingH5 = styled(H5Regular)`
   }
 `
 
-// FIXME Refactor so default data view is not assumed to be 'lista'
-const ComparisonContainer = styled.div<{ $dataView: string }>`
+const ComparisonContainer = styled.div<{ dataView: string }>`
   position: relative;
   border-radius: 8px;
   display: flex;
-  margin-top: ${({ $dataView }) => ($dataView === defaultDataView ? '0' : '56px')};
+  margin-top: ${({ dataView }) => (dataView === 'karta' ? '0' : '56px')};
   min-height: 400px;
 
   @media only screen and (${devices.tablet}) {
@@ -115,8 +115,8 @@ type RegionalViewProps = {
   municipalities: Array<Municipality>
   selectedDataset: DatasetKey
   setSelectedDataset: (newData: DatasetKey) => void
-  selectedDataView: string
-  setSelectedDataView: (newData: string) => void
+  selectedDataView: DataView
+  setSelectedDataView: (newData: DataView) => void
   dataDescriptions: DataDescriptions
 }
 
@@ -129,13 +129,13 @@ function RegionalView({
   dataDescriptions,
 }: RegionalViewProps) {
   const router = useRouter()
+  const { t } = useTranslation()
 
   const handleDataChange = (newData: DatasetKey) => {
     setSelectedDataset(newData)
     const normalizedDataset = normalizeString(newData)
     router.push(`/geografiskt/${normalizedDataset}/${selectedDataView}`, undefined, { shallow: true })
   }
-  const { t } = useTranslation()
 
   const municipalityNames = municipalities.map((item) => item.Name) // get all municipality names for drop down
   // get all municipality names and data points for map and list
@@ -155,7 +155,37 @@ function RegionalView({
   const cols = municipalityColumns(selectedDataset, datasetDescription.columnHeader, t)
   const rankedData = rankData(municipalities, selectedDataset, router.locale as string, t)
 
-  const isDefaultDataView = selectedDataView === defaultDataView
+  const renderMap = useCallback(() => (
+    <>
+      <MapLabels
+        labels={datasetDescription.labels}
+        rotations={datasetDescription.labelRotateUp}
+      />
+      <Map
+        data={municipalityData}
+        boundaries={datasetDescription.boundaries}
+      />
+    </>
+  ), [datasetDescription.boundaries, datasetDescription.labelRotateUp, datasetDescription.labels, municipalityData])
+
+  const renderList = useCallback(() => (
+    <ComparisonTable data={rankedData[selectedDataset]} columns={cols} />
+  ), [rankedData, selectedDataset, cols])
+
+  const dataViews = {
+    lista: {
+      text: t('startPage:toggleView.map'),
+      icon: <MapIcon />,
+      content: renderList,
+    },
+    karta: {
+      text: t('startPage:toggleView.list'),
+      icon: <ListIcon />,
+      content: renderMap,
+    },
+  }
+
+  const dataView = dataViews[selectedDataView]
 
   return (
     <>
@@ -170,27 +200,12 @@ function RegionalView({
           <FloatingH5>{datasetDescription.title}</FloatingH5>
           <ToggleButton
             handleClick={handleToggleView}
-            // FIXME Refactor so default data view is not assumed to be 'lista'.
-            // Below code should not need to be edited when changing default data view
-            text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
-            icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
+            text={dataView.text}
+            icon={dataView.icon}
           />
         </TitleContainer>
-        <ComparisonContainer $dataView={selectedDataView.toString()}>
-          {isDefaultDataView ? (
-            <>
-              <MapLabels
-                labels={datasetDescription.labels}
-                rotations={datasetDescription.labelRotateUp}
-              />
-              <Map
-                data={municipalityData}
-                boundaries={datasetDescription.boundaries}
-              />
-            </>
-          ) : (
-            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} />
-          )}
+        <ComparisonContainer dataView={selectedDataView}>
+          {dataViews[selectedDataView].content()}
         </ComparisonContainer>
         <InfoText>
           <Markdown>{datasetDescription.body}</Markdown>

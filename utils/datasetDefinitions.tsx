@@ -5,7 +5,7 @@ import { TOptions } from 'i18next'
 
 import { DataDescriptions, DatasetKey, Municipality } from './types'
 import { normalizeString } from './shared'
-import { defaultDataView, isValidDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
+import { DataView, defaultDataView, isValidDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
 
 export const validDatasets = ['utslappen', 'koldioxidbudgetarna', 'klimatplanerna', 'konsumtionen', 'elbilarna', 'laddarna', 'cyklarna', 'upphandlingarna'] as const
 export const defaultDataset: DatasetKey = 'utslappen'
@@ -204,7 +204,7 @@ export function getDataDescriptions(locale: string, t: TFunction) {
   function getDataView(rawDataView: string) {
     const normalized = normalizeString(rawDataView)
     if (isValidDataView(normalized)) {
-      return normalized
+      return normalized as DataView
     }
 
     return defaultDataView
