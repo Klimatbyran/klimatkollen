@@ -97,6 +97,21 @@ const colors2024 = {
     900: '#7C2E45',
     950: '#73263D',
   },
+  // NOTE: This was generated from the base color 600: '#e72c4e' since we didn't get a red color scale from the designers.
+  // This explains why we only have 11 hues for this color.
+  red: {
+    50: '#fff1f1',
+    100: '#ffe4e5',
+    200: '#ffccd0',
+    300: '#fea3ab',
+    400: '#fd6f7e',
+    500: '#f73c55',
+    600: '#e72c4e',
+    700: '#c10f34',
+    800: '#a11033',
+    900: '#8a1131',
+    950: '#4d0416',
+  },
 }
 
 const namedColors2024 = {

@@ -132,7 +132,6 @@ const SortingIcon = styled(ArrowIcon)`
 type TableProps<T extends object> = {
   data: T[]
   columns: ColumnDef<T>[]
-  routeString?: string
   // IDEA: It might be better to turn ComparisionTable into two specific components, one for every use case
   dataType?: 'municipalities' | 'companies'
   renderSubComponent?: ({ row }: { row: Row<T> }) => JSX.Element
@@ -155,7 +154,6 @@ function prepareColumnsForDefaultSorting<T extends object>(columns: TableProps<T
 function ComparisonTable<T extends object>({
   data,
   columns,
-  routeString,
   dataType = 'municipalities',
   renderSubComponent,
 }: TableProps<T>) {
@@ -194,12 +192,10 @@ function ComparisonTable<T extends object>({
 
   const handleRowClick = (row: Row<T>) => {
     if (dataType === 'municipalities') {
-      if (routeString) {
-        const cells = row.getAllCells()
-        const value = cells.at(1)?.renderValue()
-        const route = `/${routeString}/${(value as unknown as string).toLowerCase()}`
-        router.push(route)
-      }
+      const cells = row.getAllCells()
+      const value = cells.at(1)?.renderValue()
+      const route = `/kommun/${(value as unknown as string).toLowerCase()}`
+      router.push(route)
     } else if (dataType === 'companies') {
       row.toggleExpanded()
     }
@@ -254,7 +250,7 @@ function ComparisonTable<T extends object>({
             <Fragment key={row.id}>
               <TableRow
                 onClick={() => handleRowClick(row)}
-                interactive={enableExpanding || routeString !== undefined}
+                interactive={enableExpanding || dataType === 'municipalities'}
                 showBorder={enableExpanding ? !isRowExpanded : true}
                 isExpanded={isRowExpanded}
                 aria-expanded={isRowExpanded}

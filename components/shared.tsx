@@ -2,14 +2,44 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { colorTheme } from '../Theme'
 
+// Orange
+// export const mapColors = [
+//   colorTheme.huePalette.orange[650],
+//   colorTheme.huePalette.orange[500],
+//   colorTheme.huePalette.orange[400],
+//   colorTheme.huePalette.orange[350],
+//   colorTheme.huePalette.orange[250],
+//   colorTheme.huePalette.orange[150],
+// ]
+
+// With red, orange and blue
 export const mapColors = [
-  colorTheme.newColors.blue5,
-  colorTheme.huePalette.blue[850],
-  colorTheme.newColors.blue4,
-  colorTheme.newColors.blue3,
-  colorTheme.newColors.blue2,
-  colorTheme.newColors.blue1,
+  colorTheme.huePalette.red[800],
+  colorTheme.huePalette.red[600],
+  colorTheme.huePalette.orange[500],
+  colorTheme.huePalette.orange[250],
+  colorTheme.huePalette.orange[50],
+  colorTheme.huePalette.blue[200],
 ]
+
+// export const mapColors = [
+//   colorTheme.huePalette.gray[650],
+//   colorTheme.huePalette.gray[500],
+//   colorTheme.huePalette.gray[350],
+//   colorTheme.huePalette.gray[250],
+//   colorTheme.huePalette.gray[150],
+//   colorTheme.huePalette.gray[50],
+// ]
+
+/* Okto web sketches: blue */
+// export const mapColors = [
+//   colorTheme.newColors.blue5,
+//   colorTheme.huePalette.blue[850],
+//   colorTheme.newColors.blue4,
+//   colorTheme.newColors.blue3,
+//   colorTheme.newColors.blue2,
+//   colorTheme.newColors.blue1,
+// ]
 
 export const IconButton = styled.button`
   border: none;

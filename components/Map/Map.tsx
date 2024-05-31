@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
-import React, { useEffect, useRef, useState } from 'react'
+import React, {
+  useEffect, useMemo, useRef, useState,
+} from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
@@ -199,7 +201,7 @@ function Map({
     return () => document.removeEventListener('touchstart', clearToolTipOnOutsideTap)
   }, [wrapperRef])
 
-  const municipalityLines = municipalityFeatureCollection?.features?.flatMap(
+  const municipalityLines = useMemo(() => municipalityFeatureCollection?.features?.flatMap(
     ({ geometry, properties: { name } }: { geometry: any; properties: { name: string } }) => {
       const currentMunicipality = data.find((e) => e.name === name)
       const dataPoint = currentMunicipality?.primaryDataPoint
@@ -222,9 +224,9 @@ function Map({
         },
       ]
     },
-  )
+  ), [data, municipalityFeatureCollection?.features])
 
-  const municipalityLayer = new PolygonLayer({
+  const municipalityLayer = useMemo(() => new PolygonLayer({
     id: 'polygon-layer',
     data: municipalityLines,
     stroked: true,
@@ -241,7 +243,7 @@ function Map({
     getLineColor: () => [0, 0, 0, 80],
     getFillColor: (d) => getColor((d as MunicipalityData).dataPoint, boundaries),
     pickable: true,
-  })
+  }), [boundaries, municipalityLines])
 
   return (
     <DeckGLWrapper ref={wrapperRef}>
