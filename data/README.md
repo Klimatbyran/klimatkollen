@@ -64,7 +64,7 @@ In the list, the term appearing before the colon (:) is the standardized name th
 
 ### Emission Calculations 
 
-The folder `/emissions` contains files with functions to perform calculations related to CO2 emissions for municipalities, based on SMHI emission data and a given total CO2 budget for Sweden. Each function serves a specific purpose such as preprocessing data, calculating municipality specific budgets, future trends or when the budget for a municipality will run out. Their order of execution is specified in `emissions/emission_data_calculations.py`.
+The folder `/emissions` contains files with functions to perform calculations related to CO2 emissions for municipalities, based on SMHI emission data and a given total CO2 budget for Sweden. Each function serves a specific purpose such as preprocessing data, calculating municipality-specific budgets, future trends or when the budget for a municipality will run out. Their order of execution is specified in `emissions/emission_data_calculations.py`.
 
 #### Constants 
 
