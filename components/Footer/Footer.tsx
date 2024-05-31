@@ -28,8 +28,10 @@ const StyledH5 = styled(H5)`
 `
 
 const TextContainer = styled.div`
+  padding: 1rem 1rem 0;
+
   @media only screen and (${devices.tablet}) {
-    width: 45%;
+    padding: 0;
   }
 
   a {
@@ -50,20 +52,20 @@ const HorizontalContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 32px;
-  gap: 32px;
+  gap: 16px;
 
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
-    margin-top: 16px;
   }
 `
 
 const LogoContainer = styled.div`
-  flex: 1;
   order: 2;
+  padding-bottom: 2rem;
 
   @media only screen and (${devices.tablet}) {
-    align-self: end;
+    padding: 0;
+    align-self: center;
     order: 1;
   }
 
@@ -75,26 +77,36 @@ const LogoContainer = styled.div`
 const SocialLinksContainer = styled.div`
   flex: 1;
   order: 1;
+  
+  padding: 0 1rem;
+  
 
   @media only screen and (${devices.tablet}) {
+    padding: 0;
     order: 2;
   }
 `
 
-function Footer() {
+type Props = {
+  minimal?: boolean
+}
+
+function Footer({ minimal }: Props) {
   const { t } = useTranslation(['common'])
 
   return (
     <>
-      <PageWrapper>
-        <Foot>
-          <NewsletterSubscribe />
-          <StyledH5>{t('footer.supportedBy')}</StyledH5>
-          <Supporters />
-          <StyledH5>{t('footer.partners')}</StyledH5>
-          <Partners />
-        </Foot>
-      </PageWrapper>
+      {!minimal ? (
+        <PageWrapper>
+          <Foot>
+            <NewsletterSubscribe />
+            <StyledH5>{t('footer.supportedBy')}</StyledH5>
+            <Supporters />
+            <StyledH5>{t('footer.partners')}</StyledH5>
+            <Partners />
+          </Foot>
+        </PageWrapper>
+      ) : null}
       <PageWrapper backgroundColor="black2">
         <TextContainer>
           <Paragraph>{t('footer.tagline')}</Paragraph>

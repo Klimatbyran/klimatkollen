@@ -44,6 +44,7 @@ const DropDownSection = styled.div`
   margin-top: 30px;
   text-align: center;
   align-items: center;
+  padding-bottom: 6rem;
 `
 
 type Props = {
@@ -72,7 +73,7 @@ function Municipality(props: Props) {
       <PageWrapper>
         <StyledContainer>
           <HeaderSection>
-            <BackArrow route="/" />
+            <BackArrow route="/geografiskt/utslappen/karta" />
             <H1NoPad>{municipality.Name}</H1NoPad>
             {coatOfArmsImage && (
               <CoatOfArmsImage

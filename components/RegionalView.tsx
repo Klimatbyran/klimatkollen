@@ -97,7 +97,7 @@ const ComparisonContainer = styled.div<{ $dataView: string }>`
   position: relative;
   border-radius: 8px;
   display: flex;
-  margin-top: ${({ $dataView }) => ($dataView === defaultDataView ? '64px' : '0')};
+  margin-top: ${({ $dataView }) => ($dataView === defaultDataView ? '0' : '56px')};
   min-height: 400px;
 
   @media only screen and (${devices.tablet}) {
@@ -160,21 +160,18 @@ function RegionalView({
         dataDescriptions={dataDescriptions}
       />
       <InfoContainer>
-        {/* TODO: Remove this margin hack and replace with flex/grid layout instead */}
         <TitleContainer>
           <FloatingH5>{datasetDescription.title}</FloatingH5>
           <ToggleButton
             handleClick={handleToggleView}
             // FIXME Refactor so default data view is not assumed to be 'lista'.
             // Below code should not need to be edited when changing default data view
-            text={isDefaultDataView ? t('startPage:toggleView.map') : t('startPage:toggleView.list')}
-            icon={isDefaultDataView ? <MapIcon /> : <ListIcon />}
+            text={isDefaultDataView ? t('startPage:toggleView.list') : t('startPage:toggleView.map')}
+            icon={isDefaultDataView ? <ListIcon /> : <MapIcon />}
           />
         </TitleContainer>
         <ComparisonContainer $dataView={selectedDataView.toString()}>
           {isDefaultDataView ? (
-            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} />
-          ) : (
             <>
               <MapLabels
                 labels={datasetDescription.labels}
@@ -185,6 +182,8 @@ function RegionalView({
                 boundaries={datasetDescription.boundaries}
               />
             </>
+          ) : (
+            <ComparisonTable data={rankedData[selectedDataset]} columns={cols} />
           )}
         </ComparisonContainer>
         <InfoText>

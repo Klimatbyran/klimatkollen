@@ -12,11 +12,11 @@ import InstagramLogo from '../../public/icons/some/Instagram_Glyph_Black.svg'
 const ContactList = styled.ul`
   list-style: none;
 
-  @media only screen and (${devices.tablet}) {
+  @media only screen and (${devices.smallMobile}) {
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
-    justify-items: right;
+    justify-items: center;
   }
 `
 
