@@ -20,6 +20,7 @@ from issues.emissions.approximated_data_calculations import calculate_approximat
 
 LAST_YEAR_WITH_SMHI_DATA = 2021
 CURRENT_YEAR = 2024
+NATIONAL_BUDGET = 80e6
 BUDGET_YEAR = 2024
 
 class TestEmissionCalculations(unittest.TestCase):
@@ -226,7 +227,7 @@ class TestEmissionCalculations(unittest.TestCase):
         df_expected["budgetShare"] = [0.12539888902021, 0.87460111097979]
         df_expected["Budget"] = [10031911.1216168, 69968088.8783832]
 
-        df_result = calculate_municipality_budgets(df_input, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR, 80000000, BUDGET_YEAR)
+        df_result = calculate_municipality_budgets(df_input, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR, NATIONAL_BUDGET, BUDGET_YEAR)
 
         pd.testing.assert_frame_equal(df_result, df_expected, check_exact=False)
 

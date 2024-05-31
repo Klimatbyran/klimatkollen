@@ -9,28 +9,32 @@ from issues.emissions.historical_data_calculations import get_n_prep_data_from_s
 from issues.emissions.approximated_data_calculations import calculate_approximated_historical
 from issues.emissions.trend_calculations import calculate_trend_coefficients, calculate_trend
 
+
+CURRENT_YEAR = 2024  # current year
+YEAR_SECONDS = 60 * 60 * 24 * 365  # a year in seconds
+
+
+LAST_YEAR_WITH_SMHI_DATA = 2022  # last year for which the National Emission database has data
+PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
+
+
+# ------- NATIONAL CARBON BUDGETS AND OVERHEADS -------
+
 # Numbers below from
 # https://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf
-# Found in tables on page 8 and 19
+# Found in tables on page 10 and 19. The numbers are in metric tonnes.
 
-# National C02 budget in metric tonnes for 50% chance of staying below 1.5 degrees
+# National C02 budget for 50% chance of staying below 1.5 degrees
 NATIONAL_BUDGET_15 = 80000000
-# National C02 budget in metric tonnes for 50% chance of staying below 1.7 degrees
+# National C02 budget for 50% chance of staying below 1.7 degrees
 NATIONAL_BUDGET_17 = 285113000
-# National overhead for 1.7 degree scenario in metric tonnes
+# National overhead for 1.7 degree scenario
 NATIONAL_OVERHEAD_17 = 53433+1364
 # Year from which the carbon budgets applies
 BUDGET_YEAR = 2024
 
-# Year of today
-CURRENT_YEAR = 2024
 
-# Last year for which the National Emission database has data
-LAST_YEAR_WITH_SMHI_DATA = 2022
-
-PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
-
-YEAR_SECONDS = 60 * 60 * 24 * 365   # a year in seconds
+# ------- CEMENT CARBON EMISSIONS -------
 
 # Sources for cement deduction
 # Mörbylånga: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=1441
