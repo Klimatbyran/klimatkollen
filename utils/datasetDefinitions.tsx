@@ -8,7 +8,7 @@ import { normalizeString } from './shared'
 import { DataView, defaultDataView, isValidDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
 
 export const validDatasets = ['utslappen', 'koldioxidbudgetarna', 'klimatplanerna', 'konsumtionen', 'elbilarna', 'laddarna', 'cyklarna', 'upphandlingarna'] as const
-export const defaultDataset: DatasetKey = 'utslappen'
+export const defaultDataset = 'utslappen' satisfies DatasetKey
 
 // NOTE: Hardcoded constant expected in the data
 export const climatePlanMissing = 'Saknar plan'
