@@ -14,7 +14,7 @@ import { defaultDataset, getDataDescriptions } from '../utils/datasetDefinitions
 import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
-import { DataView, defaultDataView } from './[dataGroup]/[dataset]/[dataView]'
+import { DataView } from './[dataGroup]/[dataset]/[dataView]'
 import { ONE_WEEK_MS, normalizeString } from '../utils/shared'
 
 const Container = styled.div`
@@ -108,7 +108,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
 
   return {
     redirect: {
-      destination: `/foretag/${defaultDataset}/${defaultDataView}`,
+      destination: `/foretag/${defaultDataset}/lista`,
       permanent: true,
     },
     props: {
