@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import pandas as pd
-from typing import Dict
+from typing import Dict, List, Any
+
 import json
 import argparse
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
@@ -54,7 +55,7 @@ def build_dataframe() -> pd.DataFrame:
     return df
 
 
-def transform_row(row: pd.Series) -> Dict:
+def transform_row(row: pd.Series, numeric_columns: List[Any]) -> Dict:
     """
     Transforms a pandas Series into a dictionary.
 
@@ -67,19 +68,7 @@ def transform_row(row: pd.Series) -> Dict:
     cdata = {
         'kommun': row['Kommun'],
         'län': row['Län'],
-        'emissions': {
-            '1990': row[1990],
-            '2000': row[2000],
-            '2005': row[2005],
-            '2010': row[2010],
-            '2015': row[2015],
-            '2016': row[2016],
-            '2017': row[2017],
-            '2018': row[2018],
-            '2019': row[2019],
-            '2020': row[2020],
-            '2021': row[2021],
-        },
+        'emissions': { str(year): row[year] for year in numeric_columns },
         'budget': row['Budget'],
         'emissionBudget': row['parisPath'],
         'approximatedHistoricalEmission': row['approximatedHistorical'],
@@ -150,9 +139,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     df = build_dataframe()
+    numeric_columns = [col for col in df.columns if str(col).isdigit()]
     
     if args.num_decimals >= 0:
-        temp = [ round_floats(transform_row(df.iloc[i]), args.num_decimals) for i in range(len(df)) ]
+        temp = [ round_floats(transform_row(df.iloc[i], numeric_columns), args.num_decimals) for i in range(len(df)) ]
         if args.outfile == "output/climate-data.json":
             output_file = f"output/climate-data-rounded.json"
         else:
@@ -160,6 +150,6 @@ if __name__ == '__main__':
 
         store_dataframe(temp, output_file)
     else:
-        temp = [ transform_row(df.iloc[i]) for i in range(len(df)) ]
+        temp = [ transform_row(df.iloc[i], numeric_columns) for i in range(len(df)) ]
         store_dataframe(temp, args.outfile)
 

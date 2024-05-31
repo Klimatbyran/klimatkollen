@@ -35,7 +35,7 @@
     "react-markdown": "^9.0.1",
     "rehype-external-links": "^3.0.0",
     "styled-components": "^6.1.8",
-    "vite": "^5.0.12"
+    "vite": "^5.2.11"
   },
   "eslintConfig": {
     "extends": [
@@ -51,12 +51,12 @@
     "@babel/preset-react": "^7.23.3",
     "@next/bundle-analyzer": "^14.1.0",
     "@svgr/webpack": "^8.1.0",
-    "@testing-library/jest-dom": "^6.4.1",
-    "@testing-library/react": "^14.2.1",
+    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/react": "15.0.7",
     "@testing-library/user-event": "14.5.2",
     "@types/md5": "^2.3.5",
-    "@types/node": "20.11.16",
-    "@types/react": "18.2.53",
+    "@types/node": "20.12.11",
+    "@types/react": "18.3.1",
     "@types/react-mailchimp-subscribe": "^2.1.4",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
     "@typescript-eslint/parser": "^6.20.0",
@@ -68,10 +68,15 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-testing-library": "^6.2.0",
+    "eslint-plugin-testing-library": "^6.2.2",
     "prettier": "^3.2.5",
     "typescript": "^5.3.3",
-    "vitest": "^1.2.2",
+    "vitest": "^1.6.0",
     "webpack-bundle-analyzer": "^4.10.1"
+  },
+  "overrides": {
+    "jsdom": {
+      "tough-cookie": "5.0.0-rc.2"
+    }
   }
 }

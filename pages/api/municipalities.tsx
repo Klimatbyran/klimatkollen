@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { ClimateDataService } from '../../utils/climateDataService'
+import { ONE_WEEK_MS } from '../../utils/shared'
 
 export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
   const {
@@ -13,7 +14,7 @@ export default function userHandler(req: NextApiRequest, res: NextApiResponse) {
         if (municipalities.length < 1) {
           res.status(404).json('Inga kommuner hittades')
         } else {
-          res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${((60 * 60) * 24) * 7}`)
+          res.setHeader('Cache-Control', `public, stale-while-revalidate=60, max-age=${ONE_WEEK_MS}`)
           res.status(200).json(municipalities)
         }
       } catch (error) {

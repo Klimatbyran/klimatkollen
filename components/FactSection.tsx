@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { useState } from 'react'
 
 import { H3, ParagraphBold } from './Typography'
-import Icon from '../public/icons/add_light_white.svg'
-import IconGreen from '../public/icons/remove_light_white.svg'
+import IconAdd from '../public/icons/add_light_white.svg'
+import IconRemove from '../public/icons/remove_light_white.svg'
 import Markdown from './Markdown'
 
 const Row = styled.summary`
@@ -78,7 +78,7 @@ function FactSection({ heading, data, info }: Props) {
         {info && (
         <SectionRight>
           <StyledIcon>
-            {open ? <IconGreen /> : <Icon />}
+            {open ? <IconRemove /> : <IconAdd />}
           </StyledIcon>
         </SectionRight>
         )}

@@ -12,7 +12,6 @@ import { deviceSizesPx, onTouchDevice } from '../../utils/devices'
 import {
   MapProps, MunicipalityTapInfo, MunicipalityData,
 } from '../../utils/types'
-import { replaceLetters } from '../../utils/shared'
 
 const INITIAL_VIEW_STATE = {
   longitude: 17.062927,
@@ -118,7 +117,7 @@ export function isMunicipalityData(
 function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
   return (
     <Link
-      href={`/kommun/${replaceLetters(tInfo.mData.name).toLowerCase()}`}
+      href={`/kommun/${tInfo.mData.name.toLowerCase()}`}
       style={{
         ...TOOLTIP_MOBILE_STYLE,
         left: tInfo.x,
@@ -201,8 +200,7 @@ function Map({
   }, [wrapperRef])
 
   const municipalityLines = municipalityFeatureCollection?.features?.flatMap(
-    ({ geometry, properties }: { geometry: any; properties: any }) => {
-      const name = replaceLetters(properties.name)
+    ({ geometry, properties: { name } }: { geometry: any; properties: { name: string } }) => {
       const currentMunicipality = data.find((e) => e.name === name)
       const dataPoint = currentMunicipality?.primaryDataPoint
       const formattedDataPoint = currentMunicipality?.formattedPrimaryDataPoint
@@ -279,7 +277,7 @@ function Map({
             setLastTapInfo({ x, y, mData }) // trigger mobile tooltip display
             return
           }
-          router.push(`/kommun/${replaceLetters(mData.name).toLowerCase()}`)
+          router.push(`/kommun/${mData.name.toLowerCase()}`)
         }}
         onViewStateChange={({ viewState }) => {
           setLastTapInfo(null)
