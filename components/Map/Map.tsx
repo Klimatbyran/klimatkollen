@@ -59,7 +59,7 @@ const getColor = (
 
   // Special case for binary KPIs
   if (boundaries.length === 2) {
-    return dataPoint === boundaries[0] ? colors[0] : colors[colors.length - 1]
+    return dataPoint === boundaries[0] ? colors[1] : colors[colors.length - 1]
   }
 
   // Special case for KPIs with three cases
@@ -68,9 +68,9 @@ const getColor = (
       return colors[colors.length - 1]
     }
     if (dataPoint > boundaries[0]) {
-      return colors[4]
+      return colors[3]
     }
-    return colors[0]
+    return colors[1]
   }
 
   // Special case for invalid dates

@@ -8,7 +8,7 @@ export const mapColors = [
   colorTheme.huePalette.red[600],
   colorTheme.huePalette.orange[600],
   colorTheme.huePalette.orange[250],
-  colorTheme.huePalette.blue[50],
+  colorTheme.huePalette.blue[250],
 ]
 
 export const IconButton = styled.button`
