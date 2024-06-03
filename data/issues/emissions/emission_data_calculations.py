@@ -1,23 +1,40 @@
+# pylint: disable=invalid-name
 # -*- coding: utf-8 -*-
 
 import datetime
 from dateutil.relativedelta import relativedelta
 import numpy as np
-import pandas as pd
+
 from issues.emissions.historical_data_calculations import get_n_prep_data_from_smhi
 from issues.emissions.approximated_data_calculations import calculate_approximated_historical
 from issues.emissions.trend_calculations import calculate_trend_coefficients, calculate_trend
 
 
-BUDGET = 80000000                # C02 budget in metric tonnes
-BUDGET_YEAR = 2024               # year from which the budget applies
+CURRENT_YEAR = 2024  # current year
+YEAR_SECONDS = 60 * 60 * 24 * 365  # a year in seconds
+
 
 LAST_YEAR_WITH_SMHI_DATA = 2022  # last year for which the National Emission database has data
 PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/api/getexcelfile/?county=0&municipality=0&sub=CO2'
 
-CURRENT_YEAR = 2024              # current year
 
-YEAR_SECONDS = 60 * 60 * 24 * 365   # a year in seconds
+# ------- NATIONAL CARBON BUDGETS AND OVERHEADS -------
+
+# Numbers below from
+# https://www.cemus.uu.se/wp-content/uploads/2023/12/Paris-compliant-carbon-budgets-for-Swedens-counties-.pdf
+# Found in tables on page 10 and 19. The numbers are in metric tonnes.
+
+# National C02 budget for 50% chance of staying below 1.5 degrees
+NATIONAL_BUDGET_15 = 80000000
+# National C02 budget for 50% chance of staying below 1.7 degrees
+NATIONAL_BUDGET_17 = 285113000
+# National overhead for 1.7 degree scenario
+NATIONAL_OVERHEAD_17 = 53433+1364
+# Year from which the carbon budgets applies
+BUDGET_YEAR = 2024
+
+
+# ------- CEMENT CARBON EMISSIONS -------
 
 # Sources for cement deduction
 # Mörbylånga: https://utslappisiffror.naturvardsverket.se/sv/Sok/Anlaggningssida/?pid=1441
@@ -42,7 +59,6 @@ CEMENT_DEDUCTION = {
     }
 }
 
-
 def deduct_cement(df, cement_deduction):
     """
     Deducts cement emissions from the given DataFrame based on the provided cement deduction values.
@@ -66,8 +82,24 @@ def deduct_cement(df, cement_deduction):
 
     return df_cem
 
+def calculate_n_subtract_national_overheads(
+    national_budget_15, national_budget_17, national_overhead_17):
+    """
+    This function calculates national overheads for a 1.5 degree scenario carbon budget
+    and then subtracts it from corresponding national carbon budget.
+    It uses the known values for national CO2 budgets for 1.5 and 1.7 degree scenarios,
+    as well as the national overhead for the 1.7 degree scenario.
 
-def calculate_municipality_budgets(df, last_year_in_range, current_year, budget_year):
+    Returns:
+        float: The calculated national CO2 budget for a 1.5 degree scenario.
+    """
+
+    # Calculate national overhead for 1.5 degree scenario in metric tonnes
+    national_overhead_15 = (national_overhead_17/national_budget_17)*national_budget_15
+    # Subtract national overhead from national budget for 1.5 degree scenario
+    return national_budget_15-national_overhead_15
+
+def calculate_municipality_budgets(df, last_year_in_range, current_year, budget, budget_year):
     """
     Calculates the budget for each municipality based on emission data.
 
@@ -83,8 +115,9 @@ def calculate_municipality_budgets(df, last_year_in_range, current_year, budget_
     years_range_gf = range(2015, last_year_in_range+1)
     df["budgetShare"] = df[years_range_gf].sum(axis=1) / df[years_range_gf].sum(axis=0).sum()
 
+
     # Each municipality gets its share of the budget
-    df['Budget'] = BUDGET*df['budgetShare']
+    df['Budget'] = budget*df['budgetShare']
 
     # Get years passed since the year the budget starts "eating"
     all_years_since_budget = list(range(budget_year, current_year))
@@ -342,23 +375,29 @@ def emission_calculations(df):
     df_trend_coefficients = calculate_trend_coefficients(df_cem, LAST_YEAR_WITH_SMHI_DATA)
 
     df_approxmimated_historical_total = calculate_approximated_historical(
-        df_trend_coefficients,
-        LAST_YEAR_WITH_SMHI_DATA,
-        CURRENT_YEAR
-    )
+        df_trend_coefficients, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
 
     df_trend = calculate_trend(
-        df_approxmimated_historical_total, 
-        LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR
-    )
+        df_approxmimated_historical_total, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR)
 
-    df_budgeted = calculate_municipality_budgets(df_trend, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR, BUDGET_YEAR)
-    df_paris = calculate_paris_path(df_budgeted, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR, BUDGET_YEAR)
+    # Calculate carbon budget with subtracted national overheads
+    budget = calculate_n_subtract_national_overheads(
+        NATIONAL_BUDGET_15, NATIONAL_BUDGET_17, NATIONAL_OVERHEAD_17)
 
-    df_historical_change_percent = calculate_historical_change_percent(df_paris, LAST_YEAR_WITH_SMHI_DATA)
-    df_needed_change_percent = calculate_needed_change_percent(df_historical_change_percent, CURRENT_YEAR, BUDGET_YEAR)
+    df_budgeted = calculate_municipality_budgets(
+        df_trend, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR, budget, BUDGET_YEAR)
+
+    df_paris = calculate_paris_path(
+        df_budgeted, LAST_YEAR_WITH_SMHI_DATA, CURRENT_YEAR, BUDGET_YEAR)
+
+    df_historical_change_percent = calculate_historical_change_percent(
+        df_paris, LAST_YEAR_WITH_SMHI_DATA)
+
+    df_needed_change_percent = calculate_needed_change_percent(
+        df_historical_change_percent, CURRENT_YEAR, BUDGET_YEAR)
 
     df_net_zero = calculate_hit_net_zero(df_needed_change_percent, LAST_YEAR_WITH_SMHI_DATA)
+
     df_budget_runs_out = calculate_budget_runs_out(df_net_zero, CURRENT_YEAR, BUDGET_YEAR)
 
     return df_budget_runs_out
