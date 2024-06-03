@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { GetStaticProps } from 'next'
 
-import { H1 } from '../components/Typography'
+import { H1, H5 } from '../components/Typography'
 import Layout from '../components/Layout'
 import PageWrapper from '../components/PageWrapper'
 
@@ -18,6 +18,7 @@ const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
   width: 100%;
+  margin-top: 32px;
   &:hover {
     background: ${({ theme }) => theme.lightGreen};
   }
@@ -29,29 +30,33 @@ function FourOhFour() {
   }
 
   const { t } = useTranslation()
-  const [timeLeft, setTimeLeft] = useState(9000)
-  useEffect(() => {
-    setInterval(() => {
-      setTimeLeft((prev) => prev - 1000)
-    }, 1000)
-  }, [])
+  const [timeLeft, setTimeLeft] = useState(4)
 
   useEffect(() => {
-    if (timeLeft <= 0) {
-      router.push('/')
-    }
-  }, [timeLeft])
+    const interval = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(interval)
+          router.push('/')
+          return 0
+        }
+        return prevTime - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <Layout>
       <PageWrapper backgroundColor="black">
         <H1>{t('common:errors.notFound')}</H1>
-        <p>
+        <H5>
           {t('common:errors.notFoundSubtitle')}
           {' '}
-          {timeLeft >= 0 ? timeLeft / 1000 : 0}
+          {timeLeft >= 0 ? timeLeft : 0}
           ...
-        </p>
+        </H5>
         <Button onClick={handleClick}>{t('common:actions.goHome')}</Button>
       </PageWrapper>
     </Layout>
