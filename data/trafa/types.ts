@@ -36,20 +36,6 @@ export interface Row {
   IsTotal: boolean
 }
 
-export interface Cell {
-  Name: string
-  IsMeasure: boolean
-  Description: string
-  Column: string
-  Value: string
-  FormattedValue: string
-  Level: string
-  Gis: string
-  UniqueId: string
-  NoteIds: number[]
-  Versions: Version[]
-}
-
 export interface TrafaResponseObject {
   Header: Header
   Rows: Row[]

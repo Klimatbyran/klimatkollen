@@ -1,7 +1,10 @@
+/* eslint-disable no-continue */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-console */
 import axios, { AxiosError } from 'axios'
-import fs, { writeFileSync } from 'fs'
+import fs from 'fs'
 import readline from 'readline'
 import { exec, spawn } from 'child_process'
 import { Row, TrafaResponseObject } from './types'
@@ -57,7 +60,7 @@ export const fetchTrafaData = async (query: string): Promise<TrafaResponseObject
   try {
     const res = await trafaApi.get(`?query=${query}`)
     return res.data
-  } catch (error) {
+  } catch (error : any) {
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError
       // @ts-expect-error response is not always defined
@@ -111,17 +114,15 @@ const processFiles = () => new Promise<void>((resolve, reject) => {
  * Writes the provided data to a file and saves metadata containing the last fetched date and git user name.
  * @param data - The data to be written to the file.
  */
-const dataToFile = async ({
+const saveJson = async <T>({
   data,
   outputFolder = 'data/trafa/downloads',
+  fileName = 'trafa-data.json',
 }: {
-  data: TrafaResponseObject
+  data: T
   outputFolder?: string
-
+  fileName?: string
 }) => {
-  const year = data.Header.Column.find((c) => c.Name === 'ar')?.Filters![0] ?? 'unknown'
-  console.log(`%s: Writing data for ${year}`, TIMESTAMP)
-  const fileName = `${data.Name}-${year}.json`
   const filePath = `${outputFolder}/${fileName}`
   const metadataPath = `${outputFolder}/metadata.yml`
   if (!fs.existsSync(outputFolder)) {
@@ -141,14 +142,15 @@ const dataToFile = async ({
 const processRows = (rows: Row[]) => rows.map((row) => {
   const result: ResultInterface = {} as ResultInterface
   row.Cell.forEach((cell) => {
-    const isNumber = !Number.isNaN(parseInt(cell.Value, 10))
-    result[cell.Column] = isNumber ? parseInt(cell.Value, 10) : cell.Value
+    const isNumber = !Number.isNaN(parseInt(cell.Value, 10));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- any type is used to dynamically assign properties to the result object
+    (result as any)[cell.Column] = isNumber ? parseInt(cell.Value, 10) : cell.Value
   })
   return result
 })
 /**
  * Tranforms the processed data and performs calculations.
- * @param data - The result of @function processRows
+ * @param data - The processed data to be aggregated.
  * @returns
  */
 const aggregateData = (data: ResultInterface[]) => {
@@ -161,11 +163,16 @@ const aggregateData = (data: ResultInterface[]) => {
 
       if (!entry.regkom || !entry.ar || entry.nyregunder === undefined || entry.itrfslut === undefined) {
         console.error(`Invalid entry encountered: ${JSON.stringify(entry)}`)
-        // eslint-disable-next-line no-continue
         continue
       }
+      if (entry.regkom === 'Totalt') { continue }
 
       const key = `${entry.regkom}-${entry.ar}`
+
+      // Skip "Okänd kommun" entries
+      if (key.includes('Okänd')) {
+        continue
+      }
 
       // check if the row is a total row (contains total number of newly registered cars for all fuel types)
       const isTotalRow = entry.drivmedel === 'Totalt'
@@ -178,7 +185,7 @@ const aggregateData = (data: ResultInterface[]) => {
           totalCarsInTraffic: 0,
           totalElectricCars: 0,
           totalCars: 0,
-          percentageElectricCars: '0.00',
+          percentageElectricCars: '0',
         })
       }
 
@@ -198,12 +205,18 @@ const aggregateData = (data: ResultInterface[]) => {
       keyMatchCount.set(key, count + 1)
 
       if (count + 1 === 3) {
-        // assumming there are 3 rows per municipality per year (total, electric cars, and hybrid cars) calculate the percentage of electric cars
-        const percentageChange = ((aggregatedEntry.totalElectricCars / aggregatedEntry.totalCars) * 100).toFixed(2)
-        aggregatedEntry.percentageElectricCars = percentageChange
+        // make sure totalCars is not NaN
+        if (!Number.isNaN(aggregatedEntry.totalCars)) {
+          // assumming there are 3 rows per municipality per year (total, electric cars, and hybrid cars) calculate the percentage of electric cars
+          const percentageChange = ((aggregatedEntry.totalElectricCars / aggregatedEntry.totalCars) * 100).toFixed(1)
+          aggregatedEntry.percentageElectricCars = percentageChange
+        }
+      }
+      // remove the total row from the aggregation map
+      if (aggregatedEntry.name === 'Totalt') {
+        aggregationMap.delete(key)
       }
     }
-
     return Array.from(aggregationMap.values()).sort((a, b) => a.name.localeCompare(b.name))
   } catch (error) {
     console.error(`Aggregation failed: ${error}`)
@@ -215,69 +228,31 @@ const aggregateData = (data: ResultInterface[]) => {
 const getYear = (rows: any[]): string => rows[0]?.Cell.find((cell: any) => cell.Column === 'ar')?.Value ?? 'unknown'
 
 /**
- * Fetches year data from Trafa API.
- * If no year is provided, it fetches data for the current year.
- *
- * @param year - The year for which to fetch the data.
- * @returns A Promise that resolves to the fetched data.
- */
-const fetchYearData = async (year?: number) => {
-  const client = new TrafaClient()
-  const currentYear = new Date().getFullYear()
-  const yearToFetch = year ?? currentYear
-  console.log(`%s: Fetching data for ${currentYear}`, TIMESTAMP)
-  const metadataPath = 'data/trafa/downloads/metadata.yml'
-  const metadata = fs.readFileSync(metadataPath, 'utf8')
-  console.log('%s: -------------------------------Metadata-------------------------------- ', TIMESTAMP)
-  console.table(metadata)
-
-  const { query, url } = client
-    .setYear(yearToFetch.toString())
-    .setMeasure(['nyregunder', 'itrfslut'])
-    .setTarget({ category: 'communal', target: 'cars' })
-    .setFuel(['el', 'elhybrid', 'laddhybrid'])
-    .build()
-
-  console.log('%s: -----------------------------QUERY-------------------------------------', TIMESTAMP)
-  console.log('%b: Fetching data with query: %s', TIMESTAMP, url)
-  console.log('-----------------------------------------------------------------------')
-
-  console.log('%s: -----------------------------DATA--------------------------------------', TIMESTAMP)
-  console.log('%s: Fetching data...', TIMESTAMP)
-  console.log('%s: -----------------------------------------------------------------------', TIMESTAMP)
-  console.log(`%s:${query}`, TIMESTAMP)
-  // try {
-  //   const data = await fetchTrafaData(query)
-  //   dataToFile(data)
-  // } catch (error) {
-  //   if (error instanceof Error) console.error(error?.message)
-  // }
-}
-
-/**
  * Checks if the Git worktree is empty.
  * @returns A promise that resolves to a boolean indicating whether the worktree is empty or not.
  */
-const isEmptyWorktree = () => new Promise<boolean>((resolve, reject) => {
+const isEmptyWorktree = () => {
   exec('git status --porcelain', (error, stdout) => {
     if (error) {
-      reject(error)
-    } else {
-      if (stdout.trim() !== '') {
-        console.error('%s: (ERROR) Uncommitted changes in the repository. Please commit or stash them before running this script.', TIMESTAMP)
-        resolve(false)
-      }
-      resolve(true)
+      console.error('%s: (ERROR) Failed to check if the worktree is empty.', TIMESTAMP)
+      console.error('%s: Exiting...', TIMESTAMP)
+      setTimeout(() => process.exit(1), 1000)
+    } else if (stdout.trim() !== '') {
+      console.error('%s: (ERROR) Uncommitted changes in the repository. Please commit or stash them before running this script.', TIMESTAMP)
+      console.error('%s: Exiting...', TIMESTAMP)
+      setTimeout(() => process.exit(1), 1000)
     }
   })
-})
+  return true
+}
 
 /**
  * Asks the user if they want to commit the changes to the repository.
  * If the user answers 'y', it adds, commits, and pushes the changes to the repository.
  * Closes the readline interface after execution.
  */
-function askForCommit(rl: readline.Interface) {
+function askForCommit() {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
   rl.question(
     'Do you want to commit the changes to the repository? (y/n) ',
     async (answer) => {
@@ -299,34 +274,79 @@ function askForCommit(rl: readline.Interface) {
     },
   )
 }
-const regressionPerMunicipalityPerYear = (municipalities: DesiredInterface[]) => {
-  // TODO: Implement regression per municipality per year kx + m
 
+const getMetadata = () => {
+  const metadataPath = 'data/trafa/downloads/metadata.yml'
+  if (!fs.existsSync(metadataPath)) {
+    return {
+      lastFetched: new Date(0),
+      lastFetchedBy: 'unknown',
+    }
+  }
+  const metadata = fs.readFileSync(metadataPath, 'utf8')
+  const [lastFetched, lastFetchedBy] = metadata.split('\n').map((line) => line.split(': ')[1])
+  return {
+    lastFetched: new Date(lastFetched),
+    lastFetchedBy,
+  }
 }
+const seperator = '---------------------------------------------------------------------------------'
+const main = async () => {
+  [
+    'This script fetches data from the TRAFA API and processes the response and saves it to a file.',
+    seperator,
+    'The data is fetched for the years 2015 to the previous year, skipping the current year.',
+    'for the following fuel types: el, laddhybrid, and totalt(total number of registered cars).',
+    'nyregunder(number of newly registered cars), and itrfslut(number of cars in traffic).',
+    'also commits the changes(trafa-data.json & metadata-yml)  to the repository after processing the data.',
+    seperator,
+  ].forEach((message, i) => console.log(`%s: ${message}`, TIMESTAMP))
 
-export const fetchAllYearDataFrom2015ToNow = async () => {
+  const metadata = getMetadata()
+  const today = new Date()
+
+  // Check if the data should be revalidated if the data is older than a year or the environment variable is set to true
+  const shouldFetch = process.env.REVALIDATE_TRAFA_DATA === 'true' || today.getFullYear() - metadata.lastFetched.getFullYear() > 1
+
+  if (metadata.lastFetchedBy !== 'unknown') {
+    console.log(
+      '%s: Last fetched on %s by %s',
+      TIMESTAMP,
+      metadata.lastFetched.toLocaleString('sv'),
+      metadata.lastFetchedBy,
+    )
+  } else {
+    console.log('%s: No previous fetch metadata found.', TIMESTAMP)
+  }
+  if (!shouldFetch) {
+    console.log('%s: Data is up to date. Exiting...', TIMESTAMP)
+    process.exit(0)
+  }
+
+  isEmptyWorktree()
+
   const client = new TrafaClient()
   const currentYear = new Date().getFullYear()
   const yearsFrom2015 = Array.from({ length: currentYear - 2015 + 1 }, (_, i) => 2015 + i)
   // remove current year from list this data is not available yet
   yearsFrom2015.pop()
 
-  const queries = yearsFrom2015?.map((year) => client
-    .setYear(year.toString())
-    .setMeasure(['nyregunder', 'itrfslut'])
-    .setTarget({ category: 'communal', target: 'cars' })
-    .setFuel(['el', 'laddhybrid', 'totalt'])
-    .build())
-
   try {
+    const queries = yearsFrom2015?.map((year) => client
+      .setYear(year.toString())
+      .setMeasure(['nyregunder', 'itrfslut'])
+      .setTarget({ category: 'communal', target: 'cars' })
+      .setFuel(['el', 'laddhybrid', 'totalt'])
+      .build())
+
     const result = await Promise.allSettled(
       queries.map((query) => fetchTrafaData(query.query)),
     )
 
     const processedData: {
-      municipalities: DesiredInterface[]
-      year: string
-    }[] = []
+        municipalities: DesiredInterface[]
+        year: string
+      }[] = []
 
     result?.forEach((d) => {
       if (d.status === 'fulfilled') {
@@ -336,83 +356,13 @@ export const fetchAllYearDataFrom2015ToNow = async () => {
         processedData?.push({ year, municipalities: aggregatedData })
       }
     })
-    writeFileSync('data/output/file.json', JSON.stringify(processedData, null, 2))
-    return processedData
+    await saveJson({ data: processedData, fileName: 'trafa-data.json' })
+    askForCommit()
+    console.log('%s: Script execution complete! Exiting...', TIMESTAMP)
+    setTimeout(() => process.exit(0), 1000)
   } catch (error) {
-    console.error(`Error: ${error}`)
+    console.error(`%s: ${error}`, TIMESTAMP)
   }
 }
-fetchAllYearDataFrom2015ToNow()
-const main = async () => {
-  [
-    'Welcome to the TRAFA data fetching script!',
-    'This script fetches data from the TRAFA API and processes it into Excel files.',
-    "The data is fetched for 'Fordon i län och kommuner' , 'Personbilar' ,  'Antal nyregistreringar', 'Antal i trafik'.",
-    'The script also commit the changes to the repository after processing the data.',
-  ].forEach((message) => console.log(`%s: ${message}`, TIMESTAMP))
-  const worktreeStatus = await isEmptyWorktree()
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  })
-  if (!worktreeStatus) {
-    rl.close()
-    process.exit(1)
-  }
-  const options = [
-    'Fetch data for current year',
-    'Fetch data for a specific year',
-    'Fetch data for all years from 2015 to now',
-  ]
-  console.log('%s: Choose an option:', TIMESTAMP)
-  options.forEach((option, index) => console.log(`%s: ${index + 1}. ${option}`, TIMESTAMP))
-  rl.question('Enter the number of the option you want to choose: ', async (answer) => {
-    switch (answer) {
-      case '1':
-        try {
-          await fetchYearData()
-          await processFiles()
-          askForCommit(rl)
-        } catch (error) {
-          rl.close()
-        }
-        break
-      case '2':
-        rl.question('Which year do you want to fetch data for? ', async (year) => {
-          const yearRegex = /^\d{4}$/
-          if (!yearRegex.test(year)) {
-            console.log('%s: (error) Invalid year', TIMESTAMP)
-            return
-          }
-          if (
-            parseInt(year, 10) < 2015
-            || parseInt(year, 10) > new Date().getFullYear()
-          ) {
-            console.log('%s: (error) Invalid year', TIMESTAMP)
-            return
-          }
-          try {
-            await fetchYearData(parseInt(year, 10))
-            await processFiles()
-            askForCommit(rl)
-          } catch (error) {
-            rl.close()
-          }
-        })
 
-        break
-      case '3':
-        try {
-          await fetchAllYearDataFrom2015ToNow()
-          await processFiles()
-          askForCommit(rl)
-        } catch (error) {
-          rl.close()
-        }
-        break
-      default:
-        console.log('%s: Invalid option', TIMESTAMP)
-        break
-    }
-  })
-}
+main()
