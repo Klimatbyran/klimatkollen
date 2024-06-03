@@ -99,7 +99,8 @@
     }
   },
   "errors": {
-    "notFound": "404 - Sidan hittades inte"
+    "notFound": "404 - Sidan hittades inte",
+    "notFoundSubtitle": "Går tillbaka till startskärmen om"
   },
   "footer": {
     "developedWith": "Klimatkollen är utvecklad med [öppen källkod](https://github.com/Klimatbyran/klimatkollen) och drivs av den ideella föreningen Klimatbyrån.",
