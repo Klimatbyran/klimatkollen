@@ -2,6 +2,10 @@
 
 import argparse
 import json
+from typing import Any, Dict, List
+
+import numpy as np
+import pandas as pd
 
 import pandas as pd
 
@@ -49,6 +53,65 @@ def create_dataframe(to_percentage: bool) -> pd.DataFrame:
 
     return df
 
+def series_to_dict(row: pd.Series, numeric_columns: List[Any]) -> Dict:
+    """
+    Transforms a pandas Series into a dictionary.
+
+    Args:
+    row: The pandas Series to transform.
+
+    Returns:
+    A dictionary with the transformed data.
+    """
+    cdata = {
+        'kommun': row['Kommun'],
+        'län': row['Län'],
+        'emissions': { str(year): row[year] for year in numeric_columns },
+        'budget': row['Budget'],
+        'emissionBudget': row['parisPath'],
+        'approximatedHistoricalEmission': row['approximatedHistorical'],
+        'totalApproximatedHistoricalEmission': row['totalApproximatedHistorical'],
+        'trend': row['trend'],
+        'trendEmission': row['trendEmission'],
+        'historicalEmissionChangePercent': row[
+            'historicalEmissionChangePercent'
+        ],
+        'neededEmissionChangePercent': row[
+            'neededEmissionChangePercent'
+        ],
+        'hitNetZero': row['hitNetZero'],
+        'budgetRunsOut': row['budgetRunsOut'],
+        'electricCarChangePercent': row['electricCarChangePercent'],
+        'electricCarChangeYearly': row['electricCarChangeYearly'],
+        'climatePlanLink': row['Länk till aktuell klimatplan'],
+        'climatePlanYear': row['Antagen år'],
+        'climatePlanComment': row['Namn, giltighetsår, kommentar'],
+        'bicycleMetrePerCapita': row['metrePerCapita'],
+        'totalConsumptionEmission': row['Total emissions'],
+        'electricVehiclePerChargePoints': row['EVPC'],
+        'procurementScore': row['procurementScore'],
+        'procurementLink': row['procurementLink'],
+    }
+    return cdata
+
+def round_processing(v, num_decimals: int):
+    new_v = v
+    if (isinstance(v, float)):
+        new_v = np.round(v, num_decimals)
+    elif (isinstance(v, dict)):
+        new_v = {k: round_processing(a, num_decimals) for k, a in v.items()}
+    return new_v
+
+def max_decimals(entry: Dict, num_decimals: int) -> Dict:
+    return {k: round_processing(v, num_decimals) for k, v in entry.items()}
+
+def df_to_dict(df: pd.DataFrame, num_decimals: int) -> dict:
+    numeric_columns = [col for col in df.columns if str(col).isdigit()]
+
+    if num_decimals >= 0:
+        temp = [ max_decimals(series_to_dict(df.iloc[i], numeric_columns), num_decimals) for i in range(len(df)) ]
+    else:
+        temp = [ series_to_dict(df.iloc[i], numeric_columns) for i in range(len(df)) ]
 
 def convert_df_to_dict(df: pd.DataFrame, numeric_columns: list) -> dict:
     temp = [
@@ -86,15 +149,14 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Climate data calculations")
     parser.add_argument("-o", "--outfile", default="output/climate-data.json", type=str, help="Output filename (JSON formatted)")
     parser.add_argument("-t", "--to_percentage", action="store_true", default=False, help="Convert to percentages")
+    parser.add_argument("-n", "--num_decimals", default=-1, type=int, help="Number of decimals to round to")
+
 
     args = parser.parse_args()
 
     df = create_dataframe(args.to_percentage)
 
-    # Save dataframe as JSON file
-    numeric_columns = [col for col in df.columns if str(col).isdigit()]
-
-    temp = convert_df_to_dict(df, numeric_columns)
+    temp = df_to_dict(df, args.num_decimals)
 
     output_file = args.outfile
 
