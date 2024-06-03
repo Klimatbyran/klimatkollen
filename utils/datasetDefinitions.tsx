@@ -42,7 +42,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       columnHeader: t('common:datasets.municipalityEmissions.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent / 100,
-        formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
+        formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
       },
       sortAscending: true,
       name: t('common:datasets.municipalityEmissions.name'),
@@ -116,7 +116,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       columnHeader: t('common:datasets.electricCars.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.ElectricCarChangePercent,
-        formattedDataPoint: (dataPoint) => ((dataPoint as number) * 100).toFixed(1),
+        formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
       },
       sortAscending: false,
       name: t('common:datasets.electricCars.name'),
