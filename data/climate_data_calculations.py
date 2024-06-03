@@ -56,12 +56,8 @@ temp = [
         'totalApproximatedHistoricalEmission': df.iloc[i]['totalApproximatedHistorical'],
         'trend': df.iloc[i]['trend'],
         'trendEmission': df.iloc[i]['trendEmission'],
-        'historicalEmissionChangePercent': df.iloc[i][
-            'historicalEmissionChangePercent'
-        ],
-        'neededEmissionChangePercent': df.iloc[i][
-            'neededEmissionChangePercent'
-        ],
+        'historicalEmissionChangePercent': df.iloc[i]['historicalEmissionChangePercent'],
+        'neededEmissionChangePercent': df.iloc[i]['neededEmissionChangePercent'],
         'hitNetZero': df.iloc[i]['hitNetZero'],
         'budgetRunsOut': df.iloc[i]['budgetRunsOut'],
         'electricCarChangePercent': df.iloc[i]['electricCarChangePercent'],
