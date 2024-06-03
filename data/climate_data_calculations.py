@@ -7,8 +7,6 @@ from typing import Any, Dict, List
 import numpy as np
 import pandas as pd
 
-import pandas as pd
-
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
 from solutions.cars.electric_vehicle_per_charge_points import (
     get_electric_vehicle_per_charge_points,
@@ -108,10 +106,12 @@ def max_decimals(entry: Dict, num_decimals: int) -> Dict:
 def df_to_dict(df: pd.DataFrame, num_decimals: int) -> dict:
     numeric_columns = [col for col in df.columns if str(col).isdigit()]
 
+    temp = []
     if num_decimals >= 0:
         temp = [ max_decimals(series_to_dict(df.iloc[i], numeric_columns), num_decimals) for i in range(len(df)) ]
     else:
         temp = [ series_to_dict(df.iloc[i], numeric_columns) for i in range(len(df)) ]
+    return temp
 
 def convert_df_to_dict(df: pd.DataFrame, numeric_columns: list) -> dict:
     temp = [
