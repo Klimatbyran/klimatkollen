@@ -33,7 +33,6 @@ def calculate_bike_lane_per_capita():
 
     # Merge bicycle and population dataframes
     df_merged = df_bicycles.merge(df_population_renamed, on='Kommun', how='left')
-    # print(df_merged.head(5))
 
     # Calculate bike lane per capita
     df_merged['bikeMetrePerCapita'] = df_merged['Totalsumma'] / df_merged['Folkmängd']

@@ -33,7 +33,8 @@ def create_dataframe(to_percentage: bool) -> pd.DataFrame:
     df = get_climate_plans(df)
     print('4. Climate plans added')
 
-    df = bicycle_calculations(df)
+    df_bike_lanes = calculate_bike_lane_per_capita()
+    df = df.merge(df_bike_lanes, on='Kommun', how='left')
     print('5. Bicycle data added')
 
     df = get_consumption_emissions(df)
