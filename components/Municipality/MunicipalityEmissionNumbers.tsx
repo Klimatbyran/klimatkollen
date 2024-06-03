@@ -77,7 +77,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={step > 0 ? colorTheme.newColors.pink4 : colorTheme.newColors.pink5} />
+          <Square color={step > 0 ? colorTheme.huePalette.red[700] : `${colorTheme.huePalette.red[700]}bf`} />
           <StyledText $color={step > 0 ? colorTheme.newColors.white : colorTheme.newColors.gray}>
             {t('municipality:emissionNumbers.trend', { trendStartsYear, totalTrend: formatter.format(totalTrend) })}
           </StyledText>
