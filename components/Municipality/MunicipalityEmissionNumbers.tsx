@@ -83,7 +83,7 @@ function MunicipalityEmissionNumbers({ municipality, step }: EmissionsProps) {
           </StyledText>
         </TotalCo2>
         <TotalCo2>
-          <Square color={step > 1 ? colorTheme.newColors.blue4 : colorTheme.newColors.blue5} />
+          <Square color={step > 1 ? colorTheme.newColors.blue3 : colorTheme.newColors.blue4} />
           <StyledText $color={step > 1 ? colorTheme.newColors.white : colorTheme.newColors.gray}>
             {t('municipality:emissionNumbers.co2budget', { budgetStartsYear, totalBudget: formatter.format(totalBudget) })}
           </StyledText>
