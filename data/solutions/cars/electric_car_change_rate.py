@@ -5,7 +5,7 @@ import pandas as pd
 PATH_CARS_DATA = "solutions/cars/sources/kpi1_calculations.xlsx"
 
 
-def get_electric_car_change_rate(df):
+def get_electric_car_change_rate(df, to_percent: bool = False):
     # LOAD AND PREP DATA ON CHANGE RATE OF PERCENTAGE OF NEWLY REGISTERED RECHARGABLE CARS PER MUNICIPALITY AND YEAR
     df_raw_cars = pd.read_excel(PATH_CARS_DATA)
 
@@ -15,11 +15,11 @@ def get_electric_car_change_rate(df):
 
     df_raw_cars["electricCarChangePercent"] = df_raw_cars[
         "Procentenheter förändring av andel laddbara bilar 2015-2022"
-    ]
+    ] * (100 if to_percent else 1)
     
     years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
     df_raw_cars["electricCarChangeYearly"] = df_raw_cars.apply(
-        lambda x: {year: x.loc[year] for year in years},
+        lambda x: {year: x.loc[year] * (100 if to_percent else 1) for year in years},
         axis=1
     )
 
