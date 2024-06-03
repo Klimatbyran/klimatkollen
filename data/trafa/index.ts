@@ -85,30 +85,6 @@ const currentGitUser = () => new Promise<string>((resolve, reject) => {
     }
   })
 })
-const processFiles = () => new Promise<void>((resolve, reject) => {
-  const python = spawn('python3', [
-    './data/trafa/data_to_xlsx.py',
-    '--function',
-    'process_json_files',
-  ])
-  console.log(`%s: Running python script...${python.pid}`, TIMESTAMP)
-
-  python.stdout.on('data', (data) => {
-    console.log(`%s: stdout: ${data}`, TIMESTAMP)
-  })
-
-  python.stderr.on('data', (data) => {
-    console.error(`%s: stderr: ${data}`, TIMESTAMP)
-  })
-
-  python.on('close', (code) => {
-    if (code !== 0) {
-      reject(new Error(`${TIMESTAMP}: (error) python script exited with code ${code}`))
-    } else {
-      resolve()
-    }
-  })
-})
 
 /**
  * Writes the provided data to a file and saves metadata containing the last fetched date and git user name.
