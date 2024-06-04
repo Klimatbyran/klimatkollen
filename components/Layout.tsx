@@ -14,11 +14,11 @@ const Main = styled.main`
   }
 `
 
-export default function Layout({ children }: { children: JSX.Element | JSX.Element[] }) {
+export default function Layout({ children, className }: { children: JSX.Element | JSX.Element[], className?: string }) {
   return (
     <>
       <Header />
-      <Main>
+      <Main className={className}>
         <H1 className="sr-only">Klimatkollen</H1>
         {children}
       </Main>

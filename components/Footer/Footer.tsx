@@ -18,7 +18,7 @@ const Foot = styled.div`
 `
 
 const StyledH5 = styled(H5)`
-  color: ${({ theme }) => theme.midGreen};
+  color: ${({ theme }) => theme.newColors.blue3};
   margin: 16px;
   text-align: center;
 
@@ -27,45 +27,45 @@ const StyledH5 = styled(H5)`
   }
 `
 
-const BottomParent = styled.div`
-  color: ${({ theme }) => theme.black};
-`
-
 const TextContainer = styled.div`
+  padding: 1rem 1rem 0;
+
   @media only screen and (${devices.tablet}) {
-    width: 45%;
+    padding: 0;
+  }
+
+  a {
+    font-weight: 500;
   }
 `
 
 const Copyright = styled.p`
-  font-family: 'Anonymous Pro';
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 1rem;
 `
 
 const GHLink = styled.p`
-  font-family: 'Anonymous Pro';
-  font-size: 13px;
+  font-size: 14px;
 `
 
 const HorizontalContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 32px;
-  gap: 32px;
+  gap: 16px;
 
   @media only screen and (${devices.tablet}) {
     flex-direction: row;
-    margin-top: 16px;
   }
 `
 
 const LogoContainer = styled.div`
-  flex: 1;
   order: 2;
+  padding-bottom: 2rem;
 
   @media only screen and (${devices.tablet}) {
-    align-self: end;
+    padding: 0;
+    align-self: center;
     order: 1;
   }
 
@@ -77,47 +77,55 @@ const LogoContainer = styled.div`
 const SocialLinksContainer = styled.div`
   flex: 1;
   order: 1;
+  
+  padding: 0 1rem;
+  
 
   @media only screen and (${devices.tablet}) {
+    padding: 0;
     order: 2;
   }
 `
 
-function Footer() {
+type Props = {
+  minimal?: boolean
+}
+
+function Footer({ minimal }: Props) {
   const { t } = useTranslation(['common'])
 
   return (
     <>
-      <PageWrapper backgroundColor="black">
-        <Foot>
-          <NewsletterSubscribe />
-          <StyledH5>{t('footer.supportedBy')}</StyledH5>
-          <Supporters />
-          <StyledH5>{t('footer.partners')}</StyledH5>
-          <Partners />
-        </Foot>
-      </PageWrapper>
-      <PageWrapper backgroundColor="midGreen">
-        <BottomParent>
-          <TextContainer>
-            <Paragraph>{t('footer.tagline')}</Paragraph>
-            <Markdown components={{ p: Copyright }}>{t('footer.license')}</Markdown>
-            <Markdown components={{ p: GHLink }}>{t('footer.developedWith')}</Markdown>
-          </TextContainer>
-          <HorizontalContainer>
-            <SocialLinksContainer>
-              <SocialList />
-            </SocialLinksContainer>
-            <LogoContainer>
-              <img
-                src="/logos/klimatkollen_logo_black.svg"
-                width="100%"
-                loading="lazy"
-                alt="Klimatkollen logo"
-              />
-            </LogoContainer>
-          </HorizontalContainer>
-        </BottomParent>
+      {!minimal ? (
+        <PageWrapper>
+          <Foot>
+            <NewsletterSubscribe />
+            <StyledH5>{t('footer.supportedBy')}</StyledH5>
+            <Supporters />
+            <StyledH5>{t('footer.partners')}</StyledH5>
+            <Partners />
+          </Foot>
+        </PageWrapper>
+      ) : null}
+      <PageWrapper backgroundColor="black2">
+        <TextContainer>
+          <Paragraph>{t('footer.tagline')}</Paragraph>
+          <Markdown components={{ p: Copyright }}>{t('footer.license')}</Markdown>
+          <Markdown components={{ p: GHLink }}>{t('footer.developedWith')}</Markdown>
+        </TextContainer>
+        <HorizontalContainer>
+          <SocialLinksContainer>
+            <SocialList />
+          </SocialLinksContainer>
+          <LogoContainer>
+            <img
+              src="/logos/klimatkollen_logo.svg"
+              width="100%"
+              loading="lazy"
+              alt="Klimatkollen logo"
+            />
+          </LogoContainer>
+        </HorizontalContainer>
       </PageWrapper>
     </>
   )

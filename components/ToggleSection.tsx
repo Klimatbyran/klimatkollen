@@ -18,7 +18,7 @@ const Arrow = styled(ArrowSvg)<{ open: boolean }>`
   transform: rotate(${(props) => (props.open ? '180deg' : '0')});
 
   & path {
-    fill: ${(props) => (props.open ? colorTheme.lightGreen : colorTheme.offWhite)};
+    fill: ${(props) => (props.open ? colorTheme.newColors.blue3 : colorTheme.newColors.white)};
   }
 `
 

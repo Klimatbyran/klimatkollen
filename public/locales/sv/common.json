@@ -78,7 +78,7 @@
     "municipalityEmissions": {
       "body": "Genomsnittlig årlig förändring av koldioxidutsläppen i Sveriges kommuner sedan Parisavtalet 2015.",
       "columnHeader": "Utsläppsförändring",
-      "labels": ["0% +", "0–1%", "1–2%", "2–3%", "3–10%", "10–15%"],
+      "labels": ["0% +", "0–3%", "3–5%", "5–7%", "7–10%", "10–15%"],
       "name": "Utsläppen",
       "source": "Källa: [Nationella emissionsdatabasen](https://nationellaemissionsdatabasen.smhi.se/)",
       "title": "Utsläppsförändring"

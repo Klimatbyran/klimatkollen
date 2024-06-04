@@ -80,7 +80,7 @@ The most important constants in the module are `NATIONAL_BUDGET_15`, `NATIONAL_B
 
 #### Functions
 
-Here's a summary of what the functions do, in order of execution in `emissions/emission_data_calculations.py`:
+Here's a summary of what the functions do, in order of execution in `/issues/emissions/emission_data_calculations.py`:
 
 1. `get_n_prep_data_from_smhi`: Downloads data from SMHI and preprocess it into a pandas dataframe.
 

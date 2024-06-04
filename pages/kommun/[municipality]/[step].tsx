@@ -1,22 +1,28 @@
 import { GetServerSideProps } from 'next'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { ReactElement } from 'react'
+import styled from 'styled-components'
 
 import { ClimateDataService } from '../../../utils/climateDataService'
 import { WikiDataService } from '../../../utils/wikiDataService'
 import { Municipality as TMunicipality } from '../../../utils/types'
 import { PoliticalRuleService } from '../../../utils/politicalRuleService'
 import { ONE_WEEK_MS } from '../../../utils/shared'
-
-const Municipality = dynamic(() => import('../../../components/Municipality/Municipality'))
+import Layout from '../../../components/Layout'
+import Footer from '../../../components/Footer/Footer'
+import Municipality from '../../../components/Municipality/Municipality'
 
 export const CHARTS = [
   'historiska-utslapp',
   'framtida-prognos',
   'parisavtalet',
 ]
+
+const StyledLayout = styled(Layout)`
+  margin-top: 48px;
+`
 
 type Props = {
   municipality: TMunicipality
@@ -66,6 +72,15 @@ export default function Step({
       coatOfArmsImage={municipality.CoatOfArmsImage?.ImageUrl || null}
       municipalitiesName={municipalitiesName}
     />
+  )
+}
+
+Step.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <StyledLayout>{page}</StyledLayout>
+      <Footer minimal />
+    </>
   )
 }
 

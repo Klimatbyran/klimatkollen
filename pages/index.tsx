@@ -14,7 +14,7 @@ import { defaultDataset, getDataDescriptions } from '../utils/datasetDefinitions
 import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
-import { defaultDataView } from './[dataGroup]/[dataset]/[dataView]'
+import { DataView } from './[dataGroup]/[dataset]/[dataView]'
 import { ONE_WEEK_MS, normalizeString } from '../utils/shared'
 
 const Container = styled.div`
@@ -24,15 +24,16 @@ const Container = styled.div`
   align-items: center;
 `
 
-type PropsType = {
-  companies: Array<Company>
-  municipalities: Array<Municipality>
-}
-
 export const defaultDataGroup = 'foretag'
 export const secondaryDataGroup = 'geografiskt'
 const dataGroups = new Set([defaultDataGroup, secondaryDataGroup])
 export type DataGroup = typeof defaultDataGroup | typeof secondaryDataGroup
+
+type PropsType = {
+  companies: Array<Company>
+  municipalities: Array<Municipality>
+  initialDataGroup: DataGroup
+}
 
 export function getDataGroup(rawDataGroup: string): DataGroup {
   const normalized = normalizeString(rawDataGroup)
@@ -43,7 +44,7 @@ export function getDataGroup(rawDataGroup: string): DataGroup {
   return defaultDataGroup
 }
 
-function StartPage({ companies, municipalities }: PropsType) {
+function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
   const router = useRouter()
   const { dataGroup, dataset: routeDataset, dataView } = router.query
   const { t } = useTranslation()
@@ -57,11 +58,10 @@ function StartPage({ companies, municipalities }: PropsType) {
   const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(
     getDataset(routeDataset as string),
   )
-  const [selectedDataView, setSelectedDataView] = useState(
-    getDataView(dataView as string),
+  const [selectedDataView, setSelectedDataView] = useState<DataView>(
+    // NOTE: Very important to set initial state based on initialDataGroup rather than normalizedDataGroup to avoid nasty bugs
+    initialDataGroup === 'foretag' ? 'karta' : getDataView(dataView as string),
   )
-
-  const showCompanyData = normalizedDataGroup === defaultDataGroup
 
   return (
     <>
@@ -69,19 +69,20 @@ function StartPage({ companies, municipalities }: PropsType) {
         title={t('startPage:meta.title')}
         description={t('startPage:meta.description')}
       />
-      <PageWrapper backgroundColor="black" compact>
+      <PageWrapper compact>
         <Container>
           <PillSwitch
-            isActive={!showCompanyData}
+            selectedDataGroup={normalizedDataGroup}
             links={[
               { text: t('common:companies'), href: '/foretag/utslappen/lista' },
               {
                 text: t('common:municipalities'),
-                href: `/geografiskt/${selectedDataset}/${selectedDataView}`,
+                href: `/geografiskt/${selectedDataset}/karta`,
+                onClick: () => setSelectedDataView('karta'),
               },
             ]}
           />
-          {showCompanyData ? (
+          {normalizedDataGroup === 'foretag' ? (
             <CompanyView companies={companies} />
           ) : (
             <RegionalView
@@ -107,7 +108,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
 
   return {
     redirect: {
-      destination: `/foretag/${defaultDataset}/${defaultDataView}`,
+      destination: `/foretag/${defaultDataset}/lista`,
       permanent: true,
     },
     props: {

@@ -1,65 +1,3 @@
-
-/* AnonymousPro-Regular - latin */
-@font-face {
-  font-family: 'Anonymous Pro';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Anonymous Pro Regular'), 
-       url('/fonts/Anonymous_Pro/AnonymousPro-Regular.ttf') format('truetype');
-}
-
-/* AnonymousPro-Italic - latin */
-@font-face {
-  font-family: 'Anonymous Pro';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Anonymous Pro Italic'), 
-       url('/fonts/Anonymous_Pro/AnonymousPro-Italic.ttf') format('truetype');
-}
-
-/* AnonymousPro-Bold - latin */
-@font-face {
-  font-family: 'Anonymous Pro';
-  font-style: bold;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Anonymous Pro Bold'), 
-       url('/fonts/Anonymous_Pro/AnonymousPro-Bold.ttf') format('truetype');
-}
-
-/* Source Serif 4-Regular - latin */
-@font-face {
-  font-family: 'Source Serif 4';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Source Serif 4 Regular'), 
-       url('/fonts/Source_Serif_4/SourceSerif4-VariableFont_opsz,wght.ttf') format('truetype');
-}
-
-/* Source Serif 4-Italic - latin */
-@font-face {
-  font-family: 'Source Serif 4';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Source Serif 4 Italic'), 
-       url('/fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.ttf') format('truetype');
-}
-
-/* Borna-regular - latin */
-@font-face {
-  font-family: 'Borna';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Borna Regular'), url('/fonts/Borna/borna-regular-webfont.woff2') format('woff2'),
-    /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/Borna/borna-regular-webfont.woff')
-      format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -76,12 +14,12 @@ html {
 }
 
 body {
-  background: #181818;
-  color: #fff;
-  font-family: Borna, 'Source Serif 4', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  background: #000;
+  color: #F7F7F7;
+  font-family: 'DM Sans Variable', sans-serif;
   font-size: 16px;
   line-height: 19px;
-  font-weight: 300;
+  font-weight: 400;
   position: relative;
 }
 
@@ -94,6 +32,7 @@ html {
 a {
   color: inherit;
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 
