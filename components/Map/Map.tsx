@@ -144,7 +144,7 @@ function Map({
   const [municipalityFeatureCollection, setMunicipalityFeatureCollection] = useState<any>({})
   // "tapped" municipality tooltips are only to be used on touch devices.
   const [lastTapInfo, setLastTapInfo] = useState<MunicipalityTapInfo | null>(null)
-  const wrapperRef = useRef<HTMLDivElement|null>(null)
+  const wrapperRef = useRef<HTMLDivElement | null>(null)
 
   const router = useRouter()
 
@@ -224,24 +224,46 @@ function Map({
     },
   )
 
-  const municipalityLayer = new PolygonLayer({
+
+
+  const [hoveredItem, setHoveredItem] = useState<MunicipalityData | null>(null);
+  const municipalityLayer = new PolygonLayer<MunicipalityData>({
     id: 'polygon-layer',
     data: municipalityLines,
     stroked: true,
     filled: true,
     extruded: false,
     wireframe: false,
-    lineWidthUtils: 'pixels',
-    lineWidthMinPixels: 0.5,
-    getLineWidth: 80,
+    lineWidthUnits: "common",
     lineJointRounded: true,
     getElevation: 0,
-    polygonOffset: 1,
+    lineWidthMaxPixels: 4,
+    lineWidthMinPixels: 0.05,
     getPolygon: (k: any) => k.geometry,
-    getLineColor: () => [0, 0, 0, 80],
+    getLineColor: (item) => {
+      if (hoveredItem && item?.name === hoveredItem?.name) {
+        return [0, 0, 0, 255] as RGBAColor
+      } else {
+        return [0, 0, 0, 80] as RGBAColor
+      }
+    },
+    getLineWidth: (item) => {
+      if (item?.name === hoveredItem?.name) {
+        return 0.1
+      } else {
+        return 0.01
+      }
+    },
     getFillColor: (d) => getColor((d as MunicipalityData).dataPoint, boundaries),
     pickable: true,
+    onHover: (info, _input) => {
+      if (info.object?.name !== hoveredItem?.name) {
+        setHoveredItem(info.object)
+      }
+    }
   })
+
+
 
   return (
     <DeckGLWrapper ref={wrapperRef}>
