@@ -18,6 +18,8 @@ def calculate_bike_lane_per_capita():
 
     df_raw_bicycles = pd.read_excel(PATH_BICYCLE_DATA, skiprows=3)
     df_bicycles = df_raw_bicycles[['Kommun', 'Totalsumma']]
+    df_bicycles.loc[df_bicycles['Kommun'] == 'Malung', 'Kommun'] = 'Malung-Sälen'
+    df_bicycles.loc[df_bicycles['Kommun'] == 'Upplands-Väsby', 'Kommun'] = 'Upplands Väsby'
 
     df_raw_population = pd.read_excel(PATH_POPULATION_DATA, skiprows=5)
     # Drop unnecessary rows
