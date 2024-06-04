@@ -2,6 +2,8 @@
 
 Klimatkollen is for the most part a self-contained web application. This means you can run it on your own computer and see your own copy in your web brower. This page will outline how to do that from scratch. If you haven't done some of these things before, it might feel like a long process before you get to launch the page. Almost all of it is one-time setup, meaning once you get through it, contributing in the future is much easier.
 
+If you're looking to contribute code, some basic knowledge of HTML, CSS and JS is recommended. [freeCodeCamp](https://www.freecodecamp.org/) is a great place to learn these fundamentals.
+
 The steps will be as follows:
 
  * Installing Node.js
