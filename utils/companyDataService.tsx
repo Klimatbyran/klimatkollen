@@ -1,18 +1,22 @@
-import * as fs from 'fs'
-import path from 'path'
-import { Company, CompanyEmissionsPerYear } from './types'
+import { readFileSync } from 'fs'
+import { resolve } from 'path'
+import { Company, CompanyEmissionsPerYear, GuessedCompany } from './types'
+
+function loadJSON<T>(path: string): T {
+  return JSON.parse(readFileSync(resolve(path), { encoding: 'utf-8' }))
+}
+
+function normalizeString(input: string) {
+  return input.replace(/\s+/g, '').toLowerCase()
+}
 
 export class CompanyDataService {
-  companies: Array<Company>
+  companies: Company[]
+
+  guessedCompanies: GuessedCompany[]
 
   constructor() {
-    const companiesDataFilePath = path.resolve('./data/companies/company-data.json')
-    const companiesDataFileContent = fs.readFileSync(companiesDataFilePath, {
-      encoding: 'utf-8',
-    })
-    const jsonData = JSON.parse(companiesDataFileContent)
-
-    this.companies = jsonData
+    this.companies = loadJSON<Company[]>('./data/companies/company-data.json')
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .map((data: any) => {
         const emissionsPerYear = {
@@ -27,6 +31,10 @@ export class CompanyDataService {
           Emissions: emissionsPerYear,
         } as unknown as Company
       })
+
+    this.guessedCompanies = [
+      loadJSON<GuessedCompany>('./public/data/2024-05-31-AstraZeneca.json'),
+    ]
   }
 
   public getCompanies(): Array<Company> {
@@ -36,7 +44,14 @@ export class CompanyDataService {
     return this.companies
   }
 
-  public getCompany(name: string): Company {
-    return this.companies.filter((company) => company.Name.toLowerCase() === name.toLowerCase())[0]
+  public getCompany(name: string): { verified: Company, guessed: GuessedCompany } {
+    const normalizedName = normalizeString(name)
+    // TODO: handle case when it's not found
+    // when navigating to http://localhost:3000/foretag/utslappen for example
+    return {
+      // TODO: We will have a problem matching company names to actual names, until we introduce stable IDs or slugs
+      verified: this.companies.find((company) => normalizeString(company.Name) === normalizedName)!,
+      guessed: this.guessedCompanies.find((company) => normalizeString(company.companyName) === normalizedName)!,
+    }
   }
 }

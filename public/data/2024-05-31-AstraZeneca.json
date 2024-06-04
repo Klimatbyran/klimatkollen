@@ -1,0 +1,390 @@
+{
+  "companyName": "AstraZeneca",
+  "industryGics": {
+    "name": "Pharmaceuticals",
+    "sector": {
+      "code": "35",
+      "name": "Health Care"
+    },
+    "group": {
+      "code": "3520",
+      "name": "Pharmaceuticals, Biotechnology & Life Sciences"
+    },
+    "industry": {
+      "code": "352020",
+      "name": "Pharmaceuticals"
+    },
+    "subIndustry": {
+      "code": "35202010",
+      "name": "Pharmaceuticals"
+    }
+  },
+  "industryNace": {
+    "section": {
+      "code": "C",
+      "name": "Manufacturing"
+    },
+    "division": {
+      "code": "21",
+      "name": "Manufacture of basic pharmaceutical products and pharmaceutical preparations"
+    }
+  },
+  "baseYear": "2019",
+  "url": "https://www.astrazeneca.com",
+  "emissions": [
+    {
+      "year": "2019",
+      "scope1": {
+        "emissions": null,
+        "unit": "metric ton CO2e"
+      },
+      "scope2": {
+        "emissions": null,
+        "unit": "metric ton CO2e",
+        "mb": null,
+        "lb": null
+      },
+      "scope3": {
+        "emissions": 5681194,
+        "unit": "metric ton CO2e",
+        "categories": {
+          "1_purchasedGoods": 3637033,
+          "2_capitalGoods": 76941,
+          "3_fuelAndEnergyRelatedActivities": 80556,
+          "4_upstreamTransportationAndDistribution": 248112,
+          "5_wasteGeneratedInOperations": 19661,
+          "6_businessTravel": 327051,
+          "7_employeeCommuting": 46461,
+          "8_upstreamLeasedAssets": 33058,
+          "9_downstreamTransportationAndDistribution": 133627,
+          "10_processingOfSoldProducts": null,
+          "11_useOfSoldProducts": 1037501,
+          "12_endOfLifeTreatmentOfSoldProducts": 16122,
+          "13_downstreamLeasedAssets": 25072,
+          "14_franchises": null,
+          "15_investments": null,
+          "16_other": null
+        }
+      },
+      "totalEmissions": null,
+      "totalUnit": "metric ton CO2e"
+    },
+    {
+      "year": "2021",
+      "scope1": {
+        "emissions": 239468,
+        "unit": "metric ton CO2e"
+      },
+      "scope2": {
+        "emissions": 21135,
+        "unit": "metric ton CO2e",
+        "mb": 21135,
+        "lb": 189395
+      },
+      "scope3": {
+        "emissions": 5925850,
+        "unit": "metric ton CO2e",
+        "categories": {
+          "1_purchasedGoods": 4400747,
+          "2_capitalGoods": 88762,
+          "3_fuelAndEnergyRelatedActivities": 51333,
+          "4_upstreamTransportationAndDistribution": 228675,
+          "5_wasteGeneratedInOperations": 19372,
+          "6_businessTravel": 83774,
+          "7_employeeCommuting": 41293,
+          "8_upstreamLeasedAssets": 25074,
+          "9_downstreamTransportationAndDistribution": 129078,
+          "10_processingOfSoldProducts": null,
+          "11_useOfSoldProducts": 835337,
+          "12_endOfLifeTreatmentOfSoldProducts": 20023,
+          "13_downstreamLeasedAssets": 2382,
+          "14_franchises": null,
+          "15_investments": null,
+          "16_other": null
+        }
+      },
+      "totalEmissions": null,
+      "totalUnit": "metric ton CO2e"
+    },
+    {
+      "year": "2022",
+      "scope1": {
+        "emissions": 237703,
+        "unit": "metric ton CO2e"
+      },
+      "scope2": {
+        "emissions": 18491,
+        "unit": "metric ton CO2e",
+        "mb": 18491,
+        "lb": 180403
+      },
+      "scope3": {
+        "emissions": 6167415,
+        "unit": "metric ton CO2e",
+        "categories": {
+          "1_purchasedGoods": 4480479,
+          "2_capitalGoods": 76863,
+          "3_fuelAndEnergyRelatedActivities": 57975,
+          "4_upstreamTransportationAndDistribution": 218745,
+          "5_wasteGeneratedInOperations": 18434,
+          "6_businessTravel": 145814,
+          "7_employeeCommuting": 44128,
+          "8_upstreamLeasedAssets": 25872,
+          "9_downstreamTransportationAndDistribution": 118800,
+          "10_processingOfSoldProducts": null,
+          "11_useOfSoldProducts": 960650,
+          "12_endOfLifeTreatmentOfSoldProducts": 13572,
+          "13_downstreamLeasedAssets": 6082,
+          "14_franchises": null,
+          "15_investments": null,
+          "16_other": null
+        }
+      },
+      "totalEmissions": null,
+      "totalUnit": "metric ton CO2e"
+    },
+    {
+      "year": "2023",
+      "scope1": {
+        "emissions": 180898,
+        "unit": "metric ton CO2e"
+      },
+      "scope2": {
+        "emissions": 19940,
+        "unit": "metric ton CO2e",
+        "mb": 19940,
+        "lb": 183332
+      },
+      "scope3": {
+        "emissions": 6736878,
+        "unit": "metric ton CO2e",
+        "categories": {
+          "1_purchasedGoods": 4622257,
+          "2_capitalGoods": 81938,
+          "3_fuelAndEnergyRelatedActivities": 52634,
+          "4_upstreamTransportationAndDistribution": 241422,
+          "5_wasteGeneratedInOperations": 19043,
+          "6_businessTravel": 155443,
+          "7_employeeCommuting": 50827,
+          "8_upstreamLeasedAssets": 30101,
+          "9_downstreamTransportationAndDistribution": 135689,
+          "10_processingOfSoldProducts": null,
+          "11_useOfSoldProducts": 1330844,
+          "12_endOfLifeTreatmentOfSoldProducts": 14579,
+          "13_downstreamLeasedAssets": 2101,
+          "14_franchises": null,
+          "15_investments": null,
+          "16_other": null
+        }
+      },
+      "totalEmissions": null,
+      "totalUnit": "metric ton CO2e"
+    }
+  ],
+  "turnover": [
+    {
+      "year": "2019",
+      "value": null,
+      "unit": "EUR"
+    },
+    {
+      "year": "2021",
+      "value": 37136,
+      "unit": "EUR"
+    },
+    {
+      "year": "2022",
+      "value": 44359,
+      "unit": "EUR"
+    },
+    {
+      "year": "2023",
+      "value": 48551,
+      "unit": "EUR"
+    }
+  ],
+  "factors": [
+    {
+      "product": "Unknown",
+      "description": "CO2e per km driven",
+      "value": 0.13,
+      "unit": "kgCO2e/km"
+    },
+    {
+      "product": "Air2Sea&Rail",
+      "description": "Upstream transportation and distribution (% tonne.km)",
+      "value": 0.73,
+      "unit": "percentage"
+    },
+    {
+      "product": "Air2Sea&Rail",
+      "description": "Upstream transportation and distribution (% volume)",
+      "value": 0.64,
+      "unit": "percentage"
+    }
+  ],
+  "contacts": [
+    {
+      "name": "Not Provided",
+      "role": "Sustainability Manager",
+      "email": "info@astrazeneca.com",
+      "phone": "+44 (0)20 3749 5000"
+    }
+  ],
+  "goals": [
+    {
+      "description": "Reduce absolute Scope 1 and 2 greenhouse gas (GHG) emissions by 98% from 2015 base year.",
+      "year": 2026,
+      "reductionPercent": 98,
+      "baseYear": "2015"
+    },
+    {
+      "description": "100% electric road fleet where technically possible.",
+      "year": 2025,
+      "reductionPercent": 100,
+      "baseYear": "Unknown"
+    },
+    {
+      "description": "Reduce total energy consumption by 10% from 2015.",
+      "year": 2025,
+      "reductionPercent": 10,
+      "baseYear": "2015"
+    },
+    {
+      "description": "Double energy productivity from 2015.",
+      "year": 2025,
+      "reductionPercent": 100,
+      "baseYear": "2015"
+    },
+    {
+      "description": "100% renewable electricity consumption globally.",
+      "year": 2025,
+      "reductionPercent": 100,
+      "baseYear": "Unknown"
+    },
+    {
+      "description": "Reduce absolute Scope 3 GHG emissions by 50% by 2030 and 90% by 2045, from a 2019 base year.",
+      "year": 2030,
+      "reductionPercent": 50,
+      "baseYear": "2019"
+    },
+    {
+      "description": "Reduce absolute Scope 3 GHG emissions by 50% by 2030 and 90% by 2045, from a 2019 base year.",
+      "year": 2045,
+      "reductionPercent": 90,
+      "baseYear": "2019"
+    },
+    {
+      "description": "Purchase 95% of total suppliers by spend complying with Science-Based Targets (SBTs).",
+      "year": 2025,
+      "reductionPercent": 95,
+      "baseYear": "Unknown"
+    },
+    {
+      "description": "Launch a next-generation inhaler to treat asthma and COPD containing a near-zero Global Warming Potential (GWP) propellant.",
+      "year": 2025,
+      "reductionPercent": null,
+      "baseYear": "Unknown"
+    },
+    {
+      "description": "Ensure 95% of paper-based product packaging materials used are supplied from sustainable sources.",
+      "year": 2023,
+      "reductionPercent": 95,
+      "baseYear": "Unknown"
+    },
+    {
+      "description": "Ensure 100% of AstraZeneca site discharges and ≥90% of supplier site discharges are in compliance with safe API discharge concentrations.",
+      "year": 2023,
+      "reductionPercent": 100,
+      "baseYear": "Unknown"
+    },
+    {
+      "description": "Maintain 100% of active employees trained on the Code of Ethics.",
+      "year": 2025,
+      "reductionPercent": 100,
+      "baseYear": "Unknown"
+    }
+  ],
+  "initiatives": [
+    {
+      "description": "Reduce absolute Scope 1 and 2 greenhouse gas (GHG) emissions by 98% from 2015 base year.",
+      "year": 2026,
+      "reductionPercent": 98,
+      "scope": "scope1and2",
+      "comment": "The target is very ambitious."
+    },
+    {
+      "description": "100% electric road fleet where technically possible.",
+      "year": 2025,
+      "reductionPercent": 100,
+      "scope": "scope1_roadFleet",
+      "comment": "Aiming to have a fully electric road fleet by 2025."
+    },
+    {
+      "description": "Reduce total energy consumption by 10% from 2015.",
+      "year": 2025,
+      "reductionPercent": 10,
+      "scope": "totalEnergyConsumption",
+      "comment": "Reduction in total energy consumption target."
+    },
+    {
+      "description": "Double energy productivity from 2015.",
+      "year": 2025,
+      "reductionPercent": 100,
+      "scope": "energyProductivity",
+      "comment": "Aiming to double energy productivity by 2025."
+    },
+    {
+      "description": "100% renewable electricity consumption globally.",
+      "year": 2025,
+      "reductionPercent": 100,
+      "scope": "scope2_renewableElectricity",
+      "comment": "Using 100% renewable electricity globally."
+    },
+    {
+      "description": "Reduce absolute Scope 3 GHG emissions by 50% by 2030 and 90% by 2045, from a 2019 base year.",
+      "year": 2030,
+      "reductionPercent": 50,
+      "scope": "scope3",
+      "comment": "Long-term Scope 3 emissions reduction target."
+    },
+    {
+      "description": "Purchase 95% of total suppliers by spend complying with Science-Based Targets (SBTs).",
+      "year": 2025,
+      "reductionPercent": 95,
+      "scope": "scope3_1&purchasedGoodsAndServices",
+      "comment": "Science-Based Targets for suppliers."
+    },
+    {
+      "description": "Launch a next-generation inhaler to treat asthma and COPD containing a near-zero Global Warming Potential (GWP) propellant.",
+      "year": 2025,
+      "reductionPercent": null,
+      "scope": "productInnovation",
+      "comment": "Introduction of low GWP propellant inhaler."
+    },
+    {
+      "description": "Ensure 95% of paper-based product packaging materials used are supplied from sustainable sources.",
+      "year": 2023,
+      "reductionPercent": 95,
+      "scope": "productPackaging",
+      "comment": "Sustainable paper-based packaging materials."
+    },
+    {
+      "description": "Ensure 100% of AstraZeneca site discharges and ≥90% of supplier site discharges are in compliance with safe API discharge concentrations.",
+      "year": 2023,
+      "reductionPercent": 100,
+      "scope": "siteDischarges",
+      "comment": "Compliance with safe API discharge concentrations."
+    },
+    {
+      "description": "Maintain 100% of active employees trained on the Code of Ethics.",
+      "year": 2025,
+      "reductionPercent": 100,
+      "scope": "employeeTraining",
+      "comment": "Code of Ethics training for employees."
+    }
+  ],
+  "reliability": "High",
+  "needsReview": true,
+  "reviewComment": "The company has reported conflicting numbers in scope 3 compared to what could be expected and what is concluded in the totals. This needs further review."
+}

@@ -113,6 +113,8 @@ export function search(query: string, municipalitiesName: Array<string>) {
     })
 }
 
+// TODO: Replace with accessible component underneath the hood.
+// TODO: Rewrite props and component body to use `items` rather than `municipalities` specifically.
 function DropDown({ municipalitiesName, placeholder }: Props) {
   const sortedMunicipalities = getSortedMunicipalities(municipalitiesName)
   const [showDropDown, setShowDropDown] = useState(false)
@@ -140,6 +142,7 @@ function DropDown({ municipalitiesName, placeholder }: Props) {
     }
   }, [showDropDown])
 
+  // TODO: Allow passing the callback in via props to allow component to be used for multiple purposes
   const onMunicipalityClick = (name: string) => {
     setSelectedMunicipality(name)
     setShowDropDown(false)
@@ -160,6 +163,8 @@ function DropDown({ municipalitiesName, placeholder }: Props) {
     setMunicipalities(filteredMunicipalities)
   }
 
+  // TODO: unify this with onMunicipalityClick
+  // IDEA: Instead call the callback prop `onItemSelected(item: string)` or just `onSelect(item: string)`
   const seeMunicipality = () => {
     const municipalityExists = municipalities.find(
       (municipality) => municipality.toLowerCase() === selectedMunicipality.toLowerCase(),
@@ -207,6 +212,7 @@ function DropDown({ municipalitiesName, placeholder }: Props) {
           )}
         </SearchDropDown>
       </Container>
+      {/* TODO: translate text and maybe improve the UX by showing it in a different way */}
       {showInfoText && <ErrorText>Välj en kommun i listan</ErrorText>}
     </div>
   )

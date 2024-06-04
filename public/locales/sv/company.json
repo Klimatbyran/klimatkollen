@@ -1,0 +1,6 @@
+{
+  "otherCompanies": "Hur ser det ut för andra företag?",
+  "facts": {
+    "title": "Fakta om {{name}}"
+  }
+}
