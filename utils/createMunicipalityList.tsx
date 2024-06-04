@@ -6,6 +6,7 @@ import {
   dataOnDisplay, climatePlanMissing, requirementsInProcurement,
   getDataDescriptions,
 } from './datasetDefinitions'
+import { colorTheme } from '../Theme'
 
 type RowData = {
   name: string
@@ -145,7 +146,7 @@ export const municipalityColumns = (
         onClick={(e) => e.stopPropagation()}
         target="_blank"
         rel="noreferrer"
-        style={{ color: 'orange' }}
+        style={{ color: colorTheme.newColors.orange3 }}
       >
         {t('common:yes')}
       </a>

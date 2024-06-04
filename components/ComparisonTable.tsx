@@ -22,12 +22,12 @@ const StyledTable = styled.table`
 
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.7em;
+  font-size: 0.8em;
   margin: var(--margin);
   margin-bottom: 0;
 
   @media only screen and (${devices.smallMobile}) {
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
   
   @media only screen and (${devices.tablet}) {
@@ -40,14 +40,14 @@ const StyledTable = styled.table`
   }
 
   .data-column {
-    color: ${({ theme }) => theme.darkYellow};
+    color: ${({ theme }) => theme.newColors.orange3};
     text-align: right;
   }
 
   thead::before {
     content: ' ';
     position: absolute;
-    background: ${({ theme }) => theme.lightBlack};
+    background: ${({ theme }) => theme.newColors.black2};
     width: 100%;
     height: var(--margin);
     top: calc(-1 * var(--margin));
@@ -57,7 +57,7 @@ const StyledTable = styled.table`
   }
 
   thead {
-    background: ${({ theme }) => theme.lightBlack};
+    background: ${({ theme }) => theme.newColors.black2};
     position: -webkit-sticky;
     position: sticky;
     top: calc(var(--header-offset) - (3 * var(--margin)));
@@ -84,11 +84,11 @@ const TableData = styled.td`
 
 const TableHeader = styled.th`
   padding: 8px 6px;
-  font-weight: bold;
+  font-weight: 400;
   text-align: left;
   cursor: pointer;
-  background: ${({ theme }) => theme.black};
-  font-size: 0.6rem;
+  background: ${({ theme }) => theme.newColors.black3};
+  font-size: 0.75rem;
   z-index: 40;
 
   &:first-child {
@@ -102,12 +102,12 @@ const TableHeader = styled.th`
   }
 
   @media only screen and (${devices.smallMobile}) {
-    font-size: 0.65rem;
+    font-size: 0.875rem;
   }
 
   @media only screen and (${devices.tablet}) {
-    font-size: 0.875rem;
-    padding: 16px 8px 16px 12px;
+    font-size: 1rem;
+    padding: 12px 8px 12px 12px;
   }
 `
 
@@ -119,20 +119,19 @@ const TableHeaderInner = styled.span`
 `
 
 const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpanded?: boolean }>`
-  border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.midGreen}` : '')};
+  border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.newColors.blue3}` : '')};
   cursor: ${({ interactive }) => (interactive ? 'pointer' : '')};
-  background: ${({ isExpanded, theme }) => (isExpanded ? `${theme.black}88` : '')};
+  background: ${({ isExpanded, theme }) => (isExpanded ? theme.newColors.black1 : '')};
   z-index: 10;
 `
 
 const SortingIcon = styled(ArrowIcon)`
-  color: ${({ theme }) => theme.midGreen};
+  color: ${({ theme }) => theme.newColors.blue3};
 `
 
 type TableProps<T extends object> = {
   data: T[]
   columns: ColumnDef<T>[]
-  routeString?: string
   // IDEA: It might be better to turn ComparisionTable into two specific components, one for every use case
   dataType?: 'municipalities' | 'companies'
   renderSubComponent?: ({ row }: { row: Row<T> }) => JSX.Element
@@ -155,7 +154,6 @@ function prepareColumnsForDefaultSorting<T extends object>(columns: TableProps<T
 function ComparisonTable<T extends object>({
   data,
   columns,
-  routeString,
   dataType = 'municipalities',
   renderSubComponent,
 }: TableProps<T>) {
@@ -194,12 +192,10 @@ function ComparisonTable<T extends object>({
 
   const handleRowClick = (row: Row<T>) => {
     if (dataType === 'municipalities') {
-      if (routeString) {
-        const cells = row.getAllCells()
-        const value = cells.at(1)?.renderValue()
-        const route = `/${routeString}/${(value as unknown as string).toLowerCase()}`
-        router.push(route)
-      }
+      const cells = row.getAllCells()
+      const value = cells.at(1)?.renderValue()
+      const route = `/kommun/${(value as unknown as string).toLowerCase()}`
+      router.push(route)
     } else if (dataType === 'companies') {
       row.toggleExpanded()
     }
@@ -254,7 +250,7 @@ function ComparisonTable<T extends object>({
             <Fragment key={row.id}>
               <TableRow
                 onClick={() => handleRowClick(row)}
-                interactive={enableExpanding || routeString !== undefined}
+                interactive={enableExpanding || dataType === 'municipalities'}
                 showBorder={enableExpanding ? !isRowExpanded : true}
                 isExpanded={isRowExpanded}
                 aria-expanded={isRowExpanded}

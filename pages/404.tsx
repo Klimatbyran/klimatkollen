@@ -11,7 +11,7 @@ import PageWrapper from '../components/PageWrapper'
 
 const Button = styled.button`
   height: 56px;
-  background: ${({ theme }) => theme.midGreen};
+  background: ${({ theme }) => theme.newColors.blue2};
   border: 0;
   border-radius: 4px;
   font-weight: bold;
@@ -20,7 +20,7 @@ const Button = styled.button`
   width: 100%;
   margin-top: 32px;
   &:hover {
-    background: ${({ theme }) => theme.lightGreen};
+    background: ${({ theme }) => theme.newColors.blue1};
   }
 `
 
@@ -49,7 +49,7 @@ function FourOhFour() {
 
   return (
     <Layout>
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <H1>{t('common:errors.notFound')}</H1>
         <H5>
           {t('common:errors.notFoundSubtitle')}
