@@ -109,6 +109,11 @@ const ComparisonContainer = styled.div<{ dataView: string }>`
   }
 `
 
+const DATASETS_WITH_BINARY_INDEX_COLUMN: Array<DatasetKey> = [
+  'klimatplanerna',
+  'upphandlingarna',
+]
+
 type RegionalViewProps = {
   municipalities: Array<Municipality>
   selectedDataset: DatasetKey
@@ -166,9 +171,16 @@ function RegionalView({
     </>
   ), [datasetDescription.boundaries, datasetDescription.labelRotateUp, datasetDescription.labels, municipalityData])
 
-  const renderList = useCallback(() => (
-    <ComparisonTable data={rankedData[selectedDataset]} columns={cols} />
-  ), [rankedData, selectedDataset, cols])
+  const renderList = useCallback(
+    () => (
+      <ComparisonTable
+        data={rankedData[selectedDataset]}
+        columns={cols}
+        hasBinaryIndexColumn={DATASETS_WITH_BINARY_INDEX_COLUMN.includes(selectedDataset)}
+      />
+    ),
+    [rankedData, selectedDataset, cols],
+  )
 
   const dataViews = {
     lista: {
