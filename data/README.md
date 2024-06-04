@@ -64,20 +64,23 @@ In the list, the term appearing before the colon (:) is the standardized name th
 
 ### Emission Calculations 
 
-The module `emission_data_calculations.py` contains functions to perform calculations related to CO2 emissions for municipalities, based on SMHI emission data and a given total CO2 budget for Sweden. Each function serves a specific purpose such as preprocessing data, calculating municipality specific budgets, future trends or when the budget for a municipality will run out.
+The folder `/issues/emissions` contains files with functions to perform calculations related to CO2 emissions for municipalities, based on SMHI emission data and a given total CO2 budget for Sweden. Each function serves a specific purpose such as preprocessing data, calculating municipality-specific budgets, future trends or when the budget for a municipality will run out. Their order of execution is specified in `/issues/emissions/emission_data_calculations.py`.
 
 #### Constants 
 
-The most important constants in the module are `BUDGET`, `BUDGET_YEAR`, `LAST_YEAR_WITH_SMHI_DATA`, and `CURRENT_YEAR` as they determine the baseline and scope of the calculations.
+The most important constants in the module are `NATIONAL_BUDGET_15`, `NATIONAL_BUDGET_17`, `NATIONAL_OVERHEAD_17`, `BUDGET_YEAR`, `CEMENT_DEDUCTION`, `LAST_YEAR_WITH_SMHI_DATA` and `CURRENT_YEAR` as they determine the baseline and scope of the calculations.
 
-* `BUDGET`: Represents the total CO2 budget in metric tonnes.
+* `NATIONAL_BUDGET_15`: Represents the total CO2 budget for a 50% chance of staying below 1.5 degrees, in metric tonnes.
+* `NATIONAL_BUDGET_17`: Represents the total CO2 budget for a 50% chance of staying below 1.7 degrees, in metric tonnes.
+* `NATIONAL_OVERHEAD_17`: Reprensents the total national overhead for `NATIONAL_BUDGET_17`, in metric tonnes.
 * `BUDGET_YEAR`: Represents the year from which the CO2 budget applies.
+* `CEMENT_DEDUCTION`: Represents the total CO2 emissions from cement production in municipalities with cement plants that were operational in 2015 or later.
 * `LAST_YEAR_WITH_SMHI_DATA`: Represents the last year for which the [National Emission database](https://nationellaemissionsdatabasen.smhi.se/) has data.
 * `CURRENT_YEAR`: Represents the year which is to be handled as current year.
 
 #### Functions
 
-Here's a summary of what the functions do, in order of execution:
+Here's a summary of what the functions do, in order of execution in `emissions/emission_data_calculations.py`:
 
 1. `get_n_prep_data_from_smhi`: Downloads data from SMHI and preprocess it into a pandas dataframe.
 
@@ -89,19 +92,21 @@ Here's a summary of what the functions do, in order of execution:
 
 5. `calculate_trend`: Calculates trend line for future years up to 2050. This is done by interpolation using previously calculated linear trend coefficients
 
-6. `calculate_municipality_budgets`: Calculates municipality specific CO2 budgets by deriving budget shares from the SMHI data for each municipality (using grand fathering) and multiplying them with the given total CO2 budget.
+6. `calculate_n_subtract_national_overheads`: Calculates the national overhead for a CO2 budget for `NATIONAL_BUDGET_15`, based on `NATIONAL_BUDGET_17` and `NATIONAL_OVERHEAD_17`. This is achieved by determining the proportion of the national overhead within the total budget and then calculating corresponding value for `NATIONAL_BUDGET_15`. All values are in metric tonnes.
 
-7. `calculate_paris_path`: Calculates an exponential curve satisfying each municipality's CO2 budget (Paris Agreement path), starting from the year the budget kicks in.
+7. `calculate_municipality_budgets`: Calculates municipality specific CO2 budgets by deriving budget shares from the SMHI data for each municipality (using grand fathering) and multiplying them with the given total CO2 budget.
 
-8. `calculate_historical_change_percent`: Calculates the average historical yearly emission change in percent based on SMHI data from 2015 onwards.
+8. `calculate_paris_path`: Calculates an exponential curve satisfying each municipality's CO2 budget (Paris Agreement path), starting from the year the budget kicks in.
 
-9. `calculate_needed_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
+9. `calculate_historical_change_percent`: Calculates the average historical yearly emission change in percent based on SMHI data from 2015 onwards.
 
-10. `calculate_hit_net_zero`: Calculates the date and year for when each municipality hits net zero emissions (if so). This, by deriving where the trend line crosses the time axis.
+10. `calculate_needed_change_percent`: Calculates the yearly decrease in percent needed to reach the Paris Agreement goal.
 
-11. `calculate_budget_runs_out`: Calculates the year and date for when the CO2 budget runs out for each municipality (if so). This, by integrating the trend line over the time it takes for the budget to be consumed and see where we are at the time axis by that point.
+11. `calculate_hit_net_zero`: Calculates the date and year for when each municipality hits net zero emissions (if so). This, by deriving where the trend line crosses the time axis.
 
-12. `emission_calculations`: Orchestrates the execution of the above methods in sequence to perform all emission calculations for municipalities.
+12. `calculate_budget_runs_out`: Calculates the year and date for when the CO2 budget runs out for each municipality (if so). This, by integrating the trend line over the time it takes for the budget to be consumed and see where we are at the time axis by that point.
+
+13. `emission_calculations`: Orchestrates the execution of the above methods in sequence to perform all emission calculations for municipalities.
 
 
 

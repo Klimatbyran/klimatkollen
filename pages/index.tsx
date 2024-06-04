@@ -10,10 +10,7 @@ import { Company, Municipality, DatasetKey } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
 import Layout from '../components/Layout'
 import Footer from '../components/Footer/Footer'
-import {
-  defaultDataset,
-  getDataDescriptions,
-} from '../utils/datasetDefinitions'
+import { defaultDataset, getDataDescriptions } from '../utils/datasetDefinitions'
 import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
@@ -50,14 +47,19 @@ function StartPage({ companies, municipalities }: PropsType) {
   const router = useRouter()
   const { dataGroup, dataset: routeDataset, dataView } = router.query
   const { t } = useTranslation()
-  const {
-    dataDescriptions, getDataset, getDataView,
-  } = getDataDescriptions(router.locale as string, t)
+  const { dataDescriptions, getDataset, getDataView } = getDataDescriptions(
+    router.locale as string,
+    t,
+  )
 
   const normalizedDataGroup = getDataGroup(dataGroup as string)
 
-  const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(getDataset(routeDataset as string))
-  const [selectedDataView, setSelectedDataView] = useState(getDataView(dataView as string))
+  const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(
+    getDataset(routeDataset as string),
+  )
+  const [selectedDataView, setSelectedDataView] = useState(
+    getDataView(dataView as string),
+  )
 
   const showCompanyData = normalizedDataGroup === defaultDataGroup
 
@@ -73,23 +75,24 @@ function StartPage({ companies, municipalities }: PropsType) {
             isActive={!showCompanyData}
             links={[
               { text: t('common:companies'), href: '/foretag/utslappen/lista' },
-              { text: t('common:municipalities'), href: `/geografiskt/${selectedDataset}/${selectedDataView}` },
+              {
+                text: t('common:municipalities'),
+                href: `/geografiskt/${selectedDataset}/${selectedDataView}`,
+              },
             ]}
           />
-          {showCompanyData
-            ? (
-              <CompanyView companies={companies} />
-            )
-            : (
-              <RegionalView
-                municipalities={municipalities}
-                selectedDataset={selectedDataset}
-                setSelectedDataset={setSelectedDataset}
-                selectedDataView={selectedDataView}
-                setSelectedDataView={setSelectedDataView}
-                dataDescriptions={dataDescriptions}
-              />
-            )}
+          {showCompanyData ? (
+            <CompanyView companies={companies} />
+          ) : (
+            <RegionalView
+              municipalities={municipalities}
+              selectedDataset={selectedDataset}
+              setSelectedDataset={setSelectedDataset}
+              selectedDataView={selectedDataView}
+              setSelectedDataView={setSelectedDataView}
+              dataDescriptions={dataDescriptions}
+            />
+          )}
         </Container>
       </PageWrapper>
     </>
@@ -108,7 +111,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
       permanent: true,
     },
     props: {
-      ...await serverSideTranslations(locale as string, ['common', 'startPage']),
+      ...(await serverSideTranslations(locale as string, ['common', 'startPage'])),
     },
   }
 }
