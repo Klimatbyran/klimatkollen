@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { useState } from 'react'
 
 import { H3, ParagraphBold } from './Typography'
 import IconAdd from '../public/icons/add_light.svg'
@@ -60,6 +59,24 @@ const StyledIcon = styled.div`
   }
 `
 
+const Wrapper = styled.div`
+  .icon-add {
+    display: block;
+  }
+  .icon-remove {
+    display: none;
+  }
+
+  details[open] {
+    .icon-add {
+      display: none;
+    }
+    .icon-remove {
+      display: block;
+    }
+  }
+`
+
 type Props = {
   heading: string
   data: string
@@ -70,27 +87,28 @@ type Props = {
 function FactSection({
   heading, data, info, className,
 }: Props) {
-  const [open, setOpen] = useState(false)
-
   return (
-    <details onToggle={(event) => setOpen((event.target as HTMLDetailsElement).open)} className={className}>
-      <Row>
-        <SectionLeft>
-          <InfoHeading>{heading}</InfoHeading>
-          <ParagraphBold>{data}</ParagraphBold>
-        </SectionLeft>
-        {info && (
-        <SectionRight>
-          <StyledIcon>
-            {open ? <IconRemove /> : <IconAdd />}
-          </StyledIcon>
-        </SectionRight>
-        )}
-      </Row>
-      <InfoSection>
-        <Markdown>{info}</Markdown>
-      </InfoSection>
-    </details>
+    <Wrapper>
+      <details className={className}>
+        <Row>
+          <SectionLeft>
+            <InfoHeading>{heading}</InfoHeading>
+            <ParagraphBold>{data}</ParagraphBold>
+          </SectionLeft>
+          {info && (
+          <SectionRight>
+            <StyledIcon>
+              <IconAdd className="icon-add" />
+              <IconRemove className="icon-remove" />
+            </StyledIcon>
+          </SectionRight>
+          )}
+        </Row>
+        <InfoSection>
+          <Markdown>{info}</Markdown>
+        </InfoSection>
+      </details>
+    </Wrapper>
   )
 }
 
