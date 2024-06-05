@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { useTranslation } from 'next-i18next'
+// import { useTranslation } from 'next-i18next'
 
-import { H1NoPad, ParagraphBold } from '../Typography'
+import { H1NoPad } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 // import DropDown from '../DropDown'
@@ -29,16 +29,16 @@ const Bottom = styled.div`
   gap: 3rem;
 `
 
-const DropDownSection = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 30px;
-  text-align: center;
-  align-items: center;
-  padding-bottom: 6rem;
-`
+// const DropDownSection = styled.div`
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 10px;
+//   margin-top: 30px;
+//   text-align: center;
+//   align-items: center;
+//   padding-bottom: 6rem;
+// `
 
 type Props = {
   id: string
@@ -59,7 +59,7 @@ function Company(props: Props) {
     throw new Error('temporary to supress ts errors')
   }
 
-  const { t } = useTranslation()
+  // const { t } = useTranslation()
 
   return (
     <>
@@ -79,13 +79,13 @@ function Company(props: Props) {
             company={company}
           />
         </Bottom>
-        <DropDownSection>
+        {/* <DropDownSection>
           <ParagraphBold>{t('company:otherCompanies')}</ParagraphBold>
-          {/* <DropDown
+          <DropDown
             municipalitiesName={municipalitiesName}
             placeholder={t('municipality:select')}
-          /> */}
-        </DropDownSection>
+          />
+        </DropDownSection> */}
       </PageWrapper>
     </>
   )

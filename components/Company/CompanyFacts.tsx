@@ -138,12 +138,12 @@ function CompanyFacts({
 
       <ScorecardSection
         heading="Egna utsläpp"
-        data={formatter.format(company.verified.Emissions.Scope1n2 as unknown as number)}
+        data={`${formatter.format(company.verified.Emissions.Scope1n2 as unknown as number)} ton CO₂e`}
         info="Scope 1 och 2"
       />
       <ScorecardSection
         heading="I värdekedjan"
-        data={formatter.format(company.verified.Emissions.Scope3 as unknown as number)}
+        data={`${formatter.format(company.verified.Emissions.Scope3 as unknown as number)} ton CO₂e`}
         info="Scope 3"
       />
 
