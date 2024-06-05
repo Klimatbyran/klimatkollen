@@ -93,7 +93,7 @@ type Props = {
   company: { verified: TCompany, guessed: GuessedCompany }
 }
 
-const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 })
+// const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 })
 
 function CompanyFacts({
   company,
@@ -123,14 +123,21 @@ function CompanyFacts({
       </GreyContainer>
 
       <ScorecardSection
-        heading="Egna utsläpp"
-        data={`${formatter.format(company.verified.Emissions.Scope1n2 as unknown as number)} ton CO₂e`}
-        info="Scope 1 och 2"
+        heading="Bransch GICS"
+        data={JSON.stringify(company.guessed.industryGics, null, 2)}
+        // eslint-disable-next-line
+        info="The Global Industry Classification Standard (GICS) is an industry taxonomy consists of 11 sectors, 25 industry groups, 74 industries and 163 sub-industries."
       />
       <ScorecardSection
-        heading="I värdekedjan"
-        data={`${formatter.format(company.verified.Emissions.Scope3 as unknown as number)} ton CO₂e`}
-        info="Scope 3"
+        heading="Bransch NACE"
+        data={JSON.stringify(company.guessed.industryNace, null, 2)}
+        // eslint-disable-next-line
+        info={`The Statistical Classification of Economic Activities in the European Community, commonly referred to as NACE (for the French term "nomenclature statistique des activités économiques dans la Communauté européenne"), is the industry standard classification system used in the European Union.`}
+      />
+      <ScorecardSection
+        heading="Omsättning"
+        data={JSON.stringify(company.guessed.turnover, null, 2)}
+        info="Siffror från hållbarhetsrapport"
       />
 
     </StyledDiv>
