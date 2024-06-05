@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link'
 
-import ScorecardSection from './ScorecardSection'
+import ScorecardSection from '../ScorecardSection'
 import { H4, H5 } from '../Typography'
 import Icon from '../../public/icons/boxedArrow.svg'
 import PlanIcon from '../../public/icons/climatePlan.svg'

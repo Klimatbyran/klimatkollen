@@ -1,11 +1,10 @@
 import styled from 'styled-components'
-import { useState } from 'react'
 
-import Markdown from '../Markdown'
-import IconAdd from '../../public/icons/add_light.svg'
-import IconRemove from '../../public/icons/remove_light.svg'
-import { Paragraph } from '../Typography'
-import { devices } from '../../utils/devices'
+import Markdown from './Markdown'
+import IconAdd from '../public/icons/add_light.svg'
+import IconRemove from '../public/icons/remove_light.svg'
+import { Paragraph } from './Typography'
+import { devices } from '../utils/devices'
 
 const BorderContainer = styled.details`
   padding: 8px 0;
@@ -56,6 +55,24 @@ const StyledIcon = styled.div`
   }
 `
 
+const Wrapper = styled.div`
+  .icon-add {
+    display: block;
+  }
+  .icon-remove {
+    display: none;
+  }
+
+  details[open] {
+    .icon-add {
+      display: none;
+    }
+    .icon-remove {
+      display: block;
+    }
+  }
+`
+
 type Props = {
   heading: string
   data: string
@@ -63,29 +80,28 @@ type Props = {
 }
 
 function ScorecardSection({ heading, data, info }: Props) {
-  const [toggle, setToggle] = useState(false)
-
-  const onToggle = () => setToggle(!toggle)
-
   return (
-    <BorderContainer onToggle={onToggle}>
-      <Row>
-        <StyledParagraph>{heading}</StyledParagraph>
-        <StyledParagraph>{data}</StyledParagraph>
-        {info && (
-        <SectionRight>
-          <StyledIcon>
-            {toggle ? <IconRemove /> : <IconAdd />}
-          </StyledIcon>
-        </SectionRight>
+    <Wrapper>
+      <BorderContainer>
+        <Row>
+          <StyledParagraph>{heading}</StyledParagraph>
+          <StyledParagraph>{data}</StyledParagraph>
+          {Boolean(info) && (
+            <SectionRight>
+              <StyledIcon>
+                <IconAdd className="icon-add" />
+                <IconRemove className="icon-remove" />
+              </StyledIcon>
+            </SectionRight>
+          )}
+        </Row>
+        {Boolean(info) && (
+          <Markdown components={{ p: InfoParagraph }}>
+            {info}
+          </Markdown>
         )}
-      </Row>
-      {toggle ? (
-        <Markdown components={{ p: InfoParagraph }}>
-          {info}
-        </Markdown>
-      ) : null}
-    </BorderContainer>
+      </BorderContainer>
+    </Wrapper>
   )
 }
 
