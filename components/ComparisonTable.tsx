@@ -1,6 +1,4 @@
-import {
-  Fragment, useEffect, useState,
-} from 'react'
+import { Dispatch, Fragment, SetStateAction, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import {
@@ -155,10 +153,21 @@ function ComparisonTable<T extends object>({
   data,
   columns,
   dataType = 'municipalities',
+  hasBinaryIndexColumn,
   renderSubComponent,
 }: TableProps<T>) {
   const { preparedColumns, defaultSorting } = prepareColumnsForDefaultSorting(columns)
-  const [sorting, setSorting] = useState<SortingState>(defaultSorting)
+  const customSort = [
+    {
+      id: 'index',
+      desc: false,
+    },
+    {
+      id: 'name',
+      desc: false,
+    },
+  ]
+  const [sorting, setSorting] = useState<SortingState>(customSort)
   const router = useRouter()
   const [resizeCount, setResizeCount] = useState(0)
 
@@ -178,11 +187,30 @@ function ComparisonTable<T extends object>({
     return index > 1
   }
 
+  const sortIntercept: Dispatch<SetStateAction<SortingState>> = (newSort) => {
+    if (hasBinaryIndexColumn) {
+      // TODO Benni add check whether this is callable
+      const requestedSorting = newSort()
+
+      // If we're attempting to sort by the index column (first column)
+      if (requestedSorting[0].id === 'index') {
+        // Then add 'name' as secondary sorting column
+        requestedSorting.push({
+          id: 'name',
+          desc: false,
+        })
+      }
+      setSorting(requestedSorting)
+    } else {
+      setSorting(newSort)
+    }
+  }
+
   const table = useReactTable({
     data,
     columns: preparedColumns,
     state: { sorting },
-    onSortingChange: setSorting,
+    onSortingChange: sortIntercept,
     enableExpanding,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
