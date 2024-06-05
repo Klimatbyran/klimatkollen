@@ -185,10 +185,10 @@ function ComparisonTable<T extends object>({
   })
 
   const handleRowClick = (row: Row<T>) => {
-    const routeString = dataType === 'companies' ? 'foretag' : 'kommun'
+    const routeCategory = dataType === 'companies' ? 'foretag' : 'kommun'
     const cells = row.getAllCells()
     const value = cells.at(1)?.renderValue()
-    const route = `/${routeString}/${(value as unknown as string).toLowerCase()}`
+    const route = `/${routeCategory}/${(value as unknown as string).toLowerCase()}`
     router.push(route)
   }
 
