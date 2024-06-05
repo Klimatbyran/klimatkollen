@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
-import Link from 'next/link'
+// import Link from 'next/link'
 
 import ScorecardSection from './ScorecardSection'
-import { H4, H5 } from '../Typography'
-import Icon from '../../public/icons/boxedArrow.svg'
-import PlanIcon from '../../public/icons/climatePlan.svg'
-import FactSection from '../FactSection'
-import Markdown from '../Markdown'
+import { H4 } from '../Typography'
+// import Icon from '../../public/icons/boxedArrow.svg'
+// import PlanIcon from '../../public/icons/climatePlan.svg'
+// import FactSection from '../FactSection'
+// import Markdown from '../Markdown'
 import { Company as TCompany, GuessedCompany } from '../../utils/types'
 
 const StyledDiv = styled.div`
@@ -23,81 +23,81 @@ const StyledH4 = styled(H4)`
   width: 100%;
 `
 
-const GreyContainer = styled.div`
-  background: ${({ theme }) => theme.newColors.black2};
-  border-radius: 8px;
-  padding: 16px 16px 0 16px;
-  margin-bottom: 8px;
+// const GreyContainer = styled.div`
+//   background: ${({ theme }) => theme.newColors.black2};
+//   border-radius: 8px;
+//   padding: 16px 16px 0 16px;
+//   margin-bottom: 8px;
 
-  .no-climate-plan h3 {
-    color: ${({ theme }) => theme.newColors.orange3};
-  }
-`
+//   .no-climate-plan h3 {
+//     color: ${({ theme }) => theme.newColors.orange3};
+//   }
+// `
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 36px;
-`
+// const Row = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   height: 36px;
+// `
 
-const SectionLeft = styled.section`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: 90%;
-`
+// const SectionLeft = styled.section`
+//   display: flex;
+//   align-items: center;
+//   gap: 0.5rem;
+//   width: 90%;
+// `
 
-const SectionRight = styled.section`
-  text-align: right;
-`
+// const SectionRight = styled.section`
+//   text-align: right;
+// `
 
-const ArrowIcon = styled(Icon)`
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  z-index: 1;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  fill: ${({ theme }) => theme.newColors.black3};
-`
+// const ArrowIcon = styled(Icon)`
+//   width: 32px;
+//   height: 32px;
+//   position: absolute;
+//   z-index: 1;
+//   margin: auto;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   bottom: 0;
+//   fill: ${({ theme }) => theme.newColors.black3};
+// `
 
-const LinkButton = styled(Link)`
-  height: 36px;
-  color: ${({ theme }) => theme.newColors.black3};
-  background: ${({ theme }) => theme.newColors.blue2};
-  border-radius: 4px;
-  border: 1px solid transparent;
-  padding: 0.8rem 1rem 0.8rem 0.8rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  &:hover {
-    background: ${({ theme }) => theme.newColors.blue1};
-  }
-  & a {
-    text-decoration: none;
-  }
-`
+// const LinkButton = styled(Link)`
+//   height: 36px;
+//   color: ${({ theme }) => theme.newColors.black3};
+//   background: ${({ theme }) => theme.newColors.blue2};
+//   border-radius: 4px;
+//   border: 1px solid transparent;
+//   padding: 0.8rem 1rem 0.8rem 0.8rem;
+//   cursor: pointer;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   text-decoration: none;
+//   &:hover {
+//     background: ${({ theme }) => theme.newColors.blue1};
+//   }
+//   & a {
+//     text-decoration: none;
+//   }
+// `
 
-const Square = styled.div`
-  width: 16px;
-  height: 16px;
-  position: relative;
-  border-radius: 4px;
-`
+// const Square = styled.div`
+//   width: 16px;
+//   height: 16px;
+//   position: relative;
+//   border-radius: 4px;
+// `
 
 type Props = {
   company: { verified: TCompany, guessed: GuessedCompany }
 }
 
 const formatter = new Intl.NumberFormat('sv-SE', { maximumSignificantDigits: 8 })
-const fractionFormatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 })
+// const fractionFormatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 })
 
 function CompanyFacts({
   company,
