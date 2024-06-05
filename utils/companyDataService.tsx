@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs'
 import { resolve } from 'path'
+import axios from 'axios'
 import { Company, CompanyEmissionsPerYear, GuessedCompany } from './types'
 
 function loadJSON<T>(path: string): T {
@@ -37,11 +38,15 @@ export class CompanyDataService {
     ]
   }
 
-  public getCompanies(): Array<Company> {
+  public getVerifiedCompanies(): Company[] {
     if (this.companies.length < 1) {
       throw new Error('No companies found')
     }
     return this.companies
+  }
+
+  public async getGuessedCompanies(): Promise<GuessedCompany[]> {
+    return axios.get<GuessedCompany[]>('https://api.klimatkollen.se/api/companies').then((res) => res.data)
   }
 
   public getCompany(name: string): { verified: Company, guessed: GuessedCompany } {

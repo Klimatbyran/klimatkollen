@@ -27,7 +27,7 @@ function getCompanies() {
   const cached = cache.get('companies')
   if (cached) return cached
 
-  const companies = new CompanyDataService().getCompanies()
+  const companies = new CompanyDataService().getVerifiedCompanies()
   cache.set('companies', companies)
   return companies
 }

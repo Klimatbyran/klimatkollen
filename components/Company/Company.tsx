@@ -73,6 +73,7 @@ function Company(props: Props) {
         </StyledContainer>
       </PageWrapper>
       <PageWrapper>
+        {/* TODO: Show comment high up on the page */}
         <Bottom>
           <CompanyFacts
             company={company}

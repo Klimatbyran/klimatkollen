@@ -69,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res, loca
   const companyDataService = new CompanyDataService()
 
   const [companies, company] = await Promise.all([
-    companyDataService.getCompanies(),
+    companyDataService.getVerifiedCompanies(),
     companyDataService.getCompany(id),
   ])
 
