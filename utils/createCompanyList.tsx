@@ -5,15 +5,6 @@ import { TFunction } from 'i18next'
 import { Company } from './types'
 import { devices } from './devices'
 
-const Arrow = styled.img<{ open: boolean }>`
-  --scale: 0.6;
-  transform: scale(var(--scale)) rotate(${(props) => (props.open ? '180deg' : '0')});
-
-  @media only screen and (${devices.tablet}) {
-    --scale: 0.8;
-  }
-`
-
 const ScopeColumn = styled.span<{ isMissing: boolean }>`
   display: inline-flex;
   align-items: center;
@@ -101,7 +92,6 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
         return (
           <ScopeColumn isMissing={scope3String === notReported}>
             {scope3String}
-            <Arrow open={row.cell.row.getIsExpanded()} src="/icons/arrow-down-round.svg" />
           </ScopeColumn>
         )
       },
