@@ -66,6 +66,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res, loca
     return cache.get(id)
   }
 
+  // TODO: If we didn't get an exact URL match, we should also redirect to the correct URL.
+  // This is because we should avoid having multiple similar URLs that return the same content (which hurts SEO)
+
   const companyDataService = new CompanyDataService()
 
   const [companies, company] = await Promise.all([
