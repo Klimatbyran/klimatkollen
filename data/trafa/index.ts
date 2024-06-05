@@ -25,7 +25,7 @@ type DesiredInterface = {
   totalElectricCars : number
   totalCarsInTraffic : number
   totalCars : number
-  percentageElectricCars : string
+  percentageElectricCars : number
 }
 
 export const TRAFA_BASE_URL = 'https://api.trafa.se/api/data'
@@ -161,7 +161,7 @@ const aggregateData = (data: ResultInterface[]) => {
           totalCarsInTraffic: 0,
           totalElectricCars: 0,
           totalCars: 0,
-          percentageElectricCars: '0',
+          percentageElectricCars: 0,
         })
       }
 
@@ -184,8 +184,8 @@ const aggregateData = (data: ResultInterface[]) => {
         // make sure totalCars is not NaN
         if (!Number.isNaN(aggregatedEntry.totalCars)) {
           // assumming there are 3 rows per municipality per year (total, electric cars, and hybrid cars) calculate the percentage of electric cars
-          const percentageChange = ((aggregatedEntry.totalElectricCars / aggregatedEntry.totalCars) * 100).toFixed(1)
-          aggregatedEntry.percentageElectricCars = percentageChange
+          const percentageChange = (aggregatedEntry.totalElectricCars / aggregatedEntry.totalCars).toPrecision()
+          aggregatedEntry.percentageElectricCars = parseFloat(percentageChange)
         }
       }
       // remove the total row from the aggregation map
@@ -282,8 +282,8 @@ const main = async () => {
   const today = new Date()
 
   // Check if the data should be revalidated if the data is older than a year or the environment variable is set to true
-  const shouldFetch = process.env.REVALIDATE_TRAFA_DATA === 'true' || today.getFullYear() - metadata.lastFetched.getFullYear() > 1
-
+  const shouldFetch = process.env.NEXT_PUBLIC_REVALIDATE_TRAFA_DATA === 'true' ? true : today.getFullYear() - metadata.lastFetched.getFullYear() > 1
+  console.log('%s: "ENV_REVALIDATE_TRAFA_DATA": %s', TIMESTAMP, process.env.NEXT_PUBLIC_REVALIDATE_TRAFA_DATA)
   if (metadata.lastFetchedBy !== 'unknown') {
     console.log(
       '%s: Last fetched on %s by %s',
@@ -334,8 +334,6 @@ const main = async () => {
     })
     await saveJson({ data: processedData, fileName: 'trafa-data.json' })
     askForCommit()
-    console.log('%s: Script execution complete! Exiting...', TIMESTAMP)
-    setTimeout(() => process.exit(0), 1000)
   } catch (error) {
     console.error(`%s: ${error}`, TIMESTAMP)
   }

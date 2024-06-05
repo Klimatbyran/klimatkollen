@@ -3,11 +3,11 @@ import json
 import os
 from openpyxl.utils import get_column_letter
 import pandas as pd
-
+import numpy as np
 
 def process_trafa_data(): 
     # Specify the folder path where the JSON files are located
-    folder_path = 'data/trafa/downloads'
+    folder_path = 'trafa/downloads'
 
     # Get the file named 'trafa-data.json'
     file = 'trafa-data.json'
@@ -22,26 +22,25 @@ def process_trafa_data():
     for row in data:
         # Extract the data under the "Cell" key
         cell_data = row['municipalities']
-          
         # Iterate over each cell
         for cell in cell_data:
             # Add the cell data to the DataFrame
             percentage = float(cell['percentageElectricCars'])
-        
             df.loc[cell['name'], cell['year']] = percentage
 
     df = df.reset_index()
     df.columns = ['Kommun'] + list(df.columns[1:])
-    for index, row in df.iterrows():       
-        # Excel is 1-based and the first row is the header row so we need to add 2 to the index to get the correct column
-        if index == 0:
-            length = len(df.columns) + 1
-        else:
-            length = len(df.columns) 
-        df.loc[index, 'Trend'] = f'=LINEST(C{index + 2}:{get_column_letter(len(df.columns))}{index + 2}, $C$1:${get_column_letter(length)}$1, TRUE)'  # type: ignore
+    # Create Trend column
+    df['Trend'] = 0.0
+    for index, row in df.iterrows():   
+        # Calculate the trend for the municipality 
+        x = np.array(df.columns[1:-1]).astype(float)  # Exclude the "Kommun" and "Trend" column
+        y = row.values[1:-1].astype(float)  # Exclude the "Kommun" and "Trend" values
+        slope, _ = np.polyfit(x, y, 1)
+        df.loc[index, 'Trend'] = slope # type: ignore 
 
     # Write the DataFrame to an Excel file
-    output_file = 'data/output/trafa-output.xlsx'
+    output_file = 'output/trafa-output.xlsx'
 
     df.to_excel(output_file)
     print(f"Data successfully transformed and saved to {output_file}") 
@@ -49,7 +48,7 @@ def process_trafa_data():
 
 def compare_trafa_data():
     # Read the Excel file into a DataFrame
-    df_trafa = pd.read_excel('data/output/trafa-output.xlsx')
+    df_trafa = pd.read_excel('output/trafa-output.xlsx')
     # df_trafa = df_trafa.drop([0])
     
     # df_trafa = df_trafa.rename(columns={'Unnamed: 0': 'Kommun'}) 
@@ -62,7 +61,7 @@ def compare_trafa_data():
 
 
     # Read the Excel file into a DataFrame
-    df_cars = pd.read_excel('data/solutions/cars/sources/kpi1_calculations.xlsx')
+    df_cars = pd.read_excel('solutions/cars/sources/kpi1_calculations.xlsx')
         
     df_cars = df_cars.drop([0])
     
@@ -81,6 +80,8 @@ def compare_trafa_data():
     # Multiply the values of the DataFrame by 100 to get the percentage and round to 2 decimal places
     df_cars = df_cars * 100
     df_cars = df_cars.round(1)
+    df_trafa = df_trafa * 100
+    df_trafa = df_trafa.round(1)
     
     
     # order the index of the DataFrame 
@@ -123,11 +124,31 @@ def compare_trafa_data():
     df_comparisson = pd.DataFrame(comparisson, columns=['Kommun', 'År', 'KPI1', 'Trafa-API'])
     
     # Write the DataFrame to an Excel file
-    output_file = 'data/output/trafa-comparison.xlsx'
+    output_file = 'output/trafa-comparison.xlsx'
     df_comparisson.to_excel(output_file, index=False)
                         
 
     print("Data successfully compared and saved to data/output/trafa-comparison.xlsx")
+    
+def get_electric_car_change(df) : 
+    # Load trafa output
+    df_trafa = pd.read_excel('output/trafa-output.xlsx')
+    
+    # Years is all coumns except the first and last
+    years = df_trafa.columns.difference(["Kommun", "Trend", "Unnamed: 0"])
+
+    df_trafa["electricCarChangeYearly"] = df_trafa.apply(
+        lambda x: {year: x.loc[year] for year in years},
+        axis=1
+    )
+    
+    df_data= df_trafa.filter(
+        ["Kommun", "Trend", "electricCarChangeYearly"], axis=1
+    )
+    df_data.rename(columns={"Trend": "electricCarChangePercent"}, inplace=True)
+    df = df.merge(df_data, on='Kommun', how='left')
+    return df
+
     
     
 
