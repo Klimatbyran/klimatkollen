@@ -1,6 +1,4 @@
-import {
-  Fragment, useEffect, useState,
-} from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import {
@@ -10,7 +8,6 @@ import {
   SortingState,
   getSortedRowModel,
   Row,
-  getExpandedRowModel,
 } from '@tanstack/react-table'
 import type { ColumnDef } from '@tanstack/react-table'
 
@@ -29,7 +26,7 @@ const StyledTable = styled.table`
   @media only screen and (${devices.smallMobile}) {
     font-size: 0.85em;
   }
-  
+
   @media only screen and (${devices.tablet}) {
     --margin: 8px;
     font-size: 1em;
@@ -118,10 +115,9 @@ const TableHeaderInner = styled.span`
   grid-template-columns: 1fr max-content;
 `
 
-const TableRow = styled.tr<{ interactive?: boolean, showBorder?: boolean, isExpanded?: boolean }>`
-  border-bottom: ${({ showBorder, theme }) => (showBorder ? `1px solid ${theme.newColors.blue3}` : '')};
-  cursor: ${({ interactive }) => (interactive ? 'pointer' : '')};
-  background: ${({ isExpanded, theme }) => (isExpanded ? theme.newColors.black1 : '')};
+const TableRow = styled.tr`
+  border-bottom: 1px solid ${({ theme }) => theme.newColors.blue3};
+  cursor: pointer;
   z-index: 10;
 `
 
@@ -134,17 +130,20 @@ type TableProps<T extends object> = {
   columns: ColumnDef<T>[]
   // IDEA: It might be better to turn ComparisionTable into two specific components, one for every use case
   dataType?: 'municipalities' | 'companies'
-  renderSubComponent?: ({ row }: { row: Row<T> }) => JSX.Element
 }
 
 /**
  * Make sure the first column has an id, and prepare default sorting.
  */
-function prepareColumnsForDefaultSorting<T extends object>(columns: TableProps<T>['columns']) {
+function prepareColumnsForDefaultSorting<T extends object>(
+  columns: TableProps<T>['columns'],
+) {
   const preparedColumns = columns[0].id
-    ? columns
-    // @ts-expect-error accessorKey does exist, but there's a type error somewhere.
-    : [{ ...columns[0], id: (columns[0].accessorKey).replace('.', '_') }, ...columns.slice(1)]
+    ? columns : [
+      // @ts-expect-error accessorKey does exist, but there's a type error somewhere.
+      { ...columns[0], id: columns[0].accessorKey.replace('.', '_') },
+      ...columns.slice(1),
+    ]
 
   const defaultSorting = [{ id: preparedColumns[0].id!, desc: false }]
 
@@ -155,7 +154,6 @@ function ComparisonTable<T extends object>({
   data,
   columns,
   dataType = 'municipalities',
-  renderSubComponent,
 }: TableProps<T>) {
   const { preparedColumns, defaultSorting } = prepareColumnsForDefaultSorting(columns)
   const [sorting, setSorting] = useState<SortingState>(defaultSorting)
@@ -167,8 +165,6 @@ function ComparisonTable<T extends object>({
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  const enableExpanding = typeof renderSubComponent === 'function'
 
   const isDataColumn = (index: number) => {
     if (dataType === 'companies') {
@@ -183,22 +179,17 @@ function ComparisonTable<T extends object>({
     columns: preparedColumns,
     state: { sorting },
     onSortingChange: setSorting,
-    enableExpanding,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    getExpandedRowModel: getExpandedRowModel(),
     enableSortingRemoval: false,
   })
 
   const handleRowClick = (row: Row<T>) => {
-    if (dataType === 'municipalities') {
-      const cells = row.getAllCells()
-      const value = cells.at(1)?.renderValue()
-      const route = `/kommun/${(value as unknown as string).toLowerCase()}`
-      router.push(route)
-    } else if (dataType === 'companies') {
-      row.toggleExpanded()
-    }
+    const routeString = dataType === 'companies' ? 'foretag' : 'kommun'
+    const cells = row.getAllCells()
+    const value = cells.at(1)?.renderValue()
+    const route = `/${routeString}/${(value as unknown as string).toLowerCase()}`
+    router.push(route)
   }
 
   return (
@@ -230,10 +221,14 @@ function ComparisonTable<T extends object>({
                   onKeyDown={header.column.getToggleSortingHandler()}
                 >
                   <TableHeaderInner data-sorting={header.column.getIsSorted()}>
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(header.column.columnDef.header, header.getContext())}
                     {currentSort ? (
                       <SortingIcon
-                        style={{ transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)` }}
+                        style={{
+                          transform: `scale(0.6) rotate(${currentSort === 'desc' ? '' : '-'}90deg)`,
+                        }}
                       />
                     ) : null}
                   </TableHeaderInner>
@@ -244,33 +239,18 @@ function ComparisonTable<T extends object>({
         ))}
       </thead>
       <tbody>
-        {table.getRowModel().rows.map((row) => {
-          const isRowExpanded = enableExpanding && row.getIsExpanded()
-          return (
-            <Fragment key={row.id}>
-              <TableRow
-                onClick={() => handleRowClick(row)}
-                interactive={enableExpanding || dataType === 'municipalities'}
-                showBorder={enableExpanding ? !isRowExpanded : true}
-                isExpanded={isRowExpanded}
-                aria-expanded={isRowExpanded}
+        {table.getRowModel().rows.map((row) => (
+          <TableRow onClick={() => handleRowClick(row)}>
+            {row.getVisibleCells().map((cell, index) => (
+              <TableData
+                key={cell.id}
+                className={isDataColumn(index) ? 'data-column' : ''}
               >
-                {row.getVisibleCells().map((cell, index) => (
-                  <TableData key={cell.id} className={isDataColumn(index) ? 'data-column' : ''}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableData>
-                ))}
-              </TableRow>
-              {isRowExpanded && (
-                <TableRow showBorder>
-                  <td colSpan={row.getVisibleCells().length}>
-                    {renderSubComponent({ row })}
-                  </td>
-                </TableRow>
-              )}
-            </Fragment>
-          )
-        })}
+                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              </TableData>
+            ))}
+          </TableRow>
+        ))}
       </tbody>
     </StyledTable>
   )
