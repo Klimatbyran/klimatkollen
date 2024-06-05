@@ -1,7 +1,9 @@
 import styled from 'styled-components'
-// import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next'
 
-import { H1NoPad } from '../Typography'
+import {
+  H1NoPad, H3, Paragraph,
+} from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 // import DropDown from '../DropDown'
@@ -29,6 +31,29 @@ const Bottom = styled.div`
   gap: 3rem;
 `
 
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 400px;
+  background: ${({ theme }) => theme.newColors.black2};
+  padding: 1rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+
+  ${Paragraph} {
+    margin: 0;
+  }
+
+  ${Paragraph}:nth-child(odd) {
+    font-weight: 600;
+  }
+
+  ${Paragraph}:nth-child(even) {
+    text-align: right;
+  }
+`
+
 // const DropDownSection = styled.div`
 //   width: 100%;
 //   display: flex;
@@ -46,6 +71,8 @@ type Props = {
   companyNames: Array<string>
 }
 
+const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 })
+
 function Company(props: Props) {
   const {
     id,
@@ -59,35 +86,41 @@ function Company(props: Props) {
     throw new Error('temporary to supress ts errors')
   }
 
-  // const { t } = useTranslation()
+  const { t } = useTranslation()
 
   return (
-    <>
-      <PageWrapper>
-        <StyledContainer>
-          <HeaderSection>
-            <BackArrow route="/foretag/utslappen/lista" />
-            <H1NoPad>{company.verified.Name}</H1NoPad>
-            <span>{/* HACK: Only for temporary layout */}</span>
-          </HeaderSection>
-        </StyledContainer>
-      </PageWrapper>
-      <PageWrapper>
-        {/* TODO: Show comment high up on the page */}
-        <Bottom>
-          <CompanyFacts
-            company={company}
-          />
-        </Bottom>
-        {/* <DropDownSection>
+    <PageWrapper>
+      <StyledContainer>
+        <HeaderSection>
+          <BackArrow route="/foretag/utslappen/lista" />
+          <H1NoPad>{company.verified.Name}</H1NoPad>
+          <span>{/* HACK: Only for temporary layout */}</span>
+        </HeaderSection>
+      </StyledContainer>
+
+      <Grid>
+        <Paragraph>Egna utsläpp:</Paragraph>
+        <Paragraph>{`${formatter.format(company.verified.Emissions.Scope1n2 as unknown as number)} ton CO₂e`}</Paragraph>
+        <Paragraph>I värdekedjan:</Paragraph>
+        <Paragraph>{`${formatter.format(company.verified.Emissions.Scope3 as unknown as number)} ton CO₂e`}</Paragraph>
+      </Grid>
+
+      <H3>{t('common:comment')}</H3>
+      <Paragraph>{company.verified.Comment}</Paragraph>
+
+      <Bottom>
+        <CompanyFacts
+          company={company}
+        />
+      </Bottom>
+      {/* <DropDownSection>
           <ParagraphBold>{t('company:otherCompanies')}</ParagraphBold>
           <DropDown
             municipalitiesName={municipalitiesName}
             placeholder={t('municipality:select')}
           />
         </DropDownSection> */}
-      </PageWrapper>
-    </>
+    </PageWrapper>
   )
 }
 

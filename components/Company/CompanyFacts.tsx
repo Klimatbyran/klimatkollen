@@ -96,8 +96,7 @@ type Props = {
   company: { verified: TCompany, guessed: GuessedCompany }
 }
 
-const formatter = new Intl.NumberFormat('sv-SE', { maximumSignificantDigits: 8 })
-// const fractionFormatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 })
+const formatter = new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 })
 
 function CompanyFacts({
   company,
