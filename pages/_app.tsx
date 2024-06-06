@@ -10,6 +10,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { StyleSheetManager } from 'styled-components'
 import isPropValid from '@emotion/is-prop-valid'
 
+import '@fontsource-variable/dm-sans'
 import '../styles/globals.css'
 import Theme, { colorTheme } from '../Theme'
 import nextI18nextConfig from '../next-i18next.config'
@@ -85,9 +86,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <CookieConsent
           location="bottom"
           buttonText={t('common:actions.ok')}
-          style={{ background: colorTheme.lightBlack }}
+          style={{ background: colorTheme.newColors.black2 }}
           buttonStyle={{
-            backgroundColor: colorTheme.midGreen,
+            backgroundColor: colorTheme.newColors.blue2,
             fontSize: '13px',
           }}
           expires={150}

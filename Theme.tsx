@@ -8,9 +8,9 @@ const colors2024 = {
     150: '#C3C3C3',
     200: '#A5A5A5',
     250: '#878787',
-    300: '#444444',
+    300: '#717171',
     350: '#5B5B5B',
-    400: '#717171',
+    400: '#444444',
     500: '#2E2E2E',
     600: '#272727',
     650: '#202020',
@@ -97,6 +97,21 @@ const colors2024 = {
     900: '#7C2E45',
     950: '#73263D',
   },
+  // NOTE: This was generated from the base color 600: '#e72c4e' since we didn't get a red color scale from the designers.
+  // This explains why we only have 11 hues for this color.
+  red: {
+    50: '#fff1f1',
+    100: '#ffe4e5',
+    200: '#ffccd0',
+    300: '#fea3ab',
+    400: '#fd6f7e',
+    500: '#f73c55',
+    600: '#e72c4e',
+    700: '#c10f34',
+    800: '#a11033',
+    900: '#8a1131',
+    950: '#4d0416',
+  },
 }
 
 const namedColors2024 = {
@@ -134,49 +149,13 @@ const namedColors2024 = {
 export const colorTheme = {
   newColors: namedColors2024,
   huePalette: colors2024,
-
-  black: '#181818',
-  lightBlack: '#262626',
-  grey: '#939393',
-  offWhite: '#FFFDFA',
-
-  red: '#EF3030',
-  darkRed: '#8B1A1A',
-  darkRedOpaque: 'rgba(139, 26, 26, 0.6)',
-  darkDarkRed: '#450d0d',
-
-  orange: '#FF6813',
-  darkOrange: '#B55018',
-  darkOrangeOpaque: 'rgb(181, 80, 24, 0.6)',
-
-  darkYellow: '#FFA137',
-  lightYellow: '#FFE07A',
-
-  beige: '#FFF0D0',
-
-  lightBlue: '#81DFFF',
-
-  lightGreen: '#15D8D8',
-  lightGreenOpaqe: 'rgba(103, 255, 238, 0.6)',
-  lightGreenDark: 'rgb(0, 179, 159, 0.2)',
-
-  midGreen: '#30ACB4',
-  darkGreenOne: '#216675',
-  darkGreenTwo: '#1B3940',
-
-  gradientBlack: 'linear-gradient(#181818, #404040)',
-  gradientGreen: 'linear-gradient(#216675, #30ACB4)',
-  gradientOrange: 'linear-gradient(#EF3030, #FF6813)',
-  gradientRed: 'linear-gradient(#EF3030, #8B1A1A)',
-}
-
-export const spacingTheme = {
-  smallSpacing: '8px',
 }
 
 type Props = {
   children: ReactNode
 }
+
+export type ColorTheme = typeof colorTheme
 
 function Theme({ children }: Props) {
   return <ThemeProvider theme={colorTheme}>{children}</ThemeProvider>

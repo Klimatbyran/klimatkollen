@@ -42,7 +42,7 @@ function OmOss() {
   return (
     <>
       <MetaTags title={t('about:title')} description={t('about:meta.description')} />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <Container>
           <H2>{t('about:title')}</H2>
           <AiryParagraph>

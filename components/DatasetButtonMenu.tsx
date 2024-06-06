@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { DataDescriptions, DatasetKey } from '../utils/types'
 import { devices } from '../utils/devices'
 
@@ -6,7 +6,6 @@ const ButtonContainer = styled.div`
   margin: 8px 0 32px 0;
   gap: 8px;
   display: flex;
-  font-weight: bolder;
   flex-wrap: wrap;
   justify-content: center;
 
@@ -18,12 +17,11 @@ const ButtonContainer = styled.div`
 
 const Button = styled.button<{active: boolean}>`
   padding: 8px 16px;
-  font-family: 'Anonymous Pro';
   font-size: 16px;
+  font-weight: 400;
   text-decoration: none;
-  line-height: 19px;
-  color: ${({ theme }) => theme.offWhite};
-  background: ${({ theme }) => theme.lightBlack};
+  color: ${({ theme }) => theme.newColors.white};
+  background: ${({ theme }) => theme.newColors.black2};
   border: none;
   border-radius: 8px;
   white-space: nowrap;
@@ -31,18 +29,14 @@ const Button = styled.button<{active: boolean}>`
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.darkGreenTwo};
+    color: ${({ theme }) => theme.newColors.black3};
+    background: ${({ theme }) => theme.newColors.blue1};
   }
 
-  ${({ theme, active }) => active && `
-    color: ${theme.black};
-    background: ${theme.midGreen};
-
-    &:hover {
-      background-color: ${theme.lightGreen};
-  }
+  ${({ theme, active }) => active && css`
+    color: ${theme.newColors.black3};
+    background: ${theme.newColors.blue2} !important;
   `}
-
 `
 
 type MenuProps = {

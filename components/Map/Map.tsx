@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components'
 import DeckGL, { PolygonLayer, RGBAColor } from 'deck.gl'
-import React, { useEffect, useRef, useState } from 'react'
+import React, {
+  useEffect, useMemo, useRef, useState,
+} from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
@@ -23,10 +25,10 @@ const INITIAL_VIEW_STATE = {
 }
 
 const TOOLTIP_COMMON_STYLE = {
-  backgroundColor: 'black',
+  backgroundColor: colorTheme.newColors.black3,
   borderRadius: '5px',
   fontSize: '0.7em',
-  color: colorTheme.offWhite,
+  color: colorTheme.newColors.white,
 }
 
 const TOOLTIP_MOBILE_STYLE = {
@@ -57,7 +59,7 @@ const getColor = (
 
   // Special case for binary KPIs
   if (boundaries.length === 2) {
-    return dataPoint === boundaries[0] ? colors[0] : colors[colors.length - 1]
+    return dataPoint === boundaries[0] ? colors[1] : colors[colors.length - 1]
   }
 
   // Special case for KPIs with three cases
@@ -66,9 +68,9 @@ const getColor = (
       return colors[colors.length - 1]
     }
     if (dataPoint > boundaries[0]) {
-      return colors[4]
+      return colors[3]
     }
-    return colors[0]
+    return colors[1]
   }
 
   // Special case for invalid dates
@@ -129,7 +131,7 @@ function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
         src="/icons/info.svg"
         alt="info icon"
         style={{
-          color: '#fff', height: 14, width: 14, marginRight: 4,
+          color: colorTheme.newColors.white, height: 14, width: 14, marginRight: 4,
         }}
       />
       <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}`}</span>
@@ -199,7 +201,7 @@ function Map({
     return () => document.removeEventListener('touchstart', clearToolTipOnOutsideTap)
   }, [wrapperRef])
 
-  const municipalityLines = municipalityFeatureCollection?.features?.flatMap(
+  const municipalityLines = useMemo(() => municipalityFeatureCollection?.features?.flatMap(
     ({ geometry, properties: { name } }: { geometry: any; properties: { name: string } }) => {
       const currentMunicipality = data.find((e) => e.name === name)
       const dataPoint = currentMunicipality?.primaryDataPoint
@@ -222,9 +224,9 @@ function Map({
         },
       ]
     },
-  )
+  ), [data, municipalityFeatureCollection?.features])
 
-  const municipalityLayer = new PolygonLayer({
+  const municipalityLayer = useMemo(() => new PolygonLayer({
     id: 'polygon-layer',
     data: municipalityLines,
     stroked: true,
@@ -241,12 +243,12 @@ function Map({
     getLineColor: () => [0, 0, 0, 80],
     getFillColor: (d) => getColor((d as MunicipalityData).dataPoint, boundaries),
     pickable: true,
-  })
+  }), [boundaries, municipalityLines])
 
   return (
     <DeckGLWrapper ref={wrapperRef}>
       <NextNProgress
-        color={colorTheme.darkGreenOne}
+        color={colorTheme.newColors.blue1}
         startPosition={0.3}
         stopDelayMs={20}
         height={5}

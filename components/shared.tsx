@@ -3,23 +3,21 @@ import Image from 'next/image'
 import { colorTheme } from '../Theme'
 
 export const mapColors = [
-  colorTheme.red,
-  colorTheme.orange,
-  colorTheme.darkYellow,
-  colorTheme.lightYellow,
-  colorTheme.beige,
-  colorTheme.lightBlue,
+  colorTheme.huePalette.red[900],
+  colorTheme.huePalette.red[700],
+  colorTheme.huePalette.red[600],
+  colorTheme.huePalette.orange[600],
+  colorTheme.huePalette.orange[250],
+  colorTheme.huePalette.blue[250],
 ]
 
 export const IconButton = styled.button`
   border: none;
-  background-color: none;
   cursor: pointer;
   background-color: inherit;
-  color: ${({ theme }) => theme.offWhite};
-  font-family: 'Borna';
-  font-weight: 300;
+  color: ${({ theme }) => theme.newColors.white};
   font-size: 16px;
+  line-height: 20px;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -31,7 +29,8 @@ export const Square = styled.div<{ color: string }>`
   width: 20px;
   height: 20px;
   position: relative;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
+  z-index: 40;
 `
 
 export const UnorderedList = styled.ul`
@@ -45,7 +44,6 @@ export const OrderedList = styled.ol`
 `
 
 export const ListItem = styled.li`
-  font-family: 'Anonymous Pro';
   font-size: 15px;
   margin: 8px;
 `

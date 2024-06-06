@@ -40,7 +40,7 @@ function Partier() {
         title={t('partierna:meta.title')}
         description={t('partierna:meta.description')}
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <Container>
 
           <H2>{t('partierna:title')}</H2>

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable react/no-this-in-sfc */
 import {
   Filler,
   Chart,
@@ -59,6 +60,7 @@ function getSetup(emissions: EmissionPerYear[][]): {
 type Dataset = Array<{ x: number; y: number }>
 
 const emissionPerYearToDataset = (perYear: EmissionPerYear[]): Dataset => perYear.map((y) => ({ x: y.Year, y: y.CO2Equivalent }))
+const formatter = new Intl.NumberFormat('sv', { maximumFractionDigits: 1 })
 
 type Props = {
   step: number
@@ -110,8 +112,8 @@ function Graph({
               fill: true,
               data: historicalDataset,
               borderWidth: 2,
-              borderColor: colorTheme.orange,
-              backgroundColor: colorTheme.darkOrangeOpaque,
+              borderColor: colorTheme.newColors.orange3,
+              backgroundColor: `${colorTheme.newColors.orange4}7f`,
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
@@ -123,8 +125,8 @@ function Graph({
               data: approximatedDataset,
               borderDash: [2, 2],
               borderWidth: 2,
-              borderColor: colorTheme.orange,
-              backgroundColor: colorTheme.darkOrangeOpaque,
+              borderColor: colorTheme.newColors.orange3,
+              backgroundColor: `${colorTheme.newColors.orange4}7f`,
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
@@ -135,11 +137,14 @@ function Graph({
               fill: true,
               data: step >= 2 ? budgetDataset : budgetDataset.map(({ x }) => ({ x, y: 0 })),
               borderWidth: step >= 2 ? 2 : 0,
-              borderColor: colorTheme.lightGreen,
-              backgroundColor: colorTheme.lightGreenOpaqe,
+              borderColor: colorTheme.newColors.blue3,
+              backgroundColor: `${colorTheme.newColors.blue4}7f`,
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
+              // Don't show the point for the budget line during step 1 to avoid confusing users.
+              pointHitRadius: step === 1 ? 0 : undefined,
+              pointHoverRadius: step === 1 ? 0 : undefined,
             },
             {
               // @ts-ignore
@@ -147,8 +152,8 @@ function Graph({
               fill: true,
               data: trendDataset,
               borderWidth: 2,
-              borderColor: colorTheme.red,
-              backgroundColor: colorTheme.darkRedOpaque,
+              borderColor: colorTheme.huePalette.red[600],
+              backgroundColor: `${colorTheme.huePalette.red[700]}7f`,
               pointRadius: 0,
               tension: 0.15,
               hidden: false,
@@ -164,6 +169,9 @@ function Graph({
           plugins: {
             tooltip: {
               enabled: true,
+              // Filter out the budget tooltips during step 1 to avoid confusing users.
+              // @ts-expect-error We've added a custom id and can safely ignore the error here
+              filter: step === 1 ? (tooltipItem) => tooltipItem?.dataset?.id !== 'budget' : undefined,
               displayColors: false,
               padding: {
                 top: 8,
@@ -176,7 +184,8 @@ function Graph({
               },
               callbacks: {
                 title(tooltipItems) {
-                  return `${(tooltipItems[0].parsed.y / 1000).toFixed(1)}`
+                  // Skip rendering tooltips if they have no data (because they were filtered out)
+                  return tooltipItems.length ? formatter.format((tooltipItems[0].parsed.y / 1000)) : undefined
                 },
                 label() {
                   return ''
@@ -195,9 +204,9 @@ function Graph({
               },
               ticks: {
                 font: {
-                  family: 'Borna',
-                  size: 15,
-                  weight: 300,
+                  family: '"DM Sans Variable", sans-serif',
+                  size: 14,
+                  weight: 400,
                 },
                 color: 'white',
                 align: 'center',
@@ -217,9 +226,9 @@ function Graph({
               ticks: {
                 stepSize: 50_000,
                 font: {
-                  family: 'Borna',
-                  size: 15,
-                  weight: 300,
+                  family: '"DM Sans Variable", sans-serif',
+                  size: 14,
+                  weight: 400,
                 },
                 color: 'white',
                 callback: (a) => ((a as number) / 1000).toString(),

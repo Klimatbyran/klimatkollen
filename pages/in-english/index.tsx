@@ -46,7 +46,7 @@ function InEnglish() {
   return (
     <>
       <MetaTags title="In English" description="Klimatkollen in English" />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <Container>
           <H2>About us</H2>
           <Paragraph>
