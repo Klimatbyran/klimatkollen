@@ -189,13 +189,14 @@ function ComparisonTable<T extends object>({
     const cells = row.getAllCells()
     const columnIndex = dataType === 'companies' ? 0 : 1
     const value = cells.at(columnIndex)?.renderValue()
-    const entityName = (value as unknown as string).toLowerCase()
+    const lowerCaseName = (value as unknown as string).toLowerCase()
 
     if (dataType === 'companies') {
-      const companyRoute = `https://beta.klimatkollen.se/foretag/${entityName}`
+      const dashName = lowerCaseName.replace(/ /g, '-')
+      const companyRoute = `https://beta.klimatkollen.se/foretag/${dashName}`
       window.location.href = companyRoute
     } else {
-      const municipalityrRoute = `/kommun/${entityName}`
+      const municipalityrRoute = `/kommun/${lowerCaseName}`
       router.push(municipalityrRoute)
     }
   }
