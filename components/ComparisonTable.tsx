@@ -139,7 +139,8 @@ function prepareColumnsForDefaultSorting<T extends object>(
   columns: TableProps<T>['columns'],
 ) {
   const preparedColumns = columns[0].id
-    ? columns : [
+    ? columns
+    : [
       // @ts-expect-error accessorKey does exist, but there's a type error somewhere.
       { ...columns[0], id: columns[0].accessorKey.replace('.', '_') },
       ...columns.slice(1),
@@ -185,11 +186,18 @@ function ComparisonTable<T extends object>({
   })
 
   const handleRowClick = (row: Row<T>) => {
-    const routeCategory = dataType === 'companies' ? 'foretag' : 'kommun'
     const cells = row.getAllCells()
-    const value = cells.at(1)?.renderValue()
-    const route = `/${routeCategory}/${(value as unknown as string).toLowerCase()}`
-    router.push(route)
+    const columnIndex = dataType === 'companies' ? 0 : 1
+    const value = cells.at(columnIndex)?.renderValue()
+    const entityName = (value as unknown as string).toLowerCase()
+
+    if (dataType === 'companies') {
+      const companyRoute = `https://beta.klimatkollen.se/foretag/${entityName}`
+      window.location.href = companyRoute
+    } else {
+      const municipalityrRoute = `/kommun/${entityName}`
+      router.push(municipalityrRoute)
+    }
   }
 
   return (
