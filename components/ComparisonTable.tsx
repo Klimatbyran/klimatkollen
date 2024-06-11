@@ -248,7 +248,7 @@ function ComparisonTable<T extends object>({
       </thead>
       <tbody>
         {table.getRowModel().rows.map((row) => (
-          <TableRow onClick={() => handleRowClick(row)}>
+          <TableRow onClick={() => handleRowClick(row)} key={row.id}>
             {row.getVisibleCells().map((cell, index) => (
               <TableData
                 key={cell.id}
