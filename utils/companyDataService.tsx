@@ -22,8 +22,6 @@ export class CompanyDataService {
 
         return {
           Name: data.Company,
-          Url: data.URL,
-          Comment: data.Comment,
           Emissions: emissionsPerYear,
         } as unknown as Company
       })
@@ -37,6 +35,8 @@ export class CompanyDataService {
   }
 
   public getCompany(name: string): Company {
-    return this.companies.filter((company) => company.Name.toLowerCase() === name.toLowerCase())[0]
+    return this.companies.filter(
+      (company) => company.Name.toLowerCase() === name.toLowerCase(),
+    )[0]
   }
 }
