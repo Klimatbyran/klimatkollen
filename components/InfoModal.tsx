@@ -8,9 +8,9 @@ import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
 
 import Close from '../public/icons/close.svg'
-import { Paragraph } from './Typography'
 import { IconButton } from './shared'
 import { devices } from '../utils/devices'
+import Markdown from './Markdown'
 
 const Modal = styled.div<{ scrollY: number }>`
   background-color: rgba(0, 0, 0, 0.5);
@@ -120,7 +120,7 @@ function InfoModal({ text, close, scrollY }: Props) {
           <IconButton type="button" aria-label={t('common:actions.close')} onClick={close}>
             <Close />
           </IconButton>
-          <Paragraph>{text}</Paragraph>
+          <Markdown>{text}</Markdown>
         </div>
       </div>
     </Modal>
