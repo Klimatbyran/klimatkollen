@@ -25,6 +25,7 @@ export type CompanyEmissionsPerYear = {
 export type Company = {
   Name: string
   Url: string
+  WikiId: string | null
   Comment: string
   Emissions: CompanyEmissionsPerYear
 }
