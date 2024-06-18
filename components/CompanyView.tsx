@@ -68,35 +68,6 @@ const ComparisonContainer = styled.div`
   display: flex;
 `
 
-const Details = styled.div`
-  display: grid;
-  padding: 0 6px 8px;
-
-  @media only screen and (${devices.tablet}) {
-    padding: 8px 12px 16px;
-  }
-`
-
-const DetailsHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-
-  p {
-    font-style: italic;
-    color: ${({ theme }) => theme.newColors.gray};
-    padding-top: 0.5rem;
-  }
-
-  a {
-    padding: 0.5rem 0;
-  }
-
-  @media only screen and (${devices.tablet}) {
-    padding-bottom: 0.5rem;
-  }
-`
-
 type CompanyViewProps = {
   companies: Array<Company>
 }
@@ -116,21 +87,6 @@ function CompanyView({
             data={companies}
             columns={cols}
             dataType="companies"
-            renderSubComponent={({ row }) => {
-              const company = row.original
-              return (
-                <Details>
-                  <DetailsHeader>
-                    <p>
-                      {t('common:comment')}
-                      :
-                    </p>
-                    <a href={company.Url} target="_blank" rel="noopener noreferrer">{t('startPage:companyView.readReport')}</a>
-                  </DetailsHeader>
-                  <p>{company.Comment}</p>
-                </Details>
-              )
-            }}
           />
         </ComparisonContainer>
         <InfoText>
