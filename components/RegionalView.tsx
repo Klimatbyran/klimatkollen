@@ -103,6 +103,7 @@ const ComparisonContainer = styled.div<{ dataView: string }>`
   display: flex;
   margin-top: ${({ dataView }) => (dataView === 'karta' ? '0' : '56px')};
   min-height: 400px;
+  padding-bottom: 2rem;
 
   @media only screen and (${devices.tablet}) {
     min-height: 520px;
