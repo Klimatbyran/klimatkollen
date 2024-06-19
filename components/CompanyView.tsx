@@ -66,6 +66,7 @@ const ComparisonContainer = styled.div`
   position: relative;
   border-radius: 8px;
   display: flex;
+  padding-bottom: 2rem;
 `
 
 type CompanyViewProps = {
