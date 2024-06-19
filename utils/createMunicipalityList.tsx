@@ -216,6 +216,15 @@ export const municipalityColumns = (
       }
     }
 
+    if (datasetKey === 'upphandlingarna') {
+      return (rowDataA: Row<RowData>, rowDataB: Row<RowData>) => {
+        const aProcurementDemands = rowDataA.original.formattedDataPoint
+        const bProcurementDemands = rowDataB.original.formattedDataPoint
+
+        return aProcurementDemands.localeCompare(bProcurementDemands)
+      }
+    }
+
     // By default, use the standard @tanstack/table sorting functions.
     return undefined
   }
