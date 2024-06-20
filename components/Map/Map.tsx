@@ -98,7 +98,7 @@ const getColor = (
   return colors[5]
 }
 
-const getColorFromValue = (dataPoint: number | string): string => {
+const getColorFromDataPoint = (dataPoint: number | string): string => {
   let value: number;
 
   if (typeof dataPoint === 'string') {
@@ -149,8 +149,7 @@ export function isMunicipalityData(
 }
 
 function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
-
-  const dataPointColor = getColorFromValue(tInfo.mData.dataPoint);
+  const dataPointColor = getColorFromDataPoint(tInfo.mData.dataPoint);
 
   return (
     <Link
@@ -171,7 +170,7 @@ function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
       />
       <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}`}:</span>
       <span style={{ color: dataPointColor, fontWeight: 'bold' }}>{`${tInfo.mData.formattedDataPoint}%`}</span>
-    </Link >
+    </Link>
   )
 }
 
@@ -300,7 +299,7 @@ function Map({
             return null // tooltips on touch devices are handled separately
           }
 
-          const dataPointColor = getColorFromValue(mData.dataPoint);
+          const dataPointColor = getColorFromDataPoint(mData.dataPoint);
 
           return ({
             html: `
