@@ -2,8 +2,10 @@ import styled from 'styled-components'
 import { ColumnDef, Row } from '@tanstack/react-table'
 import { TFunction } from 'i18next'
 
+import Link from 'next/link'
 import { Company } from './types'
 import { devices } from './devices'
+import { getCompanyURL } from './shared'
 
 const ScopeColumn = styled.span<{ isMissing: boolean }>`
   display: inline-flex;
@@ -55,7 +57,9 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
   return [
     {
       header: t('common:company'),
-      cell: (row) => row.cell.row.original.Name,
+      cell: (row) => (row.cell.row.original.WikiId ? (
+        <Link href={getCompanyURL(row.cell.row.original.Name, row.cell.row.original.WikiId)}>{row.cell.row.original.Name}</Link>
+      ) : row.cell.row.original.Name),
       accessorKey: 'Name',
     },
     {

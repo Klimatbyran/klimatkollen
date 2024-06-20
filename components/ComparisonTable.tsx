@@ -15,6 +15,7 @@ import { devices } from '../utils/devices'
 import ArrowIcon from '../public/icons/arrow-right-bold-green.svg'
 import { Company } from '../utils/types'
 import InfoModal from './InfoModal'
+import { getCompanyURL } from '../utils/shared'
 
 const StyledTable = styled.table`
   --margin: 4px;
@@ -218,9 +219,7 @@ function ComparisonTable<T extends object>({
         return
       }
 
-      const dashName = lowerCaseName.replaceAll(' ', '-')
-      const url = process.env.NODE_ENV === 'production' ? 'https://beta.klimatkollen.se' : 'http://localhost:4321'
-      const companyRoute = `${url}/foretag/${dashName}-${wikiId}`
+      const companyRoute = getCompanyURL(lowerCaseName, wikiId)
       window.location.href = companyRoute
     } else {
       const municipalityrRoute = `/kommun/${lowerCaseName}`
