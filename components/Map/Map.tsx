@@ -52,7 +52,7 @@ const hexToRGBA = (hex: string): RGBAColor => {
 }
 
 const getColor = (
-  dataPoint: number | string,
+  dataPoint: number | string | Date,
   boundaries: number[] | string[] | Date[],
 ): RGBAColor => {
   const colors: RGBAColor[] = mapColors.map(hexToRGBA)
@@ -98,37 +98,22 @@ const getColor = (
   return colors[5]
 }
 
-const getColorFromDataPoint = (dataPoint: number | string): string => {
-  let value: number;
+const getColorFromDataPoint = (
+  dataPoint: number | string | Date,
+  boundaries: number[] | string[] | Date[],
+): string => {
+  let value: number | string | Date
 
   if (typeof dataPoint === 'string') {
-    const standardizedDataPoint = dataPoint.trim().replace('−', '-').replace(',', '.');
-    value = parseFloat(standardizedDataPoint);
+    const standardizedDataPoint = dataPoint.trim().replace('−', '-').replace(',', '.')
+    const parsedValue = parseFloat(standardizedDataPoint)
+    value = !Number.isNaN(parsedValue) ? parsedValue : dataPoint
   } else {
-    value = dataPoint;
+    value = dataPoint
   }
 
-  if (value >= 0) {
-    return mapColors[0]; // 0%+
-  }
-  if (value < 0 && value >= -3) {
-    return mapColors[1]; // 0–3%
-  }
-  if (value < -3 && value >= -5) {
-    return mapColors[2]; // 3–5%
-  }
-  if (value < -5 && value >= -7) {
-    return mapColors[3]; // 5–7%
-  }
-  if (value < -7 && value >= -10) {
-    return mapColors[4]; // 7–10%
-  }
-  if (value < -10 && value >= -15) {
-    return mapColors[5]; // 10–15%
-  }
-
-  return mapColors[6];
-};
+  return `rgba(${getColor(value, boundaries).join(',')})`
+}
 
 // Use when viewState is reimplemented
 /* const MAP_RANGE = {
@@ -148,9 +133,12 @@ export function isMunicipalityData(
   )
 }
 
-function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
-  const dataPointColor = getColorFromDataPoint(tInfo.mData.dataPoint);
-
+function MobileTooltip(
+  { tInfo, boundaries }: {
+    tInfo: MunicipalityTapInfo,
+    boundaries: number[] | string[] | Date[]
+  },
+) {
   return (
     <Link
       href={`/kommun/${tInfo.mData.name.toLowerCase()}`}
@@ -168,8 +156,13 @@ function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
           color: colorTheme.newColors.white, height: 14, width: 14, marginRight: 4,
         }}
       />
-      <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}`}:</span>
-      <span style={{ color: dataPointColor, fontWeight: 'bold' }}>{`${tInfo.mData.formattedDataPoint}%`}</span>
+      <span style={{ textDecoration: 'underline' }}>
+        {`${tInfo.mData.name}`}
+        :
+      </span>
+      <span style={{ color: getColorFromDataPoint(tInfo.mData.dataPoint, boundaries), fontWeight: 'bold' }}>
+        {`${tInfo.mData.formattedDataPoint}%`}
+      </span>
     </Link>
   )
 }
@@ -299,13 +292,11 @@ function Map({
             return null // tooltips on touch devices are handled separately
           }
 
-          const dataPointColor = getColorFromDataPoint(mData.dataPoint);
-
           return ({
             html: `
             <p>
               ${mData.name}:
-              <span style="color: ${dataPointColor}; font-weight: bold;">
+              <span style="color: ${getColorFromDataPoint(mData.dataPoint, boundaries)}; font-weight: bold;">
                 ${(mData).formattedDataPoint}%
               </span>
             </p>`,
@@ -335,7 +326,7 @@ function Map({
       return viewState
     }} */
       />
-      {lastTapInfo && <MobileTooltip tInfo={lastTapInfo} />}
+      {lastTapInfo && <MobileTooltip tInfo={lastTapInfo} boundaries={boundaries} />}
       {children}
     </DeckGLWrapper>
   )
