@@ -27,7 +27,7 @@ const INITIAL_VIEW_STATE = {
 const TOOLTIP_COMMON_STYLE = {
   backgroundColor: colorTheme.newColors.black3,
   borderRadius: '5px',
-  fontSize: '0.7em',
+  fontSize: '14px',
   color: colorTheme.newColors.white,
 }
 
@@ -98,6 +98,38 @@ const getColor = (
   return colors[5]
 }
 
+const getColorFromValue = (dataPoint: number | string): string => {
+  let value: number;
+
+  if (typeof dataPoint === 'string') {
+    const standardizedDataPoint = dataPoint.trim().replace('−', '-').replace(',', '.');
+    value = parseFloat(standardizedDataPoint);
+  } else {
+    value = dataPoint;
+  }
+
+  if (value >= 0) {
+    return mapColors[0]; // 0%+
+  }
+  if (value < 0 && value >= -3) {
+    return mapColors[1]; // 0–3%
+  }
+  if (value < -3 && value >= -5) {
+    return mapColors[2]; // 3–5%
+  }
+  if (value < -5 && value >= -7) {
+    return mapColors[3]; // 5–7%
+  }
+  if (value < -7 && value >= -10) {
+    return mapColors[4]; // 7–10%
+  }
+  if (value < -10 && value >= -15) {
+    return mapColors[5]; // 10–15%
+  }
+
+  return mapColors[6];
+};
+
 // Use when viewState is reimplemented
 /* const MAP_RANGE = {
   lon: [8.107180004121693, 26.099158344940808],
@@ -117,6 +149,9 @@ export function isMunicipalityData(
 }
 
 function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
+
+  const dataPointColor = getColorFromValue(tInfo.mData.dataPoint);
+
   return (
     <Link
       href={`/kommun/${tInfo.mData.name.toLowerCase()}`}
@@ -134,9 +169,9 @@ function MobileTooltip({ tInfo }: { tInfo: MunicipalityTapInfo }) {
           color: colorTheme.newColors.white, height: 14, width: 14, marginRight: 4,
         }}
       />
-      <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}`}</span>
-      {`: ${tInfo.mData.formattedDataPoint}`}
-    </Link>
+      <span style={{ textDecoration: 'underline' }}>{`${tInfo.mData.name}`}:</span>
+      <span style={{ color: dataPointColor, fontWeight: 'bold' }}>{`${tInfo.mData.formattedDataPoint}%`}</span>
+    </Link >
   )
 }
 
@@ -146,7 +181,7 @@ function Map({
   const [municipalityFeatureCollection, setMunicipalityFeatureCollection] = useState<any>({})
   // "tapped" municipality tooltips are only to be used on touch devices.
   const [lastTapInfo, setLastTapInfo] = useState<MunicipalityTapInfo | null>(null)
-  const wrapperRef = useRef<HTMLDivElement|null>(null)
+  const wrapperRef = useRef<HTMLDivElement | null>(null)
 
   const router = useRouter()
 
@@ -264,11 +299,19 @@ function Map({
           if (!isMunicipalityData(mData) || onTouchDevice()) {
             return null // tooltips on touch devices are handled separately
           }
-          return {
+
+          const dataPointColor = getColorFromValue(mData.dataPoint);
+
+          return ({
             html: `
-            <p>${mData.name}: ${(mData).formattedDataPoint}</p>`,
+            <p>
+              ${mData.name}:
+              <span style="color: ${dataPointColor}; font-weight: bold;">
+                ${(mData).formattedDataPoint}%
+              </span>
+            </p>`,
             style: TOOLTIP_COMMON_STYLE,
-          }
+          })
         }}
         onClick={({ object: mData, x, y }) => {
           if (!isMunicipalityData(mData)) {
