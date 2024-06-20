@@ -98,23 +98,6 @@ const getColor = (
   return colors[5]
 }
 
-const getColorFromDataPoint = (
-  dataPoint: number | string | Date,
-  boundaries: number[] | string[] | Date[],
-): string => {
-  let value: number | string | Date
-
-  if (typeof dataPoint === 'string') {
-    const standardizedDataPoint = dataPoint.trim().replace('−', '-').replace(',', '.')
-    const parsedValue = parseFloat(standardizedDataPoint)
-    value = !Number.isNaN(parsedValue) ? parsedValue : dataPoint
-  } else {
-    value = dataPoint
-  }
-
-  return `rgba(${getColor(value, boundaries).join(',')})`
-}
-
 // Use when viewState is reimplemented
 /* const MAP_RANGE = {
   lon: [8.107180004121693, 26.099158344940808],
@@ -160,7 +143,7 @@ function MobileTooltip(
         {`${tInfo.mData.name}`}
         :
       </span>
-      <span style={{ color: getColorFromDataPoint(tInfo.mData.dataPoint, boundaries), fontWeight: 'bold' }}>
+      <span style={{ color: `rgba(${getColor(tInfo.mData.dataPoint, boundaries)})`, fontWeight: 'bold' }}>
         {`${tInfo.mData.formattedDataPoint}%`}
       </span>
     </Link>
@@ -296,7 +279,7 @@ function Map({
             html: `
             <p>
               ${mData.name}:
-              <span style="color: ${getColorFromDataPoint(mData.dataPoint, boundaries)}; font-weight: bold;">
+              <span style="color: rgba(${getColor(mData.dataPoint, boundaries)}); font-weight: bold;">
                 ${(mData).formattedDataPoint}%
               </span>
             </p>`,
