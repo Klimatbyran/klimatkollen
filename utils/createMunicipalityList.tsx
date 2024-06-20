@@ -1,6 +1,7 @@
 import { CellContext, ColumnDef, Row } from '@tanstack/react-table'
 import { TFunction } from 'next-i18next'
 
+import Link from 'next/link'
 import { Municipality, DatasetKey } from './types'
 import {
   dataOnDisplay, climatePlanMissing, requirementsInProcurement,
@@ -268,7 +269,7 @@ export const municipalityColumns = (
     },
     {
       header: t('common:municipality'),
-      cell: (row) => row.renderValue(),
+      cell: (row) => <Link href={`/kommun/${(row.renderValue() as string).toLowerCase()}`}>{(row.renderValue() as string)}</Link>,
       accessorKey: 'name',
     },
     {
