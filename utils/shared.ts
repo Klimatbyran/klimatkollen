@@ -6,3 +6,9 @@ export const toTitleCase = (str: string) => str.replace(
 )
 
 export const ONE_WEEK_MS = 60 * 60 * 24 * 7
+
+export const getCompanyURL = (companyName: string, wikiId: string) => {
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://beta.klimatkollen.se' : 'http://localhost:4321'
+  const dashName = companyName.toLowerCase().replaceAll(' ', '-')
+  return `${baseURL}/foretag/${dashName}-${wikiId}`
+}
