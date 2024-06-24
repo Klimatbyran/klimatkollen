@@ -50,6 +50,7 @@
     "@babel/plugin-syntax-jsx": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@next/bundle-analyzer": "^14.1.0",
+    "@next/eslint-plugin-next": "^14.2.4",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "15.0.7",
