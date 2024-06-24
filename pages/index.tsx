@@ -4,7 +4,9 @@ import styled from 'styled-components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
+import LucideExternalLink from '../public/icons/lucide/external-link.svg'
 import MetaTags from '../components/MetaTags'
 import { Company, Municipality, DatasetKey } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -22,6 +24,35 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
+`
+
+const CompanyReportNotice = styled(Link)`
+  background: ${({ theme }) => theme.newColors.orange2};
+  color: ${({ theme }) => theme.newColors.black3};
+  padding: 0.5rem 0.75rem;
+  margin: 0 1rem 2rem;
+  border-radius: 1rem;
+  text-decoration: none !important;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+
+  span {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.huePalette.orange['300']};
+  }
+`
+
+const IconExternalLink = styled(LucideExternalLink)`
+  height: 1.25rem;
+  width: 1.25rem;
+  flex-shrink: 0;
 `
 
 export const defaultDataGroup = 'foretag'
@@ -71,6 +102,17 @@ function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
       />
       <PageWrapper compact>
         <Container>
+          <CompanyReportNotice href="/bolagsklimatkollen" target="_blank">
+            <p>
+              <span>
+                {t('startPage:reportNotice.readReport')}
+                {' '}
+              </span>
+              {t('startPage:reportNotice.text')}
+            </p>
+            <IconExternalLink />
+          </CompanyReportNotice>
+
           <PillSwitch
             selectedDataGroup={normalizedDataGroup}
             links={[
