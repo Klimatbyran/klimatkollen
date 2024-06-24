@@ -40,6 +40,8 @@ module.exports = withBundleAnalyzer({
 
   // Redirects configuration
   async redirects() {
+    // Use Vercel-defined base URL by default to get the correct base URL in preview deployments too.
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL ?? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
     return [
       ...datasetPaths.map((path) => ({
         source: `/${path}/:slug*`,
@@ -48,8 +50,7 @@ module.exports = withBundleAnalyzer({
       })),
       {
         source: '/bolagsklimatkollen',
-        // Use Vercel-defined base URL by default to get the correct base URL in preview deployments too.
-        destination: `${process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_VERCEL_URL}/2024-06-Bolagsklimatkollen.pdf`,
+        destination: `${baseURL}/2024-06-Bolagsklimatkollen.pdf`,
         permanent: false,
       },
     ]
