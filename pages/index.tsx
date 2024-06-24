@@ -118,8 +118,7 @@ function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
         <Container>
           <CompanyReportNotice href="/bolagsklimatkollen" target="_blank">
             <NoticeContent>
-              **Läs vår rapport:** Bolagsklimatkollen - En analys av 150 svenska storbolags
-              klimatredovisning 2023
+              {t('startPage:reportNotice')}
             </NoticeContent>
             <Square>
               <ArrowIcon />
