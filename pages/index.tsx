@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import Icon from '../public/icons/boxedArrow.svg'
+import LucideExternalLink from '../public/icons/lucide/external-link.svg'
 import MetaTags from '../components/MetaTags'
 import { Company, Municipality, DatasetKey } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -30,40 +30,29 @@ const CompanyReportNotice = styled(Link)`
   background: ${({ theme }) => theme.newColors.orange2};
   color: ${({ theme }) => theme.newColors.black3};
   padding: 0.5rem 0.75rem;
+  margin: 0 1rem 2rem;
   border-radius: 1rem;
   text-decoration: none !important;
   line-height: 1;
-
-  margin-bottom: 2rem;
-
-  & > * {
-    display: inline-block;
-  }
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
 
   span {
     font-weight: bold;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.huePalette.orange['300']};
   }
 `
 
-const ArrowIcon = styled(Icon)`
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  z-index: 1;
-  margin: auto;
-  left: -8px;
-  top: 0;
-  bottom: 0;
-  fill: ${({ theme }) => theme.newColors.black3};
-`
-
-const Square = styled.span`
-  width: 21px !important;
-  height: 21px !important;
-  margin-top: 1px;
-  position: relative;
-  border-radius: 4px;
-  display: inline-block;
+const IconExternalLink = styled(LucideExternalLink)`
+  height: 1.25rem;
+  width: 1.25rem;
+  flex-shrink: 0;
 `
 
 export const defaultDataGroup = 'foretag'
@@ -117,31 +106,11 @@ function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
             <p>
               <span>
                 {t('startPage:reportNotice.readReport')}
-                &nbsp;
+                {' '}
               </span>
               {t('startPage:reportNotice.text')}
-              {/* <Square>
-                <ArrowIcon />
-              </Square> */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                style={{
-                  display: 'inline-block', verticalAlign: 'middle', marginBottom: '2px', marginInlineStart: '4px',
-                }}
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 3h6v6m-11 5L21 3m-3 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-                />
-              </svg>
             </p>
+            <IconExternalLink />
           </CompanyReportNotice>
 
           <PillSwitch
