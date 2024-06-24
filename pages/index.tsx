@@ -18,7 +18,6 @@ import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
 import { DataView } from './[dataGroup]/[dataset]/[dataView]'
 import { ONE_WEEK_MS, normalizeString } from '../utils/shared'
-import Markdown from '../components/Markdown'
 
 const Container = styled.div`
   display: flex;
@@ -27,23 +26,23 @@ const Container = styled.div`
   align-items: center;
 `
 
-const NoticeContent = styled(Markdown)`
-  p {
-    margin: 0;
-    line-height: 1 !important;
-  }
-`
-
 const CompanyReportNotice = styled(Link)`
   background: ${({ theme }) => theme.newColors.orange2};
   color: ${({ theme }) => theme.newColors.black3};
   padding: 0.5rem 0.75rem;
   border-radius: 1rem;
   text-decoration: none !important;
-  display: flex;
-  align-items: center;
+  line-height: 1;
 
   margin-bottom: 2rem;
+
+  & > * {
+    display: inline-block;
+  }
+
+  span {
+    font-weight: bold;
+  }
 `
 
 const ArrowIcon = styled(Icon)`
@@ -52,21 +51,19 @@ const ArrowIcon = styled(Icon)`
   position: absolute;
   z-index: 1;
   margin: auto;
-  left: 0;
-  right: 0;
+  left: -8px;
   top: 0;
   bottom: 0;
   fill: ${({ theme }) => theme.newColors.black3};
 `
 
-const Square = styled.div`
-  width: 24px;
-  height: 24px;
+const Square = styled.span`
+  width: 21px !important;
+  height: 21px !important;
   margin-top: 1px;
   position: relative;
-  display: grid;
-  place-items: center;
   border-radius: 4px;
+  display: inline-block;
 `
 
 export const defaultDataGroup = 'foretag'
@@ -117,12 +114,34 @@ function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
       <PageWrapper compact>
         <Container>
           <CompanyReportNotice href="/bolagsklimatkollen" target="_blank">
-            <NoticeContent>
-              {t('startPage:reportNotice')}
-            </NoticeContent>
-            <Square>
-              <ArrowIcon />
-            </Square>
+            <p>
+              <span>
+                {t('startPage:reportNotice.readReport')}
+                &nbsp;
+              </span>
+              {t('startPage:reportNotice.text')}
+              {/* <Square>
+                <ArrowIcon />
+              </Square> */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                style={{
+                  display: 'inline-block', verticalAlign: 'middle', marginBottom: '2px', marginInlineStart: '4px',
+                }}
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 3h6v6m-11 5L21 3m-3 10v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                />
+              </svg>
+            </p>
           </CompanyReportNotice>
 
           <PillSwitch

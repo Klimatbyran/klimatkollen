@@ -18,7 +18,10 @@
     "ranking": "Ranking",
     "yourMunicipality": "Hur går det i din kommun?"
   },
-  "reportNotice": "**Läs vår rapport:** Bolagsklimatkollen - En analys av 150 svenska storbolags klimatredovisning 2023",
+  "reportNotice": {
+    "readReport": "Läs vår rapport:",
+    "text": "Bolagsklimatkollen - En analys av 150 svenska storbolags klimatredovisning 2023"
+  },
   "toggleView": {
     "list": "Listvy",
     "map": "Kartvy"
