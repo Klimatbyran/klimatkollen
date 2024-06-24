@@ -29,7 +29,7 @@ const WrapInner = styled.div<{ compact?: boolean }>`
   `)}
 
   @media only screen and (${devices.tablet}) {
-    padding: 32px 24px;
+    padding: 0 24px 32px;
   }
 `
 

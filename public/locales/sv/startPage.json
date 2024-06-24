@@ -1,11 +1,11 @@
 {
   "companyView": {
     "questionTitle": "Hur går det med utsläppen?",
+    "readReport": "Läs rapporten",
     "scope1n2": "Egna utsläpp",
     "scope3": "I värdekedjan",
     "source": "Källa: företagens egna årsredovisningar och hållbarhetsrapporter",
-    "tableFooterInfo": "Företags utsläpp 2023 i antal ton CO₂e. [Kontakta oss](mailto:hej@klimatkollen.se) för att redigera informationen. Läs mer om [vår metod](/metodbeskrivning-foretagsdata.pdf).",
-    "readReport": "Läs rapporten"
+    "tableFooterInfo": "Företags utsläpp 2023 i antal ton CO₂e. [Kontakta oss](mailto:hej@klimatkollen.se) för att redigera informationen. Läs mer om [vår metod](/metodbeskrivning-foretagsdata.pdf)."
   },
   "meta": {
     "description": "Hur går det med utsläppen i Sverige och i din kommun? Minskar eller ökar klimatutsläppen? Klarar vi Parisavtalet?",
@@ -17,6 +17,10 @@
     "questionTitle": "Hur går det med?",
     "ranking": "Ranking",
     "yourMunicipality": "Hur går det i din kommun?"
+  },
+  "reportNotice": {
+    "readReport": "Läs vår rapport:",
+    "text": "Bolagsklimatkollen - En analys av 150 svenska storbolags klimatredovisning 2023"
   },
   "toggleView": {
     "list": "Listvy",

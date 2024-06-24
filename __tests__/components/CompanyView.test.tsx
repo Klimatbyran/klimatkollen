@@ -6,6 +6,7 @@ import StartPage from '../../pages/index'
 import StyledComponentsWrapper from '../utils/StyledComponentsWrapper'
 
 vi.mock('../../public/icons/arrow-right-bold-green.svg', () => ({ default: () => 'svg' }))
+vi.mock('../../public/icons/lucide/external-link.svg', () => ({ default: () => 'svg' }))
 
 vi.mock('next-i18next', () => ({
   useTranslation: vi.fn(() => ({
