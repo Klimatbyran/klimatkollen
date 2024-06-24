@@ -48,7 +48,8 @@ module.exports = withBundleAnalyzer({
       })),
       {
         source: '/bolagsklimatkollen',
-        destination: `${process.env.NEXT_PUBLIC_BASE_URL}/2024-06-Bolagsklimatkollen.pdf`,
+        // Use Vercel-defined base URL by default to get the correct base URL in preview deployments too.
+        destination: `${process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_VERCEL_URL}/2024-06-Bolagsklimatkollen.pdf`,
         permanent: false,
       },
     ]
