@@ -230,14 +230,12 @@ function ComparisonTable<T extends object>({
   return (
     <>
       <StyledTable key={resizeCount}>
-        {/* HACK: prevent table headers from changing size when toggling table rows. Not sure what causes the problem, but this fixes it. */}
-        {dataType === 'companies' ? (
-          <colgroup>
-            <col width="35%" />
-            <col width="30%" />
-            <col width="35%" />
-          </colgroup>
-        ) : null}
+        {/* HACK: prevent table headers from changing size when changing data view. Not sure what causes the problem, but this fixes it. */}
+        <colgroup>
+          <col width="35%" />
+          <col width="30%" />
+          <col width="35%" />
+        </colgroup>
 
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
