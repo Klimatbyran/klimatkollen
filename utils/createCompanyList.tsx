@@ -66,15 +66,16 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
       header: t('startPage:companyView.scope1n2'),
       cell: (row) => {
         const scope1n2Emissions = row.cell.row.original.Emissions.Scope1n2
+        const hasValue = Number.isFinite(scope1n2Emissions)
 
         // console.log({ row, Emissions: row.cell.row.original.Emissions })
         // NOTE: The type does not match the actual values here.
         // TS thinks scope1n2Emissions has the type `CompanyScope`, but according to the logging above,
         // it is in fact just a number or null.
         // TODO: Fix this when we get data from the API
-        const scope1n2String = Number.isFinite(scope1n2Emissions) ? formatter.format(scope1n2Emissions as unknown as number) : notReported
+        const scope1n2String = hasValue ? formatter.format(scope1n2Emissions as unknown as number) : notReported
         return (
-          <ScopeColumn isMissing={scope1n2String === notReported}>
+          <ScopeColumn isMissing={scope1n2String === notReported} className={hasValue ? 'font-mono' : ''}>
             {scope1n2String}
           </ScopeColumn>
         )
@@ -86,15 +87,16 @@ export const companyColumns = (t: TFunction): ColumnDef<Company>[] => {
       header: () => t('startPage:companyView.scope3'),
       cell: (row) => {
         const scope3Emissions = row.cell.row.original.Emissions.Scope3
+        const hasValue = Number.isFinite(scope3Emissions)
 
         // console.log({ row, Emissions: row.cell.row.original.Emissions })
         // NOTE: The type does not match the actual values here.
         // TS thinks scope3Emissions has the type `CompanyScope`, but according to the logging above,
         // it is in fact just a number or null.
         // TODO: Fix this when we get data from the API
-        const scope3String = Number.isFinite(scope3Emissions) ? formatter.format(scope3Emissions as unknown as number) : notReported
+        const scope3String = hasValue ? formatter.format(scope3Emissions as unknown as number) : notReported
         return (
-          <ScopeColumn isMissing={scope3String === notReported}>
+          <ScopeColumn isMissing={scope3String === notReported} className={hasValue ? 'font-mono' : ''}>
             {scope3String}
           </ScopeColumn>
         )
