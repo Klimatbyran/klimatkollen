@@ -243,10 +243,6 @@ function ComparisonTable<T extends object>({
               {headerGroup.headers.map((header) => {
                 const currentSort = header.column.getIsSorted()
                 return (
-                // TODO: Ensure clicking table headers doesn't scroll to top.
-                // It almost seems like this could be by the table losing all its content
-                // just before re-rendering it. And since the table (or page) doesn't need as much scroll anymore,
-                // maybe it just shows the top of the table then again?
                   <TableHeader
                     key={header.id}
                     colSpan={header.colSpan}
