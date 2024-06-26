@@ -219,11 +219,9 @@ function ComparisonTable<T extends object>({
         return
       }
 
-      const companyRoute = getCompanyURL(lowerCaseName, wikiId)
-      window.location.href = companyRoute
+      window.location.assign(getCompanyURL(lowerCaseName, wikiId))
     } else {
-      const municipalityrRoute = `/kommun/${lowerCaseName}`
-      router.push(municipalityrRoute)
+      router.push(`/kommun/${lowerCaseName}`)
     }
   }
 
