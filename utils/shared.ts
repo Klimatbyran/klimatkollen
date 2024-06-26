@@ -7,7 +7,7 @@ export const toTitleCase = (str: string) => str.replace(
   (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase(),
 )
 
-export const ONE_WEEK_MS = 60 * 60 * 24 * 7
+export const ONE_WEEK_MS = 1000 * 60 * 60 * 24 * 7
 
 const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:4321' : 'https://beta.klimatkollen.se'
 
