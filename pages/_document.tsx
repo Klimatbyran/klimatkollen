@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="format-detection" content="telephone=no"/>
+          <meta name="format-detection" content="telephone=no" />
         </Head>
         <body>
           <Main />
