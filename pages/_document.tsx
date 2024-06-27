@@ -8,7 +8,9 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <meta name="format-detection" content="telephone=no"/>
+        </Head>
         <body>
           <Main />
           <NextScript />
