@@ -53,6 +53,11 @@ module.exports = withBundleAnalyzer({
         destination: `${baseURL}/2024-06-Bolagsklimatkollen.pdf`,
         permanent: false,
       },
+      {
+        source: '/corporateclimatechecker',
+        destination: `${baseURL}/2024-08_CorporateClimateChecker.pdf`,
+        permanent: false,
+      },
     ]
   },
 })
