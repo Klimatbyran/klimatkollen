@@ -26,7 +26,7 @@ const Container = styled.div`
   align-items: center;
 `
 
-const CompanyReportNotice = styled(Link)`
+const CompanyReportNotice = styled.div`
   background: ${({ theme }) => theme.newColors.orange2};
   color: ${({ theme }) => theme.newColors.black3};
   padding: 0.5rem 0.75rem;
@@ -34,8 +34,9 @@ const CompanyReportNotice = styled(Link)`
   border-radius: 1rem;
   text-decoration: none !important;
   line-height: 1;
-  display: flex;
+  display: grid;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-size: 0.875rem;
 
@@ -44,14 +45,23 @@ const CompanyReportNotice = styled(Link)`
     white-space: nowrap;
   }
 
-  &:hover {
-    background: ${({ theme }) => theme.huePalette.orange['300']};
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
   }
 `
 
 const IconExternalLink = styled(LucideExternalLink)`
-  height: 1.25rem;
-  width: 1.25rem;
+  height: 1rem;
+  width: 1rem;
   flex-shrink: 0;
 `
 
@@ -102,7 +112,7 @@ function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
       />
       <PageWrapper compact>
         <Container>
-          <CompanyReportNotice href="/bolagsklimatkollen" target="_blank">
+          <CompanyReportNotice>
             <p>
               <span>
                 {t('startPage:reportNotice.readReport')}
@@ -110,7 +120,19 @@ function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
               </span>
               {t('startPage:reportNotice.text')}
             </p>
-            <IconExternalLink />
+            <div>
+              <Link href="/bolagsklimatkollen" target="_blank">
+                Svenska
+                <IconExternalLink />
+              </Link>
+
+              &middot;
+
+              <Link href="/corporateclimatechecker" target="_blank">
+                English
+                <IconExternalLink />
+              </Link>
+            </div>
           </CompanyReportNotice>
 
           <PillSwitch
