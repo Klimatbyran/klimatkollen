@@ -1,10 +1,60 @@
 import pandas as pd
+import feather
+import os
+from datetime import datetime
+import hashlib
 
 PATH_SMHI = 'https://nationellaemissionsdatabasen.smhi.se/' + \
     'api/getexcelfile/?county=0&municipality=0&sub=CO2'
 
 
-def get_smhi_data():
+def cache_df(f: type(pd.read_excel)) -> type(pd.read_excel):
+    """
+    Cache the df to an intermediate file and use it if made this year
+
+    Args:
+        f: Function to cache
+
+    Returns:
+        f with caching of result
+    """
+
+    def caching_f(path=PATH_SMHI, *args, **kwargs):
+        # Create a hash of the URL for the cache file
+        url_hash = hashlib.md5(path.encode()).hexdigest()
+        cache_file = f'cached_data_{url_hash}.feather'
+        columns_file = f'cached_data_columns_{url_hash}.pkl'
+
+        # Check if cached file and columns file exist and their timestamps
+        if os.path.exists(cache_file):
+            cache_mtime = datetime.fromtimestamp(os.path.getmtime(cache_file))
+            current_year = datetime.now().year
+            if cache_mtime.year == current_year:
+                # Load cached data
+                df = pd.read_feather(cache_file)
+                # Load original column names
+                if os.path.exists(columns_file):
+                    original_columns = pd.read_pickle(columns_file)
+                    df.columns = original_columns
+                print(f"Loaded cached data from {cache_file}")
+                return df
+
+        # Process and cache the data
+        df = f(path, *args, **kwargs)
+        # Save the original column names separately
+        original_columns = df.columns
+        df.to_feather(cache_file)
+        pd.to_pickle(original_columns, columns_file)
+
+        print(f"Cached data to {cache_file}")
+        return df
+
+    caching_f.__name__ = f.__name__ + '_cached'
+    return caching_f
+
+
+@cache_df
+def get_smhi_data(path=PATH_SMHI) -> pd.DataFrame:
     """
     Downloads data from SMHI and loads it into a pandas dataframe.
 
@@ -12,7 +62,7 @@ def get_smhi_data():
         pandas.DataFrame: The dataframe containing the SMHI data.
     """
 
-    df_raw = pd.read_excel(PATH_SMHI, engine="calamine")
+    df_raw = pd.read_excel(path, engine="calamine")
 
     # Remove the first 4 rows and reset the index
     df_raw = df_raw.drop([0, 1, 2]).reset_index(drop=True)

@@ -8,3 +8,4 @@ pytest
 pytest-profiling
 graphviz
 python-calamine
+feather-format
