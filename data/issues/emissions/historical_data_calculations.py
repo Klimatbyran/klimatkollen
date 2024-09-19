@@ -12,7 +12,7 @@ def get_smhi_data():
         pandas.DataFrame: The dataframe containing the SMHI data.
     """
 
-    df_raw = pd.read_excel(PATH_SMHI)
+    df_raw = pd.read_excel(PATH_SMHI, engine="calamine")
 
     # Remove the first 4 rows and reset the index
     df_raw = df_raw.drop([0, 1, 2]).reset_index(drop=True)
