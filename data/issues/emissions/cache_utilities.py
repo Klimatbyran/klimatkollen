@@ -76,9 +76,9 @@ def cache_df(f: callable = None, path: str = None, freq: str = '1Y'):
             raise ValueError("Path parameter is required either as a decorator argument or function argument.")
 
         # Create a hash of the path for the cache file
-        excel_hash = hashlib.md5(input_path.encode()).hexdigest()
-        df_file = f'cache_df_{f.__name__}_{excel_hash}.feather'
-        columns_file = f'cache_df_{f.__name__}_{excel_hash}.pkl'
+        path_hash = hashlib.md5(input_path.encode()).hexdigest()
+        df_file = f'cache_df_{f.__name__}_{path_hash}.feather'
+        columns_file = f'cache_df_{f.__name__}_{path_hash}.pkl'
 
         # Check if cached file and columns file exist and is in the same period as now
         if os.path.exists(df_file):
@@ -95,10 +95,10 @@ def cache_df(f: callable = None, path: str = None, freq: str = '1Y'):
 
         # Process and cache the data
         df = f(*args, **kwargs)
-        # Save the original column names separately
-        original_columns = df.columns
         feather.write_feather(df, df_file)
-        pd.to_pickle(original_columns, columns_file)
+
+        # Save the original column names separately since feather does not support different heading types
+        pd.to_pickle(df.columns, columns_file)
 
         return df
 
