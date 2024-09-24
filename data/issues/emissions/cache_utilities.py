@@ -5,7 +5,7 @@ import pyarrow.feather as feather
 import pandas as pd
 
 
-def cache_df(f: type(pd.read_excel) = None, path: str = None, freq: str = '1Y'):
+def cache_df(f: type(pd.read_excel) = None, path: str = '', freq: str = '1Y'):
     """
     Cache the DataFrame to an intermediate file and use it if created within the same period.
 
@@ -71,9 +71,6 @@ def cache_df(f: type(pd.read_excel) = None, path: str = None, freq: str = '1Y'):
 
     def caching_f(*args, **kwargs):
         input_path = kwargs.get('path') or (args[0] if args else path)
-
-        if not input_path:
-            raise ValueError("Path parameter is required either as a decorator argument or function argument.")
 
         # Create a hash of the path for the cache file
         path_hash = hashlib.md5(input_path.encode()).hexdigest()
