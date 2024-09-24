@@ -5,7 +5,7 @@ import pyarrow.feather as feather
 import pandas as pd
 
 
-def cache_df(f: type(pd.read_excel) = None, path: str = '', freq: str = '1Y'):
+def cache_df(f: type(pd.read_excel) = None, path: str = '', freq: str = '1Y') -> type(pd.read_excel):
     """
     Cache the DataFrame to an intermediate file and use it if created within the same period.
 
