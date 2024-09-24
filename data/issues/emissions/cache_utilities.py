@@ -5,17 +5,17 @@ import pyarrow.feather as feather
 import pandas as pd
 
 
-def cache_df(f: callable = None, path: str = None, freq: str = '1Y'):
+def cache_df(f: type(pd.read_excel) = None, path: str = None, freq: str = '1Y'):
     """
     Cache the DataFrame to an intermediate file and use it if created within the same period.
 
     Args:
         f: A function to cache (e.g., a function that loads a DataFrame).
-        path: Path to the file to be cached. If provided, it automatically supplies the path parameter to the decorated function.
-        freq: Cache period, e.g. '1D', '1M', '1Y'. Defaults to '1Y'.
+        path: Path to the file to be cached. If provided without f, acts as a decorator.
+        freq: Cache period, e.g. '1D', '1M', '1Y'. Defaults to '1Y'. If provided without f, acts as a decorator.
 
     Returns:
-        A decorator that adds caching functionality to the intended function.
+        Caching of the output - not calling the function unless we entered a new period.
 
     Example usage:
 
