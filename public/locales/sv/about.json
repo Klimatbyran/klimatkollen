@@ -8,13 +8,21 @@
       "name": "Carl-Johan Schultz",
       "text": "Hållbarhetsstrateg på Doings, tidigare planner på Forsman & Bodenfors, författare till boken ”Hållbariseringen”, Årets marknadsföringsbok 2022."
     },
-    "christian": {
+    "christianBoard": {
       "name": "Christian Landgren",
       "text": "Digital entreprenör och en av Sveriges mest inflytelserika personer inom tech. VD och grundare av Iteam och Öppna skolplattformen."
+    },
+    "christianTeam": {
+      "name": "Christian Landgren",
+      "text": "Prisbelönt utvecklare, digital entreprenör och en av Sveriges mest inflytelserika personer inom tech. Grundare av digitala innovationsbyrån Iteam och medgrundare av Öppna skolplattformen. Talare inom AI och digital innovation och rådgivare till Sveriges innovationsminister."
     },
     "elvira": {
       "name": "Elvira Boman",
       "text": "Tech lead och teknisk fysiker på Klimatkollen och Precisit. Lång erfarenhet av grön och cirkulär tech vid flera prisbelönta startups och del av ledarteamet på IT-konsultbyrån Precisit."
+    },
+    "samuel": {
+      "name": "Samuel Plumppu",
+      "text": "Fullstackutvecklare med passion för open source och att skapa digitala lösningar som ger värde till människor och samhälle. Har tidigare arbetat med startups och ideella organisationer i tidiga skeden, bland annat på We Don’t Have Time."
     },
     "alex": {
       "name": "Alexandra Palmquist",
