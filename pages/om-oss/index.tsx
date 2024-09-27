@@ -59,7 +59,7 @@ function OmOss() {
           />
           <ToggleSection
             header={t('about:team.title')}
-            text={
+            text={(
               <Grid>
                 <GridItem>
                   <GridImage
@@ -122,11 +122,11 @@ function OmOss() {
                   {t('about:bios.christianTeam.text')}
                 </GridItem>
               </Grid>
-            }
+            )}
           />
           <ToggleSection
             header={t('about:board.title')}
-            text={
+            text={(
               <>
                 <Paragraph>{t('about:board.intro')}</Paragraph>
                 <Grid>
@@ -193,7 +193,7 @@ function OmOss() {
                 </Grid>
                 <Markdown>{t('about:policies')}</Markdown>
               </>
-            }
+            )}
           />
           <ToggleSection
             header={t('about:funding.title')}
