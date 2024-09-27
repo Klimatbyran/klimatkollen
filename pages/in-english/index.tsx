@@ -4,9 +4,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import MetaTags from '../../components/MetaTags'
-import {
-  H2, H4, Paragraph,
-} from '../../components/Typography'
+import { H2, H4, Paragraph } from '../../components/Typography'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
@@ -16,7 +14,9 @@ import { ONE_WEEK_MS } from '../../utils/shared'
 const Ola = '/team/ola.jpg'
 const Frida = '/team/frida.jpg'
 const Elvira = '/team/elvira.jpg'
+const Samuel = '/team/samuel.png'
 const Alex = '/team/alex.jpg'
+const Christian = '/board/christian.jpg'
 
 const Container = styled.section`
   display: flex;
@@ -50,11 +50,13 @@ function InEnglish() {
         <Container>
           <H2>About us</H2>
           <Paragraph>
-            Klimatkollen (Climate Checker) is a Swedish open source platform visualizing climate data for citizens.
+            Klimatkollen (Climate Checker) is a Swedish open source platform visualizing
+            climate data for citizens.
           </Paragraph>
           <Paragraph>
-            We believe that data transparency and citizen engagement are key to generating the public pressure needed
-            to make sure local governments and companies cut emissions in line with the Paris Agreement.
+            We believe that data transparency and citizen engagement are key to generating
+            the public pressure needed to make sure local governments and companies cut
+            emissions in line with the Paris Agreement.
           </Paragraph>
           <Paragraph>
             As proud winners of the
@@ -66,12 +68,12 @@ function InEnglish() {
             >
               2023 Google.org Impact Challenge
             </a>
-            , we will be scaling up and supercharging our citizen platform with AI, allowing us to add corporate emissions
-            data and new features to analyze and compare climate action across local governments and companies.
+            , we will be scaling up and supercharging our citizen platform with AI,
+            allowing us to add corporate emissions data and new features to analyze and
+            compare climate action across local governments and companies.
           </Paragraph>
           <PaddedParagraph>
-            Read more about
-            the project
+            Read more about the project
             {' '}
             <a
               // eslint-disable-next-line max-len
@@ -89,9 +91,10 @@ function InEnglish() {
             <GridItem>
               <GridImage src={Frida} alt="Frida Berry Eklund" width="200" height="200" />
               <b>Frida Berry Eklund, Co-founder</b>
-              Senior climate communications specialist and co-founder of several climate initiatives,
-              including the international platform, Our Kids’ Climate. She’s also an author and public speaker,
-              as well as a EU Climate Pact Ambassador and Climate Reality Leader.
+              Senior climate communications specialist and co-founder of several climate
+              initiatives, including the international platform, Our Kids’ Climate. She’s
+              also an author and public speaker, as well as a EU Climate Pact Ambassador
+              and Climate Reality Leader.
               {' '}
               <SocialMediaContainer>
                 <a
@@ -153,9 +156,10 @@ function InEnglish() {
             <GridItem>
               <GridImage src={Elvira} alt="Elvira Boman" width="200" height="200" />
               <b>Elvira Boman, Tech Lead</b>
-              Teach Lead at Klimatkollen and Full Stack Developer and Engineering Physicist at Precisit.
-              Extensive experience in green and circular tech at multiple award winning startups
-              and part of the leadership team at IT consultancy firm Precisit.
+              Teach Lead at Klimatkollen and Full Stack Developer and Engineering
+              Physicist at Precisit. Extensive experience in green and circular tech at
+              multiple award winning startups and part of the leadership team at IT
+              consultancy firm Precisit.
               <SocialMediaContainer>
                 <a
                   href=" https://www.linkedin.com/in/elviraboman/"
@@ -172,14 +176,62 @@ function InEnglish() {
               </SocialMediaContainer>
             </GridItem>
             <GridItem>
+              <GridImage src={Samuel} alt="Samuel Plumppu" width="200" height="200" />
+              <b>Samuel Plumppu, Frontend Lead</b>
+              Fullstack Developer with a passion for open source and for creating digital
+              solutions that bring value to people and society. Previously worked with
+              early stage startups and non-profits, including We Don’t Have Time.
+              <SocialMediaContainer>
+                <a
+                  href=" https://www.linkedin.com/in/samuelplumppu/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src="/icons/some/linkedin_white.svg"
+                    alt="LinkedIn logo"
+                    width="24"
+                    height="24"
+                  />
+                </a>
+              </SocialMediaContainer>
+            </GridItem>
+            <GridItem>
               <GridImage src={Alex} alt="Alexandra Palmquist" width="200" height="200" />
               <b>Alexandra Palmquist, Climate Data</b>
-              Environmental scientist with a focus on climate and corporate data.
-              Previous experience with the UN in Latin America, now well-established in Stockholm&apos;s
-              tech startup scene to drive climate transition.
+              Environmental scientist with a focus on climate and corporate data. Previous
+              experience with the UN in Latin America, now well-established in
+              Stockholm&apos;s tech startup scene to drive climate transition.
               <SocialMediaContainer>
                 <a
                   href="https://www.linkedin.com/in/alexandra-palmquist-46969946/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src="/icons/some/linkedin_white.svg"
+                    alt="LinkedIn logo"
+                    width="24"
+                    height="24"
+                  />
+                </a>
+              </SocialMediaContainer>
+            </GridItem>
+            <GridItem>
+              <GridImage
+                src={Christian}
+                alt="Christian Landgren"
+                width="200"
+                height="200"
+              />
+              <b>Christian Landgren, AI Lead</b>
+              Awarded developer, digital entrepreneur and one of Sweden’s most influential
+              people in tech. Founder of digital innovation agency Iteam och co-founder of
+              Öppna skolplattformen. Frequent speaker in AI and digital innovation and
+              advisor to the Swedish Minister of Innovation.
+              <SocialMediaContainer>
+                <a
+                  href="https://www.linkedin.com/in/christianlandgren/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -204,10 +256,10 @@ function InEnglish() {
           </PaddedParagraph>
           <H4>Interested in taking Klimatkollen to your country?</H4>
           <PaddedParagraph>
-            Drop us a line if you want to hear more about us or collaborate.
-            We are especially looking for co-funders and partner organisations
-            in high-emitting countries, with an interest in climate data transparency
-            and using tech and AI for good.
+            Drop us a line if you want to hear more about us or collaborate. We are
+            especially looking for co-funders and partner organisations in high-emitting
+            countries, with an interest in climate data transparency and using tech and AI
+            for good.
           </PaddedParagraph>
           <H2>Klimatkollen receives support from Google.org Impact Challenge</H2>
           <RoundedImage
@@ -297,52 +349,31 @@ function InEnglish() {
             sector, media and research institutions. See some of our partners below.
           </Paragraph>
           <Paragraph>
-            Klimatkollen was founded in 2021, by Frida Berry Eklund and Ola Spännar with the support of
+            Klimatkollen was founded in 2021, by Frida Berry Eklund and Ola Spännar with
+            the support of
             {' '}
-            <a
-              href="www.wwf.se"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="www.wwf.se" target="_blank" rel="noreferrer">
               WWF
             </a>
             ,
             {' '}
-            <a
-              href="www.climateview.global"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="www.climateview.global" target="_blank" rel="noreferrer">
               ClimateView
             </a>
             ,
             {' '}
-            <a
-              href="www.klimatklubben.se"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="www.klimatklubben.se" target="_blank" rel="noreferrer">
               Klimatklubben
             </a>
-            ,
+            , Argand,
             {' '}
-            Argand,
-            {' '}
-            <a
-              href="https://app.wedonthavetime.org/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://app.wedonthavetime.org/" target="_blank" rel="noreferrer">
               We Don’t Have Time
             </a>
             {' '}
             and
             {' '}
-            <a
-              href="https://varabarnsklimat.se/"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://varabarnsklimat.se/" target="_blank" rel="noreferrer">
               Våra barns klimat
             </a>
             .
@@ -386,7 +417,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
 
   return {
     props: {
-      ...await serverSideTranslations(locale as string, ['common']),
+      ...(await serverSideTranslations(locale as string, ['common'])),
     },
   }
 }
