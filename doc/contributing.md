@@ -26,7 +26,7 @@ Once you decide to pick an issue up, leave a comment saying so, to avoid others 
 
 ### Step 3. Make your changes
 
-For most issues you will start with making sure you can run Klimatkollen locally, see [doc/getting-started.md] for instructions on that. 
+For most issues you will start with making sure you can run Klimatkollen locally, see [doc/getting-started.md](./getting-started.md) for instructions on that, and how to set up your dev environment. 
 
 Run `git log -1` to see the latest commit in your local repo, and make sure this is the same as the `staging` branch on GitHub. This is to make sure you are up to date on everyone's changes. 
 

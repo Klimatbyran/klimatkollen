@@ -74,7 +74,7 @@ Looking for ideas on what needs to be done? We appreciate help on existing [issu
 
 Testing, bug fixes, typos or fact checking of our data is highly appreciated.
 
-See [doc/contributing.md] before making your first contribution.
+See [doc/contributing.md](./doc/contributing.md) before making your first contribution.
 
 ## Contact
 
