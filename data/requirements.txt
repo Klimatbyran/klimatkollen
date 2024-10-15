@@ -7,4 +7,3 @@ scipy
 pytest
 pytest-profiling
 graphviz
-python-calamine
