@@ -44,11 +44,6 @@ To build and run Klimatkollen, some dependencies are required apart from Node.js
 
 The full list is in "package.json" which is a file that npm can understand. To have it install all of the dependencies at the right versions, run `npm ci`.
 
-## Our frontend technologies
-
-* [Astro](https://docs.astro.build/en/tutorial/0-introduction/) - our meta framework that handles routing, data and content. Astro has support for all different frontend frameworks which makes it flexible to work with.
-* [Svelte](https://learn.svelte.dev/tutorial/welcome-to-svelte) - components for interactive UI and data visualizations (that will be implemented). In addition to this, we will probably reuse some React-components from our existing frontend.
-
 ## Running the Klimatkollen webapp. 
 
 If all the dependencies were installed without issues, you should be able to run `npm run dev`. This will de a little slow the first time, but if everything goes well it will tell you it is serving the app from "localhost:3000". Type that address in your browser and you should see your local copy of Klimatkollen in its full glory!
