@@ -4,7 +4,9 @@ import styled from 'styled-components'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
+import LucideExternalLink from '../public/icons/lucide/external-link.svg'
 import MetaTags from '../components/MetaTags'
 import { Company, Municipality, DatasetKey } from '../utils/types'
 import PageWrapper from '../components/PageWrapper'
@@ -14,7 +16,7 @@ import { defaultDataset, getDataDescriptions } from '../utils/datasetDefinitions
 import RegionalView from '../components/RegionalView'
 import CompanyView from '../components/CompanyView'
 import PillSwitch from '../components/PillSwitch'
-import { defaultDataView } from './[dataGroup]/[dataset]/[dataView]'
+import { DataView } from './[dataGroup]/[dataset]/[dataView]'
 import { ONE_WEEK_MS, normalizeString } from '../utils/shared'
 
 const Container = styled.div`
@@ -24,15 +26,55 @@ const Container = styled.div`
   align-items: center;
 `
 
-type PropsType = {
-  companies: Array<Company>
-  municipalities: Array<Municipality>
-}
+const CompanyReportNotice = styled.div`
+  background: ${({ theme }) => theme.newColors.orange2};
+  color: ${({ theme }) => theme.newColors.black3};
+  padding: 0.5rem 0.75rem;
+  margin: 0 1rem 2rem;
+  border-radius: 1rem;
+  text-decoration: none !important;
+  line-height: 1;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.875rem;
+
+  span {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  }
+`
+
+const IconExternalLink = styled(LucideExternalLink)`
+  height: 1rem;
+  width: 1rem;
+  flex-shrink: 0;
+`
 
 export const defaultDataGroup = 'foretag'
 export const secondaryDataGroup = 'geografiskt'
 const dataGroups = new Set([defaultDataGroup, secondaryDataGroup])
 export type DataGroup = typeof defaultDataGroup | typeof secondaryDataGroup
+
+type PropsType = {
+  companies: Array<Company>
+  municipalities: Array<Municipality>
+  initialDataGroup: DataGroup
+}
 
 export function getDataGroup(rawDataGroup: string): DataGroup {
   const normalized = normalizeString(rawDataGroup)
@@ -43,7 +85,7 @@ export function getDataGroup(rawDataGroup: string): DataGroup {
   return defaultDataGroup
 }
 
-function StartPage({ companies, municipalities }: PropsType) {
+function StartPage({ companies, municipalities, initialDataGroup }: PropsType) {
   const router = useRouter()
   const { dataGroup, dataset: routeDataset, dataView } = router.query
   const { t } = useTranslation()
@@ -57,11 +99,10 @@ function StartPage({ companies, municipalities }: PropsType) {
   const [selectedDataset, setSelectedDataset] = useState<DatasetKey>(
     getDataset(routeDataset as string),
   )
-  const [selectedDataView, setSelectedDataView] = useState(
-    getDataView(dataView as string),
+  const [selectedDataView, setSelectedDataView] = useState<DataView>(
+    // NOTE: Very important to set initial state based on initialDataGroup rather than normalizedDataGroup to avoid nasty bugs
+    initialDataGroup === 'foretag' ? 'karta' : getDataView(dataView as string),
   )
-
-  const showCompanyData = normalizedDataGroup === defaultDataGroup
 
   return (
     <>
@@ -69,19 +110,43 @@ function StartPage({ companies, municipalities }: PropsType) {
         title={t('startPage:meta.title')}
         description={t('startPage:meta.description')}
       />
-      <PageWrapper backgroundColor="black" compact>
+      <PageWrapper compact>
         <Container>
+          <CompanyReportNotice>
+            <p>
+              <span>
+                {t('startPage:reportNotice.readReport')}
+                {' '}
+              </span>
+              {t('startPage:reportNotice.text')}
+            </p>
+            <div>
+              <Link href="/bolagsklimatkollen" target="_blank">
+                Svenska
+                <IconExternalLink />
+              </Link>
+
+              &middot;
+
+              <Link href="/corporateclimatechecker" target="_blank">
+                English
+                <IconExternalLink />
+              </Link>
+            </div>
+          </CompanyReportNotice>
+
           <PillSwitch
-            isActive={!showCompanyData}
+            selectedDataGroup={normalizedDataGroup}
             links={[
               { text: t('common:companies'), href: '/foretag/utslappen/lista' },
               {
                 text: t('common:municipalities'),
-                href: `/geografiskt/${selectedDataset}/${selectedDataView}`,
+                href: `/geografiskt/${selectedDataset}/karta`,
+                onClick: () => setSelectedDataView('karta'),
               },
             ]}
           />
-          {showCompanyData ? (
+          {normalizedDataGroup === 'foretag' ? (
             <CompanyView companies={companies} />
           ) : (
             <RegionalView
@@ -107,7 +172,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
 
   return {
     redirect: {
-      destination: `/foretag/${defaultDataset}/${defaultDataView}`,
+      destination: `/foretag/${defaultDataset}/lista`,
       permanent: true,
     },
     props: {

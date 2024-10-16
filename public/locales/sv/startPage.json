@@ -1,6 +1,7 @@
 {
   "companyView": {
     "questionTitle": "Hur går det med utsläppen?",
+    "readReport": "Läs rapporten",
     "scope1n2": "Egna utsläpp",
     "scope3": "I värdekedjan",
     "source": "Källa: företagens egna årsredovisningar och hållbarhetsrapporter",
@@ -16,6 +17,10 @@
     "questionTitle": "Hur går det med?",
     "ranking": "Ranking",
     "yourMunicipality": "Hur går det i din kommun?"
+  },
+  "reportNotice": {
+    "readReport": "Läs vår rapport:",
+    "text": "Bolagsklimatkollen - En analys av 150 svenska storbolags klimatredovisning 2023"
   },
   "toggleView": {
     "list": "Listvy",

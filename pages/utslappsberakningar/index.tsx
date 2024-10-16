@@ -38,7 +38,7 @@ function Utslappsberakningar() {
         description={t('utslappsberakningar:meta.description')}
         imageUrl="/images/totala-utslapp-alla-partier.jpg"
       />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <Container>
           <H2>
             {t('utslappsberakningar:title')}

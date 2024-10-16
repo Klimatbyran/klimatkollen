@@ -5,7 +5,6 @@ import { H1NoPad, ParagraphBold } from '../Typography'
 import BackArrow from '../BackArrow'
 import PageWrapper from '../PageWrapper'
 import DropDown from '../DropDown'
-import { devices } from '../../utils/devices'
 import { Municipality as TMunicipality } from '../../utils/types'
 import MunicipalitySolutions from './MunicipalitySolutions'
 import MunicipalityEmissionGraph from './MunicipalityEmissionGraph'
@@ -35,10 +34,6 @@ const Bottom = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-
-  @media only screen and (${devices.tablet}) {
-    // flex-direction: row-reverse;
-  }
 `
 
 const DropDownSection = styled.div`
@@ -49,6 +44,7 @@ const DropDownSection = styled.div`
   margin-top: 30px;
   text-align: center;
   align-items: center;
+  padding-bottom: 6rem;
 `
 
 type Props = {
@@ -74,10 +70,10 @@ function Municipality(props: Props) {
 
   return (
     <>
-      <PageWrapper backgroundColor="lightBlack">
+      <PageWrapper>
         <StyledContainer>
           <HeaderSection>
-            <BackArrow route="/" />
+            <BackArrow route="/geografiskt/utslappen/karta" />
             <H1NoPad>{municipality.Name}</H1NoPad>
             {coatOfArmsImage && (
               <CoatOfArmsImage
@@ -96,7 +92,7 @@ function Municipality(props: Props) {
         </StyledContainer>
         <MunicipalitySolutions municipality={municipality} />
       </PageWrapper>
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <Bottom>
           <Scorecard
             name={municipality.Name}

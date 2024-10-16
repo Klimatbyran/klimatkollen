@@ -8,15 +8,15 @@ import styled from 'styled-components'
 import { useTranslation } from 'next-i18next'
 
 import Close from '../public/icons/close.svg'
-import { Paragraph } from './Typography'
 import { IconButton } from './shared'
 import { devices } from '../utils/devices'
+import Markdown from './Markdown'
 
 const Modal = styled.div<{ scrollY: number }>`
   background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
   height: 100vh;
-  z-index: 10;
+  z-index: 990;
   top: 0;
   left: 0;
   right: 0;
@@ -35,8 +35,8 @@ const Modal = styled.div<{ scrollY: number }>`
       padding: 3rem 2rem 2.5rem 2rem;
       display: flex;
       flex-direction: column;
-      background: ${({ theme }) => theme.black};
-      color: ${({ theme }) => theme.offWhite};
+      background: ${({ theme }) => theme.newColors.black2};
+      color: ${({ theme }) => theme.newColors.white};
       z-index: 20;
       border-radius: 16px;
       box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
@@ -120,7 +120,7 @@ function InfoModal({ text, close, scrollY }: Props) {
           <IconButton type="button" aria-label={t('common:actions.close')} onClick={close}>
             <Close />
           </IconButton>
-          <Paragraph>{text}</Paragraph>
+          <Markdown>{text}</Markdown>
         </div>
       </div>
     </Modal>

@@ -9,11 +9,7 @@ import { H2, Paragraph } from '../../components/Typography'
 import PageWrapper from '../../components/PageWrapper'
 import Layout from '../../components/Layout'
 import Footer from '../../components/Footer/Footer'
-import {
-  Grid,
-  GridImage,
-  GridItem,
-} from '../../components/shared'
+import { Grid, GridImage, GridItem } from '../../components/shared'
 import ToggleSection from '../../components/ToggleSection'
 import Markdown from '../../components/Markdown'
 import { ONE_WEEK_MS } from '../../utils/shared'
@@ -21,6 +17,7 @@ import { ONE_WEEK_MS } from '../../utils/shared'
 const Ola = '/team/ola.jpg'
 const Frida = '/team/frida.jpg'
 const Elvira = '/team/elvira.jpg'
+const Samuel = '/team/samuel.png'
 const Alex = '/team/alex.jpg'
 const Anna = '/board/anna.jpg'
 const CJ = '/board/carl-johan.jpg'
@@ -42,24 +39,16 @@ function OmOss() {
   return (
     <>
       <MetaTags title={t('about:title')} description={t('about:meta.description')} />
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <Container>
           <H2>{t('about:title')}</H2>
-          <AiryParagraph>
-            {t('about:intro')}
-          </AiryParagraph>
-          <ToggleSection
-            header={t('about:what.title')}
-            text={t('about:what.text')}
-          />
+          <AiryParagraph>{t('about:intro')}</AiryParagraph>
+          <ToggleSection header={t('about:what.title')} text={t('about:what.text')} />
           <ToggleSection
             header={t('about:content.title')}
             text={t('about:content.text')}
           />
-          <ToggleSection
-            header={t('about:who.title')}
-            text={t('about:who.text')}
-          />
+          <ToggleSection header={t('about:who.title')} text={t('about:who.text')} />
           <ToggleSection
             header={t('about:problem.title')}
             text={t('about:problem.text')}
@@ -104,6 +93,16 @@ function OmOss() {
                 </GridItem>
                 <GridItem>
                   <GridImage
+                    src={Samuel}
+                    alt={t('about:bios.samuel.name')}
+                    width="200"
+                    height="200"
+                  />
+                  <b>{t('about:bios.samuel.name')}</b>
+                  {t('about:bios.samuel.text')}
+                </GridItem>
+                <GridItem>
+                  <GridImage
                     src={Alex}
                     alt={t('about:bios.alex.name')}
                     width="200"
@@ -112,6 +111,16 @@ function OmOss() {
                   <b>{t('about:bios.alex.name')}</b>
                   {t('about:bios.alex.text')}
                 </GridItem>
+                <GridItem>
+                  <GridImage
+                    src={Christian}
+                    alt={t('about:bios.christianTeam.name')}
+                    width="200"
+                    height="200"
+                  />
+                  <b>{t('about:bios.christianTeam.name')}</b>
+                  {t('about:bios.christianTeam.text')}
+                </GridItem>
               </Grid>
             )}
           />
@@ -119,19 +128,17 @@ function OmOss() {
             header={t('about:board.title')}
             text={(
               <>
-                <Paragraph>
-                  {t('about:board.intro')}
-                </Paragraph>
+                <Paragraph>{t('about:board.intro')}</Paragraph>
                 <Grid>
                   <GridItem>
                     <GridImage
                       src={Christian}
-                      alt={t('about:bios.christian.name')}
+                      alt={t('about:bios.christianBoard.name')}
                       width="200"
                       height="200"
                     />
-                    <b>{t('about:bios.christian.name')}</b>
-                    {t('about:bios.christian.text')}
+                    <b>{t('about:bios.christianBoard.name')}</b>
+                    {t('about:bios.christianBoard.text')}
                   </GridItem>
                   <GridItem>
                     <GridImage
@@ -184,9 +191,7 @@ function OmOss() {
                     {t('about:bios.frida.text')}
                   </GridItem>
                 </Grid>
-                <Markdown>
-                  {t('about:policies')}
-                </Markdown>
+                <Markdown>{t('about:policies')}</Markdown>
               </>
             )}
           />
@@ -212,7 +217,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res, locale }) =>
 
   return {
     props: {
-      ...await serverSideTranslations(locale as string, ['common', 'about']),
+      ...(await serverSideTranslations(locale as string, ['common', 'about'])),
     },
   }
 }

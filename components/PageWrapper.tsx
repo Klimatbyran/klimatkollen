@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components'
 import { devices } from '../utils/devices'
 
-type BackgroundColors = 'midGreen' | 'lightBlack' | 'black' | 'gradient'
+type BackgroundColors = 'black2' | 'transparent'
 
 const Wrap = styled.div<{ $background: BackgroundColors }>`
-  background: ${({ $background, theme }) => theme[$background]};
+  background: ${({ $background, theme }) => (
+    $background === 'transparent'
+      ? $background
+      : theme.newColors[$background]
+  )};
   width: 100%;
   display: flex;
   justify-content: center;
@@ -25,17 +29,17 @@ const WrapInner = styled.div<{ compact?: boolean }>`
   `)}
 
   @media only screen and (${devices.tablet}) {
-    padding: 32px 24px;
+    padding: 0 24px 32px;
   }
 `
 
 type Props = {
   children: React.ReactNode
-  backgroundColor: BackgroundColors
+  backgroundColor?: BackgroundColors
   compact?: boolean
 }
 
-export default function PageWrapper({ children, backgroundColor, compact }: Props) {
+export default function PageWrapper({ children, compact, backgroundColor = 'transparent' }: Props) {
   return (
     <Wrap $background={backgroundColor}>
       <WrapInner compact={compact}>{children}</WrapInner>

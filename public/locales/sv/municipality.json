@@ -70,7 +70,7 @@
   "solutions": {
     "bikes": {
       "heading": "Antal meter cykelväg per invånare",
-      "info": "Antal meter cykelväg per invånare år 2022 totalt för alla väghållare (statlig, kommunal, enskild). Högre är generellt bättre.",
+      "info": "Antal meter cykelväg per invånare år 2023 totalt för alla väghållare (statlig, kommunal, enskild). Högre är generellt bättre.",
       "meters": "{{meters}} meter",
       "title": "Cyklarna"
     },

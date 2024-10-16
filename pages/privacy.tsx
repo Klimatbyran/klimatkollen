@@ -13,7 +13,7 @@ function FourOhFour() {
 
   return (
     <Layout>
-      <PageWrapper backgroundColor="black">
+      <PageWrapper>
         <Markdown components={{
           h1: styled(H1)`
             margin-bottom: 1rem;
