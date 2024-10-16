@@ -26,7 +26,7 @@ Once you decide to pick an issue up, leave a comment saying so, to avoid others 
 
 ### Step 3. Make your changes
 
-For most issues you will start with making sure you can run Klimatkollen locally, see [doc/getting-started.md] for instructions on that. 
+For most issues you will start with making sure you can run Klimatkollen locally, see [doc/getting-started.md](./getting-started.md) for instructions on that, and how to set up your dev environment. 
 
 Run `git log -1` to see the latest commit in your local repo, and make sure this is the same as the `staging` branch on GitHub. This is to make sure you are up to date on everyone's changes. 
 
@@ -54,7 +54,7 @@ Push your commits to your fork of Klimatkollen. If you haven't created a fork al
 
 Create a pull request. Either follow the link git showed after pushing to your fork, or create it from the GitHub web interface. Double check the branches in the PR! Make sure your are merging from your own branch, on your own repo, into "staging" on "klimatkollen". A common mistake is to accidentally start merging into "staging" on your own repo.
 
-In the PR desscription, write "Fixes #XXX" where XXX is the id of the issue you are fixing. E.g. `Fixes #413`
+In the PR description, write "Fixes #XXX" where XXX is the id of the issue you are fixing. E.g. `Fixes #413`
 
 If the PR is not ready for review yet, prefix the title wiht "Draft: ". Remove this once you're ready.
 
@@ -68,7 +68,7 @@ The reviewer will most likely have some comments, questions, or feedback, which 
 
 In some cases, the reviewer might make some changes to your PR themselves and commit it, if they need to get the fix in quickly. 
 
-The reviewer might also conclude that the changes should not be made, or that there currently isn't time to review it. Such a scenario is unlikely but if it does happen, please be understanding and remember that the reviwer wants what's best for the project, just like you.
+The reviewer might also conclude that the changes should not be made, or that there currently isn't time to review it. Such a scenario is unlikely but if it does happen, please be understanding and remember that the reviewer wants what's best for the project, just like you.
 
 Klimatkollen's team has the final say on what goes into the code. 
 
