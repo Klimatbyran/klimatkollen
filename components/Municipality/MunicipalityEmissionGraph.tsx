@@ -192,15 +192,15 @@ function MunicipalityEmissionGraph({
           {onPreviousStep ? (
             <IconButton onClick={onPreviousStep}>
               <ArrowLeft />
-              {CHARTS[step - 1].buttonText}
+              <span>{CHARTS[step - 1].buttonText}</span>
             </IconButton>
           ) : (
             <div />
           )}
-          <span style={{ textAlign: 'center' }}>{CHARTS[step].buttonText}</span>
+          <span style={{ textAlign: 'center', lineHeight: '20px' }}>{CHARTS[step].buttonText}</span>
           {onNextStep && (
             <IconButton onClick={onNextStep} style={{ justifyContent: 'flex-end' }}>
-              {CHARTS[step + 1]?.buttonText}
+              <span>{CHARTS[step + 1]?.buttonText}</span>
               <ArrowRight />
             </IconButton>
           )}

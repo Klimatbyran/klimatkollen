@@ -23,6 +23,7 @@ export class CompanyDataService {
         return {
           Name: data.Company,
           Url: data.URL,
+          WikiId: data.WikiId,
           Comment: data.Comment,
           Emissions: emissionsPerYear,
         } as unknown as Company

@@ -13,7 +13,7 @@ const InfoText = styled.div`
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
-  background: ${({ theme }) => theme.lightBlack};
+  background: ${({ theme }) => theme.newColors.black2};
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 
@@ -38,10 +38,16 @@ const InfoText = styled.div`
       font-size: 14px;
     }
   }
+
+  @media screen and (${devices.laptop}) {
+    p {
+      font-size: 16px;
+    }
+  }
 `
 
 const ParagraphSource = styled(Paragraph)`
-  color: ${({ theme }) => theme.grey};
+  color: ${({ theme }) => theme.newColors.gray};
   margin: 0;
   font-size: 12px;
   padding: 0 16px 8px;
@@ -50,7 +56,7 @@ const ParagraphSource = styled(Paragraph)`
 const InfoContainer = styled.div`
   width: 100%;
   position: relative;
-  background: ${({ theme }) => theme.lightBlack};
+  background: ${({ theme }) => theme.newColors.black2};
   border-radius: 8px;
   margin: 32px 0;
   z-index: 15;
@@ -60,35 +66,7 @@ const ComparisonContainer = styled.div`
   position: relative;
   border-radius: 8px;
   display: flex;
-`
-
-const Details = styled.div`
-  display: grid;
-  padding: 0 6px 8px;
-
-  @media only screen and (${devices.tablet}) {
-    padding: 8px 12px 16px;
-  }
-`
-
-const DetailsHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-
-  p {
-    font-style: italic;
-    color: gray;
-    padding-top: 0.5rem;
-  }
-
-  a {
-    padding: 0.5rem 0;
-  }
-
-  @media only screen and (${devices.tablet}) {
-    padding-bottom: 0.5rem;
-  }
+  padding-bottom: 2rem;
 `
 
 type CompanyViewProps = {
@@ -110,21 +88,6 @@ function CompanyView({
             data={companies}
             columns={cols}
             dataType="companies"
-            renderSubComponent={({ row }) => {
-              const company = row.original
-              return (
-                <Details>
-                  <DetailsHeader>
-                    <p>
-                      {t('common:comment')}
-                      :
-                    </p>
-                    <a href={company.Url} target="_blank" rel="noopener noreferrer">Läs rapporten</a>
-                  </DetailsHeader>
-                  <p>{company.Comment}</p>
-                </Details>
-              )
-            }}
           />
         </ComparisonContainer>
         <InfoText>

@@ -5,10 +5,10 @@ import { TOptions } from 'i18next'
 
 import { DataDescriptions, DatasetKey, Municipality } from './types'
 import { normalizeString } from './shared'
-import { defaultDataView, isValidDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
+import { DataView, defaultDataView, isValidDataView } from '../pages/[dataGroup]/[dataset]/[dataView]'
 
 export const validDatasets = ['utslappen', 'koldioxidbudgetarna', 'klimatplanerna', 'konsumtionen', 'elbilarna', 'laddarna', 'cyklarna', 'upphandlingarna'] as const
-export const defaultDataset: DatasetKey = 'utslappen'
+export const defaultDataset = 'utslappen' satisfies DatasetKey
 
 // NOTE: Hardcoded constant expected in the data
 export const climatePlanMissing = 'Saknar plan'
@@ -28,6 +28,8 @@ export const requirementsInProcurement = (score: number, t: TFunction): string =
   return t('common:no')
 }
 
+const formatter = new Intl.NumberFormat('sv', { maximumFractionDigits: 1 })
+
 function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescriptions {
   /** Get translations for a specific locale. This is used to avoid passing the locale option for all calls below */
   const t = (key: string | string[], options: TOptions = {}) => _t(key, { ...options, lng: locale })
@@ -36,13 +38,13 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       title: t('common:datasets.municipalityEmissions.title'),
       body: t('common:datasets.municipalityEmissions.body'),
       source: t('common:datasets.municipalityEmissions.source'),
-      boundaries: [0, -1, -2, -3, -10],
+      boundaries: [0, -3, -5, -7, -10],
       labels: t('common:datasets.municipalityEmissions.labels', { returnObjects: true }) as unknown as string[],
       labelRotateUp: [true, false, false, false, false, false],
       columnHeader: t('common:datasets.municipalityEmissions.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.HistoricalEmission.HistoricalEmissionChangePercent,
-        formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+        formattedDataPoint: (dataPoint) => formatter.format(dataPoint as number),
       },
       sortAscending: true,
       name: t('common:datasets.municipalityEmissions.name'),
@@ -100,7 +102,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       columnHeader: t('common:datasets.consumption.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.TotalConsumptionEmission,
-        formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+        formattedDataPoint: (dataPoint) => formatter.format(dataPoint as number),
       },
       sortAscending: true,
       name: t('common:datasets.consumption.name'),
@@ -116,7 +118,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       columnHeader: t('common:datasets.electricCars.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.ElectricCarChangePercent,
-        formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+        formattedDataPoint: (dataPoint) => formatter.format(dataPoint as number),
       },
       sortAscending: false,
       name: t('common:datasets.electricCars.name'),
@@ -132,7 +134,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       columnHeader: t('common:datasets.chargers.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.ElectricVehiclePerChargePoints,
-        formattedDataPoint: (dataPoint, t) => ((dataPoint as number) < 1e5 ? (dataPoint as number).toFixed(1) : t('common:datasets.chargers.missing')),
+        formattedDataPoint: (dataPoint, t) => ((dataPoint as number) < 1e5 ? formatter.format(dataPoint as number) : t('common:datasets.chargers.missing')),
       },
       sortAscending: true,
       name: t('common:datasets.chargers.name'),
@@ -149,7 +151,7 @@ function getTranslatedDataDescriptions(locale: string, _t: TFunction): DataDescr
       columnHeader: t('common:datasets.bikes.columnHeader'),
       dataPoints: {
         rawDataPoint: (item) => item.BicycleMetrePerCapita,
-        formattedDataPoint: (dataPoint) => (dataPoint as number).toFixed(1),
+        formattedDataPoint: (dataPoint) => formatter.format(dataPoint as number),
       },
       sortAscending: false,
       name: t('common:datasets.bikes.name'),
@@ -202,7 +204,7 @@ export function getDataDescriptions(locale: string, t: TFunction) {
   function getDataView(rawDataView: string) {
     const normalized = normalizeString(rawDataView)
     if (isValidDataView(normalized)) {
-      return normalized
+      return normalized as DataView
     }
 
     return defaultDataView

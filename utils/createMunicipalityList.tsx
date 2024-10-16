@@ -1,11 +1,13 @@
 import { CellContext, ColumnDef, Row } from '@tanstack/react-table'
 import { TFunction } from 'next-i18next'
 
+import Link from 'next/link'
 import { Municipality, DatasetKey } from './types'
 import {
   dataOnDisplay, climatePlanMissing, requirementsInProcurement,
   getDataDescriptions,
 } from './datasetDefinitions'
+import { colorTheme } from '../Theme'
 
 type RowData = {
   name: string
@@ -145,7 +147,7 @@ export const municipalityColumns = (
         onClick={(e) => e.stopPropagation()}
         target="_blank"
         rel="noreferrer"
-        style={{ color: 'orange' }}
+        style={{ color: colorTheme.newColors.orange3 }}
       >
         {t('common:yes')}
       </a>
@@ -215,6 +217,15 @@ export const municipalityColumns = (
       }
     }
 
+    if (datasetKey === 'upphandlingarna') {
+      return (rowDataA: Row<RowData>, rowDataB: Row<RowData>) => {
+        const aProcurementDemands = rowDataA.original.formattedDataPoint
+        const bProcurementDemands = rowDataB.original.formattedDataPoint
+
+        return aProcurementDemands.localeCompare(bProcurementDemands)
+      }
+    }
+
     // By default, use the standard @tanstack/table sorting functions.
     return undefined
   }
@@ -258,7 +269,7 @@ export const municipalityColumns = (
     },
     {
       header: t('common:municipality'),
-      cell: (row) => row.renderValue(),
+      cell: (row) => <Link href={`/kommun/${(row.renderValue() as string).toLowerCase()}`}>{(row.renderValue() as string)}</Link>,
       accessorKey: 'name',
     },
     {

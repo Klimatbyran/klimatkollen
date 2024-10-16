@@ -15,11 +15,11 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   padding: var(--header-padding);
-  background-color: ${({ theme }) => theme.midGreen};
-  z-index: 1000;
+  background: ${({ theme }) => theme.newColors.black3};
+  z-index: 200;
 `
 
-const LogoContainer = styled.div`
+const Logo = styled(Link)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -27,6 +27,7 @@ const LogoContainer = styled.div`
   display: flex;
   height: var(--btn-size);
   padding-top: 4px;
+  z-index: 220;
 `
 
 const NavigationList = styled.ul`
@@ -48,8 +49,7 @@ const NavigationItem = styled.li`
 
 const NavigationLink = styled.a`
   text-decoration: none;
-  color: ${({ theme }) => theme.black};
-  font-family: 'Anonymous Pro';
+  color: ${({ theme }) => theme.newColors.white};
 
   &:hover {
     text-decoration: underline;
@@ -79,10 +79,11 @@ const FullScreenMenu = styled.div`
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.midGreen};
+  background: ${({ theme }) => theme.newColors.black3};
+  color: ${({ theme }) => theme.newColors.white};
   display: flex;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 210;
   padding: 3rem 1rem 1rem 1rem;
 
   @media only screen and (${devices.tablet}) {
@@ -106,7 +107,7 @@ const CloseButtonContainer = styled.div`
 
 const Separator = styled.hr`
   width: 100%;
-  border: 0.5px solid black;
+  border: ${({ theme }) => `0.5px solid ${theme.newColors.gray}`};
 `
 
 const HamburgerItem = styled.li`
@@ -117,8 +118,6 @@ const HamburgerItem = styled.li`
 
 const HamburgerLink = styled.a`
   text-decoration: none;
-  color: ${({ theme }) => theme.black};
-  font-family: 'Anonymous Pro';
 
   &:hover {
     text-decoration: underline;
@@ -156,18 +155,15 @@ function Header() {
 
   return (
     <HeaderContainer>
-      <Link href="/">
+      <Logo href="/">
+        <Image
+          src="/logos/klimatkollen_logo.svg"
+          width="150"
+          height="32"
+          alt="Klimatkollen logotyp"
+        />
+      </Logo>
 
-        <LogoContainer>
-          <Image
-            src="/logos/klimatkollen_logo_black.svg"
-            width="150"
-            height="32"
-            alt="Klimatkollen logotyp"
-          />
-        </LogoContainer>
-
-      </Link>
       <NavigationList>
         {navigationItems.map((item) => (
           <NavigationItem key={item.label}>

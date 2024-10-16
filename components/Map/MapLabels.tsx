@@ -6,7 +6,7 @@ import { Paragraph } from '../Typography'
 import { Square, mapColors } from '../shared'
 
 const Container = styled.div`
-  background: ${({ theme }) => `${theme.lightBlack}99`};
+  background: ${({ theme }) => `${theme.newColors.black2}99`};
   pointer-events: none;
   z-index: 40;
   border-radius: 8px;
@@ -74,10 +74,10 @@ function MapLabels({ labels, rotations }: MapLabelsProps) {
 
   // Special cases for binary KPIs and KPIs with three cases
   if (labels.length === 2) {
-    labelColors = [mapColors[0], mapColors[mapColors.length - 1]]
+    labelColors = [mapColors[1], mapColors[mapColors.length - 1]]
   }
   if (labels.length === 3) {
-    labelColors = [mapColors[0], mapColors[4], mapColors[mapColors.length - 1]]
+    labelColors = [mapColors[1], mapColors[3], mapColors[mapColors.length - 1]]
   }
 
   return (

@@ -8,10 +8,8 @@ import numpy as np
 import pandas as pd
 
 from solutions.cars.electric_car_change_rate import get_electric_car_change_rate
-from solutions.cars.electric_vehicle_per_charge_points import (
-    get_electric_vehicle_per_charge_points,
-)
-from solutions.bicycles.bicycle_data_calculations import bicycle_calculations
+from solutions.cars.electric_vehicle_per_charge_points import get_electric_vehicle_per_charge_points
+from solutions.bicycles.bicycle_data_calculations import calculate_bike_lane_per_capita
 from facts.plans.plans_data_prep import get_climate_plans
 from facts.municipalities_counties import get_municipalities
 from facts.procurements.climate_requirements_in_procurements import get_procurement_data
@@ -35,7 +33,8 @@ def create_dataframe(to_percentage: bool) -> pd.DataFrame:
     df = get_climate_plans(df)
     print('4. Climate plans added')
 
-    df = bicycle_calculations(df)
+    df_bike_lanes = calculate_bike_lane_per_capita()
+    df = df.merge(df_bike_lanes, on='Kommun', how='left')
     print('5. Bicycle data added')
 
     df = get_consumption_emissions(df)
@@ -84,7 +83,7 @@ def series_to_dict(row: pd.Series, numeric_columns: List[Any]) -> Dict:
         'climatePlanLink': row['Länk till aktuell klimatplan'],
         'climatePlanYear': row['Antagen år'],
         'climatePlanComment': row['Namn, giltighetsår, kommentar'],
-        'bicycleMetrePerCapita': row['metrePerCapita'],
+        'bicycleMetrePerCapita': row['bikeMetrePerCapita'],
         'totalConsumptionEmission': row['Total emissions'],
         'electricVehiclePerChargePoints': row['EVPC'],
         'procurementScore': row['procurementScore'],
