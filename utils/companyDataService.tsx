@@ -24,7 +24,7 @@ export class CompanyDataService {
 
         const emissionsPerYear: CompanyEmissionsPerYear = {
           Scope1n2:
-            (curretEmissions?.scope1?.total ?? 0) + (curretEmissions?.scope2?.lb ?? 0),
+            (curretEmissions?.scope1?.total ?? 0) + (curretEmissions?.scope2?.mb ?? 0),
           Scope3: curretEmissions?.scope3?.statedTotalEmissions?.total ?? 0,
         }
 
