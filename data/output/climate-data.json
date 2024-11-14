@@ -24814,9 +24814,9 @@
       "2021": 39.875,
       "2022": 58.101
     },
-    "climatePlanLink": "Saknar plan",
-    "climatePlanYear": "Saknar plan",
-    "climatePlanComment": "Plan saknas. ",
+    "climatePlanLink": "https://www.trollhattan.se/globalassets/dokument/bygga-bo-och-miljo/tillvaxt-och-utveckling/agenda-21/fardplanklimat-tillganglig.pdf",
+    "climatePlanYear": 2024,
+    "climatePlanComment": "Gäller 2024-2027",
     "bicycleMetrePerCapita": 2.95,
     "totalConsumptionEmission": 6070.9,
     "electricVehiclePerChargePoints": 12.095,
