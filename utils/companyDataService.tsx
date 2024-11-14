@@ -1,43 +1,57 @@
-import * as fs from 'fs'
-import path from 'path'
+import fetch from 'node-fetch'
 import { Company, CompanyEmissionsPerYear } from './types'
 
 export class CompanyDataService {
-  companies: Array<Company>
+  companies: Array<Company> = []
 
   constructor() {
-    const companiesDataFilePath = path.resolve('./data/companies/company-data.json')
-    const companiesDataFileContent = fs.readFileSync(companiesDataFilePath, {
-      encoding: 'utf-8',
-    })
-    const jsonData = JSON.parse(companiesDataFileContent)
-
-    this.companies = jsonData
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .map((data: any) => {
-        const emissionsPerYear = {
-          Scope1n2: data.Scope1n2,
-          Scope3: data.Scope3,
-        } as unknown as CompanyEmissionsPerYear
-
-        return {
-          Name: data.Company,
-          Url: data.URL,
-          WikiId: data.WikiId,
-          Comment: data.Comment,
-          Emissions: emissionsPerYear,
-        } as unknown as Company
-      })
+    this.loadCompanies() // Ensure data is loaded asynchronously
   }
 
-  public getCompanies(): Array<Company> {
+  // Load companies data asynchronously
+  private async loadCompanies() {
+    try {
+      const response = await fetch('https://api.klimatkollen.se/api/companies')
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from the API')
+      }
+
+      const jsonData = await response.json()
+
+      this.companies = jsonData.map((data: any) => {
+        const curretEmissions = data.reportingPeriods[0]?.emissions
+
+        const emissionsPerYear: CompanyEmissionsPerYear = {
+          Scope1n2:
+            (curretEmissions?.scope1?.total ?? 0) + (curretEmissions?.scope2?.lb ?? 0),
+          Scope3: curretEmissions?.scope3?.statedTotalEmissions?.total ?? 0,
+        }
+
+        return {
+          Name: data.name,
+          Url: data.reportingPeriods[0]?.reportURL ?? '',
+          WikiId: data.wikidataId,
+          Comment: data.description,
+          Emissions: emissionsPerYear,
+        } as Company
+      })
+    } catch (error) {
+      console.error('Error loading companies:', error)
+    }
+  }
+
+  // Return companies after ensuring data is loaded
+  public async getCompanies(): Promise<Array<Company>> {
     if (this.companies.length < 1) {
-      throw new Error('No companies found')
+      await this.loadCompanies() // Ensure data is loaded before returning
     }
     return this.companies
   }
 
-  public getCompany(name: string): Company {
-    return this.companies.filter((company) => company.Name.toLowerCase() === name.toLowerCase())[0]
+  public getCompany(name: string): Company | undefined {
+    return this.companies.find(
+      (company) => company.Name.toLowerCase() === name.toLowerCase(),
+    )
   }
 }

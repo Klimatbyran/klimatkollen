@@ -1,6 +1,9 @@
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { Company as TCompany, Municipality as TMunicipality } from '../../../../utils/types'
+import {
+  Company as TCompany,
+  Municipality as TMunicipality,
+} from '../../../../utils/types'
 import StartPage, { DataGroup, getDataGroup } from '../../..'
 import { ClimateDataService } from '../../../../utils/climateDataService'
 import Layout from '../../../../components/Layout'
@@ -13,7 +16,8 @@ import { ONE_WEEK_MS } from '../../../../utils/shared'
 export const defaultDataView = 'karta'
 export const secondaryDataView = 'lista'
 export type DataView = typeof defaultDataView | typeof secondaryDataView
-export const isValidDataView = (dataView: string): dataView is DataView => [defaultDataView, secondaryDataView].includes(dataView)
+export const isValidDataView = (dataView: string): dataView is DataView =>
+  [defaultDataView, secondaryDataView].includes(dataView)
 
 interface Params extends ParsedUrlQuery {
   dataGroup: string
@@ -23,29 +27,32 @@ interface Params extends ParsedUrlQuery {
 
 const cache = new Map()
 
-function getCompanies() {
+// Make the function async
+async function getCompanies() {
   const cached = cache.get('companies')
   if (cached) return cached
 
-  const companies = new CompanyDataService().getCompanies()
+  const companyDataService = new CompanyDataService()
+  const companies = await companyDataService.getCompanies()
   cache.set('companies', companies)
   return companies
 }
 
-function getMunicipalities() {
+async function getMunicipalities() {
   const cached = cache.get('municipalities')
   if (cached) return cached
 
-  const municipalities = new ClimateDataService().getMunicipalities()
+  const municipalities = await new ClimateDataService().getMunicipalities()
   cache.set('municipalities', municipalities)
   return municipalities
 }
 
-export const getServerSideProps: GetServerSideProps = async ({
-  params, res, locale,
-}) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, res, locale }) => {
   const { dataGroup, dataset, dataView } = params as Params
-  const { t, _nextI18Next } = await getServerSideI18n(locale as string, ['common', 'startPage'])
+  const { t, _nextI18Next } = await getServerSideI18n(locale as string, [
+    'common',
+    'startPage',
+  ])
   const { getDataset, getDataView } = getDataDescriptions(locale as string, t)
 
   const normalizedDataGroup = getDataGroup(dataGroup)
@@ -66,10 +73,14 @@ export const getServerSideProps: GetServerSideProps = async ({
     `public, stale-while-revalidate=60, max-age=${ONE_WEEK_MS}`,
   )
 
+  // Await the calls to getCompanies and getMunicipalities
+  const companies = await getCompanies()
+  const municipalities = await getMunicipalities()
+
   const result = {
     props: {
-      companies: getCompanies(),
-      municipalities: getMunicipalities(),
+      companies,
+      municipalities,
       normalizedDataset,
       _nextI18Next,
       initialDataGroup: normalizedDataGroup,
@@ -89,7 +100,11 @@ export default function DataView({ companies, municipalities, initialDataGroup }
   return (
     <>
       <Layout>
-        <StartPage companies={companies} municipalities={municipalities} initialDataGroup={initialDataGroup} />
+        <StartPage
+          companies={companies}
+          municipalities={municipalities}
+          initialDataGroup={initialDataGroup}
+        />
       </Layout>
       <Footer />
     </>
