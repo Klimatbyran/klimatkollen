@@ -16,8 +16,7 @@ import { ONE_WEEK_MS } from '../../../../utils/shared'
 export const defaultDataView = 'karta'
 export const secondaryDataView = 'lista'
 export type DataView = typeof defaultDataView | typeof secondaryDataView
-export const isValidDataView = (dataView: string): dataView is DataView =>
-  [defaultDataView, secondaryDataView].includes(dataView)
+export const isValidDataView = (dataView: string): dataView is DataView => [defaultDataView, secondaryDataView].includes(dataView)
 
 interface Params extends ParsedUrlQuery {
   dataGroup: string
