@@ -5,10 +5,9 @@ export class CompanyDataService {
   companies: Array<Company> = []
 
   constructor() {
-    this.loadCompanies() // Ensure data is loaded asynchronously
+    this.loadCompanies()
   }
 
-  // Load companies data asynchronously
   private async loadCompanies() {
     try {
       const response = await fetch('https://api.klimatkollen.se/api/companies')
@@ -37,14 +36,13 @@ export class CompanyDataService {
         } as Company
       })
     } catch (error) {
-      console.error('Error loading companies:', error)
+      throw new Error('Failed to retrieve company data from the API')
     }
   }
 
-  // Return companies after ensuring data is loaded
   public async getCompanies(): Promise<Array<Company>> {
     if (this.companies.length < 1) {
-      await this.loadCompanies() // Ensure data is loaded before returning
+      await this.loadCompanies()
     }
     return this.companies
   }
