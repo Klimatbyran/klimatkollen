@@ -47,6 +47,7 @@ const getCustomSortFn = ({
   }
 
   // Sort non-NaN values normally
+  // @ts-expect-error treat Date objects as numbers since they can be compared like numbers.
   return sortAscending ? a - b : b - a
 }
 

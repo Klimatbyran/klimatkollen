@@ -26,10 +26,13 @@ export class CompanyDataService {
       this.companies = jsonData.map((data: CompanyJsonData) => {
         const curretEmissions = data.reportingPeriods[0]?.emissions
 
+        const scope1 = curretEmissions?.scope1?.total
+        const scope2 = curretEmissions?.scope2?.mb
+        const reportsScope1or2 = curretEmissions?.scope1?.total || curretEmissions?.scope2?.mb
+
         const emissionsPerYear: CompanyEmissionsPerYear = {
-          Scope1n2:
-            (curretEmissions?.scope1?.total ?? 0) + (curretEmissions?.scope2?.mb ?? 0),
-          Scope3: curretEmissions?.scope3?.statedTotalEmissions?.total ?? 0,
+          Scope1n2: reportsScope1or2 ? (scope1 ?? 0) + (scope2 ?? 0) : null,
+          Scope3: curretEmissions?.scope3?.statedTotalEmissions?.total ?? null,
         }
 
         return {

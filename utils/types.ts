@@ -34,16 +34,9 @@ export type CompanyJsonData = {
 
 export type CompaniesJsonData = Array<CompanyJsonData>
 
-export type CompanyScope = {
-  Emissions: string
-  Unit: string
-  BaseYear: string
-  [key: string]: unknown
-}
-
 export type CompanyEmissionsPerYear = {
-  Scope1n2: number
-  Scope3: number
+  Scope1n2: number | null
+  Scope3: number | null
 }
 
 export type Company = {
