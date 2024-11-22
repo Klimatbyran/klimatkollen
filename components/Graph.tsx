@@ -184,9 +184,8 @@ function Graph({
               enabled: true,
               // Filter out the budget tooltips during step 1 to avoid confusing users.
               filter:
-                step === 1
-                  ? (tooltipItem) => tooltipItem?.dataset?.id !== 'budget'
-                  : undefined,
+                // @ts-ignore
+                step === 1 ? (tooltipItem) => tooltipItem?.dataset?.id !== 'budget' : undefined,
               displayColors: false,
               padding: {
                 top: 8,
