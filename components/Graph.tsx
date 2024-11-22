@@ -183,7 +183,6 @@ function Graph({
             tooltip: {
               enabled: true,
               // Filter out the budget tooltips during step 1 to avoid confusing users.
-              // @ts-expect-error We've added a custom id and can safely ignore the error here
               filter:
                 step === 1
                   ? (tooltipItem) => tooltipItem?.dataset?.id !== 'budget'
