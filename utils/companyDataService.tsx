@@ -1,5 +1,10 @@
 import fetch from 'node-fetch'
-import { Company, CompanyEmissionsPerYear } from './types'
+import {
+  CompaniesJsonData,
+  Company,
+  CompanyEmissionsPerYear,
+  CompanyJsonData,
+} from './types'
 
 export class CompanyDataService {
   companies: Array<Company> = []
@@ -16,9 +21,9 @@ export class CompanyDataService {
         throw new Error('Failed to fetch data from the API')
       }
 
-      const jsonData = await response.json()
+      const jsonData = (await response.json()) as CompaniesJsonData
 
-      this.companies = jsonData.map((data: any) => {
+      this.companies = jsonData.map((data: CompanyJsonData) => {
         const curretEmissions = data.reportingPeriods[0]?.emissions
 
         const emissionsPerYear: CompanyEmissionsPerYear = {

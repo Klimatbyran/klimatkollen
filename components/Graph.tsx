@@ -80,23 +80,35 @@ function Graph({
     [historical, approximated, trend, budget],
   )
 
-  const historicalDataset: Dataset = useMemo(() => emissionPerYearToDataset(historical), [historical])
-  const approximatedDataset: Dataset = useMemo(() => emissionPerYearToDataset(approximated), [approximated])
+  const historicalDataset: Dataset = useMemo(
+    () => emissionPerYearToDataset(historical),
+    [historical],
+  )
+  const approximatedDataset: Dataset = useMemo(
+    () => emissionPerYearToDataset(approximated),
+    [approximated],
+  )
   const trendDataset: Dataset = useMemo(() => emissionPerYearToDataset(trend), [trend])
   const budgetDataset: Dataset = useMemo(() => emissionPerYearToDataset(budget), [budget])
 
   // some assertions
   if (process.env.NODE_ENV !== 'production') {
     if (
-      Math.max(budgetDataset.length, trendDataset.length, approximatedDataset.length, historicalDataset.length)
-      > setup.labels.length
+      Math.max(
+        budgetDataset.length,
+        trendDataset.length,
+        approximatedDataset.length,
+        historicalDataset.length,
+      ) > setup.labels.length
     ) {
       throw new Error('Dataset length larger than label length')
     }
   }
 
   // get last year with historical data (approximated included)
-  const lastYearWithData = approximated.length > 0 ? approximated[approximated.length - 1]?.Year : historical[historical.length - 1]?.Year
+  const lastYearWithData = approximated.length > 0
+    ? approximated[approximated.length - 1]?.Year
+    : historical[historical.length - 1]?.Year
 
   return (
     <Container>
@@ -135,7 +147,8 @@ function Graph({
               // @ts-ignore
               id: 'budget',
               fill: true,
-              data: step >= 2 ? budgetDataset : budgetDataset.map(({ x }) => ({ x, y: 0 })),
+              data:
+                step >= 2 ? budgetDataset : budgetDataset.map(({ x }) => ({ x, y: 0 })),
               borderWidth: step >= 2 ? 2 : 0,
               borderColor: colorTheme.newColors.blue3,
               backgroundColor: `${colorTheme.newColors.blue4}7f`,
@@ -171,7 +184,10 @@ function Graph({
               enabled: true,
               // Filter out the budget tooltips during step 1 to avoid confusing users.
               // @ts-expect-error We've added a custom id and can safely ignore the error here
-              filter: step === 1 ? (tooltipItem) => tooltipItem?.dataset?.id !== 'budget' : undefined,
+              filter:
+                step === 1
+                  ? (tooltipItem) => tooltipItem?.dataset?.id !== 'budget'
+                  : undefined,
               displayColors: false,
               padding: {
                 top: 8,
@@ -185,7 +201,9 @@ function Graph({
               callbacks: {
                 title(tooltipItems) {
                   // Skip rendering tooltips if they have no data (because they were filtered out)
-                  return tooltipItems.length ? formatter.format((tooltipItems[0].parsed.y / 1000)) : undefined
+                  return tooltipItems.length
+                    ? formatter.format(tooltipItems[0].parsed.y / 1000)
+                    : undefined
                 },
                 label() {
                   return ''
