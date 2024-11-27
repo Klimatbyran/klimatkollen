@@ -59,7 +59,8 @@ function InEnglish() {
             emissions in line with the Paris Agreement.
           </Paragraph>
           <Paragraph>
-            As proud winners of the{' '}
+            As proud winners of the
+            {' '}
             <a
               href="https://blog.google/outreach-initiatives/sustainability/boosting-sustainable-solutions-from-sweden/"
               target="_blank"
@@ -72,7 +73,8 @@ function InEnglish() {
             compare climate action across local governments and companies.
           </Paragraph>
           <PaddedParagraph>
-            Read more about the project{' '}
+            Read more about the project
+            {' '}
             <a
               // eslint-disable-next-line max-len
               href="https://www.mynewsdesk.com/se/klimatbyraan/pressreleases/klimatkollen-faar-maangmiljonstoed-fraan-google-punkt-org-foer-att-oeka-oeppenheten-om-foeretagens-utslaepp-3284663"
@@ -80,7 +82,8 @@ function InEnglish() {
               rel="noreferrer"
             >
               here
-            </a>{' '}
+            </a>
+            {' '}
             (in Swedish).
           </PaddedParagraph>
           <H2>Our team</H2>
@@ -91,7 +94,8 @@ function InEnglish() {
               Senior climate communications specialist and co-founder of several climate
               initiatives, including the international platform, Our Kids’ Climate. She’s
               also an author and public speaker, as well as a EU Climate Pact Ambassador
-              and Climate Reality Leader.{' '}
+              and Climate Reality Leader.
+              {' '}
               <SocialMediaContainer>
                 <a
                   href=" https://www.linkedin.com/in/fridaberryeklund/"
@@ -154,8 +158,8 @@ function InEnglish() {
               <b>Elvira Boman, Tech Lead</b>
               Teach Lead at Klimatkollen and Full Stack Developer and Engineering
               Physicist at Precisit. Extensive experience in green and circular tech at
-              multiple award winning startups and part of the leadership team at IT
-              consultancy firm Precisit.
+              multiple award winning startups, including Deedster, and part of the
+              leadership team at IT consultancy firm Precisit.
               <SocialMediaContainer>
                 <a
                   href=" https://www.linkedin.com/in/elviraboman/"
@@ -245,8 +249,10 @@ function InEnglish() {
           <PaddedParagraph>
             We are currently looking for people that share our vision and want to help us
             grow. We’re especially interested in AI aficionados, data visualizers, UX
-            specialists and climate data scientists. Please write us a message at{' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
+            specialists and climate data scientists. Please write us a message at
+            {' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+            .
           </PaddedParagraph>
           <H4>Interested in taking Klimatkollen to your country?</H4>
           <PaddedParagraph>
@@ -263,7 +269,8 @@ function InEnglish() {
             alt="Klimatkollen receives support from Google.org Impact Challenge"
           />
           <Paragraph>
-            In November 2023, Klimatkollen was one of two Swedish recipients of the{' '}
+            In November 2023, Klimatkollen was one of two Swedish recipients of the
+            {' '}
             <a
               href="https://blog.google/outreach-initiatives/sustainability/boosting-sustainable-solutions-from-sweden/"
               target="_blank"
@@ -286,7 +293,8 @@ function InEnglish() {
           </Paragraph>
           <Paragraph>
             Companies are part of the problem as well as the solutions to climate change.
-            In 2019–2020, large and medium sized Swedish companies emitted a whopping{' '}
+            In 2019–2020, large and medium sized Swedish companies emitted a whopping
+            {' '}
             <a
               href="https://www.regeringen.se/contentassets/4a8366fdf6d84c2f929ab6e4a216e23f/sveriges-globala-klimatavtryck-sou-202215.pdf"
               target="_blank"
@@ -307,8 +315,12 @@ function InEnglish() {
             beyond our platform.
           </Paragraph>
           <PaddedParagraph>
-            <b>Want to know more?</b> Please drop us a line at{' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
+            <b>Want to know more?</b>
+            {' '}
+            Please drop us a line at
+            {' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+            .
           </PaddedParagraph>
           <H2>Klimatkollen today</H2>
           <RoundedImage
@@ -338,23 +350,29 @@ function InEnglish() {
           </Paragraph>
           <Paragraph>
             Klimatkollen was founded in 2021, by Frida Berry Eklund and Ola Spännar with
-            the support of{' '}
+            the support of
+            {' '}
             <a href="www.wwf.se" target="_blank" rel="noreferrer">
               WWF
             </a>
-            ,{' '}
+            ,
+            {' '}
             <a href="www.climateview.global" target="_blank" rel="noreferrer">
               ClimateView
             </a>
-            ,{' '}
+            ,
+            {' '}
             <a href="www.klimatklubben.se" target="_blank" rel="noreferrer">
               Klimatklubben
             </a>
-            , Argand,{' '}
+            , Argand,
+            {' '}
             <a href="https://app.wedonthavetime.org/" target="_blank" rel="noreferrer">
               We Don’t Have Time
-            </a>{' '}
-            and{' '}
+            </a>
+            {' '}
+            and
+            {' '}
             <a href="https://varabarnsklimat.se/" target="_blank" rel="noreferrer">
               Våra barns klimat
             </a>
@@ -362,23 +380,28 @@ function InEnglish() {
           </Paragraph>
           <Paragraph>
             Klimatkollen is a platform for – and by – citizens, and we welcome
-            contributions through{' '}
+            contributions through
+            {' '}
             <a
               href="https://github.com/Klimatbyran/klimatkollen"
               target="_blank"
               rel="noreferrer"
             >
               Github
-            </a>{' '}
-            and{' '}
+            </a>
+            {' '}
+            and
+            {' '}
             <a href="https://discord.gg/N5P64QPQ6v" target="_blank" rel="noreferrer">
               Discord
             </a>
             .
           </Paragraph>
           <PaddedParagraph>
-            If you want to support our work, please do not hesitate to contact us via{' '}
-            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>.
+            If you want to support our work, please do not hesitate to contact us via
+            {' '}
+            <a href="mailto:hej@klimatkollen.se">hej@klimatkollen.se</a>
+            .
           </PaddedParagraph>
         </Container>
       </PageWrapper>
