@@ -10,16 +10,33 @@ export type Image = {
 
 // Companies
 
-export type CompanyScope = {
-  Emissions: string
-  Unit: string
-  BaseYear: string
-  [key: string]: unknown
+export type CompanyJsonData = {
+  name: string
+  description?: string
+  wikidataId?: string
+  reportingPeriods: Array<{
+    emissions?: {
+      scope1?: {
+        total?: number
+      }
+      scope2?: {
+        mb?: number
+      }
+      scope3?: {
+        statedTotalEmissions?: {
+          total?: number
+        }
+      }
+    }
+    reportURL?: string
+  }>
 }
 
+export type CompaniesJsonData = Array<CompanyJsonData>
+
 export type CompanyEmissionsPerYear = {
-  Scope1n2: CompanyScope
-  Scope3: CompanyScope
+  Scope1n2: number | null
+  Scope3: number | null
 }
 
 export type Company = {
@@ -87,14 +104,14 @@ export type Municipality = {
   HitNetZero: number | string
   BudgetRunsOut: string
   ElectricCars: number
-  ElectricCarChangePercent: number,
-  ElectricCarChangeYearly: Array<number>,
-  ClimatePlan: ClimatePlan,
-  BicycleMetrePerCapita: number,
-  TotalConsumptionEmission: number,
-  ElectricVehiclePerChargePoints: number,
-  ProcurementScore: number,
-  ProcurementLink: string,
+  ElectricCarChangePercent: number
+  ElectricCarChangeYearly: Array<number>
+  ClimatePlan: ClimatePlan
+  BicycleMetrePerCapita: number
+  TotalConsumptionEmission: number
+  ElectricVehiclePerChargePoints: number
+  ProcurementScore: number
+  ProcurementLink: string
 }
 
 export type DataDescriptionDataPoints = {
@@ -120,7 +137,7 @@ export type DataDescription = {
   stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
-export type DatasetKey = typeof validDatasets[number]
+export type DatasetKey = (typeof validDatasets)[number]
 export type DataDescriptions = Record<DatasetKey, DataDescription>
 
 export type CurrentDataPoints = {
