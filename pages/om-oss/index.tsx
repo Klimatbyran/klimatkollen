@@ -44,19 +44,7 @@ function OmOss() {
           <H2>{t('about:title')}</H2>
           <AiryParagraph>{t('about:intro')}</AiryParagraph>
           <ToggleSection header={t('about:what.title')} text={t('about:what.text')} />
-          <ToggleSection
-            header={t('about:content.title')}
-            text={t('about:content.text')}
-          />
-          <ToggleSection header={t('about:who.title')} text={t('about:who.text')} />
-          <ToggleSection
-            header={t('about:problem.title')}
-            text={t('about:problem.text')}
-          />
-          <ToggleSection
-            header={t('about:support.title')}
-            text={t('about:support.text')}
-          />
+
           <ToggleSection
             header={t('about:team.title')}
             text={(
