@@ -32,7 +32,7 @@ export class CompanyDataService {
 
           const scope1 = curretEmissions?.scope1?.total
           const scope2 = curretEmissions?.scope2?.mb
-          const reportsSeperate1or2 = scope1 || scope2
+          const reportsSeperate1or2 = scope1 ?? scope2
           const seperate1n2 = reportsSeperate1or2 ? (scope1 ?? 0) + (scope2 ?? 0) : null
 
           const combined1n2 = curretEmissions?.scope1And2?.total || null
