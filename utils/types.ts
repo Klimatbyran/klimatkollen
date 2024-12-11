@@ -12,6 +12,7 @@ export type Image = {
 
 export type CompanyJsonData = {
   name: string
+  tags: Array<string>
   description?: string
   wikidataId?: string
   reportingPeriods: Array<{

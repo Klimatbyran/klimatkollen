@@ -9,6 +9,8 @@ import {
 export class CompanyDataService {
   companies: Array<Company> = []
 
+  static allowedTags: Array<string> = ['large-cap', 'state-owned']
+
   constructor() {
     this.loadCompanies()
   }
@@ -23,26 +25,28 @@ export class CompanyDataService {
 
       const jsonData = (await response.json()) as CompaniesJsonData
 
-      this.companies = jsonData.map((data: CompanyJsonData) => {
-        const curretEmissions = data.reportingPeriods[0]?.emissions
+      this.companies = jsonData
+        .filter((data: CompanyJsonData) => data.tags.some((tag: string) => CompanyDataService.allowedTags.includes(tag)))
+        .map((data: CompanyJsonData) => {
+          const curretEmissions = data.reportingPeriods[0]?.emissions
 
-        const scope1 = curretEmissions?.scope1?.total
-        const scope2 = curretEmissions?.scope2?.mb
-        const reportsScope1or2 = curretEmissions?.scope1?.total || curretEmissions?.scope2?.mb
+          const scope1 = curretEmissions?.scope1?.total
+          const scope2 = curretEmissions?.scope2?.mb
+          const reportsScope1or2 = curretEmissions?.scope1?.total || curretEmissions?.scope2?.mb
 
-        const emissionsPerYear: CompanyEmissionsPerYear = {
-          Scope1n2: reportsScope1or2 ? (scope1 ?? 0) + (scope2 ?? 0) : null,
-          Scope3: curretEmissions?.scope3?.statedTotalEmissions?.total ?? null,
-        }
+          const emissionsPerYear: CompanyEmissionsPerYear = {
+            Scope1n2: reportsScope1or2 ? (scope1 ?? 0) + (scope2 ?? 0) : null,
+            Scope3: curretEmissions?.scope3?.statedTotalEmissions?.total ?? null,
+          }
 
-        return {
-          Name: data.name,
-          Url: data.reportingPeriods[0]?.reportURL ?? '',
-          WikiId: data.wikidataId,
-          Comment: data.description,
-          Emissions: emissionsPerYear,
-        } as Company
-      })
+          return {
+            Name: data.name,
+            Url: data.reportingPeriods[0]?.reportURL ?? '',
+            WikiId: data.wikidataId,
+            Comment: data.description,
+            Emissions: emissionsPerYear,
+          } as Company
+        })
     } catch (error) {
       throw new Error('Failed to retrieve company data from the API')
     }
