@@ -28,6 +28,9 @@ export type CompanyJsonData = {
           total?: number
         }
       }
+      scope1And2: {
+        total?: number
+      }
     }
     reportURL?: string
   }>
