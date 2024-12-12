@@ -10,6 +10,12 @@ export type Image = {
 
 // Companies
 
+export type Metadata = {
+  verifiedBy: {
+    name: string
+  } | null,
+}
+
 export type CompanyJsonData = {
   name: string
   tags: Array<string>
@@ -19,18 +25,25 @@ export type CompanyJsonData = {
     emissions?: {
       scope1?: {
         total?: number
+        metadata: Metadata
       }
       scope2?: {
         mb?: number
+        metadata: Metadata
+        calculatedTotalEmissions: number
       }
       scope3?: {
         statedTotalEmissions?: {
           total?: number
+          metadata: Metadata
         }
+        calculatedTotalEmissions: number
       }
       scope1And2: {
         total?: number
+        metadata: Metadata
       }
+      calculatedTotalEmissions: number
     }
     reportURL?: string
   }>

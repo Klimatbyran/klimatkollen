@@ -27,19 +27,22 @@ export class CompanyDataService {
       this.companies = jsonData
         .filter((data: CompanyJsonData) => data.tags.some((tag: string) => CompanyDataService.allowedTags.includes(tag)))
         .map((data: CompanyJsonData) => {
-          const curretEmissions = data.reportingPeriods[0]?.emissions
+          const currentEmissions = data.reportingPeriods[0]?.emissions
 
-          const scope1 = curretEmissions?.scope1?.total
-          const scope2 = curretEmissions?.scope2?.mb
-          const reportsSeperate1or2 = scope1 ?? scope2
-          const seperate1n2 = reportsSeperate1or2 ? (scope1 ?? 0) + (scope2 ?? 0) : null
+          // If either scope 1 and scope 2 have verification, then we use them for the total.
+          // Otherwise, we use the combined scope1And2 if it exists
+          const Scope1n2 = (Boolean(currentEmissions?.scope1?.metadata?.verifiedBy)
+            || Boolean(currentEmissions?.scope2?.metadata?.verifiedBy)
+            ? (currentEmissions?.scope1?.total || 0)
+            + (currentEmissions?.scope2
+              ?.calculatedTotalEmissions || 0)
+            : currentEmissions?.scope1And2?.total || 0)
 
-          const combined1n2 = curretEmissions?.scope1And2?.total || null
-          const scope1n2 = seperate1n2 ? seperate1n2 : combined1n2
+          const Scope3 = currentEmissions?.scope3?.calculatedTotalEmissions ?? null
 
           const emissionsPerYear: CompanyEmissionsPerYear = {
-            Scope1n2: scope1n2,
-            Scope3: curretEmissions?.scope3?.statedTotalEmissions?.total ?? null,
+            Scope1n2,
+            Scope3,
           }
 
           return {
@@ -51,7 +54,7 @@ export class CompanyDataService {
           } as Company
         })
     } catch (error) {
-      throw new Error('Failed to retrieve company data from the API')
+      throw new Error('Failed to retrieve company data from the API', { cause: error })
     }
   }
 
