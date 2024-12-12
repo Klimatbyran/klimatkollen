@@ -8,7 +8,7 @@ import {
 export class CompanyDataService {
   companies: Array<Company> = []
 
-  static allowedTags: Array<string> = ['large-cap', 'state-owned']
+  static allowedTags: Set<string> = new Set(['large-cap', 'state-owned'])
 
   constructor() {
     this.loadCompanies()
@@ -25,7 +25,6 @@ export class CompanyDataService {
       const jsonData = (await response.json()) as CompaniesJsonData
 
       this.companies = jsonData
-        .filter((data: CompanyJsonData) => data.tags.some((tag: string) => CompanyDataService.allowedTags.includes(tag)))
         .map((data: CompanyJsonData) => {
           const currentEmissions = data.reportingPeriods[0]?.emissions
 
@@ -47,6 +46,7 @@ export class CompanyDataService {
 
           return {
             Name: data.name,
+            Tags: data.tags,
             Url: data.reportingPeriods[0]?.reportURL ?? '',
             WikiId: data.wikidataId,
             Comment: data.description,

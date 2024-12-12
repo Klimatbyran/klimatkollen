@@ -46,13 +46,18 @@ async function getMunicipalities() {
   return municipalities
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, res, locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  params, req, res, locale,
+}) => {
   const { dataGroup, dataset, dataView } = params as Params
   const { t, _nextI18Next } = await getServerSideI18n(locale as string, [
     'common',
     'startPage',
   ])
   const { getDataset, getDataView } = getDataDescriptions(locale as string, t)
+
+  const url = new URL(req.url ?? '/', `http://${req.headers.host}`)
+  const preview = url.searchParams.get('preview')
 
   const normalizedDataGroup = getDataGroup(dataGroup)
   const normalizedDataset = getDataset(dataset)
@@ -73,12 +78,18 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res, loca
   )
 
   // Await the calls to getCompanies and getMunicipalities
-  const companies = await getCompanies()
-  const municipalities = await getMunicipalities()
+  const [companies, municipalities] = await Promise.all([
+    getCompanies(),
+    getMunicipalities(),
+  ])
+
+  const visibleCompanies = preview
+    ? companies
+    : companies.filter((data: TCompany) => data.Tags.some?.((tag: string) => CompanyDataService.allowedTags.has(tag)))
 
   const result = {
     props: {
-      companies,
+      companies: visibleCompanies,
       municipalities,
       normalizedDataset,
       _nextI18Next,
