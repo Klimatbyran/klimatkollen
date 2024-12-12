@@ -10,20 +10,55 @@ export type Image = {
 
 // Companies
 
-export type CompanyScope = {
-  Emissions: string
-  Unit: string
-  BaseYear: string
-  [key: string]: unknown
+export type Metadata = {
+  verifiedBy: {
+    name: string
+  } | null,
 }
 
+export type CompanyJsonData = {
+  name: string
+  tags: Array<string>
+  description?: string
+  wikidataId?: string
+  reportingPeriods: Array<{
+    emissions?: {
+      scope1?: {
+        total?: number
+        metadata: Metadata
+      }
+      scope2?: {
+        mb?: number
+        metadata: Metadata
+        calculatedTotalEmissions: number
+      }
+      scope3?: {
+        statedTotalEmissions?: {
+          total?: number
+          metadata: Metadata
+        }
+        calculatedTotalEmissions: number
+      }
+      scope1And2: {
+        total?: number
+        metadata: Metadata
+      }
+      calculatedTotalEmissions: number
+    }
+    reportURL?: string
+  }>
+}
+
+export type CompaniesJsonData = Array<CompanyJsonData>
+
 export type CompanyEmissionsPerYear = {
-  Scope1n2: CompanyScope
-  Scope3: CompanyScope
+  Scope1n2: number | null
+  Scope3: number | null
 }
 
 export type Company = {
   Name: string
+  Tags: string[]
   Url: string
   WikiId: string | null
   Comment: string
@@ -87,14 +122,14 @@ export type Municipality = {
   HitNetZero: number | string
   BudgetRunsOut: string
   ElectricCars: number
-  ElectricCarChangePercent: number,
-  ElectricCarChangeYearly: Array<number>,
-  ClimatePlan: ClimatePlan,
-  BicycleMetrePerCapita: number,
-  TotalConsumptionEmission: number,
-  ElectricVehiclePerChargePoints: number,
-  ProcurementScore: number,
-  ProcurementLink: string,
+  ElectricCarChangePercent: number
+  ElectricCarChangeYearly: Array<number>
+  ClimatePlan: ClimatePlan
+  BicycleMetrePerCapita: number
+  TotalConsumptionEmission: number
+  ElectricVehiclePerChargePoints: number
+  ProcurementScore: number
+  ProcurementLink: string
 }
 
 export type DataDescriptionDataPoints = {
@@ -120,7 +155,7 @@ export type DataDescription = {
   stringsOnTop?: boolean // If true, the strings will be sorted to the top of the table
 }
 
-export type DatasetKey = typeof validDatasets[number]
+export type DatasetKey = (typeof validDatasets)[number]
 export type DataDescriptions = Record<DatasetKey, DataDescription>
 
 export type CurrentDataPoints = {

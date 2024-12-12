@@ -1,43 +1,73 @@
-import * as fs from 'fs'
-import path from 'path'
-import { Company, CompanyEmissionsPerYear } from './types'
+import {
+  CompaniesJsonData,
+  Company,
+  CompanyEmissionsPerYear,
+  CompanyJsonData,
+} from './types'
 
 export class CompanyDataService {
-  companies: Array<Company>
+  companies: Array<Company> = []
+
+  static allowedTags: Set<string> = new Set(['large-cap', 'state-owned'])
 
   constructor() {
-    const companiesDataFilePath = path.resolve('./data/companies/company-data.json')
-    const companiesDataFileContent = fs.readFileSync(companiesDataFilePath, {
-      encoding: 'utf-8',
-    })
-    const jsonData = JSON.parse(companiesDataFileContent)
-
-    this.companies = jsonData
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .map((data: any) => {
-        const emissionsPerYear = {
-          Scope1n2: data.Scope1n2,
-          Scope3: data.Scope3,
-        } as unknown as CompanyEmissionsPerYear
-
-        return {
-          Name: data.Company,
-          Url: data.URL,
-          WikiId: data.WikiId,
-          Comment: data.Comment,
-          Emissions: emissionsPerYear,
-        } as unknown as Company
-      })
+    this.loadCompanies()
   }
 
-  public getCompanies(): Array<Company> {
+  private async loadCompanies() {
+    try {
+      const response = await fetch('https://api.klimatkollen.se/api/companies')
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from the API', { cause: { status: response.status, statusText: response.statusText } })
+      }
+
+      const jsonData = (await response.json()) as CompaniesJsonData
+
+      this.companies = jsonData
+        .map((data: CompanyJsonData) => {
+          const currentEmissions = data.reportingPeriods[0]?.emissions
+
+          // If either scope 1 and scope 2 have verification, then we use them for the total.
+          // Otherwise, we use the combined scope1And2 if it exists
+          const Scope1n2 = (Boolean(currentEmissions?.scope1?.metadata?.verifiedBy)
+            || Boolean(currentEmissions?.scope2?.metadata?.verifiedBy)
+            ? (currentEmissions?.scope1?.total || 0)
+            + (currentEmissions?.scope2
+              ?.calculatedTotalEmissions || 0)
+            : currentEmissions?.scope1And2?.total || 0)
+
+          const Scope3 = currentEmissions?.scope3?.calculatedTotalEmissions ?? null
+
+          const emissionsPerYear: CompanyEmissionsPerYear = {
+            Scope1n2,
+            Scope3,
+          }
+
+          return {
+            Name: data.name,
+            Tags: data.tags,
+            Url: data.reportingPeriods[0]?.reportURL ?? '',
+            WikiId: data.wikidataId,
+            Comment: data.description,
+            Emissions: emissionsPerYear,
+          } as Company
+        })
+    } catch (error) {
+      throw new Error('Failed to retrieve company data from the API', { cause: error })
+    }
+  }
+
+  public async getCompanies(): Promise<Array<Company>> {
     if (this.companies.length < 1) {
-      throw new Error('No companies found')
+      await this.loadCompanies()
     }
     return this.companies
   }
 
-  public getCompany(name: string): Company {
-    return this.companies.filter((company) => company.Name.toLowerCase() === name.toLowerCase())[0]
+  public getCompany(name: string): Company | undefined {
+    return this.companies.find(
+      (company) => company.Name.toLowerCase() === name.toLowerCase(),
+    )
   }
 }
