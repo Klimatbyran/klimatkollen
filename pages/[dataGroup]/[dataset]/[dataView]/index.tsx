@@ -56,9 +56,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   ])
   const { getDataset, getDataView } = getDataDescriptions(locale as string, t)
 
-  const url = new URL(req.url ?? '/', `http://${req.headers.host}`)
-  const preview = url.searchParams.get('preview')
-
   const normalizedDataGroup = getDataGroup(dataGroup)
   const normalizedDataset = getDataset(dataset)
   const normalizedDataView = getDataView(dataView)
@@ -83,9 +80,18 @@ export const getServerSideProps: GetServerSideProps = async ({
     getMunicipalities(),
   ])
 
-  const visibleCompanies = preview
-    ? companies
-    : companies.filter((data: TCompany) => data.Tags.some?.((tag: string) => CompanyDataService.allowedTags.has(tag)))
+  const url = new URL(req.url ?? '/', `http://${req.headers.host}`)
+  const preview = url.searchParams.get('preview')
+
+  // Filter visible companies based on if they have a preview link or not
+  const visibleCompanies = companies.reduce((visible: Omit<TCompany, 'Tags'>[], { Tags, ...company }: TCompany) => {
+    // Minimise data sent to the client by removing tags.
+    if (preview || Tags.some?.((tag: string) => CompanyDataService.allowedTags.has(tag))) {
+      visible.push(company)
+    }
+
+    return visible
+  }, [])
 
   const result = {
     props: {
