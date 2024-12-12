@@ -19,7 +19,7 @@ export class CompanyDataService {
       const response = await fetch('https://api.klimatkollen.se/api/companies')
 
       if (!response.ok) {
-        throw new Error('Failed to fetch data from the API')
+        throw new Error('Failed to fetch data from the API', { cause: { status: response.status, statusText: response.statusText } })
       }
 
       const jsonData = (await response.json()) as CompaniesJsonData
