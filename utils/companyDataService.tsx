@@ -1,9 +1,26 @@
+import { isNumber } from './shared'
 import {
   CompaniesJsonData,
   Company,
   CompanyEmissionsPerYear,
   CompanyJsonData,
+  type Scope3,
 } from './types'
+
+function getScope3Total({
+  calculatedTotalEmissions,
+  statedTotalEmissions,
+  categories,
+}: Scope3) {
+  if (categories.length && calculatedTotalEmissions > 0) {
+    return calculatedTotalEmissions
+  }
+
+  if (isNumber(statedTotalEmissions?.total)) {
+    return statedTotalEmissions.total
+  }
+  return null
+}
 
 export class CompanyDataService {
   companies: Array<Company> = []
@@ -35,11 +52,9 @@ export class CompanyDataService {
               ?.calculatedTotalEmissions ?? 0)
             : currentEmissions?.scope1And2?.total)) ?? null
 
-          const Scope3 = currentEmissions?.scope3?.calculatedTotalEmissions ?? null
-
           const emissionsPerYear: CompanyEmissionsPerYear = {
             Scope1n2,
-            Scope3,
+            Scope3: currentEmissions?.scope3 ? getScope3Total(currentEmissions.scope3) : null,
           }
 
           return {

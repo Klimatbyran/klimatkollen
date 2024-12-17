@@ -14,3 +14,7 @@ const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:4321'
 export const getCompanyURL = (companyName: string, wikiId: string) => (
   `${baseURL}/foretag/${slugifyURL(companyName)}-${wikiId}`
 )
+
+export function isNumber(value: unknown): value is number {
+  return Number.isFinite(value)
+}
