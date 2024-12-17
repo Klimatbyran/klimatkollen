@@ -16,6 +16,15 @@ export type Metadata = {
   } | null,
 }
 
+export type Scope3 = {
+  statedTotalEmissions?: {
+    total?: number
+    metadata: Metadata
+  } | null
+  categories: { category: number, total: number }[]
+  calculatedTotalEmissions: number
+}
+
 export type CompanyJsonData = {
   name: string
   tags: Array<string>
@@ -32,13 +41,7 @@ export type CompanyJsonData = {
         metadata: Metadata
         calculatedTotalEmissions: number
       }
-      scope3?: {
-        statedTotalEmissions?: {
-          total?: number
-          metadata: Metadata
-        }
-        calculatedTotalEmissions: number
-      }
+      scope3?: Scope3
       scope1And2: {
         total?: number
         metadata: Metadata
