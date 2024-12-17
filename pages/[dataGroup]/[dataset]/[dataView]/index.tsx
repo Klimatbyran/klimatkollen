@@ -47,7 +47,7 @@ async function getMunicipalities() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({
-  params, req, res, locale,
+  params, res, locale,
 }) => {
   const { dataGroup, dataset, dataView } = params as Params
   const { t, _nextI18Next } = await getServerSideI18n(locale as string, [
@@ -80,22 +80,9 @@ export const getServerSideProps: GetServerSideProps = async ({
     getMunicipalities(),
   ])
 
-  const url = new URL(req.url ?? '/', `http://${req.headers.host}`)
-  const preview = url.searchParams.get('preview')
-
-  // Filter visible companies based on if they have a preview link or not
-  const visibleCompanies = companies.reduce((visible: Omit<TCompany, 'Tags'>[], { Tags, ...company }: TCompany) => {
-    // Minimise data sent to the client by removing tags.
-    if (preview || Tags.some?.((tag: string) => CompanyDataService.allowedTags.has(tag))) {
-      visible.push(company)
-    }
-
-    return visible
-  }, [])
-
   const result = {
     props: {
-      companies: visibleCompanies,
+      companies,
       municipalities,
       normalizedDataset,
       _nextI18Next,

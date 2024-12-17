@@ -8,8 +8,6 @@ import {
 export class CompanyDataService {
   companies: Array<Company> = []
 
-  static allowedTags: Set<string> = new Set(['large-cap', 'state-owned'])
-
   constructor() {
     this.loadCompanies()
   }
