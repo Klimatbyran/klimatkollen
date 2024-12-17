@@ -26,14 +26,14 @@ export class CompanyDataService {
         .map((data: CompanyJsonData) => {
           const currentEmissions = data.reportingPeriods[0]?.emissions
 
-          // If either scope 1 and scope 2 have verification, then we use them for the total.
+          // If either scope 1 or scope 2 have verification, then we use them for the total.
           // Otherwise, we use the combined scope1And2 if it exists
-          const Scope1n2 = (Boolean(currentEmissions?.scope1?.metadata?.verifiedBy)
+          const Scope1n2 = ((Boolean(currentEmissions?.scope1?.metadata?.verifiedBy)
             || Boolean(currentEmissions?.scope2?.metadata?.verifiedBy)
-            ? (currentEmissions?.scope1?.total || 0)
+            ? (currentEmissions?.scope1?.total ?? 0)
             + (currentEmissions?.scope2
-              ?.calculatedTotalEmissions || 0)
-            : currentEmissions?.scope1And2?.total || 0)
+              ?.calculatedTotalEmissions ?? 0)
+            : currentEmissions?.scope1And2?.total)) ?? null
 
           const Scope3 = currentEmissions?.scope3?.calculatedTotalEmissions ?? null
 
